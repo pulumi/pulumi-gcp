@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -885,12 +884,6 @@ func (i *Dataset) ToDatasetOutputWithContext(ctx context.Context) DatasetOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetOutput)
 }
 
-func (i *Dataset) ToOutput(ctx context.Context) pulumix.Output[*Dataset] {
-	return pulumix.Output[*Dataset]{
-		OutputState: i.ToDatasetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DatasetArrayInput is an input type that accepts DatasetArray and DatasetArrayOutput values.
 // You can construct a concrete instance of `DatasetArrayInput` via:
 //
@@ -914,12 +907,6 @@ func (i DatasetArray) ToDatasetArrayOutput() DatasetArrayOutput {
 
 func (i DatasetArray) ToDatasetArrayOutputWithContext(ctx context.Context) DatasetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetArrayOutput)
-}
-
-func (i DatasetArray) ToOutput(ctx context.Context) pulumix.Output[[]*Dataset] {
-	return pulumix.Output[[]*Dataset]{
-		OutputState: i.ToDatasetArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DatasetMapInput is an input type that accepts DatasetMap and DatasetMapOutput values.
@@ -947,12 +934,6 @@ func (i DatasetMap) ToDatasetMapOutputWithContext(ctx context.Context) DatasetMa
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetMapOutput)
 }
 
-func (i DatasetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Dataset] {
-	return pulumix.Output[map[string]*Dataset]{
-		OutputState: i.ToDatasetMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatasetOutput struct{ *pulumi.OutputState }
 
 func (DatasetOutput) ElementType() reflect.Type {
@@ -965,12 +946,6 @@ func (o DatasetOutput) ToDatasetOutput() DatasetOutput {
 
 func (o DatasetOutput) ToDatasetOutputWithContext(ctx context.Context) DatasetOutput {
 	return o
-}
-
-func (o DatasetOutput) ToOutput(ctx context.Context) pulumix.Output[*Dataset] {
-	return pulumix.Output[*Dataset]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An array of objects that define dataset access for one or more entities.
@@ -1159,12 +1134,6 @@ func (o DatasetArrayOutput) ToDatasetArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o DatasetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Dataset] {
-	return pulumix.Output[[]*Dataset]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DatasetArrayOutput) Index(i pulumi.IntInput) DatasetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Dataset {
 		return vs[0].([]*Dataset)[vs[1].(int)]
@@ -1183,12 +1152,6 @@ func (o DatasetMapOutput) ToDatasetMapOutput() DatasetMapOutput {
 
 func (o DatasetMapOutput) ToDatasetMapOutputWithContext(ctx context.Context) DatasetMapOutput {
 	return o
-}
-
-func (o DatasetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Dataset] {
-	return pulumix.Output[map[string]*Dataset]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatasetMapOutput) MapIndex(k pulumi.StringInput) DatasetOutput {

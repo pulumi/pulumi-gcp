@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -79,12 +78,6 @@ func (i BackupPlanBackupConfigArgs) ToBackupPlanBackupConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupConfigOutput)
 }
 
-func (i BackupPlanBackupConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BackupPlanBackupConfig] {
-	return pulumix.Output[BackupPlanBackupConfig]{
-		OutputState: i.ToBackupPlanBackupConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BackupPlanBackupConfigArgs) ToBackupPlanBackupConfigPtrOutput() BackupPlanBackupConfigPtrOutput {
 	return i.ToBackupPlanBackupConfigPtrOutputWithContext(context.Background())
 }
@@ -126,12 +119,6 @@ func (i *backupPlanBackupConfigPtrType) ToBackupPlanBackupConfigPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupConfigPtrOutput)
 }
 
-func (i *backupPlanBackupConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanBackupConfig] {
-	return pulumix.Output[*BackupPlanBackupConfig]{
-		OutputState: i.ToBackupPlanBackupConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BackupPlanBackupConfigOutput struct{ *pulumi.OutputState }
 
 func (BackupPlanBackupConfigOutput) ElementType() reflect.Type {
@@ -154,12 +141,6 @@ func (o BackupPlanBackupConfigOutput) ToBackupPlanBackupConfigPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupPlanBackupConfig) *BackupPlanBackupConfig {
 		return &v
 	}).(BackupPlanBackupConfigPtrOutput)
-}
-
-func (o BackupPlanBackupConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BackupPlanBackupConfig] {
-	return pulumix.Output[BackupPlanBackupConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If True, include all namespaced resources.
@@ -212,12 +193,6 @@ func (o BackupPlanBackupConfigPtrOutput) ToBackupPlanBackupConfigPtrOutput() Bac
 
 func (o BackupPlanBackupConfigPtrOutput) ToBackupPlanBackupConfigPtrOutputWithContext(ctx context.Context) BackupPlanBackupConfigPtrOutput {
 	return o
-}
-
-func (o BackupPlanBackupConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanBackupConfig] {
-	return pulumix.Output[*BackupPlanBackupConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackupPlanBackupConfigPtrOutput) Elem() BackupPlanBackupConfigOutput {
@@ -329,12 +304,6 @@ func (i BackupPlanBackupConfigEncryptionKeyArgs) ToBackupPlanBackupConfigEncrypt
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupConfigEncryptionKeyOutput)
 }
 
-func (i BackupPlanBackupConfigEncryptionKeyArgs) ToOutput(ctx context.Context) pulumix.Output[BackupPlanBackupConfigEncryptionKey] {
-	return pulumix.Output[BackupPlanBackupConfigEncryptionKey]{
-		OutputState: i.ToBackupPlanBackupConfigEncryptionKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BackupPlanBackupConfigEncryptionKeyArgs) ToBackupPlanBackupConfigEncryptionKeyPtrOutput() BackupPlanBackupConfigEncryptionKeyPtrOutput {
 	return i.ToBackupPlanBackupConfigEncryptionKeyPtrOutputWithContext(context.Background())
 }
@@ -376,12 +345,6 @@ func (i *backupPlanBackupConfigEncryptionKeyPtrType) ToBackupPlanBackupConfigEnc
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupConfigEncryptionKeyPtrOutput)
 }
 
-func (i *backupPlanBackupConfigEncryptionKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanBackupConfigEncryptionKey] {
-	return pulumix.Output[*BackupPlanBackupConfigEncryptionKey]{
-		OutputState: i.ToBackupPlanBackupConfigEncryptionKeyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BackupPlanBackupConfigEncryptionKeyOutput struct{ *pulumi.OutputState }
 
 func (BackupPlanBackupConfigEncryptionKeyOutput) ElementType() reflect.Type {
@@ -406,12 +369,6 @@ func (o BackupPlanBackupConfigEncryptionKeyOutput) ToBackupPlanBackupConfigEncry
 	}).(BackupPlanBackupConfigEncryptionKeyPtrOutput)
 }
 
-func (o BackupPlanBackupConfigEncryptionKeyOutput) ToOutput(ctx context.Context) pulumix.Output[BackupPlanBackupConfigEncryptionKey] {
-	return pulumix.Output[BackupPlanBackupConfigEncryptionKey]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Google Cloud KMS encryption key. Format: projects/*/locations/*/keyRings/*/cryptoKeys/*
 func (o BackupPlanBackupConfigEncryptionKeyOutput) GcpKmsEncryptionKey() pulumi.StringOutput {
 	return o.ApplyT(func(v BackupPlanBackupConfigEncryptionKey) string { return v.GcpKmsEncryptionKey }).(pulumi.StringOutput)
@@ -429,12 +386,6 @@ func (o BackupPlanBackupConfigEncryptionKeyPtrOutput) ToBackupPlanBackupConfigEn
 
 func (o BackupPlanBackupConfigEncryptionKeyPtrOutput) ToBackupPlanBackupConfigEncryptionKeyPtrOutputWithContext(ctx context.Context) BackupPlanBackupConfigEncryptionKeyPtrOutput {
 	return o
-}
-
-func (o BackupPlanBackupConfigEncryptionKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanBackupConfigEncryptionKey] {
-	return pulumix.Output[*BackupPlanBackupConfigEncryptionKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackupPlanBackupConfigEncryptionKeyPtrOutput) Elem() BackupPlanBackupConfigEncryptionKeyOutput {
@@ -492,12 +443,6 @@ func (i BackupPlanBackupConfigSelectedApplicationsArgs) ToBackupPlanBackupConfig
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupConfigSelectedApplicationsOutput)
 }
 
-func (i BackupPlanBackupConfigSelectedApplicationsArgs) ToOutput(ctx context.Context) pulumix.Output[BackupPlanBackupConfigSelectedApplications] {
-	return pulumix.Output[BackupPlanBackupConfigSelectedApplications]{
-		OutputState: i.ToBackupPlanBackupConfigSelectedApplicationsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BackupPlanBackupConfigSelectedApplicationsArgs) ToBackupPlanBackupConfigSelectedApplicationsPtrOutput() BackupPlanBackupConfigSelectedApplicationsPtrOutput {
 	return i.ToBackupPlanBackupConfigSelectedApplicationsPtrOutputWithContext(context.Background())
 }
@@ -539,12 +484,6 @@ func (i *backupPlanBackupConfigSelectedApplicationsPtrType) ToBackupPlanBackupCo
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupConfigSelectedApplicationsPtrOutput)
 }
 
-func (i *backupPlanBackupConfigSelectedApplicationsPtrType) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanBackupConfigSelectedApplications] {
-	return pulumix.Output[*BackupPlanBackupConfigSelectedApplications]{
-		OutputState: i.ToBackupPlanBackupConfigSelectedApplicationsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BackupPlanBackupConfigSelectedApplicationsOutput struct{ *pulumi.OutputState }
 
 func (BackupPlanBackupConfigSelectedApplicationsOutput) ElementType() reflect.Type {
@@ -569,12 +508,6 @@ func (o BackupPlanBackupConfigSelectedApplicationsOutput) ToBackupPlanBackupConf
 	}).(BackupPlanBackupConfigSelectedApplicationsPtrOutput)
 }
 
-func (o BackupPlanBackupConfigSelectedApplicationsOutput) ToOutput(ctx context.Context) pulumix.Output[BackupPlanBackupConfigSelectedApplications] {
-	return pulumix.Output[BackupPlanBackupConfigSelectedApplications]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of namespaced Kubernetes resources.
 // Structure is documented below.
 func (o BackupPlanBackupConfigSelectedApplicationsOutput) NamespacedNames() BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayOutput {
@@ -595,12 +528,6 @@ func (o BackupPlanBackupConfigSelectedApplicationsPtrOutput) ToBackupPlanBackupC
 
 func (o BackupPlanBackupConfigSelectedApplicationsPtrOutput) ToBackupPlanBackupConfigSelectedApplicationsPtrOutputWithContext(ctx context.Context) BackupPlanBackupConfigSelectedApplicationsPtrOutput {
 	return o
-}
-
-func (o BackupPlanBackupConfigSelectedApplicationsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanBackupConfigSelectedApplications] {
-	return pulumix.Output[*BackupPlanBackupConfigSelectedApplications]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackupPlanBackupConfigSelectedApplicationsPtrOutput) Elem() BackupPlanBackupConfigSelectedApplicationsOutput {
@@ -661,12 +588,6 @@ func (i BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs) ToBackupPl
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupConfigSelectedApplicationsNamespacedNameOutput)
 }
 
-func (i BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs) ToOutput(ctx context.Context) pulumix.Output[BackupPlanBackupConfigSelectedApplicationsNamespacedName] {
-	return pulumix.Output[BackupPlanBackupConfigSelectedApplicationsNamespacedName]{
-		OutputState: i.ToBackupPlanBackupConfigSelectedApplicationsNamespacedNameOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayInput is an input type that accepts BackupPlanBackupConfigSelectedApplicationsNamespacedNameArray and BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayOutput values.
 // You can construct a concrete instance of `BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayInput` via:
 //
@@ -692,12 +613,6 @@ func (i BackupPlanBackupConfigSelectedApplicationsNamespacedNameArray) ToBackupP
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayOutput)
 }
 
-func (i BackupPlanBackupConfigSelectedApplicationsNamespacedNameArray) ToOutput(ctx context.Context) pulumix.Output[[]BackupPlanBackupConfigSelectedApplicationsNamespacedName] {
-	return pulumix.Output[[]BackupPlanBackupConfigSelectedApplicationsNamespacedName]{
-		OutputState: i.ToBackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BackupPlanBackupConfigSelectedApplicationsNamespacedNameOutput struct{ *pulumi.OutputState }
 
 func (BackupPlanBackupConfigSelectedApplicationsNamespacedNameOutput) ElementType() reflect.Type {
@@ -710,12 +625,6 @@ func (o BackupPlanBackupConfigSelectedApplicationsNamespacedNameOutput) ToBackup
 
 func (o BackupPlanBackupConfigSelectedApplicationsNamespacedNameOutput) ToBackupPlanBackupConfigSelectedApplicationsNamespacedNameOutputWithContext(ctx context.Context) BackupPlanBackupConfigSelectedApplicationsNamespacedNameOutput {
 	return o
-}
-
-func (o BackupPlanBackupConfigSelectedApplicationsNamespacedNameOutput) ToOutput(ctx context.Context) pulumix.Output[BackupPlanBackupConfigSelectedApplicationsNamespacedName] {
-	return pulumix.Output[BackupPlanBackupConfigSelectedApplicationsNamespacedName]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of a Kubernetes Resource.
@@ -740,12 +649,6 @@ func (o BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayOutput) ToB
 
 func (o BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayOutput) ToBackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayOutputWithContext(ctx context.Context) BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayOutput {
 	return o
-}
-
-func (o BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BackupPlanBackupConfigSelectedApplicationsNamespacedName] {
-	return pulumix.Output[[]BackupPlanBackupConfigSelectedApplicationsNamespacedName]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayOutput) Index(i pulumi.IntInput) BackupPlanBackupConfigSelectedApplicationsNamespacedNameOutput {
@@ -785,12 +688,6 @@ func (i BackupPlanBackupConfigSelectedNamespacesArgs) ToBackupPlanBackupConfigSe
 
 func (i BackupPlanBackupConfigSelectedNamespacesArgs) ToBackupPlanBackupConfigSelectedNamespacesOutputWithContext(ctx context.Context) BackupPlanBackupConfigSelectedNamespacesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupConfigSelectedNamespacesOutput)
-}
-
-func (i BackupPlanBackupConfigSelectedNamespacesArgs) ToOutput(ctx context.Context) pulumix.Output[BackupPlanBackupConfigSelectedNamespaces] {
-	return pulumix.Output[BackupPlanBackupConfigSelectedNamespaces]{
-		OutputState: i.ToBackupPlanBackupConfigSelectedNamespacesOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i BackupPlanBackupConfigSelectedNamespacesArgs) ToBackupPlanBackupConfigSelectedNamespacesPtrOutput() BackupPlanBackupConfigSelectedNamespacesPtrOutput {
@@ -834,12 +731,6 @@ func (i *backupPlanBackupConfigSelectedNamespacesPtrType) ToBackupPlanBackupConf
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupConfigSelectedNamespacesPtrOutput)
 }
 
-func (i *backupPlanBackupConfigSelectedNamespacesPtrType) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanBackupConfigSelectedNamespaces] {
-	return pulumix.Output[*BackupPlanBackupConfigSelectedNamespaces]{
-		OutputState: i.ToBackupPlanBackupConfigSelectedNamespacesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BackupPlanBackupConfigSelectedNamespacesOutput struct{ *pulumi.OutputState }
 
 func (BackupPlanBackupConfigSelectedNamespacesOutput) ElementType() reflect.Type {
@@ -864,12 +755,6 @@ func (o BackupPlanBackupConfigSelectedNamespacesOutput) ToBackupPlanBackupConfig
 	}).(BackupPlanBackupConfigSelectedNamespacesPtrOutput)
 }
 
-func (o BackupPlanBackupConfigSelectedNamespacesOutput) ToOutput(ctx context.Context) pulumix.Output[BackupPlanBackupConfigSelectedNamespaces] {
-	return pulumix.Output[BackupPlanBackupConfigSelectedNamespaces]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of Kubernetes Namespaces.
 func (o BackupPlanBackupConfigSelectedNamespacesOutput) Namespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BackupPlanBackupConfigSelectedNamespaces) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
@@ -887,12 +772,6 @@ func (o BackupPlanBackupConfigSelectedNamespacesPtrOutput) ToBackupPlanBackupCon
 
 func (o BackupPlanBackupConfigSelectedNamespacesPtrOutput) ToBackupPlanBackupConfigSelectedNamespacesPtrOutputWithContext(ctx context.Context) BackupPlanBackupConfigSelectedNamespacesPtrOutput {
 	return o
-}
-
-func (o BackupPlanBackupConfigSelectedNamespacesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanBackupConfigSelectedNamespaces] {
-	return pulumix.Output[*BackupPlanBackupConfigSelectedNamespaces]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackupPlanBackupConfigSelectedNamespacesPtrOutput) Elem() BackupPlanBackupConfigSelectedNamespacesOutput {
@@ -956,12 +835,6 @@ func (i BackupPlanBackupScheduleArgs) ToBackupPlanBackupScheduleOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupScheduleOutput)
 }
 
-func (i BackupPlanBackupScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[BackupPlanBackupSchedule] {
-	return pulumix.Output[BackupPlanBackupSchedule]{
-		OutputState: i.ToBackupPlanBackupScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BackupPlanBackupScheduleArgs) ToBackupPlanBackupSchedulePtrOutput() BackupPlanBackupSchedulePtrOutput {
 	return i.ToBackupPlanBackupSchedulePtrOutputWithContext(context.Background())
 }
@@ -1003,12 +876,6 @@ func (i *backupPlanBackupSchedulePtrType) ToBackupPlanBackupSchedulePtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupSchedulePtrOutput)
 }
 
-func (i *backupPlanBackupSchedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanBackupSchedule] {
-	return pulumix.Output[*BackupPlanBackupSchedule]{
-		OutputState: i.ToBackupPlanBackupSchedulePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BackupPlanBackupScheduleOutput struct{ *pulumi.OutputState }
 
 func (BackupPlanBackupScheduleOutput) ElementType() reflect.Type {
@@ -1031,12 +898,6 @@ func (o BackupPlanBackupScheduleOutput) ToBackupPlanBackupSchedulePtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupPlanBackupSchedule) *BackupPlanBackupSchedule {
 		return &v
 	}).(BackupPlanBackupSchedulePtrOutput)
-}
-
-func (o BackupPlanBackupScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[BackupPlanBackupSchedule] {
-	return pulumix.Output[BackupPlanBackupSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A standard cron string that defines a repeating schedule for
@@ -1063,12 +924,6 @@ func (o BackupPlanBackupSchedulePtrOutput) ToBackupPlanBackupSchedulePtrOutput()
 
 func (o BackupPlanBackupSchedulePtrOutput) ToBackupPlanBackupSchedulePtrOutputWithContext(ctx context.Context) BackupPlanBackupSchedulePtrOutput {
 	return o
-}
-
-func (o BackupPlanBackupSchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanBackupSchedule] {
-	return pulumix.Output[*BackupPlanBackupSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackupPlanBackupSchedulePtrOutput) Elem() BackupPlanBackupScheduleOutput {
@@ -1138,12 +993,6 @@ func (i BackupPlanIamBindingConditionArgs) ToBackupPlanIamBindingConditionOutput
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanIamBindingConditionOutput)
 }
 
-func (i BackupPlanIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[BackupPlanIamBindingCondition] {
-	return pulumix.Output[BackupPlanIamBindingCondition]{
-		OutputState: i.ToBackupPlanIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BackupPlanIamBindingConditionArgs) ToBackupPlanIamBindingConditionPtrOutput() BackupPlanIamBindingConditionPtrOutput {
 	return i.ToBackupPlanIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -1185,12 +1034,6 @@ func (i *backupPlanIamBindingConditionPtrType) ToBackupPlanIamBindingConditionPt
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanIamBindingConditionPtrOutput)
 }
 
-func (i *backupPlanIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanIamBindingCondition] {
-	return pulumix.Output[*BackupPlanIamBindingCondition]{
-		OutputState: i.ToBackupPlanIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BackupPlanIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (BackupPlanIamBindingConditionOutput) ElementType() reflect.Type {
@@ -1213,12 +1056,6 @@ func (o BackupPlanIamBindingConditionOutput) ToBackupPlanIamBindingConditionPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupPlanIamBindingCondition) *BackupPlanIamBindingCondition {
 		return &v
 	}).(BackupPlanIamBindingConditionPtrOutput)
-}
-
-func (o BackupPlanIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[BackupPlanIamBindingCondition] {
-	return pulumix.Output[BackupPlanIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackupPlanIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1245,12 +1082,6 @@ func (o BackupPlanIamBindingConditionPtrOutput) ToBackupPlanIamBindingConditionP
 
 func (o BackupPlanIamBindingConditionPtrOutput) ToBackupPlanIamBindingConditionPtrOutputWithContext(ctx context.Context) BackupPlanIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o BackupPlanIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanIamBindingCondition] {
-	return pulumix.Output[*BackupPlanIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackupPlanIamBindingConditionPtrOutput) Elem() BackupPlanIamBindingConditionOutput {
@@ -1325,12 +1156,6 @@ func (i BackupPlanIamMemberConditionArgs) ToBackupPlanIamMemberConditionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanIamMemberConditionOutput)
 }
 
-func (i BackupPlanIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[BackupPlanIamMemberCondition] {
-	return pulumix.Output[BackupPlanIamMemberCondition]{
-		OutputState: i.ToBackupPlanIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BackupPlanIamMemberConditionArgs) ToBackupPlanIamMemberConditionPtrOutput() BackupPlanIamMemberConditionPtrOutput {
 	return i.ToBackupPlanIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -1372,12 +1197,6 @@ func (i *backupPlanIamMemberConditionPtrType) ToBackupPlanIamMemberConditionPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanIamMemberConditionPtrOutput)
 }
 
-func (i *backupPlanIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanIamMemberCondition] {
-	return pulumix.Output[*BackupPlanIamMemberCondition]{
-		OutputState: i.ToBackupPlanIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BackupPlanIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (BackupPlanIamMemberConditionOutput) ElementType() reflect.Type {
@@ -1400,12 +1219,6 @@ func (o BackupPlanIamMemberConditionOutput) ToBackupPlanIamMemberConditionPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupPlanIamMemberCondition) *BackupPlanIamMemberCondition {
 		return &v
 	}).(BackupPlanIamMemberConditionPtrOutput)
-}
-
-func (o BackupPlanIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[BackupPlanIamMemberCondition] {
-	return pulumix.Output[BackupPlanIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackupPlanIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1432,12 +1245,6 @@ func (o BackupPlanIamMemberConditionPtrOutput) ToBackupPlanIamMemberConditionPtr
 
 func (o BackupPlanIamMemberConditionPtrOutput) ToBackupPlanIamMemberConditionPtrOutputWithContext(ctx context.Context) BackupPlanIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o BackupPlanIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanIamMemberCondition] {
-	return pulumix.Output[*BackupPlanIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackupPlanIamMemberConditionPtrOutput) Elem() BackupPlanIamMemberConditionOutput {
@@ -1550,12 +1357,6 @@ func (i BackupPlanRetentionPolicyArgs) ToBackupPlanRetentionPolicyOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanRetentionPolicyOutput)
 }
 
-func (i BackupPlanRetentionPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[BackupPlanRetentionPolicy] {
-	return pulumix.Output[BackupPlanRetentionPolicy]{
-		OutputState: i.ToBackupPlanRetentionPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BackupPlanRetentionPolicyArgs) ToBackupPlanRetentionPolicyPtrOutput() BackupPlanRetentionPolicyPtrOutput {
 	return i.ToBackupPlanRetentionPolicyPtrOutputWithContext(context.Background())
 }
@@ -1597,12 +1398,6 @@ func (i *backupPlanRetentionPolicyPtrType) ToBackupPlanRetentionPolicyPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanRetentionPolicyPtrOutput)
 }
 
-func (i *backupPlanRetentionPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanRetentionPolicy] {
-	return pulumix.Output[*BackupPlanRetentionPolicy]{
-		OutputState: i.ToBackupPlanRetentionPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BackupPlanRetentionPolicyOutput struct{ *pulumi.OutputState }
 
 func (BackupPlanRetentionPolicyOutput) ElementType() reflect.Type {
@@ -1625,12 +1420,6 @@ func (o BackupPlanRetentionPolicyOutput) ToBackupPlanRetentionPolicyPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupPlanRetentionPolicy) *BackupPlanRetentionPolicy {
 		return &v
 	}).(BackupPlanRetentionPolicyPtrOutput)
-}
-
-func (o BackupPlanRetentionPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[BackupPlanRetentionPolicy] {
-	return pulumix.Output[BackupPlanRetentionPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Minimum age for a Backup created via this BackupPlan (in days).
@@ -1676,12 +1465,6 @@ func (o BackupPlanRetentionPolicyPtrOutput) ToBackupPlanRetentionPolicyPtrOutput
 
 func (o BackupPlanRetentionPolicyPtrOutput) ToBackupPlanRetentionPolicyPtrOutputWithContext(ctx context.Context) BackupPlanRetentionPolicyPtrOutput {
 	return o
-}
-
-func (o BackupPlanRetentionPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanRetentionPolicy] {
-	return pulumix.Output[*BackupPlanRetentionPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackupPlanRetentionPolicyPtrOutput) Elem() BackupPlanRetentionPolicyOutput {
@@ -1777,12 +1560,6 @@ func (i RestorePlanIamBindingConditionArgs) ToRestorePlanIamBindingConditionOutp
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanIamBindingConditionOutput)
 }
 
-func (i RestorePlanIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanIamBindingCondition] {
-	return pulumix.Output[RestorePlanIamBindingCondition]{
-		OutputState: i.ToRestorePlanIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RestorePlanIamBindingConditionArgs) ToRestorePlanIamBindingConditionPtrOutput() RestorePlanIamBindingConditionPtrOutput {
 	return i.ToRestorePlanIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -1824,12 +1601,6 @@ func (i *restorePlanIamBindingConditionPtrType) ToRestorePlanIamBindingCondition
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanIamBindingConditionPtrOutput)
 }
 
-func (i *restorePlanIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanIamBindingCondition] {
-	return pulumix.Output[*RestorePlanIamBindingCondition]{
-		OutputState: i.ToRestorePlanIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RestorePlanIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (RestorePlanIamBindingConditionOutput) ElementType() reflect.Type {
@@ -1852,12 +1623,6 @@ func (o RestorePlanIamBindingConditionOutput) ToRestorePlanIamBindingConditionPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestorePlanIamBindingCondition) *RestorePlanIamBindingCondition {
 		return &v
 	}).(RestorePlanIamBindingConditionPtrOutput)
-}
-
-func (o RestorePlanIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanIamBindingCondition] {
-	return pulumix.Output[RestorePlanIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // User specified descriptive string for this RestorePlan.
@@ -1885,12 +1650,6 @@ func (o RestorePlanIamBindingConditionPtrOutput) ToRestorePlanIamBindingConditio
 
 func (o RestorePlanIamBindingConditionPtrOutput) ToRestorePlanIamBindingConditionPtrOutputWithContext(ctx context.Context) RestorePlanIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o RestorePlanIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanIamBindingCondition] {
-	return pulumix.Output[*RestorePlanIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestorePlanIamBindingConditionPtrOutput) Elem() RestorePlanIamBindingConditionOutput {
@@ -1968,12 +1727,6 @@ func (i RestorePlanIamMemberConditionArgs) ToRestorePlanIamMemberConditionOutput
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanIamMemberConditionOutput)
 }
 
-func (i RestorePlanIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanIamMemberCondition] {
-	return pulumix.Output[RestorePlanIamMemberCondition]{
-		OutputState: i.ToRestorePlanIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RestorePlanIamMemberConditionArgs) ToRestorePlanIamMemberConditionPtrOutput() RestorePlanIamMemberConditionPtrOutput {
 	return i.ToRestorePlanIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -2015,12 +1768,6 @@ func (i *restorePlanIamMemberConditionPtrType) ToRestorePlanIamMemberConditionPt
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanIamMemberConditionPtrOutput)
 }
 
-func (i *restorePlanIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanIamMemberCondition] {
-	return pulumix.Output[*RestorePlanIamMemberCondition]{
-		OutputState: i.ToRestorePlanIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RestorePlanIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (RestorePlanIamMemberConditionOutput) ElementType() reflect.Type {
@@ -2043,12 +1790,6 @@ func (o RestorePlanIamMemberConditionOutput) ToRestorePlanIamMemberConditionPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestorePlanIamMemberCondition) *RestorePlanIamMemberCondition {
 		return &v
 	}).(RestorePlanIamMemberConditionPtrOutput)
-}
-
-func (o RestorePlanIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanIamMemberCondition] {
-	return pulumix.Output[RestorePlanIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // User specified descriptive string for this RestorePlan.
@@ -2076,12 +1817,6 @@ func (o RestorePlanIamMemberConditionPtrOutput) ToRestorePlanIamMemberConditionP
 
 func (o RestorePlanIamMemberConditionPtrOutput) ToRestorePlanIamMemberConditionPtrOutputWithContext(ctx context.Context) RestorePlanIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o RestorePlanIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanIamMemberCondition] {
-	return pulumix.Output[*RestorePlanIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestorePlanIamMemberConditionPtrOutput) Elem() RestorePlanIamMemberConditionOutput {
@@ -2257,12 +1992,6 @@ func (i RestorePlanRestoreConfigArgs) ToRestorePlanRestoreConfigOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigOutput)
 }
 
-func (i RestorePlanRestoreConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfig] {
-	return pulumix.Output[RestorePlanRestoreConfig]{
-		OutputState: i.ToRestorePlanRestoreConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RestorePlanRestoreConfigArgs) ToRestorePlanRestoreConfigPtrOutput() RestorePlanRestoreConfigPtrOutput {
 	return i.ToRestorePlanRestoreConfigPtrOutputWithContext(context.Background())
 }
@@ -2304,12 +2033,6 @@ func (i *restorePlanRestoreConfigPtrType) ToRestorePlanRestoreConfigPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigPtrOutput)
 }
 
-func (i *restorePlanRestoreConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanRestoreConfig] {
-	return pulumix.Output[*RestorePlanRestoreConfig]{
-		OutputState: i.ToRestorePlanRestoreConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RestorePlanRestoreConfigOutput struct{ *pulumi.OutputState }
 
 func (RestorePlanRestoreConfigOutput) ElementType() reflect.Type {
@@ -2332,12 +2055,6 @@ func (o RestorePlanRestoreConfigOutput) ToRestorePlanRestoreConfigPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestorePlanRestoreConfig) *RestorePlanRestoreConfig {
 		return &v
 	}).(RestorePlanRestoreConfigPtrOutput)
-}
-
-func (o RestorePlanRestoreConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfig] {
-	return pulumix.Output[RestorePlanRestoreConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If True, restore all namespaced resources in the Backup.
@@ -2445,12 +2162,6 @@ func (o RestorePlanRestoreConfigPtrOutput) ToRestorePlanRestoreConfigPtrOutput()
 
 func (o RestorePlanRestoreConfigPtrOutput) ToRestorePlanRestoreConfigPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigPtrOutput {
 	return o
-}
-
-func (o RestorePlanRestoreConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanRestoreConfig] {
-	return pulumix.Output[*RestorePlanRestoreConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestorePlanRestoreConfigPtrOutput) Elem() RestorePlanRestoreConfigOutput {
@@ -2659,12 +2370,6 @@ func (i RestorePlanRestoreConfigClusterResourceRestoreScopeArgs) ToRestorePlanRe
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigClusterResourceRestoreScopeOutput)
 }
 
-func (i RestorePlanRestoreConfigClusterResourceRestoreScopeArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigClusterResourceRestoreScope] {
-	return pulumix.Output[RestorePlanRestoreConfigClusterResourceRestoreScope]{
-		OutputState: i.ToRestorePlanRestoreConfigClusterResourceRestoreScopeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RestorePlanRestoreConfigClusterResourceRestoreScopeArgs) ToRestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput() RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput {
 	return i.ToRestorePlanRestoreConfigClusterResourceRestoreScopePtrOutputWithContext(context.Background())
 }
@@ -2706,12 +2411,6 @@ func (i *restorePlanRestoreConfigClusterResourceRestoreScopePtrType) ToRestorePl
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput)
 }
 
-func (i *restorePlanRestoreConfigClusterResourceRestoreScopePtrType) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanRestoreConfigClusterResourceRestoreScope] {
-	return pulumix.Output[*RestorePlanRestoreConfigClusterResourceRestoreScope]{
-		OutputState: i.ToRestorePlanRestoreConfigClusterResourceRestoreScopePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RestorePlanRestoreConfigClusterResourceRestoreScopeOutput struct{ *pulumi.OutputState }
 
 func (RestorePlanRestoreConfigClusterResourceRestoreScopeOutput) ElementType() reflect.Type {
@@ -2734,12 +2433,6 @@ func (o RestorePlanRestoreConfigClusterResourceRestoreScopeOutput) ToRestorePlan
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestorePlanRestoreConfigClusterResourceRestoreScope) *RestorePlanRestoreConfigClusterResourceRestoreScope {
 		return &v
 	}).(RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput)
-}
-
-func (o RestorePlanRestoreConfigClusterResourceRestoreScopeOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigClusterResourceRestoreScope] {
-	return pulumix.Output[RestorePlanRestoreConfigClusterResourceRestoreScope]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If True, all valid cluster-scoped resources will be restored.
@@ -2787,12 +2480,6 @@ func (o RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput) ToRestoreP
 
 func (o RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput) ToRestorePlanRestoreConfigClusterResourceRestoreScopePtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput {
 	return o
-}
-
-func (o RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanRestoreConfigClusterResourceRestoreScope] {
-	return pulumix.Output[*RestorePlanRestoreConfigClusterResourceRestoreScope]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput) Elem() RestorePlanRestoreConfigClusterResourceRestoreScopeOutput {
@@ -2897,12 +2584,6 @@ func (i RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput)
 }
 
-func (i RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind] {
-	return pulumix.Output[RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind]{
-		OutputState: i.ToRestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayInput is an input type that accepts RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArray and RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput values.
 // You can construct a concrete instance of `RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayInput` via:
 //
@@ -2928,12 +2609,6 @@ func (i RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArra
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput)
 }
 
-func (i RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArray) ToOutput(ctx context.Context) pulumix.Output[[]RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind] {
-	return pulumix.Output[[]RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind]{
-		OutputState: i.ToRestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput struct{ *pulumi.OutputState }
 
 func (RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput) ElementType() reflect.Type {
@@ -2946,12 +2621,6 @@ func (o RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutp
 
 func (o RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput) ToRestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutputWithContext(ctx context.Context) RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput {
 	return o
-}
-
-func (o RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind] {
-	return pulumix.Output[RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind]{
-		OutputState: o.OutputState,
-	}
 }
 
 // API Group string of a Kubernetes resource, e.g.
@@ -2983,12 +2652,6 @@ func (o RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArra
 
 func (o RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput) ToRestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutputWithContext(ctx context.Context) RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput {
 	return o
-}
-
-func (o RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind] {
-	return pulumix.Output[[]RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput) Index(i pulumi.IntInput) RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput {
@@ -3040,12 +2703,6 @@ func (i RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput)
 }
 
-func (i RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind] {
-	return pulumix.Output[RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind]{
-		OutputState: i.ToRestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayInput is an input type that accepts RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArray and RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput values.
 // You can construct a concrete instance of `RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayInput` via:
 //
@@ -3071,12 +2728,6 @@ func (i RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArra
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput)
 }
 
-func (i RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArray) ToOutput(ctx context.Context) pulumix.Output[[]RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind] {
-	return pulumix.Output[[]RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind]{
-		OutputState: i.ToRestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput struct{ *pulumi.OutputState }
 
 func (RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput) ElementType() reflect.Type {
@@ -3089,12 +2740,6 @@ func (o RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutp
 
 func (o RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput) ToRestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutputWithContext(ctx context.Context) RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput {
 	return o
-}
-
-func (o RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind] {
-	return pulumix.Output[RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind]{
-		OutputState: o.OutputState,
-	}
 }
 
 // API Group string of a Kubernetes resource, e.g.
@@ -3126,12 +2771,6 @@ func (o RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArra
 
 func (o RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput) ToRestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutputWithContext(ctx context.Context) RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput {
 	return o
-}
-
-func (o RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind] {
-	return pulumix.Output[[]RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput) Index(i pulumi.IntInput) RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput {
@@ -3171,12 +2810,6 @@ func (i RestorePlanRestoreConfigExcludedNamespacesArgs) ToRestorePlanRestoreConf
 
 func (i RestorePlanRestoreConfigExcludedNamespacesArgs) ToRestorePlanRestoreConfigExcludedNamespacesOutputWithContext(ctx context.Context) RestorePlanRestoreConfigExcludedNamespacesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigExcludedNamespacesOutput)
-}
-
-func (i RestorePlanRestoreConfigExcludedNamespacesArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigExcludedNamespaces] {
-	return pulumix.Output[RestorePlanRestoreConfigExcludedNamespaces]{
-		OutputState: i.ToRestorePlanRestoreConfigExcludedNamespacesOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i RestorePlanRestoreConfigExcludedNamespacesArgs) ToRestorePlanRestoreConfigExcludedNamespacesPtrOutput() RestorePlanRestoreConfigExcludedNamespacesPtrOutput {
@@ -3220,12 +2853,6 @@ func (i *restorePlanRestoreConfigExcludedNamespacesPtrType) ToRestorePlanRestore
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigExcludedNamespacesPtrOutput)
 }
 
-func (i *restorePlanRestoreConfigExcludedNamespacesPtrType) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanRestoreConfigExcludedNamespaces] {
-	return pulumix.Output[*RestorePlanRestoreConfigExcludedNamespaces]{
-		OutputState: i.ToRestorePlanRestoreConfigExcludedNamespacesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RestorePlanRestoreConfigExcludedNamespacesOutput struct{ *pulumi.OutputState }
 
 func (RestorePlanRestoreConfigExcludedNamespacesOutput) ElementType() reflect.Type {
@@ -3250,12 +2877,6 @@ func (o RestorePlanRestoreConfigExcludedNamespacesOutput) ToRestorePlanRestoreCo
 	}).(RestorePlanRestoreConfigExcludedNamespacesPtrOutput)
 }
 
-func (o RestorePlanRestoreConfigExcludedNamespacesOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigExcludedNamespaces] {
-	return pulumix.Output[RestorePlanRestoreConfigExcludedNamespaces]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of Kubernetes Namespaces.
 func (o RestorePlanRestoreConfigExcludedNamespacesOutput) Namespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RestorePlanRestoreConfigExcludedNamespaces) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
@@ -3273,12 +2894,6 @@ func (o RestorePlanRestoreConfigExcludedNamespacesPtrOutput) ToRestorePlanRestor
 
 func (o RestorePlanRestoreConfigExcludedNamespacesPtrOutput) ToRestorePlanRestoreConfigExcludedNamespacesPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigExcludedNamespacesPtrOutput {
 	return o
-}
-
-func (o RestorePlanRestoreConfigExcludedNamespacesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanRestoreConfigExcludedNamespaces] {
-	return pulumix.Output[*RestorePlanRestoreConfigExcludedNamespaces]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestorePlanRestoreConfigExcludedNamespacesPtrOutput) Elem() RestorePlanRestoreConfigExcludedNamespacesOutput {
@@ -3336,12 +2951,6 @@ func (i RestorePlanRestoreConfigSelectedApplicationsArgs) ToRestorePlanRestoreCo
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigSelectedApplicationsOutput)
 }
 
-func (i RestorePlanRestoreConfigSelectedApplicationsArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigSelectedApplications] {
-	return pulumix.Output[RestorePlanRestoreConfigSelectedApplications]{
-		OutputState: i.ToRestorePlanRestoreConfigSelectedApplicationsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RestorePlanRestoreConfigSelectedApplicationsArgs) ToRestorePlanRestoreConfigSelectedApplicationsPtrOutput() RestorePlanRestoreConfigSelectedApplicationsPtrOutput {
 	return i.ToRestorePlanRestoreConfigSelectedApplicationsPtrOutputWithContext(context.Background())
 }
@@ -3383,12 +2992,6 @@ func (i *restorePlanRestoreConfigSelectedApplicationsPtrType) ToRestorePlanResto
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigSelectedApplicationsPtrOutput)
 }
 
-func (i *restorePlanRestoreConfigSelectedApplicationsPtrType) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanRestoreConfigSelectedApplications] {
-	return pulumix.Output[*RestorePlanRestoreConfigSelectedApplications]{
-		OutputState: i.ToRestorePlanRestoreConfigSelectedApplicationsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RestorePlanRestoreConfigSelectedApplicationsOutput struct{ *pulumi.OutputState }
 
 func (RestorePlanRestoreConfigSelectedApplicationsOutput) ElementType() reflect.Type {
@@ -3413,12 +3016,6 @@ func (o RestorePlanRestoreConfigSelectedApplicationsOutput) ToRestorePlanRestore
 	}).(RestorePlanRestoreConfigSelectedApplicationsPtrOutput)
 }
 
-func (o RestorePlanRestoreConfigSelectedApplicationsOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigSelectedApplications] {
-	return pulumix.Output[RestorePlanRestoreConfigSelectedApplications]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of namespaced Kubernetes resources.
 // Structure is documented below.
 func (o RestorePlanRestoreConfigSelectedApplicationsOutput) NamespacedNames() RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput {
@@ -3439,12 +3036,6 @@ func (o RestorePlanRestoreConfigSelectedApplicationsPtrOutput) ToRestorePlanRest
 
 func (o RestorePlanRestoreConfigSelectedApplicationsPtrOutput) ToRestorePlanRestoreConfigSelectedApplicationsPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigSelectedApplicationsPtrOutput {
 	return o
-}
-
-func (o RestorePlanRestoreConfigSelectedApplicationsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanRestoreConfigSelectedApplications] {
-	return pulumix.Output[*RestorePlanRestoreConfigSelectedApplications]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestorePlanRestoreConfigSelectedApplicationsPtrOutput) Elem() RestorePlanRestoreConfigSelectedApplicationsOutput {
@@ -3505,12 +3096,6 @@ func (i RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs) ToRestor
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput)
 }
 
-func (i RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigSelectedApplicationsNamespacedName] {
-	return pulumix.Output[RestorePlanRestoreConfigSelectedApplicationsNamespacedName]{
-		OutputState: i.ToRestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayInput is an input type that accepts RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArray and RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput values.
 // You can construct a concrete instance of `RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayInput` via:
 //
@@ -3536,12 +3121,6 @@ func (i RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArray) ToResto
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput)
 }
 
-func (i RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArray) ToOutput(ctx context.Context) pulumix.Output[[]RestorePlanRestoreConfigSelectedApplicationsNamespacedName] {
-	return pulumix.Output[[]RestorePlanRestoreConfigSelectedApplicationsNamespacedName]{
-		OutputState: i.ToRestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput struct{ *pulumi.OutputState }
 
 func (RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput) ElementType() reflect.Type {
@@ -3554,12 +3133,6 @@ func (o RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput) ToRest
 
 func (o RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput) ToRestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutputWithContext(ctx context.Context) RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput {
 	return o
-}
-
-func (o RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigSelectedApplicationsNamespacedName] {
-	return pulumix.Output[RestorePlanRestoreConfigSelectedApplicationsNamespacedName]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of a Kubernetes Resource.
@@ -3584,12 +3157,6 @@ func (o RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput) T
 
 func (o RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput) ToRestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutputWithContext(ctx context.Context) RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput {
 	return o
-}
-
-func (o RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RestorePlanRestoreConfigSelectedApplicationsNamespacedName] {
-	return pulumix.Output[[]RestorePlanRestoreConfigSelectedApplicationsNamespacedName]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput) Index(i pulumi.IntInput) RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput {
@@ -3629,12 +3196,6 @@ func (i RestorePlanRestoreConfigSelectedNamespacesArgs) ToRestorePlanRestoreConf
 
 func (i RestorePlanRestoreConfigSelectedNamespacesArgs) ToRestorePlanRestoreConfigSelectedNamespacesOutputWithContext(ctx context.Context) RestorePlanRestoreConfigSelectedNamespacesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigSelectedNamespacesOutput)
-}
-
-func (i RestorePlanRestoreConfigSelectedNamespacesArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigSelectedNamespaces] {
-	return pulumix.Output[RestorePlanRestoreConfigSelectedNamespaces]{
-		OutputState: i.ToRestorePlanRestoreConfigSelectedNamespacesOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i RestorePlanRestoreConfigSelectedNamespacesArgs) ToRestorePlanRestoreConfigSelectedNamespacesPtrOutput() RestorePlanRestoreConfigSelectedNamespacesPtrOutput {
@@ -3678,12 +3239,6 @@ func (i *restorePlanRestoreConfigSelectedNamespacesPtrType) ToRestorePlanRestore
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigSelectedNamespacesPtrOutput)
 }
 
-func (i *restorePlanRestoreConfigSelectedNamespacesPtrType) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanRestoreConfigSelectedNamespaces] {
-	return pulumix.Output[*RestorePlanRestoreConfigSelectedNamespaces]{
-		OutputState: i.ToRestorePlanRestoreConfigSelectedNamespacesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RestorePlanRestoreConfigSelectedNamespacesOutput struct{ *pulumi.OutputState }
 
 func (RestorePlanRestoreConfigSelectedNamespacesOutput) ElementType() reflect.Type {
@@ -3708,12 +3263,6 @@ func (o RestorePlanRestoreConfigSelectedNamespacesOutput) ToRestorePlanRestoreCo
 	}).(RestorePlanRestoreConfigSelectedNamespacesPtrOutput)
 }
 
-func (o RestorePlanRestoreConfigSelectedNamespacesOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigSelectedNamespaces] {
-	return pulumix.Output[RestorePlanRestoreConfigSelectedNamespaces]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of Kubernetes Namespaces.
 func (o RestorePlanRestoreConfigSelectedNamespacesOutput) Namespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RestorePlanRestoreConfigSelectedNamespaces) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
@@ -3731,12 +3280,6 @@ func (o RestorePlanRestoreConfigSelectedNamespacesPtrOutput) ToRestorePlanRestor
 
 func (o RestorePlanRestoreConfigSelectedNamespacesPtrOutput) ToRestorePlanRestoreConfigSelectedNamespacesPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigSelectedNamespacesPtrOutput {
 	return o
-}
-
-func (o RestorePlanRestoreConfigSelectedNamespacesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanRestoreConfigSelectedNamespaces] {
-	return pulumix.Output[*RestorePlanRestoreConfigSelectedNamespaces]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestorePlanRestoreConfigSelectedNamespacesPtrOutput) Elem() RestorePlanRestoreConfigSelectedNamespacesOutput {
@@ -3818,12 +3361,6 @@ func (i RestorePlanRestoreConfigTransformationRuleArgs) ToRestorePlanRestoreConf
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigTransformationRuleOutput)
 }
 
-func (i RestorePlanRestoreConfigTransformationRuleArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigTransformationRule] {
-	return pulumix.Output[RestorePlanRestoreConfigTransformationRule]{
-		OutputState: i.ToRestorePlanRestoreConfigTransformationRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RestorePlanRestoreConfigTransformationRuleArrayInput is an input type that accepts RestorePlanRestoreConfigTransformationRuleArray and RestorePlanRestoreConfigTransformationRuleArrayOutput values.
 // You can construct a concrete instance of `RestorePlanRestoreConfigTransformationRuleArrayInput` via:
 //
@@ -3849,12 +3386,6 @@ func (i RestorePlanRestoreConfigTransformationRuleArray) ToRestorePlanRestoreCon
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigTransformationRuleArrayOutput)
 }
 
-func (i RestorePlanRestoreConfigTransformationRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]RestorePlanRestoreConfigTransformationRule] {
-	return pulumix.Output[[]RestorePlanRestoreConfigTransformationRule]{
-		OutputState: i.ToRestorePlanRestoreConfigTransformationRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RestorePlanRestoreConfigTransformationRuleOutput struct{ *pulumi.OutputState }
 
 func (RestorePlanRestoreConfigTransformationRuleOutput) ElementType() reflect.Type {
@@ -3867,12 +3398,6 @@ func (o RestorePlanRestoreConfigTransformationRuleOutput) ToRestorePlanRestoreCo
 
 func (o RestorePlanRestoreConfigTransformationRuleOutput) ToRestorePlanRestoreConfigTransformationRuleOutputWithContext(ctx context.Context) RestorePlanRestoreConfigTransformationRuleOutput {
 	return o
-}
-
-func (o RestorePlanRestoreConfigTransformationRuleOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigTransformationRule] {
-	return pulumix.Output[RestorePlanRestoreConfigTransformationRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description is a user specified string description
@@ -3915,12 +3440,6 @@ func (o RestorePlanRestoreConfigTransformationRuleArrayOutput) ToRestorePlanRest
 
 func (o RestorePlanRestoreConfigTransformationRuleArrayOutput) ToRestorePlanRestoreConfigTransformationRuleArrayOutputWithContext(ctx context.Context) RestorePlanRestoreConfigTransformationRuleArrayOutput {
 	return o
-}
-
-func (o RestorePlanRestoreConfigTransformationRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RestorePlanRestoreConfigTransformationRule] {
-	return pulumix.Output[[]RestorePlanRestoreConfigTransformationRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestorePlanRestoreConfigTransformationRuleArrayOutput) Index(i pulumi.IntInput) RestorePlanRestoreConfigTransformationRuleOutput {
@@ -3986,12 +3505,6 @@ func (i RestorePlanRestoreConfigTransformationRuleFieldActionArgs) ToRestorePlan
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigTransformationRuleFieldActionOutput)
 }
 
-func (i RestorePlanRestoreConfigTransformationRuleFieldActionArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigTransformationRuleFieldAction] {
-	return pulumix.Output[RestorePlanRestoreConfigTransformationRuleFieldAction]{
-		OutputState: i.ToRestorePlanRestoreConfigTransformationRuleFieldActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RestorePlanRestoreConfigTransformationRuleFieldActionArrayInput is an input type that accepts RestorePlanRestoreConfigTransformationRuleFieldActionArray and RestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput values.
 // You can construct a concrete instance of `RestorePlanRestoreConfigTransformationRuleFieldActionArrayInput` via:
 //
@@ -4017,12 +3530,6 @@ func (i RestorePlanRestoreConfigTransformationRuleFieldActionArray) ToRestorePla
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput)
 }
 
-func (i RestorePlanRestoreConfigTransformationRuleFieldActionArray) ToOutput(ctx context.Context) pulumix.Output[[]RestorePlanRestoreConfigTransformationRuleFieldAction] {
-	return pulumix.Output[[]RestorePlanRestoreConfigTransformationRuleFieldAction]{
-		OutputState: i.ToRestorePlanRestoreConfigTransformationRuleFieldActionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RestorePlanRestoreConfigTransformationRuleFieldActionOutput struct{ *pulumi.OutputState }
 
 func (RestorePlanRestoreConfigTransformationRuleFieldActionOutput) ElementType() reflect.Type {
@@ -4035,12 +3542,6 @@ func (o RestorePlanRestoreConfigTransformationRuleFieldActionOutput) ToRestorePl
 
 func (o RestorePlanRestoreConfigTransformationRuleFieldActionOutput) ToRestorePlanRestoreConfigTransformationRuleFieldActionOutputWithContext(ctx context.Context) RestorePlanRestoreConfigTransformationRuleFieldActionOutput {
 	return o
-}
-
-func (o RestorePlanRestoreConfigTransformationRuleFieldActionOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigTransformationRuleFieldAction] {
-	return pulumix.Output[RestorePlanRestoreConfigTransformationRuleFieldAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A string containing a JSON Pointer value that references the
@@ -4081,12 +3582,6 @@ func (o RestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput) ToRest
 
 func (o RestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput) ToRestorePlanRestoreConfigTransformationRuleFieldActionArrayOutputWithContext(ctx context.Context) RestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput {
 	return o
-}
-
-func (o RestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RestorePlanRestoreConfigTransformationRuleFieldAction] {
-	return pulumix.Output[[]RestorePlanRestoreConfigTransformationRuleFieldAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput) Index(i pulumi.IntInput) RestorePlanRestoreConfigTransformationRuleFieldActionOutput {
@@ -4164,12 +3659,6 @@ func (i RestorePlanRestoreConfigTransformationRuleResourceFilterArgs) ToRestoreP
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigTransformationRuleResourceFilterOutput)
 }
 
-func (i RestorePlanRestoreConfigTransformationRuleResourceFilterArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigTransformationRuleResourceFilter] {
-	return pulumix.Output[RestorePlanRestoreConfigTransformationRuleResourceFilter]{
-		OutputState: i.ToRestorePlanRestoreConfigTransformationRuleResourceFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RestorePlanRestoreConfigTransformationRuleResourceFilterArgs) ToRestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput() RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput {
 	return i.ToRestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutputWithContext(context.Background())
 }
@@ -4211,12 +3700,6 @@ func (i *restorePlanRestoreConfigTransformationRuleResourceFilterPtrType) ToRest
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput)
 }
 
-func (i *restorePlanRestoreConfigTransformationRuleResourceFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanRestoreConfigTransformationRuleResourceFilter] {
-	return pulumix.Output[*RestorePlanRestoreConfigTransformationRuleResourceFilter]{
-		OutputState: i.ToRestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RestorePlanRestoreConfigTransformationRuleResourceFilterOutput struct{ *pulumi.OutputState }
 
 func (RestorePlanRestoreConfigTransformationRuleResourceFilterOutput) ElementType() reflect.Type {
@@ -4239,12 +3722,6 @@ func (o RestorePlanRestoreConfigTransformationRuleResourceFilterOutput) ToRestor
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestorePlanRestoreConfigTransformationRuleResourceFilter) *RestorePlanRestoreConfigTransformationRuleResourceFilter {
 		return &v
 	}).(RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput)
-}
-
-func (o RestorePlanRestoreConfigTransformationRuleResourceFilterOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigTransformationRuleResourceFilter] {
-	return pulumix.Output[RestorePlanRestoreConfigTransformationRuleResourceFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Filtering parameter) Any resource subject to transformation must
@@ -4290,12 +3767,6 @@ func (o RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput) ToRes
 
 func (o RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput) ToRestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput {
 	return o
-}
-
-func (o RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanRestoreConfigTransformationRuleResourceFilter] {
-	return pulumix.Output[*RestorePlanRestoreConfigTransformationRuleResourceFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput) Elem() RestorePlanRestoreConfigTransformationRuleResourceFilterOutput {
@@ -4395,12 +3866,6 @@ func (i RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput)
 }
 
-func (i RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind] {
-	return pulumix.Output[RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind]{
-		OutputState: i.ToRestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayInput is an input type that accepts RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArray and RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput values.
 // You can construct a concrete instance of `RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayInput` via:
 //
@@ -4426,12 +3891,6 @@ func (i RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArray) 
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput)
 }
 
-func (i RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArray) ToOutput(ctx context.Context) pulumix.Output[[]RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind] {
-	return pulumix.Output[[]RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind]{
-		OutputState: i.ToRestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput struct{ *pulumi.OutputState }
 
 func (RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput) ElementType() reflect.Type {
@@ -4444,12 +3903,6 @@ func (o RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput)
 
 func (o RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput) ToRestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutputWithContext(ctx context.Context) RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput {
 	return o
-}
-
-func (o RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind] {
-	return pulumix.Output[RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind]{
-		OutputState: o.OutputState,
-	}
 }
 
 // API Group string of a Kubernetes resource, e.g.
@@ -4481,12 +3934,6 @@ func (o RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOu
 
 func (o RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput) ToRestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutputWithContext(ctx context.Context) RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput {
 	return o
-}
-
-func (o RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind] {
-	return pulumix.Output[[]RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput) Index(i pulumi.IntInput) RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput {

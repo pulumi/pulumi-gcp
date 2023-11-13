@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A consumer override is applied to the consumer on its own authority to limit its own quota usage.
@@ -238,12 +237,6 @@ func (i *ConsumerQuotaOverride) ToConsumerQuotaOverrideOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumerQuotaOverrideOutput)
 }
 
-func (i *ConsumerQuotaOverride) ToOutput(ctx context.Context) pulumix.Output[*ConsumerQuotaOverride] {
-	return pulumix.Output[*ConsumerQuotaOverride]{
-		OutputState: i.ToConsumerQuotaOverrideOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConsumerQuotaOverrideArrayInput is an input type that accepts ConsumerQuotaOverrideArray and ConsumerQuotaOverrideArrayOutput values.
 // You can construct a concrete instance of `ConsumerQuotaOverrideArrayInput` via:
 //
@@ -267,12 +260,6 @@ func (i ConsumerQuotaOverrideArray) ToConsumerQuotaOverrideArrayOutput() Consume
 
 func (i ConsumerQuotaOverrideArray) ToConsumerQuotaOverrideArrayOutputWithContext(ctx context.Context) ConsumerQuotaOverrideArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumerQuotaOverrideArrayOutput)
-}
-
-func (i ConsumerQuotaOverrideArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConsumerQuotaOverride] {
-	return pulumix.Output[[]*ConsumerQuotaOverride]{
-		OutputState: i.ToConsumerQuotaOverrideArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConsumerQuotaOverrideMapInput is an input type that accepts ConsumerQuotaOverrideMap and ConsumerQuotaOverrideMapOutput values.
@@ -300,12 +287,6 @@ func (i ConsumerQuotaOverrideMap) ToConsumerQuotaOverrideMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumerQuotaOverrideMapOutput)
 }
 
-func (i ConsumerQuotaOverrideMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConsumerQuotaOverride] {
-	return pulumix.Output[map[string]*ConsumerQuotaOverride]{
-		OutputState: i.ToConsumerQuotaOverrideMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConsumerQuotaOverrideOutput struct{ *pulumi.OutputState }
 
 func (ConsumerQuotaOverrideOutput) ElementType() reflect.Type {
@@ -318,12 +299,6 @@ func (o ConsumerQuotaOverrideOutput) ToConsumerQuotaOverrideOutput() ConsumerQuo
 
 func (o ConsumerQuotaOverrideOutput) ToConsumerQuotaOverrideOutputWithContext(ctx context.Context) ConsumerQuotaOverrideOutput {
 	return o
-}
-
-func (o ConsumerQuotaOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[*ConsumerQuotaOverride] {
-	return pulumix.Output[*ConsumerQuotaOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
@@ -386,12 +361,6 @@ func (o ConsumerQuotaOverrideArrayOutput) ToConsumerQuotaOverrideArrayOutputWith
 	return o
 }
 
-func (o ConsumerQuotaOverrideArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConsumerQuotaOverride] {
-	return pulumix.Output[[]*ConsumerQuotaOverride]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConsumerQuotaOverrideArrayOutput) Index(i pulumi.IntInput) ConsumerQuotaOverrideOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConsumerQuotaOverride {
 		return vs[0].([]*ConsumerQuotaOverride)[vs[1].(int)]
@@ -410,12 +379,6 @@ func (o ConsumerQuotaOverrideMapOutput) ToConsumerQuotaOverrideMapOutput() Consu
 
 func (o ConsumerQuotaOverrideMapOutput) ToConsumerQuotaOverrideMapOutputWithContext(ctx context.Context) ConsumerQuotaOverrideMapOutput {
 	return o
-}
-
-func (o ConsumerQuotaOverrideMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConsumerQuotaOverride] {
-	return pulumix.Output[map[string]*ConsumerQuotaOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConsumerQuotaOverrideMapOutput) MapIndex(k pulumi.StringInput) ConsumerQuotaOverrideOutput {

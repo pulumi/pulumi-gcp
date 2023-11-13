@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Access Context Manager (VPC Service Controls) AccessPolicy. Each of these resources serves a different use case:
@@ -320,12 +319,6 @@ func (i *AccessPolicyIamPolicy) ToAccessPolicyIamPolicyOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIamPolicyOutput)
 }
 
-func (i *AccessPolicyIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*AccessPolicyIamPolicy] {
-	return pulumix.Output[*AccessPolicyIamPolicy]{
-		OutputState: i.ToAccessPolicyIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessPolicyIamPolicyArrayInput is an input type that accepts AccessPolicyIamPolicyArray and AccessPolicyIamPolicyArrayOutput values.
 // You can construct a concrete instance of `AccessPolicyIamPolicyArrayInput` via:
 //
@@ -349,12 +342,6 @@ func (i AccessPolicyIamPolicyArray) ToAccessPolicyIamPolicyArrayOutput() AccessP
 
 func (i AccessPolicyIamPolicyArray) ToAccessPolicyIamPolicyArrayOutputWithContext(ctx context.Context) AccessPolicyIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIamPolicyArrayOutput)
-}
-
-func (i AccessPolicyIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessPolicyIamPolicy] {
-	return pulumix.Output[[]*AccessPolicyIamPolicy]{
-		OutputState: i.ToAccessPolicyIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccessPolicyIamPolicyMapInput is an input type that accepts AccessPolicyIamPolicyMap and AccessPolicyIamPolicyMapOutput values.
@@ -382,12 +369,6 @@ func (i AccessPolicyIamPolicyMap) ToAccessPolicyIamPolicyMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIamPolicyMapOutput)
 }
 
-func (i AccessPolicyIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessPolicyIamPolicy] {
-	return pulumix.Output[map[string]*AccessPolicyIamPolicy]{
-		OutputState: i.ToAccessPolicyIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessPolicyIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (AccessPolicyIamPolicyOutput) ElementType() reflect.Type {
@@ -400,12 +381,6 @@ func (o AccessPolicyIamPolicyOutput) ToAccessPolicyIamPolicyOutput() AccessPolic
 
 func (o AccessPolicyIamPolicyOutput) ToAccessPolicyIamPolicyOutputWithContext(ctx context.Context) AccessPolicyIamPolicyOutput {
 	return o
-}
-
-func (o AccessPolicyIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessPolicyIamPolicy] {
-	return pulumix.Output[*AccessPolicyIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -450,12 +425,6 @@ func (o AccessPolicyIamPolicyArrayOutput) ToAccessPolicyIamPolicyArrayOutputWith
 	return o
 }
 
-func (o AccessPolicyIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessPolicyIamPolicy] {
-	return pulumix.Output[[]*AccessPolicyIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessPolicyIamPolicyArrayOutput) Index(i pulumi.IntInput) AccessPolicyIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessPolicyIamPolicy {
 		return vs[0].([]*AccessPolicyIamPolicy)[vs[1].(int)]
@@ -474,12 +443,6 @@ func (o AccessPolicyIamPolicyMapOutput) ToAccessPolicyIamPolicyMapOutput() Acces
 
 func (o AccessPolicyIamPolicyMapOutput) ToAccessPolicyIamPolicyMapOutputWithContext(ctx context.Context) AccessPolicyIamPolicyMapOutput {
 	return o
-}
-
-func (o AccessPolicyIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessPolicyIamPolicy] {
-	return pulumix.Output[map[string]*AccessPolicyIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessPolicyIamPolicyMapOutput) MapIndex(k pulumi.StringInput) AccessPolicyIamPolicyOutput {

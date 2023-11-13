@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a VM instance resource within GCE. For more information see
@@ -590,12 +589,6 @@ func (i *InstanceFromMachineImage) ToInstanceFromMachineImageOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageOutput)
 }
 
-func (i *InstanceFromMachineImage) ToOutput(ctx context.Context) pulumix.Output[*InstanceFromMachineImage] {
-	return pulumix.Output[*InstanceFromMachineImage]{
-		OutputState: i.ToInstanceFromMachineImageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceFromMachineImageArrayInput is an input type that accepts InstanceFromMachineImageArray and InstanceFromMachineImageArrayOutput values.
 // You can construct a concrete instance of `InstanceFromMachineImageArrayInput` via:
 //
@@ -619,12 +612,6 @@ func (i InstanceFromMachineImageArray) ToInstanceFromMachineImageArrayOutput() I
 
 func (i InstanceFromMachineImageArray) ToInstanceFromMachineImageArrayOutputWithContext(ctx context.Context) InstanceFromMachineImageArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageArrayOutput)
-}
-
-func (i InstanceFromMachineImageArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceFromMachineImage] {
-	return pulumix.Output[[]*InstanceFromMachineImage]{
-		OutputState: i.ToInstanceFromMachineImageArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstanceFromMachineImageMapInput is an input type that accepts InstanceFromMachineImageMap and InstanceFromMachineImageMapOutput values.
@@ -652,12 +639,6 @@ func (i InstanceFromMachineImageMap) ToInstanceFromMachineImageMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageMapOutput)
 }
 
-func (i InstanceFromMachineImageMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceFromMachineImage] {
-	return pulumix.Output[map[string]*InstanceFromMachineImage]{
-		OutputState: i.ToInstanceFromMachineImageMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceFromMachineImageOutput struct{ *pulumi.OutputState }
 
 func (InstanceFromMachineImageOutput) ElementType() reflect.Type {
@@ -670,12 +651,6 @@ func (o InstanceFromMachineImageOutput) ToInstanceFromMachineImageOutput() Insta
 
 func (o InstanceFromMachineImageOutput) ToInstanceFromMachineImageOutputWithContext(ctx context.Context) InstanceFromMachineImageOutput {
 	return o
-}
-
-func (o InstanceFromMachineImageOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceFromMachineImage] {
-	return pulumix.Output[*InstanceFromMachineImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Controls for advanced machine-related behavior features.
@@ -934,12 +909,6 @@ func (o InstanceFromMachineImageArrayOutput) ToInstanceFromMachineImageArrayOutp
 	return o
 }
 
-func (o InstanceFromMachineImageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceFromMachineImage] {
-	return pulumix.Output[[]*InstanceFromMachineImage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceFromMachineImageArrayOutput) Index(i pulumi.IntInput) InstanceFromMachineImageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceFromMachineImage {
 		return vs[0].([]*InstanceFromMachineImage)[vs[1].(int)]
@@ -958,12 +927,6 @@ func (o InstanceFromMachineImageMapOutput) ToInstanceFromMachineImageMapOutput()
 
 func (o InstanceFromMachineImageMapOutput) ToInstanceFromMachineImageMapOutputWithContext(ctx context.Context) InstanceFromMachineImageMapOutput {
 	return o
-}
-
-func (o InstanceFromMachineImageMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceFromMachineImage] {
-	return pulumix.Output[map[string]*InstanceFromMachineImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceFromMachineImageMapOutput) MapIndex(k pulumi.StringInput) InstanceFromMachineImageOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Cloud Deploy `DeliveryPipeline` resource
@@ -574,12 +573,6 @@ func (i *DeliveryPipeline) ToDeliveryPipelineOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineOutput)
 }
 
-func (i *DeliveryPipeline) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipeline] {
-	return pulumix.Output[*DeliveryPipeline]{
-		OutputState: i.ToDeliveryPipelineOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DeliveryPipelineArrayInput is an input type that accepts DeliveryPipelineArray and DeliveryPipelineArrayOutput values.
 // You can construct a concrete instance of `DeliveryPipelineArrayInput` via:
 //
@@ -603,12 +596,6 @@ func (i DeliveryPipelineArray) ToDeliveryPipelineArrayOutput() DeliveryPipelineA
 
 func (i DeliveryPipelineArray) ToDeliveryPipelineArrayOutputWithContext(ctx context.Context) DeliveryPipelineArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineArrayOutput)
-}
-
-func (i DeliveryPipelineArray) ToOutput(ctx context.Context) pulumix.Output[[]*DeliveryPipeline] {
-	return pulumix.Output[[]*DeliveryPipeline]{
-		OutputState: i.ToDeliveryPipelineArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DeliveryPipelineMapInput is an input type that accepts DeliveryPipelineMap and DeliveryPipelineMapOutput values.
@@ -636,12 +623,6 @@ func (i DeliveryPipelineMap) ToDeliveryPipelineMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineMapOutput)
 }
 
-func (i DeliveryPipelineMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DeliveryPipeline] {
-	return pulumix.Output[map[string]*DeliveryPipeline]{
-		OutputState: i.ToDeliveryPipelineMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryPipelineOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineOutput) ElementType() reflect.Type {
@@ -654,12 +635,6 @@ func (o DeliveryPipelineOutput) ToDeliveryPipelineOutput() DeliveryPipelineOutpu
 
 func (o DeliveryPipelineOutput) ToDeliveryPipelineOutputWithContext(ctx context.Context) DeliveryPipelineOutput {
 	return o
-}
-
-func (o DeliveryPipelineOutput) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipeline] {
-	return pulumix.Output[*DeliveryPipeline]{
-		OutputState: o.OutputState,
-	}
 }
 
 // User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
@@ -764,12 +739,6 @@ func (o DeliveryPipelineArrayOutput) ToDeliveryPipelineArrayOutputWithContext(ct
 	return o
 }
 
-func (o DeliveryPipelineArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DeliveryPipeline] {
-	return pulumix.Output[[]*DeliveryPipeline]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DeliveryPipelineArrayOutput) Index(i pulumi.IntInput) DeliveryPipelineOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DeliveryPipeline {
 		return vs[0].([]*DeliveryPipeline)[vs[1].(int)]
@@ -788,12 +757,6 @@ func (o DeliveryPipelineMapOutput) ToDeliveryPipelineMapOutput() DeliveryPipelin
 
 func (o DeliveryPipelineMapOutput) ToDeliveryPipelineMapOutputWithContext(ctx context.Context) DeliveryPipelineMapOutput {
 	return o
-}
-
-func (o DeliveryPipelineMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DeliveryPipeline] {
-	return pulumix.Output[map[string]*DeliveryPipeline]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineMapOutput) MapIndex(k pulumi.StringInput) DeliveryPipelineOutput {

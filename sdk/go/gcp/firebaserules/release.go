@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // For more information, see:
@@ -267,12 +266,6 @@ func (i *Release) ToReleaseOutputWithContext(ctx context.Context) ReleaseOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ReleaseOutput)
 }
 
-func (i *Release) ToOutput(ctx context.Context) pulumix.Output[*Release] {
-	return pulumix.Output[*Release]{
-		OutputState: i.ToReleaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ReleaseArrayInput is an input type that accepts ReleaseArray and ReleaseArrayOutput values.
 // You can construct a concrete instance of `ReleaseArrayInput` via:
 //
@@ -296,12 +289,6 @@ func (i ReleaseArray) ToReleaseArrayOutput() ReleaseArrayOutput {
 
 func (i ReleaseArray) ToReleaseArrayOutputWithContext(ctx context.Context) ReleaseArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReleaseArrayOutput)
-}
-
-func (i ReleaseArray) ToOutput(ctx context.Context) pulumix.Output[[]*Release] {
-	return pulumix.Output[[]*Release]{
-		OutputState: i.ToReleaseArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ReleaseMapInput is an input type that accepts ReleaseMap and ReleaseMapOutput values.
@@ -329,12 +316,6 @@ func (i ReleaseMap) ToReleaseMapOutputWithContext(ctx context.Context) ReleaseMa
 	return pulumi.ToOutputWithContext(ctx, i).(ReleaseMapOutput)
 }
 
-func (i ReleaseMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Release] {
-	return pulumix.Output[map[string]*Release]{
-		OutputState: i.ToReleaseMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ReleaseOutput struct{ *pulumi.OutputState }
 
 func (ReleaseOutput) ElementType() reflect.Type {
@@ -347,12 +328,6 @@ func (o ReleaseOutput) ToReleaseOutput() ReleaseOutput {
 
 func (o ReleaseOutput) ToReleaseOutputWithContext(ctx context.Context) ReleaseOutput {
 	return o
-}
-
-func (o ReleaseOutput) ToOutput(ctx context.Context) pulumix.Output[*Release] {
-	return pulumix.Output[*Release]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Output only. Time the release was created.
@@ -401,12 +376,6 @@ func (o ReleaseArrayOutput) ToReleaseArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ReleaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Release] {
-	return pulumix.Output[[]*Release]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ReleaseArrayOutput) Index(i pulumi.IntInput) ReleaseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Release {
 		return vs[0].([]*Release)[vs[1].(int)]
@@ -425,12 +394,6 @@ func (o ReleaseMapOutput) ToReleaseMapOutput() ReleaseMapOutput {
 
 func (o ReleaseMapOutput) ToReleaseMapOutputWithContext(ctx context.Context) ReleaseMapOutput {
 	return o
-}
-
-func (o ReleaseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Release] {
-	return pulumix.Output[map[string]*Release]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReleaseMapOutput) MapIndex(k pulumi.StringInput) ReleaseOutput {

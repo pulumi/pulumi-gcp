@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for BigQuery Connection Connection. Each of these resources serves a different use case:
@@ -410,12 +409,6 @@ func (i *ConnectionIamMember) ToConnectionIamMemberOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIamMemberOutput)
 }
 
-func (i *ConnectionIamMember) ToOutput(ctx context.Context) pulumix.Output[*ConnectionIamMember] {
-	return pulumix.Output[*ConnectionIamMember]{
-		OutputState: i.ToConnectionIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectionIamMemberArrayInput is an input type that accepts ConnectionIamMemberArray and ConnectionIamMemberArrayOutput values.
 // You can construct a concrete instance of `ConnectionIamMemberArrayInput` via:
 //
@@ -439,12 +432,6 @@ func (i ConnectionIamMemberArray) ToConnectionIamMemberArrayOutput() ConnectionI
 
 func (i ConnectionIamMemberArray) ToConnectionIamMemberArrayOutputWithContext(ctx context.Context) ConnectionIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIamMemberArrayOutput)
-}
-
-func (i ConnectionIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConnectionIamMember] {
-	return pulumix.Output[[]*ConnectionIamMember]{
-		OutputState: i.ToConnectionIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConnectionIamMemberMapInput is an input type that accepts ConnectionIamMemberMap and ConnectionIamMemberMapOutput values.
@@ -472,12 +459,6 @@ func (i ConnectionIamMemberMap) ToConnectionIamMemberMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIamMemberMapOutput)
 }
 
-func (i ConnectionIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConnectionIamMember] {
-	return pulumix.Output[map[string]*ConnectionIamMember]{
-		OutputState: i.ToConnectionIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionIamMemberOutput struct{ *pulumi.OutputState }
 
 func (ConnectionIamMemberOutput) ElementType() reflect.Type {
@@ -490,12 +471,6 @@ func (o ConnectionIamMemberOutput) ToConnectionIamMemberOutput() ConnectionIamMe
 
 func (o ConnectionIamMemberOutput) ToConnectionIamMemberOutputWithContext(ctx context.Context) ConnectionIamMemberOutput {
 	return o
-}
-
-func (o ConnectionIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionIamMember] {
-	return pulumix.Output[*ConnectionIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionIamMemberOutput) Condition() ConnectionIamMemberConditionPtrOutput {
@@ -567,12 +542,6 @@ func (o ConnectionIamMemberArrayOutput) ToConnectionIamMemberArrayOutputWithCont
 	return o
 }
 
-func (o ConnectionIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConnectionIamMember] {
-	return pulumix.Output[[]*ConnectionIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConnectionIamMemberArrayOutput) Index(i pulumi.IntInput) ConnectionIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConnectionIamMember {
 		return vs[0].([]*ConnectionIamMember)[vs[1].(int)]
@@ -591,12 +560,6 @@ func (o ConnectionIamMemberMapOutput) ToConnectionIamMemberMapOutput() Connectio
 
 func (o ConnectionIamMemberMapOutput) ToConnectionIamMemberMapOutputWithContext(ctx context.Context) ConnectionIamMemberMapOutput {
 	return o
-}
-
-func (o ConnectionIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConnectionIamMember] {
-	return pulumix.Output[map[string]*ConnectionIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionIamMemberMapOutput) MapIndex(k pulumi.StringInput) ConnectionIamMemberOutput {

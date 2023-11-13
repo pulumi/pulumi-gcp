@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information about a Google Cloud Pub/Sub Topic. For more information see
@@ -118,12 +117,6 @@ func (o LookupTopicResultOutput) ToLookupTopicResultOutput() LookupTopicResultOu
 
 func (o LookupTopicResultOutput) ToLookupTopicResultOutputWithContext(ctx context.Context) LookupTopicResultOutput {
 	return o
-}
-
-func (o LookupTopicResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTopicResult] {
-	return pulumix.Output[LookupTopicResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupTopicResultOutput) EffectiveLabels() pulumi.StringMapOutput {

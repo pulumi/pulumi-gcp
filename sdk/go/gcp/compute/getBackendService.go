@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provide access to a Backend Service's attribute. For more information
@@ -124,12 +123,6 @@ func (o LookupBackendServiceResultOutput) ToLookupBackendServiceResultOutput() L
 
 func (o LookupBackendServiceResultOutput) ToLookupBackendServiceResultOutputWithContext(ctx context.Context) LookupBackendServiceResultOutput {
 	return o
-}
-
-func (o LookupBackendServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBackendServiceResult] {
-	return pulumix.Output[LookupBackendServiceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupBackendServiceResultOutput) AffinityCookieTtlSec() pulumi.IntOutput {

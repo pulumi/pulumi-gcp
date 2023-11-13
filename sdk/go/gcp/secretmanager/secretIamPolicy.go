@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Secret Manager Secret. Each of these resources serves a different use case:
@@ -339,12 +338,6 @@ func (i *SecretIamPolicy) ToSecretIamPolicyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SecretIamPolicyOutput)
 }
 
-func (i *SecretIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*SecretIamPolicy] {
-	return pulumix.Output[*SecretIamPolicy]{
-		OutputState: i.ToSecretIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SecretIamPolicyArrayInput is an input type that accepts SecretIamPolicyArray and SecretIamPolicyArrayOutput values.
 // You can construct a concrete instance of `SecretIamPolicyArrayInput` via:
 //
@@ -368,12 +361,6 @@ func (i SecretIamPolicyArray) ToSecretIamPolicyArrayOutput() SecretIamPolicyArra
 
 func (i SecretIamPolicyArray) ToSecretIamPolicyArrayOutputWithContext(ctx context.Context) SecretIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecretIamPolicyArrayOutput)
-}
-
-func (i SecretIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*SecretIamPolicy] {
-	return pulumix.Output[[]*SecretIamPolicy]{
-		OutputState: i.ToSecretIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SecretIamPolicyMapInput is an input type that accepts SecretIamPolicyMap and SecretIamPolicyMapOutput values.
@@ -401,12 +388,6 @@ func (i SecretIamPolicyMap) ToSecretIamPolicyMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(SecretIamPolicyMapOutput)
 }
 
-func (i SecretIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecretIamPolicy] {
-	return pulumix.Output[map[string]*SecretIamPolicy]{
-		OutputState: i.ToSecretIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecretIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (SecretIamPolicyOutput) ElementType() reflect.Type {
@@ -419,12 +400,6 @@ func (o SecretIamPolicyOutput) ToSecretIamPolicyOutput() SecretIamPolicyOutput {
 
 func (o SecretIamPolicyOutput) ToSecretIamPolicyOutputWithContext(ctx context.Context) SecretIamPolicyOutput {
 	return o
-}
-
-func (o SecretIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretIamPolicy] {
-	return pulumix.Output[*SecretIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -474,12 +449,6 @@ func (o SecretIamPolicyArrayOutput) ToSecretIamPolicyArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o SecretIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SecretIamPolicy] {
-	return pulumix.Output[[]*SecretIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SecretIamPolicyArrayOutput) Index(i pulumi.IntInput) SecretIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SecretIamPolicy {
 		return vs[0].([]*SecretIamPolicy)[vs[1].(int)]
@@ -498,12 +467,6 @@ func (o SecretIamPolicyMapOutput) ToSecretIamPolicyMapOutput() SecretIamPolicyMa
 
 func (o SecretIamPolicyMapOutput) ToSecretIamPolicyMapOutputWithContext(ctx context.Context) SecretIamPolicyMapOutput {
 	return o
-}
-
-func (o SecretIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecretIamPolicy] {
-	return pulumix.Output[map[string]*SecretIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretIamPolicyMapOutput) MapIndex(k pulumi.StringInput) SecretIamPolicyOutput {

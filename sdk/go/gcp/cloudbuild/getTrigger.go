@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // To get more information about Cloudbuild Trigger, see:
@@ -140,12 +139,6 @@ func (o LookupTriggerResultOutput) ToLookupTriggerResultOutput() LookupTriggerRe
 
 func (o LookupTriggerResultOutput) ToLookupTriggerResultOutputWithContext(ctx context.Context) LookupTriggerResultOutput {
 	return o
-}
-
-func (o LookupTriggerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTriggerResult] {
-	return pulumix.Output[LookupTriggerResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupTriggerResultOutput) ApprovalConfigs() GetTriggerApprovalConfigArrayOutput {

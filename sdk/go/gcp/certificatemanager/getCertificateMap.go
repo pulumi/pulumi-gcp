@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get info about a Google Certificate Manager Certificate Map resource.
@@ -116,12 +115,6 @@ func (o GetCertificateMapResultOutput) ToGetCertificateMapResultOutput() GetCert
 
 func (o GetCertificateMapResultOutput) ToGetCertificateMapResultOutputWithContext(ctx context.Context) GetCertificateMapResultOutput {
 	return o
-}
-
-func (o GetCertificateMapResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCertificateMapResult] {
-	return pulumix.Output[GetCertificateMapResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetCertificateMapResultOutput) CreateTime() pulumi.StringOutput {

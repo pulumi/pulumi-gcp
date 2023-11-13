@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provide access to a Resource Policy's attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).
@@ -115,12 +114,6 @@ func (o LookupResourcePolicyResultOutput) ToLookupResourcePolicyResultOutput() L
 
 func (o LookupResourcePolicyResultOutput) ToLookupResourcePolicyResultOutputWithContext(ctx context.Context) LookupResourcePolicyResultOutput {
 	return o
-}
-
-func (o LookupResourcePolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupResourcePolicyResult] {
-	return pulumix.Output[LookupResourcePolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of this Resource Policy.

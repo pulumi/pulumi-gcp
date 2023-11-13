@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Apigee NAT (network address translation) address. A NAT address is a static external IP address used for Internet egress traffic. This is not avaible for Apigee hybrid.
@@ -277,12 +276,6 @@ func (i *NatAddress) ToNatAddressOutputWithContext(ctx context.Context) NatAddre
 	return pulumi.ToOutputWithContext(ctx, i).(NatAddressOutput)
 }
 
-func (i *NatAddress) ToOutput(ctx context.Context) pulumix.Output[*NatAddress] {
-	return pulumix.Output[*NatAddress]{
-		OutputState: i.ToNatAddressOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NatAddressArrayInput is an input type that accepts NatAddressArray and NatAddressArrayOutput values.
 // You can construct a concrete instance of `NatAddressArrayInput` via:
 //
@@ -306,12 +299,6 @@ func (i NatAddressArray) ToNatAddressArrayOutput() NatAddressArrayOutput {
 
 func (i NatAddressArray) ToNatAddressArrayOutputWithContext(ctx context.Context) NatAddressArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NatAddressArrayOutput)
-}
-
-func (i NatAddressArray) ToOutput(ctx context.Context) pulumix.Output[[]*NatAddress] {
-	return pulumix.Output[[]*NatAddress]{
-		OutputState: i.ToNatAddressArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NatAddressMapInput is an input type that accepts NatAddressMap and NatAddressMapOutput values.
@@ -339,12 +326,6 @@ func (i NatAddressMap) ToNatAddressMapOutputWithContext(ctx context.Context) Nat
 	return pulumi.ToOutputWithContext(ctx, i).(NatAddressMapOutput)
 }
 
-func (i NatAddressMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NatAddress] {
-	return pulumix.Output[map[string]*NatAddress]{
-		OutputState: i.ToNatAddressMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NatAddressOutput struct{ *pulumi.OutputState }
 
 func (NatAddressOutput) ElementType() reflect.Type {
@@ -357,12 +338,6 @@ func (o NatAddressOutput) ToNatAddressOutput() NatAddressOutput {
 
 func (o NatAddressOutput) ToNatAddressOutputWithContext(ctx context.Context) NatAddressOutput {
 	return o
-}
-
-func (o NatAddressOutput) ToOutput(ctx context.Context) pulumix.Output[*NatAddress] {
-	return pulumix.Output[*NatAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Apigee instance associated with the Apigee environment,
@@ -402,12 +377,6 @@ func (o NatAddressArrayOutput) ToNatAddressArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o NatAddressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NatAddress] {
-	return pulumix.Output[[]*NatAddress]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NatAddressArrayOutput) Index(i pulumi.IntInput) NatAddressOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NatAddress {
 		return vs[0].([]*NatAddress)[vs[1].(int)]
@@ -426,12 +395,6 @@ func (o NatAddressMapOutput) ToNatAddressMapOutput() NatAddressMapOutput {
 
 func (o NatAddressMapOutput) ToNatAddressMapOutputWithContext(ctx context.Context) NatAddressMapOutput {
 	return o
-}
-
-func (o NatAddressMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NatAddress] {
-	return pulumix.Output[map[string]*NatAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NatAddressMapOutput) MapIndex(k pulumi.StringInput) NatAddressOutput {

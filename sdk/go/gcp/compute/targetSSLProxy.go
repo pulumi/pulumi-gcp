@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a TargetSslProxy resource, which is used by one or more
@@ -311,12 +310,6 @@ func (i *TargetSSLProxy) ToTargetSSLProxyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TargetSSLProxyOutput)
 }
 
-func (i *TargetSSLProxy) ToOutput(ctx context.Context) pulumix.Output[*TargetSSLProxy] {
-	return pulumix.Output[*TargetSSLProxy]{
-		OutputState: i.ToTargetSSLProxyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TargetSSLProxyArrayInput is an input type that accepts TargetSSLProxyArray and TargetSSLProxyArrayOutput values.
 // You can construct a concrete instance of `TargetSSLProxyArrayInput` via:
 //
@@ -340,12 +333,6 @@ func (i TargetSSLProxyArray) ToTargetSSLProxyArrayOutput() TargetSSLProxyArrayOu
 
 func (i TargetSSLProxyArray) ToTargetSSLProxyArrayOutputWithContext(ctx context.Context) TargetSSLProxyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TargetSSLProxyArrayOutput)
-}
-
-func (i TargetSSLProxyArray) ToOutput(ctx context.Context) pulumix.Output[[]*TargetSSLProxy] {
-	return pulumix.Output[[]*TargetSSLProxy]{
-		OutputState: i.ToTargetSSLProxyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TargetSSLProxyMapInput is an input type that accepts TargetSSLProxyMap and TargetSSLProxyMapOutput values.
@@ -373,12 +360,6 @@ func (i TargetSSLProxyMap) ToTargetSSLProxyMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TargetSSLProxyMapOutput)
 }
 
-func (i TargetSSLProxyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TargetSSLProxy] {
-	return pulumix.Output[map[string]*TargetSSLProxy]{
-		OutputState: i.ToTargetSSLProxyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TargetSSLProxyOutput struct{ *pulumi.OutputState }
 
 func (TargetSSLProxyOutput) ElementType() reflect.Type {
@@ -391,12 +372,6 @@ func (o TargetSSLProxyOutput) ToTargetSSLProxyOutput() TargetSSLProxyOutput {
 
 func (o TargetSSLProxyOutput) ToTargetSSLProxyOutputWithContext(ctx context.Context) TargetSSLProxyOutput {
 	return o
-}
-
-func (o TargetSSLProxyOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetSSLProxy] {
-	return pulumix.Output[*TargetSSLProxy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A reference to the BackendService resource.
@@ -486,12 +461,6 @@ func (o TargetSSLProxyArrayOutput) ToTargetSSLProxyArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o TargetSSLProxyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TargetSSLProxy] {
-	return pulumix.Output[[]*TargetSSLProxy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TargetSSLProxyArrayOutput) Index(i pulumi.IntInput) TargetSSLProxyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TargetSSLProxy {
 		return vs[0].([]*TargetSSLProxy)[vs[1].(int)]
@@ -510,12 +479,6 @@ func (o TargetSSLProxyMapOutput) ToTargetSSLProxyMapOutput() TargetSSLProxyMapOu
 
 func (o TargetSSLProxyMapOutput) ToTargetSSLProxyMapOutputWithContext(ctx context.Context) TargetSSLProxyMapOutput {
 	return o
-}
-
-func (o TargetSSLProxyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TargetSSLProxy] {
-	return pulumix.Output[map[string]*TargetSSLProxy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TargetSSLProxyMapOutput) MapIndex(k pulumi.StringInput) TargetSSLProxyOutput {

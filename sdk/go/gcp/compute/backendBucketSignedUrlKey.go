@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A key for signing Cloud CDN signed URLs for BackendBuckets.
@@ -229,12 +228,6 @@ func (i *BackendBucketSignedUrlKey) ToBackendBucketSignedUrlKeyOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketSignedUrlKeyOutput)
 }
 
-func (i *BackendBucketSignedUrlKey) ToOutput(ctx context.Context) pulumix.Output[*BackendBucketSignedUrlKey] {
-	return pulumix.Output[*BackendBucketSignedUrlKey]{
-		OutputState: i.ToBackendBucketSignedUrlKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BackendBucketSignedUrlKeyArrayInput is an input type that accepts BackendBucketSignedUrlKeyArray and BackendBucketSignedUrlKeyArrayOutput values.
 // You can construct a concrete instance of `BackendBucketSignedUrlKeyArrayInput` via:
 //
@@ -258,12 +251,6 @@ func (i BackendBucketSignedUrlKeyArray) ToBackendBucketSignedUrlKeyArrayOutput()
 
 func (i BackendBucketSignedUrlKeyArray) ToBackendBucketSignedUrlKeyArrayOutputWithContext(ctx context.Context) BackendBucketSignedUrlKeyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketSignedUrlKeyArrayOutput)
-}
-
-func (i BackendBucketSignedUrlKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]*BackendBucketSignedUrlKey] {
-	return pulumix.Output[[]*BackendBucketSignedUrlKey]{
-		OutputState: i.ToBackendBucketSignedUrlKeyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BackendBucketSignedUrlKeyMapInput is an input type that accepts BackendBucketSignedUrlKeyMap and BackendBucketSignedUrlKeyMapOutput values.
@@ -291,12 +278,6 @@ func (i BackendBucketSignedUrlKeyMap) ToBackendBucketSignedUrlKeyMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketSignedUrlKeyMapOutput)
 }
 
-func (i BackendBucketSignedUrlKeyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackendBucketSignedUrlKey] {
-	return pulumix.Output[map[string]*BackendBucketSignedUrlKey]{
-		OutputState: i.ToBackendBucketSignedUrlKeyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BackendBucketSignedUrlKeyOutput struct{ *pulumi.OutputState }
 
 func (BackendBucketSignedUrlKeyOutput) ElementType() reflect.Type {
@@ -309,12 +290,6 @@ func (o BackendBucketSignedUrlKeyOutput) ToBackendBucketSignedUrlKeyOutput() Bac
 
 func (o BackendBucketSignedUrlKeyOutput) ToBackendBucketSignedUrlKeyOutputWithContext(ctx context.Context) BackendBucketSignedUrlKeyOutput {
 	return o
-}
-
-func (o BackendBucketSignedUrlKeyOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendBucketSignedUrlKey] {
-	return pulumix.Output[*BackendBucketSignedUrlKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The backend bucket this signed URL key belongs.
@@ -356,12 +331,6 @@ func (o BackendBucketSignedUrlKeyArrayOutput) ToBackendBucketSignedUrlKeyArrayOu
 	return o
 }
 
-func (o BackendBucketSignedUrlKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BackendBucketSignedUrlKey] {
-	return pulumix.Output[[]*BackendBucketSignedUrlKey]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BackendBucketSignedUrlKeyArrayOutput) Index(i pulumi.IntInput) BackendBucketSignedUrlKeyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BackendBucketSignedUrlKey {
 		return vs[0].([]*BackendBucketSignedUrlKey)[vs[1].(int)]
@@ -380,12 +349,6 @@ func (o BackendBucketSignedUrlKeyMapOutput) ToBackendBucketSignedUrlKeyMapOutput
 
 func (o BackendBucketSignedUrlKeyMapOutput) ToBackendBucketSignedUrlKeyMapOutputWithContext(ctx context.Context) BackendBucketSignedUrlKeyMapOutput {
 	return o
-}
-
-func (o BackendBucketSignedUrlKeyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackendBucketSignedUrlKey] {
-	return pulumix.Output[map[string]*BackendBucketSignedUrlKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackendBucketSignedUrlKeyMapOutput) MapIndex(k pulumi.StringInput) BackendBucketSignedUrlKeyOutput {

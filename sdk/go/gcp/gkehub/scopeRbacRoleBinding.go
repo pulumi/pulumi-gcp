@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // RBACRoleBinding represents a rbacrolebinding across the Fleet.
@@ -309,12 +308,6 @@ func (i *ScopeRbacRoleBinding) ToScopeRbacRoleBindingOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeRbacRoleBindingOutput)
 }
 
-func (i *ScopeRbacRoleBinding) ToOutput(ctx context.Context) pulumix.Output[*ScopeRbacRoleBinding] {
-	return pulumix.Output[*ScopeRbacRoleBinding]{
-		OutputState: i.ToScopeRbacRoleBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ScopeRbacRoleBindingArrayInput is an input type that accepts ScopeRbacRoleBindingArray and ScopeRbacRoleBindingArrayOutput values.
 // You can construct a concrete instance of `ScopeRbacRoleBindingArrayInput` via:
 //
@@ -338,12 +331,6 @@ func (i ScopeRbacRoleBindingArray) ToScopeRbacRoleBindingArrayOutput() ScopeRbac
 
 func (i ScopeRbacRoleBindingArray) ToScopeRbacRoleBindingArrayOutputWithContext(ctx context.Context) ScopeRbacRoleBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeRbacRoleBindingArrayOutput)
-}
-
-func (i ScopeRbacRoleBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*ScopeRbacRoleBinding] {
-	return pulumix.Output[[]*ScopeRbacRoleBinding]{
-		OutputState: i.ToScopeRbacRoleBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ScopeRbacRoleBindingMapInput is an input type that accepts ScopeRbacRoleBindingMap and ScopeRbacRoleBindingMapOutput values.
@@ -371,12 +358,6 @@ func (i ScopeRbacRoleBindingMap) ToScopeRbacRoleBindingMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeRbacRoleBindingMapOutput)
 }
 
-func (i ScopeRbacRoleBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ScopeRbacRoleBinding] {
-	return pulumix.Output[map[string]*ScopeRbacRoleBinding]{
-		OutputState: i.ToScopeRbacRoleBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScopeRbacRoleBindingOutput struct{ *pulumi.OutputState }
 
 func (ScopeRbacRoleBindingOutput) ElementType() reflect.Type {
@@ -389,12 +370,6 @@ func (o ScopeRbacRoleBindingOutput) ToScopeRbacRoleBindingOutput() ScopeRbacRole
 
 func (o ScopeRbacRoleBindingOutput) ToScopeRbacRoleBindingOutputWithContext(ctx context.Context) ScopeRbacRoleBindingOutput {
 	return o
-}
-
-func (o ScopeRbacRoleBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*ScopeRbacRoleBinding] {
-	return pulumix.Output[*ScopeRbacRoleBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time the RBAC Role Binding was created in UTC.
@@ -499,12 +474,6 @@ func (o ScopeRbacRoleBindingArrayOutput) ToScopeRbacRoleBindingArrayOutputWithCo
 	return o
 }
 
-func (o ScopeRbacRoleBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ScopeRbacRoleBinding] {
-	return pulumix.Output[[]*ScopeRbacRoleBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ScopeRbacRoleBindingArrayOutput) Index(i pulumi.IntInput) ScopeRbacRoleBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ScopeRbacRoleBinding {
 		return vs[0].([]*ScopeRbacRoleBinding)[vs[1].(int)]
@@ -523,12 +492,6 @@ func (o ScopeRbacRoleBindingMapOutput) ToScopeRbacRoleBindingMapOutput() ScopeRb
 
 func (o ScopeRbacRoleBindingMapOutput) ToScopeRbacRoleBindingMapOutputWithContext(ctx context.Context) ScopeRbacRoleBindingMapOutput {
 	return o
-}
-
-func (o ScopeRbacRoleBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ScopeRbacRoleBinding] {
-	return pulumix.Output[map[string]*ScopeRbacRoleBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScopeRbacRoleBindingMapOutput) MapIndex(k pulumi.StringInput) ScopeRbacRoleBindingOutput {

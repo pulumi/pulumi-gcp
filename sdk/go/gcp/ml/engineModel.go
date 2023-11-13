@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a machine learning solution.
@@ -320,12 +319,6 @@ func (i *EngineModel) ToEngineModelOutputWithContext(ctx context.Context) Engine
 	return pulumi.ToOutputWithContext(ctx, i).(EngineModelOutput)
 }
 
-func (i *EngineModel) ToOutput(ctx context.Context) pulumix.Output[*EngineModel] {
-	return pulumix.Output[*EngineModel]{
-		OutputState: i.ToEngineModelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EngineModelArrayInput is an input type that accepts EngineModelArray and EngineModelArrayOutput values.
 // You can construct a concrete instance of `EngineModelArrayInput` via:
 //
@@ -349,12 +342,6 @@ func (i EngineModelArray) ToEngineModelArrayOutput() EngineModelArrayOutput {
 
 func (i EngineModelArray) ToEngineModelArrayOutputWithContext(ctx context.Context) EngineModelArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EngineModelArrayOutput)
-}
-
-func (i EngineModelArray) ToOutput(ctx context.Context) pulumix.Output[[]*EngineModel] {
-	return pulumix.Output[[]*EngineModel]{
-		OutputState: i.ToEngineModelArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EngineModelMapInput is an input type that accepts EngineModelMap and EngineModelMapOutput values.
@@ -382,12 +369,6 @@ func (i EngineModelMap) ToEngineModelMapOutputWithContext(ctx context.Context) E
 	return pulumi.ToOutputWithContext(ctx, i).(EngineModelMapOutput)
 }
 
-func (i EngineModelMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EngineModel] {
-	return pulumix.Output[map[string]*EngineModel]{
-		OutputState: i.ToEngineModelMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EngineModelOutput struct{ *pulumi.OutputState }
 
 func (EngineModelOutput) ElementType() reflect.Type {
@@ -400,12 +381,6 @@ func (o EngineModelOutput) ToEngineModelOutput() EngineModelOutput {
 
 func (o EngineModelOutput) ToEngineModelOutputWithContext(ctx context.Context) EngineModelOutput {
 	return o
-}
-
-func (o EngineModelOutput) ToOutput(ctx context.Context) pulumix.Output[*EngineModel] {
-	return pulumix.Output[*EngineModel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The default version of the model. This version will be used to handle
@@ -482,12 +457,6 @@ func (o EngineModelArrayOutput) ToEngineModelArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o EngineModelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EngineModel] {
-	return pulumix.Output[[]*EngineModel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EngineModelArrayOutput) Index(i pulumi.IntInput) EngineModelOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EngineModel {
 		return vs[0].([]*EngineModel)[vs[1].(int)]
@@ -506,12 +475,6 @@ func (o EngineModelMapOutput) ToEngineModelMapOutput() EngineModelMapOutput {
 
 func (o EngineModelMapOutput) ToEngineModelMapOutputWithContext(ctx context.Context) EngineModelMapOutput {
 	return o
-}
-
-func (o EngineModelMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EngineModel] {
-	return pulumix.Output[map[string]*EngineModel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EngineModelMapOutput) MapIndex(k pulumi.StringInput) EngineModelOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i AutoscalingPolicyBasicAlgorithmArgs) ToAutoscalingPolicyBasicAlgorithmOu
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyBasicAlgorithmOutput)
 }
 
-func (i AutoscalingPolicyBasicAlgorithmArgs) ToOutput(ctx context.Context) pulumix.Output[AutoscalingPolicyBasicAlgorithm] {
-	return pulumix.Output[AutoscalingPolicyBasicAlgorithm]{
-		OutputState: i.ToAutoscalingPolicyBasicAlgorithmOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AutoscalingPolicyBasicAlgorithmArgs) ToAutoscalingPolicyBasicAlgorithmPtrOutput() AutoscalingPolicyBasicAlgorithmPtrOutput {
 	return i.ToAutoscalingPolicyBasicAlgorithmPtrOutputWithContext(context.Background())
 }
@@ -104,12 +97,6 @@ func (i *autoscalingPolicyBasicAlgorithmPtrType) ToAutoscalingPolicyBasicAlgorit
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyBasicAlgorithmPtrOutput)
 }
 
-func (i *autoscalingPolicyBasicAlgorithmPtrType) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyBasicAlgorithm] {
-	return pulumix.Output[*AutoscalingPolicyBasicAlgorithm]{
-		OutputState: i.ToAutoscalingPolicyBasicAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AutoscalingPolicyBasicAlgorithmOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingPolicyBasicAlgorithmOutput) ElementType() reflect.Type {
@@ -132,12 +119,6 @@ func (o AutoscalingPolicyBasicAlgorithmOutput) ToAutoscalingPolicyBasicAlgorithm
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoscalingPolicyBasicAlgorithm) *AutoscalingPolicyBasicAlgorithm {
 		return &v
 	}).(AutoscalingPolicyBasicAlgorithmPtrOutput)
-}
-
-func (o AutoscalingPolicyBasicAlgorithmOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscalingPolicyBasicAlgorithm] {
-	return pulumix.Output[AutoscalingPolicyBasicAlgorithm]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Duration between scaling events. A scaling period starts after the
@@ -165,12 +146,6 @@ func (o AutoscalingPolicyBasicAlgorithmPtrOutput) ToAutoscalingPolicyBasicAlgori
 
 func (o AutoscalingPolicyBasicAlgorithmPtrOutput) ToAutoscalingPolicyBasicAlgorithmPtrOutputWithContext(ctx context.Context) AutoscalingPolicyBasicAlgorithmPtrOutput {
 	return o
-}
-
-func (o AutoscalingPolicyBasicAlgorithmPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyBasicAlgorithm] {
-	return pulumix.Output[*AutoscalingPolicyBasicAlgorithm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoscalingPolicyBasicAlgorithmPtrOutput) Elem() AutoscalingPolicyBasicAlgorithmOutput {
@@ -297,12 +272,6 @@ func (i AutoscalingPolicyBasicAlgorithmYarnConfigArgs) ToAutoscalingPolicyBasicA
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyBasicAlgorithmYarnConfigOutput)
 }
 
-func (i AutoscalingPolicyBasicAlgorithmYarnConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AutoscalingPolicyBasicAlgorithmYarnConfig] {
-	return pulumix.Output[AutoscalingPolicyBasicAlgorithmYarnConfig]{
-		OutputState: i.ToAutoscalingPolicyBasicAlgorithmYarnConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AutoscalingPolicyBasicAlgorithmYarnConfigArgs) ToAutoscalingPolicyBasicAlgorithmYarnConfigPtrOutput() AutoscalingPolicyBasicAlgorithmYarnConfigPtrOutput {
 	return i.ToAutoscalingPolicyBasicAlgorithmYarnConfigPtrOutputWithContext(context.Background())
 }
@@ -344,12 +313,6 @@ func (i *autoscalingPolicyBasicAlgorithmYarnConfigPtrType) ToAutoscalingPolicyBa
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyBasicAlgorithmYarnConfigPtrOutput)
 }
 
-func (i *autoscalingPolicyBasicAlgorithmYarnConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyBasicAlgorithmYarnConfig] {
-	return pulumix.Output[*AutoscalingPolicyBasicAlgorithmYarnConfig]{
-		OutputState: i.ToAutoscalingPolicyBasicAlgorithmYarnConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AutoscalingPolicyBasicAlgorithmYarnConfigOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingPolicyBasicAlgorithmYarnConfigOutput) ElementType() reflect.Type {
@@ -372,12 +335,6 @@ func (o AutoscalingPolicyBasicAlgorithmYarnConfigOutput) ToAutoscalingPolicyBasi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoscalingPolicyBasicAlgorithmYarnConfig) *AutoscalingPolicyBasicAlgorithmYarnConfig {
 		return &v
 	}).(AutoscalingPolicyBasicAlgorithmYarnConfigPtrOutput)
-}
-
-func (o AutoscalingPolicyBasicAlgorithmYarnConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscalingPolicyBasicAlgorithmYarnConfig] {
-	return pulumix.Output[AutoscalingPolicyBasicAlgorithmYarnConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timeout for YARN graceful decommissioning of Node Managers. Specifies the
@@ -438,12 +395,6 @@ func (o AutoscalingPolicyBasicAlgorithmYarnConfigPtrOutput) ToAutoscalingPolicyB
 
 func (o AutoscalingPolicyBasicAlgorithmYarnConfigPtrOutput) ToAutoscalingPolicyBasicAlgorithmYarnConfigPtrOutputWithContext(ctx context.Context) AutoscalingPolicyBasicAlgorithmYarnConfigPtrOutput {
 	return o
-}
-
-func (o AutoscalingPolicyBasicAlgorithmYarnConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyBasicAlgorithmYarnConfig] {
-	return pulumix.Output[*AutoscalingPolicyBasicAlgorithmYarnConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoscalingPolicyBasicAlgorithmYarnConfigPtrOutput) Elem() AutoscalingPolicyBasicAlgorithmYarnConfigOutput {
@@ -562,12 +513,6 @@ func (i AutoscalingPolicyIamBindingConditionArgs) ToAutoscalingPolicyIamBindingC
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyIamBindingConditionOutput)
 }
 
-func (i AutoscalingPolicyIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[AutoscalingPolicyIamBindingCondition] {
-	return pulumix.Output[AutoscalingPolicyIamBindingCondition]{
-		OutputState: i.ToAutoscalingPolicyIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AutoscalingPolicyIamBindingConditionArgs) ToAutoscalingPolicyIamBindingConditionPtrOutput() AutoscalingPolicyIamBindingConditionPtrOutput {
 	return i.ToAutoscalingPolicyIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -609,12 +554,6 @@ func (i *autoscalingPolicyIamBindingConditionPtrType) ToAutoscalingPolicyIamBind
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyIamBindingConditionPtrOutput)
 }
 
-func (i *autoscalingPolicyIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyIamBindingCondition] {
-	return pulumix.Output[*AutoscalingPolicyIamBindingCondition]{
-		OutputState: i.ToAutoscalingPolicyIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AutoscalingPolicyIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingPolicyIamBindingConditionOutput) ElementType() reflect.Type {
@@ -637,12 +576,6 @@ func (o AutoscalingPolicyIamBindingConditionOutput) ToAutoscalingPolicyIamBindin
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoscalingPolicyIamBindingCondition) *AutoscalingPolicyIamBindingCondition {
 		return &v
 	}).(AutoscalingPolicyIamBindingConditionPtrOutput)
-}
-
-func (o AutoscalingPolicyIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscalingPolicyIamBindingCondition] {
-	return pulumix.Output[AutoscalingPolicyIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoscalingPolicyIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -669,12 +602,6 @@ func (o AutoscalingPolicyIamBindingConditionPtrOutput) ToAutoscalingPolicyIamBin
 
 func (o AutoscalingPolicyIamBindingConditionPtrOutput) ToAutoscalingPolicyIamBindingConditionPtrOutputWithContext(ctx context.Context) AutoscalingPolicyIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o AutoscalingPolicyIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyIamBindingCondition] {
-	return pulumix.Output[*AutoscalingPolicyIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoscalingPolicyIamBindingConditionPtrOutput) Elem() AutoscalingPolicyIamBindingConditionOutput {
@@ -749,12 +676,6 @@ func (i AutoscalingPolicyIamMemberConditionArgs) ToAutoscalingPolicyIamMemberCon
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyIamMemberConditionOutput)
 }
 
-func (i AutoscalingPolicyIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[AutoscalingPolicyIamMemberCondition] {
-	return pulumix.Output[AutoscalingPolicyIamMemberCondition]{
-		OutputState: i.ToAutoscalingPolicyIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AutoscalingPolicyIamMemberConditionArgs) ToAutoscalingPolicyIamMemberConditionPtrOutput() AutoscalingPolicyIamMemberConditionPtrOutput {
 	return i.ToAutoscalingPolicyIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -796,12 +717,6 @@ func (i *autoscalingPolicyIamMemberConditionPtrType) ToAutoscalingPolicyIamMembe
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyIamMemberConditionPtrOutput)
 }
 
-func (i *autoscalingPolicyIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyIamMemberCondition] {
-	return pulumix.Output[*AutoscalingPolicyIamMemberCondition]{
-		OutputState: i.ToAutoscalingPolicyIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AutoscalingPolicyIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingPolicyIamMemberConditionOutput) ElementType() reflect.Type {
@@ -824,12 +739,6 @@ func (o AutoscalingPolicyIamMemberConditionOutput) ToAutoscalingPolicyIamMemberC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoscalingPolicyIamMemberCondition) *AutoscalingPolicyIamMemberCondition {
 		return &v
 	}).(AutoscalingPolicyIamMemberConditionPtrOutput)
-}
-
-func (o AutoscalingPolicyIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscalingPolicyIamMemberCondition] {
-	return pulumix.Output[AutoscalingPolicyIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoscalingPolicyIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -856,12 +765,6 @@ func (o AutoscalingPolicyIamMemberConditionPtrOutput) ToAutoscalingPolicyIamMemb
 
 func (o AutoscalingPolicyIamMemberConditionPtrOutput) ToAutoscalingPolicyIamMemberConditionPtrOutputWithContext(ctx context.Context) AutoscalingPolicyIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o AutoscalingPolicyIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyIamMemberCondition] {
-	return pulumix.Output[*AutoscalingPolicyIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoscalingPolicyIamMemberConditionPtrOutput) Elem() AutoscalingPolicyIamMemberConditionOutput {
@@ -968,12 +871,6 @@ func (i AutoscalingPolicySecondaryWorkerConfigArgs) ToAutoscalingPolicySecondary
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicySecondaryWorkerConfigOutput)
 }
 
-func (i AutoscalingPolicySecondaryWorkerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AutoscalingPolicySecondaryWorkerConfig] {
-	return pulumix.Output[AutoscalingPolicySecondaryWorkerConfig]{
-		OutputState: i.ToAutoscalingPolicySecondaryWorkerConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AutoscalingPolicySecondaryWorkerConfigArgs) ToAutoscalingPolicySecondaryWorkerConfigPtrOutput() AutoscalingPolicySecondaryWorkerConfigPtrOutput {
 	return i.ToAutoscalingPolicySecondaryWorkerConfigPtrOutputWithContext(context.Background())
 }
@@ -1015,12 +912,6 @@ func (i *autoscalingPolicySecondaryWorkerConfigPtrType) ToAutoscalingPolicySecon
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicySecondaryWorkerConfigPtrOutput)
 }
 
-func (i *autoscalingPolicySecondaryWorkerConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicySecondaryWorkerConfig] {
-	return pulumix.Output[*AutoscalingPolicySecondaryWorkerConfig]{
-		OutputState: i.ToAutoscalingPolicySecondaryWorkerConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AutoscalingPolicySecondaryWorkerConfigOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingPolicySecondaryWorkerConfigOutput) ElementType() reflect.Type {
@@ -1043,12 +934,6 @@ func (o AutoscalingPolicySecondaryWorkerConfigOutput) ToAutoscalingPolicySeconda
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoscalingPolicySecondaryWorkerConfig) *AutoscalingPolicySecondaryWorkerConfig {
 		return &v
 	}).(AutoscalingPolicySecondaryWorkerConfigPtrOutput)
-}
-
-func (o AutoscalingPolicySecondaryWorkerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscalingPolicySecondaryWorkerConfig] {
-	return pulumix.Output[AutoscalingPolicySecondaryWorkerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Maximum number of instances for this group. Note that by default, clusters will not use
@@ -1091,12 +976,6 @@ func (o AutoscalingPolicySecondaryWorkerConfigPtrOutput) ToAutoscalingPolicySeco
 
 func (o AutoscalingPolicySecondaryWorkerConfigPtrOutput) ToAutoscalingPolicySecondaryWorkerConfigPtrOutputWithContext(ctx context.Context) AutoscalingPolicySecondaryWorkerConfigPtrOutput {
 	return o
-}
-
-func (o AutoscalingPolicySecondaryWorkerConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicySecondaryWorkerConfig] {
-	return pulumix.Output[*AutoscalingPolicySecondaryWorkerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoscalingPolicySecondaryWorkerConfigPtrOutput) Elem() AutoscalingPolicySecondaryWorkerConfigOutput {
@@ -1215,12 +1094,6 @@ func (i AutoscalingPolicyWorkerConfigArgs) ToAutoscalingPolicyWorkerConfigOutput
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyWorkerConfigOutput)
 }
 
-func (i AutoscalingPolicyWorkerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AutoscalingPolicyWorkerConfig] {
-	return pulumix.Output[AutoscalingPolicyWorkerConfig]{
-		OutputState: i.ToAutoscalingPolicyWorkerConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AutoscalingPolicyWorkerConfigArgs) ToAutoscalingPolicyWorkerConfigPtrOutput() AutoscalingPolicyWorkerConfigPtrOutput {
 	return i.ToAutoscalingPolicyWorkerConfigPtrOutputWithContext(context.Background())
 }
@@ -1262,12 +1135,6 @@ func (i *autoscalingPolicyWorkerConfigPtrType) ToAutoscalingPolicyWorkerConfigPt
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyWorkerConfigPtrOutput)
 }
 
-func (i *autoscalingPolicyWorkerConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyWorkerConfig] {
-	return pulumix.Output[*AutoscalingPolicyWorkerConfig]{
-		OutputState: i.ToAutoscalingPolicyWorkerConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AutoscalingPolicyWorkerConfigOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingPolicyWorkerConfigOutput) ElementType() reflect.Type {
@@ -1290,12 +1157,6 @@ func (o AutoscalingPolicyWorkerConfigOutput) ToAutoscalingPolicyWorkerConfigPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoscalingPolicyWorkerConfig) *AutoscalingPolicyWorkerConfig {
 		return &v
 	}).(AutoscalingPolicyWorkerConfigPtrOutput)
-}
-
-func (o AutoscalingPolicyWorkerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscalingPolicyWorkerConfig] {
-	return pulumix.Output[AutoscalingPolicyWorkerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Maximum number of instances for this group.
@@ -1336,12 +1197,6 @@ func (o AutoscalingPolicyWorkerConfigPtrOutput) ToAutoscalingPolicyWorkerConfigP
 
 func (o AutoscalingPolicyWorkerConfigPtrOutput) ToAutoscalingPolicyWorkerConfigPtrOutputWithContext(ctx context.Context) AutoscalingPolicyWorkerConfigPtrOutput {
 	return o
-}
-
-func (o AutoscalingPolicyWorkerConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyWorkerConfig] {
-	return pulumix.Output[*AutoscalingPolicyWorkerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoscalingPolicyWorkerConfigPtrOutput) Elem() AutoscalingPolicyWorkerConfigOutput {
@@ -1538,12 +1393,6 @@ func (i ClusterClusterConfigArgs) ToClusterClusterConfigOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigOutput)
 }
 
-func (i ClusterClusterConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfig] {
-	return pulumix.Output[ClusterClusterConfig]{
-		OutputState: i.ToClusterClusterConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterClusterConfigArgs) ToClusterClusterConfigPtrOutput() ClusterClusterConfigPtrOutput {
 	return i.ToClusterClusterConfigPtrOutputWithContext(context.Background())
 }
@@ -1585,12 +1434,6 @@ func (i *clusterClusterConfigPtrType) ToClusterClusterConfigPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigPtrOutput)
 }
 
-func (i *clusterClusterConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfig] {
-	return pulumix.Output[*ClusterClusterConfig]{
-		OutputState: i.ToClusterClusterConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterClusterConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterConfigOutput) ElementType() reflect.Type {
@@ -1613,12 +1456,6 @@ func (o ClusterClusterConfigOutput) ToClusterClusterConfigPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfig) *ClusterClusterConfig {
 		return &v
 	}).(ClusterClusterConfigPtrOutput)
-}
-
-func (o ClusterClusterConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfig] {
-	return pulumix.Output[ClusterClusterConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The autoscaling policy config associated with the cluster.
@@ -1742,12 +1579,6 @@ func (o ClusterClusterConfigPtrOutput) ToClusterClusterConfigPtrOutput() Cluster
 
 func (o ClusterClusterConfigPtrOutput) ToClusterClusterConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigPtrOutput {
 	return o
-}
-
-func (o ClusterClusterConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfig] {
-	return pulumix.Output[*ClusterClusterConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterClusterConfigPtrOutput) Elem() ClusterClusterConfigOutput {
@@ -1994,12 +1825,6 @@ func (i ClusterClusterConfigAutoscalingConfigArgs) ToClusterClusterConfigAutosca
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigAutoscalingConfigOutput)
 }
 
-func (i ClusterClusterConfigAutoscalingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigAutoscalingConfig] {
-	return pulumix.Output[ClusterClusterConfigAutoscalingConfig]{
-		OutputState: i.ToClusterClusterConfigAutoscalingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterClusterConfigAutoscalingConfigArgs) ToClusterClusterConfigAutoscalingConfigPtrOutput() ClusterClusterConfigAutoscalingConfigPtrOutput {
 	return i.ToClusterClusterConfigAutoscalingConfigPtrOutputWithContext(context.Background())
 }
@@ -2041,12 +1866,6 @@ func (i *clusterClusterConfigAutoscalingConfigPtrType) ToClusterClusterConfigAut
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigAutoscalingConfigPtrOutput)
 }
 
-func (i *clusterClusterConfigAutoscalingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigAutoscalingConfig] {
-	return pulumix.Output[*ClusterClusterConfigAutoscalingConfig]{
-		OutputState: i.ToClusterClusterConfigAutoscalingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterClusterConfigAutoscalingConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterConfigAutoscalingConfigOutput) ElementType() reflect.Type {
@@ -2069,12 +1888,6 @@ func (o ClusterClusterConfigAutoscalingConfigOutput) ToClusterClusterConfigAutos
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigAutoscalingConfig) *ClusterClusterConfigAutoscalingConfig {
 		return &v
 	}).(ClusterClusterConfigAutoscalingConfigPtrOutput)
-}
-
-func (o ClusterClusterConfigAutoscalingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigAutoscalingConfig] {
-	return pulumix.Output[ClusterClusterConfigAutoscalingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The autoscaling policy used by the cluster.
@@ -2102,12 +1915,6 @@ func (o ClusterClusterConfigAutoscalingConfigPtrOutput) ToClusterClusterConfigAu
 
 func (o ClusterClusterConfigAutoscalingConfigPtrOutput) ToClusterClusterConfigAutoscalingConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigAutoscalingConfigPtrOutput {
 	return o
-}
-
-func (o ClusterClusterConfigAutoscalingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigAutoscalingConfig] {
-	return pulumix.Output[*ClusterClusterConfigAutoscalingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterClusterConfigAutoscalingConfigPtrOutput) Elem() ClusterClusterConfigAutoscalingConfigOutput {
@@ -2171,12 +1978,6 @@ func (i ClusterClusterConfigDataprocMetricConfigArgs) ToClusterClusterConfigData
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigDataprocMetricConfigOutput)
 }
 
-func (i ClusterClusterConfigDataprocMetricConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigDataprocMetricConfig] {
-	return pulumix.Output[ClusterClusterConfigDataprocMetricConfig]{
-		OutputState: i.ToClusterClusterConfigDataprocMetricConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterClusterConfigDataprocMetricConfigArgs) ToClusterClusterConfigDataprocMetricConfigPtrOutput() ClusterClusterConfigDataprocMetricConfigPtrOutput {
 	return i.ToClusterClusterConfigDataprocMetricConfigPtrOutputWithContext(context.Background())
 }
@@ -2218,12 +2019,6 @@ func (i *clusterClusterConfigDataprocMetricConfigPtrType) ToClusterClusterConfig
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigDataprocMetricConfigPtrOutput)
 }
 
-func (i *clusterClusterConfigDataprocMetricConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigDataprocMetricConfig] {
-	return pulumix.Output[*ClusterClusterConfigDataprocMetricConfig]{
-		OutputState: i.ToClusterClusterConfigDataprocMetricConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterClusterConfigDataprocMetricConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterConfigDataprocMetricConfigOutput) ElementType() reflect.Type {
@@ -2248,12 +2043,6 @@ func (o ClusterClusterConfigDataprocMetricConfigOutput) ToClusterClusterConfigDa
 	}).(ClusterClusterConfigDataprocMetricConfigPtrOutput)
 }
 
-func (o ClusterClusterConfigDataprocMetricConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigDataprocMetricConfig] {
-	return pulumix.Output[ClusterClusterConfigDataprocMetricConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Metrics sources to enable.
 func (o ClusterClusterConfigDataprocMetricConfigOutput) Metrics() ClusterClusterConfigDataprocMetricConfigMetricArrayOutput {
 	return o.ApplyT(func(v ClusterClusterConfigDataprocMetricConfig) []ClusterClusterConfigDataprocMetricConfigMetric {
@@ -2273,12 +2062,6 @@ func (o ClusterClusterConfigDataprocMetricConfigPtrOutput) ToClusterClusterConfi
 
 func (o ClusterClusterConfigDataprocMetricConfigPtrOutput) ToClusterClusterConfigDataprocMetricConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigDataprocMetricConfigPtrOutput {
 	return o
-}
-
-func (o ClusterClusterConfigDataprocMetricConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigDataprocMetricConfig] {
-	return pulumix.Output[*ClusterClusterConfigDataprocMetricConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterClusterConfigDataprocMetricConfigPtrOutput) Elem() ClusterClusterConfigDataprocMetricConfigOutput {
@@ -2342,12 +2125,6 @@ func (i ClusterClusterConfigDataprocMetricConfigMetricArgs) ToClusterClusterConf
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigDataprocMetricConfigMetricOutput)
 }
 
-func (i ClusterClusterConfigDataprocMetricConfigMetricArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigDataprocMetricConfigMetric] {
-	return pulumix.Output[ClusterClusterConfigDataprocMetricConfigMetric]{
-		OutputState: i.ToClusterClusterConfigDataprocMetricConfigMetricOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClusterClusterConfigDataprocMetricConfigMetricArrayInput is an input type that accepts ClusterClusterConfigDataprocMetricConfigMetricArray and ClusterClusterConfigDataprocMetricConfigMetricArrayOutput values.
 // You can construct a concrete instance of `ClusterClusterConfigDataprocMetricConfigMetricArrayInput` via:
 //
@@ -2373,12 +2150,6 @@ func (i ClusterClusterConfigDataprocMetricConfigMetricArray) ToClusterClusterCon
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigDataprocMetricConfigMetricArrayOutput)
 }
 
-func (i ClusterClusterConfigDataprocMetricConfigMetricArray) ToOutput(ctx context.Context) pulumix.Output[[]ClusterClusterConfigDataprocMetricConfigMetric] {
-	return pulumix.Output[[]ClusterClusterConfigDataprocMetricConfigMetric]{
-		OutputState: i.ToClusterClusterConfigDataprocMetricConfigMetricArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterClusterConfigDataprocMetricConfigMetricOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterConfigDataprocMetricConfigMetricOutput) ElementType() reflect.Type {
@@ -2391,12 +2162,6 @@ func (o ClusterClusterConfigDataprocMetricConfigMetricOutput) ToClusterClusterCo
 
 func (o ClusterClusterConfigDataprocMetricConfigMetricOutput) ToClusterClusterConfigDataprocMetricConfigMetricOutputWithContext(ctx context.Context) ClusterClusterConfigDataprocMetricConfigMetricOutput {
 	return o
-}
-
-func (o ClusterClusterConfigDataprocMetricConfigMetricOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigDataprocMetricConfigMetric] {
-	return pulumix.Output[ClusterClusterConfigDataprocMetricConfigMetric]{
-		OutputState: o.OutputState,
-	}
 }
 
 // One or more [available OSS metrics] (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course.
@@ -2423,12 +2188,6 @@ func (o ClusterClusterConfigDataprocMetricConfigMetricArrayOutput) ToClusterClus
 
 func (o ClusterClusterConfigDataprocMetricConfigMetricArrayOutput) ToClusterClusterConfigDataprocMetricConfigMetricArrayOutputWithContext(ctx context.Context) ClusterClusterConfigDataprocMetricConfigMetricArrayOutput {
 	return o
-}
-
-func (o ClusterClusterConfigDataprocMetricConfigMetricArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClusterClusterConfigDataprocMetricConfigMetric] {
-	return pulumix.Output[[]ClusterClusterConfigDataprocMetricConfigMetric]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterClusterConfigDataprocMetricConfigMetricArrayOutput) Index(i pulumi.IntInput) ClusterClusterConfigDataprocMetricConfigMetricOutput {
@@ -2476,12 +2235,6 @@ func (i ClusterClusterConfigEncryptionConfigArgs) ToClusterClusterConfigEncrypti
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigEncryptionConfigOutput)
 }
 
-func (i ClusterClusterConfigEncryptionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigEncryptionConfig] {
-	return pulumix.Output[ClusterClusterConfigEncryptionConfig]{
-		OutputState: i.ToClusterClusterConfigEncryptionConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterClusterConfigEncryptionConfigArgs) ToClusterClusterConfigEncryptionConfigPtrOutput() ClusterClusterConfigEncryptionConfigPtrOutput {
 	return i.ToClusterClusterConfigEncryptionConfigPtrOutputWithContext(context.Background())
 }
@@ -2523,12 +2276,6 @@ func (i *clusterClusterConfigEncryptionConfigPtrType) ToClusterClusterConfigEncr
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigEncryptionConfigPtrOutput)
 }
 
-func (i *clusterClusterConfigEncryptionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigEncryptionConfig] {
-	return pulumix.Output[*ClusterClusterConfigEncryptionConfig]{
-		OutputState: i.ToClusterClusterConfigEncryptionConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterClusterConfigEncryptionConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterConfigEncryptionConfigOutput) ElementType() reflect.Type {
@@ -2553,12 +2300,6 @@ func (o ClusterClusterConfigEncryptionConfigOutput) ToClusterClusterConfigEncryp
 	}).(ClusterClusterConfigEncryptionConfigPtrOutput)
 }
 
-func (o ClusterClusterConfigEncryptionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigEncryptionConfig] {
-	return pulumix.Output[ClusterClusterConfigEncryptionConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Cloud KMS key name to use for PD disk encryption for
 // all instances in the cluster.
 //
@@ -2579,12 +2320,6 @@ func (o ClusterClusterConfigEncryptionConfigPtrOutput) ToClusterClusterConfigEnc
 
 func (o ClusterClusterConfigEncryptionConfigPtrOutput) ToClusterClusterConfigEncryptionConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigEncryptionConfigPtrOutput {
 	return o
-}
-
-func (o ClusterClusterConfigEncryptionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigEncryptionConfig] {
-	return pulumix.Output[*ClusterClusterConfigEncryptionConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterClusterConfigEncryptionConfigPtrOutput) Elem() ClusterClusterConfigEncryptionConfigOutput {
@@ -2647,12 +2382,6 @@ func (i ClusterClusterConfigEndpointConfigArgs) ToClusterClusterConfigEndpointCo
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigEndpointConfigOutput)
 }
 
-func (i ClusterClusterConfigEndpointConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigEndpointConfig] {
-	return pulumix.Output[ClusterClusterConfigEndpointConfig]{
-		OutputState: i.ToClusterClusterConfigEndpointConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterClusterConfigEndpointConfigArgs) ToClusterClusterConfigEndpointConfigPtrOutput() ClusterClusterConfigEndpointConfigPtrOutput {
 	return i.ToClusterClusterConfigEndpointConfigPtrOutputWithContext(context.Background())
 }
@@ -2694,12 +2423,6 @@ func (i *clusterClusterConfigEndpointConfigPtrType) ToClusterClusterConfigEndpoi
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigEndpointConfigPtrOutput)
 }
 
-func (i *clusterClusterConfigEndpointConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigEndpointConfig] {
-	return pulumix.Output[*ClusterClusterConfigEndpointConfig]{
-		OutputState: i.ToClusterClusterConfigEndpointConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterClusterConfigEndpointConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterConfigEndpointConfigOutput) ElementType() reflect.Type {
@@ -2724,12 +2447,6 @@ func (o ClusterClusterConfigEndpointConfigOutput) ToClusterClusterConfigEndpoint
 	}).(ClusterClusterConfigEndpointConfigPtrOutput)
 }
 
-func (o ClusterClusterConfigEndpointConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigEndpointConfig] {
-	return pulumix.Output[ClusterClusterConfigEndpointConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The flag to enable http access to specific ports
 // on the cluster from external sources (aka Component Gateway). Defaults to false.
 func (o ClusterClusterConfigEndpointConfigOutput) EnableHttpPortAccess() pulumi.BoolOutput {
@@ -2752,12 +2469,6 @@ func (o ClusterClusterConfigEndpointConfigPtrOutput) ToClusterClusterConfigEndpo
 
 func (o ClusterClusterConfigEndpointConfigPtrOutput) ToClusterClusterConfigEndpointConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigEndpointConfigPtrOutput {
 	return o
-}
-
-func (o ClusterClusterConfigEndpointConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigEndpointConfig] {
-	return pulumix.Output[*ClusterClusterConfigEndpointConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterClusterConfigEndpointConfigPtrOutput) Elem() ClusterClusterConfigEndpointConfigOutput {
@@ -2907,12 +2618,6 @@ func (i ClusterClusterConfigGceClusterConfigArgs) ToClusterClusterConfigGceClust
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigGceClusterConfigOutput)
 }
 
-func (i ClusterClusterConfigGceClusterConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigGceClusterConfig] {
-	return pulumix.Output[ClusterClusterConfigGceClusterConfig]{
-		OutputState: i.ToClusterClusterConfigGceClusterConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterClusterConfigGceClusterConfigArgs) ToClusterClusterConfigGceClusterConfigPtrOutput() ClusterClusterConfigGceClusterConfigPtrOutput {
 	return i.ToClusterClusterConfigGceClusterConfigPtrOutputWithContext(context.Background())
 }
@@ -2954,12 +2659,6 @@ func (i *clusterClusterConfigGceClusterConfigPtrType) ToClusterClusterConfigGceC
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigGceClusterConfigPtrOutput)
 }
 
-func (i *clusterClusterConfigGceClusterConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigGceClusterConfig] {
-	return pulumix.Output[*ClusterClusterConfigGceClusterConfig]{
-		OutputState: i.ToClusterClusterConfigGceClusterConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterClusterConfigGceClusterConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterConfigGceClusterConfigOutput) ElementType() reflect.Type {
@@ -2982,12 +2681,6 @@ func (o ClusterClusterConfigGceClusterConfigOutput) ToClusterClusterConfigGceClu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigGceClusterConfig) *ClusterClusterConfigGceClusterConfig {
 		return &v
 	}).(ClusterClusterConfigGceClusterConfigPtrOutput)
-}
-
-func (o ClusterClusterConfigGceClusterConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigGceClusterConfig] {
-	return pulumix.Output[ClusterClusterConfigGceClusterConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // By default, clusters are not restricted to internal IP addresses,
@@ -3085,12 +2778,6 @@ func (o ClusterClusterConfigGceClusterConfigPtrOutput) ToClusterClusterConfigGce
 
 func (o ClusterClusterConfigGceClusterConfigPtrOutput) ToClusterClusterConfigGceClusterConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigPtrOutput {
 	return o
-}
-
-func (o ClusterClusterConfigGceClusterConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigGceClusterConfig] {
-	return pulumix.Output[*ClusterClusterConfigGceClusterConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterClusterConfigGceClusterConfigPtrOutput) Elem() ClusterClusterConfigGceClusterConfigOutput {
@@ -3268,12 +2955,6 @@ func (i ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs) ToClusterClus
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput)
 }
 
-func (i ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigGceClusterConfigNodeGroupAffinity] {
-	return pulumix.Output[ClusterClusterConfigGceClusterConfigNodeGroupAffinity]{
-		OutputState: i.ToClusterClusterConfigGceClusterConfigNodeGroupAffinityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs) ToClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput() ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput {
 	return i.ToClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutputWithContext(context.Background())
 }
@@ -3315,12 +2996,6 @@ func (i *clusterClusterConfigGceClusterConfigNodeGroupAffinityPtrType) ToCluster
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput)
 }
 
-func (i *clusterClusterConfigGceClusterConfigNodeGroupAffinityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigGceClusterConfigNodeGroupAffinity] {
-	return pulumix.Output[*ClusterClusterConfigGceClusterConfigNodeGroupAffinity]{
-		OutputState: i.ToClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput) ElementType() reflect.Type {
@@ -3345,12 +3020,6 @@ func (o ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput) ToClusterCl
 	}).(ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput)
 }
 
-func (o ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigGceClusterConfigNodeGroupAffinity] {
-	return pulumix.Output[ClusterClusterConfigGceClusterConfigNodeGroupAffinity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The URI of a sole-tenant node group resource that the cluster will be created on.
 func (o ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput) NodeGroupUri() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterClusterConfigGceClusterConfigNodeGroupAffinity) string { return v.NodeGroupUri }).(pulumi.StringOutput)
@@ -3368,12 +3037,6 @@ func (o ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput) ToCluste
 
 func (o ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput) ToClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput {
 	return o
-}
-
-func (o ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigGceClusterConfigNodeGroupAffinity] {
-	return pulumix.Output[*ClusterClusterConfigGceClusterConfigNodeGroupAffinity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput) Elem() ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput {
@@ -3437,12 +3100,6 @@ func (i ClusterClusterConfigGceClusterConfigReservationAffinityArgs) ToClusterCl
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigGceClusterConfigReservationAffinityOutput)
 }
 
-func (i ClusterClusterConfigGceClusterConfigReservationAffinityArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigGceClusterConfigReservationAffinity] {
-	return pulumix.Output[ClusterClusterConfigGceClusterConfigReservationAffinity]{
-		OutputState: i.ToClusterClusterConfigGceClusterConfigReservationAffinityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterClusterConfigGceClusterConfigReservationAffinityArgs) ToClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput() ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput {
 	return i.ToClusterClusterConfigGceClusterConfigReservationAffinityPtrOutputWithContext(context.Background())
 }
@@ -3484,12 +3141,6 @@ func (i *clusterClusterConfigGceClusterConfigReservationAffinityPtrType) ToClust
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput)
 }
 
-func (i *clusterClusterConfigGceClusterConfigReservationAffinityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigGceClusterConfigReservationAffinity] {
-	return pulumix.Output[*ClusterClusterConfigGceClusterConfigReservationAffinity]{
-		OutputState: i.ToClusterClusterConfigGceClusterConfigReservationAffinityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterClusterConfigGceClusterConfigReservationAffinityOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterConfigGceClusterConfigReservationAffinityOutput) ElementType() reflect.Type {
@@ -3512,12 +3163,6 @@ func (o ClusterClusterConfigGceClusterConfigReservationAffinityOutput) ToCluster
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigGceClusterConfigReservationAffinity) *ClusterClusterConfigGceClusterConfigReservationAffinity {
 		return &v
 	}).(ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput)
-}
-
-func (o ClusterClusterConfigGceClusterConfigReservationAffinityOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigGceClusterConfigReservationAffinity] {
-	return pulumix.Output[ClusterClusterConfigGceClusterConfigReservationAffinity]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Corresponds to the type of reservation consumption.
@@ -3549,12 +3194,6 @@ func (o ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput) ToClus
 
 func (o ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput) ToClusterClusterConfigGceClusterConfigReservationAffinityPtrOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput {
 	return o
-}
-
-func (o ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigGceClusterConfigReservationAffinity] {
-	return pulumix.Output[*ClusterClusterConfigGceClusterConfigReservationAffinity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput) Elem() ClusterClusterConfigGceClusterConfigReservationAffinityOutput {
@@ -3642,12 +3281,6 @@ func (i ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs) ToCluste
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput)
 }
 
-func (i ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigGceClusterConfigShieldedInstanceConfig] {
-	return pulumix.Output[ClusterClusterConfigGceClusterConfigShieldedInstanceConfig]{
-		OutputState: i.ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs) ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput() ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
 	return i.ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutputWithContext(context.Background())
 }
@@ -3689,12 +3322,6 @@ func (i *clusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrType) ToCl
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput)
 }
 
-func (i *clusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigGceClusterConfigShieldedInstanceConfig] {
-	return pulumix.Output[*ClusterClusterConfigGceClusterConfigShieldedInstanceConfig]{
-		OutputState: i.ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput) ElementType() reflect.Type {
@@ -3717,12 +3344,6 @@ func (o ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput) ToClus
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigGceClusterConfigShieldedInstanceConfig) *ClusterClusterConfigGceClusterConfigShieldedInstanceConfig {
 		return &v
 	}).(ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput)
-}
-
-func (o ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigGceClusterConfigShieldedInstanceConfig] {
-	return pulumix.Output[ClusterClusterConfigGceClusterConfigShieldedInstanceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines whether instances have integrity monitoring enabled.
@@ -3756,12 +3377,6 @@ func (o ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput) ToC
 
 func (o ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput) ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
 	return o
-}
-
-func (o ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigGceClusterConfigShieldedInstanceConfig] {
-	return pulumix.Output[*ClusterClusterConfigGceClusterConfigShieldedInstanceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput) Elem() ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput {
@@ -3853,12 +3468,6 @@ func (i ClusterClusterConfigInitializationActionArgs) ToClusterClusterConfigInit
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigInitializationActionOutput)
 }
 
-func (i ClusterClusterConfigInitializationActionArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigInitializationAction] {
-	return pulumix.Output[ClusterClusterConfigInitializationAction]{
-		OutputState: i.ToClusterClusterConfigInitializationActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClusterClusterConfigInitializationActionArrayInput is an input type that accepts ClusterClusterConfigInitializationActionArray and ClusterClusterConfigInitializationActionArrayOutput values.
 // You can construct a concrete instance of `ClusterClusterConfigInitializationActionArrayInput` via:
 //
@@ -3884,12 +3493,6 @@ func (i ClusterClusterConfigInitializationActionArray) ToClusterClusterConfigIni
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigInitializationActionArrayOutput)
 }
 
-func (i ClusterClusterConfigInitializationActionArray) ToOutput(ctx context.Context) pulumix.Output[[]ClusterClusterConfigInitializationAction] {
-	return pulumix.Output[[]ClusterClusterConfigInitializationAction]{
-		OutputState: i.ToClusterClusterConfigInitializationActionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterClusterConfigInitializationActionOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterConfigInitializationActionOutput) ElementType() reflect.Type {
@@ -3902,12 +3505,6 @@ func (o ClusterClusterConfigInitializationActionOutput) ToClusterClusterConfigIn
 
 func (o ClusterClusterConfigInitializationActionOutput) ToClusterClusterConfigInitializationActionOutputWithContext(ctx context.Context) ClusterClusterConfigInitializationActionOutput {
 	return o
-}
-
-func (o ClusterClusterConfigInitializationActionOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigInitializationAction] {
-	return pulumix.Output[ClusterClusterConfigInitializationAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The script to be executed during initialization of the cluster.
@@ -3937,12 +3534,6 @@ func (o ClusterClusterConfigInitializationActionArrayOutput) ToClusterClusterCon
 
 func (o ClusterClusterConfigInitializationActionArrayOutput) ToClusterClusterConfigInitializationActionArrayOutputWithContext(ctx context.Context) ClusterClusterConfigInitializationActionArrayOutput {
 	return o
-}
-
-func (o ClusterClusterConfigInitializationActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClusterClusterConfigInitializationAction] {
-	return pulumix.Output[[]ClusterClusterConfigInitializationAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterClusterConfigInitializationActionArrayOutput) Index(i pulumi.IntInput) ClusterClusterConfigInitializationActionOutput {
@@ -4000,12 +3591,6 @@ func (i ClusterClusterConfigLifecycleConfigArgs) ToClusterClusterConfigLifecycle
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigLifecycleConfigOutput)
 }
 
-func (i ClusterClusterConfigLifecycleConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigLifecycleConfig] {
-	return pulumix.Output[ClusterClusterConfigLifecycleConfig]{
-		OutputState: i.ToClusterClusterConfigLifecycleConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterClusterConfigLifecycleConfigArgs) ToClusterClusterConfigLifecycleConfigPtrOutput() ClusterClusterConfigLifecycleConfigPtrOutput {
 	return i.ToClusterClusterConfigLifecycleConfigPtrOutputWithContext(context.Background())
 }
@@ -4047,12 +3632,6 @@ func (i *clusterClusterConfigLifecycleConfigPtrType) ToClusterClusterConfigLifec
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigLifecycleConfigPtrOutput)
 }
 
-func (i *clusterClusterConfigLifecycleConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigLifecycleConfig] {
-	return pulumix.Output[*ClusterClusterConfigLifecycleConfig]{
-		OutputState: i.ToClusterClusterConfigLifecycleConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterClusterConfigLifecycleConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterConfigLifecycleConfigOutput) ElementType() reflect.Type {
@@ -4075,12 +3654,6 @@ func (o ClusterClusterConfigLifecycleConfigOutput) ToClusterClusterConfigLifecyc
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigLifecycleConfig) *ClusterClusterConfigLifecycleConfig {
 		return &v
 	}).(ClusterClusterConfigLifecycleConfigPtrOutput)
-}
-
-func (o ClusterClusterConfigLifecycleConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigLifecycleConfig] {
-	return pulumix.Output[ClusterClusterConfigLifecycleConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when cluster will be auto-deleted.
@@ -4114,12 +3687,6 @@ func (o ClusterClusterConfigLifecycleConfigPtrOutput) ToClusterClusterConfigLife
 
 func (o ClusterClusterConfigLifecycleConfigPtrOutput) ToClusterClusterConfigLifecycleConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigLifecycleConfigPtrOutput {
 	return o
-}
-
-func (o ClusterClusterConfigLifecycleConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigLifecycleConfig] {
-	return pulumix.Output[*ClusterClusterConfigLifecycleConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterClusterConfigLifecycleConfigPtrOutput) Elem() ClusterClusterConfigLifecycleConfigOutput {
@@ -4235,12 +3802,6 @@ func (i ClusterClusterConfigMasterConfigArgs) ToClusterClusterConfigMasterConfig
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigMasterConfigOutput)
 }
 
-func (i ClusterClusterConfigMasterConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigMasterConfig] {
-	return pulumix.Output[ClusterClusterConfigMasterConfig]{
-		OutputState: i.ToClusterClusterConfigMasterConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterClusterConfigMasterConfigArgs) ToClusterClusterConfigMasterConfigPtrOutput() ClusterClusterConfigMasterConfigPtrOutput {
 	return i.ToClusterClusterConfigMasterConfigPtrOutputWithContext(context.Background())
 }
@@ -4282,12 +3843,6 @@ func (i *clusterClusterConfigMasterConfigPtrType) ToClusterClusterConfigMasterCo
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigMasterConfigPtrOutput)
 }
 
-func (i *clusterClusterConfigMasterConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigMasterConfig] {
-	return pulumix.Output[*ClusterClusterConfigMasterConfig]{
-		OutputState: i.ToClusterClusterConfigMasterConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterClusterConfigMasterConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterConfigMasterConfigOutput) ElementType() reflect.Type {
@@ -4310,12 +3865,6 @@ func (o ClusterClusterConfigMasterConfigOutput) ToClusterClusterConfigMasterConf
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigMasterConfig) *ClusterClusterConfigMasterConfig {
 		return &v
 	}).(ClusterClusterConfigMasterConfigPtrOutput)
-}
-
-func (o ClusterClusterConfigMasterConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigMasterConfig] {
-	return pulumix.Output[ClusterClusterConfigMasterConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
@@ -4375,12 +3924,6 @@ func (o ClusterClusterConfigMasterConfigPtrOutput) ToClusterClusterConfigMasterC
 
 func (o ClusterClusterConfigMasterConfigPtrOutput) ToClusterClusterConfigMasterConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigPtrOutput {
 	return o
-}
-
-func (o ClusterClusterConfigMasterConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigMasterConfig] {
-	return pulumix.Output[*ClusterClusterConfigMasterConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterClusterConfigMasterConfigPtrOutput) Elem() ClusterClusterConfigMasterConfigOutput {
@@ -4518,12 +4061,6 @@ func (i ClusterClusterConfigMasterConfigAcceleratorArgs) ToClusterClusterConfigM
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigMasterConfigAcceleratorOutput)
 }
 
-func (i ClusterClusterConfigMasterConfigAcceleratorArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigMasterConfigAccelerator] {
-	return pulumix.Output[ClusterClusterConfigMasterConfigAccelerator]{
-		OutputState: i.ToClusterClusterConfigMasterConfigAcceleratorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClusterClusterConfigMasterConfigAcceleratorArrayInput is an input type that accepts ClusterClusterConfigMasterConfigAcceleratorArray and ClusterClusterConfigMasterConfigAcceleratorArrayOutput values.
 // You can construct a concrete instance of `ClusterClusterConfigMasterConfigAcceleratorArrayInput` via:
 //
@@ -4549,12 +4086,6 @@ func (i ClusterClusterConfigMasterConfigAcceleratorArray) ToClusterClusterConfig
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigMasterConfigAcceleratorArrayOutput)
 }
 
-func (i ClusterClusterConfigMasterConfigAcceleratorArray) ToOutput(ctx context.Context) pulumix.Output[[]ClusterClusterConfigMasterConfigAccelerator] {
-	return pulumix.Output[[]ClusterClusterConfigMasterConfigAccelerator]{
-		OutputState: i.ToClusterClusterConfigMasterConfigAcceleratorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterClusterConfigMasterConfigAcceleratorOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterConfigMasterConfigAcceleratorOutput) ElementType() reflect.Type {
@@ -4567,12 +4098,6 @@ func (o ClusterClusterConfigMasterConfigAcceleratorOutput) ToClusterClusterConfi
 
 func (o ClusterClusterConfigMasterConfigAcceleratorOutput) ToClusterClusterConfigMasterConfigAcceleratorOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigAcceleratorOutput {
 	return o
-}
-
-func (o ClusterClusterConfigMasterConfigAcceleratorOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigMasterConfigAccelerator] {
-	return pulumix.Output[ClusterClusterConfigMasterConfigAccelerator]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
@@ -4603,12 +4128,6 @@ func (o ClusterClusterConfigMasterConfigAcceleratorArrayOutput) ToClusterCluster
 
 func (o ClusterClusterConfigMasterConfigAcceleratorArrayOutput) ToClusterClusterConfigMasterConfigAcceleratorArrayOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigAcceleratorArrayOutput {
 	return o
-}
-
-func (o ClusterClusterConfigMasterConfigAcceleratorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClusterClusterConfigMasterConfigAccelerator] {
-	return pulumix.Output[[]ClusterClusterConfigMasterConfigAccelerator]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterClusterConfigMasterConfigAcceleratorArrayOutput) Index(i pulumi.IntInput) ClusterClusterConfigMasterConfigAcceleratorOutput {
@@ -4670,12 +4189,6 @@ func (i ClusterClusterConfigMasterConfigDiskConfigArgs) ToClusterClusterConfigMa
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigMasterConfigDiskConfigOutput)
 }
 
-func (i ClusterClusterConfigMasterConfigDiskConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigMasterConfigDiskConfig] {
-	return pulumix.Output[ClusterClusterConfigMasterConfigDiskConfig]{
-		OutputState: i.ToClusterClusterConfigMasterConfigDiskConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterClusterConfigMasterConfigDiskConfigArgs) ToClusterClusterConfigMasterConfigDiskConfigPtrOutput() ClusterClusterConfigMasterConfigDiskConfigPtrOutput {
 	return i.ToClusterClusterConfigMasterConfigDiskConfigPtrOutputWithContext(context.Background())
 }
@@ -4717,12 +4230,6 @@ func (i *clusterClusterConfigMasterConfigDiskConfigPtrType) ToClusterClusterConf
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigMasterConfigDiskConfigPtrOutput)
 }
 
-func (i *clusterClusterConfigMasterConfigDiskConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigMasterConfigDiskConfig] {
-	return pulumix.Output[*ClusterClusterConfigMasterConfigDiskConfig]{
-		OutputState: i.ToClusterClusterConfigMasterConfigDiskConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterClusterConfigMasterConfigDiskConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterConfigMasterConfigDiskConfigOutput) ElementType() reflect.Type {
@@ -4745,12 +4252,6 @@ func (o ClusterClusterConfigMasterConfigDiskConfigOutput) ToClusterClusterConfig
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigMasterConfigDiskConfig) *ClusterClusterConfigMasterConfigDiskConfig {
 		return &v
 	}).(ClusterClusterConfigMasterConfigDiskConfigPtrOutput)
-}
-
-func (o ClusterClusterConfigMasterConfigDiskConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigMasterConfigDiskConfig] {
-	return pulumix.Output[ClusterClusterConfigMasterConfigDiskConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Size of the primary disk attached to each node, specified
@@ -4786,12 +4287,6 @@ func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) ToClusterClusterCon
 
 func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) ToClusterClusterConfigMasterConfigDiskConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigDiskConfigPtrOutput {
 	return o
-}
-
-func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigMasterConfigDiskConfig] {
-	return pulumix.Output[*ClusterClusterConfigMasterConfigDiskConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) Elem() ClusterClusterConfigMasterConfigDiskConfigOutput {
@@ -4881,12 +4376,6 @@ func (i ClusterClusterConfigMetastoreConfigArgs) ToClusterClusterConfigMetastore
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigMetastoreConfigOutput)
 }
 
-func (i ClusterClusterConfigMetastoreConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigMetastoreConfig] {
-	return pulumix.Output[ClusterClusterConfigMetastoreConfig]{
-		OutputState: i.ToClusterClusterConfigMetastoreConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterClusterConfigMetastoreConfigArgs) ToClusterClusterConfigMetastoreConfigPtrOutput() ClusterClusterConfigMetastoreConfigPtrOutput {
 	return i.ToClusterClusterConfigMetastoreConfigPtrOutputWithContext(context.Background())
 }
@@ -4928,12 +4417,6 @@ func (i *clusterClusterConfigMetastoreConfigPtrType) ToClusterClusterConfigMetas
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigMetastoreConfigPtrOutput)
 }
 
-func (i *clusterClusterConfigMetastoreConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigMetastoreConfig] {
-	return pulumix.Output[*ClusterClusterConfigMetastoreConfig]{
-		OutputState: i.ToClusterClusterConfigMetastoreConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterClusterConfigMetastoreConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterConfigMetastoreConfigOutput) ElementType() reflect.Type {
@@ -4958,12 +4441,6 @@ func (o ClusterClusterConfigMetastoreConfigOutput) ToClusterClusterConfigMetasto
 	}).(ClusterClusterConfigMetastoreConfigPtrOutput)
 }
 
-func (o ClusterClusterConfigMetastoreConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigMetastoreConfig] {
-	return pulumix.Output[ClusterClusterConfigMetastoreConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource name of an existing Dataproc Metastore service.
 //
 // Only resource names including projectid and location (region) are valid. Examples:
@@ -4985,12 +4462,6 @@ func (o ClusterClusterConfigMetastoreConfigPtrOutput) ToClusterClusterConfigMeta
 
 func (o ClusterClusterConfigMetastoreConfigPtrOutput) ToClusterClusterConfigMetastoreConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigMetastoreConfigPtrOutput {
 	return o
-}
-
-func (o ClusterClusterConfigMetastoreConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigMetastoreConfig] {
-	return pulumix.Output[*ClusterClusterConfigMetastoreConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterClusterConfigMetastoreConfigPtrOutput) Elem() ClusterClusterConfigMetastoreConfigOutput {
@@ -5070,12 +4541,6 @@ func (i ClusterClusterConfigPreemptibleWorkerConfigArgs) ToClusterClusterConfigP
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigPreemptibleWorkerConfigOutput)
 }
 
-func (i ClusterClusterConfigPreemptibleWorkerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigPreemptibleWorkerConfig] {
-	return pulumix.Output[ClusterClusterConfigPreemptibleWorkerConfig]{
-		OutputState: i.ToClusterClusterConfigPreemptibleWorkerConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterClusterConfigPreemptibleWorkerConfigArgs) ToClusterClusterConfigPreemptibleWorkerConfigPtrOutput() ClusterClusterConfigPreemptibleWorkerConfigPtrOutput {
 	return i.ToClusterClusterConfigPreemptibleWorkerConfigPtrOutputWithContext(context.Background())
 }
@@ -5117,12 +4582,6 @@ func (i *clusterClusterConfigPreemptibleWorkerConfigPtrType) ToClusterClusterCon
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigPreemptibleWorkerConfigPtrOutput)
 }
 
-func (i *clusterClusterConfigPreemptibleWorkerConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigPreemptibleWorkerConfig] {
-	return pulumix.Output[*ClusterClusterConfigPreemptibleWorkerConfig]{
-		OutputState: i.ToClusterClusterConfigPreemptibleWorkerConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterClusterConfigPreemptibleWorkerConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterConfigPreemptibleWorkerConfigOutput) ElementType() reflect.Type {
@@ -5145,12 +4604,6 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigOutput) ToClusterClusterConfi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigPreemptibleWorkerConfig) *ClusterClusterConfigPreemptibleWorkerConfig {
 		return &v
 	}).(ClusterClusterConfigPreemptibleWorkerConfigPtrOutput)
-}
-
-func (o ClusterClusterConfigPreemptibleWorkerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigPreemptibleWorkerConfig] {
-	return pulumix.Output[ClusterClusterConfigPreemptibleWorkerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Disk Config
@@ -5191,12 +4644,6 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigPtrOutput) ToClusterClusterCo
 
 func (o ClusterClusterConfigPreemptibleWorkerConfigPtrOutput) ToClusterClusterConfigPreemptibleWorkerConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigPreemptibleWorkerConfigPtrOutput {
 	return o
-}
-
-func (o ClusterClusterConfigPreemptibleWorkerConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigPreemptibleWorkerConfig] {
-	return pulumix.Output[*ClusterClusterConfigPreemptibleWorkerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterClusterConfigPreemptibleWorkerConfigPtrOutput) Elem() ClusterClusterConfigPreemptibleWorkerConfigOutput {
@@ -5306,12 +4753,6 @@ func (i ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs) ToClusterClus
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput)
 }
 
-func (i ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigPreemptibleWorkerConfigDiskConfig] {
-	return pulumix.Output[ClusterClusterConfigPreemptibleWorkerConfigDiskConfig]{
-		OutputState: i.ToClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs) ToClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput() ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput {
 	return i.ToClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutputWithContext(context.Background())
 }
@@ -5353,12 +4794,6 @@ func (i *clusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrType) ToCluster
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput)
 }
 
-func (i *clusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigPreemptibleWorkerConfigDiskConfig] {
-	return pulumix.Output[*ClusterClusterConfigPreemptibleWorkerConfigDiskConfig]{
-		OutputState: i.ToClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput) ElementType() reflect.Type {
@@ -5381,12 +4816,6 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput) ToClusterCl
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigPreemptibleWorkerConfigDiskConfig) *ClusterClusterConfigPreemptibleWorkerConfigDiskConfig {
 		return &v
 	}).(ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput)
-}
-
-func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigPreemptibleWorkerConfigDiskConfig] {
-	return pulumix.Output[ClusterClusterConfigPreemptibleWorkerConfigDiskConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Size of the primary disk attached to each node, specified
@@ -5422,12 +4851,6 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput) ToCluste
 
 func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput) ToClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput {
 	return o
-}
-
-func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigPreemptibleWorkerConfigDiskConfig] {
-	return pulumix.Output[*ClusterClusterConfigPreemptibleWorkerConfigDiskConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput) Elem() ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput {
@@ -5509,12 +4932,6 @@ func (i ClusterClusterConfigSecurityConfigArgs) ToClusterClusterConfigSecurityCo
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigSecurityConfigOutput)
 }
 
-func (i ClusterClusterConfigSecurityConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigSecurityConfig] {
-	return pulumix.Output[ClusterClusterConfigSecurityConfig]{
-		OutputState: i.ToClusterClusterConfigSecurityConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterClusterConfigSecurityConfigArgs) ToClusterClusterConfigSecurityConfigPtrOutput() ClusterClusterConfigSecurityConfigPtrOutput {
 	return i.ToClusterClusterConfigSecurityConfigPtrOutputWithContext(context.Background())
 }
@@ -5556,12 +4973,6 @@ func (i *clusterClusterConfigSecurityConfigPtrType) ToClusterClusterConfigSecuri
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigSecurityConfigPtrOutput)
 }
 
-func (i *clusterClusterConfigSecurityConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigSecurityConfig] {
-	return pulumix.Output[*ClusterClusterConfigSecurityConfig]{
-		OutputState: i.ToClusterClusterConfigSecurityConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterClusterConfigSecurityConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterConfigSecurityConfigOutput) ElementType() reflect.Type {
@@ -5586,12 +4997,6 @@ func (o ClusterClusterConfigSecurityConfigOutput) ToClusterClusterConfigSecurity
 	}).(ClusterClusterConfigSecurityConfigPtrOutput)
 }
 
-func (o ClusterClusterConfigSecurityConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigSecurityConfig] {
-	return pulumix.Output[ClusterClusterConfigSecurityConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Kerberos Configuration
 func (o ClusterClusterConfigSecurityConfigOutput) KerberosConfig() ClusterClusterConfigSecurityConfigKerberosConfigOutput {
 	return o.ApplyT(func(v ClusterClusterConfigSecurityConfig) ClusterClusterConfigSecurityConfigKerberosConfig {
@@ -5611,12 +5016,6 @@ func (o ClusterClusterConfigSecurityConfigPtrOutput) ToClusterClusterConfigSecur
 
 func (o ClusterClusterConfigSecurityConfigPtrOutput) ToClusterClusterConfigSecurityConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigSecurityConfigPtrOutput {
 	return o
-}
-
-func (o ClusterClusterConfigSecurityConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigSecurityConfig] {
-	return pulumix.Output[*ClusterClusterConfigSecurityConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterClusterConfigSecurityConfigPtrOutput) Elem() ClusterClusterConfigSecurityConfigOutput {
@@ -5764,12 +5163,6 @@ func (i ClusterClusterConfigSecurityConfigKerberosConfigArgs) ToClusterClusterCo
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigSecurityConfigKerberosConfigOutput)
 }
 
-func (i ClusterClusterConfigSecurityConfigKerberosConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigSecurityConfigKerberosConfig] {
-	return pulumix.Output[ClusterClusterConfigSecurityConfigKerberosConfig]{
-		OutputState: i.ToClusterClusterConfigSecurityConfigKerberosConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterClusterConfigSecurityConfigKerberosConfigArgs) ToClusterClusterConfigSecurityConfigKerberosConfigPtrOutput() ClusterClusterConfigSecurityConfigKerberosConfigPtrOutput {
 	return i.ToClusterClusterConfigSecurityConfigKerberosConfigPtrOutputWithContext(context.Background())
 }
@@ -5811,12 +5204,6 @@ func (i *clusterClusterConfigSecurityConfigKerberosConfigPtrType) ToClusterClust
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigSecurityConfigKerberosConfigPtrOutput)
 }
 
-func (i *clusterClusterConfigSecurityConfigKerberosConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigSecurityConfigKerberosConfig] {
-	return pulumix.Output[*ClusterClusterConfigSecurityConfigKerberosConfig]{
-		OutputState: i.ToClusterClusterConfigSecurityConfigKerberosConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterClusterConfigSecurityConfigKerberosConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterConfigSecurityConfigKerberosConfigOutput) ElementType() reflect.Type {
@@ -5839,12 +5226,6 @@ func (o ClusterClusterConfigSecurityConfigKerberosConfigOutput) ToClusterCluster
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigSecurityConfigKerberosConfig) *ClusterClusterConfigSecurityConfigKerberosConfig {
 		return &v
 	}).(ClusterClusterConfigSecurityConfigKerberosConfigPtrOutput)
-}
-
-func (o ClusterClusterConfigSecurityConfigKerberosConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigSecurityConfigKerberosConfig] {
-	return pulumix.Output[ClusterClusterConfigSecurityConfigKerberosConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The admin server (IP or hostname) for the
@@ -5954,12 +5335,6 @@ func (o ClusterClusterConfigSecurityConfigKerberosConfigPtrOutput) ToClusterClus
 
 func (o ClusterClusterConfigSecurityConfigKerberosConfigPtrOutput) ToClusterClusterConfigSecurityConfigKerberosConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigSecurityConfigKerberosConfigPtrOutput {
 	return o
-}
-
-func (o ClusterClusterConfigSecurityConfigKerberosConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigSecurityConfigKerberosConfig] {
-	return pulumix.Output[*ClusterClusterConfigSecurityConfigKerberosConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterClusterConfigSecurityConfigKerberosConfigPtrOutput) Elem() ClusterClusterConfigSecurityConfigKerberosConfigOutput {
@@ -6205,12 +5580,6 @@ func (i ClusterClusterConfigSoftwareConfigArgs) ToClusterClusterConfigSoftwareCo
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigSoftwareConfigOutput)
 }
 
-func (i ClusterClusterConfigSoftwareConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigSoftwareConfig] {
-	return pulumix.Output[ClusterClusterConfigSoftwareConfig]{
-		OutputState: i.ToClusterClusterConfigSoftwareConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterClusterConfigSoftwareConfigArgs) ToClusterClusterConfigSoftwareConfigPtrOutput() ClusterClusterConfigSoftwareConfigPtrOutput {
 	return i.ToClusterClusterConfigSoftwareConfigPtrOutputWithContext(context.Background())
 }
@@ -6252,12 +5621,6 @@ func (i *clusterClusterConfigSoftwareConfigPtrType) ToClusterClusterConfigSoftwa
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigSoftwareConfigPtrOutput)
 }
 
-func (i *clusterClusterConfigSoftwareConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigSoftwareConfig] {
-	return pulumix.Output[*ClusterClusterConfigSoftwareConfig]{
-		OutputState: i.ToClusterClusterConfigSoftwareConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterClusterConfigSoftwareConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterConfigSoftwareConfigOutput) ElementType() reflect.Type {
@@ -6280,12 +5643,6 @@ func (o ClusterClusterConfigSoftwareConfigOutput) ToClusterClusterConfigSoftware
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigSoftwareConfig) *ClusterClusterConfigSoftwareConfig {
 		return &v
 	}).(ClusterClusterConfigSoftwareConfigPtrOutput)
-}
-
-func (o ClusterClusterConfigSoftwareConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigSoftwareConfig] {
-	return pulumix.Output[ClusterClusterConfigSoftwareConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Cloud Dataproc image version to use
@@ -6330,12 +5687,6 @@ func (o ClusterClusterConfigSoftwareConfigPtrOutput) ToClusterClusterConfigSoftw
 
 func (o ClusterClusterConfigSoftwareConfigPtrOutput) ToClusterClusterConfigSoftwareConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigSoftwareConfigPtrOutput {
 	return o
-}
-
-func (o ClusterClusterConfigSoftwareConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigSoftwareConfig] {
-	return pulumix.Output[*ClusterClusterConfigSoftwareConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterClusterConfigSoftwareConfigPtrOutput) Elem() ClusterClusterConfigSoftwareConfigOutput {
@@ -6477,12 +5828,6 @@ func (i ClusterClusterConfigWorkerConfigArgs) ToClusterClusterConfigWorkerConfig
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigWorkerConfigOutput)
 }
 
-func (i ClusterClusterConfigWorkerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigWorkerConfig] {
-	return pulumix.Output[ClusterClusterConfigWorkerConfig]{
-		OutputState: i.ToClusterClusterConfigWorkerConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterClusterConfigWorkerConfigArgs) ToClusterClusterConfigWorkerConfigPtrOutput() ClusterClusterConfigWorkerConfigPtrOutput {
 	return i.ToClusterClusterConfigWorkerConfigPtrOutputWithContext(context.Background())
 }
@@ -6524,12 +5869,6 @@ func (i *clusterClusterConfigWorkerConfigPtrType) ToClusterClusterConfigWorkerCo
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigWorkerConfigPtrOutput)
 }
 
-func (i *clusterClusterConfigWorkerConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigWorkerConfig] {
-	return pulumix.Output[*ClusterClusterConfigWorkerConfig]{
-		OutputState: i.ToClusterClusterConfigWorkerConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterClusterConfigWorkerConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterConfigWorkerConfigOutput) ElementType() reflect.Type {
@@ -6552,12 +5891,6 @@ func (o ClusterClusterConfigWorkerConfigOutput) ToClusterClusterConfigWorkerConf
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigWorkerConfig) *ClusterClusterConfigWorkerConfig {
 		return &v
 	}).(ClusterClusterConfigWorkerConfigPtrOutput)
-}
-
-func (o ClusterClusterConfigWorkerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigWorkerConfig] {
-	return pulumix.Output[ClusterClusterConfigWorkerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
@@ -6622,12 +5955,6 @@ func (o ClusterClusterConfigWorkerConfigPtrOutput) ToClusterClusterConfigWorkerC
 
 func (o ClusterClusterConfigWorkerConfigPtrOutput) ToClusterClusterConfigWorkerConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigPtrOutput {
 	return o
-}
-
-func (o ClusterClusterConfigWorkerConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigWorkerConfig] {
-	return pulumix.Output[*ClusterClusterConfigWorkerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterClusterConfigWorkerConfigPtrOutput) Elem() ClusterClusterConfigWorkerConfigOutput {
@@ -6770,12 +6097,6 @@ func (i ClusterClusterConfigWorkerConfigAcceleratorArgs) ToClusterClusterConfigW
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigWorkerConfigAcceleratorOutput)
 }
 
-func (i ClusterClusterConfigWorkerConfigAcceleratorArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigWorkerConfigAccelerator] {
-	return pulumix.Output[ClusterClusterConfigWorkerConfigAccelerator]{
-		OutputState: i.ToClusterClusterConfigWorkerConfigAcceleratorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClusterClusterConfigWorkerConfigAcceleratorArrayInput is an input type that accepts ClusterClusterConfigWorkerConfigAcceleratorArray and ClusterClusterConfigWorkerConfigAcceleratorArrayOutput values.
 // You can construct a concrete instance of `ClusterClusterConfigWorkerConfigAcceleratorArrayInput` via:
 //
@@ -6801,12 +6122,6 @@ func (i ClusterClusterConfigWorkerConfigAcceleratorArray) ToClusterClusterConfig
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigWorkerConfigAcceleratorArrayOutput)
 }
 
-func (i ClusterClusterConfigWorkerConfigAcceleratorArray) ToOutput(ctx context.Context) pulumix.Output[[]ClusterClusterConfigWorkerConfigAccelerator] {
-	return pulumix.Output[[]ClusterClusterConfigWorkerConfigAccelerator]{
-		OutputState: i.ToClusterClusterConfigWorkerConfigAcceleratorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterClusterConfigWorkerConfigAcceleratorOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterConfigWorkerConfigAcceleratorOutput) ElementType() reflect.Type {
@@ -6819,12 +6134,6 @@ func (o ClusterClusterConfigWorkerConfigAcceleratorOutput) ToClusterClusterConfi
 
 func (o ClusterClusterConfigWorkerConfigAcceleratorOutput) ToClusterClusterConfigWorkerConfigAcceleratorOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigAcceleratorOutput {
 	return o
-}
-
-func (o ClusterClusterConfigWorkerConfigAcceleratorOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigWorkerConfigAccelerator] {
-	return pulumix.Output[ClusterClusterConfigWorkerConfigAccelerator]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
@@ -6855,12 +6164,6 @@ func (o ClusterClusterConfigWorkerConfigAcceleratorArrayOutput) ToClusterCluster
 
 func (o ClusterClusterConfigWorkerConfigAcceleratorArrayOutput) ToClusterClusterConfigWorkerConfigAcceleratorArrayOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigAcceleratorArrayOutput {
 	return o
-}
-
-func (o ClusterClusterConfigWorkerConfigAcceleratorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClusterClusterConfigWorkerConfigAccelerator] {
-	return pulumix.Output[[]ClusterClusterConfigWorkerConfigAccelerator]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterClusterConfigWorkerConfigAcceleratorArrayOutput) Index(i pulumi.IntInput) ClusterClusterConfigWorkerConfigAcceleratorOutput {
@@ -6922,12 +6225,6 @@ func (i ClusterClusterConfigWorkerConfigDiskConfigArgs) ToClusterClusterConfigWo
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigWorkerConfigDiskConfigOutput)
 }
 
-func (i ClusterClusterConfigWorkerConfigDiskConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigWorkerConfigDiskConfig] {
-	return pulumix.Output[ClusterClusterConfigWorkerConfigDiskConfig]{
-		OutputState: i.ToClusterClusterConfigWorkerConfigDiskConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterClusterConfigWorkerConfigDiskConfigArgs) ToClusterClusterConfigWorkerConfigDiskConfigPtrOutput() ClusterClusterConfigWorkerConfigDiskConfigPtrOutput {
 	return i.ToClusterClusterConfigWorkerConfigDiskConfigPtrOutputWithContext(context.Background())
 }
@@ -6969,12 +6266,6 @@ func (i *clusterClusterConfigWorkerConfigDiskConfigPtrType) ToClusterClusterConf
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigWorkerConfigDiskConfigPtrOutput)
 }
 
-func (i *clusterClusterConfigWorkerConfigDiskConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigWorkerConfigDiskConfig] {
-	return pulumix.Output[*ClusterClusterConfigWorkerConfigDiskConfig]{
-		OutputState: i.ToClusterClusterConfigWorkerConfigDiskConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterClusterConfigWorkerConfigDiskConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterConfigWorkerConfigDiskConfigOutput) ElementType() reflect.Type {
@@ -6997,12 +6288,6 @@ func (o ClusterClusterConfigWorkerConfigDiskConfigOutput) ToClusterClusterConfig
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigWorkerConfigDiskConfig) *ClusterClusterConfigWorkerConfigDiskConfig {
 		return &v
 	}).(ClusterClusterConfigWorkerConfigDiskConfigPtrOutput)
-}
-
-func (o ClusterClusterConfigWorkerConfigDiskConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterClusterConfigWorkerConfigDiskConfig] {
-	return pulumix.Output[ClusterClusterConfigWorkerConfigDiskConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Size of the primary disk attached to each node, specified
@@ -7038,12 +6323,6 @@ func (o ClusterClusterConfigWorkerConfigDiskConfigPtrOutput) ToClusterClusterCon
 
 func (o ClusterClusterConfigWorkerConfigDiskConfigPtrOutput) ToClusterClusterConfigWorkerConfigDiskConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigDiskConfigPtrOutput {
 	return o
-}
-
-func (o ClusterClusterConfigWorkerConfigDiskConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterClusterConfigWorkerConfigDiskConfig] {
-	return pulumix.Output[*ClusterClusterConfigWorkerConfigDiskConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterClusterConfigWorkerConfigDiskConfigPtrOutput) Elem() ClusterClusterConfigWorkerConfigDiskConfigOutput {
@@ -7127,12 +6406,6 @@ func (i ClusterIAMBindingConditionArgs) ToClusterIAMBindingConditionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMBindingConditionOutput)
 }
 
-func (i ClusterIAMBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterIAMBindingCondition] {
-	return pulumix.Output[ClusterIAMBindingCondition]{
-		OutputState: i.ToClusterIAMBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterIAMBindingConditionArgs) ToClusterIAMBindingConditionPtrOutput() ClusterIAMBindingConditionPtrOutput {
 	return i.ToClusterIAMBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -7174,12 +6447,6 @@ func (i *clusterIAMBindingConditionPtrType) ToClusterIAMBindingConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMBindingConditionPtrOutput)
 }
 
-func (i *clusterIAMBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterIAMBindingCondition] {
-	return pulumix.Output[*ClusterIAMBindingCondition]{
-		OutputState: i.ToClusterIAMBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterIAMBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (ClusterIAMBindingConditionOutput) ElementType() reflect.Type {
@@ -7202,12 +6469,6 @@ func (o ClusterIAMBindingConditionOutput) ToClusterIAMBindingConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterIAMBindingCondition) *ClusterIAMBindingCondition {
 		return &v
 	}).(ClusterIAMBindingConditionPtrOutput)
-}
-
-func (o ClusterIAMBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterIAMBindingCondition] {
-	return pulumix.Output[ClusterIAMBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -7234,12 +6495,6 @@ func (o ClusterIAMBindingConditionPtrOutput) ToClusterIAMBindingConditionPtrOutp
 
 func (o ClusterIAMBindingConditionPtrOutput) ToClusterIAMBindingConditionPtrOutputWithContext(ctx context.Context) ClusterIAMBindingConditionPtrOutput {
 	return o
-}
-
-func (o ClusterIAMBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterIAMBindingCondition] {
-	return pulumix.Output[*ClusterIAMBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterIAMBindingConditionPtrOutput) Elem() ClusterIAMBindingConditionOutput {
@@ -7314,12 +6569,6 @@ func (i ClusterIAMMemberConditionArgs) ToClusterIAMMemberConditionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMMemberConditionOutput)
 }
 
-func (i ClusterIAMMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterIAMMemberCondition] {
-	return pulumix.Output[ClusterIAMMemberCondition]{
-		OutputState: i.ToClusterIAMMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterIAMMemberConditionArgs) ToClusterIAMMemberConditionPtrOutput() ClusterIAMMemberConditionPtrOutput {
 	return i.ToClusterIAMMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -7361,12 +6610,6 @@ func (i *clusterIAMMemberConditionPtrType) ToClusterIAMMemberConditionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMMemberConditionPtrOutput)
 }
 
-func (i *clusterIAMMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterIAMMemberCondition] {
-	return pulumix.Output[*ClusterIAMMemberCondition]{
-		OutputState: i.ToClusterIAMMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterIAMMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (ClusterIAMMemberConditionOutput) ElementType() reflect.Type {
@@ -7389,12 +6632,6 @@ func (o ClusterIAMMemberConditionOutput) ToClusterIAMMemberConditionPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterIAMMemberCondition) *ClusterIAMMemberCondition {
 		return &v
 	}).(ClusterIAMMemberConditionPtrOutput)
-}
-
-func (o ClusterIAMMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterIAMMemberCondition] {
-	return pulumix.Output[ClusterIAMMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -7421,12 +6658,6 @@ func (o ClusterIAMMemberConditionPtrOutput) ToClusterIAMMemberConditionPtrOutput
 
 func (o ClusterIAMMemberConditionPtrOutput) ToClusterIAMMemberConditionPtrOutputWithContext(ctx context.Context) ClusterIAMMemberConditionPtrOutput {
 	return o
-}
-
-func (o ClusterIAMMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterIAMMemberCondition] {
-	return pulumix.Output[*ClusterIAMMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterIAMMemberConditionPtrOutput) Elem() ClusterIAMMemberConditionOutput {
@@ -7525,12 +6756,6 @@ func (i ClusterVirtualClusterConfigArgs) ToClusterVirtualClusterConfigOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigOutput)
 }
 
-func (i ClusterVirtualClusterConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterVirtualClusterConfig] {
-	return pulumix.Output[ClusterVirtualClusterConfig]{
-		OutputState: i.ToClusterVirtualClusterConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterVirtualClusterConfigArgs) ToClusterVirtualClusterConfigPtrOutput() ClusterVirtualClusterConfigPtrOutput {
 	return i.ToClusterVirtualClusterConfigPtrOutputWithContext(context.Background())
 }
@@ -7572,12 +6797,6 @@ func (i *clusterVirtualClusterConfigPtrType) ToClusterVirtualClusterConfigPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigPtrOutput)
 }
 
-func (i *clusterVirtualClusterConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterVirtualClusterConfig] {
-	return pulumix.Output[*ClusterVirtualClusterConfig]{
-		OutputState: i.ToClusterVirtualClusterConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterVirtualClusterConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterVirtualClusterConfigOutput) ElementType() reflect.Type {
@@ -7600,12 +6819,6 @@ func (o ClusterVirtualClusterConfigOutput) ToClusterVirtualClusterConfigPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterVirtualClusterConfig) *ClusterVirtualClusterConfig {
 		return &v
 	}).(ClusterVirtualClusterConfigPtrOutput)
-}
-
-func (o ClusterVirtualClusterConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterVirtualClusterConfig] {
-	return pulumix.Output[ClusterVirtualClusterConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration of auxiliary services used by this cluster.
@@ -7648,12 +6861,6 @@ func (o ClusterVirtualClusterConfigPtrOutput) ToClusterVirtualClusterConfigPtrOu
 
 func (o ClusterVirtualClusterConfigPtrOutput) ToClusterVirtualClusterConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigPtrOutput {
 	return o
-}
-
-func (o ClusterVirtualClusterConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterVirtualClusterConfig] {
-	return pulumix.Output[*ClusterVirtualClusterConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterVirtualClusterConfigPtrOutput) Elem() ClusterVirtualClusterConfigOutput {
@@ -7742,12 +6949,6 @@ func (i ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs) ToClusterVirtual
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput)
 }
 
-func (i ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterVirtualClusterConfigAuxiliaryServicesConfig] {
-	return pulumix.Output[ClusterVirtualClusterConfigAuxiliaryServicesConfig]{
-		OutputState: i.ToClusterVirtualClusterConfigAuxiliaryServicesConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs) ToClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput {
 	return i.ToClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutputWithContext(context.Background())
 }
@@ -7789,12 +6990,6 @@ func (i *clusterVirtualClusterConfigAuxiliaryServicesConfigPtrType) ToClusterVir
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput)
 }
 
-func (i *clusterVirtualClusterConfigAuxiliaryServicesConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterVirtualClusterConfigAuxiliaryServicesConfig] {
-	return pulumix.Output[*ClusterVirtualClusterConfigAuxiliaryServicesConfig]{
-		OutputState: i.ToClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput) ElementType() reflect.Type {
@@ -7817,12 +7012,6 @@ func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput) ToClusterVirtu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterVirtualClusterConfigAuxiliaryServicesConfig) *ClusterVirtualClusterConfigAuxiliaryServicesConfig {
 		return &v
 	}).(ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput)
-}
-
-func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterVirtualClusterConfigAuxiliaryServicesConfig] {
-	return pulumix.Output[ClusterVirtualClusterConfigAuxiliaryServicesConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Hive Metastore configuration for this workload.
@@ -7851,12 +7040,6 @@ func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput) ToClusterVi
 
 func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput) ToClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput {
 	return o
-}
-
-func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterVirtualClusterConfigAuxiliaryServicesConfig] {
-	return pulumix.Output[*ClusterVirtualClusterConfigAuxiliaryServicesConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput) Elem() ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput {
@@ -7930,12 +7113,6 @@ func (i ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput)
 }
 
-func (i ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig] {
-	return pulumix.Output[ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig]{
-		OutputState: i.ToClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs) ToClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput {
 	return i.ToClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutputWithContext(context.Background())
 }
@@ -7977,12 +7154,6 @@ func (i *clusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput)
 }
 
-func (i *clusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig] {
-	return pulumix.Output[*ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig]{
-		OutputState: i.ToClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput) ElementType() reflect.Type {
@@ -8005,12 +7176,6 @@ func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput)
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig) *ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig {
 		return &v
 	}).(ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput)
-}
-
-func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig] {
-	return pulumix.Output[ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource name of an existing Dataproc Metastore service.
@@ -8036,12 +7201,6 @@ func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutp
 
 func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput) ToClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput {
 	return o
-}
-
-func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig] {
-	return pulumix.Output[*ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput) Elem() ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput {
@@ -8103,12 +7262,6 @@ func (i ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConf
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput)
 }
 
-func (i ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig] {
-	return pulumix.Output[ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig]{
-		OutputState: i.ToClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs) ToClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput {
 	return i.ToClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutputWithContext(context.Background())
 }
@@ -8150,12 +7303,6 @@ func (i *clusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerCon
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput)
 }
 
-func (i *clusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig] {
-	return pulumix.Output[*ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig]{
-		OutputState: i.ToClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput) ElementType() reflect.Type {
@@ -8180,12 +7327,6 @@ func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConf
 	}).(ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput)
 }
 
-func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig] {
-	return pulumix.Output[ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
 // ***
 func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput) DataprocCluster() pulumi.StringPtrOutput {
@@ -8206,12 +7347,6 @@ func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConf
 
 func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput) ToClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput {
 	return o
-}
-
-func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig] {
-	return pulumix.Output[*ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput) Elem() ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput {
@@ -8282,12 +7417,6 @@ func (i ClusterVirtualClusterConfigKubernetesClusterConfigArgs) ToClusterVirtual
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigOutput)
 }
 
-func (i ClusterVirtualClusterConfigKubernetesClusterConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfig] {
-	return pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfig]{
-		OutputState: i.ToClusterVirtualClusterConfigKubernetesClusterConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterVirtualClusterConfigKubernetesClusterConfigArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput {
 	return i.ToClusterVirtualClusterConfigKubernetesClusterConfigPtrOutputWithContext(context.Background())
 }
@@ -8329,12 +7458,6 @@ func (i *clusterVirtualClusterConfigKubernetesClusterConfigPtrType) ToClusterVir
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput)
 }
 
-func (i *clusterVirtualClusterConfigKubernetesClusterConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterVirtualClusterConfigKubernetesClusterConfig] {
-	return pulumix.Output[*ClusterVirtualClusterConfigKubernetesClusterConfig]{
-		OutputState: i.ToClusterVirtualClusterConfigKubernetesClusterConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterVirtualClusterConfigKubernetesClusterConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterVirtualClusterConfigKubernetesClusterConfigOutput) ElementType() reflect.Type {
@@ -8357,12 +7480,6 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigOutput) ToClusterVirtu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterVirtualClusterConfigKubernetesClusterConfig) *ClusterVirtualClusterConfigKubernetesClusterConfig {
 		return &v
 	}).(ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput)
-}
-
-func (o ClusterVirtualClusterConfigKubernetesClusterConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfig] {
-	return pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration for running the Dataproc cluster on GKE.
@@ -8399,12 +7516,6 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput) ToClusterVi
 
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput {
 	return o
-}
-
-func (o ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterVirtualClusterConfigKubernetesClusterConfig] {
-	return pulumix.Output[*ClusterVirtualClusterConfigKubernetesClusterConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput) Elem() ClusterVirtualClusterConfigKubernetesClusterConfigOutput {
@@ -8493,12 +7604,6 @@ func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs) 
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput)
 }
 
-func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig] {
-	return pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig]{
-		OutputState: i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput {
 	return i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutputWithContext(context.Background())
 }
@@ -8540,12 +7645,6 @@ func (i *clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrTy
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput)
 }
 
-func (i *clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig] {
-	return pulumix.Output[*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig]{
-		OutputState: i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput) ElementType() reflect.Type {
@@ -8568,12 +7667,6 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig) *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig {
 		return &v
 	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput)
-}
-
-func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig] {
-	return pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster
@@ -8605,12 +7698,6 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOut
 
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput {
 	return o
-}
-
-func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig] {
-	return pulumix.Output[*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput) Elem() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput {
@@ -8695,12 +7782,6 @@ func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput)
 }
 
-func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget] {
-	return pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget]{
-		OutputState: i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayInput is an input type that accepts ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArray and ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput values.
 // You can construct a concrete instance of `ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayInput` via:
 //
@@ -8726,12 +7807,6 @@ func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput)
 }
 
-func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArray) ToOutput(ctx context.Context) pulumix.Output[[]ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget] {
-	return pulumix.Output[[]ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget]{
-		OutputState: i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput struct{ *pulumi.OutputState }
 
 func (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput) ElementType() reflect.Type {
@@ -8744,12 +7819,6 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput {
 	return o
-}
-
-func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget] {
-	return pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The target GKE node pool.
@@ -8789,12 +7858,6 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput {
 	return o
-}
-
-func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget] {
-	return pulumix.Output[[]ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput) Index(i pulumi.IntInput) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput {
@@ -8850,12 +7913,6 @@ func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput)
 }
 
-func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig] {
-	return pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig]{
-		OutputState: i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput {
 	return i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutputWithContext(context.Background())
 }
@@ -8897,12 +7954,6 @@ func (i *clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodeP
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput)
 }
 
-func (i *clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig] {
-	return pulumix.Output[*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig]{
-		OutputState: i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput) ElementType() reflect.Type {
@@ -8925,12 +7976,6 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig) *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig {
 		return &v
 	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput)
-}
-
-func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig] {
-	return pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The autoscaler configuration for this node pool.
@@ -8969,12 +8014,6 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput {
 	return o
-}
-
-func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig] {
-	return pulumix.Output[*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput) Elem() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput {
@@ -9057,12 +8096,6 @@ func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput)
 }
 
-func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling] {
-	return pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling]{
-		OutputState: i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput {
 	return i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutputWithContext(context.Background())
 }
@@ -9104,12 +8137,6 @@ func (i *clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodeP
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput)
 }
 
-func (i *clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling] {
-	return pulumix.Output[*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling]{
-		OutputState: i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput struct{ *pulumi.OutputState }
 
 func (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput) ElementType() reflect.Type {
@@ -9132,12 +8159,6 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling) *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling {
 		return &v
 	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput)
-}
-
-func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling] {
-	return pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The maximum number of nodes in the node pool. Must be >= minNodeCount, and must be > 0.
@@ -9166,12 +8187,6 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput {
 	return o
-}
-
-func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling] {
-	return pulumix.Output[*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput) Elem() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput {
@@ -9263,12 +8278,6 @@ func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput)
 }
 
-func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig] {
-	return pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig]{
-		OutputState: i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput {
 	return i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutputWithContext(context.Background())
 }
@@ -9310,12 +8319,6 @@ func (i *clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodeP
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput)
 }
 
-func (i *clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig] {
-	return pulumix.Output[*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig]{
-		OutputState: i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput) ElementType() reflect.Type {
@@ -9338,12 +8341,6 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig {
 		return &v
 	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput)
-}
-
-func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig] {
-	return pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of local SSD disks to attach to the node,
@@ -9398,12 +8395,6 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput {
 	return o
-}
-
-func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig] {
-	return pulumix.Output[*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput) Elem() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput {
@@ -9514,12 +8505,6 @@ func (i ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConf
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput)
 }
 
-func (i ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig] {
-	return pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig]{
-		OutputState: i.ToClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput {
 	return i.ToClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutputWithContext(context.Background())
 }
@@ -9561,12 +8546,6 @@ func (i *clusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareCon
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput)
 }
 
-func (i *clusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig] {
-	return pulumix.Output[*ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig]{
-		OutputState: i.ToClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput) ElementType() reflect.Type {
@@ -9589,12 +8568,6 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConf
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig) *ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig {
 		return &v
 	}).(ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput)
-}
-
-func (o ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig] {
-	return pulumix.Output[ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The components that should be installed in this Dataproc cluster. The key must be a string from the\
@@ -9626,12 +8599,6 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConf
 
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput {
 	return o
-}
-
-func (o ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig] {
-	return pulumix.Output[*ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput) Elem() ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput {
@@ -9730,12 +8697,6 @@ func (i JobHadoopConfigArgs) ToJobHadoopConfigOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(JobHadoopConfigOutput)
 }
 
-func (i JobHadoopConfigArgs) ToOutput(ctx context.Context) pulumix.Output[JobHadoopConfig] {
-	return pulumix.Output[JobHadoopConfig]{
-		OutputState: i.ToJobHadoopConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobHadoopConfigArgs) ToJobHadoopConfigPtrOutput() JobHadoopConfigPtrOutput {
 	return i.ToJobHadoopConfigPtrOutputWithContext(context.Background())
 }
@@ -9777,12 +8738,6 @@ func (i *jobHadoopConfigPtrType) ToJobHadoopConfigPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(JobHadoopConfigPtrOutput)
 }
 
-func (i *jobHadoopConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobHadoopConfig] {
-	return pulumix.Output[*JobHadoopConfig]{
-		OutputState: i.ToJobHadoopConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobHadoopConfigOutput struct{ *pulumi.OutputState }
 
 func (JobHadoopConfigOutput) ElementType() reflect.Type {
@@ -9805,12 +8760,6 @@ func (o JobHadoopConfigOutput) ToJobHadoopConfigPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobHadoopConfig) *JobHadoopConfig {
 		return &v
 	}).(JobHadoopConfigPtrOutput)
-}
-
-func (o JobHadoopConfigOutput) ToOutput(ctx context.Context) pulumix.Output[JobHadoopConfig] {
-	return pulumix.Output[JobHadoopConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -9866,12 +8815,6 @@ func (o JobHadoopConfigPtrOutput) ToJobHadoopConfigPtrOutput() JobHadoopConfigPt
 
 func (o JobHadoopConfigPtrOutput) ToJobHadoopConfigPtrOutputWithContext(ctx context.Context) JobHadoopConfigPtrOutput {
 	return o
-}
-
-func (o JobHadoopConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobHadoopConfig] {
-	return pulumix.Output[*JobHadoopConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobHadoopConfigPtrOutput) Elem() JobHadoopConfigOutput {
@@ -9996,12 +8939,6 @@ func (i JobHadoopConfigLoggingConfigArgs) ToJobHadoopConfigLoggingConfigOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(JobHadoopConfigLoggingConfigOutput)
 }
 
-func (i JobHadoopConfigLoggingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[JobHadoopConfigLoggingConfig] {
-	return pulumix.Output[JobHadoopConfigLoggingConfig]{
-		OutputState: i.ToJobHadoopConfigLoggingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobHadoopConfigLoggingConfigArgs) ToJobHadoopConfigLoggingConfigPtrOutput() JobHadoopConfigLoggingConfigPtrOutput {
 	return i.ToJobHadoopConfigLoggingConfigPtrOutputWithContext(context.Background())
 }
@@ -10043,12 +8980,6 @@ func (i *jobHadoopConfigLoggingConfigPtrType) ToJobHadoopConfigLoggingConfigPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(JobHadoopConfigLoggingConfigPtrOutput)
 }
 
-func (i *jobHadoopConfigLoggingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobHadoopConfigLoggingConfig] {
-	return pulumix.Output[*JobHadoopConfigLoggingConfig]{
-		OutputState: i.ToJobHadoopConfigLoggingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobHadoopConfigLoggingConfigOutput struct{ *pulumi.OutputState }
 
 func (JobHadoopConfigLoggingConfigOutput) ElementType() reflect.Type {
@@ -10073,12 +9004,6 @@ func (o JobHadoopConfigLoggingConfigOutput) ToJobHadoopConfigLoggingConfigPtrOut
 	}).(JobHadoopConfigLoggingConfigPtrOutput)
 }
 
-func (o JobHadoopConfigLoggingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[JobHadoopConfigLoggingConfig] {
-	return pulumix.Output[JobHadoopConfigLoggingConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobHadoopConfigLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobHadoopConfigLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
@@ -10095,12 +9020,6 @@ func (o JobHadoopConfigLoggingConfigPtrOutput) ToJobHadoopConfigLoggingConfigPtr
 
 func (o JobHadoopConfigLoggingConfigPtrOutput) ToJobHadoopConfigLoggingConfigPtrOutputWithContext(ctx context.Context) JobHadoopConfigLoggingConfigPtrOutput {
 	return o
-}
-
-func (o JobHadoopConfigLoggingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobHadoopConfigLoggingConfig] {
-	return pulumix.Output[*JobHadoopConfigLoggingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobHadoopConfigLoggingConfigPtrOutput) Elem() JobHadoopConfigLoggingConfigOutput {
@@ -10179,12 +9098,6 @@ func (i JobHiveConfigArgs) ToJobHiveConfigOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(JobHiveConfigOutput)
 }
 
-func (i JobHiveConfigArgs) ToOutput(ctx context.Context) pulumix.Output[JobHiveConfig] {
-	return pulumix.Output[JobHiveConfig]{
-		OutputState: i.ToJobHiveConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobHiveConfigArgs) ToJobHiveConfigPtrOutput() JobHiveConfigPtrOutput {
 	return i.ToJobHiveConfigPtrOutputWithContext(context.Background())
 }
@@ -10226,12 +9139,6 @@ func (i *jobHiveConfigPtrType) ToJobHiveConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(JobHiveConfigPtrOutput)
 }
 
-func (i *jobHiveConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobHiveConfig] {
-	return pulumix.Output[*JobHiveConfig]{
-		OutputState: i.ToJobHiveConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobHiveConfigOutput struct{ *pulumi.OutputState }
 
 func (JobHiveConfigOutput) ElementType() reflect.Type {
@@ -10254,12 +9161,6 @@ func (o JobHiveConfigOutput) ToJobHiveConfigPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobHiveConfig) *JobHiveConfig {
 		return &v
 	}).(JobHiveConfigPtrOutput)
-}
-
-func (o JobHiveConfigOutput) ToOutput(ctx context.Context) pulumix.Output[JobHiveConfig] {
-	return pulumix.Output[JobHiveConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
@@ -10306,12 +9207,6 @@ func (o JobHiveConfigPtrOutput) ToJobHiveConfigPtrOutput() JobHiveConfigPtrOutpu
 
 func (o JobHiveConfigPtrOutput) ToJobHiveConfigPtrOutputWithContext(ctx context.Context) JobHiveConfigPtrOutput {
 	return o
-}
-
-func (o JobHiveConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobHiveConfig] {
-	return pulumix.Output[*JobHiveConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobHiveConfigPtrOutput) Elem() JobHiveConfigOutput {
@@ -10421,12 +9316,6 @@ func (i JobIAMBindingConditionArgs) ToJobIAMBindingConditionOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(JobIAMBindingConditionOutput)
 }
 
-func (i JobIAMBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[JobIAMBindingCondition] {
-	return pulumix.Output[JobIAMBindingCondition]{
-		OutputState: i.ToJobIAMBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobIAMBindingConditionArgs) ToJobIAMBindingConditionPtrOutput() JobIAMBindingConditionPtrOutput {
 	return i.ToJobIAMBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -10468,12 +9357,6 @@ func (i *jobIAMBindingConditionPtrType) ToJobIAMBindingConditionPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(JobIAMBindingConditionPtrOutput)
 }
 
-func (i *jobIAMBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobIAMBindingCondition] {
-	return pulumix.Output[*JobIAMBindingCondition]{
-		OutputState: i.ToJobIAMBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobIAMBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (JobIAMBindingConditionOutput) ElementType() reflect.Type {
@@ -10496,12 +9379,6 @@ func (o JobIAMBindingConditionOutput) ToJobIAMBindingConditionPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobIAMBindingCondition) *JobIAMBindingCondition {
 		return &v
 	}).(JobIAMBindingConditionPtrOutput)
-}
-
-func (o JobIAMBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[JobIAMBindingCondition] {
-	return pulumix.Output[JobIAMBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -10528,12 +9405,6 @@ func (o JobIAMBindingConditionPtrOutput) ToJobIAMBindingConditionPtrOutput() Job
 
 func (o JobIAMBindingConditionPtrOutput) ToJobIAMBindingConditionPtrOutputWithContext(ctx context.Context) JobIAMBindingConditionPtrOutput {
 	return o
-}
-
-func (o JobIAMBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobIAMBindingCondition] {
-	return pulumix.Output[*JobIAMBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobIAMBindingConditionPtrOutput) Elem() JobIAMBindingConditionOutput {
@@ -10608,12 +9479,6 @@ func (i JobIAMMemberConditionArgs) ToJobIAMMemberConditionOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(JobIAMMemberConditionOutput)
 }
 
-func (i JobIAMMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[JobIAMMemberCondition] {
-	return pulumix.Output[JobIAMMemberCondition]{
-		OutputState: i.ToJobIAMMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobIAMMemberConditionArgs) ToJobIAMMemberConditionPtrOutput() JobIAMMemberConditionPtrOutput {
 	return i.ToJobIAMMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -10655,12 +9520,6 @@ func (i *jobIAMMemberConditionPtrType) ToJobIAMMemberConditionPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(JobIAMMemberConditionPtrOutput)
 }
 
-func (i *jobIAMMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobIAMMemberCondition] {
-	return pulumix.Output[*JobIAMMemberCondition]{
-		OutputState: i.ToJobIAMMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobIAMMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (JobIAMMemberConditionOutput) ElementType() reflect.Type {
@@ -10683,12 +9542,6 @@ func (o JobIAMMemberConditionOutput) ToJobIAMMemberConditionPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobIAMMemberCondition) *JobIAMMemberCondition {
 		return &v
 	}).(JobIAMMemberConditionPtrOutput)
-}
-
-func (o JobIAMMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[JobIAMMemberCondition] {
-	return pulumix.Output[JobIAMMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -10715,12 +9568,6 @@ func (o JobIAMMemberConditionPtrOutput) ToJobIAMMemberConditionPtrOutput() JobIA
 
 func (o JobIAMMemberConditionPtrOutput) ToJobIAMMemberConditionPtrOutputWithContext(ctx context.Context) JobIAMMemberConditionPtrOutput {
 	return o
-}
-
-func (o JobIAMMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobIAMMemberCondition] {
-	return pulumix.Output[*JobIAMMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobIAMMemberConditionPtrOutput) Elem() JobIAMMemberConditionOutput {
@@ -10823,12 +9670,6 @@ func (i JobPigConfigArgs) ToJobPigConfigOutputWithContext(ctx context.Context) J
 	return pulumi.ToOutputWithContext(ctx, i).(JobPigConfigOutput)
 }
 
-func (i JobPigConfigArgs) ToOutput(ctx context.Context) pulumix.Output[JobPigConfig] {
-	return pulumix.Output[JobPigConfig]{
-		OutputState: i.ToJobPigConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobPigConfigArgs) ToJobPigConfigPtrOutput() JobPigConfigPtrOutput {
 	return i.ToJobPigConfigPtrOutputWithContext(context.Background())
 }
@@ -10870,12 +9711,6 @@ func (i *jobPigConfigPtrType) ToJobPigConfigPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(JobPigConfigPtrOutput)
 }
 
-func (i *jobPigConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobPigConfig] {
-	return pulumix.Output[*JobPigConfig]{
-		OutputState: i.ToJobPigConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobPigConfigOutput struct{ *pulumi.OutputState }
 
 func (JobPigConfigOutput) ElementType() reflect.Type {
@@ -10898,12 +9733,6 @@ func (o JobPigConfigOutput) ToJobPigConfigPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobPigConfig) *JobPigConfig {
 		return &v
 	}).(JobPigConfigPtrOutput)
-}
-
-func (o JobPigConfigOutput) ToOutput(ctx context.Context) pulumix.Output[JobPigConfig] {
-	return pulumix.Output[JobPigConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
@@ -10956,12 +9785,6 @@ func (o JobPigConfigPtrOutput) ToJobPigConfigPtrOutput() JobPigConfigPtrOutput {
 
 func (o JobPigConfigPtrOutput) ToJobPigConfigPtrOutputWithContext(ctx context.Context) JobPigConfigPtrOutput {
 	return o
-}
-
-func (o JobPigConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobPigConfig] {
-	return pulumix.Output[*JobPigConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobPigConfigPtrOutput) Elem() JobPigConfigOutput {
@@ -11078,12 +9901,6 @@ func (i JobPigConfigLoggingConfigArgs) ToJobPigConfigLoggingConfigOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(JobPigConfigLoggingConfigOutput)
 }
 
-func (i JobPigConfigLoggingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[JobPigConfigLoggingConfig] {
-	return pulumix.Output[JobPigConfigLoggingConfig]{
-		OutputState: i.ToJobPigConfigLoggingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobPigConfigLoggingConfigArgs) ToJobPigConfigLoggingConfigPtrOutput() JobPigConfigLoggingConfigPtrOutput {
 	return i.ToJobPigConfigLoggingConfigPtrOutputWithContext(context.Background())
 }
@@ -11125,12 +9942,6 @@ func (i *jobPigConfigLoggingConfigPtrType) ToJobPigConfigLoggingConfigPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(JobPigConfigLoggingConfigPtrOutput)
 }
 
-func (i *jobPigConfigLoggingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobPigConfigLoggingConfig] {
-	return pulumix.Output[*JobPigConfigLoggingConfig]{
-		OutputState: i.ToJobPigConfigLoggingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobPigConfigLoggingConfigOutput struct{ *pulumi.OutputState }
 
 func (JobPigConfigLoggingConfigOutput) ElementType() reflect.Type {
@@ -11155,12 +9966,6 @@ func (o JobPigConfigLoggingConfigOutput) ToJobPigConfigLoggingConfigPtrOutputWit
 	}).(JobPigConfigLoggingConfigPtrOutput)
 }
 
-func (o JobPigConfigLoggingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[JobPigConfigLoggingConfig] {
-	return pulumix.Output[JobPigConfigLoggingConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobPigConfigLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobPigConfigLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
@@ -11177,12 +9982,6 @@ func (o JobPigConfigLoggingConfigPtrOutput) ToJobPigConfigLoggingConfigPtrOutput
 
 func (o JobPigConfigLoggingConfigPtrOutput) ToJobPigConfigLoggingConfigPtrOutputWithContext(ctx context.Context) JobPigConfigLoggingConfigPtrOutput {
 	return o
-}
-
-func (o JobPigConfigLoggingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobPigConfigLoggingConfig] {
-	return pulumix.Output[*JobPigConfigLoggingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobPigConfigLoggingConfigPtrOutput) Elem() JobPigConfigLoggingConfigOutput {
@@ -11237,12 +10036,6 @@ func (i JobPlacementArgs) ToJobPlacementOutputWithContext(ctx context.Context) J
 	return pulumi.ToOutputWithContext(ctx, i).(JobPlacementOutput)
 }
 
-func (i JobPlacementArgs) ToOutput(ctx context.Context) pulumix.Output[JobPlacement] {
-	return pulumix.Output[JobPlacement]{
-		OutputState: i.ToJobPlacementOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobPlacementArgs) ToJobPlacementPtrOutput() JobPlacementPtrOutput {
 	return i.ToJobPlacementPtrOutputWithContext(context.Background())
 }
@@ -11284,12 +10077,6 @@ func (i *jobPlacementPtrType) ToJobPlacementPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(JobPlacementPtrOutput)
 }
 
-func (i *jobPlacementPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobPlacement] {
-	return pulumix.Output[*JobPlacement]{
-		OutputState: i.ToJobPlacementPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobPlacementOutput struct{ *pulumi.OutputState }
 
 func (JobPlacementOutput) ElementType() reflect.Type {
@@ -11314,12 +10101,6 @@ func (o JobPlacementOutput) ToJobPlacementPtrOutputWithContext(ctx context.Conte
 	}).(JobPlacementPtrOutput)
 }
 
-func (o JobPlacementOutput) ToOutput(ctx context.Context) pulumix.Output[JobPlacement] {
-	return pulumix.Output[JobPlacement]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobPlacementOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v JobPlacement) string { return v.ClusterName }).(pulumi.StringOutput)
 }
@@ -11340,12 +10121,6 @@ func (o JobPlacementPtrOutput) ToJobPlacementPtrOutput() JobPlacementPtrOutput {
 
 func (o JobPlacementPtrOutput) ToJobPlacementPtrOutputWithContext(ctx context.Context) JobPlacementPtrOutput {
 	return o
-}
-
-func (o JobPlacementPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobPlacement] {
-	return pulumix.Output[*JobPlacement]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobPlacementPtrOutput) Elem() JobPlacementOutput {
@@ -11439,12 +10214,6 @@ func (i JobPrestoConfigArgs) ToJobPrestoConfigOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(JobPrestoConfigOutput)
 }
 
-func (i JobPrestoConfigArgs) ToOutput(ctx context.Context) pulumix.Output[JobPrestoConfig] {
-	return pulumix.Output[JobPrestoConfig]{
-		OutputState: i.ToJobPrestoConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobPrestoConfigArgs) ToJobPrestoConfigPtrOutput() JobPrestoConfigPtrOutput {
 	return i.ToJobPrestoConfigPtrOutputWithContext(context.Background())
 }
@@ -11486,12 +10255,6 @@ func (i *jobPrestoConfigPtrType) ToJobPrestoConfigPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(JobPrestoConfigPtrOutput)
 }
 
-func (i *jobPrestoConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobPrestoConfig] {
-	return pulumix.Output[*JobPrestoConfig]{
-		OutputState: i.ToJobPrestoConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobPrestoConfigOutput struct{ *pulumi.OutputState }
 
 func (JobPrestoConfigOutput) ElementType() reflect.Type {
@@ -11514,12 +10277,6 @@ func (o JobPrestoConfigOutput) ToJobPrestoConfigPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobPrestoConfig) *JobPrestoConfig {
 		return &v
 	}).(JobPrestoConfigPtrOutput)
-}
-
-func (o JobPrestoConfigOutput) ToOutput(ctx context.Context) pulumix.Output[JobPrestoConfig] {
-	return pulumix.Output[JobPrestoConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Presto client tags to attach to this query.
@@ -11572,12 +10329,6 @@ func (o JobPrestoConfigPtrOutput) ToJobPrestoConfigPtrOutput() JobPrestoConfigPt
 
 func (o JobPrestoConfigPtrOutput) ToJobPrestoConfigPtrOutputWithContext(ctx context.Context) JobPrestoConfigPtrOutput {
 	return o
-}
-
-func (o JobPrestoConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobPrestoConfig] {
-	return pulumix.Output[*JobPrestoConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobPrestoConfigPtrOutput) Elem() JobPrestoConfigOutput {
@@ -11694,12 +10445,6 @@ func (i JobPrestoConfigLoggingConfigArgs) ToJobPrestoConfigLoggingConfigOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(JobPrestoConfigLoggingConfigOutput)
 }
 
-func (i JobPrestoConfigLoggingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[JobPrestoConfigLoggingConfig] {
-	return pulumix.Output[JobPrestoConfigLoggingConfig]{
-		OutputState: i.ToJobPrestoConfigLoggingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobPrestoConfigLoggingConfigArgs) ToJobPrestoConfigLoggingConfigPtrOutput() JobPrestoConfigLoggingConfigPtrOutput {
 	return i.ToJobPrestoConfigLoggingConfigPtrOutputWithContext(context.Background())
 }
@@ -11741,12 +10486,6 @@ func (i *jobPrestoConfigLoggingConfigPtrType) ToJobPrestoConfigLoggingConfigPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(JobPrestoConfigLoggingConfigPtrOutput)
 }
 
-func (i *jobPrestoConfigLoggingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobPrestoConfigLoggingConfig] {
-	return pulumix.Output[*JobPrestoConfigLoggingConfig]{
-		OutputState: i.ToJobPrestoConfigLoggingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobPrestoConfigLoggingConfigOutput struct{ *pulumi.OutputState }
 
 func (JobPrestoConfigLoggingConfigOutput) ElementType() reflect.Type {
@@ -11771,12 +10510,6 @@ func (o JobPrestoConfigLoggingConfigOutput) ToJobPrestoConfigLoggingConfigPtrOut
 	}).(JobPrestoConfigLoggingConfigPtrOutput)
 }
 
-func (o JobPrestoConfigLoggingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[JobPrestoConfigLoggingConfig] {
-	return pulumix.Output[JobPrestoConfigLoggingConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobPrestoConfigLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobPrestoConfigLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
@@ -11793,12 +10526,6 @@ func (o JobPrestoConfigLoggingConfigPtrOutput) ToJobPrestoConfigLoggingConfigPtr
 
 func (o JobPrestoConfigLoggingConfigPtrOutput) ToJobPrestoConfigLoggingConfigPtrOutputWithContext(ctx context.Context) JobPrestoConfigLoggingConfigPtrOutput {
 	return o
-}
-
-func (o JobPrestoConfigLoggingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobPrestoConfigLoggingConfig] {
-	return pulumix.Output[*JobPrestoConfigLoggingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobPrestoConfigLoggingConfigPtrOutput) Elem() JobPrestoConfigLoggingConfigOutput {
@@ -11883,12 +10610,6 @@ func (i JobPysparkConfigArgs) ToJobPysparkConfigOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(JobPysparkConfigOutput)
 }
 
-func (i JobPysparkConfigArgs) ToOutput(ctx context.Context) pulumix.Output[JobPysparkConfig] {
-	return pulumix.Output[JobPysparkConfig]{
-		OutputState: i.ToJobPysparkConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobPysparkConfigArgs) ToJobPysparkConfigPtrOutput() JobPysparkConfigPtrOutput {
 	return i.ToJobPysparkConfigPtrOutputWithContext(context.Background())
 }
@@ -11930,12 +10651,6 @@ func (i *jobPysparkConfigPtrType) ToJobPysparkConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(JobPysparkConfigPtrOutput)
 }
 
-func (i *jobPysparkConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobPysparkConfig] {
-	return pulumix.Output[*JobPysparkConfig]{
-		OutputState: i.ToJobPysparkConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobPysparkConfigOutput struct{ *pulumi.OutputState }
 
 func (JobPysparkConfigOutput) ElementType() reflect.Type {
@@ -11958,12 +10673,6 @@ func (o JobPysparkConfigOutput) ToJobPysparkConfigPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobPysparkConfig) *JobPysparkConfig {
 		return &v
 	}).(JobPysparkConfigPtrOutput)
-}
-
-func (o JobPysparkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[JobPysparkConfig] {
-	return pulumix.Output[JobPysparkConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -12019,12 +10728,6 @@ func (o JobPysparkConfigPtrOutput) ToJobPysparkConfigPtrOutput() JobPysparkConfi
 
 func (o JobPysparkConfigPtrOutput) ToJobPysparkConfigPtrOutputWithContext(ctx context.Context) JobPysparkConfigPtrOutput {
 	return o
-}
-
-func (o JobPysparkConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobPysparkConfig] {
-	return pulumix.Output[*JobPysparkConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobPysparkConfigPtrOutput) Elem() JobPysparkConfigOutput {
@@ -12149,12 +10852,6 @@ func (i JobPysparkConfigLoggingConfigArgs) ToJobPysparkConfigLoggingConfigOutput
 	return pulumi.ToOutputWithContext(ctx, i).(JobPysparkConfigLoggingConfigOutput)
 }
 
-func (i JobPysparkConfigLoggingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[JobPysparkConfigLoggingConfig] {
-	return pulumix.Output[JobPysparkConfigLoggingConfig]{
-		OutputState: i.ToJobPysparkConfigLoggingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobPysparkConfigLoggingConfigArgs) ToJobPysparkConfigLoggingConfigPtrOutput() JobPysparkConfigLoggingConfigPtrOutput {
 	return i.ToJobPysparkConfigLoggingConfigPtrOutputWithContext(context.Background())
 }
@@ -12196,12 +10893,6 @@ func (i *jobPysparkConfigLoggingConfigPtrType) ToJobPysparkConfigLoggingConfigPt
 	return pulumi.ToOutputWithContext(ctx, i).(JobPysparkConfigLoggingConfigPtrOutput)
 }
 
-func (i *jobPysparkConfigLoggingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobPysparkConfigLoggingConfig] {
-	return pulumix.Output[*JobPysparkConfigLoggingConfig]{
-		OutputState: i.ToJobPysparkConfigLoggingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobPysparkConfigLoggingConfigOutput struct{ *pulumi.OutputState }
 
 func (JobPysparkConfigLoggingConfigOutput) ElementType() reflect.Type {
@@ -12226,12 +10917,6 @@ func (o JobPysparkConfigLoggingConfigOutput) ToJobPysparkConfigLoggingConfigPtrO
 	}).(JobPysparkConfigLoggingConfigPtrOutput)
 }
 
-func (o JobPysparkConfigLoggingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[JobPysparkConfigLoggingConfig] {
-	return pulumix.Output[JobPysparkConfigLoggingConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobPysparkConfigLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobPysparkConfigLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
@@ -12248,12 +10933,6 @@ func (o JobPysparkConfigLoggingConfigPtrOutput) ToJobPysparkConfigLoggingConfigP
 
 func (o JobPysparkConfigLoggingConfigPtrOutput) ToJobPysparkConfigLoggingConfigPtrOutputWithContext(ctx context.Context) JobPysparkConfigLoggingConfigPtrOutput {
 	return o
-}
-
-func (o JobPysparkConfigLoggingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobPysparkConfigLoggingConfig] {
-	return pulumix.Output[*JobPysparkConfigLoggingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobPysparkConfigLoggingConfigPtrOutput) Elem() JobPysparkConfigLoggingConfigOutput {
@@ -12306,12 +10985,6 @@ func (i JobReferenceArgs) ToJobReferenceOutputWithContext(ctx context.Context) J
 	return pulumi.ToOutputWithContext(ctx, i).(JobReferenceOutput)
 }
 
-func (i JobReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[JobReference] {
-	return pulumix.Output[JobReference]{
-		OutputState: i.ToJobReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobReferenceArgs) ToJobReferencePtrOutput() JobReferencePtrOutput {
 	return i.ToJobReferencePtrOutputWithContext(context.Background())
 }
@@ -12353,12 +11026,6 @@ func (i *jobReferencePtrType) ToJobReferencePtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(JobReferencePtrOutput)
 }
 
-func (i *jobReferencePtrType) ToOutput(ctx context.Context) pulumix.Output[*JobReference] {
-	return pulumix.Output[*JobReference]{
-		OutputState: i.ToJobReferencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobReferenceOutput struct{ *pulumi.OutputState }
 
 func (JobReferenceOutput) ElementType() reflect.Type {
@@ -12383,12 +11050,6 @@ func (o JobReferenceOutput) ToJobReferencePtrOutputWithContext(ctx context.Conte
 	}).(JobReferencePtrOutput)
 }
 
-func (o JobReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[JobReference] {
-	return pulumix.Output[JobReference]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobReferenceOutput) JobId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobReference) *string { return v.JobId }).(pulumi.StringPtrOutput)
 }
@@ -12405,12 +11066,6 @@ func (o JobReferencePtrOutput) ToJobReferencePtrOutput() JobReferencePtrOutput {
 
 func (o JobReferencePtrOutput) ToJobReferencePtrOutputWithContext(ctx context.Context) JobReferencePtrOutput {
 	return o
-}
-
-func (o JobReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobReference] {
-	return pulumix.Output[*JobReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobReferencePtrOutput) Elem() JobReferenceOutput {
@@ -12465,12 +11120,6 @@ func (i JobSchedulingArgs) ToJobSchedulingOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(JobSchedulingOutput)
 }
 
-func (i JobSchedulingArgs) ToOutput(ctx context.Context) pulumix.Output[JobScheduling] {
-	return pulumix.Output[JobScheduling]{
-		OutputState: i.ToJobSchedulingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobSchedulingArgs) ToJobSchedulingPtrOutput() JobSchedulingPtrOutput {
 	return i.ToJobSchedulingPtrOutputWithContext(context.Background())
 }
@@ -12512,12 +11161,6 @@ func (i *jobSchedulingPtrType) ToJobSchedulingPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(JobSchedulingPtrOutput)
 }
 
-func (i *jobSchedulingPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobScheduling] {
-	return pulumix.Output[*JobScheduling]{
-		OutputState: i.ToJobSchedulingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobSchedulingOutput struct{ *pulumi.OutputState }
 
 func (JobSchedulingOutput) ElementType() reflect.Type {
@@ -12542,12 +11185,6 @@ func (o JobSchedulingOutput) ToJobSchedulingPtrOutputWithContext(ctx context.Con
 	}).(JobSchedulingPtrOutput)
 }
 
-func (o JobSchedulingOutput) ToOutput(ctx context.Context) pulumix.Output[JobScheduling] {
-	return pulumix.Output[JobScheduling]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobSchedulingOutput) MaxFailuresPerHour() pulumi.IntOutput {
 	return o.ApplyT(func(v JobScheduling) int { return v.MaxFailuresPerHour }).(pulumi.IntOutput)
 }
@@ -12568,12 +11205,6 @@ func (o JobSchedulingPtrOutput) ToJobSchedulingPtrOutput() JobSchedulingPtrOutpu
 
 func (o JobSchedulingPtrOutput) ToJobSchedulingPtrOutputWithContext(ctx context.Context) JobSchedulingPtrOutput {
 	return o
-}
-
-func (o JobSchedulingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobScheduling] {
-	return pulumix.Output[*JobScheduling]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobSchedulingPtrOutput) Elem() JobSchedulingOutput {
@@ -12671,12 +11302,6 @@ func (i JobSparkConfigArgs) ToJobSparkConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(JobSparkConfigOutput)
 }
 
-func (i JobSparkConfigArgs) ToOutput(ctx context.Context) pulumix.Output[JobSparkConfig] {
-	return pulumix.Output[JobSparkConfig]{
-		OutputState: i.ToJobSparkConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobSparkConfigArgs) ToJobSparkConfigPtrOutput() JobSparkConfigPtrOutput {
 	return i.ToJobSparkConfigPtrOutputWithContext(context.Background())
 }
@@ -12718,12 +11343,6 @@ func (i *jobSparkConfigPtrType) ToJobSparkConfigPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(JobSparkConfigPtrOutput)
 }
 
-func (i *jobSparkConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobSparkConfig] {
-	return pulumix.Output[*JobSparkConfig]{
-		OutputState: i.ToJobSparkConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobSparkConfigOutput struct{ *pulumi.OutputState }
 
 func (JobSparkConfigOutput) ElementType() reflect.Type {
@@ -12746,12 +11365,6 @@ func (o JobSparkConfigOutput) ToJobSparkConfigPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobSparkConfig) *JobSparkConfig {
 		return &v
 	}).(JobSparkConfigPtrOutput)
-}
-
-func (o JobSparkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[JobSparkConfig] {
-	return pulumix.Output[JobSparkConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -12809,12 +11422,6 @@ func (o JobSparkConfigPtrOutput) ToJobSparkConfigPtrOutput() JobSparkConfigPtrOu
 
 func (o JobSparkConfigPtrOutput) ToJobSparkConfigPtrOutputWithContext(ctx context.Context) JobSparkConfigPtrOutput {
 	return o
-}
-
-func (o JobSparkConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobSparkConfig] {
-	return pulumix.Output[*JobSparkConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobSparkConfigPtrOutput) Elem() JobSparkConfigOutput {
@@ -12941,12 +11548,6 @@ func (i JobSparkConfigLoggingConfigArgs) ToJobSparkConfigLoggingConfigOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(JobSparkConfigLoggingConfigOutput)
 }
 
-func (i JobSparkConfigLoggingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[JobSparkConfigLoggingConfig] {
-	return pulumix.Output[JobSparkConfigLoggingConfig]{
-		OutputState: i.ToJobSparkConfigLoggingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobSparkConfigLoggingConfigArgs) ToJobSparkConfigLoggingConfigPtrOutput() JobSparkConfigLoggingConfigPtrOutput {
 	return i.ToJobSparkConfigLoggingConfigPtrOutputWithContext(context.Background())
 }
@@ -12988,12 +11589,6 @@ func (i *jobSparkConfigLoggingConfigPtrType) ToJobSparkConfigLoggingConfigPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(JobSparkConfigLoggingConfigPtrOutput)
 }
 
-func (i *jobSparkConfigLoggingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobSparkConfigLoggingConfig] {
-	return pulumix.Output[*JobSparkConfigLoggingConfig]{
-		OutputState: i.ToJobSparkConfigLoggingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobSparkConfigLoggingConfigOutput struct{ *pulumi.OutputState }
 
 func (JobSparkConfigLoggingConfigOutput) ElementType() reflect.Type {
@@ -13018,12 +11613,6 @@ func (o JobSparkConfigLoggingConfigOutput) ToJobSparkConfigLoggingConfigPtrOutpu
 	}).(JobSparkConfigLoggingConfigPtrOutput)
 }
 
-func (o JobSparkConfigLoggingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[JobSparkConfigLoggingConfig] {
-	return pulumix.Output[JobSparkConfigLoggingConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobSparkConfigLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobSparkConfigLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
@@ -13040,12 +11629,6 @@ func (o JobSparkConfigLoggingConfigPtrOutput) ToJobSparkConfigLoggingConfigPtrOu
 
 func (o JobSparkConfigLoggingConfigPtrOutput) ToJobSparkConfigLoggingConfigPtrOutputWithContext(ctx context.Context) JobSparkConfigLoggingConfigPtrOutput {
 	return o
-}
-
-func (o JobSparkConfigLoggingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobSparkConfigLoggingConfig] {
-	return pulumix.Output[*JobSparkConfigLoggingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobSparkConfigLoggingConfigPtrOutput) Elem() JobSparkConfigLoggingConfigOutput {
@@ -13126,12 +11709,6 @@ func (i JobSparksqlConfigArgs) ToJobSparksqlConfigOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(JobSparksqlConfigOutput)
 }
 
-func (i JobSparksqlConfigArgs) ToOutput(ctx context.Context) pulumix.Output[JobSparksqlConfig] {
-	return pulumix.Output[JobSparksqlConfig]{
-		OutputState: i.ToJobSparksqlConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobSparksqlConfigArgs) ToJobSparksqlConfigPtrOutput() JobSparksqlConfigPtrOutput {
 	return i.ToJobSparksqlConfigPtrOutputWithContext(context.Background())
 }
@@ -13173,12 +11750,6 @@ func (i *jobSparksqlConfigPtrType) ToJobSparksqlConfigPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(JobSparksqlConfigPtrOutput)
 }
 
-func (i *jobSparksqlConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobSparksqlConfig] {
-	return pulumix.Output[*JobSparksqlConfig]{
-		OutputState: i.ToJobSparksqlConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobSparksqlConfigOutput struct{ *pulumi.OutputState }
 
 func (JobSparksqlConfigOutput) ElementType() reflect.Type {
@@ -13201,12 +11772,6 @@ func (o JobSparksqlConfigOutput) ToJobSparksqlConfigPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobSparksqlConfig) *JobSparksqlConfig {
 		return &v
 	}).(JobSparksqlConfigPtrOutput)
-}
-
-func (o JobSparksqlConfigOutput) ToOutput(ctx context.Context) pulumix.Output[JobSparksqlConfig] {
-	return pulumix.Output[JobSparksqlConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // HCFS URIs of jar files to be added to the Spark CLASSPATH.
@@ -13254,12 +11819,6 @@ func (o JobSparksqlConfigPtrOutput) ToJobSparksqlConfigPtrOutput() JobSparksqlCo
 
 func (o JobSparksqlConfigPtrOutput) ToJobSparksqlConfigPtrOutputWithContext(ctx context.Context) JobSparksqlConfigPtrOutput {
 	return o
-}
-
-func (o JobSparksqlConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobSparksqlConfig] {
-	return pulumix.Output[*JobSparksqlConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobSparksqlConfigPtrOutput) Elem() JobSparksqlConfigOutput {
@@ -13366,12 +11925,6 @@ func (i JobSparksqlConfigLoggingConfigArgs) ToJobSparksqlConfigLoggingConfigOutp
 	return pulumi.ToOutputWithContext(ctx, i).(JobSparksqlConfigLoggingConfigOutput)
 }
 
-func (i JobSparksqlConfigLoggingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[JobSparksqlConfigLoggingConfig] {
-	return pulumix.Output[JobSparksqlConfigLoggingConfig]{
-		OutputState: i.ToJobSparksqlConfigLoggingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobSparksqlConfigLoggingConfigArgs) ToJobSparksqlConfigLoggingConfigPtrOutput() JobSparksqlConfigLoggingConfigPtrOutput {
 	return i.ToJobSparksqlConfigLoggingConfigPtrOutputWithContext(context.Background())
 }
@@ -13413,12 +11966,6 @@ func (i *jobSparksqlConfigLoggingConfigPtrType) ToJobSparksqlConfigLoggingConfig
 	return pulumi.ToOutputWithContext(ctx, i).(JobSparksqlConfigLoggingConfigPtrOutput)
 }
 
-func (i *jobSparksqlConfigLoggingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobSparksqlConfigLoggingConfig] {
-	return pulumix.Output[*JobSparksqlConfigLoggingConfig]{
-		OutputState: i.ToJobSparksqlConfigLoggingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobSparksqlConfigLoggingConfigOutput struct{ *pulumi.OutputState }
 
 func (JobSparksqlConfigLoggingConfigOutput) ElementType() reflect.Type {
@@ -13443,12 +11990,6 @@ func (o JobSparksqlConfigLoggingConfigOutput) ToJobSparksqlConfigLoggingConfigPt
 	}).(JobSparksqlConfigLoggingConfigPtrOutput)
 }
 
-func (o JobSparksqlConfigLoggingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[JobSparksqlConfigLoggingConfig] {
-	return pulumix.Output[JobSparksqlConfigLoggingConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobSparksqlConfigLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobSparksqlConfigLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
@@ -13465,12 +12006,6 @@ func (o JobSparksqlConfigLoggingConfigPtrOutput) ToJobSparksqlConfigLoggingConfi
 
 func (o JobSparksqlConfigLoggingConfigPtrOutput) ToJobSparksqlConfigLoggingConfigPtrOutputWithContext(ctx context.Context) JobSparksqlConfigLoggingConfigPtrOutput {
 	return o
-}
-
-func (o JobSparksqlConfigLoggingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobSparksqlConfigLoggingConfig] {
-	return pulumix.Output[*JobSparksqlConfigLoggingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobSparksqlConfigLoggingConfigPtrOutput) Elem() JobSparksqlConfigLoggingConfigOutput {
@@ -13529,12 +12064,6 @@ func (i JobStatusArgs) ToJobStatusOutputWithContext(ctx context.Context) JobStat
 	return pulumi.ToOutputWithContext(ctx, i).(JobStatusOutput)
 }
 
-func (i JobStatusArgs) ToOutput(ctx context.Context) pulumix.Output[JobStatus] {
-	return pulumix.Output[JobStatus]{
-		OutputState: i.ToJobStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // JobStatusArrayInput is an input type that accepts JobStatusArray and JobStatusArrayOutput values.
 // You can construct a concrete instance of `JobStatusArrayInput` via:
 //
@@ -13560,12 +12089,6 @@ func (i JobStatusArray) ToJobStatusArrayOutputWithContext(ctx context.Context) J
 	return pulumi.ToOutputWithContext(ctx, i).(JobStatusArrayOutput)
 }
 
-func (i JobStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]JobStatus] {
-	return pulumix.Output[[]JobStatus]{
-		OutputState: i.ToJobStatusArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobStatusOutput struct{ *pulumi.OutputState }
 
 func (JobStatusOutput) ElementType() reflect.Type {
@@ -13578,12 +12101,6 @@ func (o JobStatusOutput) ToJobStatusOutput() JobStatusOutput {
 
 func (o JobStatusOutput) ToJobStatusOutputWithContext(ctx context.Context) JobStatusOutput {
 	return o
-}
-
-func (o JobStatusOutput) ToOutput(ctx context.Context) pulumix.Output[JobStatus] {
-	return pulumix.Output[JobStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobStatusOutput) Details() pulumi.StringPtrOutput {
@@ -13614,12 +12131,6 @@ func (o JobStatusArrayOutput) ToJobStatusArrayOutput() JobStatusArrayOutput {
 
 func (o JobStatusArrayOutput) ToJobStatusArrayOutputWithContext(ctx context.Context) JobStatusArrayOutput {
 	return o
-}
-
-func (o JobStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobStatus] {
-	return pulumix.Output[[]JobStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobStatusArrayOutput) Index(i pulumi.IntInput) JobStatusOutput {
@@ -13675,12 +12186,6 @@ func (i MetastoreFederationBackendMetastoreArgs) ToMetastoreFederationBackendMet
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreFederationBackendMetastoreOutput)
 }
 
-func (i MetastoreFederationBackendMetastoreArgs) ToOutput(ctx context.Context) pulumix.Output[MetastoreFederationBackendMetastore] {
-	return pulumix.Output[MetastoreFederationBackendMetastore]{
-		OutputState: i.ToMetastoreFederationBackendMetastoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MetastoreFederationBackendMetastoreArrayInput is an input type that accepts MetastoreFederationBackendMetastoreArray and MetastoreFederationBackendMetastoreArrayOutput values.
 // You can construct a concrete instance of `MetastoreFederationBackendMetastoreArrayInput` via:
 //
@@ -13706,12 +12211,6 @@ func (i MetastoreFederationBackendMetastoreArray) ToMetastoreFederationBackendMe
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreFederationBackendMetastoreArrayOutput)
 }
 
-func (i MetastoreFederationBackendMetastoreArray) ToOutput(ctx context.Context) pulumix.Output[[]MetastoreFederationBackendMetastore] {
-	return pulumix.Output[[]MetastoreFederationBackendMetastore]{
-		OutputState: i.ToMetastoreFederationBackendMetastoreArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetastoreFederationBackendMetastoreOutput struct{ *pulumi.OutputState }
 
 func (MetastoreFederationBackendMetastoreOutput) ElementType() reflect.Type {
@@ -13724,12 +12223,6 @@ func (o MetastoreFederationBackendMetastoreOutput) ToMetastoreFederationBackendM
 
 func (o MetastoreFederationBackendMetastoreOutput) ToMetastoreFederationBackendMetastoreOutputWithContext(ctx context.Context) MetastoreFederationBackendMetastoreOutput {
 	return o
-}
-
-func (o MetastoreFederationBackendMetastoreOutput) ToOutput(ctx context.Context) pulumix.Output[MetastoreFederationBackendMetastore] {
-	return pulumix.Output[MetastoreFederationBackendMetastore]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of the backend metastore.
@@ -13762,12 +12255,6 @@ func (o MetastoreFederationBackendMetastoreArrayOutput) ToMetastoreFederationBac
 
 func (o MetastoreFederationBackendMetastoreArrayOutput) ToMetastoreFederationBackendMetastoreArrayOutputWithContext(ctx context.Context) MetastoreFederationBackendMetastoreArrayOutput {
 	return o
-}
-
-func (o MetastoreFederationBackendMetastoreArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MetastoreFederationBackendMetastore] {
-	return pulumix.Output[[]MetastoreFederationBackendMetastore]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreFederationBackendMetastoreArrayOutput) Index(i pulumi.IntInput) MetastoreFederationBackendMetastoreOutput {
@@ -13811,12 +12298,6 @@ func (i MetastoreFederationIamBindingConditionArgs) ToMetastoreFederationIamBind
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreFederationIamBindingConditionOutput)
 }
 
-func (i MetastoreFederationIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[MetastoreFederationIamBindingCondition] {
-	return pulumix.Output[MetastoreFederationIamBindingCondition]{
-		OutputState: i.ToMetastoreFederationIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MetastoreFederationIamBindingConditionArgs) ToMetastoreFederationIamBindingConditionPtrOutput() MetastoreFederationIamBindingConditionPtrOutput {
 	return i.ToMetastoreFederationIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -13858,12 +12339,6 @@ func (i *metastoreFederationIamBindingConditionPtrType) ToMetastoreFederationIam
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreFederationIamBindingConditionPtrOutput)
 }
 
-func (i *metastoreFederationIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetastoreFederationIamBindingCondition] {
-	return pulumix.Output[*MetastoreFederationIamBindingCondition]{
-		OutputState: i.ToMetastoreFederationIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetastoreFederationIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (MetastoreFederationIamBindingConditionOutput) ElementType() reflect.Type {
@@ -13886,12 +12361,6 @@ func (o MetastoreFederationIamBindingConditionOutput) ToMetastoreFederationIamBi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreFederationIamBindingCondition) *MetastoreFederationIamBindingCondition {
 		return &v
 	}).(MetastoreFederationIamBindingConditionPtrOutput)
-}
-
-func (o MetastoreFederationIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[MetastoreFederationIamBindingCondition] {
-	return pulumix.Output[MetastoreFederationIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreFederationIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -13918,12 +12387,6 @@ func (o MetastoreFederationIamBindingConditionPtrOutput) ToMetastoreFederationIa
 
 func (o MetastoreFederationIamBindingConditionPtrOutput) ToMetastoreFederationIamBindingConditionPtrOutputWithContext(ctx context.Context) MetastoreFederationIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o MetastoreFederationIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetastoreFederationIamBindingCondition] {
-	return pulumix.Output[*MetastoreFederationIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreFederationIamBindingConditionPtrOutput) Elem() MetastoreFederationIamBindingConditionOutput {
@@ -13998,12 +12461,6 @@ func (i MetastoreFederationIamMemberConditionArgs) ToMetastoreFederationIamMembe
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreFederationIamMemberConditionOutput)
 }
 
-func (i MetastoreFederationIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[MetastoreFederationIamMemberCondition] {
-	return pulumix.Output[MetastoreFederationIamMemberCondition]{
-		OutputState: i.ToMetastoreFederationIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MetastoreFederationIamMemberConditionArgs) ToMetastoreFederationIamMemberConditionPtrOutput() MetastoreFederationIamMemberConditionPtrOutput {
 	return i.ToMetastoreFederationIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -14045,12 +12502,6 @@ func (i *metastoreFederationIamMemberConditionPtrType) ToMetastoreFederationIamM
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreFederationIamMemberConditionPtrOutput)
 }
 
-func (i *metastoreFederationIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetastoreFederationIamMemberCondition] {
-	return pulumix.Output[*MetastoreFederationIamMemberCondition]{
-		OutputState: i.ToMetastoreFederationIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetastoreFederationIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (MetastoreFederationIamMemberConditionOutput) ElementType() reflect.Type {
@@ -14073,12 +12524,6 @@ func (o MetastoreFederationIamMemberConditionOutput) ToMetastoreFederationIamMem
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreFederationIamMemberCondition) *MetastoreFederationIamMemberCondition {
 		return &v
 	}).(MetastoreFederationIamMemberConditionPtrOutput)
-}
-
-func (o MetastoreFederationIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[MetastoreFederationIamMemberCondition] {
-	return pulumix.Output[MetastoreFederationIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreFederationIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -14105,12 +12550,6 @@ func (o MetastoreFederationIamMemberConditionPtrOutput) ToMetastoreFederationIam
 
 func (o MetastoreFederationIamMemberConditionPtrOutput) ToMetastoreFederationIamMemberConditionPtrOutputWithContext(ctx context.Context) MetastoreFederationIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o MetastoreFederationIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetastoreFederationIamMemberCondition] {
-	return pulumix.Output[*MetastoreFederationIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreFederationIamMemberConditionPtrOutput) Elem() MetastoreFederationIamMemberConditionOutput {
@@ -14185,12 +12624,6 @@ func (i MetastoreServiceEncryptionConfigArgs) ToMetastoreServiceEncryptionConfig
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceEncryptionConfigOutput)
 }
 
-func (i MetastoreServiceEncryptionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceEncryptionConfig] {
-	return pulumix.Output[MetastoreServiceEncryptionConfig]{
-		OutputState: i.ToMetastoreServiceEncryptionConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MetastoreServiceEncryptionConfigArgs) ToMetastoreServiceEncryptionConfigPtrOutput() MetastoreServiceEncryptionConfigPtrOutput {
 	return i.ToMetastoreServiceEncryptionConfigPtrOutputWithContext(context.Background())
 }
@@ -14232,12 +12665,6 @@ func (i *metastoreServiceEncryptionConfigPtrType) ToMetastoreServiceEncryptionCo
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceEncryptionConfigPtrOutput)
 }
 
-func (i *metastoreServiceEncryptionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceEncryptionConfig] {
-	return pulumix.Output[*MetastoreServiceEncryptionConfig]{
-		OutputState: i.ToMetastoreServiceEncryptionConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetastoreServiceEncryptionConfigOutput struct{ *pulumi.OutputState }
 
 func (MetastoreServiceEncryptionConfigOutput) ElementType() reflect.Type {
@@ -14262,12 +12689,6 @@ func (o MetastoreServiceEncryptionConfigOutput) ToMetastoreServiceEncryptionConf
 	}).(MetastoreServiceEncryptionConfigPtrOutput)
 }
 
-func (o MetastoreServiceEncryptionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceEncryptionConfig] {
-	return pulumix.Output[MetastoreServiceEncryptionConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The fully qualified customer provided Cloud KMS key name to use for customer data encryption.
 // Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
 func (o MetastoreServiceEncryptionConfigOutput) KmsKey() pulumi.StringOutput {
@@ -14286,12 +12707,6 @@ func (o MetastoreServiceEncryptionConfigPtrOutput) ToMetastoreServiceEncryptionC
 
 func (o MetastoreServiceEncryptionConfigPtrOutput) ToMetastoreServiceEncryptionConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceEncryptionConfigPtrOutput {
 	return o
-}
-
-func (o MetastoreServiceEncryptionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceEncryptionConfig] {
-	return pulumix.Output[*MetastoreServiceEncryptionConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreServiceEncryptionConfigPtrOutput) Elem() MetastoreServiceEncryptionConfigOutput {
@@ -14364,12 +12779,6 @@ func (i MetastoreServiceHiveMetastoreConfigArgs) ToMetastoreServiceHiveMetastore
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceHiveMetastoreConfigOutput)
 }
 
-func (i MetastoreServiceHiveMetastoreConfigArgs) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceHiveMetastoreConfig] {
-	return pulumix.Output[MetastoreServiceHiveMetastoreConfig]{
-		OutputState: i.ToMetastoreServiceHiveMetastoreConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MetastoreServiceHiveMetastoreConfigArgs) ToMetastoreServiceHiveMetastoreConfigPtrOutput() MetastoreServiceHiveMetastoreConfigPtrOutput {
 	return i.ToMetastoreServiceHiveMetastoreConfigPtrOutputWithContext(context.Background())
 }
@@ -14411,12 +12820,6 @@ func (i *metastoreServiceHiveMetastoreConfigPtrType) ToMetastoreServiceHiveMetas
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceHiveMetastoreConfigPtrOutput)
 }
 
-func (i *metastoreServiceHiveMetastoreConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceHiveMetastoreConfig] {
-	return pulumix.Output[*MetastoreServiceHiveMetastoreConfig]{
-		OutputState: i.ToMetastoreServiceHiveMetastoreConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetastoreServiceHiveMetastoreConfigOutput struct{ *pulumi.OutputState }
 
 func (MetastoreServiceHiveMetastoreConfigOutput) ElementType() reflect.Type {
@@ -14439,12 +12842,6 @@ func (o MetastoreServiceHiveMetastoreConfigOutput) ToMetastoreServiceHiveMetasto
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreServiceHiveMetastoreConfig) *MetastoreServiceHiveMetastoreConfig {
 		return &v
 	}).(MetastoreServiceHiveMetastoreConfigPtrOutput)
-}
-
-func (o MetastoreServiceHiveMetastoreConfigOutput) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceHiveMetastoreConfig] {
-	return pulumix.Output[MetastoreServiceHiveMetastoreConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreServiceHiveMetastoreConfigOutput) AuxiliaryVersions() MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput {
@@ -14488,12 +12885,6 @@ func (o MetastoreServiceHiveMetastoreConfigPtrOutput) ToMetastoreServiceHiveMeta
 
 func (o MetastoreServiceHiveMetastoreConfigPtrOutput) ToMetastoreServiceHiveMetastoreConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigPtrOutput {
 	return o
-}
-
-func (o MetastoreServiceHiveMetastoreConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceHiveMetastoreConfig] {
-	return pulumix.Output[*MetastoreServiceHiveMetastoreConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreServiceHiveMetastoreConfigPtrOutput) Elem() MetastoreServiceHiveMetastoreConfigOutput {
@@ -14599,12 +12990,6 @@ func (i MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs) ToMetastoreServ
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput)
 }
 
-func (i MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceHiveMetastoreConfigAuxiliaryVersion] {
-	return pulumix.Output[MetastoreServiceHiveMetastoreConfigAuxiliaryVersion]{
-		OutputState: i.ToMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayInput is an input type that accepts MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArray and MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput values.
 // You can construct a concrete instance of `MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayInput` via:
 //
@@ -14630,12 +13015,6 @@ func (i MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArray) ToMetastoreSer
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput)
 }
 
-func (i MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArray) ToOutput(ctx context.Context) pulumix.Output[[]MetastoreServiceHiveMetastoreConfigAuxiliaryVersion] {
-	return pulumix.Output[[]MetastoreServiceHiveMetastoreConfigAuxiliaryVersion]{
-		OutputState: i.ToMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput struct{ *pulumi.OutputState }
 
 func (MetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput) ElementType() reflect.Type {
@@ -14648,12 +13027,6 @@ func (o MetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput) ToMetastoreSe
 
 func (o MetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput) ToMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput {
 	return o
-}
-
-func (o MetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceHiveMetastoreConfigAuxiliaryVersion] {
-	return pulumix.Output[MetastoreServiceHiveMetastoreConfigAuxiliaryVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides.
@@ -14686,12 +13059,6 @@ func (o MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput) ToMetast
 
 func (o MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput) ToMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput {
 	return o
-}
-
-func (o MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MetastoreServiceHiveMetastoreConfigAuxiliaryVersion] {
-	return pulumix.Output[[]MetastoreServiceHiveMetastoreConfigAuxiliaryVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput) Index(i pulumi.IntInput) MetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput {
@@ -14743,12 +13110,6 @@ func (i MetastoreServiceHiveMetastoreConfigKerberosConfigArgs) ToMetastoreServic
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceHiveMetastoreConfigKerberosConfigOutput)
 }
 
-func (i MetastoreServiceHiveMetastoreConfigKerberosConfigArgs) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceHiveMetastoreConfigKerberosConfig] {
-	return pulumix.Output[MetastoreServiceHiveMetastoreConfigKerberosConfig]{
-		OutputState: i.ToMetastoreServiceHiveMetastoreConfigKerberosConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MetastoreServiceHiveMetastoreConfigKerberosConfigArgs) ToMetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput() MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput {
 	return i.ToMetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutputWithContext(context.Background())
 }
@@ -14790,12 +13151,6 @@ func (i *metastoreServiceHiveMetastoreConfigKerberosConfigPtrType) ToMetastoreSe
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput)
 }
 
-func (i *metastoreServiceHiveMetastoreConfigKerberosConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceHiveMetastoreConfigKerberosConfig] {
-	return pulumix.Output[*MetastoreServiceHiveMetastoreConfigKerberosConfig]{
-		OutputState: i.ToMetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetastoreServiceHiveMetastoreConfigKerberosConfigOutput struct{ *pulumi.OutputState }
 
 func (MetastoreServiceHiveMetastoreConfigKerberosConfigOutput) ElementType() reflect.Type {
@@ -14818,12 +13173,6 @@ func (o MetastoreServiceHiveMetastoreConfigKerberosConfigOutput) ToMetastoreServ
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreServiceHiveMetastoreConfigKerberosConfig) *MetastoreServiceHiveMetastoreConfigKerberosConfig {
 		return &v
 	}).(MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput)
-}
-
-func (o MetastoreServiceHiveMetastoreConfigKerberosConfigOutput) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceHiveMetastoreConfigKerberosConfig] {
-	return pulumix.Output[MetastoreServiceHiveMetastoreConfigKerberosConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
@@ -14856,12 +13205,6 @@ func (o MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput) ToMetastoreS
 
 func (o MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput) ToMetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput {
 	return o
-}
-
-func (o MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceHiveMetastoreConfigKerberosConfig] {
-	return pulumix.Output[*MetastoreServiceHiveMetastoreConfigKerberosConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput) Elem() MetastoreServiceHiveMetastoreConfigKerberosConfigOutput {
@@ -14940,12 +13283,6 @@ func (i MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs) ToMetastore
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput)
 }
 
-func (i MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab] {
-	return pulumix.Output[MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab]{
-		OutputState: i.ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs) ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput() MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput {
 	return i.ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutputWithContext(context.Background())
 }
@@ -14987,12 +13324,6 @@ func (i *metastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrType) ToMetas
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput)
 }
 
-func (i *metastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab] {
-	return pulumix.Output[*MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab]{
-		OutputState: i.ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput struct{ *pulumi.OutputState }
 
 func (MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput) ElementType() reflect.Type {
@@ -15017,12 +13348,6 @@ func (o MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput) ToMetasto
 	}).(MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput)
 }
 
-func (o MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab] {
-	return pulumix.Output[MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The relative resource name of a Secret Manager secret version, in the following form:
 // "projects/{projectNumber}/secrets/{secret_id}/versions/{version_id}".
 func (o MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput) CloudSecret() pulumi.StringOutput {
@@ -15041,12 +13366,6 @@ func (o MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput) ToMeta
 
 func (o MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput) ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput {
 	return o
-}
-
-func (o MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab] {
-	return pulumix.Output[*MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput) Elem() MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput {
@@ -15105,12 +13424,6 @@ func (i MetastoreServiceIamBindingConditionArgs) ToMetastoreServiceIamBindingCon
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceIamBindingConditionOutput)
 }
 
-func (i MetastoreServiceIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceIamBindingCondition] {
-	return pulumix.Output[MetastoreServiceIamBindingCondition]{
-		OutputState: i.ToMetastoreServiceIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MetastoreServiceIamBindingConditionArgs) ToMetastoreServiceIamBindingConditionPtrOutput() MetastoreServiceIamBindingConditionPtrOutput {
 	return i.ToMetastoreServiceIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -15152,12 +13465,6 @@ func (i *metastoreServiceIamBindingConditionPtrType) ToMetastoreServiceIamBindin
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceIamBindingConditionPtrOutput)
 }
 
-func (i *metastoreServiceIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceIamBindingCondition] {
-	return pulumix.Output[*MetastoreServiceIamBindingCondition]{
-		OutputState: i.ToMetastoreServiceIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetastoreServiceIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (MetastoreServiceIamBindingConditionOutput) ElementType() reflect.Type {
@@ -15180,12 +13487,6 @@ func (o MetastoreServiceIamBindingConditionOutput) ToMetastoreServiceIamBindingC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreServiceIamBindingCondition) *MetastoreServiceIamBindingCondition {
 		return &v
 	}).(MetastoreServiceIamBindingConditionPtrOutput)
-}
-
-func (o MetastoreServiceIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceIamBindingCondition] {
-	return pulumix.Output[MetastoreServiceIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreServiceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -15212,12 +13513,6 @@ func (o MetastoreServiceIamBindingConditionPtrOutput) ToMetastoreServiceIamBindi
 
 func (o MetastoreServiceIamBindingConditionPtrOutput) ToMetastoreServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) MetastoreServiceIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o MetastoreServiceIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceIamBindingCondition] {
-	return pulumix.Output[*MetastoreServiceIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreServiceIamBindingConditionPtrOutput) Elem() MetastoreServiceIamBindingConditionOutput {
@@ -15292,12 +13587,6 @@ func (i MetastoreServiceIamMemberConditionArgs) ToMetastoreServiceIamMemberCondi
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceIamMemberConditionOutput)
 }
 
-func (i MetastoreServiceIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceIamMemberCondition] {
-	return pulumix.Output[MetastoreServiceIamMemberCondition]{
-		OutputState: i.ToMetastoreServiceIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MetastoreServiceIamMemberConditionArgs) ToMetastoreServiceIamMemberConditionPtrOutput() MetastoreServiceIamMemberConditionPtrOutput {
 	return i.ToMetastoreServiceIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -15339,12 +13628,6 @@ func (i *metastoreServiceIamMemberConditionPtrType) ToMetastoreServiceIamMemberC
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceIamMemberConditionPtrOutput)
 }
 
-func (i *metastoreServiceIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceIamMemberCondition] {
-	return pulumix.Output[*MetastoreServiceIamMemberCondition]{
-		OutputState: i.ToMetastoreServiceIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetastoreServiceIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (MetastoreServiceIamMemberConditionOutput) ElementType() reflect.Type {
@@ -15367,12 +13650,6 @@ func (o MetastoreServiceIamMemberConditionOutput) ToMetastoreServiceIamMemberCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreServiceIamMemberCondition) *MetastoreServiceIamMemberCondition {
 		return &v
 	}).(MetastoreServiceIamMemberConditionPtrOutput)
-}
-
-func (o MetastoreServiceIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceIamMemberCondition] {
-	return pulumix.Output[MetastoreServiceIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreServiceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -15399,12 +13676,6 @@ func (o MetastoreServiceIamMemberConditionPtrOutput) ToMetastoreServiceIamMember
 
 func (o MetastoreServiceIamMemberConditionPtrOutput) ToMetastoreServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) MetastoreServiceIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o MetastoreServiceIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceIamMemberCondition] {
-	return pulumix.Output[*MetastoreServiceIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreServiceIamMemberConditionPtrOutput) Elem() MetastoreServiceIamMemberConditionOutput {
@@ -15483,12 +13754,6 @@ func (i MetastoreServiceMaintenanceWindowArgs) ToMetastoreServiceMaintenanceWind
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceMaintenanceWindowOutput)
 }
 
-func (i MetastoreServiceMaintenanceWindowArgs) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceMaintenanceWindow] {
-	return pulumix.Output[MetastoreServiceMaintenanceWindow]{
-		OutputState: i.ToMetastoreServiceMaintenanceWindowOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MetastoreServiceMaintenanceWindowArgs) ToMetastoreServiceMaintenanceWindowPtrOutput() MetastoreServiceMaintenanceWindowPtrOutput {
 	return i.ToMetastoreServiceMaintenanceWindowPtrOutputWithContext(context.Background())
 }
@@ -15530,12 +13795,6 @@ func (i *metastoreServiceMaintenanceWindowPtrType) ToMetastoreServiceMaintenance
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceMaintenanceWindowPtrOutput)
 }
 
-func (i *metastoreServiceMaintenanceWindowPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceMaintenanceWindow] {
-	return pulumix.Output[*MetastoreServiceMaintenanceWindow]{
-		OutputState: i.ToMetastoreServiceMaintenanceWindowPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetastoreServiceMaintenanceWindowOutput struct{ *pulumi.OutputState }
 
 func (MetastoreServiceMaintenanceWindowOutput) ElementType() reflect.Type {
@@ -15558,12 +13817,6 @@ func (o MetastoreServiceMaintenanceWindowOutput) ToMetastoreServiceMaintenanceWi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreServiceMaintenanceWindow) *MetastoreServiceMaintenanceWindow {
 		return &v
 	}).(MetastoreServiceMaintenanceWindowPtrOutput)
-}
-
-func (o MetastoreServiceMaintenanceWindowOutput) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceMaintenanceWindow] {
-	return pulumix.Output[MetastoreServiceMaintenanceWindow]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The day of week, when the window starts.
@@ -15589,12 +13842,6 @@ func (o MetastoreServiceMaintenanceWindowPtrOutput) ToMetastoreServiceMaintenanc
 
 func (o MetastoreServiceMaintenanceWindowPtrOutput) ToMetastoreServiceMaintenanceWindowPtrOutputWithContext(ctx context.Context) MetastoreServiceMaintenanceWindowPtrOutput {
 	return o
-}
-
-func (o MetastoreServiceMaintenanceWindowPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceMaintenanceWindow] {
-	return pulumix.Output[*MetastoreServiceMaintenanceWindow]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreServiceMaintenanceWindowPtrOutput) Elem() MetastoreServiceMaintenanceWindowOutput {
@@ -15663,12 +13910,6 @@ func (i MetastoreServiceMetadataIntegrationArgs) ToMetastoreServiceMetadataInteg
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceMetadataIntegrationOutput)
 }
 
-func (i MetastoreServiceMetadataIntegrationArgs) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceMetadataIntegration] {
-	return pulumix.Output[MetastoreServiceMetadataIntegration]{
-		OutputState: i.ToMetastoreServiceMetadataIntegrationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MetastoreServiceMetadataIntegrationArgs) ToMetastoreServiceMetadataIntegrationPtrOutput() MetastoreServiceMetadataIntegrationPtrOutput {
 	return i.ToMetastoreServiceMetadataIntegrationPtrOutputWithContext(context.Background())
 }
@@ -15710,12 +13951,6 @@ func (i *metastoreServiceMetadataIntegrationPtrType) ToMetastoreServiceMetadataI
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceMetadataIntegrationPtrOutput)
 }
 
-func (i *metastoreServiceMetadataIntegrationPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceMetadataIntegration] {
-	return pulumix.Output[*MetastoreServiceMetadataIntegration]{
-		OutputState: i.ToMetastoreServiceMetadataIntegrationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetastoreServiceMetadataIntegrationOutput struct{ *pulumi.OutputState }
 
 func (MetastoreServiceMetadataIntegrationOutput) ElementType() reflect.Type {
@@ -15740,12 +13975,6 @@ func (o MetastoreServiceMetadataIntegrationOutput) ToMetastoreServiceMetadataInt
 	}).(MetastoreServiceMetadataIntegrationPtrOutput)
 }
 
-func (o MetastoreServiceMetadataIntegrationOutput) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceMetadataIntegration] {
-	return pulumix.Output[MetastoreServiceMetadataIntegration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The integration config for the Data Catalog service.
 // Structure is documented below.
 func (o MetastoreServiceMetadataIntegrationOutput) DataCatalogConfig() MetastoreServiceMetadataIntegrationDataCatalogConfigOutput {
@@ -15766,12 +13995,6 @@ func (o MetastoreServiceMetadataIntegrationPtrOutput) ToMetastoreServiceMetadata
 
 func (o MetastoreServiceMetadataIntegrationPtrOutput) ToMetastoreServiceMetadataIntegrationPtrOutputWithContext(ctx context.Context) MetastoreServiceMetadataIntegrationPtrOutput {
 	return o
-}
-
-func (o MetastoreServiceMetadataIntegrationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceMetadataIntegration] {
-	return pulumix.Output[*MetastoreServiceMetadataIntegration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreServiceMetadataIntegrationPtrOutput) Elem() MetastoreServiceMetadataIntegrationOutput {
@@ -15828,12 +14051,6 @@ func (i MetastoreServiceMetadataIntegrationDataCatalogConfigArgs) ToMetastoreSer
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceMetadataIntegrationDataCatalogConfigOutput)
 }
 
-func (i MetastoreServiceMetadataIntegrationDataCatalogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceMetadataIntegrationDataCatalogConfig] {
-	return pulumix.Output[MetastoreServiceMetadataIntegrationDataCatalogConfig]{
-		OutputState: i.ToMetastoreServiceMetadataIntegrationDataCatalogConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MetastoreServiceMetadataIntegrationDataCatalogConfigArgs) ToMetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput() MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput {
 	return i.ToMetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutputWithContext(context.Background())
 }
@@ -15875,12 +14092,6 @@ func (i *metastoreServiceMetadataIntegrationDataCatalogConfigPtrType) ToMetastor
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput)
 }
 
-func (i *metastoreServiceMetadataIntegrationDataCatalogConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceMetadataIntegrationDataCatalogConfig] {
-	return pulumix.Output[*MetastoreServiceMetadataIntegrationDataCatalogConfig]{
-		OutputState: i.ToMetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetastoreServiceMetadataIntegrationDataCatalogConfigOutput struct{ *pulumi.OutputState }
 
 func (MetastoreServiceMetadataIntegrationDataCatalogConfigOutput) ElementType() reflect.Type {
@@ -15905,12 +14116,6 @@ func (o MetastoreServiceMetadataIntegrationDataCatalogConfigOutput) ToMetastoreS
 	}).(MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput)
 }
 
-func (o MetastoreServiceMetadataIntegrationDataCatalogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceMetadataIntegrationDataCatalogConfig] {
-	return pulumix.Output[MetastoreServiceMetadataIntegrationDataCatalogConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
 func (o MetastoreServiceMetadataIntegrationDataCatalogConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v MetastoreServiceMetadataIntegrationDataCatalogConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -15928,12 +14133,6 @@ func (o MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput) ToMetasto
 
 func (o MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput) ToMetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput {
 	return o
-}
-
-func (o MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceMetadataIntegrationDataCatalogConfig] {
-	return pulumix.Output[*MetastoreServiceMetadataIntegrationDataCatalogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput) Elem() MetastoreServiceMetadataIntegrationDataCatalogConfigOutput {
@@ -15991,12 +14190,6 @@ func (i MetastoreServiceNetworkConfigArgs) ToMetastoreServiceNetworkConfigOutput
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceNetworkConfigOutput)
 }
 
-func (i MetastoreServiceNetworkConfigArgs) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceNetworkConfig] {
-	return pulumix.Output[MetastoreServiceNetworkConfig]{
-		OutputState: i.ToMetastoreServiceNetworkConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MetastoreServiceNetworkConfigArgs) ToMetastoreServiceNetworkConfigPtrOutput() MetastoreServiceNetworkConfigPtrOutput {
 	return i.ToMetastoreServiceNetworkConfigPtrOutputWithContext(context.Background())
 }
@@ -16038,12 +14231,6 @@ func (i *metastoreServiceNetworkConfigPtrType) ToMetastoreServiceNetworkConfigPt
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceNetworkConfigPtrOutput)
 }
 
-func (i *metastoreServiceNetworkConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceNetworkConfig] {
-	return pulumix.Output[*MetastoreServiceNetworkConfig]{
-		OutputState: i.ToMetastoreServiceNetworkConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetastoreServiceNetworkConfigOutput struct{ *pulumi.OutputState }
 
 func (MetastoreServiceNetworkConfigOutput) ElementType() reflect.Type {
@@ -16068,12 +14255,6 @@ func (o MetastoreServiceNetworkConfigOutput) ToMetastoreServiceNetworkConfigPtrO
 	}).(MetastoreServiceNetworkConfigPtrOutput)
 }
 
-func (o MetastoreServiceNetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceNetworkConfig] {
-	return pulumix.Output[MetastoreServiceNetworkConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The consumer-side network configuration for the Dataproc Metastore instance.
 // Structure is documented below.
 func (o MetastoreServiceNetworkConfigOutput) Consumers() MetastoreServiceNetworkConfigConsumerArrayOutput {
@@ -16092,12 +14273,6 @@ func (o MetastoreServiceNetworkConfigPtrOutput) ToMetastoreServiceNetworkConfigP
 
 func (o MetastoreServiceNetworkConfigPtrOutput) ToMetastoreServiceNetworkConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceNetworkConfigPtrOutput {
 	return o
-}
-
-func (o MetastoreServiceNetworkConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceNetworkConfig] {
-	return pulumix.Output[*MetastoreServiceNetworkConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreServiceNetworkConfigPtrOutput) Elem() MetastoreServiceNetworkConfigOutput {
@@ -16166,12 +14341,6 @@ func (i MetastoreServiceNetworkConfigConsumerArgs) ToMetastoreServiceNetworkConf
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceNetworkConfigConsumerOutput)
 }
 
-func (i MetastoreServiceNetworkConfigConsumerArgs) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceNetworkConfigConsumer] {
-	return pulumix.Output[MetastoreServiceNetworkConfigConsumer]{
-		OutputState: i.ToMetastoreServiceNetworkConfigConsumerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MetastoreServiceNetworkConfigConsumerArrayInput is an input type that accepts MetastoreServiceNetworkConfigConsumerArray and MetastoreServiceNetworkConfigConsumerArrayOutput values.
 // You can construct a concrete instance of `MetastoreServiceNetworkConfigConsumerArrayInput` via:
 //
@@ -16197,12 +14366,6 @@ func (i MetastoreServiceNetworkConfigConsumerArray) ToMetastoreServiceNetworkCon
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceNetworkConfigConsumerArrayOutput)
 }
 
-func (i MetastoreServiceNetworkConfigConsumerArray) ToOutput(ctx context.Context) pulumix.Output[[]MetastoreServiceNetworkConfigConsumer] {
-	return pulumix.Output[[]MetastoreServiceNetworkConfigConsumer]{
-		OutputState: i.ToMetastoreServiceNetworkConfigConsumerArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetastoreServiceNetworkConfigConsumerOutput struct{ *pulumi.OutputState }
 
 func (MetastoreServiceNetworkConfigConsumerOutput) ElementType() reflect.Type {
@@ -16215,12 +14378,6 @@ func (o MetastoreServiceNetworkConfigConsumerOutput) ToMetastoreServiceNetworkCo
 
 func (o MetastoreServiceNetworkConfigConsumerOutput) ToMetastoreServiceNetworkConfigConsumerOutputWithContext(ctx context.Context) MetastoreServiceNetworkConfigConsumerOutput {
 	return o
-}
-
-func (o MetastoreServiceNetworkConfigConsumerOutput) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceNetworkConfigConsumer] {
-	return pulumix.Output[MetastoreServiceNetworkConfigConsumer]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -16249,12 +14406,6 @@ func (o MetastoreServiceNetworkConfigConsumerArrayOutput) ToMetastoreServiceNetw
 
 func (o MetastoreServiceNetworkConfigConsumerArrayOutput) ToMetastoreServiceNetworkConfigConsumerArrayOutputWithContext(ctx context.Context) MetastoreServiceNetworkConfigConsumerArrayOutput {
 	return o
-}
-
-func (o MetastoreServiceNetworkConfigConsumerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MetastoreServiceNetworkConfigConsumer] {
-	return pulumix.Output[[]MetastoreServiceNetworkConfigConsumer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreServiceNetworkConfigConsumerArrayOutput) Index(i pulumi.IntInput) MetastoreServiceNetworkConfigConsumerOutput {
@@ -16302,12 +14453,6 @@ func (i MetastoreServiceScalingConfigArgs) ToMetastoreServiceScalingConfigOutput
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceScalingConfigOutput)
 }
 
-func (i MetastoreServiceScalingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceScalingConfig] {
-	return pulumix.Output[MetastoreServiceScalingConfig]{
-		OutputState: i.ToMetastoreServiceScalingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MetastoreServiceScalingConfigArgs) ToMetastoreServiceScalingConfigPtrOutput() MetastoreServiceScalingConfigPtrOutput {
 	return i.ToMetastoreServiceScalingConfigPtrOutputWithContext(context.Background())
 }
@@ -16349,12 +14494,6 @@ func (i *metastoreServiceScalingConfigPtrType) ToMetastoreServiceScalingConfigPt
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceScalingConfigPtrOutput)
 }
 
-func (i *metastoreServiceScalingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceScalingConfig] {
-	return pulumix.Output[*MetastoreServiceScalingConfig]{
-		OutputState: i.ToMetastoreServiceScalingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetastoreServiceScalingConfigOutput struct{ *pulumi.OutputState }
 
 func (MetastoreServiceScalingConfigOutput) ElementType() reflect.Type {
@@ -16377,12 +14516,6 @@ func (o MetastoreServiceScalingConfigOutput) ToMetastoreServiceScalingConfigPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreServiceScalingConfig) *MetastoreServiceScalingConfig {
 		return &v
 	}).(MetastoreServiceScalingConfigPtrOutput)
-}
-
-func (o MetastoreServiceScalingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceScalingConfig] {
-	return pulumix.Output[MetastoreServiceScalingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Metastore instance sizes.
@@ -16408,12 +14541,6 @@ func (o MetastoreServiceScalingConfigPtrOutput) ToMetastoreServiceScalingConfigP
 
 func (o MetastoreServiceScalingConfigPtrOutput) ToMetastoreServiceScalingConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceScalingConfigPtrOutput {
 	return o
-}
-
-func (o MetastoreServiceScalingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceScalingConfig] {
-	return pulumix.Output[*MetastoreServiceScalingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreServiceScalingConfigPtrOutput) Elem() MetastoreServiceScalingConfigOutput {
@@ -16484,12 +14611,6 @@ func (i MetastoreServiceTelemetryConfigArgs) ToMetastoreServiceTelemetryConfigOu
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceTelemetryConfigOutput)
 }
 
-func (i MetastoreServiceTelemetryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceTelemetryConfig] {
-	return pulumix.Output[MetastoreServiceTelemetryConfig]{
-		OutputState: i.ToMetastoreServiceTelemetryConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MetastoreServiceTelemetryConfigArgs) ToMetastoreServiceTelemetryConfigPtrOutput() MetastoreServiceTelemetryConfigPtrOutput {
 	return i.ToMetastoreServiceTelemetryConfigPtrOutputWithContext(context.Background())
 }
@@ -16531,12 +14652,6 @@ func (i *metastoreServiceTelemetryConfigPtrType) ToMetastoreServiceTelemetryConf
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceTelemetryConfigPtrOutput)
 }
 
-func (i *metastoreServiceTelemetryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceTelemetryConfig] {
-	return pulumix.Output[*MetastoreServiceTelemetryConfig]{
-		OutputState: i.ToMetastoreServiceTelemetryConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetastoreServiceTelemetryConfigOutput struct{ *pulumi.OutputState }
 
 func (MetastoreServiceTelemetryConfigOutput) ElementType() reflect.Type {
@@ -16561,12 +14676,6 @@ func (o MetastoreServiceTelemetryConfigOutput) ToMetastoreServiceTelemetryConfig
 	}).(MetastoreServiceTelemetryConfigPtrOutput)
 }
 
-func (o MetastoreServiceTelemetryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[MetastoreServiceTelemetryConfig] {
-	return pulumix.Output[MetastoreServiceTelemetryConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The output format of the Dataproc Metastore service's logs.
 // Default value is `JSON`.
 // Possible values are: `LEGACY`, `JSON`.
@@ -16586,12 +14695,6 @@ func (o MetastoreServiceTelemetryConfigPtrOutput) ToMetastoreServiceTelemetryCon
 
 func (o MetastoreServiceTelemetryConfigPtrOutput) ToMetastoreServiceTelemetryConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceTelemetryConfigPtrOutput {
 	return o
-}
-
-func (o MetastoreServiceTelemetryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceTelemetryConfig] {
-	return pulumix.Output[*MetastoreServiceTelemetryConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreServiceTelemetryConfigPtrOutput) Elem() MetastoreServiceTelemetryConfigOutput {
@@ -16693,12 +14796,6 @@ func (i WorkflowTemplateJobArgs) ToWorkflowTemplateJobOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobOutput)
 }
 
-func (i WorkflowTemplateJobArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJob] {
-	return pulumix.Output[WorkflowTemplateJob]{
-		OutputState: i.ToWorkflowTemplateJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkflowTemplateJobArrayInput is an input type that accepts WorkflowTemplateJobArray and WorkflowTemplateJobArrayOutput values.
 // You can construct a concrete instance of `WorkflowTemplateJobArrayInput` via:
 //
@@ -16724,12 +14821,6 @@ func (i WorkflowTemplateJobArray) ToWorkflowTemplateJobArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobArrayOutput)
 }
 
-func (i WorkflowTemplateJobArray) ToOutput(ctx context.Context) pulumix.Output[[]WorkflowTemplateJob] {
-	return pulumix.Output[[]WorkflowTemplateJob]{
-		OutputState: i.ToWorkflowTemplateJobArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplateJobOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateJobOutput) ElementType() reflect.Type {
@@ -16742,12 +14833,6 @@ func (o WorkflowTemplateJobOutput) ToWorkflowTemplateJobOutput() WorkflowTemplat
 
 func (o WorkflowTemplateJobOutput) ToWorkflowTemplateJobOutputWithContext(ctx context.Context) WorkflowTemplateJobOutput {
 	return o
-}
-
-func (o WorkflowTemplateJobOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJob] {
-	return pulumix.Output[WorkflowTemplateJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Job is a Hadoop job.
@@ -16824,12 +14909,6 @@ func (o WorkflowTemplateJobArrayOutput) ToWorkflowTemplateJobArrayOutputWithCont
 	return o
 }
 
-func (o WorkflowTemplateJobArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkflowTemplateJob] {
-	return pulumix.Output[[]WorkflowTemplateJob]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkflowTemplateJobArrayOutput) Index(i pulumi.IntInput) WorkflowTemplateJobOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTemplateJob {
 		return vs[0].([]WorkflowTemplateJob)[vs[1].(int)]
@@ -16897,12 +14976,6 @@ func (i WorkflowTemplateJobHadoopJobArgs) ToWorkflowTemplateJobHadoopJobOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobHadoopJobOutput)
 }
 
-func (i WorkflowTemplateJobHadoopJobArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobHadoopJob] {
-	return pulumix.Output[WorkflowTemplateJobHadoopJob]{
-		OutputState: i.ToWorkflowTemplateJobHadoopJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplateJobHadoopJobArgs) ToWorkflowTemplateJobHadoopJobPtrOutput() WorkflowTemplateJobHadoopJobPtrOutput {
 	return i.ToWorkflowTemplateJobHadoopJobPtrOutputWithContext(context.Background())
 }
@@ -16944,12 +15017,6 @@ func (i *workflowTemplateJobHadoopJobPtrType) ToWorkflowTemplateJobHadoopJobPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobHadoopJobPtrOutput)
 }
 
-func (i *workflowTemplateJobHadoopJobPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobHadoopJob] {
-	return pulumix.Output[*WorkflowTemplateJobHadoopJob]{
-		OutputState: i.ToWorkflowTemplateJobHadoopJobPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplateJobHadoopJobOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateJobHadoopJobOutput) ElementType() reflect.Type {
@@ -16972,12 +15039,6 @@ func (o WorkflowTemplateJobHadoopJobOutput) ToWorkflowTemplateJobHadoopJobPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobHadoopJob) *WorkflowTemplateJobHadoopJob {
 		return &v
 	}).(WorkflowTemplateJobHadoopJobPtrOutput)
-}
-
-func (o WorkflowTemplateJobHadoopJobOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobHadoopJob] {
-	return pulumix.Output[WorkflowTemplateJobHadoopJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
@@ -17034,12 +15095,6 @@ func (o WorkflowTemplateJobHadoopJobPtrOutput) ToWorkflowTemplateJobHadoopJobPtr
 
 func (o WorkflowTemplateJobHadoopJobPtrOutput) ToWorkflowTemplateJobHadoopJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobHadoopJobPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplateJobHadoopJobPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobHadoopJob] {
-	return pulumix.Output[*WorkflowTemplateJobHadoopJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplateJobHadoopJobPtrOutput) Elem() WorkflowTemplateJobHadoopJobOutput {
@@ -17165,12 +15220,6 @@ func (i WorkflowTemplateJobHadoopJobLoggingConfigArgs) ToWorkflowTemplateJobHado
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobHadoopJobLoggingConfigOutput)
 }
 
-func (i WorkflowTemplateJobHadoopJobLoggingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobHadoopJobLoggingConfig] {
-	return pulumix.Output[WorkflowTemplateJobHadoopJobLoggingConfig]{
-		OutputState: i.ToWorkflowTemplateJobHadoopJobLoggingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplateJobHadoopJobLoggingConfigArgs) ToWorkflowTemplateJobHadoopJobLoggingConfigPtrOutput() WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput {
 	return i.ToWorkflowTemplateJobHadoopJobLoggingConfigPtrOutputWithContext(context.Background())
 }
@@ -17212,12 +15261,6 @@ func (i *workflowTemplateJobHadoopJobLoggingConfigPtrType) ToWorkflowTemplateJob
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput)
 }
 
-func (i *workflowTemplateJobHadoopJobLoggingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobHadoopJobLoggingConfig] {
-	return pulumix.Output[*WorkflowTemplateJobHadoopJobLoggingConfig]{
-		OutputState: i.ToWorkflowTemplateJobHadoopJobLoggingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplateJobHadoopJobLoggingConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateJobHadoopJobLoggingConfigOutput) ElementType() reflect.Type {
@@ -17242,12 +15285,6 @@ func (o WorkflowTemplateJobHadoopJobLoggingConfigOutput) ToWorkflowTemplateJobHa
 	}).(WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput)
 }
 
-func (o WorkflowTemplateJobHadoopJobLoggingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobHadoopJobLoggingConfig] {
-	return pulumix.Output[WorkflowTemplateJobHadoopJobLoggingConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
 func (o WorkflowTemplateJobHadoopJobLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobHadoopJobLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
@@ -17265,12 +15302,6 @@ func (o WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput) ToWorkflowTemplateJo
 
 func (o WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput) ToWorkflowTemplateJobHadoopJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobHadoopJobLoggingConfig] {
-	return pulumix.Output[*WorkflowTemplateJobHadoopJobLoggingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput) Elem() WorkflowTemplateJobHadoopJobLoggingConfigOutput {
@@ -17346,12 +15377,6 @@ func (i WorkflowTemplateJobHiveJobArgs) ToWorkflowTemplateJobHiveJobOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobHiveJobOutput)
 }
 
-func (i WorkflowTemplateJobHiveJobArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobHiveJob] {
-	return pulumix.Output[WorkflowTemplateJobHiveJob]{
-		OutputState: i.ToWorkflowTemplateJobHiveJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplateJobHiveJobArgs) ToWorkflowTemplateJobHiveJobPtrOutput() WorkflowTemplateJobHiveJobPtrOutput {
 	return i.ToWorkflowTemplateJobHiveJobPtrOutputWithContext(context.Background())
 }
@@ -17393,12 +15418,6 @@ func (i *workflowTemplateJobHiveJobPtrType) ToWorkflowTemplateJobHiveJobPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobHiveJobPtrOutput)
 }
 
-func (i *workflowTemplateJobHiveJobPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobHiveJob] {
-	return pulumix.Output[*WorkflowTemplateJobHiveJob]{
-		OutputState: i.ToWorkflowTemplateJobHiveJobPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplateJobHiveJobOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateJobHiveJobOutput) ElementType() reflect.Type {
@@ -17421,12 +15440,6 @@ func (o WorkflowTemplateJobHiveJobOutput) ToWorkflowTemplateJobHiveJobPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobHiveJob) *WorkflowTemplateJobHiveJob {
 		return &v
 	}).(WorkflowTemplateJobHiveJobPtrOutput)
-}
-
-func (o WorkflowTemplateJobHiveJobOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobHiveJob] {
-	return pulumix.Output[WorkflowTemplateJobHiveJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
@@ -17471,12 +15484,6 @@ func (o WorkflowTemplateJobHiveJobPtrOutput) ToWorkflowTemplateJobHiveJobPtrOutp
 
 func (o WorkflowTemplateJobHiveJobPtrOutput) ToWorkflowTemplateJobHiveJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobHiveJobPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplateJobHiveJobPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobHiveJob] {
-	return pulumix.Output[*WorkflowTemplateJobHiveJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplateJobHiveJobPtrOutput) Elem() WorkflowTemplateJobHiveJobOutput {
@@ -17582,12 +15589,6 @@ func (i WorkflowTemplateJobHiveJobQueryListArgs) ToWorkflowTemplateJobHiveJobQue
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobHiveJobQueryListOutput)
 }
 
-func (i WorkflowTemplateJobHiveJobQueryListArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobHiveJobQueryList] {
-	return pulumix.Output[WorkflowTemplateJobHiveJobQueryList]{
-		OutputState: i.ToWorkflowTemplateJobHiveJobQueryListOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplateJobHiveJobQueryListArgs) ToWorkflowTemplateJobHiveJobQueryListPtrOutput() WorkflowTemplateJobHiveJobQueryListPtrOutput {
 	return i.ToWorkflowTemplateJobHiveJobQueryListPtrOutputWithContext(context.Background())
 }
@@ -17629,12 +15630,6 @@ func (i *workflowTemplateJobHiveJobQueryListPtrType) ToWorkflowTemplateJobHiveJo
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobHiveJobQueryListPtrOutput)
 }
 
-func (i *workflowTemplateJobHiveJobQueryListPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobHiveJobQueryList] {
-	return pulumix.Output[*WorkflowTemplateJobHiveJobQueryList]{
-		OutputState: i.ToWorkflowTemplateJobHiveJobQueryListPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplateJobHiveJobQueryListOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateJobHiveJobQueryListOutput) ElementType() reflect.Type {
@@ -17659,12 +15654,6 @@ func (o WorkflowTemplateJobHiveJobQueryListOutput) ToWorkflowTemplateJobHiveJobQ
 	}).(WorkflowTemplateJobHiveJobQueryListPtrOutput)
 }
 
-func (o WorkflowTemplateJobHiveJobQueryListOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobHiveJobQueryList] {
-	return pulumix.Output[WorkflowTemplateJobHiveJobQueryList]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
 func (o WorkflowTemplateJobHiveJobQueryListOutput) Queries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobHiveJobQueryList) []string { return v.Queries }).(pulumi.StringArrayOutput)
@@ -17682,12 +15671,6 @@ func (o WorkflowTemplateJobHiveJobQueryListPtrOutput) ToWorkflowTemplateJobHiveJ
 
 func (o WorkflowTemplateJobHiveJobQueryListPtrOutput) ToWorkflowTemplateJobHiveJobQueryListPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobHiveJobQueryListPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplateJobHiveJobQueryListPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobHiveJobQueryList] {
-	return pulumix.Output[*WorkflowTemplateJobHiveJobQueryList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplateJobHiveJobQueryListPtrOutput) Elem() WorkflowTemplateJobHiveJobQueryListOutput {
@@ -17767,12 +15750,6 @@ func (i WorkflowTemplateJobPigJobArgs) ToWorkflowTemplateJobPigJobOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPigJobOutput)
 }
 
-func (i WorkflowTemplateJobPigJobArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobPigJob] {
-	return pulumix.Output[WorkflowTemplateJobPigJob]{
-		OutputState: i.ToWorkflowTemplateJobPigJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplateJobPigJobArgs) ToWorkflowTemplateJobPigJobPtrOutput() WorkflowTemplateJobPigJobPtrOutput {
 	return i.ToWorkflowTemplateJobPigJobPtrOutputWithContext(context.Background())
 }
@@ -17814,12 +15791,6 @@ func (i *workflowTemplateJobPigJobPtrType) ToWorkflowTemplateJobPigJobPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPigJobPtrOutput)
 }
 
-func (i *workflowTemplateJobPigJobPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobPigJob] {
-	return pulumix.Output[*WorkflowTemplateJobPigJob]{
-		OutputState: i.ToWorkflowTemplateJobPigJobPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplateJobPigJobOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateJobPigJobOutput) ElementType() reflect.Type {
@@ -17842,12 +15813,6 @@ func (o WorkflowTemplateJobPigJobOutput) ToWorkflowTemplateJobPigJobPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobPigJob) *WorkflowTemplateJobPigJob {
 		return &v
 	}).(WorkflowTemplateJobPigJobPtrOutput)
-}
-
-func (o WorkflowTemplateJobPigJobOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobPigJob] {
-	return pulumix.Output[WorkflowTemplateJobPigJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
@@ -17897,12 +15862,6 @@ func (o WorkflowTemplateJobPigJobPtrOutput) ToWorkflowTemplateJobPigJobPtrOutput
 
 func (o WorkflowTemplateJobPigJobPtrOutput) ToWorkflowTemplateJobPigJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPigJobPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplateJobPigJobPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobPigJob] {
-	return pulumix.Output[*WorkflowTemplateJobPigJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplateJobPigJobPtrOutput) Elem() WorkflowTemplateJobPigJobOutput {
@@ -18018,12 +15977,6 @@ func (i WorkflowTemplateJobPigJobLoggingConfigArgs) ToWorkflowTemplateJobPigJobL
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPigJobLoggingConfigOutput)
 }
 
-func (i WorkflowTemplateJobPigJobLoggingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobPigJobLoggingConfig] {
-	return pulumix.Output[WorkflowTemplateJobPigJobLoggingConfig]{
-		OutputState: i.ToWorkflowTemplateJobPigJobLoggingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplateJobPigJobLoggingConfigArgs) ToWorkflowTemplateJobPigJobLoggingConfigPtrOutput() WorkflowTemplateJobPigJobLoggingConfigPtrOutput {
 	return i.ToWorkflowTemplateJobPigJobLoggingConfigPtrOutputWithContext(context.Background())
 }
@@ -18065,12 +16018,6 @@ func (i *workflowTemplateJobPigJobLoggingConfigPtrType) ToWorkflowTemplateJobPig
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPigJobLoggingConfigPtrOutput)
 }
 
-func (i *workflowTemplateJobPigJobLoggingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobPigJobLoggingConfig] {
-	return pulumix.Output[*WorkflowTemplateJobPigJobLoggingConfig]{
-		OutputState: i.ToWorkflowTemplateJobPigJobLoggingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplateJobPigJobLoggingConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateJobPigJobLoggingConfigOutput) ElementType() reflect.Type {
@@ -18095,12 +16042,6 @@ func (o WorkflowTemplateJobPigJobLoggingConfigOutput) ToWorkflowTemplateJobPigJo
 	}).(WorkflowTemplateJobPigJobLoggingConfigPtrOutput)
 }
 
-func (o WorkflowTemplateJobPigJobLoggingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobPigJobLoggingConfig] {
-	return pulumix.Output[WorkflowTemplateJobPigJobLoggingConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
 func (o WorkflowTemplateJobPigJobLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobPigJobLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
@@ -18118,12 +16059,6 @@ func (o WorkflowTemplateJobPigJobLoggingConfigPtrOutput) ToWorkflowTemplateJobPi
 
 func (o WorkflowTemplateJobPigJobLoggingConfigPtrOutput) ToWorkflowTemplateJobPigJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPigJobLoggingConfigPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplateJobPigJobLoggingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobPigJobLoggingConfig] {
-	return pulumix.Output[*WorkflowTemplateJobPigJobLoggingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplateJobPigJobLoggingConfigPtrOutput) Elem() WorkflowTemplateJobPigJobLoggingConfigOutput {
@@ -18179,12 +16114,6 @@ func (i WorkflowTemplateJobPigJobQueryListArgs) ToWorkflowTemplateJobPigJobQuery
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPigJobQueryListOutput)
 }
 
-func (i WorkflowTemplateJobPigJobQueryListArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobPigJobQueryList] {
-	return pulumix.Output[WorkflowTemplateJobPigJobQueryList]{
-		OutputState: i.ToWorkflowTemplateJobPigJobQueryListOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplateJobPigJobQueryListArgs) ToWorkflowTemplateJobPigJobQueryListPtrOutput() WorkflowTemplateJobPigJobQueryListPtrOutput {
 	return i.ToWorkflowTemplateJobPigJobQueryListPtrOutputWithContext(context.Background())
 }
@@ -18226,12 +16155,6 @@ func (i *workflowTemplateJobPigJobQueryListPtrType) ToWorkflowTemplateJobPigJobQ
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPigJobQueryListPtrOutput)
 }
 
-func (i *workflowTemplateJobPigJobQueryListPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobPigJobQueryList] {
-	return pulumix.Output[*WorkflowTemplateJobPigJobQueryList]{
-		OutputState: i.ToWorkflowTemplateJobPigJobQueryListPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplateJobPigJobQueryListOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateJobPigJobQueryListOutput) ElementType() reflect.Type {
@@ -18256,12 +16179,6 @@ func (o WorkflowTemplateJobPigJobQueryListOutput) ToWorkflowTemplateJobPigJobQue
 	}).(WorkflowTemplateJobPigJobQueryListPtrOutput)
 }
 
-func (o WorkflowTemplateJobPigJobQueryListOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobPigJobQueryList] {
-	return pulumix.Output[WorkflowTemplateJobPigJobQueryList]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
 func (o WorkflowTemplateJobPigJobQueryListOutput) Queries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobPigJobQueryList) []string { return v.Queries }).(pulumi.StringArrayOutput)
@@ -18279,12 +16196,6 @@ func (o WorkflowTemplateJobPigJobQueryListPtrOutput) ToWorkflowTemplateJobPigJob
 
 func (o WorkflowTemplateJobPigJobQueryListPtrOutput) ToWorkflowTemplateJobPigJobQueryListPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPigJobQueryListPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplateJobPigJobQueryListPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobPigJobQueryList] {
-	return pulumix.Output[*WorkflowTemplateJobPigJobQueryList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplateJobPigJobQueryListPtrOutput) Elem() WorkflowTemplateJobPigJobQueryListOutput {
@@ -18364,12 +16275,6 @@ func (i WorkflowTemplateJobPrestoJobArgs) ToWorkflowTemplateJobPrestoJobOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPrestoJobOutput)
 }
 
-func (i WorkflowTemplateJobPrestoJobArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobPrestoJob] {
-	return pulumix.Output[WorkflowTemplateJobPrestoJob]{
-		OutputState: i.ToWorkflowTemplateJobPrestoJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplateJobPrestoJobArgs) ToWorkflowTemplateJobPrestoJobPtrOutput() WorkflowTemplateJobPrestoJobPtrOutput {
 	return i.ToWorkflowTemplateJobPrestoJobPtrOutputWithContext(context.Background())
 }
@@ -18411,12 +16316,6 @@ func (i *workflowTemplateJobPrestoJobPtrType) ToWorkflowTemplateJobPrestoJobPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPrestoJobPtrOutput)
 }
 
-func (i *workflowTemplateJobPrestoJobPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobPrestoJob] {
-	return pulumix.Output[*WorkflowTemplateJobPrestoJob]{
-		OutputState: i.ToWorkflowTemplateJobPrestoJobPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplateJobPrestoJobOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateJobPrestoJobOutput) ElementType() reflect.Type {
@@ -18439,12 +16338,6 @@ func (o WorkflowTemplateJobPrestoJobOutput) ToWorkflowTemplateJobPrestoJobPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobPrestoJob) *WorkflowTemplateJobPrestoJob {
 		return &v
 	}).(WorkflowTemplateJobPrestoJobPtrOutput)
-}
-
-func (o WorkflowTemplateJobPrestoJobOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobPrestoJob] {
-	return pulumix.Output[WorkflowTemplateJobPrestoJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Presto client tags to attach to this query
@@ -18496,12 +16389,6 @@ func (o WorkflowTemplateJobPrestoJobPtrOutput) ToWorkflowTemplateJobPrestoJobPtr
 
 func (o WorkflowTemplateJobPrestoJobPtrOutput) ToWorkflowTemplateJobPrestoJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPrestoJobPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplateJobPrestoJobPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobPrestoJob] {
-	return pulumix.Output[*WorkflowTemplateJobPrestoJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplateJobPrestoJobPtrOutput) Elem() WorkflowTemplateJobPrestoJobOutput {
@@ -18617,12 +16504,6 @@ func (i WorkflowTemplateJobPrestoJobLoggingConfigArgs) ToWorkflowTemplateJobPres
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPrestoJobLoggingConfigOutput)
 }
 
-func (i WorkflowTemplateJobPrestoJobLoggingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobPrestoJobLoggingConfig] {
-	return pulumix.Output[WorkflowTemplateJobPrestoJobLoggingConfig]{
-		OutputState: i.ToWorkflowTemplateJobPrestoJobLoggingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplateJobPrestoJobLoggingConfigArgs) ToWorkflowTemplateJobPrestoJobLoggingConfigPtrOutput() WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput {
 	return i.ToWorkflowTemplateJobPrestoJobLoggingConfigPtrOutputWithContext(context.Background())
 }
@@ -18664,12 +16545,6 @@ func (i *workflowTemplateJobPrestoJobLoggingConfigPtrType) ToWorkflowTemplateJob
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput)
 }
 
-func (i *workflowTemplateJobPrestoJobLoggingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobPrestoJobLoggingConfig] {
-	return pulumix.Output[*WorkflowTemplateJobPrestoJobLoggingConfig]{
-		OutputState: i.ToWorkflowTemplateJobPrestoJobLoggingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplateJobPrestoJobLoggingConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateJobPrestoJobLoggingConfigOutput) ElementType() reflect.Type {
@@ -18694,12 +16569,6 @@ func (o WorkflowTemplateJobPrestoJobLoggingConfigOutput) ToWorkflowTemplateJobPr
 	}).(WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput)
 }
 
-func (o WorkflowTemplateJobPrestoJobLoggingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobPrestoJobLoggingConfig] {
-	return pulumix.Output[WorkflowTemplateJobPrestoJobLoggingConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
 func (o WorkflowTemplateJobPrestoJobLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobPrestoJobLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
@@ -18717,12 +16586,6 @@ func (o WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput) ToWorkflowTemplateJo
 
 func (o WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput) ToWorkflowTemplateJobPrestoJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobPrestoJobLoggingConfig] {
-	return pulumix.Output[*WorkflowTemplateJobPrestoJobLoggingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput) Elem() WorkflowTemplateJobPrestoJobLoggingConfigOutput {
@@ -18778,12 +16641,6 @@ func (i WorkflowTemplateJobPrestoJobQueryListArgs) ToWorkflowTemplateJobPrestoJo
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPrestoJobQueryListOutput)
 }
 
-func (i WorkflowTemplateJobPrestoJobQueryListArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobPrestoJobQueryList] {
-	return pulumix.Output[WorkflowTemplateJobPrestoJobQueryList]{
-		OutputState: i.ToWorkflowTemplateJobPrestoJobQueryListOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplateJobPrestoJobQueryListArgs) ToWorkflowTemplateJobPrestoJobQueryListPtrOutput() WorkflowTemplateJobPrestoJobQueryListPtrOutput {
 	return i.ToWorkflowTemplateJobPrestoJobQueryListPtrOutputWithContext(context.Background())
 }
@@ -18825,12 +16682,6 @@ func (i *workflowTemplateJobPrestoJobQueryListPtrType) ToWorkflowTemplateJobPres
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPrestoJobQueryListPtrOutput)
 }
 
-func (i *workflowTemplateJobPrestoJobQueryListPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobPrestoJobQueryList] {
-	return pulumix.Output[*WorkflowTemplateJobPrestoJobQueryList]{
-		OutputState: i.ToWorkflowTemplateJobPrestoJobQueryListPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplateJobPrestoJobQueryListOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateJobPrestoJobQueryListOutput) ElementType() reflect.Type {
@@ -18855,12 +16706,6 @@ func (o WorkflowTemplateJobPrestoJobQueryListOutput) ToWorkflowTemplateJobPresto
 	}).(WorkflowTemplateJobPrestoJobQueryListPtrOutput)
 }
 
-func (o WorkflowTemplateJobPrestoJobQueryListOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobPrestoJobQueryList] {
-	return pulumix.Output[WorkflowTemplateJobPrestoJobQueryList]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
 func (o WorkflowTemplateJobPrestoJobQueryListOutput) Queries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobPrestoJobQueryList) []string { return v.Queries }).(pulumi.StringArrayOutput)
@@ -18878,12 +16723,6 @@ func (o WorkflowTemplateJobPrestoJobQueryListPtrOutput) ToWorkflowTemplateJobPre
 
 func (o WorkflowTemplateJobPrestoJobQueryListPtrOutput) ToWorkflowTemplateJobPrestoJobQueryListPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPrestoJobQueryListPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplateJobPrestoJobQueryListPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobPrestoJobQueryList] {
-	return pulumix.Output[*WorkflowTemplateJobPrestoJobQueryList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplateJobPrestoJobQueryListPtrOutput) Elem() WorkflowTemplateJobPrestoJobQueryListOutput {
@@ -18967,12 +16806,6 @@ func (i WorkflowTemplateJobPysparkJobArgs) ToWorkflowTemplateJobPysparkJobOutput
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPysparkJobOutput)
 }
 
-func (i WorkflowTemplateJobPysparkJobArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobPysparkJob] {
-	return pulumix.Output[WorkflowTemplateJobPysparkJob]{
-		OutputState: i.ToWorkflowTemplateJobPysparkJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplateJobPysparkJobArgs) ToWorkflowTemplateJobPysparkJobPtrOutput() WorkflowTemplateJobPysparkJobPtrOutput {
 	return i.ToWorkflowTemplateJobPysparkJobPtrOutputWithContext(context.Background())
 }
@@ -19014,12 +16847,6 @@ func (i *workflowTemplateJobPysparkJobPtrType) ToWorkflowTemplateJobPysparkJobPt
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPysparkJobPtrOutput)
 }
 
-func (i *workflowTemplateJobPysparkJobPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobPysparkJob] {
-	return pulumix.Output[*WorkflowTemplateJobPysparkJob]{
-		OutputState: i.ToWorkflowTemplateJobPysparkJobPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplateJobPysparkJobOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateJobPysparkJobOutput) ElementType() reflect.Type {
@@ -19042,12 +16869,6 @@ func (o WorkflowTemplateJobPysparkJobOutput) ToWorkflowTemplateJobPysparkJobPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobPysparkJob) *WorkflowTemplateJobPysparkJob {
 		return &v
 	}).(WorkflowTemplateJobPysparkJobPtrOutput)
-}
-
-func (o WorkflowTemplateJobPysparkJobOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobPysparkJob] {
-	return pulumix.Output[WorkflowTemplateJobPysparkJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -19104,12 +16925,6 @@ func (o WorkflowTemplateJobPysparkJobPtrOutput) ToWorkflowTemplateJobPysparkJobP
 
 func (o WorkflowTemplateJobPysparkJobPtrOutput) ToWorkflowTemplateJobPysparkJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPysparkJobPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplateJobPysparkJobPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobPysparkJob] {
-	return pulumix.Output[*WorkflowTemplateJobPysparkJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplateJobPysparkJobPtrOutput) Elem() WorkflowTemplateJobPysparkJobOutput {
@@ -19235,12 +17050,6 @@ func (i WorkflowTemplateJobPysparkJobLoggingConfigArgs) ToWorkflowTemplateJobPys
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPysparkJobLoggingConfigOutput)
 }
 
-func (i WorkflowTemplateJobPysparkJobLoggingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobPysparkJobLoggingConfig] {
-	return pulumix.Output[WorkflowTemplateJobPysparkJobLoggingConfig]{
-		OutputState: i.ToWorkflowTemplateJobPysparkJobLoggingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplateJobPysparkJobLoggingConfigArgs) ToWorkflowTemplateJobPysparkJobLoggingConfigPtrOutput() WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput {
 	return i.ToWorkflowTemplateJobPysparkJobLoggingConfigPtrOutputWithContext(context.Background())
 }
@@ -19282,12 +17091,6 @@ func (i *workflowTemplateJobPysparkJobLoggingConfigPtrType) ToWorkflowTemplateJo
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput)
 }
 
-func (i *workflowTemplateJobPysparkJobLoggingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobPysparkJobLoggingConfig] {
-	return pulumix.Output[*WorkflowTemplateJobPysparkJobLoggingConfig]{
-		OutputState: i.ToWorkflowTemplateJobPysparkJobLoggingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplateJobPysparkJobLoggingConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateJobPysparkJobLoggingConfigOutput) ElementType() reflect.Type {
@@ -19312,12 +17115,6 @@ func (o WorkflowTemplateJobPysparkJobLoggingConfigOutput) ToWorkflowTemplateJobP
 	}).(WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput)
 }
 
-func (o WorkflowTemplateJobPysparkJobLoggingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobPysparkJobLoggingConfig] {
-	return pulumix.Output[WorkflowTemplateJobPysparkJobLoggingConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
 func (o WorkflowTemplateJobPysparkJobLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobPysparkJobLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
@@ -19335,12 +17132,6 @@ func (o WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput) ToWorkflowTemplateJ
 
 func (o WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput) ToWorkflowTemplateJobPysparkJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobPysparkJobLoggingConfig] {
-	return pulumix.Output[*WorkflowTemplateJobPysparkJobLoggingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput) Elem() WorkflowTemplateJobPysparkJobLoggingConfigOutput {
@@ -19400,12 +17191,6 @@ func (i WorkflowTemplateJobSchedulingArgs) ToWorkflowTemplateJobSchedulingOutput
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSchedulingOutput)
 }
 
-func (i WorkflowTemplateJobSchedulingArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobScheduling] {
-	return pulumix.Output[WorkflowTemplateJobScheduling]{
-		OutputState: i.ToWorkflowTemplateJobSchedulingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplateJobSchedulingArgs) ToWorkflowTemplateJobSchedulingPtrOutput() WorkflowTemplateJobSchedulingPtrOutput {
 	return i.ToWorkflowTemplateJobSchedulingPtrOutputWithContext(context.Background())
 }
@@ -19447,12 +17232,6 @@ func (i *workflowTemplateJobSchedulingPtrType) ToWorkflowTemplateJobSchedulingPt
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSchedulingPtrOutput)
 }
 
-func (i *workflowTemplateJobSchedulingPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobScheduling] {
-	return pulumix.Output[*WorkflowTemplateJobScheduling]{
-		OutputState: i.ToWorkflowTemplateJobSchedulingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplateJobSchedulingOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateJobSchedulingOutput) ElementType() reflect.Type {
@@ -19477,12 +17256,6 @@ func (o WorkflowTemplateJobSchedulingOutput) ToWorkflowTemplateJobSchedulingPtrO
 	}).(WorkflowTemplateJobSchedulingPtrOutput)
 }
 
-func (o WorkflowTemplateJobSchedulingOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobScheduling] {
-	return pulumix.Output[WorkflowTemplateJobScheduling]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window. Maximum value is 10.
 func (o WorkflowTemplateJobSchedulingOutput) MaxFailuresPerHour() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobScheduling) *int { return v.MaxFailuresPerHour }).(pulumi.IntPtrOutput)
@@ -19505,12 +17278,6 @@ func (o WorkflowTemplateJobSchedulingPtrOutput) ToWorkflowTemplateJobSchedulingP
 
 func (o WorkflowTemplateJobSchedulingPtrOutput) ToWorkflowTemplateJobSchedulingPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSchedulingPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplateJobSchedulingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobScheduling] {
-	return pulumix.Output[*WorkflowTemplateJobScheduling]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplateJobSchedulingPtrOutput) Elem() WorkflowTemplateJobSchedulingOutput {
@@ -19604,12 +17371,6 @@ func (i WorkflowTemplateJobSparkJobArgs) ToWorkflowTemplateJobSparkJobOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkJobOutput)
 }
 
-func (i WorkflowTemplateJobSparkJobArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobSparkJob] {
-	return pulumix.Output[WorkflowTemplateJobSparkJob]{
-		OutputState: i.ToWorkflowTemplateJobSparkJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplateJobSparkJobArgs) ToWorkflowTemplateJobSparkJobPtrOutput() WorkflowTemplateJobSparkJobPtrOutput {
 	return i.ToWorkflowTemplateJobSparkJobPtrOutputWithContext(context.Background())
 }
@@ -19651,12 +17412,6 @@ func (i *workflowTemplateJobSparkJobPtrType) ToWorkflowTemplateJobSparkJobPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkJobPtrOutput)
 }
 
-func (i *workflowTemplateJobSparkJobPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobSparkJob] {
-	return pulumix.Output[*WorkflowTemplateJobSparkJob]{
-		OutputState: i.ToWorkflowTemplateJobSparkJobPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplateJobSparkJobOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateJobSparkJobOutput) ElementType() reflect.Type {
@@ -19679,12 +17434,6 @@ func (o WorkflowTemplateJobSparkJobOutput) ToWorkflowTemplateJobSparkJobPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobSparkJob) *WorkflowTemplateJobSparkJob {
 		return &v
 	}).(WorkflowTemplateJobSparkJobPtrOutput)
-}
-
-func (o WorkflowTemplateJobSparkJobOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobSparkJob] {
-	return pulumix.Output[WorkflowTemplateJobSparkJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -19739,12 +17488,6 @@ func (o WorkflowTemplateJobSparkJobPtrOutput) ToWorkflowTemplateJobSparkJobPtrOu
 
 func (o WorkflowTemplateJobSparkJobPtrOutput) ToWorkflowTemplateJobSparkJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkJobPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplateJobSparkJobPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobSparkJob] {
-	return pulumix.Output[*WorkflowTemplateJobSparkJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplateJobSparkJobPtrOutput) Elem() WorkflowTemplateJobSparkJobOutput {
@@ -19870,12 +17613,6 @@ func (i WorkflowTemplateJobSparkJobLoggingConfigArgs) ToWorkflowTemplateJobSpark
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkJobLoggingConfigOutput)
 }
 
-func (i WorkflowTemplateJobSparkJobLoggingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobSparkJobLoggingConfig] {
-	return pulumix.Output[WorkflowTemplateJobSparkJobLoggingConfig]{
-		OutputState: i.ToWorkflowTemplateJobSparkJobLoggingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplateJobSparkJobLoggingConfigArgs) ToWorkflowTemplateJobSparkJobLoggingConfigPtrOutput() WorkflowTemplateJobSparkJobLoggingConfigPtrOutput {
 	return i.ToWorkflowTemplateJobSparkJobLoggingConfigPtrOutputWithContext(context.Background())
 }
@@ -19917,12 +17654,6 @@ func (i *workflowTemplateJobSparkJobLoggingConfigPtrType) ToWorkflowTemplateJobS
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkJobLoggingConfigPtrOutput)
 }
 
-func (i *workflowTemplateJobSparkJobLoggingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobSparkJobLoggingConfig] {
-	return pulumix.Output[*WorkflowTemplateJobSparkJobLoggingConfig]{
-		OutputState: i.ToWorkflowTemplateJobSparkJobLoggingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplateJobSparkJobLoggingConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateJobSparkJobLoggingConfigOutput) ElementType() reflect.Type {
@@ -19947,12 +17678,6 @@ func (o WorkflowTemplateJobSparkJobLoggingConfigOutput) ToWorkflowTemplateJobSpa
 	}).(WorkflowTemplateJobSparkJobLoggingConfigPtrOutput)
 }
 
-func (o WorkflowTemplateJobSparkJobLoggingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobSparkJobLoggingConfig] {
-	return pulumix.Output[WorkflowTemplateJobSparkJobLoggingConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
 func (o WorkflowTemplateJobSparkJobLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobSparkJobLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
@@ -19970,12 +17695,6 @@ func (o WorkflowTemplateJobSparkJobLoggingConfigPtrOutput) ToWorkflowTemplateJob
 
 func (o WorkflowTemplateJobSparkJobLoggingConfigPtrOutput) ToWorkflowTemplateJobSparkJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkJobLoggingConfigPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplateJobSparkJobLoggingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobSparkJobLoggingConfig] {
-	return pulumix.Output[*WorkflowTemplateJobSparkJobLoggingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplateJobSparkJobLoggingConfigPtrOutput) Elem() WorkflowTemplateJobSparkJobLoggingConfigOutput {
@@ -20051,12 +17770,6 @@ func (i WorkflowTemplateJobSparkRJobArgs) ToWorkflowTemplateJobSparkRJobOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkRJobOutput)
 }
 
-func (i WorkflowTemplateJobSparkRJobArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobSparkRJob] {
-	return pulumix.Output[WorkflowTemplateJobSparkRJob]{
-		OutputState: i.ToWorkflowTemplateJobSparkRJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplateJobSparkRJobArgs) ToWorkflowTemplateJobSparkRJobPtrOutput() WorkflowTemplateJobSparkRJobPtrOutput {
 	return i.ToWorkflowTemplateJobSparkRJobPtrOutputWithContext(context.Background())
 }
@@ -20098,12 +17811,6 @@ func (i *workflowTemplateJobSparkRJobPtrType) ToWorkflowTemplateJobSparkRJobPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkRJobPtrOutput)
 }
 
-func (i *workflowTemplateJobSparkRJobPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobSparkRJob] {
-	return pulumix.Output[*WorkflowTemplateJobSparkRJob]{
-		OutputState: i.ToWorkflowTemplateJobSparkRJobPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplateJobSparkRJobOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateJobSparkRJobOutput) ElementType() reflect.Type {
@@ -20126,12 +17833,6 @@ func (o WorkflowTemplateJobSparkRJobOutput) ToWorkflowTemplateJobSparkRJobPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobSparkRJob) *WorkflowTemplateJobSparkRJob {
 		return &v
 	}).(WorkflowTemplateJobSparkRJobPtrOutput)
-}
-
-func (o WorkflowTemplateJobSparkRJobOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobSparkRJob] {
-	return pulumix.Output[WorkflowTemplateJobSparkRJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -20178,12 +17879,6 @@ func (o WorkflowTemplateJobSparkRJobPtrOutput) ToWorkflowTemplateJobSparkRJobPtr
 
 func (o WorkflowTemplateJobSparkRJobPtrOutput) ToWorkflowTemplateJobSparkRJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkRJobPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplateJobSparkRJobPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobSparkRJob] {
-	return pulumix.Output[*WorkflowTemplateJobSparkRJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplateJobSparkRJobPtrOutput) Elem() WorkflowTemplateJobSparkRJobOutput {
@@ -20289,12 +17984,6 @@ func (i WorkflowTemplateJobSparkRJobLoggingConfigArgs) ToWorkflowTemplateJobSpar
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkRJobLoggingConfigOutput)
 }
 
-func (i WorkflowTemplateJobSparkRJobLoggingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobSparkRJobLoggingConfig] {
-	return pulumix.Output[WorkflowTemplateJobSparkRJobLoggingConfig]{
-		OutputState: i.ToWorkflowTemplateJobSparkRJobLoggingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplateJobSparkRJobLoggingConfigArgs) ToWorkflowTemplateJobSparkRJobLoggingConfigPtrOutput() WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput {
 	return i.ToWorkflowTemplateJobSparkRJobLoggingConfigPtrOutputWithContext(context.Background())
 }
@@ -20336,12 +18025,6 @@ func (i *workflowTemplateJobSparkRJobLoggingConfigPtrType) ToWorkflowTemplateJob
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput)
 }
 
-func (i *workflowTemplateJobSparkRJobLoggingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobSparkRJobLoggingConfig] {
-	return pulumix.Output[*WorkflowTemplateJobSparkRJobLoggingConfig]{
-		OutputState: i.ToWorkflowTemplateJobSparkRJobLoggingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplateJobSparkRJobLoggingConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateJobSparkRJobLoggingConfigOutput) ElementType() reflect.Type {
@@ -20366,12 +18049,6 @@ func (o WorkflowTemplateJobSparkRJobLoggingConfigOutput) ToWorkflowTemplateJobSp
 	}).(WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput)
 }
 
-func (o WorkflowTemplateJobSparkRJobLoggingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobSparkRJobLoggingConfig] {
-	return pulumix.Output[WorkflowTemplateJobSparkRJobLoggingConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
 func (o WorkflowTemplateJobSparkRJobLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobSparkRJobLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
@@ -20389,12 +18066,6 @@ func (o WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput) ToWorkflowTemplateJo
 
 func (o WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput) ToWorkflowTemplateJobSparkRJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobSparkRJobLoggingConfig] {
-	return pulumix.Output[*WorkflowTemplateJobSparkRJobLoggingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput) Elem() WorkflowTemplateJobSparkRJobLoggingConfigOutput {
@@ -20470,12 +18141,6 @@ func (i WorkflowTemplateJobSparkSqlJobArgs) ToWorkflowTemplateJobSparkSqlJobOutp
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkSqlJobOutput)
 }
 
-func (i WorkflowTemplateJobSparkSqlJobArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobSparkSqlJob] {
-	return pulumix.Output[WorkflowTemplateJobSparkSqlJob]{
-		OutputState: i.ToWorkflowTemplateJobSparkSqlJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplateJobSparkSqlJobArgs) ToWorkflowTemplateJobSparkSqlJobPtrOutput() WorkflowTemplateJobSparkSqlJobPtrOutput {
 	return i.ToWorkflowTemplateJobSparkSqlJobPtrOutputWithContext(context.Background())
 }
@@ -20517,12 +18182,6 @@ func (i *workflowTemplateJobSparkSqlJobPtrType) ToWorkflowTemplateJobSparkSqlJob
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkSqlJobPtrOutput)
 }
 
-func (i *workflowTemplateJobSparkSqlJobPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobSparkSqlJob] {
-	return pulumix.Output[*WorkflowTemplateJobSparkSqlJob]{
-		OutputState: i.ToWorkflowTemplateJobSparkSqlJobPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplateJobSparkSqlJobOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateJobSparkSqlJobOutput) ElementType() reflect.Type {
@@ -20545,12 +18204,6 @@ func (o WorkflowTemplateJobSparkSqlJobOutput) ToWorkflowTemplateJobSparkSqlJobPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobSparkSqlJob) *WorkflowTemplateJobSparkSqlJob {
 		return &v
 	}).(WorkflowTemplateJobSparkSqlJobPtrOutput)
-}
-
-func (o WorkflowTemplateJobSparkSqlJobOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobSparkSqlJob] {
-	return pulumix.Output[WorkflowTemplateJobSparkSqlJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // HCFS URIs of jar files to be added to the Spark CLASSPATH.
@@ -20597,12 +18250,6 @@ func (o WorkflowTemplateJobSparkSqlJobPtrOutput) ToWorkflowTemplateJobSparkSqlJo
 
 func (o WorkflowTemplateJobSparkSqlJobPtrOutput) ToWorkflowTemplateJobSparkSqlJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkSqlJobPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplateJobSparkSqlJobPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobSparkSqlJob] {
-	return pulumix.Output[*WorkflowTemplateJobSparkSqlJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplateJobSparkSqlJobPtrOutput) Elem() WorkflowTemplateJobSparkSqlJobOutput {
@@ -20708,12 +18355,6 @@ func (i WorkflowTemplateJobSparkSqlJobLoggingConfigArgs) ToWorkflowTemplateJobSp
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkSqlJobLoggingConfigOutput)
 }
 
-func (i WorkflowTemplateJobSparkSqlJobLoggingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobSparkSqlJobLoggingConfig] {
-	return pulumix.Output[WorkflowTemplateJobSparkSqlJobLoggingConfig]{
-		OutputState: i.ToWorkflowTemplateJobSparkSqlJobLoggingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplateJobSparkSqlJobLoggingConfigArgs) ToWorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput() WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput {
 	return i.ToWorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutputWithContext(context.Background())
 }
@@ -20755,12 +18396,6 @@ func (i *workflowTemplateJobSparkSqlJobLoggingConfigPtrType) ToWorkflowTemplateJ
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput)
 }
 
-func (i *workflowTemplateJobSparkSqlJobLoggingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobSparkSqlJobLoggingConfig] {
-	return pulumix.Output[*WorkflowTemplateJobSparkSqlJobLoggingConfig]{
-		OutputState: i.ToWorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplateJobSparkSqlJobLoggingConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateJobSparkSqlJobLoggingConfigOutput) ElementType() reflect.Type {
@@ -20785,12 +18420,6 @@ func (o WorkflowTemplateJobSparkSqlJobLoggingConfigOutput) ToWorkflowTemplateJob
 	}).(WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput)
 }
 
-func (o WorkflowTemplateJobSparkSqlJobLoggingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobSparkSqlJobLoggingConfig] {
-	return pulumix.Output[WorkflowTemplateJobSparkSqlJobLoggingConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
 func (o WorkflowTemplateJobSparkSqlJobLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobSparkSqlJobLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
@@ -20808,12 +18437,6 @@ func (o WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput) ToWorkflowTemplate
 
 func (o WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput) ToWorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobSparkSqlJobLoggingConfig] {
-	return pulumix.Output[*WorkflowTemplateJobSparkSqlJobLoggingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput) Elem() WorkflowTemplateJobSparkSqlJobLoggingConfigOutput {
@@ -20869,12 +18492,6 @@ func (i WorkflowTemplateJobSparkSqlJobQueryListArgs) ToWorkflowTemplateJobSparkS
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkSqlJobQueryListOutput)
 }
 
-func (i WorkflowTemplateJobSparkSqlJobQueryListArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobSparkSqlJobQueryList] {
-	return pulumix.Output[WorkflowTemplateJobSparkSqlJobQueryList]{
-		OutputState: i.ToWorkflowTemplateJobSparkSqlJobQueryListOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplateJobSparkSqlJobQueryListArgs) ToWorkflowTemplateJobSparkSqlJobQueryListPtrOutput() WorkflowTemplateJobSparkSqlJobQueryListPtrOutput {
 	return i.ToWorkflowTemplateJobSparkSqlJobQueryListPtrOutputWithContext(context.Background())
 }
@@ -20916,12 +18533,6 @@ func (i *workflowTemplateJobSparkSqlJobQueryListPtrType) ToWorkflowTemplateJobSp
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkSqlJobQueryListPtrOutput)
 }
 
-func (i *workflowTemplateJobSparkSqlJobQueryListPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobSparkSqlJobQueryList] {
-	return pulumix.Output[*WorkflowTemplateJobSparkSqlJobQueryList]{
-		OutputState: i.ToWorkflowTemplateJobSparkSqlJobQueryListPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplateJobSparkSqlJobQueryListOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateJobSparkSqlJobQueryListOutput) ElementType() reflect.Type {
@@ -20946,12 +18557,6 @@ func (o WorkflowTemplateJobSparkSqlJobQueryListOutput) ToWorkflowTemplateJobSpar
 	}).(WorkflowTemplateJobSparkSqlJobQueryListPtrOutput)
 }
 
-func (o WorkflowTemplateJobSparkSqlJobQueryListOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateJobSparkSqlJobQueryList] {
-	return pulumix.Output[WorkflowTemplateJobSparkSqlJobQueryList]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
 func (o WorkflowTemplateJobSparkSqlJobQueryListOutput) Queries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobSparkSqlJobQueryList) []string { return v.Queries }).(pulumi.StringArrayOutput)
@@ -20969,12 +18574,6 @@ func (o WorkflowTemplateJobSparkSqlJobQueryListPtrOutput) ToWorkflowTemplateJobS
 
 func (o WorkflowTemplateJobSparkSqlJobQueryListPtrOutput) ToWorkflowTemplateJobSparkSqlJobQueryListPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkSqlJobQueryListPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplateJobSparkSqlJobQueryListPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateJobSparkSqlJobQueryList] {
-	return pulumix.Output[*WorkflowTemplateJobSparkSqlJobQueryList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplateJobSparkSqlJobQueryListPtrOutput) Elem() WorkflowTemplateJobSparkSqlJobQueryListOutput {
@@ -21042,12 +18641,6 @@ func (i WorkflowTemplateParameterArgs) ToWorkflowTemplateParameterOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateParameterOutput)
 }
 
-func (i WorkflowTemplateParameterArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateParameter] {
-	return pulumix.Output[WorkflowTemplateParameter]{
-		OutputState: i.ToWorkflowTemplateParameterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkflowTemplateParameterArrayInput is an input type that accepts WorkflowTemplateParameterArray and WorkflowTemplateParameterArrayOutput values.
 // You can construct a concrete instance of `WorkflowTemplateParameterArrayInput` via:
 //
@@ -21073,12 +18666,6 @@ func (i WorkflowTemplateParameterArray) ToWorkflowTemplateParameterArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateParameterArrayOutput)
 }
 
-func (i WorkflowTemplateParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]WorkflowTemplateParameter] {
-	return pulumix.Output[[]WorkflowTemplateParameter]{
-		OutputState: i.ToWorkflowTemplateParameterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplateParameterOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateParameterOutput) ElementType() reflect.Type {
@@ -21091,12 +18678,6 @@ func (o WorkflowTemplateParameterOutput) ToWorkflowTemplateParameterOutput() Wor
 
 func (o WorkflowTemplateParameterOutput) ToWorkflowTemplateParameterOutputWithContext(ctx context.Context) WorkflowTemplateParameterOutput {
 	return o
-}
-
-func (o WorkflowTemplateParameterOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateParameter] {
-	return pulumix.Output[WorkflowTemplateParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Brief description of the parameter. Must not exceed 1024 characters.
@@ -21131,12 +18712,6 @@ func (o WorkflowTemplateParameterArrayOutput) ToWorkflowTemplateParameterArrayOu
 
 func (o WorkflowTemplateParameterArrayOutput) ToWorkflowTemplateParameterArrayOutputWithContext(ctx context.Context) WorkflowTemplateParameterArrayOutput {
 	return o
-}
-
-func (o WorkflowTemplateParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkflowTemplateParameter] {
-	return pulumix.Output[[]WorkflowTemplateParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplateParameterArrayOutput) Index(i pulumi.IntInput) WorkflowTemplateParameterOutput {
@@ -21182,12 +18757,6 @@ func (i WorkflowTemplateParameterValidationArgs) ToWorkflowTemplateParameterVali
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateParameterValidationOutput)
 }
 
-func (i WorkflowTemplateParameterValidationArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateParameterValidation] {
-	return pulumix.Output[WorkflowTemplateParameterValidation]{
-		OutputState: i.ToWorkflowTemplateParameterValidationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplateParameterValidationArgs) ToWorkflowTemplateParameterValidationPtrOutput() WorkflowTemplateParameterValidationPtrOutput {
 	return i.ToWorkflowTemplateParameterValidationPtrOutputWithContext(context.Background())
 }
@@ -21229,12 +18798,6 @@ func (i *workflowTemplateParameterValidationPtrType) ToWorkflowTemplateParameter
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateParameterValidationPtrOutput)
 }
 
-func (i *workflowTemplateParameterValidationPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateParameterValidation] {
-	return pulumix.Output[*WorkflowTemplateParameterValidation]{
-		OutputState: i.ToWorkflowTemplateParameterValidationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplateParameterValidationOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateParameterValidationOutput) ElementType() reflect.Type {
@@ -21257,12 +18820,6 @@ func (o WorkflowTemplateParameterValidationOutput) ToWorkflowTemplateParameterVa
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateParameterValidation) *WorkflowTemplateParameterValidation {
 		return &v
 	}).(WorkflowTemplateParameterValidationPtrOutput)
-}
-
-func (o WorkflowTemplateParameterValidationOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateParameterValidation] {
-	return pulumix.Output[WorkflowTemplateParameterValidation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Validation based on regular expressions.
@@ -21289,12 +18846,6 @@ func (o WorkflowTemplateParameterValidationPtrOutput) ToWorkflowTemplateParamete
 
 func (o WorkflowTemplateParameterValidationPtrOutput) ToWorkflowTemplateParameterValidationPtrOutputWithContext(ctx context.Context) WorkflowTemplateParameterValidationPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplateParameterValidationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateParameterValidation] {
-	return pulumix.Output[*WorkflowTemplateParameterValidation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplateParameterValidationPtrOutput) Elem() WorkflowTemplateParameterValidationOutput {
@@ -21360,12 +18911,6 @@ func (i WorkflowTemplateParameterValidationRegexArgs) ToWorkflowTemplateParamete
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateParameterValidationRegexOutput)
 }
 
-func (i WorkflowTemplateParameterValidationRegexArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateParameterValidationRegex] {
-	return pulumix.Output[WorkflowTemplateParameterValidationRegex]{
-		OutputState: i.ToWorkflowTemplateParameterValidationRegexOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplateParameterValidationRegexArgs) ToWorkflowTemplateParameterValidationRegexPtrOutput() WorkflowTemplateParameterValidationRegexPtrOutput {
 	return i.ToWorkflowTemplateParameterValidationRegexPtrOutputWithContext(context.Background())
 }
@@ -21407,12 +18952,6 @@ func (i *workflowTemplateParameterValidationRegexPtrType) ToWorkflowTemplatePara
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateParameterValidationRegexPtrOutput)
 }
 
-func (i *workflowTemplateParameterValidationRegexPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateParameterValidationRegex] {
-	return pulumix.Output[*WorkflowTemplateParameterValidationRegex]{
-		OutputState: i.ToWorkflowTemplateParameterValidationRegexPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplateParameterValidationRegexOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateParameterValidationRegexOutput) ElementType() reflect.Type {
@@ -21437,12 +18976,6 @@ func (o WorkflowTemplateParameterValidationRegexOutput) ToWorkflowTemplateParame
 	}).(WorkflowTemplateParameterValidationRegexPtrOutput)
 }
 
-func (o WorkflowTemplateParameterValidationRegexOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateParameterValidationRegex] {
-	return pulumix.Output[WorkflowTemplateParameterValidationRegex]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
 func (o WorkflowTemplateParameterValidationRegexOutput) Regexes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowTemplateParameterValidationRegex) []string { return v.Regexes }).(pulumi.StringArrayOutput)
@@ -21460,12 +18993,6 @@ func (o WorkflowTemplateParameterValidationRegexPtrOutput) ToWorkflowTemplatePar
 
 func (o WorkflowTemplateParameterValidationRegexPtrOutput) ToWorkflowTemplateParameterValidationRegexPtrOutputWithContext(ctx context.Context) WorkflowTemplateParameterValidationRegexPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplateParameterValidationRegexPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateParameterValidationRegex] {
-	return pulumix.Output[*WorkflowTemplateParameterValidationRegex]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplateParameterValidationRegexPtrOutput) Elem() WorkflowTemplateParameterValidationRegexOutput {
@@ -21521,12 +19048,6 @@ func (i WorkflowTemplateParameterValidationValuesArgs) ToWorkflowTemplateParamet
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateParameterValidationValuesOutput)
 }
 
-func (i WorkflowTemplateParameterValidationValuesArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateParameterValidationValues] {
-	return pulumix.Output[WorkflowTemplateParameterValidationValues]{
-		OutputState: i.ToWorkflowTemplateParameterValidationValuesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplateParameterValidationValuesArgs) ToWorkflowTemplateParameterValidationValuesPtrOutput() WorkflowTemplateParameterValidationValuesPtrOutput {
 	return i.ToWorkflowTemplateParameterValidationValuesPtrOutputWithContext(context.Background())
 }
@@ -21568,12 +19089,6 @@ func (i *workflowTemplateParameterValidationValuesPtrType) ToWorkflowTemplatePar
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateParameterValidationValuesPtrOutput)
 }
 
-func (i *workflowTemplateParameterValidationValuesPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateParameterValidationValues] {
-	return pulumix.Output[*WorkflowTemplateParameterValidationValues]{
-		OutputState: i.ToWorkflowTemplateParameterValidationValuesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplateParameterValidationValuesOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateParameterValidationValuesOutput) ElementType() reflect.Type {
@@ -21598,12 +19113,6 @@ func (o WorkflowTemplateParameterValidationValuesOutput) ToWorkflowTemplateParam
 	}).(WorkflowTemplateParameterValidationValuesPtrOutput)
 }
 
-func (o WorkflowTemplateParameterValidationValuesOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplateParameterValidationValues] {
-	return pulumix.Output[WorkflowTemplateParameterValidationValues]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Required. List of allowed values for the parameter.
 func (o WorkflowTemplateParameterValidationValuesOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowTemplateParameterValidationValues) []string { return v.Values }).(pulumi.StringArrayOutput)
@@ -21621,12 +19130,6 @@ func (o WorkflowTemplateParameterValidationValuesPtrOutput) ToWorkflowTemplatePa
 
 func (o WorkflowTemplateParameterValidationValuesPtrOutput) ToWorkflowTemplateParameterValidationValuesPtrOutputWithContext(ctx context.Context) WorkflowTemplateParameterValidationValuesPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplateParameterValidationValuesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplateParameterValidationValues] {
-	return pulumix.Output[*WorkflowTemplateParameterValidationValues]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplateParameterValidationValuesPtrOutput) Elem() WorkflowTemplateParameterValidationValuesOutput {
@@ -21686,12 +19189,6 @@ func (i WorkflowTemplatePlacementArgs) ToWorkflowTemplatePlacementOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementOutput)
 }
 
-func (i WorkflowTemplatePlacementArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacement] {
-	return pulumix.Output[WorkflowTemplatePlacement]{
-		OutputState: i.ToWorkflowTemplatePlacementOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplatePlacementArgs) ToWorkflowTemplatePlacementPtrOutput() WorkflowTemplatePlacementPtrOutput {
 	return i.ToWorkflowTemplatePlacementPtrOutputWithContext(context.Background())
 }
@@ -21733,12 +19230,6 @@ func (i *workflowTemplatePlacementPtrType) ToWorkflowTemplatePlacementPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementPtrOutput)
 }
 
-func (i *workflowTemplatePlacementPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacement] {
-	return pulumix.Output[*WorkflowTemplatePlacement]{
-		OutputState: i.ToWorkflowTemplatePlacementPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementOutput) ElementType() reflect.Type {
@@ -21763,12 +19254,6 @@ func (o WorkflowTemplatePlacementOutput) ToWorkflowTemplatePlacementPtrOutputWit
 	}).(WorkflowTemplatePlacementPtrOutput)
 }
 
-func (o WorkflowTemplatePlacementOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacement] {
-	return pulumix.Output[WorkflowTemplatePlacement]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
 func (o WorkflowTemplatePlacementOutput) ClusterSelector() WorkflowTemplatePlacementClusterSelectorPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacement) *WorkflowTemplatePlacementClusterSelector { return v.ClusterSelector }).(WorkflowTemplatePlacementClusterSelectorPtrOutput)
@@ -21791,12 +19276,6 @@ func (o WorkflowTemplatePlacementPtrOutput) ToWorkflowTemplatePlacementPtrOutput
 
 func (o WorkflowTemplatePlacementPtrOutput) ToWorkflowTemplatePlacementPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacement] {
-	return pulumix.Output[*WorkflowTemplatePlacement]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementPtrOutput) Elem() WorkflowTemplatePlacementOutput {
@@ -21866,12 +19345,6 @@ func (i WorkflowTemplatePlacementClusterSelectorArgs) ToWorkflowTemplatePlacemen
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementClusterSelectorOutput)
 }
 
-func (i WorkflowTemplatePlacementClusterSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementClusterSelector] {
-	return pulumix.Output[WorkflowTemplatePlacementClusterSelector]{
-		OutputState: i.ToWorkflowTemplatePlacementClusterSelectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplatePlacementClusterSelectorArgs) ToWorkflowTemplatePlacementClusterSelectorPtrOutput() WorkflowTemplatePlacementClusterSelectorPtrOutput {
 	return i.ToWorkflowTemplatePlacementClusterSelectorPtrOutputWithContext(context.Background())
 }
@@ -21913,12 +19386,6 @@ func (i *workflowTemplatePlacementClusterSelectorPtrType) ToWorkflowTemplatePlac
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementClusterSelectorPtrOutput)
 }
 
-func (i *workflowTemplatePlacementClusterSelectorPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementClusterSelector] {
-	return pulumix.Output[*WorkflowTemplatePlacementClusterSelector]{
-		OutputState: i.ToWorkflowTemplatePlacementClusterSelectorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementClusterSelectorOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementClusterSelectorOutput) ElementType() reflect.Type {
@@ -21943,12 +19410,6 @@ func (o WorkflowTemplatePlacementClusterSelectorOutput) ToWorkflowTemplatePlacem
 	}).(WorkflowTemplatePlacementClusterSelectorPtrOutput)
 }
 
-func (o WorkflowTemplatePlacementClusterSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementClusterSelector] {
-	return pulumix.Output[WorkflowTemplatePlacementClusterSelector]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Required. The cluster labels. Cluster must have all labels to match.
 func (o WorkflowTemplatePlacementClusterSelectorOutput) ClusterLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementClusterSelector) map[string]string { return v.ClusterLabels }).(pulumi.StringMapOutput)
@@ -21971,12 +19432,6 @@ func (o WorkflowTemplatePlacementClusterSelectorPtrOutput) ToWorkflowTemplatePla
 
 func (o WorkflowTemplatePlacementClusterSelectorPtrOutput) ToWorkflowTemplatePlacementClusterSelectorPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementClusterSelectorPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementClusterSelectorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementClusterSelector] {
-	return pulumix.Output[*WorkflowTemplatePlacementClusterSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementClusterSelectorPtrOutput) Elem() WorkflowTemplatePlacementClusterSelectorOutput {
@@ -22050,12 +19505,6 @@ func (i WorkflowTemplatePlacementManagedClusterArgs) ToWorkflowTemplatePlacement
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedCluster] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedCluster]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplatePlacementManagedClusterArgs) ToWorkflowTemplatePlacementManagedClusterPtrOutput() WorkflowTemplatePlacementManagedClusterPtrOutput {
 	return i.ToWorkflowTemplatePlacementManagedClusterPtrOutputWithContext(context.Background())
 }
@@ -22097,12 +19546,6 @@ func (i *workflowTemplatePlacementManagedClusterPtrType) ToWorkflowTemplatePlace
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterPtrOutput)
 }
 
-func (i *workflowTemplatePlacementManagedClusterPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedCluster] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedCluster]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterOutput) ElementType() reflect.Type {
@@ -22125,12 +19568,6 @@ func (o WorkflowTemplatePlacementManagedClusterOutput) ToWorkflowTemplatePlaceme
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedCluster) *WorkflowTemplatePlacementManagedCluster {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterPtrOutput)
-}
-
-func (o WorkflowTemplatePlacementManagedClusterOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedCluster] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix. The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
@@ -22162,12 +19599,6 @@ func (o WorkflowTemplatePlacementManagedClusterPtrOutput) ToWorkflowTemplatePlac
 
 func (o WorkflowTemplatePlacementManagedClusterPtrOutput) ToWorkflowTemplatePlacementManagedClusterPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedCluster] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterOutput {
@@ -22303,12 +19734,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigArgs) ToWorkflowTemplatePla
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplatePlacementManagedClusterConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigPtrOutput {
 	return i.ToWorkflowTemplatePlacementManagedClusterConfigPtrOutputWithContext(context.Background())
 }
@@ -22350,12 +19775,6 @@ func (i *workflowTemplatePlacementManagedClusterConfigPtrType) ToWorkflowTemplat
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigPtrOutput)
 }
 
-func (i *workflowTemplatePlacementManagedClusterConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigOutput) ElementType() reflect.Type {
@@ -22378,12 +19797,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigOutput) ToWorkflowTemplateP
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigPtrOutput)
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
@@ -22501,12 +19914,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) ToWorkflowTempla
 
 func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigOutput {
@@ -22704,12 +20111,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs) ToWo
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput {
 	return i.ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutputWithContext(context.Background())
 }
@@ -22751,12 +20152,6 @@ func (i *workflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrType) 
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput)
 }
 
-func (i *workflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput) ElementType() reflect.Type {
@@ -22781,12 +20176,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput) To
 	}).(WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput)
 }
 
-func (o WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
 func (o WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig) *string { return v.Policy }).(pulumi.StringPtrOutput)
@@ -22804,12 +20193,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput)
 
 func (o WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput {
@@ -22865,12 +20248,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs) ToWor
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput {
 	return i.ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutputWithContext(context.Background())
 }
@@ -22912,12 +20289,6 @@ func (i *workflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrType) T
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput)
 }
 
-func (i *workflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput) ElementType() reflect.Type {
@@ -22942,12 +20313,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput) ToW
 	}).(WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput)
 }
 
-func (o WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
 func (o WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput) GcePdKmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig) *string {
@@ -22967,12 +20332,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput) 
 
 func (o WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput {
@@ -23032,12 +20391,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs) ToWorkf
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigEndpointConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigEndpointConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput {
 	return i.ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutputWithContext(context.Background())
 }
@@ -23079,12 +20432,6 @@ func (i *workflowTemplatePlacementManagedClusterConfigEndpointConfigPtrType) ToW
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput)
 }
 
-func (i *workflowTemplatePlacementManagedClusterConfigEndpointConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigEndpointConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigEndpointConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput) ElementType() reflect.Type {
@@ -23107,12 +20454,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput) ToWor
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigEndpointConfig) *WorkflowTemplatePlacementManagedClusterConfigEndpointConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput)
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigEndpointConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigEndpointConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
@@ -23141,12 +20482,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput) To
 
 func (o WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigEndpointConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigEndpointConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput {
@@ -23256,12 +20591,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs) ToWor
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput {
 	return i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutputWithContext(context.Background())
 }
@@ -23303,12 +20632,6 @@ func (i *workflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrType) T
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput)
 }
 
-func (i *workflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) ElementType() reflect.Type {
@@ -23331,12 +20654,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) ToW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput)
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internalIpOnly` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
@@ -23423,12 +20740,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) 
 
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput {
@@ -23594,12 +20905,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAf
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput {
 	return i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutputWithContext(context.Background())
 }
@@ -23641,12 +20946,6 @@ func (i *workflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupA
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput)
 }
 
-func (i *workflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput) ElementType() reflect.Type {
@@ -23671,12 +20970,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAf
 	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput)
 }
 
-func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1`*`node-group-1`
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput) NodeGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity) string {
@@ -23696,12 +20989,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAf
 
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput {
@@ -23765,12 +21052,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservation
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput {
 	return i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutputWithContext(context.Background())
 }
@@ -23812,12 +21093,6 @@ func (i *workflowTemplatePlacementManagedClusterConfigGceClusterConfigReservatio
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput)
 }
 
-func (i *workflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput) ElementType() reflect.Type {
@@ -23840,12 +21115,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservation
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput)
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
@@ -23881,12 +21150,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservation
 
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput {
@@ -23970,12 +21233,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedIns
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
 	return i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutputWithContext(context.Background())
 }
@@ -24017,12 +21274,6 @@ func (i *workflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedIn
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput)
 }
 
-func (i *workflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput) ElementType() reflect.Type {
@@ -24045,12 +21296,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedIns
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput)
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
@@ -24086,12 +21331,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedIns
 
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput {
@@ -24167,12 +21406,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs) ToWor
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput {
 	return i.ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutputWithContext(context.Background())
 }
@@ -24214,12 +21447,6 @@ func (i *workflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrType) T
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput)
 }
 
-func (i *workflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput) ElementType() reflect.Type {
@@ -24244,12 +21471,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput) ToW
 	}).(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput)
 }
 
-func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A target for the deployment.
 func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput) NamespacedGkeDeploymentTarget() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget {
@@ -24269,12 +21490,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput) 
 
 func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput {
@@ -24334,12 +21549,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedG
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput {
 	return i.ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutputWithContext(context.Background())
 }
@@ -24381,12 +21590,6 @@ func (i *workflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespaced
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput)
 }
 
-func (i *workflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput) ElementType() reflect.Type {
@@ -24409,12 +21612,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedG
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget) *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput)
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A namespace within the GKE cluster to deploy into.
@@ -24443,12 +21640,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedG
 
 func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput {
@@ -24518,12 +21709,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigInitializationAction] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigInitializationAction]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigInitializationActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigInitializationActionArray and WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput values.
 // You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayInput` via:
 //
@@ -24549,12 +21734,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigInitializationActionArray) 
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigInitializationActionArray) ToOutput(ctx context.Context) pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigInitializationAction] {
-	return pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigInitializationAction]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput) ElementType() reflect.Type {
@@ -24567,12 +21746,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput)
 
 func (o WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput) ToWorkflowTemplatePlacementManagedClusterConfigInitializationActionOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigInitializationAction] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigInitializationAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. Cloud Storage URI of executable file.
@@ -24601,12 +21774,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOu
 
 func (o WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigInitializationAction] {
-	return pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigInitializationAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput) Index(i pulumi.IntInput) WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput {
@@ -24660,12 +21827,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs) ToWork
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput {
 	return i.ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutputWithContext(context.Background())
 }
@@ -24707,12 +21868,6 @@ func (i *workflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrType) To
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput)
 }
 
-func (i *workflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput) ElementType() reflect.Type {
@@ -24735,12 +21890,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput) ToWo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig) *WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput)
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when cluster will be auto-deleted (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
@@ -24775,12 +21924,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput) T
 
 func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput {
@@ -24902,12 +22045,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs) ToWorkflo
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigMasterConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigMasterConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput {
 	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutputWithContext(context.Background())
 }
@@ -24949,12 +22086,6 @@ func (i *workflowTemplatePlacementManagedClusterConfigMasterConfigPtrType) ToWor
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput)
 }
 
-func (i *workflowTemplatePlacementManagedClusterConfigMasterConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigMasterConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigMasterConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) ElementType() reflect.Type {
@@ -24977,12 +22108,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) ToWorkf
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput)
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigMasterConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigMasterConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Compute Engine accelerator configuration for these instances.
@@ -25053,12 +22178,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) ToWo
 
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigMasterConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigMasterConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput {
@@ -25208,12 +22327,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArray and WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput values.
 // You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayInput` via:
 //
@@ -25239,12 +22352,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArra
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArray) ToOutput(ctx context.Context) pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator] {
-	return pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput) ElementType() reflect.Type {
@@ -25257,12 +22364,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutp
 
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of the accelerator cards of this type exposed to this instance.
@@ -25291,12 +22392,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArra
 
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator] {
-	return pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput) Index(i pulumi.IntInput) WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput {
@@ -25346,12 +22441,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs)
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput {
 	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutputWithContext(context.Background())
 }
@@ -25393,12 +22482,6 @@ func (i *workflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrT
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput)
 }
 
-func (i *workflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput) ElementType() reflect.Type {
@@ -25421,12 +22504,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) *WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput)
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Size in GB of the boot disk (default is 500GB).
@@ -25462,12 +22539,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOu
 
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput {
@@ -25543,12 +22614,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupCon
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArray and WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput values.
 // You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayInput` via:
 //
@@ -25574,12 +22639,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupCon
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig] {
-	return pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput) ElementType() reflect.Type {
@@ -25592,12 +22651,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupCon
 
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput) InstanceGroupManagerName() pulumi.StringPtrOutput {
@@ -25624,12 +22677,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupCon
 
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig] {
-	return pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput) Index(i pulumi.IntInput) WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput {
@@ -25669,12 +22716,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs) ToWork
 
 func (i WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput)
-}
-
-func (i WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput {
@@ -25718,12 +22759,6 @@ func (i *workflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrType) To
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput)
 }
 
-func (i *workflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput) ElementType() reflect.Type {
@@ -25748,12 +22783,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput) ToWo
 	}).(WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput)
 }
 
-func (o WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Required. Resource name of an existing Dataproc Metastore service. Example: * `projects/`
 func (o WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput) DataprocMetastoreService() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig) string {
@@ -25773,12 +22802,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput) T
 
 func (o WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput {
@@ -25870,12 +22893,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs) 
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput {
 	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutputWithContext(context.Background())
 }
@@ -25917,12 +22934,6 @@ func (i *workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrTy
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput)
 }
 
-func (i *workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) ElementType() reflect.Type {
@@ -25945,12 +22956,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput)
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Compute Engine accelerator configuration for these instances.
@@ -26031,12 +23036,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOut
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput {
@@ -26186,12 +23185,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccele
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArray and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput values.
 // You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayInput` via:
 //
@@ -26217,12 +23210,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccele
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArray) ToOutput(ctx context.Context) pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator] {
-	return pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput) ElementType() reflect.Type {
@@ -26235,12 +23222,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccele
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of the accelerator cards of this type exposed to this instance.
@@ -26269,12 +23250,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccele
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator] {
-	return pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput) Index(i pulumi.IntInput) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput {
@@ -26324,12 +23299,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskCo
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput {
 	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutputWithContext(context.Background())
 }
@@ -26371,12 +23340,6 @@ func (i *workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskC
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput)
 }
 
-func (i *workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput) ElementType() reflect.Type {
@@ -26399,12 +23362,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskCo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput)
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Size in GB of the boot disk (default is 500GB).
@@ -26440,12 +23397,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskCo
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput {
@@ -26521,12 +23472,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManage
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArray and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput values.
 // You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayInput` via:
 //
@@ -26552,12 +23497,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManage
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig] {
-	return pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput) ElementType() reflect.Type {
@@ -26570,12 +23509,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManage
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput) InstanceGroupManagerName() pulumi.StringPtrOutput {
@@ -26602,12 +23535,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManage
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig] {
-	return pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput) Index(i pulumi.IntInput) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput {
@@ -26647,12 +23574,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs) ToWorkf
 
 func (i WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput)
-}
-
-func (i WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSecurityConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSecurityConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput {
@@ -26696,12 +23617,6 @@ func (i *workflowTemplatePlacementManagedClusterConfigSecurityConfigPtrType) ToW
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput)
 }
 
-func (i *workflowTemplatePlacementManagedClusterConfigSecurityConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigSecurityConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigSecurityConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput) ElementType() reflect.Type {
@@ -26726,12 +23641,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput) ToWor
 	}).(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput)
 }
 
-func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSecurityConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSecurityConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Kerberos related configuration.
 func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput) KerberosConfig() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecurityConfig) *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig {
@@ -26751,12 +23660,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput) To
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigSecurityConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigSecurityConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput {
@@ -26868,12 +23771,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfi
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput {
 	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutputWithContext(context.Background())
 }
@@ -26915,12 +23812,6 @@ func (i *workflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConf
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput)
 }
 
-func (i *workflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput) ElementType() reflect.Type {
@@ -26943,12 +23834,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput)
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
@@ -27068,12 +23953,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfi
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput {
@@ -27305,12 +24184,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs) ToWorkf
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput {
 	return i.ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutputWithContext(context.Background())
 }
@@ -27352,12 +24225,6 @@ func (i *workflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrType) ToW
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput)
 }
 
-func (i *workflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput) ElementType() reflect.Type {
@@ -27380,12 +24247,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput) ToWor
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig) *WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput)
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the ["preview" version](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
@@ -27433,12 +24294,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput) To
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput {
@@ -27564,12 +24419,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs) ToWorkflo
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigWorkerConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigWorkerConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput {
 	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutputWithContext(context.Background())
 }
@@ -27611,12 +24460,6 @@ func (i *workflowTemplatePlacementManagedClusterConfigWorkerConfigPtrType) ToWor
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput)
 }
 
-func (i *workflowTemplatePlacementManagedClusterConfigWorkerConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigWorkerConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigWorkerConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) ElementType() reflect.Type {
@@ -27639,12 +24482,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) ToWorkf
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput)
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigWorkerConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigWorkerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Compute Engine accelerator configuration for these instances.
@@ -27715,12 +24552,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) ToWo
 
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigWorkerConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigWorkerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput {
@@ -27870,12 +24701,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArray and WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput values.
 // You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayInput` via:
 //
@@ -27901,12 +24726,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArra
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArray) ToOutput(ctx context.Context) pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator] {
-	return pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput) ElementType() reflect.Type {
@@ -27919,12 +24738,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutp
 
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of the accelerator cards of this type exposed to this instance.
@@ -27953,12 +24766,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArra
 
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator] {
-	return pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput) Index(i pulumi.IntInput) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput {
@@ -28008,12 +24815,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs)
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput {
 	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutputWithContext(context.Background())
 }
@@ -28055,12 +24856,6 @@ func (i *workflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrT
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput)
 }
 
-func (i *workflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput) ElementType() reflect.Type {
@@ -28083,12 +24878,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput)
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Size in GB of the boot disk (default is 500GB).
@@ -28124,12 +24913,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOu
 
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig] {
-	return pulumix.Output[*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput {
@@ -28205,12 +24988,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupCon
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArray and WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput values.
 // You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayInput` via:
 //
@@ -28236,12 +25013,6 @@ func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupCon
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput)
 }
 
-func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig] {
-	return pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig]{
-		OutputState: i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput) ElementType() reflect.Type {
@@ -28254,12 +25025,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupCon
 
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig] {
-	return pulumix.Output[WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput) InstanceGroupManagerName() pulumi.StringPtrOutput {
@@ -28286,12 +25051,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupCon
 
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput {
 	return o
-}
-
-func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig] {
-	return pulumix.Output[[]WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput) Index(i pulumi.IntInput) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput {

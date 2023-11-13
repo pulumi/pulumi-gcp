@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Identity-Aware Proxy TunnelInstance. Each of these resources serves a different use case:
@@ -472,12 +471,6 @@ func (i *TunnelInstanceIAMPolicy) ToTunnelInstanceIAMPolicyOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIAMPolicyOutput)
 }
 
-func (i *TunnelInstanceIAMPolicy) ToOutput(ctx context.Context) pulumix.Output[*TunnelInstanceIAMPolicy] {
-	return pulumix.Output[*TunnelInstanceIAMPolicy]{
-		OutputState: i.ToTunnelInstanceIAMPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TunnelInstanceIAMPolicyArrayInput is an input type that accepts TunnelInstanceIAMPolicyArray and TunnelInstanceIAMPolicyArrayOutput values.
 // You can construct a concrete instance of `TunnelInstanceIAMPolicyArrayInput` via:
 //
@@ -501,12 +494,6 @@ func (i TunnelInstanceIAMPolicyArray) ToTunnelInstanceIAMPolicyArrayOutput() Tun
 
 func (i TunnelInstanceIAMPolicyArray) ToTunnelInstanceIAMPolicyArrayOutputWithContext(ctx context.Context) TunnelInstanceIAMPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIAMPolicyArrayOutput)
-}
-
-func (i TunnelInstanceIAMPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*TunnelInstanceIAMPolicy] {
-	return pulumix.Output[[]*TunnelInstanceIAMPolicy]{
-		OutputState: i.ToTunnelInstanceIAMPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TunnelInstanceIAMPolicyMapInput is an input type that accepts TunnelInstanceIAMPolicyMap and TunnelInstanceIAMPolicyMapOutput values.
@@ -534,12 +521,6 @@ func (i TunnelInstanceIAMPolicyMap) ToTunnelInstanceIAMPolicyMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIAMPolicyMapOutput)
 }
 
-func (i TunnelInstanceIAMPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TunnelInstanceIAMPolicy] {
-	return pulumix.Output[map[string]*TunnelInstanceIAMPolicy]{
-		OutputState: i.ToTunnelInstanceIAMPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TunnelInstanceIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (TunnelInstanceIAMPolicyOutput) ElementType() reflect.Type {
@@ -552,12 +533,6 @@ func (o TunnelInstanceIAMPolicyOutput) ToTunnelInstanceIAMPolicyOutput() TunnelI
 
 func (o TunnelInstanceIAMPolicyOutput) ToTunnelInstanceIAMPolicyOutputWithContext(ctx context.Context) TunnelInstanceIAMPolicyOutput {
 	return o
-}
-
-func (o TunnelInstanceIAMPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*TunnelInstanceIAMPolicy] {
-	return pulumix.Output[*TunnelInstanceIAMPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -612,12 +587,6 @@ func (o TunnelInstanceIAMPolicyArrayOutput) ToTunnelInstanceIAMPolicyArrayOutput
 	return o
 }
 
-func (o TunnelInstanceIAMPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TunnelInstanceIAMPolicy] {
-	return pulumix.Output[[]*TunnelInstanceIAMPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TunnelInstanceIAMPolicyArrayOutput) Index(i pulumi.IntInput) TunnelInstanceIAMPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TunnelInstanceIAMPolicy {
 		return vs[0].([]*TunnelInstanceIAMPolicy)[vs[1].(int)]
@@ -636,12 +605,6 @@ func (o TunnelInstanceIAMPolicyMapOutput) ToTunnelInstanceIAMPolicyMapOutput() T
 
 func (o TunnelInstanceIAMPolicyMapOutput) ToTunnelInstanceIAMPolicyMapOutputWithContext(ctx context.Context) TunnelInstanceIAMPolicyMapOutput {
 	return o
-}
-
-func (o TunnelInstanceIAMPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TunnelInstanceIAMPolicy] {
-	return pulumix.Output[map[string]*TunnelInstanceIAMPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TunnelInstanceIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) TunnelInstanceIAMPolicyOutput {

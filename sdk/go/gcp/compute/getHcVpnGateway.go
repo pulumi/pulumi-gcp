@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a HA VPN Gateway within GCE from its name.
@@ -121,12 +120,6 @@ func (o GetHcVpnGatewayResultOutput) ToGetHcVpnGatewayResultOutput() GetHcVpnGat
 
 func (o GetHcVpnGatewayResultOutput) ToGetHcVpnGatewayResultOutputWithContext(ctx context.Context) GetHcVpnGatewayResultOutput {
 	return o
-}
-
-func (o GetHcVpnGatewayResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetHcVpnGatewayResult] {
-	return pulumix.Output[GetHcVpnGatewayResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetHcVpnGatewayResultOutput) Description() pulumi.StringOutput {
