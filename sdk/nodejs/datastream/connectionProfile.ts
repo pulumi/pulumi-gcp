@@ -125,7 +125,7 @@ import * as utilities from "../utilities";
  *     deletionProtection: true,
  * });
  * const db = new gcp.sql.Database("db", {instance: instance.name});
- * const pwd = new random.index.Random_password("pwd", {
+ * const pwd = new random.RandomPassword("pwd", {
  *     length: 16,
  *     special: false,
  * });
