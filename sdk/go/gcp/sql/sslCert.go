@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Google SQL SSL Cert on a Google SQL Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts).
@@ -242,12 +241,6 @@ func (i *SslCert) ToSslCertOutputWithContext(ctx context.Context) SslCertOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(SslCertOutput)
 }
 
-func (i *SslCert) ToOutput(ctx context.Context) pulumix.Output[*SslCert] {
-	return pulumix.Output[*SslCert]{
-		OutputState: i.ToSslCertOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SslCertArrayInput is an input type that accepts SslCertArray and SslCertArrayOutput values.
 // You can construct a concrete instance of `SslCertArrayInput` via:
 //
@@ -271,12 +264,6 @@ func (i SslCertArray) ToSslCertArrayOutput() SslCertArrayOutput {
 
 func (i SslCertArray) ToSslCertArrayOutputWithContext(ctx context.Context) SslCertArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SslCertArrayOutput)
-}
-
-func (i SslCertArray) ToOutput(ctx context.Context) pulumix.Output[[]*SslCert] {
-	return pulumix.Output[[]*SslCert]{
-		OutputState: i.ToSslCertArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SslCertMapInput is an input type that accepts SslCertMap and SslCertMapOutput values.
@@ -304,12 +291,6 @@ func (i SslCertMap) ToSslCertMapOutputWithContext(ctx context.Context) SslCertMa
 	return pulumi.ToOutputWithContext(ctx, i).(SslCertMapOutput)
 }
 
-func (i SslCertMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SslCert] {
-	return pulumix.Output[map[string]*SslCert]{
-		OutputState: i.ToSslCertMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SslCertOutput struct{ *pulumi.OutputState }
 
 func (SslCertOutput) ElementType() reflect.Type {
@@ -322,12 +303,6 @@ func (o SslCertOutput) ToSslCertOutput() SslCertOutput {
 
 func (o SslCertOutput) ToSslCertOutputWithContext(ctx context.Context) SslCertOutput {
 	return o
-}
-
-func (o SslCertOutput) ToOutput(ctx context.Context) pulumix.Output[*SslCert] {
-	return pulumix.Output[*SslCert]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The actual certificate data for this client certificate.
@@ -399,12 +374,6 @@ func (o SslCertArrayOutput) ToSslCertArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o SslCertArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SslCert] {
-	return pulumix.Output[[]*SslCert]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SslCertArrayOutput) Index(i pulumi.IntInput) SslCertOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SslCert {
 		return vs[0].([]*SslCert)[vs[1].(int)]
@@ -423,12 +392,6 @@ func (o SslCertMapOutput) ToSslCertMapOutput() SslCertMapOutput {
 
 func (o SslCertMapOutput) ToSslCertMapOutputWithContext(ctx context.Context) SslCertMapOutput {
 	return o
-}
-
-func (o SslCertMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SslCert] {
-	return pulumix.Output[map[string]*SslCert]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SslCertMapOutput) MapIndex(k pulumi.StringInput) SslCertOutput {

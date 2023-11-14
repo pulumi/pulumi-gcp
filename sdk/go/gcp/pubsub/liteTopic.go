@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A named resource to which messages are sent by publishers.
@@ -273,12 +272,6 @@ func (i *LiteTopic) ToLiteTopicOutputWithContext(ctx context.Context) LiteTopicO
 	return pulumi.ToOutputWithContext(ctx, i).(LiteTopicOutput)
 }
 
-func (i *LiteTopic) ToOutput(ctx context.Context) pulumix.Output[*LiteTopic] {
-	return pulumix.Output[*LiteTopic]{
-		OutputState: i.ToLiteTopicOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LiteTopicArrayInput is an input type that accepts LiteTopicArray and LiteTopicArrayOutput values.
 // You can construct a concrete instance of `LiteTopicArrayInput` via:
 //
@@ -302,12 +295,6 @@ func (i LiteTopicArray) ToLiteTopicArrayOutput() LiteTopicArrayOutput {
 
 func (i LiteTopicArray) ToLiteTopicArrayOutputWithContext(ctx context.Context) LiteTopicArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LiteTopicArrayOutput)
-}
-
-func (i LiteTopicArray) ToOutput(ctx context.Context) pulumix.Output[[]*LiteTopic] {
-	return pulumix.Output[[]*LiteTopic]{
-		OutputState: i.ToLiteTopicArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // LiteTopicMapInput is an input type that accepts LiteTopicMap and LiteTopicMapOutput values.
@@ -335,12 +322,6 @@ func (i LiteTopicMap) ToLiteTopicMapOutputWithContext(ctx context.Context) LiteT
 	return pulumi.ToOutputWithContext(ctx, i).(LiteTopicMapOutput)
 }
 
-func (i LiteTopicMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LiteTopic] {
-	return pulumix.Output[map[string]*LiteTopic]{
-		OutputState: i.ToLiteTopicMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LiteTopicOutput struct{ *pulumi.OutputState }
 
 func (LiteTopicOutput) ElementType() reflect.Type {
@@ -353,12 +334,6 @@ func (o LiteTopicOutput) ToLiteTopicOutput() LiteTopicOutput {
 
 func (o LiteTopicOutput) ToLiteTopicOutputWithContext(ctx context.Context) LiteTopicOutput {
 	return o
-}
-
-func (o LiteTopicOutput) ToOutput(ctx context.Context) pulumix.Output[*LiteTopic] {
-	return pulumix.Output[*LiteTopic]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the topic.
@@ -416,12 +391,6 @@ func (o LiteTopicArrayOutput) ToLiteTopicArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o LiteTopicArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LiteTopic] {
-	return pulumix.Output[[]*LiteTopic]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LiteTopicArrayOutput) Index(i pulumi.IntInput) LiteTopicOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LiteTopic {
 		return vs[0].([]*LiteTopic)[vs[1].(int)]
@@ -440,12 +409,6 @@ func (o LiteTopicMapOutput) ToLiteTopicMapOutput() LiteTopicMapOutput {
 
 func (o LiteTopicMapOutput) ToLiteTopicMapOutputWithContext(ctx context.Context) LiteTopicMapOutput {
 	return o
-}
-
-func (o LiteTopicMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LiteTopic] {
-	return pulumix.Output[map[string]*LiteTopic]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LiteTopicMapOutput) MapIndex(k pulumi.StringInput) LiteTopicOutput {

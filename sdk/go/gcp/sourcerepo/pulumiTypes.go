@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i RepositoryIamBindingConditionArgs) ToRepositoryIamBindingConditionOutput
 
 func (i RepositoryIamBindingConditionArgs) ToRepositoryIamBindingConditionOutputWithContext(ctx context.Context) RepositoryIamBindingConditionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamBindingConditionOutput)
-}
-
-func (i RepositoryIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryIamBindingCondition] {
-	return pulumix.Output[RepositoryIamBindingCondition]{
-		OutputState: i.ToRepositoryIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i RepositoryIamBindingConditionArgs) ToRepositoryIamBindingConditionPtrOutput() RepositoryIamBindingConditionPtrOutput {
@@ -96,12 +89,6 @@ func (i *repositoryIamBindingConditionPtrType) ToRepositoryIamBindingConditionPt
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamBindingConditionPtrOutput)
 }
 
-func (i *repositoryIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepositoryIamBindingCondition] {
-	return pulumix.Output[*RepositoryIamBindingCondition]{
-		OutputState: i.ToRepositoryIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (RepositoryIamBindingConditionOutput) ElementType() reflect.Type {
@@ -124,12 +111,6 @@ func (o RepositoryIamBindingConditionOutput) ToRepositoryIamBindingConditionPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryIamBindingCondition) *RepositoryIamBindingCondition {
 		return &v
 	}).(RepositoryIamBindingConditionPtrOutput)
-}
-
-func (o RepositoryIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryIamBindingCondition] {
-	return pulumix.Output[RepositoryIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -156,12 +137,6 @@ func (o RepositoryIamBindingConditionPtrOutput) ToRepositoryIamBindingConditionP
 
 func (o RepositoryIamBindingConditionPtrOutput) ToRepositoryIamBindingConditionPtrOutputWithContext(ctx context.Context) RepositoryIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o RepositoryIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryIamBindingCondition] {
-	return pulumix.Output[*RepositoryIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryIamBindingConditionPtrOutput) Elem() RepositoryIamBindingConditionOutput {
@@ -236,12 +211,6 @@ func (i RepositoryIamMemberConditionArgs) ToRepositoryIamMemberConditionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamMemberConditionOutput)
 }
 
-func (i RepositoryIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryIamMemberCondition] {
-	return pulumix.Output[RepositoryIamMemberCondition]{
-		OutputState: i.ToRepositoryIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RepositoryIamMemberConditionArgs) ToRepositoryIamMemberConditionPtrOutput() RepositoryIamMemberConditionPtrOutput {
 	return i.ToRepositoryIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -283,12 +252,6 @@ func (i *repositoryIamMemberConditionPtrType) ToRepositoryIamMemberConditionPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamMemberConditionPtrOutput)
 }
 
-func (i *repositoryIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepositoryIamMemberCondition] {
-	return pulumix.Output[*RepositoryIamMemberCondition]{
-		OutputState: i.ToRepositoryIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (RepositoryIamMemberConditionOutput) ElementType() reflect.Type {
@@ -311,12 +274,6 @@ func (o RepositoryIamMemberConditionOutput) ToRepositoryIamMemberConditionPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryIamMemberCondition) *RepositoryIamMemberCondition {
 		return &v
 	}).(RepositoryIamMemberConditionPtrOutput)
-}
-
-func (o RepositoryIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryIamMemberCondition] {
-	return pulumix.Output[RepositoryIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -343,12 +300,6 @@ func (o RepositoryIamMemberConditionPtrOutput) ToRepositoryIamMemberConditionPtr
 
 func (o RepositoryIamMemberConditionPtrOutput) ToRepositoryIamMemberConditionPtrOutputWithContext(ctx context.Context) RepositoryIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o RepositoryIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryIamMemberCondition] {
-	return pulumix.Output[*RepositoryIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryIamMemberConditionPtrOutput) Elem() RepositoryIamMemberConditionOutput {
@@ -441,12 +392,6 @@ func (i RepositoryPubsubConfigArgs) ToRepositoryPubsubConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryPubsubConfigOutput)
 }
 
-func (i RepositoryPubsubConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryPubsubConfig] {
-	return pulumix.Output[RepositoryPubsubConfig]{
-		OutputState: i.ToRepositoryPubsubConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RepositoryPubsubConfigArrayInput is an input type that accepts RepositoryPubsubConfigArray and RepositoryPubsubConfigArrayOutput values.
 // You can construct a concrete instance of `RepositoryPubsubConfigArrayInput` via:
 //
@@ -472,12 +417,6 @@ func (i RepositoryPubsubConfigArray) ToRepositoryPubsubConfigArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryPubsubConfigArrayOutput)
 }
 
-func (i RepositoryPubsubConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]RepositoryPubsubConfig] {
-	return pulumix.Output[[]RepositoryPubsubConfig]{
-		OutputState: i.ToRepositoryPubsubConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryPubsubConfigOutput struct{ *pulumi.OutputState }
 
 func (RepositoryPubsubConfigOutput) ElementType() reflect.Type {
@@ -490,12 +429,6 @@ func (o RepositoryPubsubConfigOutput) ToRepositoryPubsubConfigOutput() Repositor
 
 func (o RepositoryPubsubConfigOutput) ToRepositoryPubsubConfigOutputWithContext(ctx context.Context) RepositoryPubsubConfigOutput {
 	return o
-}
-
-func (o RepositoryPubsubConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryPubsubConfig] {
-	return pulumix.Output[RepositoryPubsubConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The format of the Cloud Pub/Sub messages.
@@ -531,12 +464,6 @@ func (o RepositoryPubsubConfigArrayOutput) ToRepositoryPubsubConfigArrayOutput()
 
 func (o RepositoryPubsubConfigArrayOutput) ToRepositoryPubsubConfigArrayOutputWithContext(ctx context.Context) RepositoryPubsubConfigArrayOutput {
 	return o
-}
-
-func (o RepositoryPubsubConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RepositoryPubsubConfig] {
-	return pulumix.Output[[]RepositoryPubsubConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryPubsubConfigArrayOutput) Index(i pulumi.IntInput) RepositoryPubsubConfigOutput {
@@ -580,12 +507,6 @@ func (i GetRepositoryPubsubConfigArgs) ToGetRepositoryPubsubConfigOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryPubsubConfigOutput)
 }
 
-func (i GetRepositoryPubsubConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryPubsubConfig] {
-	return pulumix.Output[GetRepositoryPubsubConfig]{
-		OutputState: i.ToGetRepositoryPubsubConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRepositoryPubsubConfigArrayInput is an input type that accepts GetRepositoryPubsubConfigArray and GetRepositoryPubsubConfigArrayOutput values.
 // You can construct a concrete instance of `GetRepositoryPubsubConfigArrayInput` via:
 //
@@ -611,12 +532,6 @@ func (i GetRepositoryPubsubConfigArray) ToGetRepositoryPubsubConfigArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryPubsubConfigArrayOutput)
 }
 
-func (i GetRepositoryPubsubConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRepositoryPubsubConfig] {
-	return pulumix.Output[[]GetRepositoryPubsubConfig]{
-		OutputState: i.ToGetRepositoryPubsubConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRepositoryPubsubConfigOutput struct{ *pulumi.OutputState }
 
 func (GetRepositoryPubsubConfigOutput) ElementType() reflect.Type {
@@ -629,12 +544,6 @@ func (o GetRepositoryPubsubConfigOutput) ToGetRepositoryPubsubConfigOutput() Get
 
 func (o GetRepositoryPubsubConfigOutput) ToGetRepositoryPubsubConfigOutputWithContext(ctx context.Context) GetRepositoryPubsubConfigOutput {
 	return o
-}
-
-func (o GetRepositoryPubsubConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryPubsubConfig] {
-	return pulumix.Output[GetRepositoryPubsubConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRepositoryPubsubConfigOutput) MessageFormat() pulumi.StringOutput {
@@ -661,12 +570,6 @@ func (o GetRepositoryPubsubConfigArrayOutput) ToGetRepositoryPubsubConfigArrayOu
 
 func (o GetRepositoryPubsubConfigArrayOutput) ToGetRepositoryPubsubConfigArrayOutputWithContext(ctx context.Context) GetRepositoryPubsubConfigArrayOutput {
 	return o
-}
-
-func (o GetRepositoryPubsubConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRepositoryPubsubConfig] {
-	return pulumix.Output[[]GetRepositoryPubsubConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRepositoryPubsubConfigArrayOutput) Index(i pulumi.IntInput) GetRepositoryPubsubConfigOutput {

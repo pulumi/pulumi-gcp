@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a Global Address resource. Global addresses are used for
@@ -448,12 +447,6 @@ func (i *GlobalAddress) ToGlobalAddressOutputWithContext(ctx context.Context) Gl
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalAddressOutput)
 }
 
-func (i *GlobalAddress) ToOutput(ctx context.Context) pulumix.Output[*GlobalAddress] {
-	return pulumix.Output[*GlobalAddress]{
-		OutputState: i.ToGlobalAddressOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GlobalAddressArrayInput is an input type that accepts GlobalAddressArray and GlobalAddressArrayOutput values.
 // You can construct a concrete instance of `GlobalAddressArrayInput` via:
 //
@@ -477,12 +470,6 @@ func (i GlobalAddressArray) ToGlobalAddressArrayOutput() GlobalAddressArrayOutpu
 
 func (i GlobalAddressArray) ToGlobalAddressArrayOutputWithContext(ctx context.Context) GlobalAddressArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalAddressArrayOutput)
-}
-
-func (i GlobalAddressArray) ToOutput(ctx context.Context) pulumix.Output[[]*GlobalAddress] {
-	return pulumix.Output[[]*GlobalAddress]{
-		OutputState: i.ToGlobalAddressArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GlobalAddressMapInput is an input type that accepts GlobalAddressMap and GlobalAddressMapOutput values.
@@ -510,12 +497,6 @@ func (i GlobalAddressMap) ToGlobalAddressMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalAddressMapOutput)
 }
 
-func (i GlobalAddressMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GlobalAddress] {
-	return pulumix.Output[map[string]*GlobalAddress]{
-		OutputState: i.ToGlobalAddressMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GlobalAddressOutput struct{ *pulumi.OutputState }
 
 func (GlobalAddressOutput) ElementType() reflect.Type {
@@ -528,12 +509,6 @@ func (o GlobalAddressOutput) ToGlobalAddressOutput() GlobalAddressOutput {
 
 func (o GlobalAddressOutput) ToGlobalAddressOutputWithContext(ctx context.Context) GlobalAddressOutput {
 	return o
-}
-
-func (o GlobalAddressOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalAddress] {
-	return pulumix.Output[*GlobalAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IP address or beginning of the address range represented by this
@@ -653,12 +628,6 @@ func (o GlobalAddressArrayOutput) ToGlobalAddressArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o GlobalAddressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GlobalAddress] {
-	return pulumix.Output[[]*GlobalAddress]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GlobalAddressArrayOutput) Index(i pulumi.IntInput) GlobalAddressOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GlobalAddress {
 		return vs[0].([]*GlobalAddress)[vs[1].(int)]
@@ -677,12 +646,6 @@ func (o GlobalAddressMapOutput) ToGlobalAddressMapOutput() GlobalAddressMapOutpu
 
 func (o GlobalAddressMapOutput) ToGlobalAddressMapOutputWithContext(ctx context.Context) GlobalAddressMapOutput {
 	return o
-}
-
-func (o GlobalAddressMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GlobalAddress] {
-	return pulumix.Output[map[string]*GlobalAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GlobalAddressMapOutput) MapIndex(k pulumi.StringInput) GlobalAddressOutput {

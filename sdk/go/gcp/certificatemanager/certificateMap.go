@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // CertificateMap defines a collection of certificate configurations,
@@ -272,12 +271,6 @@ func (i *CertificateMapResource) ToCertificateMapResourceOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateMapResourceOutput)
 }
 
-func (i *CertificateMapResource) ToOutput(ctx context.Context) pulumix.Output[*CertificateMapResource] {
-	return pulumix.Output[*CertificateMapResource]{
-		OutputState: i.ToCertificateMapResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CertificateMapResourceArrayInput is an input type that accepts CertificateMapResourceArray and CertificateMapResourceArrayOutput values.
 // You can construct a concrete instance of `CertificateMapResourceArrayInput` via:
 //
@@ -301,12 +294,6 @@ func (i CertificateMapResourceArray) ToCertificateMapResourceArrayOutput() Certi
 
 func (i CertificateMapResourceArray) ToCertificateMapResourceArrayOutputWithContext(ctx context.Context) CertificateMapResourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateMapResourceArrayOutput)
-}
-
-func (i CertificateMapResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*CertificateMapResource] {
-	return pulumix.Output[[]*CertificateMapResource]{
-		OutputState: i.ToCertificateMapResourceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CertificateMapResourceMapInput is an input type that accepts CertificateMapResourceMap and CertificateMapResourceMapOutput values.
@@ -334,12 +321,6 @@ func (i CertificateMapResourceMap) ToCertificateMapResourceMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateMapResourceMapOutput)
 }
 
-func (i CertificateMapResourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CertificateMapResource] {
-	return pulumix.Output[map[string]*CertificateMapResource]{
-		OutputState: i.ToCertificateMapResourceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CertificateMapResourceOutput struct{ *pulumi.OutputState }
 
 func (CertificateMapResourceOutput) ElementType() reflect.Type {
@@ -352,12 +333,6 @@ func (o CertificateMapResourceOutput) ToCertificateMapResourceOutput() Certifica
 
 func (o CertificateMapResourceOutput) ToCertificateMapResourceOutputWithContext(ctx context.Context) CertificateMapResourceOutput {
 	return o
-}
-
-func (o CertificateMapResourceOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateMapResource] {
-	return pulumix.Output[*CertificateMapResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
@@ -433,12 +408,6 @@ func (o CertificateMapResourceArrayOutput) ToCertificateMapResourceArrayOutputWi
 	return o
 }
 
-func (o CertificateMapResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CertificateMapResource] {
-	return pulumix.Output[[]*CertificateMapResource]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CertificateMapResourceArrayOutput) Index(i pulumi.IntInput) CertificateMapResourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CertificateMapResource {
 		return vs[0].([]*CertificateMapResource)[vs[1].(int)]
@@ -457,12 +426,6 @@ func (o CertificateMapResourceMapOutput) ToCertificateMapResourceMapOutput() Cer
 
 func (o CertificateMapResourceMapOutput) ToCertificateMapResourceMapOutputWithContext(ctx context.Context) CertificateMapResourceMapOutput {
 	return o
-}
-
-func (o CertificateMapResourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CertificateMapResource] {
-	return pulumix.Output[map[string]*CertificateMapResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertificateMapResourceMapOutput) MapIndex(k pulumi.StringInput) CertificateMapResourceOutput {

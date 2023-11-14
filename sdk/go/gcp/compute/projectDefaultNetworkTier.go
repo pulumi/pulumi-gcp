@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Configures the Google Compute Engine
@@ -172,12 +171,6 @@ func (i *ProjectDefaultNetworkTier) ToProjectDefaultNetworkTierOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultNetworkTierOutput)
 }
 
-func (i *ProjectDefaultNetworkTier) ToOutput(ctx context.Context) pulumix.Output[*ProjectDefaultNetworkTier] {
-	return pulumix.Output[*ProjectDefaultNetworkTier]{
-		OutputState: i.ToProjectDefaultNetworkTierOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProjectDefaultNetworkTierArrayInput is an input type that accepts ProjectDefaultNetworkTierArray and ProjectDefaultNetworkTierArrayOutput values.
 // You can construct a concrete instance of `ProjectDefaultNetworkTierArrayInput` via:
 //
@@ -201,12 +194,6 @@ func (i ProjectDefaultNetworkTierArray) ToProjectDefaultNetworkTierArrayOutput()
 
 func (i ProjectDefaultNetworkTierArray) ToProjectDefaultNetworkTierArrayOutputWithContext(ctx context.Context) ProjectDefaultNetworkTierArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultNetworkTierArrayOutput)
-}
-
-func (i ProjectDefaultNetworkTierArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectDefaultNetworkTier] {
-	return pulumix.Output[[]*ProjectDefaultNetworkTier]{
-		OutputState: i.ToProjectDefaultNetworkTierArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ProjectDefaultNetworkTierMapInput is an input type that accepts ProjectDefaultNetworkTierMap and ProjectDefaultNetworkTierMapOutput values.
@@ -234,12 +221,6 @@ func (i ProjectDefaultNetworkTierMap) ToProjectDefaultNetworkTierMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultNetworkTierMapOutput)
 }
 
-func (i ProjectDefaultNetworkTierMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectDefaultNetworkTier] {
-	return pulumix.Output[map[string]*ProjectDefaultNetworkTier]{
-		OutputState: i.ToProjectDefaultNetworkTierMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectDefaultNetworkTierOutput struct{ *pulumi.OutputState }
 
 func (ProjectDefaultNetworkTierOutput) ElementType() reflect.Type {
@@ -252,12 +233,6 @@ func (o ProjectDefaultNetworkTierOutput) ToProjectDefaultNetworkTierOutput() Pro
 
 func (o ProjectDefaultNetworkTierOutput) ToProjectDefaultNetworkTierOutputWithContext(ctx context.Context) ProjectDefaultNetworkTierOutput {
 	return o
-}
-
-func (o ProjectDefaultNetworkTierOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectDefaultNetworkTier] {
-	return pulumix.Output[*ProjectDefaultNetworkTier]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The default network tier to be configured for the project.
@@ -288,12 +263,6 @@ func (o ProjectDefaultNetworkTierArrayOutput) ToProjectDefaultNetworkTierArrayOu
 	return o
 }
 
-func (o ProjectDefaultNetworkTierArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectDefaultNetworkTier] {
-	return pulumix.Output[[]*ProjectDefaultNetworkTier]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProjectDefaultNetworkTierArrayOutput) Index(i pulumi.IntInput) ProjectDefaultNetworkTierOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectDefaultNetworkTier {
 		return vs[0].([]*ProjectDefaultNetworkTier)[vs[1].(int)]
@@ -312,12 +281,6 @@ func (o ProjectDefaultNetworkTierMapOutput) ToProjectDefaultNetworkTierMapOutput
 
 func (o ProjectDefaultNetworkTierMapOutput) ToProjectDefaultNetworkTierMapOutputWithContext(ctx context.Context) ProjectDefaultNetworkTierMapOutput {
 	return o
-}
-
-func (o ProjectDefaultNetworkTierMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectDefaultNetworkTier] {
-	return pulumix.Output[map[string]*ProjectDefaultNetworkTier]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectDefaultNetworkTierMapOutput) MapIndex(k pulumi.StringInput) ProjectDefaultNetworkTierOutput {

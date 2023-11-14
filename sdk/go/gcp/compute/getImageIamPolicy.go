@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for image
@@ -111,12 +110,6 @@ func (o LookupImageIamPolicyResultOutput) ToLookupImageIamPolicyResultOutput() L
 
 func (o LookupImageIamPolicyResultOutput) ToLookupImageIamPolicyResultOutputWithContext(ctx context.Context) LookupImageIamPolicyResultOutput {
 	return o
-}
-
-func (o LookupImageIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupImageIamPolicyResult] {
-	return pulumix.Output[LookupImageIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.

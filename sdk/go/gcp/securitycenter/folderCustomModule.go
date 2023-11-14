@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents an instance of a Security Health Analytics custom module, including
@@ -346,12 +345,6 @@ func (i *FolderCustomModule) ToFolderCustomModuleOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(FolderCustomModuleOutput)
 }
 
-func (i *FolderCustomModule) ToOutput(ctx context.Context) pulumix.Output[*FolderCustomModule] {
-	return pulumix.Output[*FolderCustomModule]{
-		OutputState: i.ToFolderCustomModuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FolderCustomModuleArrayInput is an input type that accepts FolderCustomModuleArray and FolderCustomModuleArrayOutput values.
 // You can construct a concrete instance of `FolderCustomModuleArrayInput` via:
 //
@@ -375,12 +368,6 @@ func (i FolderCustomModuleArray) ToFolderCustomModuleArrayOutput() FolderCustomM
 
 func (i FolderCustomModuleArray) ToFolderCustomModuleArrayOutputWithContext(ctx context.Context) FolderCustomModuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FolderCustomModuleArrayOutput)
-}
-
-func (i FolderCustomModuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*FolderCustomModule] {
-	return pulumix.Output[[]*FolderCustomModule]{
-		OutputState: i.ToFolderCustomModuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FolderCustomModuleMapInput is an input type that accepts FolderCustomModuleMap and FolderCustomModuleMapOutput values.
@@ -408,12 +395,6 @@ func (i FolderCustomModuleMap) ToFolderCustomModuleMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(FolderCustomModuleMapOutput)
 }
 
-func (i FolderCustomModuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FolderCustomModule] {
-	return pulumix.Output[map[string]*FolderCustomModule]{
-		OutputState: i.ToFolderCustomModuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FolderCustomModuleOutput struct{ *pulumi.OutputState }
 
 func (FolderCustomModuleOutput) ElementType() reflect.Type {
@@ -426,12 +407,6 @@ func (o FolderCustomModuleOutput) ToFolderCustomModuleOutput() FolderCustomModul
 
 func (o FolderCustomModuleOutput) ToFolderCustomModuleOutputWithContext(ctx context.Context) FolderCustomModuleOutput {
 	return o
-}
-
-func (o FolderCustomModuleOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderCustomModule] {
-	return pulumix.Output[*FolderCustomModule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If empty, indicates that the custom module was created in the organization, folder,
@@ -498,12 +473,6 @@ func (o FolderCustomModuleArrayOutput) ToFolderCustomModuleArrayOutputWithContex
 	return o
 }
 
-func (o FolderCustomModuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FolderCustomModule] {
-	return pulumix.Output[[]*FolderCustomModule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FolderCustomModuleArrayOutput) Index(i pulumi.IntInput) FolderCustomModuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FolderCustomModule {
 		return vs[0].([]*FolderCustomModule)[vs[1].(int)]
@@ -522,12 +491,6 @@ func (o FolderCustomModuleMapOutput) ToFolderCustomModuleMapOutput() FolderCusto
 
 func (o FolderCustomModuleMapOutput) ToFolderCustomModuleMapOutputWithContext(ctx context.Context) FolderCustomModuleMapOutput {
 	return o
-}
-
-func (o FolderCustomModuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FolderCustomModule] {
-	return pulumix.Output[map[string]*FolderCustomModule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FolderCustomModuleMapOutput) MapIndex(k pulumi.StringInput) FolderCustomModuleOutput {

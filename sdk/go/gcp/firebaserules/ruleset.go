@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // For more information, see:
@@ -227,12 +226,6 @@ func (i *Ruleset) ToRulesetOutputWithContext(ctx context.Context) RulesetOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(RulesetOutput)
 }
 
-func (i *Ruleset) ToOutput(ctx context.Context) pulumix.Output[*Ruleset] {
-	return pulumix.Output[*Ruleset]{
-		OutputState: i.ToRulesetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RulesetArrayInput is an input type that accepts RulesetArray and RulesetArrayOutput values.
 // You can construct a concrete instance of `RulesetArrayInput` via:
 //
@@ -256,12 +249,6 @@ func (i RulesetArray) ToRulesetArrayOutput() RulesetArrayOutput {
 
 func (i RulesetArray) ToRulesetArrayOutputWithContext(ctx context.Context) RulesetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RulesetArrayOutput)
-}
-
-func (i RulesetArray) ToOutput(ctx context.Context) pulumix.Output[[]*Ruleset] {
-	return pulumix.Output[[]*Ruleset]{
-		OutputState: i.ToRulesetArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RulesetMapInput is an input type that accepts RulesetMap and RulesetMapOutput values.
@@ -289,12 +276,6 @@ func (i RulesetMap) ToRulesetMapOutputWithContext(ctx context.Context) RulesetMa
 	return pulumi.ToOutputWithContext(ctx, i).(RulesetMapOutput)
 }
 
-func (i RulesetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Ruleset] {
-	return pulumix.Output[map[string]*Ruleset]{
-		OutputState: i.ToRulesetMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RulesetOutput struct{ *pulumi.OutputState }
 
 func (RulesetOutput) ElementType() reflect.Type {
@@ -307,12 +288,6 @@ func (o RulesetOutput) ToRulesetOutput() RulesetOutput {
 
 func (o RulesetOutput) ToRulesetOutputWithContext(ctx context.Context) RulesetOutput {
 	return o
-}
-
-func (o RulesetOutput) ToOutput(ctx context.Context) pulumix.Output[*Ruleset] {
-	return pulumix.Output[*Ruleset]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Output only. Time the `Ruleset` was created.
@@ -356,12 +331,6 @@ func (o RulesetArrayOutput) ToRulesetArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o RulesetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Ruleset] {
-	return pulumix.Output[[]*Ruleset]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RulesetArrayOutput) Index(i pulumi.IntInput) RulesetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Ruleset {
 		return vs[0].([]*Ruleset)[vs[1].(int)]
@@ -380,12 +349,6 @@ func (o RulesetMapOutput) ToRulesetMapOutput() RulesetMapOutput {
 
 func (o RulesetMapOutput) ToRulesetMapOutputWithContext(ctx context.Context) RulesetMapOutput {
 	return o
-}
-
-func (o RulesetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Ruleset] {
-	return pulumix.Output[map[string]*Ruleset]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RulesetMapOutput) MapIndex(k pulumi.StringInput) RulesetOutput {

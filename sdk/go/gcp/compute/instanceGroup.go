@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a group of dissimilar Compute Engine virtual machine instances.
@@ -322,12 +321,6 @@ func (i *InstanceGroup) ToInstanceGroupOutputWithContext(ctx context.Context) In
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupOutput)
 }
 
-func (i *InstanceGroup) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroup] {
-	return pulumix.Output[*InstanceGroup]{
-		OutputState: i.ToInstanceGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceGroupArrayInput is an input type that accepts InstanceGroupArray and InstanceGroupArrayOutput values.
 // You can construct a concrete instance of `InstanceGroupArrayInput` via:
 //
@@ -351,12 +344,6 @@ func (i InstanceGroupArray) ToInstanceGroupArrayOutput() InstanceGroupArrayOutpu
 
 func (i InstanceGroupArray) ToInstanceGroupArrayOutputWithContext(ctx context.Context) InstanceGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupArrayOutput)
-}
-
-func (i InstanceGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceGroup] {
-	return pulumix.Output[[]*InstanceGroup]{
-		OutputState: i.ToInstanceGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstanceGroupMapInput is an input type that accepts InstanceGroupMap and InstanceGroupMapOutput values.
@@ -384,12 +371,6 @@ func (i InstanceGroupMap) ToInstanceGroupMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupMapOutput)
 }
 
-func (i InstanceGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceGroup] {
-	return pulumix.Output[map[string]*InstanceGroup]{
-		OutputState: i.ToInstanceGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceGroupOutput struct{ *pulumi.OutputState }
 
 func (InstanceGroupOutput) ElementType() reflect.Type {
@@ -402,12 +383,6 @@ func (o InstanceGroupOutput) ToInstanceGroupOutput() InstanceGroupOutput {
 
 func (o InstanceGroupOutput) ToInstanceGroupOutputWithContext(ctx context.Context) InstanceGroupOutput {
 	return o
-}
-
-func (o InstanceGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroup] {
-	return pulumix.Output[*InstanceGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An optional textual description of the instance
@@ -481,12 +456,6 @@ func (o InstanceGroupArrayOutput) ToInstanceGroupArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o InstanceGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceGroup] {
-	return pulumix.Output[[]*InstanceGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceGroupArrayOutput) Index(i pulumi.IntInput) InstanceGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceGroup {
 		return vs[0].([]*InstanceGroup)[vs[1].(int)]
@@ -505,12 +474,6 @@ func (o InstanceGroupMapOutput) ToInstanceGroupMapOutput() InstanceGroupMapOutpu
 
 func (o InstanceGroupMapOutput) ToInstanceGroupMapOutputWithContext(ctx context.Context) InstanceGroupMapOutput {
 	return o
-}
-
-func (o InstanceGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceGroup] {
-	return pulumix.Output[map[string]*InstanceGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceGroupMapOutput) MapIndex(k pulumi.StringInput) InstanceGroupOutput {

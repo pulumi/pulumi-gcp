@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Identity-Aware Proxy WebBackendService. Each of these resources serves a different use case:
@@ -489,12 +488,6 @@ func (i *WebBackendServiceIamBinding) ToWebBackendServiceIamBindingOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(WebBackendServiceIamBindingOutput)
 }
 
-func (i *WebBackendServiceIamBinding) ToOutput(ctx context.Context) pulumix.Output[*WebBackendServiceIamBinding] {
-	return pulumix.Output[*WebBackendServiceIamBinding]{
-		OutputState: i.ToWebBackendServiceIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WebBackendServiceIamBindingArrayInput is an input type that accepts WebBackendServiceIamBindingArray and WebBackendServiceIamBindingArrayOutput values.
 // You can construct a concrete instance of `WebBackendServiceIamBindingArrayInput` via:
 //
@@ -518,12 +511,6 @@ func (i WebBackendServiceIamBindingArray) ToWebBackendServiceIamBindingArrayOutp
 
 func (i WebBackendServiceIamBindingArray) ToWebBackendServiceIamBindingArrayOutputWithContext(ctx context.Context) WebBackendServiceIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebBackendServiceIamBindingArrayOutput)
-}
-
-func (i WebBackendServiceIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*WebBackendServiceIamBinding] {
-	return pulumix.Output[[]*WebBackendServiceIamBinding]{
-		OutputState: i.ToWebBackendServiceIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WebBackendServiceIamBindingMapInput is an input type that accepts WebBackendServiceIamBindingMap and WebBackendServiceIamBindingMapOutput values.
@@ -551,12 +538,6 @@ func (i WebBackendServiceIamBindingMap) ToWebBackendServiceIamBindingMapOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(WebBackendServiceIamBindingMapOutput)
 }
 
-func (i WebBackendServiceIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebBackendServiceIamBinding] {
-	return pulumix.Output[map[string]*WebBackendServiceIamBinding]{
-		OutputState: i.ToWebBackendServiceIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebBackendServiceIamBindingOutput struct{ *pulumi.OutputState }
 
 func (WebBackendServiceIamBindingOutput) ElementType() reflect.Type {
@@ -569,12 +550,6 @@ func (o WebBackendServiceIamBindingOutput) ToWebBackendServiceIamBindingOutput()
 
 func (o WebBackendServiceIamBindingOutput) ToWebBackendServiceIamBindingOutputWithContext(ctx context.Context) WebBackendServiceIamBindingOutput {
 	return o
-}
-
-func (o WebBackendServiceIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*WebBackendServiceIamBinding] {
-	return pulumix.Output[*WebBackendServiceIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -636,12 +611,6 @@ func (o WebBackendServiceIamBindingArrayOutput) ToWebBackendServiceIamBindingArr
 	return o
 }
 
-func (o WebBackendServiceIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WebBackendServiceIamBinding] {
-	return pulumix.Output[[]*WebBackendServiceIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WebBackendServiceIamBindingArrayOutput) Index(i pulumi.IntInput) WebBackendServiceIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WebBackendServiceIamBinding {
 		return vs[0].([]*WebBackendServiceIamBinding)[vs[1].(int)]
@@ -660,12 +629,6 @@ func (o WebBackendServiceIamBindingMapOutput) ToWebBackendServiceIamBindingMapOu
 
 func (o WebBackendServiceIamBindingMapOutput) ToWebBackendServiceIamBindingMapOutputWithContext(ctx context.Context) WebBackendServiceIamBindingMapOutput {
 	return o
-}
-
-func (o WebBackendServiceIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebBackendServiceIamBinding] {
-	return pulumix.Output[map[string]*WebBackendServiceIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebBackendServiceIamBindingMapOutput) MapIndex(k pulumi.StringInput) WebBackendServiceIamBindingOutput {

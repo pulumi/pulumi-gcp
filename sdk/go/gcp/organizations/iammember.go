@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Four different resources help you manage your IAM policy for a organization. Each of these resources serves a different use case:
@@ -476,12 +475,6 @@ func (i *IAMMember) ToIAMMemberOutputWithContext(ctx context.Context) IAMMemberO
 	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberOutput)
 }
 
-func (i *IAMMember) ToOutput(ctx context.Context) pulumix.Output[*IAMMember] {
-	return pulumix.Output[*IAMMember]{
-		OutputState: i.ToIAMMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IAMMemberArrayInput is an input type that accepts IAMMemberArray and IAMMemberArrayOutput values.
 // You can construct a concrete instance of `IAMMemberArrayInput` via:
 //
@@ -505,12 +498,6 @@ func (i IAMMemberArray) ToIAMMemberArrayOutput() IAMMemberArrayOutput {
 
 func (i IAMMemberArray) ToIAMMemberArrayOutputWithContext(ctx context.Context) IAMMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberArrayOutput)
-}
-
-func (i IAMMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*IAMMember] {
-	return pulumix.Output[[]*IAMMember]{
-		OutputState: i.ToIAMMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IAMMemberMapInput is an input type that accepts IAMMemberMap and IAMMemberMapOutput values.
@@ -538,12 +525,6 @@ func (i IAMMemberMap) ToIAMMemberMapOutputWithContext(ctx context.Context) IAMMe
 	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberMapOutput)
 }
 
-func (i IAMMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IAMMember] {
-	return pulumix.Output[map[string]*IAMMember]{
-		OutputState: i.ToIAMMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IAMMemberOutput struct{ *pulumi.OutputState }
 
 func (IAMMemberOutput) ElementType() reflect.Type {
@@ -556,12 +537,6 @@ func (o IAMMemberOutput) ToIAMMemberOutput() IAMMemberOutput {
 
 func (o IAMMemberOutput) ToIAMMemberOutputWithContext(ctx context.Context) IAMMemberOutput {
 	return o
-}
-
-func (o IAMMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*IAMMember] {
-	return pulumix.Output[*IAMMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -605,12 +580,6 @@ func (o IAMMemberArrayOutput) ToIAMMemberArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o IAMMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IAMMember] {
-	return pulumix.Output[[]*IAMMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IAMMemberArrayOutput) Index(i pulumi.IntInput) IAMMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IAMMember {
 		return vs[0].([]*IAMMember)[vs[1].(int)]
@@ -629,12 +598,6 @@ func (o IAMMemberMapOutput) ToIAMMemberMapOutput() IAMMemberMapOutput {
 
 func (o IAMMemberMapOutput) ToIAMMemberMapOutputWithContext(ctx context.Context) IAMMemberMapOutput {
 	return o
-}
-
-func (o IAMMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IAMMember] {
-	return pulumix.Output[map[string]*IAMMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IAMMemberMapOutput) MapIndex(k pulumi.StringInput) IAMMemberOutput {

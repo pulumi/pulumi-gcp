@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Feature Metadata information that describes an attribute of an entity type. For example, apple is an entity type, and color is a feature that describes apple.
@@ -346,12 +345,6 @@ func (i *AiFeatureStoreEntityTypeFeature) ToAiFeatureStoreEntityTypeFeatureOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeFeatureOutput)
 }
 
-func (i *AiFeatureStoreEntityTypeFeature) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreEntityTypeFeature] {
-	return pulumix.Output[*AiFeatureStoreEntityTypeFeature]{
-		OutputState: i.ToAiFeatureStoreEntityTypeFeatureOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AiFeatureStoreEntityTypeFeatureArrayInput is an input type that accepts AiFeatureStoreEntityTypeFeatureArray and AiFeatureStoreEntityTypeFeatureArrayOutput values.
 // You can construct a concrete instance of `AiFeatureStoreEntityTypeFeatureArrayInput` via:
 //
@@ -375,12 +368,6 @@ func (i AiFeatureStoreEntityTypeFeatureArray) ToAiFeatureStoreEntityTypeFeatureA
 
 func (i AiFeatureStoreEntityTypeFeatureArray) ToAiFeatureStoreEntityTypeFeatureArrayOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeFeatureArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeFeatureArrayOutput)
-}
-
-func (i AiFeatureStoreEntityTypeFeatureArray) ToOutput(ctx context.Context) pulumix.Output[[]*AiFeatureStoreEntityTypeFeature] {
-	return pulumix.Output[[]*AiFeatureStoreEntityTypeFeature]{
-		OutputState: i.ToAiFeatureStoreEntityTypeFeatureArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AiFeatureStoreEntityTypeFeatureMapInput is an input type that accepts AiFeatureStoreEntityTypeFeatureMap and AiFeatureStoreEntityTypeFeatureMapOutput values.
@@ -408,12 +395,6 @@ func (i AiFeatureStoreEntityTypeFeatureMap) ToAiFeatureStoreEntityTypeFeatureMap
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeFeatureMapOutput)
 }
 
-func (i AiFeatureStoreEntityTypeFeatureMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AiFeatureStoreEntityTypeFeature] {
-	return pulumix.Output[map[string]*AiFeatureStoreEntityTypeFeature]{
-		OutputState: i.ToAiFeatureStoreEntityTypeFeatureMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiFeatureStoreEntityTypeFeatureOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureStoreEntityTypeFeatureOutput) ElementType() reflect.Type {
@@ -426,12 +407,6 @@ func (o AiFeatureStoreEntityTypeFeatureOutput) ToAiFeatureStoreEntityTypeFeature
 
 func (o AiFeatureStoreEntityTypeFeatureOutput) ToAiFeatureStoreEntityTypeFeatureOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeFeatureOutput {
 	return o
-}
-
-func (o AiFeatureStoreEntityTypeFeatureOutput) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreEntityTypeFeature] {
-	return pulumix.Output[*AiFeatureStoreEntityTypeFeature]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of when the entity type was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -510,12 +485,6 @@ func (o AiFeatureStoreEntityTypeFeatureArrayOutput) ToAiFeatureStoreEntityTypeFe
 	return o
 }
 
-func (o AiFeatureStoreEntityTypeFeatureArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AiFeatureStoreEntityTypeFeature] {
-	return pulumix.Output[[]*AiFeatureStoreEntityTypeFeature]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AiFeatureStoreEntityTypeFeatureArrayOutput) Index(i pulumi.IntInput) AiFeatureStoreEntityTypeFeatureOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AiFeatureStoreEntityTypeFeature {
 		return vs[0].([]*AiFeatureStoreEntityTypeFeature)[vs[1].(int)]
@@ -534,12 +503,6 @@ func (o AiFeatureStoreEntityTypeFeatureMapOutput) ToAiFeatureStoreEntityTypeFeat
 
 func (o AiFeatureStoreEntityTypeFeatureMapOutput) ToAiFeatureStoreEntityTypeFeatureMapOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeFeatureMapOutput {
 	return o
-}
-
-func (o AiFeatureStoreEntityTypeFeatureMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AiFeatureStoreEntityTypeFeature] {
-	return pulumix.Output[map[string]*AiFeatureStoreEntityTypeFeature]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiFeatureStoreEntityTypeFeatureMapOutput) MapIndex(k pulumi.StringInput) AiFeatureStoreEntityTypeFeatureOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for serviceconsumers
@@ -78,12 +77,6 @@ func (o GetServiceConsumersIamPolicyResultOutput) ToGetServiceConsumersIamPolicy
 
 func (o GetServiceConsumersIamPolicyResultOutput) ToGetServiceConsumersIamPolicyResultOutputWithContext(ctx context.Context) GetServiceConsumersIamPolicyResultOutput {
 	return o
-}
-
-func (o GetServiceConsumersIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceConsumersIamPolicyResult] {
-	return pulumix.Output[GetServiceConsumersIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetServiceConsumersIamPolicyResultOutput) ConsumerProject() pulumi.StringOutput {

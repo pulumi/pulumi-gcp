@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Service Directory Namespace. Each of these resources serves a different use case:
@@ -338,12 +337,6 @@ func (i *NamespaceIamMember) ToNamespaceIamMemberOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamMemberOutput)
 }
 
-func (i *NamespaceIamMember) ToOutput(ctx context.Context) pulumix.Output[*NamespaceIamMember] {
-	return pulumix.Output[*NamespaceIamMember]{
-		OutputState: i.ToNamespaceIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NamespaceIamMemberArrayInput is an input type that accepts NamespaceIamMemberArray and NamespaceIamMemberArrayOutput values.
 // You can construct a concrete instance of `NamespaceIamMemberArrayInput` via:
 //
@@ -367,12 +360,6 @@ func (i NamespaceIamMemberArray) ToNamespaceIamMemberArrayOutput() NamespaceIamM
 
 func (i NamespaceIamMemberArray) ToNamespaceIamMemberArrayOutputWithContext(ctx context.Context) NamespaceIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamMemberArrayOutput)
-}
-
-func (i NamespaceIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*NamespaceIamMember] {
-	return pulumix.Output[[]*NamespaceIamMember]{
-		OutputState: i.ToNamespaceIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NamespaceIamMemberMapInput is an input type that accepts NamespaceIamMemberMap and NamespaceIamMemberMapOutput values.
@@ -400,12 +387,6 @@ func (i NamespaceIamMemberMap) ToNamespaceIamMemberMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamMemberMapOutput)
 }
 
-func (i NamespaceIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NamespaceIamMember] {
-	return pulumix.Output[map[string]*NamespaceIamMember]{
-		OutputState: i.ToNamespaceIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NamespaceIamMemberOutput struct{ *pulumi.OutputState }
 
 func (NamespaceIamMemberOutput) ElementType() reflect.Type {
@@ -418,12 +399,6 @@ func (o NamespaceIamMemberOutput) ToNamespaceIamMemberOutput() NamespaceIamMembe
 
 func (o NamespaceIamMemberOutput) ToNamespaceIamMemberOutputWithContext(ctx context.Context) NamespaceIamMemberOutput {
 	return o
-}
-
-func (o NamespaceIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*NamespaceIamMember] {
-	return pulumix.Output[*NamespaceIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NamespaceIamMemberOutput) Condition() NamespaceIamMemberConditionPtrOutput {
@@ -477,12 +452,6 @@ func (o NamespaceIamMemberArrayOutput) ToNamespaceIamMemberArrayOutputWithContex
 	return o
 }
 
-func (o NamespaceIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NamespaceIamMember] {
-	return pulumix.Output[[]*NamespaceIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NamespaceIamMemberArrayOutput) Index(i pulumi.IntInput) NamespaceIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NamespaceIamMember {
 		return vs[0].([]*NamespaceIamMember)[vs[1].(int)]
@@ -501,12 +470,6 @@ func (o NamespaceIamMemberMapOutput) ToNamespaceIamMemberMapOutput() NamespaceIa
 
 func (o NamespaceIamMemberMapOutput) ToNamespaceIamMemberMapOutputWithContext(ctx context.Context) NamespaceIamMemberMapOutput {
 	return o
-}
-
-func (o NamespaceIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NamespaceIamMember] {
-	return pulumix.Output[map[string]*NamespaceIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NamespaceIamMemberMapOutput) MapIndex(k pulumi.StringInput) NamespaceIamMemberOutput {

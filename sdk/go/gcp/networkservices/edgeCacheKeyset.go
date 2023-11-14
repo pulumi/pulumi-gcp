@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // EdgeCacheKeyset represents a collection of public keys used for validating signed requests.
@@ -377,12 +376,6 @@ func (i *EdgeCacheKeyset) ToEdgeCacheKeysetOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheKeysetOutput)
 }
 
-func (i *EdgeCacheKeyset) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheKeyset] {
-	return pulumix.Output[*EdgeCacheKeyset]{
-		OutputState: i.ToEdgeCacheKeysetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EdgeCacheKeysetArrayInput is an input type that accepts EdgeCacheKeysetArray and EdgeCacheKeysetArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheKeysetArrayInput` via:
 //
@@ -406,12 +399,6 @@ func (i EdgeCacheKeysetArray) ToEdgeCacheKeysetArrayOutput() EdgeCacheKeysetArra
 
 func (i EdgeCacheKeysetArray) ToEdgeCacheKeysetArrayOutputWithContext(ctx context.Context) EdgeCacheKeysetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheKeysetArrayOutput)
-}
-
-func (i EdgeCacheKeysetArray) ToOutput(ctx context.Context) pulumix.Output[[]*EdgeCacheKeyset] {
-	return pulumix.Output[[]*EdgeCacheKeyset]{
-		OutputState: i.ToEdgeCacheKeysetArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EdgeCacheKeysetMapInput is an input type that accepts EdgeCacheKeysetMap and EdgeCacheKeysetMapOutput values.
@@ -439,12 +426,6 @@ func (i EdgeCacheKeysetMap) ToEdgeCacheKeysetMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheKeysetMapOutput)
 }
 
-func (i EdgeCacheKeysetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EdgeCacheKeyset] {
-	return pulumix.Output[map[string]*EdgeCacheKeyset]{
-		OutputState: i.ToEdgeCacheKeysetMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EdgeCacheKeysetOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheKeysetOutput) ElementType() reflect.Type {
@@ -457,12 +438,6 @@ func (o EdgeCacheKeysetOutput) ToEdgeCacheKeysetOutput() EdgeCacheKeysetOutput {
 
 func (o EdgeCacheKeysetOutput) ToEdgeCacheKeysetOutputWithContext(ctx context.Context) EdgeCacheKeysetOutput {
 	return o
-}
-
-func (o EdgeCacheKeysetOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheKeyset] {
-	return pulumix.Output[*EdgeCacheKeyset]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A human-readable description of the resource.
@@ -538,12 +513,6 @@ func (o EdgeCacheKeysetArrayOutput) ToEdgeCacheKeysetArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o EdgeCacheKeysetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EdgeCacheKeyset] {
-	return pulumix.Output[[]*EdgeCacheKeyset]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EdgeCacheKeysetArrayOutput) Index(i pulumi.IntInput) EdgeCacheKeysetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EdgeCacheKeyset {
 		return vs[0].([]*EdgeCacheKeyset)[vs[1].(int)]
@@ -562,12 +531,6 @@ func (o EdgeCacheKeysetMapOutput) ToEdgeCacheKeysetMapOutput() EdgeCacheKeysetMa
 
 func (o EdgeCacheKeysetMapOutput) ToEdgeCacheKeysetMapOutputWithContext(ctx context.Context) EdgeCacheKeysetMapOutput {
 	return o
-}
-
-func (o EdgeCacheKeysetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EdgeCacheKeyset] {
-	return pulumix.Output[map[string]*EdgeCacheKeyset]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdgeCacheKeysetMapOutput) MapIndex(k pulumi.StringInput) EdgeCacheKeysetOutput {

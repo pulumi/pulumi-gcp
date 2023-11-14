@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A reservation is a mechanism used to guarantee BigQuery slots to users.
@@ -288,12 +287,6 @@ func (i *Reservation) ToReservationOutputWithContext(ctx context.Context) Reserv
 	return pulumi.ToOutputWithContext(ctx, i).(ReservationOutput)
 }
 
-func (i *Reservation) ToOutput(ctx context.Context) pulumix.Output[*Reservation] {
-	return pulumix.Output[*Reservation]{
-		OutputState: i.ToReservationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ReservationArrayInput is an input type that accepts ReservationArray and ReservationArrayOutput values.
 // You can construct a concrete instance of `ReservationArrayInput` via:
 //
@@ -317,12 +310,6 @@ func (i ReservationArray) ToReservationArrayOutput() ReservationArrayOutput {
 
 func (i ReservationArray) ToReservationArrayOutputWithContext(ctx context.Context) ReservationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReservationArrayOutput)
-}
-
-func (i ReservationArray) ToOutput(ctx context.Context) pulumix.Output[[]*Reservation] {
-	return pulumix.Output[[]*Reservation]{
-		OutputState: i.ToReservationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ReservationMapInput is an input type that accepts ReservationMap and ReservationMapOutput values.
@@ -350,12 +337,6 @@ func (i ReservationMap) ToReservationMapOutputWithContext(ctx context.Context) R
 	return pulumi.ToOutputWithContext(ctx, i).(ReservationMapOutput)
 }
 
-func (i ReservationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Reservation] {
-	return pulumix.Output[map[string]*Reservation]{
-		OutputState: i.ToReservationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ReservationOutput struct{ *pulumi.OutputState }
 
 func (ReservationOutput) ElementType() reflect.Type {
@@ -368,12 +349,6 @@ func (o ReservationOutput) ToReservationOutput() ReservationOutput {
 
 func (o ReservationOutput) ToReservationOutputWithContext(ctx context.Context) ReservationOutput {
 	return o
-}
-
-func (o ReservationOutput) ToOutput(ctx context.Context) pulumix.Output[*Reservation] {
-	return pulumix.Output[*Reservation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration parameters for the auto scaling feature.
@@ -444,12 +419,6 @@ func (o ReservationArrayOutput) ToReservationArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o ReservationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Reservation] {
-	return pulumix.Output[[]*Reservation]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ReservationArrayOutput) Index(i pulumi.IntInput) ReservationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Reservation {
 		return vs[0].([]*Reservation)[vs[1].(int)]
@@ -468,12 +437,6 @@ func (o ReservationMapOutput) ToReservationMapOutput() ReservationMapOutput {
 
 func (o ReservationMapOutput) ToReservationMapOutputWithContext(ctx context.Context) ReservationMapOutput {
 	return o
-}
-
-func (o ReservationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Reservation] {
-	return pulumix.Output[map[string]*Reservation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReservationMapOutput) MapIndex(k pulumi.StringInput) ReservationOutput {
