@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -75,12 +74,6 @@ func (i GroupGroupKeyArgs) ToGroupGroupKeyOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GroupGroupKeyOutput)
 }
 
-func (i GroupGroupKeyArgs) ToOutput(ctx context.Context) pulumix.Output[GroupGroupKey] {
-	return pulumix.Output[GroupGroupKey]{
-		OutputState: i.ToGroupGroupKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GroupGroupKeyArgs) ToGroupGroupKeyPtrOutput() GroupGroupKeyPtrOutput {
 	return i.ToGroupGroupKeyPtrOutputWithContext(context.Background())
 }
@@ -122,12 +115,6 @@ func (i *groupGroupKeyPtrType) ToGroupGroupKeyPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(GroupGroupKeyPtrOutput)
 }
 
-func (i *groupGroupKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GroupGroupKey] {
-	return pulumix.Output[*GroupGroupKey]{
-		OutputState: i.ToGroupGroupKeyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GroupGroupKeyOutput struct{ *pulumi.OutputState }
 
 func (GroupGroupKeyOutput) ElementType() reflect.Type {
@@ -150,12 +137,6 @@ func (o GroupGroupKeyOutput) ToGroupGroupKeyPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupGroupKey) *GroupGroupKey {
 		return &v
 	}).(GroupGroupKeyPtrOutput)
-}
-
-func (o GroupGroupKeyOutput) ToOutput(ctx context.Context) pulumix.Output[GroupGroupKey] {
-	return pulumix.Output[GroupGroupKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the entity.
@@ -192,12 +173,6 @@ func (o GroupGroupKeyPtrOutput) ToGroupGroupKeyPtrOutput() GroupGroupKeyPtrOutpu
 
 func (o GroupGroupKeyPtrOutput) ToGroupGroupKeyPtrOutputWithContext(ctx context.Context) GroupGroupKeyPtrOutput {
 	return o
-}
-
-func (o GroupGroupKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupGroupKey] {
-	return pulumix.Output[*GroupGroupKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupGroupKeyPtrOutput) Elem() GroupGroupKeyOutput {
@@ -299,12 +274,6 @@ func (i GroupMembershipMemberKeyArgs) ToGroupMembershipMemberKeyOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMembershipMemberKeyOutput)
 }
 
-func (i GroupMembershipMemberKeyArgs) ToOutput(ctx context.Context) pulumix.Output[GroupMembershipMemberKey] {
-	return pulumix.Output[GroupMembershipMemberKey]{
-		OutputState: i.ToGroupMembershipMemberKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GroupMembershipMemberKeyArgs) ToGroupMembershipMemberKeyPtrOutput() GroupMembershipMemberKeyPtrOutput {
 	return i.ToGroupMembershipMemberKeyPtrOutputWithContext(context.Background())
 }
@@ -346,12 +315,6 @@ func (i *groupMembershipMemberKeyPtrType) ToGroupMembershipMemberKeyPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMembershipMemberKeyPtrOutput)
 }
 
-func (i *groupMembershipMemberKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GroupMembershipMemberKey] {
-	return pulumix.Output[*GroupMembershipMemberKey]{
-		OutputState: i.ToGroupMembershipMemberKeyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GroupMembershipMemberKeyOutput struct{ *pulumi.OutputState }
 
 func (GroupMembershipMemberKeyOutput) ElementType() reflect.Type {
@@ -374,12 +337,6 @@ func (o GroupMembershipMemberKeyOutput) ToGroupMembershipMemberKeyPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupMembershipMemberKey) *GroupMembershipMemberKey {
 		return &v
 	}).(GroupMembershipMemberKeyPtrOutput)
-}
-
-func (o GroupMembershipMemberKeyOutput) ToOutput(ctx context.Context) pulumix.Output[GroupMembershipMemberKey] {
-	return pulumix.Output[GroupMembershipMemberKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the entity.
@@ -414,12 +371,6 @@ func (o GroupMembershipMemberKeyPtrOutput) ToGroupMembershipMemberKeyPtrOutput()
 
 func (o GroupMembershipMemberKeyPtrOutput) ToGroupMembershipMemberKeyPtrOutputWithContext(ctx context.Context) GroupMembershipMemberKeyPtrOutput {
 	return o
-}
-
-func (o GroupMembershipMemberKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupMembershipMemberKey] {
-	return pulumix.Output[*GroupMembershipMemberKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupMembershipMemberKeyPtrOutput) Elem() GroupMembershipMemberKeyOutput {
@@ -519,12 +470,6 @@ func (i GroupMembershipPreferredMemberKeyArgs) ToGroupMembershipPreferredMemberK
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMembershipPreferredMemberKeyOutput)
 }
 
-func (i GroupMembershipPreferredMemberKeyArgs) ToOutput(ctx context.Context) pulumix.Output[GroupMembershipPreferredMemberKey] {
-	return pulumix.Output[GroupMembershipPreferredMemberKey]{
-		OutputState: i.ToGroupMembershipPreferredMemberKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GroupMembershipPreferredMemberKeyArgs) ToGroupMembershipPreferredMemberKeyPtrOutput() GroupMembershipPreferredMemberKeyPtrOutput {
 	return i.ToGroupMembershipPreferredMemberKeyPtrOutputWithContext(context.Background())
 }
@@ -566,12 +511,6 @@ func (i *groupMembershipPreferredMemberKeyPtrType) ToGroupMembershipPreferredMem
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMembershipPreferredMemberKeyPtrOutput)
 }
 
-func (i *groupMembershipPreferredMemberKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GroupMembershipPreferredMemberKey] {
-	return pulumix.Output[*GroupMembershipPreferredMemberKey]{
-		OutputState: i.ToGroupMembershipPreferredMemberKeyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GroupMembershipPreferredMemberKeyOutput struct{ *pulumi.OutputState }
 
 func (GroupMembershipPreferredMemberKeyOutput) ElementType() reflect.Type {
@@ -594,12 +533,6 @@ func (o GroupMembershipPreferredMemberKeyOutput) ToGroupMembershipPreferredMembe
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupMembershipPreferredMemberKey) *GroupMembershipPreferredMemberKey {
 		return &v
 	}).(GroupMembershipPreferredMemberKeyPtrOutput)
-}
-
-func (o GroupMembershipPreferredMemberKeyOutput) ToOutput(ctx context.Context) pulumix.Output[GroupMembershipPreferredMemberKey] {
-	return pulumix.Output[GroupMembershipPreferredMemberKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the entity.
@@ -634,12 +567,6 @@ func (o GroupMembershipPreferredMemberKeyPtrOutput) ToGroupMembershipPreferredMe
 
 func (o GroupMembershipPreferredMemberKeyPtrOutput) ToGroupMembershipPreferredMemberKeyPtrOutputWithContext(ctx context.Context) GroupMembershipPreferredMemberKeyPtrOutput {
 	return o
-}
-
-func (o GroupMembershipPreferredMemberKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupMembershipPreferredMemberKey] {
-	return pulumix.Output[*GroupMembershipPreferredMemberKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupMembershipPreferredMemberKeyPtrOutput) Elem() GroupMembershipPreferredMemberKeyOutput {
@@ -721,12 +648,6 @@ func (i GroupMembershipRoleArgs) ToGroupMembershipRoleOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMembershipRoleOutput)
 }
 
-func (i GroupMembershipRoleArgs) ToOutput(ctx context.Context) pulumix.Output[GroupMembershipRole] {
-	return pulumix.Output[GroupMembershipRole]{
-		OutputState: i.ToGroupMembershipRoleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GroupMembershipRoleArrayInput is an input type that accepts GroupMembershipRoleArray and GroupMembershipRoleArrayOutput values.
 // You can construct a concrete instance of `GroupMembershipRoleArrayInput` via:
 //
@@ -752,12 +673,6 @@ func (i GroupMembershipRoleArray) ToGroupMembershipRoleArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMembershipRoleArrayOutput)
 }
 
-func (i GroupMembershipRoleArray) ToOutput(ctx context.Context) pulumix.Output[[]GroupMembershipRole] {
-	return pulumix.Output[[]GroupMembershipRole]{
-		OutputState: i.ToGroupMembershipRoleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GroupMembershipRoleOutput struct{ *pulumi.OutputState }
 
 func (GroupMembershipRoleOutput) ElementType() reflect.Type {
@@ -770,12 +685,6 @@ func (o GroupMembershipRoleOutput) ToGroupMembershipRoleOutput() GroupMembership
 
 func (o GroupMembershipRoleOutput) ToGroupMembershipRoleOutputWithContext(ctx context.Context) GroupMembershipRoleOutput {
 	return o
-}
-
-func (o GroupMembershipRoleOutput) ToOutput(ctx context.Context) pulumix.Output[GroupMembershipRole] {
-	return pulumix.Output[GroupMembershipRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
@@ -798,12 +707,6 @@ func (o GroupMembershipRoleArrayOutput) ToGroupMembershipRoleArrayOutput() Group
 
 func (o GroupMembershipRoleArrayOutput) ToGroupMembershipRoleArrayOutputWithContext(ctx context.Context) GroupMembershipRoleArrayOutput {
 	return o
-}
-
-func (o GroupMembershipRoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GroupMembershipRole] {
-	return pulumix.Output[[]GroupMembershipRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupMembershipRoleArrayOutput) Index(i pulumi.IntInput) GroupMembershipRoleOutput {
@@ -869,12 +772,6 @@ func (i GetGroupMembershipsMembershipArgs) ToGetGroupMembershipsMembershipOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMembershipsMembershipOutput)
 }
 
-func (i GetGroupMembershipsMembershipArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupMembershipsMembership] {
-	return pulumix.Output[GetGroupMembershipsMembership]{
-		OutputState: i.ToGetGroupMembershipsMembershipOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetGroupMembershipsMembershipArrayInput is an input type that accepts GetGroupMembershipsMembershipArray and GetGroupMembershipsMembershipArrayOutput values.
 // You can construct a concrete instance of `GetGroupMembershipsMembershipArrayInput` via:
 //
@@ -900,12 +797,6 @@ func (i GetGroupMembershipsMembershipArray) ToGetGroupMembershipsMembershipArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMembershipsMembershipArrayOutput)
 }
 
-func (i GetGroupMembershipsMembershipArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupMembershipsMembership] {
-	return pulumix.Output[[]GetGroupMembershipsMembership]{
-		OutputState: i.ToGetGroupMembershipsMembershipArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetGroupMembershipsMembershipOutput struct{ *pulumi.OutputState }
 
 func (GetGroupMembershipsMembershipOutput) ElementType() reflect.Type {
@@ -918,12 +809,6 @@ func (o GetGroupMembershipsMembershipOutput) ToGetGroupMembershipsMembershipOutp
 
 func (o GetGroupMembershipsMembershipOutput) ToGetGroupMembershipsMembershipOutputWithContext(ctx context.Context) GetGroupMembershipsMembershipOutput {
 	return o
-}
-
-func (o GetGroupMembershipsMembershipOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupMembershipsMembership] {
-	return pulumix.Output[GetGroupMembershipsMembership]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetGroupMembershipsMembershipOutput) CreateTime() pulumi.StringOutput {
@@ -980,12 +865,6 @@ func (o GetGroupMembershipsMembershipArrayOutput) ToGetGroupMembershipsMembershi
 	return o
 }
 
-func (o GetGroupMembershipsMembershipArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupMembershipsMembership] {
-	return pulumix.Output[[]GetGroupMembershipsMembership]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetGroupMembershipsMembershipArrayOutput) Index(i pulumi.IntInput) GetGroupMembershipsMembershipOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupMembershipsMembership {
 		return vs[0].([]GetGroupMembershipsMembership)[vs[1].(int)]
@@ -1039,12 +918,6 @@ func (i GetGroupMembershipsMembershipMemberKeyArgs) ToGetGroupMembershipsMembers
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMembershipsMembershipMemberKeyOutput)
 }
 
-func (i GetGroupMembershipsMembershipMemberKeyArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupMembershipsMembershipMemberKey] {
-	return pulumix.Output[GetGroupMembershipsMembershipMemberKey]{
-		OutputState: i.ToGetGroupMembershipsMembershipMemberKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetGroupMembershipsMembershipMemberKeyArrayInput is an input type that accepts GetGroupMembershipsMembershipMemberKeyArray and GetGroupMembershipsMembershipMemberKeyArrayOutput values.
 // You can construct a concrete instance of `GetGroupMembershipsMembershipMemberKeyArrayInput` via:
 //
@@ -1070,12 +943,6 @@ func (i GetGroupMembershipsMembershipMemberKeyArray) ToGetGroupMembershipsMember
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMembershipsMembershipMemberKeyArrayOutput)
 }
 
-func (i GetGroupMembershipsMembershipMemberKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupMembershipsMembershipMemberKey] {
-	return pulumix.Output[[]GetGroupMembershipsMembershipMemberKey]{
-		OutputState: i.ToGetGroupMembershipsMembershipMemberKeyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetGroupMembershipsMembershipMemberKeyOutput struct{ *pulumi.OutputState }
 
 func (GetGroupMembershipsMembershipMemberKeyOutput) ElementType() reflect.Type {
@@ -1088,12 +955,6 @@ func (o GetGroupMembershipsMembershipMemberKeyOutput) ToGetGroupMembershipsMembe
 
 func (o GetGroupMembershipsMembershipMemberKeyOutput) ToGetGroupMembershipsMembershipMemberKeyOutputWithContext(ctx context.Context) GetGroupMembershipsMembershipMemberKeyOutput {
 	return o
-}
-
-func (o GetGroupMembershipsMembershipMemberKeyOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupMembershipsMembershipMemberKey] {
-	return pulumix.Output[GetGroupMembershipsMembershipMemberKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the entity. For Google-managed entities, the id is the email address of an existing
@@ -1123,12 +984,6 @@ func (o GetGroupMembershipsMembershipMemberKeyArrayOutput) ToGetGroupMemberships
 
 func (o GetGroupMembershipsMembershipMemberKeyArrayOutput) ToGetGroupMembershipsMembershipMemberKeyArrayOutputWithContext(ctx context.Context) GetGroupMembershipsMembershipMemberKeyArrayOutput {
 	return o
-}
-
-func (o GetGroupMembershipsMembershipMemberKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupMembershipsMembershipMemberKey] {
-	return pulumix.Output[[]GetGroupMembershipsMembershipMemberKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetGroupMembershipsMembershipMemberKeyArrayOutput) Index(i pulumi.IntInput) GetGroupMembershipsMembershipMemberKeyOutput {
@@ -1184,12 +1039,6 @@ func (i GetGroupMembershipsMembershipPreferredMemberKeyArgs) ToGetGroupMembershi
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMembershipsMembershipPreferredMemberKeyOutput)
 }
 
-func (i GetGroupMembershipsMembershipPreferredMemberKeyArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupMembershipsMembershipPreferredMemberKey] {
-	return pulumix.Output[GetGroupMembershipsMembershipPreferredMemberKey]{
-		OutputState: i.ToGetGroupMembershipsMembershipPreferredMemberKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetGroupMembershipsMembershipPreferredMemberKeyArrayInput is an input type that accepts GetGroupMembershipsMembershipPreferredMemberKeyArray and GetGroupMembershipsMembershipPreferredMemberKeyArrayOutput values.
 // You can construct a concrete instance of `GetGroupMembershipsMembershipPreferredMemberKeyArrayInput` via:
 //
@@ -1215,12 +1064,6 @@ func (i GetGroupMembershipsMembershipPreferredMemberKeyArray) ToGetGroupMembersh
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMembershipsMembershipPreferredMemberKeyArrayOutput)
 }
 
-func (i GetGroupMembershipsMembershipPreferredMemberKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupMembershipsMembershipPreferredMemberKey] {
-	return pulumix.Output[[]GetGroupMembershipsMembershipPreferredMemberKey]{
-		OutputState: i.ToGetGroupMembershipsMembershipPreferredMemberKeyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetGroupMembershipsMembershipPreferredMemberKeyOutput struct{ *pulumi.OutputState }
 
 func (GetGroupMembershipsMembershipPreferredMemberKeyOutput) ElementType() reflect.Type {
@@ -1233,12 +1076,6 @@ func (o GetGroupMembershipsMembershipPreferredMemberKeyOutput) ToGetGroupMembers
 
 func (o GetGroupMembershipsMembershipPreferredMemberKeyOutput) ToGetGroupMembershipsMembershipPreferredMemberKeyOutputWithContext(ctx context.Context) GetGroupMembershipsMembershipPreferredMemberKeyOutput {
 	return o
-}
-
-func (o GetGroupMembershipsMembershipPreferredMemberKeyOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupMembershipsMembershipPreferredMemberKey] {
-	return pulumix.Output[GetGroupMembershipsMembershipPreferredMemberKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the entity. For Google-managed entities, the id is the email address of an existing
@@ -1268,12 +1105,6 @@ func (o GetGroupMembershipsMembershipPreferredMemberKeyArrayOutput) ToGetGroupMe
 
 func (o GetGroupMembershipsMembershipPreferredMemberKeyArrayOutput) ToGetGroupMembershipsMembershipPreferredMemberKeyArrayOutputWithContext(ctx context.Context) GetGroupMembershipsMembershipPreferredMemberKeyArrayOutput {
 	return o
-}
-
-func (o GetGroupMembershipsMembershipPreferredMemberKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupMembershipsMembershipPreferredMemberKey] {
-	return pulumix.Output[[]GetGroupMembershipsMembershipPreferredMemberKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetGroupMembershipsMembershipPreferredMemberKeyArrayOutput) Index(i pulumi.IntInput) GetGroupMembershipsMembershipPreferredMemberKeyOutput {
@@ -1315,12 +1146,6 @@ func (i GetGroupMembershipsMembershipRoleArgs) ToGetGroupMembershipsMembershipRo
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMembershipsMembershipRoleOutput)
 }
 
-func (i GetGroupMembershipsMembershipRoleArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupMembershipsMembershipRole] {
-	return pulumix.Output[GetGroupMembershipsMembershipRole]{
-		OutputState: i.ToGetGroupMembershipsMembershipRoleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetGroupMembershipsMembershipRoleArrayInput is an input type that accepts GetGroupMembershipsMembershipRoleArray and GetGroupMembershipsMembershipRoleArrayOutput values.
 // You can construct a concrete instance of `GetGroupMembershipsMembershipRoleArrayInput` via:
 //
@@ -1346,12 +1171,6 @@ func (i GetGroupMembershipsMembershipRoleArray) ToGetGroupMembershipsMembershipR
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMembershipsMembershipRoleArrayOutput)
 }
 
-func (i GetGroupMembershipsMembershipRoleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupMembershipsMembershipRole] {
-	return pulumix.Output[[]GetGroupMembershipsMembershipRole]{
-		OutputState: i.ToGetGroupMembershipsMembershipRoleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetGroupMembershipsMembershipRoleOutput struct{ *pulumi.OutputState }
 
 func (GetGroupMembershipsMembershipRoleOutput) ElementType() reflect.Type {
@@ -1364,12 +1183,6 @@ func (o GetGroupMembershipsMembershipRoleOutput) ToGetGroupMembershipsMembership
 
 func (o GetGroupMembershipsMembershipRoleOutput) ToGetGroupMembershipsMembershipRoleOutputWithContext(ctx context.Context) GetGroupMembershipsMembershipRoleOutput {
 	return o
-}
-
-func (o GetGroupMembershipsMembershipRoleOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupMembershipsMembershipRole] {
-	return pulumix.Output[GetGroupMembershipsMembershipRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
@@ -1389,12 +1202,6 @@ func (o GetGroupMembershipsMembershipRoleArrayOutput) ToGetGroupMembershipsMembe
 
 func (o GetGroupMembershipsMembershipRoleArrayOutput) ToGetGroupMembershipsMembershipRoleArrayOutputWithContext(ctx context.Context) GetGroupMembershipsMembershipRoleArrayOutput {
 	return o
-}
-
-func (o GetGroupMembershipsMembershipRoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupMembershipsMembershipRole] {
-	return pulumix.Output[[]GetGroupMembershipsMembershipRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetGroupMembershipsMembershipRoleArrayOutput) Index(i pulumi.IntInput) GetGroupMembershipsMembershipRoleOutput {
@@ -1466,12 +1273,6 @@ func (i GetGroupsGroupArgs) ToGetGroupsGroupOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupOutput)
 }
 
-func (i GetGroupsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupsGroup] {
-	return pulumix.Output[GetGroupsGroup]{
-		OutputState: i.ToGetGroupsGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetGroupsGroupArrayInput is an input type that accepts GetGroupsGroupArray and GetGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetGroupsGroupArrayInput` via:
 //
@@ -1497,12 +1298,6 @@ func (i GetGroupsGroupArray) ToGetGroupsGroupArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupArrayOutput)
 }
 
-func (i GetGroupsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupsGroup] {
-	return pulumix.Output[[]GetGroupsGroup]{
-		OutputState: i.ToGetGroupsGroupArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetGroupsGroupOutput) ElementType() reflect.Type {
@@ -1515,12 +1310,6 @@ func (o GetGroupsGroupOutput) ToGetGroupsGroupOutput() GetGroupsGroupOutput {
 
 func (o GetGroupsGroupOutput) ToGetGroupsGroupOutputWithContext(ctx context.Context) GetGroupsGroupOutput {
 	return o
-}
-
-func (o GetGroupsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupsGroup] {
-	return pulumix.Output[GetGroupsGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetGroupsGroupOutput) CreateTime() pulumi.StringOutput {
@@ -1579,12 +1368,6 @@ func (o GetGroupsGroupArrayOutput) ToGetGroupsGroupArrayOutput() GetGroupsGroupA
 
 func (o GetGroupsGroupArrayOutput) ToGetGroupsGroupArrayOutputWithContext(ctx context.Context) GetGroupsGroupArrayOutput {
 	return o
-}
-
-func (o GetGroupsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupsGroup] {
-	return pulumix.Output[[]GetGroupsGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput {
@@ -1646,12 +1429,6 @@ func (i GetGroupsGroupGroupKeyArgs) ToGetGroupsGroupGroupKeyOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupGroupKeyOutput)
 }
 
-func (i GetGroupsGroupGroupKeyArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupsGroupGroupKey] {
-	return pulumix.Output[GetGroupsGroupGroupKey]{
-		OutputState: i.ToGetGroupsGroupGroupKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetGroupsGroupGroupKeyArrayInput is an input type that accepts GetGroupsGroupGroupKeyArray and GetGroupsGroupGroupKeyArrayOutput values.
 // You can construct a concrete instance of `GetGroupsGroupGroupKeyArrayInput` via:
 //
@@ -1677,12 +1454,6 @@ func (i GetGroupsGroupGroupKeyArray) ToGetGroupsGroupGroupKeyArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupGroupKeyArrayOutput)
 }
 
-func (i GetGroupsGroupGroupKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupsGroupGroupKey] {
-	return pulumix.Output[[]GetGroupsGroupGroupKey]{
-		OutputState: i.ToGetGroupsGroupGroupKeyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetGroupsGroupGroupKeyOutput struct{ *pulumi.OutputState }
 
 func (GetGroupsGroupGroupKeyOutput) ElementType() reflect.Type {
@@ -1695,12 +1466,6 @@ func (o GetGroupsGroupGroupKeyOutput) ToGetGroupsGroupGroupKeyOutput() GetGroups
 
 func (o GetGroupsGroupGroupKeyOutput) ToGetGroupsGroupGroupKeyOutputWithContext(ctx context.Context) GetGroupsGroupGroupKeyOutput {
 	return o
-}
-
-func (o GetGroupsGroupGroupKeyOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupsGroupGroupKey] {
-	return pulumix.Output[GetGroupsGroupGroupKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the entity.
@@ -1733,12 +1498,6 @@ func (o GetGroupsGroupGroupKeyArrayOutput) ToGetGroupsGroupGroupKeyArrayOutput()
 
 func (o GetGroupsGroupGroupKeyArrayOutput) ToGetGroupsGroupGroupKeyArrayOutputWithContext(ctx context.Context) GetGroupsGroupGroupKeyArrayOutput {
 	return o
-}
-
-func (o GetGroupsGroupGroupKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupsGroupGroupKey] {
-	return pulumix.Output[[]GetGroupsGroupGroupKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetGroupsGroupGroupKeyArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupGroupKeyOutput {

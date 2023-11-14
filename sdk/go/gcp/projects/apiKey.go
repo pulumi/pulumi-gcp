@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Apikeys Key resource
@@ -400,12 +399,6 @@ func (i *ApiKey) ToApiKeyOutputWithContext(ctx context.Context) ApiKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyOutput)
 }
 
-func (i *ApiKey) ToOutput(ctx context.Context) pulumix.Output[*ApiKey] {
-	return pulumix.Output[*ApiKey]{
-		OutputState: i.ToApiKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApiKeyArrayInput is an input type that accepts ApiKeyArray and ApiKeyArrayOutput values.
 // You can construct a concrete instance of `ApiKeyArrayInput` via:
 //
@@ -429,12 +422,6 @@ func (i ApiKeyArray) ToApiKeyArrayOutput() ApiKeyArrayOutput {
 
 func (i ApiKeyArray) ToApiKeyArrayOutputWithContext(ctx context.Context) ApiKeyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyArrayOutput)
-}
-
-func (i ApiKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApiKey] {
-	return pulumix.Output[[]*ApiKey]{
-		OutputState: i.ToApiKeyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApiKeyMapInput is an input type that accepts ApiKeyMap and ApiKeyMapOutput values.
@@ -462,12 +449,6 @@ func (i ApiKeyMap) ToApiKeyMapOutputWithContext(ctx context.Context) ApiKeyMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyMapOutput)
 }
 
-func (i ApiKeyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApiKey] {
-	return pulumix.Output[map[string]*ApiKey]{
-		OutputState: i.ToApiKeyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiKeyOutput struct{ *pulumi.OutputState }
 
 func (ApiKeyOutput) ElementType() reflect.Type {
@@ -480,12 +461,6 @@ func (o ApiKeyOutput) ToApiKeyOutput() ApiKeyOutput {
 
 func (o ApiKeyOutput) ToApiKeyOutputWithContext(ctx context.Context) ApiKeyOutput {
 	return o
-}
-
-func (o ApiKeyOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiKey] {
-	return pulumix.Output[*ApiKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Human-readable display name of this API key. Modifiable by user.
@@ -532,12 +507,6 @@ func (o ApiKeyArrayOutput) ToApiKeyArrayOutputWithContext(ctx context.Context) A
 	return o
 }
 
-func (o ApiKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApiKey] {
-	return pulumix.Output[[]*ApiKey]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApiKeyArrayOutput) Index(i pulumi.IntInput) ApiKeyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApiKey {
 		return vs[0].([]*ApiKey)[vs[1].(int)]
@@ -556,12 +525,6 @@ func (o ApiKeyMapOutput) ToApiKeyMapOutput() ApiKeyMapOutput {
 
 func (o ApiKeyMapOutput) ToApiKeyMapOutputWithContext(ctx context.Context) ApiKeyMapOutput {
 	return o
-}
-
-func (o ApiKeyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApiKey] {
-	return pulumix.Output[map[string]*ApiKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiKeyMapOutput) MapIndex(k pulumi.StringInput) ApiKeyOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes a composite index for Cloud Datastore.
@@ -238,12 +237,6 @@ func (i *DataStoreIndex) ToDataStoreIndexOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(DataStoreIndexOutput)
 }
 
-func (i *DataStoreIndex) ToOutput(ctx context.Context) pulumix.Output[*DataStoreIndex] {
-	return pulumix.Output[*DataStoreIndex]{
-		OutputState: i.ToDataStoreIndexOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataStoreIndexArrayInput is an input type that accepts DataStoreIndexArray and DataStoreIndexArrayOutput values.
 // You can construct a concrete instance of `DataStoreIndexArrayInput` via:
 //
@@ -267,12 +260,6 @@ func (i DataStoreIndexArray) ToDataStoreIndexArrayOutput() DataStoreIndexArrayOu
 
 func (i DataStoreIndexArray) ToDataStoreIndexArrayOutputWithContext(ctx context.Context) DataStoreIndexArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataStoreIndexArrayOutput)
-}
-
-func (i DataStoreIndexArray) ToOutput(ctx context.Context) pulumix.Output[[]*DataStoreIndex] {
-	return pulumix.Output[[]*DataStoreIndex]{
-		OutputState: i.ToDataStoreIndexArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DataStoreIndexMapInput is an input type that accepts DataStoreIndexMap and DataStoreIndexMapOutput values.
@@ -300,12 +287,6 @@ func (i DataStoreIndexMap) ToDataStoreIndexMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DataStoreIndexMapOutput)
 }
 
-func (i DataStoreIndexMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DataStoreIndex] {
-	return pulumix.Output[map[string]*DataStoreIndex]{
-		OutputState: i.ToDataStoreIndexMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataStoreIndexOutput struct{ *pulumi.OutputState }
 
 func (DataStoreIndexOutput) ElementType() reflect.Type {
@@ -318,12 +299,6 @@ func (o DataStoreIndexOutput) ToDataStoreIndexOutput() DataStoreIndexOutput {
 
 func (o DataStoreIndexOutput) ToDataStoreIndexOutputWithContext(ctx context.Context) DataStoreIndexOutput {
 	return o
-}
-
-func (o DataStoreIndexOutput) ToOutput(ctx context.Context) pulumix.Output[*DataStoreIndex] {
-	return pulumix.Output[*DataStoreIndex]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Policy for including ancestors in the index.
@@ -371,12 +346,6 @@ func (o DataStoreIndexArrayOutput) ToDataStoreIndexArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o DataStoreIndexArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DataStoreIndex] {
-	return pulumix.Output[[]*DataStoreIndex]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DataStoreIndexArrayOutput) Index(i pulumi.IntInput) DataStoreIndexOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DataStoreIndex {
 		return vs[0].([]*DataStoreIndex)[vs[1].(int)]
@@ -395,12 +364,6 @@ func (o DataStoreIndexMapOutput) ToDataStoreIndexMapOutput() DataStoreIndexMapOu
 
 func (o DataStoreIndexMapOutput) ToDataStoreIndexMapOutputWithContext(ctx context.Context) DataStoreIndexMapOutput {
 	return o
-}
-
-func (o DataStoreIndexMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DataStoreIndex] {
-	return pulumix.Output[map[string]*DataStoreIndex]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataStoreIndexMapOutput) MapIndex(k pulumi.StringInput) DataStoreIndexOutput {

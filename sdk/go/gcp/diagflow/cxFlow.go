@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Flows represents the conversation flows when you build your chatbot agent.
@@ -689,12 +688,6 @@ func (i *CxFlow) ToCxFlowOutputWithContext(ctx context.Context) CxFlowOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowOutput)
 }
 
-func (i *CxFlow) ToOutput(ctx context.Context) pulumix.Output[*CxFlow] {
-	return pulumix.Output[*CxFlow]{
-		OutputState: i.ToCxFlowOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxFlowArrayInput is an input type that accepts CxFlowArray and CxFlowArrayOutput values.
 // You can construct a concrete instance of `CxFlowArrayInput` via:
 //
@@ -718,12 +711,6 @@ func (i CxFlowArray) ToCxFlowArrayOutput() CxFlowArrayOutput {
 
 func (i CxFlowArray) ToCxFlowArrayOutputWithContext(ctx context.Context) CxFlowArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowArrayOutput)
-}
-
-func (i CxFlowArray) ToOutput(ctx context.Context) pulumix.Output[[]*CxFlow] {
-	return pulumix.Output[[]*CxFlow]{
-		OutputState: i.ToCxFlowArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CxFlowMapInput is an input type that accepts CxFlowMap and CxFlowMapOutput values.
@@ -751,12 +738,6 @@ func (i CxFlowMap) ToCxFlowMapOutputWithContext(ctx context.Context) CxFlowMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowMapOutput)
 }
 
-func (i CxFlowMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxFlow] {
-	return pulumix.Output[map[string]*CxFlow]{
-		OutputState: i.ToCxFlowMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxFlowOutput struct{ *pulumi.OutputState }
 
 func (CxFlowOutput) ElementType() reflect.Type {
@@ -769,12 +750,6 @@ func (o CxFlowOutput) ToCxFlowOutput() CxFlowOutput {
 
 func (o CxFlowOutput) ToCxFlowOutputWithContext(ctx context.Context) CxFlowOutput {
 	return o
-}
-
-func (o CxFlowOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlow] {
-	return pulumix.Output[*CxFlow]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
@@ -860,12 +835,6 @@ func (o CxFlowArrayOutput) ToCxFlowArrayOutputWithContext(ctx context.Context) C
 	return o
 }
 
-func (o CxFlowArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CxFlow] {
-	return pulumix.Output[[]*CxFlow]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CxFlowArrayOutput) Index(i pulumi.IntInput) CxFlowOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CxFlow {
 		return vs[0].([]*CxFlow)[vs[1].(int)]
@@ -884,12 +853,6 @@ func (o CxFlowMapOutput) ToCxFlowMapOutput() CxFlowMapOutput {
 
 func (o CxFlowMapOutput) ToCxFlowMapOutputWithContext(ctx context.Context) CxFlowMapOutput {
 	return o
-}
-
-func (o CxFlowMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxFlow] {
-	return pulumix.Output[map[string]*CxFlow]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxFlowMapOutput) MapIndex(k pulumi.StringInput) CxFlowOutput {

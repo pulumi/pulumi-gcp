@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides access to Cloud Composer environment configuration in a region for a given project.
@@ -89,12 +88,6 @@ func (o LookupEnvironmentResultOutput) ToLookupEnvironmentResultOutput() LookupE
 
 func (o LookupEnvironmentResultOutput) ToLookupEnvironmentResultOutputWithContext(ctx context.Context) LookupEnvironmentResultOutput {
 	return o
-}
-
-func (o LookupEnvironmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEnvironmentResult] {
-	return pulumix.Output[LookupEnvironmentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration parameters for the environment.

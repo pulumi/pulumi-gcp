@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage IAM policies on bigtable tables. Each of these resources serves a different use case:
@@ -350,12 +349,6 @@ func (i *TableIamPolicy) ToTableIamPolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TableIamPolicyOutput)
 }
 
-func (i *TableIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*TableIamPolicy] {
-	return pulumix.Output[*TableIamPolicy]{
-		OutputState: i.ToTableIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TableIamPolicyArrayInput is an input type that accepts TableIamPolicyArray and TableIamPolicyArrayOutput values.
 // You can construct a concrete instance of `TableIamPolicyArrayInput` via:
 //
@@ -379,12 +372,6 @@ func (i TableIamPolicyArray) ToTableIamPolicyArrayOutput() TableIamPolicyArrayOu
 
 func (i TableIamPolicyArray) ToTableIamPolicyArrayOutputWithContext(ctx context.Context) TableIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TableIamPolicyArrayOutput)
-}
-
-func (i TableIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*TableIamPolicy] {
-	return pulumix.Output[[]*TableIamPolicy]{
-		OutputState: i.ToTableIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TableIamPolicyMapInput is an input type that accepts TableIamPolicyMap and TableIamPolicyMapOutput values.
@@ -412,12 +399,6 @@ func (i TableIamPolicyMap) ToTableIamPolicyMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TableIamPolicyMapOutput)
 }
 
-func (i TableIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TableIamPolicy] {
-	return pulumix.Output[map[string]*TableIamPolicy]{
-		OutputState: i.ToTableIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TableIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (TableIamPolicyOutput) ElementType() reflect.Type {
@@ -430,12 +411,6 @@ func (o TableIamPolicyOutput) ToTableIamPolicyOutput() TableIamPolicyOutput {
 
 func (o TableIamPolicyOutput) ToTableIamPolicyOutputWithContext(ctx context.Context) TableIamPolicyOutput {
 	return o
-}
-
-func (o TableIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*TableIamPolicy] {
-	return pulumix.Output[*TableIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the tables's IAM policy.
@@ -491,12 +466,6 @@ func (o TableIamPolicyArrayOutput) ToTableIamPolicyArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o TableIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TableIamPolicy] {
-	return pulumix.Output[[]*TableIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TableIamPolicyArrayOutput) Index(i pulumi.IntInput) TableIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TableIamPolicy {
 		return vs[0].([]*TableIamPolicy)[vs[1].(int)]
@@ -515,12 +484,6 @@ func (o TableIamPolicyMapOutput) ToTableIamPolicyMapOutput() TableIamPolicyMapOu
 
 func (o TableIamPolicyMapOutput) ToTableIamPolicyMapOutputWithContext(ctx context.Context) TableIamPolicyMapOutput {
 	return o
-}
-
-func (o TableIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TableIamPolicy] {
-	return pulumix.Output[map[string]*TableIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TableIamPolicyMapOutput) MapIndex(k pulumi.StringInput) TableIamPolicyOutput {

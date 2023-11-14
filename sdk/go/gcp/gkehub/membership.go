@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Membership contains information about a member cluster.
@@ -380,12 +379,6 @@ func (i *Membership) ToMembershipOutputWithContext(ctx context.Context) Membersh
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipOutput)
 }
 
-func (i *Membership) ToOutput(ctx context.Context) pulumix.Output[*Membership] {
-	return pulumix.Output[*Membership]{
-		OutputState: i.ToMembershipOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MembershipArrayInput is an input type that accepts MembershipArray and MembershipArrayOutput values.
 // You can construct a concrete instance of `MembershipArrayInput` via:
 //
@@ -409,12 +402,6 @@ func (i MembershipArray) ToMembershipArrayOutput() MembershipArrayOutput {
 
 func (i MembershipArray) ToMembershipArrayOutputWithContext(ctx context.Context) MembershipArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipArrayOutput)
-}
-
-func (i MembershipArray) ToOutput(ctx context.Context) pulumix.Output[[]*Membership] {
-	return pulumix.Output[[]*Membership]{
-		OutputState: i.ToMembershipArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MembershipMapInput is an input type that accepts MembershipMap and MembershipMapOutput values.
@@ -442,12 +429,6 @@ func (i MembershipMap) ToMembershipMapOutputWithContext(ctx context.Context) Mem
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipMapOutput)
 }
 
-func (i MembershipMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Membership] {
-	return pulumix.Output[map[string]*Membership]{
-		OutputState: i.ToMembershipMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MembershipOutput struct{ *pulumi.OutputState }
 
 func (MembershipOutput) ElementType() reflect.Type {
@@ -460,12 +441,6 @@ func (o MembershipOutput) ToMembershipOutput() MembershipOutput {
 
 func (o MembershipOutput) ToMembershipOutputWithContext(ctx context.Context) MembershipOutput {
 	return o
-}
-
-func (o MembershipOutput) ToOutput(ctx context.Context) pulumix.Output[*Membership] {
-	return pulumix.Output[*Membership]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Authority encodes how Google will recognize identities from this Membership.
@@ -544,12 +519,6 @@ func (o MembershipArrayOutput) ToMembershipArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o MembershipArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Membership] {
-	return pulumix.Output[[]*Membership]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MembershipArrayOutput) Index(i pulumi.IntInput) MembershipOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Membership {
 		return vs[0].([]*Membership)[vs[1].(int)]
@@ -568,12 +537,6 @@ func (o MembershipMapOutput) ToMembershipMapOutput() MembershipMapOutput {
 
 func (o MembershipMapOutput) ToMembershipMapOutputWithContext(ctx context.Context) MembershipMapOutput {
 	return o
-}
-
-func (o MembershipMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Membership] {
-	return pulumix.Output[map[string]*Membership]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MembershipMapOutput) MapIndex(k pulumi.StringInput) MembershipOutput {

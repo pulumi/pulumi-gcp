@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for taxonomy
@@ -113,12 +112,6 @@ func (o LookupTaxonomyIamPolicyResultOutput) ToLookupTaxonomyIamPolicyResultOutp
 
 func (o LookupTaxonomyIamPolicyResultOutput) ToLookupTaxonomyIamPolicyResultOutputWithContext(ctx context.Context) LookupTaxonomyIamPolicyResultOutput {
 	return o
-}
-
-func (o LookupTaxonomyIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTaxonomyIamPolicyResult] {
-	return pulumix.Output[LookupTaxonomyIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.

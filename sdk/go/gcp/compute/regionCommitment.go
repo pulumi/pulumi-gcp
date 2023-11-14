@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a regional Commitment resource.
@@ -465,12 +464,6 @@ func (i *RegionCommitment) ToRegionCommitmentOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionCommitmentOutput)
 }
 
-func (i *RegionCommitment) ToOutput(ctx context.Context) pulumix.Output[*RegionCommitment] {
-	return pulumix.Output[*RegionCommitment]{
-		OutputState: i.ToRegionCommitmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RegionCommitmentArrayInput is an input type that accepts RegionCommitmentArray and RegionCommitmentArrayOutput values.
 // You can construct a concrete instance of `RegionCommitmentArrayInput` via:
 //
@@ -494,12 +487,6 @@ func (i RegionCommitmentArray) ToRegionCommitmentArrayOutput() RegionCommitmentA
 
 func (i RegionCommitmentArray) ToRegionCommitmentArrayOutputWithContext(ctx context.Context) RegionCommitmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionCommitmentArrayOutput)
-}
-
-func (i RegionCommitmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionCommitment] {
-	return pulumix.Output[[]*RegionCommitment]{
-		OutputState: i.ToRegionCommitmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RegionCommitmentMapInput is an input type that accepts RegionCommitmentMap and RegionCommitmentMapOutput values.
@@ -527,12 +514,6 @@ func (i RegionCommitmentMap) ToRegionCommitmentMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(RegionCommitmentMapOutput)
 }
 
-func (i RegionCommitmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionCommitment] {
-	return pulumix.Output[map[string]*RegionCommitment]{
-		OutputState: i.ToRegionCommitmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegionCommitmentOutput struct{ *pulumi.OutputState }
 
 func (RegionCommitmentOutput) ElementType() reflect.Type {
@@ -545,12 +526,6 @@ func (o RegionCommitmentOutput) ToRegionCommitmentOutput() RegionCommitmentOutpu
 
 func (o RegionCommitmentOutput) ToRegionCommitmentOutputWithContext(ctx context.Context) RegionCommitmentOutput {
 	return o
-}
-
-func (o RegionCommitmentOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionCommitment] {
-	return pulumix.Output[*RegionCommitment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies whether to enable automatic renewal for the commitment.
@@ -676,12 +651,6 @@ func (o RegionCommitmentArrayOutput) ToRegionCommitmentArrayOutputWithContext(ct
 	return o
 }
 
-func (o RegionCommitmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionCommitment] {
-	return pulumix.Output[[]*RegionCommitment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegionCommitmentArrayOutput) Index(i pulumi.IntInput) RegionCommitmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionCommitment {
 		return vs[0].([]*RegionCommitment)[vs[1].(int)]
@@ -700,12 +669,6 @@ func (o RegionCommitmentMapOutput) ToRegionCommitmentMapOutput() RegionCommitmen
 
 func (o RegionCommitmentMapOutput) ToRegionCommitmentMapOutputWithContext(ctx context.Context) RegionCommitmentMapOutput {
 	return o
-}
-
-func (o RegionCommitmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionCommitment] {
-	return pulumix.Output[map[string]*RegionCommitment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegionCommitmentMapOutput) MapIndex(k pulumi.StringInput) RegionCommitmentOutput {

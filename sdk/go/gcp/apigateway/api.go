@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A consumable API that can be used by multiple Gateways.
@@ -266,12 +265,6 @@ func (i *Api) ToApiOutputWithContext(ctx context.Context) ApiOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiOutput)
 }
 
-func (i *Api) ToOutput(ctx context.Context) pulumix.Output[*Api] {
-	return pulumix.Output[*Api]{
-		OutputState: i.ToApiOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApiArrayInput is an input type that accepts ApiArray and ApiArrayOutput values.
 // You can construct a concrete instance of `ApiArrayInput` via:
 //
@@ -295,12 +288,6 @@ func (i ApiArray) ToApiArrayOutput() ApiArrayOutput {
 
 func (i ApiArray) ToApiArrayOutputWithContext(ctx context.Context) ApiArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiArrayOutput)
-}
-
-func (i ApiArray) ToOutput(ctx context.Context) pulumix.Output[[]*Api] {
-	return pulumix.Output[[]*Api]{
-		OutputState: i.ToApiArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApiMapInput is an input type that accepts ApiMap and ApiMapOutput values.
@@ -328,12 +315,6 @@ func (i ApiMap) ToApiMapOutputWithContext(ctx context.Context) ApiMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiMapOutput)
 }
 
-func (i ApiMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Api] {
-	return pulumix.Output[map[string]*Api]{
-		OutputState: i.ToApiMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiOutput struct{ *pulumi.OutputState }
 
 func (ApiOutput) ElementType() reflect.Type {
@@ -346,12 +327,6 @@ func (o ApiOutput) ToApiOutput() ApiOutput {
 
 func (o ApiOutput) ToApiOutputWithContext(ctx context.Context) ApiOutput {
 	return o
-}
-
-func (o ApiOutput) ToOutput(ctx context.Context) pulumix.Output[*Api] {
-	return pulumix.Output[*Api]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Identifier to assign to the API. Must be unique within scope of the parent resource(project)
@@ -422,12 +397,6 @@ func (o ApiArrayOutput) ToApiArrayOutputWithContext(ctx context.Context) ApiArra
 	return o
 }
 
-func (o ApiArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Api] {
-	return pulumix.Output[[]*Api]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApiArrayOutput) Index(i pulumi.IntInput) ApiOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Api {
 		return vs[0].([]*Api)[vs[1].(int)]
@@ -446,12 +415,6 @@ func (o ApiMapOutput) ToApiMapOutput() ApiMapOutput {
 
 func (o ApiMapOutput) ToApiMapOutputWithContext(ctx context.Context) ApiMapOutput {
 	return o
-}
-
-func (o ApiMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Api] {
-	return pulumix.Output[map[string]*Api]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiMapOutput) MapIndex(k pulumi.StringInput) ApiOutput {

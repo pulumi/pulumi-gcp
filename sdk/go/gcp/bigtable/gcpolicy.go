@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a Google Cloud Bigtable GC Policy inside a family. For more information see
@@ -423,12 +422,6 @@ func (i *GCPolicy) ToGCPolicyOutputWithContext(ctx context.Context) GCPolicyOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GCPolicyOutput)
 }
 
-func (i *GCPolicy) ToOutput(ctx context.Context) pulumix.Output[*GCPolicy] {
-	return pulumix.Output[*GCPolicy]{
-		OutputState: i.ToGCPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GCPolicyArrayInput is an input type that accepts GCPolicyArray and GCPolicyArrayOutput values.
 // You can construct a concrete instance of `GCPolicyArrayInput` via:
 //
@@ -452,12 +445,6 @@ func (i GCPolicyArray) ToGCPolicyArrayOutput() GCPolicyArrayOutput {
 
 func (i GCPolicyArray) ToGCPolicyArrayOutputWithContext(ctx context.Context) GCPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GCPolicyArrayOutput)
-}
-
-func (i GCPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*GCPolicy] {
-	return pulumix.Output[[]*GCPolicy]{
-		OutputState: i.ToGCPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GCPolicyMapInput is an input type that accepts GCPolicyMap and GCPolicyMapOutput values.
@@ -485,12 +472,6 @@ func (i GCPolicyMap) ToGCPolicyMapOutputWithContext(ctx context.Context) GCPolic
 	return pulumi.ToOutputWithContext(ctx, i).(GCPolicyMapOutput)
 }
 
-func (i GCPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GCPolicy] {
-	return pulumix.Output[map[string]*GCPolicy]{
-		OutputState: i.ToGCPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GCPolicyOutput struct{ *pulumi.OutputState }
 
 func (GCPolicyOutput) ElementType() reflect.Type {
@@ -503,12 +484,6 @@ func (o GCPolicyOutput) ToGCPolicyOutput() GCPolicyOutput {
 
 func (o GCPolicyOutput) ToGCPolicyOutputWithContext(ctx context.Context) GCPolicyOutput {
 	return o
-}
-
-func (o GCPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*GCPolicy] {
-	return pulumix.Output[*GCPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the column family.
@@ -575,12 +550,6 @@ func (o GCPolicyArrayOutput) ToGCPolicyArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o GCPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GCPolicy] {
-	return pulumix.Output[[]*GCPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GCPolicyArrayOutput) Index(i pulumi.IntInput) GCPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GCPolicy {
 		return vs[0].([]*GCPolicy)[vs[1].(int)]
@@ -599,12 +568,6 @@ func (o GCPolicyMapOutput) ToGCPolicyMapOutput() GCPolicyMapOutput {
 
 func (o GCPolicyMapOutput) ToGCPolicyMapOutputWithContext(ctx context.Context) GCPolicyMapOutput {
 	return o
-}
-
-func (o GCPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GCPolicy] {
-	return pulumix.Output[map[string]*GCPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GCPolicyMapOutput) MapIndex(k pulumi.StringInput) GCPolicyOutput {

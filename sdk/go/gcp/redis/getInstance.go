@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get info about a Google Cloud Redis instance.
@@ -151,12 +150,6 @@ func (o LookupInstanceResultOutput) ToLookupInstanceResultOutput() LookupInstanc
 
 func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx context.Context) LookupInstanceResultOutput {
 	return o
-}
-
-func (o LookupInstanceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInstanceResult] {
-	return pulumix.Output[LookupInstanceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupInstanceResultOutput) AlternativeLocationId() pulumi.StringOutput {

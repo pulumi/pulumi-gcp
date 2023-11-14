@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Healthcare FHIR store. Each of these resources serves a different use case:
@@ -342,12 +341,6 @@ func (i *FhirStoreIamBinding) ToFhirStoreIamBindingOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamBindingOutput)
 }
 
-func (i *FhirStoreIamBinding) ToOutput(ctx context.Context) pulumix.Output[*FhirStoreIamBinding] {
-	return pulumix.Output[*FhirStoreIamBinding]{
-		OutputState: i.ToFhirStoreIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FhirStoreIamBindingArrayInput is an input type that accepts FhirStoreIamBindingArray and FhirStoreIamBindingArrayOutput values.
 // You can construct a concrete instance of `FhirStoreIamBindingArrayInput` via:
 //
@@ -371,12 +364,6 @@ func (i FhirStoreIamBindingArray) ToFhirStoreIamBindingArrayOutput() FhirStoreIa
 
 func (i FhirStoreIamBindingArray) ToFhirStoreIamBindingArrayOutputWithContext(ctx context.Context) FhirStoreIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamBindingArrayOutput)
-}
-
-func (i FhirStoreIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*FhirStoreIamBinding] {
-	return pulumix.Output[[]*FhirStoreIamBinding]{
-		OutputState: i.ToFhirStoreIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FhirStoreIamBindingMapInput is an input type that accepts FhirStoreIamBindingMap and FhirStoreIamBindingMapOutput values.
@@ -404,12 +391,6 @@ func (i FhirStoreIamBindingMap) ToFhirStoreIamBindingMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamBindingMapOutput)
 }
 
-func (i FhirStoreIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FhirStoreIamBinding] {
-	return pulumix.Output[map[string]*FhirStoreIamBinding]{
-		OutputState: i.ToFhirStoreIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FhirStoreIamBindingOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreIamBindingOutput) ElementType() reflect.Type {
@@ -422,12 +403,6 @@ func (o FhirStoreIamBindingOutput) ToFhirStoreIamBindingOutput() FhirStoreIamBin
 
 func (o FhirStoreIamBindingOutput) ToFhirStoreIamBindingOutputWithContext(ctx context.Context) FhirStoreIamBindingOutput {
 	return o
-}
-
-func (o FhirStoreIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*FhirStoreIamBinding] {
-	return pulumix.Output[*FhirStoreIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FhirStoreIamBindingOutput) Condition() FhirStoreIamBindingConditionPtrOutput {
@@ -481,12 +456,6 @@ func (o FhirStoreIamBindingArrayOutput) ToFhirStoreIamBindingArrayOutputWithCont
 	return o
 }
 
-func (o FhirStoreIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FhirStoreIamBinding] {
-	return pulumix.Output[[]*FhirStoreIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FhirStoreIamBindingArrayOutput) Index(i pulumi.IntInput) FhirStoreIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FhirStoreIamBinding {
 		return vs[0].([]*FhirStoreIamBinding)[vs[1].(int)]
@@ -505,12 +474,6 @@ func (o FhirStoreIamBindingMapOutput) ToFhirStoreIamBindingMapOutput() FhirStore
 
 func (o FhirStoreIamBindingMapOutput) ToFhirStoreIamBindingMapOutputWithContext(ctx context.Context) FhirStoreIamBindingMapOutput {
 	return o
-}
-
-func (o FhirStoreIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FhirStoreIamBinding] {
-	return pulumix.Output[map[string]*FhirStoreIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FhirStoreIamBindingMapOutput) MapIndex(k pulumi.StringInput) FhirStoreIamBindingOutput {

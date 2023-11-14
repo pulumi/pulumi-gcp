@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Compute Instance Group within GCE.
@@ -129,12 +128,6 @@ func (o LookupInstanceGroupResultOutput) ToLookupInstanceGroupResultOutput() Loo
 
 func (o LookupInstanceGroupResultOutput) ToLookupInstanceGroupResultOutputWithContext(ctx context.Context) LookupInstanceGroupResultOutput {
 	return o
-}
-
-func (o LookupInstanceGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInstanceGroupResult] {
-	return pulumix.Output[LookupInstanceGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Textual description of the instance group.

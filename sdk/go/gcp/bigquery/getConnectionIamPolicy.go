@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for connection
@@ -131,12 +130,6 @@ func (o LookupConnectionIamPolicyResultOutput) ToLookupConnectionIamPolicyResult
 
 func (o LookupConnectionIamPolicyResultOutput) ToLookupConnectionIamPolicyResultOutputWithContext(ctx context.Context) LookupConnectionIamPolicyResultOutput {
 	return o
-}
-
-func (o LookupConnectionIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConnectionIamPolicyResult] {
-	return pulumix.Output[LookupConnectionIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupConnectionIamPolicyResultOutput) ConnectionId() pulumi.StringOutput {

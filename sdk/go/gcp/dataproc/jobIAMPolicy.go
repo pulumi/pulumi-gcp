@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage IAM policies on dataproc jobs. Each of these resources serves a different use case:
@@ -290,12 +289,6 @@ func (i *JobIAMPolicy) ToJobIAMPolicyOutputWithContext(ctx context.Context) JobI
 	return pulumi.ToOutputWithContext(ctx, i).(JobIAMPolicyOutput)
 }
 
-func (i *JobIAMPolicy) ToOutput(ctx context.Context) pulumix.Output[*JobIAMPolicy] {
-	return pulumix.Output[*JobIAMPolicy]{
-		OutputState: i.ToJobIAMPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // JobIAMPolicyArrayInput is an input type that accepts JobIAMPolicyArray and JobIAMPolicyArrayOutput values.
 // You can construct a concrete instance of `JobIAMPolicyArrayInput` via:
 //
@@ -319,12 +312,6 @@ func (i JobIAMPolicyArray) ToJobIAMPolicyArrayOutput() JobIAMPolicyArrayOutput {
 
 func (i JobIAMPolicyArray) ToJobIAMPolicyArrayOutputWithContext(ctx context.Context) JobIAMPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobIAMPolicyArrayOutput)
-}
-
-func (i JobIAMPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*JobIAMPolicy] {
-	return pulumix.Output[[]*JobIAMPolicy]{
-		OutputState: i.ToJobIAMPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // JobIAMPolicyMapInput is an input type that accepts JobIAMPolicyMap and JobIAMPolicyMapOutput values.
@@ -352,12 +339,6 @@ func (i JobIAMPolicyMap) ToJobIAMPolicyMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(JobIAMPolicyMapOutput)
 }
 
-func (i JobIAMPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*JobIAMPolicy] {
-	return pulumix.Output[map[string]*JobIAMPolicy]{
-		OutputState: i.ToJobIAMPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (JobIAMPolicyOutput) ElementType() reflect.Type {
@@ -370,12 +351,6 @@ func (o JobIAMPolicyOutput) ToJobIAMPolicyOutput() JobIAMPolicyOutput {
 
 func (o JobIAMPolicyOutput) ToJobIAMPolicyOutputWithContext(ctx context.Context) JobIAMPolicyOutput {
 	return o
-}
-
-func (o JobIAMPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*JobIAMPolicy] {
-	return pulumix.Output[*JobIAMPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the jobs's IAM policy.
@@ -420,12 +395,6 @@ func (o JobIAMPolicyArrayOutput) ToJobIAMPolicyArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o JobIAMPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*JobIAMPolicy] {
-	return pulumix.Output[[]*JobIAMPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobIAMPolicyArrayOutput) Index(i pulumi.IntInput) JobIAMPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *JobIAMPolicy {
 		return vs[0].([]*JobIAMPolicy)[vs[1].(int)]
@@ -444,12 +413,6 @@ func (o JobIAMPolicyMapOutput) ToJobIAMPolicyMapOutput() JobIAMPolicyMapOutput {
 
 func (o JobIAMPolicyMapOutput) ToJobIAMPolicyMapOutputWithContext(ctx context.Context) JobIAMPolicyMapOutput {
 	return o
-}
-
-func (o JobIAMPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*JobIAMPolicy] {
-	return pulumix.Output[map[string]*JobIAMPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) JobIAMPolicyOutput {

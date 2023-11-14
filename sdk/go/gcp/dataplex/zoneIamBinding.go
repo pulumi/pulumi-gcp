@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Dataplex Zone. Each of these resources serves a different use case:
@@ -381,12 +380,6 @@ func (i *ZoneIamBinding) ToZoneIamBindingOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneIamBindingOutput)
 }
 
-func (i *ZoneIamBinding) ToOutput(ctx context.Context) pulumix.Output[*ZoneIamBinding] {
-	return pulumix.Output[*ZoneIamBinding]{
-		OutputState: i.ToZoneIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ZoneIamBindingArrayInput is an input type that accepts ZoneIamBindingArray and ZoneIamBindingArrayOutput values.
 // You can construct a concrete instance of `ZoneIamBindingArrayInput` via:
 //
@@ -410,12 +403,6 @@ func (i ZoneIamBindingArray) ToZoneIamBindingArrayOutput() ZoneIamBindingArrayOu
 
 func (i ZoneIamBindingArray) ToZoneIamBindingArrayOutputWithContext(ctx context.Context) ZoneIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneIamBindingArrayOutput)
-}
-
-func (i ZoneIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*ZoneIamBinding] {
-	return pulumix.Output[[]*ZoneIamBinding]{
-		OutputState: i.ToZoneIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ZoneIamBindingMapInput is an input type that accepts ZoneIamBindingMap and ZoneIamBindingMapOutput values.
@@ -443,12 +430,6 @@ func (i ZoneIamBindingMap) ToZoneIamBindingMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneIamBindingMapOutput)
 }
 
-func (i ZoneIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ZoneIamBinding] {
-	return pulumix.Output[map[string]*ZoneIamBinding]{
-		OutputState: i.ToZoneIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ZoneIamBindingOutput struct{ *pulumi.OutputState }
 
 func (ZoneIamBindingOutput) ElementType() reflect.Type {
@@ -461,12 +442,6 @@ func (o ZoneIamBindingOutput) ToZoneIamBindingOutput() ZoneIamBindingOutput {
 
 func (o ZoneIamBindingOutput) ToZoneIamBindingOutputWithContext(ctx context.Context) ZoneIamBindingOutput {
 	return o
-}
-
-func (o ZoneIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*ZoneIamBinding] {
-	return pulumix.Output[*ZoneIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ZoneIamBindingOutput) Condition() ZoneIamBindingConditionPtrOutput {
@@ -534,12 +509,6 @@ func (o ZoneIamBindingArrayOutput) ToZoneIamBindingArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o ZoneIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ZoneIamBinding] {
-	return pulumix.Output[[]*ZoneIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ZoneIamBindingArrayOutput) Index(i pulumi.IntInput) ZoneIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ZoneIamBinding {
 		return vs[0].([]*ZoneIamBinding)[vs[1].(int)]
@@ -558,12 +527,6 @@ func (o ZoneIamBindingMapOutput) ToZoneIamBindingMapOutput() ZoneIamBindingMapOu
 
 func (o ZoneIamBindingMapOutput) ToZoneIamBindingMapOutputWithContext(ctx context.Context) ZoneIamBindingMapOutput {
 	return o
-}
-
-func (o ZoneIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ZoneIamBinding] {
-	return pulumix.Output[map[string]*ZoneIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ZoneIamBindingMapOutput) MapIndex(k pulumi.StringInput) ZoneIamBindingOutput {

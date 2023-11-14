@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An HttpHealthCheck resource. This resource defines a template for how
@@ -358,12 +357,6 @@ func (i *HttpHealthCheck) ToHttpHealthCheckOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(HttpHealthCheckOutput)
 }
 
-func (i *HttpHealthCheck) ToOutput(ctx context.Context) pulumix.Output[*HttpHealthCheck] {
-	return pulumix.Output[*HttpHealthCheck]{
-		OutputState: i.ToHttpHealthCheckOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HttpHealthCheckArrayInput is an input type that accepts HttpHealthCheckArray and HttpHealthCheckArrayOutput values.
 // You can construct a concrete instance of `HttpHealthCheckArrayInput` via:
 //
@@ -387,12 +380,6 @@ func (i HttpHealthCheckArray) ToHttpHealthCheckArrayOutput() HttpHealthCheckArra
 
 func (i HttpHealthCheckArray) ToHttpHealthCheckArrayOutputWithContext(ctx context.Context) HttpHealthCheckArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HttpHealthCheckArrayOutput)
-}
-
-func (i HttpHealthCheckArray) ToOutput(ctx context.Context) pulumix.Output[[]*HttpHealthCheck] {
-	return pulumix.Output[[]*HttpHealthCheck]{
-		OutputState: i.ToHttpHealthCheckArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HttpHealthCheckMapInput is an input type that accepts HttpHealthCheckMap and HttpHealthCheckMapOutput values.
@@ -420,12 +407,6 @@ func (i HttpHealthCheckMap) ToHttpHealthCheckMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(HttpHealthCheckMapOutput)
 }
 
-func (i HttpHealthCheckMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HttpHealthCheck] {
-	return pulumix.Output[map[string]*HttpHealthCheck]{
-		OutputState: i.ToHttpHealthCheckMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HttpHealthCheckOutput struct{ *pulumi.OutputState }
 
 func (HttpHealthCheckOutput) ElementType() reflect.Type {
@@ -438,12 +419,6 @@ func (o HttpHealthCheckOutput) ToHttpHealthCheckOutput() HttpHealthCheckOutput {
 
 func (o HttpHealthCheckOutput) ToHttpHealthCheckOutputWithContext(ctx context.Context) HttpHealthCheckOutput {
 	return o
-}
-
-func (o HttpHealthCheckOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpHealthCheck] {
-	return pulumix.Output[*HttpHealthCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 // How often (in seconds) to send a health check. The default value is 5
@@ -539,12 +514,6 @@ func (o HttpHealthCheckArrayOutput) ToHttpHealthCheckArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o HttpHealthCheckArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HttpHealthCheck] {
-	return pulumix.Output[[]*HttpHealthCheck]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HttpHealthCheckArrayOutput) Index(i pulumi.IntInput) HttpHealthCheckOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HttpHealthCheck {
 		return vs[0].([]*HttpHealthCheck)[vs[1].(int)]
@@ -563,12 +532,6 @@ func (o HttpHealthCheckMapOutput) ToHttpHealthCheckMapOutput() HttpHealthCheckMa
 
 func (o HttpHealthCheckMapOutput) ToHttpHealthCheckMapOutputWithContext(ctx context.Context) HttpHealthCheckMapOutput {
 	return o
-}
-
-func (o HttpHealthCheckMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HttpHealthCheck] {
-	return pulumix.Output[map[string]*HttpHealthCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpHealthCheckMapOutput) MapIndex(k pulumi.StringInput) HttpHealthCheckOutput {

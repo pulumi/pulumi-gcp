@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information about a Google Compute Persistent disks.
@@ -186,12 +185,6 @@ func (o LookupDiskResultOutput) ToLookupDiskResultOutput() LookupDiskResultOutpu
 
 func (o LookupDiskResultOutput) ToLookupDiskResultOutputWithContext(ctx context.Context) LookupDiskResultOutput {
 	return o
-}
-
-func (o LookupDiskResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDiskResult] {
-	return pulumix.Output[LookupDiskResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupDiskResultOutput) AsyncPrimaryDisks() GetDiskAsyncPrimaryDiskArrayOutput {

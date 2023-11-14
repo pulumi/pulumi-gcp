@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Compute Engine Snapshot. Each of these resources serves a different use case:
@@ -356,12 +355,6 @@ func (i *SnapshotIamMember) ToSnapshotIamMemberOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(SnapshotIamMemberOutput)
 }
 
-func (i *SnapshotIamMember) ToOutput(ctx context.Context) pulumix.Output[*SnapshotIamMember] {
-	return pulumix.Output[*SnapshotIamMember]{
-		OutputState: i.ToSnapshotIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SnapshotIamMemberArrayInput is an input type that accepts SnapshotIamMemberArray and SnapshotIamMemberArrayOutput values.
 // You can construct a concrete instance of `SnapshotIamMemberArrayInput` via:
 //
@@ -385,12 +378,6 @@ func (i SnapshotIamMemberArray) ToSnapshotIamMemberArrayOutput() SnapshotIamMemb
 
 func (i SnapshotIamMemberArray) ToSnapshotIamMemberArrayOutputWithContext(ctx context.Context) SnapshotIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SnapshotIamMemberArrayOutput)
-}
-
-func (i SnapshotIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*SnapshotIamMember] {
-	return pulumix.Output[[]*SnapshotIamMember]{
-		OutputState: i.ToSnapshotIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SnapshotIamMemberMapInput is an input type that accepts SnapshotIamMemberMap and SnapshotIamMemberMapOutput values.
@@ -418,12 +405,6 @@ func (i SnapshotIamMemberMap) ToSnapshotIamMemberMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(SnapshotIamMemberMapOutput)
 }
 
-func (i SnapshotIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SnapshotIamMember] {
-	return pulumix.Output[map[string]*SnapshotIamMember]{
-		OutputState: i.ToSnapshotIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SnapshotIamMemberOutput struct{ *pulumi.OutputState }
 
 func (SnapshotIamMemberOutput) ElementType() reflect.Type {
@@ -436,12 +417,6 @@ func (o SnapshotIamMemberOutput) ToSnapshotIamMemberOutput() SnapshotIamMemberOu
 
 func (o SnapshotIamMemberOutput) ToSnapshotIamMemberOutputWithContext(ctx context.Context) SnapshotIamMemberOutput {
 	return o
-}
-
-func (o SnapshotIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*SnapshotIamMember] {
-	return pulumix.Output[*SnapshotIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SnapshotIamMemberOutput) Condition() SnapshotIamMemberConditionPtrOutput {
@@ -501,12 +476,6 @@ func (o SnapshotIamMemberArrayOutput) ToSnapshotIamMemberArrayOutputWithContext(
 	return o
 }
 
-func (o SnapshotIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SnapshotIamMember] {
-	return pulumix.Output[[]*SnapshotIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SnapshotIamMemberArrayOutput) Index(i pulumi.IntInput) SnapshotIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SnapshotIamMember {
 		return vs[0].([]*SnapshotIamMember)[vs[1].(int)]
@@ -525,12 +494,6 @@ func (o SnapshotIamMemberMapOutput) ToSnapshotIamMemberMapOutput() SnapshotIamMe
 
 func (o SnapshotIamMemberMapOutput) ToSnapshotIamMemberMapOutputWithContext(ctx context.Context) SnapshotIamMemberMapOutput {
 	return o
-}
-
-func (o SnapshotIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SnapshotIamMember] {
-	return pulumix.Output[map[string]*SnapshotIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SnapshotIamMemberMapOutput) MapIndex(k pulumi.StringInput) SnapshotIamMemberOutput {

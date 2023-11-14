@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Allows management of a single peered DNS domain for an existing Google Cloud Platform project.
@@ -193,12 +192,6 @@ func (i *PeeredDnsDomain) ToPeeredDnsDomainOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(PeeredDnsDomainOutput)
 }
 
-func (i *PeeredDnsDomain) ToOutput(ctx context.Context) pulumix.Output[*PeeredDnsDomain] {
-	return pulumix.Output[*PeeredDnsDomain]{
-		OutputState: i.ToPeeredDnsDomainOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PeeredDnsDomainArrayInput is an input type that accepts PeeredDnsDomainArray and PeeredDnsDomainArrayOutput values.
 // You can construct a concrete instance of `PeeredDnsDomainArrayInput` via:
 //
@@ -222,12 +215,6 @@ func (i PeeredDnsDomainArray) ToPeeredDnsDomainArrayOutput() PeeredDnsDomainArra
 
 func (i PeeredDnsDomainArray) ToPeeredDnsDomainArrayOutputWithContext(ctx context.Context) PeeredDnsDomainArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PeeredDnsDomainArrayOutput)
-}
-
-func (i PeeredDnsDomainArray) ToOutput(ctx context.Context) pulumix.Output[[]*PeeredDnsDomain] {
-	return pulumix.Output[[]*PeeredDnsDomain]{
-		OutputState: i.ToPeeredDnsDomainArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PeeredDnsDomainMapInput is an input type that accepts PeeredDnsDomainMap and PeeredDnsDomainMapOutput values.
@@ -255,12 +242,6 @@ func (i PeeredDnsDomainMap) ToPeeredDnsDomainMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(PeeredDnsDomainMapOutput)
 }
 
-func (i PeeredDnsDomainMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PeeredDnsDomain] {
-	return pulumix.Output[map[string]*PeeredDnsDomain]{
-		OutputState: i.ToPeeredDnsDomainMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PeeredDnsDomainOutput struct{ *pulumi.OutputState }
 
 func (PeeredDnsDomainOutput) ElementType() reflect.Type {
@@ -273,12 +254,6 @@ func (o PeeredDnsDomainOutput) ToPeeredDnsDomainOutput() PeeredDnsDomainOutput {
 
 func (o PeeredDnsDomainOutput) ToPeeredDnsDomainOutputWithContext(ctx context.Context) PeeredDnsDomainOutput {
 	return o
-}
-
-func (o PeeredDnsDomainOutput) ToOutput(ctx context.Context) pulumix.Output[*PeeredDnsDomain] {
-	return pulumix.Output[*PeeredDnsDomain]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The DNS domain suffix of the peered DNS domain. Make sure to suffix with a `.` (dot).
@@ -325,12 +300,6 @@ func (o PeeredDnsDomainArrayOutput) ToPeeredDnsDomainArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o PeeredDnsDomainArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PeeredDnsDomain] {
-	return pulumix.Output[[]*PeeredDnsDomain]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PeeredDnsDomainArrayOutput) Index(i pulumi.IntInput) PeeredDnsDomainOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PeeredDnsDomain {
 		return vs[0].([]*PeeredDnsDomain)[vs[1].(int)]
@@ -349,12 +318,6 @@ func (o PeeredDnsDomainMapOutput) ToPeeredDnsDomainMapOutput() PeeredDnsDomainMa
 
 func (o PeeredDnsDomainMapOutput) ToPeeredDnsDomainMapOutputWithContext(ctx context.Context) PeeredDnsDomainMapOutput {
 	return o
-}
-
-func (o PeeredDnsDomainMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PeeredDnsDomain] {
-	return pulumix.Output[map[string]*PeeredDnsDomain]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PeeredDnsDomainMapOutput) MapIndex(k pulumi.StringInput) PeeredDnsDomainOutput {

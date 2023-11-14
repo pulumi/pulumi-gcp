@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Healthcare DICOM store. Each of these resources serves a different use case:
@@ -342,12 +341,6 @@ func (i *DicomStoreIamBinding) ToDicomStoreIamBindingOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamBindingOutput)
 }
 
-func (i *DicomStoreIamBinding) ToOutput(ctx context.Context) pulumix.Output[*DicomStoreIamBinding] {
-	return pulumix.Output[*DicomStoreIamBinding]{
-		OutputState: i.ToDicomStoreIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DicomStoreIamBindingArrayInput is an input type that accepts DicomStoreIamBindingArray and DicomStoreIamBindingArrayOutput values.
 // You can construct a concrete instance of `DicomStoreIamBindingArrayInput` via:
 //
@@ -371,12 +364,6 @@ func (i DicomStoreIamBindingArray) ToDicomStoreIamBindingArrayOutput() DicomStor
 
 func (i DicomStoreIamBindingArray) ToDicomStoreIamBindingArrayOutputWithContext(ctx context.Context) DicomStoreIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamBindingArrayOutput)
-}
-
-func (i DicomStoreIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*DicomStoreIamBinding] {
-	return pulumix.Output[[]*DicomStoreIamBinding]{
-		OutputState: i.ToDicomStoreIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DicomStoreIamBindingMapInput is an input type that accepts DicomStoreIamBindingMap and DicomStoreIamBindingMapOutput values.
@@ -404,12 +391,6 @@ func (i DicomStoreIamBindingMap) ToDicomStoreIamBindingMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamBindingMapOutput)
 }
 
-func (i DicomStoreIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DicomStoreIamBinding] {
-	return pulumix.Output[map[string]*DicomStoreIamBinding]{
-		OutputState: i.ToDicomStoreIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DicomStoreIamBindingOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreIamBindingOutput) ElementType() reflect.Type {
@@ -422,12 +403,6 @@ func (o DicomStoreIamBindingOutput) ToDicomStoreIamBindingOutput() DicomStoreIam
 
 func (o DicomStoreIamBindingOutput) ToDicomStoreIamBindingOutputWithContext(ctx context.Context) DicomStoreIamBindingOutput {
 	return o
-}
-
-func (o DicomStoreIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*DicomStoreIamBinding] {
-	return pulumix.Output[*DicomStoreIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DicomStoreIamBindingOutput) Condition() DicomStoreIamBindingConditionPtrOutput {
@@ -481,12 +456,6 @@ func (o DicomStoreIamBindingArrayOutput) ToDicomStoreIamBindingArrayOutputWithCo
 	return o
 }
 
-func (o DicomStoreIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DicomStoreIamBinding] {
-	return pulumix.Output[[]*DicomStoreIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DicomStoreIamBindingArrayOutput) Index(i pulumi.IntInput) DicomStoreIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DicomStoreIamBinding {
 		return vs[0].([]*DicomStoreIamBinding)[vs[1].(int)]
@@ -505,12 +474,6 @@ func (o DicomStoreIamBindingMapOutput) ToDicomStoreIamBindingMapOutput() DicomSt
 
 func (o DicomStoreIamBindingMapOutput) ToDicomStoreIamBindingMapOutputWithContext(ctx context.Context) DicomStoreIamBindingMapOutput {
 	return o
-}
-
-func (o DicomStoreIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DicomStoreIamBinding] {
-	return pulumix.Output[map[string]*DicomStoreIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DicomStoreIamBindingMapOutput) MapIndex(k pulumi.StringInput) DicomStoreIamBindingOutput {

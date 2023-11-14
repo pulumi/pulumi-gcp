@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -366,12 +365,6 @@ func (i *AuthorizationPolicy) ToAuthorizationPolicyOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationPolicyOutput)
 }
 
-func (i *AuthorizationPolicy) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationPolicy] {
-	return pulumix.Output[*AuthorizationPolicy]{
-		OutputState: i.ToAuthorizationPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuthorizationPolicyArrayInput is an input type that accepts AuthorizationPolicyArray and AuthorizationPolicyArrayOutput values.
 // You can construct a concrete instance of `AuthorizationPolicyArrayInput` via:
 //
@@ -395,12 +388,6 @@ func (i AuthorizationPolicyArray) ToAuthorizationPolicyArrayOutput() Authorizati
 
 func (i AuthorizationPolicyArray) ToAuthorizationPolicyArrayOutputWithContext(ctx context.Context) AuthorizationPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationPolicyArrayOutput)
-}
-
-func (i AuthorizationPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*AuthorizationPolicy] {
-	return pulumix.Output[[]*AuthorizationPolicy]{
-		OutputState: i.ToAuthorizationPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AuthorizationPolicyMapInput is an input type that accepts AuthorizationPolicyMap and AuthorizationPolicyMapOutput values.
@@ -428,12 +415,6 @@ func (i AuthorizationPolicyMap) ToAuthorizationPolicyMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationPolicyMapOutput)
 }
 
-func (i AuthorizationPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthorizationPolicy] {
-	return pulumix.Output[map[string]*AuthorizationPolicy]{
-		OutputState: i.ToAuthorizationPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AuthorizationPolicyOutput struct{ *pulumi.OutputState }
 
 func (AuthorizationPolicyOutput) ElementType() reflect.Type {
@@ -446,12 +427,6 @@ func (o AuthorizationPolicyOutput) ToAuthorizationPolicyOutput() AuthorizationPo
 
 func (o AuthorizationPolicyOutput) ToAuthorizationPolicyOutputWithContext(ctx context.Context) AuthorizationPolicyOutput {
 	return o
-}
-
-func (o AuthorizationPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationPolicy] {
-	return pulumix.Output[*AuthorizationPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
@@ -534,12 +509,6 @@ func (o AuthorizationPolicyArrayOutput) ToAuthorizationPolicyArrayOutputWithCont
 	return o
 }
 
-func (o AuthorizationPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AuthorizationPolicy] {
-	return pulumix.Output[[]*AuthorizationPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuthorizationPolicyArrayOutput) Index(i pulumi.IntInput) AuthorizationPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AuthorizationPolicy {
 		return vs[0].([]*AuthorizationPolicy)[vs[1].(int)]
@@ -558,12 +527,6 @@ func (o AuthorizationPolicyMapOutput) ToAuthorizationPolicyMapOutput() Authoriza
 
 func (o AuthorizationPolicyMapOutput) ToAuthorizationPolicyMapOutputWithContext(ctx context.Context) AuthorizationPolicyMapOutput {
 	return o
-}
-
-func (o AuthorizationPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthorizationPolicy] {
-	return pulumix.Output[map[string]*AuthorizationPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthorizationPolicyMapOutput) MapIndex(k pulumi.StringInput) AuthorizationPolicyOutput {

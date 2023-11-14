@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a GlobalForwardingRule resource. Global forwarding rules are
@@ -1087,12 +1086,6 @@ func (i *GlobalForwardingRule) ToGlobalForwardingRuleOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalForwardingRuleOutput)
 }
 
-func (i *GlobalForwardingRule) ToOutput(ctx context.Context) pulumix.Output[*GlobalForwardingRule] {
-	return pulumix.Output[*GlobalForwardingRule]{
-		OutputState: i.ToGlobalForwardingRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GlobalForwardingRuleArrayInput is an input type that accepts GlobalForwardingRuleArray and GlobalForwardingRuleArrayOutput values.
 // You can construct a concrete instance of `GlobalForwardingRuleArrayInput` via:
 //
@@ -1116,12 +1109,6 @@ func (i GlobalForwardingRuleArray) ToGlobalForwardingRuleArrayOutput() GlobalFor
 
 func (i GlobalForwardingRuleArray) ToGlobalForwardingRuleArrayOutputWithContext(ctx context.Context) GlobalForwardingRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalForwardingRuleArrayOutput)
-}
-
-func (i GlobalForwardingRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*GlobalForwardingRule] {
-	return pulumix.Output[[]*GlobalForwardingRule]{
-		OutputState: i.ToGlobalForwardingRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GlobalForwardingRuleMapInput is an input type that accepts GlobalForwardingRuleMap and GlobalForwardingRuleMapOutput values.
@@ -1149,12 +1136,6 @@ func (i GlobalForwardingRuleMap) ToGlobalForwardingRuleMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalForwardingRuleMapOutput)
 }
 
-func (i GlobalForwardingRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GlobalForwardingRule] {
-	return pulumix.Output[map[string]*GlobalForwardingRule]{
-		OutputState: i.ToGlobalForwardingRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GlobalForwardingRuleOutput struct{ *pulumi.OutputState }
 
 func (GlobalForwardingRuleOutput) ElementType() reflect.Type {
@@ -1167,12 +1148,6 @@ func (o GlobalForwardingRuleOutput) ToGlobalForwardingRuleOutput() GlobalForward
 
 func (o GlobalForwardingRuleOutput) ToGlobalForwardingRuleOutputWithContext(ctx context.Context) GlobalForwardingRuleOutput {
 	return o
-}
-
-func (o GlobalForwardingRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalForwardingRule] {
-	return pulumix.Output[*GlobalForwardingRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
@@ -1420,12 +1395,6 @@ func (o GlobalForwardingRuleArrayOutput) ToGlobalForwardingRuleArrayOutputWithCo
 	return o
 }
 
-func (o GlobalForwardingRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GlobalForwardingRule] {
-	return pulumix.Output[[]*GlobalForwardingRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GlobalForwardingRuleArrayOutput) Index(i pulumi.IntInput) GlobalForwardingRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GlobalForwardingRule {
 		return vs[0].([]*GlobalForwardingRule)[vs[1].(int)]
@@ -1444,12 +1413,6 @@ func (o GlobalForwardingRuleMapOutput) ToGlobalForwardingRuleMapOutput() GlobalF
 
 func (o GlobalForwardingRuleMapOutput) ToGlobalForwardingRuleMapOutputWithContext(ctx context.Context) GlobalForwardingRuleMapOutput {
 	return o
-}
-
-func (o GlobalForwardingRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GlobalForwardingRule] {
-	return pulumix.Output[map[string]*GlobalForwardingRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GlobalForwardingRuleMapOutput) MapIndex(k pulumi.StringInput) GlobalForwardingRuleOutput {
