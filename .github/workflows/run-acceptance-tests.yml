@@ -36,7 +36,6 @@ env:
   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   TF_APPEND_USER_AGENT: pulumi
   TRAVIS_OS_NAME: linux
-  VERSION_PREFIX: 7.0.0
 jobs:
   build_sdk:
     if: github.event_name == 'repository_dispatch' ||
