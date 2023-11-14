@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The hmacKeys resource represents an HMAC key within Cloud Storage. The resource
@@ -247,12 +246,6 @@ func (i *HmacKey) ToHmacKeyOutputWithContext(ctx context.Context) HmacKeyOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(HmacKeyOutput)
 }
 
-func (i *HmacKey) ToOutput(ctx context.Context) pulumix.Output[*HmacKey] {
-	return pulumix.Output[*HmacKey]{
-		OutputState: i.ToHmacKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HmacKeyArrayInput is an input type that accepts HmacKeyArray and HmacKeyArrayOutput values.
 // You can construct a concrete instance of `HmacKeyArrayInput` via:
 //
@@ -276,12 +269,6 @@ func (i HmacKeyArray) ToHmacKeyArrayOutput() HmacKeyArrayOutput {
 
 func (i HmacKeyArray) ToHmacKeyArrayOutputWithContext(ctx context.Context) HmacKeyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HmacKeyArrayOutput)
-}
-
-func (i HmacKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]*HmacKey] {
-	return pulumix.Output[[]*HmacKey]{
-		OutputState: i.ToHmacKeyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HmacKeyMapInput is an input type that accepts HmacKeyMap and HmacKeyMapOutput values.
@@ -309,12 +296,6 @@ func (i HmacKeyMap) ToHmacKeyMapOutputWithContext(ctx context.Context) HmacKeyMa
 	return pulumi.ToOutputWithContext(ctx, i).(HmacKeyMapOutput)
 }
 
-func (i HmacKeyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HmacKey] {
-	return pulumix.Output[map[string]*HmacKey]{
-		OutputState: i.ToHmacKeyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HmacKeyOutput struct{ *pulumi.OutputState }
 
 func (HmacKeyOutput) ElementType() reflect.Type {
@@ -327,12 +308,6 @@ func (o HmacKeyOutput) ToHmacKeyOutput() HmacKeyOutput {
 
 func (o HmacKeyOutput) ToHmacKeyOutputWithContext(ctx context.Context) HmacKeyOutput {
 	return o
-}
-
-func (o HmacKeyOutput) ToOutput(ctx context.Context) pulumix.Output[*HmacKey] {
-	return pulumix.Output[*HmacKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The access ID of the HMAC Key.
@@ -390,12 +365,6 @@ func (o HmacKeyArrayOutput) ToHmacKeyArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o HmacKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HmacKey] {
-	return pulumix.Output[[]*HmacKey]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HmacKeyArrayOutput) Index(i pulumi.IntInput) HmacKeyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HmacKey {
 		return vs[0].([]*HmacKey)[vs[1].(int)]
@@ -414,12 +383,6 @@ func (o HmacKeyMapOutput) ToHmacKeyMapOutput() HmacKeyMapOutput {
 
 func (o HmacKeyMapOutput) ToHmacKeyMapOutputWithContext(ctx context.Context) HmacKeyMapOutput {
 	return o
-}
-
-func (o HmacKeyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HmacKey] {
-	return pulumix.Output[map[string]*HmacKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HmacKeyMapOutput) MapIndex(k pulumi.StringInput) HmacKeyOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An alias from a pkcs12 file.
@@ -223,12 +222,6 @@ func (i *KeystoresAliasesPkcs12) ToKeystoresAliasesPkcs12OutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesPkcs12Output)
 }
 
-func (i *KeystoresAliasesPkcs12) ToOutput(ctx context.Context) pulumix.Output[*KeystoresAliasesPkcs12] {
-	return pulumix.Output[*KeystoresAliasesPkcs12]{
-		OutputState: i.ToKeystoresAliasesPkcs12OutputWithContext(ctx).OutputState,
-	}
-}
-
 // KeystoresAliasesPkcs12ArrayInput is an input type that accepts KeystoresAliasesPkcs12Array and KeystoresAliasesPkcs12ArrayOutput values.
 // You can construct a concrete instance of `KeystoresAliasesPkcs12ArrayInput` via:
 //
@@ -252,12 +245,6 @@ func (i KeystoresAliasesPkcs12Array) ToKeystoresAliasesPkcs12ArrayOutput() Keyst
 
 func (i KeystoresAliasesPkcs12Array) ToKeystoresAliasesPkcs12ArrayOutputWithContext(ctx context.Context) KeystoresAliasesPkcs12ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesPkcs12ArrayOutput)
-}
-
-func (i KeystoresAliasesPkcs12Array) ToOutput(ctx context.Context) pulumix.Output[[]*KeystoresAliasesPkcs12] {
-	return pulumix.Output[[]*KeystoresAliasesPkcs12]{
-		OutputState: i.ToKeystoresAliasesPkcs12ArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // KeystoresAliasesPkcs12MapInput is an input type that accepts KeystoresAliasesPkcs12Map and KeystoresAliasesPkcs12MapOutput values.
@@ -285,12 +272,6 @@ func (i KeystoresAliasesPkcs12Map) ToKeystoresAliasesPkcs12MapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesPkcs12MapOutput)
 }
 
-func (i KeystoresAliasesPkcs12Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*KeystoresAliasesPkcs12] {
-	return pulumix.Output[map[string]*KeystoresAliasesPkcs12]{
-		OutputState: i.ToKeystoresAliasesPkcs12MapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KeystoresAliasesPkcs12Output struct{ *pulumi.OutputState }
 
 func (KeystoresAliasesPkcs12Output) ElementType() reflect.Type {
@@ -303,12 +284,6 @@ func (o KeystoresAliasesPkcs12Output) ToKeystoresAliasesPkcs12Output() Keystores
 
 func (o KeystoresAliasesPkcs12Output) ToKeystoresAliasesPkcs12OutputWithContext(ctx context.Context) KeystoresAliasesPkcs12Output {
 	return o
-}
-
-func (o KeystoresAliasesPkcs12Output) ToOutput(ctx context.Context) pulumix.Output[*KeystoresAliasesPkcs12] {
-	return pulumix.Output[*KeystoresAliasesPkcs12]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Alias Name
@@ -373,12 +348,6 @@ func (o KeystoresAliasesPkcs12ArrayOutput) ToKeystoresAliasesPkcs12ArrayOutputWi
 	return o
 }
 
-func (o KeystoresAliasesPkcs12ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KeystoresAliasesPkcs12] {
-	return pulumix.Output[[]*KeystoresAliasesPkcs12]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o KeystoresAliasesPkcs12ArrayOutput) Index(i pulumi.IntInput) KeystoresAliasesPkcs12Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KeystoresAliasesPkcs12 {
 		return vs[0].([]*KeystoresAliasesPkcs12)[vs[1].(int)]
@@ -397,12 +366,6 @@ func (o KeystoresAliasesPkcs12MapOutput) ToKeystoresAliasesPkcs12MapOutput() Key
 
 func (o KeystoresAliasesPkcs12MapOutput) ToKeystoresAliasesPkcs12MapOutputWithContext(ctx context.Context) KeystoresAliasesPkcs12MapOutput {
 	return o
-}
-
-func (o KeystoresAliasesPkcs12MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KeystoresAliasesPkcs12] {
-	return pulumix.Output[map[string]*KeystoresAliasesPkcs12]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeystoresAliasesPkcs12MapOutput) MapIndex(k pulumi.StringInput) KeystoresAliasesPkcs12Output {

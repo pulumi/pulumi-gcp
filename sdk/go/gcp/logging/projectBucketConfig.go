@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a project-level logging bucket config. For more information see
@@ -365,12 +364,6 @@ func (i *ProjectBucketConfig) ToProjectBucketConfigOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectBucketConfigOutput)
 }
 
-func (i *ProjectBucketConfig) ToOutput(ctx context.Context) pulumix.Output[*ProjectBucketConfig] {
-	return pulumix.Output[*ProjectBucketConfig]{
-		OutputState: i.ToProjectBucketConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProjectBucketConfigArrayInput is an input type that accepts ProjectBucketConfigArray and ProjectBucketConfigArrayOutput values.
 // You can construct a concrete instance of `ProjectBucketConfigArrayInput` via:
 //
@@ -394,12 +387,6 @@ func (i ProjectBucketConfigArray) ToProjectBucketConfigArrayOutput() ProjectBuck
 
 func (i ProjectBucketConfigArray) ToProjectBucketConfigArrayOutputWithContext(ctx context.Context) ProjectBucketConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectBucketConfigArrayOutput)
-}
-
-func (i ProjectBucketConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectBucketConfig] {
-	return pulumix.Output[[]*ProjectBucketConfig]{
-		OutputState: i.ToProjectBucketConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ProjectBucketConfigMapInput is an input type that accepts ProjectBucketConfigMap and ProjectBucketConfigMapOutput values.
@@ -427,12 +414,6 @@ func (i ProjectBucketConfigMap) ToProjectBucketConfigMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectBucketConfigMapOutput)
 }
 
-func (i ProjectBucketConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectBucketConfig] {
-	return pulumix.Output[map[string]*ProjectBucketConfig]{
-		OutputState: i.ToProjectBucketConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectBucketConfigOutput struct{ *pulumi.OutputState }
 
 func (ProjectBucketConfigOutput) ElementType() reflect.Type {
@@ -445,12 +426,6 @@ func (o ProjectBucketConfigOutput) ToProjectBucketConfigOutput() ProjectBucketCo
 
 func (o ProjectBucketConfigOutput) ToProjectBucketConfigOutputWithContext(ctx context.Context) ProjectBucketConfigOutput {
 	return o
-}
-
-func (o ProjectBucketConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectBucketConfig] {
-	return pulumix.Output[*ProjectBucketConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
@@ -517,12 +492,6 @@ func (o ProjectBucketConfigArrayOutput) ToProjectBucketConfigArrayOutputWithCont
 	return o
 }
 
-func (o ProjectBucketConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectBucketConfig] {
-	return pulumix.Output[[]*ProjectBucketConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProjectBucketConfigArrayOutput) Index(i pulumi.IntInput) ProjectBucketConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectBucketConfig {
 		return vs[0].([]*ProjectBucketConfig)[vs[1].(int)]
@@ -541,12 +510,6 @@ func (o ProjectBucketConfigMapOutput) ToProjectBucketConfigMapOutput() ProjectBu
 
 func (o ProjectBucketConfigMapOutput) ToProjectBucketConfigMapOutputWithContext(ctx context.Context) ProjectBucketConfigMapOutput {
 	return o
-}
-
-func (o ProjectBucketConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectBucketConfig] {
-	return pulumix.Output[map[string]*ProjectBucketConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectBucketConfigMapOutput) MapIndex(k pulumi.StringInput) ProjectBucketConfigOutput {

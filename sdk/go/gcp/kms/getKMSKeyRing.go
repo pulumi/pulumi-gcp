@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides access to Google Cloud Platform KMS KeyRing. For more information see
@@ -125,12 +124,6 @@ func (o GetKMSKeyRingResultOutput) ToGetKMSKeyRingResultOutput() GetKMSKeyRingRe
 
 func (o GetKMSKeyRingResultOutput) ToGetKMSKeyRingResultOutputWithContext(ctx context.Context) GetKMSKeyRingResultOutput {
 	return o
-}
-
-func (o GetKMSKeyRingResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetKMSKeyRingResult] {
-	return pulumix.Output[GetKMSKeyRingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

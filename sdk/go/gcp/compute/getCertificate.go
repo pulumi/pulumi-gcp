@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get info about a Google Compute SSL Certificate from its name.
@@ -120,12 +119,6 @@ func (o GetCertificateResultOutput) ToGetCertificateResultOutput() GetCertificat
 
 func (o GetCertificateResultOutput) ToGetCertificateResultOutputWithContext(ctx context.Context) GetCertificateResultOutput {
 	return o
-}
-
-func (o GetCertificateResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCertificateResult] {
-	return pulumix.Output[GetCertificateResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetCertificateResultOutput) Certificate() pulumi.StringOutput {

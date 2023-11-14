@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -447,12 +446,6 @@ func (i *WorkstationCluster) ToWorkstationClusterOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationClusterOutput)
 }
 
-func (i *WorkstationCluster) ToOutput(ctx context.Context) pulumix.Output[*WorkstationCluster] {
-	return pulumix.Output[*WorkstationCluster]{
-		OutputState: i.ToWorkstationClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkstationClusterArrayInput is an input type that accepts WorkstationClusterArray and WorkstationClusterArrayOutput values.
 // You can construct a concrete instance of `WorkstationClusterArrayInput` via:
 //
@@ -476,12 +469,6 @@ func (i WorkstationClusterArray) ToWorkstationClusterArrayOutput() WorkstationCl
 
 func (i WorkstationClusterArray) ToWorkstationClusterArrayOutputWithContext(ctx context.Context) WorkstationClusterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationClusterArrayOutput)
-}
-
-func (i WorkstationClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*WorkstationCluster] {
-	return pulumix.Output[[]*WorkstationCluster]{
-		OutputState: i.ToWorkstationClusterArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WorkstationClusterMapInput is an input type that accepts WorkstationClusterMap and WorkstationClusterMapOutput values.
@@ -509,12 +496,6 @@ func (i WorkstationClusterMap) ToWorkstationClusterMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationClusterMapOutput)
 }
 
-func (i WorkstationClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkstationCluster] {
-	return pulumix.Output[map[string]*WorkstationCluster]{
-		OutputState: i.ToWorkstationClusterMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkstationClusterOutput struct{ *pulumi.OutputState }
 
 func (WorkstationClusterOutput) ElementType() reflect.Type {
@@ -527,12 +508,6 @@ func (o WorkstationClusterOutput) ToWorkstationClusterOutput() WorkstationCluste
 
 func (o WorkstationClusterOutput) ToWorkstationClusterOutputWithContext(ctx context.Context) WorkstationClusterOutput {
 	return o
-}
-
-func (o WorkstationClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkstationCluster] {
-	return pulumix.Output[*WorkstationCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Client-specified annotations. This is distinct from labels.
@@ -657,12 +632,6 @@ func (o WorkstationClusterArrayOutput) ToWorkstationClusterArrayOutputWithContex
 	return o
 }
 
-func (o WorkstationClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WorkstationCluster] {
-	return pulumix.Output[[]*WorkstationCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkstationClusterArrayOutput) Index(i pulumi.IntInput) WorkstationClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkstationCluster {
 		return vs[0].([]*WorkstationCluster)[vs[1].(int)]
@@ -681,12 +650,6 @@ func (o WorkstationClusterMapOutput) ToWorkstationClusterMapOutput() Workstation
 
 func (o WorkstationClusterMapOutput) ToWorkstationClusterMapOutputWithContext(ctx context.Context) WorkstationClusterMapOutput {
 	return o
-}
-
-func (o WorkstationClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkstationCluster] {
-	return pulumix.Output[map[string]*WorkstationCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkstationClusterMapOutput) MapIndex(k pulumi.StringInput) WorkstationClusterOutput {

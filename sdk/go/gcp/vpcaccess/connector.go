@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Serverless VPC Access connector resource.
@@ -340,12 +339,6 @@ func (i *Connector) ToConnectorOutputWithContext(ctx context.Context) ConnectorO
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorOutput)
 }
 
-func (i *Connector) ToOutput(ctx context.Context) pulumix.Output[*Connector] {
-	return pulumix.Output[*Connector]{
-		OutputState: i.ToConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectorArrayInput is an input type that accepts ConnectorArray and ConnectorArrayOutput values.
 // You can construct a concrete instance of `ConnectorArrayInput` via:
 //
@@ -369,12 +362,6 @@ func (i ConnectorArray) ToConnectorArrayOutput() ConnectorArrayOutput {
 
 func (i ConnectorArray) ToConnectorArrayOutputWithContext(ctx context.Context) ConnectorArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorArrayOutput)
-}
-
-func (i ConnectorArray) ToOutput(ctx context.Context) pulumix.Output[[]*Connector] {
-	return pulumix.Output[[]*Connector]{
-		OutputState: i.ToConnectorArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConnectorMapInput is an input type that accepts ConnectorMap and ConnectorMapOutput values.
@@ -402,12 +389,6 @@ func (i ConnectorMap) ToConnectorMapOutputWithContext(ctx context.Context) Conne
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorMapOutput)
 }
 
-func (i ConnectorMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Connector] {
-	return pulumix.Output[map[string]*Connector]{
-		OutputState: i.ToConnectorMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectorOutput struct{ *pulumi.OutputState }
 
 func (ConnectorOutput) ElementType() reflect.Type {
@@ -420,12 +401,6 @@ func (o ConnectorOutput) ToConnectorOutput() ConnectorOutput {
 
 func (o ConnectorOutput) ToConnectorOutputWithContext(ctx context.Context) ConnectorOutput {
 	return o
-}
-
-func (o ConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*Connector] {
-	return pulumix.Output[*Connector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of projects using the connector.
@@ -516,12 +491,6 @@ func (o ConnectorArrayOutput) ToConnectorArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o ConnectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Connector] {
-	return pulumix.Output[[]*Connector]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConnectorArrayOutput) Index(i pulumi.IntInput) ConnectorOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Connector {
 		return vs[0].([]*Connector)[vs[1].(int)]
@@ -540,12 +509,6 @@ func (o ConnectorMapOutput) ToConnectorMapOutput() ConnectorMapOutput {
 
 func (o ConnectorMapOutput) ToConnectorMapOutputWithContext(ctx context.Context) ConnectorMapOutput {
 	return o
-}
-
-func (o ConnectorMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Connector] {
-	return pulumix.Output[map[string]*Connector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorMapOutput) MapIndex(k pulumi.StringInput) ConnectorOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // OIDC IdP configuration for a Identity Toolkit project within a tenant.
@@ -259,12 +258,6 @@ func (i *TenantOauthIdpConfig) ToTenantOauthIdpConfigOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(TenantOauthIdpConfigOutput)
 }
 
-func (i *TenantOauthIdpConfig) ToOutput(ctx context.Context) pulumix.Output[*TenantOauthIdpConfig] {
-	return pulumix.Output[*TenantOauthIdpConfig]{
-		OutputState: i.ToTenantOauthIdpConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TenantOauthIdpConfigArrayInput is an input type that accepts TenantOauthIdpConfigArray and TenantOauthIdpConfigArrayOutput values.
 // You can construct a concrete instance of `TenantOauthIdpConfigArrayInput` via:
 //
@@ -288,12 +281,6 @@ func (i TenantOauthIdpConfigArray) ToTenantOauthIdpConfigArrayOutput() TenantOau
 
 func (i TenantOauthIdpConfigArray) ToTenantOauthIdpConfigArrayOutputWithContext(ctx context.Context) TenantOauthIdpConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TenantOauthIdpConfigArrayOutput)
-}
-
-func (i TenantOauthIdpConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*TenantOauthIdpConfig] {
-	return pulumix.Output[[]*TenantOauthIdpConfig]{
-		OutputState: i.ToTenantOauthIdpConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TenantOauthIdpConfigMapInput is an input type that accepts TenantOauthIdpConfigMap and TenantOauthIdpConfigMapOutput values.
@@ -321,12 +308,6 @@ func (i TenantOauthIdpConfigMap) ToTenantOauthIdpConfigMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(TenantOauthIdpConfigMapOutput)
 }
 
-func (i TenantOauthIdpConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TenantOauthIdpConfig] {
-	return pulumix.Output[map[string]*TenantOauthIdpConfig]{
-		OutputState: i.ToTenantOauthIdpConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TenantOauthIdpConfigOutput struct{ *pulumi.OutputState }
 
 func (TenantOauthIdpConfigOutput) ElementType() reflect.Type {
@@ -339,12 +320,6 @@ func (o TenantOauthIdpConfigOutput) ToTenantOauthIdpConfigOutput() TenantOauthId
 
 func (o TenantOauthIdpConfigOutput) ToTenantOauthIdpConfigOutputWithContext(ctx context.Context) TenantOauthIdpConfigOutput {
 	return o
-}
-
-func (o TenantOauthIdpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*TenantOauthIdpConfig] {
-	return pulumix.Output[*TenantOauthIdpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The client id of an OAuth client.
@@ -404,12 +379,6 @@ func (o TenantOauthIdpConfigArrayOutput) ToTenantOauthIdpConfigArrayOutputWithCo
 	return o
 }
 
-func (o TenantOauthIdpConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TenantOauthIdpConfig] {
-	return pulumix.Output[[]*TenantOauthIdpConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TenantOauthIdpConfigArrayOutput) Index(i pulumi.IntInput) TenantOauthIdpConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TenantOauthIdpConfig {
 		return vs[0].([]*TenantOauthIdpConfig)[vs[1].(int)]
@@ -428,12 +397,6 @@ func (o TenantOauthIdpConfigMapOutput) ToTenantOauthIdpConfigMapOutput() TenantO
 
 func (o TenantOauthIdpConfigMapOutput) ToTenantOauthIdpConfigMapOutputWithContext(ctx context.Context) TenantOauthIdpConfigMapOutput {
 	return o
-}
-
-func (o TenantOauthIdpConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TenantOauthIdpConfig] {
-	return pulumix.Output[map[string]*TenantOauthIdpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TenantOauthIdpConfigMapOutput) MapIndex(k pulumi.StringInput) TenantOauthIdpConfigOutput {

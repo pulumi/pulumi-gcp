@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a Target Pool within GCE. This is a collection of instances used as
@@ -295,12 +294,6 @@ func (i *TargetPool) ToTargetPoolOutputWithContext(ctx context.Context) TargetPo
 	return pulumi.ToOutputWithContext(ctx, i).(TargetPoolOutput)
 }
 
-func (i *TargetPool) ToOutput(ctx context.Context) pulumix.Output[*TargetPool] {
-	return pulumix.Output[*TargetPool]{
-		OutputState: i.ToTargetPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TargetPoolArrayInput is an input type that accepts TargetPoolArray and TargetPoolArrayOutput values.
 // You can construct a concrete instance of `TargetPoolArrayInput` via:
 //
@@ -324,12 +317,6 @@ func (i TargetPoolArray) ToTargetPoolArrayOutput() TargetPoolArrayOutput {
 
 func (i TargetPoolArray) ToTargetPoolArrayOutputWithContext(ctx context.Context) TargetPoolArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TargetPoolArrayOutput)
-}
-
-func (i TargetPoolArray) ToOutput(ctx context.Context) pulumix.Output[[]*TargetPool] {
-	return pulumix.Output[[]*TargetPool]{
-		OutputState: i.ToTargetPoolArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TargetPoolMapInput is an input type that accepts TargetPoolMap and TargetPoolMapOutput values.
@@ -357,12 +344,6 @@ func (i TargetPoolMap) ToTargetPoolMapOutputWithContext(ctx context.Context) Tar
 	return pulumi.ToOutputWithContext(ctx, i).(TargetPoolMapOutput)
 }
 
-func (i TargetPoolMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TargetPool] {
-	return pulumix.Output[map[string]*TargetPool]{
-		OutputState: i.ToTargetPoolMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TargetPoolOutput struct{ *pulumi.OutputState }
 
 func (TargetPoolOutput) ElementType() reflect.Type {
@@ -375,12 +356,6 @@ func (o TargetPoolOutput) ToTargetPoolOutput() TargetPoolOutput {
 
 func (o TargetPoolOutput) ToTargetPoolOutputWithContext(ctx context.Context) TargetPoolOutput {
 	return o
-}
-
-func (o TargetPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetPool] {
-	return pulumix.Output[*TargetPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // URL to the backup target pool. Must also set
@@ -466,12 +441,6 @@ func (o TargetPoolArrayOutput) ToTargetPoolArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o TargetPoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TargetPool] {
-	return pulumix.Output[[]*TargetPool]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TargetPoolArrayOutput) Index(i pulumi.IntInput) TargetPoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TargetPool {
 		return vs[0].([]*TargetPool)[vs[1].(int)]
@@ -490,12 +459,6 @@ func (o TargetPoolMapOutput) ToTargetPoolMapOutput() TargetPoolMapOutput {
 
 func (o TargetPoolMapOutput) ToTargetPoolMapOutputWithContext(ctx context.Context) TargetPoolMapOutput {
 	return o
-}
-
-func (o TargetPoolMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TargetPool] {
-	return pulumix.Output[map[string]*TargetPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TargetPoolMapOutput) MapIndex(k pulumi.StringInput) TargetPoolOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -439,12 +438,6 @@ func (i *GrpcRoute) ToGrpcRouteOutputWithContext(ctx context.Context) GrpcRouteO
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteOutput)
 }
 
-func (i *GrpcRoute) ToOutput(ctx context.Context) pulumix.Output[*GrpcRoute] {
-	return pulumix.Output[*GrpcRoute]{
-		OutputState: i.ToGrpcRouteOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GrpcRouteArrayInput is an input type that accepts GrpcRouteArray and GrpcRouteArrayOutput values.
 // You can construct a concrete instance of `GrpcRouteArrayInput` via:
 //
@@ -468,12 +461,6 @@ func (i GrpcRouteArray) ToGrpcRouteArrayOutput() GrpcRouteArrayOutput {
 
 func (i GrpcRouteArray) ToGrpcRouteArrayOutputWithContext(ctx context.Context) GrpcRouteArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteArrayOutput)
-}
-
-func (i GrpcRouteArray) ToOutput(ctx context.Context) pulumix.Output[[]*GrpcRoute] {
-	return pulumix.Output[[]*GrpcRoute]{
-		OutputState: i.ToGrpcRouteArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GrpcRouteMapInput is an input type that accepts GrpcRouteMap and GrpcRouteMapOutput values.
@@ -501,12 +488,6 @@ func (i GrpcRouteMap) ToGrpcRouteMapOutputWithContext(ctx context.Context) GrpcR
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteMapOutput)
 }
 
-func (i GrpcRouteMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GrpcRoute] {
-	return pulumix.Output[map[string]*GrpcRoute]{
-		OutputState: i.ToGrpcRouteMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GrpcRouteOutput struct{ *pulumi.OutputState }
 
 func (GrpcRouteOutput) ElementType() reflect.Type {
@@ -519,12 +500,6 @@ func (o GrpcRouteOutput) ToGrpcRouteOutput() GrpcRouteOutput {
 
 func (o GrpcRouteOutput) ToGrpcRouteOutputWithContext(ctx context.Context) GrpcRouteOutput {
 	return o
-}
-
-func (o GrpcRouteOutput) ToOutput(ctx context.Context) pulumix.Output[*GrpcRoute] {
-	return pulumix.Output[*GrpcRoute]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time the GrpcRoute was created in UTC.
@@ -612,12 +587,6 @@ func (o GrpcRouteArrayOutput) ToGrpcRouteArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o GrpcRouteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GrpcRoute] {
-	return pulumix.Output[[]*GrpcRoute]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GrpcRouteArrayOutput) Index(i pulumi.IntInput) GrpcRouteOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GrpcRoute {
 		return vs[0].([]*GrpcRoute)[vs[1].(int)]
@@ -636,12 +605,6 @@ func (o GrpcRouteMapOutput) ToGrpcRouteMapOutput() GrpcRouteMapOutput {
 
 func (o GrpcRouteMapOutput) ToGrpcRouteMapOutputWithContext(ctx context.Context) GrpcRouteMapOutput {
 	return o
-}
-
-func (o GrpcRouteMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GrpcRoute] {
-	return pulumix.Output[map[string]*GrpcRoute]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GrpcRouteMapOutput) MapIndex(k pulumi.StringInput) GrpcRouteOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
@@ -122,12 +121,6 @@ func (o GetOrganizationResultOutput) ToGetOrganizationResultOutput() GetOrganiza
 
 func (o GetOrganizationResultOutput) ToGetOrganizationResultOutputWithContext(ctx context.Context) GetOrganizationResultOutput {
 	return o
-}
-
-func (o GetOrganizationResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetOrganizationResult] {
-	return pulumix.Output[GetOrganizationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when the Organization was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".

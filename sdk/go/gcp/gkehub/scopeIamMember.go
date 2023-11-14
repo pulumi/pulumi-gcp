@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for GKEHub Scope. Each of these resources serves a different use case:
@@ -357,12 +356,6 @@ func (i *ScopeIamMember) ToScopeIamMemberOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeIamMemberOutput)
 }
 
-func (i *ScopeIamMember) ToOutput(ctx context.Context) pulumix.Output[*ScopeIamMember] {
-	return pulumix.Output[*ScopeIamMember]{
-		OutputState: i.ToScopeIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ScopeIamMemberArrayInput is an input type that accepts ScopeIamMemberArray and ScopeIamMemberArrayOutput values.
 // You can construct a concrete instance of `ScopeIamMemberArrayInput` via:
 //
@@ -386,12 +379,6 @@ func (i ScopeIamMemberArray) ToScopeIamMemberArrayOutput() ScopeIamMemberArrayOu
 
 func (i ScopeIamMemberArray) ToScopeIamMemberArrayOutputWithContext(ctx context.Context) ScopeIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeIamMemberArrayOutput)
-}
-
-func (i ScopeIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*ScopeIamMember] {
-	return pulumix.Output[[]*ScopeIamMember]{
-		OutputState: i.ToScopeIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ScopeIamMemberMapInput is an input type that accepts ScopeIamMemberMap and ScopeIamMemberMapOutput values.
@@ -419,12 +406,6 @@ func (i ScopeIamMemberMap) ToScopeIamMemberMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeIamMemberMapOutput)
 }
 
-func (i ScopeIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ScopeIamMember] {
-	return pulumix.Output[map[string]*ScopeIamMember]{
-		OutputState: i.ToScopeIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScopeIamMemberOutput struct{ *pulumi.OutputState }
 
 func (ScopeIamMemberOutput) ElementType() reflect.Type {
@@ -437,12 +418,6 @@ func (o ScopeIamMemberOutput) ToScopeIamMemberOutput() ScopeIamMemberOutput {
 
 func (o ScopeIamMemberOutput) ToScopeIamMemberOutputWithContext(ctx context.Context) ScopeIamMemberOutput {
 	return o
-}
-
-func (o ScopeIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*ScopeIamMember] {
-	return pulumix.Output[*ScopeIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScopeIamMemberOutput) Condition() ScopeIamMemberConditionPtrOutput {
@@ -501,12 +476,6 @@ func (o ScopeIamMemberArrayOutput) ToScopeIamMemberArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o ScopeIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ScopeIamMember] {
-	return pulumix.Output[[]*ScopeIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ScopeIamMemberArrayOutput) Index(i pulumi.IntInput) ScopeIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ScopeIamMember {
 		return vs[0].([]*ScopeIamMember)[vs[1].(int)]
@@ -525,12 +494,6 @@ func (o ScopeIamMemberMapOutput) ToScopeIamMemberMapOutput() ScopeIamMemberMapOu
 
 func (o ScopeIamMemberMapOutput) ToScopeIamMemberMapOutputWithContext(ctx context.Context) ScopeIamMemberMapOutput {
 	return o
-}
-
-func (o ScopeIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ScopeIamMember] {
-	return pulumix.Output[map[string]*ScopeIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScopeIamMemberMapOutput) MapIndex(k pulumi.StringInput) ScopeIamMemberOutput {

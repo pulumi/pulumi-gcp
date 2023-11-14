@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -379,12 +378,6 @@ func (i *RegionSecurityPolicy) ToRegionSecurityPolicyOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionSecurityPolicyOutput)
 }
 
-func (i *RegionSecurityPolicy) ToOutput(ctx context.Context) pulumix.Output[*RegionSecurityPolicy] {
-	return pulumix.Output[*RegionSecurityPolicy]{
-		OutputState: i.ToRegionSecurityPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RegionSecurityPolicyArrayInput is an input type that accepts RegionSecurityPolicyArray and RegionSecurityPolicyArrayOutput values.
 // You can construct a concrete instance of `RegionSecurityPolicyArrayInput` via:
 //
@@ -408,12 +401,6 @@ func (i RegionSecurityPolicyArray) ToRegionSecurityPolicyArrayOutput() RegionSec
 
 func (i RegionSecurityPolicyArray) ToRegionSecurityPolicyArrayOutputWithContext(ctx context.Context) RegionSecurityPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionSecurityPolicyArrayOutput)
-}
-
-func (i RegionSecurityPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionSecurityPolicy] {
-	return pulumix.Output[[]*RegionSecurityPolicy]{
-		OutputState: i.ToRegionSecurityPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RegionSecurityPolicyMapInput is an input type that accepts RegionSecurityPolicyMap and RegionSecurityPolicyMapOutput values.
@@ -441,12 +428,6 @@ func (i RegionSecurityPolicyMap) ToRegionSecurityPolicyMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(RegionSecurityPolicyMapOutput)
 }
 
-func (i RegionSecurityPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionSecurityPolicy] {
-	return pulumix.Output[map[string]*RegionSecurityPolicy]{
-		OutputState: i.ToRegionSecurityPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegionSecurityPolicyOutput struct{ *pulumi.OutputState }
 
 func (RegionSecurityPolicyOutput) ElementType() reflect.Type {
@@ -459,12 +440,6 @@ func (o RegionSecurityPolicyOutput) ToRegionSecurityPolicyOutput() RegionSecurit
 
 func (o RegionSecurityPolicyOutput) ToRegionSecurityPolicyOutputWithContext(ctx context.Context) RegionSecurityPolicyOutput {
 	return o
-}
-
-func (o RegionSecurityPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionSecurityPolicy] {
-	return pulumix.Output[*RegionSecurityPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration for Google Cloud Armor DDOS Proctection Config.
@@ -555,12 +530,6 @@ func (o RegionSecurityPolicyArrayOutput) ToRegionSecurityPolicyArrayOutputWithCo
 	return o
 }
 
-func (o RegionSecurityPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionSecurityPolicy] {
-	return pulumix.Output[[]*RegionSecurityPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegionSecurityPolicyArrayOutput) Index(i pulumi.IntInput) RegionSecurityPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionSecurityPolicy {
 		return vs[0].([]*RegionSecurityPolicy)[vs[1].(int)]
@@ -579,12 +548,6 @@ func (o RegionSecurityPolicyMapOutput) ToRegionSecurityPolicyMapOutput() RegionS
 
 func (o RegionSecurityPolicyMapOutput) ToRegionSecurityPolicyMapOutputWithContext(ctx context.Context) RegionSecurityPolicyMapOutput {
 	return o
-}
-
-func (o RegionSecurityPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionSecurityPolicy] {
-	return pulumix.Output[map[string]*RegionSecurityPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegionSecurityPolicyMapOutput) MapIndex(k pulumi.StringInput) RegionSecurityPolicyOutput {

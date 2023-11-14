@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupAndroidApp(ctx *pulumi.Context, args *LookupAndroidAppArgs, opts ...pulumi.InvokeOption) (*LookupAndroidAppResult, error) {
@@ -100,12 +99,6 @@ func (o LookupAndroidAppResultOutput) ToLookupAndroidAppResultOutput() LookupAnd
 
 func (o LookupAndroidAppResultOutput) ToLookupAndroidAppResultOutputWithContext(ctx context.Context) LookupAndroidAppResultOutput {
 	return o
-}
-
-func (o LookupAndroidAppResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAndroidAppResult] {
-	return pulumix.Output[LookupAndroidAppResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupAndroidAppResultOutput) ApiKeyId() pulumi.StringOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information about a VM instance template resource within GCE. For more information see
@@ -205,12 +204,6 @@ func (o LookupRegionInstanceTemplateResultOutput) ToLookupRegionInstanceTemplate
 
 func (o LookupRegionInstanceTemplateResultOutput) ToLookupRegionInstanceTemplateResultOutputWithContext(ctx context.Context) LookupRegionInstanceTemplateResultOutput {
 	return o
-}
-
-func (o LookupRegionInstanceTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegionInstanceTemplateResult] {
-	return pulumix.Output[LookupRegionInstanceTemplateResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupRegionInstanceTemplateResultOutput) AdvancedMachineFeatures() GetRegionInstanceTemplateAdvancedMachineFeatureArrayOutput {

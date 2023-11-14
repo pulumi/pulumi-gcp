@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Data catalog EntryGroup. Each of these resources serves a different use case:
@@ -364,12 +363,6 @@ func (i *EntryGroupIamBinding) ToEntryGroupIamBindingOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamBindingOutput)
 }
 
-func (i *EntryGroupIamBinding) ToOutput(ctx context.Context) pulumix.Output[*EntryGroupIamBinding] {
-	return pulumix.Output[*EntryGroupIamBinding]{
-		OutputState: i.ToEntryGroupIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EntryGroupIamBindingArrayInput is an input type that accepts EntryGroupIamBindingArray and EntryGroupIamBindingArrayOutput values.
 // You can construct a concrete instance of `EntryGroupIamBindingArrayInput` via:
 //
@@ -393,12 +386,6 @@ func (i EntryGroupIamBindingArray) ToEntryGroupIamBindingArrayOutput() EntryGrou
 
 func (i EntryGroupIamBindingArray) ToEntryGroupIamBindingArrayOutputWithContext(ctx context.Context) EntryGroupIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamBindingArrayOutput)
-}
-
-func (i EntryGroupIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*EntryGroupIamBinding] {
-	return pulumix.Output[[]*EntryGroupIamBinding]{
-		OutputState: i.ToEntryGroupIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EntryGroupIamBindingMapInput is an input type that accepts EntryGroupIamBindingMap and EntryGroupIamBindingMapOutput values.
@@ -426,12 +413,6 @@ func (i EntryGroupIamBindingMap) ToEntryGroupIamBindingMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamBindingMapOutput)
 }
 
-func (i EntryGroupIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EntryGroupIamBinding] {
-	return pulumix.Output[map[string]*EntryGroupIamBinding]{
-		OutputState: i.ToEntryGroupIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EntryGroupIamBindingOutput struct{ *pulumi.OutputState }
 
 func (EntryGroupIamBindingOutput) ElementType() reflect.Type {
@@ -444,12 +425,6 @@ func (o EntryGroupIamBindingOutput) ToEntryGroupIamBindingOutput() EntryGroupIam
 
 func (o EntryGroupIamBindingOutput) ToEntryGroupIamBindingOutputWithContext(ctx context.Context) EntryGroupIamBindingOutput {
 	return o
-}
-
-func (o EntryGroupIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*EntryGroupIamBinding] {
-	return pulumix.Output[*EntryGroupIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EntryGroupIamBindingOutput) Condition() EntryGroupIamBindingConditionPtrOutput {
@@ -513,12 +488,6 @@ func (o EntryGroupIamBindingArrayOutput) ToEntryGroupIamBindingArrayOutputWithCo
 	return o
 }
 
-func (o EntryGroupIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EntryGroupIamBinding] {
-	return pulumix.Output[[]*EntryGroupIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EntryGroupIamBindingArrayOutput) Index(i pulumi.IntInput) EntryGroupIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EntryGroupIamBinding {
 		return vs[0].([]*EntryGroupIamBinding)[vs[1].(int)]
@@ -537,12 +506,6 @@ func (o EntryGroupIamBindingMapOutput) ToEntryGroupIamBindingMapOutput() EntryGr
 
 func (o EntryGroupIamBindingMapOutput) ToEntryGroupIamBindingMapOutputWithContext(ctx context.Context) EntryGroupIamBindingMapOutput {
 	return o
-}
-
-func (o EntryGroupIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EntryGroupIamBinding] {
-	return pulumix.Output[map[string]*EntryGroupIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EntryGroupIamBindingMapOutput) MapIndex(k pulumi.StringInput) EntryGroupIamBindingOutput {

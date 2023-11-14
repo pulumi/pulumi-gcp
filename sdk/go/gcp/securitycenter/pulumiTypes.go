@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -87,12 +86,6 @@ func (i FolderCustomModuleCustomConfigArgs) ToFolderCustomModuleCustomConfigOutp
 	return pulumi.ToOutputWithContext(ctx, i).(FolderCustomModuleCustomConfigOutput)
 }
 
-func (i FolderCustomModuleCustomConfigArgs) ToOutput(ctx context.Context) pulumix.Output[FolderCustomModuleCustomConfig] {
-	return pulumix.Output[FolderCustomModuleCustomConfig]{
-		OutputState: i.ToFolderCustomModuleCustomConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FolderCustomModuleCustomConfigArgs) ToFolderCustomModuleCustomConfigPtrOutput() FolderCustomModuleCustomConfigPtrOutput {
 	return i.ToFolderCustomModuleCustomConfigPtrOutputWithContext(context.Background())
 }
@@ -134,12 +127,6 @@ func (i *folderCustomModuleCustomConfigPtrType) ToFolderCustomModuleCustomConfig
 	return pulumi.ToOutputWithContext(ctx, i).(FolderCustomModuleCustomConfigPtrOutput)
 }
 
-func (i *folderCustomModuleCustomConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*FolderCustomModuleCustomConfig] {
-	return pulumix.Output[*FolderCustomModuleCustomConfig]{
-		OutputState: i.ToFolderCustomModuleCustomConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FolderCustomModuleCustomConfigOutput struct{ *pulumi.OutputState }
 
 func (FolderCustomModuleCustomConfigOutput) ElementType() reflect.Type {
@@ -162,12 +149,6 @@ func (o FolderCustomModuleCustomConfigOutput) ToFolderCustomModuleCustomConfigPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FolderCustomModuleCustomConfig) *FolderCustomModuleCustomConfig {
 		return &v
 	}).(FolderCustomModuleCustomConfigPtrOutput)
-}
-
-func (o FolderCustomModuleCustomConfigOutput) ToOutput(ctx context.Context) pulumix.Output[FolderCustomModuleCustomConfig] {
-	return pulumix.Output[FolderCustomModuleCustomConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Custom output properties.
@@ -226,12 +207,6 @@ func (o FolderCustomModuleCustomConfigPtrOutput) ToFolderCustomModuleCustomConfi
 
 func (o FolderCustomModuleCustomConfigPtrOutput) ToFolderCustomModuleCustomConfigPtrOutputWithContext(ctx context.Context) FolderCustomModuleCustomConfigPtrOutput {
 	return o
-}
-
-func (o FolderCustomModuleCustomConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderCustomModuleCustomConfig] {
-	return pulumix.Output[*FolderCustomModuleCustomConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FolderCustomModuleCustomConfigPtrOutput) Elem() FolderCustomModuleCustomConfigOutput {
@@ -349,12 +324,6 @@ func (i FolderCustomModuleCustomConfigCustomOutputArgs) ToFolderCustomModuleCust
 	return pulumi.ToOutputWithContext(ctx, i).(FolderCustomModuleCustomConfigCustomOutputOutput)
 }
 
-func (i FolderCustomModuleCustomConfigCustomOutputArgs) ToOutput(ctx context.Context) pulumix.Output[FolderCustomModuleCustomConfigCustomOutput] {
-	return pulumix.Output[FolderCustomModuleCustomConfigCustomOutput]{
-		OutputState: i.ToFolderCustomModuleCustomConfigCustomOutputOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FolderCustomModuleCustomConfigCustomOutputArgs) ToFolderCustomModuleCustomConfigCustomOutputPtrOutput() FolderCustomModuleCustomConfigCustomOutputPtrOutput {
 	return i.ToFolderCustomModuleCustomConfigCustomOutputPtrOutputWithContext(context.Background())
 }
@@ -396,12 +365,6 @@ func (i *folderCustomModuleCustomConfigCustomOutputPtrType) ToFolderCustomModule
 	return pulumi.ToOutputWithContext(ctx, i).(FolderCustomModuleCustomConfigCustomOutputPtrOutput)
 }
 
-func (i *folderCustomModuleCustomConfigCustomOutputPtrType) ToOutput(ctx context.Context) pulumix.Output[*FolderCustomModuleCustomConfigCustomOutput] {
-	return pulumix.Output[*FolderCustomModuleCustomConfigCustomOutput]{
-		OutputState: i.ToFolderCustomModuleCustomConfigCustomOutputPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FolderCustomModuleCustomConfigCustomOutputOutput struct{ *pulumi.OutputState }
 
 func (FolderCustomModuleCustomConfigCustomOutputOutput) ElementType() reflect.Type {
@@ -426,12 +389,6 @@ func (o FolderCustomModuleCustomConfigCustomOutputOutput) ToFolderCustomModuleCu
 	}).(FolderCustomModuleCustomConfigCustomOutputPtrOutput)
 }
 
-func (o FolderCustomModuleCustomConfigCustomOutputOutput) ToOutput(ctx context.Context) pulumix.Output[FolderCustomModuleCustomConfigCustomOutput] {
-	return pulumix.Output[FolderCustomModuleCustomConfigCustomOutput]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of custom output properties to add to the finding.
 // Structure is documented below.
 func (o FolderCustomModuleCustomConfigCustomOutputOutput) Properties() FolderCustomModuleCustomConfigCustomOutputPropertyArrayOutput {
@@ -452,12 +409,6 @@ func (o FolderCustomModuleCustomConfigCustomOutputPtrOutput) ToFolderCustomModul
 
 func (o FolderCustomModuleCustomConfigCustomOutputPtrOutput) ToFolderCustomModuleCustomConfigCustomOutputPtrOutputWithContext(ctx context.Context) FolderCustomModuleCustomConfigCustomOutputPtrOutput {
 	return o
-}
-
-func (o FolderCustomModuleCustomConfigCustomOutputPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderCustomModuleCustomConfigCustomOutput] {
-	return pulumix.Output[*FolderCustomModuleCustomConfigCustomOutput]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FolderCustomModuleCustomConfigCustomOutputPtrOutput) Elem() FolderCustomModuleCustomConfigCustomOutputOutput {
@@ -522,12 +473,6 @@ func (i FolderCustomModuleCustomConfigCustomOutputPropertyArgs) ToFolderCustomMo
 	return pulumi.ToOutputWithContext(ctx, i).(FolderCustomModuleCustomConfigCustomOutputPropertyOutput)
 }
 
-func (i FolderCustomModuleCustomConfigCustomOutputPropertyArgs) ToOutput(ctx context.Context) pulumix.Output[FolderCustomModuleCustomConfigCustomOutputProperty] {
-	return pulumix.Output[FolderCustomModuleCustomConfigCustomOutputProperty]{
-		OutputState: i.ToFolderCustomModuleCustomConfigCustomOutputPropertyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FolderCustomModuleCustomConfigCustomOutputPropertyArrayInput is an input type that accepts FolderCustomModuleCustomConfigCustomOutputPropertyArray and FolderCustomModuleCustomConfigCustomOutputPropertyArrayOutput values.
 // You can construct a concrete instance of `FolderCustomModuleCustomConfigCustomOutputPropertyArrayInput` via:
 //
@@ -553,12 +498,6 @@ func (i FolderCustomModuleCustomConfigCustomOutputPropertyArray) ToFolderCustomM
 	return pulumi.ToOutputWithContext(ctx, i).(FolderCustomModuleCustomConfigCustomOutputPropertyArrayOutput)
 }
 
-func (i FolderCustomModuleCustomConfigCustomOutputPropertyArray) ToOutput(ctx context.Context) pulumix.Output[[]FolderCustomModuleCustomConfigCustomOutputProperty] {
-	return pulumix.Output[[]FolderCustomModuleCustomConfigCustomOutputProperty]{
-		OutputState: i.ToFolderCustomModuleCustomConfigCustomOutputPropertyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FolderCustomModuleCustomConfigCustomOutputPropertyOutput struct{ *pulumi.OutputState }
 
 func (FolderCustomModuleCustomConfigCustomOutputPropertyOutput) ElementType() reflect.Type {
@@ -571,12 +510,6 @@ func (o FolderCustomModuleCustomConfigCustomOutputPropertyOutput) ToFolderCustom
 
 func (o FolderCustomModuleCustomConfigCustomOutputPropertyOutput) ToFolderCustomModuleCustomConfigCustomOutputPropertyOutputWithContext(ctx context.Context) FolderCustomModuleCustomConfigCustomOutputPropertyOutput {
 	return o
-}
-
-func (o FolderCustomModuleCustomConfigCustomOutputPropertyOutput) ToOutput(ctx context.Context) pulumix.Output[FolderCustomModuleCustomConfigCustomOutputProperty] {
-	return pulumix.Output[FolderCustomModuleCustomConfigCustomOutputProperty]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the property for the custom output.
@@ -605,12 +538,6 @@ func (o FolderCustomModuleCustomConfigCustomOutputPropertyArrayOutput) ToFolderC
 
 func (o FolderCustomModuleCustomConfigCustomOutputPropertyArrayOutput) ToFolderCustomModuleCustomConfigCustomOutputPropertyArrayOutputWithContext(ctx context.Context) FolderCustomModuleCustomConfigCustomOutputPropertyArrayOutput {
 	return o
-}
-
-func (o FolderCustomModuleCustomConfigCustomOutputPropertyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FolderCustomModuleCustomConfigCustomOutputProperty] {
-	return pulumix.Output[[]FolderCustomModuleCustomConfigCustomOutputProperty]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FolderCustomModuleCustomConfigCustomOutputPropertyArrayOutput) Index(i pulumi.IntInput) FolderCustomModuleCustomConfigCustomOutputPropertyOutput {
@@ -670,12 +597,6 @@ func (i FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionOutput)
 }
 
-func (i FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs) ToOutput(ctx context.Context) pulumix.Output[FolderCustomModuleCustomConfigCustomOutputPropertyValueExpression] {
-	return pulumix.Output[FolderCustomModuleCustomConfigCustomOutputPropertyValueExpression]{
-		OutputState: i.ToFolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs) ToFolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutput() FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutput {
 	return i.ToFolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutputWithContext(context.Background())
 }
@@ -717,12 +638,6 @@ func (i *folderCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutput)
 }
 
-func (i *folderCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrType) ToOutput(ctx context.Context) pulumix.Output[*FolderCustomModuleCustomConfigCustomOutputPropertyValueExpression] {
-	return pulumix.Output[*FolderCustomModuleCustomConfigCustomOutputPropertyValueExpression]{
-		OutputState: i.ToFolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionOutput struct{ *pulumi.OutputState }
 
 func (FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionOutput) ElementType() reflect.Type {
@@ -745,12 +660,6 @@ func (o FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionOutput)
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FolderCustomModuleCustomConfigCustomOutputPropertyValueExpression) *FolderCustomModuleCustomConfigCustomOutputPropertyValueExpression {
 		return &v
 	}).(FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutput)
-}
-
-func (o FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionOutput) ToOutput(ctx context.Context) pulumix.Output[FolderCustomModuleCustomConfigCustomOutputPropertyValueExpression] {
-	return pulumix.Output[FolderCustomModuleCustomConfigCustomOutputPropertyValueExpression]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the expression. This is a longer text which describes the
@@ -790,12 +699,6 @@ func (o FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutp
 
 func (o FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutput) ToFolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutputWithContext(ctx context.Context) FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutput {
 	return o
-}
-
-func (o FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderCustomModuleCustomConfigCustomOutputPropertyValueExpression] {
-	return pulumix.Output[*FolderCustomModuleCustomConfigCustomOutputPropertyValueExpression]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutput) Elem() FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionOutput {
@@ -902,12 +805,6 @@ func (i FolderCustomModuleCustomConfigPredicateArgs) ToFolderCustomModuleCustomC
 	return pulumi.ToOutputWithContext(ctx, i).(FolderCustomModuleCustomConfigPredicateOutput)
 }
 
-func (i FolderCustomModuleCustomConfigPredicateArgs) ToOutput(ctx context.Context) pulumix.Output[FolderCustomModuleCustomConfigPredicate] {
-	return pulumix.Output[FolderCustomModuleCustomConfigPredicate]{
-		OutputState: i.ToFolderCustomModuleCustomConfigPredicateOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FolderCustomModuleCustomConfigPredicateArgs) ToFolderCustomModuleCustomConfigPredicatePtrOutput() FolderCustomModuleCustomConfigPredicatePtrOutput {
 	return i.ToFolderCustomModuleCustomConfigPredicatePtrOutputWithContext(context.Background())
 }
@@ -949,12 +846,6 @@ func (i *folderCustomModuleCustomConfigPredicatePtrType) ToFolderCustomModuleCus
 	return pulumi.ToOutputWithContext(ctx, i).(FolderCustomModuleCustomConfigPredicatePtrOutput)
 }
 
-func (i *folderCustomModuleCustomConfigPredicatePtrType) ToOutput(ctx context.Context) pulumix.Output[*FolderCustomModuleCustomConfigPredicate] {
-	return pulumix.Output[*FolderCustomModuleCustomConfigPredicate]{
-		OutputState: i.ToFolderCustomModuleCustomConfigPredicatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FolderCustomModuleCustomConfigPredicateOutput struct{ *pulumi.OutputState }
 
 func (FolderCustomModuleCustomConfigPredicateOutput) ElementType() reflect.Type {
@@ -977,12 +868,6 @@ func (o FolderCustomModuleCustomConfigPredicateOutput) ToFolderCustomModuleCusto
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FolderCustomModuleCustomConfigPredicate) *FolderCustomModuleCustomConfigPredicate {
 		return &v
 	}).(FolderCustomModuleCustomConfigPredicatePtrOutput)
-}
-
-func (o FolderCustomModuleCustomConfigPredicateOutput) ToOutput(ctx context.Context) pulumix.Output[FolderCustomModuleCustomConfigPredicate] {
-	return pulumix.Output[FolderCustomModuleCustomConfigPredicate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the expression. This is a longer text which describes the
@@ -1020,12 +905,6 @@ func (o FolderCustomModuleCustomConfigPredicatePtrOutput) ToFolderCustomModuleCu
 
 func (o FolderCustomModuleCustomConfigPredicatePtrOutput) ToFolderCustomModuleCustomConfigPredicatePtrOutputWithContext(ctx context.Context) FolderCustomModuleCustomConfigPredicatePtrOutput {
 	return o
-}
-
-func (o FolderCustomModuleCustomConfigPredicatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderCustomModuleCustomConfigPredicate] {
-	return pulumix.Output[*FolderCustomModuleCustomConfigPredicate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FolderCustomModuleCustomConfigPredicatePtrOutput) Elem() FolderCustomModuleCustomConfigPredicateOutput {
@@ -1118,12 +997,6 @@ func (i FolderCustomModuleCustomConfigResourceSelectorArgs) ToFolderCustomModule
 	return pulumi.ToOutputWithContext(ctx, i).(FolderCustomModuleCustomConfigResourceSelectorOutput)
 }
 
-func (i FolderCustomModuleCustomConfigResourceSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[FolderCustomModuleCustomConfigResourceSelector] {
-	return pulumix.Output[FolderCustomModuleCustomConfigResourceSelector]{
-		OutputState: i.ToFolderCustomModuleCustomConfigResourceSelectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FolderCustomModuleCustomConfigResourceSelectorArgs) ToFolderCustomModuleCustomConfigResourceSelectorPtrOutput() FolderCustomModuleCustomConfigResourceSelectorPtrOutput {
 	return i.ToFolderCustomModuleCustomConfigResourceSelectorPtrOutputWithContext(context.Background())
 }
@@ -1165,12 +1038,6 @@ func (i *folderCustomModuleCustomConfigResourceSelectorPtrType) ToFolderCustomMo
 	return pulumi.ToOutputWithContext(ctx, i).(FolderCustomModuleCustomConfigResourceSelectorPtrOutput)
 }
 
-func (i *folderCustomModuleCustomConfigResourceSelectorPtrType) ToOutput(ctx context.Context) pulumix.Output[*FolderCustomModuleCustomConfigResourceSelector] {
-	return pulumix.Output[*FolderCustomModuleCustomConfigResourceSelector]{
-		OutputState: i.ToFolderCustomModuleCustomConfigResourceSelectorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FolderCustomModuleCustomConfigResourceSelectorOutput struct{ *pulumi.OutputState }
 
 func (FolderCustomModuleCustomConfigResourceSelectorOutput) ElementType() reflect.Type {
@@ -1195,12 +1062,6 @@ func (o FolderCustomModuleCustomConfigResourceSelectorOutput) ToFolderCustomModu
 	}).(FolderCustomModuleCustomConfigResourceSelectorPtrOutput)
 }
 
-func (o FolderCustomModuleCustomConfigResourceSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[FolderCustomModuleCustomConfigResourceSelector] {
-	return pulumix.Output[FolderCustomModuleCustomConfigResourceSelector]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The resource types to run the detector on.
 //
 // ***
@@ -1220,12 +1081,6 @@ func (o FolderCustomModuleCustomConfigResourceSelectorPtrOutput) ToFolderCustomM
 
 func (o FolderCustomModuleCustomConfigResourceSelectorPtrOutput) ToFolderCustomModuleCustomConfigResourceSelectorPtrOutputWithContext(ctx context.Context) FolderCustomModuleCustomConfigResourceSelectorPtrOutput {
 	return o
-}
-
-func (o FolderCustomModuleCustomConfigResourceSelectorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderCustomModuleCustomConfigResourceSelector] {
-	return pulumix.Output[*FolderCustomModuleCustomConfigResourceSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FolderCustomModuleCustomConfigResourceSelectorPtrOutput) Elem() FolderCustomModuleCustomConfigResourceSelectorOutput {
@@ -1287,12 +1142,6 @@ func (i InstanceIamBindingConditionArgs) ToInstanceIamBindingConditionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamBindingConditionOutput)
 }
 
-func (i InstanceIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceIamBindingCondition] {
-	return pulumix.Output[InstanceIamBindingCondition]{
-		OutputState: i.ToInstanceIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i InstanceIamBindingConditionArgs) ToInstanceIamBindingConditionPtrOutput() InstanceIamBindingConditionPtrOutput {
 	return i.ToInstanceIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -1334,12 +1183,6 @@ func (i *instanceIamBindingConditionPtrType) ToInstanceIamBindingConditionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamBindingConditionPtrOutput)
 }
 
-func (i *instanceIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceIamBindingCondition] {
-	return pulumix.Output[*InstanceIamBindingCondition]{
-		OutputState: i.ToInstanceIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (InstanceIamBindingConditionOutput) ElementType() reflect.Type {
@@ -1362,12 +1205,6 @@ func (o InstanceIamBindingConditionOutput) ToInstanceIamBindingConditionPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceIamBindingCondition) *InstanceIamBindingCondition {
 		return &v
 	}).(InstanceIamBindingConditionPtrOutput)
-}
-
-func (o InstanceIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceIamBindingCondition] {
-	return pulumix.Output[InstanceIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An optional description of the instance.
@@ -1395,12 +1232,6 @@ func (o InstanceIamBindingConditionPtrOutput) ToInstanceIamBindingConditionPtrOu
 
 func (o InstanceIamBindingConditionPtrOutput) ToInstanceIamBindingConditionPtrOutputWithContext(ctx context.Context) InstanceIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o InstanceIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceIamBindingCondition] {
-	return pulumix.Output[*InstanceIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceIamBindingConditionPtrOutput) Elem() InstanceIamBindingConditionOutput {
@@ -1478,12 +1309,6 @@ func (i InstanceIamMemberConditionArgs) ToInstanceIamMemberConditionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamMemberConditionOutput)
 }
 
-func (i InstanceIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceIamMemberCondition] {
-	return pulumix.Output[InstanceIamMemberCondition]{
-		OutputState: i.ToInstanceIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i InstanceIamMemberConditionArgs) ToInstanceIamMemberConditionPtrOutput() InstanceIamMemberConditionPtrOutput {
 	return i.ToInstanceIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -1525,12 +1350,6 @@ func (i *instanceIamMemberConditionPtrType) ToInstanceIamMemberConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamMemberConditionPtrOutput)
 }
 
-func (i *instanceIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceIamMemberCondition] {
-	return pulumix.Output[*InstanceIamMemberCondition]{
-		OutputState: i.ToInstanceIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (InstanceIamMemberConditionOutput) ElementType() reflect.Type {
@@ -1553,12 +1372,6 @@ func (o InstanceIamMemberConditionOutput) ToInstanceIamMemberConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceIamMemberCondition) *InstanceIamMemberCondition {
 		return &v
 	}).(InstanceIamMemberConditionPtrOutput)
-}
-
-func (o InstanceIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceIamMemberCondition] {
-	return pulumix.Output[InstanceIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An optional description of the instance.
@@ -1586,12 +1399,6 @@ func (o InstanceIamMemberConditionPtrOutput) ToInstanceIamMemberConditionPtrOutp
 
 func (o InstanceIamMemberConditionPtrOutput) ToInstanceIamMemberConditionPtrOutputWithContext(ctx context.Context) InstanceIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o InstanceIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceIamMemberCondition] {
-	return pulumix.Output[*InstanceIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceIamMemberConditionPtrOutput) Elem() InstanceIamMemberConditionOutput {
@@ -1705,12 +1512,6 @@ func (i NotificationConfigStreamingConfigArgs) ToNotificationConfigStreamingConf
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigStreamingConfigOutput)
 }
 
-func (i NotificationConfigStreamingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[NotificationConfigStreamingConfig] {
-	return pulumix.Output[NotificationConfigStreamingConfig]{
-		OutputState: i.ToNotificationConfigStreamingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i NotificationConfigStreamingConfigArgs) ToNotificationConfigStreamingConfigPtrOutput() NotificationConfigStreamingConfigPtrOutput {
 	return i.ToNotificationConfigStreamingConfigPtrOutputWithContext(context.Background())
 }
@@ -1752,12 +1553,6 @@ func (i *notificationConfigStreamingConfigPtrType) ToNotificationConfigStreaming
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigStreamingConfigPtrOutput)
 }
 
-func (i *notificationConfigStreamingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*NotificationConfigStreamingConfig] {
-	return pulumix.Output[*NotificationConfigStreamingConfig]{
-		OutputState: i.ToNotificationConfigStreamingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NotificationConfigStreamingConfigOutput struct{ *pulumi.OutputState }
 
 func (NotificationConfigStreamingConfigOutput) ElementType() reflect.Type {
@@ -1780,12 +1575,6 @@ func (o NotificationConfigStreamingConfigOutput) ToNotificationConfigStreamingCo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationConfigStreamingConfig) *NotificationConfigStreamingConfig {
 		return &v
 	}).(NotificationConfigStreamingConfigPtrOutput)
-}
-
-func (o NotificationConfigStreamingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[NotificationConfigStreamingConfig] {
-	return pulumix.Output[NotificationConfigStreamingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Expression that defines the filter to apply across create/update
@@ -1825,12 +1614,6 @@ func (o NotificationConfigStreamingConfigPtrOutput) ToNotificationConfigStreamin
 
 func (o NotificationConfigStreamingConfigPtrOutput) ToNotificationConfigStreamingConfigPtrOutputWithContext(ctx context.Context) NotificationConfigStreamingConfigPtrOutput {
 	return o
-}
-
-func (o NotificationConfigStreamingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NotificationConfigStreamingConfig] {
-	return pulumix.Output[*NotificationConfigStreamingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NotificationConfigStreamingConfigPtrOutput) Elem() NotificationConfigStreamingConfigOutput {
@@ -1946,12 +1729,6 @@ func (i OrganizationCustomModuleCustomConfigArgs) ToOrganizationCustomModuleCust
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationCustomModuleCustomConfigOutput)
 }
 
-func (i OrganizationCustomModuleCustomConfigArgs) ToOutput(ctx context.Context) pulumix.Output[OrganizationCustomModuleCustomConfig] {
-	return pulumix.Output[OrganizationCustomModuleCustomConfig]{
-		OutputState: i.ToOrganizationCustomModuleCustomConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OrganizationCustomModuleCustomConfigArgs) ToOrganizationCustomModuleCustomConfigPtrOutput() OrganizationCustomModuleCustomConfigPtrOutput {
 	return i.ToOrganizationCustomModuleCustomConfigPtrOutputWithContext(context.Background())
 }
@@ -1993,12 +1770,6 @@ func (i *organizationCustomModuleCustomConfigPtrType) ToOrganizationCustomModule
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationCustomModuleCustomConfigPtrOutput)
 }
 
-func (i *organizationCustomModuleCustomConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*OrganizationCustomModuleCustomConfig] {
-	return pulumix.Output[*OrganizationCustomModuleCustomConfig]{
-		OutputState: i.ToOrganizationCustomModuleCustomConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationCustomModuleCustomConfigOutput struct{ *pulumi.OutputState }
 
 func (OrganizationCustomModuleCustomConfigOutput) ElementType() reflect.Type {
@@ -2021,12 +1792,6 @@ func (o OrganizationCustomModuleCustomConfigOutput) ToOrganizationCustomModuleCu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationCustomModuleCustomConfig) *OrganizationCustomModuleCustomConfig {
 		return &v
 	}).(OrganizationCustomModuleCustomConfigPtrOutput)
-}
-
-func (o OrganizationCustomModuleCustomConfigOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationCustomModuleCustomConfig] {
-	return pulumix.Output[OrganizationCustomModuleCustomConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Custom output properties.
@@ -2087,12 +1852,6 @@ func (o OrganizationCustomModuleCustomConfigPtrOutput) ToOrganizationCustomModul
 
 func (o OrganizationCustomModuleCustomConfigPtrOutput) ToOrganizationCustomModuleCustomConfigPtrOutputWithContext(ctx context.Context) OrganizationCustomModuleCustomConfigPtrOutput {
 	return o
-}
-
-func (o OrganizationCustomModuleCustomConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationCustomModuleCustomConfig] {
-	return pulumix.Output[*OrganizationCustomModuleCustomConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationCustomModuleCustomConfigPtrOutput) Elem() OrganizationCustomModuleCustomConfigOutput {
@@ -2210,12 +1969,6 @@ func (i OrganizationCustomModuleCustomConfigCustomOutputArgs) ToOrganizationCust
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationCustomModuleCustomConfigCustomOutputOutput)
 }
 
-func (i OrganizationCustomModuleCustomConfigCustomOutputArgs) ToOutput(ctx context.Context) pulumix.Output[OrganizationCustomModuleCustomConfigCustomOutput] {
-	return pulumix.Output[OrganizationCustomModuleCustomConfigCustomOutput]{
-		OutputState: i.ToOrganizationCustomModuleCustomConfigCustomOutputOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OrganizationCustomModuleCustomConfigCustomOutputArgs) ToOrganizationCustomModuleCustomConfigCustomOutputPtrOutput() OrganizationCustomModuleCustomConfigCustomOutputPtrOutput {
 	return i.ToOrganizationCustomModuleCustomConfigCustomOutputPtrOutputWithContext(context.Background())
 }
@@ -2257,12 +2010,6 @@ func (i *organizationCustomModuleCustomConfigCustomOutputPtrType) ToOrganization
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationCustomModuleCustomConfigCustomOutputPtrOutput)
 }
 
-func (i *organizationCustomModuleCustomConfigCustomOutputPtrType) ToOutput(ctx context.Context) pulumix.Output[*OrganizationCustomModuleCustomConfigCustomOutput] {
-	return pulumix.Output[*OrganizationCustomModuleCustomConfigCustomOutput]{
-		OutputState: i.ToOrganizationCustomModuleCustomConfigCustomOutputPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationCustomModuleCustomConfigCustomOutputOutput struct{ *pulumi.OutputState }
 
 func (OrganizationCustomModuleCustomConfigCustomOutputOutput) ElementType() reflect.Type {
@@ -2287,12 +2034,6 @@ func (o OrganizationCustomModuleCustomConfigCustomOutputOutput) ToOrganizationCu
 	}).(OrganizationCustomModuleCustomConfigCustomOutputPtrOutput)
 }
 
-func (o OrganizationCustomModuleCustomConfigCustomOutputOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationCustomModuleCustomConfigCustomOutput] {
-	return pulumix.Output[OrganizationCustomModuleCustomConfigCustomOutput]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of custom output properties to add to the finding.
 // Structure is documented below.
 func (o OrganizationCustomModuleCustomConfigCustomOutputOutput) Properties() OrganizationCustomModuleCustomConfigCustomOutputPropertyArrayOutput {
@@ -2313,12 +2054,6 @@ func (o OrganizationCustomModuleCustomConfigCustomOutputPtrOutput) ToOrganizatio
 
 func (o OrganizationCustomModuleCustomConfigCustomOutputPtrOutput) ToOrganizationCustomModuleCustomConfigCustomOutputPtrOutputWithContext(ctx context.Context) OrganizationCustomModuleCustomConfigCustomOutputPtrOutput {
 	return o
-}
-
-func (o OrganizationCustomModuleCustomConfigCustomOutputPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationCustomModuleCustomConfigCustomOutput] {
-	return pulumix.Output[*OrganizationCustomModuleCustomConfigCustomOutput]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationCustomModuleCustomConfigCustomOutputPtrOutput) Elem() OrganizationCustomModuleCustomConfigCustomOutputOutput {
@@ -2383,12 +2118,6 @@ func (i OrganizationCustomModuleCustomConfigCustomOutputPropertyArgs) ToOrganiza
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationCustomModuleCustomConfigCustomOutputPropertyOutput)
 }
 
-func (i OrganizationCustomModuleCustomConfigCustomOutputPropertyArgs) ToOutput(ctx context.Context) pulumix.Output[OrganizationCustomModuleCustomConfigCustomOutputProperty] {
-	return pulumix.Output[OrganizationCustomModuleCustomConfigCustomOutputProperty]{
-		OutputState: i.ToOrganizationCustomModuleCustomConfigCustomOutputPropertyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OrganizationCustomModuleCustomConfigCustomOutputPropertyArrayInput is an input type that accepts OrganizationCustomModuleCustomConfigCustomOutputPropertyArray and OrganizationCustomModuleCustomConfigCustomOutputPropertyArrayOutput values.
 // You can construct a concrete instance of `OrganizationCustomModuleCustomConfigCustomOutputPropertyArrayInput` via:
 //
@@ -2414,12 +2143,6 @@ func (i OrganizationCustomModuleCustomConfigCustomOutputPropertyArray) ToOrganiz
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationCustomModuleCustomConfigCustomOutputPropertyArrayOutput)
 }
 
-func (i OrganizationCustomModuleCustomConfigCustomOutputPropertyArray) ToOutput(ctx context.Context) pulumix.Output[[]OrganizationCustomModuleCustomConfigCustomOutputProperty] {
-	return pulumix.Output[[]OrganizationCustomModuleCustomConfigCustomOutputProperty]{
-		OutputState: i.ToOrganizationCustomModuleCustomConfigCustomOutputPropertyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationCustomModuleCustomConfigCustomOutputPropertyOutput struct{ *pulumi.OutputState }
 
 func (OrganizationCustomModuleCustomConfigCustomOutputPropertyOutput) ElementType() reflect.Type {
@@ -2432,12 +2155,6 @@ func (o OrganizationCustomModuleCustomConfigCustomOutputPropertyOutput) ToOrgani
 
 func (o OrganizationCustomModuleCustomConfigCustomOutputPropertyOutput) ToOrganizationCustomModuleCustomConfigCustomOutputPropertyOutputWithContext(ctx context.Context) OrganizationCustomModuleCustomConfigCustomOutputPropertyOutput {
 	return o
-}
-
-func (o OrganizationCustomModuleCustomConfigCustomOutputPropertyOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationCustomModuleCustomConfigCustomOutputProperty] {
-	return pulumix.Output[OrganizationCustomModuleCustomConfigCustomOutputProperty]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the property for the custom output.
@@ -2466,12 +2183,6 @@ func (o OrganizationCustomModuleCustomConfigCustomOutputPropertyArrayOutput) ToO
 
 func (o OrganizationCustomModuleCustomConfigCustomOutputPropertyArrayOutput) ToOrganizationCustomModuleCustomConfigCustomOutputPropertyArrayOutputWithContext(ctx context.Context) OrganizationCustomModuleCustomConfigCustomOutputPropertyArrayOutput {
 	return o
-}
-
-func (o OrganizationCustomModuleCustomConfigCustomOutputPropertyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OrganizationCustomModuleCustomConfigCustomOutputProperty] {
-	return pulumix.Output[[]OrganizationCustomModuleCustomConfigCustomOutputProperty]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationCustomModuleCustomConfigCustomOutputPropertyArrayOutput) Index(i pulumi.IntInput) OrganizationCustomModuleCustomConfigCustomOutputPropertyOutput {
@@ -2531,12 +2242,6 @@ func (i OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionA
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionOutput)
 }
 
-func (i OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs) ToOutput(ctx context.Context) pulumix.Output[OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpression] {
-	return pulumix.Output[OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpression]{
-		OutputState: i.ToOrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs) ToOrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutput() OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutput {
 	return i.ToOrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutputWithContext(context.Background())
 }
@@ -2578,12 +2283,6 @@ func (i *organizationCustomModuleCustomConfigCustomOutputPropertyValueExpression
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutput)
 }
 
-func (i *organizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrType) ToOutput(ctx context.Context) pulumix.Output[*OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpression] {
-	return pulumix.Output[*OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpression]{
-		OutputState: i.ToOrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionOutput struct{ *pulumi.OutputState }
 
 func (OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionOutput) ElementType() reflect.Type {
@@ -2606,12 +2305,6 @@ func (o OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpression) *OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpression {
 		return &v
 	}).(OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutput)
-}
-
-func (o OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpression] {
-	return pulumix.Output[OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpression]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the expression. This is a longer text which describes the
@@ -2657,12 +2350,6 @@ func (o OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionP
 
 func (o OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutput) ToOrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutputWithContext(ctx context.Context) OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutput {
 	return o
-}
-
-func (o OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpression] {
-	return pulumix.Output[*OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpression]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutput) Elem() OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionOutput {
@@ -2769,12 +2456,6 @@ func (i OrganizationCustomModuleCustomConfigPredicateArgs) ToOrganizationCustomM
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationCustomModuleCustomConfigPredicateOutput)
 }
 
-func (i OrganizationCustomModuleCustomConfigPredicateArgs) ToOutput(ctx context.Context) pulumix.Output[OrganizationCustomModuleCustomConfigPredicate] {
-	return pulumix.Output[OrganizationCustomModuleCustomConfigPredicate]{
-		OutputState: i.ToOrganizationCustomModuleCustomConfigPredicateOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OrganizationCustomModuleCustomConfigPredicateArgs) ToOrganizationCustomModuleCustomConfigPredicatePtrOutput() OrganizationCustomModuleCustomConfigPredicatePtrOutput {
 	return i.ToOrganizationCustomModuleCustomConfigPredicatePtrOutputWithContext(context.Background())
 }
@@ -2816,12 +2497,6 @@ func (i *organizationCustomModuleCustomConfigPredicatePtrType) ToOrganizationCus
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationCustomModuleCustomConfigPredicatePtrOutput)
 }
 
-func (i *organizationCustomModuleCustomConfigPredicatePtrType) ToOutput(ctx context.Context) pulumix.Output[*OrganizationCustomModuleCustomConfigPredicate] {
-	return pulumix.Output[*OrganizationCustomModuleCustomConfigPredicate]{
-		OutputState: i.ToOrganizationCustomModuleCustomConfigPredicatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationCustomModuleCustomConfigPredicateOutput struct{ *pulumi.OutputState }
 
 func (OrganizationCustomModuleCustomConfigPredicateOutput) ElementType() reflect.Type {
@@ -2844,12 +2519,6 @@ func (o OrganizationCustomModuleCustomConfigPredicateOutput) ToOrganizationCusto
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationCustomModuleCustomConfigPredicate) *OrganizationCustomModuleCustomConfigPredicate {
 		return &v
 	}).(OrganizationCustomModuleCustomConfigPredicatePtrOutput)
-}
-
-func (o OrganizationCustomModuleCustomConfigPredicateOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationCustomModuleCustomConfigPredicate] {
-	return pulumix.Output[OrganizationCustomModuleCustomConfigPredicate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the expression. This is a longer text which describes the
@@ -2887,12 +2556,6 @@ func (o OrganizationCustomModuleCustomConfigPredicatePtrOutput) ToOrganizationCu
 
 func (o OrganizationCustomModuleCustomConfigPredicatePtrOutput) ToOrganizationCustomModuleCustomConfigPredicatePtrOutputWithContext(ctx context.Context) OrganizationCustomModuleCustomConfigPredicatePtrOutput {
 	return o
-}
-
-func (o OrganizationCustomModuleCustomConfigPredicatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationCustomModuleCustomConfigPredicate] {
-	return pulumix.Output[*OrganizationCustomModuleCustomConfigPredicate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationCustomModuleCustomConfigPredicatePtrOutput) Elem() OrganizationCustomModuleCustomConfigPredicateOutput {
@@ -2985,12 +2648,6 @@ func (i OrganizationCustomModuleCustomConfigResourceSelectorArgs) ToOrganization
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationCustomModuleCustomConfigResourceSelectorOutput)
 }
 
-func (i OrganizationCustomModuleCustomConfigResourceSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[OrganizationCustomModuleCustomConfigResourceSelector] {
-	return pulumix.Output[OrganizationCustomModuleCustomConfigResourceSelector]{
-		OutputState: i.ToOrganizationCustomModuleCustomConfigResourceSelectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OrganizationCustomModuleCustomConfigResourceSelectorArgs) ToOrganizationCustomModuleCustomConfigResourceSelectorPtrOutput() OrganizationCustomModuleCustomConfigResourceSelectorPtrOutput {
 	return i.ToOrganizationCustomModuleCustomConfigResourceSelectorPtrOutputWithContext(context.Background())
 }
@@ -3032,12 +2689,6 @@ func (i *organizationCustomModuleCustomConfigResourceSelectorPtrType) ToOrganiza
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationCustomModuleCustomConfigResourceSelectorPtrOutput)
 }
 
-func (i *organizationCustomModuleCustomConfigResourceSelectorPtrType) ToOutput(ctx context.Context) pulumix.Output[*OrganizationCustomModuleCustomConfigResourceSelector] {
-	return pulumix.Output[*OrganizationCustomModuleCustomConfigResourceSelector]{
-		OutputState: i.ToOrganizationCustomModuleCustomConfigResourceSelectorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationCustomModuleCustomConfigResourceSelectorOutput struct{ *pulumi.OutputState }
 
 func (OrganizationCustomModuleCustomConfigResourceSelectorOutput) ElementType() reflect.Type {
@@ -3062,12 +2713,6 @@ func (o OrganizationCustomModuleCustomConfigResourceSelectorOutput) ToOrganizati
 	}).(OrganizationCustomModuleCustomConfigResourceSelectorPtrOutput)
 }
 
-func (o OrganizationCustomModuleCustomConfigResourceSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationCustomModuleCustomConfigResourceSelector] {
-	return pulumix.Output[OrganizationCustomModuleCustomConfigResourceSelector]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The resource types to run the detector on.
 //
 // ***
@@ -3087,12 +2732,6 @@ func (o OrganizationCustomModuleCustomConfigResourceSelectorPtrOutput) ToOrganiz
 
 func (o OrganizationCustomModuleCustomConfigResourceSelectorPtrOutput) ToOrganizationCustomModuleCustomConfigResourceSelectorPtrOutputWithContext(ctx context.Context) OrganizationCustomModuleCustomConfigResourceSelectorPtrOutput {
 	return o
-}
-
-func (o OrganizationCustomModuleCustomConfigResourceSelectorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationCustomModuleCustomConfigResourceSelector] {
-	return pulumix.Output[*OrganizationCustomModuleCustomConfigResourceSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationCustomModuleCustomConfigResourceSelectorPtrOutput) Elem() OrganizationCustomModuleCustomConfigResourceSelectorOutput {
@@ -3190,12 +2829,6 @@ func (i ProjectCustomModuleCustomConfigArgs) ToProjectCustomModuleCustomConfigOu
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectCustomModuleCustomConfigOutput)
 }
 
-func (i ProjectCustomModuleCustomConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectCustomModuleCustomConfig] {
-	return pulumix.Output[ProjectCustomModuleCustomConfig]{
-		OutputState: i.ToProjectCustomModuleCustomConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ProjectCustomModuleCustomConfigArgs) ToProjectCustomModuleCustomConfigPtrOutput() ProjectCustomModuleCustomConfigPtrOutput {
 	return i.ToProjectCustomModuleCustomConfigPtrOutputWithContext(context.Background())
 }
@@ -3237,12 +2870,6 @@ func (i *projectCustomModuleCustomConfigPtrType) ToProjectCustomModuleCustomConf
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectCustomModuleCustomConfigPtrOutput)
 }
 
-func (i *projectCustomModuleCustomConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProjectCustomModuleCustomConfig] {
-	return pulumix.Output[*ProjectCustomModuleCustomConfig]{
-		OutputState: i.ToProjectCustomModuleCustomConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectCustomModuleCustomConfigOutput struct{ *pulumi.OutputState }
 
 func (ProjectCustomModuleCustomConfigOutput) ElementType() reflect.Type {
@@ -3265,12 +2892,6 @@ func (o ProjectCustomModuleCustomConfigOutput) ToProjectCustomModuleCustomConfig
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectCustomModuleCustomConfig) *ProjectCustomModuleCustomConfig {
 		return &v
 	}).(ProjectCustomModuleCustomConfigPtrOutput)
-}
-
-func (o ProjectCustomModuleCustomConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectCustomModuleCustomConfig] {
-	return pulumix.Output[ProjectCustomModuleCustomConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Custom output properties.
@@ -3329,12 +2950,6 @@ func (o ProjectCustomModuleCustomConfigPtrOutput) ToProjectCustomModuleCustomCon
 
 func (o ProjectCustomModuleCustomConfigPtrOutput) ToProjectCustomModuleCustomConfigPtrOutputWithContext(ctx context.Context) ProjectCustomModuleCustomConfigPtrOutput {
 	return o
-}
-
-func (o ProjectCustomModuleCustomConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectCustomModuleCustomConfig] {
-	return pulumix.Output[*ProjectCustomModuleCustomConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectCustomModuleCustomConfigPtrOutput) Elem() ProjectCustomModuleCustomConfigOutput {
@@ -3452,12 +3067,6 @@ func (i ProjectCustomModuleCustomConfigCustomOutputArgs) ToProjectCustomModuleCu
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectCustomModuleCustomConfigCustomOutputOutput)
 }
 
-func (i ProjectCustomModuleCustomConfigCustomOutputArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectCustomModuleCustomConfigCustomOutput] {
-	return pulumix.Output[ProjectCustomModuleCustomConfigCustomOutput]{
-		OutputState: i.ToProjectCustomModuleCustomConfigCustomOutputOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ProjectCustomModuleCustomConfigCustomOutputArgs) ToProjectCustomModuleCustomConfigCustomOutputPtrOutput() ProjectCustomModuleCustomConfigCustomOutputPtrOutput {
 	return i.ToProjectCustomModuleCustomConfigCustomOutputPtrOutputWithContext(context.Background())
 }
@@ -3499,12 +3108,6 @@ func (i *projectCustomModuleCustomConfigCustomOutputPtrType) ToProjectCustomModu
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectCustomModuleCustomConfigCustomOutputPtrOutput)
 }
 
-func (i *projectCustomModuleCustomConfigCustomOutputPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProjectCustomModuleCustomConfigCustomOutput] {
-	return pulumix.Output[*ProjectCustomModuleCustomConfigCustomOutput]{
-		OutputState: i.ToProjectCustomModuleCustomConfigCustomOutputPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectCustomModuleCustomConfigCustomOutputOutput struct{ *pulumi.OutputState }
 
 func (ProjectCustomModuleCustomConfigCustomOutputOutput) ElementType() reflect.Type {
@@ -3529,12 +3132,6 @@ func (o ProjectCustomModuleCustomConfigCustomOutputOutput) ToProjectCustomModule
 	}).(ProjectCustomModuleCustomConfigCustomOutputPtrOutput)
 }
 
-func (o ProjectCustomModuleCustomConfigCustomOutputOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectCustomModuleCustomConfigCustomOutput] {
-	return pulumix.Output[ProjectCustomModuleCustomConfigCustomOutput]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of custom output properties to add to the finding.
 // Structure is documented below.
 func (o ProjectCustomModuleCustomConfigCustomOutputOutput) Properties() ProjectCustomModuleCustomConfigCustomOutputPropertyArrayOutput {
@@ -3555,12 +3152,6 @@ func (o ProjectCustomModuleCustomConfigCustomOutputPtrOutput) ToProjectCustomMod
 
 func (o ProjectCustomModuleCustomConfigCustomOutputPtrOutput) ToProjectCustomModuleCustomConfigCustomOutputPtrOutputWithContext(ctx context.Context) ProjectCustomModuleCustomConfigCustomOutputPtrOutput {
 	return o
-}
-
-func (o ProjectCustomModuleCustomConfigCustomOutputPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectCustomModuleCustomConfigCustomOutput] {
-	return pulumix.Output[*ProjectCustomModuleCustomConfigCustomOutput]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectCustomModuleCustomConfigCustomOutputPtrOutput) Elem() ProjectCustomModuleCustomConfigCustomOutputOutput {
@@ -3625,12 +3216,6 @@ func (i ProjectCustomModuleCustomConfigCustomOutputPropertyArgs) ToProjectCustom
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectCustomModuleCustomConfigCustomOutputPropertyOutput)
 }
 
-func (i ProjectCustomModuleCustomConfigCustomOutputPropertyArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectCustomModuleCustomConfigCustomOutputProperty] {
-	return pulumix.Output[ProjectCustomModuleCustomConfigCustomOutputProperty]{
-		OutputState: i.ToProjectCustomModuleCustomConfigCustomOutputPropertyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProjectCustomModuleCustomConfigCustomOutputPropertyArrayInput is an input type that accepts ProjectCustomModuleCustomConfigCustomOutputPropertyArray and ProjectCustomModuleCustomConfigCustomOutputPropertyArrayOutput values.
 // You can construct a concrete instance of `ProjectCustomModuleCustomConfigCustomOutputPropertyArrayInput` via:
 //
@@ -3656,12 +3241,6 @@ func (i ProjectCustomModuleCustomConfigCustomOutputPropertyArray) ToProjectCusto
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectCustomModuleCustomConfigCustomOutputPropertyArrayOutput)
 }
 
-func (i ProjectCustomModuleCustomConfigCustomOutputPropertyArray) ToOutput(ctx context.Context) pulumix.Output[[]ProjectCustomModuleCustomConfigCustomOutputProperty] {
-	return pulumix.Output[[]ProjectCustomModuleCustomConfigCustomOutputProperty]{
-		OutputState: i.ToProjectCustomModuleCustomConfigCustomOutputPropertyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectCustomModuleCustomConfigCustomOutputPropertyOutput struct{ *pulumi.OutputState }
 
 func (ProjectCustomModuleCustomConfigCustomOutputPropertyOutput) ElementType() reflect.Type {
@@ -3674,12 +3253,6 @@ func (o ProjectCustomModuleCustomConfigCustomOutputPropertyOutput) ToProjectCust
 
 func (o ProjectCustomModuleCustomConfigCustomOutputPropertyOutput) ToProjectCustomModuleCustomConfigCustomOutputPropertyOutputWithContext(ctx context.Context) ProjectCustomModuleCustomConfigCustomOutputPropertyOutput {
 	return o
-}
-
-func (o ProjectCustomModuleCustomConfigCustomOutputPropertyOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectCustomModuleCustomConfigCustomOutputProperty] {
-	return pulumix.Output[ProjectCustomModuleCustomConfigCustomOutputProperty]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the property for the custom output.
@@ -3708,12 +3281,6 @@ func (o ProjectCustomModuleCustomConfigCustomOutputPropertyArrayOutput) ToProjec
 
 func (o ProjectCustomModuleCustomConfigCustomOutputPropertyArrayOutput) ToProjectCustomModuleCustomConfigCustomOutputPropertyArrayOutputWithContext(ctx context.Context) ProjectCustomModuleCustomConfigCustomOutputPropertyArrayOutput {
 	return o
-}
-
-func (o ProjectCustomModuleCustomConfigCustomOutputPropertyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ProjectCustomModuleCustomConfigCustomOutputProperty] {
-	return pulumix.Output[[]ProjectCustomModuleCustomConfigCustomOutputProperty]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectCustomModuleCustomConfigCustomOutputPropertyArrayOutput) Index(i pulumi.IntInput) ProjectCustomModuleCustomConfigCustomOutputPropertyOutput {
@@ -3773,12 +3340,6 @@ func (i ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs) 
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionOutput)
 }
 
-func (i ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpression] {
-	return pulumix.Output[ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpression]{
-		OutputState: i.ToProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs) ToProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutput() ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutput {
 	return i.ToProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutputWithContext(context.Background())
 }
@@ -3820,12 +3381,6 @@ func (i *projectCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrTy
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutput)
 }
 
-func (i *projectCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpression] {
-	return pulumix.Output[*ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpression]{
-		OutputState: i.ToProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionOutput struct{ *pulumi.OutputState }
 
 func (ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionOutput) ElementType() reflect.Type {
@@ -3848,12 +3403,6 @@ func (o ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionOutput
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpression) *ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpression {
 		return &v
 	}).(ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutput)
-}
-
-func (o ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpression] {
-	return pulumix.Output[ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpression]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the expression. This is a longer text which describes the
@@ -3893,12 +3442,6 @@ func (o ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOut
 
 func (o ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutput) ToProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutputWithContext(ctx context.Context) ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutput {
 	return o
-}
-
-func (o ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpression] {
-	return pulumix.Output[*ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpression]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionPtrOutput) Elem() ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionOutput {
@@ -4005,12 +3548,6 @@ func (i ProjectCustomModuleCustomConfigPredicateArgs) ToProjectCustomModuleCusto
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectCustomModuleCustomConfigPredicateOutput)
 }
 
-func (i ProjectCustomModuleCustomConfigPredicateArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectCustomModuleCustomConfigPredicate] {
-	return pulumix.Output[ProjectCustomModuleCustomConfigPredicate]{
-		OutputState: i.ToProjectCustomModuleCustomConfigPredicateOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ProjectCustomModuleCustomConfigPredicateArgs) ToProjectCustomModuleCustomConfigPredicatePtrOutput() ProjectCustomModuleCustomConfigPredicatePtrOutput {
 	return i.ToProjectCustomModuleCustomConfigPredicatePtrOutputWithContext(context.Background())
 }
@@ -4052,12 +3589,6 @@ func (i *projectCustomModuleCustomConfigPredicatePtrType) ToProjectCustomModuleC
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectCustomModuleCustomConfigPredicatePtrOutput)
 }
 
-func (i *projectCustomModuleCustomConfigPredicatePtrType) ToOutput(ctx context.Context) pulumix.Output[*ProjectCustomModuleCustomConfigPredicate] {
-	return pulumix.Output[*ProjectCustomModuleCustomConfigPredicate]{
-		OutputState: i.ToProjectCustomModuleCustomConfigPredicatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectCustomModuleCustomConfigPredicateOutput struct{ *pulumi.OutputState }
 
 func (ProjectCustomModuleCustomConfigPredicateOutput) ElementType() reflect.Type {
@@ -4080,12 +3611,6 @@ func (o ProjectCustomModuleCustomConfigPredicateOutput) ToProjectCustomModuleCus
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectCustomModuleCustomConfigPredicate) *ProjectCustomModuleCustomConfigPredicate {
 		return &v
 	}).(ProjectCustomModuleCustomConfigPredicatePtrOutput)
-}
-
-func (o ProjectCustomModuleCustomConfigPredicateOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectCustomModuleCustomConfigPredicate] {
-	return pulumix.Output[ProjectCustomModuleCustomConfigPredicate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the expression. This is a longer text which describes the
@@ -4123,12 +3648,6 @@ func (o ProjectCustomModuleCustomConfigPredicatePtrOutput) ToProjectCustomModule
 
 func (o ProjectCustomModuleCustomConfigPredicatePtrOutput) ToProjectCustomModuleCustomConfigPredicatePtrOutputWithContext(ctx context.Context) ProjectCustomModuleCustomConfigPredicatePtrOutput {
 	return o
-}
-
-func (o ProjectCustomModuleCustomConfigPredicatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectCustomModuleCustomConfigPredicate] {
-	return pulumix.Output[*ProjectCustomModuleCustomConfigPredicate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectCustomModuleCustomConfigPredicatePtrOutput) Elem() ProjectCustomModuleCustomConfigPredicateOutput {
@@ -4221,12 +3740,6 @@ func (i ProjectCustomModuleCustomConfigResourceSelectorArgs) ToProjectCustomModu
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectCustomModuleCustomConfigResourceSelectorOutput)
 }
 
-func (i ProjectCustomModuleCustomConfigResourceSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectCustomModuleCustomConfigResourceSelector] {
-	return pulumix.Output[ProjectCustomModuleCustomConfigResourceSelector]{
-		OutputState: i.ToProjectCustomModuleCustomConfigResourceSelectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ProjectCustomModuleCustomConfigResourceSelectorArgs) ToProjectCustomModuleCustomConfigResourceSelectorPtrOutput() ProjectCustomModuleCustomConfigResourceSelectorPtrOutput {
 	return i.ToProjectCustomModuleCustomConfigResourceSelectorPtrOutputWithContext(context.Background())
 }
@@ -4268,12 +3781,6 @@ func (i *projectCustomModuleCustomConfigResourceSelectorPtrType) ToProjectCustom
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectCustomModuleCustomConfigResourceSelectorPtrOutput)
 }
 
-func (i *projectCustomModuleCustomConfigResourceSelectorPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProjectCustomModuleCustomConfigResourceSelector] {
-	return pulumix.Output[*ProjectCustomModuleCustomConfigResourceSelector]{
-		OutputState: i.ToProjectCustomModuleCustomConfigResourceSelectorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectCustomModuleCustomConfigResourceSelectorOutput struct{ *pulumi.OutputState }
 
 func (ProjectCustomModuleCustomConfigResourceSelectorOutput) ElementType() reflect.Type {
@@ -4298,12 +3805,6 @@ func (o ProjectCustomModuleCustomConfigResourceSelectorOutput) ToProjectCustomMo
 	}).(ProjectCustomModuleCustomConfigResourceSelectorPtrOutput)
 }
 
-func (o ProjectCustomModuleCustomConfigResourceSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectCustomModuleCustomConfigResourceSelector] {
-	return pulumix.Output[ProjectCustomModuleCustomConfigResourceSelector]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The resource types to run the detector on.
 //
 // ***
@@ -4323,12 +3824,6 @@ func (o ProjectCustomModuleCustomConfigResourceSelectorPtrOutput) ToProjectCusto
 
 func (o ProjectCustomModuleCustomConfigResourceSelectorPtrOutput) ToProjectCustomModuleCustomConfigResourceSelectorPtrOutputWithContext(ctx context.Context) ProjectCustomModuleCustomConfigResourceSelectorPtrOutput {
 	return o
-}
-
-func (o ProjectCustomModuleCustomConfigResourceSelectorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectCustomModuleCustomConfigResourceSelector] {
-	return pulumix.Output[*ProjectCustomModuleCustomConfigResourceSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectCustomModuleCustomConfigResourceSelectorPtrOutput) Elem() ProjectCustomModuleCustomConfigResourceSelectorOutput {
@@ -4390,12 +3885,6 @@ func (i SourceIamBindingConditionArgs) ToSourceIamBindingConditionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(SourceIamBindingConditionOutput)
 }
 
-func (i SourceIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[SourceIamBindingCondition] {
-	return pulumix.Output[SourceIamBindingCondition]{
-		OutputState: i.ToSourceIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SourceIamBindingConditionArgs) ToSourceIamBindingConditionPtrOutput() SourceIamBindingConditionPtrOutput {
 	return i.ToSourceIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -4437,12 +3926,6 @@ func (i *sourceIamBindingConditionPtrType) ToSourceIamBindingConditionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(SourceIamBindingConditionPtrOutput)
 }
 
-func (i *sourceIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*SourceIamBindingCondition] {
-	return pulumix.Output[*SourceIamBindingCondition]{
-		OutputState: i.ToSourceIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SourceIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (SourceIamBindingConditionOutput) ElementType() reflect.Type {
@@ -4465,12 +3948,6 @@ func (o SourceIamBindingConditionOutput) ToSourceIamBindingConditionPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceIamBindingCondition) *SourceIamBindingCondition {
 		return &v
 	}).(SourceIamBindingConditionPtrOutput)
-}
-
-func (o SourceIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[SourceIamBindingCondition] {
-	return pulumix.Output[SourceIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the source (max of 1024 characters).
@@ -4498,12 +3975,6 @@ func (o SourceIamBindingConditionPtrOutput) ToSourceIamBindingConditionPtrOutput
 
 func (o SourceIamBindingConditionPtrOutput) ToSourceIamBindingConditionPtrOutputWithContext(ctx context.Context) SourceIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o SourceIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceIamBindingCondition] {
-	return pulumix.Output[*SourceIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourceIamBindingConditionPtrOutput) Elem() SourceIamBindingConditionOutput {
@@ -4581,12 +4052,6 @@ func (i SourceIamMemberConditionArgs) ToSourceIamMemberConditionOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(SourceIamMemberConditionOutput)
 }
 
-func (i SourceIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[SourceIamMemberCondition] {
-	return pulumix.Output[SourceIamMemberCondition]{
-		OutputState: i.ToSourceIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SourceIamMemberConditionArgs) ToSourceIamMemberConditionPtrOutput() SourceIamMemberConditionPtrOutput {
 	return i.ToSourceIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -4628,12 +4093,6 @@ func (i *sourceIamMemberConditionPtrType) ToSourceIamMemberConditionPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(SourceIamMemberConditionPtrOutput)
 }
 
-func (i *sourceIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*SourceIamMemberCondition] {
-	return pulumix.Output[*SourceIamMemberCondition]{
-		OutputState: i.ToSourceIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SourceIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (SourceIamMemberConditionOutput) ElementType() reflect.Type {
@@ -4656,12 +4115,6 @@ func (o SourceIamMemberConditionOutput) ToSourceIamMemberConditionPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceIamMemberCondition) *SourceIamMemberCondition {
 		return &v
 	}).(SourceIamMemberConditionPtrOutput)
-}
-
-func (o SourceIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[SourceIamMemberCondition] {
-	return pulumix.Output[SourceIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the source (max of 1024 characters).
@@ -4689,12 +4142,6 @@ func (o SourceIamMemberConditionPtrOutput) ToSourceIamMemberConditionPtrOutput()
 
 func (o SourceIamMemberConditionPtrOutput) ToSourceIamMemberConditionPtrOutputWithContext(ctx context.Context) SourceIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o SourceIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceIamMemberCondition] {
-	return pulumix.Output[*SourceIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourceIamMemberConditionPtrOutput) Elem() SourceIamMemberConditionOutput {

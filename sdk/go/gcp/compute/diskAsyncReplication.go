@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Starts and stops asynchronous persistent disk replication. For more information
@@ -174,12 +173,6 @@ func (i *DiskAsyncReplication) ToDiskAsyncReplicationOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(DiskAsyncReplicationOutput)
 }
 
-func (i *DiskAsyncReplication) ToOutput(ctx context.Context) pulumix.Output[*DiskAsyncReplication] {
-	return pulumix.Output[*DiskAsyncReplication]{
-		OutputState: i.ToDiskAsyncReplicationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DiskAsyncReplicationArrayInput is an input type that accepts DiskAsyncReplicationArray and DiskAsyncReplicationArrayOutput values.
 // You can construct a concrete instance of `DiskAsyncReplicationArrayInput` via:
 //
@@ -203,12 +196,6 @@ func (i DiskAsyncReplicationArray) ToDiskAsyncReplicationArrayOutput() DiskAsync
 
 func (i DiskAsyncReplicationArray) ToDiskAsyncReplicationArrayOutputWithContext(ctx context.Context) DiskAsyncReplicationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DiskAsyncReplicationArrayOutput)
-}
-
-func (i DiskAsyncReplicationArray) ToOutput(ctx context.Context) pulumix.Output[[]*DiskAsyncReplication] {
-	return pulumix.Output[[]*DiskAsyncReplication]{
-		OutputState: i.ToDiskAsyncReplicationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DiskAsyncReplicationMapInput is an input type that accepts DiskAsyncReplicationMap and DiskAsyncReplicationMapOutput values.
@@ -236,12 +223,6 @@ func (i DiskAsyncReplicationMap) ToDiskAsyncReplicationMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(DiskAsyncReplicationMapOutput)
 }
 
-func (i DiskAsyncReplicationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DiskAsyncReplication] {
-	return pulumix.Output[map[string]*DiskAsyncReplication]{
-		OutputState: i.ToDiskAsyncReplicationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DiskAsyncReplicationOutput struct{ *pulumi.OutputState }
 
 func (DiskAsyncReplicationOutput) ElementType() reflect.Type {
@@ -254,12 +235,6 @@ func (o DiskAsyncReplicationOutput) ToDiskAsyncReplicationOutput() DiskAsyncRepl
 
 func (o DiskAsyncReplicationOutput) ToDiskAsyncReplicationOutputWithContext(ctx context.Context) DiskAsyncReplicationOutput {
 	return o
-}
-
-func (o DiskAsyncReplicationOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskAsyncReplication] {
-	return pulumix.Output[*DiskAsyncReplication]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The primary disk (source of replication).
@@ -288,12 +263,6 @@ func (o DiskAsyncReplicationArrayOutput) ToDiskAsyncReplicationArrayOutputWithCo
 	return o
 }
 
-func (o DiskAsyncReplicationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DiskAsyncReplication] {
-	return pulumix.Output[[]*DiskAsyncReplication]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DiskAsyncReplicationArrayOutput) Index(i pulumi.IntInput) DiskAsyncReplicationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DiskAsyncReplication {
 		return vs[0].([]*DiskAsyncReplication)[vs[1].(int)]
@@ -312,12 +281,6 @@ func (o DiskAsyncReplicationMapOutput) ToDiskAsyncReplicationMapOutput() DiskAsy
 
 func (o DiskAsyncReplicationMapOutput) ToDiskAsyncReplicationMapOutputWithContext(ctx context.Context) DiskAsyncReplicationMapOutput {
 	return o
-}
-
-func (o DiskAsyncReplicationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DiskAsyncReplication] {
-	return pulumix.Output[map[string]*DiskAsyncReplication]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskAsyncReplicationMapOutput) MapIndex(k pulumi.StringInput) DiskAsyncReplicationOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // EdgeCacheService defines the IP addresses, protocols, security policies, cache policies and routing configuration.
@@ -679,12 +678,6 @@ func (i *EdgeCacheService) ToEdgeCacheServiceOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceOutput)
 }
 
-func (i *EdgeCacheService) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheService] {
-	return pulumix.Output[*EdgeCacheService]{
-		OutputState: i.ToEdgeCacheServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EdgeCacheServiceArrayInput is an input type that accepts EdgeCacheServiceArray and EdgeCacheServiceArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceArrayInput` via:
 //
@@ -708,12 +701,6 @@ func (i EdgeCacheServiceArray) ToEdgeCacheServiceArrayOutput() EdgeCacheServiceA
 
 func (i EdgeCacheServiceArray) ToEdgeCacheServiceArrayOutputWithContext(ctx context.Context) EdgeCacheServiceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceArrayOutput)
-}
-
-func (i EdgeCacheServiceArray) ToOutput(ctx context.Context) pulumix.Output[[]*EdgeCacheService] {
-	return pulumix.Output[[]*EdgeCacheService]{
-		OutputState: i.ToEdgeCacheServiceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EdgeCacheServiceMapInput is an input type that accepts EdgeCacheServiceMap and EdgeCacheServiceMapOutput values.
@@ -741,12 +728,6 @@ func (i EdgeCacheServiceMap) ToEdgeCacheServiceMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceMapOutput)
 }
 
-func (i EdgeCacheServiceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EdgeCacheService] {
-	return pulumix.Output[map[string]*EdgeCacheService]{
-		OutputState: i.ToEdgeCacheServiceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EdgeCacheServiceOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceOutput) ElementType() reflect.Type {
@@ -759,12 +740,6 @@ func (o EdgeCacheServiceOutput) ToEdgeCacheServiceOutput() EdgeCacheServiceOutpu
 
 func (o EdgeCacheServiceOutput) ToEdgeCacheServiceOutputWithContext(ctx context.Context) EdgeCacheServiceOutput {
 	return o
-}
-
-func (o EdgeCacheServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheService] {
-	return pulumix.Output[*EdgeCacheService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A human-readable description of the hostRule.
@@ -876,12 +851,6 @@ func (o EdgeCacheServiceArrayOutput) ToEdgeCacheServiceArrayOutputWithContext(ct
 	return o
 }
 
-func (o EdgeCacheServiceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EdgeCacheService] {
-	return pulumix.Output[[]*EdgeCacheService]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EdgeCacheServiceArrayOutput) Index(i pulumi.IntInput) EdgeCacheServiceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EdgeCacheService {
 		return vs[0].([]*EdgeCacheService)[vs[1].(int)]
@@ -900,12 +869,6 @@ func (o EdgeCacheServiceMapOutput) ToEdgeCacheServiceMapOutput() EdgeCacheServic
 
 func (o EdgeCacheServiceMapOutput) ToEdgeCacheServiceMapOutputWithContext(ctx context.Context) EdgeCacheServiceMapOutput {
 	return o
-}
-
-func (o EdgeCacheServiceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EdgeCacheService] {
-	return pulumix.Output[map[string]*EdgeCacheService]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdgeCacheServiceMapOutput) MapIndex(k pulumi.StringInput) EdgeCacheServiceOutput {

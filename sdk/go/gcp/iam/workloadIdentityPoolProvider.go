@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A configuration for an external identity provider.
@@ -851,12 +850,6 @@ func (i *WorkloadIdentityPoolProvider) ToWorkloadIdentityPoolProviderOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolProviderOutput)
 }
 
-func (i *WorkloadIdentityPoolProvider) ToOutput(ctx context.Context) pulumix.Output[*WorkloadIdentityPoolProvider] {
-	return pulumix.Output[*WorkloadIdentityPoolProvider]{
-		OutputState: i.ToWorkloadIdentityPoolProviderOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkloadIdentityPoolProviderArrayInput is an input type that accepts WorkloadIdentityPoolProviderArray and WorkloadIdentityPoolProviderArrayOutput values.
 // You can construct a concrete instance of `WorkloadIdentityPoolProviderArrayInput` via:
 //
@@ -880,12 +873,6 @@ func (i WorkloadIdentityPoolProviderArray) ToWorkloadIdentityPoolProviderArrayOu
 
 func (i WorkloadIdentityPoolProviderArray) ToWorkloadIdentityPoolProviderArrayOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolProviderArrayOutput)
-}
-
-func (i WorkloadIdentityPoolProviderArray) ToOutput(ctx context.Context) pulumix.Output[[]*WorkloadIdentityPoolProvider] {
-	return pulumix.Output[[]*WorkloadIdentityPoolProvider]{
-		OutputState: i.ToWorkloadIdentityPoolProviderArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WorkloadIdentityPoolProviderMapInput is an input type that accepts WorkloadIdentityPoolProviderMap and WorkloadIdentityPoolProviderMapOutput values.
@@ -913,12 +900,6 @@ func (i WorkloadIdentityPoolProviderMap) ToWorkloadIdentityPoolProviderMapOutput
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolProviderMapOutput)
 }
 
-func (i WorkloadIdentityPoolProviderMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkloadIdentityPoolProvider] {
-	return pulumix.Output[map[string]*WorkloadIdentityPoolProvider]{
-		OutputState: i.ToWorkloadIdentityPoolProviderMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkloadIdentityPoolProviderOutput struct{ *pulumi.OutputState }
 
 func (WorkloadIdentityPoolProviderOutput) ElementType() reflect.Type {
@@ -931,12 +912,6 @@ func (o WorkloadIdentityPoolProviderOutput) ToWorkloadIdentityPoolProviderOutput
 
 func (o WorkloadIdentityPoolProviderOutput) ToWorkloadIdentityPoolProviderOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderOutput {
 	return o
-}
-
-func (o WorkloadIdentityPoolProviderOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadIdentityPoolProvider] {
-	return pulumix.Output[*WorkloadIdentityPoolProvider]{
-		OutputState: o.OutputState,
-	}
 }
 
 // [A Common Expression Language](https://opensource.google/projects/cel) expression, in
@@ -1104,12 +1079,6 @@ func (o WorkloadIdentityPoolProviderArrayOutput) ToWorkloadIdentityPoolProviderA
 	return o
 }
 
-func (o WorkloadIdentityPoolProviderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WorkloadIdentityPoolProvider] {
-	return pulumix.Output[[]*WorkloadIdentityPoolProvider]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkloadIdentityPoolProviderArrayOutput) Index(i pulumi.IntInput) WorkloadIdentityPoolProviderOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkloadIdentityPoolProvider {
 		return vs[0].([]*WorkloadIdentityPoolProvider)[vs[1].(int)]
@@ -1128,12 +1097,6 @@ func (o WorkloadIdentityPoolProviderMapOutput) ToWorkloadIdentityPoolProviderMap
 
 func (o WorkloadIdentityPoolProviderMapOutput) ToWorkloadIdentityPoolProviderMapOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderMapOutput {
 	return o
-}
-
-func (o WorkloadIdentityPoolProviderMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkloadIdentityPoolProvider] {
-	return pulumix.Output[map[string]*WorkloadIdentityPoolProvider]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkloadIdentityPoolProviderMapOutput) MapIndex(k pulumi.StringInput) WorkloadIdentityPoolProviderOutput {

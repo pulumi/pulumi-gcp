@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -314,12 +313,6 @@ func (i *TlsInspectionPolicy) ToTlsInspectionPolicyOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(TlsInspectionPolicyOutput)
 }
 
-func (i *TlsInspectionPolicy) ToOutput(ctx context.Context) pulumix.Output[*TlsInspectionPolicy] {
-	return pulumix.Output[*TlsInspectionPolicy]{
-		OutputState: i.ToTlsInspectionPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TlsInspectionPolicyArrayInput is an input type that accepts TlsInspectionPolicyArray and TlsInspectionPolicyArrayOutput values.
 // You can construct a concrete instance of `TlsInspectionPolicyArrayInput` via:
 //
@@ -343,12 +336,6 @@ func (i TlsInspectionPolicyArray) ToTlsInspectionPolicyArrayOutput() TlsInspecti
 
 func (i TlsInspectionPolicyArray) ToTlsInspectionPolicyArrayOutputWithContext(ctx context.Context) TlsInspectionPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TlsInspectionPolicyArrayOutput)
-}
-
-func (i TlsInspectionPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*TlsInspectionPolicy] {
-	return pulumix.Output[[]*TlsInspectionPolicy]{
-		OutputState: i.ToTlsInspectionPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TlsInspectionPolicyMapInput is an input type that accepts TlsInspectionPolicyMap and TlsInspectionPolicyMapOutput values.
@@ -376,12 +363,6 @@ func (i TlsInspectionPolicyMap) ToTlsInspectionPolicyMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(TlsInspectionPolicyMapOutput)
 }
 
-func (i TlsInspectionPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TlsInspectionPolicy] {
-	return pulumix.Output[map[string]*TlsInspectionPolicy]{
-		OutputState: i.ToTlsInspectionPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TlsInspectionPolicyOutput struct{ *pulumi.OutputState }
 
 func (TlsInspectionPolicyOutput) ElementType() reflect.Type {
@@ -394,12 +375,6 @@ func (o TlsInspectionPolicyOutput) ToTlsInspectionPolicyOutput() TlsInspectionPo
 
 func (o TlsInspectionPolicyOutput) ToTlsInspectionPolicyOutputWithContext(ctx context.Context) TlsInspectionPolicyOutput {
 	return o
-}
-
-func (o TlsInspectionPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*TlsInspectionPolicy] {
-	return pulumix.Output[*TlsInspectionPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A CA pool resource used to issue interception certificates.
@@ -459,12 +434,6 @@ func (o TlsInspectionPolicyArrayOutput) ToTlsInspectionPolicyArrayOutputWithCont
 	return o
 }
 
-func (o TlsInspectionPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TlsInspectionPolicy] {
-	return pulumix.Output[[]*TlsInspectionPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TlsInspectionPolicyArrayOutput) Index(i pulumi.IntInput) TlsInspectionPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TlsInspectionPolicy {
 		return vs[0].([]*TlsInspectionPolicy)[vs[1].(int)]
@@ -483,12 +452,6 @@ func (o TlsInspectionPolicyMapOutput) ToTlsInspectionPolicyMapOutput() TlsInspec
 
 func (o TlsInspectionPolicyMapOutput) ToTlsInspectionPolicyMapOutputWithContext(ctx context.Context) TlsInspectionPolicyMapOutput {
 	return o
-}
-
-func (o TlsInspectionPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TlsInspectionPolicy] {
-	return pulumix.Output[map[string]*TlsInspectionPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TlsInspectionPolicyMapOutput) MapIndex(k pulumi.StringInput) TlsInspectionPolicyOutput {

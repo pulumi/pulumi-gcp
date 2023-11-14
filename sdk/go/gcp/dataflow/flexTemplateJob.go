@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -569,12 +568,6 @@ func (i *FlexTemplateJob) ToFlexTemplateJobOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(FlexTemplateJobOutput)
 }
 
-func (i *FlexTemplateJob) ToOutput(ctx context.Context) pulumix.Output[*FlexTemplateJob] {
-	return pulumix.Output[*FlexTemplateJob]{
-		OutputState: i.ToFlexTemplateJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FlexTemplateJobArrayInput is an input type that accepts FlexTemplateJobArray and FlexTemplateJobArrayOutput values.
 // You can construct a concrete instance of `FlexTemplateJobArrayInput` via:
 //
@@ -598,12 +591,6 @@ func (i FlexTemplateJobArray) ToFlexTemplateJobArrayOutput() FlexTemplateJobArra
 
 func (i FlexTemplateJobArray) ToFlexTemplateJobArrayOutputWithContext(ctx context.Context) FlexTemplateJobArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlexTemplateJobArrayOutput)
-}
-
-func (i FlexTemplateJobArray) ToOutput(ctx context.Context) pulumix.Output[[]*FlexTemplateJob] {
-	return pulumix.Output[[]*FlexTemplateJob]{
-		OutputState: i.ToFlexTemplateJobArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FlexTemplateJobMapInput is an input type that accepts FlexTemplateJobMap and FlexTemplateJobMapOutput values.
@@ -631,12 +618,6 @@ func (i FlexTemplateJobMap) ToFlexTemplateJobMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(FlexTemplateJobMapOutput)
 }
 
-func (i FlexTemplateJobMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FlexTemplateJob] {
-	return pulumix.Output[map[string]*FlexTemplateJob]{
-		OutputState: i.ToFlexTemplateJobMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlexTemplateJobOutput struct{ *pulumi.OutputState }
 
 func (FlexTemplateJobOutput) ElementType() reflect.Type {
@@ -649,12 +630,6 @@ func (o FlexTemplateJobOutput) ToFlexTemplateJobOutput() FlexTemplateJobOutput {
 
 func (o FlexTemplateJobOutput) ToFlexTemplateJobOutputWithContext(ctx context.Context) FlexTemplateJobOutput {
 	return o
-}
-
-func (o FlexTemplateJobOutput) ToOutput(ctx context.Context) pulumix.Output[*FlexTemplateJob] {
-	return pulumix.Output[*FlexTemplateJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of experiments that should be used by the job. An example value is ["enable_stackdriver_agent_metrics"].
@@ -836,12 +811,6 @@ func (o FlexTemplateJobArrayOutput) ToFlexTemplateJobArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o FlexTemplateJobArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FlexTemplateJob] {
-	return pulumix.Output[[]*FlexTemplateJob]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FlexTemplateJobArrayOutput) Index(i pulumi.IntInput) FlexTemplateJobOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FlexTemplateJob {
 		return vs[0].([]*FlexTemplateJob)[vs[1].(int)]
@@ -860,12 +829,6 @@ func (o FlexTemplateJobMapOutput) ToFlexTemplateJobMapOutput() FlexTemplateJobMa
 
 func (o FlexTemplateJobMapOutput) ToFlexTemplateJobMapOutputWithContext(ctx context.Context) FlexTemplateJobMapOutput {
 	return o
-}
-
-func (o FlexTemplateJobMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FlexTemplateJob] {
-	return pulumix.Output[map[string]*FlexTemplateJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlexTemplateJobMapOutput) MapIndex(k pulumi.StringInput) FlexTemplateJobOutput {

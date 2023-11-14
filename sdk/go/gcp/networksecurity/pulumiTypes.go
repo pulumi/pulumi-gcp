@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -59,12 +58,6 @@ func (i AuthorizationPolicyRuleArgs) ToAuthorizationPolicyRuleOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationPolicyRuleOutput)
 }
 
-func (i AuthorizationPolicyRuleArgs) ToOutput(ctx context.Context) pulumix.Output[AuthorizationPolicyRule] {
-	return pulumix.Output[AuthorizationPolicyRule]{
-		OutputState: i.ToAuthorizationPolicyRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuthorizationPolicyRuleArrayInput is an input type that accepts AuthorizationPolicyRuleArray and AuthorizationPolicyRuleArrayOutput values.
 // You can construct a concrete instance of `AuthorizationPolicyRuleArrayInput` via:
 //
@@ -90,12 +83,6 @@ func (i AuthorizationPolicyRuleArray) ToAuthorizationPolicyRuleArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationPolicyRuleArrayOutput)
 }
 
-func (i AuthorizationPolicyRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]AuthorizationPolicyRule] {
-	return pulumix.Output[[]AuthorizationPolicyRule]{
-		OutputState: i.ToAuthorizationPolicyRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AuthorizationPolicyRuleOutput struct{ *pulumi.OutputState }
 
 func (AuthorizationPolicyRuleOutput) ElementType() reflect.Type {
@@ -108,12 +95,6 @@ func (o AuthorizationPolicyRuleOutput) ToAuthorizationPolicyRuleOutput() Authori
 
 func (o AuthorizationPolicyRuleOutput) ToAuthorizationPolicyRuleOutputWithContext(ctx context.Context) AuthorizationPolicyRuleOutput {
 	return o
-}
-
-func (o AuthorizationPolicyRuleOutput) ToOutput(ctx context.Context) pulumix.Output[AuthorizationPolicyRule] {
-	return pulumix.Output[AuthorizationPolicyRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers.
@@ -142,12 +123,6 @@ func (o AuthorizationPolicyRuleArrayOutput) ToAuthorizationPolicyRuleArrayOutput
 
 func (o AuthorizationPolicyRuleArrayOutput) ToAuthorizationPolicyRuleArrayOutputWithContext(ctx context.Context) AuthorizationPolicyRuleArrayOutput {
 	return o
-}
-
-func (o AuthorizationPolicyRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuthorizationPolicyRule] {
-	return pulumix.Output[[]AuthorizationPolicyRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthorizationPolicyRuleArrayOutput) Index(i pulumi.IntInput) AuthorizationPolicyRuleOutput {
@@ -205,12 +180,6 @@ func (i AuthorizationPolicyRuleDestinationArgs) ToAuthorizationPolicyRuleDestina
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationPolicyRuleDestinationOutput)
 }
 
-func (i AuthorizationPolicyRuleDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[AuthorizationPolicyRuleDestination] {
-	return pulumix.Output[AuthorizationPolicyRuleDestination]{
-		OutputState: i.ToAuthorizationPolicyRuleDestinationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuthorizationPolicyRuleDestinationArrayInput is an input type that accepts AuthorizationPolicyRuleDestinationArray and AuthorizationPolicyRuleDestinationArrayOutput values.
 // You can construct a concrete instance of `AuthorizationPolicyRuleDestinationArrayInput` via:
 //
@@ -236,12 +205,6 @@ func (i AuthorizationPolicyRuleDestinationArray) ToAuthorizationPolicyRuleDestin
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationPolicyRuleDestinationArrayOutput)
 }
 
-func (i AuthorizationPolicyRuleDestinationArray) ToOutput(ctx context.Context) pulumix.Output[[]AuthorizationPolicyRuleDestination] {
-	return pulumix.Output[[]AuthorizationPolicyRuleDestination]{
-		OutputState: i.ToAuthorizationPolicyRuleDestinationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AuthorizationPolicyRuleDestinationOutput struct{ *pulumi.OutputState }
 
 func (AuthorizationPolicyRuleDestinationOutput) ElementType() reflect.Type {
@@ -254,12 +217,6 @@ func (o AuthorizationPolicyRuleDestinationOutput) ToAuthorizationPolicyRuleDesti
 
 func (o AuthorizationPolicyRuleDestinationOutput) ToAuthorizationPolicyRuleDestinationOutputWithContext(ctx context.Context) AuthorizationPolicyRuleDestinationOutput {
 	return o
-}
-
-func (o AuthorizationPolicyRuleDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[AuthorizationPolicyRuleDestination] {
-	return pulumix.Output[AuthorizationPolicyRuleDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example "*.myorg.com") or a presence (any) match "*".
@@ -298,12 +255,6 @@ func (o AuthorizationPolicyRuleDestinationArrayOutput) ToAuthorizationPolicyRule
 
 func (o AuthorizationPolicyRuleDestinationArrayOutput) ToAuthorizationPolicyRuleDestinationArrayOutputWithContext(ctx context.Context) AuthorizationPolicyRuleDestinationArrayOutput {
 	return o
-}
-
-func (o AuthorizationPolicyRuleDestinationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuthorizationPolicyRuleDestination] {
-	return pulumix.Output[[]AuthorizationPolicyRuleDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthorizationPolicyRuleDestinationArrayOutput) Index(i pulumi.IntInput) AuthorizationPolicyRuleDestinationOutput {
@@ -349,12 +300,6 @@ func (i AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs) ToAuthorizationPo
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationPolicyRuleDestinationHttpHeaderMatchOutput)
 }
 
-func (i AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs) ToOutput(ctx context.Context) pulumix.Output[AuthorizationPolicyRuleDestinationHttpHeaderMatch] {
-	return pulumix.Output[AuthorizationPolicyRuleDestinationHttpHeaderMatch]{
-		OutputState: i.ToAuthorizationPolicyRuleDestinationHttpHeaderMatchOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs) ToAuthorizationPolicyRuleDestinationHttpHeaderMatchPtrOutput() AuthorizationPolicyRuleDestinationHttpHeaderMatchPtrOutput {
 	return i.ToAuthorizationPolicyRuleDestinationHttpHeaderMatchPtrOutputWithContext(context.Background())
 }
@@ -396,12 +341,6 @@ func (i *authorizationPolicyRuleDestinationHttpHeaderMatchPtrType) ToAuthorizati
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationPolicyRuleDestinationHttpHeaderMatchPtrOutput)
 }
 
-func (i *authorizationPolicyRuleDestinationHttpHeaderMatchPtrType) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationPolicyRuleDestinationHttpHeaderMatch] {
-	return pulumix.Output[*AuthorizationPolicyRuleDestinationHttpHeaderMatch]{
-		OutputState: i.ToAuthorizationPolicyRuleDestinationHttpHeaderMatchPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AuthorizationPolicyRuleDestinationHttpHeaderMatchOutput struct{ *pulumi.OutputState }
 
 func (AuthorizationPolicyRuleDestinationHttpHeaderMatchOutput) ElementType() reflect.Type {
@@ -426,12 +365,6 @@ func (o AuthorizationPolicyRuleDestinationHttpHeaderMatchOutput) ToAuthorization
 	}).(AuthorizationPolicyRuleDestinationHttpHeaderMatchPtrOutput)
 }
 
-func (o AuthorizationPolicyRuleDestinationHttpHeaderMatchOutput) ToOutput(ctx context.Context) pulumix.Output[AuthorizationPolicyRuleDestinationHttpHeaderMatch] {
-	return pulumix.Output[AuthorizationPolicyRuleDestinationHttpHeaderMatch]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method".
 func (o AuthorizationPolicyRuleDestinationHttpHeaderMatchOutput) HeaderName() pulumi.StringOutput {
 	return o.ApplyT(func(v AuthorizationPolicyRuleDestinationHttpHeaderMatch) string { return v.HeaderName }).(pulumi.StringOutput)
@@ -454,12 +387,6 @@ func (o AuthorizationPolicyRuleDestinationHttpHeaderMatchPtrOutput) ToAuthorizat
 
 func (o AuthorizationPolicyRuleDestinationHttpHeaderMatchPtrOutput) ToAuthorizationPolicyRuleDestinationHttpHeaderMatchPtrOutputWithContext(ctx context.Context) AuthorizationPolicyRuleDestinationHttpHeaderMatchPtrOutput {
 	return o
-}
-
-func (o AuthorizationPolicyRuleDestinationHttpHeaderMatchPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationPolicyRuleDestinationHttpHeaderMatch] {
-	return pulumix.Output[*AuthorizationPolicyRuleDestinationHttpHeaderMatch]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthorizationPolicyRuleDestinationHttpHeaderMatchPtrOutput) Elem() AuthorizationPolicyRuleDestinationHttpHeaderMatchOutput {
@@ -533,12 +460,6 @@ func (i AuthorizationPolicyRuleSourceArgs) ToAuthorizationPolicyRuleSourceOutput
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationPolicyRuleSourceOutput)
 }
 
-func (i AuthorizationPolicyRuleSourceArgs) ToOutput(ctx context.Context) pulumix.Output[AuthorizationPolicyRuleSource] {
-	return pulumix.Output[AuthorizationPolicyRuleSource]{
-		OutputState: i.ToAuthorizationPolicyRuleSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuthorizationPolicyRuleSourceArrayInput is an input type that accepts AuthorizationPolicyRuleSourceArray and AuthorizationPolicyRuleSourceArrayOutput values.
 // You can construct a concrete instance of `AuthorizationPolicyRuleSourceArrayInput` via:
 //
@@ -564,12 +485,6 @@ func (i AuthorizationPolicyRuleSourceArray) ToAuthorizationPolicyRuleSourceArray
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationPolicyRuleSourceArrayOutput)
 }
 
-func (i AuthorizationPolicyRuleSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]AuthorizationPolicyRuleSource] {
-	return pulumix.Output[[]AuthorizationPolicyRuleSource]{
-		OutputState: i.ToAuthorizationPolicyRuleSourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AuthorizationPolicyRuleSourceOutput struct{ *pulumi.OutputState }
 
 func (AuthorizationPolicyRuleSourceOutput) ElementType() reflect.Type {
@@ -582,12 +497,6 @@ func (o AuthorizationPolicyRuleSourceOutput) ToAuthorizationPolicyRuleSourceOutp
 
 func (o AuthorizationPolicyRuleSourceOutput) ToAuthorizationPolicyRuleSourceOutputWithContext(ctx context.Context) AuthorizationPolicyRuleSourceOutput {
 	return o
-}
-
-func (o AuthorizationPolicyRuleSourceOutput) ToOutput(ctx context.Context) pulumix.Output[AuthorizationPolicyRuleSource] {
-	return pulumix.Output[AuthorizationPolicyRuleSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of CIDR ranges to match based on source IP address. At least one IP block should match. Single IP (e.g., "1.2.3.4") and CIDR (e.g., "1.2.3.0/24") are supported. Authorization based on source IP alone should be avoided.
@@ -614,12 +523,6 @@ func (o AuthorizationPolicyRuleSourceArrayOutput) ToAuthorizationPolicyRuleSourc
 
 func (o AuthorizationPolicyRuleSourceArrayOutput) ToAuthorizationPolicyRuleSourceArrayOutputWithContext(ctx context.Context) AuthorizationPolicyRuleSourceArrayOutput {
 	return o
-}
-
-func (o AuthorizationPolicyRuleSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuthorizationPolicyRuleSource] {
-	return pulumix.Output[[]AuthorizationPolicyRuleSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthorizationPolicyRuleSourceArrayOutput) Index(i pulumi.IntInput) AuthorizationPolicyRuleSourceOutput {
@@ -669,12 +572,6 @@ func (i ClientTlsPolicyClientCertificateArgs) ToClientTlsPolicyClientCertificate
 	return pulumi.ToOutputWithContext(ctx, i).(ClientTlsPolicyClientCertificateOutput)
 }
 
-func (i ClientTlsPolicyClientCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[ClientTlsPolicyClientCertificate] {
-	return pulumix.Output[ClientTlsPolicyClientCertificate]{
-		OutputState: i.ToClientTlsPolicyClientCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClientTlsPolicyClientCertificateArgs) ToClientTlsPolicyClientCertificatePtrOutput() ClientTlsPolicyClientCertificatePtrOutput {
 	return i.ToClientTlsPolicyClientCertificatePtrOutputWithContext(context.Background())
 }
@@ -716,12 +613,6 @@ func (i *clientTlsPolicyClientCertificatePtrType) ToClientTlsPolicyClientCertifi
 	return pulumi.ToOutputWithContext(ctx, i).(ClientTlsPolicyClientCertificatePtrOutput)
 }
 
-func (i *clientTlsPolicyClientCertificatePtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientTlsPolicyClientCertificate] {
-	return pulumix.Output[*ClientTlsPolicyClientCertificate]{
-		OutputState: i.ToClientTlsPolicyClientCertificatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClientTlsPolicyClientCertificateOutput struct{ *pulumi.OutputState }
 
 func (ClientTlsPolicyClientCertificateOutput) ElementType() reflect.Type {
@@ -744,12 +635,6 @@ func (o ClientTlsPolicyClientCertificateOutput) ToClientTlsPolicyClientCertifica
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientTlsPolicyClientCertificate) *ClientTlsPolicyClientCertificate {
 		return &v
 	}).(ClientTlsPolicyClientCertificatePtrOutput)
-}
-
-func (o ClientTlsPolicyClientCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[ClientTlsPolicyClientCertificate] {
-	return pulumix.Output[ClientTlsPolicyClientCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
@@ -780,12 +665,6 @@ func (o ClientTlsPolicyClientCertificatePtrOutput) ToClientTlsPolicyClientCertif
 
 func (o ClientTlsPolicyClientCertificatePtrOutput) ToClientTlsPolicyClientCertificatePtrOutputWithContext(ctx context.Context) ClientTlsPolicyClientCertificatePtrOutput {
 	return o
-}
-
-func (o ClientTlsPolicyClientCertificatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientTlsPolicyClientCertificate] {
-	return pulumix.Output[*ClientTlsPolicyClientCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClientTlsPolicyClientCertificatePtrOutput) Elem() ClientTlsPolicyClientCertificateOutput {
@@ -853,12 +732,6 @@ func (i ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs) ToClien
 	return pulumi.ToOutputWithContext(ctx, i).(ClientTlsPolicyClientCertificateCertificateProviderInstanceOutput)
 }
 
-func (i ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[ClientTlsPolicyClientCertificateCertificateProviderInstance] {
-	return pulumix.Output[ClientTlsPolicyClientCertificateCertificateProviderInstance]{
-		OutputState: i.ToClientTlsPolicyClientCertificateCertificateProviderInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs) ToClientTlsPolicyClientCertificateCertificateProviderInstancePtrOutput() ClientTlsPolicyClientCertificateCertificateProviderInstancePtrOutput {
 	return i.ToClientTlsPolicyClientCertificateCertificateProviderInstancePtrOutputWithContext(context.Background())
 }
@@ -900,12 +773,6 @@ func (i *clientTlsPolicyClientCertificateCertificateProviderInstancePtrType) ToC
 	return pulumi.ToOutputWithContext(ctx, i).(ClientTlsPolicyClientCertificateCertificateProviderInstancePtrOutput)
 }
 
-func (i *clientTlsPolicyClientCertificateCertificateProviderInstancePtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientTlsPolicyClientCertificateCertificateProviderInstance] {
-	return pulumix.Output[*ClientTlsPolicyClientCertificateCertificateProviderInstance]{
-		OutputState: i.ToClientTlsPolicyClientCertificateCertificateProviderInstancePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClientTlsPolicyClientCertificateCertificateProviderInstanceOutput struct{ *pulumi.OutputState }
 
 func (ClientTlsPolicyClientCertificateCertificateProviderInstanceOutput) ElementType() reflect.Type {
@@ -930,12 +797,6 @@ func (o ClientTlsPolicyClientCertificateCertificateProviderInstanceOutput) ToCli
 	}).(ClientTlsPolicyClientCertificateCertificateProviderInstancePtrOutput)
 }
 
-func (o ClientTlsPolicyClientCertificateCertificateProviderInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[ClientTlsPolicyClientCertificateCertificateProviderInstance] {
-	return pulumix.Output[ClientTlsPolicyClientCertificateCertificateProviderInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "googleCloudPrivateSpiffe" to use Certificate Authority Service certificate provider instance.
 func (o ClientTlsPolicyClientCertificateCertificateProviderInstanceOutput) PluginInstance() pulumi.StringOutput {
 	return o.ApplyT(func(v ClientTlsPolicyClientCertificateCertificateProviderInstance) string { return v.PluginInstance }).(pulumi.StringOutput)
@@ -953,12 +814,6 @@ func (o ClientTlsPolicyClientCertificateCertificateProviderInstancePtrOutput) To
 
 func (o ClientTlsPolicyClientCertificateCertificateProviderInstancePtrOutput) ToClientTlsPolicyClientCertificateCertificateProviderInstancePtrOutputWithContext(ctx context.Context) ClientTlsPolicyClientCertificateCertificateProviderInstancePtrOutput {
 	return o
-}
-
-func (o ClientTlsPolicyClientCertificateCertificateProviderInstancePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientTlsPolicyClientCertificateCertificateProviderInstance] {
-	return pulumix.Output[*ClientTlsPolicyClientCertificateCertificateProviderInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClientTlsPolicyClientCertificateCertificateProviderInstancePtrOutput) Elem() ClientTlsPolicyClientCertificateCertificateProviderInstanceOutput {
@@ -1014,12 +869,6 @@ func (i ClientTlsPolicyClientCertificateGrpcEndpointArgs) ToClientTlsPolicyClien
 	return pulumi.ToOutputWithContext(ctx, i).(ClientTlsPolicyClientCertificateGrpcEndpointOutput)
 }
 
-func (i ClientTlsPolicyClientCertificateGrpcEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[ClientTlsPolicyClientCertificateGrpcEndpoint] {
-	return pulumix.Output[ClientTlsPolicyClientCertificateGrpcEndpoint]{
-		OutputState: i.ToClientTlsPolicyClientCertificateGrpcEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClientTlsPolicyClientCertificateGrpcEndpointArgs) ToClientTlsPolicyClientCertificateGrpcEndpointPtrOutput() ClientTlsPolicyClientCertificateGrpcEndpointPtrOutput {
 	return i.ToClientTlsPolicyClientCertificateGrpcEndpointPtrOutputWithContext(context.Background())
 }
@@ -1061,12 +910,6 @@ func (i *clientTlsPolicyClientCertificateGrpcEndpointPtrType) ToClientTlsPolicyC
 	return pulumi.ToOutputWithContext(ctx, i).(ClientTlsPolicyClientCertificateGrpcEndpointPtrOutput)
 }
 
-func (i *clientTlsPolicyClientCertificateGrpcEndpointPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientTlsPolicyClientCertificateGrpcEndpoint] {
-	return pulumix.Output[*ClientTlsPolicyClientCertificateGrpcEndpoint]{
-		OutputState: i.ToClientTlsPolicyClientCertificateGrpcEndpointPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClientTlsPolicyClientCertificateGrpcEndpointOutput struct{ *pulumi.OutputState }
 
 func (ClientTlsPolicyClientCertificateGrpcEndpointOutput) ElementType() reflect.Type {
@@ -1091,12 +934,6 @@ func (o ClientTlsPolicyClientCertificateGrpcEndpointOutput) ToClientTlsPolicyCli
 	}).(ClientTlsPolicyClientCertificateGrpcEndpointPtrOutput)
 }
 
-func (o ClientTlsPolicyClientCertificateGrpcEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[ClientTlsPolicyClientCertificateGrpcEndpoint] {
-	return pulumix.Output[ClientTlsPolicyClientCertificateGrpcEndpoint]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
 func (o ClientTlsPolicyClientCertificateGrpcEndpointOutput) TargetUri() pulumi.StringOutput {
 	return o.ApplyT(func(v ClientTlsPolicyClientCertificateGrpcEndpoint) string { return v.TargetUri }).(pulumi.StringOutput)
@@ -1114,12 +951,6 @@ func (o ClientTlsPolicyClientCertificateGrpcEndpointPtrOutput) ToClientTlsPolicy
 
 func (o ClientTlsPolicyClientCertificateGrpcEndpointPtrOutput) ToClientTlsPolicyClientCertificateGrpcEndpointPtrOutputWithContext(ctx context.Context) ClientTlsPolicyClientCertificateGrpcEndpointPtrOutput {
 	return o
-}
-
-func (o ClientTlsPolicyClientCertificateGrpcEndpointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientTlsPolicyClientCertificateGrpcEndpoint] {
-	return pulumix.Output[*ClientTlsPolicyClientCertificateGrpcEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClientTlsPolicyClientCertificateGrpcEndpointPtrOutput) Elem() ClientTlsPolicyClientCertificateGrpcEndpointOutput {
@@ -1183,12 +1014,6 @@ func (i ClientTlsPolicyServerValidationCaArgs) ToClientTlsPolicyServerValidation
 	return pulumi.ToOutputWithContext(ctx, i).(ClientTlsPolicyServerValidationCaOutput)
 }
 
-func (i ClientTlsPolicyServerValidationCaArgs) ToOutput(ctx context.Context) pulumix.Output[ClientTlsPolicyServerValidationCa] {
-	return pulumix.Output[ClientTlsPolicyServerValidationCa]{
-		OutputState: i.ToClientTlsPolicyServerValidationCaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClientTlsPolicyServerValidationCaArrayInput is an input type that accepts ClientTlsPolicyServerValidationCaArray and ClientTlsPolicyServerValidationCaArrayOutput values.
 // You can construct a concrete instance of `ClientTlsPolicyServerValidationCaArrayInput` via:
 //
@@ -1214,12 +1039,6 @@ func (i ClientTlsPolicyServerValidationCaArray) ToClientTlsPolicyServerValidatio
 	return pulumi.ToOutputWithContext(ctx, i).(ClientTlsPolicyServerValidationCaArrayOutput)
 }
 
-func (i ClientTlsPolicyServerValidationCaArray) ToOutput(ctx context.Context) pulumix.Output[[]ClientTlsPolicyServerValidationCa] {
-	return pulumix.Output[[]ClientTlsPolicyServerValidationCa]{
-		OutputState: i.ToClientTlsPolicyServerValidationCaArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClientTlsPolicyServerValidationCaOutput struct{ *pulumi.OutputState }
 
 func (ClientTlsPolicyServerValidationCaOutput) ElementType() reflect.Type {
@@ -1232,12 +1051,6 @@ func (o ClientTlsPolicyServerValidationCaOutput) ToClientTlsPolicyServerValidati
 
 func (o ClientTlsPolicyServerValidationCaOutput) ToClientTlsPolicyServerValidationCaOutputWithContext(ctx context.Context) ClientTlsPolicyServerValidationCaOutput {
 	return o
-}
-
-func (o ClientTlsPolicyServerValidationCaOutput) ToOutput(ctx context.Context) pulumix.Output[ClientTlsPolicyServerValidationCa] {
-	return pulumix.Output[ClientTlsPolicyServerValidationCa]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
@@ -1268,12 +1081,6 @@ func (o ClientTlsPolicyServerValidationCaArrayOutput) ToClientTlsPolicyServerVal
 
 func (o ClientTlsPolicyServerValidationCaArrayOutput) ToClientTlsPolicyServerValidationCaArrayOutputWithContext(ctx context.Context) ClientTlsPolicyServerValidationCaArrayOutput {
 	return o
-}
-
-func (o ClientTlsPolicyServerValidationCaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClientTlsPolicyServerValidationCa] {
-	return pulumix.Output[[]ClientTlsPolicyServerValidationCa]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClientTlsPolicyServerValidationCaArrayOutput) Index(i pulumi.IntInput) ClientTlsPolicyServerValidationCaOutput {
@@ -1313,12 +1120,6 @@ func (i ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs) ToClie
 
 func (i ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs) ToClientTlsPolicyServerValidationCaCertificateProviderInstanceOutputWithContext(ctx context.Context) ClientTlsPolicyServerValidationCaCertificateProviderInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClientTlsPolicyServerValidationCaCertificateProviderInstanceOutput)
-}
-
-func (i ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[ClientTlsPolicyServerValidationCaCertificateProviderInstance] {
-	return pulumix.Output[ClientTlsPolicyServerValidationCaCertificateProviderInstance]{
-		OutputState: i.ToClientTlsPolicyServerValidationCaCertificateProviderInstanceOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs) ToClientTlsPolicyServerValidationCaCertificateProviderInstancePtrOutput() ClientTlsPolicyServerValidationCaCertificateProviderInstancePtrOutput {
@@ -1362,12 +1163,6 @@ func (i *clientTlsPolicyServerValidationCaCertificateProviderInstancePtrType) To
 	return pulumi.ToOutputWithContext(ctx, i).(ClientTlsPolicyServerValidationCaCertificateProviderInstancePtrOutput)
 }
 
-func (i *clientTlsPolicyServerValidationCaCertificateProviderInstancePtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientTlsPolicyServerValidationCaCertificateProviderInstance] {
-	return pulumix.Output[*ClientTlsPolicyServerValidationCaCertificateProviderInstance]{
-		OutputState: i.ToClientTlsPolicyServerValidationCaCertificateProviderInstancePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClientTlsPolicyServerValidationCaCertificateProviderInstanceOutput struct{ *pulumi.OutputState }
 
 func (ClientTlsPolicyServerValidationCaCertificateProviderInstanceOutput) ElementType() reflect.Type {
@@ -1392,12 +1187,6 @@ func (o ClientTlsPolicyServerValidationCaCertificateProviderInstanceOutput) ToCl
 	}).(ClientTlsPolicyServerValidationCaCertificateProviderInstancePtrOutput)
 }
 
-func (o ClientTlsPolicyServerValidationCaCertificateProviderInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[ClientTlsPolicyServerValidationCaCertificateProviderInstance] {
-	return pulumix.Output[ClientTlsPolicyServerValidationCaCertificateProviderInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "googleCloudPrivateSpiffe" to use Certificate Authority Service certificate provider instance.
 func (o ClientTlsPolicyServerValidationCaCertificateProviderInstanceOutput) PluginInstance() pulumi.StringOutput {
 	return o.ApplyT(func(v ClientTlsPolicyServerValidationCaCertificateProviderInstance) string { return v.PluginInstance }).(pulumi.StringOutput)
@@ -1415,12 +1204,6 @@ func (o ClientTlsPolicyServerValidationCaCertificateProviderInstancePtrOutput) T
 
 func (o ClientTlsPolicyServerValidationCaCertificateProviderInstancePtrOutput) ToClientTlsPolicyServerValidationCaCertificateProviderInstancePtrOutputWithContext(ctx context.Context) ClientTlsPolicyServerValidationCaCertificateProviderInstancePtrOutput {
 	return o
-}
-
-func (o ClientTlsPolicyServerValidationCaCertificateProviderInstancePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientTlsPolicyServerValidationCaCertificateProviderInstance] {
-	return pulumix.Output[*ClientTlsPolicyServerValidationCaCertificateProviderInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClientTlsPolicyServerValidationCaCertificateProviderInstancePtrOutput) Elem() ClientTlsPolicyServerValidationCaCertificateProviderInstanceOutput {
@@ -1476,12 +1259,6 @@ func (i ClientTlsPolicyServerValidationCaGrpcEndpointArgs) ToClientTlsPolicyServ
 	return pulumi.ToOutputWithContext(ctx, i).(ClientTlsPolicyServerValidationCaGrpcEndpointOutput)
 }
 
-func (i ClientTlsPolicyServerValidationCaGrpcEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[ClientTlsPolicyServerValidationCaGrpcEndpoint] {
-	return pulumix.Output[ClientTlsPolicyServerValidationCaGrpcEndpoint]{
-		OutputState: i.ToClientTlsPolicyServerValidationCaGrpcEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClientTlsPolicyServerValidationCaGrpcEndpointArgs) ToClientTlsPolicyServerValidationCaGrpcEndpointPtrOutput() ClientTlsPolicyServerValidationCaGrpcEndpointPtrOutput {
 	return i.ToClientTlsPolicyServerValidationCaGrpcEndpointPtrOutputWithContext(context.Background())
 }
@@ -1523,12 +1300,6 @@ func (i *clientTlsPolicyServerValidationCaGrpcEndpointPtrType) ToClientTlsPolicy
 	return pulumi.ToOutputWithContext(ctx, i).(ClientTlsPolicyServerValidationCaGrpcEndpointPtrOutput)
 }
 
-func (i *clientTlsPolicyServerValidationCaGrpcEndpointPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientTlsPolicyServerValidationCaGrpcEndpoint] {
-	return pulumix.Output[*ClientTlsPolicyServerValidationCaGrpcEndpoint]{
-		OutputState: i.ToClientTlsPolicyServerValidationCaGrpcEndpointPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClientTlsPolicyServerValidationCaGrpcEndpointOutput struct{ *pulumi.OutputState }
 
 func (ClientTlsPolicyServerValidationCaGrpcEndpointOutput) ElementType() reflect.Type {
@@ -1553,12 +1324,6 @@ func (o ClientTlsPolicyServerValidationCaGrpcEndpointOutput) ToClientTlsPolicySe
 	}).(ClientTlsPolicyServerValidationCaGrpcEndpointPtrOutput)
 }
 
-func (o ClientTlsPolicyServerValidationCaGrpcEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[ClientTlsPolicyServerValidationCaGrpcEndpoint] {
-	return pulumix.Output[ClientTlsPolicyServerValidationCaGrpcEndpoint]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
 func (o ClientTlsPolicyServerValidationCaGrpcEndpointOutput) TargetUri() pulumi.StringOutput {
 	return o.ApplyT(func(v ClientTlsPolicyServerValidationCaGrpcEndpoint) string { return v.TargetUri }).(pulumi.StringOutput)
@@ -1576,12 +1341,6 @@ func (o ClientTlsPolicyServerValidationCaGrpcEndpointPtrOutput) ToClientTlsPolic
 
 func (o ClientTlsPolicyServerValidationCaGrpcEndpointPtrOutput) ToClientTlsPolicyServerValidationCaGrpcEndpointPtrOutputWithContext(ctx context.Context) ClientTlsPolicyServerValidationCaGrpcEndpointPtrOutput {
 	return o
-}
-
-func (o ClientTlsPolicyServerValidationCaGrpcEndpointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientTlsPolicyServerValidationCaGrpcEndpoint] {
-	return pulumix.Output[*ClientTlsPolicyServerValidationCaGrpcEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClientTlsPolicyServerValidationCaGrpcEndpointPtrOutput) Elem() ClientTlsPolicyServerValidationCaGrpcEndpointOutput {
@@ -1657,12 +1416,6 @@ func (i ServerTlsPolicyMtlsPolicyArgs) ToServerTlsPolicyMtlsPolicyOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyMtlsPolicyOutput)
 }
 
-func (i ServerTlsPolicyMtlsPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[ServerTlsPolicyMtlsPolicy] {
-	return pulumix.Output[ServerTlsPolicyMtlsPolicy]{
-		OutputState: i.ToServerTlsPolicyMtlsPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServerTlsPolicyMtlsPolicyArgs) ToServerTlsPolicyMtlsPolicyPtrOutput() ServerTlsPolicyMtlsPolicyPtrOutput {
 	return i.ToServerTlsPolicyMtlsPolicyPtrOutputWithContext(context.Background())
 }
@@ -1704,12 +1457,6 @@ func (i *serverTlsPolicyMtlsPolicyPtrType) ToServerTlsPolicyMtlsPolicyPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyMtlsPolicyPtrOutput)
 }
 
-func (i *serverTlsPolicyMtlsPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServerTlsPolicyMtlsPolicy] {
-	return pulumix.Output[*ServerTlsPolicyMtlsPolicy]{
-		OutputState: i.ToServerTlsPolicyMtlsPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServerTlsPolicyMtlsPolicyOutput struct{ *pulumi.OutputState }
 
 func (ServerTlsPolicyMtlsPolicyOutput) ElementType() reflect.Type {
@@ -1732,12 +1479,6 @@ func (o ServerTlsPolicyMtlsPolicyOutput) ToServerTlsPolicyMtlsPolicyPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerTlsPolicyMtlsPolicy) *ServerTlsPolicyMtlsPolicy {
 		return &v
 	}).(ServerTlsPolicyMtlsPolicyPtrOutput)
-}
-
-func (o ServerTlsPolicyMtlsPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[ServerTlsPolicyMtlsPolicy] {
-	return pulumix.Output[ServerTlsPolicyMtlsPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
@@ -1775,12 +1516,6 @@ func (o ServerTlsPolicyMtlsPolicyPtrOutput) ToServerTlsPolicyMtlsPolicyPtrOutput
 
 func (o ServerTlsPolicyMtlsPolicyPtrOutput) ToServerTlsPolicyMtlsPolicyPtrOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyPtrOutput {
 	return o
-}
-
-func (o ServerTlsPolicyMtlsPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerTlsPolicyMtlsPolicy] {
-	return pulumix.Output[*ServerTlsPolicyMtlsPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerTlsPolicyMtlsPolicyPtrOutput) Elem() ServerTlsPolicyMtlsPolicyOutput {
@@ -1872,12 +1607,6 @@ func (i ServerTlsPolicyMtlsPolicyClientValidationCaArgs) ToServerTlsPolicyMtlsPo
 	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyMtlsPolicyClientValidationCaOutput)
 }
 
-func (i ServerTlsPolicyMtlsPolicyClientValidationCaArgs) ToOutput(ctx context.Context) pulumix.Output[ServerTlsPolicyMtlsPolicyClientValidationCa] {
-	return pulumix.Output[ServerTlsPolicyMtlsPolicyClientValidationCa]{
-		OutputState: i.ToServerTlsPolicyMtlsPolicyClientValidationCaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServerTlsPolicyMtlsPolicyClientValidationCaArrayInput is an input type that accepts ServerTlsPolicyMtlsPolicyClientValidationCaArray and ServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput values.
 // You can construct a concrete instance of `ServerTlsPolicyMtlsPolicyClientValidationCaArrayInput` via:
 //
@@ -1903,12 +1632,6 @@ func (i ServerTlsPolicyMtlsPolicyClientValidationCaArray) ToServerTlsPolicyMtlsP
 	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput)
 }
 
-func (i ServerTlsPolicyMtlsPolicyClientValidationCaArray) ToOutput(ctx context.Context) pulumix.Output[[]ServerTlsPolicyMtlsPolicyClientValidationCa] {
-	return pulumix.Output[[]ServerTlsPolicyMtlsPolicyClientValidationCa]{
-		OutputState: i.ToServerTlsPolicyMtlsPolicyClientValidationCaArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServerTlsPolicyMtlsPolicyClientValidationCaOutput struct{ *pulumi.OutputState }
 
 func (ServerTlsPolicyMtlsPolicyClientValidationCaOutput) ElementType() reflect.Type {
@@ -1921,12 +1644,6 @@ func (o ServerTlsPolicyMtlsPolicyClientValidationCaOutput) ToServerTlsPolicyMtls
 
 func (o ServerTlsPolicyMtlsPolicyClientValidationCaOutput) ToServerTlsPolicyMtlsPolicyClientValidationCaOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaOutput {
 	return o
-}
-
-func (o ServerTlsPolicyMtlsPolicyClientValidationCaOutput) ToOutput(ctx context.Context) pulumix.Output[ServerTlsPolicyMtlsPolicyClientValidationCa] {
-	return pulumix.Output[ServerTlsPolicyMtlsPolicyClientValidationCa]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
@@ -1958,12 +1675,6 @@ func (o ServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput) ToServerTlsPolic
 
 func (o ServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput) ToServerTlsPolicyMtlsPolicyClientValidationCaArrayOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput {
 	return o
-}
-
-func (o ServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServerTlsPolicyMtlsPolicyClientValidationCa] {
-	return pulumix.Output[[]ServerTlsPolicyMtlsPolicyClientValidationCa]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput) Index(i pulumi.IntInput) ServerTlsPolicyMtlsPolicyClientValidationCaOutput {
@@ -2003,12 +1714,6 @@ func (i ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceAr
 
 func (i ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs) ToServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput)
-}
-
-func (i ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance] {
-	return pulumix.Output[ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance]{
-		OutputState: i.ToServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs) ToServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput() ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput {
@@ -2052,12 +1757,6 @@ func (i *serverTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceP
 	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput)
 }
 
-func (i *serverTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrType) ToOutput(ctx context.Context) pulumix.Output[*ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance] {
-	return pulumix.Output[*ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance]{
-		OutputState: i.ToServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput struct{ *pulumi.OutputState }
 
 func (ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput) ElementType() reflect.Type {
@@ -2082,12 +1781,6 @@ func (o ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOu
 	}).(ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput)
 }
 
-func (o ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance] {
-	return pulumix.Output[ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "googleCloudPrivateSpiffe" to use Certificate Authority Service certificate provider instance.
 func (o ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput) PluginInstance() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance) string {
@@ -2107,12 +1800,6 @@ func (o ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePt
 
 func (o ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput) ToServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput {
 	return o
-}
-
-func (o ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance] {
-	return pulumix.Output[*ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput) Elem() ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput {
@@ -2168,12 +1855,6 @@ func (i ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs) ToServerTls
 	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput)
 }
 
-func (i ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint] {
-	return pulumix.Output[ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint]{
-		OutputState: i.ToServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs) ToServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput() ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput {
 	return i.ToServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutputWithContext(context.Background())
 }
@@ -2215,12 +1896,6 @@ func (i *serverTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrType) ToServe
 	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput)
 }
 
-func (i *serverTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint] {
-	return pulumix.Output[*ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint]{
-		OutputState: i.ToServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput struct{ *pulumi.OutputState }
 
 func (ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput) ElementType() reflect.Type {
@@ -2245,12 +1920,6 @@ func (o ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput) ToServerT
 	}).(ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput)
 }
 
-func (o ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint] {
-	return pulumix.Output[ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
 func (o ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput) TargetUri() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint) string { return v.TargetUri }).(pulumi.StringOutput)
@@ -2268,12 +1937,6 @@ func (o ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput) ToServ
 
 func (o ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput) ToServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput {
 	return o
-}
-
-func (o ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint] {
-	return pulumix.Output[*ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput) Elem() ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput {
@@ -2339,12 +2002,6 @@ func (i ServerTlsPolicyServerCertificateArgs) ToServerTlsPolicyServerCertificate
 	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyServerCertificateOutput)
 }
 
-func (i ServerTlsPolicyServerCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[ServerTlsPolicyServerCertificate] {
-	return pulumix.Output[ServerTlsPolicyServerCertificate]{
-		OutputState: i.ToServerTlsPolicyServerCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServerTlsPolicyServerCertificateArgs) ToServerTlsPolicyServerCertificatePtrOutput() ServerTlsPolicyServerCertificatePtrOutput {
 	return i.ToServerTlsPolicyServerCertificatePtrOutputWithContext(context.Background())
 }
@@ -2386,12 +2043,6 @@ func (i *serverTlsPolicyServerCertificatePtrType) ToServerTlsPolicyServerCertifi
 	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyServerCertificatePtrOutput)
 }
 
-func (i *serverTlsPolicyServerCertificatePtrType) ToOutput(ctx context.Context) pulumix.Output[*ServerTlsPolicyServerCertificate] {
-	return pulumix.Output[*ServerTlsPolicyServerCertificate]{
-		OutputState: i.ToServerTlsPolicyServerCertificatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServerTlsPolicyServerCertificateOutput struct{ *pulumi.OutputState }
 
 func (ServerTlsPolicyServerCertificateOutput) ElementType() reflect.Type {
@@ -2414,12 +2065,6 @@ func (o ServerTlsPolicyServerCertificateOutput) ToServerTlsPolicyServerCertifica
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerTlsPolicyServerCertificate) *ServerTlsPolicyServerCertificate {
 		return &v
 	}).(ServerTlsPolicyServerCertificatePtrOutput)
-}
-
-func (o ServerTlsPolicyServerCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[ServerTlsPolicyServerCertificate] {
-	return pulumix.Output[ServerTlsPolicyServerCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
@@ -2451,12 +2096,6 @@ func (o ServerTlsPolicyServerCertificatePtrOutput) ToServerTlsPolicyServerCertif
 
 func (o ServerTlsPolicyServerCertificatePtrOutput) ToServerTlsPolicyServerCertificatePtrOutputWithContext(ctx context.Context) ServerTlsPolicyServerCertificatePtrOutput {
 	return o
-}
-
-func (o ServerTlsPolicyServerCertificatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerTlsPolicyServerCertificate] {
-	return pulumix.Output[*ServerTlsPolicyServerCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerTlsPolicyServerCertificatePtrOutput) Elem() ServerTlsPolicyServerCertificateOutput {
@@ -2525,12 +2164,6 @@ func (i ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs) ToServe
 	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyServerCertificateCertificateProviderInstanceOutput)
 }
 
-func (i ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[ServerTlsPolicyServerCertificateCertificateProviderInstance] {
-	return pulumix.Output[ServerTlsPolicyServerCertificateCertificateProviderInstance]{
-		OutputState: i.ToServerTlsPolicyServerCertificateCertificateProviderInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs) ToServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput() ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput {
 	return i.ToServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutputWithContext(context.Background())
 }
@@ -2572,12 +2205,6 @@ func (i *serverTlsPolicyServerCertificateCertificateProviderInstancePtrType) ToS
 	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput)
 }
 
-func (i *serverTlsPolicyServerCertificateCertificateProviderInstancePtrType) ToOutput(ctx context.Context) pulumix.Output[*ServerTlsPolicyServerCertificateCertificateProviderInstance] {
-	return pulumix.Output[*ServerTlsPolicyServerCertificateCertificateProviderInstance]{
-		OutputState: i.ToServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServerTlsPolicyServerCertificateCertificateProviderInstanceOutput struct{ *pulumi.OutputState }
 
 func (ServerTlsPolicyServerCertificateCertificateProviderInstanceOutput) ElementType() reflect.Type {
@@ -2602,12 +2229,6 @@ func (o ServerTlsPolicyServerCertificateCertificateProviderInstanceOutput) ToSer
 	}).(ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput)
 }
 
-func (o ServerTlsPolicyServerCertificateCertificateProviderInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[ServerTlsPolicyServerCertificateCertificateProviderInstance] {
-	return pulumix.Output[ServerTlsPolicyServerCertificateCertificateProviderInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "googleCloudPrivateSpiffe" to use Certificate Authority Service certificate provider instance.
 func (o ServerTlsPolicyServerCertificateCertificateProviderInstanceOutput) PluginInstance() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerTlsPolicyServerCertificateCertificateProviderInstance) string { return v.PluginInstance }).(pulumi.StringOutput)
@@ -2625,12 +2246,6 @@ func (o ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput) To
 
 func (o ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput) ToServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutputWithContext(ctx context.Context) ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput {
 	return o
-}
-
-func (o ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerTlsPolicyServerCertificateCertificateProviderInstance] {
-	return pulumix.Output[*ServerTlsPolicyServerCertificateCertificateProviderInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput) Elem() ServerTlsPolicyServerCertificateCertificateProviderInstanceOutput {
@@ -2686,12 +2301,6 @@ func (i ServerTlsPolicyServerCertificateGrpcEndpointArgs) ToServerTlsPolicyServe
 	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyServerCertificateGrpcEndpointOutput)
 }
 
-func (i ServerTlsPolicyServerCertificateGrpcEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[ServerTlsPolicyServerCertificateGrpcEndpoint] {
-	return pulumix.Output[ServerTlsPolicyServerCertificateGrpcEndpoint]{
-		OutputState: i.ToServerTlsPolicyServerCertificateGrpcEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServerTlsPolicyServerCertificateGrpcEndpointArgs) ToServerTlsPolicyServerCertificateGrpcEndpointPtrOutput() ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput {
 	return i.ToServerTlsPolicyServerCertificateGrpcEndpointPtrOutputWithContext(context.Background())
 }
@@ -2733,12 +2342,6 @@ func (i *serverTlsPolicyServerCertificateGrpcEndpointPtrType) ToServerTlsPolicyS
 	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput)
 }
 
-func (i *serverTlsPolicyServerCertificateGrpcEndpointPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServerTlsPolicyServerCertificateGrpcEndpoint] {
-	return pulumix.Output[*ServerTlsPolicyServerCertificateGrpcEndpoint]{
-		OutputState: i.ToServerTlsPolicyServerCertificateGrpcEndpointPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServerTlsPolicyServerCertificateGrpcEndpointOutput struct{ *pulumi.OutputState }
 
 func (ServerTlsPolicyServerCertificateGrpcEndpointOutput) ElementType() reflect.Type {
@@ -2763,12 +2366,6 @@ func (o ServerTlsPolicyServerCertificateGrpcEndpointOutput) ToServerTlsPolicySer
 	}).(ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput)
 }
 
-func (o ServerTlsPolicyServerCertificateGrpcEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[ServerTlsPolicyServerCertificateGrpcEndpoint] {
-	return pulumix.Output[ServerTlsPolicyServerCertificateGrpcEndpoint]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
 func (o ServerTlsPolicyServerCertificateGrpcEndpointOutput) TargetUri() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerTlsPolicyServerCertificateGrpcEndpoint) string { return v.TargetUri }).(pulumi.StringOutput)
@@ -2786,12 +2383,6 @@ func (o ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput) ToServerTlsPolicy
 
 func (o ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput) ToServerTlsPolicyServerCertificateGrpcEndpointPtrOutputWithContext(ctx context.Context) ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput {
 	return o
-}
-
-func (o ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerTlsPolicyServerCertificateGrpcEndpoint] {
-	return pulumix.Output[*ServerTlsPolicyServerCertificateGrpcEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput) Elem() ServerTlsPolicyServerCertificateGrpcEndpointOutput {

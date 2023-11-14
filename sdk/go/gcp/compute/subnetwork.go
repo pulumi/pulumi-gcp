@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A VPC network is a virtual version of the traditional physical networks
@@ -770,12 +769,6 @@ func (i *Subnetwork) ToSubnetworkOutputWithContext(ctx context.Context) Subnetwo
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkOutput)
 }
 
-func (i *Subnetwork) ToOutput(ctx context.Context) pulumix.Output[*Subnetwork] {
-	return pulumix.Output[*Subnetwork]{
-		OutputState: i.ToSubnetworkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SubnetworkArrayInput is an input type that accepts SubnetworkArray and SubnetworkArrayOutput values.
 // You can construct a concrete instance of `SubnetworkArrayInput` via:
 //
@@ -799,12 +792,6 @@ func (i SubnetworkArray) ToSubnetworkArrayOutput() SubnetworkArrayOutput {
 
 func (i SubnetworkArray) ToSubnetworkArrayOutputWithContext(ctx context.Context) SubnetworkArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkArrayOutput)
-}
-
-func (i SubnetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]*Subnetwork] {
-	return pulumix.Output[[]*Subnetwork]{
-		OutputState: i.ToSubnetworkArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SubnetworkMapInput is an input type that accepts SubnetworkMap and SubnetworkMapOutput values.
@@ -832,12 +819,6 @@ func (i SubnetworkMap) ToSubnetworkMapOutputWithContext(ctx context.Context) Sub
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkMapOutput)
 }
 
-func (i SubnetworkMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Subnetwork] {
-	return pulumix.Output[map[string]*Subnetwork]{
-		OutputState: i.ToSubnetworkMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SubnetworkOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkOutput) ElementType() reflect.Type {
@@ -850,12 +831,6 @@ func (o SubnetworkOutput) ToSubnetworkOutput() SubnetworkOutput {
 
 func (o SubnetworkOutput) ToSubnetworkOutputWithContext(ctx context.Context) SubnetworkOutput {
 	return o
-}
-
-func (o SubnetworkOutput) ToOutput(ctx context.Context) pulumix.Output[*Subnetwork] {
-	return pulumix.Output[*Subnetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation timestamp in RFC3339 text format.
@@ -1022,12 +997,6 @@ func (o SubnetworkArrayOutput) ToSubnetworkArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o SubnetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Subnetwork] {
-	return pulumix.Output[[]*Subnetwork]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SubnetworkArrayOutput) Index(i pulumi.IntInput) SubnetworkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Subnetwork {
 		return vs[0].([]*Subnetwork)[vs[1].(int)]
@@ -1046,12 +1015,6 @@ func (o SubnetworkMapOutput) ToSubnetworkMapOutput() SubnetworkMapOutput {
 
 func (o SubnetworkMapOutput) ToSubnetworkMapOutputWithContext(ctx context.Context) SubnetworkMapOutput {
 	return o
-}
-
-func (o SubnetworkMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Subnetwork] {
-	return pulumix.Output[map[string]*Subnetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubnetworkMapOutput) MapIndex(k pulumi.StringInput) SubnetworkOutput {

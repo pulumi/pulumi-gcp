@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupApiIamPolicy(ctx *pulumi.Context, args *LookupApiIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupApiIamPolicyResult, error) {
@@ -81,12 +80,6 @@ func (o LookupApiIamPolicyResultOutput) ToLookupApiIamPolicyResultOutput() Looku
 
 func (o LookupApiIamPolicyResultOutput) ToLookupApiIamPolicyResultOutputWithContext(ctx context.Context) LookupApiIamPolicyResultOutput {
 	return o
-}
-
-func (o LookupApiIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupApiIamPolicyResult] {
-	return pulumix.Output[LookupApiIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupApiIamPolicyResultOutput) Api() pulumi.StringOutput {
