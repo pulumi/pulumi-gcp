@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the list of IP addresses that checkers run from. For more information see
@@ -81,12 +80,6 @@ func (o GetUptimeCheckIPsResultOutput) ToGetUptimeCheckIPsResultOutput() GetUpti
 
 func (o GetUptimeCheckIPsResultOutput) ToGetUptimeCheckIPsResultOutputWithContext(ctx context.Context) GetUptimeCheckIPsResultOutput {
 	return o
-}
-
-func (o GetUptimeCheckIPsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetUptimeCheckIPsResult] {
-	return pulumix.Output[GetUptimeCheckIPsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

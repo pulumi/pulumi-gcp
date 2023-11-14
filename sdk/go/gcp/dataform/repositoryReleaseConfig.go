@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -308,12 +307,6 @@ func (i *RepositoryReleaseConfig) ToRepositoryReleaseConfigOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryReleaseConfigOutput)
 }
 
-func (i *RepositoryReleaseConfig) ToOutput(ctx context.Context) pulumix.Output[*RepositoryReleaseConfig] {
-	return pulumix.Output[*RepositoryReleaseConfig]{
-		OutputState: i.ToRepositoryReleaseConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RepositoryReleaseConfigArrayInput is an input type that accepts RepositoryReleaseConfigArray and RepositoryReleaseConfigArrayOutput values.
 // You can construct a concrete instance of `RepositoryReleaseConfigArrayInput` via:
 //
@@ -337,12 +330,6 @@ func (i RepositoryReleaseConfigArray) ToRepositoryReleaseConfigArrayOutput() Rep
 
 func (i RepositoryReleaseConfigArray) ToRepositoryReleaseConfigArrayOutputWithContext(ctx context.Context) RepositoryReleaseConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryReleaseConfigArrayOutput)
-}
-
-func (i RepositoryReleaseConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*RepositoryReleaseConfig] {
-	return pulumix.Output[[]*RepositoryReleaseConfig]{
-		OutputState: i.ToRepositoryReleaseConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RepositoryReleaseConfigMapInput is an input type that accepts RepositoryReleaseConfigMap and RepositoryReleaseConfigMapOutput values.
@@ -370,12 +357,6 @@ func (i RepositoryReleaseConfigMap) ToRepositoryReleaseConfigMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryReleaseConfigMapOutput)
 }
 
-func (i RepositoryReleaseConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RepositoryReleaseConfig] {
-	return pulumix.Output[map[string]*RepositoryReleaseConfig]{
-		OutputState: i.ToRepositoryReleaseConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryReleaseConfigOutput struct{ *pulumi.OutputState }
 
 func (RepositoryReleaseConfigOutput) ElementType() reflect.Type {
@@ -388,12 +369,6 @@ func (o RepositoryReleaseConfigOutput) ToRepositoryReleaseConfigOutput() Reposit
 
 func (o RepositoryReleaseConfigOutput) ToRepositoryReleaseConfigOutputWithContext(ctx context.Context) RepositoryReleaseConfigOutput {
 	return o
-}
-
-func (o RepositoryReleaseConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryReleaseConfig] {
-	return pulumix.Output[*RepositoryReleaseConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
@@ -464,12 +439,6 @@ func (o RepositoryReleaseConfigArrayOutput) ToRepositoryReleaseConfigArrayOutput
 	return o
 }
 
-func (o RepositoryReleaseConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RepositoryReleaseConfig] {
-	return pulumix.Output[[]*RepositoryReleaseConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RepositoryReleaseConfigArrayOutput) Index(i pulumi.IntInput) RepositoryReleaseConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RepositoryReleaseConfig {
 		return vs[0].([]*RepositoryReleaseConfig)[vs[1].(int)]
@@ -488,12 +457,6 @@ func (o RepositoryReleaseConfigMapOutput) ToRepositoryReleaseConfigMapOutput() R
 
 func (o RepositoryReleaseConfigMapOutput) ToRepositoryReleaseConfigMapOutputWithContext(ctx context.Context) RepositoryReleaseConfigMapOutput {
 	return o
-}
-
-func (o RepositoryReleaseConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RepositoryReleaseConfig] {
-	return pulumix.Output[map[string]*RepositoryReleaseConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryReleaseConfigMapOutput) MapIndex(k pulumi.StringInput) RepositoryReleaseConfigOutput {

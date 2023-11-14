@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Budget configuration for a billing account.
@@ -563,12 +562,6 @@ func (i *Budget) ToBudgetOutputWithContext(ctx context.Context) BudgetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetOutput)
 }
 
-func (i *Budget) ToOutput(ctx context.Context) pulumix.Output[*Budget] {
-	return pulumix.Output[*Budget]{
-		OutputState: i.ToBudgetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BudgetArrayInput is an input type that accepts BudgetArray and BudgetArrayOutput values.
 // You can construct a concrete instance of `BudgetArrayInput` via:
 //
@@ -592,12 +585,6 @@ func (i BudgetArray) ToBudgetArrayOutput() BudgetArrayOutput {
 
 func (i BudgetArray) ToBudgetArrayOutputWithContext(ctx context.Context) BudgetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetArrayOutput)
-}
-
-func (i BudgetArray) ToOutput(ctx context.Context) pulumix.Output[[]*Budget] {
-	return pulumix.Output[[]*Budget]{
-		OutputState: i.ToBudgetArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BudgetMapInput is an input type that accepts BudgetMap and BudgetMapOutput values.
@@ -625,12 +612,6 @@ func (i BudgetMap) ToBudgetMapOutputWithContext(ctx context.Context) BudgetMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetMapOutput)
 }
 
-func (i BudgetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Budget] {
-	return pulumix.Output[map[string]*Budget]{
-		OutputState: i.ToBudgetMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BudgetOutput struct{ *pulumi.OutputState }
 
 func (BudgetOutput) ElementType() reflect.Type {
@@ -643,12 +624,6 @@ func (o BudgetOutput) ToBudgetOutput() BudgetOutput {
 
 func (o BudgetOutput) ToBudgetOutputWithContext(ctx context.Context) BudgetOutput {
 	return o
-}
-
-func (o BudgetOutput) ToOutput(ctx context.Context) pulumix.Output[*Budget] {
-	return pulumix.Output[*Budget]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines notifications that are sent on every update to the
@@ -711,12 +686,6 @@ func (o BudgetArrayOutput) ToBudgetArrayOutputWithContext(ctx context.Context) B
 	return o
 }
 
-func (o BudgetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Budget] {
-	return pulumix.Output[[]*Budget]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BudgetArrayOutput) Index(i pulumi.IntInput) BudgetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Budget {
 		return vs[0].([]*Budget)[vs[1].(int)]
@@ -735,12 +704,6 @@ func (o BudgetMapOutput) ToBudgetMapOutput() BudgetMapOutput {
 
 func (o BudgetMapOutput) ToBudgetMapOutputWithContext(ctx context.Context) BudgetMapOutput {
 	return o
-}
-
-func (o BudgetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Budget] {
-	return pulumix.Output[map[string]*Budget]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BudgetMapOutput) MapIndex(k pulumi.StringInput) BudgetOutput {

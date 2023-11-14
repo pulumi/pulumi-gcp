@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Compute Engine Instance. Each of these resources serves a different use case:
@@ -515,12 +514,6 @@ func (i *InstanceIAMBinding) ToInstanceIAMBindingOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMBindingOutput)
 }
 
-func (i *InstanceIAMBinding) ToOutput(ctx context.Context) pulumix.Output[*InstanceIAMBinding] {
-	return pulumix.Output[*InstanceIAMBinding]{
-		OutputState: i.ToInstanceIAMBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceIAMBindingArrayInput is an input type that accepts InstanceIAMBindingArray and InstanceIAMBindingArrayOutput values.
 // You can construct a concrete instance of `InstanceIAMBindingArrayInput` via:
 //
@@ -544,12 +537,6 @@ func (i InstanceIAMBindingArray) ToInstanceIAMBindingArrayOutput() InstanceIAMBi
 
 func (i InstanceIAMBindingArray) ToInstanceIAMBindingArrayOutputWithContext(ctx context.Context) InstanceIAMBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMBindingArrayOutput)
-}
-
-func (i InstanceIAMBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceIAMBinding] {
-	return pulumix.Output[[]*InstanceIAMBinding]{
-		OutputState: i.ToInstanceIAMBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstanceIAMBindingMapInput is an input type that accepts InstanceIAMBindingMap and InstanceIAMBindingMapOutput values.
@@ -577,12 +564,6 @@ func (i InstanceIAMBindingMap) ToInstanceIAMBindingMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMBindingMapOutput)
 }
 
-func (i InstanceIAMBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceIAMBinding] {
-	return pulumix.Output[map[string]*InstanceIAMBinding]{
-		OutputState: i.ToInstanceIAMBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceIAMBindingOutput struct{ *pulumi.OutputState }
 
 func (InstanceIAMBindingOutput) ElementType() reflect.Type {
@@ -595,12 +576,6 @@ func (o InstanceIAMBindingOutput) ToInstanceIAMBindingOutput() InstanceIAMBindin
 
 func (o InstanceIAMBindingOutput) ToInstanceIAMBindingOutputWithContext(ctx context.Context) InstanceIAMBindingOutput {
 	return o
-}
-
-func (o InstanceIAMBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceIAMBinding] {
-	return pulumix.Output[*InstanceIAMBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -669,12 +644,6 @@ func (o InstanceIAMBindingArrayOutput) ToInstanceIAMBindingArrayOutputWithContex
 	return o
 }
 
-func (o InstanceIAMBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceIAMBinding] {
-	return pulumix.Output[[]*InstanceIAMBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceIAMBindingArrayOutput) Index(i pulumi.IntInput) InstanceIAMBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceIAMBinding {
 		return vs[0].([]*InstanceIAMBinding)[vs[1].(int)]
@@ -693,12 +662,6 @@ func (o InstanceIAMBindingMapOutput) ToInstanceIAMBindingMapOutput() InstanceIAM
 
 func (o InstanceIAMBindingMapOutput) ToInstanceIAMBindingMapOutputWithContext(ctx context.Context) InstanceIAMBindingMapOutput {
 	return o
-}
-
-func (o InstanceIAMBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceIAMBinding] {
-	return pulumix.Output[map[string]*InstanceIAMBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceIAMBindingMapOutput) MapIndex(k pulumi.StringInput) InstanceIAMBindingOutput {

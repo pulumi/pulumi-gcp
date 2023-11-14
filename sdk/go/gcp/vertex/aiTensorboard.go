@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Tensorboard is a physical database that stores users' training metrics. A default Tensorboard is provided in each region of a GCP project. If needed users can also create extra Tensorboards in their projects.
@@ -355,12 +354,6 @@ func (i *AiTensorboard) ToAiTensorboardOutputWithContext(ctx context.Context) Ai
 	return pulumi.ToOutputWithContext(ctx, i).(AiTensorboardOutput)
 }
 
-func (i *AiTensorboard) ToOutput(ctx context.Context) pulumix.Output[*AiTensorboard] {
-	return pulumix.Output[*AiTensorboard]{
-		OutputState: i.ToAiTensorboardOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AiTensorboardArrayInput is an input type that accepts AiTensorboardArray and AiTensorboardArrayOutput values.
 // You can construct a concrete instance of `AiTensorboardArrayInput` via:
 //
@@ -384,12 +377,6 @@ func (i AiTensorboardArray) ToAiTensorboardArrayOutput() AiTensorboardArrayOutpu
 
 func (i AiTensorboardArray) ToAiTensorboardArrayOutputWithContext(ctx context.Context) AiTensorboardArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AiTensorboardArrayOutput)
-}
-
-func (i AiTensorboardArray) ToOutput(ctx context.Context) pulumix.Output[[]*AiTensorboard] {
-	return pulumix.Output[[]*AiTensorboard]{
-		OutputState: i.ToAiTensorboardArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AiTensorboardMapInput is an input type that accepts AiTensorboardMap and AiTensorboardMapOutput values.
@@ -417,12 +404,6 @@ func (i AiTensorboardMap) ToAiTensorboardMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AiTensorboardMapOutput)
 }
 
-func (i AiTensorboardMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AiTensorboard] {
-	return pulumix.Output[map[string]*AiTensorboard]{
-		OutputState: i.ToAiTensorboardMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiTensorboardOutput struct{ *pulumi.OutputState }
 
 func (AiTensorboardOutput) ElementType() reflect.Type {
@@ -435,12 +416,6 @@ func (o AiTensorboardOutput) ToAiTensorboardOutput() AiTensorboardOutput {
 
 func (o AiTensorboardOutput) ToAiTensorboardOutputWithContext(ctx context.Context) AiTensorboardOutput {
 	return o
-}
-
-func (o AiTensorboardOutput) ToOutput(ctx context.Context) pulumix.Output[*AiTensorboard] {
-	return pulumix.Output[*AiTensorboard]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a '/'.
@@ -530,12 +505,6 @@ func (o AiTensorboardArrayOutput) ToAiTensorboardArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o AiTensorboardArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AiTensorboard] {
-	return pulumix.Output[[]*AiTensorboard]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AiTensorboardArrayOutput) Index(i pulumi.IntInput) AiTensorboardOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AiTensorboard {
 		return vs[0].([]*AiTensorboard)[vs[1].(int)]
@@ -554,12 +523,6 @@ func (o AiTensorboardMapOutput) ToAiTensorboardMapOutput() AiTensorboardMapOutpu
 
 func (o AiTensorboardMapOutput) ToAiTensorboardMapOutputWithContext(ctx context.Context) AiTensorboardMapOutput {
 	return o
-}
-
-func (o AiTensorboardMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AiTensorboard] {
-	return pulumix.Output[map[string]*AiTensorboard]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiTensorboardMapOutput) MapIndex(k pulumi.StringInput) AiTensorboardOutput {

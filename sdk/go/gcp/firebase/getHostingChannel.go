@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupHostingChannel(ctx *pulumi.Context, args *LookupHostingChannelArgs, opts ...pulumi.InvokeOption) (*LookupHostingChannelResult, error) {
@@ -84,12 +83,6 @@ func (o LookupHostingChannelResultOutput) ToLookupHostingChannelResultOutput() L
 
 func (o LookupHostingChannelResultOutput) ToLookupHostingChannelResultOutputWithContext(ctx context.Context) LookupHostingChannelResultOutput {
 	return o
-}
-
-func (o LookupHostingChannelResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHostingChannelResult] {
-	return pulumix.Output[LookupHostingChannelResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupHostingChannelResultOutput) ChannelId() pulumi.StringOutput {

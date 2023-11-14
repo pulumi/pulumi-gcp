@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information about a Google Billing Account.
@@ -131,12 +130,6 @@ func (o GetBillingAccountResultOutput) ToGetBillingAccountResultOutput() GetBill
 
 func (o GetBillingAccountResultOutput) ToGetBillingAccountResultOutputWithContext(ctx context.Context) GetBillingAccountResultOutput {
 	return o
-}
-
-func (o GetBillingAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBillingAccountResult] {
-	return pulumix.Output[GetBillingAccountResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetBillingAccountResultOutput) BillingAccount() pulumi.StringPtrOutput {

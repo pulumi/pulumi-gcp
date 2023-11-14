@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information about a Cloud SQL instance backup run.
@@ -127,12 +126,6 @@ func (o GetBackupRunResultOutput) ToGetBackupRunResultOutput() GetBackupRunResul
 
 func (o GetBackupRunResultOutput) ToGetBackupRunResultOutputWithContext(ctx context.Context) GetBackupRunResultOutput {
 	return o
-}
-
-func (o GetBackupRunResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBackupRunResult] {
-	return pulumix.Output[GetBackupRunResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetBackupRunResultOutput) BackupId() pulumi.IntOutput {

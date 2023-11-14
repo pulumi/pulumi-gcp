@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a folder-level logging sink. For more information see:
@@ -325,12 +324,6 @@ func (i *FolderSink) ToFolderSinkOutputWithContext(ctx context.Context) FolderSi
 	return pulumi.ToOutputWithContext(ctx, i).(FolderSinkOutput)
 }
 
-func (i *FolderSink) ToOutput(ctx context.Context) pulumix.Output[*FolderSink] {
-	return pulumix.Output[*FolderSink]{
-		OutputState: i.ToFolderSinkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FolderSinkArrayInput is an input type that accepts FolderSinkArray and FolderSinkArrayOutput values.
 // You can construct a concrete instance of `FolderSinkArrayInput` via:
 //
@@ -354,12 +347,6 @@ func (i FolderSinkArray) ToFolderSinkArrayOutput() FolderSinkArrayOutput {
 
 func (i FolderSinkArray) ToFolderSinkArrayOutputWithContext(ctx context.Context) FolderSinkArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FolderSinkArrayOutput)
-}
-
-func (i FolderSinkArray) ToOutput(ctx context.Context) pulumix.Output[[]*FolderSink] {
-	return pulumix.Output[[]*FolderSink]{
-		OutputState: i.ToFolderSinkArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FolderSinkMapInput is an input type that accepts FolderSinkMap and FolderSinkMapOutput values.
@@ -387,12 +374,6 @@ func (i FolderSinkMap) ToFolderSinkMapOutputWithContext(ctx context.Context) Fol
 	return pulumi.ToOutputWithContext(ctx, i).(FolderSinkMapOutput)
 }
 
-func (i FolderSinkMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FolderSink] {
-	return pulumix.Output[map[string]*FolderSink]{
-		OutputState: i.ToFolderSinkMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FolderSinkOutput struct{ *pulumi.OutputState }
 
 func (FolderSinkOutput) ElementType() reflect.Type {
@@ -405,12 +386,6 @@ func (o FolderSinkOutput) ToFolderSinkOutput() FolderSinkOutput {
 
 func (o FolderSinkOutput) ToFolderSinkOutputWithContext(ctx context.Context) FolderSinkOutput {
 	return o
-}
-
-func (o FolderSinkOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderSink] {
-	return pulumix.Output[*FolderSink]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Options that affect sinks exporting data to BigQuery. Structure documented below.
@@ -490,12 +465,6 @@ func (o FolderSinkArrayOutput) ToFolderSinkArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o FolderSinkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FolderSink] {
-	return pulumix.Output[[]*FolderSink]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FolderSinkArrayOutput) Index(i pulumi.IntInput) FolderSinkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FolderSink {
 		return vs[0].([]*FolderSink)[vs[1].(int)]
@@ -514,12 +483,6 @@ func (o FolderSinkMapOutput) ToFolderSinkMapOutput() FolderSinkMapOutput {
 
 func (o FolderSinkMapOutput) ToFolderSinkMapOutputWithContext(ctx context.Context) FolderSinkMapOutput {
 	return o
-}
-
-func (o FolderSinkMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FolderSink] {
-	return pulumix.Output[map[string]*FolderSink]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FolderSinkMapOutput) MapIndex(k pulumi.StringInput) FolderSinkOutput {

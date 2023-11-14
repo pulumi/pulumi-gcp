@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Adds existing resource policies to a disk. You can only add one policy
@@ -260,12 +259,6 @@ func (i *RegionDiskResourcePolicyAttachment) ToRegionDiskResourcePolicyAttachmen
 	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskResourcePolicyAttachmentOutput)
 }
 
-func (i *RegionDiskResourcePolicyAttachment) ToOutput(ctx context.Context) pulumix.Output[*RegionDiskResourcePolicyAttachment] {
-	return pulumix.Output[*RegionDiskResourcePolicyAttachment]{
-		OutputState: i.ToRegionDiskResourcePolicyAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RegionDiskResourcePolicyAttachmentArrayInput is an input type that accepts RegionDiskResourcePolicyAttachmentArray and RegionDiskResourcePolicyAttachmentArrayOutput values.
 // You can construct a concrete instance of `RegionDiskResourcePolicyAttachmentArrayInput` via:
 //
@@ -289,12 +282,6 @@ func (i RegionDiskResourcePolicyAttachmentArray) ToRegionDiskResourcePolicyAttac
 
 func (i RegionDiskResourcePolicyAttachmentArray) ToRegionDiskResourcePolicyAttachmentArrayOutputWithContext(ctx context.Context) RegionDiskResourcePolicyAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskResourcePolicyAttachmentArrayOutput)
-}
-
-func (i RegionDiskResourcePolicyAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionDiskResourcePolicyAttachment] {
-	return pulumix.Output[[]*RegionDiskResourcePolicyAttachment]{
-		OutputState: i.ToRegionDiskResourcePolicyAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RegionDiskResourcePolicyAttachmentMapInput is an input type that accepts RegionDiskResourcePolicyAttachmentMap and RegionDiskResourcePolicyAttachmentMapOutput values.
@@ -322,12 +309,6 @@ func (i RegionDiskResourcePolicyAttachmentMap) ToRegionDiskResourcePolicyAttachm
 	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskResourcePolicyAttachmentMapOutput)
 }
 
-func (i RegionDiskResourcePolicyAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionDiskResourcePolicyAttachment] {
-	return pulumix.Output[map[string]*RegionDiskResourcePolicyAttachment]{
-		OutputState: i.ToRegionDiskResourcePolicyAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegionDiskResourcePolicyAttachmentOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskResourcePolicyAttachmentOutput) ElementType() reflect.Type {
@@ -340,12 +321,6 @@ func (o RegionDiskResourcePolicyAttachmentOutput) ToRegionDiskResourcePolicyAtta
 
 func (o RegionDiskResourcePolicyAttachmentOutput) ToRegionDiskResourcePolicyAttachmentOutputWithContext(ctx context.Context) RegionDiskResourcePolicyAttachmentOutput {
 	return o
-}
-
-func (o RegionDiskResourcePolicyAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionDiskResourcePolicyAttachment] {
-	return pulumix.Output[*RegionDiskResourcePolicyAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the regional disk in which the resource policies are attached to.
@@ -386,12 +361,6 @@ func (o RegionDiskResourcePolicyAttachmentArrayOutput) ToRegionDiskResourcePolic
 	return o
 }
 
-func (o RegionDiskResourcePolicyAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionDiskResourcePolicyAttachment] {
-	return pulumix.Output[[]*RegionDiskResourcePolicyAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegionDiskResourcePolicyAttachmentArrayOutput) Index(i pulumi.IntInput) RegionDiskResourcePolicyAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionDiskResourcePolicyAttachment {
 		return vs[0].([]*RegionDiskResourcePolicyAttachment)[vs[1].(int)]
@@ -410,12 +379,6 @@ func (o RegionDiskResourcePolicyAttachmentMapOutput) ToRegionDiskResourcePolicyA
 
 func (o RegionDiskResourcePolicyAttachmentMapOutput) ToRegionDiskResourcePolicyAttachmentMapOutputWithContext(ctx context.Context) RegionDiskResourcePolicyAttachmentMapOutput {
 	return o
-}
-
-func (o RegionDiskResourcePolicyAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionDiskResourcePolicyAttachment] {
-	return pulumix.Output[map[string]*RegionDiskResourcePolicyAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegionDiskResourcePolicyAttachmentMapOutput) MapIndex(k pulumi.StringInput) RegionDiskResourcePolicyAttachmentOutput {

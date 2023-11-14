@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -45,12 +44,6 @@ func (i EngineModelDefaultVersionArgs) ToEngineModelDefaultVersionOutput() Engin
 
 func (i EngineModelDefaultVersionArgs) ToEngineModelDefaultVersionOutputWithContext(ctx context.Context) EngineModelDefaultVersionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EngineModelDefaultVersionOutput)
-}
-
-func (i EngineModelDefaultVersionArgs) ToOutput(ctx context.Context) pulumix.Output[EngineModelDefaultVersion] {
-	return pulumix.Output[EngineModelDefaultVersion]{
-		OutputState: i.ToEngineModelDefaultVersionOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i EngineModelDefaultVersionArgs) ToEngineModelDefaultVersionPtrOutput() EngineModelDefaultVersionPtrOutput {
@@ -94,12 +87,6 @@ func (i *engineModelDefaultVersionPtrType) ToEngineModelDefaultVersionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(EngineModelDefaultVersionPtrOutput)
 }
 
-func (i *engineModelDefaultVersionPtrType) ToOutput(ctx context.Context) pulumix.Output[*EngineModelDefaultVersion] {
-	return pulumix.Output[*EngineModelDefaultVersion]{
-		OutputState: i.ToEngineModelDefaultVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EngineModelDefaultVersionOutput struct{ *pulumi.OutputState }
 
 func (EngineModelDefaultVersionOutput) ElementType() reflect.Type {
@@ -124,12 +111,6 @@ func (o EngineModelDefaultVersionOutput) ToEngineModelDefaultVersionPtrOutputWit
 	}).(EngineModelDefaultVersionPtrOutput)
 }
 
-func (o EngineModelDefaultVersionOutput) ToOutput(ctx context.Context) pulumix.Output[EngineModelDefaultVersion] {
-	return pulumix.Output[EngineModelDefaultVersion]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name specified for the version when it was created.
 func (o EngineModelDefaultVersionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v EngineModelDefaultVersion) string { return v.Name }).(pulumi.StringOutput)
@@ -147,12 +128,6 @@ func (o EngineModelDefaultVersionPtrOutput) ToEngineModelDefaultVersionPtrOutput
 
 func (o EngineModelDefaultVersionPtrOutput) ToEngineModelDefaultVersionPtrOutputWithContext(ctx context.Context) EngineModelDefaultVersionPtrOutput {
 	return o
-}
-
-func (o EngineModelDefaultVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EngineModelDefaultVersion] {
-	return pulumix.Output[*EngineModelDefaultVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EngineModelDefaultVersionPtrOutput) Elem() EngineModelDefaultVersionOutput {

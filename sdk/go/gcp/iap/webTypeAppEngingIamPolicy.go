@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Identity-Aware Proxy WebTypeAppEngine. Each of these resources serves a different use case:
@@ -461,12 +460,6 @@ func (i *WebTypeAppEngingIamPolicy) ToWebTypeAppEngingIamPolicyOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeAppEngingIamPolicyOutput)
 }
 
-func (i *WebTypeAppEngingIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*WebTypeAppEngingIamPolicy] {
-	return pulumix.Output[*WebTypeAppEngingIamPolicy]{
-		OutputState: i.ToWebTypeAppEngingIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WebTypeAppEngingIamPolicyArrayInput is an input type that accepts WebTypeAppEngingIamPolicyArray and WebTypeAppEngingIamPolicyArrayOutput values.
 // You can construct a concrete instance of `WebTypeAppEngingIamPolicyArrayInput` via:
 //
@@ -490,12 +483,6 @@ func (i WebTypeAppEngingIamPolicyArray) ToWebTypeAppEngingIamPolicyArrayOutput()
 
 func (i WebTypeAppEngingIamPolicyArray) ToWebTypeAppEngingIamPolicyArrayOutputWithContext(ctx context.Context) WebTypeAppEngingIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeAppEngingIamPolicyArrayOutput)
-}
-
-func (i WebTypeAppEngingIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*WebTypeAppEngingIamPolicy] {
-	return pulumix.Output[[]*WebTypeAppEngingIamPolicy]{
-		OutputState: i.ToWebTypeAppEngingIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WebTypeAppEngingIamPolicyMapInput is an input type that accepts WebTypeAppEngingIamPolicyMap and WebTypeAppEngingIamPolicyMapOutput values.
@@ -523,12 +510,6 @@ func (i WebTypeAppEngingIamPolicyMap) ToWebTypeAppEngingIamPolicyMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeAppEngingIamPolicyMapOutput)
 }
 
-func (i WebTypeAppEngingIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebTypeAppEngingIamPolicy] {
-	return pulumix.Output[map[string]*WebTypeAppEngingIamPolicy]{
-		OutputState: i.ToWebTypeAppEngingIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebTypeAppEngingIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (WebTypeAppEngingIamPolicyOutput) ElementType() reflect.Type {
@@ -541,12 +522,6 @@ func (o WebTypeAppEngingIamPolicyOutput) ToWebTypeAppEngingIamPolicyOutput() Web
 
 func (o WebTypeAppEngingIamPolicyOutput) ToWebTypeAppEngingIamPolicyOutputWithContext(ctx context.Context) WebTypeAppEngingIamPolicyOutput {
 	return o
-}
-
-func (o WebTypeAppEngingIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*WebTypeAppEngingIamPolicy] {
-	return pulumix.Output[*WebTypeAppEngingIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
@@ -597,12 +572,6 @@ func (o WebTypeAppEngingIamPolicyArrayOutput) ToWebTypeAppEngingIamPolicyArrayOu
 	return o
 }
 
-func (o WebTypeAppEngingIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WebTypeAppEngingIamPolicy] {
-	return pulumix.Output[[]*WebTypeAppEngingIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WebTypeAppEngingIamPolicyArrayOutput) Index(i pulumi.IntInput) WebTypeAppEngingIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WebTypeAppEngingIamPolicy {
 		return vs[0].([]*WebTypeAppEngingIamPolicy)[vs[1].(int)]
@@ -621,12 +590,6 @@ func (o WebTypeAppEngingIamPolicyMapOutput) ToWebTypeAppEngingIamPolicyMapOutput
 
 func (o WebTypeAppEngingIamPolicyMapOutput) ToWebTypeAppEngingIamPolicyMapOutputWithContext(ctx context.Context) WebTypeAppEngingIamPolicyMapOutput {
 	return o
-}
-
-func (o WebTypeAppEngingIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebTypeAppEngingIamPolicy] {
-	return pulumix.Output[map[string]*WebTypeAppEngingIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebTypeAppEngingIamPolicyMapOutput) MapIndex(k pulumi.StringInput) WebTypeAppEngingIamPolicyOutput {

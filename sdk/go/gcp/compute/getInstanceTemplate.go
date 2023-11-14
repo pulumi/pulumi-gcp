@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **Note**: Global instance templates can be used in any region. To lower the impact of outages outside your region and gain data residency within your region, use google_compute_region_instance_template.
@@ -215,12 +214,6 @@ func (o LookupInstanceTemplateResultOutput) ToLookupInstanceTemplateResultOutput
 
 func (o LookupInstanceTemplateResultOutput) ToLookupInstanceTemplateResultOutputWithContext(ctx context.Context) LookupInstanceTemplateResultOutput {
 	return o
-}
-
-func (o LookupInstanceTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInstanceTemplateResult] {
-	return pulumix.Output[LookupInstanceTemplateResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupInstanceTemplateResultOutput) AdvancedMachineFeatures() GetInstanceTemplateAdvancedMachineFeatureArrayOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -121,12 +120,6 @@ func (o LookupPrivateCloudResultOutput) ToLookupPrivateCloudResultOutput() Looku
 
 func (o LookupPrivateCloudResultOutput) ToLookupPrivateCloudResultOutputWithContext(ctx context.Context) LookupPrivateCloudResultOutput {
 	return o
-}
-
-func (o LookupPrivateCloudResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrivateCloudResult] {
-	return pulumix.Output[LookupPrivateCloudResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupPrivateCloudResultOutput) Description() pulumi.StringOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i BatchingArgs) ToBatchingOutputWithContext(ctx context.Context) BatchingO
 	return pulumi.ToOutputWithContext(ctx, i).(BatchingOutput)
 }
 
-func (i BatchingArgs) ToOutput(ctx context.Context) pulumix.Output[Batching] {
-	return pulumix.Output[Batching]{
-		OutputState: i.ToBatchingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BatchingOutput struct{ *pulumi.OutputState }
 
 func (BatchingOutput) ElementType() reflect.Type {
@@ -65,12 +58,6 @@ func (o BatchingOutput) ToBatchingOutput() BatchingOutput {
 
 func (o BatchingOutput) ToBatchingOutputWithContext(ctx context.Context) BatchingOutput {
 	return o
-}
-
-func (o BatchingOutput) ToOutput(ctx context.Context) pulumix.Output[Batching] {
-	return pulumix.Output[Batching]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BatchingOutput) EnableBatching() pulumi.BoolPtrOutput {

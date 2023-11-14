@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information about a Cloud SQL instance.
@@ -126,12 +125,6 @@ func (o LookupDatabaseInstanceResultOutput) ToLookupDatabaseInstanceResultOutput
 
 func (o LookupDatabaseInstanceResultOutput) ToLookupDatabaseInstanceResultOutputWithContext(ctx context.Context) LookupDatabaseInstanceResultOutput {
 	return o
-}
-
-func (o LookupDatabaseInstanceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDatabaseInstanceResult] {
-	return pulumix.Output[LookupDatabaseInstanceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupDatabaseInstanceResultOutput) AvailableMaintenanceVersions() pulumi.StringArrayOutput {

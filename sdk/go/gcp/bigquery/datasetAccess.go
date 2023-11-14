@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -559,12 +558,6 @@ func (i *DatasetAccess) ToDatasetAccessOutputWithContext(ctx context.Context) Da
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessOutput)
 }
 
-func (i *DatasetAccess) ToOutput(ctx context.Context) pulumix.Output[*DatasetAccess] {
-	return pulumix.Output[*DatasetAccess]{
-		OutputState: i.ToDatasetAccessOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DatasetAccessArrayInput is an input type that accepts DatasetAccessArray and DatasetAccessArrayOutput values.
 // You can construct a concrete instance of `DatasetAccessArrayInput` via:
 //
@@ -588,12 +581,6 @@ func (i DatasetAccessArray) ToDatasetAccessArrayOutput() DatasetAccessArrayOutpu
 
 func (i DatasetAccessArray) ToDatasetAccessArrayOutputWithContext(ctx context.Context) DatasetAccessArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessArrayOutput)
-}
-
-func (i DatasetAccessArray) ToOutput(ctx context.Context) pulumix.Output[[]*DatasetAccess] {
-	return pulumix.Output[[]*DatasetAccess]{
-		OutputState: i.ToDatasetAccessArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DatasetAccessMapInput is an input type that accepts DatasetAccessMap and DatasetAccessMapOutput values.
@@ -621,12 +608,6 @@ func (i DatasetAccessMap) ToDatasetAccessMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessMapOutput)
 }
 
-func (i DatasetAccessMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatasetAccess] {
-	return pulumix.Output[map[string]*DatasetAccess]{
-		OutputState: i.ToDatasetAccessMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatasetAccessOutput struct{ *pulumi.OutputState }
 
 func (DatasetAccessOutput) ElementType() reflect.Type {
@@ -639,12 +620,6 @@ func (o DatasetAccessOutput) ToDatasetAccessOutput() DatasetAccessOutput {
 
 func (o DatasetAccessOutput) ToDatasetAccessOutputWithContext(ctx context.Context) DatasetAccessOutput {
 	return o
-}
-
-func (o DatasetAccessOutput) ToOutput(ctx context.Context) pulumix.Output[*DatasetAccess] {
-	return pulumix.Output[*DatasetAccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
@@ -746,12 +721,6 @@ func (o DatasetAccessArrayOutput) ToDatasetAccessArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o DatasetAccessArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DatasetAccess] {
-	return pulumix.Output[[]*DatasetAccess]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DatasetAccessArrayOutput) Index(i pulumi.IntInput) DatasetAccessOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatasetAccess {
 		return vs[0].([]*DatasetAccess)[vs[1].(int)]
@@ -770,12 +739,6 @@ func (o DatasetAccessMapOutput) ToDatasetAccessMapOutput() DatasetAccessMapOutpu
 
 func (o DatasetAccessMapOutput) ToDatasetAccessMapOutputWithContext(ctx context.Context) DatasetAccessMapOutput {
 	return o
-}
-
-func (o DatasetAccessMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatasetAccess] {
-	return pulumix.Output[map[string]*DatasetAccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatasetAccessMapOutput) MapIndex(k pulumi.StringInput) DatasetAccessOutput {

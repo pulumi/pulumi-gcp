@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Resource to hold the state and status of a user's domain mapping.
@@ -247,12 +246,6 @@ func (i *DomainMapping) ToDomainMappingOutputWithContext(ctx context.Context) Do
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingOutput)
 }
 
-func (i *DomainMapping) ToOutput(ctx context.Context) pulumix.Output[*DomainMapping] {
-	return pulumix.Output[*DomainMapping]{
-		OutputState: i.ToDomainMappingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DomainMappingArrayInput is an input type that accepts DomainMappingArray and DomainMappingArrayOutput values.
 // You can construct a concrete instance of `DomainMappingArrayInput` via:
 //
@@ -276,12 +269,6 @@ func (i DomainMappingArray) ToDomainMappingArrayOutput() DomainMappingArrayOutpu
 
 func (i DomainMappingArray) ToDomainMappingArrayOutputWithContext(ctx context.Context) DomainMappingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingArrayOutput)
-}
-
-func (i DomainMappingArray) ToOutput(ctx context.Context) pulumix.Output[[]*DomainMapping] {
-	return pulumix.Output[[]*DomainMapping]{
-		OutputState: i.ToDomainMappingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DomainMappingMapInput is an input type that accepts DomainMappingMap and DomainMappingMapOutput values.
@@ -309,12 +296,6 @@ func (i DomainMappingMap) ToDomainMappingMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingMapOutput)
 }
 
-func (i DomainMappingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DomainMapping] {
-	return pulumix.Output[map[string]*DomainMapping]{
-		OutputState: i.ToDomainMappingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DomainMappingOutput struct{ *pulumi.OutputState }
 
 func (DomainMappingOutput) ElementType() reflect.Type {
@@ -327,12 +308,6 @@ func (o DomainMappingOutput) ToDomainMappingOutput() DomainMappingOutput {
 
 func (o DomainMappingOutput) ToDomainMappingOutputWithContext(ctx context.Context) DomainMappingOutput {
 	return o
-}
-
-func (o DomainMappingOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainMapping] {
-	return pulumix.Output[*DomainMapping]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The location of the cloud run instance. eg us-central1
@@ -383,12 +358,6 @@ func (o DomainMappingArrayOutput) ToDomainMappingArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o DomainMappingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DomainMapping] {
-	return pulumix.Output[[]*DomainMapping]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DomainMappingArrayOutput) Index(i pulumi.IntInput) DomainMappingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DomainMapping {
 		return vs[0].([]*DomainMapping)[vs[1].(int)]
@@ -407,12 +376,6 @@ func (o DomainMappingMapOutput) ToDomainMappingMapOutput() DomainMappingMapOutpu
 
 func (o DomainMappingMapOutput) ToDomainMappingMapOutputWithContext(ctx context.Context) DomainMappingMapOutput {
 	return o
-}
-
-func (o DomainMappingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DomainMapping] {
-	return pulumix.Output[map[string]*DomainMapping]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DomainMappingMapOutput) MapIndex(k pulumi.StringInput) DomainMappingOutput {

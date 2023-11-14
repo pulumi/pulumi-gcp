@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Anthos cluster running on Azure.
@@ -505,12 +504,6 @@ func (i *AzureCluster) ToAzureClusterOutputWithContext(ctx context.Context) Azur
 	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterOutput)
 }
 
-func (i *AzureCluster) ToOutput(ctx context.Context) pulumix.Output[*AzureCluster] {
-	return pulumix.Output[*AzureCluster]{
-		OutputState: i.ToAzureClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AzureClusterArrayInput is an input type that accepts AzureClusterArray and AzureClusterArrayOutput values.
 // You can construct a concrete instance of `AzureClusterArrayInput` via:
 //
@@ -534,12 +527,6 @@ func (i AzureClusterArray) ToAzureClusterArrayOutput() AzureClusterArrayOutput {
 
 func (i AzureClusterArray) ToAzureClusterArrayOutputWithContext(ctx context.Context) AzureClusterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterArrayOutput)
-}
-
-func (i AzureClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*AzureCluster] {
-	return pulumix.Output[[]*AzureCluster]{
-		OutputState: i.ToAzureClusterArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AzureClusterMapInput is an input type that accepts AzureClusterMap and AzureClusterMapOutput values.
@@ -567,12 +554,6 @@ func (i AzureClusterMap) ToAzureClusterMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterMapOutput)
 }
 
-func (i AzureClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AzureCluster] {
-	return pulumix.Output[map[string]*AzureCluster]{
-		OutputState: i.ToAzureClusterMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AzureClusterOutput struct{ *pulumi.OutputState }
 
 func (AzureClusterOutput) ElementType() reflect.Type {
@@ -585,12 +566,6 @@ func (o AzureClusterOutput) ToAzureClusterOutput() AzureClusterOutput {
 
 func (o AzureClusterOutput) ToAzureClusterOutputWithContext(ctx context.Context) AzureClusterOutput {
 	return o
-}
-
-func (o AzureClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureCluster] {
-	return pulumix.Output[*AzureCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
@@ -728,12 +703,6 @@ func (o AzureClusterArrayOutput) ToAzureClusterArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o AzureClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AzureCluster] {
-	return pulumix.Output[[]*AzureCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AzureClusterArrayOutput) Index(i pulumi.IntInput) AzureClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AzureCluster {
 		return vs[0].([]*AzureCluster)[vs[1].(int)]
@@ -752,12 +721,6 @@ func (o AzureClusterMapOutput) ToAzureClusterMapOutput() AzureClusterMapOutput {
 
 func (o AzureClusterMapOutput) ToAzureClusterMapOutputWithContext(ctx context.Context) AzureClusterMapOutput {
 	return o
-}
-
-func (o AzureClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AzureCluster] {
-	return pulumix.Output[map[string]*AzureCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureClusterMapOutput) MapIndex(k pulumi.StringInput) AzureClusterOutput {

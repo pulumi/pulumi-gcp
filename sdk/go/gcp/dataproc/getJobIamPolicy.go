@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for a Dataproc job.
@@ -109,12 +108,6 @@ func (o GetJobIamPolicyResultOutput) ToGetJobIamPolicyResultOutput() GetJobIamPo
 
 func (o GetJobIamPolicyResultOutput) ToGetJobIamPolicyResultOutputWithContext(ctx context.Context) GetJobIamPolicyResultOutput {
 	return o
-}
-
-func (o GetJobIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetJobIamPolicyResult] {
-	return pulumix.Output[GetJobIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.

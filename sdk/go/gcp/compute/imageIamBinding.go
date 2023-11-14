@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Compute Engine Image. Each of these resources serves a different use case:
@@ -489,12 +488,6 @@ func (i *ImageIamBinding) ToImageIamBindingOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ImageIamBindingOutput)
 }
 
-func (i *ImageIamBinding) ToOutput(ctx context.Context) pulumix.Output[*ImageIamBinding] {
-	return pulumix.Output[*ImageIamBinding]{
-		OutputState: i.ToImageIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ImageIamBindingArrayInput is an input type that accepts ImageIamBindingArray and ImageIamBindingArrayOutput values.
 // You can construct a concrete instance of `ImageIamBindingArrayInput` via:
 //
@@ -518,12 +511,6 @@ func (i ImageIamBindingArray) ToImageIamBindingArrayOutput() ImageIamBindingArra
 
 func (i ImageIamBindingArray) ToImageIamBindingArrayOutputWithContext(ctx context.Context) ImageIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageIamBindingArrayOutput)
-}
-
-func (i ImageIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*ImageIamBinding] {
-	return pulumix.Output[[]*ImageIamBinding]{
-		OutputState: i.ToImageIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ImageIamBindingMapInput is an input type that accepts ImageIamBindingMap and ImageIamBindingMapOutput values.
@@ -551,12 +538,6 @@ func (i ImageIamBindingMap) ToImageIamBindingMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ImageIamBindingMapOutput)
 }
 
-func (i ImageIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ImageIamBinding] {
-	return pulumix.Output[map[string]*ImageIamBinding]{
-		OutputState: i.ToImageIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ImageIamBindingOutput struct{ *pulumi.OutputState }
 
 func (ImageIamBindingOutput) ElementType() reflect.Type {
@@ -569,12 +550,6 @@ func (o ImageIamBindingOutput) ToImageIamBindingOutput() ImageIamBindingOutput {
 
 func (o ImageIamBindingOutput) ToImageIamBindingOutputWithContext(ctx context.Context) ImageIamBindingOutput {
 	return o
-}
-
-func (o ImageIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageIamBinding] {
-	return pulumix.Output[*ImageIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -636,12 +611,6 @@ func (o ImageIamBindingArrayOutput) ToImageIamBindingArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o ImageIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ImageIamBinding] {
-	return pulumix.Output[[]*ImageIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ImageIamBindingArrayOutput) Index(i pulumi.IntInput) ImageIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ImageIamBinding {
 		return vs[0].([]*ImageIamBinding)[vs[1].(int)]
@@ -660,12 +629,6 @@ func (o ImageIamBindingMapOutput) ToImageIamBindingMapOutput() ImageIamBindingMa
 
 func (o ImageIamBindingMapOutput) ToImageIamBindingMapOutputWithContext(ctx context.Context) ImageIamBindingMapOutput {
 	return o
-}
-
-func (o ImageIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ImageIamBinding] {
-	return pulumix.Output[map[string]*ImageIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImageIamBindingMapOutput) MapIndex(k pulumi.StringInput) ImageIamBindingOutput {

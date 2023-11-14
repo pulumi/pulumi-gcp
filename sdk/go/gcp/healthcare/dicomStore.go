@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A DicomStore is a datastore inside a Healthcare dataset that conforms to the DICOM
@@ -394,12 +393,6 @@ func (i *DicomStore) ToDicomStoreOutputWithContext(ctx context.Context) DicomSto
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreOutput)
 }
 
-func (i *DicomStore) ToOutput(ctx context.Context) pulumix.Output[*DicomStore] {
-	return pulumix.Output[*DicomStore]{
-		OutputState: i.ToDicomStoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DicomStoreArrayInput is an input type that accepts DicomStoreArray and DicomStoreArrayOutput values.
 // You can construct a concrete instance of `DicomStoreArrayInput` via:
 //
@@ -423,12 +416,6 @@ func (i DicomStoreArray) ToDicomStoreArrayOutput() DicomStoreArrayOutput {
 
 func (i DicomStoreArray) ToDicomStoreArrayOutputWithContext(ctx context.Context) DicomStoreArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreArrayOutput)
-}
-
-func (i DicomStoreArray) ToOutput(ctx context.Context) pulumix.Output[[]*DicomStore] {
-	return pulumix.Output[[]*DicomStore]{
-		OutputState: i.ToDicomStoreArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DicomStoreMapInput is an input type that accepts DicomStoreMap and DicomStoreMapOutput values.
@@ -456,12 +443,6 @@ func (i DicomStoreMap) ToDicomStoreMapOutputWithContext(ctx context.Context) Dic
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreMapOutput)
 }
 
-func (i DicomStoreMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DicomStore] {
-	return pulumix.Output[map[string]*DicomStore]{
-		OutputState: i.ToDicomStoreMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DicomStoreOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreOutput) ElementType() reflect.Type {
@@ -474,12 +455,6 @@ func (o DicomStoreOutput) ToDicomStoreOutput() DicomStoreOutput {
 
 func (o DicomStoreOutput) ToDicomStoreOutputWithContext(ctx context.Context) DicomStoreOutput {
 	return o
-}
-
-func (o DicomStoreOutput) ToOutput(ctx context.Context) pulumix.Output[*DicomStore] {
-	return pulumix.Output[*DicomStore]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Identifies the dataset addressed by this request. Must be in the format
@@ -554,12 +529,6 @@ func (o DicomStoreArrayOutput) ToDicomStoreArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o DicomStoreArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DicomStore] {
-	return pulumix.Output[[]*DicomStore]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DicomStoreArrayOutput) Index(i pulumi.IntInput) DicomStoreOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DicomStore {
 		return vs[0].([]*DicomStore)[vs[1].(int)]
@@ -578,12 +547,6 @@ func (o DicomStoreMapOutput) ToDicomStoreMapOutput() DicomStoreMapOutput {
 
 func (o DicomStoreMapOutput) ToDicomStoreMapOutputWithContext(ctx context.Context) DicomStoreMapOutput {
 	return o
-}
-
-func (o DicomStoreMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DicomStore] {
-	return pulumix.Output[map[string]*DicomStore]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DicomStoreMapOutput) MapIndex(k pulumi.StringInput) DicomStoreOutput {

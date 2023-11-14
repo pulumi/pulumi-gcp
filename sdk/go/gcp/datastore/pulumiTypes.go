@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i DataStoreIndexPropertyArgs) ToDataStoreIndexPropertyOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(DataStoreIndexPropertyOutput)
 }
 
-func (i DataStoreIndexPropertyArgs) ToOutput(ctx context.Context) pulumix.Output[DataStoreIndexProperty] {
-	return pulumix.Output[DataStoreIndexProperty]{
-		OutputState: i.ToDataStoreIndexPropertyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataStoreIndexPropertyArrayInput is an input type that accepts DataStoreIndexPropertyArray and DataStoreIndexPropertyArrayOutput values.
 // You can construct a concrete instance of `DataStoreIndexPropertyArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i DataStoreIndexPropertyArray) ToDataStoreIndexPropertyArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(DataStoreIndexPropertyArrayOutput)
 }
 
-func (i DataStoreIndexPropertyArray) ToOutput(ctx context.Context) pulumix.Output[[]DataStoreIndexProperty] {
-	return pulumix.Output[[]DataStoreIndexProperty]{
-		OutputState: i.ToDataStoreIndexPropertyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataStoreIndexPropertyOutput struct{ *pulumi.OutputState }
 
 func (DataStoreIndexPropertyOutput) ElementType() reflect.Type {
@@ -102,12 +89,6 @@ func (o DataStoreIndexPropertyOutput) ToDataStoreIndexPropertyOutput() DataStore
 
 func (o DataStoreIndexPropertyOutput) ToDataStoreIndexPropertyOutputWithContext(ctx context.Context) DataStoreIndexPropertyOutput {
 	return o
-}
-
-func (o DataStoreIndexPropertyOutput) ToOutput(ctx context.Context) pulumix.Output[DataStoreIndexProperty] {
-	return pulumix.Output[DataStoreIndexProperty]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The direction the index should optimize for sorting.
@@ -133,12 +114,6 @@ func (o DataStoreIndexPropertyArrayOutput) ToDataStoreIndexPropertyArrayOutput()
 
 func (o DataStoreIndexPropertyArrayOutput) ToDataStoreIndexPropertyArrayOutputWithContext(ctx context.Context) DataStoreIndexPropertyArrayOutput {
 	return o
-}
-
-func (o DataStoreIndexPropertyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DataStoreIndexProperty] {
-	return pulumix.Output[[]DataStoreIndexProperty]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataStoreIndexPropertyArrayOutput) Index(i pulumi.IntInput) DataStoreIndexPropertyOutput {
