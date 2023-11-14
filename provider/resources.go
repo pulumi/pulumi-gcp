@@ -84,6 +84,7 @@ const (
 	gcpDeploymentManager        = "DeploymentManager"        // DeploymentManager resources
 	gcpDiagflow                 = "Diagflow"                 // Diagflow resources
 	gcpEdgeNetwork              = "EdgeNetwork"              // Distributed Cloud Edge Network resources
+	gcpEdgecontainer            = "EdgeContainer"            // Cloud Edge Container resources
 	gcpEndPoints                = "Endpoints"                // End Point resources
 	gcpEssentialContacts        = "EssentialContacts"        // Essential Contacts resources
 	gcpEventarc                 = "Eventarc"                 // Eventarc
@@ -100,6 +101,7 @@ const (
 	gcpIAM                      = "Iam"                      // IAM resources
 	gcpIAP                      = "Iap"                      // IAP resources
 	gcpIdentityPlatform         = "IdentityPlatform"         // IdentityPlatform resources
+	gcpIntegrationConnectors    = "IntegrationConnectors"    // Integration Connectors resources
 	gcpIot                      = "Iot"                      // Iot resources
 	gcpKMS                      = "Kms"                      // KMS resources
 	gcpKubernetes               = "Container"                // Kubernetes Engine resources
@@ -180,6 +182,7 @@ var moduleMapping = map[string]string{
 	"container_analysis":              gcpContainerAnalysis,
 	"dataform":                        gcpDataform,
 	"dns":                             gcpDNS,
+	"database_migration_service":      gcpDatabaseMigrationService,
 	"data_catalog":                    gcpDataCatalog,
 	"dataflow":                        gcpDataFlow,
 	"data_fusion":                     gcpDataFusion,
@@ -192,6 +195,7 @@ var moduleMapping = map[string]string{
 	"deployment_manager":              gcpDeploymentManager,
 	"dialogflow":                      gcpDiagflow,
 	"edgenetwork":                     gcpEdgeNetwork,
+	"edgecontainer":                   gcpEdgecontainer,
 	"endpoints":                       gcpEndPoints,
 	"essential_contacts":              gcpEssentialContacts,
 	"eventarc":                        gcpEventarc,
@@ -207,6 +211,7 @@ var moduleMapping = map[string]string{
 	"healthcare":                      gcpHealthcare,
 	"iam":                             gcpIAM,
 	"iap":                             gcpIAP,
+	"integration_connectors":          gcpIntegrationConnectors,
 	"looker":                          gcpLooker,
 	"identity_platform":               gcpIdentityPlatform,
 	"cloudiot":                        gcpIot,
@@ -1732,6 +1737,24 @@ func Provider() tfbridge.ProviderInfo {
 			"google_pubsub_lite_subscription": {Tok: gcpResource(gcpPubSub, "LiteSubscription")},
 			"google_pubsub_lite_topic":        {Tok: gcpResource(gcpPubSub, "LiteTopic")},
 			"google_pubsub_schema":            {Tok: gcpResource(gcpPubSub, "Schema")},
+			"google_pubsub_schema_iam_binding": {
+				Tok: gcpResource(gcpPubSub, "SchemaIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "pubsub_schema_iam.html.markdown",
+				},
+			},
+			"google_pubsub_schema_iam_policy": {
+				Tok: gcpResource(gcpPubSub, "SchemaIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "pubsub_schema_iam.html.markdown",
+				},
+			},
+			"google_pubsub_schema_iam_member": {
+				Tok: gcpResource(gcpPubSub, "SchemaIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "pubsub_schema_iam.html.markdown",
+				},
+			},
 
 			// Redis resources
 			"google_redis_instance": {Tok: gcpResource(gcpRedis, "Instance")},
