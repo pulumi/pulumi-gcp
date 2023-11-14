@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['EndpointArgs', 'Endpoint']
+__all__ = ['EndpointArrgs', 'Endpoint']
 
 @pulumi.input_type
-class EndpointArgs:
+calass EndpointArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  network: pulumi.Input[str],
@@ -139,7 +139,7 @@ class EndpointArgs:
 
 
 @pulumi.input_type
-class _EndpointState:
+calass _EndpointState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -332,7 +332,7 @@ class _EndpointState:
         pulumi.set(self, "update_time", value)
 
 
-class Endpoint(pulumi.CustomResource):
+calass Endpoint(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -411,7 +411,7 @@ class Endpoint(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: EndpointArgs,
+                 args: EndpointArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Cloud IDS is an intrusion detection service that provides threat detection for intrusions, malware, spyware, and command-and-control attacks on your network.
@@ -461,12 +461,12 @@ class Endpoint(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param EndpointArgs args: The arguments to use to populate this resource's properties.
+        :param EndpointArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(EndpointArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(EndpointArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -489,7 +489,7 @@ class Endpoint(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = EndpointArgs.__new__(EndpointArgs)
+            __props__ = EndpointArrgs.__new__(EndpointArrgs)
 
             __props__.__dict__["description"] = description
             if location is None and not opts.urn:

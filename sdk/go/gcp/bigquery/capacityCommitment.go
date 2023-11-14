@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Capacity commitment is a way to purchase compute capacity for BigQuery jobs (in the form of slots) with some committed period of usage. Annual commitments renew by default. Commitments can be removed after their commitment end time passes.
@@ -294,12 +293,6 @@ func (i *CapacityCommitment) ToCapacityCommitmentOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(CapacityCommitmentOutput)
 }
 
-func (i *CapacityCommitment) ToOutput(ctx context.Context) pulumix.Output[*CapacityCommitment] {
-	return pulumix.Output[*CapacityCommitment]{
-		OutputState: i.ToCapacityCommitmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CapacityCommitmentArrayInput is an input type that accepts CapacityCommitmentArray and CapacityCommitmentArrayOutput values.
 // You can construct a concrete instance of `CapacityCommitmentArrayInput` via:
 //
@@ -323,12 +316,6 @@ func (i CapacityCommitmentArray) ToCapacityCommitmentArrayOutput() CapacityCommi
 
 func (i CapacityCommitmentArray) ToCapacityCommitmentArrayOutputWithContext(ctx context.Context) CapacityCommitmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CapacityCommitmentArrayOutput)
-}
-
-func (i CapacityCommitmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*CapacityCommitment] {
-	return pulumix.Output[[]*CapacityCommitment]{
-		OutputState: i.ToCapacityCommitmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CapacityCommitmentMapInput is an input type that accepts CapacityCommitmentMap and CapacityCommitmentMapOutput values.
@@ -356,12 +343,6 @@ func (i CapacityCommitmentMap) ToCapacityCommitmentMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(CapacityCommitmentMapOutput)
 }
 
-func (i CapacityCommitmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CapacityCommitment] {
-	return pulumix.Output[map[string]*CapacityCommitment]{
-		OutputState: i.ToCapacityCommitmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CapacityCommitmentOutput struct{ *pulumi.OutputState }
 
 func (CapacityCommitmentOutput) ElementType() reflect.Type {
@@ -374,12 +355,6 @@ func (o CapacityCommitmentOutput) ToCapacityCommitmentOutput() CapacityCommitmen
 
 func (o CapacityCommitmentOutput) ToCapacityCommitmentOutputWithContext(ctx context.Context) CapacityCommitmentOutput {
 	return o
-}
-
-func (o CapacityCommitmentOutput) ToOutput(ctx context.Context) pulumix.Output[*CapacityCommitment] {
-	return pulumix.Output[*CapacityCommitment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is
@@ -463,12 +438,6 @@ func (o CapacityCommitmentArrayOutput) ToCapacityCommitmentArrayOutputWithContex
 	return o
 }
 
-func (o CapacityCommitmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CapacityCommitment] {
-	return pulumix.Output[[]*CapacityCommitment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CapacityCommitmentArrayOutput) Index(i pulumi.IntInput) CapacityCommitmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CapacityCommitment {
 		return vs[0].([]*CapacityCommitment)[vs[1].(int)]
@@ -487,12 +456,6 @@ func (o CapacityCommitmentMapOutput) ToCapacityCommitmentMapOutput() CapacityCom
 
 func (o CapacityCommitmentMapOutput) ToCapacityCommitmentMapOutputWithContext(ctx context.Context) CapacityCommitmentMapOutput {
 	return o
-}
-
-func (o CapacityCommitmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CapacityCommitment] {
-	return pulumix.Output[map[string]*CapacityCommitment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CapacityCommitmentMapOutput) MapIndex(k pulumi.StringInput) CapacityCommitmentOutput {

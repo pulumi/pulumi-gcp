@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DatasetIamBindingArgs', 'DatasetIamBinding']
+__all__ = ['DatasetIamBindingArrgs', 'DatasetIamBinding']
 
 @pulumi.input_type
-class DatasetIamBindingArgs:
+calass DatasetIamBindingArrgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['DatasetIamBindingConditionArgs']] = None):
+                 condition: Optional[pulumi.Input['DatasetIamBindingConditionArrgs']] = None):
         """
         The set of arguments for constructing a DatasetIamBinding resource.
         :param pulumi.Input[str] dataset_id: The dataset ID, in the form
@@ -94,18 +94,18 @@ class DatasetIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['DatasetIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['DatasetIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['DatasetIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['DatasetIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
-class _DatasetIamBindingState:
+calass _DatasetIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['DatasetIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['DatasetIamBindingConditionArrgs']] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -143,11 +143,11 @@ class _DatasetIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['DatasetIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['DatasetIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['DatasetIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['DatasetIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -210,12 +210,12 @@ class _DatasetIamBindingState:
         pulumi.set(self, "role", value)
 
 
-class DatasetIamBinding(pulumi.CustomResource):
+calass DatasetIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['DatasetIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['DatasetIamBindingConditionArrgs']]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -237,7 +237,7 @@ class DatasetIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -323,7 +323,7 @@ class DatasetIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DatasetIamBindingArgs,
+                 args: DatasetIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Healthcare dataset. Each of these resources serves a different use case:
@@ -342,7 +342,7 @@ class DatasetIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -406,12 +406,12 @@ class DatasetIamBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param DatasetIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param DatasetIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DatasetIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DatasetIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -420,7 +420,7 @@ class DatasetIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['DatasetIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['DatasetIamBindingConditionArrgs']]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -431,7 +431,7 @@ class DatasetIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DatasetIamBindingArgs.__new__(DatasetIamBindingArgs)
+            __props__ = DatasetIamBindingArrgs.__new__(DatasetIamBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if dataset_id is None and not opts.urn:
@@ -454,7 +454,7 @@ class DatasetIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['DatasetIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['DatasetIamBindingConditionArrgs']]] = None,
             dataset_id: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

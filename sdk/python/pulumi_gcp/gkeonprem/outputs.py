@@ -137,7 +137,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class BareMetalAdminClusterClusterOperations(dict):
+calass BareMetalAdminClusterClusterOperations(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -173,7 +173,7 @@ class BareMetalAdminClusterClusterOperations(dict):
 
 
 @pulumi.output_type
-class BareMetalAdminClusterControlPlane(dict):
+calass BareMetalAdminClusterControlPlane(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -197,9 +197,9 @@ class BareMetalAdminClusterControlPlane(dict):
                  control_plane_node_pool_config: 'outputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig',
                  api_server_args: Optional[Sequence['outputs.BareMetalAdminClusterControlPlaneApiServerArg']] = None):
         """
-        :param 'BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs' control_plane_node_pool_config: Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
+        :param 'BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArrgs' control_plane_node_pool_config: Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
                Structure is documented below.
-        :param Sequence['BareMetalAdminClusterControlPlaneApiServerArgArgs'] api_server_args: Customizes the default API server args. Only a subset of
+        :param Sequence['BareMetalAdminClusterControlPlaneApiServerArgArrgs'] api_server_args: Customizes the default API server args. Only a subset of
                customized flags are supported. Please refer to the API server
                documentation below to know the exact format:
                https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
@@ -232,7 +232,7 @@ class BareMetalAdminClusterControlPlane(dict):
 
 
 @pulumi.output_type
-class BareMetalAdminClusterControlPlaneApiServerArg(dict):
+calass BareMetalAdminClusterControlPlaneApiServerArg(dict):
     def __init__(__self__, *,
                  argument: str,
                  value: str):
@@ -261,7 +261,7 @@ class BareMetalAdminClusterControlPlaneApiServerArg(dict):
 
 
 @pulumi.output_type
-class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig(dict):
+calass BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -282,7 +282,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig(dict):
     def __init__(__self__, *,
                  node_pool_config: 'outputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig'):
         """
-        :param 'BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs' node_pool_config: The generic configuration for a node pool running the control plane.
+        :param 'BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArrgs' node_pool_config: The generic configuration for a node pool running the control plane.
                Structure is documented below.
         """
         pulumi.set(__self__, "node_pool_config", node_pool_config)
@@ -298,7 +298,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig(dict):
+calass BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -334,10 +334,10 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig(
                http://kubernetes.io/v1.1/docs/user-guide/labels.html
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        :param Sequence['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs'] node_configs: The list of machine addresses in the Bare Metal Node Pool.
+        :param Sequence['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrgs'] node_configs: The list of machine addresses in the Bare Metal Node Pool.
                Structure is documented below.
         :param str operating_system: Specifies the nodes operating system (default: LINUX).
-        :param Sequence['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs'] taints: The initial taints assigned to nodes of this node pool.
+        :param Sequence['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrgs'] taints: The initial taints assigned to nodes of this node pool.
                Structure is documented below.
         """
         if labels is not None:
@@ -394,7 +394,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig(
 
 
 @pulumi.output_type
-class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig(dict):
+calass BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -462,7 +462,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigN
 
 
 @pulumi.output_type
-class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint(dict):
+calass BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint(dict):
     def __init__(__self__, *,
                  effect: Optional[str] = None,
                  key: Optional[str] = None,
@@ -507,7 +507,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigT
 
 
 @pulumi.output_type
-class BareMetalAdminClusterFleet(dict):
+calass BareMetalAdminClusterFleet(dict):
     def __init__(__self__, *,
                  membership: Optional[str] = None):
         """
@@ -532,7 +532,7 @@ class BareMetalAdminClusterFleet(dict):
 
 
 @pulumi.output_type
-class BareMetalAdminClusterLoadBalancer(dict):
+calass BareMetalAdminClusterLoadBalancer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -559,11 +559,11 @@ class BareMetalAdminClusterLoadBalancer(dict):
                  vip_config: 'outputs.BareMetalAdminClusterLoadBalancerVipConfig',
                  manual_lb_config: Optional['outputs.BareMetalAdminClusterLoadBalancerManualLbConfig'] = None):
         """
-        :param 'BareMetalAdminClusterLoadBalancerPortConfigArgs' port_config: Specifies the load balancer ports.
+        :param 'BareMetalAdminClusterLoadBalancerPortConfigArrgs' port_config: Specifies the load balancer ports.
                Structure is documented below.
-        :param 'BareMetalAdminClusterLoadBalancerVipConfigArgs' vip_config: Specified the Bare Metal Load Balancer Config
+        :param 'BareMetalAdminClusterLoadBalancerVipConfigArrgs' vip_config: Specified the Bare Metal Load Balancer Config
                Structure is documented below.
-        :param 'BareMetalAdminClusterLoadBalancerManualLbConfigArgs' manual_lb_config: A nested object resource
+        :param 'BareMetalAdminClusterLoadBalancerManualLbConfigArrgs' manual_lb_config: A nested object resource
                Structure is documented below.
         """
         pulumi.set(__self__, "port_config", port_config)
@@ -600,7 +600,7 @@ class BareMetalAdminClusterLoadBalancer(dict):
 
 
 @pulumi.output_type
-class BareMetalAdminClusterLoadBalancerManualLbConfig(dict):
+calass BareMetalAdminClusterLoadBalancerManualLbConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -618,7 +618,7 @@ class BareMetalAdminClusterLoadBalancerManualLbConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalAdminClusterLoadBalancerPortConfig(dict):
+calass BareMetalAdminClusterLoadBalancerPortConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -653,7 +653,7 @@ class BareMetalAdminClusterLoadBalancerPortConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalAdminClusterLoadBalancerVipConfig(dict):
+calass BareMetalAdminClusterLoadBalancerVipConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -688,7 +688,7 @@ class BareMetalAdminClusterLoadBalancerVipConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalAdminClusterMaintenanceConfig(dict):
+calass BareMetalAdminClusterMaintenanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -729,7 +729,7 @@ class BareMetalAdminClusterMaintenanceConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalAdminClusterNetworkConfig(dict):
+calass BareMetalAdminClusterNetworkConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -750,7 +750,7 @@ class BareMetalAdminClusterNetworkConfig(dict):
     def __init__(__self__, *,
                  island_mode_cidr: Optional['outputs.BareMetalAdminClusterNetworkConfigIslandModeCidr'] = None):
         """
-        :param 'BareMetalAdminClusterNetworkConfigIslandModeCidrArgs' island_mode_cidr: A nested object resource
+        :param 'BareMetalAdminClusterNetworkConfigIslandModeCidrArrgs' island_mode_cidr: A nested object resource
                Structure is documented below.
         """
         if island_mode_cidr is not None:
@@ -767,7 +767,7 @@ class BareMetalAdminClusterNetworkConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalAdminClusterNetworkConfigIslandModeCidr(dict):
+calass BareMetalAdminClusterNetworkConfigIslandModeCidr(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -815,7 +815,7 @@ class BareMetalAdminClusterNetworkConfigIslandModeCidr(dict):
 
 
 @pulumi.output_type
-class BareMetalAdminClusterNodeAccessConfig(dict):
+calass BareMetalAdminClusterNodeAccessConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -853,7 +853,7 @@ class BareMetalAdminClusterNodeAccessConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalAdminClusterNodeConfig(dict):
+calass BareMetalAdminClusterNodeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -891,7 +891,7 @@ class BareMetalAdminClusterNodeConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalAdminClusterProxy(dict):
+calass BareMetalAdminClusterProxy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -946,11 +946,11 @@ class BareMetalAdminClusterProxy(dict):
 
 
 @pulumi.output_type
-class BareMetalAdminClusterSecurityConfig(dict):
+calass BareMetalAdminClusterSecurityConfig(dict):
     def __init__(__self__, *,
                  authorization: Optional['outputs.BareMetalAdminClusterSecurityConfigAuthorization'] = None):
         """
-        :param 'BareMetalAdminClusterSecurityConfigAuthorizationArgs' authorization: Configures user access to the Bare Metal User cluster.
+        :param 'BareMetalAdminClusterSecurityConfigAuthorizationArrgs' authorization: Configures user access to the Bare Metal User cluster.
                Structure is documented below.
         """
         if authorization is not None:
@@ -967,7 +967,7 @@ class BareMetalAdminClusterSecurityConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalAdminClusterSecurityConfigAuthorization(dict):
+calass BareMetalAdminClusterSecurityConfigAuthorization(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -988,7 +988,7 @@ class BareMetalAdminClusterSecurityConfigAuthorization(dict):
     def __init__(__self__, *,
                  admin_users: Sequence['outputs.BareMetalAdminClusterSecurityConfigAuthorizationAdminUser']):
         """
-        :param Sequence['BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs'] admin_users: Users that will be granted the cluster-admin role on the cluster, providing full access to the cluster.
+        :param Sequence['BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrgs'] admin_users: Users that will be granted the cluster-admin role on the cluster, providing full access to the cluster.
                Structure is documented below.
         """
         pulumi.set(__self__, "admin_users", admin_users)
@@ -1004,7 +1004,7 @@ class BareMetalAdminClusterSecurityConfigAuthorization(dict):
 
 
 @pulumi.output_type
-class BareMetalAdminClusterSecurityConfigAuthorizationAdminUser(dict):
+calass BareMetalAdminClusterSecurityConfigAuthorizationAdminUser(dict):
     def __init__(__self__, *,
                  username: str):
         """
@@ -1022,7 +1022,7 @@ class BareMetalAdminClusterSecurityConfigAuthorizationAdminUser(dict):
 
 
 @pulumi.output_type
-class BareMetalAdminClusterStatus(dict):
+calass BareMetalAdminClusterStatus(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1044,7 +1044,7 @@ class BareMetalAdminClusterStatus(dict):
                  conditions: Optional[Sequence['outputs.BareMetalAdminClusterStatusCondition']] = None,
                  error_message: Optional[str] = None):
         """
-        :param Sequence['BareMetalAdminClusterStatusConditionArgs'] conditions: (Output)
+        :param Sequence['BareMetalAdminClusterStatusConditionArrgs'] conditions: (Output)
                ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
                Structure is documented below.
         :param str error_message: (Output)
@@ -1084,7 +1084,7 @@ class BareMetalAdminClusterStatus(dict):
 
 
 @pulumi.output_type
-class BareMetalAdminClusterStatusCondition(dict):
+calass BareMetalAdminClusterStatusCondition(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1176,7 +1176,7 @@ class BareMetalAdminClusterStatusCondition(dict):
 
 
 @pulumi.output_type
-class BareMetalAdminClusterStorage(dict):
+calass BareMetalAdminClusterStorage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1200,11 +1200,11 @@ class BareMetalAdminClusterStorage(dict):
                  lvp_node_mounts_config: 'outputs.BareMetalAdminClusterStorageLvpNodeMountsConfig',
                  lvp_share_config: 'outputs.BareMetalAdminClusterStorageLvpShareConfig'):
         """
-        :param 'BareMetalAdminClusterStorageLvpNodeMountsConfigArgs' lvp_node_mounts_config: Specifies the config for local PersistentVolumes backed
+        :param 'BareMetalAdminClusterStorageLvpNodeMountsConfigArrgs' lvp_node_mounts_config: Specifies the config for local PersistentVolumes backed
                by mounted node disks. These disks need to be formatted and mounted by the
                user, which can be done before or after cluster creation.
                Structure is documented below.
-        :param 'BareMetalAdminClusterStorageLvpShareConfigArgs' lvp_share_config: Specifies the config for local PersistentVolumes backed by
+        :param 'BareMetalAdminClusterStorageLvpShareConfigArrgs' lvp_share_config: Specifies the config for local PersistentVolumes backed by
                subdirectories in a shared filesystem. These subdirectores are
                automatically created during cluster creation.
                Structure is documented below.
@@ -1236,7 +1236,7 @@ class BareMetalAdminClusterStorage(dict):
 
 
 @pulumi.output_type
-class BareMetalAdminClusterStorageLvpNodeMountsConfig(dict):
+calass BareMetalAdminClusterStorageLvpNodeMountsConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1282,7 +1282,7 @@ class BareMetalAdminClusterStorageLvpNodeMountsConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalAdminClusterStorageLvpShareConfig(dict):
+calass BareMetalAdminClusterStorageLvpShareConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1306,7 +1306,7 @@ class BareMetalAdminClusterStorageLvpShareConfig(dict):
                  lvp_config: 'outputs.BareMetalAdminClusterStorageLvpShareConfigLvpConfig',
                  shared_path_pv_count: Optional[int] = None):
         """
-        :param 'BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs' lvp_config: Defines the machine path and storage class for the LVP Share.
+        :param 'BareMetalAdminClusterStorageLvpShareConfigLvpConfigArrgs' lvp_config: Defines the machine path and storage class for the LVP Share.
                Structure is documented below.
         :param int shared_path_pv_count: The number of subdirectories to create under path.
         """
@@ -1333,7 +1333,7 @@ class BareMetalAdminClusterStorageLvpShareConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalAdminClusterStorageLvpShareConfigLvpConfig(dict):
+calass BareMetalAdminClusterStorageLvpShareConfigLvpConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1379,7 +1379,7 @@ class BareMetalAdminClusterStorageLvpShareConfigLvpConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalAdminClusterValidationCheck(dict):
+calass BareMetalAdminClusterValidationCheck(dict):
     def __init__(__self__, *,
                  options: Optional[str] = None,
                  scenario: Optional[str] = None,
@@ -1389,7 +1389,7 @@ class BareMetalAdminClusterValidationCheck(dict):
                Options used for the validation check.
         :param str scenario: (Output)
                The scenario when the preflight checks were run..
-        :param Sequence['BareMetalAdminClusterValidationCheckStatusArgs'] statuses: (Output)
+        :param Sequence['BareMetalAdminClusterValidationCheckStatusArrgs'] statuses: (Output)
                Specifies the detailed validation check status
                Structure is documented below.
         """
@@ -1430,11 +1430,11 @@ class BareMetalAdminClusterValidationCheck(dict):
 
 
 @pulumi.output_type
-class BareMetalAdminClusterValidationCheckStatus(dict):
+calass BareMetalAdminClusterValidationCheckStatus(dict):
     def __init__(__self__, *,
                  results: Optional[Sequence['outputs.BareMetalAdminClusterValidationCheckStatusResult']] = None):
         """
-        :param Sequence['BareMetalAdminClusterValidationCheckStatusResultArgs'] results: (Output)
+        :param Sequence['BareMetalAdminClusterValidationCheckStatusResultArrgs'] results: (Output)
                Individual checks which failed as part of the Preflight check execution.
                Structure is documented below.
         """
@@ -1453,7 +1453,7 @@ class BareMetalAdminClusterValidationCheckStatus(dict):
 
 
 @pulumi.output_type
-class BareMetalAdminClusterValidationCheckStatusResult(dict):
+calass BareMetalAdminClusterValidationCheckStatusResult(dict):
     def __init__(__self__, *,
                  category: Optional[str] = None,
                  description: Optional[str] = None,
@@ -1528,7 +1528,7 @@ class BareMetalAdminClusterValidationCheckStatusResult(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterBinaryAuthorization(dict):
+calass BareMetalClusterBinaryAuthorization(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1568,7 +1568,7 @@ class BareMetalClusterBinaryAuthorization(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterClusterOperations(dict):
+calass BareMetalClusterClusterOperations(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1604,7 +1604,7 @@ class BareMetalClusterClusterOperations(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterControlPlane(dict):
+calass BareMetalClusterControlPlane(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1628,9 +1628,9 @@ class BareMetalClusterControlPlane(dict):
                  control_plane_node_pool_config: 'outputs.BareMetalClusterControlPlaneControlPlaneNodePoolConfig',
                  api_server_args: Optional[Sequence['outputs.BareMetalClusterControlPlaneApiServerArg']] = None):
         """
-        :param 'BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs' control_plane_node_pool_config: Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
+        :param 'BareMetalClusterControlPlaneControlPlaneNodePoolConfigArrgs' control_plane_node_pool_config: Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
                Structure is documented below.
-        :param Sequence['BareMetalClusterControlPlaneApiServerArgArgs'] api_server_args: Customizes the default API server args. Only a subset of
+        :param Sequence['BareMetalClusterControlPlaneApiServerArgArrgs'] api_server_args: Customizes the default API server args. Only a subset of
                customized flags are supported. Please refer to the API server
                documentation below to know the exact format:
                https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
@@ -1663,7 +1663,7 @@ class BareMetalClusterControlPlane(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterControlPlaneApiServerArg(dict):
+calass BareMetalClusterControlPlaneApiServerArg(dict):
     def __init__(__self__, *,
                  argument: str,
                  value: str):
@@ -1692,7 +1692,7 @@ class BareMetalClusterControlPlaneApiServerArg(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterControlPlaneControlPlaneNodePoolConfig(dict):
+calass BareMetalClusterControlPlaneControlPlaneNodePoolConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1713,7 +1713,7 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfig(dict):
     def __init__(__self__, *,
                  node_pool_config: 'outputs.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig'):
         """
-        :param 'BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs' node_pool_config: The generic configuration for a node pool running the control plane.
+        :param 'BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArrgs' node_pool_config: The generic configuration for a node pool running the control plane.
                Structure is documented below.
         """
         pulumi.set(__self__, "node_pool_config", node_pool_config)
@@ -1729,7 +1729,7 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig(dict):
+calass BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1765,10 +1765,10 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig(dict)
                http://kubernetes.io/v1.1/docs/user-guide/labels.html
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        :param Sequence['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs'] node_configs: The list of machine addresses in the Bare Metal Node Pool.
+        :param Sequence['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrgs'] node_configs: The list of machine addresses in the Bare Metal Node Pool.
                Structure is documented below.
         :param str operating_system: Specifies the nodes operating system (default: LINUX).
-        :param Sequence['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs'] taints: The initial taints assigned to nodes of this node pool.
+        :param Sequence['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrgs'] taints: The initial taints assigned to nodes of this node pool.
                Structure is documented below.
         """
         if labels is not None:
@@ -1825,7 +1825,7 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig(dict)
 
 
 @pulumi.output_type
-class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig(dict):
+calass BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1893,7 +1893,7 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeCo
 
 
 @pulumi.output_type
-class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint(dict):
+calass BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint(dict):
     def __init__(__self__, *,
                  effect: Optional[str] = None,
                  key: Optional[str] = None,
@@ -1938,7 +1938,7 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint(
 
 
 @pulumi.output_type
-class BareMetalClusterFleet(dict):
+calass BareMetalClusterFleet(dict):
     def __init__(__self__, *,
                  membership: Optional[str] = None):
         """
@@ -1963,7 +1963,7 @@ class BareMetalClusterFleet(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterLoadBalancer(dict):
+calass BareMetalClusterLoadBalancer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1996,15 +1996,15 @@ class BareMetalClusterLoadBalancer(dict):
                  manual_lb_config: Optional['outputs.BareMetalClusterLoadBalancerManualLbConfig'] = None,
                  metal_lb_config: Optional['outputs.BareMetalClusterLoadBalancerMetalLbConfig'] = None):
         """
-        :param 'BareMetalClusterLoadBalancerPortConfigArgs' port_config: Specifies the load balancer ports.
+        :param 'BareMetalClusterLoadBalancerPortConfigArrgs' port_config: Specifies the load balancer ports.
                Structure is documented below.
-        :param 'BareMetalClusterLoadBalancerVipConfigArgs' vip_config: Specified the Bare Metal Load Balancer Config
+        :param 'BareMetalClusterLoadBalancerVipConfigArrgs' vip_config: Specified the Bare Metal Load Balancer Config
                Structure is documented below.
-        :param 'BareMetalClusterLoadBalancerBgpLbConfigArgs' bgp_lb_config: Configuration for BGP typed load balancers.
+        :param 'BareMetalClusterLoadBalancerBgpLbConfigArrgs' bgp_lb_config: Configuration for BGP typed load balancers.
                Structure is documented below.
-        :param 'BareMetalClusterLoadBalancerManualLbConfigArgs' manual_lb_config: A nested object resource
+        :param 'BareMetalClusterLoadBalancerManualLbConfigArrgs' manual_lb_config: A nested object resource
                Structure is documented below.
-        :param 'BareMetalClusterLoadBalancerMetalLbConfigArgs' metal_lb_config: A nested object resource
+        :param 'BareMetalClusterLoadBalancerMetalLbConfigArrgs' metal_lb_config: A nested object resource
                Structure is documented below.
         """
         pulumi.set(__self__, "port_config", port_config)
@@ -2063,7 +2063,7 @@ class BareMetalClusterLoadBalancer(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterLoadBalancerBgpLbConfig(dict):
+calass BareMetalClusterLoadBalancerBgpLbConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2091,19 +2091,19 @@ class BareMetalClusterLoadBalancerBgpLbConfig(dict):
                  bgp_peer_configs: Sequence['outputs.BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig'],
                  load_balancer_node_pool_config: Optional['outputs.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig'] = None):
         """
-        :param Sequence['BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs'] address_pools: AddressPools is a list of non-overlapping IP pools used by load balancer
+        :param Sequence['BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArrgs'] address_pools: AddressPools is a list of non-overlapping IP pools used by load balancer
                typed services. All addresses must be routable to load balancer nodes.
                IngressVIP must be included in the pools.
                Structure is documented below.
         :param int asn: BGP autonomous system number (ASN) of the cluster.
                This field can be updated after cluster creation.
-        :param Sequence['BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs'] bgp_peer_configs: The list of BGP peers that the cluster will connect to.
+        :param Sequence['BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArrgs'] bgp_peer_configs: The list of BGP peers that the cluster will connect to.
                At least one peer must be configured for each control plane node.
                Control plane nodes will connect to these peers to advertise the control
                plane VIP. The Services load balancer also uses these peers by default.
                This field can be updated after cluster creation.
                Structure is documented below.
-        :param 'BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs' load_balancer_node_pool_config: Specifies the node pool running data plane load balancing. L2 connectivity
+        :param 'BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArrgs' load_balancer_node_pool_config: Specifies the node pool running data plane load balancing. L2 connectivity
                is required among nodes in this pool. If missing, the control plane node
                pool is used for data plane load balancing.
                Structure is documented below.
@@ -2160,7 +2160,7 @@ class BareMetalClusterLoadBalancerBgpLbConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterLoadBalancerBgpLbConfigAddressPool(dict):
+calass BareMetalClusterLoadBalancerBgpLbConfigAddressPool(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2234,7 +2234,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigAddressPool(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig(dict):
+calass BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2304,7 +2304,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig(dict):
+calass BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2325,7 +2325,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig(dict):
     def __init__(__self__, *,
                  node_pool_config: Optional['outputs.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig'] = None):
         """
-        :param 'BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs' node_pool_config: The generic configuration for a node pool running a load balancer.
+        :param 'BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArrgs' node_pool_config: The generic configuration for a node pool running a load balancer.
                Structure is documented below.
         """
         if node_pool_config is not None:
@@ -2342,7 +2342,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig(dict):
+calass BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2371,7 +2371,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
                  operating_system: Optional[str] = None,
                  taints: Optional[Sequence['outputs.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint']] = None):
         """
-        :param 'BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs' kubelet_config: The modifiable kubelet configurations for the baremetal machines.
+        :param 'BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArrgs' kubelet_config: The modifiable kubelet configurations for the baremetal machines.
                Structure is documented below.
         :param Mapping[str, str] labels: The map of Kubernetes labels (key/value pairs) to be applied to
                each node. These will added in addition to any default label(s)
@@ -2383,10 +2383,10 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
                http://kubernetes.io/v1.1/docs/user-guide/labels.html
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        :param Sequence['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs'] node_configs: The list of machine addresses in the Bare Metal Node Pool.
+        :param Sequence['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrgs'] node_configs: The list of machine addresses in the Bare Metal Node Pool.
                Structure is documented below.
         :param str operating_system: Specifies the nodes operating system (default: LINUX).
-        :param Sequence['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs'] taints: The initial taints assigned to nodes of this node pool.
+        :param Sequence['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrgs'] taints: The initial taints assigned to nodes of this node pool.
                Structure is documented below.
         """
         if kubelet_config is not None:
@@ -2454,7 +2454,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
 
 
 @pulumi.output_type
-class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig(dict):
+calass BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2544,7 +2544,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
 
 
 @pulumi.output_type
-class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig(dict):
+calass BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2612,7 +2612,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
 
 
 @pulumi.output_type
-class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint(dict):
+calass BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint(dict):
     def __init__(__self__, *,
                  effect: Optional[str] = None,
                  key: Optional[str] = None,
@@ -2657,7 +2657,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
 
 
 @pulumi.output_type
-class BareMetalClusterLoadBalancerManualLbConfig(dict):
+calass BareMetalClusterLoadBalancerManualLbConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -2675,7 +2675,7 @@ class BareMetalClusterLoadBalancerManualLbConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterLoadBalancerMetalLbConfig(dict):
+calass BareMetalClusterLoadBalancerMetalLbConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2699,11 +2699,11 @@ class BareMetalClusterLoadBalancerMetalLbConfig(dict):
                  address_pools: Sequence['outputs.BareMetalClusterLoadBalancerMetalLbConfigAddressPool'],
                  load_balancer_node_pool_config: Optional['outputs.BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig'] = None):
         """
-        :param Sequence['BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs'] address_pools: AddressPools is a list of non-overlapping IP pools used by load balancer
+        :param Sequence['BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArrgs'] address_pools: AddressPools is a list of non-overlapping IP pools used by load balancer
                typed services. All addresses must be routable to load balancer nodes.
                IngressVIP must be included in the pools.
                Structure is documented below.
-        :param 'BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs' load_balancer_node_pool_config: Specifies the load balancer's node pool configuration.
+        :param 'BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArrgs' load_balancer_node_pool_config: Specifies the load balancer's node pool configuration.
                Structure is documented below.
         """
         pulumi.set(__self__, "address_pools", address_pools)
@@ -2732,7 +2732,7 @@ class BareMetalClusterLoadBalancerMetalLbConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterLoadBalancerMetalLbConfigAddressPool(dict):
+calass BareMetalClusterLoadBalancerMetalLbConfigAddressPool(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2806,7 +2806,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigAddressPool(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig(dict):
+calass BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2827,7 +2827,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig(dict):
     def __init__(__self__, *,
                  node_pool_config: Optional['outputs.BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig'] = None):
         """
-        :param 'BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs' node_pool_config: The generic configuration for a node pool running a load balancer.
+        :param 'BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArrgs' node_pool_config: The generic configuration for a node pool running a load balancer.
                Structure is documented below.
         """
         if node_pool_config is not None:
@@ -2844,7 +2844,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig(dict):
+calass BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2880,10 +2880,10 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
                http://kubernetes.io/v1.1/docs/user-guide/labels.html
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        :param Sequence['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs'] node_configs: The list of machine addresses in the Bare Metal Node Pool.
+        :param Sequence['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrgs'] node_configs: The list of machine addresses in the Bare Metal Node Pool.
                Structure is documented below.
         :param str operating_system: Specifies the nodes operating system (default: LINUX).
-        :param Sequence['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs'] taints: The initial taints assigned to nodes of this node pool.
+        :param Sequence['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrgs'] taints: The initial taints assigned to nodes of this node pool.
                Structure is documented below.
         """
         if labels is not None:
@@ -2940,7 +2940,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
 
 
 @pulumi.output_type
-class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig(dict):
+calass BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3008,7 +3008,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
 
 
 @pulumi.output_type
-class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint(dict):
+calass BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint(dict):
     def __init__(__self__, *,
                  effect: Optional[str] = None,
                  key: Optional[str] = None,
@@ -3053,7 +3053,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
 
 
 @pulumi.output_type
-class BareMetalClusterLoadBalancerPortConfig(dict):
+calass BareMetalClusterLoadBalancerPortConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3088,7 +3088,7 @@ class BareMetalClusterLoadBalancerPortConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterLoadBalancerVipConfig(dict):
+calass BareMetalClusterLoadBalancerVipConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3136,7 +3136,7 @@ class BareMetalClusterLoadBalancerVipConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterMaintenanceConfig(dict):
+calass BareMetalClusterMaintenanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3177,7 +3177,7 @@ class BareMetalClusterMaintenanceConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterNetworkConfig(dict):
+calass BareMetalClusterNetworkConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3211,11 +3211,11 @@ class BareMetalClusterNetworkConfig(dict):
                Load Balancing with BGP or the egress NAT gateway.
                Setting configuration for advanced networking features will automatically
                set this flag.
-        :param 'BareMetalClusterNetworkConfigIslandModeCidrArgs' island_mode_cidr: A nested object resource
+        :param 'BareMetalClusterNetworkConfigIslandModeCidrArrgs' island_mode_cidr: A nested object resource
                Structure is documented below.
-        :param 'BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs' multiple_network_interfaces_config: Configuration for multiple network interfaces.
+        :param 'BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArrgs' multiple_network_interfaces_config: Configuration for multiple network interfaces.
                Structure is documented below.
-        :param 'BareMetalClusterNetworkConfigSrIovConfigArgs' sr_iov_config: Configuration for SR-IOV.
+        :param 'BareMetalClusterNetworkConfigSrIovConfigArrgs' sr_iov_config: Configuration for SR-IOV.
                Structure is documented below.
         """
         if advanced_networking is not None:
@@ -3267,7 +3267,7 @@ class BareMetalClusterNetworkConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterNetworkConfigIslandModeCidr(dict):
+calass BareMetalClusterNetworkConfigIslandModeCidr(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3315,7 +3315,7 @@ class BareMetalClusterNetworkConfigIslandModeCidr(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig(dict):
+calass BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None):
         """
@@ -3338,7 +3338,7 @@ class BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterNetworkConfigSrIovConfig(dict):
+calass BareMetalClusterNetworkConfigSrIovConfig(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None):
         """
@@ -3357,7 +3357,7 @@ class BareMetalClusterNetworkConfigSrIovConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterNodeAccessConfig(dict):
+calass BareMetalClusterNodeAccessConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3395,7 +3395,7 @@ class BareMetalClusterNodeAccessConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterNodeConfig(dict):
+calass BareMetalClusterNodeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3449,7 +3449,7 @@ class BareMetalClusterNodeConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterOsEnvironmentConfig(dict):
+calass BareMetalClusterOsEnvironmentConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3486,7 +3486,7 @@ class BareMetalClusterOsEnvironmentConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterProxy(dict):
+calass BareMetalClusterProxy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3541,11 +3541,11 @@ class BareMetalClusterProxy(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterSecurityConfig(dict):
+calass BareMetalClusterSecurityConfig(dict):
     def __init__(__self__, *,
                  authorization: Optional['outputs.BareMetalClusterSecurityConfigAuthorization'] = None):
         """
-        :param 'BareMetalClusterSecurityConfigAuthorizationArgs' authorization: Configures user access to the Bare Metal User cluster.
+        :param 'BareMetalClusterSecurityConfigAuthorizationArrgs' authorization: Configures user access to the Bare Metal User cluster.
                Structure is documented below.
         """
         if authorization is not None:
@@ -3562,7 +3562,7 @@ class BareMetalClusterSecurityConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterSecurityConfigAuthorization(dict):
+calass BareMetalClusterSecurityConfigAuthorization(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3583,7 +3583,7 @@ class BareMetalClusterSecurityConfigAuthorization(dict):
     def __init__(__self__, *,
                  admin_users: Sequence['outputs.BareMetalClusterSecurityConfigAuthorizationAdminUser']):
         """
-        :param Sequence['BareMetalClusterSecurityConfigAuthorizationAdminUserArgs'] admin_users: Users that will be granted the cluster-admin role on the cluster, providing full access to the cluster.
+        :param Sequence['BareMetalClusterSecurityConfigAuthorizationAdminUserArrgs'] admin_users: Users that will be granted the cluster-admin role on the cluster, providing full access to the cluster.
                Structure is documented below.
         """
         pulumi.set(__self__, "admin_users", admin_users)
@@ -3599,7 +3599,7 @@ class BareMetalClusterSecurityConfigAuthorization(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterSecurityConfigAuthorizationAdminUser(dict):
+calass BareMetalClusterSecurityConfigAuthorizationAdminUser(dict):
     def __init__(__self__, *,
                  username: str):
         """
@@ -3617,7 +3617,7 @@ class BareMetalClusterSecurityConfigAuthorizationAdminUser(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterStatus(dict):
+calass BareMetalClusterStatus(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3639,7 +3639,7 @@ class BareMetalClusterStatus(dict):
                  conditions: Optional[Sequence['outputs.BareMetalClusterStatusCondition']] = None,
                  error_message: Optional[str] = None):
         """
-        :param Sequence['BareMetalClusterStatusConditionArgs'] conditions: (Output)
+        :param Sequence['BareMetalClusterStatusConditionArrgs'] conditions: (Output)
                ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
                Structure is documented below.
         :param str error_message: (Output)
@@ -3679,7 +3679,7 @@ class BareMetalClusterStatus(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterStatusCondition(dict):
+calass BareMetalClusterStatusCondition(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3771,7 +3771,7 @@ class BareMetalClusterStatusCondition(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterStorage(dict):
+calass BareMetalClusterStorage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3795,11 +3795,11 @@ class BareMetalClusterStorage(dict):
                  lvp_node_mounts_config: 'outputs.BareMetalClusterStorageLvpNodeMountsConfig',
                  lvp_share_config: 'outputs.BareMetalClusterStorageLvpShareConfig'):
         """
-        :param 'BareMetalClusterStorageLvpNodeMountsConfigArgs' lvp_node_mounts_config: Specifies the config for local PersistentVolumes backed
+        :param 'BareMetalClusterStorageLvpNodeMountsConfigArrgs' lvp_node_mounts_config: Specifies the config for local PersistentVolumes backed
                by mounted node disks. These disks need to be formatted and mounted by the
                user, which can be done before or after cluster creation.
                Structure is documented below.
-        :param 'BareMetalClusterStorageLvpShareConfigArgs' lvp_share_config: Specifies the config for local PersistentVolumes backed by
+        :param 'BareMetalClusterStorageLvpShareConfigArrgs' lvp_share_config: Specifies the config for local PersistentVolumes backed by
                subdirectories in a shared filesystem. These subdirectores are
                automatically created during cluster creation.
                Structure is documented below.
@@ -3831,7 +3831,7 @@ class BareMetalClusterStorage(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterStorageLvpNodeMountsConfig(dict):
+calass BareMetalClusterStorageLvpNodeMountsConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3881,7 +3881,7 @@ class BareMetalClusterStorageLvpNodeMountsConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterStorageLvpShareConfig(dict):
+calass BareMetalClusterStorageLvpShareConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3905,7 +3905,7 @@ class BareMetalClusterStorageLvpShareConfig(dict):
                  lvp_config: 'outputs.BareMetalClusterStorageLvpShareConfigLvpConfig',
                  shared_path_pv_count: Optional[int] = None):
         """
-        :param 'BareMetalClusterStorageLvpShareConfigLvpConfigArgs' lvp_config: Defines the machine path and storage class for the LVP Share.
+        :param 'BareMetalClusterStorageLvpShareConfigLvpConfigArrgs' lvp_config: Defines the machine path and storage class for the LVP Share.
                Structure is documented below.
         :param int shared_path_pv_count: The number of subdirectories to create under path.
         """
@@ -3932,7 +3932,7 @@ class BareMetalClusterStorageLvpShareConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterStorageLvpShareConfigLvpConfig(dict):
+calass BareMetalClusterStorageLvpShareConfigLvpConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3978,7 +3978,7 @@ class BareMetalClusterStorageLvpShareConfigLvpConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterUpgradePolicy(dict):
+calass BareMetalClusterUpgradePolicy(dict):
     def __init__(__self__, *,
                  policy: Optional[str] = None):
         """
@@ -3999,7 +3999,7 @@ class BareMetalClusterUpgradePolicy(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterValidationCheck(dict):
+calass BareMetalClusterValidationCheck(dict):
     def __init__(__self__, *,
                  options: Optional[str] = None,
                  scenario: Optional[str] = None,
@@ -4009,7 +4009,7 @@ class BareMetalClusterValidationCheck(dict):
                Options used for the validation check.
         :param str scenario: (Output)
                The scenario when the preflight checks were run..
-        :param Sequence['BareMetalClusterValidationCheckStatusArgs'] statuses: (Output)
+        :param Sequence['BareMetalClusterValidationCheckStatusArrgs'] statuses: (Output)
                Specifies the detailed validation check status
                Structure is documented below.
         """
@@ -4050,11 +4050,11 @@ class BareMetalClusterValidationCheck(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterValidationCheckStatus(dict):
+calass BareMetalClusterValidationCheckStatus(dict):
     def __init__(__self__, *,
                  results: Optional[Sequence['outputs.BareMetalClusterValidationCheckStatusResult']] = None):
         """
-        :param Sequence['BareMetalClusterValidationCheckStatusResultArgs'] results: (Output)
+        :param Sequence['BareMetalClusterValidationCheckStatusResultArrgs'] results: (Output)
                Individual checks which failed as part of the Preflight check execution.
                Structure is documented below.
         """
@@ -4073,7 +4073,7 @@ class BareMetalClusterValidationCheckStatus(dict):
 
 
 @pulumi.output_type
-class BareMetalClusterValidationCheckStatusResult(dict):
+calass BareMetalClusterValidationCheckStatusResult(dict):
     def __init__(__self__, *,
                  category: Optional[str] = None,
                  description: Optional[str] = None,
@@ -4148,7 +4148,7 @@ class BareMetalClusterValidationCheckStatusResult(dict):
 
 
 @pulumi.output_type
-class BareMetalNodePoolNodePoolConfig(dict):
+calass BareMetalNodePoolNodePoolConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4174,7 +4174,7 @@ class BareMetalNodePoolNodePoolConfig(dict):
                  operating_system: Optional[str] = None,
                  taints: Optional[Sequence['outputs.BareMetalNodePoolNodePoolConfigTaint']] = None):
         """
-        :param Sequence['BareMetalNodePoolNodePoolConfigNodeConfigArgs'] node_configs: The list of machine addresses in the Bare Metal Node Pool.
+        :param Sequence['BareMetalNodePoolNodePoolConfigNodeConfigArrgs'] node_configs: The list of machine addresses in the Bare Metal Node Pool.
                Structure is documented below.
         :param Mapping[str, str] labels: The map of Kubernetes labels (key/value pairs) to be applied to
                each node. These will added in addition to any default label(s)
@@ -4187,7 +4187,7 @@ class BareMetalNodePoolNodePoolConfig(dict):
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param str operating_system: Specifies the nodes operating system (default: LINUX).
-        :param Sequence['BareMetalNodePoolNodePoolConfigTaintArgs'] taints: The initial taints assigned to nodes of this node pool.
+        :param Sequence['BareMetalNodePoolNodePoolConfigTaintArrgs'] taints: The initial taints assigned to nodes of this node pool.
                Structure is documented below.
         """
         pulumi.set(__self__, "node_configs", node_configs)
@@ -4243,7 +4243,7 @@ class BareMetalNodePoolNodePoolConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalNodePoolNodePoolConfigNodeConfig(dict):
+calass BareMetalNodePoolNodePoolConfigNodeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4311,7 +4311,7 @@ class BareMetalNodePoolNodePoolConfigNodeConfig(dict):
 
 
 @pulumi.output_type
-class BareMetalNodePoolNodePoolConfigTaint(dict):
+calass BareMetalNodePoolNodePoolConfigTaint(dict):
     def __init__(__self__, *,
                  effect: Optional[str] = None,
                  key: Optional[str] = None,
@@ -4360,7 +4360,7 @@ class BareMetalNodePoolNodePoolConfigTaint(dict):
 
 
 @pulumi.output_type
-class BareMetalNodePoolStatus(dict):
+calass BareMetalNodePoolStatus(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4382,7 +4382,7 @@ class BareMetalNodePoolStatus(dict):
                  conditions: Optional[Sequence['outputs.BareMetalNodePoolStatusCondition']] = None,
                  error_message: Optional[str] = None):
         """
-        :param Sequence['BareMetalNodePoolStatusConditionArgs'] conditions: (Output)
+        :param Sequence['BareMetalNodePoolStatusConditionArrgs'] conditions: (Output)
                ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
                Structure is documented below.
         :param str error_message: (Output)
@@ -4422,7 +4422,7 @@ class BareMetalNodePoolStatus(dict):
 
 
 @pulumi.output_type
-class BareMetalNodePoolStatusCondition(dict):
+calass BareMetalNodePoolStatusCondition(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4512,7 +4512,7 @@ class BareMetalNodePoolStatusCondition(dict):
 
 
 @pulumi.output_type
-class VMwareClusterAntiAffinityGroups(dict):
+calass VMwareClusterAntiAffinityGroups(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4551,7 +4551,7 @@ class VMwareClusterAntiAffinityGroups(dict):
 
 
 @pulumi.output_type
-class VMwareClusterAuthorization(dict):
+calass VMwareClusterAuthorization(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4572,7 +4572,7 @@ class VMwareClusterAuthorization(dict):
     def __init__(__self__, *,
                  admin_users: Optional[Sequence['outputs.VMwareClusterAuthorizationAdminUser']] = None):
         """
-        :param Sequence['VMwareClusterAuthorizationAdminUserArgs'] admin_users: Users that will be granted the cluster-admin role on the cluster, providing
+        :param Sequence['VMwareClusterAuthorizationAdminUserArrgs'] admin_users: Users that will be granted the cluster-admin role on the cluster, providing
                full access to the cluster.
                Structure is documented below.
         """
@@ -4591,7 +4591,7 @@ class VMwareClusterAuthorization(dict):
 
 
 @pulumi.output_type
-class VMwareClusterAuthorizationAdminUser(dict):
+calass VMwareClusterAuthorizationAdminUser(dict):
     def __init__(__self__, *,
                  username: str):
         """
@@ -4609,7 +4609,7 @@ class VMwareClusterAuthorizationAdminUser(dict):
 
 
 @pulumi.output_type
-class VMwareClusterAutoRepairConfig(dict):
+calass VMwareClusterAutoRepairConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -4627,7 +4627,7 @@ class VMwareClusterAutoRepairConfig(dict):
 
 
 @pulumi.output_type
-class VMwareClusterControlPlaneNode(dict):
+calass VMwareClusterControlPlaneNode(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4654,7 +4654,7 @@ class VMwareClusterControlPlaneNode(dict):
                  replicas: Optional[int] = None,
                  vsphere_configs: Optional[Sequence['outputs.VMwareClusterControlPlaneNodeVsphereConfig']] = None):
         """
-        :param 'VMwareClusterControlPlaneNodeAutoResizeConfigArgs' auto_resize_config: AutoResizeConfig provides auto resizing configurations.
+        :param 'VMwareClusterControlPlaneNodeAutoResizeConfigArrgs' auto_resize_config: AutoResizeConfig provides auto resizing configurations.
                Structure is documented below.
         :param int cpus: The number of CPUs for each admin cluster node that serve as control planes
                for this VMware User Cluster. (default: 4 CPUs)
@@ -4662,7 +4662,7 @@ class VMwareClusterControlPlaneNode(dict):
                control plane for this VMware User Cluster (default: 8192 MB memory).
         :param int replicas: The number of control plane nodes for this VMware User Cluster.
                (default: 1 replica).
-        :param Sequence['VMwareClusterControlPlaneNodeVsphereConfigArgs'] vsphere_configs: (Output)
+        :param Sequence['VMwareClusterControlPlaneNodeVsphereConfigArrgs'] vsphere_configs: (Output)
                Vsphere-specific config.
                Structure is documented below.
         """
@@ -4725,7 +4725,7 @@ class VMwareClusterControlPlaneNode(dict):
 
 
 @pulumi.output_type
-class VMwareClusterControlPlaneNodeAutoResizeConfig(dict):
+calass VMwareClusterControlPlaneNodeAutoResizeConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -4747,7 +4747,7 @@ class VMwareClusterControlPlaneNodeAutoResizeConfig(dict):
 
 
 @pulumi.output_type
-class VMwareClusterControlPlaneNodeVsphereConfig(dict):
+calass VMwareClusterControlPlaneNodeVsphereConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4803,7 +4803,7 @@ class VMwareClusterControlPlaneNodeVsphereConfig(dict):
 
 
 @pulumi.output_type
-class VMwareClusterDataplaneV2(dict):
+calass VMwareClusterDataplaneV2(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4867,7 +4867,7 @@ class VMwareClusterDataplaneV2(dict):
 
 
 @pulumi.output_type
-class VMwareClusterFleet(dict):
+calass VMwareClusterFleet(dict):
     def __init__(__self__, *,
                  membership: Optional[str] = None):
         """
@@ -4892,7 +4892,7 @@ class VMwareClusterFleet(dict):
 
 
 @pulumi.output_type
-class VMwareClusterLoadBalancer(dict):
+calass VMwareClusterLoadBalancer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4922,13 +4922,13 @@ class VMwareClusterLoadBalancer(dict):
                  metal_lb_config: Optional['outputs.VMwareClusterLoadBalancerMetalLbConfig'] = None,
                  vip_config: Optional['outputs.VMwareClusterLoadBalancerVipConfig'] = None):
         """
-        :param 'VMwareClusterLoadBalancerF5ConfigArgs' f5_config: Configuration for F5 Big IP typed load balancers.
+        :param 'VMwareClusterLoadBalancerF5ConfigArrgs' f5_config: Configuration for F5 Big IP typed load balancers.
                Structure is documented below.
-        :param 'VMwareClusterLoadBalancerManualLbConfigArgs' manual_lb_config: Manually configured load balancers.
+        :param 'VMwareClusterLoadBalancerManualLbConfigArrgs' manual_lb_config: Manually configured load balancers.
                Structure is documented below.
-        :param 'VMwareClusterLoadBalancerMetalLbConfigArgs' metal_lb_config: Configuration for MetalLB typed load balancers.
+        :param 'VMwareClusterLoadBalancerMetalLbConfigArrgs' metal_lb_config: Configuration for MetalLB typed load balancers.
                Structure is documented below.
-        :param 'VMwareClusterLoadBalancerVipConfigArgs' vip_config: The VIPs used by the load balancer.
+        :param 'VMwareClusterLoadBalancerVipConfigArrgs' vip_config: The VIPs used by the load balancer.
                Structure is documented below.
         """
         if f5_config is not None:
@@ -4978,7 +4978,7 @@ class VMwareClusterLoadBalancer(dict):
 
 
 @pulumi.output_type
-class VMwareClusterLoadBalancerF5Config(dict):
+calass VMwareClusterLoadBalancerF5Config(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5042,7 +5042,7 @@ class VMwareClusterLoadBalancerF5Config(dict):
 
 
 @pulumi.output_type
-class VMwareClusterLoadBalancerManualLbConfig(dict):
+calass VMwareClusterLoadBalancerManualLbConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5128,7 +5128,7 @@ class VMwareClusterLoadBalancerManualLbConfig(dict):
 
 
 @pulumi.output_type
-class VMwareClusterLoadBalancerMetalLbConfig(dict):
+calass VMwareClusterLoadBalancerMetalLbConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5149,7 +5149,7 @@ class VMwareClusterLoadBalancerMetalLbConfig(dict):
     def __init__(__self__, *,
                  address_pools: Sequence['outputs.VMwareClusterLoadBalancerMetalLbConfigAddressPool']):
         """
-        :param Sequence['VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs'] address_pools: AddressPools is a list of non-overlapping IP pools used by load balancer
+        :param Sequence['VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrgs'] address_pools: AddressPools is a list of non-overlapping IP pools used by load balancer
                typed services. All addresses must be routable to load balancer nodes.
                IngressVIP must be included in the pools.
                Structure is documented below.
@@ -5169,7 +5169,7 @@ class VMwareClusterLoadBalancerMetalLbConfig(dict):
 
 
 @pulumi.output_type
-class VMwareClusterLoadBalancerMetalLbConfigAddressPool(dict):
+calass VMwareClusterLoadBalancerMetalLbConfigAddressPool(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5253,7 +5253,7 @@ class VMwareClusterLoadBalancerMetalLbConfigAddressPool(dict):
 
 
 @pulumi.output_type
-class VMwareClusterLoadBalancerVipConfig(dict):
+calass VMwareClusterLoadBalancerVipConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5307,7 +5307,7 @@ class VMwareClusterLoadBalancerVipConfig(dict):
 
 
 @pulumi.output_type
-class VMwareClusterNetworkConfig(dict):
+calass VMwareClusterNetworkConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5351,13 +5351,13 @@ class VMwareClusterNetworkConfig(dict):
         :param Sequence[str] service_address_cidr_blocks: All services in the cluster are assigned an RFC1918 IPv4 address
                from these ranges. Only a single range is supported.. This field
                cannot be changed after creation.
-        :param 'VMwareClusterNetworkConfigControlPlaneV2ConfigArgs' control_plane_v2_config: Configuration for control plane V2 mode.
+        :param 'VMwareClusterNetworkConfigControlPlaneV2ConfigArrgs' control_plane_v2_config: Configuration for control plane V2 mode.
                Structure is documented below.
-        :param 'VMwareClusterNetworkConfigDhcpIpConfigArgs' dhcp_ip_config: Configuration settings for a DHCP IP configuration.
+        :param 'VMwareClusterNetworkConfigDhcpIpConfigArrgs' dhcp_ip_config: Configuration settings for a DHCP IP configuration.
                Structure is documented below.
-        :param 'VMwareClusterNetworkConfigHostConfigArgs' host_config: Represents common network settings irrespective of the host's IP address.
+        :param 'VMwareClusterNetworkConfigHostConfigArrgs' host_config: Represents common network settings irrespective of the host's IP address.
                Structure is documented below.
-        :param 'VMwareClusterNetworkConfigStaticIpConfigArgs' static_ip_config: Configuration settings for a static IP configuration.
+        :param 'VMwareClusterNetworkConfigStaticIpConfigArrgs' static_ip_config: Configuration settings for a static IP configuration.
                Structure is documented below.
         :param str vcenter_network: (Output)
                vcenter_network specifies vCenter network name. Inherited from the admin cluster.
@@ -5441,7 +5441,7 @@ class VMwareClusterNetworkConfig(dict):
 
 
 @pulumi.output_type
-class VMwareClusterNetworkConfigControlPlaneV2Config(dict):
+calass VMwareClusterNetworkConfigControlPlaneV2Config(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5462,7 +5462,7 @@ class VMwareClusterNetworkConfigControlPlaneV2Config(dict):
     def __init__(__self__, *,
                  control_plane_ip_block: Optional['outputs.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock'] = None):
         """
-        :param 'VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs' control_plane_ip_block: Static IP addresses for the control plane nodes.
+        :param 'VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArrgs' control_plane_ip_block: Static IP addresses for the control plane nodes.
                Structure is documented below.
         """
         if control_plane_ip_block is not None:
@@ -5479,14 +5479,14 @@ class VMwareClusterNetworkConfigControlPlaneV2Config(dict):
 
 
 @pulumi.output_type
-class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock(dict):
+calass VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock(dict):
     def __init__(__self__, *,
                  gateway: Optional[str] = None,
                  ips: Optional[Sequence['outputs.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp']] = None,
                  netmask: Optional[str] = None):
         """
         :param str gateway: The network gateway used by the VMware User Cluster.
-        :param Sequence['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs'] ips: The node's network configurations used by the VMware User Cluster.
+        :param Sequence['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArrgs'] ips: The node's network configurations used by the VMware User Cluster.
                Structure is documented below.
         :param str netmask: The netmask used by the VMware User Cluster.
         """
@@ -5524,7 +5524,7 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock(dict):
 
 
 @pulumi.output_type
-class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp(dict):
+calass VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp(dict):
     def __init__(__self__, *,
                  hostname: Optional[str] = None,
                  ip: Optional[str] = None):
@@ -5555,7 +5555,7 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp(dict):
 
 
 @pulumi.output_type
-class VMwareClusterNetworkConfigDhcpIpConfig(dict):
+calass VMwareClusterNetworkConfigDhcpIpConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -5575,7 +5575,7 @@ class VMwareClusterNetworkConfigDhcpIpConfig(dict):
 
 
 @pulumi.output_type
-class VMwareClusterNetworkConfigHostConfig(dict):
+calass VMwareClusterNetworkConfigHostConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5643,7 +5643,7 @@ class VMwareClusterNetworkConfigHostConfig(dict):
 
 
 @pulumi.output_type
-class VMwareClusterNetworkConfigStaticIpConfig(dict):
+calass VMwareClusterNetworkConfigStaticIpConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5664,7 +5664,7 @@ class VMwareClusterNetworkConfigStaticIpConfig(dict):
     def __init__(__self__, *,
                  ip_blocks: Sequence['outputs.VMwareClusterNetworkConfigStaticIpConfigIpBlock']):
         """
-        :param Sequence['VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs'] ip_blocks: Represents the configuration values for static IP allocation to nodes.
+        :param Sequence['VMwareClusterNetworkConfigStaticIpConfigIpBlockArrgs'] ip_blocks: Represents the configuration values for static IP allocation to nodes.
                Structure is documented below.
         """
         pulumi.set(__self__, "ip_blocks", ip_blocks)
@@ -5680,14 +5680,14 @@ class VMwareClusterNetworkConfigStaticIpConfig(dict):
 
 
 @pulumi.output_type
-class VMwareClusterNetworkConfigStaticIpConfigIpBlock(dict):
+calass VMwareClusterNetworkConfigStaticIpConfigIpBlock(dict):
     def __init__(__self__, *,
                  gateway: str,
                  ips: Sequence['outputs.VMwareClusterNetworkConfigStaticIpConfigIpBlockIp'],
                  netmask: str):
         """
         :param str gateway: The network gateway used by the VMware User Cluster.
-        :param Sequence['VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs'] ips: The node's network configurations used by the VMware User Cluster.
+        :param Sequence['VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArrgs'] ips: The node's network configurations used by the VMware User Cluster.
                Structure is documented below.
         :param str netmask: The netmask used by the VMware User Cluster.
         """
@@ -5722,7 +5722,7 @@ class VMwareClusterNetworkConfigStaticIpConfigIpBlock(dict):
 
 
 @pulumi.output_type
-class VMwareClusterNetworkConfigStaticIpConfigIpBlockIp(dict):
+calass VMwareClusterNetworkConfigStaticIpConfigIpBlockIp(dict):
     def __init__(__self__, *,
                  ip: str,
                  hostname: Optional[str] = None):
@@ -5752,7 +5752,7 @@ class VMwareClusterNetworkConfigStaticIpConfigIpBlockIp(dict):
 
 
 @pulumi.output_type
-class VMwareClusterStatus(dict):
+calass VMwareClusterStatus(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5774,7 +5774,7 @@ class VMwareClusterStatus(dict):
                  conditions: Optional[Sequence['outputs.VMwareClusterStatusCondition']] = None,
                  error_message: Optional[str] = None):
         """
-        :param Sequence['VMwareClusterStatusConditionArgs'] conditions: (Output)
+        :param Sequence['VMwareClusterStatusConditionArrgs'] conditions: (Output)
                ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
                Structure is documented below.
         :param str error_message: (Output)
@@ -5814,7 +5814,7 @@ class VMwareClusterStatus(dict):
 
 
 @pulumi.output_type
-class VMwareClusterStatusCondition(dict):
+calass VMwareClusterStatusCondition(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5910,7 +5910,7 @@ class VMwareClusterStatusCondition(dict):
 
 
 @pulumi.output_type
-class VMwareClusterStorage(dict):
+calass VMwareClusterStorage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5947,7 +5947,7 @@ class VMwareClusterStorage(dict):
 
 
 @pulumi.output_type
-class VMwareClusterUpgradePolicy(dict):
+calass VMwareClusterUpgradePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5983,7 +5983,7 @@ class VMwareClusterUpgradePolicy(dict):
 
 
 @pulumi.output_type
-class VMwareClusterValidationCheck(dict):
+calass VMwareClusterValidationCheck(dict):
     def __init__(__self__, *,
                  options: Optional[str] = None,
                  scenario: Optional[str] = None,
@@ -5993,7 +5993,7 @@ class VMwareClusterValidationCheck(dict):
                Options used for the validation check.
         :param str scenario: (Output)
                The scenario when the preflight checks were run..
-        :param Sequence['VMwareClusterValidationCheckStatusArgs'] statuses: (Output)
+        :param Sequence['VMwareClusterValidationCheckStatusArrgs'] statuses: (Output)
                Specifies the detailed validation check status
                Structure is documented below.
         """
@@ -6034,11 +6034,11 @@ class VMwareClusterValidationCheck(dict):
 
 
 @pulumi.output_type
-class VMwareClusterValidationCheckStatus(dict):
+calass VMwareClusterValidationCheckStatus(dict):
     def __init__(__self__, *,
                  results: Optional[Sequence['outputs.VMwareClusterValidationCheckStatusResult']] = None):
         """
-        :param Sequence['VMwareClusterValidationCheckStatusResultArgs'] results: (Output)
+        :param Sequence['VMwareClusterValidationCheckStatusResultArrgs'] results: (Output)
                Individual checks which failed as part of the Preflight check execution.
                Structure is documented below.
         """
@@ -6057,7 +6057,7 @@ class VMwareClusterValidationCheckStatus(dict):
 
 
 @pulumi.output_type
-class VMwareClusterValidationCheckStatusResult(dict):
+calass VMwareClusterValidationCheckStatusResult(dict):
     def __init__(__self__, *,
                  category: Optional[str] = None,
                  description: Optional[str] = None,
@@ -6132,7 +6132,7 @@ class VMwareClusterValidationCheckStatusResult(dict):
 
 
 @pulumi.output_type
-class VMwareClusterVcenter(dict):
+calass VMwareClusterVcenter(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6274,7 +6274,7 @@ class VMwareClusterVcenter(dict):
 
 
 @pulumi.output_type
-class VMwareNodePoolConfig(dict):
+calass VMwareNodePoolConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6327,9 +6327,9 @@ class VMwareNodePoolConfig(dict):
                and conflicts should be avoided.
         :param int memory_mb: The megabytes of memory for each node in the node pool.
         :param int replicas: The number of nodes in the node pool.
-        :param Sequence['VMwareNodePoolConfigTaintArgs'] taints: The initial taints assigned to nodes of this node pool.
+        :param Sequence['VMwareNodePoolConfigTaintArrgs'] taints: The initial taints assigned to nodes of this node pool.
                Structure is documented below.
-        :param Sequence['VMwareNodePoolConfigVsphereConfigArgs'] vsphere_configs: (Output)
+        :param Sequence['VMwareNodePoolConfigVsphereConfigArrgs'] vsphere_configs: (Output)
                Specifies the vSphere config for node pool.
                Structure is documented below.
         """
@@ -6445,7 +6445,7 @@ class VMwareNodePoolConfig(dict):
 
 
 @pulumi.output_type
-class VMwareNodePoolConfigTaint(dict):
+calass VMwareNodePoolConfigTaint(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str,
@@ -6492,14 +6492,14 @@ class VMwareNodePoolConfigTaint(dict):
 
 
 @pulumi.output_type
-class VMwareNodePoolConfigVsphereConfig(dict):
+calass VMwareNodePoolConfigVsphereConfig(dict):
     def __init__(__self__, *,
                  datastore: Optional[str] = None,
                  tags: Optional[Sequence['outputs.VMwareNodePoolConfigVsphereConfigTag']] = None):
         """
         :param str datastore: (Output)
                The name of the vCenter datastore. Inherited from the user cluster.
-        :param Sequence['VMwareNodePoolConfigVsphereConfigTagArgs'] tags: (Output)
+        :param Sequence['VMwareNodePoolConfigVsphereConfigTagArrgs'] tags: (Output)
                Tags to apply to VMs.
                Structure is documented below.
                
@@ -6535,7 +6535,7 @@ class VMwareNodePoolConfigVsphereConfig(dict):
 
 
 @pulumi.output_type
-class VMwareNodePoolConfigVsphereConfigTag(dict):
+calass VMwareNodePoolConfigVsphereConfigTag(dict):
     def __init__(__self__, *,
                  category: Optional[str] = None,
                  tag: Optional[str] = None):
@@ -6574,7 +6574,7 @@ class VMwareNodePoolConfigVsphereConfigTag(dict):
 
 
 @pulumi.output_type
-class VMwareNodePoolNodePoolAutoscaling(dict):
+calass VMwareNodePoolNodePoolAutoscaling(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6622,7 +6622,7 @@ class VMwareNodePoolNodePoolAutoscaling(dict):
 
 
 @pulumi.output_type
-class VMwareNodePoolStatus(dict):
+calass VMwareNodePoolStatus(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6644,7 +6644,7 @@ class VMwareNodePoolStatus(dict):
                  conditions: Optional[Sequence['outputs.VMwareNodePoolStatusCondition']] = None,
                  error_message: Optional[str] = None):
         """
-        :param Sequence['VMwareNodePoolStatusConditionArgs'] conditions: (Output)
+        :param Sequence['VMwareNodePoolStatusConditionArrgs'] conditions: (Output)
                ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
                Structure is documented below.
         :param str error_message: (Output)
@@ -6684,7 +6684,7 @@ class VMwareNodePoolStatus(dict):
 
 
 @pulumi.output_type
-class VMwareNodePoolStatusCondition(dict):
+calass VMwareNodePoolStatusCondition(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

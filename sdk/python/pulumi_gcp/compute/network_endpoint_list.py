@@ -11,13 +11,13 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['NetworkEndpointListArgs', 'NetworkEndpointList']
+__all__ = ['NetworkEndpointListArrgs', 'NetworkEndpointList']
 
 @pulumi.input_type
-class NetworkEndpointListArgs:
+calass NetworkEndpointListArrgs:
     def __init__(__self__, *,
                  network_endpoint_group: pulumi.Input[str],
-                 network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]]] = None,
+                 network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArrgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
@@ -26,7 +26,7 @@ class NetworkEndpointListArgs:
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]] network_endpoints: The network endpoints to be added to the enclosing network endpoint group
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArrgs']]] network_endpoints: The network endpoints to be added to the enclosing network endpoint group
                (NEG). Each endpoint specifies an IP address and port, along with
                additional information depending on the NEG type.
                Structure is documented below.
@@ -59,7 +59,7 @@ class NetworkEndpointListArgs:
 
     @property
     @pulumi.getter(name="networkEndpoints")
-    def network_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]]]:
+    def network_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArrgs']]]]:
         """
         The network endpoints to be added to the enclosing network endpoint group
         (NEG). Each endpoint specifies an IP address and port, along with
@@ -69,7 +69,7 @@ class NetworkEndpointListArgs:
         return pulumi.get(self, "network_endpoints")
 
     @network_endpoints.setter
-    def network_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]]]):
+    def network_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArrgs']]]]):
         pulumi.set(self, "network_endpoints", value)
 
     @property
@@ -99,10 +99,10 @@ class NetworkEndpointListArgs:
 
 
 @pulumi.input_type
-class _NetworkEndpointListState:
+calass _NetworkEndpointListState:
     def __init__(__self__, *,
                  network_endpoint_group: Optional[pulumi.Input[str]] = None,
-                 network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]]] = None,
+                 network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArrgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
@@ -111,7 +111,7 @@ class _NetworkEndpointListState:
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]] network_endpoints: The network endpoints to be added to the enclosing network endpoint group
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArrgs']]] network_endpoints: The network endpoints to be added to the enclosing network endpoint group
                (NEG). Each endpoint specifies an IP address and port, along with
                additional information depending on the NEG type.
                Structure is documented below.
@@ -145,7 +145,7 @@ class _NetworkEndpointListState:
 
     @property
     @pulumi.getter(name="networkEndpoints")
-    def network_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]]]:
+    def network_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArrgs']]]]:
         """
         The network endpoints to be added to the enclosing network endpoint group
         (NEG). Each endpoint specifies an IP address and port, along with
@@ -155,7 +155,7 @@ class _NetworkEndpointListState:
         return pulumi.get(self, "network_endpoints")
 
     @network_endpoints.setter
-    def network_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]]]):
+    def network_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArrgs']]]]):
         pulumi.set(self, "network_endpoints", value)
 
     @property
@@ -184,13 +184,13 @@ class _NetworkEndpointListState:
         pulumi.set(self, "zone", value)
 
 
-class NetworkEndpointList(pulumi.CustomResource):
+calass NetworkEndpointList(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  network_endpoint_group: Optional[pulumi.Input[str]] = None,
-                 network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkEndpointListNetworkEndpointArgs']]]]] = None,
+                 network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkEndpointListNetworkEndpointArrgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -226,35 +226,35 @@ class NetworkEndpointList(pulumi.CustomResource):
             network=default_network.id)
         endpoint_instance1 = gcp.compute.Instance("endpoint-instance1",
             machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image=my_image.self_link,
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 subnetwork=default_subnetwork.id,
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArrgs()],
             )])
         endpoint_instance2 = gcp.compute.Instance("endpoint-instance2",
             machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image=my_image.self_link,
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 subnetwork=default_subnetwork.id,
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArrgs()],
             )])
         default_endpoints = gcp.compute.NetworkEndpointList("default-endpoints",
             network_endpoint_group=google_compute_network_endpoint_group["neg"]["name"],
             network_endpoints=[
-                gcp.compute.NetworkEndpointListNetworkEndpointArgs(
+                gcp.compute.NetworkEndpointListNetworkEndpointArrgs(
                     instance=endpoint_instance1.name,
                     port=google_compute_network_endpoint_group["neg"]["default_port"],
                     ip_address=endpoint_instance1.network_interfaces[0].network_ip,
                 ),
-                gcp.compute.NetworkEndpointListNetworkEndpointArgs(
+                gcp.compute.NetworkEndpointListNetworkEndpointArrgs(
                     instance=endpoint_instance2.name,
                     port=google_compute_network_endpoint_group["neg"]["default_port"],
                     ip_address=endpoint_instance2.network_interfaces[0].network_ip,
@@ -293,7 +293,7 @@ class NetworkEndpointList(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkEndpointListNetworkEndpointArgs']]]] network_endpoints: The network endpoints to be added to the enclosing network endpoint group
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkEndpointListNetworkEndpointArrgs']]]] network_endpoints: The network endpoints to be added to the enclosing network endpoint group
                (NEG). Each endpoint specifies an IP address and port, along with
                additional information depending on the NEG type.
                Structure is documented below.
@@ -305,7 +305,7 @@ class NetworkEndpointList(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: NetworkEndpointListArgs,
+                 args: NetworkEndpointListArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A set of network endpoints belonging to a network endpoint group (NEG). A
@@ -339,35 +339,35 @@ class NetworkEndpointList(pulumi.CustomResource):
             network=default_network.id)
         endpoint_instance1 = gcp.compute.Instance("endpoint-instance1",
             machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image=my_image.self_link,
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 subnetwork=default_subnetwork.id,
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArrgs()],
             )])
         endpoint_instance2 = gcp.compute.Instance("endpoint-instance2",
             machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image=my_image.self_link,
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 subnetwork=default_subnetwork.id,
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArrgs()],
             )])
         default_endpoints = gcp.compute.NetworkEndpointList("default-endpoints",
             network_endpoint_group=google_compute_network_endpoint_group["neg"]["name"],
             network_endpoints=[
-                gcp.compute.NetworkEndpointListNetworkEndpointArgs(
+                gcp.compute.NetworkEndpointListNetworkEndpointArrgs(
                     instance=endpoint_instance1.name,
                     port=google_compute_network_endpoint_group["neg"]["default_port"],
                     ip_address=endpoint_instance1.network_interfaces[0].network_ip,
                 ),
-                gcp.compute.NetworkEndpointListNetworkEndpointArgs(
+                gcp.compute.NetworkEndpointListNetworkEndpointArrgs(
                     instance=endpoint_instance2.name,
                     port=google_compute_network_endpoint_group["neg"]["default_port"],
                     ip_address=endpoint_instance2.network_interfaces[0].network_ip,
@@ -401,12 +401,12 @@ class NetworkEndpointList(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param NetworkEndpointListArgs args: The arguments to use to populate this resource's properties.
+        :param NetworkEndpointListArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(NetworkEndpointListArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(NetworkEndpointListArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -416,7 +416,7 @@ class NetworkEndpointList(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  network_endpoint_group: Optional[pulumi.Input[str]] = None,
-                 network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkEndpointListNetworkEndpointArgs']]]]] = None,
+                 network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkEndpointListNetworkEndpointArrgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -426,7 +426,7 @@ class NetworkEndpointList(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = NetworkEndpointListArgs.__new__(NetworkEndpointListArgs)
+            __props__ = NetworkEndpointListArrgs.__new__(NetworkEndpointListArrgs)
 
             if network_endpoint_group is None and not opts.urn:
                 raise TypeError("Missing required property 'network_endpoint_group'")
@@ -445,7 +445,7 @@ class NetworkEndpointList(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             network_endpoint_group: Optional[pulumi.Input[str]] = None,
-            network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkEndpointListNetworkEndpointArgs']]]]] = None,
+            network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkEndpointListNetworkEndpointArrgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'NetworkEndpointList':
         """
@@ -459,7 +459,7 @@ class NetworkEndpointList(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkEndpointListNetworkEndpointArgs']]]] network_endpoints: The network endpoints to be added to the enclosing network endpoint group
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkEndpointListNetworkEndpointArrgs']]]] network_endpoints: The network endpoints to be added to the enclosing network endpoint group
                (NEG). Each endpoint specifies an IP address and port, along with
                additional information depending on the NEG type.
                Structure is documented below.

@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class InstanceAccelerator(dict):
+calass InstanceAccelerator(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -67,7 +67,7 @@ class InstanceAccelerator(dict):
 
 
 @pulumi.output_type
-class InstanceCryptoKeyConfig(dict):
+calass InstanceCryptoKeyConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -102,7 +102,7 @@ class InstanceCryptoKeyConfig(dict):
 
 
 @pulumi.output_type
-class InstanceEventPublishConfig(dict):
+calass InstanceEventPublishConfig(dict):
     def __init__(__self__, *,
                  enabled: bool,
                  topic: str):
@@ -131,7 +131,7 @@ class InstanceEventPublishConfig(dict):
 
 
 @pulumi.output_type
-class InstanceNetworkConfig(dict):
+calass InstanceNetworkConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

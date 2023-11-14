@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['MetastoreServiceIamPolicyArgs', 'MetastoreServiceIamPolicy']
+__all__ = ['MetastoreServiceIamPolicyArrgs', 'MetastoreServiceIamPolicy']
 
 @pulumi.input_type
-class MetastoreServiceIamPolicyArgs:
+calass MetastoreServiceIamPolicyArrgs:
     def __init__(__self__, *,
                  policy_data: pulumi.Input[str],
                  service_id: pulumi.Input[str],
@@ -110,7 +110,7 @@ class MetastoreServiceIamPolicyArgs:
 
 
 @pulumi.input_type
-class _MetastoreServiceIamPolicyState:
+calass _MetastoreServiceIamPolicyState:
     def __init__(__self__, *,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -225,7 +225,7 @@ class _MetastoreServiceIamPolicyState:
         pulumi.set(self, "service_id", value)
 
 
-class MetastoreServiceIamPolicy(pulumi.CustomResource):
+calass MetastoreServiceIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -256,7 +256,7 @@ class MetastoreServiceIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -345,7 +345,7 @@ class MetastoreServiceIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: MetastoreServiceIamPolicyArgs,
+                 args: MetastoreServiceIamPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Dataproc metastore Service. Each of these resources serves a different use case:
@@ -368,7 +368,7 @@ class MetastoreServiceIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -432,12 +432,12 @@ class MetastoreServiceIamPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param MetastoreServiceIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param MetastoreServiceIamPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(MetastoreServiceIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(MetastoreServiceIamPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -457,7 +457,7 @@ class MetastoreServiceIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = MetastoreServiceIamPolicyArgs.__new__(MetastoreServiceIamPolicyArgs)
+            __props__ = MetastoreServiceIamPolicyArrgs.__new__(MetastoreServiceIamPolicyArrgs)
 
             __props__.__dict__["location"] = location
             if policy_data is None and not opts.urn:

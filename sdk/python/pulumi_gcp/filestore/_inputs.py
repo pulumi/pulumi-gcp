@@ -10,23 +10,23 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'InstanceFileSharesArgs',
-    'InstanceFileSharesNfsExportOptionArgs',
-    'InstanceNetworkArgs',
+    'InstanceFileSharesArrgs',
+    'InstanceFileSharesNfsExportOptionArrgs',
+    'InstanceNetworkArrgs',
 ]
 
 @pulumi.input_type
-class InstanceFileSharesArgs:
+calass InstanceFileSharesArrgs:
     def __init__(__self__, *,
                  capacity_gb: pulumi.Input[int],
                  name: pulumi.Input[str],
-                 nfs_export_options: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFileSharesNfsExportOptionArgs']]]] = None,
+                 nfs_export_options: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFileSharesNfsExportOptionArrgs']]]] = None,
                  source_backup: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] capacity_gb: File share capacity in GiB. This must be at least 1024 GiB
                for the standard tier, or 2560 GiB for the premium tier.
         :param pulumi.Input[str] name: The name of the fileshare (16 characters or less)
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceFileSharesNfsExportOptionArgs']]] nfs_export_options: Nfs Export Options. There is a limit of 10 export options per file share.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceFileSharesNfsExportOptionArrgs']]] nfs_export_options: Nfs Export Options. There is a limit of 10 export options per file share.
                Structure is documented below.
         :param pulumi.Input[str] source_backup: (Output)
                The resource name of the backup, in the format
@@ -67,7 +67,7 @@ class InstanceFileSharesArgs:
 
     @property
     @pulumi.getter(name="nfsExportOptions")
-    def nfs_export_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFileSharesNfsExportOptionArgs']]]]:
+    def nfs_export_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFileSharesNfsExportOptionArrgs']]]]:
         """
         Nfs Export Options. There is a limit of 10 export options per file share.
         Structure is documented below.
@@ -75,7 +75,7 @@ class InstanceFileSharesArgs:
         return pulumi.get(self, "nfs_export_options")
 
     @nfs_export_options.setter
-    def nfs_export_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFileSharesNfsExportOptionArgs']]]]):
+    def nfs_export_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFileSharesNfsExportOptionArrgs']]]]):
         pulumi.set(self, "nfs_export_options", value)
 
     @property
@@ -95,7 +95,7 @@ class InstanceFileSharesArgs:
 
 
 @pulumi.input_type
-class InstanceFileSharesNfsExportOptionArgs:
+calass InstanceFileSharesNfsExportOptionArrgs:
     def __init__(__self__, *,
                  access_mode: Optional[pulumi.Input[str]] = None,
                  anon_gid: Optional[pulumi.Input[int]] = None,
@@ -206,7 +206,7 @@ class InstanceFileSharesNfsExportOptionArgs:
 
 
 @pulumi.input_type
-class InstanceNetworkArgs:
+calass InstanceNetworkArrgs:
     def __init__(__self__, *,
                  modes: pulumi.Input[Sequence[pulumi.Input[str]]],
                  network: pulumi.Input[str],

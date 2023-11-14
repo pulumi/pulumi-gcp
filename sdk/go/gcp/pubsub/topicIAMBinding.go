@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Cloud Pub/Sub Topic. Each of these resources serves a different use case:
@@ -362,12 +361,6 @@ func (i *TopicIAMBinding) ToTopicIAMBindingOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMBindingOutput)
 }
 
-func (i *TopicIAMBinding) ToOutput(ctx context.Context) pulumix.Output[*TopicIAMBinding] {
-	return pulumix.Output[*TopicIAMBinding]{
-		OutputState: i.ToTopicIAMBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TopicIAMBindingArrayInput is an input type that accepts TopicIAMBindingArray and TopicIAMBindingArrayOutput values.
 // You can construct a concrete instance of `TopicIAMBindingArrayInput` via:
 //
@@ -391,12 +384,6 @@ func (i TopicIAMBindingArray) ToTopicIAMBindingArrayOutput() TopicIAMBindingArra
 
 func (i TopicIAMBindingArray) ToTopicIAMBindingArrayOutputWithContext(ctx context.Context) TopicIAMBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMBindingArrayOutput)
-}
-
-func (i TopicIAMBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*TopicIAMBinding] {
-	return pulumix.Output[[]*TopicIAMBinding]{
-		OutputState: i.ToTopicIAMBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TopicIAMBindingMapInput is an input type that accepts TopicIAMBindingMap and TopicIAMBindingMapOutput values.
@@ -424,12 +411,6 @@ func (i TopicIAMBindingMap) ToTopicIAMBindingMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMBindingMapOutput)
 }
 
-func (i TopicIAMBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TopicIAMBinding] {
-	return pulumix.Output[map[string]*TopicIAMBinding]{
-		OutputState: i.ToTopicIAMBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TopicIAMBindingOutput struct{ *pulumi.OutputState }
 
 func (TopicIAMBindingOutput) ElementType() reflect.Type {
@@ -442,12 +423,6 @@ func (o TopicIAMBindingOutput) ToTopicIAMBindingOutput() TopicIAMBindingOutput {
 
 func (o TopicIAMBindingOutput) ToTopicIAMBindingOutputWithContext(ctx context.Context) TopicIAMBindingOutput {
 	return o
-}
-
-func (o TopicIAMBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*TopicIAMBinding] {
-	return pulumix.Output[*TopicIAMBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TopicIAMBindingOutput) Condition() TopicIAMBindingConditionPtrOutput {
@@ -507,12 +482,6 @@ func (o TopicIAMBindingArrayOutput) ToTopicIAMBindingArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o TopicIAMBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TopicIAMBinding] {
-	return pulumix.Output[[]*TopicIAMBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TopicIAMBindingArrayOutput) Index(i pulumi.IntInput) TopicIAMBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TopicIAMBinding {
 		return vs[0].([]*TopicIAMBinding)[vs[1].(int)]
@@ -531,12 +500,6 @@ func (o TopicIAMBindingMapOutput) ToTopicIAMBindingMapOutput() TopicIAMBindingMa
 
 func (o TopicIAMBindingMapOutput) ToTopicIAMBindingMapOutputWithContext(ctx context.Context) TopicIAMBindingMapOutput {
 	return o
-}
-
-func (o TopicIAMBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TopicIAMBinding] {
-	return pulumix.Output[map[string]*TopicIAMBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TopicIAMBindingMapOutput) MapIndex(k pulumi.StringInput) TopicIAMBindingOutput {

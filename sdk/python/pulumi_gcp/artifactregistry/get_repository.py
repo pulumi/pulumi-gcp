@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetRepositoryResult:
+calass GetRepositoryResult:
     """
     A collection of values returned by getRepository.
     """
@@ -188,7 +188,7 @@ class GetRepositoryResult:
         return pulumi.get(self, "virtual_repository_configs")
 
 
-class AwaitableGetRepositoryResult(GetRepositoryResult):
+calass AwaitableGetRepositoryResult(GetRepositoryResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

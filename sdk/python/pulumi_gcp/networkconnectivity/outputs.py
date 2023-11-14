@@ -24,7 +24,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class HubRoutingVpc(dict):
+calass HubRoutingVpc(dict):
     def __init__(__self__, *,
                  uri: Optional[str] = None):
         if uri is not None:
@@ -37,7 +37,7 @@ class HubRoutingVpc(dict):
 
 
 @pulumi.output_type
-class ServiceConnectionPolicyPscConfig(dict):
+calass ServiceConnectionPolicyPscConfig(dict):
     def __init__(__self__, *,
                  subnetworks: Sequence[str],
                  limit: Optional[str] = None):
@@ -67,7 +67,7 @@ class ServiceConnectionPolicyPscConfig(dict):
 
 
 @pulumi.output_type
-class ServiceConnectionPolicyPscConnection(dict):
+calass ServiceConnectionPolicyPscConnection(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -111,9 +111,9 @@ class ServiceConnectionPolicyPscConnection(dict):
         :param str consumer_address: The resource reference of the consumer address.
         :param str consumer_forwarding_rule: The resource reference of the PSC Forwarding Rule within the consumer VPC.
         :param str consumer_target_project: The project where the PSC connection is created.
-        :param 'ServiceConnectionPolicyPscConnectionErrorArgs' error: The most recent error during operating this connection.
+        :param 'ServiceConnectionPolicyPscConnectionErrorArrgs' error: The most recent error during operating this connection.
                Structure is documented below.
-        :param 'ServiceConnectionPolicyPscConnectionErrorInfoArgs' error_info: The error info for the latest error during operating this connection.
+        :param 'ServiceConnectionPolicyPscConnectionErrorInfoArrgs' error_info: The error info for the latest error during operating this connection.
                Structure is documented below.
         :param str error_type: The error type indicates whether the error is consumer facing, producer
                facing or system internal.
@@ -221,7 +221,7 @@ class ServiceConnectionPolicyPscConnection(dict):
 
 
 @pulumi.output_type
-class ServiceConnectionPolicyPscConnectionError(dict):
+calass ServiceConnectionPolicyPscConnectionError(dict):
     def __init__(__self__, *,
                  code: Optional[int] = None,
                  details: Optional[Sequence[Mapping[str, Any]]] = None,
@@ -266,7 +266,7 @@ class ServiceConnectionPolicyPscConnectionError(dict):
 
 
 @pulumi.output_type
-class ServiceConnectionPolicyPscConnectionErrorInfo(dict):
+calass ServiceConnectionPolicyPscConnectionErrorInfo(dict):
     def __init__(__self__, *,
                  domain: Optional[str] = None,
                  metadata: Optional[Mapping[str, str]] = None,
@@ -309,7 +309,7 @@ class ServiceConnectionPolicyPscConnectionErrorInfo(dict):
 
 
 @pulumi.output_type
-class SpokeLinkedInterconnectAttachments(dict):
+calass SpokeLinkedInterconnectAttachments(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -355,7 +355,7 @@ class SpokeLinkedInterconnectAttachments(dict):
 
 
 @pulumi.output_type
-class SpokeLinkedRouterApplianceInstances(dict):
+calass SpokeLinkedRouterApplianceInstances(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -377,7 +377,7 @@ class SpokeLinkedRouterApplianceInstances(dict):
                  instances: Sequence['outputs.SpokeLinkedRouterApplianceInstancesInstance'],
                  site_to_site_data_transfer: bool):
         """
-        :param Sequence['SpokeLinkedRouterApplianceInstancesInstanceArgs'] instances: The list of router appliance instances
+        :param Sequence['SpokeLinkedRouterApplianceInstancesInstanceArrgs'] instances: The list of router appliance instances
         :param bool site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
         """
         pulumi.set(__self__, "instances", instances)
@@ -401,7 +401,7 @@ class SpokeLinkedRouterApplianceInstances(dict):
 
 
 @pulumi.output_type
-class SpokeLinkedRouterApplianceInstancesInstance(dict):
+calass SpokeLinkedRouterApplianceInstancesInstance(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -455,7 +455,7 @@ class SpokeLinkedRouterApplianceInstancesInstance(dict):
 
 
 @pulumi.output_type
-class SpokeLinkedVpcNetwork(dict):
+calass SpokeLinkedVpcNetwork(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -502,7 +502,7 @@ class SpokeLinkedVpcNetwork(dict):
 
 
 @pulumi.output_type
-class SpokeLinkedVpnTunnels(dict):
+calass SpokeLinkedVpnTunnels(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

@@ -23,7 +23,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class ExtensionsInstanceConfig(dict):
+calass ExtensionsInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -189,7 +189,7 @@ class ExtensionsInstanceConfig(dict):
 
 
 @pulumi.output_type
-class ExtensionsInstanceErrorStatus(dict):
+calass ExtensionsInstanceErrorStatus(dict):
     def __init__(__self__, *,
                  code: Optional[int] = None,
                  details: Optional[Sequence[Mapping[str, Any]]] = None,
@@ -232,7 +232,7 @@ class ExtensionsInstanceErrorStatus(dict):
 
 
 @pulumi.output_type
-class ExtensionsInstanceRuntimeData(dict):
+calass ExtensionsInstanceRuntimeData(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -259,9 +259,9 @@ class ExtensionsInstanceRuntimeData(dict):
                  processing_state: Optional['outputs.ExtensionsInstanceRuntimeDataProcessingState'] = None,
                  state_update_time: Optional[str] = None):
         """
-        :param 'ExtensionsInstanceRuntimeDataFatalErrorArgs' fatal_error: The fatal error state for the extension instance
+        :param 'ExtensionsInstanceRuntimeDataFatalErrorArrgs' fatal_error: The fatal error state for the extension instance
                Structure is documented below.
-        :param 'ExtensionsInstanceRuntimeDataProcessingStateArgs' processing_state: The processing state for the extension instance
+        :param 'ExtensionsInstanceRuntimeDataProcessingStateArrgs' processing_state: The processing state for the extension instance
                Structure is documented below.
         :param str state_update_time: The time of the last state update.
         """
@@ -300,7 +300,7 @@ class ExtensionsInstanceRuntimeData(dict):
 
 
 @pulumi.output_type
-class ExtensionsInstanceRuntimeDataFatalError(dict):
+calass ExtensionsInstanceRuntimeDataFatalError(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -340,7 +340,7 @@ class ExtensionsInstanceRuntimeDataFatalError(dict):
 
 
 @pulumi.output_type
-class ExtensionsInstanceRuntimeDataProcessingState(dict):
+calass ExtensionsInstanceRuntimeDataProcessingState(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -394,15 +394,15 @@ class ExtensionsInstanceRuntimeDataProcessingState(dict):
 
 
 @pulumi.output_type
-class HostingVersionConfig(dict):
+calass HostingVersionConfig(dict):
     def __init__(__self__, *,
                  redirects: Optional[Sequence['outputs.HostingVersionConfigRedirect']] = None,
                  rewrites: Optional[Sequence['outputs.HostingVersionConfigRewrite']] = None):
         """
-        :param Sequence['HostingVersionConfigRedirectArgs'] redirects: An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
+        :param Sequence['HostingVersionConfigRedirectArrgs'] redirects: An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
                triggers Hosting to respond with a redirect to the specified destination path.
                Structure is documented below.
-        :param Sequence['HostingVersionConfigRewriteArgs'] rewrites: An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the
+        :param Sequence['HostingVersionConfigRewriteArrgs'] rewrites: An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the
                request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
                Structure is documented below.
         """
@@ -433,7 +433,7 @@ class HostingVersionConfig(dict):
 
 
 @pulumi.output_type
-class HostingVersionConfigRedirect(dict):
+calass HostingVersionConfigRedirect(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -513,7 +513,7 @@ class HostingVersionConfigRedirect(dict):
 
 
 @pulumi.output_type
-class HostingVersionConfigRewrite(dict):
+calass HostingVersionConfigRewrite(dict):
     def __init__(__self__, *,
                  function: Optional[str] = None,
                  glob: Optional[str] = None,
@@ -523,7 +523,7 @@ class HostingVersionConfigRewrite(dict):
         :param str function: The function to proxy requests to. Must match the exported function name exactly.
         :param str glob: The user-supplied glob to match against the request URL path.
         :param str regex: The user-supplied RE2 regular expression to match against the request URL path.
-        :param 'HostingVersionConfigRewriteRunArgs' run: The request will be forwarded to Cloud Run.
+        :param 'HostingVersionConfigRewriteRunArrgs' run: The request will be forwarded to Cloud Run.
                Structure is documented below.
         """
         if function is not None:
@@ -570,7 +570,7 @@ class HostingVersionConfigRewrite(dict):
 
 
 @pulumi.output_type
-class HostingVersionConfigRewriteRun(dict):
+calass HostingVersionConfigRewriteRun(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

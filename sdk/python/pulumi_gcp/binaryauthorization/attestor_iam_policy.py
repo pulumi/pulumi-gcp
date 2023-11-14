@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['AttestorIamPolicyArgs', 'AttestorIamPolicy']
+__all__ = ['AttestorIamPolicyArrgs', 'AttestorIamPolicy']
 
 @pulumi.input_type
-class AttestorIamPolicyArgs:
+calass AttestorIamPolicyArrgs:
     def __init__(__self__, *,
                  attestor: pulumi.Input[str],
                  policy_data: pulumi.Input[str],
@@ -94,7 +94,7 @@ class AttestorIamPolicyArgs:
 
 
 @pulumi.input_type
-class _AttestorIamPolicyState:
+calass _AttestorIamPolicyState:
     def __init__(__self__, *,
                  attestor: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -193,7 +193,7 @@ class _AttestorIamPolicyState:
         pulumi.set(self, "project", value)
 
 
-class AttestorIamPolicy(pulumi.CustomResource):
+calass AttestorIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -223,7 +223,7 @@ class AttestorIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -307,7 +307,7 @@ class AttestorIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AttestorIamPolicyArgs,
+                 args: AttestorIamPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Binary Authorization Attestor. Each of these resources serves a different use case:
@@ -330,7 +330,7 @@ class AttestorIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -391,12 +391,12 @@ class AttestorIamPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param AttestorIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param AttestorIamPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AttestorIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AttestorIamPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -415,7 +415,7 @@ class AttestorIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AttestorIamPolicyArgs.__new__(AttestorIamPolicyArgs)
+            __props__ = AttestorIamPolicyArrgs.__new__(AttestorIamPolicyArrgs)
 
             if attestor is None and not opts.urn:
                 raise TypeError("Missing required property 'attestor'")

@@ -10,17 +10,17 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'ConsumersIamBindingConditionArgs',
-    'ConsumersIamMemberConditionArgs',
-    'ServiceApiArgs',
-    'ServiceApiMethodArgs',
-    'ServiceEndpointArgs',
-    'ServiceIamBindingConditionArgs',
-    'ServiceIamMemberConditionArgs',
+    'ConsumersIamBindingConditionArrgs',
+    'ConsumersIamMemberConditionArrgs',
+    'ServiceApiArrgs',
+    'ServiceApiMethodArrgs',
+    'ServiceEndpointArrgs',
+    'ServiceIamBindingConditionArrgs',
+    'ServiceIamMemberConditionArrgs',
 ]
 
 @pulumi.input_type
-class ConsumersIamBindingConditionArgs:
+calass ConsumersIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -59,7 +59,7 @@ class ConsumersIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class ConsumersIamMemberConditionArgs:
+calass ConsumersIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -98,14 +98,14 @@ class ConsumersIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class ServiceApiArgs:
+calass ServiceApiArrgs:
     def __init__(__self__, *,
-                 methods: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceApiMethodArgs']]]] = None,
+                 methods: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceApiMethodArrgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  syntax: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceApiMethodArgs']]] methods: A list of Method objects; structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceApiMethodArrgs']]] methods: A list of Method objects; structure is documented below.
         :param pulumi.Input[str] name: The simple name of the endpoint as described in the config.
         :param pulumi.Input[str] syntax: `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
         :param pulumi.Input[str] version: A version string for this api. If specified, will have the form major-version.minor-version, e.g. `1.10`.
@@ -121,14 +121,14 @@ class ServiceApiArgs:
 
     @property
     @pulumi.getter
-    def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceApiMethodArgs']]]]:
+    def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceApiMethodArrgs']]]]:
         """
         A list of Method objects; structure is documented below.
         """
         return pulumi.get(self, "methods")
 
     @methods.setter
-    def methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceApiMethodArgs']]]]):
+    def methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceApiMethodArrgs']]]]):
         pulumi.set(self, "methods", value)
 
     @property
@@ -169,7 +169,7 @@ class ServiceApiArgs:
 
 
 @pulumi.input_type
-class ServiceApiMethodArgs:
+calass ServiceApiMethodArrgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
                  request_type: Optional[pulumi.Input[str]] = None,
@@ -240,7 +240,7 @@ class ServiceApiMethodArgs:
 
 
 @pulumi.input_type
-class ServiceEndpointArgs:
+calass ServiceEndpointArrgs:
     def __init__(__self__, *,
                  address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
@@ -279,7 +279,7 @@ class ServiceEndpointArgs:
 
 
 @pulumi.input_type
-class ServiceIamBindingConditionArgs:
+calass ServiceIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -318,7 +318,7 @@ class ServiceIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class ServiceIamMemberConditionArgs:
+calass ServiceIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],

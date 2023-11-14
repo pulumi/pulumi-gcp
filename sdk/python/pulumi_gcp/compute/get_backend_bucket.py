@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetBackendBucketResult:
+calass GetBackendBucketResult:
     """
     A collection of values returned by getBackendBucket.
     """
@@ -124,7 +124,7 @@ class GetBackendBucketResult:
         return pulumi.get(self, "self_link")
 
 
-class AwaitableGetBackendBucketResult(GetBackendBucketResult):
+calass AwaitableGetBackendBucketResult(GetBackendBucketResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

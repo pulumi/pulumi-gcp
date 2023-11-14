@@ -10,20 +10,20 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'CryptoKeyIAMBindingConditionArgs',
-    'CryptoKeyIAMMemberConditionArgs',
-    'CryptoKeyVersionAttestationArgs',
-    'CryptoKeyVersionAttestationCertChainsArgs',
-    'CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs',
-    'CryptoKeyVersionTemplateArgs',
-    'KeyRingIAMBindingConditionArgs',
-    'KeyRingIAMMemberConditionArgs',
-    'KeyRingImportJobAttestationArgs',
-    'KeyRingImportJobPublicKeyArgs',
+    'CryptoKeyIAMBindingConditionArrgs',
+    'CryptoKeyIAMMemberConditionArrgs',
+    'CryptoKeyVersionAttestationArrgs',
+    'CryptoKeyVersionAttestationCertChainsArrgs',
+    'CryptoKeyVersionAttestationExternalProtectionLevelOptionsArrgs',
+    'CryptoKeyVersionTemplateArrgs',
+    'KeyRingIAMBindingConditionArrgs',
+    'KeyRingIAMMemberConditionArrgs',
+    'KeyRingImportJobAttestationArrgs',
+    'KeyRingImportJobPublicKeyArrgs',
 ]
 
 @pulumi.input_type
-class CryptoKeyIAMBindingConditionArgs:
+calass CryptoKeyIAMBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -84,7 +84,7 @@ class CryptoKeyIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class CryptoKeyIAMMemberConditionArgs:
+calass CryptoKeyIAMMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -145,18 +145,18 @@ class CryptoKeyIAMMemberConditionArgs:
 
 
 @pulumi.input_type
-class CryptoKeyVersionAttestationArgs:
+calass CryptoKeyVersionAttestationArrgs:
     def __init__(__self__, *,
-                 cert_chains: Optional[pulumi.Input['CryptoKeyVersionAttestationCertChainsArgs']] = None,
+                 cert_chains: Optional[pulumi.Input['CryptoKeyVersionAttestationCertChainsArrgs']] = None,
                  content: Optional[pulumi.Input[str]] = None,
-                 external_protection_level_options: Optional[pulumi.Input['CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs']] = None,
+                 external_protection_level_options: Optional[pulumi.Input['CryptoKeyVersionAttestationExternalProtectionLevelOptionsArrgs']] = None,
                  format: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['CryptoKeyVersionAttestationCertChainsArgs'] cert_chains: The certificate chains needed to validate the attestation
+        :param pulumi.Input['CryptoKeyVersionAttestationCertChainsArrgs'] cert_chains: The certificate chains needed to validate the attestation
                Structure is documented below.
         :param pulumi.Input[str] content: (Output)
                The attestation data provided by the HSM when the key operation was performed.
-        :param pulumi.Input['CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs'] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+        :param pulumi.Input['CryptoKeyVersionAttestationExternalProtectionLevelOptionsArrgs'] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
                Structure is documented below.
         :param pulumi.Input[str] format: (Output)
                The format of the attestation data.
@@ -172,7 +172,7 @@ class CryptoKeyVersionAttestationArgs:
 
     @property
     @pulumi.getter(name="certChains")
-    def cert_chains(self) -> Optional[pulumi.Input['CryptoKeyVersionAttestationCertChainsArgs']]:
+    def cert_chains(self) -> Optional[pulumi.Input['CryptoKeyVersionAttestationCertChainsArrgs']]:
         """
         The certificate chains needed to validate the attestation
         Structure is documented below.
@@ -180,7 +180,7 @@ class CryptoKeyVersionAttestationArgs:
         return pulumi.get(self, "cert_chains")
 
     @cert_chains.setter
-    def cert_chains(self, value: Optional[pulumi.Input['CryptoKeyVersionAttestationCertChainsArgs']]):
+    def cert_chains(self, value: Optional[pulumi.Input['CryptoKeyVersionAttestationCertChainsArrgs']]):
         pulumi.set(self, "cert_chains", value)
 
     @property
@@ -198,7 +198,7 @@ class CryptoKeyVersionAttestationArgs:
 
     @property
     @pulumi.getter(name="externalProtectionLevelOptions")
-    def external_protection_level_options(self) -> Optional[pulumi.Input['CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs']]:
+    def external_protection_level_options(self) -> Optional[pulumi.Input['CryptoKeyVersionAttestationExternalProtectionLevelOptionsArrgs']]:
         """
         ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
         Structure is documented below.
@@ -206,7 +206,7 @@ class CryptoKeyVersionAttestationArgs:
         return pulumi.get(self, "external_protection_level_options")
 
     @external_protection_level_options.setter
-    def external_protection_level_options(self, value: Optional[pulumi.Input['CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs']]):
+    def external_protection_level_options(self, value: Optional[pulumi.Input['CryptoKeyVersionAttestationExternalProtectionLevelOptionsArrgs']]):
         pulumi.set(self, "external_protection_level_options", value)
 
     @property
@@ -224,7 +224,7 @@ class CryptoKeyVersionAttestationArgs:
 
 
 @pulumi.input_type
-class CryptoKeyVersionAttestationCertChainsArgs:
+calass CryptoKeyVersionAttestationCertChainsArrgs:
     def __init__(__self__, *,
                  cavium_certs: Optional[pulumi.Input[str]] = None,
                  google_card_certs: Optional[pulumi.Input[str]] = None,
@@ -279,7 +279,7 @@ class CryptoKeyVersionAttestationCertChainsArgs:
 
 
 @pulumi.input_type
-class CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs:
+calass CryptoKeyVersionAttestationExternalProtectionLevelOptionsArrgs:
     def __init__(__self__, *,
                  ekm_connection_key_path: Optional[pulumi.Input[str]] = None,
                  external_key_uri: Optional[pulumi.Input[str]] = None):
@@ -318,7 +318,7 @@ class CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs:
 
 
 @pulumi.input_type
-class CryptoKeyVersionTemplateArgs:
+calass CryptoKeyVersionTemplateArrgs:
     def __init__(__self__, *,
                  algorithm: pulumi.Input[str],
                  protection_level: Optional[pulumi.Input[str]] = None):
@@ -358,7 +358,7 @@ class CryptoKeyVersionTemplateArgs:
 
 
 @pulumi.input_type
-class KeyRingIAMBindingConditionArgs:
+calass KeyRingIAMBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -419,7 +419,7 @@ class KeyRingIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class KeyRingIAMMemberConditionArgs:
+calass KeyRingIAMMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -480,7 +480,7 @@ class KeyRingIAMMemberConditionArgs:
 
 
 @pulumi.input_type
-class KeyRingImportJobAttestationArgs:
+calass KeyRingImportJobAttestationArrgs:
     def __init__(__self__, *,
                  content: Optional[pulumi.Input[str]] = None,
                  format: Optional[pulumi.Input[str]] = None):
@@ -525,7 +525,7 @@ class KeyRingImportJobAttestationArgs:
 
 
 @pulumi.input_type
-class KeyRingImportJobPublicKeyArgs:
+calass KeyRingImportJobPublicKeyArrgs:
     def __init__(__self__, *,
                  pem: Optional[pulumi.Input[str]] = None):
         """

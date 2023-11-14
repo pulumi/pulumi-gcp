@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['ChannelArgs', 'Channel']
+__all__ = ['ChannelArrgs', 'Channel']
 
 @pulumi.input_type
-class ChannelArgs:
+calass ChannelArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  crypto_key_name: Optional[pulumi.Input[str]] = None,
@@ -107,7 +107,7 @@ class ChannelArgs:
 
 
 @pulumi.input_type
-class _ChannelState:
+calass _ChannelState:
     def __init__(__self__, *,
                  activation_token: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -298,7 +298,7 @@ class _ChannelState:
         pulumi.set(self, "update_time", value)
 
 
-class Channel(pulumi.CustomResource):
+calass Channel(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -367,7 +367,7 @@ class Channel(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ChannelArgs,
+                 args: ChannelArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Eventarc Channel resource
@@ -412,12 +412,12 @@ class Channel(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ChannelArgs args: The arguments to use to populate this resource's properties.
+        :param ChannelArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ChannelArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ChannelArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -438,7 +438,7 @@ class Channel(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ChannelArgs.__new__(ChannelArgs)
+            __props__ = ChannelArrgs.__new__(ChannelArrgs)
 
             __props__.__dict__["crypto_key_name"] = crypto_key_name
             if location is None and not opts.urn:

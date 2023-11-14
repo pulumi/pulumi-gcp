@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['GlobalForwardingRuleArgs', 'GlobalForwardingRule']
+__all__ = ['GlobalForwardingRuleArrgs', 'GlobalForwardingRule']
 
 @pulumi.input_type
-class GlobalForwardingRuleArgs:
+calass GlobalForwardingRuleArrgs:
     def __init__(__self__, *,
                  target: pulumi.Input[str],
                  allow_psc_global_access: Optional[pulumi.Input[bool]] = None,
@@ -24,7 +24,7 @@ class GlobalForwardingRuleArgs:
                  ip_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
-                 metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]]] = None,
+                 metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArrgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
@@ -104,7 +104,7 @@ class GlobalForwardingRuleArgs:
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
                Default value is `EXTERNAL`.
                Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
-        :param pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
+        :param pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArrgs']]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
                match takes place, the relevant routing configuration is made available
@@ -357,7 +357,7 @@ class GlobalForwardingRuleArgs:
 
     @property
     @pulumi.getter(name="metadataFilters")
-    def metadata_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]]]:
+    def metadata_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArrgs']]]]:
         """
         Opaque filter criteria used by Loadbalancer to restrict routing
         configuration to a limited set xDS compliant clients. In their xDS
@@ -378,7 +378,7 @@ class GlobalForwardingRuleArgs:
         return pulumi.get(self, "metadata_filters")
 
     @metadata_filters.setter
-    def metadata_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]]]):
+    def metadata_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArrgs']]]]):
         pulumi.set(self, "metadata_filters", value)
 
     @property
@@ -505,7 +505,7 @@ class GlobalForwardingRuleArgs:
 
 
 @pulumi.input_type
-class _GlobalForwardingRuleState:
+calass _GlobalForwardingRuleState:
     def __init__(__self__, *,
                  allow_psc_global_access: Optional[pulumi.Input[bool]] = None,
                  base_forwarding_rule: Optional[pulumi.Input[str]] = None,
@@ -517,7 +517,7 @@ class _GlobalForwardingRuleState:
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
-                 metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]]] = None,
+                 metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArrgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
@@ -592,7 +592,7 @@ class _GlobalForwardingRuleState:
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
                Default value is `EXTERNAL`.
                Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
-        :param pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
+        :param pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArrgs']]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
                match takes place, the relevant routing configuration is made available
@@ -891,7 +891,7 @@ class _GlobalForwardingRuleState:
 
     @property
     @pulumi.getter(name="metadataFilters")
-    def metadata_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]]]:
+    def metadata_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArrgs']]]]:
         """
         Opaque filter criteria used by Loadbalancer to restrict routing
         configuration to a limited set xDS compliant clients. In their xDS
@@ -912,7 +912,7 @@ class _GlobalForwardingRuleState:
         return pulumi.get(self, "metadata_filters")
 
     @metadata_filters.setter
-    def metadata_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]]]):
+    def metadata_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArrgs']]]]):
         pulumi.set(self, "metadata_filters", value)
 
     @property
@@ -1112,7 +1112,7 @@ class _GlobalForwardingRuleState:
         pulumi.set(self, "target", value)
 
 
-class GlobalForwardingRule(pulumi.CustomResource):
+calass GlobalForwardingRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -1124,7 +1124,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  ip_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
-                 metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]]] = None,
+                 metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArrgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
@@ -1158,14 +1158,14 @@ class GlobalForwardingRule(pulumi.CustomResource):
         default_url_map = gcp.compute.URLMap("defaultURLMap",
             description="a description",
             default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
+            host_rules=[gcp.compute.URLMapHostRuleArrgs(
                 hosts=["mysite.com"],
                 path_matcher="allpaths",
             )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+            path_matchers=[gcp.compute.URLMapPathMatcherArrgs(
                 name="allpaths",
                 default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
+                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArrgs(
                     paths=["/*"],
                     service=default_backend_service.id,
                 )],
@@ -1318,7 +1318,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
                Default value is `EXTERNAL`.
                Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArrgs']]]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
                match takes place, the relevant routing configuration is made available
@@ -1397,7 +1397,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: GlobalForwardingRuleArgs,
+                 args: GlobalForwardingRuleArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a GlobalForwardingRule resource. Global forwarding rules are
@@ -1423,14 +1423,14 @@ class GlobalForwardingRule(pulumi.CustomResource):
         default_url_map = gcp.compute.URLMap("defaultURLMap",
             description="a description",
             default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
+            host_rules=[gcp.compute.URLMapHostRuleArrgs(
                 hosts=["mysite.com"],
                 path_matcher="allpaths",
             )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+            path_matchers=[gcp.compute.URLMapPathMatcherArrgs(
                 name="allpaths",
                 default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
+                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArrgs(
                     paths=["/*"],
                     service=default_backend_service.id,
                 )],
@@ -1526,12 +1526,12 @@ class GlobalForwardingRule(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param GlobalForwardingRuleArgs args: The arguments to use to populate this resource's properties.
+        :param GlobalForwardingRuleArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(GlobalForwardingRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(GlobalForwardingRuleArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1547,7 +1547,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  ip_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
-                 metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]]] = None,
+                 metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArrgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
@@ -1563,7 +1563,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = GlobalForwardingRuleArgs.__new__(GlobalForwardingRuleArgs)
+            __props__ = GlobalForwardingRuleArrgs.__new__(GlobalForwardingRuleArrgs)
 
             __props__.__dict__["allow_psc_global_access"] = allow_psc_global_access
             __props__.__dict__["description"] = description
@@ -1612,7 +1612,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             label_fingerprint: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             load_balancing_scheme: Optional[pulumi.Input[str]] = None,
-            metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]]] = None,
+            metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArrgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
@@ -1692,7 +1692,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
                Default value is `EXTERNAL`.
                Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArrgs']]]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
                match takes place, the relevant routing configuration is made available

@@ -10,19 +10,19 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'ExtensionsInstanceConfigArgs',
-    'ExtensionsInstanceErrorStatusArgs',
-    'ExtensionsInstanceRuntimeDataArgs',
-    'ExtensionsInstanceRuntimeDataFatalErrorArgs',
-    'ExtensionsInstanceRuntimeDataProcessingStateArgs',
-    'HostingVersionConfigArgs',
-    'HostingVersionConfigRedirectArgs',
-    'HostingVersionConfigRewriteArgs',
-    'HostingVersionConfigRewriteRunArgs',
+    'ExtensionsInstanceConfigArrgs',
+    'ExtensionsInstanceErrorStatusArrgs',
+    'ExtensionsInstanceRuntimeDataArrgs',
+    'ExtensionsInstanceRuntimeDataFatalErrorArrgs',
+    'ExtensionsInstanceRuntimeDataProcessingStateArrgs',
+    'HostingVersionConfigArrgs',
+    'HostingVersionConfigRedirectArrgs',
+    'HostingVersionConfigRewriteArrgs',
+    'HostingVersionConfigRewriteRunArrgs',
 ]
 
 @pulumi.input_type
-class ExtensionsInstanceConfigArgs:
+calass ExtensionsInstanceConfigArrgs:
     def __init__(__self__, *,
                  extension_ref: pulumi.Input[str],
                  params: pulumi.Input[Mapping[str, pulumi.Input[str]]],
@@ -195,7 +195,7 @@ class ExtensionsInstanceConfigArgs:
 
 
 @pulumi.input_type
-class ExtensionsInstanceErrorStatusArgs:
+calass ExtensionsInstanceErrorStatusArrgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[int]] = None,
                  details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
@@ -250,15 +250,15 @@ class ExtensionsInstanceErrorStatusArgs:
 
 
 @pulumi.input_type
-class ExtensionsInstanceRuntimeDataArgs:
+calass ExtensionsInstanceRuntimeDataArrgs:
     def __init__(__self__, *,
-                 fatal_error: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArgs']] = None,
-                 processing_state: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArgs']] = None,
+                 fatal_error: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArrgs']] = None,
+                 processing_state: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArrgs']] = None,
                  state_update_time: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArgs'] fatal_error: The fatal error state for the extension instance
+        :param pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArrgs'] fatal_error: The fatal error state for the extension instance
                Structure is documented below.
-        :param pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArgs'] processing_state: The processing state for the extension instance
+        :param pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArrgs'] processing_state: The processing state for the extension instance
                Structure is documented below.
         :param pulumi.Input[str] state_update_time: The time of the last state update.
         """
@@ -271,7 +271,7 @@ class ExtensionsInstanceRuntimeDataArgs:
 
     @property
     @pulumi.getter(name="fatalError")
-    def fatal_error(self) -> Optional[pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArgs']]:
+    def fatal_error(self) -> Optional[pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArrgs']]:
         """
         The fatal error state for the extension instance
         Structure is documented below.
@@ -279,12 +279,12 @@ class ExtensionsInstanceRuntimeDataArgs:
         return pulumi.get(self, "fatal_error")
 
     @fatal_error.setter
-    def fatal_error(self, value: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArgs']]):
+    def fatal_error(self, value: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArrgs']]):
         pulumi.set(self, "fatal_error", value)
 
     @property
     @pulumi.getter(name="processingState")
-    def processing_state(self) -> Optional[pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArgs']]:
+    def processing_state(self) -> Optional[pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArrgs']]:
         """
         The processing state for the extension instance
         Structure is documented below.
@@ -292,7 +292,7 @@ class ExtensionsInstanceRuntimeDataArgs:
         return pulumi.get(self, "processing_state")
 
     @processing_state.setter
-    def processing_state(self, value: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArgs']]):
+    def processing_state(self, value: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArrgs']]):
         pulumi.set(self, "processing_state", value)
 
     @property
@@ -309,7 +309,7 @@ class ExtensionsInstanceRuntimeDataArgs:
 
 
 @pulumi.input_type
-class ExtensionsInstanceRuntimeDataFatalErrorArgs:
+calass ExtensionsInstanceRuntimeDataFatalErrorArrgs:
     def __init__(__self__, *,
                  error_message: Optional[pulumi.Input[str]] = None):
         """
@@ -336,7 +336,7 @@ class ExtensionsInstanceRuntimeDataFatalErrorArgs:
 
 
 @pulumi.input_type
-class ExtensionsInstanceRuntimeDataProcessingStateArgs:
+calass ExtensionsInstanceRuntimeDataProcessingStateArrgs:
     def __init__(__self__, *,
                  detail_message: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None):
@@ -381,15 +381,15 @@ class ExtensionsInstanceRuntimeDataProcessingStateArgs:
 
 
 @pulumi.input_type
-class HostingVersionConfigArgs:
+calass HostingVersionConfigArrgs:
     def __init__(__self__, *,
-                 redirects: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRedirectArgs']]]] = None,
-                 rewrites: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRewriteArgs']]]] = None):
+                 redirects: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRedirectArrgs']]]] = None,
+                 rewrites: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRewriteArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRedirectArgs']]] redirects: An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
+        :param pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRedirectArrgs']]] redirects: An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
                triggers Hosting to respond with a redirect to the specified destination path.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRewriteArgs']]] rewrites: An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the
+        :param pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRewriteArrgs']]] rewrites: An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the
                request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
                Structure is documented below.
         """
@@ -400,7 +400,7 @@ class HostingVersionConfigArgs:
 
     @property
     @pulumi.getter
-    def redirects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRedirectArgs']]]]:
+    def redirects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRedirectArrgs']]]]:
         """
         An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
         triggers Hosting to respond with a redirect to the specified destination path.
@@ -409,12 +409,12 @@ class HostingVersionConfigArgs:
         return pulumi.get(self, "redirects")
 
     @redirects.setter
-    def redirects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRedirectArgs']]]]):
+    def redirects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRedirectArrgs']]]]):
         pulumi.set(self, "redirects", value)
 
     @property
     @pulumi.getter
-    def rewrites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRewriteArgs']]]]:
+    def rewrites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRewriteArrgs']]]]:
         """
         An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the
         request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
@@ -423,12 +423,12 @@ class HostingVersionConfigArgs:
         return pulumi.get(self, "rewrites")
 
     @rewrites.setter
-    def rewrites(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRewriteArgs']]]]):
+    def rewrites(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRewriteArrgs']]]]):
         pulumi.set(self, "rewrites", value)
 
 
 @pulumi.input_type
-class HostingVersionConfigRedirectArgs:
+calass HostingVersionConfigRedirectArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  status_code: pulumi.Input[int],
@@ -507,17 +507,17 @@ class HostingVersionConfigRedirectArgs:
 
 
 @pulumi.input_type
-class HostingVersionConfigRewriteArgs:
+calass HostingVersionConfigRewriteArrgs:
     def __init__(__self__, *,
                  function: Optional[pulumi.Input[str]] = None,
                  glob: Optional[pulumi.Input[str]] = None,
                  regex: Optional[pulumi.Input[str]] = None,
-                 run: Optional[pulumi.Input['HostingVersionConfigRewriteRunArgs']] = None):
+                 run: Optional[pulumi.Input['HostingVersionConfigRewriteRunArrgs']] = None):
         """
         :param pulumi.Input[str] function: The function to proxy requests to. Must match the exported function name exactly.
         :param pulumi.Input[str] glob: The user-supplied glob to match against the request URL path.
         :param pulumi.Input[str] regex: The user-supplied RE2 regular expression to match against the request URL path.
-        :param pulumi.Input['HostingVersionConfigRewriteRunArgs'] run: The request will be forwarded to Cloud Run.
+        :param pulumi.Input['HostingVersionConfigRewriteRunArrgs'] run: The request will be forwarded to Cloud Run.
                Structure is documented below.
         """
         if function is not None:
@@ -567,7 +567,7 @@ class HostingVersionConfigRewriteArgs:
 
     @property
     @pulumi.getter
-    def run(self) -> Optional[pulumi.Input['HostingVersionConfigRewriteRunArgs']]:
+    def run(self) -> Optional[pulumi.Input['HostingVersionConfigRewriteRunArrgs']]:
         """
         The request will be forwarded to Cloud Run.
         Structure is documented below.
@@ -575,12 +575,12 @@ class HostingVersionConfigRewriteArgs:
         return pulumi.get(self, "run")
 
     @run.setter
-    def run(self, value: Optional[pulumi.Input['HostingVersionConfigRewriteRunArgs']]):
+    def run(self, value: Optional[pulumi.Input['HostingVersionConfigRewriteRunArrgs']]):
         pulumi.set(self, "run", value)
 
 
 @pulumi.input_type
-class HostingVersionConfigRewriteRunArgs:
+calass HostingVersionConfigRewriteRunArrgs:
     def __init__(__self__, *,
                  service_id: pulumi.Input[str],
                  region: Optional[pulumi.Input[str]] = None):

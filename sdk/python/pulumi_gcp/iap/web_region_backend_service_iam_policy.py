@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['WebRegionBackendServiceIamPolicyArgs', 'WebRegionBackendServiceIamPolicy']
+__all__ = ['WebRegionBackendServiceIamPolicyArrgs', 'WebRegionBackendServiceIamPolicy']
 
 @pulumi.input_type
-class WebRegionBackendServiceIamPolicyArgs:
+calass WebRegionBackendServiceIamPolicyArrgs:
     def __init__(__self__, *,
                  policy_data: pulumi.Input[str],
                  web_region_backend_service: pulumi.Input[str],
@@ -106,7 +106,7 @@ class WebRegionBackendServiceIamPolicyArgs:
 
 
 @pulumi.input_type
-class _WebRegionBackendServiceIamPolicyState:
+calass _WebRegionBackendServiceIamPolicyState:
     def __init__(__self__, *,
                  etag: Optional[pulumi.Input[str]] = None,
                  policy_data: Optional[pulumi.Input[str]] = None,
@@ -217,7 +217,7 @@ class _WebRegionBackendServiceIamPolicyState:
         pulumi.set(self, "web_region_backend_service", value)
 
 
-class WebRegionBackendServiceIamPolicy(pulumi.CustomResource):
+calass WebRegionBackendServiceIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -250,7 +250,7 @@ class WebRegionBackendServiceIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
         )])
@@ -267,10 +267,10 @@ class WebRegionBackendServiceIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -308,7 +308,7 @@ class WebRegionBackendServiceIamPolicy(pulumi.CustomResource):
             web_region_backend_service=google_compute_region_backend_service["default"]["name"],
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.iap.WebRegionBackendServiceIamBindingConditionArgs(
+            condition=gcp.iap.WebRegionBackendServiceIamBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -340,7 +340,7 @@ class WebRegionBackendServiceIamPolicy(pulumi.CustomResource):
             web_region_backend_service=google_compute_region_backend_service["default"]["name"],
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com",
-            condition=gcp.iap.WebRegionBackendServiceIamMemberConditionArgs(
+            condition=gcp.iap.WebRegionBackendServiceIamMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -395,7 +395,7 @@ class WebRegionBackendServiceIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: WebRegionBackendServiceIamPolicyArgs,
+                 args: WebRegionBackendServiceIamPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Identity-Aware Proxy WebRegionBackendService. Each of these resources serves a different use case:
@@ -420,7 +420,7 @@ class WebRegionBackendServiceIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
         )])
@@ -437,10 +437,10 @@ class WebRegionBackendServiceIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -478,7 +478,7 @@ class WebRegionBackendServiceIamPolicy(pulumi.CustomResource):
             web_region_backend_service=google_compute_region_backend_service["default"]["name"],
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.iap.WebRegionBackendServiceIamBindingConditionArgs(
+            condition=gcp.iap.WebRegionBackendServiceIamBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -510,7 +510,7 @@ class WebRegionBackendServiceIamPolicy(pulumi.CustomResource):
             web_region_backend_service=google_compute_region_backend_service["default"]["name"],
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com",
-            condition=gcp.iap.WebRegionBackendServiceIamMemberConditionArgs(
+            condition=gcp.iap.WebRegionBackendServiceIamMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -542,12 +542,12 @@ class WebRegionBackendServiceIamPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param WebRegionBackendServiceIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param WebRegionBackendServiceIamPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(WebRegionBackendServiceIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(WebRegionBackendServiceIamPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -567,7 +567,7 @@ class WebRegionBackendServiceIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = WebRegionBackendServiceIamPolicyArgs.__new__(WebRegionBackendServiceIamPolicyArgs)
+            __props__ = WebRegionBackendServiceIamPolicyArrgs.__new__(WebRegionBackendServiceIamPolicyArrgs)
 
             if policy_data is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_data'")

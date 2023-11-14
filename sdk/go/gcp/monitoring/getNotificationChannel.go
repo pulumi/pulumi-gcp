@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A NotificationChannel is a medium through which an alert is delivered
@@ -180,12 +179,6 @@ func (o LookupNotificationChannelResultOutput) ToLookupNotificationChannelResult
 
 func (o LookupNotificationChannelResultOutput) ToLookupNotificationChannelResultOutputWithContext(ctx context.Context) LookupNotificationChannelResultOutput {
 	return o
-}
-
-func (o LookupNotificationChannelResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNotificationChannelResult] {
-	return pulumix.Output[LookupNotificationChannelResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An optional human-readable description of this notification channel.

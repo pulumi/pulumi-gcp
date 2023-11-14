@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['ConsentStoreIamPolicyArgs', 'ConsentStoreIamPolicy']
+__all__ = ['ConsentStoreIamPolicyArrgs', 'ConsentStoreIamPolicy']
 
 @pulumi.input_type
-class ConsentStoreIamPolicyArgs:
+calass ConsentStoreIamPolicyArrgs:
     def __init__(__self__, *,
                  consent_store_id: pulumi.Input[str],
                  dataset: pulumi.Input[str],
@@ -95,7 +95,7 @@ class ConsentStoreIamPolicyArgs:
 
 
 @pulumi.input_type
-class _ConsentStoreIamPolicyState:
+calass _ConsentStoreIamPolicyState:
     def __init__(__self__, *,
                  consent_store_id: Optional[pulumi.Input[str]] = None,
                  dataset: Optional[pulumi.Input[str]] = None,
@@ -196,7 +196,7 @@ class _ConsentStoreIamPolicyState:
         pulumi.set(self, "policy_data", value)
 
 
-class ConsentStoreIamPolicy(pulumi.CustomResource):
+calass ConsentStoreIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -226,7 +226,7 @@ class ConsentStoreIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -311,7 +311,7 @@ class ConsentStoreIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ConsentStoreIamPolicyArgs,
+                 args: ConsentStoreIamPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Cloud Healthcare ConsentStore. Each of these resources serves a different use case:
@@ -334,7 +334,7 @@ class ConsentStoreIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -395,12 +395,12 @@ class ConsentStoreIamPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param ConsentStoreIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param ConsentStoreIamPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ConsentStoreIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ConsentStoreIamPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -419,7 +419,7 @@ class ConsentStoreIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ConsentStoreIamPolicyArgs.__new__(ConsentStoreIamPolicyArgs)
+            __props__ = ConsentStoreIamPolicyArrgs.__new__(ConsentStoreIamPolicyArrgs)
 
             if consent_store_id is None and not opts.urn:
                 raise TypeError("Missing required property 'consent_store_id'")

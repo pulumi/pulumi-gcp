@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['TagTemplateIamPolicyArgs', 'TagTemplateIamPolicy']
+__all__ = ['TagTemplateIamPolicyArrgs', 'TagTemplateIamPolicy']
 
 @pulumi.input_type
-class TagTemplateIamPolicyArgs:
+calass TagTemplateIamPolicyArrgs:
     def __init__(__self__, *,
                  policy_data: pulumi.Input[str],
                  tag_template: pulumi.Input[str],
@@ -106,7 +106,7 @@ class TagTemplateIamPolicyArgs:
 
 
 @pulumi.input_type
-class _TagTemplateIamPolicyState:
+calass _TagTemplateIamPolicyState:
     def __init__(__self__, *,
                  etag: Optional[pulumi.Input[str]] = None,
                  policy_data: Optional[pulumi.Input[str]] = None,
@@ -217,7 +217,7 @@ class _TagTemplateIamPolicyState:
         pulumi.set(self, "tag_template", value)
 
 
-class TagTemplateIamPolicy(pulumi.CustomResource):
+calass TagTemplateIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -248,7 +248,7 @@ class TagTemplateIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -329,7 +329,7 @@ class TagTemplateIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TagTemplateIamPolicyArgs,
+                 args: TagTemplateIamPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Data catalog TagTemplate. Each of these resources serves a different use case:
@@ -352,7 +352,7 @@ class TagTemplateIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -410,12 +410,12 @@ class TagTemplateIamPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param TagTemplateIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param TagTemplateIamPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(TagTemplateIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TagTemplateIamPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -435,7 +435,7 @@ class TagTemplateIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = TagTemplateIamPolicyArgs.__new__(TagTemplateIamPolicyArgs)
+            __props__ = TagTemplateIamPolicyArrgs.__new__(TagTemplateIamPolicyArrgs)
 
             if policy_data is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_data'")

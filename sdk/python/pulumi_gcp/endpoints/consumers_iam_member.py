@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ConsumersIamMemberArgs', 'ConsumersIamMember']
+__all__ = ['ConsumersIamMemberArrgs', 'ConsumersIamMember']
 
 @pulumi.input_type
-class ConsumersIamMemberArgs:
+calass ConsumersIamMemberArrgs:
     def __init__(__self__, *,
                  consumer_project: pulumi.Input[str],
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
                  service_name: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['ConsumersIamMemberConditionArgs']] = None):
+                 condition: Optional[pulumi.Input['ConsumersIamMemberConditionArrgs']] = None):
         """
         The set of arguments for constructing a ConsumersIamMember resource.
         :param pulumi.Input[str] role: The role that should be applied. Only one
@@ -77,18 +77,18 @@ class ConsumersIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ConsumersIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ConsumersIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ConsumersIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ConsumersIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
-class _ConsumersIamMemberState:
+calass _ConsumersIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['ConsumersIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['ConsumersIamMemberConditionArrgs']] = None,
                  consumer_project: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
@@ -116,11 +116,11 @@ class _ConsumersIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ConsumersIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ConsumersIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ConsumersIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ConsumersIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -177,12 +177,12 @@ class _ConsumersIamMemberState:
         pulumi.set(self, "service_name", value)
 
 
-class ConsumersIamMember(pulumi.CustomResource):
+calass ConsumersIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ConsumersIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ConsumersIamMemberConditionArrgs']]] = None,
                  consumer_project: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -237,7 +237,7 @@ class ConsumersIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ConsumersIamMemberArgs,
+                 args: ConsumersIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Cloud Endpoints ServiceConsumers. Each of these resources serves a different use case:
@@ -279,12 +279,12 @@ class ConsumersIamMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param ConsumersIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param ConsumersIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ConsumersIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ConsumersIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -293,7 +293,7 @@ class ConsumersIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ConsumersIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ConsumersIamMemberConditionArrgs']]] = None,
                  consumer_project: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -305,7 +305,7 @@ class ConsumersIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ConsumersIamMemberArgs.__new__(ConsumersIamMemberArgs)
+            __props__ = ConsumersIamMemberArrgs.__new__(ConsumersIamMemberArrgs)
 
             __props__.__dict__["condition"] = condition
             if consumer_project is None and not opts.urn:
@@ -331,7 +331,7 @@ class ConsumersIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['ConsumersIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['ConsumersIamMemberConditionArrgs']]] = None,
             consumer_project: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,

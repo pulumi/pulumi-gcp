@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['FunctionIamMemberArgs', 'FunctionIamMember']
+__all__ = ['FunctionIamMemberArrgs', 'FunctionIamMember']
 
 @pulumi.input_type
-class FunctionIamMemberArgs:
+calass FunctionIamMemberArrgs:
     def __init__(__self__, *,
                  cloud_function: pulumi.Input[str],
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['FunctionIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['FunctionIamMemberConditionArrgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -91,11 +91,11 @@ class FunctionIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['FunctionIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['FunctionIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['FunctionIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['FunctionIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -137,10 +137,10 @@ class FunctionIamMemberArgs:
 
 
 @pulumi.input_type
-class _FunctionIamMemberState:
+calass _FunctionIamMemberState:
     def __init__(__self__, *,
                  cloud_function: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input['FunctionIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['FunctionIamMemberConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
@@ -198,11 +198,11 @@ class _FunctionIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['FunctionIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['FunctionIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['FunctionIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['FunctionIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -278,13 +278,13 @@ class _FunctionIamMemberState:
         pulumi.set(self, "role", value)
 
 
-class FunctionIamMember(pulumi.CustomResource):
+calass FunctionIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_function: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['FunctionIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['FunctionIamMemberConditionArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -311,7 +311,7 @@ class FunctionIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -400,7 +400,7 @@ class FunctionIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FunctionIamMemberArgs,
+                 args: FunctionIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Cloud Functions (2nd gen) function. Each of these resources serves a different use case:
@@ -423,7 +423,7 @@ class FunctionIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -487,12 +487,12 @@ class FunctionIamMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param FunctionIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param FunctionIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(FunctionIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(FunctionIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -502,7 +502,7 @@ class FunctionIamMember(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_function: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['FunctionIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['FunctionIamMemberConditionArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -514,7 +514,7 @@ class FunctionIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = FunctionIamMemberArgs.__new__(FunctionIamMemberArgs)
+            __props__ = FunctionIamMemberArrgs.__new__(FunctionIamMemberArrgs)
 
             if cloud_function is None and not opts.urn:
                 raise TypeError("Missing required property 'cloud_function'")
@@ -540,7 +540,7 @@ class FunctionIamMember(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cloud_function: Optional[pulumi.Input[str]] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['FunctionIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['FunctionIamMemberConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,

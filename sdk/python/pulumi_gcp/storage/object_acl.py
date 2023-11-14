@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['ObjectACLArgs', 'ObjectACL']
+__all__ = ['ObjectACLArrgs', 'ObjectACL']
 
 @pulumi.input_type
-class ObjectACLArgs:
+calass ObjectACLArrgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
                  object: pulumi.Input[str],
@@ -88,7 +88,7 @@ class ObjectACLArgs:
 
 
 @pulumi.input_type
-class _ObjectACLState:
+calass _ObjectACLState:
     def __init__(__self__, *,
                  bucket: Optional[pulumi.Input[str]] = None,
                  object: Optional[pulumi.Input[str]] = None,
@@ -165,7 +165,7 @@ class _ObjectACLState:
         pulumi.set(self, "role_entities", value)
 
 
-class ObjectACL(pulumi.CustomResource):
+calass ObjectACL(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -227,7 +227,7 @@ class ObjectACL(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ObjectACLArgs,
+                 args: ObjectACLArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Authoritatively manages the access control list (ACL) for an object in a Google
@@ -268,12 +268,12 @@ class ObjectACL(pulumi.CustomResource):
         This resource does not support import.
 
         :param str resource_name: The name of the resource.
-        :param ObjectACLArgs args: The arguments to use to populate this resource's properties.
+        :param ObjectACLArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ObjectACLArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ObjectACLArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -293,7 +293,7 @@ class ObjectACL(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ObjectACLArgs.__new__(ObjectACLArgs)
+            __props__ = ObjectACLArrgs.__new__(ObjectACLArrgs)
 
             if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")

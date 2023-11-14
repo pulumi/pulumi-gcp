@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Cloud Storage Bucket. Each of these resources serves a different use case:
@@ -468,12 +467,6 @@ func (i *BucketIAMBinding) ToBucketIAMBindingOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMBindingOutput)
 }
 
-func (i *BucketIAMBinding) ToOutput(ctx context.Context) pulumix.Output[*BucketIAMBinding] {
-	return pulumix.Output[*BucketIAMBinding]{
-		OutputState: i.ToBucketIAMBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BucketIAMBindingArrayInput is an input type that accepts BucketIAMBindingArray and BucketIAMBindingArrayOutput values.
 // You can construct a concrete instance of `BucketIAMBindingArrayInput` via:
 //
@@ -497,12 +490,6 @@ func (i BucketIAMBindingArray) ToBucketIAMBindingArrayOutput() BucketIAMBindingA
 
 func (i BucketIAMBindingArray) ToBucketIAMBindingArrayOutputWithContext(ctx context.Context) BucketIAMBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMBindingArrayOutput)
-}
-
-func (i BucketIAMBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*BucketIAMBinding] {
-	return pulumix.Output[[]*BucketIAMBinding]{
-		OutputState: i.ToBucketIAMBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BucketIAMBindingMapInput is an input type that accepts BucketIAMBindingMap and BucketIAMBindingMapOutput values.
@@ -530,12 +517,6 @@ func (i BucketIAMBindingMap) ToBucketIAMBindingMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMBindingMapOutput)
 }
 
-func (i BucketIAMBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BucketIAMBinding] {
-	return pulumix.Output[map[string]*BucketIAMBinding]{
-		OutputState: i.ToBucketIAMBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BucketIAMBindingOutput struct{ *pulumi.OutputState }
 
 func (BucketIAMBindingOutput) ElementType() reflect.Type {
@@ -548,12 +529,6 @@ func (o BucketIAMBindingOutput) ToBucketIAMBindingOutput() BucketIAMBindingOutpu
 
 func (o BucketIAMBindingOutput) ToBucketIAMBindingOutputWithContext(ctx context.Context) BucketIAMBindingOutput {
 	return o
-}
-
-func (o BucketIAMBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*BucketIAMBinding] {
-	return pulumix.Output[*BucketIAMBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Used to find the parent resource to bind the IAM policy to
@@ -609,12 +584,6 @@ func (o BucketIAMBindingArrayOutput) ToBucketIAMBindingArrayOutputWithContext(ct
 	return o
 }
 
-func (o BucketIAMBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BucketIAMBinding] {
-	return pulumix.Output[[]*BucketIAMBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BucketIAMBindingArrayOutput) Index(i pulumi.IntInput) BucketIAMBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BucketIAMBinding {
 		return vs[0].([]*BucketIAMBinding)[vs[1].(int)]
@@ -633,12 +602,6 @@ func (o BucketIAMBindingMapOutput) ToBucketIAMBindingMapOutput() BucketIAMBindin
 
 func (o BucketIAMBindingMapOutput) ToBucketIAMBindingMapOutputWithContext(ctx context.Context) BucketIAMBindingMapOutput {
 	return o
-}
-
-func (o BucketIAMBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BucketIAMBinding] {
-	return pulumix.Output[map[string]*BucketIAMBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BucketIAMBindingMapOutput) MapIndex(k pulumi.StringInput) BucketIAMBindingOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -556,12 +555,6 @@ func (i *RegionInstanceTemplate) ToRegionInstanceTemplateOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateOutput)
 }
 
-func (i *RegionInstanceTemplate) ToOutput(ctx context.Context) pulumix.Output[*RegionInstanceTemplate] {
-	return pulumix.Output[*RegionInstanceTemplate]{
-		OutputState: i.ToRegionInstanceTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RegionInstanceTemplateArrayInput is an input type that accepts RegionInstanceTemplateArray and RegionInstanceTemplateArrayOutput values.
 // You can construct a concrete instance of `RegionInstanceTemplateArrayInput` via:
 //
@@ -585,12 +578,6 @@ func (i RegionInstanceTemplateArray) ToRegionInstanceTemplateArrayOutput() Regio
 
 func (i RegionInstanceTemplateArray) ToRegionInstanceTemplateArrayOutputWithContext(ctx context.Context) RegionInstanceTemplateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateArrayOutput)
-}
-
-func (i RegionInstanceTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionInstanceTemplate] {
-	return pulumix.Output[[]*RegionInstanceTemplate]{
-		OutputState: i.ToRegionInstanceTemplateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RegionInstanceTemplateMapInput is an input type that accepts RegionInstanceTemplateMap and RegionInstanceTemplateMapOutput values.
@@ -618,12 +605,6 @@ func (i RegionInstanceTemplateMap) ToRegionInstanceTemplateMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateMapOutput)
 }
 
-func (i RegionInstanceTemplateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionInstanceTemplate] {
-	return pulumix.Output[map[string]*RegionInstanceTemplate]{
-		OutputState: i.ToRegionInstanceTemplateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegionInstanceTemplateOutput struct{ *pulumi.OutputState }
 
 func (RegionInstanceTemplateOutput) ElementType() reflect.Type {
@@ -636,12 +617,6 @@ func (o RegionInstanceTemplateOutput) ToRegionInstanceTemplateOutput() RegionIns
 
 func (o RegionInstanceTemplateOutput) ToRegionInstanceTemplateOutputWithContext(ctx context.Context) RegionInstanceTemplateOutput {
 	return o
-}
-
-func (o RegionInstanceTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionInstanceTemplate] {
-	return pulumix.Output[*RegionInstanceTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
@@ -853,12 +828,6 @@ func (o RegionInstanceTemplateArrayOutput) ToRegionInstanceTemplateArrayOutputWi
 	return o
 }
 
-func (o RegionInstanceTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionInstanceTemplate] {
-	return pulumix.Output[[]*RegionInstanceTemplate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegionInstanceTemplateArrayOutput) Index(i pulumi.IntInput) RegionInstanceTemplateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionInstanceTemplate {
 		return vs[0].([]*RegionInstanceTemplate)[vs[1].(int)]
@@ -877,12 +846,6 @@ func (o RegionInstanceTemplateMapOutput) ToRegionInstanceTemplateMapOutput() Reg
 
 func (o RegionInstanceTemplateMapOutput) ToRegionInstanceTemplateMapOutputWithContext(ctx context.Context) RegionInstanceTemplateMapOutput {
 	return o
-}
-
-func (o RegionInstanceTemplateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionInstanceTemplate] {
-	return pulumix.Output[map[string]*RegionInstanceTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegionInstanceTemplateMapOutput) MapIndex(k pulumi.StringInput) RegionInstanceTemplateOutput {

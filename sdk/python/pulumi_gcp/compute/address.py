@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['AddressArgs', 'Address']
+__all__ = ['AddressArrgs', 'Address']
 
 @pulumi.input_type
-class AddressArgs:
+calass AddressArrgs:
     def __init__(__self__, *,
                  address: Optional[pulumi.Input[str]] = None,
                  address_type: Optional[pulumi.Input[str]] = None,
@@ -330,7 +330,7 @@ class AddressArgs:
 
 
 @pulumi.input_type
-class _AddressState:
+calass _AddressState:
     def __init__(__self__, *,
                  address: Optional[pulumi.Input[str]] = None,
                  address_type: Optional[pulumi.Input[str]] = None,
@@ -745,7 +745,7 @@ class _AddressState:
         pulumi.set(self, "users", value)
 
 
-class Address(pulumi.CustomResource):
+calass Address(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -835,14 +835,14 @@ class Address(pulumi.CustomResource):
         instance_with_ip = gcp.compute.Instance("instanceWithIp",
             machine_type="f1-micro",
             zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image=debian_image.self_link,
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 network="default",
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs(
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArrgs(
                     nat_ip=static.address,
                 )],
             )])
@@ -946,7 +946,7 @@ class Address(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[AddressArgs] = None,
+                 args: Optional[AddressArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents an Address resource.
@@ -1018,14 +1018,14 @@ class Address(pulumi.CustomResource):
         instance_with_ip = gcp.compute.Instance("instanceWithIp",
             machine_type="f1-micro",
             zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image=debian_image.self_link,
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 network="default",
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs(
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArrgs(
                     nat_ip=static.address,
                 )],
             )])
@@ -1066,12 +1066,12 @@ class Address(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AddressArgs args: The arguments to use to populate this resource's properties.
+        :param AddressArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AddressArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AddressArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1101,7 +1101,7 @@ class Address(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AddressArgs.__new__(AddressArgs)
+            __props__ = AddressArrgs.__new__(AddressArrgs)
 
             __props__.__dict__["address"] = address
             __props__.__dict__["address_type"] = address_type

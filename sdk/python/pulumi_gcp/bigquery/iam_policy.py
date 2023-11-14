@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['IamPolicyArgs', 'IamPolicy']
+__all__ = ['IamPolicyArrgs', 'IamPolicy']
 
 @pulumi.input_type
-class IamPolicyArgs:
+calass IamPolicyArrgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
                  policy_data: pulumi.Input[str],
@@ -101,7 +101,7 @@ class IamPolicyArgs:
 
 
 @pulumi.input_type
-class _IamPolicyState:
+calass _IamPolicyState:
     def __init__(__self__, *,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -208,7 +208,7 @@ class _IamPolicyState:
         pulumi.set(self, "table_id", value)
 
 
-class IamPolicy(pulumi.CustomResource):
+calass IamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -241,7 +241,7 @@ class IamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/bigquery.dataOwner",
             members=["user:jane@example.com"],
         )])
@@ -258,10 +258,10 @@ class IamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/bigquery.dataOwner",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -299,7 +299,7 @@ class IamPolicy(pulumi.CustomResource):
             table_id=google_bigquery_table["test"]["table_id"],
             role="roles/bigquery.dataOwner",
             members=["user:jane@example.com"],
-            condition=gcp.bigquery.IamBindingConditionArgs(
+            condition=gcp.bigquery.IamBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -331,7 +331,7 @@ class IamPolicy(pulumi.CustomResource):
             table_id=google_bigquery_table["test"]["table_id"],
             role="roles/bigquery.dataOwner",
             member="user:jane@example.com",
-            condition=gcp.bigquery.IamMemberConditionArgs(
+            condition=gcp.bigquery.IamMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -385,7 +385,7 @@ class IamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: IamPolicyArgs,
+                 args: IamPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for BigQuery Table. Each of these resources serves a different use case:
@@ -410,7 +410,7 @@ class IamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/bigquery.dataOwner",
             members=["user:jane@example.com"],
         )])
@@ -427,10 +427,10 @@ class IamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/bigquery.dataOwner",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -468,7 +468,7 @@ class IamPolicy(pulumi.CustomResource):
             table_id=google_bigquery_table["test"]["table_id"],
             role="roles/bigquery.dataOwner",
             members=["user:jane@example.com"],
-            condition=gcp.bigquery.IamBindingConditionArgs(
+            condition=gcp.bigquery.IamBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -500,7 +500,7 @@ class IamPolicy(pulumi.CustomResource):
             table_id=google_bigquery_table["test"]["table_id"],
             role="roles/bigquery.dataOwner",
             member="user:jane@example.com",
-            condition=gcp.bigquery.IamMemberConditionArgs(
+            condition=gcp.bigquery.IamMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -532,12 +532,12 @@ class IamPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param IamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param IamPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(IamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(IamPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -557,7 +557,7 @@ class IamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = IamPolicyArgs.__new__(IamPolicyArgs)
+            __props__ = IamPolicyArrgs.__new__(IamPolicyArrgs)
 
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")

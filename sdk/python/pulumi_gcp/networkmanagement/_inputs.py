@@ -10,12 +10,12 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'ConnectivityTestDestinationArgs',
-    'ConnectivityTestSourceArgs',
+    'ConnectivityTestDestinationArrgs',
+    'ConnectivityTestSourceArrgs',
 ]
 
 @pulumi.input_type
-class ConnectivityTestDestinationArgs:
+calass ConnectivityTestDestinationArrgs:
     def __init__(__self__, *,
                  instance: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
@@ -126,7 +126,7 @@ class ConnectivityTestDestinationArgs:
 
 
 @pulumi.input_type
-class ConnectivityTestSourceArgs:
+calass ConnectivityTestSourceArrgs:
     def __init__(__self__, *,
                  instance: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,

@@ -11,13 +11,13 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ConnectivityTestArgs', 'ConnectivityTest']
+__all__ = ['ConnectivityTestArrgs', 'ConnectivityTest']
 
 @pulumi.input_type
-class ConnectivityTestArgs:
+calass ConnectivityTestArrgs:
     def __init__(__self__, *,
-                 destination: pulumi.Input['ConnectivityTestDestinationArgs'],
-                 source: pulumi.Input['ConnectivityTestSourceArgs'],
+                 destination: pulumi.Input['ConnectivityTestDestinationArrgs'],
+                 source: pulumi.Input['ConnectivityTestSourceArrgs'],
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -26,7 +26,7 @@ class ConnectivityTestArgs:
                  related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a ConnectivityTest resource.
-        :param pulumi.Input['ConnectivityTestDestinationArgs'] destination: Required. Destination specification of the Connectivity Test.
+        :param pulumi.Input['ConnectivityTestDestinationArrgs'] destination: Required. Destination specification of the Connectivity Test.
                You can use a combination of destination IP address, Compute
                Engine VM instance, or VPC network to uniquely identify the
                destination location.
@@ -41,7 +41,7 @@ class ConnectivityTestArgs:
                is ambiguous. However, the result can include endpoints that you
                don't intend to test.
                Structure is documented below.
-        :param pulumi.Input['ConnectivityTestSourceArgs'] source: Required. Source specification of the Connectivity Test.
+        :param pulumi.Input['ConnectivityTestSourceArrgs'] source: Required. Source specification of the Connectivity Test.
                You can use a combination of source IP address, virtual machine
                (VM) instance, or Compute Engine network to uniquely identify the
                source location.
@@ -91,7 +91,7 @@ class ConnectivityTestArgs:
 
     @property
     @pulumi.getter
-    def destination(self) -> pulumi.Input['ConnectivityTestDestinationArgs']:
+    def destination(self) -> pulumi.Input['ConnectivityTestDestinationArrgs']:
         """
         Required. Destination specification of the Connectivity Test.
         You can use a combination of destination IP address, Compute
@@ -112,12 +112,12 @@ class ConnectivityTestArgs:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: pulumi.Input['ConnectivityTestDestinationArgs']):
+    def destination(self, value: pulumi.Input['ConnectivityTestDestinationArrgs']):
         pulumi.set(self, "destination", value)
 
     @property
     @pulumi.getter
-    def source(self) -> pulumi.Input['ConnectivityTestSourceArgs']:
+    def source(self) -> pulumi.Input['ConnectivityTestSourceArrgs']:
         """
         Required. Source specification of the Connectivity Test.
         You can use a combination of source IP address, virtual machine
@@ -142,7 +142,7 @@ class ConnectivityTestArgs:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: pulumi.Input['ConnectivityTestSourceArgs']):
+    def source(self, value: pulumi.Input['ConnectivityTestSourceArrgs']):
         pulumi.set(self, "source", value)
 
     @property
@@ -226,10 +226,10 @@ class ConnectivityTestArgs:
 
 
 @pulumi.input_type
-class _ConnectivityTestState:
+calass _ConnectivityTestState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
-                 destination: Optional[pulumi.Input['ConnectivityTestDestinationArgs']] = None,
+                 destination: Optional[pulumi.Input['ConnectivityTestDestinationArrgs']] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -237,12 +237,12 @@ class _ConnectivityTestState:
                  protocol: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 source: Optional[pulumi.Input['ConnectivityTestSourceArgs']] = None):
+                 source: Optional[pulumi.Input['ConnectivityTestSourceArrgs']] = None):
         """
         Input properties used for looking up and filtering ConnectivityTest resources.
         :param pulumi.Input[str] description: The user-supplied description of the Connectivity Test.
                Maximum of 512 characters.
-        :param pulumi.Input['ConnectivityTestDestinationArgs'] destination: Required. Destination specification of the Connectivity Test.
+        :param pulumi.Input['ConnectivityTestDestinationArrgs'] destination: Required. Destination specification of the Connectivity Test.
                You can use a combination of destination IP address, Compute
                Engine VM instance, or VPC network to uniquely identify the
                destination location.
@@ -271,7 +271,7 @@ class _ConnectivityTestState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_projects: Other projects that may be relevant for reachability analysis.
                This is applicable to scenarios where a test can cross project
                boundaries.
-        :param pulumi.Input['ConnectivityTestSourceArgs'] source: Required. Source specification of the Connectivity Test.
+        :param pulumi.Input['ConnectivityTestSourceArrgs'] source: Required. Source specification of the Connectivity Test.
                You can use a combination of source IP address, virtual machine
                (VM) instance, or Compute Engine network to uniquely identify the
                source location.
@@ -327,7 +327,7 @@ class _ConnectivityTestState:
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input['ConnectivityTestDestinationArgs']]:
+    def destination(self) -> Optional[pulumi.Input['ConnectivityTestDestinationArrgs']]:
         """
         Required. Destination specification of the Connectivity Test.
         You can use a combination of destination IP address, Compute
@@ -348,7 +348,7 @@ class _ConnectivityTestState:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input['ConnectivityTestDestinationArgs']]):
+    def destination(self, value: Optional[pulumi.Input['ConnectivityTestDestinationArrgs']]):
         pulumi.set(self, "destination", value)
 
     @property
@@ -444,7 +444,7 @@ class _ConnectivityTestState:
 
     @property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input['ConnectivityTestSourceArgs']]:
+    def source(self) -> Optional[pulumi.Input['ConnectivityTestSourceArrgs']]:
         """
         Required. Source specification of the Connectivity Test.
         You can use a combination of source IP address, virtual machine
@@ -469,23 +469,23 @@ class _ConnectivityTestState:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input['ConnectivityTestSourceArgs']]):
+    def source(self, value: Optional[pulumi.Input['ConnectivityTestSourceArrgs']]):
         pulumi.set(self, "source", value)
 
 
-class ConnectivityTest(pulumi.CustomResource):
+calass ConnectivityTest(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 destination: Optional[pulumi.Input[pulumi.InputType['ConnectivityTestDestinationArgs']]] = None,
+                 destination: Optional[pulumi.Input[pulumi.InputType['ConnectivityTestDestinationArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 source: Optional[pulumi.Input[pulumi.InputType['ConnectivityTestSourceArgs']]] = None,
+                 source: Optional[pulumi.Input[pulumi.InputType['ConnectivityTestSourceArrgs']]] = None,
                  __props__=None):
         """
         A connectivity test are a static analysis of your resource configurations
@@ -510,31 +510,31 @@ class ConnectivityTest(pulumi.CustomResource):
             project="debian-cloud")
         source = gcp.compute.Instance("source",
             machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image=debian9.id,
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 network=vpc.id,
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArrgs()],
             )])
         destination = gcp.compute.Instance("destination",
             machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image=debian9.id,
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 network=vpc.id,
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArrgs()],
             )])
         instance_test = gcp.networkmanagement.ConnectivityTest("instance-test",
-            source=gcp.networkmanagement.ConnectivityTestSourceArgs(
+            source=gcp.networkmanagement.ConnectivityTestSourceArrgs(
                 instance=source.id,
             ),
-            destination=gcp.networkmanagement.ConnectivityTestDestinationArgs(
+            destination=gcp.networkmanagement.ConnectivityTestDestinationArrgs(
                 instance=destination.id,
             ),
             protocol="TCP",
@@ -564,13 +564,13 @@ class ConnectivityTest(pulumi.CustomResource):
             address="10.0.43.43",
             region="us-central1")
         address_test = gcp.networkmanagement.ConnectivityTest("address-test",
-            source=gcp.networkmanagement.ConnectivityTestSourceArgs(
+            source=gcp.networkmanagement.ConnectivityTestSourceArrgs(
                 ip_address=source_addr.address,
                 project_id=source_addr.project,
                 network=vpc.id,
                 network_type="GCP_NETWORK",
             ),
-            destination=gcp.networkmanagement.ConnectivityTestDestinationArgs(
+            destination=gcp.networkmanagement.ConnectivityTestDestinationArrgs(
                 ip_address=dest_addr.address,
                 project_id=dest_addr.project,
                 network=vpc.id,
@@ -598,7 +598,7 @@ class ConnectivityTest(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The user-supplied description of the Connectivity Test.
                Maximum of 512 characters.
-        :param pulumi.Input[pulumi.InputType['ConnectivityTestDestinationArgs']] destination: Required. Destination specification of the Connectivity Test.
+        :param pulumi.Input[pulumi.InputType['ConnectivityTestDestinationArrgs']] destination: Required. Destination specification of the Connectivity Test.
                You can use a combination of destination IP address, Compute
                Engine VM instance, or VPC network to uniquely identify the
                destination location.
@@ -624,7 +624,7 @@ class ConnectivityTest(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_projects: Other projects that may be relevant for reachability analysis.
                This is applicable to scenarios where a test can cross project
                boundaries.
-        :param pulumi.Input[pulumi.InputType['ConnectivityTestSourceArgs']] source: Required. Source specification of the Connectivity Test.
+        :param pulumi.Input[pulumi.InputType['ConnectivityTestSourceArrgs']] source: Required. Source specification of the Connectivity Test.
                You can use a combination of source IP address, virtual machine
                (VM) instance, or Compute Engine network to uniquely identify the
                source location.
@@ -648,7 +648,7 @@ class ConnectivityTest(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ConnectivityTestArgs,
+                 args: ConnectivityTestArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A connectivity test are a static analysis of your resource configurations
@@ -673,31 +673,31 @@ class ConnectivityTest(pulumi.CustomResource):
             project="debian-cloud")
         source = gcp.compute.Instance("source",
             machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image=debian9.id,
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 network=vpc.id,
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArrgs()],
             )])
         destination = gcp.compute.Instance("destination",
             machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image=debian9.id,
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 network=vpc.id,
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArrgs()],
             )])
         instance_test = gcp.networkmanagement.ConnectivityTest("instance-test",
-            source=gcp.networkmanagement.ConnectivityTestSourceArgs(
+            source=gcp.networkmanagement.ConnectivityTestSourceArrgs(
                 instance=source.id,
             ),
-            destination=gcp.networkmanagement.ConnectivityTestDestinationArgs(
+            destination=gcp.networkmanagement.ConnectivityTestDestinationArrgs(
                 instance=destination.id,
             ),
             protocol="TCP",
@@ -727,13 +727,13 @@ class ConnectivityTest(pulumi.CustomResource):
             address="10.0.43.43",
             region="us-central1")
         address_test = gcp.networkmanagement.ConnectivityTest("address-test",
-            source=gcp.networkmanagement.ConnectivityTestSourceArgs(
+            source=gcp.networkmanagement.ConnectivityTestSourceArrgs(
                 ip_address=source_addr.address,
                 project_id=source_addr.project,
                 network=vpc.id,
                 network_type="GCP_NETWORK",
             ),
-            destination=gcp.networkmanagement.ConnectivityTestDestinationArgs(
+            destination=gcp.networkmanagement.ConnectivityTestDestinationArrgs(
                 ip_address=dest_addr.address,
                 project_id=dest_addr.project,
                 network=vpc.id,
@@ -758,12 +758,12 @@ class ConnectivityTest(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ConnectivityTestArgs args: The arguments to use to populate this resource's properties.
+        :param ConnectivityTestArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ConnectivityTestArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ConnectivityTestArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -773,13 +773,13 @@ class ConnectivityTest(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 destination: Optional[pulumi.Input[pulumi.InputType['ConnectivityTestDestinationArgs']]] = None,
+                 destination: Optional[pulumi.Input[pulumi.InputType['ConnectivityTestDestinationArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 source: Optional[pulumi.Input[pulumi.InputType['ConnectivityTestSourceArgs']]] = None,
+                 source: Optional[pulumi.Input[pulumi.InputType['ConnectivityTestSourceArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -787,7 +787,7 @@ class ConnectivityTest(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ConnectivityTestArgs.__new__(ConnectivityTestArgs)
+            __props__ = ConnectivityTestArrgs.__new__(ConnectivityTestArrgs)
 
             __props__.__dict__["description"] = description
             if destination is None and not opts.urn:
@@ -816,7 +816,7 @@ class ConnectivityTest(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
-            destination: Optional[pulumi.Input[pulumi.InputType['ConnectivityTestDestinationArgs']]] = None,
+            destination: Optional[pulumi.Input[pulumi.InputType['ConnectivityTestDestinationArrgs']]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -824,7 +824,7 @@ class ConnectivityTest(pulumi.CustomResource):
             protocol: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            source: Optional[pulumi.Input[pulumi.InputType['ConnectivityTestSourceArgs']]] = None) -> 'ConnectivityTest':
+            source: Optional[pulumi.Input[pulumi.InputType['ConnectivityTestSourceArrgs']]] = None) -> 'ConnectivityTest':
         """
         Get an existing ConnectivityTest resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -834,7 +834,7 @@ class ConnectivityTest(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The user-supplied description of the Connectivity Test.
                Maximum of 512 characters.
-        :param pulumi.Input[pulumi.InputType['ConnectivityTestDestinationArgs']] destination: Required. Destination specification of the Connectivity Test.
+        :param pulumi.Input[pulumi.InputType['ConnectivityTestDestinationArrgs']] destination: Required. Destination specification of the Connectivity Test.
                You can use a combination of destination IP address, Compute
                Engine VM instance, or VPC network to uniquely identify the
                destination location.
@@ -863,7 +863,7 @@ class ConnectivityTest(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_projects: Other projects that may be relevant for reachability analysis.
                This is applicable to scenarios where a test can cross project
                boundaries.
-        :param pulumi.Input[pulumi.InputType['ConnectivityTestSourceArgs']] source: Required. Source specification of the Connectivity Test.
+        :param pulumi.Input[pulumi.InputType['ConnectivityTestSourceArrgs']] source: Required. Source specification of the Connectivity Test.
                You can use a combination of source IP address, virtual machine
                (VM) instance, or Compute Engine network to uniquely identify the
                source location.

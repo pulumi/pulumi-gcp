@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['ServiceBindingArgs', 'ServiceBinding']
+__all__ = ['ServiceBindingArrgs', 'ServiceBinding']
 
 @pulumi.input_type
-class ServiceBindingArgs:
+calass ServiceBindingArrgs:
     def __init__(__self__, *,
                  service: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -113,7 +113,7 @@ class ServiceBindingArgs:
 
 
 @pulumi.input_type
-class _ServiceBindingState:
+calass _ServiceBindingState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -280,7 +280,7 @@ class _ServiceBindingState:
         pulumi.set(self, "update_time", value)
 
 
-class ServiceBinding(pulumi.CustomResource):
+calass ServiceBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -355,7 +355,7 @@ class ServiceBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ServiceBindingArgs,
+                 args: ServiceBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -403,12 +403,12 @@ class ServiceBinding(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ServiceBindingArgs args: The arguments to use to populate this resource's properties.
+        :param ServiceBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ServiceBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ServiceBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -429,7 +429,7 @@ class ServiceBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ServiceBindingArgs.__new__(ServiceBindingArgs)
+            __props__ = ServiceBindingArrgs.__new__(ServiceBindingArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels

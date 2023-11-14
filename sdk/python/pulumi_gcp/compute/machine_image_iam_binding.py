@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['MachineImageIamBindingArgs', 'MachineImageIamBinding']
+__all__ = ['MachineImageIamBindingArrgs', 'MachineImageIamBinding']
 
 @pulumi.input_type
-class MachineImageIamBindingArgs:
+calass MachineImageIamBindingArrgs:
     def __init__(__self__, *,
                  machine_image: pulumi.Input[str],
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['MachineImageIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['MachineImageIamBindingConditionArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MachineImageIamBinding resource.
@@ -27,7 +27,7 @@ class MachineImageIamBindingArgs:
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `compute.MachineImageIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input['MachineImageIamBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['MachineImageIamBindingConditionArrgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -89,7 +89,7 @@ class MachineImageIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['MachineImageIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['MachineImageIamBindingConditionArrgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -97,7 +97,7 @@ class MachineImageIamBindingArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['MachineImageIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['MachineImageIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -127,9 +127,9 @@ class MachineImageIamBindingArgs:
 
 
 @pulumi.input_type
-class _MachineImageIamBindingState:
+calass _MachineImageIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['MachineImageIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['MachineImageIamBindingConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  machine_image: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -137,7 +137,7 @@ class _MachineImageIamBindingState:
                  role: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MachineImageIamBinding resources.
-        :param pulumi.Input['MachineImageIamBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['MachineImageIamBindingConditionArrgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] machine_image: Used to find the parent resource to bind the IAM policy to
@@ -174,7 +174,7 @@ class _MachineImageIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['MachineImageIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['MachineImageIamBindingConditionArrgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -182,7 +182,7 @@ class _MachineImageIamBindingState:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['MachineImageIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['MachineImageIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -258,12 +258,12 @@ class _MachineImageIamBindingState:
         pulumi.set(self, "role", value)
 
 
-class MachineImageIamBinding(pulumi.CustomResource):
+calass MachineImageIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['MachineImageIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['MachineImageIamBindingConditionArrgs']]] = None,
                  machine_image: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -291,7 +291,7 @@ class MachineImageIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/compute.admin",
             members=["user:jane@example.com"],
         )])
@@ -308,10 +308,10 @@ class MachineImageIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/compute.admin",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -348,7 +348,7 @@ class MachineImageIamBinding(pulumi.CustomResource):
             machine_image=google_compute_machine_image["image"]["name"],
             role="roles/compute.admin",
             members=["user:jane@example.com"],
-            condition=gcp.compute.MachineImageIamBindingConditionArgs(
+            condition=gcp.compute.MachineImageIamBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -380,7 +380,7 @@ class MachineImageIamBinding(pulumi.CustomResource):
             machine_image=google_compute_machine_image["image"]["name"],
             role="roles/compute.admin",
             member="user:jane@example.com",
-            condition=gcp.compute.MachineImageIamMemberConditionArgs(
+            condition=gcp.compute.MachineImageIamMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -414,7 +414,7 @@ class MachineImageIamBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['MachineImageIamBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['MachineImageIamBindingConditionArrgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] machine_image: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -439,7 +439,7 @@ class MachineImageIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: MachineImageIamBindingArgs,
+                 args: MachineImageIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Compute Engine MachineImage. Each of these resources serves a different use case:
@@ -463,7 +463,7 @@ class MachineImageIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/compute.admin",
             members=["user:jane@example.com"],
         )])
@@ -480,10 +480,10 @@ class MachineImageIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/compute.admin",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -520,7 +520,7 @@ class MachineImageIamBinding(pulumi.CustomResource):
             machine_image=google_compute_machine_image["image"]["name"],
             role="roles/compute.admin",
             members=["user:jane@example.com"],
-            condition=gcp.compute.MachineImageIamBindingConditionArgs(
+            condition=gcp.compute.MachineImageIamBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -552,7 +552,7 @@ class MachineImageIamBinding(pulumi.CustomResource):
             machine_image=google_compute_machine_image["image"]["name"],
             role="roles/compute.admin",
             member="user:jane@example.com",
-            condition=gcp.compute.MachineImageIamMemberConditionArgs(
+            condition=gcp.compute.MachineImageIamMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -585,12 +585,12 @@ class MachineImageIamBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param MachineImageIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param MachineImageIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(MachineImageIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(MachineImageIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -599,7 +599,7 @@ class MachineImageIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['MachineImageIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['MachineImageIamBindingConditionArrgs']]] = None,
                  machine_image: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -611,7 +611,7 @@ class MachineImageIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = MachineImageIamBindingArgs.__new__(MachineImageIamBindingArgs)
+            __props__ = MachineImageIamBindingArrgs.__new__(MachineImageIamBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if machine_image is None and not opts.urn:
@@ -635,7 +635,7 @@ class MachineImageIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['MachineImageIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['MachineImageIamBindingConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             machine_image: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -648,7 +648,7 @@ class MachineImageIamBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['MachineImageIamBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['MachineImageIamBindingConditionArrgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] machine_image: Used to find the parent resource to bind the IAM policy to

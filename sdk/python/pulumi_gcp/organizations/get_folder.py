@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetFolderResult:
+calass GetFolderResult:
     """
     A collection of values returned by getFolder.
     """
@@ -125,7 +125,7 @@ class GetFolderResult:
         return pulumi.get(self, "parent")
 
 
-class AwaitableGetFolderResult(GetFolderResult):
+calass AwaitableGetFolderResult(GetFolderResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

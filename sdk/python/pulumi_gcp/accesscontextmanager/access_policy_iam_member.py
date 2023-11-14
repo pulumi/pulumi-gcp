@@ -11,14 +11,14 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AccessPolicyIamMemberArgs', 'AccessPolicyIamMember']
+__all__ = ['AccessPolicyIamMemberArrgs', 'AccessPolicyIamMember']
 
 @pulumi.input_type
-class AccessPolicyIamMemberArgs:
+calass AccessPolicyIamMemberArrgs:
     def __init__(__self__, *,
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['AccessPolicyIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['AccessPolicyIamMemberConditionArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AccessPolicyIamMember resource.
@@ -71,11 +71,11 @@ class AccessPolicyIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['AccessPolicyIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['AccessPolicyIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['AccessPolicyIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['AccessPolicyIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -104,9 +104,9 @@ class AccessPolicyIamMemberArgs:
 
 
 @pulumi.input_type
-class _AccessPolicyIamMemberState:
+calass _AccessPolicyIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['AccessPolicyIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['AccessPolicyIamMemberConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -144,11 +144,11 @@ class _AccessPolicyIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['AccessPolicyIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['AccessPolicyIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['AccessPolicyIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['AccessPolicyIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -211,12 +211,12 @@ class _AccessPolicyIamMemberState:
         pulumi.set(self, "role", value)
 
 
-class AccessPolicyIamMember(pulumi.CustomResource):
+calass AccessPolicyIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['AccessPolicyIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['AccessPolicyIamMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -242,7 +242,7 @@ class AccessPolicyIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/accesscontextmanager.policyAdmin",
             members=["user:jane@example.com"],
         )])
@@ -318,7 +318,7 @@ class AccessPolicyIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AccessPolicyIamMemberArgs,
+                 args: AccessPolicyIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Access Context Manager (VPC Service Controls) AccessPolicy. Each of these resources serves a different use case:
@@ -341,7 +341,7 @@ class AccessPolicyIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/accesscontextmanager.policyAdmin",
             members=["user:jane@example.com"],
         )])
@@ -395,12 +395,12 @@ class AccessPolicyIamMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param AccessPolicyIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param AccessPolicyIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AccessPolicyIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AccessPolicyIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -409,7 +409,7 @@ class AccessPolicyIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['AccessPolicyIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['AccessPolicyIamMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -420,7 +420,7 @@ class AccessPolicyIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AccessPolicyIamMemberArgs.__new__(AccessPolicyIamMemberArgs)
+            __props__ = AccessPolicyIamMemberArrgs.__new__(AccessPolicyIamMemberArrgs)
 
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
@@ -441,7 +441,7 @@ class AccessPolicyIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['AccessPolicyIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['AccessPolicyIamMemberConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,

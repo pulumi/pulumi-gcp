@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class NamespaceIamBindingCondition(dict):
+calass NamespaceIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -44,7 +44,7 @@ class NamespaceIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class NamespaceIamMemberCondition(dict):
+calass NamespaceIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -71,7 +71,7 @@ class NamespaceIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class ServiceIamBindingCondition(dict):
+calass ServiceIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -98,7 +98,7 @@ class ServiceIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class ServiceIamMemberCondition(dict):
+calass ServiceIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,

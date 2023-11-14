@@ -11,20 +11,20 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['WorkloadArgs', 'Workload']
+__all__ = ['WorkloadArrgs', 'Workload']
 
 @pulumi.input_type
-class WorkloadArgs:
+calass WorkloadArrgs:
     def __init__(__self__, *,
                  billing_account: pulumi.Input[str],
                  compliance_regime: pulumi.Input[str],
                  display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
                  organization: pulumi.Input[str],
-                 kms_settings: Optional[pulumi.Input['WorkloadKmsSettingsArgs']] = None,
+                 kms_settings: Optional[pulumi.Input['WorkloadKmsSettingsArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
-                 resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]]] = None):
+                 resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArrgs']]]] = None):
         """
         The set of arguments for constructing a Workload resource.
         :param pulumi.Input[str] billing_account: Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, 'billingAccounts/012345-567890-ABCDEF`.
@@ -36,13 +36,13 @@ class WorkloadArgs:
                
                
                - - -
-        :param pulumi.Input['WorkloadKmsSettingsArgs'] kms_settings: Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
+        :param pulumi.Input['WorkloadKmsSettingsArrgs'] kms_settings: Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels applied to the workload.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
-        :param pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArrgs']]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         """
         pulumi.set(__self__, "billing_account", billing_account)
         pulumi.set(__self__, "compliance_regime", compliance_regime)
@@ -124,14 +124,14 @@ class WorkloadArgs:
 
     @property
     @pulumi.getter(name="kmsSettings")
-    def kms_settings(self) -> Optional[pulumi.Input['WorkloadKmsSettingsArgs']]:
+    def kms_settings(self) -> Optional[pulumi.Input['WorkloadKmsSettingsArrgs']]:
         """
         Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
         """
         return pulumi.get(self, "kms_settings")
 
     @kms_settings.setter
-    def kms_settings(self, value: Optional[pulumi.Input['WorkloadKmsSettingsArgs']]):
+    def kms_settings(self, value: Optional[pulumi.Input['WorkloadKmsSettingsArrgs']]):
         pulumi.set(self, "kms_settings", value)
 
     @property
@@ -163,34 +163,34 @@ class WorkloadArgs:
 
     @property
     @pulumi.getter(name="resourceSettings")
-    def resource_settings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]]]:
+    def resource_settings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArrgs']]]]:
         """
         Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         """
         return pulumi.get(self, "resource_settings")
 
     @resource_settings.setter
-    def resource_settings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]]]):
+    def resource_settings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArrgs']]]]):
         pulumi.set(self, "resource_settings", value)
 
 
 @pulumi.input_type
-class _WorkloadState:
+calass _WorkloadState:
     def __init__(__self__, *,
                  billing_account: Optional[pulumi.Input[str]] = None,
                  compliance_regime: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 kms_settings: Optional[pulumi.Input['WorkloadKmsSettingsArgs']] = None,
+                 kms_settings: Optional[pulumi.Input['WorkloadKmsSettingsArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization: Optional[pulumi.Input[str]] = None,
                  provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArgs']]]] = None):
+                 resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArrgs']]]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArrgs']]]] = None):
         """
         Input properties used for looking up and filtering Workload resources.
         :param pulumi.Input[str] billing_account: Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, 'billingAccounts/012345-567890-ABCDEF`.
@@ -198,7 +198,7 @@ class _WorkloadState:
         :param pulumi.Input[str] create_time: Output only. Immutable. The Workload creation timestamp.
         :param pulumi.Input[str] display_name: Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
         :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input['WorkloadKmsSettingsArgs'] kms_settings: Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
+        :param pulumi.Input['WorkloadKmsSettingsArrgs'] kms_settings: Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels applied to the workload.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -212,8 +212,8 @@ class _WorkloadState:
                - - -
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArgs']]] resources: Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArrgs']]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArrgs']]] resources: Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
         """
         if billing_account is not None:
             pulumi.set(__self__, "billing_account", billing_account)
@@ -306,14 +306,14 @@ class _WorkloadState:
 
     @property
     @pulumi.getter(name="kmsSettings")
-    def kms_settings(self) -> Optional[pulumi.Input['WorkloadKmsSettingsArgs']]:
+    def kms_settings(self) -> Optional[pulumi.Input['WorkloadKmsSettingsArrgs']]:
         """
         Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
         """
         return pulumi.get(self, "kms_settings")
 
     @kms_settings.setter
-    def kms_settings(self, value: Optional[pulumi.Input['WorkloadKmsSettingsArgs']]):
+    def kms_settings(self, value: Optional[pulumi.Input['WorkloadKmsSettingsArrgs']]):
         pulumi.set(self, "kms_settings", value)
 
     @property
@@ -397,30 +397,30 @@ class _WorkloadState:
 
     @property
     @pulumi.getter(name="resourceSettings")
-    def resource_settings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]]]:
+    def resource_settings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArrgs']]]]:
         """
         Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         """
         return pulumi.get(self, "resource_settings")
 
     @resource_settings.setter
-    def resource_settings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]]]):
+    def resource_settings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArrgs']]]]):
         pulumi.set(self, "resource_settings", value)
 
     @property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArgs']]]]:
+    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArrgs']]]]:
         """
         Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
         """
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArgs']]]]):
+    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArrgs']]]]):
         pulumi.set(self, "resources", value)
 
 
-class Workload(pulumi.CustomResource):
+calass Workload(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -428,12 +428,12 @@ class Workload(pulumi.CustomResource):
                  billing_account: Optional[pulumi.Input[str]] = None,
                  compliance_regime: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 kms_settings: Optional[pulumi.Input[pulumi.InputType['WorkloadKmsSettingsArgs']]] = None,
+                 kms_settings: Optional[pulumi.Input[pulumi.InputType['WorkloadKmsSettingsArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  organization: Optional[pulumi.Input[str]] = None,
                  provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
-                 resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceSettingArgs']]]]] = None,
+                 resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceSettingArrgs']]]]] = None,
                  __props__=None):
         """
         The AssuredWorkloads Workload resource
@@ -449,7 +449,7 @@ class Workload(pulumi.CustomResource):
             billing_account="billingAccounts/000000-0000000-0000000-000000",
             compliance_regime="FEDRAMP_MODERATE",
             display_name="Workload Example",
-            kms_settings=gcp.assuredworkloads.WorkloadKmsSettingsArgs(
+            kms_settings=gcp.assuredworkloads.WorkloadKmsSettingsArrgs(
                 next_rotation_time="9999-10-02T15:01:23Z",
                 rotation_period="10368000s",
             ),
@@ -460,13 +460,13 @@ class Workload(pulumi.CustomResource):
             organization="123456789",
             provisioned_resources_parent="folders/519620126891",
             resource_settings=[
-                gcp.assuredworkloads.WorkloadResourceSettingArgs(
+                gcp.assuredworkloads.WorkloadResourceSettingArrgs(
                     resource_type="CONSUMER_PROJECT",
                 ),
-                gcp.assuredworkloads.WorkloadResourceSettingArgs(
+                gcp.assuredworkloads.WorkloadResourceSettingArrgs(
                     resource_type="ENCRYPTION_KEYS_PROJECT",
                 ),
-                gcp.assuredworkloads.WorkloadResourceSettingArgs(
+                gcp.assuredworkloads.WorkloadResourceSettingArrgs(
                     resource_id="ring",
                     resource_type="KEYRING",
                 ),
@@ -490,7 +490,7 @@ class Workload(pulumi.CustomResource):
         :param pulumi.Input[str] billing_account: Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, 'billingAccounts/012345-567890-ABCDEF`.
         :param pulumi.Input[str] compliance_regime: Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS
         :param pulumi.Input[str] display_name: Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
-        :param pulumi.Input[pulumi.InputType['WorkloadKmsSettingsArgs']] kms_settings: Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
+        :param pulumi.Input[pulumi.InputType['WorkloadKmsSettingsArrgs']] kms_settings: Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels applied to the workload.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -502,13 +502,13 @@ class Workload(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceSettingArgs']]]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceSettingArrgs']]]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: WorkloadArgs,
+                 args: WorkloadArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The AssuredWorkloads Workload resource
@@ -524,7 +524,7 @@ class Workload(pulumi.CustomResource):
             billing_account="billingAccounts/000000-0000000-0000000-000000",
             compliance_regime="FEDRAMP_MODERATE",
             display_name="Workload Example",
-            kms_settings=gcp.assuredworkloads.WorkloadKmsSettingsArgs(
+            kms_settings=gcp.assuredworkloads.WorkloadKmsSettingsArrgs(
                 next_rotation_time="9999-10-02T15:01:23Z",
                 rotation_period="10368000s",
             ),
@@ -535,13 +535,13 @@ class Workload(pulumi.CustomResource):
             organization="123456789",
             provisioned_resources_parent="folders/519620126891",
             resource_settings=[
-                gcp.assuredworkloads.WorkloadResourceSettingArgs(
+                gcp.assuredworkloads.WorkloadResourceSettingArrgs(
                     resource_type="CONSUMER_PROJECT",
                 ),
-                gcp.assuredworkloads.WorkloadResourceSettingArgs(
+                gcp.assuredworkloads.WorkloadResourceSettingArrgs(
                     resource_type="ENCRYPTION_KEYS_PROJECT",
                 ),
-                gcp.assuredworkloads.WorkloadResourceSettingArgs(
+                gcp.assuredworkloads.WorkloadResourceSettingArrgs(
                     resource_id="ring",
                     resource_type="KEYRING",
                 ),
@@ -561,12 +561,12 @@ class Workload(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param WorkloadArgs args: The arguments to use to populate this resource's properties.
+        :param WorkloadArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(WorkloadArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(WorkloadArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -578,12 +578,12 @@ class Workload(pulumi.CustomResource):
                  billing_account: Optional[pulumi.Input[str]] = None,
                  compliance_regime: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 kms_settings: Optional[pulumi.Input[pulumi.InputType['WorkloadKmsSettingsArgs']]] = None,
+                 kms_settings: Optional[pulumi.Input[pulumi.InputType['WorkloadKmsSettingsArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  organization: Optional[pulumi.Input[str]] = None,
                  provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
-                 resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceSettingArgs']]]]] = None,
+                 resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceSettingArrgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -591,7 +591,7 @@ class Workload(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = WorkloadArgs.__new__(WorkloadArgs)
+            __props__ = WorkloadArrgs.__new__(WorkloadArrgs)
 
             if billing_account is None and not opts.urn:
                 raise TypeError("Missing required property 'billing_account'")
@@ -634,15 +634,15 @@ class Workload(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            kms_settings: Optional[pulumi.Input[pulumi.InputType['WorkloadKmsSettingsArgs']]] = None,
+            kms_settings: Optional[pulumi.Input[pulumi.InputType['WorkloadKmsSettingsArrgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             organization: Optional[pulumi.Input[str]] = None,
             provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceSettingArgs']]]]] = None,
-            resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceArgs']]]]] = None) -> 'Workload':
+            resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceSettingArrgs']]]]] = None,
+            resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceArrgs']]]]] = None) -> 'Workload':
         """
         Get an existing Workload resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -655,7 +655,7 @@ class Workload(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Output only. Immutable. The Workload creation timestamp.
         :param pulumi.Input[str] display_name: Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
         :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['WorkloadKmsSettingsArgs']] kms_settings: Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
+        :param pulumi.Input[pulumi.InputType['WorkloadKmsSettingsArrgs']] kms_settings: Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels applied to the workload.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -669,8 +669,8 @@ class Workload(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceSettingArgs']]]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceArgs']]]] resources: Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceSettingArrgs']]]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceArrgs']]]] resources: Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

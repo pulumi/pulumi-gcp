@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -51,12 +50,6 @@ func (i DeploymentLabelArgs) ToDeploymentLabelOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentLabelOutput)
 }
 
-func (i DeploymentLabelArgs) ToOutput(ctx context.Context) pulumix.Output[DeploymentLabel] {
-	return pulumix.Output[DeploymentLabel]{
-		OutputState: i.ToDeploymentLabelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DeploymentLabelArrayInput is an input type that accepts DeploymentLabelArray and DeploymentLabelArrayOutput values.
 // You can construct a concrete instance of `DeploymentLabelArrayInput` via:
 //
@@ -82,12 +75,6 @@ func (i DeploymentLabelArray) ToDeploymentLabelArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentLabelArrayOutput)
 }
 
-func (i DeploymentLabelArray) ToOutput(ctx context.Context) pulumix.Output[[]DeploymentLabel] {
-	return pulumix.Output[[]DeploymentLabel]{
-		OutputState: i.ToDeploymentLabelArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeploymentLabelOutput struct{ *pulumi.OutputState }
 
 func (DeploymentLabelOutput) ElementType() reflect.Type {
@@ -100,12 +87,6 @@ func (o DeploymentLabelOutput) ToDeploymentLabelOutput() DeploymentLabelOutput {
 
 func (o DeploymentLabelOutput) ToDeploymentLabelOutputWithContext(ctx context.Context) DeploymentLabelOutput {
 	return o
-}
-
-func (o DeploymentLabelOutput) ToOutput(ctx context.Context) pulumix.Output[DeploymentLabel] {
-	return pulumix.Output[DeploymentLabel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Key for label.
@@ -130,12 +111,6 @@ func (o DeploymentLabelArrayOutput) ToDeploymentLabelArrayOutput() DeploymentLab
 
 func (o DeploymentLabelArrayOutput) ToDeploymentLabelArrayOutputWithContext(ctx context.Context) DeploymentLabelArrayOutput {
 	return o
-}
-
-func (o DeploymentLabelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeploymentLabel] {
-	return pulumix.Output[[]DeploymentLabel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeploymentLabelArrayOutput) Index(i pulumi.IntInput) DeploymentLabelOutput {
@@ -189,12 +164,6 @@ func (i DeploymentTargetArgs) ToDeploymentTargetOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentTargetOutput)
 }
 
-func (i DeploymentTargetArgs) ToOutput(ctx context.Context) pulumix.Output[DeploymentTarget] {
-	return pulumix.Output[DeploymentTarget]{
-		OutputState: i.ToDeploymentTargetOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DeploymentTargetArgs) ToDeploymentTargetPtrOutput() DeploymentTargetPtrOutput {
 	return i.ToDeploymentTargetPtrOutputWithContext(context.Background())
 }
@@ -236,12 +205,6 @@ func (i *deploymentTargetPtrType) ToDeploymentTargetPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentTargetPtrOutput)
 }
 
-func (i *deploymentTargetPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeploymentTarget] {
-	return pulumix.Output[*DeploymentTarget]{
-		OutputState: i.ToDeploymentTargetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeploymentTargetOutput struct{ *pulumi.OutputState }
 
 func (DeploymentTargetOutput) ElementType() reflect.Type {
@@ -264,12 +227,6 @@ func (o DeploymentTargetOutput) ToDeploymentTargetPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentTarget) *DeploymentTarget {
 		return &v
 	}).(DeploymentTargetPtrOutput)
-}
-
-func (o DeploymentTargetOutput) ToOutput(ctx context.Context) pulumix.Output[DeploymentTarget] {
-	return pulumix.Output[DeploymentTarget]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The root configuration file to use for this deployment.
@@ -298,12 +255,6 @@ func (o DeploymentTargetPtrOutput) ToDeploymentTargetPtrOutput() DeploymentTarge
 
 func (o DeploymentTargetPtrOutput) ToDeploymentTargetPtrOutputWithContext(ctx context.Context) DeploymentTargetPtrOutput {
 	return o
-}
-
-func (o DeploymentTargetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeploymentTarget] {
-	return pulumix.Output[*DeploymentTarget]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeploymentTargetPtrOutput) Elem() DeploymentTargetOutput {
@@ -373,12 +324,6 @@ func (i DeploymentTargetConfigArgs) ToDeploymentTargetConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentTargetConfigOutput)
 }
 
-func (i DeploymentTargetConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DeploymentTargetConfig] {
-	return pulumix.Output[DeploymentTargetConfig]{
-		OutputState: i.ToDeploymentTargetConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DeploymentTargetConfigArgs) ToDeploymentTargetConfigPtrOutput() DeploymentTargetConfigPtrOutput {
 	return i.ToDeploymentTargetConfigPtrOutputWithContext(context.Background())
 }
@@ -420,12 +365,6 @@ func (i *deploymentTargetConfigPtrType) ToDeploymentTargetConfigPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentTargetConfigPtrOutput)
 }
 
-func (i *deploymentTargetConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeploymentTargetConfig] {
-	return pulumix.Output[*DeploymentTargetConfig]{
-		OutputState: i.ToDeploymentTargetConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeploymentTargetConfigOutput struct{ *pulumi.OutputState }
 
 func (DeploymentTargetConfigOutput) ElementType() reflect.Type {
@@ -450,12 +389,6 @@ func (o DeploymentTargetConfigOutput) ToDeploymentTargetConfigPtrOutputWithConte
 	}).(DeploymentTargetConfigPtrOutput)
 }
 
-func (o DeploymentTargetConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DeploymentTargetConfig] {
-	return pulumix.Output[DeploymentTargetConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The full YAML contents of your configuration file.
 func (o DeploymentTargetConfigOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v DeploymentTargetConfig) string { return v.Content }).(pulumi.StringOutput)
@@ -473,12 +406,6 @@ func (o DeploymentTargetConfigPtrOutput) ToDeploymentTargetConfigPtrOutput() Dep
 
 func (o DeploymentTargetConfigPtrOutput) ToDeploymentTargetConfigPtrOutputWithContext(ctx context.Context) DeploymentTargetConfigPtrOutput {
 	return o
-}
-
-func (o DeploymentTargetConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeploymentTargetConfig] {
-	return pulumix.Output[*DeploymentTargetConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeploymentTargetConfigPtrOutput) Elem() DeploymentTargetConfigOutput {
@@ -544,12 +471,6 @@ func (i DeploymentTargetImportArgs) ToDeploymentTargetImportOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentTargetImportOutput)
 }
 
-func (i DeploymentTargetImportArgs) ToOutput(ctx context.Context) pulumix.Output[DeploymentTargetImport] {
-	return pulumix.Output[DeploymentTargetImport]{
-		OutputState: i.ToDeploymentTargetImportOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DeploymentTargetImportArrayInput is an input type that accepts DeploymentTargetImportArray and DeploymentTargetImportArrayOutput values.
 // You can construct a concrete instance of `DeploymentTargetImportArrayInput` via:
 //
@@ -575,12 +496,6 @@ func (i DeploymentTargetImportArray) ToDeploymentTargetImportArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentTargetImportArrayOutput)
 }
 
-func (i DeploymentTargetImportArray) ToOutput(ctx context.Context) pulumix.Output[[]DeploymentTargetImport] {
-	return pulumix.Output[[]DeploymentTargetImport]{
-		OutputState: i.ToDeploymentTargetImportArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeploymentTargetImportOutput struct{ *pulumi.OutputState }
 
 func (DeploymentTargetImportOutput) ElementType() reflect.Type {
@@ -593,12 +508,6 @@ func (o DeploymentTargetImportOutput) ToDeploymentTargetImportOutput() Deploymen
 
 func (o DeploymentTargetImportOutput) ToDeploymentTargetImportOutputWithContext(ctx context.Context) DeploymentTargetImportOutput {
 	return o
-}
-
-func (o DeploymentTargetImportOutput) ToOutput(ctx context.Context) pulumix.Output[DeploymentTargetImport] {
-	return pulumix.Output[DeploymentTargetImport]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The full contents of the template that you want to import.
@@ -626,12 +535,6 @@ func (o DeploymentTargetImportArrayOutput) ToDeploymentTargetImportArrayOutput()
 
 func (o DeploymentTargetImportArrayOutput) ToDeploymentTargetImportArrayOutputWithContext(ctx context.Context) DeploymentTargetImportArrayOutput {
 	return o
-}
-
-func (o DeploymentTargetImportArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeploymentTargetImport] {
-	return pulumix.Output[[]DeploymentTargetImport]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeploymentTargetImportArrayOutput) Index(i pulumi.IntInput) DeploymentTargetImportOutput {

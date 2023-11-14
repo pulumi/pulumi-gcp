@@ -10,31 +10,31 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'ConsentStoreIamBindingConditionArgs',
-    'ConsentStoreIamMemberConditionArgs',
-    'DatasetIamBindingConditionArgs',
-    'DatasetIamMemberConditionArgs',
-    'DicomStoreIamBindingConditionArgs',
-    'DicomStoreIamMemberConditionArgs',
-    'DicomStoreNotificationConfigArgs',
-    'DicomStoreStreamConfigArgs',
-    'DicomStoreStreamConfigBigqueryDestinationArgs',
-    'FhirStoreIamBindingConditionArgs',
-    'FhirStoreIamMemberConditionArgs',
-    'FhirStoreNotificationConfigArgs',
-    'FhirStoreStreamConfigArgs',
-    'FhirStoreStreamConfigBigqueryDestinationArgs',
-    'FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs',
-    'FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs',
-    'Hl7StoreIamBindingConditionArgs',
-    'Hl7StoreIamMemberConditionArgs',
-    'Hl7StoreNotificationConfigArgs',
-    'Hl7StoreNotificationConfigsArgs',
-    'Hl7StoreParserConfigArgs',
+    'ConsentStoreIamBindingConditionArrgs',
+    'ConsentStoreIamMemberConditionArrgs',
+    'DatasetIamBindingConditionArrgs',
+    'DatasetIamMemberConditionArrgs',
+    'DicomStoreIamBindingConditionArrgs',
+    'DicomStoreIamMemberConditionArrgs',
+    'DicomStoreNotificationConfigArrgs',
+    'DicomStoreStreamConfigArrgs',
+    'DicomStoreStreamConfigBigqueryDestinationArrgs',
+    'FhirStoreIamBindingConditionArrgs',
+    'FhirStoreIamMemberConditionArrgs',
+    'FhirStoreNotificationConfigArrgs',
+    'FhirStoreStreamConfigArrgs',
+    'FhirStoreStreamConfigBigqueryDestinationArrgs',
+    'FhirStoreStreamConfigBigqueryDestinationSchemaConfigArrgs',
+    'FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArrgs',
+    'Hl7StoreIamBindingConditionArrgs',
+    'Hl7StoreIamMemberConditionArrgs',
+    'Hl7StoreNotificationConfigArrgs',
+    'Hl7StoreNotificationConfigsArrgs',
+    'Hl7StoreParserConfigArrgs',
 ]
 
 @pulumi.input_type
-class ConsentStoreIamBindingConditionArgs:
+calass ConsentStoreIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -73,7 +73,7 @@ class ConsentStoreIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class ConsentStoreIamMemberConditionArgs:
+calass ConsentStoreIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -112,7 +112,7 @@ class ConsentStoreIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class DatasetIamBindingConditionArgs:
+calass DatasetIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -151,7 +151,7 @@ class DatasetIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class DatasetIamMemberConditionArgs:
+calass DatasetIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -190,7 +190,7 @@ class DatasetIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class DicomStoreIamBindingConditionArgs:
+calass DicomStoreIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -229,7 +229,7 @@ class DicomStoreIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class DicomStoreIamMemberConditionArgs:
+calass DicomStoreIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -268,7 +268,7 @@ class DicomStoreIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class DicomStoreNotificationConfigArgs:
+calass DicomStoreNotificationConfigArrgs:
     def __init__(__self__, *,
                  pubsub_topic: pulumi.Input[str]):
         """
@@ -300,18 +300,18 @@ class DicomStoreNotificationConfigArgs:
 
 
 @pulumi.input_type
-class DicomStoreStreamConfigArgs:
+calass DicomStoreStreamConfigArrgs:
     def __init__(__self__, *,
-                 bigquery_destination: pulumi.Input['DicomStoreStreamConfigBigqueryDestinationArgs']):
+                 bigquery_destination: pulumi.Input['DicomStoreStreamConfigBigqueryDestinationArrgs']):
         """
-        :param pulumi.Input['DicomStoreStreamConfigBigqueryDestinationArgs'] bigquery_destination: BigQueryDestination to include a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
+        :param pulumi.Input['DicomStoreStreamConfigBigqueryDestinationArrgs'] bigquery_destination: BigQueryDestination to include a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
                Structure is documented below.
         """
         pulumi.set(__self__, "bigquery_destination", bigquery_destination)
 
     @property
     @pulumi.getter(name="bigqueryDestination")
-    def bigquery_destination(self) -> pulumi.Input['DicomStoreStreamConfigBigqueryDestinationArgs']:
+    def bigquery_destination(self) -> pulumi.Input['DicomStoreStreamConfigBigqueryDestinationArrgs']:
         """
         BigQueryDestination to include a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
         Structure is documented below.
@@ -319,12 +319,12 @@ class DicomStoreStreamConfigArgs:
         return pulumi.get(self, "bigquery_destination")
 
     @bigquery_destination.setter
-    def bigquery_destination(self, value: pulumi.Input['DicomStoreStreamConfigBigqueryDestinationArgs']):
+    def bigquery_destination(self, value: pulumi.Input['DicomStoreStreamConfigBigqueryDestinationArrgs']):
         pulumi.set(self, "bigquery_destination", value)
 
 
 @pulumi.input_type
-class DicomStoreStreamConfigBigqueryDestinationArgs:
+calass DicomStoreStreamConfigBigqueryDestinationArrgs:
     def __init__(__self__, *,
                  table_uri: pulumi.Input[str]):
         """
@@ -346,7 +346,7 @@ class DicomStoreStreamConfigBigqueryDestinationArgs:
 
 
 @pulumi.input_type
-class FhirStoreIamBindingConditionArgs:
+calass FhirStoreIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -385,7 +385,7 @@ class FhirStoreIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class FhirStoreIamMemberConditionArgs:
+calass FhirStoreIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -424,7 +424,7 @@ class FhirStoreIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class FhirStoreNotificationConfigArgs:
+calass FhirStoreNotificationConfigArrgs:
     def __init__(__self__, *,
                  pubsub_topic: pulumi.Input[str],
                  send_full_resource: Optional[pulumi.Input[bool]] = None,
@@ -504,12 +504,12 @@ class FhirStoreNotificationConfigArgs:
 
 
 @pulumi.input_type
-class FhirStoreStreamConfigArgs:
+calass FhirStoreStreamConfigArrgs:
     def __init__(__self__, *,
-                 bigquery_destination: pulumi.Input['FhirStoreStreamConfigBigqueryDestinationArgs'],
+                 bigquery_destination: pulumi.Input['FhirStoreStreamConfigBigqueryDestinationArrgs'],
                  resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input['FhirStoreStreamConfigBigqueryDestinationArgs'] bigquery_destination: The destination BigQuery structure that contains both the dataset location and corresponding schema config.
+        :param pulumi.Input['FhirStoreStreamConfigBigqueryDestinationArrgs'] bigquery_destination: The destination BigQuery structure that contains both the dataset location and corresponding schema config.
                The output is organized in one table per resource type. The server reuses the existing tables (if any) that
                are named after the resource types, e.g. "Patient", "Observation". When there is no existing table for a given
                resource type, the server attempts to create one.
@@ -525,7 +525,7 @@ class FhirStoreStreamConfigArgs:
 
     @property
     @pulumi.getter(name="bigqueryDestination")
-    def bigquery_destination(self) -> pulumi.Input['FhirStoreStreamConfigBigqueryDestinationArgs']:
+    def bigquery_destination(self) -> pulumi.Input['FhirStoreStreamConfigBigqueryDestinationArrgs']:
         """
         The destination BigQuery structure that contains both the dataset location and corresponding schema config.
         The output is organized in one table per resource type. The server reuses the existing tables (if any) that
@@ -537,7 +537,7 @@ class FhirStoreStreamConfigArgs:
         return pulumi.get(self, "bigquery_destination")
 
     @bigquery_destination.setter
-    def bigquery_destination(self, value: pulumi.Input['FhirStoreStreamConfigBigqueryDestinationArgs']):
+    def bigquery_destination(self, value: pulumi.Input['FhirStoreStreamConfigBigqueryDestinationArrgs']):
         pulumi.set(self, "bigquery_destination", value)
 
     @property
@@ -556,13 +556,13 @@ class FhirStoreStreamConfigArgs:
 
 
 @pulumi.input_type
-class FhirStoreStreamConfigBigqueryDestinationArgs:
+calass FhirStoreStreamConfigBigqueryDestinationArrgs:
     def __init__(__self__, *,
                  dataset_uri: pulumi.Input[str],
-                 schema_config: pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs']):
+                 schema_config: pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigArrgs']):
         """
         :param pulumi.Input[str] dataset_uri: BigQuery URI to a dataset, up to 2000 characters long, in the format bq://projectId.bqDatasetId
-        :param pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs'] schema_config: The configuration for the exported BigQuery schema.
+        :param pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigArrgs'] schema_config: The configuration for the exported BigQuery schema.
                Structure is documented below.
         """
         pulumi.set(__self__, "dataset_uri", dataset_uri)
@@ -582,7 +582,7 @@ class FhirStoreStreamConfigBigqueryDestinationArgs:
 
     @property
     @pulumi.getter(name="schemaConfig")
-    def schema_config(self) -> pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs']:
+    def schema_config(self) -> pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigArrgs']:
         """
         The configuration for the exported BigQuery schema.
         Structure is documented below.
@@ -590,22 +590,22 @@ class FhirStoreStreamConfigBigqueryDestinationArgs:
         return pulumi.get(self, "schema_config")
 
     @schema_config.setter
-    def schema_config(self, value: pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs']):
+    def schema_config(self, value: pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigArrgs']):
         pulumi.set(self, "schema_config", value)
 
 
 @pulumi.input_type
-class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs:
+calass FhirStoreStreamConfigBigqueryDestinationSchemaConfigArrgs:
     def __init__(__self__, *,
                  recursive_structure_depth: pulumi.Input[int],
-                 last_updated_partition_config: Optional[pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs']] = None,
+                 last_updated_partition_config: Optional[pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArrgs']] = None,
                  schema_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] recursive_structure_depth: The depth for all recursive structures in the output analytics schema. For example, concept in the CodeSystem
                resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called
                concept.concept but not concept.concept.concept. If not specified or set to 0, the server will use the default
                value 2. The maximum depth allowed is 5.
-        :param pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs'] last_updated_partition_config: The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
+        :param pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArrgs'] last_updated_partition_config: The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
                Structure is documented below.
         :param pulumi.Input[str] schema_type: Specifies the output schema type.
                * ANALYTICS: Analytics schema defined by the FHIR community.
@@ -638,7 +638,7 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs:
 
     @property
     @pulumi.getter(name="lastUpdatedPartitionConfig")
-    def last_updated_partition_config(self) -> Optional[pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs']]:
+    def last_updated_partition_config(self) -> Optional[pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArrgs']]:
         """
         The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
         Structure is documented below.
@@ -646,7 +646,7 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs:
         return pulumi.get(self, "last_updated_partition_config")
 
     @last_updated_partition_config.setter
-    def last_updated_partition_config(self, value: Optional[pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs']]):
+    def last_updated_partition_config(self, value: Optional[pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArrgs']]):
         pulumi.set(self, "last_updated_partition_config", value)
 
     @property
@@ -669,7 +669,7 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs:
 
 
 @pulumi.input_type
-class FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs:
+calass FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArrgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  expiration_ms: Optional[pulumi.Input[str]] = None):
@@ -709,7 +709,7 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionCo
 
 
 @pulumi.input_type
-class Hl7StoreIamBindingConditionArgs:
+calass Hl7StoreIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -748,7 +748,7 @@ class Hl7StoreIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class Hl7StoreIamMemberConditionArgs:
+calass Hl7StoreIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -787,7 +787,7 @@ class Hl7StoreIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class Hl7StoreNotificationConfigArgs:
+calass Hl7StoreNotificationConfigArrgs:
     def __init__(__self__, *,
                  pubsub_topic: pulumi.Input[str]):
         """
@@ -819,7 +819,7 @@ class Hl7StoreNotificationConfigArgs:
 
 
 @pulumi.input_type
-class Hl7StoreNotificationConfigsArgs:
+calass Hl7StoreNotificationConfigsArrgs:
     def __init__(__self__, *,
                  pubsub_topic: pulumi.Input[str],
                  filter: Optional[pulumi.Input[str]] = None):
@@ -885,7 +885,7 @@ class Hl7StoreNotificationConfigsArgs:
 
 
 @pulumi.input_type
-class Hl7StoreParserConfigArgs:
+calass Hl7StoreParserConfigArrgs:
     def __init__(__self__, *,
                  allow_null_header: Optional[pulumi.Input[bool]] = None,
                  schema: Optional[pulumi.Input[str]] = None,

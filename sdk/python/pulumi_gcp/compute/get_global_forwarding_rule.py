@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetGlobalForwardingRuleResult:
+calass GetGlobalForwardingRuleResult:
     """
     A collection of values returned by getGlobalForwardingRule.
     """
@@ -220,7 +220,7 @@ class GetGlobalForwardingRuleResult:
         return pulumi.get(self, "target")
 
 
-class AwaitableGetGlobalForwardingRuleResult(GetGlobalForwardingRuleResult):
+calass AwaitableGetGlobalForwardingRuleResult(GetGlobalForwardingRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

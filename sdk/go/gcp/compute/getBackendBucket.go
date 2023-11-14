@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information about a BackendBucket.
@@ -118,12 +117,6 @@ func (o LookupBackendBucketResultOutput) ToLookupBackendBucketResultOutput() Loo
 
 func (o LookupBackendBucketResultOutput) ToLookupBackendBucketResultOutputWithContext(ctx context.Context) LookupBackendBucketResultOutput {
 	return o
-}
-
-func (o LookupBackendBucketResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBackendBucketResult] {
-	return pulumix.Output[LookupBackendBucketResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupBackendBucketResultOutput) BucketName() pulumi.StringOutput {

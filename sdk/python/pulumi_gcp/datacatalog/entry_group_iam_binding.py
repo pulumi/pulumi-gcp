@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['EntryGroupIamBindingArgs', 'EntryGroupIamBinding']
+__all__ = ['EntryGroupIamBindingArrgs', 'EntryGroupIamBinding']
 
 @pulumi.input_type
-class EntryGroupIamBindingArgs:
+calass EntryGroupIamBindingArrgs:
     def __init__(__self__, *,
                  entry_group: pulumi.Input[str],
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['EntryGroupIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['EntryGroupIamBindingConditionArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
         """
@@ -90,11 +90,11 @@ class EntryGroupIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['EntryGroupIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['EntryGroupIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['EntryGroupIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['EntryGroupIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -133,9 +133,9 @@ class EntryGroupIamBindingArgs:
 
 
 @pulumi.input_type
-class _EntryGroupIamBindingState:
+calass _EntryGroupIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['EntryGroupIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['EntryGroupIamBindingConditionArrgs']] = None,
                  entry_group: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -181,11 +181,11 @@ class _EntryGroupIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['EntryGroupIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['EntryGroupIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['EntryGroupIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['EntryGroupIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -270,12 +270,12 @@ class _EntryGroupIamBindingState:
         pulumi.set(self, "role", value)
 
 
-class EntryGroupIamBinding(pulumi.CustomResource):
+calass EntryGroupIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['EntryGroupIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['EntryGroupIamBindingConditionArrgs']]] = None,
                  entry_group: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -303,7 +303,7 @@ class EntryGroupIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -385,7 +385,7 @@ class EntryGroupIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: EntryGroupIamBindingArgs,
+                 args: EntryGroupIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Data catalog EntryGroup. Each of these resources serves a different use case:
@@ -408,7 +408,7 @@ class EntryGroupIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -466,12 +466,12 @@ class EntryGroupIamBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param EntryGroupIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param EntryGroupIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(EntryGroupIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(EntryGroupIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -480,7 +480,7 @@ class EntryGroupIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['EntryGroupIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['EntryGroupIamBindingConditionArrgs']]] = None,
                  entry_group: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -493,7 +493,7 @@ class EntryGroupIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = EntryGroupIamBindingArgs.__new__(EntryGroupIamBindingArgs)
+            __props__ = EntryGroupIamBindingArrgs.__new__(EntryGroupIamBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if entry_group is None and not opts.urn:
@@ -518,7 +518,7 @@ class EntryGroupIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['EntryGroupIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['EntryGroupIamBindingConditionArrgs']]] = None,
             entry_group: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

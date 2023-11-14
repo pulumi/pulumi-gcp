@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['TaskIamBindingArgs', 'TaskIamBinding']
+__all__ = ['TaskIamBindingArrgs', 'TaskIamBinding']
 
 @pulumi.input_type
-class TaskIamBindingArgs:
+calass TaskIamBindingArrgs:
     def __init__(__self__, *,
                  lake: pulumi.Input[str],
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
                  task_id: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['TaskIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['TaskIamBindingConditionArrgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -105,11 +105,11 @@ class TaskIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['TaskIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['TaskIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['TaskIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['TaskIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -152,9 +152,9 @@ class TaskIamBindingArgs:
 
 
 @pulumi.input_type
-class _TaskIamBindingState:
+calass _TaskIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['TaskIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['TaskIamBindingConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -206,11 +206,11 @@ class _TaskIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['TaskIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['TaskIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['TaskIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['TaskIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -309,12 +309,12 @@ class _TaskIamBindingState:
         pulumi.set(self, "task_id", value)
 
 
-class TaskIamBinding(pulumi.CustomResource):
+calass TaskIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['TaskIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['TaskIamBindingConditionArrgs']]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -343,7 +343,7 @@ class TaskIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -437,7 +437,7 @@ class TaskIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TaskIamBindingArgs,
+                 args: TaskIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Dataplex Task. Each of these resources serves a different use case:
@@ -460,7 +460,7 @@ class TaskIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -527,12 +527,12 @@ class TaskIamBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param TaskIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param TaskIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(TaskIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TaskIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -541,7 +541,7 @@ class TaskIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['TaskIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['TaskIamBindingConditionArrgs']]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -555,7 +555,7 @@ class TaskIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = TaskIamBindingArgs.__new__(TaskIamBindingArgs)
+            __props__ = TaskIamBindingArrgs.__new__(TaskIamBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if lake is None and not opts.urn:
@@ -583,7 +583,7 @@ class TaskIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['TaskIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['TaskIamBindingConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             lake: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,

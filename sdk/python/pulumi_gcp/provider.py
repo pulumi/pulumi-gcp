@@ -10,10 +10,10 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from ._inputs import *
 
-__all__ = ['ProviderArgs', 'Provider']
+__all__ = ['ProviderArrgs', 'Provider']
 
 @pulumi.input_type
-class ProviderArgs:
+calass ProviderArrgs:
     def __init__(__self__, *,
                  access_approval_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  access_context_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -27,7 +27,7 @@ class ProviderArgs:
                  artifact_registry_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  assured_workloads_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  backup_dr_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 batching: Optional[pulumi.Input['ProviderBatchingArgs']] = None,
+                 batching: Optional[pulumi.Input['ProviderBatchingArrgs']] = None,
                  beyondcorp_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  big_query_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  biglake_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -585,11 +585,11 @@ class ProviderArgs:
 
     @property
     @pulumi.getter
-    def batching(self) -> Optional[pulumi.Input['ProviderBatchingArgs']]:
+    def batching(self) -> Optional[pulumi.Input['ProviderBatchingArrgs']]:
         return pulumi.get(self, "batching")
 
     @batching.setter
-    def batching(self, value: Optional[pulumi.Input['ProviderBatchingArgs']]):
+    def batching(self, value: Optional[pulumi.Input['ProviderBatchingArrgs']]):
         pulumi.set(self, "batching", value)
 
     @property
@@ -1826,7 +1826,7 @@ class ProviderArgs:
         pulumi.set(self, "zone", value)
 
 
-class Provider(pulumi.ProviderResource):
+calass Provider(pulumi.ProviderResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -1843,7 +1843,7 @@ class Provider(pulumi.ProviderResource):
                  artifact_registry_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  assured_workloads_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  backup_dr_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 batching: Optional[pulumi.Input[pulumi.InputType['ProviderBatchingArgs']]] = None,
+                 batching: Optional[pulumi.Input[pulumi.InputType['ProviderBatchingArrgs']]] = None,
                  beyondcorp_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  big_query_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  biglake_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1995,7 +1995,7 @@ class Provider(pulumi.ProviderResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[ProviderArgs] = None,
+                 args: Optional[ProviderArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The provider type for the google-beta package. By default, resources use package-wide configuration
@@ -2004,12 +2004,12 @@ class Provider(pulumi.ProviderResource):
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 
         :param str resource_name: The name of the resource.
-        :param ProviderArgs args: The arguments to use to populate this resource's properties.
+        :param ProviderArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ProviderArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ProviderArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -2030,7 +2030,7 @@ class Provider(pulumi.ProviderResource):
                  artifact_registry_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  assured_workloads_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  backup_dr_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 batching: Optional[pulumi.Input[pulumi.InputType['ProviderBatchingArgs']]] = None,
+                 batching: Optional[pulumi.Input[pulumi.InputType['ProviderBatchingArrgs']]] = None,
                  beyondcorp_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  big_query_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  biglake_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2175,7 +2175,7 @@ class Provider(pulumi.ProviderResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ProviderArgs.__new__(ProviderArgs)
+            __props__ = ProviderArrgs.__new__(ProviderArrgs)
 
             __props__.__dict__["access_approval_custom_endpoint"] = access_approval_custom_endpoint
             __props__.__dict__["access_context_manager_custom_endpoint"] = access_context_manager_custom_endpoint

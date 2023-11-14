@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetSubnetworkIamPolicyResult:
+calass GetSubnetworkIamPolicyResult:
     """
     A collection of values returned by getSubnetworkIamPolicy.
     """
@@ -82,7 +82,7 @@ class GetSubnetworkIamPolicyResult:
         return pulumi.get(self, "subnetwork")
 
 
-class AwaitableGetSubnetworkIamPolicyResult(GetSubnetworkIamPolicyResult):
+calass AwaitableGetSubnetworkIamPolicyResult(GetSubnetworkIamPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

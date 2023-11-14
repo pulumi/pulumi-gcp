@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetMachineImageIamPolicyResult:
+calass GetMachineImageIamPolicyResult:
     """
     A collection of values returned by getMachineImageIamPolicy.
     """
@@ -74,7 +74,7 @@ class GetMachineImageIamPolicyResult:
         return pulumi.get(self, "project")
 
 
-class AwaitableGetMachineImageIamPolicyResult(GetMachineImageIamPolicyResult):
+calass AwaitableGetMachineImageIamPolicyResult(GetMachineImageIamPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

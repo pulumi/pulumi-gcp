@@ -23,7 +23,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class RepositoryGitRemoteSettings(dict):
+calass RepositoryGitRemoteSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -98,7 +98,7 @@ class RepositoryGitRemoteSettings(dict):
 
 
 @pulumi.output_type
-class RepositoryReleaseConfigCodeCompilationConfig(dict):
+calass RepositoryReleaseConfigCodeCompilationConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -236,7 +236,7 @@ class RepositoryReleaseConfigCodeCompilationConfig(dict):
 
 
 @pulumi.output_type
-class RepositoryReleaseConfigRecentScheduledReleaseRecord(dict):
+calass RepositoryReleaseConfigRecentScheduledReleaseRecord(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -265,7 +265,7 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecord(dict):
         """
         :param str compilation_result: (Output)
                The name of the created compilation result, if one was successfully created. Must be in the format projects/*/locations/*/repositories/*/compilationResults/*.
-        :param Sequence['RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs'] error_statuses: (Output)
+        :param Sequence['RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrgs'] error_statuses: (Output)
                The error status encountered upon this attempt to create the compilation result, if the attempt was unsuccessful.
                Structure is documented below.
         :param str release_time: (Output)
@@ -308,7 +308,7 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecord(dict):
 
 
 @pulumi.output_type
-class RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus(dict):
+calass RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus(dict):
     def __init__(__self__, *,
                  code: Optional[int] = None,
                  message: Optional[str] = None):
@@ -343,7 +343,7 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus(dict):
 
 
 @pulumi.output_type
-class RepositoryWorkflowConfigInvocationConfig(dict):
+calass RepositoryWorkflowConfigInvocationConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -381,7 +381,7 @@ class RepositoryWorkflowConfigInvocationConfig(dict):
         """
         :param bool fully_refresh_incremental_tables_enabled: Optional. When set to true, any incremental tables will be fully refreshed.
         :param Sequence[str] included_tags: Optional. The set of tags to include.
-        :param Sequence['RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs'] included_targets: Optional. The set of action identifiers to include.
+        :param Sequence['RepositoryWorkflowConfigInvocationConfigIncludedTargetArrgs'] included_targets: Optional. The set of action identifiers to include.
                Structure is documented below.
         :param str service_account: Optional. The service account to run workflow invocations under.
         :param bool transitive_dependencies_included: Optional. When set to true, transitive dependencies of included actions will be executed.
@@ -451,7 +451,7 @@ class RepositoryWorkflowConfigInvocationConfig(dict):
 
 
 @pulumi.output_type
-class RepositoryWorkflowConfigInvocationConfigIncludedTarget(dict):
+calass RepositoryWorkflowConfigInvocationConfigIncludedTarget(dict):
     def __init__(__self__, *,
                  database: Optional[str] = None,
                  name: Optional[str] = None,
@@ -494,7 +494,7 @@ class RepositoryWorkflowConfigInvocationConfigIncludedTarget(dict):
 
 
 @pulumi.output_type
-class RepositoryWorkflowConfigRecentScheduledExecutionRecord(dict):
+calass RepositoryWorkflowConfigRecentScheduledExecutionRecord(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -521,7 +521,7 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecord(dict):
                  execution_time: Optional[str] = None,
                  workflow_invocation: Optional[str] = None):
         """
-        :param Sequence['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs'] error_statuses: (Output)
+        :param Sequence['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrgs'] error_statuses: (Output)
                The error status encountered upon this attempt to create the workflow invocation, if the attempt was unsuccessful.
                Structure is documented below.
         :param str execution_time: (Output)
@@ -566,7 +566,7 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecord(dict):
 
 
 @pulumi.output_type
-class RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus(dict):
+calass RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus(dict):
     def __init__(__self__, *,
                  code: Optional[int] = None,
                  message: Optional[str] = None):
@@ -601,7 +601,7 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus(dict):
 
 
 @pulumi.output_type
-class RepositoryWorkspaceCompilationOverrides(dict):
+calass RepositoryWorkspaceCompilationOverrides(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

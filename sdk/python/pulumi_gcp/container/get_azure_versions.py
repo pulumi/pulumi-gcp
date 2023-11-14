@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetAzureVersionsResult:
+calass GetAzureVersionsResult:
     """
     A collection of values returned by getAzureVersions.
     """
@@ -73,7 +73,7 @@ class GetAzureVersionsResult:
         return pulumi.get(self, "valid_versions")
 
 
-class AwaitableGetAzureVersionsResult(GetAzureVersionsResult):
+calass AwaitableGetAzureVersionsResult(GetAzureVersionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

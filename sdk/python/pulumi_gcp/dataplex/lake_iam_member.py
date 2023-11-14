@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['LakeIamMemberArgs', 'LakeIamMember']
+__all__ = ['LakeIamMemberArrgs', 'LakeIamMember']
 
 @pulumi.input_type
-class LakeIamMemberArgs:
+calass LakeIamMemberArrgs:
     def __init__(__self__, *,
                  lake: pulumi.Input[str],
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['LakeIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['LakeIamMemberConditionArrgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -90,11 +90,11 @@ class LakeIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['LakeIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['LakeIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['LakeIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['LakeIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -133,9 +133,9 @@ class LakeIamMemberArgs:
 
 
 @pulumi.input_type
-class _LakeIamMemberState:
+calass _LakeIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['LakeIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['LakeIamMemberConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -181,11 +181,11 @@ class _LakeIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['LakeIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['LakeIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['LakeIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['LakeIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -270,12 +270,12 @@ class _LakeIamMemberState:
         pulumi.set(self, "role", value)
 
 
-class LakeIamMember(pulumi.CustomResource):
+calass LakeIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['LakeIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['LakeIamMemberConditionArrgs']]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
@@ -303,7 +303,7 @@ class LakeIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -391,7 +391,7 @@ class LakeIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: LakeIamMemberArgs,
+                 args: LakeIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Dataplex Lake. Each of these resources serves a different use case:
@@ -414,7 +414,7 @@ class LakeIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -478,12 +478,12 @@ class LakeIamMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param LakeIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param LakeIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(LakeIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(LakeIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -492,7 +492,7 @@ class LakeIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['LakeIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['LakeIamMemberConditionArrgs']]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
@@ -505,7 +505,7 @@ class LakeIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = LakeIamMemberArgs.__new__(LakeIamMemberArgs)
+            __props__ = LakeIamMemberArrgs.__new__(LakeIamMemberArrgs)
 
             __props__.__dict__["condition"] = condition
             if lake is None and not opts.urn:
@@ -530,7 +530,7 @@ class LakeIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['LakeIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['LakeIamMemberConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             lake: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,

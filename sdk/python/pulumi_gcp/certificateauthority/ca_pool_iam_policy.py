@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['CaPoolIamPolicyArgs', 'CaPoolIamPolicy']
+__all__ = ['CaPoolIamPolicyArrgs', 'CaPoolIamPolicy']
 
 @pulumi.input_type
-class CaPoolIamPolicyArgs:
+calass CaPoolIamPolicyArrgs:
     def __init__(__self__, *,
                  ca_pool: pulumi.Input[str],
                  policy_data: pulumi.Input[str],
@@ -114,7 +114,7 @@ class CaPoolIamPolicyArgs:
 
 
 @pulumi.input_type
-class _CaPoolIamPolicyState:
+calass _CaPoolIamPolicyState:
     def __init__(__self__, *,
                  ca_pool: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -233,7 +233,7 @@ class _CaPoolIamPolicyState:
         pulumi.set(self, "project", value)
 
 
-class CaPoolIamPolicy(pulumi.CustomResource):
+calass CaPoolIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -266,7 +266,7 @@ class CaPoolIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/privateca.certificateManager",
             members=["user:jane@example.com"],
         )])
@@ -281,10 +281,10 @@ class CaPoolIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/privateca.certificateManager",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -316,7 +316,7 @@ class CaPoolIamPolicy(pulumi.CustomResource):
             ca_pool=google_privateca_ca_pool["default"]["id"],
             role="roles/privateca.certificateManager",
             members=["user:jane@example.com"],
-            condition=gcp.certificateauthority.CaPoolIamBindingConditionArgs(
+            condition=gcp.certificateauthority.CaPoolIamBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -344,7 +344,7 @@ class CaPoolIamPolicy(pulumi.CustomResource):
             ca_pool=google_privateca_ca_pool["default"]["id"],
             role="roles/privateca.certificateManager",
             member="user:jane@example.com",
-            condition=gcp.certificateauthority.CaPoolIamMemberConditionArgs(
+            condition=gcp.certificateauthority.CaPoolIamMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -402,7 +402,7 @@ class CaPoolIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CaPoolIamPolicyArgs,
+                 args: CaPoolIamPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Certificate Authority Service CaPool. Each of these resources serves a different use case:
@@ -427,7 +427,7 @@ class CaPoolIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/privateca.certificateManager",
             members=["user:jane@example.com"],
         )])
@@ -442,10 +442,10 @@ class CaPoolIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/privateca.certificateManager",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -477,7 +477,7 @@ class CaPoolIamPolicy(pulumi.CustomResource):
             ca_pool=google_privateca_ca_pool["default"]["id"],
             role="roles/privateca.certificateManager",
             members=["user:jane@example.com"],
-            condition=gcp.certificateauthority.CaPoolIamBindingConditionArgs(
+            condition=gcp.certificateauthority.CaPoolIamBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -505,7 +505,7 @@ class CaPoolIamPolicy(pulumi.CustomResource):
             ca_pool=google_privateca_ca_pool["default"]["id"],
             role="roles/privateca.certificateManager",
             member="user:jane@example.com",
-            condition=gcp.certificateauthority.CaPoolIamMemberConditionArgs(
+            condition=gcp.certificateauthority.CaPoolIamMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -537,12 +537,12 @@ class CaPoolIamPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param CaPoolIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param CaPoolIamPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(CaPoolIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(CaPoolIamPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -562,7 +562,7 @@ class CaPoolIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = CaPoolIamPolicyArgs.__new__(CaPoolIamPolicyArgs)
+            __props__ = CaPoolIamPolicyArrgs.__new__(CaPoolIamPolicyArrgs)
 
             if ca_pool is None and not opts.urn:
                 raise TypeError("Missing required property 'ca_pool'")

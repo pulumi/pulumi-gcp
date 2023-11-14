@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Cloud Pub/Sub Topic. Each of these resources serves a different use case:
@@ -339,12 +338,6 @@ func (i *RepositoryIamPolicy) ToRepositoryIamPolicyOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamPolicyOutput)
 }
 
-func (i *RepositoryIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*RepositoryIamPolicy] {
-	return pulumix.Output[*RepositoryIamPolicy]{
-		OutputState: i.ToRepositoryIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RepositoryIamPolicyArrayInput is an input type that accepts RepositoryIamPolicyArray and RepositoryIamPolicyArrayOutput values.
 // You can construct a concrete instance of `RepositoryIamPolicyArrayInput` via:
 //
@@ -368,12 +361,6 @@ func (i RepositoryIamPolicyArray) ToRepositoryIamPolicyArrayOutput() RepositoryI
 
 func (i RepositoryIamPolicyArray) ToRepositoryIamPolicyArrayOutputWithContext(ctx context.Context) RepositoryIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamPolicyArrayOutput)
-}
-
-func (i RepositoryIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*RepositoryIamPolicy] {
-	return pulumix.Output[[]*RepositoryIamPolicy]{
-		OutputState: i.ToRepositoryIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RepositoryIamPolicyMapInput is an input type that accepts RepositoryIamPolicyMap and RepositoryIamPolicyMapOutput values.
@@ -401,12 +388,6 @@ func (i RepositoryIamPolicyMap) ToRepositoryIamPolicyMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamPolicyMapOutput)
 }
 
-func (i RepositoryIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RepositoryIamPolicy] {
-	return pulumix.Output[map[string]*RepositoryIamPolicy]{
-		OutputState: i.ToRepositoryIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (RepositoryIamPolicyOutput) ElementType() reflect.Type {
@@ -419,12 +400,6 @@ func (o RepositoryIamPolicyOutput) ToRepositoryIamPolicyOutput() RepositoryIamPo
 
 func (o RepositoryIamPolicyOutput) ToRepositoryIamPolicyOutputWithContext(ctx context.Context) RepositoryIamPolicyOutput {
 	return o
-}
-
-func (o RepositoryIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryIamPolicy] {
-	return pulumix.Output[*RepositoryIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -474,12 +449,6 @@ func (o RepositoryIamPolicyArrayOutput) ToRepositoryIamPolicyArrayOutputWithCont
 	return o
 }
 
-func (o RepositoryIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RepositoryIamPolicy] {
-	return pulumix.Output[[]*RepositoryIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RepositoryIamPolicyArrayOutput) Index(i pulumi.IntInput) RepositoryIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RepositoryIamPolicy {
 		return vs[0].([]*RepositoryIamPolicy)[vs[1].(int)]
@@ -498,12 +467,6 @@ func (o RepositoryIamPolicyMapOutput) ToRepositoryIamPolicyMapOutput() Repositor
 
 func (o RepositoryIamPolicyMapOutput) ToRepositoryIamPolicyMapOutputWithContext(ctx context.Context) RepositoryIamPolicyMapOutput {
 	return o
-}
-
-func (o RepositoryIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RepositoryIamPolicy] {
-	return pulumix.Output[map[string]*RepositoryIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryIamPolicyMapOutput) MapIndex(k pulumi.StringInput) RepositoryIamPolicyOutput {

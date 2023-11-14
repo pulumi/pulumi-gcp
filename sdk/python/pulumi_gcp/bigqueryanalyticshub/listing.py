@@ -11,35 +11,35 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ListingArgs', 'Listing']
+__all__ = ['ListingArrgs', 'Listing']
 
 @pulumi.input_type
-class ListingArgs:
+calass ListingArrgs:
     def __init__(__self__, *,
-                 bigquery_dataset: pulumi.Input['ListingBigqueryDatasetArgs'],
+                 bigquery_dataset: pulumi.Input['ListingBigqueryDatasetArrgs'],
                  data_exchange_id: pulumi.Input[str],
                  display_name: pulumi.Input[str],
                  listing_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 data_provider: Optional[pulumi.Input['ListingDataProviderArgs']] = None,
+                 data_provider: Optional[pulumi.Input['ListingDataProviderArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  documentation: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  primary_contact: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 publisher: Optional[pulumi.Input['ListingPublisherArgs']] = None,
+                 publisher: Optional[pulumi.Input['ListingPublisherArrgs']] = None,
                  request_access: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Listing resource.
-        :param pulumi.Input['ListingBigqueryDatasetArgs'] bigquery_dataset: Shared dataset i.e. BigQuery dataset source.
+        :param pulumi.Input['ListingBigqueryDatasetArrgs'] bigquery_dataset: Shared dataset i.e. BigQuery dataset source.
                Structure is documented below.
         :param pulumi.Input[str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[str] display_name: Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
         :param pulumi.Input[str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[str] location: The name of the location this data exchange listing.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] categories: Categories of the listing. Up to two categories are allowed.
-        :param pulumi.Input['ListingDataProviderArgs'] data_provider: Details of the data provider who owns the source data.
+        :param pulumi.Input['ListingDataProviderArrgs'] data_provider: Details of the data provider who owns the source data.
                Structure is documented below.
         :param pulumi.Input[str] description: Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         :param pulumi.Input[str] documentation: Documentation describing the listing.
@@ -47,7 +47,7 @@ class ListingArgs:
         :param pulumi.Input[str] primary_contact: Email or URL of the primary point of contact of the listing.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['ListingPublisherArgs'] publisher: Details of the publisher who owns the listing and who can share the source data.
+        :param pulumi.Input['ListingPublisherArrgs'] publisher: Details of the publisher who owns the listing and who can share the source data.
                Structure is documented below.
         :param pulumi.Input[str] request_access: Email or URL of the request access of the listing. Subscribers can use this reference to request access.
         """
@@ -77,7 +77,7 @@ class ListingArgs:
 
     @property
     @pulumi.getter(name="bigqueryDataset")
-    def bigquery_dataset(self) -> pulumi.Input['ListingBigqueryDatasetArgs']:
+    def bigquery_dataset(self) -> pulumi.Input['ListingBigqueryDatasetArrgs']:
         """
         Shared dataset i.e. BigQuery dataset source.
         Structure is documented below.
@@ -85,7 +85,7 @@ class ListingArgs:
         return pulumi.get(self, "bigquery_dataset")
 
     @bigquery_dataset.setter
-    def bigquery_dataset(self, value: pulumi.Input['ListingBigqueryDatasetArgs']):
+    def bigquery_dataset(self, value: pulumi.Input['ListingBigqueryDatasetArrgs']):
         pulumi.set(self, "bigquery_dataset", value)
 
     @property
@@ -150,7 +150,7 @@ class ListingArgs:
 
     @property
     @pulumi.getter(name="dataProvider")
-    def data_provider(self) -> Optional[pulumi.Input['ListingDataProviderArgs']]:
+    def data_provider(self) -> Optional[pulumi.Input['ListingDataProviderArrgs']]:
         """
         Details of the data provider who owns the source data.
         Structure is documented below.
@@ -158,7 +158,7 @@ class ListingArgs:
         return pulumi.get(self, "data_provider")
 
     @data_provider.setter
-    def data_provider(self, value: Optional[pulumi.Input['ListingDataProviderArgs']]):
+    def data_provider(self, value: Optional[pulumi.Input['ListingDataProviderArrgs']]):
         pulumi.set(self, "data_provider", value)
 
     @property
@@ -224,7 +224,7 @@ class ListingArgs:
 
     @property
     @pulumi.getter
-    def publisher(self) -> Optional[pulumi.Input['ListingPublisherArgs']]:
+    def publisher(self) -> Optional[pulumi.Input['ListingPublisherArrgs']]:
         """
         Details of the publisher who owns the listing and who can share the source data.
         Structure is documented below.
@@ -232,7 +232,7 @@ class ListingArgs:
         return pulumi.get(self, "publisher")
 
     @publisher.setter
-    def publisher(self, value: Optional[pulumi.Input['ListingPublisherArgs']]):
+    def publisher(self, value: Optional[pulumi.Input['ListingPublisherArrgs']]):
         pulumi.set(self, "publisher", value)
 
     @property
@@ -249,12 +249,12 @@ class ListingArgs:
 
 
 @pulumi.input_type
-class _ListingState:
+calass _ListingState:
     def __init__(__self__, *,
-                 bigquery_dataset: Optional[pulumi.Input['ListingBigqueryDatasetArgs']] = None,
+                 bigquery_dataset: Optional[pulumi.Input['ListingBigqueryDatasetArrgs']] = None,
                  categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  data_exchange_id: Optional[pulumi.Input[str]] = None,
-                 data_provider: Optional[pulumi.Input['ListingDataProviderArgs']] = None,
+                 data_provider: Optional[pulumi.Input['ListingDataProviderArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  documentation: Optional[pulumi.Input[str]] = None,
@@ -264,15 +264,15 @@ class _ListingState:
                  name: Optional[pulumi.Input[str]] = None,
                  primary_contact: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 publisher: Optional[pulumi.Input['ListingPublisherArgs']] = None,
+                 publisher: Optional[pulumi.Input['ListingPublisherArrgs']] = None,
                  request_access: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Listing resources.
-        :param pulumi.Input['ListingBigqueryDatasetArgs'] bigquery_dataset: Shared dataset i.e. BigQuery dataset source.
+        :param pulumi.Input['ListingBigqueryDatasetArrgs'] bigquery_dataset: Shared dataset i.e. BigQuery dataset source.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] categories: Categories of the listing. Up to two categories are allowed.
         :param pulumi.Input[str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
-        :param pulumi.Input['ListingDataProviderArgs'] data_provider: Details of the data provider who owns the source data.
+        :param pulumi.Input['ListingDataProviderArrgs'] data_provider: Details of the data provider who owns the source data.
                Structure is documented below.
         :param pulumi.Input[str] description: Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         :param pulumi.Input[str] display_name: Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
@@ -284,7 +284,7 @@ class _ListingState:
         :param pulumi.Input[str] primary_contact: Email or URL of the primary point of contact of the listing.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['ListingPublisherArgs'] publisher: Details of the publisher who owns the listing and who can share the source data.
+        :param pulumi.Input['ListingPublisherArrgs'] publisher: Details of the publisher who owns the listing and who can share the source data.
                Structure is documented below.
         :param pulumi.Input[str] request_access: Email or URL of the request access of the listing. Subscribers can use this reference to request access.
         """
@@ -321,7 +321,7 @@ class _ListingState:
 
     @property
     @pulumi.getter(name="bigqueryDataset")
-    def bigquery_dataset(self) -> Optional[pulumi.Input['ListingBigqueryDatasetArgs']]:
+    def bigquery_dataset(self) -> Optional[pulumi.Input['ListingBigqueryDatasetArrgs']]:
         """
         Shared dataset i.e. BigQuery dataset source.
         Structure is documented below.
@@ -329,7 +329,7 @@ class _ListingState:
         return pulumi.get(self, "bigquery_dataset")
 
     @bigquery_dataset.setter
-    def bigquery_dataset(self, value: Optional[pulumi.Input['ListingBigqueryDatasetArgs']]):
+    def bigquery_dataset(self, value: Optional[pulumi.Input['ListingBigqueryDatasetArrgs']]):
         pulumi.set(self, "bigquery_dataset", value)
 
     @property
@@ -358,7 +358,7 @@ class _ListingState:
 
     @property
     @pulumi.getter(name="dataProvider")
-    def data_provider(self) -> Optional[pulumi.Input['ListingDataProviderArgs']]:
+    def data_provider(self) -> Optional[pulumi.Input['ListingDataProviderArrgs']]:
         """
         Details of the data provider who owns the source data.
         Structure is documented below.
@@ -366,7 +366,7 @@ class _ListingState:
         return pulumi.get(self, "data_provider")
 
     @data_provider.setter
-    def data_provider(self, value: Optional[pulumi.Input['ListingDataProviderArgs']]):
+    def data_provider(self, value: Optional[pulumi.Input['ListingDataProviderArrgs']]):
         pulumi.set(self, "data_provider", value)
 
     @property
@@ -480,7 +480,7 @@ class _ListingState:
 
     @property
     @pulumi.getter
-    def publisher(self) -> Optional[pulumi.Input['ListingPublisherArgs']]:
+    def publisher(self) -> Optional[pulumi.Input['ListingPublisherArrgs']]:
         """
         Details of the publisher who owns the listing and who can share the source data.
         Structure is documented below.
@@ -488,7 +488,7 @@ class _ListingState:
         return pulumi.get(self, "publisher")
 
     @publisher.setter
-    def publisher(self, value: Optional[pulumi.Input['ListingPublisherArgs']]):
+    def publisher(self, value: Optional[pulumi.Input['ListingPublisherArrgs']]):
         pulumi.set(self, "publisher", value)
 
     @property
@@ -504,15 +504,15 @@ class _ListingState:
         pulumi.set(self, "request_access", value)
 
 
-class Listing(pulumi.CustomResource):
+calass Listing(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_dataset: Optional[pulumi.Input[pulumi.InputType['ListingBigqueryDatasetArgs']]] = None,
+                 bigquery_dataset: Optional[pulumi.Input[pulumi.InputType['ListingBigqueryDatasetArrgs']]] = None,
                  categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  data_exchange_id: Optional[pulumi.Input[str]] = None,
-                 data_provider: Optional[pulumi.Input[pulumi.InputType['ListingDataProviderArgs']]] = None,
+                 data_provider: Optional[pulumi.Input[pulumi.InputType['ListingDataProviderArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  documentation: Optional[pulumi.Input[str]] = None,
@@ -521,7 +521,7 @@ class Listing(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  primary_contact: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 publisher: Optional[pulumi.Input[pulumi.InputType['ListingPublisherArgs']]] = None,
+                 publisher: Optional[pulumi.Input[pulumi.InputType['ListingPublisherArrgs']]] = None,
                  request_access: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -556,7 +556,7 @@ class Listing(pulumi.CustomResource):
             listing_id="my_listing",
             display_name="my_listing",
             description="example data exchange",
-            bigquery_dataset=gcp.bigqueryanalyticshub.ListingBigqueryDatasetArgs(
+            bigquery_dataset=gcp.bigqueryanalyticshub.ListingBigqueryDatasetArrgs(
                 dataset=listing_dataset.id,
             ))
         ```
@@ -579,11 +579,11 @@ class Listing(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ListingBigqueryDatasetArgs']] bigquery_dataset: Shared dataset i.e. BigQuery dataset source.
+        :param pulumi.Input[pulumi.InputType['ListingBigqueryDatasetArrgs']] bigquery_dataset: Shared dataset i.e. BigQuery dataset source.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] categories: Categories of the listing. Up to two categories are allowed.
         :param pulumi.Input[str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
-        :param pulumi.Input[pulumi.InputType['ListingDataProviderArgs']] data_provider: Details of the data provider who owns the source data.
+        :param pulumi.Input[pulumi.InputType['ListingDataProviderArrgs']] data_provider: Details of the data provider who owns the source data.
                Structure is documented below.
         :param pulumi.Input[str] description: Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         :param pulumi.Input[str] display_name: Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
@@ -594,7 +594,7 @@ class Listing(pulumi.CustomResource):
         :param pulumi.Input[str] primary_contact: Email or URL of the primary point of contact of the listing.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['ListingPublisherArgs']] publisher: Details of the publisher who owns the listing and who can share the source data.
+        :param pulumi.Input[pulumi.InputType['ListingPublisherArrgs']] publisher: Details of the publisher who owns the listing and who can share the source data.
                Structure is documented below.
         :param pulumi.Input[str] request_access: Email or URL of the request access of the listing. Subscribers can use this reference to request access.
         """
@@ -602,7 +602,7 @@ class Listing(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ListingArgs,
+                 args: ListingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Bigquery Analytics Hub data exchange listing
@@ -636,7 +636,7 @@ class Listing(pulumi.CustomResource):
             listing_id="my_listing",
             display_name="my_listing",
             description="example data exchange",
-            bigquery_dataset=gcp.bigqueryanalyticshub.ListingBigqueryDatasetArgs(
+            bigquery_dataset=gcp.bigqueryanalyticshub.ListingBigqueryDatasetArrgs(
                 dataset=listing_dataset.id,
             ))
         ```
@@ -658,12 +658,12 @@ class Listing(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ListingArgs args: The arguments to use to populate this resource's properties.
+        :param ListingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ListingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ListingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -672,10 +672,10 @@ class Listing(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_dataset: Optional[pulumi.Input[pulumi.InputType['ListingBigqueryDatasetArgs']]] = None,
+                 bigquery_dataset: Optional[pulumi.Input[pulumi.InputType['ListingBigqueryDatasetArrgs']]] = None,
                  categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  data_exchange_id: Optional[pulumi.Input[str]] = None,
-                 data_provider: Optional[pulumi.Input[pulumi.InputType['ListingDataProviderArgs']]] = None,
+                 data_provider: Optional[pulumi.Input[pulumi.InputType['ListingDataProviderArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  documentation: Optional[pulumi.Input[str]] = None,
@@ -684,7 +684,7 @@ class Listing(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  primary_contact: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 publisher: Optional[pulumi.Input[pulumi.InputType['ListingPublisherArgs']]] = None,
+                 publisher: Optional[pulumi.Input[pulumi.InputType['ListingPublisherArrgs']]] = None,
                  request_access: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -693,7 +693,7 @@ class Listing(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ListingArgs.__new__(ListingArgs)
+            __props__ = ListingArrgs.__new__(ListingArrgs)
 
             if bigquery_dataset is None and not opts.urn:
                 raise TypeError("Missing required property 'bigquery_dataset'")
@@ -730,10 +730,10 @@ class Listing(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bigquery_dataset: Optional[pulumi.Input[pulumi.InputType['ListingBigqueryDatasetArgs']]] = None,
+            bigquery_dataset: Optional[pulumi.Input[pulumi.InputType['ListingBigqueryDatasetArrgs']]] = None,
             categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             data_exchange_id: Optional[pulumi.Input[str]] = None,
-            data_provider: Optional[pulumi.Input[pulumi.InputType['ListingDataProviderArgs']]] = None,
+            data_provider: Optional[pulumi.Input[pulumi.InputType['ListingDataProviderArrgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             documentation: Optional[pulumi.Input[str]] = None,
@@ -743,7 +743,7 @@ class Listing(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             primary_contact: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            publisher: Optional[pulumi.Input[pulumi.InputType['ListingPublisherArgs']]] = None,
+            publisher: Optional[pulumi.Input[pulumi.InputType['ListingPublisherArrgs']]] = None,
             request_access: Optional[pulumi.Input[str]] = None) -> 'Listing':
         """
         Get an existing Listing resource's state with the given name, id, and optional extra
@@ -752,11 +752,11 @@ class Listing(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ListingBigqueryDatasetArgs']] bigquery_dataset: Shared dataset i.e. BigQuery dataset source.
+        :param pulumi.Input[pulumi.InputType['ListingBigqueryDatasetArrgs']] bigquery_dataset: Shared dataset i.e. BigQuery dataset source.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] categories: Categories of the listing. Up to two categories are allowed.
         :param pulumi.Input[str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
-        :param pulumi.Input[pulumi.InputType['ListingDataProviderArgs']] data_provider: Details of the data provider who owns the source data.
+        :param pulumi.Input[pulumi.InputType['ListingDataProviderArrgs']] data_provider: Details of the data provider who owns the source data.
                Structure is documented below.
         :param pulumi.Input[str] description: Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         :param pulumi.Input[str] display_name: Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
@@ -768,7 +768,7 @@ class Listing(pulumi.CustomResource):
         :param pulumi.Input[str] primary_contact: Email or URL of the primary point of contact of the listing.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['ListingPublisherArgs']] publisher: Details of the publisher who owns the listing and who can share the source data.
+        :param pulumi.Input[pulumi.InputType['ListingPublisherArrgs']] publisher: Details of the publisher who owns the listing and who can share the source data.
                Structure is documented below.
         :param pulumi.Input[str] request_access: Email or URL of the request access of the listing. Subscribers can use this reference to request access.
         """

@@ -11,38 +11,38 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AwsClusterArgs', 'AwsCluster']
+__all__ = ['AwsClusterArrgs', 'AwsCluster']
 
 @pulumi.input_type
-class AwsClusterArgs:
+calass AwsClusterArrgs:
     def __init__(__self__, *,
-                 authorization: pulumi.Input['AwsClusterAuthorizationArgs'],
+                 authorization: pulumi.Input['AwsClusterAuthorizationArrgs'],
                  aws_region: pulumi.Input[str],
-                 control_plane: pulumi.Input['AwsClusterControlPlaneArgs'],
-                 fleet: pulumi.Input['AwsClusterFleetArgs'],
+                 control_plane: pulumi.Input['AwsClusterControlPlaneArrgs'],
+                 fleet: pulumi.Input['AwsClusterFleetArrgs'],
                  location: pulumi.Input[str],
-                 networking: pulumi.Input['AwsClusterNetworkingArgs'],
+                 networking: pulumi.Input['AwsClusterNetworkingArrgs'],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input['AwsClusterBinaryAuthorizationArgs']] = None,
+                 binary_authorization: Optional[pulumi.Input['AwsClusterBinaryAuthorizationArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 logging_config: Optional[pulumi.Input['AwsClusterLoggingConfigArgs']] = None,
+                 logging_config: Optional[pulumi.Input['AwsClusterLoggingConfigArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AwsCluster resource.
-        :param pulumi.Input['AwsClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
+        :param pulumi.Input['AwsClusterAuthorizationArrgs'] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[str] aws_region: The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
-        :param pulumi.Input['AwsClusterControlPlaneArgs'] control_plane: Configuration related to the cluster control plane.
-        :param pulumi.Input['AwsClusterFleetArgs'] fleet: Fleet configuration.
+        :param pulumi.Input['AwsClusterControlPlaneArrgs'] control_plane: Configuration related to the cluster control plane.
+        :param pulumi.Input['AwsClusterFleetArrgs'] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input['AwsClusterNetworkingArgs'] networking: Cluster-wide networking configuration.
+        :param pulumi.Input['AwsClusterNetworkingArrgs'] networking: Cluster-wide networking configuration.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input['AwsClusterBinaryAuthorizationArgs'] binary_authorization: Configuration options for the Binary Authorization feature.
+        :param pulumi.Input['AwsClusterBinaryAuthorizationArrgs'] binary_authorization: Configuration options for the Binary Authorization feature.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
-        :param pulumi.Input['AwsClusterLoggingConfigArgs'] logging_config: (Beta only) Logging configuration.
+        :param pulumi.Input['AwsClusterLoggingConfigArrgs'] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
         """
@@ -67,14 +67,14 @@ class AwsClusterArgs:
 
     @property
     @pulumi.getter
-    def authorization(self) -> pulumi.Input['AwsClusterAuthorizationArgs']:
+    def authorization(self) -> pulumi.Input['AwsClusterAuthorizationArrgs']:
         """
         Configuration related to the cluster RBAC settings.
         """
         return pulumi.get(self, "authorization")
 
     @authorization.setter
-    def authorization(self, value: pulumi.Input['AwsClusterAuthorizationArgs']):
+    def authorization(self, value: pulumi.Input['AwsClusterAuthorizationArrgs']):
         pulumi.set(self, "authorization", value)
 
     @property
@@ -91,26 +91,26 @@ class AwsClusterArgs:
 
     @property
     @pulumi.getter(name="controlPlane")
-    def control_plane(self) -> pulumi.Input['AwsClusterControlPlaneArgs']:
+    def control_plane(self) -> pulumi.Input['AwsClusterControlPlaneArrgs']:
         """
         Configuration related to the cluster control plane.
         """
         return pulumi.get(self, "control_plane")
 
     @control_plane.setter
-    def control_plane(self, value: pulumi.Input['AwsClusterControlPlaneArgs']):
+    def control_plane(self, value: pulumi.Input['AwsClusterControlPlaneArrgs']):
         pulumi.set(self, "control_plane", value)
 
     @property
     @pulumi.getter
-    def fleet(self) -> pulumi.Input['AwsClusterFleetArgs']:
+    def fleet(self) -> pulumi.Input['AwsClusterFleetArrgs']:
         """
         Fleet configuration.
         """
         return pulumi.get(self, "fleet")
 
     @fleet.setter
-    def fleet(self, value: pulumi.Input['AwsClusterFleetArgs']):
+    def fleet(self, value: pulumi.Input['AwsClusterFleetArrgs']):
         pulumi.set(self, "fleet", value)
 
     @property
@@ -127,14 +127,14 @@ class AwsClusterArgs:
 
     @property
     @pulumi.getter
-    def networking(self) -> pulumi.Input['AwsClusterNetworkingArgs']:
+    def networking(self) -> pulumi.Input['AwsClusterNetworkingArrgs']:
         """
         Cluster-wide networking configuration.
         """
         return pulumi.get(self, "networking")
 
     @networking.setter
-    def networking(self, value: pulumi.Input['AwsClusterNetworkingArgs']):
+    def networking(self, value: pulumi.Input['AwsClusterNetworkingArrgs']):
         pulumi.set(self, "networking", value)
 
     @property
@@ -154,14 +154,14 @@ class AwsClusterArgs:
 
     @property
     @pulumi.getter(name="binaryAuthorization")
-    def binary_authorization(self) -> Optional[pulumi.Input['AwsClusterBinaryAuthorizationArgs']]:
+    def binary_authorization(self) -> Optional[pulumi.Input['AwsClusterBinaryAuthorizationArrgs']]:
         """
         Configuration options for the Binary Authorization feature.
         """
         return pulumi.get(self, "binary_authorization")
 
     @binary_authorization.setter
-    def binary_authorization(self, value: Optional[pulumi.Input['AwsClusterBinaryAuthorizationArgs']]):
+    def binary_authorization(self, value: Optional[pulumi.Input['AwsClusterBinaryAuthorizationArrgs']]):
         pulumi.set(self, "binary_authorization", value)
 
     @property
@@ -178,14 +178,14 @@ class AwsClusterArgs:
 
     @property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['AwsClusterLoggingConfigArgs']]:
+    def logging_config(self) -> Optional[pulumi.Input['AwsClusterLoggingConfigArrgs']]:
         """
         (Beta only) Logging configuration.
         """
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['AwsClusterLoggingConfigArgs']]):
+    def logging_config(self, value: Optional[pulumi.Input['AwsClusterLoggingConfigArrgs']]):
         pulumi.set(self, "logging_config", value)
 
     @property
@@ -214,56 +214,56 @@ class AwsClusterArgs:
 
 
 @pulumi.input_type
-class _AwsClusterState:
+calass _AwsClusterState:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 authorization: Optional[pulumi.Input['AwsClusterAuthorizationArgs']] = None,
+                 authorization: Optional[pulumi.Input['AwsClusterAuthorizationArrgs']] = None,
                  aws_region: Optional[pulumi.Input[str]] = None,
-                 binary_authorization: Optional[pulumi.Input['AwsClusterBinaryAuthorizationArgs']] = None,
-                 control_plane: Optional[pulumi.Input['AwsClusterControlPlaneArgs']] = None,
+                 binary_authorization: Optional[pulumi.Input['AwsClusterBinaryAuthorizationArrgs']] = None,
+                 control_plane: Optional[pulumi.Input['AwsClusterControlPlaneArrgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 fleet: Optional[pulumi.Input['AwsClusterFleetArgs']] = None,
+                 fleet: Optional[pulumi.Input['AwsClusterFleetArrgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 logging_config: Optional[pulumi.Input['AwsClusterLoggingConfigArgs']] = None,
+                 logging_config: Optional[pulumi.Input['AwsClusterLoggingConfigArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networking: Optional[pulumi.Input['AwsClusterNetworkingArgs']] = None,
+                 networking: Optional[pulumi.Input['AwsClusterNetworkingArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reconciling: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
-                 workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AwsClusterWorkloadIdentityConfigArgs']]]] = None):
+                 workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AwsClusterWorkloadIdentityConfigArrgs']]]] = None):
         """
         Input properties used for looking up and filtering AwsCluster resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input['AwsClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
+        :param pulumi.Input['AwsClusterAuthorizationArrgs'] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[str] aws_region: The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
-        :param pulumi.Input['AwsClusterBinaryAuthorizationArgs'] binary_authorization: Configuration options for the Binary Authorization feature.
-        :param pulumi.Input['AwsClusterControlPlaneArgs'] control_plane: Configuration related to the cluster control plane.
+        :param pulumi.Input['AwsClusterBinaryAuthorizationArrgs'] binary_authorization: Configuration options for the Binary Authorization feature.
+        :param pulumi.Input['AwsClusterControlPlaneArrgs'] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
                Terraform, other clients and services.
         :param pulumi.Input[str] endpoint: Output only. The endpoint of the cluster's API server.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-        :param pulumi.Input['AwsClusterFleetArgs'] fleet: Fleet configuration.
+        :param pulumi.Input['AwsClusterFleetArrgs'] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input['AwsClusterLoggingConfigArgs'] logging_config: (Beta only) Logging configuration.
+        :param pulumi.Input['AwsClusterLoggingConfigArrgs'] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
-        :param pulumi.Input['AwsClusterNetworkingArgs'] networking: Cluster-wide networking configuration.
+        :param pulumi.Input['AwsClusterNetworkingArrgs'] networking: Cluster-wide networking configuration.
         :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently changes in flight to the cluster.
         :param pulumi.Input[str] state: Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the cluster.
         :param pulumi.Input[str] update_time: Output only. The time at which this cluster was last updated.
-        :param pulumi.Input[Sequence[pulumi.Input['AwsClusterWorkloadIdentityConfigArgs']]] workload_identity_configs: Output only. Workload Identity settings.
+        :param pulumi.Input[Sequence[pulumi.Input['AwsClusterWorkloadIdentityConfigArrgs']]] workload_identity_configs: Output only. Workload Identity settings.
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -325,14 +325,14 @@ class _AwsClusterState:
 
     @property
     @pulumi.getter
-    def authorization(self) -> Optional[pulumi.Input['AwsClusterAuthorizationArgs']]:
+    def authorization(self) -> Optional[pulumi.Input['AwsClusterAuthorizationArrgs']]:
         """
         Configuration related to the cluster RBAC settings.
         """
         return pulumi.get(self, "authorization")
 
     @authorization.setter
-    def authorization(self, value: Optional[pulumi.Input['AwsClusterAuthorizationArgs']]):
+    def authorization(self, value: Optional[pulumi.Input['AwsClusterAuthorizationArrgs']]):
         pulumi.set(self, "authorization", value)
 
     @property
@@ -349,26 +349,26 @@ class _AwsClusterState:
 
     @property
     @pulumi.getter(name="binaryAuthorization")
-    def binary_authorization(self) -> Optional[pulumi.Input['AwsClusterBinaryAuthorizationArgs']]:
+    def binary_authorization(self) -> Optional[pulumi.Input['AwsClusterBinaryAuthorizationArrgs']]:
         """
         Configuration options for the Binary Authorization feature.
         """
         return pulumi.get(self, "binary_authorization")
 
     @binary_authorization.setter
-    def binary_authorization(self, value: Optional[pulumi.Input['AwsClusterBinaryAuthorizationArgs']]):
+    def binary_authorization(self, value: Optional[pulumi.Input['AwsClusterBinaryAuthorizationArrgs']]):
         pulumi.set(self, "binary_authorization", value)
 
     @property
     @pulumi.getter(name="controlPlane")
-    def control_plane(self) -> Optional[pulumi.Input['AwsClusterControlPlaneArgs']]:
+    def control_plane(self) -> Optional[pulumi.Input['AwsClusterControlPlaneArrgs']]:
         """
         Configuration related to the cluster control plane.
         """
         return pulumi.get(self, "control_plane")
 
     @control_plane.setter
-    def control_plane(self, value: Optional[pulumi.Input['AwsClusterControlPlaneArgs']]):
+    def control_plane(self, value: Optional[pulumi.Input['AwsClusterControlPlaneArrgs']]):
         pulumi.set(self, "control_plane", value)
 
     @property
@@ -434,14 +434,14 @@ class _AwsClusterState:
 
     @property
     @pulumi.getter
-    def fleet(self) -> Optional[pulumi.Input['AwsClusterFleetArgs']]:
+    def fleet(self) -> Optional[pulumi.Input['AwsClusterFleetArrgs']]:
         """
         Fleet configuration.
         """
         return pulumi.get(self, "fleet")
 
     @fleet.setter
-    def fleet(self, value: Optional[pulumi.Input['AwsClusterFleetArgs']]):
+    def fleet(self, value: Optional[pulumi.Input['AwsClusterFleetArrgs']]):
         pulumi.set(self, "fleet", value)
 
     @property
@@ -458,14 +458,14 @@ class _AwsClusterState:
 
     @property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['AwsClusterLoggingConfigArgs']]:
+    def logging_config(self) -> Optional[pulumi.Input['AwsClusterLoggingConfigArrgs']]:
         """
         (Beta only) Logging configuration.
         """
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['AwsClusterLoggingConfigArgs']]):
+    def logging_config(self, value: Optional[pulumi.Input['AwsClusterLoggingConfigArrgs']]):
         pulumi.set(self, "logging_config", value)
 
     @property
@@ -482,14 +482,14 @@ class _AwsClusterState:
 
     @property
     @pulumi.getter
-    def networking(self) -> Optional[pulumi.Input['AwsClusterNetworkingArgs']]:
+    def networking(self) -> Optional[pulumi.Input['AwsClusterNetworkingArrgs']]:
         """
         Cluster-wide networking configuration.
         """
         return pulumi.get(self, "networking")
 
     @networking.setter
-    def networking(self, value: Optional[pulumi.Input['AwsClusterNetworkingArgs']]):
+    def networking(self, value: Optional[pulumi.Input['AwsClusterNetworkingArrgs']]):
         pulumi.set(self, "networking", value)
 
     @property
@@ -554,33 +554,33 @@ class _AwsClusterState:
 
     @property
     @pulumi.getter(name="workloadIdentityConfigs")
-    def workload_identity_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsClusterWorkloadIdentityConfigArgs']]]]:
+    def workload_identity_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsClusterWorkloadIdentityConfigArrgs']]]]:
         """
         Output only. Workload Identity settings.
         """
         return pulumi.get(self, "workload_identity_configs")
 
     @workload_identity_configs.setter
-    def workload_identity_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsClusterWorkloadIdentityConfigArgs']]]]):
+    def workload_identity_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsClusterWorkloadIdentityConfigArrgs']]]]):
         pulumi.set(self, "workload_identity_configs", value)
 
 
-class AwsCluster(pulumi.CustomResource):
+calass AwsCluster(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 authorization: Optional[pulumi.Input[pulumi.InputType['AwsClusterAuthorizationArgs']]] = None,
+                 authorization: Optional[pulumi.Input[pulumi.InputType['AwsClusterAuthorizationArrgs']]] = None,
                  aws_region: Optional[pulumi.Input[str]] = None,
-                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['AwsClusterBinaryAuthorizationArgs']]] = None,
-                 control_plane: Optional[pulumi.Input[pulumi.InputType['AwsClusterControlPlaneArgs']]] = None,
+                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['AwsClusterBinaryAuthorizationArrgs']]] = None,
+                 control_plane: Optional[pulumi.Input[pulumi.InputType['AwsClusterControlPlaneArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 fleet: Optional[pulumi.Input[pulumi.InputType['AwsClusterFleetArgs']]] = None,
+                 fleet: Optional[pulumi.Input[pulumi.InputType['AwsClusterFleetArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 logging_config: Optional[pulumi.Input[pulumi.InputType['AwsClusterLoggingConfigArgs']]] = None,
+                 logging_config: Optional[pulumi.Input[pulumi.InputType['AwsClusterLoggingConfigArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networking: Optional[pulumi.Input[pulumi.InputType['AwsClusterNetworkingArgs']]] = None,
+                 networking: Optional[pulumi.Input[pulumi.InputType['AwsClusterNetworkingArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -601,43 +601,43 @@ class AwsCluster(pulumi.CustomResource):
             annotations={
                 "label-one": "value-one",
             },
-            authorization=gcp.container.AwsClusterAuthorizationArgs(
-                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
+            authorization=gcp.container.AwsClusterAuthorizationArrgs(
+                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArrgs(
                     username="my@service-account.com",
                 )],
             ),
             aws_region="my-aws-region",
-            control_plane=gcp.container.AwsClusterControlPlaneArgs(
-                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArgs(
+            control_plane=gcp.container.AwsClusterControlPlaneArrgs(
+                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArrgs(
                     role_arn="arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
                     role_session_name="my--1p-dev-session",
                 ),
-                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArgs(
+                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
-                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArgs(
+                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
                 iam_instance_profile="my--1p-dev-controlplane",
                 instance_type="t3.medium",
-                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
+                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="GP3",
                 ),
-                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArgs(
+                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArrgs(
                     secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
                     secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
                 ),
-                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArgs(
+                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="GP3",
                 ),
                 security_group_ids=["sg-00000000000000000"],
-                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
+                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArrgs(
                     ec2_key_pair="my--1p-dev-ssh",
                 ),
                 subnet_ids=["subnet-00000000000000000"],
@@ -647,11 +647,11 @@ class AwsCluster(pulumi.CustomResource):
                 version=versions.valid_versions[0],
             ),
             description="A sample aws cluster",
-            fleet=gcp.container.AwsClusterFleetArgs(
+            fleet=gcp.container.AwsClusterFleetArrgs(
                 project="my-project-number",
             ),
             location="us-west1",
-            networking=gcp.container.AwsClusterNetworkingArgs(
+            networking=gcp.container.AwsClusterNetworkingArrgs(
                 pod_address_cidr_blocks=["10.2.0.0/16"],
                 service_address_cidr_blocks=["10.1.0.0/16"],
                 vpc_id="vpc-00000000000000000",
@@ -670,43 +670,43 @@ class AwsCluster(pulumi.CustomResource):
             annotations={
                 "label-one": "value-one",
             },
-            authorization=gcp.container.AwsClusterAuthorizationArgs(
-                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
+            authorization=gcp.container.AwsClusterAuthorizationArrgs(
+                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArrgs(
                     username="my@service-account.com",
                 )],
             ),
             aws_region="my-aws-region",
-            control_plane=gcp.container.AwsClusterControlPlaneArgs(
-                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArgs(
+            control_plane=gcp.container.AwsClusterControlPlaneArrgs(
+                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArrgs(
                     role_arn="arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
                     role_session_name="my--1p-dev-session",
                 ),
-                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArgs(
+                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
-                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArgs(
+                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
                 iam_instance_profile="my--1p-dev-controlplane",
                 instance_type="t3.medium",
-                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
+                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="gp3",
                 ),
-                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArgs(
+                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArrgs(
                     secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
                     secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
                 ),
-                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArgs(
+                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="gp3",
                 ),
                 security_group_ids=["sg-00000000000000000"],
-                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
+                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArrgs(
                     ec2_key_pair="my--1p-dev-ssh",
                 ),
                 subnet_ids=["subnet-00000000000000000"],
@@ -716,11 +716,11 @@ class AwsCluster(pulumi.CustomResource):
                 version=versions.valid_versions[0],
             ),
             description="A sample aws cluster",
-            fleet=gcp.container.AwsClusterFleetArgs(
+            fleet=gcp.container.AwsClusterFleetArrgs(
                 project="my-project-number",
             ),
             location="us-west1",
-            networking=gcp.container.AwsClusterNetworkingArgs(
+            networking=gcp.container.AwsClusterNetworkingArrgs(
                 pod_address_cidr_blocks=["10.2.0.0/16"],
                 service_address_cidr_blocks=["10.1.0.0/16"],
                 vpc_id="vpc-00000000000000000",
@@ -736,59 +736,59 @@ class AwsCluster(pulumi.CustomResource):
         versions = gcp.container.get_aws_versions(project="my-project-name",
             location="us-west1")
         primary = gcp.container.AwsCluster("primary",
-            authorization=gcp.container.AwsClusterAuthorizationArgs(
-                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
+            authorization=gcp.container.AwsClusterAuthorizationArrgs(
+                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArrgs(
                     username="my@service-account.com",
                 )],
             ),
             aws_region="my-aws-region",
-            control_plane=gcp.container.AwsClusterControlPlaneArgs(
-                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArgs(
+            control_plane=gcp.container.AwsClusterControlPlaneArrgs(
+                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArrgs(
                     role_arn="arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
                     role_session_name="my--1p-dev-session",
                 ),
-                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArgs(
+                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
-                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArgs(
+                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
                 iam_instance_profile="my--1p-dev-controlplane",
                 subnet_ids=["subnet-00000000000000000"],
                 version=versions.valid_versions[0],
                 instance_type="t3.medium",
-                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
+                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="gp3",
                 ),
-                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArgs(
+                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArrgs(
                     secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
                     secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
                 ),
-                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArgs(
+                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="gp3",
                 ),
                 security_group_ids=["sg-00000000000000000"],
-                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
+                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArrgs(
                     ec2_key_pair="my--1p-dev-ssh",
                 ),
                 tags={
                     "owner": "my@service-account.com",
                 },
-                instance_placement=gcp.container.AwsClusterControlPlaneInstancePlacementArgs(
+                instance_placement=gcp.container.AwsClusterControlPlaneInstancePlacementArrgs(
                     tenancy="dedicated",
                 ),
             ),
-            fleet=gcp.container.AwsClusterFleetArgs(
+            fleet=gcp.container.AwsClusterFleetArrgs(
                 project="my-project-number",
             ),
             location="us-west1",
-            networking=gcp.container.AwsClusterNetworkingArgs(
+            networking=gcp.container.AwsClusterNetworkingArrgs(
                 pod_address_cidr_blocks=["10.2.0.0/16"],
                 service_address_cidr_blocks=["10.1.0.0/16"],
                 vpc_id="vpc-00000000000000000",
@@ -798,8 +798,8 @@ class AwsCluster(pulumi.CustomResource):
             },
             description="A sample aws cluster",
             project="my-project-name",
-            logging_config=gcp.container.AwsClusterLoggingConfigArgs(
-                component_config=gcp.container.AwsClusterLoggingConfigComponentConfigArgs(
+            logging_config=gcp.container.AwsClusterLoggingConfigArrgs(
+                component_config=gcp.container.AwsClusterLoggingConfigComponentConfigArrgs(
                     enable_components=[
                         "system_components",
                         "workloads",
@@ -831,23 +831,23 @@ class AwsCluster(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['AwsClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
+        :param pulumi.Input[pulumi.InputType['AwsClusterAuthorizationArrgs']] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[str] aws_region: The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
-        :param pulumi.Input[pulumi.InputType['AwsClusterBinaryAuthorizationArgs']] binary_authorization: Configuration options for the Binary Authorization feature.
-        :param pulumi.Input[pulumi.InputType['AwsClusterControlPlaneArgs']] control_plane: Configuration related to the cluster control plane.
+        :param pulumi.Input[pulumi.InputType['AwsClusterBinaryAuthorizationArrgs']] binary_authorization: Configuration options for the Binary Authorization feature.
+        :param pulumi.Input[pulumi.InputType['AwsClusterControlPlaneArrgs']] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
-        :param pulumi.Input[pulumi.InputType['AwsClusterFleetArgs']] fleet: Fleet configuration.
+        :param pulumi.Input[pulumi.InputType['AwsClusterFleetArrgs']] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['AwsClusterLoggingConfigArgs']] logging_config: (Beta only) Logging configuration.
+        :param pulumi.Input[pulumi.InputType['AwsClusterLoggingConfigArrgs']] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
-        :param pulumi.Input[pulumi.InputType['AwsClusterNetworkingArgs']] networking: Cluster-wide networking configuration.
+        :param pulumi.Input[pulumi.InputType['AwsClusterNetworkingArrgs']] networking: Cluster-wide networking configuration.
         :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AwsClusterArgs,
+                 args: AwsClusterArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An Anthos cluster running on AWS.
@@ -867,43 +867,43 @@ class AwsCluster(pulumi.CustomResource):
             annotations={
                 "label-one": "value-one",
             },
-            authorization=gcp.container.AwsClusterAuthorizationArgs(
-                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
+            authorization=gcp.container.AwsClusterAuthorizationArrgs(
+                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArrgs(
                     username="my@service-account.com",
                 )],
             ),
             aws_region="my-aws-region",
-            control_plane=gcp.container.AwsClusterControlPlaneArgs(
-                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArgs(
+            control_plane=gcp.container.AwsClusterControlPlaneArrgs(
+                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArrgs(
                     role_arn="arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
                     role_session_name="my--1p-dev-session",
                 ),
-                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArgs(
+                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
-                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArgs(
+                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
                 iam_instance_profile="my--1p-dev-controlplane",
                 instance_type="t3.medium",
-                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
+                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="GP3",
                 ),
-                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArgs(
+                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArrgs(
                     secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
                     secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
                 ),
-                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArgs(
+                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="GP3",
                 ),
                 security_group_ids=["sg-00000000000000000"],
-                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
+                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArrgs(
                     ec2_key_pair="my--1p-dev-ssh",
                 ),
                 subnet_ids=["subnet-00000000000000000"],
@@ -913,11 +913,11 @@ class AwsCluster(pulumi.CustomResource):
                 version=versions.valid_versions[0],
             ),
             description="A sample aws cluster",
-            fleet=gcp.container.AwsClusterFleetArgs(
+            fleet=gcp.container.AwsClusterFleetArrgs(
                 project="my-project-number",
             ),
             location="us-west1",
-            networking=gcp.container.AwsClusterNetworkingArgs(
+            networking=gcp.container.AwsClusterNetworkingArrgs(
                 pod_address_cidr_blocks=["10.2.0.0/16"],
                 service_address_cidr_blocks=["10.1.0.0/16"],
                 vpc_id="vpc-00000000000000000",
@@ -936,43 +936,43 @@ class AwsCluster(pulumi.CustomResource):
             annotations={
                 "label-one": "value-one",
             },
-            authorization=gcp.container.AwsClusterAuthorizationArgs(
-                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
+            authorization=gcp.container.AwsClusterAuthorizationArrgs(
+                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArrgs(
                     username="my@service-account.com",
                 )],
             ),
             aws_region="my-aws-region",
-            control_plane=gcp.container.AwsClusterControlPlaneArgs(
-                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArgs(
+            control_plane=gcp.container.AwsClusterControlPlaneArrgs(
+                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArrgs(
                     role_arn="arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
                     role_session_name="my--1p-dev-session",
                 ),
-                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArgs(
+                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
-                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArgs(
+                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
                 iam_instance_profile="my--1p-dev-controlplane",
                 instance_type="t3.medium",
-                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
+                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="gp3",
                 ),
-                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArgs(
+                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArrgs(
                     secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
                     secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
                 ),
-                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArgs(
+                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="gp3",
                 ),
                 security_group_ids=["sg-00000000000000000"],
-                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
+                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArrgs(
                     ec2_key_pair="my--1p-dev-ssh",
                 ),
                 subnet_ids=["subnet-00000000000000000"],
@@ -982,11 +982,11 @@ class AwsCluster(pulumi.CustomResource):
                 version=versions.valid_versions[0],
             ),
             description="A sample aws cluster",
-            fleet=gcp.container.AwsClusterFleetArgs(
+            fleet=gcp.container.AwsClusterFleetArrgs(
                 project="my-project-number",
             ),
             location="us-west1",
-            networking=gcp.container.AwsClusterNetworkingArgs(
+            networking=gcp.container.AwsClusterNetworkingArrgs(
                 pod_address_cidr_blocks=["10.2.0.0/16"],
                 service_address_cidr_blocks=["10.1.0.0/16"],
                 vpc_id="vpc-00000000000000000",
@@ -1002,59 +1002,59 @@ class AwsCluster(pulumi.CustomResource):
         versions = gcp.container.get_aws_versions(project="my-project-name",
             location="us-west1")
         primary = gcp.container.AwsCluster("primary",
-            authorization=gcp.container.AwsClusterAuthorizationArgs(
-                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
+            authorization=gcp.container.AwsClusterAuthorizationArrgs(
+                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArrgs(
                     username="my@service-account.com",
                 )],
             ),
             aws_region="my-aws-region",
-            control_plane=gcp.container.AwsClusterControlPlaneArgs(
-                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArgs(
+            control_plane=gcp.container.AwsClusterControlPlaneArrgs(
+                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArrgs(
                     role_arn="arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
                     role_session_name="my--1p-dev-session",
                 ),
-                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArgs(
+                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
-                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArgs(
+                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
                 iam_instance_profile="my--1p-dev-controlplane",
                 subnet_ids=["subnet-00000000000000000"],
                 version=versions.valid_versions[0],
                 instance_type="t3.medium",
-                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
+                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="gp3",
                 ),
-                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArgs(
+                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArrgs(
                     secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
                     secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
                 ),
-                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArgs(
+                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="gp3",
                 ),
                 security_group_ids=["sg-00000000000000000"],
-                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
+                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArrgs(
                     ec2_key_pair="my--1p-dev-ssh",
                 ),
                 tags={
                     "owner": "my@service-account.com",
                 },
-                instance_placement=gcp.container.AwsClusterControlPlaneInstancePlacementArgs(
+                instance_placement=gcp.container.AwsClusterControlPlaneInstancePlacementArrgs(
                     tenancy="dedicated",
                 ),
             ),
-            fleet=gcp.container.AwsClusterFleetArgs(
+            fleet=gcp.container.AwsClusterFleetArrgs(
                 project="my-project-number",
             ),
             location="us-west1",
-            networking=gcp.container.AwsClusterNetworkingArgs(
+            networking=gcp.container.AwsClusterNetworkingArrgs(
                 pod_address_cidr_blocks=["10.2.0.0/16"],
                 service_address_cidr_blocks=["10.1.0.0/16"],
                 vpc_id="vpc-00000000000000000",
@@ -1064,8 +1064,8 @@ class AwsCluster(pulumi.CustomResource):
             },
             description="A sample aws cluster",
             project="my-project-name",
-            logging_config=gcp.container.AwsClusterLoggingConfigArgs(
-                component_config=gcp.container.AwsClusterLoggingConfigComponentConfigArgs(
+            logging_config=gcp.container.AwsClusterLoggingConfigArrgs(
+                component_config=gcp.container.AwsClusterLoggingConfigComponentConfigArrgs(
                     enable_components=[
                         "system_components",
                         "workloads",
@@ -1092,12 +1092,12 @@ class AwsCluster(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AwsClusterArgs args: The arguments to use to populate this resource's properties.
+        :param AwsClusterArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AwsClusterArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AwsClusterArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1107,16 +1107,16 @@ class AwsCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 authorization: Optional[pulumi.Input[pulumi.InputType['AwsClusterAuthorizationArgs']]] = None,
+                 authorization: Optional[pulumi.Input[pulumi.InputType['AwsClusterAuthorizationArrgs']]] = None,
                  aws_region: Optional[pulumi.Input[str]] = None,
-                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['AwsClusterBinaryAuthorizationArgs']]] = None,
-                 control_plane: Optional[pulumi.Input[pulumi.InputType['AwsClusterControlPlaneArgs']]] = None,
+                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['AwsClusterBinaryAuthorizationArrgs']]] = None,
+                 control_plane: Optional[pulumi.Input[pulumi.InputType['AwsClusterControlPlaneArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 fleet: Optional[pulumi.Input[pulumi.InputType['AwsClusterFleetArgs']]] = None,
+                 fleet: Optional[pulumi.Input[pulumi.InputType['AwsClusterFleetArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 logging_config: Optional[pulumi.Input[pulumi.InputType['AwsClusterLoggingConfigArgs']]] = None,
+                 logging_config: Optional[pulumi.Input[pulumi.InputType['AwsClusterLoggingConfigArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networking: Optional[pulumi.Input[pulumi.InputType['AwsClusterNetworkingArgs']]] = None,
+                 networking: Optional[pulumi.Input[pulumi.InputType['AwsClusterNetworkingArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1125,7 +1125,7 @@ class AwsCluster(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AwsClusterArgs.__new__(AwsClusterArgs)
+            __props__ = AwsClusterArrgs.__new__(AwsClusterArrgs)
 
             __props__.__dict__["annotations"] = annotations
             if authorization is None and not opts.urn:
@@ -1171,26 +1171,26 @@ class AwsCluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            authorization: Optional[pulumi.Input[pulumi.InputType['AwsClusterAuthorizationArgs']]] = None,
+            authorization: Optional[pulumi.Input[pulumi.InputType['AwsClusterAuthorizationArrgs']]] = None,
             aws_region: Optional[pulumi.Input[str]] = None,
-            binary_authorization: Optional[pulumi.Input[pulumi.InputType['AwsClusterBinaryAuthorizationArgs']]] = None,
-            control_plane: Optional[pulumi.Input[pulumi.InputType['AwsClusterControlPlaneArgs']]] = None,
+            binary_authorization: Optional[pulumi.Input[pulumi.InputType['AwsClusterBinaryAuthorizationArrgs']]] = None,
+            control_plane: Optional[pulumi.Input[pulumi.InputType['AwsClusterControlPlaneArrgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
-            fleet: Optional[pulumi.Input[pulumi.InputType['AwsClusterFleetArgs']]] = None,
+            fleet: Optional[pulumi.Input[pulumi.InputType['AwsClusterFleetArrgs']]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            logging_config: Optional[pulumi.Input[pulumi.InputType['AwsClusterLoggingConfigArgs']]] = None,
+            logging_config: Optional[pulumi.Input[pulumi.InputType['AwsClusterLoggingConfigArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            networking: Optional[pulumi.Input[pulumi.InputType['AwsClusterNetworkingArgs']]] = None,
+            networking: Optional[pulumi.Input[pulumi.InputType['AwsClusterNetworkingArrgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
             state: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
-            workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AwsClusterWorkloadIdentityConfigArgs']]]]] = None) -> 'AwsCluster':
+            workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AwsClusterWorkloadIdentityConfigArrgs']]]]] = None) -> 'AwsCluster':
         """
         Get an existing AwsCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1202,27 +1202,27 @@ class AwsCluster(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['AwsClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
+        :param pulumi.Input[pulumi.InputType['AwsClusterAuthorizationArrgs']] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[str] aws_region: The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
-        :param pulumi.Input[pulumi.InputType['AwsClusterBinaryAuthorizationArgs']] binary_authorization: Configuration options for the Binary Authorization feature.
-        :param pulumi.Input[pulumi.InputType['AwsClusterControlPlaneArgs']] control_plane: Configuration related to the cluster control plane.
+        :param pulumi.Input[pulumi.InputType['AwsClusterBinaryAuthorizationArrgs']] binary_authorization: Configuration options for the Binary Authorization feature.
+        :param pulumi.Input[pulumi.InputType['AwsClusterControlPlaneArrgs']] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
                Terraform, other clients and services.
         :param pulumi.Input[str] endpoint: Output only. The endpoint of the cluster's API server.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-        :param pulumi.Input[pulumi.InputType['AwsClusterFleetArgs']] fleet: Fleet configuration.
+        :param pulumi.Input[pulumi.InputType['AwsClusterFleetArrgs']] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['AwsClusterLoggingConfigArgs']] logging_config: (Beta only) Logging configuration.
+        :param pulumi.Input[pulumi.InputType['AwsClusterLoggingConfigArrgs']] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
-        :param pulumi.Input[pulumi.InputType['AwsClusterNetworkingArgs']] networking: Cluster-wide networking configuration.
+        :param pulumi.Input[pulumi.InputType['AwsClusterNetworkingArrgs']] networking: Cluster-wide networking configuration.
         :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently changes in flight to the cluster.
         :param pulumi.Input[str] state: Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the cluster.
         :param pulumi.Input[str] update_time: Output only. The time at which this cluster was last updated.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AwsClusterWorkloadIdentityConfigArgs']]]] workload_identity_configs: Output only. Workload Identity settings.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AwsClusterWorkloadIdentityConfigArrgs']]]] workload_identity_configs: Output only. Workload Identity settings.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

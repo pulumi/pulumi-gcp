@@ -10,18 +10,18 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'PipelineScheduleInfoArgs',
-    'PipelineWorkloadArgs',
-    'PipelineWorkloadDataflowFlexTemplateRequestArgs',
-    'PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgs',
-    'PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgs',
-    'PipelineWorkloadDataflowLaunchTemplateRequestArgs',
-    'PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs',
-    'PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs',
+    'PipelineScheduleInfoArrgs',
+    'PipelineWorkloadArrgs',
+    'PipelineWorkloadDataflowFlexTemplateRequestArrgs',
+    'PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArrgs',
+    'PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArrgs',
+    'PipelineWorkloadDataflowLaunchTemplateRequestArrgs',
+    'PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArrgs',
+    'PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArrgs',
 ]
 
 @pulumi.input_type
-class PipelineScheduleInfoArgs:
+calass PipelineScheduleInfoArrgs:
     def __init__(__self__, *,
                  next_job_time: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
@@ -80,15 +80,15 @@ class PipelineScheduleInfoArgs:
 
 
 @pulumi.input_type
-class PipelineWorkloadArgs:
+calass PipelineWorkloadArrgs:
     def __init__(__self__, *,
-                 dataflow_flex_template_request: Optional[pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestArgs']] = None,
-                 dataflow_launch_template_request: Optional[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestArgs']] = None):
+                 dataflow_flex_template_request: Optional[pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestArrgs']] = None,
+                 dataflow_launch_template_request: Optional[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestArrgs']] = None):
         """
-        :param pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestArgs'] dataflow_flex_template_request: Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
+        :param pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestArrgs'] dataflow_flex_template_request: Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplaterequest
                Structure is documented below.
-        :param pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestArgs'] dataflow_launch_template_request: Template information and additional parameters needed to launch a Dataflow job using the standard launch API.
+        :param pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestArrgs'] dataflow_launch_template_request: Template information and additional parameters needed to launch a Dataflow job using the standard launch API.
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest
                Structure is documented below.
         """
@@ -99,7 +99,7 @@ class PipelineWorkloadArgs:
 
     @property
     @pulumi.getter(name="dataflowFlexTemplateRequest")
-    def dataflow_flex_template_request(self) -> Optional[pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestArgs']]:
+    def dataflow_flex_template_request(self) -> Optional[pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestArrgs']]:
         """
         Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
         https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplaterequest
@@ -108,12 +108,12 @@ class PipelineWorkloadArgs:
         return pulumi.get(self, "dataflow_flex_template_request")
 
     @dataflow_flex_template_request.setter
-    def dataflow_flex_template_request(self, value: Optional[pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestArgs']]):
+    def dataflow_flex_template_request(self, value: Optional[pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestArrgs']]):
         pulumi.set(self, "dataflow_flex_template_request", value)
 
     @property
     @pulumi.getter(name="dataflowLaunchTemplateRequest")
-    def dataflow_launch_template_request(self) -> Optional[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestArgs']]:
+    def dataflow_launch_template_request(self) -> Optional[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestArrgs']]:
         """
         Template information and additional parameters needed to launch a Dataflow job using the standard launch API.
         https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest
@@ -122,19 +122,19 @@ class PipelineWorkloadArgs:
         return pulumi.get(self, "dataflow_launch_template_request")
 
     @dataflow_launch_template_request.setter
-    def dataflow_launch_template_request(self, value: Optional[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestArgs']]):
+    def dataflow_launch_template_request(self, value: Optional[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestArrgs']]):
         pulumi.set(self, "dataflow_launch_template_request", value)
 
 
 @pulumi.input_type
-class PipelineWorkloadDataflowFlexTemplateRequestArgs:
+calass PipelineWorkloadDataflowFlexTemplateRequestArrgs:
     def __init__(__self__, *,
-                 launch_parameter: pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgs'],
+                 launch_parameter: pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArrgs'],
                  location: pulumi.Input[str],
                  project_id: pulumi.Input[str],
                  validate_only: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgs'] launch_parameter: Parameter to launch a job from a Flex Template.
+        :param pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArrgs'] launch_parameter: Parameter to launch a job from a Flex Template.
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplateparameter
                Structure is documented below.
         :param pulumi.Input[str] location: The regional endpoint to which to direct the request. For example, us-central1, us-west1.
@@ -149,7 +149,7 @@ class PipelineWorkloadDataflowFlexTemplateRequestArgs:
 
     @property
     @pulumi.getter(name="launchParameter")
-    def launch_parameter(self) -> pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgs']:
+    def launch_parameter(self) -> pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArrgs']:
         """
         Parameter to launch a job from a Flex Template.
         https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplateparameter
@@ -158,7 +158,7 @@ class PipelineWorkloadDataflowFlexTemplateRequestArgs:
         return pulumi.get(self, "launch_parameter")
 
     @launch_parameter.setter
-    def launch_parameter(self, value: pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgs']):
+    def launch_parameter(self, value: pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArrgs']):
         pulumi.set(self, "launch_parameter", value)
 
     @property
@@ -199,11 +199,11 @@ class PipelineWorkloadDataflowFlexTemplateRequestArgs:
 
 
 @pulumi.input_type
-class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgs:
+calass PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArrgs:
     def __init__(__self__, *,
                  job_name: pulumi.Input[str],
                  container_spec_gcs_path: Optional[pulumi.Input[str]] = None,
-                 environment: Optional[pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgs']] = None,
+                 environment: Optional[pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArrgs']] = None,
                  launch_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  transform_name_mappings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -211,7 +211,7 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgs:
         """
         :param pulumi.Input[str] job_name: The job name to use for the created job. For an update job request, the job name should be the same as the existing running job.
         :param pulumi.Input[str] container_spec_gcs_path: Cloud Storage path to a file with a JSON-serialized ContainerSpec as content.
-        :param pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgs'] environment: The runtime environment for the Flex Template job.
+        :param pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArrgs'] environment: The runtime environment for the Flex Template job.
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexTemplateRuntimeEnvironment
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] launch_options: Launch options for this Flex Template job. This is a common set of options across languages and templates. This should not be used to pass job parameters.
@@ -262,7 +262,7 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgs:
 
     @property
     @pulumi.getter
-    def environment(self) -> Optional[pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgs']]:
+    def environment(self) -> Optional[pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArrgs']]:
         """
         The runtime environment for the Flex Template job.
         https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexTemplateRuntimeEnvironment
@@ -271,7 +271,7 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgs:
         return pulumi.get(self, "environment")
 
     @environment.setter
-    def environment(self, value: Optional[pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgs']]):
+    def environment(self, value: Optional[pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArrgs']]):
         pulumi.set(self, "environment", value)
 
     @property
@@ -327,7 +327,7 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgs:
 
 
 @pulumi.input_type
-class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgs:
+calass PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArrgs:
     def __init__(__self__, *,
                  additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  additional_user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -602,17 +602,17 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgs:
 
 
 @pulumi.input_type
-class PipelineWorkloadDataflowLaunchTemplateRequestArgs:
+calass PipelineWorkloadDataflowLaunchTemplateRequestArrgs:
     def __init__(__self__, *,
                  project_id: pulumi.Input[str],
                  gcs_path: Optional[pulumi.Input[str]] = None,
-                 launch_parameters: Optional[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs']] = None,
+                 launch_parameters: Optional[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArrgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  validate_only: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] project_id: The ID of the Cloud Platform project that the job belongs to.
         :param pulumi.Input[str] gcs_path: A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with 'gs://'.
-        :param pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs'] launch_parameters: The parameters of the template to launch. This should be part of the body of the POST request.
+        :param pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArrgs'] launch_parameters: The parameters of the template to launch. This should be part of the body of the POST request.
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplateparameters
                Structure is documented below.
         :param pulumi.Input[str] location: The regional endpoint to which to direct the request.
@@ -654,7 +654,7 @@ class PipelineWorkloadDataflowLaunchTemplateRequestArgs:
 
     @property
     @pulumi.getter(name="launchParameters")
-    def launch_parameters(self) -> Optional[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs']]:
+    def launch_parameters(self) -> Optional[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArrgs']]:
         """
         The parameters of the template to launch. This should be part of the body of the POST request.
         https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplateparameters
@@ -663,7 +663,7 @@ class PipelineWorkloadDataflowLaunchTemplateRequestArgs:
         return pulumi.get(self, "launch_parameters")
 
     @launch_parameters.setter
-    def launch_parameters(self, value: Optional[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs']]):
+    def launch_parameters(self, value: Optional[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArrgs']]):
         pulumi.set(self, "launch_parameters", value)
 
     @property
@@ -692,16 +692,16 @@ class PipelineWorkloadDataflowLaunchTemplateRequestArgs:
 
 
 @pulumi.input_type
-class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs:
+calass PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArrgs:
     def __init__(__self__, *,
                  job_name: pulumi.Input[str],
-                 environment: Optional[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs']] = None,
+                 environment: Optional[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArrgs']] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  update: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] job_name: The job name to use for the created job.
-        :param pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs'] environment: The runtime environment for the job.
+        :param pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArrgs'] environment: The runtime environment for the job.
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#RuntimeEnvironment
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: The runtime parameters to pass to the job.
@@ -734,7 +734,7 @@ class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs:
 
     @property
     @pulumi.getter
-    def environment(self) -> Optional[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs']]:
+    def environment(self) -> Optional[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArrgs']]:
         """
         The runtime environment for the job.
         https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#RuntimeEnvironment
@@ -743,7 +743,7 @@ class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs:
         return pulumi.get(self, "environment")
 
     @environment.setter
-    def environment(self, value: Optional[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs']]):
+    def environment(self, value: Optional[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArrgs']]):
         pulumi.set(self, "environment", value)
 
     @property
@@ -786,7 +786,7 @@ class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs:
 
 
 @pulumi.input_type
-class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs:
+calass PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArrgs:
     def __init__(__self__, *,
                  additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  additional_user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,

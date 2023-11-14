@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetRegistryImageResult:
+calass GetRegistryImageResult:
     """
     A collection of values returned by getRegistryImage.
     """
@@ -86,7 +86,7 @@ class GetRegistryImageResult:
         return pulumi.get(self, "tag")
 
 
-class AwaitableGetRegistryImageResult(GetRegistryImageResult):
+calass AwaitableGetRegistryImageResult(GetRegistryImageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

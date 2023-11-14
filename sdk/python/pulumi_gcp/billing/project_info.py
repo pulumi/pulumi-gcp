@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['ProjectInfoArgs', 'ProjectInfo']
+__all__ = ['ProjectInfoArrgs', 'ProjectInfo']
 
 @pulumi.input_type
-class ProjectInfoArgs:
+calass ProjectInfoArrgs:
     def __init__(__self__, *,
                  billing_account: pulumi.Input[str],
                  project: Optional[pulumi.Input[str]] = None):
@@ -63,7 +63,7 @@ class ProjectInfoArgs:
 
 
 @pulumi.input_type
-class _ProjectInfoState:
+calass _ProjectInfoState:
     def __init__(__self__, *,
                  billing_account: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -114,7 +114,7 @@ class _ProjectInfoState:
         pulumi.set(self, "project", value)
 
 
-class ProjectInfo(pulumi.CustomResource):
+calass ProjectInfo(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -160,7 +160,7 @@ class ProjectInfo(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ProjectInfoArgs,
+                 args: ProjectInfoArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Billing information for a project.
@@ -186,12 +186,12 @@ class ProjectInfo(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ProjectInfoArgs args: The arguments to use to populate this resource's properties.
+        :param ProjectInfoArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ProjectInfoArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ProjectInfoArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -209,7 +209,7 @@ class ProjectInfo(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ProjectInfoArgs.__new__(ProjectInfoArgs)
+            __props__ = ProjectInfoArrgs.__new__(ProjectInfoArrgs)
 
             if billing_account is None and not opts.urn:
                 raise TypeError("Missing required property 'billing_account'")

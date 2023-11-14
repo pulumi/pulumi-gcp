@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['BucketACLArgs', 'BucketACL']
+__all__ = ['BucketACLArrgs', 'BucketACL']
 
 @pulumi.input_type
-class BucketACLArgs:
+calass BucketACLArrgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
                  default_acl: Optional[pulumi.Input[str]] = None,
@@ -87,7 +87,7 @@ class BucketACLArgs:
 
 
 @pulumi.input_type
-class _BucketACLState:
+calass _BucketACLState:
     def __init__(__self__, *,
                  bucket: Optional[pulumi.Input[str]] = None,
                  default_acl: Optional[pulumi.Input[str]] = None,
@@ -162,7 +162,7 @@ class _BucketACLState:
         pulumi.set(self, "role_entities", value)
 
 
-class BucketACL(pulumi.CustomResource):
+calass BucketACL(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -218,7 +218,7 @@ class BucketACL(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: BucketACLArgs,
+                 args: BucketACLArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Authoritatively manages a bucket's ACLs in Google cloud storage service (GCS). For more information see
@@ -254,12 +254,12 @@ class BucketACL(pulumi.CustomResource):
         This resource does not support import.
 
         :param str resource_name: The name of the resource.
-        :param BucketACLArgs args: The arguments to use to populate this resource's properties.
+        :param BucketACLArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(BucketACLArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(BucketACLArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -279,7 +279,7 @@ class BucketACL(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = BucketACLArgs.__new__(BucketACLArgs)
+            __props__ = BucketACLArrgs.__new__(BucketACLArrgs)
 
             if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")

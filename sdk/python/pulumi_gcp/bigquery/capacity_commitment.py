@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['CapacityCommitmentArgs', 'CapacityCommitment']
+__all__ = ['CapacityCommitmentArrgs', 'CapacityCommitment']
 
 @pulumi.input_type
-class CapacityCommitmentArgs:
+calass CapacityCommitmentArrgs:
     def __init__(__self__, *,
                  plan: pulumi.Input[str],
                  slot_count: pulumi.Input[int],
@@ -162,7 +162,7 @@ class CapacityCommitmentArgs:
 
 
 @pulumi.input_type
-class _CapacityCommitmentState:
+calass _CapacityCommitmentState:
     def __init__(__self__, *,
                  capacity_commitment_id: Optional[pulumi.Input[str]] = None,
                  commitment_end_time: Optional[pulumi.Input[str]] = None,
@@ -377,7 +377,7 @@ class _CapacityCommitmentState:
         pulumi.set(self, "state", value)
 
 
-class CapacityCommitment(pulumi.CustomResource):
+calass CapacityCommitment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -456,7 +456,7 @@ class CapacityCommitment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CapacityCommitmentArgs,
+                 args: CapacityCommitmentArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Capacity commitment is a way to purchase compute capacity for BigQuery jobs (in the form of slots) with some committed period of usage. Annual commitments renew by default. Commitments can be removed after their commitment end time passes.
@@ -501,12 +501,12 @@ class CapacityCommitment(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param CapacityCommitmentArgs args: The arguments to use to populate this resource's properties.
+        :param CapacityCommitmentArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(CapacityCommitmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(CapacityCommitmentArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -530,7 +530,7 @@ class CapacityCommitment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = CapacityCommitmentArgs.__new__(CapacityCommitmentArgs)
+            __props__ = CapacityCommitmentArrgs.__new__(CapacityCommitmentArrgs)
 
             __props__.__dict__["capacity_commitment_id"] = capacity_commitment_id
             __props__.__dict__["edition"] = edition

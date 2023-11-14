@@ -11,19 +11,19 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AccessApprovalSettingsArgs', 'AccessApprovalSettings']
+__all__ = ['AccessApprovalSettingsArrgs', 'AccessApprovalSettings']
 
 @pulumi.input_type
-class AccessApprovalSettingsArgs:
+calass AccessApprovalSettingsArrgs:
     def __init__(__self__, *,
-                 enrolled_services: pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]],
+                 enrolled_services: pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArrgs']]],
                  project_id: pulumi.Input[str],
                  active_key_version: Optional[pulumi.Input[str]] = None,
                  notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AccessApprovalSettings resource.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArrgs']]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled.
                Access requests for the resource given by name against any of these services contained here will be required
                to have explicit approval. Enrollment can only be done on an all or nothing basis.
                A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
@@ -54,7 +54,7 @@ class AccessApprovalSettingsArgs:
 
     @property
     @pulumi.getter(name="enrolledServices")
-    def enrolled_services(self) -> pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]]:
+    def enrolled_services(self) -> pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArrgs']]]:
         """
         A list of Google Cloud Services for which the given resource has Access Approval enrolled.
         Access requests for the resource given by name against any of these services contained here will be required
@@ -65,7 +65,7 @@ class AccessApprovalSettingsArgs:
         return pulumi.get(self, "enrolled_services")
 
     @enrolled_services.setter
-    def enrolled_services(self, value: pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]]):
+    def enrolled_services(self, value: pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArrgs']]]):
         pulumi.set(self, "enrolled_services", value)
 
     @property
@@ -128,12 +128,12 @@ class AccessApprovalSettingsArgs:
 
 
 @pulumi.input_type
-class _AccessApprovalSettingsState:
+calass _AccessApprovalSettingsState:
     def __init__(__self__, *,
                  active_key_version: Optional[pulumi.Input[str]] = None,
                  ancestor_has_active_key_version: Optional[pulumi.Input[bool]] = None,
                  enrolled_ancestor: Optional[pulumi.Input[bool]] = None,
-                 enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]]] = None,
+                 enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArrgs']]]] = None,
                  invalid_key_version: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -146,7 +146,7 @@ class _AccessApprovalSettingsState:
                This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
         :param pulumi.Input[bool] ancestor_has_active_key_version: If the field is true, that indicates that an ancestor of this Project has set active_key_version.
         :param pulumi.Input[bool] enrolled_ancestor: If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArrgs']]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled.
                Access requests for the resource given by name against any of these services contained here will be required
                to have explicit approval. Enrollment can only be done on an all or nothing basis.
                A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
@@ -227,7 +227,7 @@ class _AccessApprovalSettingsState:
 
     @property
     @pulumi.getter(name="enrolledServices")
-    def enrolled_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]]]:
+    def enrolled_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArrgs']]]]:
         """
         A list of Google Cloud Services for which the given resource has Access Approval enrolled.
         Access requests for the resource given by name against any of these services contained here will be required
@@ -238,7 +238,7 @@ class _AccessApprovalSettingsState:
         return pulumi.get(self, "enrolled_services")
 
     @enrolled_services.setter
-    def enrolled_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]]]):
+    def enrolled_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArrgs']]]]):
         pulumi.set(self, "enrolled_services", value)
 
     @property
@@ -313,13 +313,13 @@ class _AccessApprovalSettingsState:
         pulumi.set(self, "project_id", value)
 
 
-class AccessApprovalSettings(pulumi.CustomResource):
+calass AccessApprovalSettings(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active_key_version: Optional[pulumi.Input[str]] = None,
-                 enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArgs']]]]] = None,
+                 enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArrgs']]]]] = None,
                  notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -339,7 +339,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project_access_approval = gcp.projects.AccessApprovalSettings("projectAccessApproval",
-            enrolled_services=[gcp.projects.AccessApprovalSettingsEnrolledServiceArgs(
+            enrolled_services=[gcp.projects.AccessApprovalSettingsEnrolledServiceArrgs(
                 cloud_product="all",
                 enrollment_level="BLOCK_ALL",
             )],
@@ -361,7 +361,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
         crypto_key = gcp.kms.CryptoKey("cryptoKey",
             key_ring=key_ring.id,
             purpose="ASYMMETRIC_SIGN",
-            version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
+            version_template=gcp.kms.CryptoKeyVersionTemplateArrgs(
                 algorithm="EC_SIGN_P384_SHA384",
             ))
         service_account = gcp.accessapproval.get_project_service_account(project_id="my-project-name")
@@ -373,7 +373,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
         project_access_approval = gcp.projects.AccessApprovalSettings("projectAccessApproval",
             project_id="my-project-name",
             active_key_version=crypto_key_version.name,
-            enrolled_services=[gcp.projects.AccessApprovalSettingsEnrolledServiceArgs(
+            enrolled_services=[gcp.projects.AccessApprovalSettingsEnrolledServiceArrgs(
                 cloud_product="all",
             )],
             opts=pulumi.ResourceOptions(depends_on=[iam]))
@@ -396,7 +396,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
         :param pulumi.Input[str] active_key_version: The asymmetric crypto key version to use for signing approval requests.
                Empty active_key_version indicates that a Google-managed key should be used for signing.
                This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArgs']]]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArrgs']]]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled.
                Access requests for the resource given by name against any of these services contained here will be required
                to have explicit approval. Enrollment can only be done on an all or nothing basis.
                A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
@@ -414,7 +414,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AccessApprovalSettingsArgs,
+                 args: AccessApprovalSettingsArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Access Approval enables you to require your explicit approval whenever Google support and engineering need to access your customer content.
@@ -431,7 +431,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project_access_approval = gcp.projects.AccessApprovalSettings("projectAccessApproval",
-            enrolled_services=[gcp.projects.AccessApprovalSettingsEnrolledServiceArgs(
+            enrolled_services=[gcp.projects.AccessApprovalSettingsEnrolledServiceArrgs(
                 cloud_product="all",
                 enrollment_level="BLOCK_ALL",
             )],
@@ -453,7 +453,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
         crypto_key = gcp.kms.CryptoKey("cryptoKey",
             key_ring=key_ring.id,
             purpose="ASYMMETRIC_SIGN",
-            version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
+            version_template=gcp.kms.CryptoKeyVersionTemplateArrgs(
                 algorithm="EC_SIGN_P384_SHA384",
             ))
         service_account = gcp.accessapproval.get_project_service_account(project_id="my-project-name")
@@ -465,7 +465,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
         project_access_approval = gcp.projects.AccessApprovalSettings("projectAccessApproval",
             project_id="my-project-name",
             active_key_version=crypto_key_version.name,
-            enrolled_services=[gcp.projects.AccessApprovalSettingsEnrolledServiceArgs(
+            enrolled_services=[gcp.projects.AccessApprovalSettingsEnrolledServiceArrgs(
                 cloud_product="all",
             )],
             opts=pulumi.ResourceOptions(depends_on=[iam]))
@@ -484,12 +484,12 @@ class AccessApprovalSettings(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AccessApprovalSettingsArgs args: The arguments to use to populate this resource's properties.
+        :param AccessApprovalSettingsArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AccessApprovalSettingsArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AccessApprovalSettingsArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -499,7 +499,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active_key_version: Optional[pulumi.Input[str]] = None,
-                 enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArgs']]]]] = None,
+                 enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArrgs']]]]] = None,
                  notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -510,7 +510,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AccessApprovalSettingsArgs.__new__(AccessApprovalSettingsArgs)
+            __props__ = AccessApprovalSettingsArrgs.__new__(AccessApprovalSettingsArrgs)
 
             __props__.__dict__["active_key_version"] = active_key_version
             if enrolled_services is None and not opts.urn:
@@ -538,7 +538,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
             active_key_version: Optional[pulumi.Input[str]] = None,
             ancestor_has_active_key_version: Optional[pulumi.Input[bool]] = None,
             enrolled_ancestor: Optional[pulumi.Input[bool]] = None,
-            enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArgs']]]]] = None,
+            enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArrgs']]]]] = None,
             invalid_key_version: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -556,7 +556,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
                This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
         :param pulumi.Input[bool] ancestor_has_active_key_version: If the field is true, that indicates that an ancestor of this Project has set active_key_version.
         :param pulumi.Input[bool] enrolled_ancestor: If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArgs']]]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArrgs']]]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled.
                Access requests for the resource given by name against any of these services contained here will be required
                to have explicit approval. Enrollment can only be done on an all or nothing basis.
                A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.

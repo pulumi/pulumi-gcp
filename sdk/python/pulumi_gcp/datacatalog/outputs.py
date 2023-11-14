@@ -33,7 +33,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class EntryBigqueryDateShardedSpec(dict):
+calass EntryBigqueryDateShardedSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -105,7 +105,7 @@ class EntryBigqueryDateShardedSpec(dict):
 
 
 @pulumi.output_type
-class EntryBigqueryTableSpec(dict):
+calass EntryBigqueryTableSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -134,10 +134,10 @@ class EntryBigqueryTableSpec(dict):
         """
         :param str table_source_type: (Output)
                The table source type.
-        :param Sequence['EntryBigqueryTableSpecTableSpecArgs'] table_specs: (Output)
+        :param Sequence['EntryBigqueryTableSpecTableSpecArrgs'] table_specs: (Output)
                Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
                Structure is documented below.
-        :param Sequence['EntryBigqueryTableSpecViewSpecArgs'] view_specs: (Output)
+        :param Sequence['EntryBigqueryTableSpecViewSpecArrgs'] view_specs: (Output)
                Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
                Structure is documented below.
         """
@@ -179,7 +179,7 @@ class EntryBigqueryTableSpec(dict):
 
 
 @pulumi.output_type
-class EntryBigqueryTableSpecTableSpec(dict):
+calass EntryBigqueryTableSpecTableSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -223,7 +223,7 @@ class EntryBigqueryTableSpecTableSpec(dict):
 
 
 @pulumi.output_type
-class EntryBigqueryTableSpecViewSpec(dict):
+calass EntryBigqueryTableSpecViewSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -261,7 +261,7 @@ class EntryBigqueryTableSpecViewSpec(dict):
 
 
 @pulumi.output_type
-class EntryGcsFilesetSpec(dict):
+calass EntryGcsFilesetSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -296,7 +296,7 @@ class EntryGcsFilesetSpec(dict):
                * gs://bucket_name/[a-m].txt: matches files that contain a, b, ... or m followed by .txt in bucket_name
                * gs://bucket_name/a/*/b: matches all files in bucket_name that match a/*/b pattern, such as a/c/b, a/d/b
                * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
-        :param Sequence['EntryGcsFilesetSpecSampleGcsFileSpecArgs'] sample_gcs_file_specs: (Output)
+        :param Sequence['EntryGcsFilesetSpecSampleGcsFileSpecArrgs'] sample_gcs_file_specs: (Output)
                Sample files contained in this fileset, not all files contained in this fileset are represented here.
                Structure is documented below.
                
@@ -340,7 +340,7 @@ class EntryGcsFilesetSpec(dict):
 
 
 @pulumi.output_type
-class EntryGcsFilesetSpecSampleGcsFileSpec(dict):
+calass EntryGcsFilesetSpecSampleGcsFileSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -394,7 +394,7 @@ class EntryGcsFilesetSpecSampleGcsFileSpec(dict):
 
 
 @pulumi.output_type
-class EntryGroupIamBindingCondition(dict):
+calass EntryGroupIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -421,7 +421,7 @@ class EntryGroupIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class EntryGroupIamMemberCondition(dict):
+calass EntryGroupIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -448,7 +448,7 @@ class EntryGroupIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class PolicyTagIamBindingCondition(dict):
+calass PolicyTagIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -475,7 +475,7 @@ class PolicyTagIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class PolicyTagIamMemberCondition(dict):
+calass PolicyTagIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -502,7 +502,7 @@ class PolicyTagIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class TagField(dict):
+calass TagField(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -645,7 +645,7 @@ class TagField(dict):
 
 
 @pulumi.output_type
-class TagTemplateField(dict):
+calass TagTemplateField(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -677,7 +677,7 @@ class TagTemplateField(dict):
                  order: Optional[int] = None):
         """
         :param str field_id: The identifier for this object. Format specified above.
-        :param 'TagTemplateFieldTypeArgs' type: The type of value this tag field can contain.
+        :param 'TagTemplateFieldTypeArrgs' type: The type of value this tag field can contain.
                Structure is documented below.
         :param str description: A description for this field.
         :param str display_name: The display name for this field.
@@ -763,7 +763,7 @@ class TagTemplateField(dict):
 
 
 @pulumi.output_type
-class TagTemplateFieldType(dict):
+calass TagTemplateFieldType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -787,7 +787,7 @@ class TagTemplateFieldType(dict):
                  enum_type: Optional['outputs.TagTemplateFieldTypeEnumType'] = None,
                  primitive_type: Optional[str] = None):
         """
-        :param 'TagTemplateFieldTypeEnumTypeArgs' enum_type: Represents an enum type.
+        :param 'TagTemplateFieldTypeEnumTypeArrgs' enum_type: Represents an enum type.
                Exactly one of `primitive_type` or `enum_type` must be set
                Structure is documented below.
         :param str primitive_type: Represents primitive types - string, bool etc.
@@ -821,7 +821,7 @@ class TagTemplateFieldType(dict):
 
 
 @pulumi.output_type
-class TagTemplateFieldTypeEnumType(dict):
+calass TagTemplateFieldTypeEnumType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -842,7 +842,7 @@ class TagTemplateFieldTypeEnumType(dict):
     def __init__(__self__, *,
                  allowed_values: Sequence['outputs.TagTemplateFieldTypeEnumTypeAllowedValue']):
         """
-        :param Sequence['TagTemplateFieldTypeEnumTypeAllowedValueArgs'] allowed_values: The set of allowed values for this enum. The display names of the
+        :param Sequence['TagTemplateFieldTypeEnumTypeAllowedValueArrgs'] allowed_values: The set of allowed values for this enum. The display names of the
                values must be case-insensitively unique within this set. Currently,
                enum values can only be added to the list of allowed values. Deletion
                and renaming of enum values are not supported.
@@ -866,7 +866,7 @@ class TagTemplateFieldTypeEnumType(dict):
 
 
 @pulumi.output_type
-class TagTemplateFieldTypeEnumTypeAllowedValue(dict):
+calass TagTemplateFieldTypeEnumTypeAllowedValue(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -901,7 +901,7 @@ class TagTemplateFieldTypeEnumTypeAllowedValue(dict):
 
 
 @pulumi.output_type
-class TagTemplateIamBindingCondition(dict):
+calass TagTemplateIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -928,7 +928,7 @@ class TagTemplateIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class TagTemplateIamMemberCondition(dict):
+calass TagTemplateIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -955,7 +955,7 @@ class TagTemplateIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class TaxonomyIamBindingCondition(dict):
+calass TaxonomyIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -982,7 +982,7 @@ class TaxonomyIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class TaxonomyIamMemberCondition(dict):
+calass TaxonomyIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,

@@ -11,12 +11,12 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['TcpRouteArgs', 'TcpRoute']
+__all__ = ['TcpRouteArrgs', 'TcpRoute']
 
 @pulumi.input_type
-class TcpRouteArgs:
+calass TcpRouteArrgs:
     def __init__(__self__, *,
-                 rules: pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleArgs']]],
+                 rules: pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleArrgs']]],
                  description: Optional[pulumi.Input[str]] = None,
                  gateways: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -25,7 +25,7 @@ class TcpRouteArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TcpRoute resource.
-        :param pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleArgs']]] rules: Rules that define how traffic is routed and handled. At least one RouteRule must be supplied.
+        :param pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleArrgs']]] rules: Rules that define how traffic is routed and handled. At least one RouteRule must be supplied.
                If there are multiple rules then the action taken will be the first rule to match.
                Structure is documented below.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
@@ -57,7 +57,7 @@ class TcpRouteArgs:
 
     @property
     @pulumi.getter
-    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleArgs']]]:
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleArrgs']]]:
         """
         Rules that define how traffic is routed and handled. At least one RouteRule must be supplied.
         If there are multiple rules then the action taken will be the first rule to match.
@@ -66,7 +66,7 @@ class TcpRouteArgs:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleArgs']]]):
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleArrgs']]]):
         pulumi.set(self, "rules", value)
 
     @property
@@ -149,7 +149,7 @@ class TcpRouteArgs:
 
 
 @pulumi.input_type
-class _TcpRouteState:
+calass _TcpRouteState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -160,7 +160,7 @@ class _TcpRouteState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleArgs']]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleArrgs']]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -181,7 +181,7 @@ class _TcpRouteState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleArgs']]] rules: Rules that define how traffic is routed and handled. At least one RouteRule must be supplied.
+        :param pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleArrgs']]] rules: Rules that define how traffic is routed and handled. At least one RouteRule must be supplied.
                If there are multiple rules then the action taken will be the first rule to match.
                Structure is documented below.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
@@ -329,7 +329,7 @@ class _TcpRouteState:
 
     @property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleArgs']]]]:
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleArrgs']]]]:
         """
         Rules that define how traffic is routed and handled. At least one RouteRule must be supplied.
         If there are multiple rules then the action taken will be the first rule to match.
@@ -338,7 +338,7 @@ class _TcpRouteState:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleArgs']]]]):
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleArrgs']]]]):
         pulumi.set(self, "rules", value)
 
     @property
@@ -366,7 +366,7 @@ class _TcpRouteState:
         pulumi.set(self, "update_time", value)
 
 
-class TcpRoute(pulumi.CustomResource):
+calass TcpRoute(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -377,7 +377,7 @@ class TcpRoute(pulumi.CustomResource):
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TcpRouteRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TcpRouteRuleArrgs']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -412,7 +412,7 @@ class TcpRoute(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the TcpRoute resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TcpRouteRuleArgs']]]] rules: Rules that define how traffic is routed and handled. At least one RouteRule must be supplied.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TcpRouteRuleArrgs']]]] rules: Rules that define how traffic is routed and handled. At least one RouteRule must be supplied.
                If there are multiple rules then the action taken will be the first rule to match.
                Structure is documented below.
         """
@@ -420,7 +420,7 @@ class TcpRoute(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TcpRouteArgs,
+                 args: TcpRouteArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -442,12 +442,12 @@ class TcpRoute(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param TcpRouteArgs args: The arguments to use to populate this resource's properties.
+        :param TcpRouteArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(TcpRouteArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TcpRouteArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -462,7 +462,7 @@ class TcpRoute(pulumi.CustomResource):
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TcpRouteRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TcpRouteRuleArrgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -470,7 +470,7 @@ class TcpRoute(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = TcpRouteArgs.__new__(TcpRouteArgs)
+            __props__ = TcpRouteArrgs.__new__(TcpRouteArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["gateways"] = gateways
@@ -507,7 +507,7 @@ class TcpRoute(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TcpRouteRuleArgs']]]]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TcpRouteRuleArrgs']]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'TcpRoute':
         """
@@ -533,7 +533,7 @@ class TcpRoute(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TcpRouteRuleArgs']]]] rules: Rules that define how traffic is routed and handled. At least one RouteRule must be supplied.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TcpRouteRuleArrgs']]]] rules: Rules that define how traffic is routed and handled. At least one RouteRule must be supplied.
                If there are multiple rules then the action taken will be the first rule to match.
                Structure is documented below.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.

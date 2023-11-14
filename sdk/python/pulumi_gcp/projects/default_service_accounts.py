@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['DefaultServiceAccountsArgs', 'DefaultServiceAccounts']
+__all__ = ['DefaultServiceAccountsArrgs', 'DefaultServiceAccounts']
 
 @pulumi.input_type
-class DefaultServiceAccountsArgs:
+calass DefaultServiceAccountsArrgs:
     def __init__(__self__, *,
                  action: pulumi.Input[str],
                  project: pulumi.Input[str],
@@ -72,7 +72,7 @@ class DefaultServiceAccountsArgs:
 
 
 @pulumi.input_type
-class _DefaultServiceAccountsState:
+calass _DefaultServiceAccountsState:
     def __init__(__self__, *,
                  action: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -149,7 +149,7 @@ class _DefaultServiceAccountsState:
         pulumi.set(self, "service_accounts", value)
 
 
-class DefaultServiceAccounts(pulumi.CustomResource):
+calass DefaultServiceAccounts(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -214,7 +214,7 @@ class DefaultServiceAccounts(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DefaultServiceAccountsArgs,
+                 args: DefaultServiceAccountsArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Allows management of Google Cloud Platform project default service accounts.
@@ -260,12 +260,12 @@ class DefaultServiceAccounts(pulumi.CustomResource):
         This resource does not support import
 
         :param str resource_name: The name of the resource.
-        :param DefaultServiceAccountsArgs args: The arguments to use to populate this resource's properties.
+        :param DefaultServiceAccountsArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DefaultServiceAccountsArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DefaultServiceAccountsArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -284,7 +284,7 @@ class DefaultServiceAccounts(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DefaultServiceAccountsArgs.__new__(DefaultServiceAccountsArgs)
+            __props__ = DefaultServiceAccountsArrgs.__new__(DefaultServiceAccountsArrgs)
 
             if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")

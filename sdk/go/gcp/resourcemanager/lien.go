@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Lien represents an encumbrance on the actions that can be performed on a resource.
@@ -265,12 +264,6 @@ func (i *Lien) ToLienOutputWithContext(ctx context.Context) LienOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LienOutput)
 }
 
-func (i *Lien) ToOutput(ctx context.Context) pulumix.Output[*Lien] {
-	return pulumix.Output[*Lien]{
-		OutputState: i.ToLienOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LienArrayInput is an input type that accepts LienArray and LienArrayOutput values.
 // You can construct a concrete instance of `LienArrayInput` via:
 //
@@ -294,12 +287,6 @@ func (i LienArray) ToLienArrayOutput() LienArrayOutput {
 
 func (i LienArray) ToLienArrayOutputWithContext(ctx context.Context) LienArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LienArrayOutput)
-}
-
-func (i LienArray) ToOutput(ctx context.Context) pulumix.Output[[]*Lien] {
-	return pulumix.Output[[]*Lien]{
-		OutputState: i.ToLienArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // LienMapInput is an input type that accepts LienMap and LienMapOutput values.
@@ -327,12 +314,6 @@ func (i LienMap) ToLienMapOutputWithContext(ctx context.Context) LienMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LienMapOutput)
 }
 
-func (i LienMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Lien] {
-	return pulumix.Output[map[string]*Lien]{
-		OutputState: i.ToLienMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LienOutput struct{ *pulumi.OutputState }
 
 func (LienOutput) ElementType() reflect.Type {
@@ -345,12 +326,6 @@ func (o LienOutput) ToLienOutput() LienOutput {
 
 func (o LienOutput) ToLienOutputWithContext(ctx context.Context) LienOutput {
 	return o
-}
-
-func (o LienOutput) ToOutput(ctx context.Context) pulumix.Output[*Lien] {
-	return pulumix.Output[*Lien]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time of creation
@@ -409,12 +384,6 @@ func (o LienArrayOutput) ToLienArrayOutputWithContext(ctx context.Context) LienA
 	return o
 }
 
-func (o LienArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Lien] {
-	return pulumix.Output[[]*Lien]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LienArrayOutput) Index(i pulumi.IntInput) LienOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Lien {
 		return vs[0].([]*Lien)[vs[1].(int)]
@@ -433,12 +402,6 @@ func (o LienMapOutput) ToLienMapOutput() LienMapOutput {
 
 func (o LienMapOutput) ToLienMapOutputWithContext(ctx context.Context) LienMapOutput {
 	return o
-}
-
-func (o LienMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Lien] {
-	return pulumix.Output[map[string]*Lien]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LienMapOutput) MapIndex(k pulumi.StringInput) LienOutput {

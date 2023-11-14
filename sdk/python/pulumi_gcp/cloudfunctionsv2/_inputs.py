@@ -10,29 +10,29 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'FunctionBuildConfigArgs',
-    'FunctionBuildConfigSourceArgs',
-    'FunctionBuildConfigSourceRepoSourceArgs',
-    'FunctionBuildConfigSourceStorageSourceArgs',
-    'FunctionEventTriggerArgs',
-    'FunctionEventTriggerEventFilterArgs',
-    'FunctionIamBindingConditionArgs',
-    'FunctionIamMemberConditionArgs',
-    'FunctionServiceConfigArgs',
-    'FunctionServiceConfigSecretEnvironmentVariableArgs',
-    'FunctionServiceConfigSecretVolumeArgs',
-    'FunctionServiceConfigSecretVolumeVersionArgs',
+    'FunctionBuildConfigArrgs',
+    'FunctionBuildConfigSourceArrgs',
+    'FunctionBuildConfigSourceRepoSourceArrgs',
+    'FunctionBuildConfigSourceStorageSourceArrgs',
+    'FunctionEventTriggerArrgs',
+    'FunctionEventTriggerEventFilterArrgs',
+    'FunctionIamBindingConditionArrgs',
+    'FunctionIamMemberConditionArrgs',
+    'FunctionServiceConfigArrgs',
+    'FunctionServiceConfigSecretEnvironmentVariableArrgs',
+    'FunctionServiceConfigSecretVolumeArrgs',
+    'FunctionServiceConfigSecretVolumeVersionArrgs',
 ]
 
 @pulumi.input_type
-class FunctionBuildConfigArgs:
+calass FunctionBuildConfigArrgs:
     def __init__(__self__, *,
                  build: Optional[pulumi.Input[str]] = None,
                  docker_repository: Optional[pulumi.Input[str]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
-                 source: Optional[pulumi.Input['FunctionBuildConfigSourceArgs']] = None,
+                 source: Optional[pulumi.Input['FunctionBuildConfigSourceArrgs']] = None,
                  worker_pool: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] build: (Output)
@@ -47,7 +47,7 @@ class FunctionBuildConfigArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: User-provided build-time environment variables for the function.
         :param pulumi.Input[str] runtime: The runtime in which to run the function. Required when deploying a new
                function, optional when updating an existing function.
-        :param pulumi.Input['FunctionBuildConfigSourceArgs'] source: The location of the function source code.
+        :param pulumi.Input['FunctionBuildConfigSourceArrgs'] source: The location of the function source code.
                Structure is documented below.
         :param pulumi.Input[str] worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function.
         """
@@ -135,7 +135,7 @@ class FunctionBuildConfigArgs:
 
     @property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input['FunctionBuildConfigSourceArgs']]:
+    def source(self) -> Optional[pulumi.Input['FunctionBuildConfigSourceArrgs']]:
         """
         The location of the function source code.
         Structure is documented below.
@@ -143,7 +143,7 @@ class FunctionBuildConfigArgs:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input['FunctionBuildConfigSourceArgs']]):
+    def source(self, value: Optional[pulumi.Input['FunctionBuildConfigSourceArrgs']]):
         pulumi.set(self, "source", value)
 
     @property
@@ -160,14 +160,14 @@ class FunctionBuildConfigArgs:
 
 
 @pulumi.input_type
-class FunctionBuildConfigSourceArgs:
+calass FunctionBuildConfigSourceArrgs:
     def __init__(__self__, *,
-                 repo_source: Optional[pulumi.Input['FunctionBuildConfigSourceRepoSourceArgs']] = None,
-                 storage_source: Optional[pulumi.Input['FunctionBuildConfigSourceStorageSourceArgs']] = None):
+                 repo_source: Optional[pulumi.Input['FunctionBuildConfigSourceRepoSourceArrgs']] = None,
+                 storage_source: Optional[pulumi.Input['FunctionBuildConfigSourceStorageSourceArrgs']] = None):
         """
-        :param pulumi.Input['FunctionBuildConfigSourceRepoSourceArgs'] repo_source: If provided, get the source from this location in a Cloud Source Repository.
+        :param pulumi.Input['FunctionBuildConfigSourceRepoSourceArrgs'] repo_source: If provided, get the source from this location in a Cloud Source Repository.
                Structure is documented below.
-        :param pulumi.Input['FunctionBuildConfigSourceStorageSourceArgs'] storage_source: If provided, get the source from this location in Google Cloud Storage.
+        :param pulumi.Input['FunctionBuildConfigSourceStorageSourceArrgs'] storage_source: If provided, get the source from this location in Google Cloud Storage.
                Structure is documented below.
         """
         if repo_source is not None:
@@ -177,7 +177,7 @@ class FunctionBuildConfigSourceArgs:
 
     @property
     @pulumi.getter(name="repoSource")
-    def repo_source(self) -> Optional[pulumi.Input['FunctionBuildConfigSourceRepoSourceArgs']]:
+    def repo_source(self) -> Optional[pulumi.Input['FunctionBuildConfigSourceRepoSourceArrgs']]:
         """
         If provided, get the source from this location in a Cloud Source Repository.
         Structure is documented below.
@@ -185,12 +185,12 @@ class FunctionBuildConfigSourceArgs:
         return pulumi.get(self, "repo_source")
 
     @repo_source.setter
-    def repo_source(self, value: Optional[pulumi.Input['FunctionBuildConfigSourceRepoSourceArgs']]):
+    def repo_source(self, value: Optional[pulumi.Input['FunctionBuildConfigSourceRepoSourceArrgs']]):
         pulumi.set(self, "repo_source", value)
 
     @property
     @pulumi.getter(name="storageSource")
-    def storage_source(self) -> Optional[pulumi.Input['FunctionBuildConfigSourceStorageSourceArgs']]:
+    def storage_source(self) -> Optional[pulumi.Input['FunctionBuildConfigSourceStorageSourceArrgs']]:
         """
         If provided, get the source from this location in Google Cloud Storage.
         Structure is documented below.
@@ -198,12 +198,12 @@ class FunctionBuildConfigSourceArgs:
         return pulumi.get(self, "storage_source")
 
     @storage_source.setter
-    def storage_source(self, value: Optional[pulumi.Input['FunctionBuildConfigSourceStorageSourceArgs']]):
+    def storage_source(self, value: Optional[pulumi.Input['FunctionBuildConfigSourceStorageSourceArrgs']]):
         pulumi.set(self, "storage_source", value)
 
 
 @pulumi.input_type
-class FunctionBuildConfigSourceRepoSourceArgs:
+calass FunctionBuildConfigSourceRepoSourceArrgs:
     def __init__(__self__, *,
                  branch_name: Optional[pulumi.Input[str]] = None,
                  commit_sha: Optional[pulumi.Input[str]] = None,
@@ -326,7 +326,7 @@ class FunctionBuildConfigSourceRepoSourceArgs:
 
 
 @pulumi.input_type
-class FunctionBuildConfigSourceStorageSourceArgs:
+calass FunctionBuildConfigSourceStorageSourceArrgs:
     def __init__(__self__, *,
                  bucket: Optional[pulumi.Input[str]] = None,
                  generation: Optional[pulumi.Input[int]] = None,
@@ -383,9 +383,9 @@ class FunctionBuildConfigSourceStorageSourceArgs:
 
 
 @pulumi.input_type
-class FunctionEventTriggerArgs:
+calass FunctionEventTriggerArrgs:
     def __init__(__self__, *,
-                 event_filters: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArgs']]]] = None,
+                 event_filters: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArrgs']]]] = None,
                  event_type: Optional[pulumi.Input[str]] = None,
                  pubsub_topic: Optional[pulumi.Input[str]] = None,
                  retry_policy: Optional[pulumi.Input[str]] = None,
@@ -393,7 +393,7 @@ class FunctionEventTriggerArgs:
                  trigger: Optional[pulumi.Input[str]] = None,
                  trigger_region: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArgs']]] event_filters: Criteria used to filter events.
+        :param pulumi.Input[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArrgs']]] event_filters: Criteria used to filter events.
                Structure is documented below.
         :param pulumi.Input[str] event_type: Required. The type of event to observe.
         :param pulumi.Input[str] pubsub_topic: The name of a Pub/Sub topic in the same project that will be used
@@ -426,7 +426,7 @@ class FunctionEventTriggerArgs:
 
     @property
     @pulumi.getter(name="eventFilters")
-    def event_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArgs']]]]:
+    def event_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArrgs']]]]:
         """
         Criteria used to filter events.
         Structure is documented below.
@@ -434,7 +434,7 @@ class FunctionEventTriggerArgs:
         return pulumi.get(self, "event_filters")
 
     @event_filters.setter
-    def event_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArgs']]]]):
+    def event_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArrgs']]]]):
         pulumi.set(self, "event_filters", value)
 
     @property
@@ -518,7 +518,7 @@ class FunctionEventTriggerArgs:
 
 
 @pulumi.input_type
-class FunctionEventTriggerEventFilterArgs:
+calass FunctionEventTriggerEventFilterArrgs:
     def __init__(__self__, *,
                  attribute: pulumi.Input[str],
                  value: pulumi.Input[str],
@@ -585,7 +585,7 @@ class FunctionEventTriggerEventFilterArgs:
 
 
 @pulumi.input_type
-class FunctionIamBindingConditionArgs:
+calass FunctionIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -624,7 +624,7 @@ class FunctionIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class FunctionIamMemberConditionArgs:
+calass FunctionIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -663,7 +663,7 @@ class FunctionIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class FunctionServiceConfigArgs:
+calass FunctionServiceConfigArrgs:
     def __init__(__self__, *,
                  all_traffic_on_latest_revision: Optional[pulumi.Input[bool]] = None,
                  available_cpu: Optional[pulumi.Input[str]] = None,
@@ -674,8 +674,8 @@ class FunctionServiceConfigArgs:
                  max_instance_count: Optional[pulumi.Input[int]] = None,
                  max_instance_request_concurrency: Optional[pulumi.Input[int]] = None,
                  min_instance_count: Optional[pulumi.Input[int]] = None,
-                 secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretEnvironmentVariableArgs']]]] = None,
-                 secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeArgs']]]] = None,
+                 secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretEnvironmentVariableArrgs']]]] = None,
+                 secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeArrgs']]]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None,
@@ -699,9 +699,9 @@ class FunctionServiceConfigArgs:
         :param pulumi.Input[int] max_instance_request_concurrency: Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
         :param pulumi.Input[int] min_instance_count: The limit on the minimum number of function instances that may coexist at a
                given time.
-        :param pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretEnvironmentVariableArgs']]] secret_environment_variables: Secret environment variables configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretEnvironmentVariableArrgs']]] secret_environment_variables: Secret environment variables configuration.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeArgs']]] secret_volumes: Secret volumes configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeArrgs']]] secret_volumes: Secret volumes configuration.
                Structure is documented below.
         :param pulumi.Input[str] service: Name of the service associated with a Function.
         :param pulumi.Input[str] service_account_email: The email of the service account for this function.
@@ -866,7 +866,7 @@ class FunctionServiceConfigArgs:
 
     @property
     @pulumi.getter(name="secretEnvironmentVariables")
-    def secret_environment_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretEnvironmentVariableArgs']]]]:
+    def secret_environment_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretEnvironmentVariableArrgs']]]]:
         """
         Secret environment variables configuration.
         Structure is documented below.
@@ -874,12 +874,12 @@ class FunctionServiceConfigArgs:
         return pulumi.get(self, "secret_environment_variables")
 
     @secret_environment_variables.setter
-    def secret_environment_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretEnvironmentVariableArgs']]]]):
+    def secret_environment_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretEnvironmentVariableArrgs']]]]):
         pulumi.set(self, "secret_environment_variables", value)
 
     @property
     @pulumi.getter(name="secretVolumes")
-    def secret_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeArgs']]]]:
+    def secret_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeArrgs']]]]:
         """
         Secret volumes configuration.
         Structure is documented below.
@@ -887,7 +887,7 @@ class FunctionServiceConfigArgs:
         return pulumi.get(self, "secret_volumes")
 
     @secret_volumes.setter
-    def secret_volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeArgs']]]]):
+    def secret_volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeArrgs']]]]):
         pulumi.set(self, "secret_volumes", value)
 
     @property
@@ -968,7 +968,7 @@ class FunctionServiceConfigArgs:
 
 
 @pulumi.input_type
-class FunctionServiceConfigSecretEnvironmentVariableArgs:
+calass FunctionServiceConfigSecretEnvironmentVariableArrgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  project_id: pulumi.Input[str],
@@ -1035,17 +1035,17 @@ class FunctionServiceConfigSecretEnvironmentVariableArgs:
 
 
 @pulumi.input_type
-class FunctionServiceConfigSecretVolumeArgs:
+calass FunctionServiceConfigSecretVolumeArrgs:
     def __init__(__self__, *,
                  mount_path: pulumi.Input[str],
                  project_id: pulumi.Input[str],
                  secret: pulumi.Input[str],
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeVersionArgs']]]] = None):
+                 versions: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeVersionArrgs']]]] = None):
         """
         :param pulumi.Input[str] mount_path: The path within the container to mount the secret volume. For example, setting the mountPath as /etc/secrets would mount the secret value files under the /etc/secrets directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
         :param pulumi.Input[str] project_id: Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
         :param pulumi.Input[str] secret: Name of the secret in secret manager (not the full resource name).
-        :param pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeVersionArgs']]] versions: List of secret versions to mount for this secret. If empty, the latest version of the secret will be made available in a file named after the secret under the mount point.'
+        :param pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeVersionArrgs']]] versions: List of secret versions to mount for this secret. If empty, the latest version of the secret will be made available in a file named after the secret under the mount point.'
                Structure is documented below.
         """
         pulumi.set(__self__, "mount_path", mount_path)
@@ -1092,7 +1092,7 @@ class FunctionServiceConfigSecretVolumeArgs:
 
     @property
     @pulumi.getter
-    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeVersionArgs']]]]:
+    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeVersionArrgs']]]]:
         """
         List of secret versions to mount for this secret. If empty, the latest version of the secret will be made available in a file named after the secret under the mount point.'
         Structure is documented below.
@@ -1100,12 +1100,12 @@ class FunctionServiceConfigSecretVolumeArgs:
         return pulumi.get(self, "versions")
 
     @versions.setter
-    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeVersionArgs']]]]):
+    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeVersionArrgs']]]]):
         pulumi.set(self, "versions", value)
 
 
 @pulumi.input_type
-class FunctionServiceConfigSecretVolumeVersionArgs:
+calass FunctionServiceConfigSecretVolumeVersionArrgs:
     def __init__(__self__, *,
                  path: pulumi.Input[str],
                  version: pulumi.Input[str]):

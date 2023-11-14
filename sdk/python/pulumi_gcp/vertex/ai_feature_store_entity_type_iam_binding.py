@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AiFeatureStoreEntityTypeIamBindingArgs', 'AiFeatureStoreEntityTypeIamBinding']
+__all__ = ['AiFeatureStoreEntityTypeIamBindingArrgs', 'AiFeatureStoreEntityTypeIamBinding']
 
 @pulumi.input_type
-class AiFeatureStoreEntityTypeIamBindingArgs:
+calass AiFeatureStoreEntityTypeIamBindingArrgs:
     def __init__(__self__, *,
                  entitytype: pulumi.Input[str],
                  featurestore: pulumi.Input[str],
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['AiFeatureStoreEntityTypeIamBindingConditionArgs']] = None):
+                 condition: Optional[pulumi.Input['AiFeatureStoreEntityTypeIamBindingConditionArrgs']] = None):
         """
         The set of arguments for constructing a AiFeatureStoreEntityTypeIamBinding resource.
         :param pulumi.Input[str] entitytype: Used to find the parent resource to bind the IAM policy to
@@ -109,18 +109,18 @@ class AiFeatureStoreEntityTypeIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
-class _AiFeatureStoreEntityTypeIamBindingState:
+calass _AiFeatureStoreEntityTypeIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['AiFeatureStoreEntityTypeIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['AiFeatureStoreEntityTypeIamBindingConditionArrgs']] = None,
                  entitytype: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  featurestore: Optional[pulumi.Input[str]] = None,
@@ -162,11 +162,11 @@ class _AiFeatureStoreEntityTypeIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -241,12 +241,12 @@ class _AiFeatureStoreEntityTypeIamBindingState:
         pulumi.set(self, "role", value)
 
 
-class AiFeatureStoreEntityTypeIamBinding(pulumi.CustomResource):
+calass AiFeatureStoreEntityTypeIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeIamBindingConditionArrgs']]] = None,
                  entitytype: Optional[pulumi.Input[str]] = None,
                  featurestore: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -301,7 +301,7 @@ class AiFeatureStoreEntityTypeIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AiFeatureStoreEntityTypeIamBindingArgs,
+                 args: AiFeatureStoreEntityTypeIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Import
@@ -329,12 +329,12 @@ class AiFeatureStoreEntityTypeIamBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param AiFeatureStoreEntityTypeIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param AiFeatureStoreEntityTypeIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AiFeatureStoreEntityTypeIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AiFeatureStoreEntityTypeIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -343,7 +343,7 @@ class AiFeatureStoreEntityTypeIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeIamBindingConditionArrgs']]] = None,
                  entitytype: Optional[pulumi.Input[str]] = None,
                  featurestore: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -355,7 +355,7 @@ class AiFeatureStoreEntityTypeIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AiFeatureStoreEntityTypeIamBindingArgs.__new__(AiFeatureStoreEntityTypeIamBindingArgs)
+            __props__ = AiFeatureStoreEntityTypeIamBindingArrgs.__new__(AiFeatureStoreEntityTypeIamBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if entitytype is None and not opts.urn:
@@ -381,7 +381,7 @@ class AiFeatureStoreEntityTypeIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeIamBindingConditionArrgs']]] = None,
             entitytype: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             featurestore: Optional[pulumi.Input[str]] = None,

@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ApiConfigIamBindingArgs', 'ApiConfigIamBinding']
+__all__ = ['ApiConfigIamBindingArrgs', 'ApiConfigIamBinding']
 
 @pulumi.input_type
-class ApiConfigIamBindingArgs:
+calass ApiConfigIamBindingArrgs:
     def __init__(__self__, *,
                  api: pulumi.Input[str],
                  api_config: pulumi.Input[str],
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['ApiConfigIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['ApiConfigIamBindingConditionArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ApiConfigIamBinding resource.
@@ -100,11 +100,11 @@ class ApiConfigIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ApiConfigIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ApiConfigIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ApiConfigIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ApiConfigIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -134,11 +134,11 @@ class ApiConfigIamBindingArgs:
 
 
 @pulumi.input_type
-class _ApiConfigIamBindingState:
+calass _ApiConfigIamBindingState:
     def __init__(__self__, *,
                  api: Optional[pulumi.Input[str]] = None,
                  api_config: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input['ApiConfigIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['ApiConfigIamBindingConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -205,11 +205,11 @@ class _ApiConfigIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ApiConfigIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ApiConfigIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ApiConfigIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ApiConfigIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -273,14 +273,14 @@ class _ApiConfigIamBindingState:
         pulumi.set(self, "role", value)
 
 
-class ApiConfigIamBinding(pulumi.CustomResource):
+calass ApiConfigIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: Optional[pulumi.Input[str]] = None,
                  api_config: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ApiConfigIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ApiConfigIamBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -306,7 +306,7 @@ class ApiConfigIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/apigateway.viewer",
             members=["user:jane@example.com"],
         )])
@@ -395,7 +395,7 @@ class ApiConfigIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ApiConfigIamBindingArgs,
+                 args: ApiConfigIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for API Gateway ApiConfig. Each of these resources serves a different use case:
@@ -418,7 +418,7 @@ class ApiConfigIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/apigateway.viewer",
             members=["user:jane@example.com"],
         )])
@@ -482,12 +482,12 @@ class ApiConfigIamBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param ApiConfigIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param ApiConfigIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ApiConfigIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ApiConfigIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -498,7 +498,7 @@ class ApiConfigIamBinding(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: Optional[pulumi.Input[str]] = None,
                  api_config: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ApiConfigIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ApiConfigIamBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -509,7 +509,7 @@ class ApiConfigIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ApiConfigIamBindingArgs.__new__(ApiConfigIamBindingArgs)
+            __props__ = ApiConfigIamBindingArrgs.__new__(ApiConfigIamBindingArrgs)
 
             if api is None and not opts.urn:
                 raise TypeError("Missing required property 'api'")
@@ -538,7 +538,7 @@ class ApiConfigIamBinding(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             api: Optional[pulumi.Input[str]] = None,
             api_config: Optional[pulumi.Input[str]] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['ApiConfigIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['ApiConfigIamBindingConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,

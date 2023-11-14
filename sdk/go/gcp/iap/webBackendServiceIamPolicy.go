@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Identity-Aware Proxy WebBackendService. Each of these resources serves a different use case:
@@ -461,12 +460,6 @@ func (i *WebBackendServiceIamPolicy) ToWebBackendServiceIamPolicyOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(WebBackendServiceIamPolicyOutput)
 }
 
-func (i *WebBackendServiceIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*WebBackendServiceIamPolicy] {
-	return pulumix.Output[*WebBackendServiceIamPolicy]{
-		OutputState: i.ToWebBackendServiceIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WebBackendServiceIamPolicyArrayInput is an input type that accepts WebBackendServiceIamPolicyArray and WebBackendServiceIamPolicyArrayOutput values.
 // You can construct a concrete instance of `WebBackendServiceIamPolicyArrayInput` via:
 //
@@ -490,12 +483,6 @@ func (i WebBackendServiceIamPolicyArray) ToWebBackendServiceIamPolicyArrayOutput
 
 func (i WebBackendServiceIamPolicyArray) ToWebBackendServiceIamPolicyArrayOutputWithContext(ctx context.Context) WebBackendServiceIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebBackendServiceIamPolicyArrayOutput)
-}
-
-func (i WebBackendServiceIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*WebBackendServiceIamPolicy] {
-	return pulumix.Output[[]*WebBackendServiceIamPolicy]{
-		OutputState: i.ToWebBackendServiceIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WebBackendServiceIamPolicyMapInput is an input type that accepts WebBackendServiceIamPolicyMap and WebBackendServiceIamPolicyMapOutput values.
@@ -523,12 +510,6 @@ func (i WebBackendServiceIamPolicyMap) ToWebBackendServiceIamPolicyMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(WebBackendServiceIamPolicyMapOutput)
 }
 
-func (i WebBackendServiceIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebBackendServiceIamPolicy] {
-	return pulumix.Output[map[string]*WebBackendServiceIamPolicy]{
-		OutputState: i.ToWebBackendServiceIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebBackendServiceIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (WebBackendServiceIamPolicyOutput) ElementType() reflect.Type {
@@ -541,12 +522,6 @@ func (o WebBackendServiceIamPolicyOutput) ToWebBackendServiceIamPolicyOutput() W
 
 func (o WebBackendServiceIamPolicyOutput) ToWebBackendServiceIamPolicyOutputWithContext(ctx context.Context) WebBackendServiceIamPolicyOutput {
 	return o
-}
-
-func (o WebBackendServiceIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*WebBackendServiceIamPolicy] {
-	return pulumix.Output[*WebBackendServiceIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -597,12 +572,6 @@ func (o WebBackendServiceIamPolicyArrayOutput) ToWebBackendServiceIamPolicyArray
 	return o
 }
 
-func (o WebBackendServiceIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WebBackendServiceIamPolicy] {
-	return pulumix.Output[[]*WebBackendServiceIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WebBackendServiceIamPolicyArrayOutput) Index(i pulumi.IntInput) WebBackendServiceIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WebBackendServiceIamPolicy {
 		return vs[0].([]*WebBackendServiceIamPolicy)[vs[1].(int)]
@@ -621,12 +590,6 @@ func (o WebBackendServiceIamPolicyMapOutput) ToWebBackendServiceIamPolicyMapOutp
 
 func (o WebBackendServiceIamPolicyMapOutput) ToWebBackendServiceIamPolicyMapOutputWithContext(ctx context.Context) WebBackendServiceIamPolicyMapOutput {
 	return o
-}
-
-func (o WebBackendServiceIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebBackendServiceIamPolicy] {
-	return pulumix.Output[map[string]*WebBackendServiceIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebBackendServiceIamPolicyMapOutput) MapIndex(k pulumi.StringInput) WebBackendServiceIamPolicyOutput {

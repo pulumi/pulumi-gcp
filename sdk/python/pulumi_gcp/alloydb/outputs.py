@@ -42,7 +42,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class BackupEncryptionConfig(dict):
+calass BackupEncryptionConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -78,7 +78,7 @@ class BackupEncryptionConfig(dict):
 
 
 @pulumi.output_type
-class BackupEncryptionInfo(dict):
+calass BackupEncryptionInfo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -132,7 +132,7 @@ class BackupEncryptionInfo(dict):
 
 
 @pulumi.output_type
-class BackupExpiryQuantity(dict):
+calass BackupExpiryQuantity(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -186,7 +186,7 @@ class BackupExpiryQuantity(dict):
 
 
 @pulumi.output_type
-class ClusterAutomatedBackupPolicy(dict):
+calass ClusterAutomatedBackupPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -226,15 +226,15 @@ class ClusterAutomatedBackupPolicy(dict):
                The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it will default to 1 hour.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         :param bool enabled: Whether automated backups are enabled.
-        :param 'ClusterAutomatedBackupPolicyEncryptionConfigArgs' encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        :param 'ClusterAutomatedBackupPolicyEncryptionConfigArrgs' encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
         :param Mapping[str, str] labels: Labels to apply to backups created using this configuration.
         :param str location: The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
-        :param 'ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs' quantity_based_retention: Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
+        :param 'ClusterAutomatedBackupPolicyQuantityBasedRetentionArrgs' quantity_based_retention: Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
                Structure is documented below.
-        :param 'ClusterAutomatedBackupPolicyTimeBasedRetentionArgs' time_based_retention: Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
+        :param 'ClusterAutomatedBackupPolicyTimeBasedRetentionArrgs' time_based_retention: Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
                Structure is documented below.
-        :param 'ClusterAutomatedBackupPolicyWeeklyScheduleArgs' weekly_schedule: Weekly schedule for the Backup.
+        :param 'ClusterAutomatedBackupPolicyWeeklyScheduleArrgs' weekly_schedule: Weekly schedule for the Backup.
                Structure is documented below.
         """
         if backup_window is not None:
@@ -326,7 +326,7 @@ class ClusterAutomatedBackupPolicy(dict):
 
 
 @pulumi.output_type
-class ClusterAutomatedBackupPolicyEncryptionConfig(dict):
+calass ClusterAutomatedBackupPolicyEncryptionConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -362,7 +362,7 @@ class ClusterAutomatedBackupPolicyEncryptionConfig(dict):
 
 
 @pulumi.output_type
-class ClusterAutomatedBackupPolicyQuantityBasedRetention(dict):
+calass ClusterAutomatedBackupPolicyQuantityBasedRetention(dict):
     def __init__(__self__, *,
                  count: Optional[int] = None):
         """
@@ -381,7 +381,7 @@ class ClusterAutomatedBackupPolicyQuantityBasedRetention(dict):
 
 
 @pulumi.output_type
-class ClusterAutomatedBackupPolicyTimeBasedRetention(dict):
+calass ClusterAutomatedBackupPolicyTimeBasedRetention(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -419,7 +419,7 @@ class ClusterAutomatedBackupPolicyTimeBasedRetention(dict):
 
 
 @pulumi.output_type
-class ClusterAutomatedBackupPolicyWeeklySchedule(dict):
+calass ClusterAutomatedBackupPolicyWeeklySchedule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -443,7 +443,7 @@ class ClusterAutomatedBackupPolicyWeeklySchedule(dict):
                  start_times: Sequence['outputs.ClusterAutomatedBackupPolicyWeeklyScheduleStartTime'],
                  days_of_weeks: Optional[Sequence[str]] = None):
         """
-        :param Sequence['ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs'] start_times: The times during the day to start a backup. At least one start time must be provided. The start times are assumed to be in UTC and to be an exact hour (e.g., 04:00:00).
+        :param Sequence['ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrgs'] start_times: The times during the day to start a backup. At least one start time must be provided. The start times are assumed to be in UTC and to be an exact hour (e.g., 04:00:00).
                Structure is documented below.
         :param Sequence[str] days_of_weeks: The days of the week to perform a backup. At least one day of the week must be provided.
                Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
@@ -472,7 +472,7 @@ class ClusterAutomatedBackupPolicyWeeklySchedule(dict):
 
 
 @pulumi.output_type
-class ClusterAutomatedBackupPolicyWeeklyScheduleStartTime(dict):
+calass ClusterAutomatedBackupPolicyWeeklyScheduleStartTime(dict):
     def __init__(__self__, *,
                  hours: Optional[int] = None,
                  minutes: Optional[int] = None,
@@ -527,7 +527,7 @@ class ClusterAutomatedBackupPolicyWeeklyScheduleStartTime(dict):
 
 
 @pulumi.output_type
-class ClusterBackupSource(dict):
+calass ClusterBackupSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -563,7 +563,7 @@ class ClusterBackupSource(dict):
 
 
 @pulumi.output_type
-class ClusterContinuousBackupConfig(dict):
+calass ClusterContinuousBackupConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -589,7 +589,7 @@ class ClusterContinuousBackupConfig(dict):
                  recovery_window_days: Optional[int] = None):
         """
         :param bool enabled: Whether continuous backup recovery is enabled. If not set, defaults to true.
-        :param 'ClusterContinuousBackupConfigEncryptionConfigArgs' encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        :param 'ClusterContinuousBackupConfigEncryptionConfigArrgs' encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
         :param int recovery_window_days: The numbers of days that are eligible to restore from using PITR. To support the entire recovery window, backups and logs are retained for one day more than the recovery window.
                If not set, defaults to 14 days.
@@ -629,7 +629,7 @@ class ClusterContinuousBackupConfig(dict):
 
 
 @pulumi.output_type
-class ClusterContinuousBackupConfigEncryptionConfig(dict):
+calass ClusterContinuousBackupConfigEncryptionConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -665,7 +665,7 @@ class ClusterContinuousBackupConfigEncryptionConfig(dict):
 
 
 @pulumi.output_type
-class ClusterContinuousBackupInfo(dict):
+calass ClusterContinuousBackupInfo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -697,7 +697,7 @@ class ClusterContinuousBackupInfo(dict):
                The earliest restorable time that can be restored to. Output only field.
         :param str enabled_time: (Output)
                When ContinuousBackup was most recently enabled. Set to null if ContinuousBackup is not enabled.
-        :param Sequence['ClusterContinuousBackupInfoEncryptionInfoArgs'] encryption_infos: (Output)
+        :param Sequence['ClusterContinuousBackupInfoEncryptionInfoArrgs'] encryption_infos: (Output)
                Output only. The encryption information for the WALs and backups required for ContinuousBackup.
                Structure is documented below.
         :param Sequence[str] schedules: (Output)
@@ -751,7 +751,7 @@ class ClusterContinuousBackupInfo(dict):
 
 
 @pulumi.output_type
-class ClusterContinuousBackupInfoEncryptionInfo(dict):
+calass ClusterContinuousBackupInfoEncryptionInfo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -805,7 +805,7 @@ class ClusterContinuousBackupInfoEncryptionInfo(dict):
 
 
 @pulumi.output_type
-class ClusterEncryptionConfig(dict):
+calass ClusterEncryptionConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -841,7 +841,7 @@ class ClusterEncryptionConfig(dict):
 
 
 @pulumi.output_type
-class ClusterEncryptionInfo(dict):
+calass ClusterEncryptionInfo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -895,7 +895,7 @@ class ClusterEncryptionInfo(dict):
 
 
 @pulumi.output_type
-class ClusterInitialUser(dict):
+calass ClusterInitialUser(dict):
     def __init__(__self__, *,
                  password: str,
                  user: Optional[str] = None):
@@ -927,7 +927,7 @@ class ClusterInitialUser(dict):
 
 
 @pulumi.output_type
-class ClusterMigrationSource(dict):
+calass ClusterMigrationSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -991,7 +991,7 @@ class ClusterMigrationSource(dict):
 
 
 @pulumi.output_type
-class ClusterNetworkConfig(dict):
+calass ClusterNetworkConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1043,7 +1043,7 @@ class ClusterNetworkConfig(dict):
 
 
 @pulumi.output_type
-class ClusterRestoreBackupSource(dict):
+calass ClusterRestoreBackupSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1078,7 +1078,7 @@ class ClusterRestoreBackupSource(dict):
 
 
 @pulumi.output_type
-class ClusterRestoreContinuousBackupSource(dict):
+calass ClusterRestoreContinuousBackupSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1124,7 +1124,7 @@ class ClusterRestoreContinuousBackupSource(dict):
 
 
 @pulumi.output_type
-class InstanceMachineConfig(dict):
+calass InstanceMachineConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1160,7 +1160,7 @@ class InstanceMachineConfig(dict):
 
 
 @pulumi.output_type
-class InstanceQueryInsightsConfig(dict):
+calass InstanceQueryInsightsConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1238,7 +1238,7 @@ class InstanceQueryInsightsConfig(dict):
 
 
 @pulumi.output_type
-class InstanceReadPoolConfig(dict):
+calass InstanceReadPoolConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1274,7 +1274,7 @@ class InstanceReadPoolConfig(dict):
 
 
 @pulumi.output_type
-class GetLocationsLocationResult(dict):
+calass GetLocationsLocationResult(dict):
     def __init__(__self__, *,
                  display_name: str,
                  labels: Mapping[str, str],
@@ -1336,7 +1336,7 @@ class GetLocationsLocationResult(dict):
 
 
 @pulumi.output_type
-class GetSupportedDatabaseFlagsSupportedDatabaseFlagResult(dict):
+calass GetSupportedDatabaseFlagsSupportedDatabaseFlagResult(dict):
     def __init__(__self__, *,
                  accepts_multiple_values: bool,
                  flag_name: str,
@@ -1349,10 +1349,10 @@ class GetSupportedDatabaseFlagsSupportedDatabaseFlagResult(dict):
         """
         :param bool accepts_multiple_values: Whether the database flag accepts multiple values. If true, a comma-separated list of stringified values may be specified.
         :param str flag_name: The name of the database flag, e.g. "max_allowed_packets". The is a possibly key for the Instance.database_flags map field.
-        :param 'GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsArgs' integer_restrictions: Restriction on `INTEGER` type value. Specifies the minimum value and the maximum value that can be specified, if applicable.
+        :param 'GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsArrgs' integer_restrictions: Restriction on `INTEGER` type value. Specifies the minimum value and the maximum value that can be specified, if applicable.
         :param str name: The name of the flag resource, following Google Cloud conventions, e.g.: * projects/{project}/locations/{location}/flags/{flag} This field currently has no semantic meaning.
         :param bool requires_db_restart: Whether setting or updating this flag on an Instance requires a database restart. If a flag that requires database restart is set, the backend will automatically restart the database (making sure to satisfy any availability SLO's).
-        :param 'GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsArgs' string_restrictions: Restriction on `STRING` type value. The list of allowed values, if bounded. This field will be empty if there is a unbounded number of allowed values.
+        :param 'GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsArrgs' string_restrictions: Restriction on `STRING` type value. The list of allowed values, if bounded. This field will be empty if there is a unbounded number of allowed values.
         :param Sequence[str] supported_db_versions: Major database engine versions for which this flag is supported. The supported values are `POSTGRES_14` and `DATABASE_VERSION_UNSPECIFIED`.
         :param str value_type: ValueType describes the semantic type of the value that the flag accepts. Regardless of the ValueType, the Instance.database_flags field accepts the stringified version of the value, i.e. "20" or "3.14". The supported values are `VALUE_TYPE_UNSPECIFIED`, `STRING`, `INTEGER`, `FLOAT` and `NONE`.
         """
@@ -1431,7 +1431,7 @@ class GetSupportedDatabaseFlagsSupportedDatabaseFlagResult(dict):
 
 
 @pulumi.output_type
-class GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsResult(dict):
+calass GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsResult(dict):
     def __init__(__self__, *,
                  max_value: str,
                  min_value: str):
@@ -1450,7 +1450,7 @@ class GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsResult(di
 
 
 @pulumi.output_type
-class GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsResult(dict):
+calass GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsResult(dict):
     def __init__(__self__, *,
                  allowed_values: Sequence[str]):
         pulumi.set(__self__, "allowed_values", allowed_values)

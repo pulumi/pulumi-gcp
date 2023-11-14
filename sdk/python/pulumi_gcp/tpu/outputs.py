@@ -15,7 +15,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class NodeNetworkEndpoint(dict):
+calass NodeNetworkEndpoint(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -67,7 +67,7 @@ class NodeNetworkEndpoint(dict):
 
 
 @pulumi.output_type
-class NodeSchedulingConfig(dict):
+calass NodeSchedulingConfig(dict):
     def __init__(__self__, *,
                  preemptible: bool):
         """

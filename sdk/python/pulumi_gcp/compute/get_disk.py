@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetDiskResult:
+calass GetDiskResult:
     """
     A collection of values returned by getDisk.
     """
@@ -374,7 +374,7 @@ class GetDiskResult:
         return pulumi.get(self, "zone")
 
 
-class AwaitableGetDiskResult(GetDiskResult):
+calass AwaitableGetDiskResult(GetDiskResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
@@ -435,7 +435,7 @@ def get_disk(name: Optional[str] = None,
     persistent_boot_disk = gcp.compute.get_disk(name="persistent-boot-disk",
         project="example")
     # ...
-    default = gcp.compute.Instance("default", boot_disk=gcp.compute.InstanceBootDiskArgs(
+    default = gcp.compute.Instance("default", boot_disk=gcp.compute.InstanceBootDiskArrgs(
         source=persistent_boot_disk.self_link,
         auto_delete=False,
     ))
@@ -513,7 +513,7 @@ def get_disk_output(name: Optional[pulumi.Input[str]] = None,
     persistent_boot_disk = gcp.compute.get_disk(name="persistent-boot-disk",
         project="example")
     # ...
-    default = gcp.compute.Instance("default", boot_disk=gcp.compute.InstanceBootDiskArgs(
+    default = gcp.compute.Instance("default", boot_disk=gcp.compute.InstanceBootDiskArrgs(
         source=persistent_boot_disk.self_link,
         auto_delete=False,
     ))

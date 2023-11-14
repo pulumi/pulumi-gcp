@@ -11,14 +11,14 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['BackupPlanIamBindingArgs', 'BackupPlanIamBinding']
+__all__ = ['BackupPlanIamBindingArrgs', 'BackupPlanIamBinding']
 
 @pulumi.input_type
-class BackupPlanIamBindingArgs:
+calass BackupPlanIamBindingArrgs:
     def __init__(__self__, *,
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['BackupPlanIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['BackupPlanIamBindingConditionArrgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -81,11 +81,11 @@ class BackupPlanIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['BackupPlanIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['BackupPlanIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['BackupPlanIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['BackupPlanIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -140,9 +140,9 @@ class BackupPlanIamBindingArgs:
 
 
 @pulumi.input_type
-class _BackupPlanIamBindingState:
+calass _BackupPlanIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['BackupPlanIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['BackupPlanIamBindingConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -190,11 +190,11 @@ class _BackupPlanIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['BackupPlanIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['BackupPlanIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['BackupPlanIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['BackupPlanIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -283,12 +283,12 @@ class _BackupPlanIamBindingState:
         pulumi.set(self, "role", value)
 
 
-class BackupPlanIamBinding(pulumi.CustomResource):
+calass BackupPlanIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['BackupPlanIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['BackupPlanIamBindingConditionArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -316,7 +316,7 @@ class BackupPlanIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -403,7 +403,7 @@ class BackupPlanIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: BackupPlanIamBindingArgs,
+                 args: BackupPlanIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Backup for GKE BackupPlan. Each of these resources serves a different use case:
@@ -426,7 +426,7 @@ class BackupPlanIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -487,12 +487,12 @@ class BackupPlanIamBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param BackupPlanIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param BackupPlanIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(BackupPlanIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(BackupPlanIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -501,7 +501,7 @@ class BackupPlanIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['BackupPlanIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['BackupPlanIamBindingConditionArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -514,7 +514,7 @@ class BackupPlanIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = BackupPlanIamBindingArgs.__new__(BackupPlanIamBindingArgs)
+            __props__ = BackupPlanIamBindingArrgs.__new__(BackupPlanIamBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             __props__.__dict__["location"] = location
@@ -537,7 +537,7 @@ class BackupPlanIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['BackupPlanIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['BackupPlanIamBindingConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

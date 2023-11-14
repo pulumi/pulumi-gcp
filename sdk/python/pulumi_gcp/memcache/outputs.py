@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class InstanceMaintenancePolicy(dict):
+calass InstanceMaintenancePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -49,7 +49,7 @@ class InstanceMaintenancePolicy(dict):
                  description: Optional[str] = None,
                  update_time: Optional[str] = None):
         """
-        :param Sequence['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs'] weekly_maintenance_windows: Required. Maintenance window that is applied to resources covered by this policy.
+        :param Sequence['InstanceMaintenancePolicyWeeklyMaintenanceWindowArrgs'] weekly_maintenance_windows: Required. Maintenance window that is applied to resources covered by this policy.
                Minimum 1. For the current version, the maximum number of weekly_maintenance_windows
                is expected to be one.
                Structure is documented below.
@@ -118,7 +118,7 @@ class InstanceMaintenancePolicy(dict):
 
 
 @pulumi.output_type
-class InstanceMaintenancePolicyWeeklyMaintenanceWindow(dict):
+calass InstanceMaintenancePolicyWeeklyMaintenanceWindow(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -154,7 +154,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindow(dict):
         :param str duration: Required. The length of the maintenance window, ranging from 3 hours to 8 hours.
                A duration in seconds with up to nine fractional digits,
                terminated by 's'. Example: "3.5s".
-        :param 'InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs' start_time: Required. Start time of the window in UTC time.
+        :param 'InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrgs' start_time: Required. Start time of the window in UTC time.
                Structure is documented below.
         """
         pulumi.set(__self__, "day", day)
@@ -199,7 +199,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindow(dict):
 
 
 @pulumi.output_type
-class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime(dict):
+calass InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime(dict):
     def __init__(__self__, *,
                  hours: Optional[int] = None,
                  minutes: Optional[int] = None,
@@ -258,7 +258,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime(dict):
 
 
 @pulumi.output_type
-class InstanceMaintenanceSchedule(dict):
+calass InstanceMaintenanceSchedule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -338,7 +338,7 @@ class InstanceMaintenanceSchedule(dict):
 
 
 @pulumi.output_type
-class InstanceMemcacheNode(dict):
+calass InstanceMemcacheNode(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -432,7 +432,7 @@ class InstanceMemcacheNode(dict):
 
 
 @pulumi.output_type
-class InstanceMemcacheParameters(dict):
+calass InstanceMemcacheParameters(dict):
     def __init__(__self__, *,
                  id: Optional[str] = None,
                  params: Optional[Mapping[str, str]] = None):
@@ -465,7 +465,7 @@ class InstanceMemcacheParameters(dict):
 
 
 @pulumi.output_type
-class InstanceNodeConfig(dict):
+calass InstanceNodeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

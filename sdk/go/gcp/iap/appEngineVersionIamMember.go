@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Identity-Aware Proxy AppEngineVersion. Each of these resources serves a different use case:
@@ -527,12 +526,6 @@ func (i *AppEngineVersionIamMember) ToAppEngineVersionIamMemberOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineVersionIamMemberOutput)
 }
 
-func (i *AppEngineVersionIamMember) ToOutput(ctx context.Context) pulumix.Output[*AppEngineVersionIamMember] {
-	return pulumix.Output[*AppEngineVersionIamMember]{
-		OutputState: i.ToAppEngineVersionIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AppEngineVersionIamMemberArrayInput is an input type that accepts AppEngineVersionIamMemberArray and AppEngineVersionIamMemberArrayOutput values.
 // You can construct a concrete instance of `AppEngineVersionIamMemberArrayInput` via:
 //
@@ -556,12 +549,6 @@ func (i AppEngineVersionIamMemberArray) ToAppEngineVersionIamMemberArrayOutput()
 
 func (i AppEngineVersionIamMemberArray) ToAppEngineVersionIamMemberArrayOutputWithContext(ctx context.Context) AppEngineVersionIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineVersionIamMemberArrayOutput)
-}
-
-func (i AppEngineVersionIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*AppEngineVersionIamMember] {
-	return pulumix.Output[[]*AppEngineVersionIamMember]{
-		OutputState: i.ToAppEngineVersionIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AppEngineVersionIamMemberMapInput is an input type that accepts AppEngineVersionIamMemberMap and AppEngineVersionIamMemberMapOutput values.
@@ -589,12 +576,6 @@ func (i AppEngineVersionIamMemberMap) ToAppEngineVersionIamMemberMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineVersionIamMemberMapOutput)
 }
 
-func (i AppEngineVersionIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AppEngineVersionIamMember] {
-	return pulumix.Output[map[string]*AppEngineVersionIamMember]{
-		OutputState: i.ToAppEngineVersionIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AppEngineVersionIamMemberOutput struct{ *pulumi.OutputState }
 
 func (AppEngineVersionIamMemberOutput) ElementType() reflect.Type {
@@ -607,12 +588,6 @@ func (o AppEngineVersionIamMemberOutput) ToAppEngineVersionIamMemberOutput() App
 
 func (o AppEngineVersionIamMemberOutput) ToAppEngineVersionIamMemberOutputWithContext(ctx context.Context) AppEngineVersionIamMemberOutput {
 	return o
-}
-
-func (o AppEngineVersionIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*AppEngineVersionIamMember] {
-	return pulumix.Output[*AppEngineVersionIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
@@ -684,12 +659,6 @@ func (o AppEngineVersionIamMemberArrayOutput) ToAppEngineVersionIamMemberArrayOu
 	return o
 }
 
-func (o AppEngineVersionIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AppEngineVersionIamMember] {
-	return pulumix.Output[[]*AppEngineVersionIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AppEngineVersionIamMemberArrayOutput) Index(i pulumi.IntInput) AppEngineVersionIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AppEngineVersionIamMember {
 		return vs[0].([]*AppEngineVersionIamMember)[vs[1].(int)]
@@ -708,12 +677,6 @@ func (o AppEngineVersionIamMemberMapOutput) ToAppEngineVersionIamMemberMapOutput
 
 func (o AppEngineVersionIamMemberMapOutput) ToAppEngineVersionIamMemberMapOutputWithContext(ctx context.Context) AppEngineVersionIamMemberMapOutput {
 	return o
-}
-
-func (o AppEngineVersionIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AppEngineVersionIamMember] {
-	return pulumix.Output[map[string]*AppEngineVersionIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppEngineVersionIamMemberMapOutput) MapIndex(k pulumi.StringInput) AppEngineVersionIamMemberOutput {

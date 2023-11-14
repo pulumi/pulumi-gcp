@@ -10,48 +10,48 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'AddonsConfigAddonsConfigArgs',
-    'AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs',
-    'AddonsConfigAddonsConfigApiSecurityConfigArgs',
-    'AddonsConfigAddonsConfigConnectorsPlatformConfigArgs',
-    'AddonsConfigAddonsConfigIntegrationConfigArgs',
-    'AddonsConfigAddonsConfigMonetizationConfigArgs',
-    'EnvironmentIamBindingConditionArgs',
-    'EnvironmentIamMemberConditionArgs',
-    'EnvironmentNodeConfigArgs',
-    'KeystoresAliasesKeyCertFileCertsInfoArgs',
-    'KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs',
-    'KeystoresAliasesPkcs12CertsInfoArgs',
-    'KeystoresAliasesPkcs12CertsInfoCertInfoArgs',
-    'KeystoresAliasesSelfSignedCertCertsInfoArgs',
-    'KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs',
-    'KeystoresAliasesSelfSignedCertSubjectArgs',
-    'KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs',
-    'OrganizationPropertiesArgs',
-    'OrganizationPropertiesPropertyArgs',
-    'SharedflowMetaDataArgs',
-    'TargetServerSSlInfoArgs',
-    'TargetServerSSlInfoCommonNameArgs',
+    'AddonsConfigAddonsConfigArrgs',
+    'AddonsConfigAddonsConfigAdvancedApiOpsConfigArrgs',
+    'AddonsConfigAddonsConfigApiSecurityConfigArrgs',
+    'AddonsConfigAddonsConfigConnectorsPlatformConfigArrgs',
+    'AddonsConfigAddonsConfigIntegrationConfigArrgs',
+    'AddonsConfigAddonsConfigMonetizationConfigArrgs',
+    'EnvironmentIamBindingConditionArrgs',
+    'EnvironmentIamMemberConditionArrgs',
+    'EnvironmentNodeConfigArrgs',
+    'KeystoresAliasesKeyCertFileCertsInfoArrgs',
+    'KeystoresAliasesKeyCertFileCertsInfoCertInfoArrgs',
+    'KeystoresAliasesPkcs12CertsInfoArrgs',
+    'KeystoresAliasesPkcs12CertsInfoCertInfoArrgs',
+    'KeystoresAliasesSelfSignedCertCertsInfoArrgs',
+    'KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrgs',
+    'KeystoresAliasesSelfSignedCertSubjectArrgs',
+    'KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArrgs',
+    'OrganizationPropertiesArrgs',
+    'OrganizationPropertiesPropertyArrgs',
+    'SharedflowMetaDataArrgs',
+    'TargetServerSSlInfoArrgs',
+    'TargetServerSSlInfoCommonNameArrgs',
 ]
 
 @pulumi.input_type
-class AddonsConfigAddonsConfigArgs:
+calass AddonsConfigAddonsConfigArrgs:
     def __init__(__self__, *,
-                 advanced_api_ops_config: Optional[pulumi.Input['AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs']] = None,
-                 api_security_config: Optional[pulumi.Input['AddonsConfigAddonsConfigApiSecurityConfigArgs']] = None,
-                 connectors_platform_config: Optional[pulumi.Input['AddonsConfigAddonsConfigConnectorsPlatformConfigArgs']] = None,
-                 integration_config: Optional[pulumi.Input['AddonsConfigAddonsConfigIntegrationConfigArgs']] = None,
-                 monetization_config: Optional[pulumi.Input['AddonsConfigAddonsConfigMonetizationConfigArgs']] = None):
+                 advanced_api_ops_config: Optional[pulumi.Input['AddonsConfigAddonsConfigAdvancedApiOpsConfigArrgs']] = None,
+                 api_security_config: Optional[pulumi.Input['AddonsConfigAddonsConfigApiSecurityConfigArrgs']] = None,
+                 connectors_platform_config: Optional[pulumi.Input['AddonsConfigAddonsConfigConnectorsPlatformConfigArrgs']] = None,
+                 integration_config: Optional[pulumi.Input['AddonsConfigAddonsConfigIntegrationConfigArrgs']] = None,
+                 monetization_config: Optional[pulumi.Input['AddonsConfigAddonsConfigMonetizationConfigArrgs']] = None):
         """
-        :param pulumi.Input['AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs'] advanced_api_ops_config: Configuration for the Monetization add-on.
+        :param pulumi.Input['AddonsConfigAddonsConfigAdvancedApiOpsConfigArrgs'] advanced_api_ops_config: Configuration for the Monetization add-on.
                Structure is documented below.
-        :param pulumi.Input['AddonsConfigAddonsConfigApiSecurityConfigArgs'] api_security_config: Configuration for the Monetization add-on.
+        :param pulumi.Input['AddonsConfigAddonsConfigApiSecurityConfigArrgs'] api_security_config: Configuration for the Monetization add-on.
                Structure is documented below.
-        :param pulumi.Input['AddonsConfigAddonsConfigConnectorsPlatformConfigArgs'] connectors_platform_config: Configuration for the Monetization add-on.
+        :param pulumi.Input['AddonsConfigAddonsConfigConnectorsPlatformConfigArrgs'] connectors_platform_config: Configuration for the Monetization add-on.
                Structure is documented below.
-        :param pulumi.Input['AddonsConfigAddonsConfigIntegrationConfigArgs'] integration_config: Configuration for the Monetization add-on.
+        :param pulumi.Input['AddonsConfigAddonsConfigIntegrationConfigArrgs'] integration_config: Configuration for the Monetization add-on.
                Structure is documented below.
-        :param pulumi.Input['AddonsConfigAddonsConfigMonetizationConfigArgs'] monetization_config: Configuration for the Monetization add-on.
+        :param pulumi.Input['AddonsConfigAddonsConfigMonetizationConfigArrgs'] monetization_config: Configuration for the Monetization add-on.
                Structure is documented below.
         """
         if advanced_api_ops_config is not None:
@@ -67,7 +67,7 @@ class AddonsConfigAddonsConfigArgs:
 
     @property
     @pulumi.getter(name="advancedApiOpsConfig")
-    def advanced_api_ops_config(self) -> Optional[pulumi.Input['AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs']]:
+    def advanced_api_ops_config(self) -> Optional[pulumi.Input['AddonsConfigAddonsConfigAdvancedApiOpsConfigArrgs']]:
         """
         Configuration for the Monetization add-on.
         Structure is documented below.
@@ -75,12 +75,12 @@ class AddonsConfigAddonsConfigArgs:
         return pulumi.get(self, "advanced_api_ops_config")
 
     @advanced_api_ops_config.setter
-    def advanced_api_ops_config(self, value: Optional[pulumi.Input['AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs']]):
+    def advanced_api_ops_config(self, value: Optional[pulumi.Input['AddonsConfigAddonsConfigAdvancedApiOpsConfigArrgs']]):
         pulumi.set(self, "advanced_api_ops_config", value)
 
     @property
     @pulumi.getter(name="apiSecurityConfig")
-    def api_security_config(self) -> Optional[pulumi.Input['AddonsConfigAddonsConfigApiSecurityConfigArgs']]:
+    def api_security_config(self) -> Optional[pulumi.Input['AddonsConfigAddonsConfigApiSecurityConfigArrgs']]:
         """
         Configuration for the Monetization add-on.
         Structure is documented below.
@@ -88,12 +88,12 @@ class AddonsConfigAddonsConfigArgs:
         return pulumi.get(self, "api_security_config")
 
     @api_security_config.setter
-    def api_security_config(self, value: Optional[pulumi.Input['AddonsConfigAddonsConfigApiSecurityConfigArgs']]):
+    def api_security_config(self, value: Optional[pulumi.Input['AddonsConfigAddonsConfigApiSecurityConfigArrgs']]):
         pulumi.set(self, "api_security_config", value)
 
     @property
     @pulumi.getter(name="connectorsPlatformConfig")
-    def connectors_platform_config(self) -> Optional[pulumi.Input['AddonsConfigAddonsConfigConnectorsPlatformConfigArgs']]:
+    def connectors_platform_config(self) -> Optional[pulumi.Input['AddonsConfigAddonsConfigConnectorsPlatformConfigArrgs']]:
         """
         Configuration for the Monetization add-on.
         Structure is documented below.
@@ -101,12 +101,12 @@ class AddonsConfigAddonsConfigArgs:
         return pulumi.get(self, "connectors_platform_config")
 
     @connectors_platform_config.setter
-    def connectors_platform_config(self, value: Optional[pulumi.Input['AddonsConfigAddonsConfigConnectorsPlatformConfigArgs']]):
+    def connectors_platform_config(self, value: Optional[pulumi.Input['AddonsConfigAddonsConfigConnectorsPlatformConfigArrgs']]):
         pulumi.set(self, "connectors_platform_config", value)
 
     @property
     @pulumi.getter(name="integrationConfig")
-    def integration_config(self) -> Optional[pulumi.Input['AddonsConfigAddonsConfigIntegrationConfigArgs']]:
+    def integration_config(self) -> Optional[pulumi.Input['AddonsConfigAddonsConfigIntegrationConfigArrgs']]:
         """
         Configuration for the Monetization add-on.
         Structure is documented below.
@@ -114,12 +114,12 @@ class AddonsConfigAddonsConfigArgs:
         return pulumi.get(self, "integration_config")
 
     @integration_config.setter
-    def integration_config(self, value: Optional[pulumi.Input['AddonsConfigAddonsConfigIntegrationConfigArgs']]):
+    def integration_config(self, value: Optional[pulumi.Input['AddonsConfigAddonsConfigIntegrationConfigArrgs']]):
         pulumi.set(self, "integration_config", value)
 
     @property
     @pulumi.getter(name="monetizationConfig")
-    def monetization_config(self) -> Optional[pulumi.Input['AddonsConfigAddonsConfigMonetizationConfigArgs']]:
+    def monetization_config(self) -> Optional[pulumi.Input['AddonsConfigAddonsConfigMonetizationConfigArrgs']]:
         """
         Configuration for the Monetization add-on.
         Structure is documented below.
@@ -127,12 +127,12 @@ class AddonsConfigAddonsConfigArgs:
         return pulumi.get(self, "monetization_config")
 
     @monetization_config.setter
-    def monetization_config(self, value: Optional[pulumi.Input['AddonsConfigAddonsConfigMonetizationConfigArgs']]):
+    def monetization_config(self, value: Optional[pulumi.Input['AddonsConfigAddonsConfigMonetizationConfigArrgs']]):
         pulumi.set(self, "monetization_config", value)
 
 
 @pulumi.input_type
-class AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs:
+calass AddonsConfigAddonsConfigAdvancedApiOpsConfigArrgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
@@ -155,7 +155,7 @@ class AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs:
 
 
 @pulumi.input_type
-class AddonsConfigAddonsConfigApiSecurityConfigArgs:
+calass AddonsConfigAddonsConfigApiSecurityConfigArrgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  expires_at: Optional[pulumi.Input[str]] = None):
@@ -196,7 +196,7 @@ class AddonsConfigAddonsConfigApiSecurityConfigArgs:
 
 
 @pulumi.input_type
-class AddonsConfigAddonsConfigConnectorsPlatformConfigArgs:
+calass AddonsConfigAddonsConfigConnectorsPlatformConfigArrgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  expires_at: Optional[pulumi.Input[str]] = None):
@@ -237,7 +237,7 @@ class AddonsConfigAddonsConfigConnectorsPlatformConfigArgs:
 
 
 @pulumi.input_type
-class AddonsConfigAddonsConfigIntegrationConfigArgs:
+calass AddonsConfigAddonsConfigIntegrationConfigArrgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
@@ -260,7 +260,7 @@ class AddonsConfigAddonsConfigIntegrationConfigArgs:
 
 
 @pulumi.input_type
-class AddonsConfigAddonsConfigMonetizationConfigArgs:
+calass AddonsConfigAddonsConfigMonetizationConfigArrgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
@@ -283,7 +283,7 @@ class AddonsConfigAddonsConfigMonetizationConfigArgs:
 
 
 @pulumi.input_type
-class EnvironmentIamBindingConditionArgs:
+calass EnvironmentIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -322,7 +322,7 @@ class EnvironmentIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class EnvironmentIamMemberConditionArgs:
+calass EnvironmentIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -361,7 +361,7 @@ class EnvironmentIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class EnvironmentNodeConfigArgs:
+calass EnvironmentNodeConfigArrgs:
     def __init__(__self__, *,
                  current_aggregate_node_count: Optional[pulumi.Input[str]] = None,
                  max_node_count: Optional[pulumi.Input[str]] = None,
@@ -428,11 +428,11 @@ class EnvironmentNodeConfigArgs:
 
 
 @pulumi.input_type
-class KeystoresAliasesKeyCertFileCertsInfoArgs:
+calass KeystoresAliasesKeyCertFileCertsInfoArrgs:
     def __init__(__self__, *,
-                 cert_infos: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs']]]] = None):
+                 cert_infos: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoCertInfoArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs']]] cert_infos: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoCertInfoArrgs']]] cert_infos: (Output)
                List of all properties in the object.
                Structure is documented below.
         """
@@ -441,7 +441,7 @@ class KeystoresAliasesKeyCertFileCertsInfoArgs:
 
     @property
     @pulumi.getter(name="certInfos")
-    def cert_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs']]]]:
+    def cert_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoCertInfoArrgs']]]]:
         """
         (Output)
         List of all properties in the object.
@@ -450,12 +450,12 @@ class KeystoresAliasesKeyCertFileCertsInfoArgs:
         return pulumi.get(self, "cert_infos")
 
     @cert_infos.setter
-    def cert_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs']]]]):
+    def cert_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoCertInfoArrgs']]]]):
         pulumi.set(self, "cert_infos", value)
 
 
 @pulumi.input_type
-class KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs:
+calass KeystoresAliasesKeyCertFileCertsInfoCertInfoArrgs:
     def __init__(__self__, *,
                  basic_constraints: Optional[pulumi.Input[str]] = None,
                  expiry_date: Optional[pulumi.Input[str]] = None,
@@ -662,11 +662,11 @@ class KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs:
 
 
 @pulumi.input_type
-class KeystoresAliasesPkcs12CertsInfoArgs:
+calass KeystoresAliasesPkcs12CertsInfoArrgs:
     def __init__(__self__, *,
-                 cert_infos: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoCertInfoArgs']]]] = None):
+                 cert_infos: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoCertInfoArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoCertInfoArgs']]] cert_infos: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoCertInfoArrgs']]] cert_infos: (Output)
                List of all properties in the object.
                Structure is documented below.
         """
@@ -675,7 +675,7 @@ class KeystoresAliasesPkcs12CertsInfoArgs:
 
     @property
     @pulumi.getter(name="certInfos")
-    def cert_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoCertInfoArgs']]]]:
+    def cert_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoCertInfoArrgs']]]]:
         """
         (Output)
         List of all properties in the object.
@@ -684,12 +684,12 @@ class KeystoresAliasesPkcs12CertsInfoArgs:
         return pulumi.get(self, "cert_infos")
 
     @cert_infos.setter
-    def cert_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoCertInfoArgs']]]]):
+    def cert_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoCertInfoArrgs']]]]):
         pulumi.set(self, "cert_infos", value)
 
 
 @pulumi.input_type
-class KeystoresAliasesPkcs12CertsInfoCertInfoArgs:
+calass KeystoresAliasesPkcs12CertsInfoCertInfoArrgs:
     def __init__(__self__, *,
                  basic_constraints: Optional[pulumi.Input[str]] = None,
                  expiry_date: Optional[pulumi.Input[str]] = None,
@@ -896,11 +896,11 @@ class KeystoresAliasesPkcs12CertsInfoCertInfoArgs:
 
 
 @pulumi.input_type
-class KeystoresAliasesSelfSignedCertCertsInfoArgs:
+calass KeystoresAliasesSelfSignedCertCertsInfoArrgs:
     def __init__(__self__, *,
-                 cert_infos: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs']]]] = None):
+                 cert_infos: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs']]] cert_infos: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrgs']]] cert_infos: (Output)
                List of all properties in the object.
                Structure is documented below.
         """
@@ -909,7 +909,7 @@ class KeystoresAliasesSelfSignedCertCertsInfoArgs:
 
     @property
     @pulumi.getter(name="certInfos")
-    def cert_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs']]]]:
+    def cert_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrgs']]]]:
         """
         (Output)
         List of all properties in the object.
@@ -918,12 +918,12 @@ class KeystoresAliasesSelfSignedCertCertsInfoArgs:
         return pulumi.get(self, "cert_infos")
 
     @cert_infos.setter
-    def cert_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs']]]]):
+    def cert_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrgs']]]]):
         pulumi.set(self, "cert_infos", value)
 
 
 @pulumi.input_type
-class KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs:
+calass KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrgs:
     def __init__(__self__, *,
                  basic_constraints: Optional[pulumi.Input[str]] = None,
                  expiry_date: Optional[pulumi.Input[str]] = None,
@@ -1130,7 +1130,7 @@ class KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs:
 
 
 @pulumi.input_type
-class KeystoresAliasesSelfSignedCertSubjectArgs:
+calass KeystoresAliasesSelfSignedCertSubjectArrgs:
     def __init__(__self__, *,
                  common_name: Optional[pulumi.Input[str]] = None,
                  country_code: Optional[pulumi.Input[str]] = None,
@@ -1253,7 +1253,7 @@ class KeystoresAliasesSelfSignedCertSubjectArgs:
 
 
 @pulumi.input_type
-class KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs:
+calass KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArrgs:
     def __init__(__self__, *,
                  subject_alternative_name: Optional[pulumi.Input[str]] = None):
         """
@@ -1276,11 +1276,11 @@ class KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs:
 
 
 @pulumi.input_type
-class OrganizationPropertiesArgs:
+calass OrganizationPropertiesArrgs:
     def __init__(__self__, *,
-                 properties: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationPropertiesPropertyArgs']]]] = None):
+                 properties: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationPropertiesPropertyArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['OrganizationPropertiesPropertyArgs']]] properties: List of all properties in the object.
+        :param pulumi.Input[Sequence[pulumi.Input['OrganizationPropertiesPropertyArrgs']]] properties: List of all properties in the object.
                Structure is documented below.
         """
         if properties is not None:
@@ -1288,7 +1288,7 @@ class OrganizationPropertiesArgs:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationPropertiesPropertyArgs']]]]:
+    def properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationPropertiesPropertyArrgs']]]]:
         """
         List of all properties in the object.
         Structure is documented below.
@@ -1296,12 +1296,12 @@ class OrganizationPropertiesArgs:
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationPropertiesPropertyArgs']]]]):
+    def properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationPropertiesPropertyArrgs']]]]):
         pulumi.set(self, "properties", value)
 
 
 @pulumi.input_type
-class OrganizationPropertiesPropertyArgs:
+calass OrganizationPropertiesPropertyArrgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
@@ -1340,7 +1340,7 @@ class OrganizationPropertiesPropertyArgs:
 
 
 @pulumi.input_type
-class SharedflowMetaDataArgs:
+calass SharedflowMetaDataArrgs:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[str]] = None,
                  last_modified_at: Optional[pulumi.Input[str]] = None,
@@ -1395,12 +1395,12 @@ class SharedflowMetaDataArgs:
 
 
 @pulumi.input_type
-class TargetServerSSlInfoArgs:
+calass TargetServerSSlInfoArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
                  ciphers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_auth_enabled: Optional[pulumi.Input[bool]] = None,
-                 common_name: Optional[pulumi.Input['TargetServerSSlInfoCommonNameArgs']] = None,
+                 common_name: Optional[pulumi.Input['TargetServerSSlInfoCommonNameArrgs']] = None,
                  ignore_validation_errors: Optional[pulumi.Input[bool]] = None,
                  key_alias: Optional[pulumi.Input[str]] = None,
                  key_store: Optional[pulumi.Input[str]] = None,
@@ -1410,7 +1410,7 @@ class TargetServerSSlInfoArgs:
         :param pulumi.Input[bool] enabled: Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ciphers: The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
         :param pulumi.Input[bool] client_auth_enabled: Enables two-way TLS.
-        :param pulumi.Input['TargetServerSSlInfoCommonNameArgs'] common_name: The TLS Common Name of the certificate.
+        :param pulumi.Input['TargetServerSSlInfoCommonNameArrgs'] common_name: The TLS Common Name of the certificate.
                Structure is documented below.
         :param pulumi.Input[bool] ignore_validation_errors: If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
         :param pulumi.Input[str] key_alias: Required if clientAuthEnabled is true. The resource ID for the alias containing the private key and cert.
@@ -1474,7 +1474,7 @@ class TargetServerSSlInfoArgs:
 
     @property
     @pulumi.getter(name="commonName")
-    def common_name(self) -> Optional[pulumi.Input['TargetServerSSlInfoCommonNameArgs']]:
+    def common_name(self) -> Optional[pulumi.Input['TargetServerSSlInfoCommonNameArrgs']]:
         """
         The TLS Common Name of the certificate.
         Structure is documented below.
@@ -1482,7 +1482,7 @@ class TargetServerSSlInfoArgs:
         return pulumi.get(self, "common_name")
 
     @common_name.setter
-    def common_name(self, value: Optional[pulumi.Input['TargetServerSSlInfoCommonNameArgs']]):
+    def common_name(self, value: Optional[pulumi.Input['TargetServerSSlInfoCommonNameArrgs']]):
         pulumi.set(self, "common_name", value)
 
     @property
@@ -1547,7 +1547,7 @@ class TargetServerSSlInfoArgs:
 
 
 @pulumi.input_type
-class TargetServerSSlInfoCommonNameArgs:
+calass TargetServerSSlInfoCommonNameArrgs:
     def __init__(__self__, *,
                  value: Optional[pulumi.Input[str]] = None,
                  wildcard_match: Optional[pulumi.Input[bool]] = None):

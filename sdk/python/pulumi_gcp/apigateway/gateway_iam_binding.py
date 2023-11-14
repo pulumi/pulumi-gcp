@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['GatewayIamBindingArgs', 'GatewayIamBinding']
+__all__ = ['GatewayIamBindingArrgs', 'GatewayIamBinding']
 
 @pulumi.input_type
-class GatewayIamBindingArgs:
+calass GatewayIamBindingArrgs:
     def __init__(__self__, *,
                  gateway: pulumi.Input[str],
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['GatewayIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['GatewayIamBindingConditionArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
         """
@@ -90,11 +90,11 @@ class GatewayIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['GatewayIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['GatewayIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['GatewayIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['GatewayIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -139,9 +139,9 @@ class GatewayIamBindingArgs:
 
 
 @pulumi.input_type
-class _GatewayIamBindingState:
+calass _GatewayIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['GatewayIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['GatewayIamBindingConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  gateway: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -190,11 +190,11 @@ class _GatewayIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['GatewayIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['GatewayIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['GatewayIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['GatewayIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -282,12 +282,12 @@ class _GatewayIamBindingState:
         pulumi.set(self, "role", value)
 
 
-class GatewayIamBinding(pulumi.CustomResource):
+calass GatewayIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['GatewayIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['GatewayIamBindingConditionArrgs']]] = None,
                  gateway: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -315,7 +315,7 @@ class GatewayIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/apigateway.viewer",
             members=["user:jane@example.com"],
         )])
@@ -409,7 +409,7 @@ class GatewayIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: GatewayIamBindingArgs,
+                 args: GatewayIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for API Gateway Gateway. Each of these resources serves a different use case:
@@ -432,7 +432,7 @@ class GatewayIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/apigateway.viewer",
             members=["user:jane@example.com"],
         )])
@@ -499,12 +499,12 @@ class GatewayIamBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param GatewayIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param GatewayIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(GatewayIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(GatewayIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -513,7 +513,7 @@ class GatewayIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['GatewayIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['GatewayIamBindingConditionArrgs']]] = None,
                  gateway: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -526,7 +526,7 @@ class GatewayIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = GatewayIamBindingArgs.__new__(GatewayIamBindingArgs)
+            __props__ = GatewayIamBindingArrgs.__new__(GatewayIamBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if gateway is None and not opts.urn:
@@ -551,7 +551,7 @@ class GatewayIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['GatewayIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['GatewayIamBindingConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             gateway: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

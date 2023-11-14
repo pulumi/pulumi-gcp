@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetObjectSignedUrlResult:
+calass GetObjectSignedUrlResult:
     """
     A collection of values returned by getObjectSignedUrl.
     """
@@ -110,7 +110,7 @@ class GetObjectSignedUrlResult:
         return pulumi.get(self, "signed_url")
 
 
-class AwaitableGetObjectSignedUrlResult(GetObjectSignedUrlResult):
+calass AwaitableGetObjectSignedUrlResult(GetObjectSignedUrlResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

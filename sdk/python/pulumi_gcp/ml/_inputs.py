@@ -10,11 +10,11 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'EngineModelDefaultVersionArgs',
+    'EngineModelDefaultVersionArrgs',
 ]
 
 @pulumi.input_type
-class EngineModelDefaultVersionArgs:
+calass EngineModelDefaultVersionArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
         """

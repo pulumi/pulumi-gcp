@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Health Checks determine whether instances are responsive and able to do work.
@@ -836,12 +835,6 @@ func (i *RegionHealthCheck) ToRegionHealthCheckOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(RegionHealthCheckOutput)
 }
 
-func (i *RegionHealthCheck) ToOutput(ctx context.Context) pulumix.Output[*RegionHealthCheck] {
-	return pulumix.Output[*RegionHealthCheck]{
-		OutputState: i.ToRegionHealthCheckOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RegionHealthCheckArrayInput is an input type that accepts RegionHealthCheckArray and RegionHealthCheckArrayOutput values.
 // You can construct a concrete instance of `RegionHealthCheckArrayInput` via:
 //
@@ -865,12 +858,6 @@ func (i RegionHealthCheckArray) ToRegionHealthCheckArrayOutput() RegionHealthChe
 
 func (i RegionHealthCheckArray) ToRegionHealthCheckArrayOutputWithContext(ctx context.Context) RegionHealthCheckArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionHealthCheckArrayOutput)
-}
-
-func (i RegionHealthCheckArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionHealthCheck] {
-	return pulumix.Output[[]*RegionHealthCheck]{
-		OutputState: i.ToRegionHealthCheckArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RegionHealthCheckMapInput is an input type that accepts RegionHealthCheckMap and RegionHealthCheckMapOutput values.
@@ -898,12 +885,6 @@ func (i RegionHealthCheckMap) ToRegionHealthCheckMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(RegionHealthCheckMapOutput)
 }
 
-func (i RegionHealthCheckMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionHealthCheck] {
-	return pulumix.Output[map[string]*RegionHealthCheck]{
-		OutputState: i.ToRegionHealthCheckMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegionHealthCheckOutput struct{ *pulumi.OutputState }
 
 func (RegionHealthCheckOutput) ElementType() reflect.Type {
@@ -916,12 +897,6 @@ func (o RegionHealthCheckOutput) ToRegionHealthCheckOutput() RegionHealthCheckOu
 
 func (o RegionHealthCheckOutput) ToRegionHealthCheckOutputWithContext(ctx context.Context) RegionHealthCheckOutput {
 	return o
-}
-
-func (o RegionHealthCheckOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionHealthCheck] {
-	return pulumix.Output[*RegionHealthCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 // How often (in seconds) to send a health check. The default value is 5
@@ -1051,12 +1026,6 @@ func (o RegionHealthCheckArrayOutput) ToRegionHealthCheckArrayOutputWithContext(
 	return o
 }
 
-func (o RegionHealthCheckArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionHealthCheck] {
-	return pulumix.Output[[]*RegionHealthCheck]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegionHealthCheckArrayOutput) Index(i pulumi.IntInput) RegionHealthCheckOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionHealthCheck {
 		return vs[0].([]*RegionHealthCheck)[vs[1].(int)]
@@ -1075,12 +1044,6 @@ func (o RegionHealthCheckMapOutput) ToRegionHealthCheckMapOutput() RegionHealthC
 
 func (o RegionHealthCheckMapOutput) ToRegionHealthCheckMapOutputWithContext(ctx context.Context) RegionHealthCheckMapOutput {
 	return o
-}
-
-func (o RegionHealthCheckMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionHealthCheck] {
-	return pulumix.Output[map[string]*RegionHealthCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegionHealthCheckMapOutput) MapIndex(k pulumi.StringInput) RegionHealthCheckOutput {

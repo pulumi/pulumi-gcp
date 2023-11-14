@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Denotes one policy tag in a taxonomy.
@@ -306,12 +305,6 @@ func (i *PolicyTag) ToPolicyTagOutputWithContext(ctx context.Context) PolicyTagO
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagOutput)
 }
 
-func (i *PolicyTag) ToOutput(ctx context.Context) pulumix.Output[*PolicyTag] {
-	return pulumix.Output[*PolicyTag]{
-		OutputState: i.ToPolicyTagOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PolicyTagArrayInput is an input type that accepts PolicyTagArray and PolicyTagArrayOutput values.
 // You can construct a concrete instance of `PolicyTagArrayInput` via:
 //
@@ -335,12 +328,6 @@ func (i PolicyTagArray) ToPolicyTagArrayOutput() PolicyTagArrayOutput {
 
 func (i PolicyTagArray) ToPolicyTagArrayOutputWithContext(ctx context.Context) PolicyTagArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagArrayOutput)
-}
-
-func (i PolicyTagArray) ToOutput(ctx context.Context) pulumix.Output[[]*PolicyTag] {
-	return pulumix.Output[[]*PolicyTag]{
-		OutputState: i.ToPolicyTagArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PolicyTagMapInput is an input type that accepts PolicyTagMap and PolicyTagMapOutput values.
@@ -368,12 +355,6 @@ func (i PolicyTagMap) ToPolicyTagMapOutputWithContext(ctx context.Context) Polic
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagMapOutput)
 }
 
-func (i PolicyTagMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PolicyTag] {
-	return pulumix.Output[map[string]*PolicyTag]{
-		OutputState: i.ToPolicyTagMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PolicyTagOutput struct{ *pulumi.OutputState }
 
 func (PolicyTagOutput) ElementType() reflect.Type {
@@ -386,12 +367,6 @@ func (o PolicyTagOutput) ToPolicyTagOutput() PolicyTagOutput {
 
 func (o PolicyTagOutput) ToPolicyTagOutputWithContext(ctx context.Context) PolicyTagOutput {
 	return o
-}
-
-func (o PolicyTagOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyTag] {
-	return pulumix.Output[*PolicyTag]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource names of child policy tags of this policy tag.
@@ -448,12 +423,6 @@ func (o PolicyTagArrayOutput) ToPolicyTagArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o PolicyTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PolicyTag] {
-	return pulumix.Output[[]*PolicyTag]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PolicyTagArrayOutput) Index(i pulumi.IntInput) PolicyTagOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PolicyTag {
 		return vs[0].([]*PolicyTag)[vs[1].(int)]
@@ -472,12 +441,6 @@ func (o PolicyTagMapOutput) ToPolicyTagMapOutput() PolicyTagMapOutput {
 
 func (o PolicyTagMapOutput) ToPolicyTagMapOutputWithContext(ctx context.Context) PolicyTagMapOutput {
 	return o
-}
-
-func (o PolicyTagMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PolicyTag] {
-	return pulumix.Output[map[string]*PolicyTag]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyTagMapOutput) MapIndex(k pulumi.StringInput) PolicyTagOutput {

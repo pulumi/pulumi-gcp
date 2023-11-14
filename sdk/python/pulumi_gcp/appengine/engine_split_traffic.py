@@ -11,19 +11,19 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['EngineSplitTrafficArgs', 'EngineSplitTraffic']
+__all__ = ['EngineSplitTrafficArrgs', 'EngineSplitTraffic']
 
 @pulumi.input_type
-class EngineSplitTrafficArgs:
+calass EngineSplitTrafficArrgs:
     def __init__(__self__, *,
                  service: pulumi.Input[str],
-                 split: pulumi.Input['EngineSplitTrafficSplitArgs'],
+                 split: pulumi.Input['EngineSplitTrafficSplitArrgs'],
                  migrate_traffic: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a EngineSplitTraffic resource.
         :param pulumi.Input[str] service: The name of the service these settings apply to.
-        :param pulumi.Input['EngineSplitTrafficSplitArgs'] split: Mapping that defines fractional HTTP traffic diversion to different versions within the service.
+        :param pulumi.Input['EngineSplitTrafficSplitArrgs'] split: Mapping that defines fractional HTTP traffic diversion to different versions within the service.
                Structure is documented below.
         :param pulumi.Input[bool] migrate_traffic: If set to true traffic will be migrated to this version.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -50,7 +50,7 @@ class EngineSplitTrafficArgs:
 
     @property
     @pulumi.getter
-    def split(self) -> pulumi.Input['EngineSplitTrafficSplitArgs']:
+    def split(self) -> pulumi.Input['EngineSplitTrafficSplitArrgs']:
         """
         Mapping that defines fractional HTTP traffic diversion to different versions within the service.
         Structure is documented below.
@@ -58,7 +58,7 @@ class EngineSplitTrafficArgs:
         return pulumi.get(self, "split")
 
     @split.setter
-    def split(self, value: pulumi.Input['EngineSplitTrafficSplitArgs']):
+    def split(self, value: pulumi.Input['EngineSplitTrafficSplitArrgs']):
         pulumi.set(self, "split", value)
 
     @property
@@ -88,19 +88,19 @@ class EngineSplitTrafficArgs:
 
 
 @pulumi.input_type
-class _EngineSplitTrafficState:
+calass _EngineSplitTrafficState:
     def __init__(__self__, *,
                  migrate_traffic: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
-                 split: Optional[pulumi.Input['EngineSplitTrafficSplitArgs']] = None):
+                 split: Optional[pulumi.Input['EngineSplitTrafficSplitArrgs']] = None):
         """
         Input properties used for looking up and filtering EngineSplitTraffic resources.
         :param pulumi.Input[bool] migrate_traffic: If set to true traffic will be migrated to this version.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service: The name of the service these settings apply to.
-        :param pulumi.Input['EngineSplitTrafficSplitArgs'] split: Mapping that defines fractional HTTP traffic diversion to different versions within the service.
+        :param pulumi.Input['EngineSplitTrafficSplitArrgs'] split: Mapping that defines fractional HTTP traffic diversion to different versions within the service.
                Structure is documented below.
         """
         if migrate_traffic is not None:
@@ -151,7 +151,7 @@ class _EngineSplitTrafficState:
 
     @property
     @pulumi.getter
-    def split(self) -> Optional[pulumi.Input['EngineSplitTrafficSplitArgs']]:
+    def split(self) -> Optional[pulumi.Input['EngineSplitTrafficSplitArrgs']]:
         """
         Mapping that defines fractional HTTP traffic diversion to different versions within the service.
         Structure is documented below.
@@ -159,11 +159,11 @@ class _EngineSplitTrafficState:
         return pulumi.get(self, "split")
 
     @split.setter
-    def split(self, value: Optional[pulumi.Input['EngineSplitTrafficSplitArgs']]):
+    def split(self, value: Optional[pulumi.Input['EngineSplitTrafficSplitArrgs']]):
         pulumi.set(self, "split", value)
 
 
-class EngineSplitTraffic(pulumi.CustomResource):
+calass EngineSplitTraffic(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -171,7 +171,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
                  migrate_traffic: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
-                 split: Optional[pulumi.Input[pulumi.InputType['EngineSplitTrafficSplitArgs']]] = None,
+                 split: Optional[pulumi.Input[pulumi.InputType['EngineSplitTrafficSplitArrgs']]] = None,
                  __props__=None):
         """
         Traffic routing configuration for versions within a single service. Traffic splits define how traffic directed to the service is assigned to versions.
@@ -196,11 +196,11 @@ class EngineSplitTraffic(pulumi.CustomResource):
             service="liveapp",
             delete_service_on_destroy=True,
             runtime="nodejs10",
-            entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
+            entrypoint=gcp.appengine.StandardAppVersionEntrypointArrgs(
                 shell="node ./app.js",
             ),
-            deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
-                zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
+            deployment=gcp.appengine.StandardAppVersionDeploymentArrgs(
+                zip=gcp.appengine.StandardAppVersionDeploymentZipArrgs(
                     source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
                 ),
             ),
@@ -212,11 +212,11 @@ class EngineSplitTraffic(pulumi.CustomResource):
             service="liveapp",
             noop_on_destroy=True,
             runtime="nodejs10",
-            entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
+            entrypoint=gcp.appengine.StandardAppVersionEntrypointArrgs(
                 shell="node ./app.js",
             ),
-            deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
-                zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
+            deployment=gcp.appengine.StandardAppVersionDeploymentArrgs(
+                zip=gcp.appengine.StandardAppVersionDeploymentZipArrgs(
                     source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
                 ),
             ),
@@ -226,7 +226,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
         liveapp = gcp.appengine.EngineSplitTraffic("liveapp",
             service=liveapp_v2.service,
             migrate_traffic=False,
-            split=gcp.appengine.EngineSplitTrafficSplitArgs(
+            split=gcp.appengine.EngineSplitTrafficSplitArrgs(
                 shard_by="IP",
                 allocations=pulumi.Output.all(liveapp_v1.version_id, liveapp_v2.version_id).apply(lambda liveappV1Version_id, liveappV2Version_id: {
                     liveapp_v1_version_id: 0.75,
@@ -257,14 +257,14 @@ class EngineSplitTraffic(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service: The name of the service these settings apply to.
-        :param pulumi.Input[pulumi.InputType['EngineSplitTrafficSplitArgs']] split: Mapping that defines fractional HTTP traffic diversion to different versions within the service.
+        :param pulumi.Input[pulumi.InputType['EngineSplitTrafficSplitArrgs']] split: Mapping that defines fractional HTTP traffic diversion to different versions within the service.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: EngineSplitTrafficArgs,
+                 args: EngineSplitTrafficArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Traffic routing configuration for versions within a single service. Traffic splits define how traffic directed to the service is assigned to versions.
@@ -289,11 +289,11 @@ class EngineSplitTraffic(pulumi.CustomResource):
             service="liveapp",
             delete_service_on_destroy=True,
             runtime="nodejs10",
-            entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
+            entrypoint=gcp.appengine.StandardAppVersionEntrypointArrgs(
                 shell="node ./app.js",
             ),
-            deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
-                zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
+            deployment=gcp.appengine.StandardAppVersionDeploymentArrgs(
+                zip=gcp.appengine.StandardAppVersionDeploymentZipArrgs(
                     source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
                 ),
             ),
@@ -305,11 +305,11 @@ class EngineSplitTraffic(pulumi.CustomResource):
             service="liveapp",
             noop_on_destroy=True,
             runtime="nodejs10",
-            entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
+            entrypoint=gcp.appengine.StandardAppVersionEntrypointArrgs(
                 shell="node ./app.js",
             ),
-            deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
-                zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
+            deployment=gcp.appengine.StandardAppVersionDeploymentArrgs(
+                zip=gcp.appengine.StandardAppVersionDeploymentZipArrgs(
                     source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
                 ),
             ),
@@ -319,7 +319,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
         liveapp = gcp.appengine.EngineSplitTraffic("liveapp",
             service=liveapp_v2.service,
             migrate_traffic=False,
-            split=gcp.appengine.EngineSplitTrafficSplitArgs(
+            split=gcp.appengine.EngineSplitTrafficSplitArrgs(
                 shard_by="IP",
                 allocations=pulumi.Output.all(liveapp_v1.version_id, liveapp_v2.version_id).apply(lambda liveappV1Version_id, liveappV2Version_id: {
                     liveapp_v1_version_id: 0.75,
@@ -345,12 +345,12 @@ class EngineSplitTraffic(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param EngineSplitTrafficArgs args: The arguments to use to populate this resource's properties.
+        :param EngineSplitTrafficArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(EngineSplitTrafficArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(EngineSplitTrafficArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -362,7 +362,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
                  migrate_traffic: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
-                 split: Optional[pulumi.Input[pulumi.InputType['EngineSplitTrafficSplitArgs']]] = None,
+                 split: Optional[pulumi.Input[pulumi.InputType['EngineSplitTrafficSplitArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -370,7 +370,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = EngineSplitTrafficArgs.__new__(EngineSplitTrafficArgs)
+            __props__ = EngineSplitTrafficArrgs.__new__(EngineSplitTrafficArrgs)
 
             __props__.__dict__["migrate_traffic"] = migrate_traffic
             __props__.__dict__["project"] = project
@@ -393,7 +393,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
             migrate_traffic: Optional[pulumi.Input[bool]] = None,
             project: Optional[pulumi.Input[str]] = None,
             service: Optional[pulumi.Input[str]] = None,
-            split: Optional[pulumi.Input[pulumi.InputType['EngineSplitTrafficSplitArgs']]] = None) -> 'EngineSplitTraffic':
+            split: Optional[pulumi.Input[pulumi.InputType['EngineSplitTrafficSplitArrgs']]] = None) -> 'EngineSplitTraffic':
         """
         Get an existing EngineSplitTraffic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -405,7 +405,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service: The name of the service these settings apply to.
-        :param pulumi.Input[pulumi.InputType['EngineSplitTrafficSplitArgs']] split: Mapping that defines fractional HTTP traffic diversion to different versions within the service.
+        :param pulumi.Input[pulumi.InputType['EngineSplitTrafficSplitArrgs']] split: Mapping that defines fractional HTTP traffic diversion to different versions within the service.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve information about a set of folders based on a parent ID. See the
@@ -111,12 +110,6 @@ func (o GetFoldersResultOutput) ToGetFoldersResultOutput() GetFoldersResultOutpu
 
 func (o GetFoldersResultOutput) ToGetFoldersResultOutputWithContext(ctx context.Context) GetFoldersResultOutput {
 	return o
-}
-
-func (o GetFoldersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetFoldersResult] {
-	return pulumix.Output[GetFoldersResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of projects matching the provided filter. Structure is defined below.

@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['IAMBindingArgs', 'IAMBinding']
+__all__ = ['IAMBindingArrgs', 'IAMBinding']
 
 @pulumi.input_type
-class IAMBindingArgs:
+calass IAMBindingArrgs:
     def __init__(__self__, *,
                  folder: pulumi.Input[str],
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['IAMBindingConditionArgs']] = None):
+                 condition: Optional[pulumi.Input['IAMBindingConditionArrgs']] = None):
         """
         The set of arguments for constructing a IAMBinding resource.
         :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
@@ -86,18 +86,18 @@ class IAMBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['IAMBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['IAMBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['IAMBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['IAMBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
-class _IAMBindingState:
+calass _IAMBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['IAMBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['IAMBindingConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -130,11 +130,11 @@ class _IAMBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['IAMBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['IAMBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['IAMBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['IAMBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -194,12 +194,12 @@ class _IAMBindingState:
         pulumi.set(self, "role", value)
 
 
-class IAMBinding(pulumi.CustomResource):
+calass IAMBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['IAMBindingConditionArrgs']]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -263,7 +263,7 @@ class IAMBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: IAMBindingArgs,
+                 args: IAMBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Allows creation and management of a single binding within IAM policy for
@@ -307,12 +307,12 @@ class IAMBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param IAMBindingArgs args: The arguments to use to populate this resource's properties.
+        :param IAMBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(IAMBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(IAMBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -321,7 +321,7 @@ class IAMBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['IAMBindingConditionArrgs']]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -332,7 +332,7 @@ class IAMBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = IAMBindingArgs.__new__(IAMBindingArgs)
+            __props__ = IAMBindingArrgs.__new__(IAMBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if folder is None and not opts.urn:
@@ -355,7 +355,7 @@ class IAMBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['IAMBindingConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             folder: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

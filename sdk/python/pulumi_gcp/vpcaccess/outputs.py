@@ -15,7 +15,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class ConnectorSubnet(dict):
+calass ConnectorSubnet(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -65,7 +65,7 @@ class ConnectorSubnet(dict):
 
 
 @pulumi.output_type
-class GetConnectorSubnetResult(dict):
+calass GetConnectorSubnetResult(dict):
     def __init__(__self__, *,
                  name: str,
                  project_id: str):

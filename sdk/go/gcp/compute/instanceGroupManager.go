@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Google Compute Engine Instance Group Manager API creates and manages pools
@@ -626,12 +625,6 @@ func (i *InstanceGroupManager) ToInstanceGroupManagerOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerOutput)
 }
 
-func (i *InstanceGroupManager) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManager] {
-	return pulumix.Output[*InstanceGroupManager]{
-		OutputState: i.ToInstanceGroupManagerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceGroupManagerArrayInput is an input type that accepts InstanceGroupManagerArray and InstanceGroupManagerArrayOutput values.
 // You can construct a concrete instance of `InstanceGroupManagerArrayInput` via:
 //
@@ -655,12 +648,6 @@ func (i InstanceGroupManagerArray) ToInstanceGroupManagerArrayOutput() InstanceG
 
 func (i InstanceGroupManagerArray) ToInstanceGroupManagerArrayOutputWithContext(ctx context.Context) InstanceGroupManagerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerArrayOutput)
-}
-
-func (i InstanceGroupManagerArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceGroupManager] {
-	return pulumix.Output[[]*InstanceGroupManager]{
-		OutputState: i.ToInstanceGroupManagerArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstanceGroupManagerMapInput is an input type that accepts InstanceGroupManagerMap and InstanceGroupManagerMapOutput values.
@@ -688,12 +675,6 @@ func (i InstanceGroupManagerMap) ToInstanceGroupManagerMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerMapOutput)
 }
 
-func (i InstanceGroupManagerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceGroupManager] {
-	return pulumix.Output[map[string]*InstanceGroupManager]{
-		OutputState: i.ToInstanceGroupManagerMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceGroupManagerOutput struct{ *pulumi.OutputState }
 
 func (InstanceGroupManagerOutput) ElementType() reflect.Type {
@@ -706,12 +687,6 @@ func (o InstanceGroupManagerOutput) ToInstanceGroupManagerOutput() InstanceGroup
 
 func (o InstanceGroupManagerOutput) ToInstanceGroupManagerOutputWithContext(ctx context.Context) InstanceGroupManagerOutput {
 	return o
-}
-
-func (o InstanceGroupManagerOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManager] {
-	return pulumix.Output[*InstanceGroupManager]{
-		OutputState: o.OutputState,
-	}
 }
 
 // )
@@ -892,12 +867,6 @@ func (o InstanceGroupManagerArrayOutput) ToInstanceGroupManagerArrayOutputWithCo
 	return o
 }
 
-func (o InstanceGroupManagerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceGroupManager] {
-	return pulumix.Output[[]*InstanceGroupManager]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceGroupManagerArrayOutput) Index(i pulumi.IntInput) InstanceGroupManagerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceGroupManager {
 		return vs[0].([]*InstanceGroupManager)[vs[1].(int)]
@@ -916,12 +885,6 @@ func (o InstanceGroupManagerMapOutput) ToInstanceGroupManagerMapOutput() Instanc
 
 func (o InstanceGroupManagerMapOutput) ToInstanceGroupManagerMapOutputWithContext(ctx context.Context) InstanceGroupManagerMapOutput {
 	return o
-}
-
-func (o InstanceGroupManagerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceGroupManager] {
-	return pulumix.Output[map[string]*InstanceGroupManager]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceGroupManagerMapOutput) MapIndex(k pulumi.StringInput) InstanceGroupManagerOutput {

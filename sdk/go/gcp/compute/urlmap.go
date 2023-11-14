@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // UrlMaps are used to route requests to a backend service based on rules
@@ -368,12 +367,6 @@ func (i *URLMap) ToURLMapOutputWithContext(ctx context.Context) URLMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(URLMapOutput)
 }
 
-func (i *URLMap) ToOutput(ctx context.Context) pulumix.Output[*URLMap] {
-	return pulumix.Output[*URLMap]{
-		OutputState: i.ToURLMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // URLMapArrayInput is an input type that accepts URLMapArray and URLMapArrayOutput values.
 // You can construct a concrete instance of `URLMapArrayInput` via:
 //
@@ -397,12 +390,6 @@ func (i URLMapArray) ToURLMapArrayOutput() URLMapArrayOutput {
 
 func (i URLMapArray) ToURLMapArrayOutputWithContext(ctx context.Context) URLMapArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(URLMapArrayOutput)
-}
-
-func (i URLMapArray) ToOutput(ctx context.Context) pulumix.Output[[]*URLMap] {
-	return pulumix.Output[[]*URLMap]{
-		OutputState: i.ToURLMapArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // URLMapMapInput is an input type that accepts URLMapMap and URLMapMapOutput values.
@@ -430,12 +417,6 @@ func (i URLMapMap) ToURLMapMapOutputWithContext(ctx context.Context) URLMapMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(URLMapMapOutput)
 }
 
-func (i URLMapMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*URLMap] {
-	return pulumix.Output[map[string]*URLMap]{
-		OutputState: i.ToURLMapMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type URLMapOutput struct{ *pulumi.OutputState }
 
 func (URLMapOutput) ElementType() reflect.Type {
@@ -448,12 +429,6 @@ func (o URLMapOutput) ToURLMapOutput() URLMapOutput {
 
 func (o URLMapOutput) ToURLMapOutputWithContext(ctx context.Context) URLMapOutput {
 	return o
-}
-
-func (o URLMapOutput) ToOutput(ctx context.Context) pulumix.Output[*URLMap] {
-	return pulumix.Output[*URLMap]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation timestamp in RFC3339 text format.
@@ -566,12 +541,6 @@ func (o URLMapArrayOutput) ToURLMapArrayOutputWithContext(ctx context.Context) U
 	return o
 }
 
-func (o URLMapArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*URLMap] {
-	return pulumix.Output[[]*URLMap]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o URLMapArrayOutput) Index(i pulumi.IntInput) URLMapOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *URLMap {
 		return vs[0].([]*URLMap)[vs[1].(int)]
@@ -590,12 +559,6 @@ func (o URLMapMapOutput) ToURLMapMapOutput() URLMapMapOutput {
 
 func (o URLMapMapOutput) ToURLMapMapOutputWithContext(ctx context.Context) URLMapMapOutput {
 	return o
-}
-
-func (o URLMapMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*URLMap] {
-	return pulumix.Output[map[string]*URLMap]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o URLMapMapOutput) MapIndex(k pulumi.StringInput) URLMapOutput {

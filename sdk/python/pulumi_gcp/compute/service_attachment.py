@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ServiceAttachmentArgs', 'ServiceAttachment']
+__all__ = ['ServiceAttachmentArrgs', 'ServiceAttachment']
 
 @pulumi.input_type
-class ServiceAttachmentArgs:
+calass ServiceAttachmentArrgs:
     def __init__(__self__, *,
                  connection_preference: pulumi.Input[str],
                  enable_proxy_protocol: pulumi.Input[bool],
                  nat_subnets: pulumi.Input[Sequence[pulumi.Input[str]]],
                  target_service: pulumi.Input[str],
-                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]]] = None,
+                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArrgs']]]] = None,
                  consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -41,7 +41,7 @@ class ServiceAttachmentArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] nat_subnets: An array of subnets that is provided for NAT in this service attachment.
         :param pulumi.Input[str] target_service: The URL of a forwarding rule that represents the service identified by
                this service attachment.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]] consumer_accept_lists: An array of projects that are allowed to connect to this service
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArrgs']]] consumer_accept_lists: An array of projects that are allowed to connect to this service
                attachment.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] consumer_reject_lists: An array of projects that are not allowed to connect to this service
@@ -142,7 +142,7 @@ class ServiceAttachmentArgs:
 
     @property
     @pulumi.getter(name="consumerAcceptLists")
-    def consumer_accept_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]]]:
+    def consumer_accept_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArrgs']]]]:
         """
         An array of projects that are allowed to connect to this service
         attachment.
@@ -151,7 +151,7 @@ class ServiceAttachmentArgs:
         return pulumi.get(self, "consumer_accept_lists")
 
     @consumer_accept_lists.setter
-    def consumer_accept_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]]]):
+    def consumer_accept_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArrgs']]]]):
         pulumi.set(self, "consumer_accept_lists", value)
 
     @property
@@ -252,11 +252,11 @@ class ServiceAttachmentArgs:
 
 
 @pulumi.input_type
-class _ServiceAttachmentState:
+calass _ServiceAttachmentState:
     def __init__(__self__, *,
-                 connected_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConnectedEndpointArgs']]]] = None,
+                 connected_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConnectedEndpointArrgs']]]] = None,
                  connection_preference: Optional[pulumi.Input[str]] = None,
-                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]]] = None,
+                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArrgs']]]] = None,
                  consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -271,12 +271,12 @@ class _ServiceAttachmentState:
                  target_service: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServiceAttachment resources.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConnectedEndpointArgs']]] connected_endpoints: An array of the consumer forwarding rules connected to this service
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConnectedEndpointArrgs']]] connected_endpoints: An array of the consumer forwarding rules connected to this service
                attachment.
                Structure is documented below.
         :param pulumi.Input[str] connection_preference: The connection preference to use for this service attachment. Valid
                values include "ACCEPT_AUTOMATIC", "ACCEPT_MANUAL".
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]] consumer_accept_lists: An array of projects that are allowed to connect to this service
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArrgs']]] consumer_accept_lists: An array of projects that are allowed to connect to this service
                attachment.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] consumer_reject_lists: An array of projects that are not allowed to connect to this service
@@ -344,7 +344,7 @@ class _ServiceAttachmentState:
 
     @property
     @pulumi.getter(name="connectedEndpoints")
-    def connected_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConnectedEndpointArgs']]]]:
+    def connected_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConnectedEndpointArrgs']]]]:
         """
         An array of the consumer forwarding rules connected to this service
         attachment.
@@ -353,7 +353,7 @@ class _ServiceAttachmentState:
         return pulumi.get(self, "connected_endpoints")
 
     @connected_endpoints.setter
-    def connected_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConnectedEndpointArgs']]]]):
+    def connected_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConnectedEndpointArrgs']]]]):
         pulumi.set(self, "connected_endpoints", value)
 
     @property
@@ -371,7 +371,7 @@ class _ServiceAttachmentState:
 
     @property
     @pulumi.getter(name="consumerAcceptLists")
-    def consumer_accept_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]]]:
+    def consumer_accept_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArrgs']]]]:
         """
         An array of projects that are allowed to connect to this service
         attachment.
@@ -380,7 +380,7 @@ class _ServiceAttachmentState:
         return pulumi.get(self, "consumer_accept_lists")
 
     @consumer_accept_lists.setter
-    def consumer_accept_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]]]):
+    def consumer_accept_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArrgs']]]]):
         pulumi.set(self, "consumer_accept_lists", value)
 
     @property
@@ -547,13 +547,13 @@ class _ServiceAttachmentState:
         pulumi.set(self, "target_service", value)
 
 
-class ServiceAttachment(pulumi.CustomResource):
+calass ServiceAttachment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_preference: Optional[pulumi.Input[str]] = None,
-                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerAcceptListArgs']]]]] = None,
+                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerAcceptListArrgs']]]]] = None,
                  consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -600,7 +600,7 @@ class ServiceAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connection_preference: The connection preference to use for this service attachment. Valid
                values include "ACCEPT_AUTOMATIC", "ACCEPT_MANUAL".
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerAcceptListArgs']]]] consumer_accept_lists: An array of projects that are allowed to connect to this service
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerAcceptListArrgs']]]] consumer_accept_lists: An array of projects that are allowed to connect to this service
                attachment.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] consumer_reject_lists: An array of projects that are not allowed to connect to this service
@@ -636,7 +636,7 @@ class ServiceAttachment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ServiceAttachmentArgs,
+                 args: ServiceAttachmentArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a ServiceAttachment resource.
@@ -670,12 +670,12 @@ class ServiceAttachment(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ServiceAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param ServiceAttachmentArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ServiceAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ServiceAttachmentArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -685,7 +685,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_preference: Optional[pulumi.Input[str]] = None,
-                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerAcceptListArgs']]]]] = None,
+                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerAcceptListArrgs']]]]] = None,
                  consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -703,7 +703,7 @@ class ServiceAttachment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ServiceAttachmentArgs.__new__(ServiceAttachmentArgs)
+            __props__ = ServiceAttachmentArrgs.__new__(ServiceAttachmentArrgs)
 
             if connection_preference is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_preference'")
@@ -738,9 +738,9 @@ class ServiceAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connected_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConnectedEndpointArgs']]]]] = None,
+            connected_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConnectedEndpointArrgs']]]]] = None,
             connection_preference: Optional[pulumi.Input[str]] = None,
-            consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerAcceptListArgs']]]]] = None,
+            consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerAcceptListArrgs']]]]] = None,
             consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -760,12 +760,12 @@ class ServiceAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConnectedEndpointArgs']]]] connected_endpoints: An array of the consumer forwarding rules connected to this service
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConnectedEndpointArrgs']]]] connected_endpoints: An array of the consumer forwarding rules connected to this service
                attachment.
                Structure is documented below.
         :param pulumi.Input[str] connection_preference: The connection preference to use for this service attachment. Valid
                values include "ACCEPT_AUTOMATIC", "ACCEPT_MANUAL".
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerAcceptListArgs']]]] consumer_accept_lists: An array of projects that are allowed to connect to this service
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerAcceptListArrgs']]]] consumer_accept_lists: An array of projects that are allowed to connect to this service
                attachment.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] consumer_reject_lists: An array of projects that are not allowed to connect to this service

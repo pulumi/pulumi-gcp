@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get runtime versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.runtimeVersions).
@@ -137,12 +136,6 @@ func (o GetV2RuntimeVersionsResultOutput) ToGetV2RuntimeVersionsResultOutput() G
 
 func (o GetV2RuntimeVersionsResultOutput) ToGetV2RuntimeVersionsResultOutputWithContext(ctx context.Context) GetV2RuntimeVersionsResultOutput {
 	return o
-}
-
-func (o GetV2RuntimeVersionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetV2RuntimeVersionsResult] {
-	return pulumix.Output[GetV2RuntimeVersionsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

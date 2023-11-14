@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ConnectionIamBindingArgs', 'ConnectionIamBinding']
+__all__ = ['ConnectionIamBindingArrgs', 'ConnectionIamBinding']
 
 @pulumi.input_type
-class ConnectionIamBindingArgs:
+calass ConnectionIamBindingArrgs:
     def __init__(__self__, *,
                  connection_id: pulumi.Input[str],
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['ConnectionIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['ConnectionIamBindingConditionArrgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -99,11 +99,11 @@ class ConnectionIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ConnectionIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ConnectionIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ConnectionIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ConnectionIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -151,9 +151,9 @@ class ConnectionIamBindingArgs:
 
 
 @pulumi.input_type
-class _ConnectionIamBindingState:
+calass _ConnectionIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['ConnectionIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['ConnectionIamBindingConditionArrgs']] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -207,11 +207,11 @@ class _ConnectionIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ConnectionIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ConnectionIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ConnectionIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ConnectionIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -306,12 +306,12 @@ class _ConnectionIamBindingState:
         pulumi.set(self, "role", value)
 
 
-class ConnectionIamBinding(pulumi.CustomResource):
+calass ConnectionIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ConnectionIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ConnectionIamBindingConditionArrgs']]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -339,7 +339,7 @@ class ConnectionIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -435,7 +435,7 @@ class ConnectionIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ConnectionIamBindingArgs,
+                 args: ConnectionIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for BigQuery Connection Connection. Each of these resources serves a different use case:
@@ -458,7 +458,7 @@ class ConnectionIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -522,12 +522,12 @@ class ConnectionIamBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param ConnectionIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param ConnectionIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ConnectionIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ConnectionIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -536,7 +536,7 @@ class ConnectionIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ConnectionIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ConnectionIamBindingConditionArrgs']]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -549,7 +549,7 @@ class ConnectionIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ConnectionIamBindingArgs.__new__(ConnectionIamBindingArgs)
+            __props__ = ConnectionIamBindingArrgs.__new__(ConnectionIamBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if connection_id is None and not opts.urn:
@@ -574,7 +574,7 @@ class ConnectionIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['ConnectionIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['ConnectionIamBindingConditionArrgs']]] = None,
             connection_id: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,

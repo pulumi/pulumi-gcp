@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
@@ -128,12 +127,6 @@ func (o LookupSSLPolicyResultOutput) ToLookupSSLPolicyResultOutput() LookupSSLPo
 
 func (o LookupSSLPolicyResultOutput) ToLookupSSLPolicyResultOutputWithContext(ctx context.Context) LookupSSLPolicyResultOutput {
 	return o
-}
-
-func (o LookupSSLPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSSLPolicyResult] {
-	return pulumix.Output[LookupSSLPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupSSLPolicyResultOutput) CreationTimestamp() pulumi.StringOutput {

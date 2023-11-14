@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetKMSSecretResult:
+calass GetKMSSecretResult:
     """
     A collection of values returned by getKMSSecret.
     """
@@ -70,7 +70,7 @@ class GetKMSSecretResult:
         return pulumi.get(self, "plaintext")
 
 
-class AwaitableGetKMSSecretResult(GetKMSSecretResult):
+calass AwaitableGetKMSSecretResult(GetKMSSecretResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

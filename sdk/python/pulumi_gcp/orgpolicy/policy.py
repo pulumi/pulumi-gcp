@@ -11,14 +11,14 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['PolicyArgs', 'Policy']
+__all__ = ['PolicyArrgs', 'Policy']
 
 @pulumi.input_type
-class PolicyArgs:
+calass PolicyArrgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input['PolicySpecArgs']] = None):
+                 spec: Optional[pulumi.Input['PolicySpecArrgs']] = None):
         """
         The set of arguments for constructing a Policy resource.
         :param pulumi.Input[str] parent: The parent of the resource.
@@ -27,7 +27,7 @@ class PolicyArgs:
                
                - - -
         :param pulumi.Input[str] name: Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
-        :param pulumi.Input['PolicySpecArgs'] spec: Basic information about the Organization Policy.
+        :param pulumi.Input['PolicySpecArrgs'] spec: Basic information about the Organization Policy.
         """
         pulumi.set(__self__, "parent", parent)
         if name is not None:
@@ -65,23 +65,23 @@ class PolicyArgs:
 
     @property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['PolicySpecArgs']]:
+    def spec(self) -> Optional[pulumi.Input['PolicySpecArrgs']]:
         """
         Basic information about the Organization Policy.
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['PolicySpecArgs']]):
+    def spec(self, value: Optional[pulumi.Input['PolicySpecArrgs']]):
         pulumi.set(self, "spec", value)
 
 
 @pulumi.input_type
-class _PolicyState:
+calass _PolicyState:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input['PolicySpecArgs']] = None):
+                 spec: Optional[pulumi.Input['PolicySpecArrgs']] = None):
         """
         Input properties used for looking up and filtering Policy resources.
         :param pulumi.Input[str] name: Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
@@ -90,7 +90,7 @@ class _PolicyState:
                
                
                - - -
-        :param pulumi.Input['PolicySpecArgs'] spec: Basic information about the Organization Policy.
+        :param pulumi.Input['PolicySpecArrgs'] spec: Basic information about the Organization Policy.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -129,25 +129,25 @@ class _PolicyState:
 
     @property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['PolicySpecArgs']]:
+    def spec(self) -> Optional[pulumi.Input['PolicySpecArrgs']]:
         """
         Basic information about the Organization Policy.
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['PolicySpecArgs']]):
+    def spec(self, value: Optional[pulumi.Input['PolicySpecArrgs']]):
         pulumi.set(self, "spec", value)
 
 
-class Policy(pulumi.CustomResource):
+calass Policy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['PolicySpecArgs']]] = None,
+                 spec: Optional[pulumi.Input[pulumi.InputType['PolicySpecArrgs']]] = None,
                  __props__=None):
         """
         An organization policy gives you programmatic control over your organization's cloud resources.  Using Organization Policies, you will be able to configure constraints across your entire resource hierarchy.
@@ -168,8 +168,8 @@ class Policy(pulumi.CustomResource):
             project_id="id")
         primary = gcp.orgpolicy.Policy("primary",
             parent=basic.name.apply(lambda name: f"projects/{name}"),
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
+            spec=gcp.orgpolicy.PolicySpecArrgs(
+                rules=[gcp.orgpolicy.PolicySpecRuleArrgs(
                     enforce="FALSE",
                 )],
             ))
@@ -185,9 +185,9 @@ class Policy(pulumi.CustomResource):
             display_name="folder")
         primary = gcp.orgpolicy.Policy("primary",
             parent=basic.name,
-            spec=gcp.orgpolicy.PolicySpecArgs(
+            spec=gcp.orgpolicy.PolicySpecArrgs(
                 inherit_from_parent=True,
-                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
+                rules=[gcp.orgpolicy.PolicySpecRuleArrgs(
                     deny_all="TRUE",
                 )],
             ))
@@ -200,7 +200,7 @@ class Policy(pulumi.CustomResource):
 
         primary = gcp.orgpolicy.Policy("primary",
             parent="organizations/123456789",
-            spec=gcp.orgpolicy.PolicySpecArgs(
+            spec=gcp.orgpolicy.PolicySpecArrgs(
                 reset=True,
             ))
         ```
@@ -215,21 +215,21 @@ class Policy(pulumi.CustomResource):
             project_id="id")
         primary = gcp.orgpolicy.Policy("primary",
             parent=basic.name.apply(lambda name: f"projects/{name}"),
-            spec=gcp.orgpolicy.PolicySpecArgs(
+            spec=gcp.orgpolicy.PolicySpecArrgs(
                 rules=[
-                    gcp.orgpolicy.PolicySpecRuleArgs(
-                        condition=gcp.orgpolicy.PolicySpecRuleConditionArgs(
+                    gcp.orgpolicy.PolicySpecRuleArrgs(
+                        condition=gcp.orgpolicy.PolicySpecRuleConditionArrgs(
                             description="A sample condition for the policy",
                             expression="resource.matchLabels('labelKeys/123', 'labelValues/345')",
                             location="sample-location.log",
                             title="sample-condition",
                         ),
-                        values=gcp.orgpolicy.PolicySpecRuleValuesArgs(
+                        values=gcp.orgpolicy.PolicySpecRuleValuesArrgs(
                             allowed_values=["projects/allowed-project"],
                             denied_values=["projects/denied-project"],
                         ),
                     ),
-                    gcp.orgpolicy.PolicySpecRuleArgs(
+                    gcp.orgpolicy.PolicySpecRuleArrgs(
                         allow_all="TRUE",
                     ),
                 ],
@@ -252,13 +252,13 @@ class Policy(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['PolicySpecArgs']] spec: Basic information about the Organization Policy.
+        :param pulumi.Input[pulumi.InputType['PolicySpecArrgs']] spec: Basic information about the Organization Policy.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: PolicyArgs,
+                 args: PolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An organization policy gives you programmatic control over your organization's cloud resources.  Using Organization Policies, you will be able to configure constraints across your entire resource hierarchy.
@@ -279,8 +279,8 @@ class Policy(pulumi.CustomResource):
             project_id="id")
         primary = gcp.orgpolicy.Policy("primary",
             parent=basic.name.apply(lambda name: f"projects/{name}"),
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
+            spec=gcp.orgpolicy.PolicySpecArrgs(
+                rules=[gcp.orgpolicy.PolicySpecRuleArrgs(
                     enforce="FALSE",
                 )],
             ))
@@ -296,9 +296,9 @@ class Policy(pulumi.CustomResource):
             display_name="folder")
         primary = gcp.orgpolicy.Policy("primary",
             parent=basic.name,
-            spec=gcp.orgpolicy.PolicySpecArgs(
+            spec=gcp.orgpolicy.PolicySpecArrgs(
                 inherit_from_parent=True,
-                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
+                rules=[gcp.orgpolicy.PolicySpecRuleArrgs(
                     deny_all="TRUE",
                 )],
             ))
@@ -311,7 +311,7 @@ class Policy(pulumi.CustomResource):
 
         primary = gcp.orgpolicy.Policy("primary",
             parent="organizations/123456789",
-            spec=gcp.orgpolicy.PolicySpecArgs(
+            spec=gcp.orgpolicy.PolicySpecArrgs(
                 reset=True,
             ))
         ```
@@ -326,21 +326,21 @@ class Policy(pulumi.CustomResource):
             project_id="id")
         primary = gcp.orgpolicy.Policy("primary",
             parent=basic.name.apply(lambda name: f"projects/{name}"),
-            spec=gcp.orgpolicy.PolicySpecArgs(
+            spec=gcp.orgpolicy.PolicySpecArrgs(
                 rules=[
-                    gcp.orgpolicy.PolicySpecRuleArgs(
-                        condition=gcp.orgpolicy.PolicySpecRuleConditionArgs(
+                    gcp.orgpolicy.PolicySpecRuleArrgs(
+                        condition=gcp.orgpolicy.PolicySpecRuleConditionArrgs(
                             description="A sample condition for the policy",
                             expression="resource.matchLabels('labelKeys/123', 'labelValues/345')",
                             location="sample-location.log",
                             title="sample-condition",
                         ),
-                        values=gcp.orgpolicy.PolicySpecRuleValuesArgs(
+                        values=gcp.orgpolicy.PolicySpecRuleValuesArrgs(
                             allowed_values=["projects/allowed-project"],
                             denied_values=["projects/denied-project"],
                         ),
                     ),
-                    gcp.orgpolicy.PolicySpecRuleArgs(
+                    gcp.orgpolicy.PolicySpecRuleArrgs(
                         allow_all="TRUE",
                     ),
                 ],
@@ -356,12 +356,12 @@ class Policy(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param PolicyArgs args: The arguments to use to populate this resource's properties.
+        :param PolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(PolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(PolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -372,7 +372,7 @@ class Policy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['PolicySpecArgs']]] = None,
+                 spec: Optional[pulumi.Input[pulumi.InputType['PolicySpecArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -380,7 +380,7 @@ class Policy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = PolicyArgs.__new__(PolicyArgs)
+            __props__ = PolicyArrgs.__new__(PolicyArrgs)
 
             __props__.__dict__["name"] = name
             if parent is None and not opts.urn:
@@ -399,7 +399,7 @@ class Policy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
-            spec: Optional[pulumi.Input[pulumi.InputType['PolicySpecArgs']]] = None) -> 'Policy':
+            spec: Optional[pulumi.Input[pulumi.InputType['PolicySpecArrgs']]] = None) -> 'Policy':
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -413,7 +413,7 @@ class Policy(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['PolicySpecArgs']] spec: Basic information about the Organization Policy.
+        :param pulumi.Input[pulumi.InputType['PolicySpecArrgs']] spec: Basic information about the Organization Policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

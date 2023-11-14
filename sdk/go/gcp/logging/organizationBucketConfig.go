@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a organization-level logging bucket config. For more information see
@@ -229,12 +228,6 @@ func (i *OrganizationBucketConfig) ToOrganizationBucketConfigOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationBucketConfigOutput)
 }
 
-func (i *OrganizationBucketConfig) ToOutput(ctx context.Context) pulumix.Output[*OrganizationBucketConfig] {
-	return pulumix.Output[*OrganizationBucketConfig]{
-		OutputState: i.ToOrganizationBucketConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OrganizationBucketConfigArrayInput is an input type that accepts OrganizationBucketConfigArray and OrganizationBucketConfigArrayOutput values.
 // You can construct a concrete instance of `OrganizationBucketConfigArrayInput` via:
 //
@@ -258,12 +251,6 @@ func (i OrganizationBucketConfigArray) ToOrganizationBucketConfigArrayOutput() O
 
 func (i OrganizationBucketConfigArray) ToOrganizationBucketConfigArrayOutputWithContext(ctx context.Context) OrganizationBucketConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationBucketConfigArrayOutput)
-}
-
-func (i OrganizationBucketConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationBucketConfig] {
-	return pulumix.Output[[]*OrganizationBucketConfig]{
-		OutputState: i.ToOrganizationBucketConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // OrganizationBucketConfigMapInput is an input type that accepts OrganizationBucketConfigMap and OrganizationBucketConfigMapOutput values.
@@ -291,12 +278,6 @@ func (i OrganizationBucketConfigMap) ToOrganizationBucketConfigMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationBucketConfigMapOutput)
 }
 
-func (i OrganizationBucketConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationBucketConfig] {
-	return pulumix.Output[map[string]*OrganizationBucketConfig]{
-		OutputState: i.ToOrganizationBucketConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationBucketConfigOutput struct{ *pulumi.OutputState }
 
 func (OrganizationBucketConfigOutput) ElementType() reflect.Type {
@@ -309,12 +290,6 @@ func (o OrganizationBucketConfigOutput) ToOrganizationBucketConfigOutput() Organ
 
 func (o OrganizationBucketConfigOutput) ToOrganizationBucketConfigOutputWithContext(ctx context.Context) OrganizationBucketConfigOutput {
 	return o
-}
-
-func (o OrganizationBucketConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationBucketConfig] {
-	return pulumix.Output[*OrganizationBucketConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
@@ -373,12 +348,6 @@ func (o OrganizationBucketConfigArrayOutput) ToOrganizationBucketConfigArrayOutp
 	return o
 }
 
-func (o OrganizationBucketConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationBucketConfig] {
-	return pulumix.Output[[]*OrganizationBucketConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OrganizationBucketConfigArrayOutput) Index(i pulumi.IntInput) OrganizationBucketConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OrganizationBucketConfig {
 		return vs[0].([]*OrganizationBucketConfig)[vs[1].(int)]
@@ -397,12 +366,6 @@ func (o OrganizationBucketConfigMapOutput) ToOrganizationBucketConfigMapOutput()
 
 func (o OrganizationBucketConfigMapOutput) ToOrganizationBucketConfigMapOutputWithContext(ctx context.Context) OrganizationBucketConfigMapOutput {
 	return o
-}
-
-func (o OrganizationBucketConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationBucketConfig] {
-	return pulumix.Output[map[string]*OrganizationBucketConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationBucketConfigMapOutput) MapIndex(k pulumi.StringInput) OrganizationBucketConfigOutput {

@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class RepositoryIamBindingCondition(dict):
+calass RepositoryIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -44,7 +44,7 @@ class RepositoryIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class RepositoryIamMemberCondition(dict):
+calass RepositoryIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -71,7 +71,7 @@ class RepositoryIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class RepositoryPubsubConfig(dict):
+calass RepositoryPubsubConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -143,7 +143,7 @@ class RepositoryPubsubConfig(dict):
 
 
 @pulumi.output_type
-class GetRepositoryPubsubConfigResult(dict):
+calass GetRepositoryPubsubConfigResult(dict):
     def __init__(__self__, *,
                  message_format: str,
                  service_account_email: str,

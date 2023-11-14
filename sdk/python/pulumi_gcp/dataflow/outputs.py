@@ -22,7 +22,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class PipelineScheduleInfo(dict):
+calass PipelineScheduleInfo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -88,7 +88,7 @@ class PipelineScheduleInfo(dict):
 
 
 @pulumi.output_type
-class PipelineWorkload(dict):
+calass PipelineWorkload(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -112,10 +112,10 @@ class PipelineWorkload(dict):
                  dataflow_flex_template_request: Optional['outputs.PipelineWorkloadDataflowFlexTemplateRequest'] = None,
                  dataflow_launch_template_request: Optional['outputs.PipelineWorkloadDataflowLaunchTemplateRequest'] = None):
         """
-        :param 'PipelineWorkloadDataflowFlexTemplateRequestArgs' dataflow_flex_template_request: Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
+        :param 'PipelineWorkloadDataflowFlexTemplateRequestArrgs' dataflow_flex_template_request: Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplaterequest
                Structure is documented below.
-        :param 'PipelineWorkloadDataflowLaunchTemplateRequestArgs' dataflow_launch_template_request: Template information and additional parameters needed to launch a Dataflow job using the standard launch API.
+        :param 'PipelineWorkloadDataflowLaunchTemplateRequestArrgs' dataflow_launch_template_request: Template information and additional parameters needed to launch a Dataflow job using the standard launch API.
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest
                Structure is documented below.
         """
@@ -146,7 +146,7 @@ class PipelineWorkload(dict):
 
 
 @pulumi.output_type
-class PipelineWorkloadDataflowFlexTemplateRequest(dict):
+calass PipelineWorkloadDataflowFlexTemplateRequest(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -174,7 +174,7 @@ class PipelineWorkloadDataflowFlexTemplateRequest(dict):
                  project_id: str,
                  validate_only: Optional[bool] = None):
         """
-        :param 'PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgs' launch_parameter: Parameter to launch a job from a Flex Template.
+        :param 'PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArrgs' launch_parameter: Parameter to launch a job from a Flex Template.
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplateparameter
                Structure is documented below.
         :param str location: The regional endpoint to which to direct the request. For example, us-central1, us-west1.
@@ -223,7 +223,7 @@ class PipelineWorkloadDataflowFlexTemplateRequest(dict):
 
 
 @pulumi.output_type
-class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter(dict):
+calass PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -258,7 +258,7 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter(dict):
         """
         :param str job_name: The job name to use for the created job. For an update job request, the job name should be the same as the existing running job.
         :param str container_spec_gcs_path: Cloud Storage path to a file with a JSON-serialized ContainerSpec as content.
-        :param 'PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgs' environment: The runtime environment for the Flex Template job.
+        :param 'PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArrgs' environment: The runtime environment for the Flex Template job.
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexTemplateRuntimeEnvironment
                Structure is documented below.
         :param Mapping[str, str] launch_options: Launch options for this Flex Template job. This is a common set of options across languages and templates. This should not be used to pass job parameters.
@@ -346,7 +346,7 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter(dict):
 
 
 @pulumi.output_type
-class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment(dict):
+calass PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -598,7 +598,7 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment(dict
 
 
 @pulumi.output_type
-class PipelineWorkloadDataflowLaunchTemplateRequest(dict):
+calass PipelineWorkloadDataflowLaunchTemplateRequest(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -631,7 +631,7 @@ class PipelineWorkloadDataflowLaunchTemplateRequest(dict):
         """
         :param str project_id: The ID of the Cloud Platform project that the job belongs to.
         :param str gcs_path: A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with 'gs://'.
-        :param 'PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs' launch_parameters: The parameters of the template to launch. This should be part of the body of the POST request.
+        :param 'PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArrgs' launch_parameters: The parameters of the template to launch. This should be part of the body of the POST request.
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplateparameters
                Structure is documented below.
         :param str location: The regional endpoint to which to direct the request.
@@ -691,7 +691,7 @@ class PipelineWorkloadDataflowLaunchTemplateRequest(dict):
 
 
 @pulumi.output_type
-class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters(dict):
+calass PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -719,7 +719,7 @@ class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters(dict):
                  update: Optional[bool] = None):
         """
         :param str job_name: The job name to use for the created job.
-        :param 'PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs' environment: The runtime environment for the job.
+        :param 'PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArrgs' environment: The runtime environment for the job.
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#RuntimeEnvironment
                Structure is documented below.
         :param Mapping[str, str] parameters: The runtime parameters to pass to the job.
@@ -784,7 +784,7 @@ class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters(dict):
 
 
 @pulumi.output_type
-class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment(dict):
+calass PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

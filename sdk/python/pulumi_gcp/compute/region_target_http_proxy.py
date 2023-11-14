@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['RegionTargetHttpProxyArgs', 'RegionTargetHttpProxy']
+__all__ = ['RegionTargetHttpProxyArrgs', 'RegionTargetHttpProxy']
 
 @pulumi.input_type
-class RegionTargetHttpProxyArgs:
+calass RegionTargetHttpProxyArrgs:
     def __init__(__self__, *,
                  url_map: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -123,7 +123,7 @@ class RegionTargetHttpProxyArgs:
 
 
 @pulumi.input_type
-class _RegionTargetHttpProxyState:
+calass _RegionTargetHttpProxyState:
     def __init__(__self__, *,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -282,7 +282,7 @@ class _RegionTargetHttpProxyState:
         pulumi.set(self, "url_map", value)
 
 
-class RegionTargetHttpProxy(pulumi.CustomResource):
+calass RegionTargetHttpProxy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -312,7 +312,7 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
 
         default_region_url_map = gcp.compute.RegionUrlMap("defaultRegionUrlMap",
             region="us-central1",
-            default_url_redirect=gcp.compute.RegionUrlMapDefaultUrlRedirectArgs(
+            default_url_redirect=gcp.compute.RegionUrlMapDefaultUrlRedirectArrgs(
                 https_redirect=True,
                 strip_query=False,
             ))
@@ -365,7 +365,7 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RegionTargetHttpProxyArgs,
+                 args: RegionTargetHttpProxyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a RegionTargetHttpProxy resource, which is used by one or more
@@ -386,7 +386,7 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
 
         default_region_url_map = gcp.compute.RegionUrlMap("defaultRegionUrlMap",
             region="us-central1",
-            default_url_redirect=gcp.compute.RegionUrlMapDefaultUrlRedirectArgs(
+            default_url_redirect=gcp.compute.RegionUrlMapDefaultUrlRedirectArrgs(
                 https_redirect=True,
                 strip_query=False,
             ))
@@ -416,12 +416,12 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param RegionTargetHttpProxyArgs args: The arguments to use to populate this resource's properties.
+        :param RegionTargetHttpProxyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RegionTargetHttpProxyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(RegionTargetHttpProxyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -442,7 +442,7 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RegionTargetHttpProxyArgs.__new__(RegionTargetHttpProxyArgs)
+            __props__ = RegionTargetHttpProxyArrgs.__new__(RegionTargetHttpProxyArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name

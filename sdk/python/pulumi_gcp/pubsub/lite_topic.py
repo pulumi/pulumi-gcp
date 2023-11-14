@@ -11,17 +11,17 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['LiteTopicArgs', 'LiteTopic']
+__all__ = ['LiteTopicArrgs', 'LiteTopic']
 
 @pulumi.input_type
-class LiteTopicArgs:
+calass LiteTopicArrgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
-                 partition_config: Optional[pulumi.Input['LiteTopicPartitionConfigArgs']] = None,
+                 partition_config: Optional[pulumi.Input['LiteTopicPartitionConfigArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 reservation_config: Optional[pulumi.Input['LiteTopicReservationConfigArgs']] = None,
-                 retention_config: Optional[pulumi.Input['LiteTopicRetentionConfigArgs']] = None,
+                 reservation_config: Optional[pulumi.Input['LiteTopicReservationConfigArrgs']] = None,
+                 retention_config: Optional[pulumi.Input['LiteTopicRetentionConfigArrgs']] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a LiteTopic resource.
@@ -29,14 +29,14 @@ class LiteTopicArgs:
                
                
                - - -
-        :param pulumi.Input['LiteTopicPartitionConfigArgs'] partition_config: The settings for this topic's partitions.
+        :param pulumi.Input['LiteTopicPartitionConfigArrgs'] partition_config: The settings for this topic's partitions.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the pubsub lite topic.
-        :param pulumi.Input['LiteTopicReservationConfigArgs'] reservation_config: The settings for this topic's Reservation usage.
+        :param pulumi.Input['LiteTopicReservationConfigArrgs'] reservation_config: The settings for this topic's Reservation usage.
                Structure is documented below.
-        :param pulumi.Input['LiteTopicRetentionConfigArgs'] retention_config: The settings for a topic's message retention.
+        :param pulumi.Input['LiteTopicRetentionConfigArrgs'] retention_config: The settings for a topic's message retention.
                Structure is documented below.
         :param pulumi.Input[str] zone: The zone of the pubsub lite topic.
         """
@@ -72,7 +72,7 @@ class LiteTopicArgs:
 
     @property
     @pulumi.getter(name="partitionConfig")
-    def partition_config(self) -> Optional[pulumi.Input['LiteTopicPartitionConfigArgs']]:
+    def partition_config(self) -> Optional[pulumi.Input['LiteTopicPartitionConfigArrgs']]:
         """
         The settings for this topic's partitions.
         Structure is documented below.
@@ -80,7 +80,7 @@ class LiteTopicArgs:
         return pulumi.get(self, "partition_config")
 
     @partition_config.setter
-    def partition_config(self, value: Optional[pulumi.Input['LiteTopicPartitionConfigArgs']]):
+    def partition_config(self, value: Optional[pulumi.Input['LiteTopicPartitionConfigArrgs']]):
         pulumi.set(self, "partition_config", value)
 
     @property
@@ -110,7 +110,7 @@ class LiteTopicArgs:
 
     @property
     @pulumi.getter(name="reservationConfig")
-    def reservation_config(self) -> Optional[pulumi.Input['LiteTopicReservationConfigArgs']]:
+    def reservation_config(self) -> Optional[pulumi.Input['LiteTopicReservationConfigArrgs']]:
         """
         The settings for this topic's Reservation usage.
         Structure is documented below.
@@ -118,12 +118,12 @@ class LiteTopicArgs:
         return pulumi.get(self, "reservation_config")
 
     @reservation_config.setter
-    def reservation_config(self, value: Optional[pulumi.Input['LiteTopicReservationConfigArgs']]):
+    def reservation_config(self, value: Optional[pulumi.Input['LiteTopicReservationConfigArrgs']]):
         pulumi.set(self, "reservation_config", value)
 
     @property
     @pulumi.getter(name="retentionConfig")
-    def retention_config(self) -> Optional[pulumi.Input['LiteTopicRetentionConfigArgs']]:
+    def retention_config(self) -> Optional[pulumi.Input['LiteTopicRetentionConfigArrgs']]:
         """
         The settings for a topic's message retention.
         Structure is documented below.
@@ -131,7 +131,7 @@ class LiteTopicArgs:
         return pulumi.get(self, "retention_config")
 
     @retention_config.setter
-    def retention_config(self, value: Optional[pulumi.Input['LiteTopicRetentionConfigArgs']]):
+    def retention_config(self, value: Optional[pulumi.Input['LiteTopicRetentionConfigArrgs']]):
         pulumi.set(self, "retention_config", value)
 
     @property
@@ -148,14 +148,14 @@ class LiteTopicArgs:
 
 
 @pulumi.input_type
-class _LiteTopicState:
+calass _LiteTopicState:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
-                 partition_config: Optional[pulumi.Input['LiteTopicPartitionConfigArgs']] = None,
+                 partition_config: Optional[pulumi.Input['LiteTopicPartitionConfigArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 reservation_config: Optional[pulumi.Input['LiteTopicReservationConfigArgs']] = None,
-                 retention_config: Optional[pulumi.Input['LiteTopicRetentionConfigArgs']] = None,
+                 reservation_config: Optional[pulumi.Input['LiteTopicReservationConfigArrgs']] = None,
+                 retention_config: Optional[pulumi.Input['LiteTopicRetentionConfigArrgs']] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LiteTopic resources.
@@ -163,14 +163,14 @@ class _LiteTopicState:
                
                
                - - -
-        :param pulumi.Input['LiteTopicPartitionConfigArgs'] partition_config: The settings for this topic's partitions.
+        :param pulumi.Input['LiteTopicPartitionConfigArrgs'] partition_config: The settings for this topic's partitions.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the pubsub lite topic.
-        :param pulumi.Input['LiteTopicReservationConfigArgs'] reservation_config: The settings for this topic's Reservation usage.
+        :param pulumi.Input['LiteTopicReservationConfigArrgs'] reservation_config: The settings for this topic's Reservation usage.
                Structure is documented below.
-        :param pulumi.Input['LiteTopicRetentionConfigArgs'] retention_config: The settings for a topic's message retention.
+        :param pulumi.Input['LiteTopicRetentionConfigArrgs'] retention_config: The settings for a topic's message retention.
                Structure is documented below.
         :param pulumi.Input[str] zone: The zone of the pubsub lite topic.
         """
@@ -206,7 +206,7 @@ class _LiteTopicState:
 
     @property
     @pulumi.getter(name="partitionConfig")
-    def partition_config(self) -> Optional[pulumi.Input['LiteTopicPartitionConfigArgs']]:
+    def partition_config(self) -> Optional[pulumi.Input['LiteTopicPartitionConfigArrgs']]:
         """
         The settings for this topic's partitions.
         Structure is documented below.
@@ -214,7 +214,7 @@ class _LiteTopicState:
         return pulumi.get(self, "partition_config")
 
     @partition_config.setter
-    def partition_config(self, value: Optional[pulumi.Input['LiteTopicPartitionConfigArgs']]):
+    def partition_config(self, value: Optional[pulumi.Input['LiteTopicPartitionConfigArrgs']]):
         pulumi.set(self, "partition_config", value)
 
     @property
@@ -244,7 +244,7 @@ class _LiteTopicState:
 
     @property
     @pulumi.getter(name="reservationConfig")
-    def reservation_config(self) -> Optional[pulumi.Input['LiteTopicReservationConfigArgs']]:
+    def reservation_config(self) -> Optional[pulumi.Input['LiteTopicReservationConfigArrgs']]:
         """
         The settings for this topic's Reservation usage.
         Structure is documented below.
@@ -252,12 +252,12 @@ class _LiteTopicState:
         return pulumi.get(self, "reservation_config")
 
     @reservation_config.setter
-    def reservation_config(self, value: Optional[pulumi.Input['LiteTopicReservationConfigArgs']]):
+    def reservation_config(self, value: Optional[pulumi.Input['LiteTopicReservationConfigArrgs']]):
         pulumi.set(self, "reservation_config", value)
 
     @property
     @pulumi.getter(name="retentionConfig")
-    def retention_config(self) -> Optional[pulumi.Input['LiteTopicRetentionConfigArgs']]:
+    def retention_config(self) -> Optional[pulumi.Input['LiteTopicRetentionConfigArrgs']]:
         """
         The settings for a topic's message retention.
         Structure is documented below.
@@ -265,7 +265,7 @@ class _LiteTopicState:
         return pulumi.get(self, "retention_config")
 
     @retention_config.setter
-    def retention_config(self, value: Optional[pulumi.Input['LiteTopicRetentionConfigArgs']]):
+    def retention_config(self, value: Optional[pulumi.Input['LiteTopicRetentionConfigArrgs']]):
         pulumi.set(self, "retention_config", value)
 
     @property
@@ -281,17 +281,17 @@ class _LiteTopicState:
         pulumi.set(self, "zone", value)
 
 
-class LiteTopic(pulumi.CustomResource):
+calass LiteTopic(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 partition_config: Optional[pulumi.Input[pulumi.InputType['LiteTopicPartitionConfigArgs']]] = None,
+                 partition_config: Optional[pulumi.Input[pulumi.InputType['LiteTopicPartitionConfigArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 reservation_config: Optional[pulumi.Input[pulumi.InputType['LiteTopicReservationConfigArgs']]] = None,
-                 retention_config: Optional[pulumi.Input[pulumi.InputType['LiteTopicRetentionConfigArgs']]] = None,
+                 reservation_config: Optional[pulumi.Input[pulumi.InputType['LiteTopicReservationConfigArrgs']]] = None,
+                 retention_config: Optional[pulumi.Input[pulumi.InputType['LiteTopicRetentionConfigArrgs']]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -316,17 +316,17 @@ class LiteTopic(pulumi.CustomResource):
             throughput_capacity=2)
         example_lite_topic = gcp.pubsub.LiteTopic("exampleLiteTopic",
             project=project.number,
-            partition_config=gcp.pubsub.LiteTopicPartitionConfigArgs(
+            partition_config=gcp.pubsub.LiteTopicPartitionConfigArrgs(
                 count=1,
-                capacity=gcp.pubsub.LiteTopicPartitionConfigCapacityArgs(
+                capacity=gcp.pubsub.LiteTopicPartitionConfigCapacityArrgs(
                     publish_mib_per_sec=4,
                     subscribe_mib_per_sec=8,
                 ),
             ),
-            retention_config=gcp.pubsub.LiteTopicRetentionConfigArgs(
+            retention_config=gcp.pubsub.LiteTopicRetentionConfigArrgs(
                 per_partition_bytes="32212254720",
             ),
-            reservation_config=gcp.pubsub.LiteTopicReservationConfigArgs(
+            reservation_config=gcp.pubsub.LiteTopicReservationConfigArrgs(
                 throughput_reservation=example_lite_reservation.name,
             ))
         ```
@@ -357,14 +357,14 @@ class LiteTopic(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['LiteTopicPartitionConfigArgs']] partition_config: The settings for this topic's partitions.
+        :param pulumi.Input[pulumi.InputType['LiteTopicPartitionConfigArrgs']] partition_config: The settings for this topic's partitions.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the pubsub lite topic.
-        :param pulumi.Input[pulumi.InputType['LiteTopicReservationConfigArgs']] reservation_config: The settings for this topic's Reservation usage.
+        :param pulumi.Input[pulumi.InputType['LiteTopicReservationConfigArrgs']] reservation_config: The settings for this topic's Reservation usage.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['LiteTopicRetentionConfigArgs']] retention_config: The settings for a topic's message retention.
+        :param pulumi.Input[pulumi.InputType['LiteTopicRetentionConfigArrgs']] retention_config: The settings for a topic's message retention.
                Structure is documented below.
         :param pulumi.Input[str] zone: The zone of the pubsub lite topic.
         """
@@ -372,7 +372,7 @@ class LiteTopic(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[LiteTopicArgs] = None,
+                 args: Optional[LiteTopicArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A named resource to which messages are sent by publishers.
@@ -396,17 +396,17 @@ class LiteTopic(pulumi.CustomResource):
             throughput_capacity=2)
         example_lite_topic = gcp.pubsub.LiteTopic("exampleLiteTopic",
             project=project.number,
-            partition_config=gcp.pubsub.LiteTopicPartitionConfigArgs(
+            partition_config=gcp.pubsub.LiteTopicPartitionConfigArrgs(
                 count=1,
-                capacity=gcp.pubsub.LiteTopicPartitionConfigCapacityArgs(
+                capacity=gcp.pubsub.LiteTopicPartitionConfigCapacityArrgs(
                     publish_mib_per_sec=4,
                     subscribe_mib_per_sec=8,
                 ),
             ),
-            retention_config=gcp.pubsub.LiteTopicRetentionConfigArgs(
+            retention_config=gcp.pubsub.LiteTopicRetentionConfigArrgs(
                 per_partition_bytes="32212254720",
             ),
-            reservation_config=gcp.pubsub.LiteTopicReservationConfigArgs(
+            reservation_config=gcp.pubsub.LiteTopicReservationConfigArrgs(
                 throughput_reservation=example_lite_reservation.name,
             ))
         ```
@@ -432,12 +432,12 @@ class LiteTopic(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param LiteTopicArgs args: The arguments to use to populate this resource's properties.
+        :param LiteTopicArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(LiteTopicArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(LiteTopicArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -447,11 +447,11 @@ class LiteTopic(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 partition_config: Optional[pulumi.Input[pulumi.InputType['LiteTopicPartitionConfigArgs']]] = None,
+                 partition_config: Optional[pulumi.Input[pulumi.InputType['LiteTopicPartitionConfigArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 reservation_config: Optional[pulumi.Input[pulumi.InputType['LiteTopicReservationConfigArgs']]] = None,
-                 retention_config: Optional[pulumi.Input[pulumi.InputType['LiteTopicRetentionConfigArgs']]] = None,
+                 reservation_config: Optional[pulumi.Input[pulumi.InputType['LiteTopicReservationConfigArrgs']]] = None,
+                 retention_config: Optional[pulumi.Input[pulumi.InputType['LiteTopicRetentionConfigArrgs']]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -460,7 +460,7 @@ class LiteTopic(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = LiteTopicArgs.__new__(LiteTopicArgs)
+            __props__ = LiteTopicArrgs.__new__(LiteTopicArrgs)
 
             __props__.__dict__["name"] = name
             __props__.__dict__["partition_config"] = partition_config
@@ -480,11 +480,11 @@ class LiteTopic(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             name: Optional[pulumi.Input[str]] = None,
-            partition_config: Optional[pulumi.Input[pulumi.InputType['LiteTopicPartitionConfigArgs']]] = None,
+            partition_config: Optional[pulumi.Input[pulumi.InputType['LiteTopicPartitionConfigArrgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            reservation_config: Optional[pulumi.Input[pulumi.InputType['LiteTopicReservationConfigArgs']]] = None,
-            retention_config: Optional[pulumi.Input[pulumi.InputType['LiteTopicRetentionConfigArgs']]] = None,
+            reservation_config: Optional[pulumi.Input[pulumi.InputType['LiteTopicReservationConfigArrgs']]] = None,
+            retention_config: Optional[pulumi.Input[pulumi.InputType['LiteTopicRetentionConfigArrgs']]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'LiteTopic':
         """
         Get an existing LiteTopic resource's state with the given name, id, and optional extra
@@ -497,14 +497,14 @@ class LiteTopic(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['LiteTopicPartitionConfigArgs']] partition_config: The settings for this topic's partitions.
+        :param pulumi.Input[pulumi.InputType['LiteTopicPartitionConfigArrgs']] partition_config: The settings for this topic's partitions.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the pubsub lite topic.
-        :param pulumi.Input[pulumi.InputType['LiteTopicReservationConfigArgs']] reservation_config: The settings for this topic's Reservation usage.
+        :param pulumi.Input[pulumi.InputType['LiteTopicReservationConfigArrgs']] reservation_config: The settings for this topic's Reservation usage.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['LiteTopicRetentionConfigArgs']] retention_config: The settings for a topic's message retention.
+        :param pulumi.Input[pulumi.InputType['LiteTopicRetentionConfigArrgs']] retention_config: The settings for a topic's message retention.
                Structure is documented below.
         :param pulumi.Input[str] zone: The zone of the pubsub lite topic.
         """

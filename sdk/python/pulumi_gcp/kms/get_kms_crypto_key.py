@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetKMSCryptoKeyResult:
+calass GetKMSCryptoKeyResult:
     """
     A collection of values returned by getKMSCryptoKey.
     """
@@ -132,7 +132,7 @@ class GetKMSCryptoKeyResult:
         return pulumi.get(self, "version_templates")
 
 
-class AwaitableGetKMSCryptoKeyResult(GetKMSCryptoKeyResult):
+calass AwaitableGetKMSCryptoKeyResult(GetKMSCryptoKeyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

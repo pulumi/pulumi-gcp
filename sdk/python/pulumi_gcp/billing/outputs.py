@@ -24,7 +24,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class AccountIamBindingCondition(dict):
+calass AccountIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -51,7 +51,7 @@ class AccountIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class AccountIamMemberCondition(dict):
+calass AccountIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -78,7 +78,7 @@ class AccountIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class BudgetAllUpdatesRule(dict):
+calass BudgetAllUpdatesRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -178,7 +178,7 @@ class BudgetAllUpdatesRule(dict):
 
 
 @pulumi.output_type
-class BudgetAmount(dict):
+calass BudgetAmount(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -206,7 +206,7 @@ class BudgetAmount(dict):
                last period's spend.
                Boolean. Set value to true to use. Do not set to false, instead
                use the `specified_amount` block.
-        :param 'BudgetAmountSpecifiedAmountArgs' specified_amount: A specified amount to use as the budget. currencyCode is
+        :param 'BudgetAmountSpecifiedAmountArrgs' specified_amount: A specified amount to use as the budget. currencyCode is
                optional. If specified, it must match the currency of the
                billing account. The currencyCode is provided on output.
                Structure is documented below.
@@ -240,7 +240,7 @@ class BudgetAmount(dict):
 
 
 @pulumi.output_type
-class BudgetAmountSpecifiedAmount(dict):
+calass BudgetAmountSpecifiedAmount(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -318,7 +318,7 @@ class BudgetAmountSpecifiedAmount(dict):
 
 
 @pulumi.output_type
-class BudgetBudgetFilter(dict):
+calass BudgetBudgetFilter(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -368,7 +368,7 @@ class BudgetBudgetFilter(dict):
                for threshold calculations.
                Default value is `INCLUDE_ALL_CREDITS`.
                Possible values are: `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, `INCLUDE_SPECIFIED_CREDITS`.
-        :param 'BudgetBudgetFilterCustomPeriodArgs' custom_period: Specifies to track usage from any start date (required) to any end date (optional).
+        :param 'BudgetBudgetFilterCustomPeriodArrgs' custom_period: Specifies to track usage from any start date (required) to any end date (optional).
                This time period is static, it does not recur.
                Exactly one of `calendar_period`, `custom_period` must be provided.
                Structure is documented below.
@@ -522,7 +522,7 @@ class BudgetBudgetFilter(dict):
 
 
 @pulumi.output_type
-class BudgetBudgetFilterCustomPeriod(dict):
+calass BudgetBudgetFilterCustomPeriod(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -546,9 +546,9 @@ class BudgetBudgetFilterCustomPeriod(dict):
                  start_date: 'outputs.BudgetBudgetFilterCustomPeriodStartDate',
                  end_date: Optional['outputs.BudgetBudgetFilterCustomPeriodEndDate'] = None):
         """
-        :param 'BudgetBudgetFilterCustomPeriodStartDateArgs' start_date: A start date is required. The start date must be after January 1, 2017.
+        :param 'BudgetBudgetFilterCustomPeriodStartDateArrgs' start_date: A start date is required. The start date must be after January 1, 2017.
                Structure is documented below.
-        :param 'BudgetBudgetFilterCustomPeriodEndDateArgs' end_date: Optional. The end date of the time period. Budgets with elapsed end date won't be processed.
+        :param 'BudgetBudgetFilterCustomPeriodEndDateArrgs' end_date: Optional. The end date of the time period. Budgets with elapsed end date won't be processed.
                If unset, specifies to track all usage incurred since the startDate.
                Structure is documented below.
         """
@@ -577,7 +577,7 @@ class BudgetBudgetFilterCustomPeriod(dict):
 
 
 @pulumi.output_type
-class BudgetBudgetFilterCustomPeriodEndDate(dict):
+calass BudgetBudgetFilterCustomPeriodEndDate(dict):
     def __init__(__self__, *,
                  day: int,
                  month: int,
@@ -617,7 +617,7 @@ class BudgetBudgetFilterCustomPeriodEndDate(dict):
 
 
 @pulumi.output_type
-class BudgetBudgetFilterCustomPeriodStartDate(dict):
+calass BudgetBudgetFilterCustomPeriodStartDate(dict):
     def __init__(__self__, *,
                  day: int,
                  month: int,
@@ -657,7 +657,7 @@ class BudgetBudgetFilterCustomPeriodStartDate(dict):
 
 
 @pulumi.output_type
-class BudgetThresholdRule(dict):
+calass BudgetThresholdRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

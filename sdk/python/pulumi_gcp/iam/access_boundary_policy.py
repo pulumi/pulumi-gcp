@@ -11,19 +11,19 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AccessBoundaryPolicyArgs', 'AccessBoundaryPolicy']
+__all__ = ['AccessBoundaryPolicyArrgs', 'AccessBoundaryPolicy']
 
 @pulumi.input_type
-class AccessBoundaryPolicyArgs:
+calass AccessBoundaryPolicyArrgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[str],
-                 rules: pulumi.Input[Sequence[pulumi.Input['AccessBoundaryPolicyRuleArgs']]],
+                 rules: pulumi.Input[Sequence[pulumi.Input['AccessBoundaryPolicyRuleArrgs']]],
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AccessBoundaryPolicy resource.
         :param pulumi.Input[str] parent: The attachment point is identified by its URL-encoded full resource name.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessBoundaryPolicyRuleArgs']]] rules: Rules to be applied.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessBoundaryPolicyRuleArrgs']]] rules: Rules to be applied.
                Structure is documented below.
         :param pulumi.Input[str] display_name: The display name of the rule.
         :param pulumi.Input[str] name: The name of the policy.
@@ -49,7 +49,7 @@ class AccessBoundaryPolicyArgs:
 
     @property
     @pulumi.getter
-    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['AccessBoundaryPolicyRuleArgs']]]:
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['AccessBoundaryPolicyRuleArrgs']]]:
         """
         Rules to be applied.
         Structure is documented below.
@@ -57,7 +57,7 @@ class AccessBoundaryPolicyArgs:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['AccessBoundaryPolicyRuleArgs']]]):
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['AccessBoundaryPolicyRuleArrgs']]]):
         pulumi.set(self, "rules", value)
 
     @property
@@ -86,20 +86,20 @@ class AccessBoundaryPolicyArgs:
 
 
 @pulumi.input_type
-class _AccessBoundaryPolicyState:
+calass _AccessBoundaryPolicyState:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['AccessBoundaryPolicyRuleArgs']]]] = None):
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['AccessBoundaryPolicyRuleArrgs']]]] = None):
         """
         Input properties used for looking up and filtering AccessBoundaryPolicy resources.
         :param pulumi.Input[str] display_name: The display name of the rule.
         :param pulumi.Input[str] etag: The hash of the resource. Used internally during updates.
         :param pulumi.Input[str] name: The name of the policy.
         :param pulumi.Input[str] parent: The attachment point is identified by its URL-encoded full resource name.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessBoundaryPolicyRuleArgs']]] rules: Rules to be applied.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessBoundaryPolicyRuleArrgs']]] rules: Rules to be applied.
                Structure is documented below.
         """
         if display_name is not None:
@@ -163,7 +163,7 @@ class _AccessBoundaryPolicyState:
 
     @property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessBoundaryPolicyRuleArgs']]]]:
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessBoundaryPolicyRuleArrgs']]]]:
         """
         Rules to be applied.
         Structure is documented below.
@@ -171,11 +171,11 @@ class _AccessBoundaryPolicyState:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessBoundaryPolicyRuleArgs']]]]):
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessBoundaryPolicyRuleArrgs']]]]):
         pulumi.set(self, "rules", value)
 
 
-class AccessBoundaryPolicy(pulumi.CustomResource):
+calass AccessBoundaryPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -183,7 +183,7 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessBoundaryPolicyRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessBoundaryPolicyRuleArrgs']]]]] = None,
                  __props__=None):
         """
         Represents a collection of access boundary policies to apply to a given resource.
@@ -205,14 +205,14 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The display name of the rule.
         :param pulumi.Input[str] name: The name of the policy.
         :param pulumi.Input[str] parent: The attachment point is identified by its URL-encoded full resource name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessBoundaryPolicyRuleArgs']]]] rules: Rules to be applied.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessBoundaryPolicyRuleArrgs']]]] rules: Rules to be applied.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AccessBoundaryPolicyArgs,
+                 args: AccessBoundaryPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a collection of access boundary policies to apply to a given resource.
@@ -230,12 +230,12 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AccessBoundaryPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param AccessBoundaryPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AccessBoundaryPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AccessBoundaryPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -247,7 +247,7 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessBoundaryPolicyRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessBoundaryPolicyRuleArrgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -255,7 +255,7 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AccessBoundaryPolicyArgs.__new__(AccessBoundaryPolicyArgs)
+            __props__ = AccessBoundaryPolicyArrgs.__new__(AccessBoundaryPolicyArrgs)
 
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["name"] = name
@@ -280,7 +280,7 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
             etag: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessBoundaryPolicyRuleArgs']]]]] = None) -> 'AccessBoundaryPolicy':
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessBoundaryPolicyRuleArrgs']]]]] = None) -> 'AccessBoundaryPolicy':
         """
         Get an existing AccessBoundaryPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -292,7 +292,7 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] etag: The hash of the resource. Used internally during updates.
         :param pulumi.Input[str] name: The name of the policy.
         :param pulumi.Input[str] parent: The attachment point is identified by its URL-encoded full resource name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessBoundaryPolicyRuleArgs']]]] rules: Rules to be applied.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessBoundaryPolicyRuleArrgs']]]] rules: Rules to be applied.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

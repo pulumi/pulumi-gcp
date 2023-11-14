@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetAuthorityResult:
+calass GetAuthorityResult:
     """
     A collection of values returned by getAuthority.
     """
@@ -239,7 +239,7 @@ class GetAuthorityResult:
         return pulumi.get(self, "update_time")
 
 
-class AwaitableGetAuthorityResult(GetAuthorityResult):
+calass AwaitableGetAuthorityResult(GetAuthorityResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

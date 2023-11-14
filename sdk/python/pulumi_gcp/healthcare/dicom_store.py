@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DicomStoreArgs', 'DicomStore']
+__all__ = ['DicomStoreArrgs', 'DicomStore']
 
 @pulumi.input_type
-class DicomStoreArgs:
+calass DicomStoreArrgs:
     def __init__(__self__, *,
                  dataset: pulumi.Input[str],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_config: Optional[pulumi.Input['DicomStoreNotificationConfigArgs']] = None,
-                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]] = None):
+                 notification_config: Optional[pulumi.Input['DicomStoreNotificationConfigArrgs']] = None,
+                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArrgs']]]] = None):
         """
         The set of arguments for constructing a DicomStore resource.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
@@ -41,9 +41,9 @@ class DicomStoreArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the DicomStore.
                ** Changing this property may recreate the Dicom store (removing all data) **
-        :param pulumi.Input['DicomStoreNotificationConfigArgs'] notification_config: A nested object resource
+        :param pulumi.Input['DicomStoreNotificationConfigArrgs'] notification_config: A nested object resource
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]] stream_configs: To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
+        :param pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArrgs']]] stream_configs: To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
                streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
                Structure is documented below.
         """
@@ -110,7 +110,7 @@ class DicomStoreArgs:
 
     @property
     @pulumi.getter(name="notificationConfig")
-    def notification_config(self) -> Optional[pulumi.Input['DicomStoreNotificationConfigArgs']]:
+    def notification_config(self) -> Optional[pulumi.Input['DicomStoreNotificationConfigArrgs']]:
         """
         A nested object resource
         Structure is documented below.
@@ -118,12 +118,12 @@ class DicomStoreArgs:
         return pulumi.get(self, "notification_config")
 
     @notification_config.setter
-    def notification_config(self, value: Optional[pulumi.Input['DicomStoreNotificationConfigArgs']]):
+    def notification_config(self, value: Optional[pulumi.Input['DicomStoreNotificationConfigArrgs']]):
         pulumi.set(self, "notification_config", value)
 
     @property
     @pulumi.getter(name="streamConfigs")
-    def stream_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]]:
+    def stream_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArrgs']]]]:
         """
         To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
         streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
@@ -132,21 +132,21 @@ class DicomStoreArgs:
         return pulumi.get(self, "stream_configs")
 
     @stream_configs.setter
-    def stream_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]]):
+    def stream_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArrgs']]]]):
         pulumi.set(self, "stream_configs", value)
 
 
 @pulumi.input_type
-class _DicomStoreState:
+calass _DicomStoreState:
     def __init__(__self__, *,
                  dataset: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_config: Optional[pulumi.Input['DicomStoreNotificationConfigArgs']] = None,
+                 notification_config: Optional[pulumi.Input['DicomStoreNotificationConfigArrgs']] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]] = None):
+                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArrgs']]]] = None):
         """
         Input properties used for looking up and filtering DicomStore resources.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
@@ -168,12 +168,12 @@ class _DicomStoreState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the DicomStore.
                ** Changing this property may recreate the Dicom store (removing all data) **
-        :param pulumi.Input['DicomStoreNotificationConfigArgs'] notification_config: A nested object resource
+        :param pulumi.Input['DicomStoreNotificationConfigArrgs'] notification_config: A nested object resource
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] self_link: The fully qualified name of this dataset
-        :param pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]] stream_configs: To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
+        :param pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArrgs']]] stream_configs: To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
                streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
                Structure is documented below.
         """
@@ -259,7 +259,7 @@ class _DicomStoreState:
 
     @property
     @pulumi.getter(name="notificationConfig")
-    def notification_config(self) -> Optional[pulumi.Input['DicomStoreNotificationConfigArgs']]:
+    def notification_config(self) -> Optional[pulumi.Input['DicomStoreNotificationConfigArrgs']]:
         """
         A nested object resource
         Structure is documented below.
@@ -267,7 +267,7 @@ class _DicomStoreState:
         return pulumi.get(self, "notification_config")
 
     @notification_config.setter
-    def notification_config(self, value: Optional[pulumi.Input['DicomStoreNotificationConfigArgs']]):
+    def notification_config(self, value: Optional[pulumi.Input['DicomStoreNotificationConfigArrgs']]):
         pulumi.set(self, "notification_config", value)
 
     @property
@@ -297,7 +297,7 @@ class _DicomStoreState:
 
     @property
     @pulumi.getter(name="streamConfigs")
-    def stream_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]]:
+    def stream_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArrgs']]]]:
         """
         To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
         streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
@@ -306,11 +306,11 @@ class _DicomStoreState:
         return pulumi.get(self, "stream_configs")
 
     @stream_configs.setter
-    def stream_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]]):
+    def stream_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArrgs']]]]):
         pulumi.set(self, "stream_configs", value)
 
 
-class DicomStore(pulumi.CustomResource):
+calass DicomStore(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -318,8 +318,8 @@ class DicomStore(pulumi.CustomResource):
                  dataset: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_config: Optional[pulumi.Input[pulumi.InputType['DicomStoreNotificationConfigArgs']]] = None,
-                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DicomStoreStreamConfigArgs']]]]] = None,
+                 notification_config: Optional[pulumi.Input[pulumi.InputType['DicomStoreNotificationConfigArrgs']]] = None,
+                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DicomStoreStreamConfigArrgs']]]]] = None,
                  __props__=None):
         """
         A DicomStore is a datastore inside a Healthcare dataset that conforms to the DICOM
@@ -342,7 +342,7 @@ class DicomStore(pulumi.CustomResource):
         dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
         default = gcp.healthcare.DicomStore("default",
             dataset=dataset.id,
-            notification_config=gcp.healthcare.DicomStoreNotificationConfigArgs(
+            notification_config=gcp.healthcare.DicomStoreNotificationConfigArrgs(
                 pubsub_topic=topic.id,
             ),
             labels={
@@ -372,14 +372,14 @@ class DicomStore(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         default = gcp.healthcare.DicomStore("default",
             dataset=dataset.id,
-            notification_config=gcp.healthcare.DicomStoreNotificationConfigArgs(
+            notification_config=gcp.healthcare.DicomStoreNotificationConfigArrgs(
                 pubsub_topic=topic.id,
             ),
             labels={
                 "label1": "labelvalue1",
             },
-            stream_configs=[gcp.healthcare.DicomStoreStreamConfigArgs(
-                bigquery_destination=gcp.healthcare.DicomStoreStreamConfigBigqueryDestinationArgs(
+            stream_configs=[gcp.healthcare.DicomStoreStreamConfigArrgs(
+                bigquery_destination=gcp.healthcare.DicomStoreStreamConfigBigqueryDestinationArrgs(
                     table_uri=pulumi.Output.all(bq_dataset.project, bq_dataset.dataset_id, bq_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
                 ),
             )],
@@ -418,9 +418,9 @@ class DicomStore(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the DicomStore.
                ** Changing this property may recreate the Dicom store (removing all data) **
-        :param pulumi.Input[pulumi.InputType['DicomStoreNotificationConfigArgs']] notification_config: A nested object resource
+        :param pulumi.Input[pulumi.InputType['DicomStoreNotificationConfigArrgs']] notification_config: A nested object resource
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DicomStoreStreamConfigArgs']]]] stream_configs: To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DicomStoreStreamConfigArrgs']]]] stream_configs: To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
                streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
                Structure is documented below.
         """
@@ -428,7 +428,7 @@ class DicomStore(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DicomStoreArgs,
+                 args: DicomStoreArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A DicomStore is a datastore inside a Healthcare dataset that conforms to the DICOM
@@ -451,7 +451,7 @@ class DicomStore(pulumi.CustomResource):
         dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
         default = gcp.healthcare.DicomStore("default",
             dataset=dataset.id,
-            notification_config=gcp.healthcare.DicomStoreNotificationConfigArgs(
+            notification_config=gcp.healthcare.DicomStoreNotificationConfigArrgs(
                 pubsub_topic=topic.id,
             ),
             labels={
@@ -481,14 +481,14 @@ class DicomStore(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         default = gcp.healthcare.DicomStore("default",
             dataset=dataset.id,
-            notification_config=gcp.healthcare.DicomStoreNotificationConfigArgs(
+            notification_config=gcp.healthcare.DicomStoreNotificationConfigArrgs(
                 pubsub_topic=topic.id,
             ),
             labels={
                 "label1": "labelvalue1",
             },
-            stream_configs=[gcp.healthcare.DicomStoreStreamConfigArgs(
-                bigquery_destination=gcp.healthcare.DicomStoreStreamConfigBigqueryDestinationArgs(
+            stream_configs=[gcp.healthcare.DicomStoreStreamConfigArrgs(
+                bigquery_destination=gcp.healthcare.DicomStoreStreamConfigBigqueryDestinationArrgs(
                     table_uri=pulumi.Output.all(bq_dataset.project, bq_dataset.dataset_id, bq_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
                 ),
             )],
@@ -508,12 +508,12 @@ class DicomStore(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param DicomStoreArgs args: The arguments to use to populate this resource's properties.
+        :param DicomStoreArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DicomStoreArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DicomStoreArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -525,8 +525,8 @@ class DicomStore(pulumi.CustomResource):
                  dataset: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_config: Optional[pulumi.Input[pulumi.InputType['DicomStoreNotificationConfigArgs']]] = None,
-                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DicomStoreStreamConfigArgs']]]]] = None,
+                 notification_config: Optional[pulumi.Input[pulumi.InputType['DicomStoreNotificationConfigArrgs']]] = None,
+                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DicomStoreStreamConfigArrgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -534,7 +534,7 @@ class DicomStore(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DicomStoreArgs.__new__(DicomStoreArgs)
+            __props__ = DicomStoreArrgs.__new__(DicomStoreArrgs)
 
             if dataset is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset'")
@@ -562,10 +562,10 @@ class DicomStore(pulumi.CustomResource):
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            notification_config: Optional[pulumi.Input[pulumi.InputType['DicomStoreNotificationConfigArgs']]] = None,
+            notification_config: Optional[pulumi.Input[pulumi.InputType['DicomStoreNotificationConfigArrgs']]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DicomStoreStreamConfigArgs']]]]] = None) -> 'DicomStore':
+            stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DicomStoreStreamConfigArrgs']]]]] = None) -> 'DicomStore':
         """
         Get an existing DicomStore resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -592,12 +592,12 @@ class DicomStore(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the DicomStore.
                ** Changing this property may recreate the Dicom store (removing all data) **
-        :param pulumi.Input[pulumi.InputType['DicomStoreNotificationConfigArgs']] notification_config: A nested object resource
+        :param pulumi.Input[pulumi.InputType['DicomStoreNotificationConfigArrgs']] notification_config: A nested object resource
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] self_link: The fully qualified name of this dataset
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DicomStoreStreamConfigArgs']]]] stream_configs: To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DicomStoreStreamConfigArrgs']]]] stream_configs: To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
                streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
                Structure is documented below.
         """

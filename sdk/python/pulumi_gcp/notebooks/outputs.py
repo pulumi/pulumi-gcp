@@ -37,7 +37,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class EnvironmentContainerImage(dict):
+calass EnvironmentContainerImage(dict):
     def __init__(__self__, *,
                  repository: str,
                  tag: Optional[str] = None):
@@ -69,7 +69,7 @@ class EnvironmentContainerImage(dict):
 
 
 @pulumi.output_type
-class EnvironmentVmImage(dict):
+calass EnvironmentVmImage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -132,7 +132,7 @@ class EnvironmentVmImage(dict):
 
 
 @pulumi.output_type
-class InstanceAcceleratorConfig(dict):
+calass InstanceAcceleratorConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -180,7 +180,7 @@ class InstanceAcceleratorConfig(dict):
 
 
 @pulumi.output_type
-class InstanceContainerImage(dict):
+calass InstanceContainerImage(dict):
     def __init__(__self__, *,
                  repository: str,
                  tag: Optional[str] = None):
@@ -212,7 +212,7 @@ class InstanceContainerImage(dict):
 
 
 @pulumi.output_type
-class InstanceIamBindingCondition(dict):
+calass InstanceIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -239,7 +239,7 @@ class InstanceIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class InstanceIamMemberCondition(dict):
+calass InstanceIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -266,7 +266,7 @@ class InstanceIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class InstanceReservationAffinity(dict):
+calass InstanceReservationAffinity(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -327,7 +327,7 @@ class InstanceReservationAffinity(dict):
 
 
 @pulumi.output_type
-class InstanceShieldedInstanceConfig(dict):
+calass InstanceShieldedInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -405,7 +405,7 @@ class InstanceShieldedInstanceConfig(dict):
 
 
 @pulumi.output_type
-class InstanceVmImage(dict):
+calass InstanceVmImage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -468,7 +468,7 @@ class InstanceVmImage(dict):
 
 
 @pulumi.output_type
-class RuntimeAccessConfig(dict):
+calass RuntimeAccessConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -540,7 +540,7 @@ class RuntimeAccessConfig(dict):
 
 
 @pulumi.output_type
-class RuntimeIamBindingCondition(dict):
+calass RuntimeIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -567,7 +567,7 @@ class RuntimeIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class RuntimeIamMemberCondition(dict):
+calass RuntimeIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -594,7 +594,7 @@ class RuntimeIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class RuntimeMetric(dict):
+calass RuntimeMetric(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -634,7 +634,7 @@ class RuntimeMetric(dict):
 
 
 @pulumi.output_type
-class RuntimeSoftwareConfig(dict):
+calass RuntimeSoftwareConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -686,7 +686,7 @@ class RuntimeSoftwareConfig(dict):
         :param int idle_shutdown_timeout: Time in minutes to wait before shuting down runtime.
                Default: 180 minutes
         :param bool install_gpu_driver: Install Nvidia Driver automatically.
-        :param Sequence['RuntimeSoftwareConfigKernelArgs'] kernels: Use a list of container images to use as Kernels in the notebook instance.
+        :param Sequence['RuntimeSoftwareConfigKernelArrgs'] kernels: Use a list of container images to use as Kernels in the notebook instance.
                Structure is documented below.
         :param str notebook_upgrade_schedule: Cron expression in UTC timezone for schedule instance auto upgrade.
                Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
@@ -810,7 +810,7 @@ class RuntimeSoftwareConfig(dict):
 
 
 @pulumi.output_type
-class RuntimeSoftwareConfigKernel(dict):
+calass RuntimeSoftwareConfigKernel(dict):
     def __init__(__self__, *,
                  repository: str,
                  tag: Optional[str] = None):
@@ -842,7 +842,7 @@ class RuntimeSoftwareConfigKernel(dict):
 
 
 @pulumi.output_type
-class RuntimeVirtualMachine(dict):
+calass RuntimeVirtualMachine(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -873,7 +873,7 @@ class RuntimeVirtualMachine(dict):
                The unique identifier of the Managed Compute Engine instance.
         :param str instance_name: (Output)
                The user-friendly name of the Managed Compute Engine instance.
-        :param 'RuntimeVirtualMachineVirtualMachineConfigArgs' virtual_machine_config: Virtual Machine configuration settings.
+        :param 'RuntimeVirtualMachineVirtualMachineConfigArrgs' virtual_machine_config: Virtual Machine configuration settings.
                Structure is documented below.
         """
         if instance_id is not None:
@@ -912,7 +912,7 @@ class RuntimeVirtualMachine(dict):
 
 
 @pulumi.output_type
-class RuntimeVirtualMachineVirtualMachineConfig(dict):
+calass RuntimeVirtualMachineVirtualMachineConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -966,14 +966,14 @@ class RuntimeVirtualMachineVirtualMachineConfig(dict):
                  tags: Optional[Sequence[str]] = None,
                  zone: Optional[str] = None):
         """
-        :param 'RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs' data_disk: Data disk option configuration settings.
+        :param 'RuntimeVirtualMachineVirtualMachineConfigDataDiskArrgs' data_disk: Data disk option configuration settings.
                Structure is documented below.
         :param str machine_type: The Compute Engine machine type used for runtimes.
-        :param 'RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs' accelerator_config: The Compute Engine accelerator configuration for this runtime.
+        :param 'RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArrgs' accelerator_config: The Compute Engine accelerator configuration for this runtime.
                Structure is documented below.
-        :param Sequence['RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs'] container_images: Use a list of container images to start the notebook instance.
+        :param Sequence['RuntimeVirtualMachineVirtualMachineConfigContainerImageArrgs'] container_images: Use a list of container images to start the notebook instance.
                Structure is documented below.
-        :param 'RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs' encryption_config: Encryption settings for virtual machine data disk.
+        :param 'RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArrgs' encryption_config: Encryption settings for virtual machine data disk.
                Structure is documented below.
         :param Mapping[str, str] guest_attributes: (Output)
                The Compute Engine guest attributes. (see [Project and instance
@@ -1014,7 +1014,7 @@ class RuntimeVirtualMachineVirtualMachineConfig(dict):
                Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
         :param str reserved_ip_range: Reserved IP Range name is used for VPC Peering. The
                subnetwork allocation will use the range *name* if it's assigned.
-        :param 'RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs' shielded_instance_config: Shielded VM Instance configuration settings.
+        :param 'RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArrgs' shielded_instance_config: Shielded VM Instance configuration settings.
                Structure is documented below.
         :param str subnet: The Compute Engine subnetwork to be used for machine
                communications. Cannot be specified with network. A full URL or
@@ -1234,7 +1234,7 @@ class RuntimeVirtualMachineVirtualMachineConfig(dict):
 
 
 @pulumi.output_type
-class RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig(dict):
+calass RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1286,7 +1286,7 @@ class RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig(dict):
 
 
 @pulumi.output_type
-class RuntimeVirtualMachineVirtualMachineConfigContainerImage(dict):
+calass RuntimeVirtualMachineVirtualMachineConfigContainerImage(dict):
     def __init__(__self__, *,
                  repository: str,
                  tag: Optional[str] = None):
@@ -1318,7 +1318,7 @@ class RuntimeVirtualMachineVirtualMachineConfigContainerImage(dict):
 
 
 @pulumi.output_type
-class RuntimeVirtualMachineVirtualMachineConfigDataDisk(dict):
+calass RuntimeVirtualMachineVirtualMachineConfigDataDisk(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1384,7 +1384,7 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDisk(dict):
                Output only. A zero-based index to this disk, where 0 is
                reserved for the boot disk. If you have many disks attached
                to an instance, each disk would have a unique index number.
-        :param 'RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs' initialize_params: Input only. Specifies the parameters for a new disk that will
+        :param 'RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArrgs' initialize_params: Input only. Specifies the parameters for a new disk that will
                be created alongside the new instance. Use initialization
                parameters to create boot disks or local SSDs attached to the
                new instance. This property is mutually exclusive with the
@@ -1574,7 +1574,7 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDisk(dict):
 
 
 @pulumi.output_type
-class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams(dict):
+calass RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1684,7 +1684,7 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams(dict):
 
 
 @pulumi.output_type
-class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig(dict):
+calass RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1728,7 +1728,7 @@ class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig(dict):
 
 
 @pulumi.output_type
-class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig(dict):
+calass RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

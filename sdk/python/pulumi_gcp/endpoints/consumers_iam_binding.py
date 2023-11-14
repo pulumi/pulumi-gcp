@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ConsumersIamBindingArgs', 'ConsumersIamBinding']
+__all__ = ['ConsumersIamBindingArrgs', 'ConsumersIamBinding']
 
 @pulumi.input_type
-class ConsumersIamBindingArgs:
+calass ConsumersIamBindingArrgs:
     def __init__(__self__, *,
                  consumer_project: pulumi.Input[str],
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
                  service_name: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['ConsumersIamBindingConditionArgs']] = None):
+                 condition: Optional[pulumi.Input['ConsumersIamBindingConditionArrgs']] = None):
         """
         The set of arguments for constructing a ConsumersIamBinding resource.
         :param pulumi.Input[str] role: The role that should be applied. Only one
@@ -77,18 +77,18 @@ class ConsumersIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ConsumersIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ConsumersIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ConsumersIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ConsumersIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
-class _ConsumersIamBindingState:
+calass _ConsumersIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['ConsumersIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['ConsumersIamBindingConditionArrgs']] = None,
                  consumer_project: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -116,11 +116,11 @@ class _ConsumersIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ConsumersIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ConsumersIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ConsumersIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ConsumersIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -177,12 +177,12 @@ class _ConsumersIamBindingState:
         pulumi.set(self, "service_name", value)
 
 
-class ConsumersIamBinding(pulumi.CustomResource):
+calass ConsumersIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ConsumersIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ConsumersIamBindingConditionArrgs']]] = None,
                  consumer_project: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -237,7 +237,7 @@ class ConsumersIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ConsumersIamBindingArgs,
+                 args: ConsumersIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Cloud Endpoints ServiceConsumers. Each of these resources serves a different use case:
@@ -279,12 +279,12 @@ class ConsumersIamBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param ConsumersIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param ConsumersIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ConsumersIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ConsumersIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -293,7 +293,7 @@ class ConsumersIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ConsumersIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ConsumersIamBindingConditionArrgs']]] = None,
                  consumer_project: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -305,7 +305,7 @@ class ConsumersIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ConsumersIamBindingArgs.__new__(ConsumersIamBindingArgs)
+            __props__ = ConsumersIamBindingArrgs.__new__(ConsumersIamBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if consumer_project is None and not opts.urn:
@@ -331,7 +331,7 @@ class ConsumersIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['ConsumersIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['ConsumersIamBindingConditionArrgs']]] = None,
             consumer_project: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

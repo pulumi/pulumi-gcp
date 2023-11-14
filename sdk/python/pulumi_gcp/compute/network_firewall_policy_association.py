@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['NetworkFirewallPolicyAssociationArgs', 'NetworkFirewallPolicyAssociation']
+__all__ = ['NetworkFirewallPolicyAssociationArrgs', 'NetworkFirewallPolicyAssociation']
 
 @pulumi.input_type
-class NetworkFirewallPolicyAssociationArgs:
+calass NetworkFirewallPolicyAssociationArrgs:
     def __init__(__self__, *,
                  attachment_target: pulumi.Input[str],
                  firewall_policy: pulumi.Input[str],
@@ -90,7 +90,7 @@ class NetworkFirewallPolicyAssociationArgs:
 
 
 @pulumi.input_type
-class _NetworkFirewallPolicyAssociationState:
+calass _NetworkFirewallPolicyAssociationState:
     def __init__(__self__, *,
                  attachment_target: Optional[pulumi.Input[str]] = None,
                  firewall_policy: Optional[pulumi.Input[str]] = None,
@@ -185,7 +185,7 @@ class _NetworkFirewallPolicyAssociationState:
         pulumi.set(self, "short_name", value)
 
 
-class NetworkFirewallPolicyAssociation(pulumi.CustomResource):
+calass NetworkFirewallPolicyAssociation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -241,7 +241,7 @@ class NetworkFirewallPolicyAssociation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: NetworkFirewallPolicyAssociationArgs,
+                 args: NetworkFirewallPolicyAssociationArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Compute NetworkFirewallPolicyAssociation resource
@@ -275,12 +275,12 @@ class NetworkFirewallPolicyAssociation(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param NetworkFirewallPolicyAssociationArgs args: The arguments to use to populate this resource's properties.
+        :param NetworkFirewallPolicyAssociationArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(NetworkFirewallPolicyAssociationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(NetworkFirewallPolicyAssociationArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -300,7 +300,7 @@ class NetworkFirewallPolicyAssociation(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = NetworkFirewallPolicyAssociationArgs.__new__(NetworkFirewallPolicyAssociationArgs)
+            __props__ = NetworkFirewallPolicyAssociationArrgs.__new__(NetworkFirewallPolicyAssociationArrgs)
 
             if attachment_target is None and not opts.urn:
                 raise TypeError("Missing required property 'attachment_target'")

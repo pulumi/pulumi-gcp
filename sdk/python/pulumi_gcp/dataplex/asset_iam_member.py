@@ -11,17 +11,17 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AssetIamMemberArgs', 'AssetIamMember']
+__all__ = ['AssetIamMemberArrgs', 'AssetIamMember']
 
 @pulumi.input_type
-class AssetIamMemberArgs:
+calass AssetIamMemberArrgs:
     def __init__(__self__, *,
                  asset: pulumi.Input[str],
                  dataplex_zone: pulumi.Input[str],
                  lake: pulumi.Input[str],
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['AssetIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['AssetIamMemberConditionArrgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -112,11 +112,11 @@ class AssetIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['AssetIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['AssetIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['AssetIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['AssetIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -155,10 +155,10 @@ class AssetIamMemberArgs:
 
 
 @pulumi.input_type
-class _AssetIamMemberState:
+calass _AssetIamMemberState:
     def __init__(__self__, *,
                  asset: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input['AssetIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['AssetIamMemberConditionArrgs']] = None,
                  dataplex_zone: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
@@ -221,11 +221,11 @@ class _AssetIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['AssetIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['AssetIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['AssetIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['AssetIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -316,13 +316,13 @@ class _AssetIamMemberState:
         pulumi.set(self, "role", value)
 
 
-class AssetIamMember(pulumi.CustomResource):
+calass AssetIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  asset: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['AssetIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['AssetIamMemberConditionArrgs']]] = None,
                  dataplex_zone: Optional[pulumi.Input[str]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -351,7 +351,7 @@ class AssetIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -445,7 +445,7 @@ class AssetIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AssetIamMemberArgs,
+                 args: AssetIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Dataplex Asset. Each of these resources serves a different use case:
@@ -468,7 +468,7 @@ class AssetIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -538,12 +538,12 @@ class AssetIamMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param AssetIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param AssetIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AssetIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AssetIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -553,7 +553,7 @@ class AssetIamMember(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  asset: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['AssetIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['AssetIamMemberConditionArrgs']]] = None,
                  dataplex_zone: Optional[pulumi.Input[str]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -567,7 +567,7 @@ class AssetIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AssetIamMemberArgs.__new__(AssetIamMemberArgs)
+            __props__ = AssetIamMemberArrgs.__new__(AssetIamMemberArrgs)
 
             if asset is None and not opts.urn:
                 raise TypeError("Missing required property 'asset'")
@@ -599,7 +599,7 @@ class AssetIamMember(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             asset: Optional[pulumi.Input[str]] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['AssetIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['AssetIamMemberConditionArrgs']]] = None,
             dataplex_zone: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             lake: Optional[pulumi.Input[str]] = None,

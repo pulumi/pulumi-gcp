@@ -11,14 +11,14 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['RepositoryWorkflowConfigArgs', 'RepositoryWorkflowConfig']
+__all__ = ['RepositoryWorkflowConfigArrgs', 'RepositoryWorkflowConfig']
 
 @pulumi.input_type
-class RepositoryWorkflowConfigArgs:
+calass RepositoryWorkflowConfigArrgs:
     def __init__(__self__, *,
                  release_config: pulumi.Input[str],
                  cron_schedule: Optional[pulumi.Input[str]] = None,
-                 invocation_config: Optional[pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs']] = None,
+                 invocation_config: Optional[pulumi.Input['RepositoryWorkflowConfigInvocationConfigArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -31,7 +31,7 @@ class RepositoryWorkflowConfigArgs:
                
                - - -
         :param pulumi.Input[str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
-        :param pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs'] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
+        :param pulumi.Input['RepositoryWorkflowConfigInvocationConfigArrgs'] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
                Structure is documented below.
         :param pulumi.Input[str] name: The workflow's name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -85,7 +85,7 @@ class RepositoryWorkflowConfigArgs:
 
     @property
     @pulumi.getter(name="invocationConfig")
-    def invocation_config(self) -> Optional[pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs']]:
+    def invocation_config(self) -> Optional[pulumi.Input['RepositoryWorkflowConfigInvocationConfigArrgs']]:
         """
         Optional. If left unset, a default InvocationConfig will be used.
         Structure is documented below.
@@ -93,7 +93,7 @@ class RepositoryWorkflowConfigArgs:
         return pulumi.get(self, "invocation_config")
 
     @invocation_config.setter
-    def invocation_config(self, value: Optional[pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs']]):
+    def invocation_config(self, value: Optional[pulumi.Input['RepositoryWorkflowConfigInvocationConfigArrgs']]):
         pulumi.set(self, "invocation_config", value)
 
     @property
@@ -159,13 +159,13 @@ class RepositoryWorkflowConfigArgs:
 
 
 @pulumi.input_type
-class _RepositoryWorkflowConfigState:
+calass _RepositoryWorkflowConfigState:
     def __init__(__self__, *,
                  cron_schedule: Optional[pulumi.Input[str]] = None,
-                 invocation_config: Optional[pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs']] = None,
+                 invocation_config: Optional[pulumi.Input['RepositoryWorkflowConfigInvocationConfigArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 recent_scheduled_execution_records: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs']]]] = None,
+                 recent_scheduled_execution_records: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordArrgs']]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  release_config: Optional[pulumi.Input[str]] = None,
                  repository: Optional[pulumi.Input[str]] = None,
@@ -173,12 +173,12 @@ class _RepositoryWorkflowConfigState:
         """
         Input properties used for looking up and filtering RepositoryWorkflowConfig resources.
         :param pulumi.Input[str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
-        :param pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs'] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
+        :param pulumi.Input['RepositoryWorkflowConfigInvocationConfigArrgs'] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
                Structure is documented below.
         :param pulumi.Input[str] name: The workflow's name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs']]] recent_scheduled_execution_records: Records of the 10 most recent scheduled execution attempts, ordered in in descending order of executionTime. Updated whenever automatic creation of a workflow invocation is triggered by cronSchedule.
+        :param pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordArrgs']]] recent_scheduled_execution_records: Records of the 10 most recent scheduled execution attempts, ordered in in descending order of executionTime. Updated whenever automatic creation of a workflow invocation is triggered by cronSchedule.
                Structure is documented below.
         :param pulumi.Input[str] region: A reference to the region
         :param pulumi.Input[str] release_config: The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
@@ -221,7 +221,7 @@ class _RepositoryWorkflowConfigState:
 
     @property
     @pulumi.getter(name="invocationConfig")
-    def invocation_config(self) -> Optional[pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs']]:
+    def invocation_config(self) -> Optional[pulumi.Input['RepositoryWorkflowConfigInvocationConfigArrgs']]:
         """
         Optional. If left unset, a default InvocationConfig will be used.
         Structure is documented below.
@@ -229,7 +229,7 @@ class _RepositoryWorkflowConfigState:
         return pulumi.get(self, "invocation_config")
 
     @invocation_config.setter
-    def invocation_config(self, value: Optional[pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs']]):
+    def invocation_config(self, value: Optional[pulumi.Input['RepositoryWorkflowConfigInvocationConfigArrgs']]):
         pulumi.set(self, "invocation_config", value)
 
     @property
@@ -259,7 +259,7 @@ class _RepositoryWorkflowConfigState:
 
     @property
     @pulumi.getter(name="recentScheduledExecutionRecords")
-    def recent_scheduled_execution_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs']]]]:
+    def recent_scheduled_execution_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordArrgs']]]]:
         """
         Records of the 10 most recent scheduled execution attempts, ordered in in descending order of executionTime. Updated whenever automatic creation of a workflow invocation is triggered by cronSchedule.
         Structure is documented below.
@@ -267,7 +267,7 @@ class _RepositoryWorkflowConfigState:
         return pulumi.get(self, "recent_scheduled_execution_records")
 
     @recent_scheduled_execution_records.setter
-    def recent_scheduled_execution_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs']]]]):
+    def recent_scheduled_execution_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordArrgs']]]]):
         pulumi.set(self, "recent_scheduled_execution_records", value)
 
     @property
@@ -322,13 +322,13 @@ class _RepositoryWorkflowConfigState:
         pulumi.set(self, "time_zone", value)
 
 
-class RepositoryWorkflowConfig(pulumi.CustomResource):
+calass RepositoryWorkflowConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cron_schedule: Optional[pulumi.Input[str]] = None,
-                 invocation_config: Optional[pulumi.Input[pulumi.InputType['RepositoryWorkflowConfigInvocationConfigArgs']]] = None,
+                 invocation_config: Optional[pulumi.Input[pulumi.InputType['RepositoryWorkflowConfigInvocationConfigArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -347,8 +347,8 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
         git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
         secret = gcp.secretmanager.Secret("secret",
             secret_id="my_secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArrgs(),
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         secret_version = gcp.secretmanager.SecretVersion("secretVersion",
@@ -357,12 +357,12 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         repository = gcp.dataform.Repository("repository",
             region="us-central1",
-            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
+            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArrgs(
                 url=git_repository.url,
                 default_branch="main",
                 authentication_token_secret_version=secret_version.id,
             ),
-            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArgs(
+            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArrgs(
                 default_database="database",
                 schema_suffix="_suffix",
                 table_prefix="prefix_",
@@ -375,7 +375,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             git_commitish="main",
             cron_schedule="0 7 * * *",
             time_zone="America/New_York",
-            code_compilation_config=gcp.dataform.RepositoryReleaseConfigCodeCompilationConfigArgs(
+            code_compilation_config=gcp.dataform.RepositoryReleaseConfigCodeCompilationConfigArrgs(
                 default_database="gcp-example-project",
                 default_schema="example-dataset",
                 default_location="us-central1",
@@ -397,14 +397,14 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             region=repository.region,
             repository=repository.name,
             release_config=release_config.id,
-            invocation_config=gcp.dataform.RepositoryWorkflowConfigInvocationConfigArgs(
+            invocation_config=gcp.dataform.RepositoryWorkflowConfigInvocationConfigArrgs(
                 included_targets=[
-                    gcp.dataform.RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs(
+                    gcp.dataform.RepositoryWorkflowConfigInvocationConfigIncludedTargetArrgs(
                         database="gcp-example-project",
                         schema="example-dataset",
                         name="target_1",
                     ),
-                    gcp.dataform.RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs(
+                    gcp.dataform.RepositoryWorkflowConfigInvocationConfigIncludedTargetArrgs(
                         database="gcp-example-project",
                         schema="example-dataset",
                         name="target_2",
@@ -444,7 +444,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
-        :param pulumi.Input[pulumi.InputType['RepositoryWorkflowConfigInvocationConfigArgs']] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
+        :param pulumi.Input[pulumi.InputType['RepositoryWorkflowConfigInvocationConfigArrgs']] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
                Structure is documented below.
         :param pulumi.Input[str] name: The workflow's name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -461,7 +461,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RepositoryWorkflowConfigArgs,
+                 args: RepositoryWorkflowConfigArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -474,8 +474,8 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
         git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
         secret = gcp.secretmanager.Secret("secret",
             secret_id="my_secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArrgs(),
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         secret_version = gcp.secretmanager.SecretVersion("secretVersion",
@@ -484,12 +484,12 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         repository = gcp.dataform.Repository("repository",
             region="us-central1",
-            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
+            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArrgs(
                 url=git_repository.url,
                 default_branch="main",
                 authentication_token_secret_version=secret_version.id,
             ),
-            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArgs(
+            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArrgs(
                 default_database="database",
                 schema_suffix="_suffix",
                 table_prefix="prefix_",
@@ -502,7 +502,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             git_commitish="main",
             cron_schedule="0 7 * * *",
             time_zone="America/New_York",
-            code_compilation_config=gcp.dataform.RepositoryReleaseConfigCodeCompilationConfigArgs(
+            code_compilation_config=gcp.dataform.RepositoryReleaseConfigCodeCompilationConfigArrgs(
                 default_database="gcp-example-project",
                 default_schema="example-dataset",
                 default_location="us-central1",
@@ -524,14 +524,14 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             region=repository.region,
             repository=repository.name,
             release_config=release_config.id,
-            invocation_config=gcp.dataform.RepositoryWorkflowConfigInvocationConfigArgs(
+            invocation_config=gcp.dataform.RepositoryWorkflowConfigInvocationConfigArrgs(
                 included_targets=[
-                    gcp.dataform.RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs(
+                    gcp.dataform.RepositoryWorkflowConfigInvocationConfigIncludedTargetArrgs(
                         database="gcp-example-project",
                         schema="example-dataset",
                         name="target_1",
                     ),
-                    gcp.dataform.RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs(
+                    gcp.dataform.RepositoryWorkflowConfigInvocationConfigIncludedTargetArrgs(
                         database="gcp-example-project",
                         schema="example-dataset",
                         name="target_2",
@@ -569,12 +569,12 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param RepositoryWorkflowConfigArgs args: The arguments to use to populate this resource's properties.
+        :param RepositoryWorkflowConfigArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RepositoryWorkflowConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(RepositoryWorkflowConfigArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -584,7 +584,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cron_schedule: Optional[pulumi.Input[str]] = None,
-                 invocation_config: Optional[pulumi.Input[pulumi.InputType['RepositoryWorkflowConfigInvocationConfigArgs']]] = None,
+                 invocation_config: Optional[pulumi.Input[pulumi.InputType['RepositoryWorkflowConfigInvocationConfigArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -598,7 +598,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RepositoryWorkflowConfigArgs.__new__(RepositoryWorkflowConfigArgs)
+            __props__ = RepositoryWorkflowConfigArrgs.__new__(RepositoryWorkflowConfigArrgs)
 
             __props__.__dict__["cron_schedule"] = cron_schedule
             __props__.__dict__["invocation_config"] = invocation_config
@@ -622,10 +622,10 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cron_schedule: Optional[pulumi.Input[str]] = None,
-            invocation_config: Optional[pulumi.Input[pulumi.InputType['RepositoryWorkflowConfigInvocationConfigArgs']]] = None,
+            invocation_config: Optional[pulumi.Input[pulumi.InputType['RepositoryWorkflowConfigInvocationConfigArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            recent_scheduled_execution_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs']]]]] = None,
+            recent_scheduled_execution_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryWorkflowConfigRecentScheduledExecutionRecordArrgs']]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             release_config: Optional[pulumi.Input[str]] = None,
             repository: Optional[pulumi.Input[str]] = None,
@@ -638,12 +638,12 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
-        :param pulumi.Input[pulumi.InputType['RepositoryWorkflowConfigInvocationConfigArgs']] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
+        :param pulumi.Input[pulumi.InputType['RepositoryWorkflowConfigInvocationConfigArrgs']] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
                Structure is documented below.
         :param pulumi.Input[str] name: The workflow's name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs']]]] recent_scheduled_execution_records: Records of the 10 most recent scheduled execution attempts, ordered in in descending order of executionTime. Updated whenever automatic creation of a workflow invocation is triggered by cronSchedule.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryWorkflowConfigRecentScheduledExecutionRecordArrgs']]]] recent_scheduled_execution_records: Records of the 10 most recent scheduled execution attempts, ordered in in descending order of executionTime. Updated whenever automatic creation of a workflow invocation is triggered by cronSchedule.
                Structure is documented below.
         :param pulumi.Input[str] region: A reference to the region
         :param pulumi.Input[str] release_config: The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.

@@ -11,14 +11,14 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['RegionBackendServiceIamMemberArgs', 'RegionBackendServiceIamMember']
+__all__ = ['RegionBackendServiceIamMemberArrgs', 'RegionBackendServiceIamMember']
 
 @pulumi.input_type
-class RegionBackendServiceIamMemberArgs:
+calass RegionBackendServiceIamMemberArrgs:
     def __init__(__self__, *,
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['RegionBackendServiceIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['RegionBackendServiceIamMemberConditionArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
@@ -27,7 +27,7 @@ class RegionBackendServiceIamMemberArgs:
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `compute.RegionBackendServiceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input['RegionBackendServiceIamMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['RegionBackendServiceIamMemberConditionArrgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] name: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -86,7 +86,7 @@ class RegionBackendServiceIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['RegionBackendServiceIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['RegionBackendServiceIamMemberConditionArrgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -94,7 +94,7 @@ class RegionBackendServiceIamMemberArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['RegionBackendServiceIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['RegionBackendServiceIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -152,9 +152,9 @@ class RegionBackendServiceIamMemberArgs:
 
 
 @pulumi.input_type
-class _RegionBackendServiceIamMemberState:
+calass _RegionBackendServiceIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['RegionBackendServiceIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['RegionBackendServiceIamMemberConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -163,7 +163,7 @@ class _RegionBackendServiceIamMemberState:
                  role: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RegionBackendServiceIamMember resources.
-        :param pulumi.Input['RegionBackendServiceIamMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['RegionBackendServiceIamMemberConditionArrgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] name: Used to find the parent resource to bind the IAM policy to
@@ -207,7 +207,7 @@ class _RegionBackendServiceIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['RegionBackendServiceIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['RegionBackendServiceIamMemberConditionArrgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -215,7 +215,7 @@ class _RegionBackendServiceIamMemberState:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['RegionBackendServiceIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['RegionBackendServiceIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -307,12 +307,12 @@ class _RegionBackendServiceIamMemberState:
         pulumi.set(self, "role", value)
 
 
-class RegionBackendServiceIamMember(pulumi.CustomResource):
+calass RegionBackendServiceIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceIamMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -346,7 +346,7 @@ class RegionBackendServiceIamMember(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceIamMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['RegionBackendServiceIamMemberConditionArrgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] name: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -376,7 +376,7 @@ class RegionBackendServiceIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RegionBackendServiceIamMemberArgs,
+                 args: RegionBackendServiceIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Import
@@ -404,12 +404,12 @@ class RegionBackendServiceIamMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param RegionBackendServiceIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param RegionBackendServiceIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RegionBackendServiceIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(RegionBackendServiceIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -418,7 +418,7 @@ class RegionBackendServiceIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceIamMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -431,7 +431,7 @@ class RegionBackendServiceIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RegionBackendServiceIamMemberArgs.__new__(RegionBackendServiceIamMemberArgs)
+            __props__ = RegionBackendServiceIamMemberArrgs.__new__(RegionBackendServiceIamMemberArrgs)
 
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
@@ -454,7 +454,7 @@ class RegionBackendServiceIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceIamMemberConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -468,7 +468,7 @@ class RegionBackendServiceIamMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceIamMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['RegionBackendServiceIamMemberConditionArrgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] name: Used to find the parent resource to bind the IAM policy to

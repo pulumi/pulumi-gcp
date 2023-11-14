@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetBillingAccountResult:
+calass GetBillingAccountResult:
     """
     A collection of values returned by getBillingAccount.
     """
@@ -90,7 +90,7 @@ class GetBillingAccountResult:
         return pulumi.get(self, "project_ids")
 
 
-class AwaitableGetBillingAccountResult(GetBillingAccountResult):
+calass AwaitableGetBillingAccountResult(GetBillingAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

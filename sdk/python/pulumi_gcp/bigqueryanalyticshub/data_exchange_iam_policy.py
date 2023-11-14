@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['DataExchangeIamPolicyArgs', 'DataExchangeIamPolicy']
+__all__ = ['DataExchangeIamPolicyArrgs', 'DataExchangeIamPolicy']
 
 @pulumi.input_type
-class DataExchangeIamPolicyArgs:
+calass DataExchangeIamPolicyArrgs:
     def __init__(__self__, *,
                  data_exchange_id: pulumi.Input[str],
                  policy_data: pulumi.Input[str],
@@ -112,7 +112,7 @@ class DataExchangeIamPolicyArgs:
 
 
 @pulumi.input_type
-class _DataExchangeIamPolicyState:
+calass _DataExchangeIamPolicyState:
     def __init__(__self__, *,
                  data_exchange_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -229,7 +229,7 @@ class _DataExchangeIamPolicyState:
         pulumi.set(self, "project", value)
 
 
-class DataExchangeIamPolicy(pulumi.CustomResource):
+calass DataExchangeIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -260,7 +260,7 @@ class DataExchangeIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -349,7 +349,7 @@ class DataExchangeIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DataExchangeIamPolicyArgs,
+                 args: DataExchangeIamPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Bigquery Analytics Hub DataExchange. Each of these resources serves a different use case:
@@ -372,7 +372,7 @@ class DataExchangeIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -436,12 +436,12 @@ class DataExchangeIamPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param DataExchangeIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param DataExchangeIamPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DataExchangeIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DataExchangeIamPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -461,7 +461,7 @@ class DataExchangeIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DataExchangeIamPolicyArgs.__new__(DataExchangeIamPolicyArgs)
+            __props__ = DataExchangeIamPolicyArrgs.__new__(DataExchangeIamPolicyArrgs)
 
             if data_exchange_id is None and not opts.urn:
                 raise TypeError("Missing required property 'data_exchange_id'")

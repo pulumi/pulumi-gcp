@@ -16,7 +16,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class WorkloadKmsSettings(dict):
+calass WorkloadKmsSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -64,7 +64,7 @@ class WorkloadKmsSettings(dict):
 
 
 @pulumi.output_type
-class WorkloadResource(dict):
+calass WorkloadResource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -114,7 +114,7 @@ class WorkloadResource(dict):
 
 
 @pulumi.output_type
-class WorkloadResourceSetting(dict):
+calass WorkloadResourceSetting(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

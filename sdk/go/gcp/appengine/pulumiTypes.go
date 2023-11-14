@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i ApplicationFeatureSettingsArgs) ToApplicationFeatureSettingsOutput() App
 
 func (i ApplicationFeatureSettingsArgs) ToApplicationFeatureSettingsOutputWithContext(ctx context.Context) ApplicationFeatureSettingsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationFeatureSettingsOutput)
-}
-
-func (i ApplicationFeatureSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationFeatureSettings] {
-	return pulumix.Output[ApplicationFeatureSettings]{
-		OutputState: i.ToApplicationFeatureSettingsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ApplicationFeatureSettingsArgs) ToApplicationFeatureSettingsPtrOutput() ApplicationFeatureSettingsPtrOutput {
@@ -96,12 +89,6 @@ func (i *applicationFeatureSettingsPtrType) ToApplicationFeatureSettingsPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationFeatureSettingsPtrOutput)
 }
 
-func (i *applicationFeatureSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationFeatureSettings] {
-	return pulumix.Output[*ApplicationFeatureSettings]{
-		OutputState: i.ToApplicationFeatureSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationFeatureSettingsOutput struct{ *pulumi.OutputState }
 
 func (ApplicationFeatureSettingsOutput) ElementType() reflect.Type {
@@ -126,12 +113,6 @@ func (o ApplicationFeatureSettingsOutput) ToApplicationFeatureSettingsPtrOutputW
 	}).(ApplicationFeatureSettingsPtrOutput)
 }
 
-func (o ApplicationFeatureSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationFeatureSettings] {
-	return pulumix.Output[ApplicationFeatureSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Set to false to use the legacy health check instead of the readiness
 // and liveness checks.
 func (o ApplicationFeatureSettingsOutput) SplitHealthChecks() pulumi.BoolOutput {
@@ -150,12 +131,6 @@ func (o ApplicationFeatureSettingsPtrOutput) ToApplicationFeatureSettingsPtrOutp
 
 func (o ApplicationFeatureSettingsPtrOutput) ToApplicationFeatureSettingsPtrOutputWithContext(ctx context.Context) ApplicationFeatureSettingsPtrOutput {
 	return o
-}
-
-func (o ApplicationFeatureSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationFeatureSettings] {
-	return pulumix.Output[*ApplicationFeatureSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationFeatureSettingsPtrOutput) Elem() ApplicationFeatureSettingsOutput {
@@ -228,12 +203,6 @@ func (i ApplicationIapArgs) ToApplicationIapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationIapOutput)
 }
 
-func (i ApplicationIapArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationIap] {
-	return pulumix.Output[ApplicationIap]{
-		OutputState: i.ToApplicationIapOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ApplicationIapArgs) ToApplicationIapPtrOutput() ApplicationIapPtrOutput {
 	return i.ToApplicationIapPtrOutputWithContext(context.Background())
 }
@@ -275,12 +244,6 @@ func (i *applicationIapPtrType) ToApplicationIapPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationIapPtrOutput)
 }
 
-func (i *applicationIapPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationIap] {
-	return pulumix.Output[*ApplicationIap]{
-		OutputState: i.ToApplicationIapPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationIapOutput struct{ *pulumi.OutputState }
 
 func (ApplicationIapOutput) ElementType() reflect.Type {
@@ -303,12 +266,6 @@ func (o ApplicationIapOutput) ToApplicationIapPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationIap) *ApplicationIap {
 		return &v
 	}).(ApplicationIapPtrOutput)
-}
-
-func (o ApplicationIapOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationIap] {
-	return pulumix.Output[ApplicationIap]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests.
@@ -345,12 +302,6 @@ func (o ApplicationIapPtrOutput) ToApplicationIapPtrOutput() ApplicationIapPtrOu
 
 func (o ApplicationIapPtrOutput) ToApplicationIapPtrOutputWithContext(ctx context.Context) ApplicationIapPtrOutput {
 	return o
-}
-
-func (o ApplicationIapPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationIap] {
-	return pulumix.Output[*ApplicationIap]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationIapPtrOutput) Elem() ApplicationIapOutput {
@@ -440,12 +391,6 @@ func (i ApplicationUrlDispatchRuleArgs) ToApplicationUrlDispatchRuleOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationUrlDispatchRuleOutput)
 }
 
-func (i ApplicationUrlDispatchRuleArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationUrlDispatchRule] {
-	return pulumix.Output[ApplicationUrlDispatchRule]{
-		OutputState: i.ToApplicationUrlDispatchRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApplicationUrlDispatchRuleArrayInput is an input type that accepts ApplicationUrlDispatchRuleArray and ApplicationUrlDispatchRuleArrayOutput values.
 // You can construct a concrete instance of `ApplicationUrlDispatchRuleArrayInput` via:
 //
@@ -471,12 +416,6 @@ func (i ApplicationUrlDispatchRuleArray) ToApplicationUrlDispatchRuleArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationUrlDispatchRuleArrayOutput)
 }
 
-func (i ApplicationUrlDispatchRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationUrlDispatchRule] {
-	return pulumix.Output[[]ApplicationUrlDispatchRule]{
-		OutputState: i.ToApplicationUrlDispatchRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationUrlDispatchRuleOutput struct{ *pulumi.OutputState }
 
 func (ApplicationUrlDispatchRuleOutput) ElementType() reflect.Type {
@@ -489,12 +428,6 @@ func (o ApplicationUrlDispatchRuleOutput) ToApplicationUrlDispatchRuleOutput() A
 
 func (o ApplicationUrlDispatchRuleOutput) ToApplicationUrlDispatchRuleOutputWithContext(ctx context.Context) ApplicationUrlDispatchRuleOutput {
 	return o
-}
-
-func (o ApplicationUrlDispatchRuleOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationUrlDispatchRule] {
-	return pulumix.Output[ApplicationUrlDispatchRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationUrlDispatchRuleOutput) Domain() pulumi.StringPtrOutput {
@@ -521,12 +454,6 @@ func (o ApplicationUrlDispatchRuleArrayOutput) ToApplicationUrlDispatchRuleArray
 
 func (o ApplicationUrlDispatchRuleArrayOutput) ToApplicationUrlDispatchRuleArrayOutputWithContext(ctx context.Context) ApplicationUrlDispatchRuleArrayOutput {
 	return o
-}
-
-func (o ApplicationUrlDispatchRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationUrlDispatchRule] {
-	return pulumix.Output[[]ApplicationUrlDispatchRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationUrlDispatchRuleArrayOutput) Index(i pulumi.IntInput) ApplicationUrlDispatchRuleOutput {
@@ -586,12 +513,6 @@ func (i ApplicationUrlDispatchRulesDispatchRuleArgs) ToApplicationUrlDispatchRul
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationUrlDispatchRulesDispatchRuleOutput)
 }
 
-func (i ApplicationUrlDispatchRulesDispatchRuleArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationUrlDispatchRulesDispatchRule] {
-	return pulumix.Output[ApplicationUrlDispatchRulesDispatchRule]{
-		OutputState: i.ToApplicationUrlDispatchRulesDispatchRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApplicationUrlDispatchRulesDispatchRuleArrayInput is an input type that accepts ApplicationUrlDispatchRulesDispatchRuleArray and ApplicationUrlDispatchRulesDispatchRuleArrayOutput values.
 // You can construct a concrete instance of `ApplicationUrlDispatchRulesDispatchRuleArrayInput` via:
 //
@@ -617,12 +538,6 @@ func (i ApplicationUrlDispatchRulesDispatchRuleArray) ToApplicationUrlDispatchRu
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationUrlDispatchRulesDispatchRuleArrayOutput)
 }
 
-func (i ApplicationUrlDispatchRulesDispatchRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationUrlDispatchRulesDispatchRule] {
-	return pulumix.Output[[]ApplicationUrlDispatchRulesDispatchRule]{
-		OutputState: i.ToApplicationUrlDispatchRulesDispatchRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationUrlDispatchRulesDispatchRuleOutput struct{ *pulumi.OutputState }
 
 func (ApplicationUrlDispatchRulesDispatchRuleOutput) ElementType() reflect.Type {
@@ -635,12 +550,6 @@ func (o ApplicationUrlDispatchRulesDispatchRuleOutput) ToApplicationUrlDispatchR
 
 func (o ApplicationUrlDispatchRulesDispatchRuleOutput) ToApplicationUrlDispatchRulesDispatchRuleOutputWithContext(ctx context.Context) ApplicationUrlDispatchRulesDispatchRuleOutput {
 	return o
-}
-
-func (o ApplicationUrlDispatchRulesDispatchRuleOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationUrlDispatchRulesDispatchRule] {
-	return pulumix.Output[ApplicationUrlDispatchRulesDispatchRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".
@@ -675,12 +584,6 @@ func (o ApplicationUrlDispatchRulesDispatchRuleArrayOutput) ToApplicationUrlDisp
 
 func (o ApplicationUrlDispatchRulesDispatchRuleArrayOutput) ToApplicationUrlDispatchRulesDispatchRuleArrayOutputWithContext(ctx context.Context) ApplicationUrlDispatchRulesDispatchRuleArrayOutput {
 	return o
-}
-
-func (o ApplicationUrlDispatchRulesDispatchRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationUrlDispatchRulesDispatchRule] {
-	return pulumix.Output[[]ApplicationUrlDispatchRulesDispatchRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationUrlDispatchRulesDispatchRuleArrayOutput) Index(i pulumi.IntInput) ApplicationUrlDispatchRulesDispatchRuleOutput {
@@ -732,12 +635,6 @@ func (i DomainMappingResourceRecordArgs) ToDomainMappingResourceRecordOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingResourceRecordOutput)
 }
 
-func (i DomainMappingResourceRecordArgs) ToOutput(ctx context.Context) pulumix.Output[DomainMappingResourceRecord] {
-	return pulumix.Output[DomainMappingResourceRecord]{
-		OutputState: i.ToDomainMappingResourceRecordOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DomainMappingResourceRecordArrayInput is an input type that accepts DomainMappingResourceRecordArray and DomainMappingResourceRecordArrayOutput values.
 // You can construct a concrete instance of `DomainMappingResourceRecordArrayInput` via:
 //
@@ -763,12 +660,6 @@ func (i DomainMappingResourceRecordArray) ToDomainMappingResourceRecordArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingResourceRecordArrayOutput)
 }
 
-func (i DomainMappingResourceRecordArray) ToOutput(ctx context.Context) pulumix.Output[[]DomainMappingResourceRecord] {
-	return pulumix.Output[[]DomainMappingResourceRecord]{
-		OutputState: i.ToDomainMappingResourceRecordArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DomainMappingResourceRecordOutput struct{ *pulumi.OutputState }
 
 func (DomainMappingResourceRecordOutput) ElementType() reflect.Type {
@@ -781,12 +672,6 @@ func (o DomainMappingResourceRecordOutput) ToDomainMappingResourceRecordOutput()
 
 func (o DomainMappingResourceRecordOutput) ToDomainMappingResourceRecordOutputWithContext(ctx context.Context) DomainMappingResourceRecordOutput {
 	return o
-}
-
-func (o DomainMappingResourceRecordOutput) ToOutput(ctx context.Context) pulumix.Output[DomainMappingResourceRecord] {
-	return pulumix.Output[DomainMappingResourceRecord]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
@@ -817,12 +702,6 @@ func (o DomainMappingResourceRecordArrayOutput) ToDomainMappingResourceRecordArr
 
 func (o DomainMappingResourceRecordArrayOutput) ToDomainMappingResourceRecordArrayOutputWithContext(ctx context.Context) DomainMappingResourceRecordArrayOutput {
 	return o
-}
-
-func (o DomainMappingResourceRecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DomainMappingResourceRecord] {
-	return pulumix.Output[[]DomainMappingResourceRecord]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DomainMappingResourceRecordArrayOutput) Index(i pulumi.IntInput) DomainMappingResourceRecordOutput {
@@ -896,12 +775,6 @@ func (i DomainMappingSslSettingsArgs) ToDomainMappingSslSettingsOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingSslSettingsOutput)
 }
 
-func (i DomainMappingSslSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[DomainMappingSslSettings] {
-	return pulumix.Output[DomainMappingSslSettings]{
-		OutputState: i.ToDomainMappingSslSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DomainMappingSslSettingsArgs) ToDomainMappingSslSettingsPtrOutput() DomainMappingSslSettingsPtrOutput {
 	return i.ToDomainMappingSslSettingsPtrOutputWithContext(context.Background())
 }
@@ -943,12 +816,6 @@ func (i *domainMappingSslSettingsPtrType) ToDomainMappingSslSettingsPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingSslSettingsPtrOutput)
 }
 
-func (i *domainMappingSslSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DomainMappingSslSettings] {
-	return pulumix.Output[*DomainMappingSslSettings]{
-		OutputState: i.ToDomainMappingSslSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DomainMappingSslSettingsOutput struct{ *pulumi.OutputState }
 
 func (DomainMappingSslSettingsOutput) ElementType() reflect.Type {
@@ -971,12 +838,6 @@ func (o DomainMappingSslSettingsOutput) ToDomainMappingSslSettingsPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainMappingSslSettings) *DomainMappingSslSettings {
 		return &v
 	}).(DomainMappingSslSettingsPtrOutput)
-}
-
-func (o DomainMappingSslSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[DomainMappingSslSettings] {
-	return pulumix.Output[DomainMappingSslSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will
@@ -1018,12 +879,6 @@ func (o DomainMappingSslSettingsPtrOutput) ToDomainMappingSslSettingsPtrOutput()
 
 func (o DomainMappingSslSettingsPtrOutput) ToDomainMappingSslSettingsPtrOutputWithContext(ctx context.Context) DomainMappingSslSettingsPtrOutput {
 	return o
-}
-
-func (o DomainMappingSslSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainMappingSslSettings] {
-	return pulumix.Output[*DomainMappingSslSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DomainMappingSslSettingsPtrOutput) Elem() DomainMappingSslSettingsOutput {
@@ -1121,12 +976,6 @@ func (i EngineSplitTrafficSplitArgs) ToEngineSplitTrafficSplitOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(EngineSplitTrafficSplitOutput)
 }
 
-func (i EngineSplitTrafficSplitArgs) ToOutput(ctx context.Context) pulumix.Output[EngineSplitTrafficSplit] {
-	return pulumix.Output[EngineSplitTrafficSplit]{
-		OutputState: i.ToEngineSplitTrafficSplitOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EngineSplitTrafficSplitArgs) ToEngineSplitTrafficSplitPtrOutput() EngineSplitTrafficSplitPtrOutput {
 	return i.ToEngineSplitTrafficSplitPtrOutputWithContext(context.Background())
 }
@@ -1168,12 +1017,6 @@ func (i *engineSplitTrafficSplitPtrType) ToEngineSplitTrafficSplitPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(EngineSplitTrafficSplitPtrOutput)
 }
 
-func (i *engineSplitTrafficSplitPtrType) ToOutput(ctx context.Context) pulumix.Output[*EngineSplitTrafficSplit] {
-	return pulumix.Output[*EngineSplitTrafficSplit]{
-		OutputState: i.ToEngineSplitTrafficSplitPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EngineSplitTrafficSplitOutput struct{ *pulumi.OutputState }
 
 func (EngineSplitTrafficSplitOutput) ElementType() reflect.Type {
@@ -1196,12 +1039,6 @@ func (o EngineSplitTrafficSplitOutput) ToEngineSplitTrafficSplitPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EngineSplitTrafficSplit) *EngineSplitTrafficSplit {
 		return &v
 	}).(EngineSplitTrafficSplitPtrOutput)
-}
-
-func (o EngineSplitTrafficSplitOutput) ToOutput(ctx context.Context) pulumix.Output[EngineSplitTrafficSplit] {
-	return pulumix.Output[EngineSplitTrafficSplit]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
@@ -1229,12 +1066,6 @@ func (o EngineSplitTrafficSplitPtrOutput) ToEngineSplitTrafficSplitPtrOutput() E
 
 func (o EngineSplitTrafficSplitPtrOutput) ToEngineSplitTrafficSplitPtrOutputWithContext(ctx context.Context) EngineSplitTrafficSplitPtrOutput {
 	return o
-}
-
-func (o EngineSplitTrafficSplitPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EngineSplitTrafficSplit] {
-	return pulumix.Output[*EngineSplitTrafficSplit]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EngineSplitTrafficSplitPtrOutput) Elem() EngineSplitTrafficSplitOutput {
@@ -1329,12 +1160,6 @@ func (i FlexibleAppVersionApiConfigArgs) ToFlexibleAppVersionApiConfigOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionApiConfigOutput)
 }
 
-func (i FlexibleAppVersionApiConfigArgs) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionApiConfig] {
-	return pulumix.Output[FlexibleAppVersionApiConfig]{
-		OutputState: i.ToFlexibleAppVersionApiConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FlexibleAppVersionApiConfigArgs) ToFlexibleAppVersionApiConfigPtrOutput() FlexibleAppVersionApiConfigPtrOutput {
 	return i.ToFlexibleAppVersionApiConfigPtrOutputWithContext(context.Background())
 }
@@ -1376,12 +1201,6 @@ func (i *flexibleAppVersionApiConfigPtrType) ToFlexibleAppVersionApiConfigPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionApiConfigPtrOutput)
 }
 
-func (i *flexibleAppVersionApiConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionApiConfig] {
-	return pulumix.Output[*FlexibleAppVersionApiConfig]{
-		OutputState: i.ToFlexibleAppVersionApiConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlexibleAppVersionApiConfigOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionApiConfigOutput) ElementType() reflect.Type {
@@ -1404,12 +1223,6 @@ func (o FlexibleAppVersionApiConfigOutput) ToFlexibleAppVersionApiConfigPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionApiConfig) *FlexibleAppVersionApiConfig {
 		return &v
 	}).(FlexibleAppVersionApiConfigPtrOutput)
-}
-
-func (o FlexibleAppVersionApiConfigOutput) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionApiConfig] {
-	return pulumix.Output[FlexibleAppVersionApiConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Action to take when users access resources that require authentication.
@@ -1454,12 +1267,6 @@ func (o FlexibleAppVersionApiConfigPtrOutput) ToFlexibleAppVersionApiConfigPtrOu
 
 func (o FlexibleAppVersionApiConfigPtrOutput) ToFlexibleAppVersionApiConfigPtrOutputWithContext(ctx context.Context) FlexibleAppVersionApiConfigPtrOutput {
 	return o
-}
-
-func (o FlexibleAppVersionApiConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionApiConfig] {
-	return pulumix.Output[*FlexibleAppVersionApiConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlexibleAppVersionApiConfigPtrOutput) Elem() FlexibleAppVersionApiConfigOutput {
@@ -1618,12 +1425,6 @@ func (i FlexibleAppVersionAutomaticScalingArgs) ToFlexibleAppVersionAutomaticSca
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionAutomaticScalingOutput)
 }
 
-func (i FlexibleAppVersionAutomaticScalingArgs) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionAutomaticScaling] {
-	return pulumix.Output[FlexibleAppVersionAutomaticScaling]{
-		OutputState: i.ToFlexibleAppVersionAutomaticScalingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FlexibleAppVersionAutomaticScalingArgs) ToFlexibleAppVersionAutomaticScalingPtrOutput() FlexibleAppVersionAutomaticScalingPtrOutput {
 	return i.ToFlexibleAppVersionAutomaticScalingPtrOutputWithContext(context.Background())
 }
@@ -1665,12 +1466,6 @@ func (i *flexibleAppVersionAutomaticScalingPtrType) ToFlexibleAppVersionAutomati
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionAutomaticScalingPtrOutput)
 }
 
-func (i *flexibleAppVersionAutomaticScalingPtrType) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionAutomaticScaling] {
-	return pulumix.Output[*FlexibleAppVersionAutomaticScaling]{
-		OutputState: i.ToFlexibleAppVersionAutomaticScalingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlexibleAppVersionAutomaticScalingOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionAutomaticScalingOutput) ElementType() reflect.Type {
@@ -1693,12 +1488,6 @@ func (o FlexibleAppVersionAutomaticScalingOutput) ToFlexibleAppVersionAutomaticS
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScaling {
 		return &v
 	}).(FlexibleAppVersionAutomaticScalingPtrOutput)
-}
-
-func (o FlexibleAppVersionAutomaticScalingOutput) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionAutomaticScaling] {
-	return pulumix.Output[FlexibleAppVersionAutomaticScaling]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time period that the Autoscaler should wait before it starts collecting information from a new instance.
@@ -1788,12 +1577,6 @@ func (o FlexibleAppVersionAutomaticScalingPtrOutput) ToFlexibleAppVersionAutomat
 
 func (o FlexibleAppVersionAutomaticScalingPtrOutput) ToFlexibleAppVersionAutomaticScalingPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingPtrOutput {
 	return o
-}
-
-func (o FlexibleAppVersionAutomaticScalingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionAutomaticScaling] {
-	return pulumix.Output[*FlexibleAppVersionAutomaticScaling]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlexibleAppVersionAutomaticScalingPtrOutput) Elem() FlexibleAppVersionAutomaticScalingOutput {
@@ -1970,12 +1753,6 @@ func (i FlexibleAppVersionAutomaticScalingCpuUtilizationArgs) ToFlexibleAppVersi
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionAutomaticScalingCpuUtilizationOutput)
 }
 
-func (i FlexibleAppVersionAutomaticScalingCpuUtilizationArgs) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionAutomaticScalingCpuUtilization] {
-	return pulumix.Output[FlexibleAppVersionAutomaticScalingCpuUtilization]{
-		OutputState: i.ToFlexibleAppVersionAutomaticScalingCpuUtilizationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FlexibleAppVersionAutomaticScalingCpuUtilizationArgs) ToFlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput() FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput {
 	return i.ToFlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutputWithContext(context.Background())
 }
@@ -2017,12 +1794,6 @@ func (i *flexibleAppVersionAutomaticScalingCpuUtilizationPtrType) ToFlexibleAppV
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput)
 }
 
-func (i *flexibleAppVersionAutomaticScalingCpuUtilizationPtrType) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionAutomaticScalingCpuUtilization] {
-	return pulumix.Output[*FlexibleAppVersionAutomaticScalingCpuUtilization]{
-		OutputState: i.ToFlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlexibleAppVersionAutomaticScalingCpuUtilizationOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionAutomaticScalingCpuUtilizationOutput) ElementType() reflect.Type {
@@ -2047,12 +1818,6 @@ func (o FlexibleAppVersionAutomaticScalingCpuUtilizationOutput) ToFlexibleAppVer
 	}).(FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput)
 }
 
-func (o FlexibleAppVersionAutomaticScalingCpuUtilizationOutput) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionAutomaticScalingCpuUtilization] {
-	return pulumix.Output[FlexibleAppVersionAutomaticScalingCpuUtilization]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Period of time over which CPU utilization is calculated.
 func (o FlexibleAppVersionAutomaticScalingCpuUtilizationOutput) AggregationWindowLength() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingCpuUtilization) *string { return v.AggregationWindowLength }).(pulumi.StringPtrOutput)
@@ -2075,12 +1840,6 @@ func (o FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput) ToFlexibleApp
 
 func (o FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput) ToFlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput {
 	return o
-}
-
-func (o FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionAutomaticScalingCpuUtilization] {
-	return pulumix.Output[*FlexibleAppVersionAutomaticScalingCpuUtilization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput) Elem() FlexibleAppVersionAutomaticScalingCpuUtilizationOutput {
@@ -2158,12 +1917,6 @@ func (i FlexibleAppVersionAutomaticScalingDiskUtilizationArgs) ToFlexibleAppVers
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionAutomaticScalingDiskUtilizationOutput)
 }
 
-func (i FlexibleAppVersionAutomaticScalingDiskUtilizationArgs) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionAutomaticScalingDiskUtilization] {
-	return pulumix.Output[FlexibleAppVersionAutomaticScalingDiskUtilization]{
-		OutputState: i.ToFlexibleAppVersionAutomaticScalingDiskUtilizationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FlexibleAppVersionAutomaticScalingDiskUtilizationArgs) ToFlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput() FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput {
 	return i.ToFlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutputWithContext(context.Background())
 }
@@ -2205,12 +1958,6 @@ func (i *flexibleAppVersionAutomaticScalingDiskUtilizationPtrType) ToFlexibleApp
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput)
 }
 
-func (i *flexibleAppVersionAutomaticScalingDiskUtilizationPtrType) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionAutomaticScalingDiskUtilization] {
-	return pulumix.Output[*FlexibleAppVersionAutomaticScalingDiskUtilization]{
-		OutputState: i.ToFlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlexibleAppVersionAutomaticScalingDiskUtilizationOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionAutomaticScalingDiskUtilizationOutput) ElementType() reflect.Type {
@@ -2233,12 +1980,6 @@ func (o FlexibleAppVersionAutomaticScalingDiskUtilizationOutput) ToFlexibleAppVe
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionAutomaticScalingDiskUtilization) *FlexibleAppVersionAutomaticScalingDiskUtilization {
 		return &v
 	}).(FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput)
-}
-
-func (o FlexibleAppVersionAutomaticScalingDiskUtilizationOutput) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionAutomaticScalingDiskUtilization] {
-	return pulumix.Output[FlexibleAppVersionAutomaticScalingDiskUtilization]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Target bytes read per second.
@@ -2273,12 +2014,6 @@ func (o FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput) ToFlexibleAp
 
 func (o FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput) ToFlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput {
 	return o
-}
-
-func (o FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionAutomaticScalingDiskUtilization] {
-	return pulumix.Output[*FlexibleAppVersionAutomaticScalingDiskUtilization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput) Elem() FlexibleAppVersionAutomaticScalingDiskUtilizationOutput {
@@ -2376,12 +2111,6 @@ func (i FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs) ToFlexibleAppV
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput)
 }
 
-func (i FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionAutomaticScalingNetworkUtilization] {
-	return pulumix.Output[FlexibleAppVersionAutomaticScalingNetworkUtilization]{
-		OutputState: i.ToFlexibleAppVersionAutomaticScalingNetworkUtilizationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs) ToFlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput() FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput {
 	return i.ToFlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutputWithContext(context.Background())
 }
@@ -2423,12 +2152,6 @@ func (i *flexibleAppVersionAutomaticScalingNetworkUtilizationPtrType) ToFlexible
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput)
 }
 
-func (i *flexibleAppVersionAutomaticScalingNetworkUtilizationPtrType) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionAutomaticScalingNetworkUtilization] {
-	return pulumix.Output[*FlexibleAppVersionAutomaticScalingNetworkUtilization]{
-		OutputState: i.ToFlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput) ElementType() reflect.Type {
@@ -2451,12 +2174,6 @@ func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput) ToFlexibleAp
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionAutomaticScalingNetworkUtilization) *FlexibleAppVersionAutomaticScalingNetworkUtilization {
 		return &v
 	}).(FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput)
-}
-
-func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionAutomaticScalingNetworkUtilization] {
-	return pulumix.Output[FlexibleAppVersionAutomaticScalingNetworkUtilization]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Target bytes received per second.
@@ -2495,12 +2212,6 @@ func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput) ToFlexibl
 
 func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput) ToFlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput {
 	return o
-}
-
-func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionAutomaticScalingNetworkUtilization] {
-	return pulumix.Output[*FlexibleAppVersionAutomaticScalingNetworkUtilization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput) Elem() FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput {
@@ -2590,12 +2301,6 @@ func (i FlexibleAppVersionAutomaticScalingRequestUtilizationArgs) ToFlexibleAppV
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionAutomaticScalingRequestUtilizationOutput)
 }
 
-func (i FlexibleAppVersionAutomaticScalingRequestUtilizationArgs) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionAutomaticScalingRequestUtilization] {
-	return pulumix.Output[FlexibleAppVersionAutomaticScalingRequestUtilization]{
-		OutputState: i.ToFlexibleAppVersionAutomaticScalingRequestUtilizationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FlexibleAppVersionAutomaticScalingRequestUtilizationArgs) ToFlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput() FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput {
 	return i.ToFlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutputWithContext(context.Background())
 }
@@ -2637,12 +2342,6 @@ func (i *flexibleAppVersionAutomaticScalingRequestUtilizationPtrType) ToFlexible
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput)
 }
 
-func (i *flexibleAppVersionAutomaticScalingRequestUtilizationPtrType) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionAutomaticScalingRequestUtilization] {
-	return pulumix.Output[*FlexibleAppVersionAutomaticScalingRequestUtilization]{
-		OutputState: i.ToFlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlexibleAppVersionAutomaticScalingRequestUtilizationOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionAutomaticScalingRequestUtilizationOutput) ElementType() reflect.Type {
@@ -2665,12 +2364,6 @@ func (o FlexibleAppVersionAutomaticScalingRequestUtilizationOutput) ToFlexibleAp
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionAutomaticScalingRequestUtilization) *FlexibleAppVersionAutomaticScalingRequestUtilization {
 		return &v
 	}).(FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput)
-}
-
-func (o FlexibleAppVersionAutomaticScalingRequestUtilizationOutput) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionAutomaticScalingRequestUtilization] {
-	return pulumix.Output[FlexibleAppVersionAutomaticScalingRequestUtilization]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Target number of concurrent requests.
@@ -2699,12 +2392,6 @@ func (o FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput) ToFlexibl
 
 func (o FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput) ToFlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput {
 	return o
-}
-
-func (o FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionAutomaticScalingRequestUtilization] {
-	return pulumix.Output[*FlexibleAppVersionAutomaticScalingRequestUtilization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput) Elem() FlexibleAppVersionAutomaticScalingRequestUtilizationOutput {
@@ -2792,12 +2479,6 @@ func (i FlexibleAppVersionDeploymentArgs) ToFlexibleAppVersionDeploymentOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionDeploymentOutput)
 }
 
-func (i FlexibleAppVersionDeploymentArgs) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionDeployment] {
-	return pulumix.Output[FlexibleAppVersionDeployment]{
-		OutputState: i.ToFlexibleAppVersionDeploymentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FlexibleAppVersionDeploymentArgs) ToFlexibleAppVersionDeploymentPtrOutput() FlexibleAppVersionDeploymentPtrOutput {
 	return i.ToFlexibleAppVersionDeploymentPtrOutputWithContext(context.Background())
 }
@@ -2839,12 +2520,6 @@ func (i *flexibleAppVersionDeploymentPtrType) ToFlexibleAppVersionDeploymentPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionDeploymentPtrOutput)
 }
 
-func (i *flexibleAppVersionDeploymentPtrType) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionDeployment] {
-	return pulumix.Output[*FlexibleAppVersionDeployment]{
-		OutputState: i.ToFlexibleAppVersionDeploymentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlexibleAppVersionDeploymentOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionDeploymentOutput) ElementType() reflect.Type {
@@ -2867,12 +2542,6 @@ func (o FlexibleAppVersionDeploymentOutput) ToFlexibleAppVersionDeploymentPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionDeployment) *FlexibleAppVersionDeployment {
 		return &v
 	}).(FlexibleAppVersionDeploymentPtrOutput)
-}
-
-func (o FlexibleAppVersionDeploymentOutput) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionDeployment] {
-	return pulumix.Output[FlexibleAppVersionDeployment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.
@@ -2914,12 +2583,6 @@ func (o FlexibleAppVersionDeploymentPtrOutput) ToFlexibleAppVersionDeploymentPtr
 
 func (o FlexibleAppVersionDeploymentPtrOutput) ToFlexibleAppVersionDeploymentPtrOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentPtrOutput {
 	return o
-}
-
-func (o FlexibleAppVersionDeploymentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionDeployment] {
-	return pulumix.Output[*FlexibleAppVersionDeployment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlexibleAppVersionDeploymentPtrOutput) Elem() FlexibleAppVersionDeploymentOutput {
@@ -3016,12 +2679,6 @@ func (i FlexibleAppVersionDeploymentCloudBuildOptionsArgs) ToFlexibleAppVersionD
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionDeploymentCloudBuildOptionsOutput)
 }
 
-func (i FlexibleAppVersionDeploymentCloudBuildOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionDeploymentCloudBuildOptions] {
-	return pulumix.Output[FlexibleAppVersionDeploymentCloudBuildOptions]{
-		OutputState: i.ToFlexibleAppVersionDeploymentCloudBuildOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FlexibleAppVersionDeploymentCloudBuildOptionsArgs) ToFlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput() FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput {
 	return i.ToFlexibleAppVersionDeploymentCloudBuildOptionsPtrOutputWithContext(context.Background())
 }
@@ -3063,12 +2720,6 @@ func (i *flexibleAppVersionDeploymentCloudBuildOptionsPtrType) ToFlexibleAppVers
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput)
 }
 
-func (i *flexibleAppVersionDeploymentCloudBuildOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionDeploymentCloudBuildOptions] {
-	return pulumix.Output[*FlexibleAppVersionDeploymentCloudBuildOptions]{
-		OutputState: i.ToFlexibleAppVersionDeploymentCloudBuildOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlexibleAppVersionDeploymentCloudBuildOptionsOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionDeploymentCloudBuildOptionsOutput) ElementType() reflect.Type {
@@ -3091,12 +2742,6 @@ func (o FlexibleAppVersionDeploymentCloudBuildOptionsOutput) ToFlexibleAppVersio
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionDeploymentCloudBuildOptions) *FlexibleAppVersionDeploymentCloudBuildOptions {
 		return &v
 	}).(FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput)
-}
-
-func (o FlexibleAppVersionDeploymentCloudBuildOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionDeploymentCloudBuildOptions] {
-	return pulumix.Output[FlexibleAppVersionDeploymentCloudBuildOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Path to the yaml file used in deployment, used to determine runtime configuration details.
@@ -3122,12 +2767,6 @@ func (o FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput) ToFlexibleAppVer
 
 func (o FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput) ToFlexibleAppVersionDeploymentCloudBuildOptionsPtrOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput {
 	return o
-}
-
-func (o FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionDeploymentCloudBuildOptions] {
-	return pulumix.Output[*FlexibleAppVersionDeploymentCloudBuildOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput) Elem() FlexibleAppVersionDeploymentCloudBuildOptionsOutput {
@@ -3196,12 +2835,6 @@ func (i FlexibleAppVersionDeploymentContainerArgs) ToFlexibleAppVersionDeploymen
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionDeploymentContainerOutput)
 }
 
-func (i FlexibleAppVersionDeploymentContainerArgs) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionDeploymentContainer] {
-	return pulumix.Output[FlexibleAppVersionDeploymentContainer]{
-		OutputState: i.ToFlexibleAppVersionDeploymentContainerOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FlexibleAppVersionDeploymentContainerArgs) ToFlexibleAppVersionDeploymentContainerPtrOutput() FlexibleAppVersionDeploymentContainerPtrOutput {
 	return i.ToFlexibleAppVersionDeploymentContainerPtrOutputWithContext(context.Background())
 }
@@ -3243,12 +2876,6 @@ func (i *flexibleAppVersionDeploymentContainerPtrType) ToFlexibleAppVersionDeplo
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionDeploymentContainerPtrOutput)
 }
 
-func (i *flexibleAppVersionDeploymentContainerPtrType) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionDeploymentContainer] {
-	return pulumix.Output[*FlexibleAppVersionDeploymentContainer]{
-		OutputState: i.ToFlexibleAppVersionDeploymentContainerPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlexibleAppVersionDeploymentContainerOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionDeploymentContainerOutput) ElementType() reflect.Type {
@@ -3273,12 +2900,6 @@ func (o FlexibleAppVersionDeploymentContainerOutput) ToFlexibleAppVersionDeploym
 	}).(FlexibleAppVersionDeploymentContainerPtrOutput)
 }
 
-func (o FlexibleAppVersionDeploymentContainerOutput) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionDeploymentContainer] {
-	return pulumix.Output[FlexibleAppVersionDeploymentContainer]{
-		OutputState: o.OutputState,
-	}
-}
-
 // URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest.
 // Examples: "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest"
 func (o FlexibleAppVersionDeploymentContainerOutput) Image() pulumi.StringOutput {
@@ -3297,12 +2918,6 @@ func (o FlexibleAppVersionDeploymentContainerPtrOutput) ToFlexibleAppVersionDepl
 
 func (o FlexibleAppVersionDeploymentContainerPtrOutput) ToFlexibleAppVersionDeploymentContainerPtrOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentContainerPtrOutput {
 	return o
-}
-
-func (o FlexibleAppVersionDeploymentContainerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionDeploymentContainer] {
-	return pulumix.Output[*FlexibleAppVersionDeploymentContainer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlexibleAppVersionDeploymentContainerPtrOutput) Elem() FlexibleAppVersionDeploymentContainerOutput {
@@ -3367,12 +2982,6 @@ func (i FlexibleAppVersionDeploymentFileArgs) ToFlexibleAppVersionDeploymentFile
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionDeploymentFileOutput)
 }
 
-func (i FlexibleAppVersionDeploymentFileArgs) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionDeploymentFile] {
-	return pulumix.Output[FlexibleAppVersionDeploymentFile]{
-		OutputState: i.ToFlexibleAppVersionDeploymentFileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FlexibleAppVersionDeploymentFileArrayInput is an input type that accepts FlexibleAppVersionDeploymentFileArray and FlexibleAppVersionDeploymentFileArrayOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionDeploymentFileArrayInput` via:
 //
@@ -3398,12 +3007,6 @@ func (i FlexibleAppVersionDeploymentFileArray) ToFlexibleAppVersionDeploymentFil
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionDeploymentFileArrayOutput)
 }
 
-func (i FlexibleAppVersionDeploymentFileArray) ToOutput(ctx context.Context) pulumix.Output[[]FlexibleAppVersionDeploymentFile] {
-	return pulumix.Output[[]FlexibleAppVersionDeploymentFile]{
-		OutputState: i.ToFlexibleAppVersionDeploymentFileArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlexibleAppVersionDeploymentFileOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionDeploymentFileOutput) ElementType() reflect.Type {
@@ -3416,12 +3019,6 @@ func (o FlexibleAppVersionDeploymentFileOutput) ToFlexibleAppVersionDeploymentFi
 
 func (o FlexibleAppVersionDeploymentFileOutput) ToFlexibleAppVersionDeploymentFileOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentFileOutput {
 	return o
-}
-
-func (o FlexibleAppVersionDeploymentFileOutput) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionDeploymentFile] {
-	return pulumix.Output[FlexibleAppVersionDeploymentFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The identifier for this object. Format specified above.
@@ -3451,12 +3048,6 @@ func (o FlexibleAppVersionDeploymentFileArrayOutput) ToFlexibleAppVersionDeploym
 
 func (o FlexibleAppVersionDeploymentFileArrayOutput) ToFlexibleAppVersionDeploymentFileArrayOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentFileArrayOutput {
 	return o
-}
-
-func (o FlexibleAppVersionDeploymentFileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FlexibleAppVersionDeploymentFile] {
-	return pulumix.Output[[]FlexibleAppVersionDeploymentFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlexibleAppVersionDeploymentFileArrayOutput) Index(i pulumi.IntInput) FlexibleAppVersionDeploymentFileOutput {
@@ -3502,12 +3093,6 @@ func (i FlexibleAppVersionDeploymentZipArgs) ToFlexibleAppVersionDeploymentZipOu
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionDeploymentZipOutput)
 }
 
-func (i FlexibleAppVersionDeploymentZipArgs) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionDeploymentZip] {
-	return pulumix.Output[FlexibleAppVersionDeploymentZip]{
-		OutputState: i.ToFlexibleAppVersionDeploymentZipOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FlexibleAppVersionDeploymentZipArgs) ToFlexibleAppVersionDeploymentZipPtrOutput() FlexibleAppVersionDeploymentZipPtrOutput {
 	return i.ToFlexibleAppVersionDeploymentZipPtrOutputWithContext(context.Background())
 }
@@ -3549,12 +3134,6 @@ func (i *flexibleAppVersionDeploymentZipPtrType) ToFlexibleAppVersionDeploymentZ
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionDeploymentZipPtrOutput)
 }
 
-func (i *flexibleAppVersionDeploymentZipPtrType) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionDeploymentZip] {
-	return pulumix.Output[*FlexibleAppVersionDeploymentZip]{
-		OutputState: i.ToFlexibleAppVersionDeploymentZipPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlexibleAppVersionDeploymentZipOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionDeploymentZipOutput) ElementType() reflect.Type {
@@ -3579,12 +3158,6 @@ func (o FlexibleAppVersionDeploymentZipOutput) ToFlexibleAppVersionDeploymentZip
 	}).(FlexibleAppVersionDeploymentZipPtrOutput)
 }
 
-func (o FlexibleAppVersionDeploymentZipOutput) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionDeploymentZip] {
-	return pulumix.Output[FlexibleAppVersionDeploymentZip]{
-		OutputState: o.OutputState,
-	}
-}
-
 // files count
 func (o FlexibleAppVersionDeploymentZipOutput) FilesCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionDeploymentZip) *int { return v.FilesCount }).(pulumi.IntPtrOutput)
@@ -3607,12 +3180,6 @@ func (o FlexibleAppVersionDeploymentZipPtrOutput) ToFlexibleAppVersionDeployment
 
 func (o FlexibleAppVersionDeploymentZipPtrOutput) ToFlexibleAppVersionDeploymentZipPtrOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentZipPtrOutput {
 	return o
-}
-
-func (o FlexibleAppVersionDeploymentZipPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionDeploymentZip] {
-	return pulumix.Output[*FlexibleAppVersionDeploymentZip]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlexibleAppVersionDeploymentZipPtrOutput) Elem() FlexibleAppVersionDeploymentZipOutput {
@@ -3706,12 +3273,6 @@ func (i FlexibleAppVersionEndpointsApiServiceArgs) ToFlexibleAppVersionEndpoints
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionEndpointsApiServiceOutput)
 }
 
-func (i FlexibleAppVersionEndpointsApiServiceArgs) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionEndpointsApiService] {
-	return pulumix.Output[FlexibleAppVersionEndpointsApiService]{
-		OutputState: i.ToFlexibleAppVersionEndpointsApiServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FlexibleAppVersionEndpointsApiServiceArgs) ToFlexibleAppVersionEndpointsApiServicePtrOutput() FlexibleAppVersionEndpointsApiServicePtrOutput {
 	return i.ToFlexibleAppVersionEndpointsApiServicePtrOutputWithContext(context.Background())
 }
@@ -3753,12 +3314,6 @@ func (i *flexibleAppVersionEndpointsApiServicePtrType) ToFlexibleAppVersionEndpo
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionEndpointsApiServicePtrOutput)
 }
 
-func (i *flexibleAppVersionEndpointsApiServicePtrType) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionEndpointsApiService] {
-	return pulumix.Output[*FlexibleAppVersionEndpointsApiService]{
-		OutputState: i.ToFlexibleAppVersionEndpointsApiServicePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlexibleAppVersionEndpointsApiServiceOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionEndpointsApiServiceOutput) ElementType() reflect.Type {
@@ -3781,12 +3336,6 @@ func (o FlexibleAppVersionEndpointsApiServiceOutput) ToFlexibleAppVersionEndpoin
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionEndpointsApiService) *FlexibleAppVersionEndpointsApiService {
 		return &v
 	}).(FlexibleAppVersionEndpointsApiServicePtrOutput)
-}
-
-func (o FlexibleAppVersionEndpointsApiServiceOutput) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionEndpointsApiService] {
-	return pulumix.Output[FlexibleAppVersionEndpointsApiService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".
@@ -3829,12 +3378,6 @@ func (o FlexibleAppVersionEndpointsApiServicePtrOutput) ToFlexibleAppVersionEndp
 
 func (o FlexibleAppVersionEndpointsApiServicePtrOutput) ToFlexibleAppVersionEndpointsApiServicePtrOutputWithContext(ctx context.Context) FlexibleAppVersionEndpointsApiServicePtrOutput {
 	return o
-}
-
-func (o FlexibleAppVersionEndpointsApiServicePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionEndpointsApiService] {
-	return pulumix.Output[*FlexibleAppVersionEndpointsApiService]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlexibleAppVersionEndpointsApiServicePtrOutput) Elem() FlexibleAppVersionEndpointsApiServiceOutput {
@@ -3928,12 +3471,6 @@ func (i FlexibleAppVersionEntrypointArgs) ToFlexibleAppVersionEntrypointOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionEntrypointOutput)
 }
 
-func (i FlexibleAppVersionEntrypointArgs) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionEntrypoint] {
-	return pulumix.Output[FlexibleAppVersionEntrypoint]{
-		OutputState: i.ToFlexibleAppVersionEntrypointOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FlexibleAppVersionEntrypointArgs) ToFlexibleAppVersionEntrypointPtrOutput() FlexibleAppVersionEntrypointPtrOutput {
 	return i.ToFlexibleAppVersionEntrypointPtrOutputWithContext(context.Background())
 }
@@ -3975,12 +3512,6 @@ func (i *flexibleAppVersionEntrypointPtrType) ToFlexibleAppVersionEntrypointPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionEntrypointPtrOutput)
 }
 
-func (i *flexibleAppVersionEntrypointPtrType) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionEntrypoint] {
-	return pulumix.Output[*FlexibleAppVersionEntrypoint]{
-		OutputState: i.ToFlexibleAppVersionEntrypointPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlexibleAppVersionEntrypointOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionEntrypointOutput) ElementType() reflect.Type {
@@ -4005,12 +3536,6 @@ func (o FlexibleAppVersionEntrypointOutput) ToFlexibleAppVersionEntrypointPtrOut
 	}).(FlexibleAppVersionEntrypointPtrOutput)
 }
 
-func (o FlexibleAppVersionEntrypointOutput) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionEntrypoint] {
-	return pulumix.Output[FlexibleAppVersionEntrypoint]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The format should be a shell command that can be fed to bash -c.
 func (o FlexibleAppVersionEntrypointOutput) Shell() pulumi.StringOutput {
 	return o.ApplyT(func(v FlexibleAppVersionEntrypoint) string { return v.Shell }).(pulumi.StringOutput)
@@ -4028,12 +3553,6 @@ func (o FlexibleAppVersionEntrypointPtrOutput) ToFlexibleAppVersionEntrypointPtr
 
 func (o FlexibleAppVersionEntrypointPtrOutput) ToFlexibleAppVersionEntrypointPtrOutputWithContext(ctx context.Context) FlexibleAppVersionEntrypointPtrOutput {
 	return o
-}
-
-func (o FlexibleAppVersionEntrypointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionEntrypoint] {
-	return pulumix.Output[*FlexibleAppVersionEntrypoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlexibleAppVersionEntrypointPtrOutput) Elem() FlexibleAppVersionEntrypointOutput {
@@ -4131,12 +3650,6 @@ func (i FlexibleAppVersionHandlerArgs) ToFlexibleAppVersionHandlerOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionHandlerOutput)
 }
 
-func (i FlexibleAppVersionHandlerArgs) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionHandler] {
-	return pulumix.Output[FlexibleAppVersionHandler]{
-		OutputState: i.ToFlexibleAppVersionHandlerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FlexibleAppVersionHandlerArrayInput is an input type that accepts FlexibleAppVersionHandlerArray and FlexibleAppVersionHandlerArrayOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionHandlerArrayInput` via:
 //
@@ -4162,12 +3675,6 @@ func (i FlexibleAppVersionHandlerArray) ToFlexibleAppVersionHandlerArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionHandlerArrayOutput)
 }
 
-func (i FlexibleAppVersionHandlerArray) ToOutput(ctx context.Context) pulumix.Output[[]FlexibleAppVersionHandler] {
-	return pulumix.Output[[]FlexibleAppVersionHandler]{
-		OutputState: i.ToFlexibleAppVersionHandlerArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlexibleAppVersionHandlerOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionHandlerOutput) ElementType() reflect.Type {
@@ -4180,12 +3687,6 @@ func (o FlexibleAppVersionHandlerOutput) ToFlexibleAppVersionHandlerOutput() Fle
 
 func (o FlexibleAppVersionHandlerOutput) ToFlexibleAppVersionHandlerOutputWithContext(ctx context.Context) FlexibleAppVersionHandlerOutput {
 	return o
-}
-
-func (o FlexibleAppVersionHandlerOutput) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionHandler] {
-	return pulumix.Output[FlexibleAppVersionHandler]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Actions to take when the user is not logged in.
@@ -4246,12 +3747,6 @@ func (o FlexibleAppVersionHandlerArrayOutput) ToFlexibleAppVersionHandlerArrayOu
 	return o
 }
 
-func (o FlexibleAppVersionHandlerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FlexibleAppVersionHandler] {
-	return pulumix.Output[[]FlexibleAppVersionHandler]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FlexibleAppVersionHandlerArrayOutput) Index(i pulumi.IntInput) FlexibleAppVersionHandlerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FlexibleAppVersionHandler {
 		return vs[0].([]FlexibleAppVersionHandler)[vs[1].(int)]
@@ -4289,12 +3784,6 @@ func (i FlexibleAppVersionHandlerScriptArgs) ToFlexibleAppVersionHandlerScriptOu
 
 func (i FlexibleAppVersionHandlerScriptArgs) ToFlexibleAppVersionHandlerScriptOutputWithContext(ctx context.Context) FlexibleAppVersionHandlerScriptOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionHandlerScriptOutput)
-}
-
-func (i FlexibleAppVersionHandlerScriptArgs) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionHandlerScript] {
-	return pulumix.Output[FlexibleAppVersionHandlerScript]{
-		OutputState: i.ToFlexibleAppVersionHandlerScriptOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i FlexibleAppVersionHandlerScriptArgs) ToFlexibleAppVersionHandlerScriptPtrOutput() FlexibleAppVersionHandlerScriptPtrOutput {
@@ -4338,12 +3827,6 @@ func (i *flexibleAppVersionHandlerScriptPtrType) ToFlexibleAppVersionHandlerScri
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionHandlerScriptPtrOutput)
 }
 
-func (i *flexibleAppVersionHandlerScriptPtrType) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionHandlerScript] {
-	return pulumix.Output[*FlexibleAppVersionHandlerScript]{
-		OutputState: i.ToFlexibleAppVersionHandlerScriptPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlexibleAppVersionHandlerScriptOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionHandlerScriptOutput) ElementType() reflect.Type {
@@ -4368,12 +3851,6 @@ func (o FlexibleAppVersionHandlerScriptOutput) ToFlexibleAppVersionHandlerScript
 	}).(FlexibleAppVersionHandlerScriptPtrOutput)
 }
 
-func (o FlexibleAppVersionHandlerScriptOutput) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionHandlerScript] {
-	return pulumix.Output[FlexibleAppVersionHandlerScript]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Path to the script from the application root directory.
 func (o FlexibleAppVersionHandlerScriptOutput) ScriptPath() pulumi.StringOutput {
 	return o.ApplyT(func(v FlexibleAppVersionHandlerScript) string { return v.ScriptPath }).(pulumi.StringOutput)
@@ -4391,12 +3868,6 @@ func (o FlexibleAppVersionHandlerScriptPtrOutput) ToFlexibleAppVersionHandlerScr
 
 func (o FlexibleAppVersionHandlerScriptPtrOutput) ToFlexibleAppVersionHandlerScriptPtrOutputWithContext(ctx context.Context) FlexibleAppVersionHandlerScriptPtrOutput {
 	return o
-}
-
-func (o FlexibleAppVersionHandlerScriptPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionHandlerScript] {
-	return pulumix.Output[*FlexibleAppVersionHandlerScript]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlexibleAppVersionHandlerScriptPtrOutput) Elem() FlexibleAppVersionHandlerScriptOutput {
@@ -4490,12 +3961,6 @@ func (i FlexibleAppVersionHandlerStaticFilesArgs) ToFlexibleAppVersionHandlerSta
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionHandlerStaticFilesOutput)
 }
 
-func (i FlexibleAppVersionHandlerStaticFilesArgs) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionHandlerStaticFiles] {
-	return pulumix.Output[FlexibleAppVersionHandlerStaticFiles]{
-		OutputState: i.ToFlexibleAppVersionHandlerStaticFilesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FlexibleAppVersionHandlerStaticFilesArgs) ToFlexibleAppVersionHandlerStaticFilesPtrOutput() FlexibleAppVersionHandlerStaticFilesPtrOutput {
 	return i.ToFlexibleAppVersionHandlerStaticFilesPtrOutputWithContext(context.Background())
 }
@@ -4537,12 +4002,6 @@ func (i *flexibleAppVersionHandlerStaticFilesPtrType) ToFlexibleAppVersionHandle
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionHandlerStaticFilesPtrOutput)
 }
 
-func (i *flexibleAppVersionHandlerStaticFilesPtrType) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionHandlerStaticFiles] {
-	return pulumix.Output[*FlexibleAppVersionHandlerStaticFiles]{
-		OutputState: i.ToFlexibleAppVersionHandlerStaticFilesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlexibleAppVersionHandlerStaticFilesOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionHandlerStaticFilesOutput) ElementType() reflect.Type {
@@ -4565,12 +4024,6 @@ func (o FlexibleAppVersionHandlerStaticFilesOutput) ToFlexibleAppVersionHandlerS
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionHandlerStaticFiles) *FlexibleAppVersionHandlerStaticFiles {
 		return &v
 	}).(FlexibleAppVersionHandlerStaticFilesPtrOutput)
-}
-
-func (o FlexibleAppVersionHandlerStaticFilesOutput) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionHandlerStaticFiles] {
-	return pulumix.Output[FlexibleAppVersionHandlerStaticFiles]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether files should also be uploaded as code data. By default, files declared in static file handlers are
@@ -4627,12 +4080,6 @@ func (o FlexibleAppVersionHandlerStaticFilesPtrOutput) ToFlexibleAppVersionHandl
 
 func (o FlexibleAppVersionHandlerStaticFilesPtrOutput) ToFlexibleAppVersionHandlerStaticFilesPtrOutputWithContext(ctx context.Context) FlexibleAppVersionHandlerStaticFilesPtrOutput {
 	return o
-}
-
-func (o FlexibleAppVersionHandlerStaticFilesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionHandlerStaticFiles] {
-	return pulumix.Output[*FlexibleAppVersionHandlerStaticFiles]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlexibleAppVersionHandlerStaticFilesPtrOutput) Elem() FlexibleAppVersionHandlerStaticFilesOutput {
@@ -4783,12 +4230,6 @@ func (i FlexibleAppVersionLivenessCheckArgs) ToFlexibleAppVersionLivenessCheckOu
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionLivenessCheckOutput)
 }
 
-func (i FlexibleAppVersionLivenessCheckArgs) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionLivenessCheck] {
-	return pulumix.Output[FlexibleAppVersionLivenessCheck]{
-		OutputState: i.ToFlexibleAppVersionLivenessCheckOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FlexibleAppVersionLivenessCheckArgs) ToFlexibleAppVersionLivenessCheckPtrOutput() FlexibleAppVersionLivenessCheckPtrOutput {
 	return i.ToFlexibleAppVersionLivenessCheckPtrOutputWithContext(context.Background())
 }
@@ -4830,12 +4271,6 @@ func (i *flexibleAppVersionLivenessCheckPtrType) ToFlexibleAppVersionLivenessChe
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionLivenessCheckPtrOutput)
 }
 
-func (i *flexibleAppVersionLivenessCheckPtrType) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionLivenessCheck] {
-	return pulumix.Output[*FlexibleAppVersionLivenessCheck]{
-		OutputState: i.ToFlexibleAppVersionLivenessCheckPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlexibleAppVersionLivenessCheckOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionLivenessCheckOutput) ElementType() reflect.Type {
@@ -4858,12 +4293,6 @@ func (o FlexibleAppVersionLivenessCheckOutput) ToFlexibleAppVersionLivenessCheck
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionLivenessCheck) *FlexibleAppVersionLivenessCheck {
 		return &v
 	}).(FlexibleAppVersionLivenessCheckPtrOutput)
-}
-
-func (o FlexibleAppVersionLivenessCheckOutput) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionLivenessCheck] {
-	return pulumix.Output[FlexibleAppVersionLivenessCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Interval between health checks.
@@ -4915,12 +4344,6 @@ func (o FlexibleAppVersionLivenessCheckPtrOutput) ToFlexibleAppVersionLivenessCh
 
 func (o FlexibleAppVersionLivenessCheckPtrOutput) ToFlexibleAppVersionLivenessCheckPtrOutputWithContext(ctx context.Context) FlexibleAppVersionLivenessCheckPtrOutput {
 	return o
-}
-
-func (o FlexibleAppVersionLivenessCheckPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionLivenessCheck] {
-	return pulumix.Output[*FlexibleAppVersionLivenessCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlexibleAppVersionLivenessCheckPtrOutput) Elem() FlexibleAppVersionLivenessCheckOutput {
@@ -5042,12 +4465,6 @@ func (i FlexibleAppVersionManualScalingArgs) ToFlexibleAppVersionManualScalingOu
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionManualScalingOutput)
 }
 
-func (i FlexibleAppVersionManualScalingArgs) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionManualScaling] {
-	return pulumix.Output[FlexibleAppVersionManualScaling]{
-		OutputState: i.ToFlexibleAppVersionManualScalingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FlexibleAppVersionManualScalingArgs) ToFlexibleAppVersionManualScalingPtrOutput() FlexibleAppVersionManualScalingPtrOutput {
 	return i.ToFlexibleAppVersionManualScalingPtrOutputWithContext(context.Background())
 }
@@ -5089,12 +4506,6 @@ func (i *flexibleAppVersionManualScalingPtrType) ToFlexibleAppVersionManualScali
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionManualScalingPtrOutput)
 }
 
-func (i *flexibleAppVersionManualScalingPtrType) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionManualScaling] {
-	return pulumix.Output[*FlexibleAppVersionManualScaling]{
-		OutputState: i.ToFlexibleAppVersionManualScalingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlexibleAppVersionManualScalingOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionManualScalingOutput) ElementType() reflect.Type {
@@ -5119,12 +4530,6 @@ func (o FlexibleAppVersionManualScalingOutput) ToFlexibleAppVersionManualScaling
 	}).(FlexibleAppVersionManualScalingPtrOutput)
 }
 
-func (o FlexibleAppVersionManualScalingOutput) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionManualScaling] {
-	return pulumix.Output[FlexibleAppVersionManualScaling]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Number of instances to assign to the service at the start.
 // **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
 // Modules API set_num_instances() you must use `lifecycle.ignore_changes = ["manualScaling"[0].instances]` to prevent drift detection.
@@ -5144,12 +4549,6 @@ func (o FlexibleAppVersionManualScalingPtrOutput) ToFlexibleAppVersionManualScal
 
 func (o FlexibleAppVersionManualScalingPtrOutput) ToFlexibleAppVersionManualScalingPtrOutputWithContext(ctx context.Context) FlexibleAppVersionManualScalingPtrOutput {
 	return o
-}
-
-func (o FlexibleAppVersionManualScalingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionManualScaling] {
-	return pulumix.Output[*FlexibleAppVersionManualScaling]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlexibleAppVersionManualScalingPtrOutput) Elem() FlexibleAppVersionManualScalingOutput {
@@ -5231,12 +4630,6 @@ func (i FlexibleAppVersionNetworkArgs) ToFlexibleAppVersionNetworkOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionNetworkOutput)
 }
 
-func (i FlexibleAppVersionNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionNetwork] {
-	return pulumix.Output[FlexibleAppVersionNetwork]{
-		OutputState: i.ToFlexibleAppVersionNetworkOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FlexibleAppVersionNetworkArgs) ToFlexibleAppVersionNetworkPtrOutput() FlexibleAppVersionNetworkPtrOutput {
 	return i.ToFlexibleAppVersionNetworkPtrOutputWithContext(context.Background())
 }
@@ -5278,12 +4671,6 @@ func (i *flexibleAppVersionNetworkPtrType) ToFlexibleAppVersionNetworkPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionNetworkPtrOutput)
 }
 
-func (i *flexibleAppVersionNetworkPtrType) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionNetwork] {
-	return pulumix.Output[*FlexibleAppVersionNetwork]{
-		OutputState: i.ToFlexibleAppVersionNetworkPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlexibleAppVersionNetworkOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionNetworkOutput) ElementType() reflect.Type {
@@ -5306,12 +4693,6 @@ func (o FlexibleAppVersionNetworkOutput) ToFlexibleAppVersionNetworkPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionNetwork) *FlexibleAppVersionNetwork {
 		return &v
 	}).(FlexibleAppVersionNetworkPtrOutput)
-}
-
-func (o FlexibleAppVersionNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionNetwork] {
-	return pulumix.Output[FlexibleAppVersionNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of ports, or port pairs, to forward from the virtual machine to the application container.
@@ -5355,12 +4736,6 @@ func (o FlexibleAppVersionNetworkPtrOutput) ToFlexibleAppVersionNetworkPtrOutput
 
 func (o FlexibleAppVersionNetworkPtrOutput) ToFlexibleAppVersionNetworkPtrOutputWithContext(ctx context.Context) FlexibleAppVersionNetworkPtrOutput {
 	return o
-}
-
-func (o FlexibleAppVersionNetworkPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionNetwork] {
-	return pulumix.Output[*FlexibleAppVersionNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlexibleAppVersionNetworkPtrOutput) Elem() FlexibleAppVersionNetworkOutput {
@@ -5486,12 +4861,6 @@ func (i FlexibleAppVersionReadinessCheckArgs) ToFlexibleAppVersionReadinessCheck
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionReadinessCheckOutput)
 }
 
-func (i FlexibleAppVersionReadinessCheckArgs) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionReadinessCheck] {
-	return pulumix.Output[FlexibleAppVersionReadinessCheck]{
-		OutputState: i.ToFlexibleAppVersionReadinessCheckOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FlexibleAppVersionReadinessCheckArgs) ToFlexibleAppVersionReadinessCheckPtrOutput() FlexibleAppVersionReadinessCheckPtrOutput {
 	return i.ToFlexibleAppVersionReadinessCheckPtrOutputWithContext(context.Background())
 }
@@ -5533,12 +4902,6 @@ func (i *flexibleAppVersionReadinessCheckPtrType) ToFlexibleAppVersionReadinessC
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionReadinessCheckPtrOutput)
 }
 
-func (i *flexibleAppVersionReadinessCheckPtrType) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionReadinessCheck] {
-	return pulumix.Output[*FlexibleAppVersionReadinessCheck]{
-		OutputState: i.ToFlexibleAppVersionReadinessCheckPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlexibleAppVersionReadinessCheckOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionReadinessCheckOutput) ElementType() reflect.Type {
@@ -5561,12 +4924,6 @@ func (o FlexibleAppVersionReadinessCheckOutput) ToFlexibleAppVersionReadinessChe
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionReadinessCheck) *FlexibleAppVersionReadinessCheck {
 		return &v
 	}).(FlexibleAppVersionReadinessCheckPtrOutput)
-}
-
-func (o FlexibleAppVersionReadinessCheckOutput) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionReadinessCheck] {
-	return pulumix.Output[FlexibleAppVersionReadinessCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A maximum time limit on application initialization, measured from moment the application successfully
@@ -5617,12 +4974,6 @@ func (o FlexibleAppVersionReadinessCheckPtrOutput) ToFlexibleAppVersionReadiness
 
 func (o FlexibleAppVersionReadinessCheckPtrOutput) ToFlexibleAppVersionReadinessCheckPtrOutputWithContext(ctx context.Context) FlexibleAppVersionReadinessCheckPtrOutput {
 	return o
-}
-
-func (o FlexibleAppVersionReadinessCheckPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionReadinessCheck] {
-	return pulumix.Output[*FlexibleAppVersionReadinessCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlexibleAppVersionReadinessCheckPtrOutput) Elem() FlexibleAppVersionReadinessCheckOutput {
@@ -5753,12 +5104,6 @@ func (i FlexibleAppVersionResourcesArgs) ToFlexibleAppVersionResourcesOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionResourcesOutput)
 }
 
-func (i FlexibleAppVersionResourcesArgs) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionResources] {
-	return pulumix.Output[FlexibleAppVersionResources]{
-		OutputState: i.ToFlexibleAppVersionResourcesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FlexibleAppVersionResourcesArgs) ToFlexibleAppVersionResourcesPtrOutput() FlexibleAppVersionResourcesPtrOutput {
 	return i.ToFlexibleAppVersionResourcesPtrOutputWithContext(context.Background())
 }
@@ -5800,12 +5145,6 @@ func (i *flexibleAppVersionResourcesPtrType) ToFlexibleAppVersionResourcesPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionResourcesPtrOutput)
 }
 
-func (i *flexibleAppVersionResourcesPtrType) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionResources] {
-	return pulumix.Output[*FlexibleAppVersionResources]{
-		OutputState: i.ToFlexibleAppVersionResourcesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlexibleAppVersionResourcesOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionResourcesOutput) ElementType() reflect.Type {
@@ -5828,12 +5167,6 @@ func (o FlexibleAppVersionResourcesOutput) ToFlexibleAppVersionResourcesPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionResources) *FlexibleAppVersionResources {
 		return &v
 	}).(FlexibleAppVersionResourcesPtrOutput)
-}
-
-func (o FlexibleAppVersionResourcesOutput) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionResources] {
-	return pulumix.Output[FlexibleAppVersionResources]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Number of CPU cores needed.
@@ -5869,12 +5202,6 @@ func (o FlexibleAppVersionResourcesPtrOutput) ToFlexibleAppVersionResourcesPtrOu
 
 func (o FlexibleAppVersionResourcesPtrOutput) ToFlexibleAppVersionResourcesPtrOutputWithContext(ctx context.Context) FlexibleAppVersionResourcesPtrOutput {
 	return o
-}
-
-func (o FlexibleAppVersionResourcesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionResources] {
-	return pulumix.Output[*FlexibleAppVersionResources]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlexibleAppVersionResourcesPtrOutput) Elem() FlexibleAppVersionResourcesOutput {
@@ -5969,12 +5296,6 @@ func (i FlexibleAppVersionResourcesVolumeArgs) ToFlexibleAppVersionResourcesVolu
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionResourcesVolumeOutput)
 }
 
-func (i FlexibleAppVersionResourcesVolumeArgs) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionResourcesVolume] {
-	return pulumix.Output[FlexibleAppVersionResourcesVolume]{
-		OutputState: i.ToFlexibleAppVersionResourcesVolumeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FlexibleAppVersionResourcesVolumeArrayInput is an input type that accepts FlexibleAppVersionResourcesVolumeArray and FlexibleAppVersionResourcesVolumeArrayOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionResourcesVolumeArrayInput` via:
 //
@@ -6000,12 +5321,6 @@ func (i FlexibleAppVersionResourcesVolumeArray) ToFlexibleAppVersionResourcesVol
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionResourcesVolumeArrayOutput)
 }
 
-func (i FlexibleAppVersionResourcesVolumeArray) ToOutput(ctx context.Context) pulumix.Output[[]FlexibleAppVersionResourcesVolume] {
-	return pulumix.Output[[]FlexibleAppVersionResourcesVolume]{
-		OutputState: i.ToFlexibleAppVersionResourcesVolumeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlexibleAppVersionResourcesVolumeOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionResourcesVolumeOutput) ElementType() reflect.Type {
@@ -6018,12 +5333,6 @@ func (o FlexibleAppVersionResourcesVolumeOutput) ToFlexibleAppVersionResourcesVo
 
 func (o FlexibleAppVersionResourcesVolumeOutput) ToFlexibleAppVersionResourcesVolumeOutputWithContext(ctx context.Context) FlexibleAppVersionResourcesVolumeOutput {
 	return o
-}
-
-func (o FlexibleAppVersionResourcesVolumeOutput) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionResourcesVolume] {
-	return pulumix.Output[FlexibleAppVersionResourcesVolume]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Unique name for the volume.
@@ -6053,12 +5362,6 @@ func (o FlexibleAppVersionResourcesVolumeArrayOutput) ToFlexibleAppVersionResour
 
 func (o FlexibleAppVersionResourcesVolumeArrayOutput) ToFlexibleAppVersionResourcesVolumeArrayOutputWithContext(ctx context.Context) FlexibleAppVersionResourcesVolumeArrayOutput {
 	return o
-}
-
-func (o FlexibleAppVersionResourcesVolumeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FlexibleAppVersionResourcesVolume] {
-	return pulumix.Output[[]FlexibleAppVersionResourcesVolume]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlexibleAppVersionResourcesVolumeArrayOutput) Index(i pulumi.IntInput) FlexibleAppVersionResourcesVolumeOutput {
@@ -6098,12 +5401,6 @@ func (i FlexibleAppVersionVpcAccessConnectorArgs) ToFlexibleAppVersionVpcAccessC
 
 func (i FlexibleAppVersionVpcAccessConnectorArgs) ToFlexibleAppVersionVpcAccessConnectorOutputWithContext(ctx context.Context) FlexibleAppVersionVpcAccessConnectorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionVpcAccessConnectorOutput)
-}
-
-func (i FlexibleAppVersionVpcAccessConnectorArgs) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionVpcAccessConnector] {
-	return pulumix.Output[FlexibleAppVersionVpcAccessConnector]{
-		OutputState: i.ToFlexibleAppVersionVpcAccessConnectorOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i FlexibleAppVersionVpcAccessConnectorArgs) ToFlexibleAppVersionVpcAccessConnectorPtrOutput() FlexibleAppVersionVpcAccessConnectorPtrOutput {
@@ -6147,12 +5444,6 @@ func (i *flexibleAppVersionVpcAccessConnectorPtrType) ToFlexibleAppVersionVpcAcc
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionVpcAccessConnectorPtrOutput)
 }
 
-func (i *flexibleAppVersionVpcAccessConnectorPtrType) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionVpcAccessConnector] {
-	return pulumix.Output[*FlexibleAppVersionVpcAccessConnector]{
-		OutputState: i.ToFlexibleAppVersionVpcAccessConnectorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlexibleAppVersionVpcAccessConnectorOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionVpcAccessConnectorOutput) ElementType() reflect.Type {
@@ -6177,12 +5468,6 @@ func (o FlexibleAppVersionVpcAccessConnectorOutput) ToFlexibleAppVersionVpcAcces
 	}).(FlexibleAppVersionVpcAccessConnectorPtrOutput)
 }
 
-func (o FlexibleAppVersionVpcAccessConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[FlexibleAppVersionVpcAccessConnector] {
-	return pulumix.Output[FlexibleAppVersionVpcAccessConnector]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 func (o FlexibleAppVersionVpcAccessConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FlexibleAppVersionVpcAccessConnector) string { return v.Name }).(pulumi.StringOutput)
@@ -6200,12 +5485,6 @@ func (o FlexibleAppVersionVpcAccessConnectorPtrOutput) ToFlexibleAppVersionVpcAc
 
 func (o FlexibleAppVersionVpcAccessConnectorPtrOutput) ToFlexibleAppVersionVpcAccessConnectorPtrOutputWithContext(ctx context.Context) FlexibleAppVersionVpcAccessConnectorPtrOutput {
 	return o
-}
-
-func (o FlexibleAppVersionVpcAccessConnectorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersionVpcAccessConnector] {
-	return pulumix.Output[*FlexibleAppVersionVpcAccessConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlexibleAppVersionVpcAccessConnectorPtrOutput) Elem() FlexibleAppVersionVpcAccessConnectorOutput {
@@ -6269,12 +5548,6 @@ func (i ServiceNetworkSettingsNetworkSettingsArgs) ToServiceNetworkSettingsNetwo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkSettingsNetworkSettingsOutput)
 }
 
-func (i ServiceNetworkSettingsNetworkSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceNetworkSettingsNetworkSettings] {
-	return pulumix.Output[ServiceNetworkSettingsNetworkSettings]{
-		OutputState: i.ToServiceNetworkSettingsNetworkSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceNetworkSettingsNetworkSettingsArgs) ToServiceNetworkSettingsNetworkSettingsPtrOutput() ServiceNetworkSettingsNetworkSettingsPtrOutput {
 	return i.ToServiceNetworkSettingsNetworkSettingsPtrOutputWithContext(context.Background())
 }
@@ -6316,12 +5589,6 @@ func (i *serviceNetworkSettingsNetworkSettingsPtrType) ToServiceNetworkSettingsN
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkSettingsNetworkSettingsPtrOutput)
 }
 
-func (i *serviceNetworkSettingsNetworkSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceNetworkSettingsNetworkSettings] {
-	return pulumix.Output[*ServiceNetworkSettingsNetworkSettings]{
-		OutputState: i.ToServiceNetworkSettingsNetworkSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceNetworkSettingsNetworkSettingsOutput struct{ *pulumi.OutputState }
 
 func (ServiceNetworkSettingsNetworkSettingsOutput) ElementType() reflect.Type {
@@ -6346,12 +5613,6 @@ func (o ServiceNetworkSettingsNetworkSettingsOutput) ToServiceNetworkSettingsNet
 	}).(ServiceNetworkSettingsNetworkSettingsPtrOutput)
 }
 
-func (o ServiceNetworkSettingsNetworkSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceNetworkSettingsNetworkSettings] {
-	return pulumix.Output[ServiceNetworkSettingsNetworkSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ingress settings for version or service.
 // Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
 // Possible values are: `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
@@ -6373,12 +5634,6 @@ func (o ServiceNetworkSettingsNetworkSettingsPtrOutput) ToServiceNetworkSettings
 
 func (o ServiceNetworkSettingsNetworkSettingsPtrOutput) ToServiceNetworkSettingsNetworkSettingsPtrOutputWithContext(ctx context.Context) ServiceNetworkSettingsNetworkSettingsPtrOutput {
 	return o
-}
-
-func (o ServiceNetworkSettingsNetworkSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceNetworkSettingsNetworkSettings] {
-	return pulumix.Output[*ServiceNetworkSettingsNetworkSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceNetworkSettingsNetworkSettingsPtrOutput) Elem() ServiceNetworkSettingsNetworkSettingsOutput {
@@ -6466,12 +5721,6 @@ func (i StandardAppVersionAutomaticScalingArgs) ToStandardAppVersionAutomaticSca
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionAutomaticScalingOutput)
 }
 
-func (i StandardAppVersionAutomaticScalingArgs) ToOutput(ctx context.Context) pulumix.Output[StandardAppVersionAutomaticScaling] {
-	return pulumix.Output[StandardAppVersionAutomaticScaling]{
-		OutputState: i.ToStandardAppVersionAutomaticScalingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StandardAppVersionAutomaticScalingArgs) ToStandardAppVersionAutomaticScalingPtrOutput() StandardAppVersionAutomaticScalingPtrOutput {
 	return i.ToStandardAppVersionAutomaticScalingPtrOutputWithContext(context.Background())
 }
@@ -6513,12 +5762,6 @@ func (i *standardAppVersionAutomaticScalingPtrType) ToStandardAppVersionAutomati
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionAutomaticScalingPtrOutput)
 }
 
-func (i *standardAppVersionAutomaticScalingPtrType) ToOutput(ctx context.Context) pulumix.Output[*StandardAppVersionAutomaticScaling] {
-	return pulumix.Output[*StandardAppVersionAutomaticScaling]{
-		OutputState: i.ToStandardAppVersionAutomaticScalingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StandardAppVersionAutomaticScalingOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionAutomaticScalingOutput) ElementType() reflect.Type {
@@ -6541,12 +5784,6 @@ func (o StandardAppVersionAutomaticScalingOutput) ToStandardAppVersionAutomaticS
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardAppVersionAutomaticScaling) *StandardAppVersionAutomaticScaling {
 		return &v
 	}).(StandardAppVersionAutomaticScalingPtrOutput)
-}
-
-func (o StandardAppVersionAutomaticScalingOutput) ToOutput(ctx context.Context) pulumix.Output[StandardAppVersionAutomaticScaling] {
-	return pulumix.Output[StandardAppVersionAutomaticScaling]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
@@ -6597,12 +5834,6 @@ func (o StandardAppVersionAutomaticScalingPtrOutput) ToStandardAppVersionAutomat
 
 func (o StandardAppVersionAutomaticScalingPtrOutput) ToStandardAppVersionAutomaticScalingPtrOutputWithContext(ctx context.Context) StandardAppVersionAutomaticScalingPtrOutput {
 	return o
-}
-
-func (o StandardAppVersionAutomaticScalingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StandardAppVersionAutomaticScaling] {
-	return pulumix.Output[*StandardAppVersionAutomaticScaling]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StandardAppVersionAutomaticScalingPtrOutput) Elem() StandardAppVersionAutomaticScalingOutput {
@@ -6724,12 +5955,6 @@ func (i StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs) ToStand
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput)
 }
 
-func (i StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[StandardAppVersionAutomaticScalingStandardSchedulerSettings] {
-	return pulumix.Output[StandardAppVersionAutomaticScalingStandardSchedulerSettings]{
-		OutputState: i.ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs) ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput() StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput {
 	return i.ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutputWithContext(context.Background())
 }
@@ -6771,12 +5996,6 @@ func (i *standardAppVersionAutomaticScalingStandardSchedulerSettingsPtrType) ToS
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput)
 }
 
-func (i *standardAppVersionAutomaticScalingStandardSchedulerSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*StandardAppVersionAutomaticScalingStandardSchedulerSettings] {
-	return pulumix.Output[*StandardAppVersionAutomaticScalingStandardSchedulerSettings]{
-		OutputState: i.ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput) ElementType() reflect.Type {
@@ -6799,12 +6018,6 @@ func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput) ToSta
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardAppVersionAutomaticScalingStandardSchedulerSettings) *StandardAppVersionAutomaticScalingStandardSchedulerSettings {
 		return &v
 	}).(StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput)
-}
-
-func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[StandardAppVersionAutomaticScalingStandardSchedulerSettings] {
-	return pulumix.Output[StandardAppVersionAutomaticScalingStandardSchedulerSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
@@ -6843,12 +6056,6 @@ func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput) To
 
 func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput) ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutputWithContext(ctx context.Context) StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput {
 	return o
-}
-
-func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StandardAppVersionAutomaticScalingStandardSchedulerSettings] {
-	return pulumix.Output[*StandardAppVersionAutomaticScalingStandardSchedulerSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput) Elem() StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput {
@@ -6940,12 +6147,6 @@ func (i StandardAppVersionBasicScalingArgs) ToStandardAppVersionBasicScalingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionBasicScalingOutput)
 }
 
-func (i StandardAppVersionBasicScalingArgs) ToOutput(ctx context.Context) pulumix.Output[StandardAppVersionBasicScaling] {
-	return pulumix.Output[StandardAppVersionBasicScaling]{
-		OutputState: i.ToStandardAppVersionBasicScalingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StandardAppVersionBasicScalingArgs) ToStandardAppVersionBasicScalingPtrOutput() StandardAppVersionBasicScalingPtrOutput {
 	return i.ToStandardAppVersionBasicScalingPtrOutputWithContext(context.Background())
 }
@@ -6987,12 +6188,6 @@ func (i *standardAppVersionBasicScalingPtrType) ToStandardAppVersionBasicScaling
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionBasicScalingPtrOutput)
 }
 
-func (i *standardAppVersionBasicScalingPtrType) ToOutput(ctx context.Context) pulumix.Output[*StandardAppVersionBasicScaling] {
-	return pulumix.Output[*StandardAppVersionBasicScaling]{
-		OutputState: i.ToStandardAppVersionBasicScalingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StandardAppVersionBasicScalingOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionBasicScalingOutput) ElementType() reflect.Type {
@@ -7015,12 +6210,6 @@ func (o StandardAppVersionBasicScalingOutput) ToStandardAppVersionBasicScalingPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardAppVersionBasicScaling) *StandardAppVersionBasicScaling {
 		return &v
 	}).(StandardAppVersionBasicScalingPtrOutput)
-}
-
-func (o StandardAppVersionBasicScalingOutput) ToOutput(ctx context.Context) pulumix.Output[StandardAppVersionBasicScaling] {
-	return pulumix.Output[StandardAppVersionBasicScaling]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Duration of time after the last request that an instance must wait before the instance is shut down.
@@ -7046,12 +6235,6 @@ func (o StandardAppVersionBasicScalingPtrOutput) ToStandardAppVersionBasicScalin
 
 func (o StandardAppVersionBasicScalingPtrOutput) ToStandardAppVersionBasicScalingPtrOutputWithContext(ctx context.Context) StandardAppVersionBasicScalingPtrOutput {
 	return o
-}
-
-func (o StandardAppVersionBasicScalingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StandardAppVersionBasicScaling] {
-	return pulumix.Output[*StandardAppVersionBasicScaling]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StandardAppVersionBasicScalingPtrOutput) Elem() StandardAppVersionBasicScalingOutput {
@@ -7128,12 +6311,6 @@ func (i StandardAppVersionDeploymentArgs) ToStandardAppVersionDeploymentOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionDeploymentOutput)
 }
 
-func (i StandardAppVersionDeploymentArgs) ToOutput(ctx context.Context) pulumix.Output[StandardAppVersionDeployment] {
-	return pulumix.Output[StandardAppVersionDeployment]{
-		OutputState: i.ToStandardAppVersionDeploymentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StandardAppVersionDeploymentArgs) ToStandardAppVersionDeploymentPtrOutput() StandardAppVersionDeploymentPtrOutput {
 	return i.ToStandardAppVersionDeploymentPtrOutputWithContext(context.Background())
 }
@@ -7175,12 +6352,6 @@ func (i *standardAppVersionDeploymentPtrType) ToStandardAppVersionDeploymentPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionDeploymentPtrOutput)
 }
 
-func (i *standardAppVersionDeploymentPtrType) ToOutput(ctx context.Context) pulumix.Output[*StandardAppVersionDeployment] {
-	return pulumix.Output[*StandardAppVersionDeployment]{
-		OutputState: i.ToStandardAppVersionDeploymentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StandardAppVersionDeploymentOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionDeploymentOutput) ElementType() reflect.Type {
@@ -7203,12 +6374,6 @@ func (o StandardAppVersionDeploymentOutput) ToStandardAppVersionDeploymentPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardAppVersionDeployment) *StandardAppVersionDeployment {
 		return &v
 	}).(StandardAppVersionDeploymentPtrOutput)
-}
-
-func (o StandardAppVersionDeploymentOutput) ToOutput(ctx context.Context) pulumix.Output[StandardAppVersionDeployment] {
-	return pulumix.Output[StandardAppVersionDeployment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Manifest of the files stored in Google Cloud Storage that are included as part of this version.
@@ -7236,12 +6401,6 @@ func (o StandardAppVersionDeploymentPtrOutput) ToStandardAppVersionDeploymentPtr
 
 func (o StandardAppVersionDeploymentPtrOutput) ToStandardAppVersionDeploymentPtrOutputWithContext(ctx context.Context) StandardAppVersionDeploymentPtrOutput {
 	return o
-}
-
-func (o StandardAppVersionDeploymentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StandardAppVersionDeployment] {
-	return pulumix.Output[*StandardAppVersionDeployment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StandardAppVersionDeploymentPtrOutput) Elem() StandardAppVersionDeploymentOutput {
@@ -7318,12 +6477,6 @@ func (i StandardAppVersionDeploymentFileArgs) ToStandardAppVersionDeploymentFile
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionDeploymentFileOutput)
 }
 
-func (i StandardAppVersionDeploymentFileArgs) ToOutput(ctx context.Context) pulumix.Output[StandardAppVersionDeploymentFile] {
-	return pulumix.Output[StandardAppVersionDeploymentFile]{
-		OutputState: i.ToStandardAppVersionDeploymentFileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StandardAppVersionDeploymentFileArrayInput is an input type that accepts StandardAppVersionDeploymentFileArray and StandardAppVersionDeploymentFileArrayOutput values.
 // You can construct a concrete instance of `StandardAppVersionDeploymentFileArrayInput` via:
 //
@@ -7349,12 +6502,6 @@ func (i StandardAppVersionDeploymentFileArray) ToStandardAppVersionDeploymentFil
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionDeploymentFileArrayOutput)
 }
 
-func (i StandardAppVersionDeploymentFileArray) ToOutput(ctx context.Context) pulumix.Output[[]StandardAppVersionDeploymentFile] {
-	return pulumix.Output[[]StandardAppVersionDeploymentFile]{
-		OutputState: i.ToStandardAppVersionDeploymentFileArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StandardAppVersionDeploymentFileOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionDeploymentFileOutput) ElementType() reflect.Type {
@@ -7367,12 +6514,6 @@ func (o StandardAppVersionDeploymentFileOutput) ToStandardAppVersionDeploymentFi
 
 func (o StandardAppVersionDeploymentFileOutput) ToStandardAppVersionDeploymentFileOutputWithContext(ctx context.Context) StandardAppVersionDeploymentFileOutput {
 	return o
-}
-
-func (o StandardAppVersionDeploymentFileOutput) ToOutput(ctx context.Context) pulumix.Output[StandardAppVersionDeploymentFile] {
-	return pulumix.Output[StandardAppVersionDeploymentFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The identifier for this object. Format specified above.
@@ -7402,12 +6543,6 @@ func (o StandardAppVersionDeploymentFileArrayOutput) ToStandardAppVersionDeploym
 
 func (o StandardAppVersionDeploymentFileArrayOutput) ToStandardAppVersionDeploymentFileArrayOutputWithContext(ctx context.Context) StandardAppVersionDeploymentFileArrayOutput {
 	return o
-}
-
-func (o StandardAppVersionDeploymentFileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StandardAppVersionDeploymentFile] {
-	return pulumix.Output[[]StandardAppVersionDeploymentFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StandardAppVersionDeploymentFileArrayOutput) Index(i pulumi.IntInput) StandardAppVersionDeploymentFileOutput {
@@ -7453,12 +6588,6 @@ func (i StandardAppVersionDeploymentZipArgs) ToStandardAppVersionDeploymentZipOu
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionDeploymentZipOutput)
 }
 
-func (i StandardAppVersionDeploymentZipArgs) ToOutput(ctx context.Context) pulumix.Output[StandardAppVersionDeploymentZip] {
-	return pulumix.Output[StandardAppVersionDeploymentZip]{
-		OutputState: i.ToStandardAppVersionDeploymentZipOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StandardAppVersionDeploymentZipArgs) ToStandardAppVersionDeploymentZipPtrOutput() StandardAppVersionDeploymentZipPtrOutput {
 	return i.ToStandardAppVersionDeploymentZipPtrOutputWithContext(context.Background())
 }
@@ -7500,12 +6629,6 @@ func (i *standardAppVersionDeploymentZipPtrType) ToStandardAppVersionDeploymentZ
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionDeploymentZipPtrOutput)
 }
 
-func (i *standardAppVersionDeploymentZipPtrType) ToOutput(ctx context.Context) pulumix.Output[*StandardAppVersionDeploymentZip] {
-	return pulumix.Output[*StandardAppVersionDeploymentZip]{
-		OutputState: i.ToStandardAppVersionDeploymentZipPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StandardAppVersionDeploymentZipOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionDeploymentZipOutput) ElementType() reflect.Type {
@@ -7530,12 +6653,6 @@ func (o StandardAppVersionDeploymentZipOutput) ToStandardAppVersionDeploymentZip
 	}).(StandardAppVersionDeploymentZipPtrOutput)
 }
 
-func (o StandardAppVersionDeploymentZipOutput) ToOutput(ctx context.Context) pulumix.Output[StandardAppVersionDeploymentZip] {
-	return pulumix.Output[StandardAppVersionDeploymentZip]{
-		OutputState: o.OutputState,
-	}
-}
-
 // files count
 func (o StandardAppVersionDeploymentZipOutput) FilesCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionDeploymentZip) *int { return v.FilesCount }).(pulumi.IntPtrOutput)
@@ -7558,12 +6675,6 @@ func (o StandardAppVersionDeploymentZipPtrOutput) ToStandardAppVersionDeployment
 
 func (o StandardAppVersionDeploymentZipPtrOutput) ToStandardAppVersionDeploymentZipPtrOutputWithContext(ctx context.Context) StandardAppVersionDeploymentZipPtrOutput {
 	return o
-}
-
-func (o StandardAppVersionDeploymentZipPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StandardAppVersionDeploymentZip] {
-	return pulumix.Output[*StandardAppVersionDeploymentZip]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StandardAppVersionDeploymentZipPtrOutput) Elem() StandardAppVersionDeploymentZipOutput {
@@ -7633,12 +6744,6 @@ func (i StandardAppVersionEntrypointArgs) ToStandardAppVersionEntrypointOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionEntrypointOutput)
 }
 
-func (i StandardAppVersionEntrypointArgs) ToOutput(ctx context.Context) pulumix.Output[StandardAppVersionEntrypoint] {
-	return pulumix.Output[StandardAppVersionEntrypoint]{
-		OutputState: i.ToStandardAppVersionEntrypointOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StandardAppVersionEntrypointArgs) ToStandardAppVersionEntrypointPtrOutput() StandardAppVersionEntrypointPtrOutput {
 	return i.ToStandardAppVersionEntrypointPtrOutputWithContext(context.Background())
 }
@@ -7680,12 +6785,6 @@ func (i *standardAppVersionEntrypointPtrType) ToStandardAppVersionEntrypointPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionEntrypointPtrOutput)
 }
 
-func (i *standardAppVersionEntrypointPtrType) ToOutput(ctx context.Context) pulumix.Output[*StandardAppVersionEntrypoint] {
-	return pulumix.Output[*StandardAppVersionEntrypoint]{
-		OutputState: i.ToStandardAppVersionEntrypointPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StandardAppVersionEntrypointOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionEntrypointOutput) ElementType() reflect.Type {
@@ -7710,12 +6809,6 @@ func (o StandardAppVersionEntrypointOutput) ToStandardAppVersionEntrypointPtrOut
 	}).(StandardAppVersionEntrypointPtrOutput)
 }
 
-func (o StandardAppVersionEntrypointOutput) ToOutput(ctx context.Context) pulumix.Output[StandardAppVersionEntrypoint] {
-	return pulumix.Output[StandardAppVersionEntrypoint]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The format should be a shell command that can be fed to bash -c.
 //
 // ***
@@ -7735,12 +6828,6 @@ func (o StandardAppVersionEntrypointPtrOutput) ToStandardAppVersionEntrypointPtr
 
 func (o StandardAppVersionEntrypointPtrOutput) ToStandardAppVersionEntrypointPtrOutputWithContext(ctx context.Context) StandardAppVersionEntrypointPtrOutput {
 	return o
-}
-
-func (o StandardAppVersionEntrypointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StandardAppVersionEntrypoint] {
-	return pulumix.Output[*StandardAppVersionEntrypoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StandardAppVersionEntrypointPtrOutput) Elem() StandardAppVersionEntrypointOutput {
@@ -7838,12 +6925,6 @@ func (i StandardAppVersionHandlerArgs) ToStandardAppVersionHandlerOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionHandlerOutput)
 }
 
-func (i StandardAppVersionHandlerArgs) ToOutput(ctx context.Context) pulumix.Output[StandardAppVersionHandler] {
-	return pulumix.Output[StandardAppVersionHandler]{
-		OutputState: i.ToStandardAppVersionHandlerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StandardAppVersionHandlerArrayInput is an input type that accepts StandardAppVersionHandlerArray and StandardAppVersionHandlerArrayOutput values.
 // You can construct a concrete instance of `StandardAppVersionHandlerArrayInput` via:
 //
@@ -7869,12 +6950,6 @@ func (i StandardAppVersionHandlerArray) ToStandardAppVersionHandlerArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionHandlerArrayOutput)
 }
 
-func (i StandardAppVersionHandlerArray) ToOutput(ctx context.Context) pulumix.Output[[]StandardAppVersionHandler] {
-	return pulumix.Output[[]StandardAppVersionHandler]{
-		OutputState: i.ToStandardAppVersionHandlerArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StandardAppVersionHandlerOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionHandlerOutput) ElementType() reflect.Type {
@@ -7887,12 +6962,6 @@ func (o StandardAppVersionHandlerOutput) ToStandardAppVersionHandlerOutput() Sta
 
 func (o StandardAppVersionHandlerOutput) ToStandardAppVersionHandlerOutputWithContext(ctx context.Context) StandardAppVersionHandlerOutput {
 	return o
-}
-
-func (o StandardAppVersionHandlerOutput) ToOutput(ctx context.Context) pulumix.Output[StandardAppVersionHandler] {
-	return pulumix.Output[StandardAppVersionHandler]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Actions to take when the user is not logged in.
@@ -7952,12 +7021,6 @@ func (o StandardAppVersionHandlerArrayOutput) ToStandardAppVersionHandlerArrayOu
 	return o
 }
 
-func (o StandardAppVersionHandlerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StandardAppVersionHandler] {
-	return pulumix.Output[[]StandardAppVersionHandler]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StandardAppVersionHandlerArrayOutput) Index(i pulumi.IntInput) StandardAppVersionHandlerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StandardAppVersionHandler {
 		return vs[0].([]StandardAppVersionHandler)[vs[1].(int)]
@@ -7995,12 +7058,6 @@ func (i StandardAppVersionHandlerScriptArgs) ToStandardAppVersionHandlerScriptOu
 
 func (i StandardAppVersionHandlerScriptArgs) ToStandardAppVersionHandlerScriptOutputWithContext(ctx context.Context) StandardAppVersionHandlerScriptOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionHandlerScriptOutput)
-}
-
-func (i StandardAppVersionHandlerScriptArgs) ToOutput(ctx context.Context) pulumix.Output[StandardAppVersionHandlerScript] {
-	return pulumix.Output[StandardAppVersionHandlerScript]{
-		OutputState: i.ToStandardAppVersionHandlerScriptOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i StandardAppVersionHandlerScriptArgs) ToStandardAppVersionHandlerScriptPtrOutput() StandardAppVersionHandlerScriptPtrOutput {
@@ -8044,12 +7101,6 @@ func (i *standardAppVersionHandlerScriptPtrType) ToStandardAppVersionHandlerScri
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionHandlerScriptPtrOutput)
 }
 
-func (i *standardAppVersionHandlerScriptPtrType) ToOutput(ctx context.Context) pulumix.Output[*StandardAppVersionHandlerScript] {
-	return pulumix.Output[*StandardAppVersionHandlerScript]{
-		OutputState: i.ToStandardAppVersionHandlerScriptPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StandardAppVersionHandlerScriptOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionHandlerScriptOutput) ElementType() reflect.Type {
@@ -8074,12 +7125,6 @@ func (o StandardAppVersionHandlerScriptOutput) ToStandardAppVersionHandlerScript
 	}).(StandardAppVersionHandlerScriptPtrOutput)
 }
 
-func (o StandardAppVersionHandlerScriptOutput) ToOutput(ctx context.Context) pulumix.Output[StandardAppVersionHandlerScript] {
-	return pulumix.Output[StandardAppVersionHandlerScript]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Path to the script from the application root directory.
 func (o StandardAppVersionHandlerScriptOutput) ScriptPath() pulumi.StringOutput {
 	return o.ApplyT(func(v StandardAppVersionHandlerScript) string { return v.ScriptPath }).(pulumi.StringOutput)
@@ -8097,12 +7142,6 @@ func (o StandardAppVersionHandlerScriptPtrOutput) ToStandardAppVersionHandlerScr
 
 func (o StandardAppVersionHandlerScriptPtrOutput) ToStandardAppVersionHandlerScriptPtrOutputWithContext(ctx context.Context) StandardAppVersionHandlerScriptPtrOutput {
 	return o
-}
-
-func (o StandardAppVersionHandlerScriptPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StandardAppVersionHandlerScript] {
-	return pulumix.Output[*StandardAppVersionHandlerScript]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StandardAppVersionHandlerScriptPtrOutput) Elem() StandardAppVersionHandlerScriptOutput {
@@ -8192,12 +7231,6 @@ func (i StandardAppVersionHandlerStaticFilesArgs) ToStandardAppVersionHandlerSta
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionHandlerStaticFilesOutput)
 }
 
-func (i StandardAppVersionHandlerStaticFilesArgs) ToOutput(ctx context.Context) pulumix.Output[StandardAppVersionHandlerStaticFiles] {
-	return pulumix.Output[StandardAppVersionHandlerStaticFiles]{
-		OutputState: i.ToStandardAppVersionHandlerStaticFilesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StandardAppVersionHandlerStaticFilesArgs) ToStandardAppVersionHandlerStaticFilesPtrOutput() StandardAppVersionHandlerStaticFilesPtrOutput {
 	return i.ToStandardAppVersionHandlerStaticFilesPtrOutputWithContext(context.Background())
 }
@@ -8239,12 +7272,6 @@ func (i *standardAppVersionHandlerStaticFilesPtrType) ToStandardAppVersionHandle
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionHandlerStaticFilesPtrOutput)
 }
 
-func (i *standardAppVersionHandlerStaticFilesPtrType) ToOutput(ctx context.Context) pulumix.Output[*StandardAppVersionHandlerStaticFiles] {
-	return pulumix.Output[*StandardAppVersionHandlerStaticFiles]{
-		OutputState: i.ToStandardAppVersionHandlerStaticFilesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StandardAppVersionHandlerStaticFilesOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionHandlerStaticFilesOutput) ElementType() reflect.Type {
@@ -8267,12 +7294,6 @@ func (o StandardAppVersionHandlerStaticFilesOutput) ToStandardAppVersionHandlerS
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardAppVersionHandlerStaticFiles) *StandardAppVersionHandlerStaticFiles {
 		return &v
 	}).(StandardAppVersionHandlerStaticFilesPtrOutput)
-}
-
-func (o StandardAppVersionHandlerStaticFilesOutput) ToOutput(ctx context.Context) pulumix.Output[StandardAppVersionHandlerStaticFiles] {
-	return pulumix.Output[StandardAppVersionHandlerStaticFiles]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as
@@ -8327,12 +7348,6 @@ func (o StandardAppVersionHandlerStaticFilesPtrOutput) ToStandardAppVersionHandl
 
 func (o StandardAppVersionHandlerStaticFilesPtrOutput) ToStandardAppVersionHandlerStaticFilesPtrOutputWithContext(ctx context.Context) StandardAppVersionHandlerStaticFilesPtrOutput {
 	return o
-}
-
-func (o StandardAppVersionHandlerStaticFilesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StandardAppVersionHandlerStaticFiles] {
-	return pulumix.Output[*StandardAppVersionHandlerStaticFiles]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StandardAppVersionHandlerStaticFilesPtrOutput) Elem() StandardAppVersionHandlerStaticFilesOutput {
@@ -8457,12 +7472,6 @@ func (i StandardAppVersionLibraryArgs) ToStandardAppVersionLibraryOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionLibraryOutput)
 }
 
-func (i StandardAppVersionLibraryArgs) ToOutput(ctx context.Context) pulumix.Output[StandardAppVersionLibrary] {
-	return pulumix.Output[StandardAppVersionLibrary]{
-		OutputState: i.ToStandardAppVersionLibraryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StandardAppVersionLibraryArrayInput is an input type that accepts StandardAppVersionLibraryArray and StandardAppVersionLibraryArrayOutput values.
 // You can construct a concrete instance of `StandardAppVersionLibraryArrayInput` via:
 //
@@ -8488,12 +7497,6 @@ func (i StandardAppVersionLibraryArray) ToStandardAppVersionLibraryArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionLibraryArrayOutput)
 }
 
-func (i StandardAppVersionLibraryArray) ToOutput(ctx context.Context) pulumix.Output[[]StandardAppVersionLibrary] {
-	return pulumix.Output[[]StandardAppVersionLibrary]{
-		OutputState: i.ToStandardAppVersionLibraryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StandardAppVersionLibraryOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionLibraryOutput) ElementType() reflect.Type {
@@ -8506,12 +7509,6 @@ func (o StandardAppVersionLibraryOutput) ToStandardAppVersionLibraryOutput() Sta
 
 func (o StandardAppVersionLibraryOutput) ToStandardAppVersionLibraryOutputWithContext(ctx context.Context) StandardAppVersionLibraryOutput {
 	return o
-}
-
-func (o StandardAppVersionLibraryOutput) ToOutput(ctx context.Context) pulumix.Output[StandardAppVersionLibrary] {
-	return pulumix.Output[StandardAppVersionLibrary]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the library. Example "django".
@@ -8536,12 +7533,6 @@ func (o StandardAppVersionLibraryArrayOutput) ToStandardAppVersionLibraryArrayOu
 
 func (o StandardAppVersionLibraryArrayOutput) ToStandardAppVersionLibraryArrayOutputWithContext(ctx context.Context) StandardAppVersionLibraryArrayOutput {
 	return o
-}
-
-func (o StandardAppVersionLibraryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StandardAppVersionLibrary] {
-	return pulumix.Output[[]StandardAppVersionLibrary]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StandardAppVersionLibraryArrayOutput) Index(i pulumi.IntInput) StandardAppVersionLibraryOutput {
@@ -8587,12 +7578,6 @@ func (i StandardAppVersionManualScalingArgs) ToStandardAppVersionManualScalingOu
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionManualScalingOutput)
 }
 
-func (i StandardAppVersionManualScalingArgs) ToOutput(ctx context.Context) pulumix.Output[StandardAppVersionManualScaling] {
-	return pulumix.Output[StandardAppVersionManualScaling]{
-		OutputState: i.ToStandardAppVersionManualScalingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StandardAppVersionManualScalingArgs) ToStandardAppVersionManualScalingPtrOutput() StandardAppVersionManualScalingPtrOutput {
 	return i.ToStandardAppVersionManualScalingPtrOutputWithContext(context.Background())
 }
@@ -8634,12 +7619,6 @@ func (i *standardAppVersionManualScalingPtrType) ToStandardAppVersionManualScali
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionManualScalingPtrOutput)
 }
 
-func (i *standardAppVersionManualScalingPtrType) ToOutput(ctx context.Context) pulumix.Output[*StandardAppVersionManualScaling] {
-	return pulumix.Output[*StandardAppVersionManualScaling]{
-		OutputState: i.ToStandardAppVersionManualScalingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StandardAppVersionManualScalingOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionManualScalingOutput) ElementType() reflect.Type {
@@ -8664,12 +7643,6 @@ func (o StandardAppVersionManualScalingOutput) ToStandardAppVersionManualScaling
 	}).(StandardAppVersionManualScalingPtrOutput)
 }
 
-func (o StandardAppVersionManualScalingOutput) ToOutput(ctx context.Context) pulumix.Output[StandardAppVersionManualScaling] {
-	return pulumix.Output[StandardAppVersionManualScaling]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Number of instances to assign to the service at the start.
 // **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
 // Modules API set_num_instances() you must use `lifecycle.ignore_changes = ["manualScaling"[0].instances]` to prevent drift detection.
@@ -8689,12 +7662,6 @@ func (o StandardAppVersionManualScalingPtrOutput) ToStandardAppVersionManualScal
 
 func (o StandardAppVersionManualScalingPtrOutput) ToStandardAppVersionManualScalingPtrOutputWithContext(ctx context.Context) StandardAppVersionManualScalingPtrOutput {
 	return o
-}
-
-func (o StandardAppVersionManualScalingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StandardAppVersionManualScaling] {
-	return pulumix.Output[*StandardAppVersionManualScaling]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StandardAppVersionManualScalingPtrOutput) Elem() StandardAppVersionManualScalingOutput {
@@ -8756,12 +7723,6 @@ func (i StandardAppVersionVpcAccessConnectorArgs) ToStandardAppVersionVpcAccessC
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionVpcAccessConnectorOutput)
 }
 
-func (i StandardAppVersionVpcAccessConnectorArgs) ToOutput(ctx context.Context) pulumix.Output[StandardAppVersionVpcAccessConnector] {
-	return pulumix.Output[StandardAppVersionVpcAccessConnector]{
-		OutputState: i.ToStandardAppVersionVpcAccessConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StandardAppVersionVpcAccessConnectorArgs) ToStandardAppVersionVpcAccessConnectorPtrOutput() StandardAppVersionVpcAccessConnectorPtrOutput {
 	return i.ToStandardAppVersionVpcAccessConnectorPtrOutputWithContext(context.Background())
 }
@@ -8803,12 +7764,6 @@ func (i *standardAppVersionVpcAccessConnectorPtrType) ToStandardAppVersionVpcAcc
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionVpcAccessConnectorPtrOutput)
 }
 
-func (i *standardAppVersionVpcAccessConnectorPtrType) ToOutput(ctx context.Context) pulumix.Output[*StandardAppVersionVpcAccessConnector] {
-	return pulumix.Output[*StandardAppVersionVpcAccessConnector]{
-		OutputState: i.ToStandardAppVersionVpcAccessConnectorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StandardAppVersionVpcAccessConnectorOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionVpcAccessConnectorOutput) ElementType() reflect.Type {
@@ -8833,12 +7788,6 @@ func (o StandardAppVersionVpcAccessConnectorOutput) ToStandardAppVersionVpcAcces
 	}).(StandardAppVersionVpcAccessConnectorPtrOutput)
 }
 
-func (o StandardAppVersionVpcAccessConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[StandardAppVersionVpcAccessConnector] {
-	return pulumix.Output[StandardAppVersionVpcAccessConnector]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The egress setting for the connector, controlling what traffic is diverted through it.
 func (o StandardAppVersionVpcAccessConnectorOutput) EgressSetting() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionVpcAccessConnector) *string { return v.EgressSetting }).(pulumi.StringPtrOutput)
@@ -8861,12 +7810,6 @@ func (o StandardAppVersionVpcAccessConnectorPtrOutput) ToStandardAppVersionVpcAc
 
 func (o StandardAppVersionVpcAccessConnectorPtrOutput) ToStandardAppVersionVpcAccessConnectorPtrOutputWithContext(ctx context.Context) StandardAppVersionVpcAccessConnectorPtrOutput {
 	return o
-}
-
-func (o StandardAppVersionVpcAccessConnectorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StandardAppVersionVpcAccessConnector] {
-	return pulumix.Output[*StandardAppVersionVpcAccessConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StandardAppVersionVpcAccessConnectorPtrOutput) Elem() StandardAppVersionVpcAccessConnectorOutput {

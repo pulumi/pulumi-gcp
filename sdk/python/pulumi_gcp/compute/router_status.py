@@ -20,7 +20,7 @@ __all__ = [
 warnings.warn("""gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus""", DeprecationWarning)
 
 @pulumi.output_type
-class RouterStatusResult:
+calass RouterStatusResult:
     """
     A collection of values returned by RouterStatus.
     """
@@ -96,7 +96,7 @@ class RouterStatusResult:
         return pulumi.get(self, "region")
 
 
-class AwaitableRouterStatusResult(RouterStatusResult):
+calass AwaitableRouterStatusResult(RouterStatusResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

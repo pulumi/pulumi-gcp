@@ -10,15 +10,15 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'DatabaseEncryptionConfigArgs',
-    'DatabaseIAMBindingConditionArgs',
-    'DatabaseIAMMemberConditionArgs',
-    'InstanceIAMBindingConditionArgs',
-    'InstanceIAMMemberConditionArgs',
+    'DatabaseEncryptionConfigArrgs',
+    'DatabaseIAMBindingConditionArrgs',
+    'DatabaseIAMMemberConditionArrgs',
+    'InstanceIAMBindingConditionArrgs',
+    'InstanceIAMMemberConditionArrgs',
 ]
 
 @pulumi.input_type
-class DatabaseEncryptionConfigArgs:
+calass DatabaseEncryptionConfigArrgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[str]):
         """
@@ -42,7 +42,7 @@ class DatabaseEncryptionConfigArgs:
 
 
 @pulumi.input_type
-class DatabaseIAMBindingConditionArgs:
+calass DatabaseIAMBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -81,7 +81,7 @@ class DatabaseIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class DatabaseIAMMemberConditionArgs:
+calass DatabaseIAMMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -120,7 +120,7 @@ class DatabaseIAMMemberConditionArgs:
 
 
 @pulumi.input_type
-class InstanceIAMBindingConditionArgs:
+calass InstanceIAMBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -159,7 +159,7 @@ class InstanceIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class InstanceIAMMemberConditionArgs:
+calass InstanceIAMMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],

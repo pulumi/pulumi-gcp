@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetPeeredDnsDomainResult:
+calass GetPeeredDnsDomainResult:
     """
     A collection of values returned by getPeeredDnsDomain.
     """
@@ -83,7 +83,7 @@ class GetPeeredDnsDomainResult:
         return pulumi.get(self, "service")
 
 
-class AwaitableGetPeeredDnsDomainResult(GetPeeredDnsDomainResult):
+calass AwaitableGetPeeredDnsDomainResult(GetPeeredDnsDomainResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

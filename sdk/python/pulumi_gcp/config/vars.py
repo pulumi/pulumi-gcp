@@ -15,7 +15,7 @@ import types
 __config__ = pulumi.Config('gcp')
 
 
-class _ExportableConfig(types.ModuleType):
+calass _ExportableConfig(types.ModuleType):
     @property
     def access_approval_custom_endpoint(self) -> Optional[str]:
         return __config__.get('accessApprovalCustomEndpoint')

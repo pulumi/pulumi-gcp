@@ -76,13 +76,13 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class ConnectionProfileBigqueryProfile(dict):
+calass ConnectionProfileBigqueryProfile(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class ConnectionProfileForwardSshConnectivity(dict):
+calass ConnectionProfileForwardSshConnectivity(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -168,7 +168,7 @@ class ConnectionProfileForwardSshConnectivity(dict):
 
 
 @pulumi.output_type
-class ConnectionProfileGcsProfile(dict):
+calass ConnectionProfileGcsProfile(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -215,7 +215,7 @@ class ConnectionProfileGcsProfile(dict):
 
 
 @pulumi.output_type
-class ConnectionProfileMysqlProfile(dict):
+calass ConnectionProfileMysqlProfile(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -245,7 +245,7 @@ class ConnectionProfileMysqlProfile(dict):
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param str username: Username for the MySQL connection.
         :param int port: Port for the MySQL connection.
-        :param 'ConnectionProfileMysqlProfileSslConfigArgs' ssl_config: SSL configuration for the MySQL connection.
+        :param 'ConnectionProfileMysqlProfileSslConfigArrgs' ssl_config: SSL configuration for the MySQL connection.
                Structure is documented below.
         """
         pulumi.set(__self__, "hostname", hostname)
@@ -300,7 +300,7 @@ class ConnectionProfileMysqlProfile(dict):
 
 
 @pulumi.output_type
-class ConnectionProfileMysqlProfileSslConfig(dict):
+calass ConnectionProfileMysqlProfileSslConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -430,7 +430,7 @@ class ConnectionProfileMysqlProfileSslConfig(dict):
 
 
 @pulumi.output_type
-class ConnectionProfileOracleProfile(dict):
+calass ConnectionProfileOracleProfile(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -526,7 +526,7 @@ class ConnectionProfileOracleProfile(dict):
 
 
 @pulumi.output_type
-class ConnectionProfilePostgresqlProfile(dict):
+calass ConnectionProfilePostgresqlProfile(dict):
     def __init__(__self__, *,
                  database: str,
                  hostname: str,
@@ -591,7 +591,7 @@ class ConnectionProfilePostgresqlProfile(dict):
 
 
 @pulumi.output_type
-class ConnectionProfilePrivateConnectivity(dict):
+calass ConnectionProfilePrivateConnectivity(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -626,7 +626,7 @@ class ConnectionProfilePrivateConnectivity(dict):
 
 
 @pulumi.output_type
-class PrivateConnectionError(dict):
+calass PrivateConnectionError(dict):
     def __init__(__self__, *,
                  details: Optional[Mapping[str, str]] = None,
                  message: Optional[str] = None):
@@ -657,7 +657,7 @@ class PrivateConnectionError(dict):
 
 
 @pulumi.output_type
-class PrivateConnectionVpcPeeringConfig(dict):
+calass PrivateConnectionVpcPeeringConfig(dict):
     def __init__(__self__, *,
                  subnet: str,
                  vpc: str):
@@ -692,7 +692,7 @@ class PrivateConnectionVpcPeeringConfig(dict):
 
 
 @pulumi.output_type
-class StreamBackfillAll(dict):
+calass StreamBackfillAll(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -719,11 +719,11 @@ class StreamBackfillAll(dict):
                  oracle_excluded_objects: Optional['outputs.StreamBackfillAllOracleExcludedObjects'] = None,
                  postgresql_excluded_objects: Optional['outputs.StreamBackfillAllPostgresqlExcludedObjects'] = None):
         """
-        :param 'StreamBackfillAllMysqlExcludedObjectsArgs' mysql_excluded_objects: MySQL data source objects to avoid backfilling.
+        :param 'StreamBackfillAllMysqlExcludedObjectsArrgs' mysql_excluded_objects: MySQL data source objects to avoid backfilling.
                Structure is documented below.
-        :param 'StreamBackfillAllOracleExcludedObjectsArgs' oracle_excluded_objects: PostgreSQL data source objects to avoid backfilling.
+        :param 'StreamBackfillAllOracleExcludedObjectsArrgs' oracle_excluded_objects: PostgreSQL data source objects to avoid backfilling.
                Structure is documented below.
-        :param 'StreamBackfillAllPostgresqlExcludedObjectsArgs' postgresql_excluded_objects: PostgreSQL data source objects to avoid backfilling.
+        :param 'StreamBackfillAllPostgresqlExcludedObjectsArrgs' postgresql_excluded_objects: PostgreSQL data source objects to avoid backfilling.
                Structure is documented below.
         """
         if mysql_excluded_objects is not None:
@@ -762,7 +762,7 @@ class StreamBackfillAll(dict):
 
 
 @pulumi.output_type
-class StreamBackfillAllMysqlExcludedObjects(dict):
+calass StreamBackfillAllMysqlExcludedObjects(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -783,7 +783,7 @@ class StreamBackfillAllMysqlExcludedObjects(dict):
     def __init__(__self__, *,
                  mysql_databases: Sequence['outputs.StreamBackfillAllMysqlExcludedObjectsMysqlDatabase']):
         """
-        :param Sequence['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs'] mysql_databases: MySQL databases on the server
+        :param Sequence['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrgs'] mysql_databases: MySQL databases on the server
                Structure is documented below.
         """
         pulumi.set(__self__, "mysql_databases", mysql_databases)
@@ -799,7 +799,7 @@ class StreamBackfillAllMysqlExcludedObjects(dict):
 
 
 @pulumi.output_type
-class StreamBackfillAllMysqlExcludedObjectsMysqlDatabase(dict):
+calass StreamBackfillAllMysqlExcludedObjectsMysqlDatabase(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -822,7 +822,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabase(dict):
                  mysql_tables: Optional[Sequence['outputs.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable']] = None):
         """
         :param str database: Database name.
-        :param Sequence['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs'] mysql_tables: Tables in the database.
+        :param Sequence['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrgs'] mysql_tables: Tables in the database.
                Structure is documented below.
         """
         pulumi.set(__self__, "database", database)
@@ -848,7 +848,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabase(dict):
 
 
 @pulumi.output_type
-class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable(dict):
+calass StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -871,7 +871,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable(dict):
                  mysql_columns: Optional[Sequence['outputs.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn']] = None):
         """
         :param str table: Table name.
-        :param Sequence['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs'] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        :param Sequence['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrgs'] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -897,7 +897,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable(dict):
 
 
 @pulumi.output_type
-class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn(dict):
+calass StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1013,7 +1013,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn(di
 
 
 @pulumi.output_type
-class StreamBackfillAllOracleExcludedObjects(dict):
+calass StreamBackfillAllOracleExcludedObjects(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1034,7 +1034,7 @@ class StreamBackfillAllOracleExcludedObjects(dict):
     def __init__(__self__, *,
                  oracle_schemas: Sequence['outputs.StreamBackfillAllOracleExcludedObjectsOracleSchema']):
         """
-        :param Sequence['StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs'] oracle_schemas: Oracle schemas/databases in the database server
+        :param Sequence['StreamBackfillAllOracleExcludedObjectsOracleSchemaArrgs'] oracle_schemas: Oracle schemas/databases in the database server
                Structure is documented below.
         """
         pulumi.set(__self__, "oracle_schemas", oracle_schemas)
@@ -1050,7 +1050,7 @@ class StreamBackfillAllOracleExcludedObjects(dict):
 
 
 @pulumi.output_type
-class StreamBackfillAllOracleExcludedObjectsOracleSchema(dict):
+calass StreamBackfillAllOracleExcludedObjectsOracleSchema(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1073,7 +1073,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchema(dict):
                  oracle_tables: Optional[Sequence['outputs.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable']] = None):
         """
         :param str schema: Schema name.
-        :param Sequence['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs'] oracle_tables: Tables in the database.
+        :param Sequence['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrgs'] oracle_tables: Tables in the database.
                Structure is documented below.
         """
         pulumi.set(__self__, "schema", schema)
@@ -1099,7 +1099,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchema(dict):
 
 
 @pulumi.output_type
-class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable(dict):
+calass StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1122,7 +1122,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable(dict):
                  oracle_columns: Optional[Sequence['outputs.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn']] = None):
         """
         :param str table: Table name.
-        :param Sequence['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs'] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        :param Sequence['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrgs'] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -1148,7 +1148,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable(dict):
 
 
 @pulumi.output_type
-class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn(dict):
+calass StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1300,7 +1300,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn(
 
 
 @pulumi.output_type
-class StreamBackfillAllPostgresqlExcludedObjects(dict):
+calass StreamBackfillAllPostgresqlExcludedObjects(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1321,7 +1321,7 @@ class StreamBackfillAllPostgresqlExcludedObjects(dict):
     def __init__(__self__, *,
                  postgresql_schemas: Sequence['outputs.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema']):
         """
-        :param Sequence['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs'] postgresql_schemas: PostgreSQL schemas on the server
+        :param Sequence['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrgs'] postgresql_schemas: PostgreSQL schemas on the server
                Structure is documented below.
         """
         pulumi.set(__self__, "postgresql_schemas", postgresql_schemas)
@@ -1337,7 +1337,7 @@ class StreamBackfillAllPostgresqlExcludedObjects(dict):
 
 
 @pulumi.output_type
-class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema(dict):
+calass StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1360,7 +1360,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema(dict):
                  postgresql_tables: Optional[Sequence['outputs.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable']] = None):
         """
         :param str schema: Database name.
-        :param Sequence['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs'] postgresql_tables: Tables in the schema.
+        :param Sequence['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrgs'] postgresql_tables: Tables in the schema.
                Structure is documented below.
         """
         pulumi.set(__self__, "schema", schema)
@@ -1386,7 +1386,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema(dict):
 
 
 @pulumi.output_type
-class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable(dict):
+calass StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1409,7 +1409,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable(
                  postgresql_columns: Optional[Sequence['outputs.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn']] = None):
         """
         :param str table: Table name.
-        :param Sequence['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs'] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        :param Sequence['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrgs'] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -1435,7 +1435,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable(
 
 
 @pulumi.output_type
-class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn(dict):
+calass StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1567,13 +1567,13 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
 
 
 @pulumi.output_type
-class StreamBackfillNone(dict):
+calass StreamBackfillNone(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class StreamDestinationConfig(dict):
+calass StreamDestinationConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1601,9 +1601,9 @@ class StreamDestinationConfig(dict):
                  gcs_destination_config: Optional['outputs.StreamDestinationConfigGcsDestinationConfig'] = None):
         """
         :param str destination_connection_profile: Destination connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
-        :param 'StreamDestinationConfigBigqueryDestinationConfigArgs' bigquery_destination_config: A configuration for how data should be loaded to Cloud Storage.
+        :param 'StreamDestinationConfigBigqueryDestinationConfigArrgs' bigquery_destination_config: A configuration for how data should be loaded to Cloud Storage.
                Structure is documented below.
-        :param 'StreamDestinationConfigGcsDestinationConfigArgs' gcs_destination_config: A configuration for how data should be loaded to Cloud Storage.
+        :param 'StreamDestinationConfigGcsDestinationConfigArrgs' gcs_destination_config: A configuration for how data should be loaded to Cloud Storage.
                Structure is documented below.
         """
         pulumi.set(__self__, "destination_connection_profile", destination_connection_profile)
@@ -1640,7 +1640,7 @@ class StreamDestinationConfig(dict):
 
 
 @pulumi.output_type
-class StreamDestinationConfigBigqueryDestinationConfig(dict):
+calass StreamDestinationConfigBigqueryDestinationConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1671,9 +1671,9 @@ class StreamDestinationConfigBigqueryDestinationConfig(dict):
                Editing this field will only affect new tables created in the future, but existing tables
                will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
-        :param 'StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs' single_target_dataset: A single target dataset to which all data will be streamed.
+        :param 'StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArrgs' single_target_dataset: A single target dataset to which all data will be streamed.
                Structure is documented below.
-        :param 'StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs' source_hierarchy_datasets: Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
+        :param 'StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArrgs' source_hierarchy_datasets: Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
                Structure is documented below.
         """
         if data_freshness is not None:
@@ -1714,7 +1714,7 @@ class StreamDestinationConfigBigqueryDestinationConfig(dict):
 
 
 @pulumi.output_type
-class StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset(dict):
+calass StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1751,7 +1751,7 @@ class StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset(dict):
 
 
 @pulumi.output_type
-class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets(dict):
+calass StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1772,7 +1772,7 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets(di
     def __init__(__self__, *,
                  dataset_template: 'outputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate'):
         """
-        :param 'StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs' dataset_template: Dataset template used for dynamic dataset creation.
+        :param 'StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArrgs' dataset_template: Dataset template used for dynamic dataset creation.
                Structure is documented below.
         """
         pulumi.set(__self__, "dataset_template", dataset_template)
@@ -1788,7 +1788,7 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets(di
 
 
 @pulumi.output_type
-class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate(dict):
+calass StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1863,7 +1863,7 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDat
 
 
 @pulumi.output_type
-class StreamDestinationConfigGcsDestinationConfig(dict):
+calass StreamDestinationConfigGcsDestinationConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1894,11 +1894,11 @@ class StreamDestinationConfigGcsDestinationConfig(dict):
                  json_file_format: Optional['outputs.StreamDestinationConfigGcsDestinationConfigJsonFileFormat'] = None,
                  path: Optional[str] = None):
         """
-        :param 'StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs' avro_file_format: AVRO file format configuration.
+        :param 'StreamDestinationConfigGcsDestinationConfigAvroFileFormatArrgs' avro_file_format: AVRO file format configuration.
         :param str file_rotation_interval: The maximum duration for which new events are added before a file is closed and a new file is created.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
         :param int file_rotation_mb: The maximum file size to be saved in the bucket.
-        :param 'StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs' json_file_format: JSON file format configuration.
+        :param 'StreamDestinationConfigGcsDestinationConfigJsonFileFormatArrgs' json_file_format: JSON file format configuration.
                Structure is documented below.
         :param str path: Path inside the Cloud Storage bucket to write data to.
         """
@@ -1957,13 +1957,13 @@ class StreamDestinationConfigGcsDestinationConfig(dict):
 
 
 @pulumi.output_type
-class StreamDestinationConfigGcsDestinationConfigAvroFileFormat(dict):
+calass StreamDestinationConfigGcsDestinationConfigAvroFileFormat(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class StreamDestinationConfigGcsDestinationConfigJsonFileFormat(dict):
+calass StreamDestinationConfigGcsDestinationConfigJsonFileFormat(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2015,7 +2015,7 @@ class StreamDestinationConfigGcsDestinationConfigJsonFileFormat(dict):
 
 
 @pulumi.output_type
-class StreamSourceConfig(dict):
+calass StreamSourceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2046,11 +2046,11 @@ class StreamSourceConfig(dict):
                  postgresql_source_config: Optional['outputs.StreamSourceConfigPostgresqlSourceConfig'] = None):
         """
         :param str source_connection_profile: Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
-        :param 'StreamSourceConfigMysqlSourceConfigArgs' mysql_source_config: MySQL data source configuration.
+        :param 'StreamSourceConfigMysqlSourceConfigArrgs' mysql_source_config: MySQL data source configuration.
                Structure is documented below.
-        :param 'StreamSourceConfigOracleSourceConfigArgs' oracle_source_config: MySQL data source configuration.
+        :param 'StreamSourceConfigOracleSourceConfigArrgs' oracle_source_config: MySQL data source configuration.
                Structure is documented below.
-        :param 'StreamSourceConfigPostgresqlSourceConfigArgs' postgresql_source_config: PostgreSQL data source configuration.
+        :param 'StreamSourceConfigPostgresqlSourceConfigArrgs' postgresql_source_config: PostgreSQL data source configuration.
                Structure is documented below.
         """
         pulumi.set(__self__, "source_connection_profile", source_connection_profile)
@@ -2098,7 +2098,7 @@ class StreamSourceConfig(dict):
 
 
 @pulumi.output_type
-class StreamSourceConfigMysqlSourceConfig(dict):
+calass StreamSourceConfigMysqlSourceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2128,9 +2128,9 @@ class StreamSourceConfigMysqlSourceConfig(dict):
                  max_concurrent_backfill_tasks: Optional[int] = None,
                  max_concurrent_cdc_tasks: Optional[int] = None):
         """
-        :param 'StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs' exclude_objects: MySQL objects to exclude from the stream.
+        :param 'StreamSourceConfigMysqlSourceConfigExcludeObjectsArrgs' exclude_objects: MySQL objects to exclude from the stream.
                Structure is documented below.
-        :param 'StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs' include_objects: MySQL objects to retrieve from the source.
+        :param 'StreamSourceConfigMysqlSourceConfigIncludeObjectsArrgs' include_objects: MySQL objects to retrieve from the source.
                Structure is documented below.
         :param int max_concurrent_backfill_tasks: Maximum number of concurrent backfill tasks. The number should be non negative.
                If not set (or set to 0), the system's default value will be used.
@@ -2184,7 +2184,7 @@ class StreamSourceConfigMysqlSourceConfig(dict):
 
 
 @pulumi.output_type
-class StreamSourceConfigMysqlSourceConfigExcludeObjects(dict):
+calass StreamSourceConfigMysqlSourceConfigExcludeObjects(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2205,7 +2205,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjects(dict):
     def __init__(__self__, *,
                  mysql_databases: Sequence['outputs.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase']):
         """
-        :param Sequence['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs'] mysql_databases: MySQL databases on the server
+        :param Sequence['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrgs'] mysql_databases: MySQL databases on the server
                Structure is documented below.
         """
         pulumi.set(__self__, "mysql_databases", mysql_databases)
@@ -2221,7 +2221,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjects(dict):
 
 
 @pulumi.output_type
-class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase(dict):
+calass StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2244,7 +2244,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase(dict):
                  mysql_tables: Optional[Sequence['outputs.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable']] = None):
         """
         :param str database: Database name.
-        :param Sequence['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs'] mysql_tables: Tables in the database.
+        :param Sequence['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrgs'] mysql_tables: Tables in the database.
                Structure is documented below.
         """
         pulumi.set(__self__, "database", database)
@@ -2270,7 +2270,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase(dict):
 
 
 @pulumi.output_type
-class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable(dict):
+calass StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2293,7 +2293,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable(d
                  mysql_columns: Optional[Sequence['outputs.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn']] = None):
         """
         :param str table: Table name.
-        :param Sequence['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs'] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        :param Sequence['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrgs'] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -2319,7 +2319,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable(d
 
 
 @pulumi.output_type
-class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn(dict):
+calass StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2435,7 +2435,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMy
 
 
 @pulumi.output_type
-class StreamSourceConfigMysqlSourceConfigIncludeObjects(dict):
+calass StreamSourceConfigMysqlSourceConfigIncludeObjects(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2456,7 +2456,7 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjects(dict):
     def __init__(__self__, *,
                  mysql_databases: Sequence['outputs.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase']):
         """
-        :param Sequence['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs'] mysql_databases: MySQL databases on the server
+        :param Sequence['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrgs'] mysql_databases: MySQL databases on the server
                Structure is documented below.
         """
         pulumi.set(__self__, "mysql_databases", mysql_databases)
@@ -2472,7 +2472,7 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjects(dict):
 
 
 @pulumi.output_type
-class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase(dict):
+calass StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2495,7 +2495,7 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase(dict):
                  mysql_tables: Optional[Sequence['outputs.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable']] = None):
         """
         :param str database: Database name.
-        :param Sequence['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs'] mysql_tables: Tables in the database.
+        :param Sequence['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrgs'] mysql_tables: Tables in the database.
                Structure is documented below.
         """
         pulumi.set(__self__, "database", database)
@@ -2521,7 +2521,7 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase(dict):
 
 
 @pulumi.output_type
-class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable(dict):
+calass StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2544,7 +2544,7 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable(d
                  mysql_columns: Optional[Sequence['outputs.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn']] = None):
         """
         :param str table: Table name.
-        :param Sequence['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs'] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        :param Sequence['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrgs'] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -2570,7 +2570,7 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable(d
 
 
 @pulumi.output_type
-class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn(dict):
+calass StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2686,7 +2686,7 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMy
 
 
 @pulumi.output_type
-class StreamSourceConfigOracleSourceConfig(dict):
+calass StreamSourceConfigOracleSourceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2722,16 +2722,16 @@ class StreamSourceConfigOracleSourceConfig(dict):
                  max_concurrent_cdc_tasks: Optional[int] = None,
                  stream_large_objects: Optional['outputs.StreamSourceConfigOracleSourceConfigStreamLargeObjects'] = None):
         """
-        :param 'StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs' drop_large_objects: Configuration to drop large object values.
-        :param 'StreamSourceConfigOracleSourceConfigExcludeObjectsArgs' exclude_objects: Oracle objects to exclude from the stream.
+        :param 'StreamSourceConfigOracleSourceConfigDropLargeObjectsArrgs' drop_large_objects: Configuration to drop large object values.
+        :param 'StreamSourceConfigOracleSourceConfigExcludeObjectsArrgs' exclude_objects: Oracle objects to exclude from the stream.
                Structure is documented below.
-        :param 'StreamSourceConfigOracleSourceConfigIncludeObjectsArgs' include_objects: Oracle objects to retrieve from the source.
+        :param 'StreamSourceConfigOracleSourceConfigIncludeObjectsArrgs' include_objects: Oracle objects to retrieve from the source.
                Structure is documented below.
         :param int max_concurrent_backfill_tasks: Maximum number of concurrent backfill tasks. The number should be non negative.
                If not set (or set to 0), the system's default value will be used.
         :param int max_concurrent_cdc_tasks: Maximum number of concurrent CDC tasks. The number should be non negative.
                If not set (or set to 0), the system's default value will be used.
-        :param 'StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs' stream_large_objects: Configuration to drop large object values.
+        :param 'StreamSourceConfigOracleSourceConfigStreamLargeObjectsArrgs' stream_large_objects: Configuration to drop large object values.
         """
         if drop_large_objects is not None:
             pulumi.set(__self__, "drop_large_objects", drop_large_objects)
@@ -2800,13 +2800,13 @@ class StreamSourceConfigOracleSourceConfig(dict):
 
 
 @pulumi.output_type
-class StreamSourceConfigOracleSourceConfigDropLargeObjects(dict):
+calass StreamSourceConfigOracleSourceConfigDropLargeObjects(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class StreamSourceConfigOracleSourceConfigExcludeObjects(dict):
+calass StreamSourceConfigOracleSourceConfigExcludeObjects(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2827,7 +2827,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjects(dict):
     def __init__(__self__, *,
                  oracle_schemas: Sequence['outputs.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema']):
         """
-        :param Sequence['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs'] oracle_schemas: Oracle schemas/databases in the database server
+        :param Sequence['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrgs'] oracle_schemas: Oracle schemas/databases in the database server
                Structure is documented below.
         """
         pulumi.set(__self__, "oracle_schemas", oracle_schemas)
@@ -2843,7 +2843,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjects(dict):
 
 
 @pulumi.output_type
-class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema(dict):
+calass StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2866,7 +2866,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema(dict):
                  oracle_tables: Optional[Sequence['outputs.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable']] = None):
         """
         :param str schema: Schema name.
-        :param Sequence['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs'] oracle_tables: Tables in the database.
+        :param Sequence['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrgs'] oracle_tables: Tables in the database.
                Structure is documented below.
         """
         pulumi.set(__self__, "schema", schema)
@@ -2892,7 +2892,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema(dict):
 
 
 @pulumi.output_type
-class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable(dict):
+calass StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2915,7 +2915,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable(
                  oracle_columns: Optional[Sequence['outputs.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn']] = None):
         """
         :param str table: Table name.
-        :param Sequence['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs'] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        :param Sequence['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrgs'] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -2941,7 +2941,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable(
 
 
 @pulumi.output_type
-class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn(dict):
+calass StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3093,7 +3093,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
 
 
 @pulumi.output_type
-class StreamSourceConfigOracleSourceConfigIncludeObjects(dict):
+calass StreamSourceConfigOracleSourceConfigIncludeObjects(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3114,7 +3114,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjects(dict):
     def __init__(__self__, *,
                  oracle_schemas: Sequence['outputs.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema']):
         """
-        :param Sequence['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs'] oracle_schemas: Oracle schemas/databases in the database server
+        :param Sequence['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrgs'] oracle_schemas: Oracle schemas/databases in the database server
                Structure is documented below.
         """
         pulumi.set(__self__, "oracle_schemas", oracle_schemas)
@@ -3130,7 +3130,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjects(dict):
 
 
 @pulumi.output_type
-class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema(dict):
+calass StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3153,7 +3153,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema(dict):
                  oracle_tables: Optional[Sequence['outputs.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable']] = None):
         """
         :param str schema: Schema name.
-        :param Sequence['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs'] oracle_tables: Tables in the database.
+        :param Sequence['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrgs'] oracle_tables: Tables in the database.
                Structure is documented below.
         """
         pulumi.set(__self__, "schema", schema)
@@ -3179,7 +3179,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema(dict):
 
 
 @pulumi.output_type
-class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable(dict):
+calass StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3202,7 +3202,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable(
                  oracle_columns: Optional[Sequence['outputs.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn']] = None):
         """
         :param str table: Table name.
-        :param Sequence['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs'] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        :param Sequence['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrgs'] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -3228,7 +3228,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable(
 
 
 @pulumi.output_type
-class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn(dict):
+calass StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3380,13 +3380,13 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
 
 
 @pulumi.output_type
-class StreamSourceConfigOracleSourceConfigStreamLargeObjects(dict):
+calass StreamSourceConfigOracleSourceConfigStreamLargeObjects(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class StreamSourceConfigPostgresqlSourceConfig(dict):
+calass StreamSourceConfigPostgresqlSourceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3421,9 +3421,9 @@ class StreamSourceConfigPostgresqlSourceConfig(dict):
                that are defined in the stream's include_objects.
         :param str replication_slot: The name of the logical replication slot that's configured with
                the pgoutput plugin.
-        :param 'StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs' exclude_objects: PostgreSQL objects to exclude from the stream.
+        :param 'StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArrgs' exclude_objects: PostgreSQL objects to exclude from the stream.
                Structure is documented below.
-        :param 'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs' include_objects: PostgreSQL objects to retrieve from the source.
+        :param 'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArrgs' include_objects: PostgreSQL objects to retrieve from the source.
                Structure is documented below.
         :param int max_concurrent_backfill_tasks: Maximum number of concurrent backfill tasks. The number should be non
                negative. If not set (or set to 0), the system's default value will be used.
@@ -3484,7 +3484,7 @@ class StreamSourceConfigPostgresqlSourceConfig(dict):
 
 
 @pulumi.output_type
-class StreamSourceConfigPostgresqlSourceConfigExcludeObjects(dict):
+calass StreamSourceConfigPostgresqlSourceConfigExcludeObjects(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3505,7 +3505,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjects(dict):
     def __init__(__self__, *,
                  postgresql_schemas: Sequence['outputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema']):
         """
-        :param Sequence['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs'] postgresql_schemas: PostgreSQL schemas on the server
+        :param Sequence['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrgs'] postgresql_schemas: PostgreSQL schemas on the server
                Structure is documented below.
         """
         pulumi.set(__self__, "postgresql_schemas", postgresql_schemas)
@@ -3521,7 +3521,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjects(dict):
 
 
 @pulumi.output_type
-class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema(dict):
+calass StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3544,7 +3544,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema(dic
                  postgresql_tables: Optional[Sequence['outputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable']] = None):
         """
         :param str schema: Database name.
-        :param Sequence['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs'] postgresql_tables: Tables in the schema.
+        :param Sequence['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrgs'] postgresql_tables: Tables in the schema.
                Structure is documented below.
         """
         pulumi.set(__self__, "schema", schema)
@@ -3570,7 +3570,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema(dic
 
 
 @pulumi.output_type
-class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable(dict):
+calass StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3593,7 +3593,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
                  postgresql_columns: Optional[Sequence['outputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn']] = None):
         """
         :param str table: Table name.
-        :param Sequence['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs'] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        :param Sequence['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrgs'] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -3619,7 +3619,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
 
 
 @pulumi.output_type
-class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn(dict):
+calass StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3751,7 +3751,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
 
 
 @pulumi.output_type
-class StreamSourceConfigPostgresqlSourceConfigIncludeObjects(dict):
+calass StreamSourceConfigPostgresqlSourceConfigIncludeObjects(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3772,7 +3772,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjects(dict):
     def __init__(__self__, *,
                  postgresql_schemas: Sequence['outputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema']):
         """
-        :param Sequence['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs'] postgresql_schemas: PostgreSQL schemas on the server
+        :param Sequence['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrgs'] postgresql_schemas: PostgreSQL schemas on the server
                Structure is documented below.
         """
         pulumi.set(__self__, "postgresql_schemas", postgresql_schemas)
@@ -3788,7 +3788,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjects(dict):
 
 
 @pulumi.output_type
-class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema(dict):
+calass StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3811,7 +3811,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema(dic
                  postgresql_tables: Optional[Sequence['outputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable']] = None):
         """
         :param str schema: Database name.
-        :param Sequence['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs'] postgresql_tables: Tables in the schema.
+        :param Sequence['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrgs'] postgresql_tables: Tables in the schema.
                Structure is documented below.
         """
         pulumi.set(__self__, "schema", schema)
@@ -3837,7 +3837,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema(dic
 
 
 @pulumi.output_type
-class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable(dict):
+calass StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3860,7 +3860,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
                  postgresql_columns: Optional[Sequence['outputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn']] = None):
         """
         :param str table: Table name.
-        :param Sequence['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs'] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        :param Sequence['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrgs'] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -3886,7 +3886,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
 
 
 @pulumi.output_type
-class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn(dict):
+calass StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

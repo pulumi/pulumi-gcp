@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['NetworkEndpointArgs', 'NetworkEndpoint']
+__all__ = ['NetworkEndpointArrgs', 'NetworkEndpoint']
 
 @pulumi.input_type
-class NetworkEndpointArgs:
+calass NetworkEndpointArrgs:
     def __init__(__self__, *,
                  ip_address: pulumi.Input[str],
                  network_endpoint_group: pulumi.Input[str],
@@ -134,7 +134,7 @@ class NetworkEndpointArgs:
 
 
 @pulumi.input_type
-class _NetworkEndpointState:
+calass _NetworkEndpointState:
     def __init__(__self__, *,
                  instance: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
@@ -257,7 +257,7 @@ class _NetworkEndpointState:
         pulumi.set(self, "zone", value)
 
 
-class NetworkEndpoint(pulumi.CustomResource):
+calass NetworkEndpoint(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -298,14 +298,14 @@ class NetworkEndpoint(pulumi.CustomResource):
             network=default_network.id)
         endpoint_instance = gcp.compute.Instance("endpoint-instance",
             machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image=my_image.self_link,
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 subnetwork=default_subnetwork.id,
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArrgs()],
             )])
         default_endpoint = gcp.compute.NetworkEndpoint("default-endpoint",
             network_endpoint_group=google_compute_network_endpoint_group["neg"]["name"],
@@ -362,7 +362,7 @@ class NetworkEndpoint(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: NetworkEndpointArgs,
+                 args: NetworkEndpointArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Network endpoint represents a IP address and port combination that is
@@ -393,14 +393,14 @@ class NetworkEndpoint(pulumi.CustomResource):
             network=default_network.id)
         endpoint_instance = gcp.compute.Instance("endpoint-instance",
             machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image=my_image.self_link,
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 subnetwork=default_subnetwork.id,
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArrgs()],
             )])
         default_endpoint = gcp.compute.NetworkEndpoint("default-endpoint",
             network_endpoint_group=google_compute_network_endpoint_group["neg"]["name"],
@@ -435,12 +435,12 @@ class NetworkEndpoint(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param NetworkEndpointArgs args: The arguments to use to populate this resource's properties.
+        :param NetworkEndpointArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(NetworkEndpointArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(NetworkEndpointArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -462,7 +462,7 @@ class NetworkEndpoint(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = NetworkEndpointArgs.__new__(NetworkEndpointArgs)
+            __props__ = NetworkEndpointArrgs.__new__(NetworkEndpointArrgs)
 
             __props__.__dict__["instance"] = instance
             if ip_address is None and not opts.urn:

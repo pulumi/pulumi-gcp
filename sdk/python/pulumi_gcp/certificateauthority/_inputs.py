@@ -10,99 +10,99 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'AuthorityAccessUrlArgs',
-    'AuthorityConfigArgs',
-    'AuthorityConfigSubjectConfigArgs',
-    'AuthorityConfigSubjectConfigSubjectArgs',
-    'AuthorityConfigSubjectConfigSubjectAltNameArgs',
-    'AuthorityConfigX509ConfigArgs',
-    'AuthorityConfigX509ConfigAdditionalExtensionArgs',
-    'AuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs',
-    'AuthorityConfigX509ConfigCaOptionsArgs',
-    'AuthorityConfigX509ConfigKeyUsageArgs',
-    'AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs',
-    'AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs',
-    'AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs',
-    'AuthorityConfigX509ConfigNameConstraintsArgs',
-    'AuthorityConfigX509ConfigPolicyIdArgs',
-    'AuthorityKeySpecArgs',
-    'AuthoritySubordinateConfigArgs',
-    'AuthoritySubordinateConfigPemIssuerChainArgs',
-    'CaPoolIamBindingConditionArgs',
-    'CaPoolIamMemberConditionArgs',
-    'CaPoolIssuancePolicyArgs',
-    'CaPoolIssuancePolicyAllowedIssuanceModesArgs',
-    'CaPoolIssuancePolicyAllowedKeyTypeArgs',
-    'CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs',
-    'CaPoolIssuancePolicyAllowedKeyTypeRsaArgs',
-    'CaPoolIssuancePolicyBaselineValuesArgs',
-    'CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs',
-    'CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgs',
-    'CaPoolIssuancePolicyBaselineValuesCaOptionsArgs',
-    'CaPoolIssuancePolicyBaselineValuesKeyUsageArgs',
-    'CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs',
-    'CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs',
-    'CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgs',
-    'CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs',
-    'CaPoolIssuancePolicyBaselineValuesPolicyIdArgs',
-    'CaPoolIssuancePolicyIdentityConstraintsArgs',
-    'CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs',
-    'CaPoolPublishingOptionsArgs',
-    'CertificateCertificateDescriptionArgs',
-    'CertificateCertificateDescriptionAuthorityKeyIdArgs',
-    'CertificateCertificateDescriptionCertFingerprintArgs',
-    'CertificateCertificateDescriptionPublicKeyArgs',
-    'CertificateCertificateDescriptionSubjectDescriptionArgs',
-    'CertificateCertificateDescriptionSubjectDescriptionSubjectArgs',
-    'CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs',
-    'CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs',
-    'CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs',
-    'CertificateCertificateDescriptionSubjectKeyIdArgs',
-    'CertificateCertificateDescriptionX509DescriptionArgs',
-    'CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs',
-    'CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs',
-    'CertificateCertificateDescriptionX509DescriptionCaOptionArgs',
-    'CertificateCertificateDescriptionX509DescriptionKeyUsageArgs',
-    'CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs',
-    'CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs',
-    'CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs',
-    'CertificateCertificateDescriptionX509DescriptionNameConstraintArgs',
-    'CertificateCertificateDescriptionX509DescriptionPolicyIdArgs',
-    'CertificateConfigArgs',
-    'CertificateConfigPublicKeyArgs',
-    'CertificateConfigSubjectConfigArgs',
-    'CertificateConfigSubjectConfigSubjectArgs',
-    'CertificateConfigSubjectConfigSubjectAltNameArgs',
-    'CertificateConfigX509ConfigArgs',
-    'CertificateConfigX509ConfigAdditionalExtensionArgs',
-    'CertificateConfigX509ConfigAdditionalExtensionObjectIdArgs',
-    'CertificateConfigX509ConfigCaOptionsArgs',
-    'CertificateConfigX509ConfigKeyUsageArgs',
-    'CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs',
-    'CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs',
-    'CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs',
-    'CertificateConfigX509ConfigNameConstraintsArgs',
-    'CertificateConfigX509ConfigPolicyIdArgs',
-    'CertificateRevocationDetailArgs',
-    'CertificateTemplateIamBindingConditionArgs',
-    'CertificateTemplateIamMemberConditionArgs',
-    'CertificateTemplateIdentityConstraintsArgs',
-    'CertificateTemplateIdentityConstraintsCelExpressionArgs',
-    'CertificateTemplatePassthroughExtensionsArgs',
-    'CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs',
-    'CertificateTemplatePredefinedValuesArgs',
-    'CertificateTemplatePredefinedValuesAdditionalExtensionArgs',
-    'CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs',
-    'CertificateTemplatePredefinedValuesCaOptionsArgs',
-    'CertificateTemplatePredefinedValuesKeyUsageArgs',
-    'CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs',
-    'CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs',
-    'CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs',
-    'CertificateTemplatePredefinedValuesPolicyIdArgs',
+    'AuthorityAccessUrlArrgs',
+    'AuthorityConfigArrgs',
+    'AuthorityConfigSubjectConfigArrgs',
+    'AuthorityConfigSubjectConfigSubjectArrgs',
+    'AuthorityConfigSubjectConfigSubjectAltNameArrgs',
+    'AuthorityConfigX509ConfigArrgs',
+    'AuthorityConfigX509ConfigAdditionalExtensionArrgs',
+    'AuthorityConfigX509ConfigAdditionalExtensionObjectIdArrgs',
+    'AuthorityConfigX509ConfigCaOptionsArrgs',
+    'AuthorityConfigX509ConfigKeyUsageArrgs',
+    'AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrgs',
+    'AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrgs',
+    'AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrgs',
+    'AuthorityConfigX509ConfigNameConstraintsArrgs',
+    'AuthorityConfigX509ConfigPolicyIdArrgs',
+    'AuthorityKeySpecArrgs',
+    'AuthoritySubordinateConfigArrgs',
+    'AuthoritySubordinateConfigPemIssuerChainArrgs',
+    'CaPoolIamBindingConditionArrgs',
+    'CaPoolIamMemberConditionArrgs',
+    'CaPoolIssuancePolicyArrgs',
+    'CaPoolIssuancePolicyAllowedIssuanceModesArrgs',
+    'CaPoolIssuancePolicyAllowedKeyTypeArrgs',
+    'CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArrgs',
+    'CaPoolIssuancePolicyAllowedKeyTypeRsaArrgs',
+    'CaPoolIssuancePolicyBaselineValuesArrgs',
+    'CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArrgs',
+    'CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArrgs',
+    'CaPoolIssuancePolicyBaselineValuesCaOptionsArrgs',
+    'CaPoolIssuancePolicyBaselineValuesKeyUsageArrgs',
+    'CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArrgs',
+    'CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArrgs',
+    'CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArrgs',
+    'CaPoolIssuancePolicyBaselineValuesNameConstraintsArrgs',
+    'CaPoolIssuancePolicyBaselineValuesPolicyIdArrgs',
+    'CaPoolIssuancePolicyIdentityConstraintsArrgs',
+    'CaPoolIssuancePolicyIdentityConstraintsCelExpressionArrgs',
+    'CaPoolPublishingOptionsArrgs',
+    'CertificateCertificateDescriptionArrgs',
+    'CertificateCertificateDescriptionAuthorityKeyIdArrgs',
+    'CertificateCertificateDescriptionCertFingerprintArrgs',
+    'CertificateCertificateDescriptionPublicKeyArrgs',
+    'CertificateCertificateDescriptionSubjectDescriptionArrgs',
+    'CertificateCertificateDescriptionSubjectDescriptionSubjectArrgs',
+    'CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArrgs',
+    'CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrgs',
+    'CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArrgs',
+    'CertificateCertificateDescriptionSubjectKeyIdArrgs',
+    'CertificateCertificateDescriptionX509DescriptionArrgs',
+    'CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrgs',
+    'CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrgs',
+    'CertificateCertificateDescriptionX509DescriptionCaOptionArrgs',
+    'CertificateCertificateDescriptionX509DescriptionKeyUsageArrgs',
+    'CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrgs',
+    'CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrgs',
+    'CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrgs',
+    'CertificateCertificateDescriptionX509DescriptionNameConstraintArrgs',
+    'CertificateCertificateDescriptionX509DescriptionPolicyIdArrgs',
+    'CertificateConfigArrgs',
+    'CertificateConfigPublicKeyArrgs',
+    'CertificateConfigSubjectConfigArrgs',
+    'CertificateConfigSubjectConfigSubjectArrgs',
+    'CertificateConfigSubjectConfigSubjectAltNameArrgs',
+    'CertificateConfigX509ConfigArrgs',
+    'CertificateConfigX509ConfigAdditionalExtensionArrgs',
+    'CertificateConfigX509ConfigAdditionalExtensionObjectIdArrgs',
+    'CertificateConfigX509ConfigCaOptionsArrgs',
+    'CertificateConfigX509ConfigKeyUsageArrgs',
+    'CertificateConfigX509ConfigKeyUsageBaseKeyUsageArrgs',
+    'CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArrgs',
+    'CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrgs',
+    'CertificateConfigX509ConfigNameConstraintsArrgs',
+    'CertificateConfigX509ConfigPolicyIdArrgs',
+    'CertificateRevocationDetailArrgs',
+    'CertificateTemplateIamBindingConditionArrgs',
+    'CertificateTemplateIamMemberConditionArrgs',
+    'CertificateTemplateIdentityConstraintsArrgs',
+    'CertificateTemplateIdentityConstraintsCelExpressionArrgs',
+    'CertificateTemplatePassthroughExtensionsArrgs',
+    'CertificateTemplatePassthroughExtensionsAdditionalExtensionArrgs',
+    'CertificateTemplatePredefinedValuesArrgs',
+    'CertificateTemplatePredefinedValuesAdditionalExtensionArrgs',
+    'CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArrgs',
+    'CertificateTemplatePredefinedValuesCaOptionsArrgs',
+    'CertificateTemplatePredefinedValuesKeyUsageArrgs',
+    'CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArrgs',
+    'CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArrgs',
+    'CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrgs',
+    'CertificateTemplatePredefinedValuesPolicyIdArrgs',
 ]
 
 @pulumi.input_type
-class AuthorityAccessUrlArgs:
+calass AuthorityAccessUrlArrgs:
     def __init__(__self__, *,
                  ca_certificate_access_url: Optional[pulumi.Input[str]] = None,
                  crl_access_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -149,17 +149,17 @@ class AuthorityAccessUrlArgs:
 
 
 @pulumi.input_type
-class AuthorityConfigArgs:
+calass AuthorityConfigArrgs:
     def __init__(__self__, *,
-                 subject_config: pulumi.Input['AuthorityConfigSubjectConfigArgs'],
-                 x509_config: pulumi.Input['AuthorityConfigX509ConfigArgs']):
+                 subject_config: pulumi.Input['AuthorityConfigSubjectConfigArrgs'],
+                 x509_config: pulumi.Input['AuthorityConfigX509ConfigArrgs']):
         """
-        :param pulumi.Input['AuthorityConfigSubjectConfigArgs'] subject_config: Specifies some of the values in a certificate that are related to the subject.
+        :param pulumi.Input['AuthorityConfigSubjectConfigArrgs'] subject_config: Specifies some of the values in a certificate that are related to the subject.
                Structure is documented below.
                
                
                <a name="nested_x509_config"></a>The `x509_config` block supports:
-        :param pulumi.Input['AuthorityConfigX509ConfigArgs'] x509_config: Describes how some of the technical X.509 fields in a certificate should be populated.
+        :param pulumi.Input['AuthorityConfigX509ConfigArrgs'] x509_config: Describes how some of the technical X.509 fields in a certificate should be populated.
                Structure is documented below.
         """
         pulumi.set(__self__, "subject_config", subject_config)
@@ -167,7 +167,7 @@ class AuthorityConfigArgs:
 
     @property
     @pulumi.getter(name="subjectConfig")
-    def subject_config(self) -> pulumi.Input['AuthorityConfigSubjectConfigArgs']:
+    def subject_config(self) -> pulumi.Input['AuthorityConfigSubjectConfigArrgs']:
         """
         Specifies some of the values in a certificate that are related to the subject.
         Structure is documented below.
@@ -178,12 +178,12 @@ class AuthorityConfigArgs:
         return pulumi.get(self, "subject_config")
 
     @subject_config.setter
-    def subject_config(self, value: pulumi.Input['AuthorityConfigSubjectConfigArgs']):
+    def subject_config(self, value: pulumi.Input['AuthorityConfigSubjectConfigArrgs']):
         pulumi.set(self, "subject_config", value)
 
     @property
     @pulumi.getter(name="x509Config")
-    def x509_config(self) -> pulumi.Input['AuthorityConfigX509ConfigArgs']:
+    def x509_config(self) -> pulumi.Input['AuthorityConfigX509ConfigArrgs']:
         """
         Describes how some of the technical X.509 fields in a certificate should be populated.
         Structure is documented below.
@@ -191,19 +191,19 @@ class AuthorityConfigArgs:
         return pulumi.get(self, "x509_config")
 
     @x509_config.setter
-    def x509_config(self, value: pulumi.Input['AuthorityConfigX509ConfigArgs']):
+    def x509_config(self, value: pulumi.Input['AuthorityConfigX509ConfigArrgs']):
         pulumi.set(self, "x509_config", value)
 
 
 @pulumi.input_type
-class AuthorityConfigSubjectConfigArgs:
+calass AuthorityConfigSubjectConfigArrgs:
     def __init__(__self__, *,
-                 subject: pulumi.Input['AuthorityConfigSubjectConfigSubjectArgs'],
-                 subject_alt_name: Optional[pulumi.Input['AuthorityConfigSubjectConfigSubjectAltNameArgs']] = None):
+                 subject: pulumi.Input['AuthorityConfigSubjectConfigSubjectArrgs'],
+                 subject_alt_name: Optional[pulumi.Input['AuthorityConfigSubjectConfigSubjectAltNameArrgs']] = None):
         """
-        :param pulumi.Input['AuthorityConfigSubjectConfigSubjectArgs'] subject: Contains distinguished name fields such as the location and organization.
+        :param pulumi.Input['AuthorityConfigSubjectConfigSubjectArrgs'] subject: Contains distinguished name fields such as the location and organization.
                Structure is documented below.
-        :param pulumi.Input['AuthorityConfigSubjectConfigSubjectAltNameArgs'] subject_alt_name: The subject alternative name fields.
+        :param pulumi.Input['AuthorityConfigSubjectConfigSubjectAltNameArrgs'] subject_alt_name: The subject alternative name fields.
                Structure is documented below.
         """
         pulumi.set(__self__, "subject", subject)
@@ -212,7 +212,7 @@ class AuthorityConfigSubjectConfigArgs:
 
     @property
     @pulumi.getter
-    def subject(self) -> pulumi.Input['AuthorityConfigSubjectConfigSubjectArgs']:
+    def subject(self) -> pulumi.Input['AuthorityConfigSubjectConfigSubjectArrgs']:
         """
         Contains distinguished name fields such as the location and organization.
         Structure is documented below.
@@ -220,12 +220,12 @@ class AuthorityConfigSubjectConfigArgs:
         return pulumi.get(self, "subject")
 
     @subject.setter
-    def subject(self, value: pulumi.Input['AuthorityConfigSubjectConfigSubjectArgs']):
+    def subject(self, value: pulumi.Input['AuthorityConfigSubjectConfigSubjectArrgs']):
         pulumi.set(self, "subject", value)
 
     @property
     @pulumi.getter(name="subjectAltName")
-    def subject_alt_name(self) -> Optional[pulumi.Input['AuthorityConfigSubjectConfigSubjectAltNameArgs']]:
+    def subject_alt_name(self) -> Optional[pulumi.Input['AuthorityConfigSubjectConfigSubjectAltNameArrgs']]:
         """
         The subject alternative name fields.
         Structure is documented below.
@@ -233,12 +233,12 @@ class AuthorityConfigSubjectConfigArgs:
         return pulumi.get(self, "subject_alt_name")
 
     @subject_alt_name.setter
-    def subject_alt_name(self, value: Optional[pulumi.Input['AuthorityConfigSubjectConfigSubjectAltNameArgs']]):
+    def subject_alt_name(self, value: Optional[pulumi.Input['AuthorityConfigSubjectConfigSubjectAltNameArrgs']]):
         pulumi.set(self, "subject_alt_name", value)
 
 
 @pulumi.input_type
-class AuthorityConfigSubjectConfigSubjectArgs:
+calass AuthorityConfigSubjectConfigSubjectArrgs:
     def __init__(__self__, *,
                  common_name: pulumi.Input[str],
                  organization: pulumi.Input[str],
@@ -371,7 +371,7 @@ class AuthorityConfigSubjectConfigSubjectArgs:
 
 
 @pulumi.input_type
-class AuthorityConfigSubjectConfigSubjectAltNameArgs:
+calass AuthorityConfigSubjectConfigSubjectAltNameArrgs:
     def __init__(__self__, *,
                  dns_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -442,26 +442,26 @@ class AuthorityConfigSubjectConfigSubjectAltNameArgs:
 
 
 @pulumi.input_type
-class AuthorityConfigX509ConfigArgs:
+calass AuthorityConfigX509ConfigArrgs:
     def __init__(__self__, *,
-                 ca_options: pulumi.Input['AuthorityConfigX509ConfigCaOptionsArgs'],
-                 key_usage: pulumi.Input['AuthorityConfigX509ConfigKeyUsageArgs'],
-                 additional_extensions: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigAdditionalExtensionArgs']]]] = None,
+                 ca_options: pulumi.Input['AuthorityConfigX509ConfigCaOptionsArrgs'],
+                 key_usage: pulumi.Input['AuthorityConfigX509ConfigKeyUsageArrgs'],
+                 additional_extensions: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigAdditionalExtensionArrgs']]]] = None,
                  aia_ocsp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 name_constraints: Optional[pulumi.Input['AuthorityConfigX509ConfigNameConstraintsArgs']] = None,
-                 policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigPolicyIdArgs']]]] = None):
+                 name_constraints: Optional[pulumi.Input['AuthorityConfigX509ConfigNameConstraintsArrgs']] = None,
+                 policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigPolicyIdArrgs']]]] = None):
         """
-        :param pulumi.Input['AuthorityConfigX509ConfigCaOptionsArgs'] ca_options: Describes values that are relevant in a CA certificate.
+        :param pulumi.Input['AuthorityConfigX509ConfigCaOptionsArrgs'] ca_options: Describes values that are relevant in a CA certificate.
                Structure is documented below.
-        :param pulumi.Input['AuthorityConfigX509ConfigKeyUsageArgs'] key_usage: Indicates the intended use for keys that correspond to a certificate.
+        :param pulumi.Input['AuthorityConfigX509ConfigKeyUsageArrgs'] key_usage: Indicates the intended use for keys that correspond to a certificate.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigAdditionalExtensionArgs']]] additional_extensions: Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+        :param pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigAdditionalExtensionArrgs']]] additional_extensions: Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] aia_ocsp_servers: Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
                "Authority Information Access" extension in the certificate.
-        :param pulumi.Input['AuthorityConfigX509ConfigNameConstraintsArgs'] name_constraints: Describes the X.509 name constraints extension.
+        :param pulumi.Input['AuthorityConfigX509ConfigNameConstraintsArrgs'] name_constraints: Describes the X.509 name constraints extension.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigPolicyIdArgs']]] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        :param pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigPolicyIdArrgs']]] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
                Structure is documented below.
         """
         pulumi.set(__self__, "ca_options", ca_options)
@@ -477,7 +477,7 @@ class AuthorityConfigX509ConfigArgs:
 
     @property
     @pulumi.getter(name="caOptions")
-    def ca_options(self) -> pulumi.Input['AuthorityConfigX509ConfigCaOptionsArgs']:
+    def ca_options(self) -> pulumi.Input['AuthorityConfigX509ConfigCaOptionsArrgs']:
         """
         Describes values that are relevant in a CA certificate.
         Structure is documented below.
@@ -485,12 +485,12 @@ class AuthorityConfigX509ConfigArgs:
         return pulumi.get(self, "ca_options")
 
     @ca_options.setter
-    def ca_options(self, value: pulumi.Input['AuthorityConfigX509ConfigCaOptionsArgs']):
+    def ca_options(self, value: pulumi.Input['AuthorityConfigX509ConfigCaOptionsArrgs']):
         pulumi.set(self, "ca_options", value)
 
     @property
     @pulumi.getter(name="keyUsage")
-    def key_usage(self) -> pulumi.Input['AuthorityConfigX509ConfigKeyUsageArgs']:
+    def key_usage(self) -> pulumi.Input['AuthorityConfigX509ConfigKeyUsageArrgs']:
         """
         Indicates the intended use for keys that correspond to a certificate.
         Structure is documented below.
@@ -498,12 +498,12 @@ class AuthorityConfigX509ConfigArgs:
         return pulumi.get(self, "key_usage")
 
     @key_usage.setter
-    def key_usage(self, value: pulumi.Input['AuthorityConfigX509ConfigKeyUsageArgs']):
+    def key_usage(self, value: pulumi.Input['AuthorityConfigX509ConfigKeyUsageArrgs']):
         pulumi.set(self, "key_usage", value)
 
     @property
     @pulumi.getter(name="additionalExtensions")
-    def additional_extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigAdditionalExtensionArgs']]]]:
+    def additional_extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigAdditionalExtensionArrgs']]]]:
         """
         Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
         Structure is documented below.
@@ -511,7 +511,7 @@ class AuthorityConfigX509ConfigArgs:
         return pulumi.get(self, "additional_extensions")
 
     @additional_extensions.setter
-    def additional_extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigAdditionalExtensionArgs']]]]):
+    def additional_extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigAdditionalExtensionArrgs']]]]):
         pulumi.set(self, "additional_extensions", value)
 
     @property
@@ -529,7 +529,7 @@ class AuthorityConfigX509ConfigArgs:
 
     @property
     @pulumi.getter(name="nameConstraints")
-    def name_constraints(self) -> Optional[pulumi.Input['AuthorityConfigX509ConfigNameConstraintsArgs']]:
+    def name_constraints(self) -> Optional[pulumi.Input['AuthorityConfigX509ConfigNameConstraintsArrgs']]:
         """
         Describes the X.509 name constraints extension.
         Structure is documented below.
@@ -537,12 +537,12 @@ class AuthorityConfigX509ConfigArgs:
         return pulumi.get(self, "name_constraints")
 
     @name_constraints.setter
-    def name_constraints(self, value: Optional[pulumi.Input['AuthorityConfigX509ConfigNameConstraintsArgs']]):
+    def name_constraints(self, value: Optional[pulumi.Input['AuthorityConfigX509ConfigNameConstraintsArrgs']]):
         pulumi.set(self, "name_constraints", value)
 
     @property
     @pulumi.getter(name="policyIds")
-    def policy_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigPolicyIdArgs']]]]:
+    def policy_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigPolicyIdArrgs']]]]:
         """
         Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
         Structure is documented below.
@@ -550,20 +550,20 @@ class AuthorityConfigX509ConfigArgs:
         return pulumi.get(self, "policy_ids")
 
     @policy_ids.setter
-    def policy_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigPolicyIdArgs']]]]):
+    def policy_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigPolicyIdArrgs']]]]):
         pulumi.set(self, "policy_ids", value)
 
 
 @pulumi.input_type
-class AuthorityConfigX509ConfigAdditionalExtensionArgs:
+calass AuthorityConfigX509ConfigAdditionalExtensionArrgs:
     def __init__(__self__, *,
                  critical: pulumi.Input[bool],
-                 object_id: pulumi.Input['AuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs'],
+                 object_id: pulumi.Input['AuthorityConfigX509ConfigAdditionalExtensionObjectIdArrgs'],
                  value: pulumi.Input[str]):
         """
         :param pulumi.Input[bool] critical: Indicates whether or not this extension is critical (i.e., if the client does not know how to
                handle this extension, the client should consider this to be an error).
-        :param pulumi.Input['AuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs'] object_id: Describes values that are relevant in a CA certificate.
+        :param pulumi.Input['AuthorityConfigX509ConfigAdditionalExtensionObjectIdArrgs'] object_id: Describes values that are relevant in a CA certificate.
                Structure is documented below.
         :param pulumi.Input[str] value: The value of this X.509 extension. A base64-encoded string.
         """
@@ -586,7 +586,7 @@ class AuthorityConfigX509ConfigAdditionalExtensionArgs:
 
     @property
     @pulumi.getter(name="objectId")
-    def object_id(self) -> pulumi.Input['AuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs']:
+    def object_id(self) -> pulumi.Input['AuthorityConfigX509ConfigAdditionalExtensionObjectIdArrgs']:
         """
         Describes values that are relevant in a CA certificate.
         Structure is documented below.
@@ -594,7 +594,7 @@ class AuthorityConfigX509ConfigAdditionalExtensionArgs:
         return pulumi.get(self, "object_id")
 
     @object_id.setter
-    def object_id(self, value: pulumi.Input['AuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs']):
+    def object_id(self, value: pulumi.Input['AuthorityConfigX509ConfigAdditionalExtensionObjectIdArrgs']):
         pulumi.set(self, "object_id", value)
 
     @property
@@ -611,7 +611,7 @@ class AuthorityConfigX509ConfigAdditionalExtensionArgs:
 
 
 @pulumi.input_type
-class AuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs:
+calass AuthorityConfigX509ConfigAdditionalExtensionObjectIdArrgs:
     def __init__(__self__, *,
                  object_id_paths: pulumi.Input[Sequence[pulumi.Input[int]]]):
         """
@@ -633,7 +633,7 @@ class AuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs:
 
 
 @pulumi.input_type
-class AuthorityConfigX509ConfigCaOptionsArgs:
+calass AuthorityConfigX509ConfigCaOptionsArrgs:
     def __init__(__self__, *,
                  is_ca: pulumi.Input[bool],
                  max_issuer_path_length: Optional[pulumi.Input[int]] = None,
@@ -713,17 +713,17 @@ class AuthorityConfigX509ConfigCaOptionsArgs:
 
 
 @pulumi.input_type
-class AuthorityConfigX509ConfigKeyUsageArgs:
+calass AuthorityConfigX509ConfigKeyUsageArrgs:
     def __init__(__self__, *,
-                 base_key_usage: pulumi.Input['AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs'],
-                 extended_key_usage: pulumi.Input['AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs'],
-                 unknown_extended_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs']]]] = None):
+                 base_key_usage: pulumi.Input['AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrgs'],
+                 extended_key_usage: pulumi.Input['AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrgs'],
+                 unknown_extended_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrgs']]]] = None):
         """
-        :param pulumi.Input['AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs'] base_key_usage: Describes high-level ways in which a key may be used.
+        :param pulumi.Input['AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrgs'] base_key_usage: Describes high-level ways in which a key may be used.
                Structure is documented below.
-        :param pulumi.Input['AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs'] extended_key_usage: Describes high-level ways in which a key may be used.
+        :param pulumi.Input['AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrgs'] extended_key_usage: Describes high-level ways in which a key may be used.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs']]] unknown_extended_key_usages: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        :param pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrgs']]] unknown_extended_key_usages: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
                Structure is documented below.
         """
         pulumi.set(__self__, "base_key_usage", base_key_usage)
@@ -733,7 +733,7 @@ class AuthorityConfigX509ConfigKeyUsageArgs:
 
     @property
     @pulumi.getter(name="baseKeyUsage")
-    def base_key_usage(self) -> pulumi.Input['AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs']:
+    def base_key_usage(self) -> pulumi.Input['AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrgs']:
         """
         Describes high-level ways in which a key may be used.
         Structure is documented below.
@@ -741,12 +741,12 @@ class AuthorityConfigX509ConfigKeyUsageArgs:
         return pulumi.get(self, "base_key_usage")
 
     @base_key_usage.setter
-    def base_key_usage(self, value: pulumi.Input['AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs']):
+    def base_key_usage(self, value: pulumi.Input['AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrgs']):
         pulumi.set(self, "base_key_usage", value)
 
     @property
     @pulumi.getter(name="extendedKeyUsage")
-    def extended_key_usage(self) -> pulumi.Input['AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs']:
+    def extended_key_usage(self) -> pulumi.Input['AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrgs']:
         """
         Describes high-level ways in which a key may be used.
         Structure is documented below.
@@ -754,12 +754,12 @@ class AuthorityConfigX509ConfigKeyUsageArgs:
         return pulumi.get(self, "extended_key_usage")
 
     @extended_key_usage.setter
-    def extended_key_usage(self, value: pulumi.Input['AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs']):
+    def extended_key_usage(self, value: pulumi.Input['AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrgs']):
         pulumi.set(self, "extended_key_usage", value)
 
     @property
     @pulumi.getter(name="unknownExtendedKeyUsages")
-    def unknown_extended_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs']]]]:
+    def unknown_extended_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrgs']]]]:
         """
         An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         Structure is documented below.
@@ -767,12 +767,12 @@ class AuthorityConfigX509ConfigKeyUsageArgs:
         return pulumi.get(self, "unknown_extended_key_usages")
 
     @unknown_extended_key_usages.setter
-    def unknown_extended_key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs']]]]):
+    def unknown_extended_key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrgs']]]]):
         pulumi.set(self, "unknown_extended_key_usages", value)
 
 
 @pulumi.input_type
-class AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs:
+calass AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrgs:
     def __init__(__self__, *,
                  cert_sign: Optional[pulumi.Input[bool]] = None,
                  content_commitment: Optional[pulumi.Input[bool]] = None,
@@ -923,7 +923,7 @@ class AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs:
 
 
 @pulumi.input_type
-class AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs:
+calass AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrgs:
     def __init__(__self__, *,
                  client_auth: Optional[pulumi.Input[bool]] = None,
                  code_signing: Optional[pulumi.Input[bool]] = None,
@@ -1026,7 +1026,7 @@ class AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs:
 
 
 @pulumi.input_type
-class AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs:
+calass AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrgs:
     def __init__(__self__, *,
                  object_id_paths: pulumi.Input[Sequence[pulumi.Input[int]]]):
         """
@@ -1048,7 +1048,7 @@ class AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs:
 
 
 @pulumi.input_type
-class AuthorityConfigX509ConfigNameConstraintsArgs:
+calass AuthorityConfigX509ConfigNameConstraintsArrgs:
     def __init__(__self__, *,
                  critical: pulumi.Input[bool],
                  excluded_dns_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1246,7 +1246,7 @@ class AuthorityConfigX509ConfigNameConstraintsArgs:
 
 
 @pulumi.input_type
-class AuthorityConfigX509ConfigPolicyIdArgs:
+calass AuthorityConfigX509ConfigPolicyIdArrgs:
     def __init__(__self__, *,
                  object_id_paths: pulumi.Input[Sequence[pulumi.Input[int]]]):
         """
@@ -1268,7 +1268,7 @@ class AuthorityConfigX509ConfigPolicyIdArgs:
 
 
 @pulumi.input_type
-class AuthorityKeySpecArgs:
+calass AuthorityKeySpecArrgs:
     def __init__(__self__, *,
                  algorithm: Optional[pulumi.Input[str]] = None,
                  cloud_kms_key_version: Optional[pulumi.Input[str]] = None):
@@ -1317,16 +1317,16 @@ class AuthorityKeySpecArgs:
 
 
 @pulumi.input_type
-class AuthoritySubordinateConfigArgs:
+calass AuthoritySubordinateConfigArrgs:
     def __init__(__self__, *,
                  certificate_authority: Optional[pulumi.Input[str]] = None,
-                 pem_issuer_chain: Optional[pulumi.Input['AuthoritySubordinateConfigPemIssuerChainArgs']] = None):
+                 pem_issuer_chain: Optional[pulumi.Input['AuthoritySubordinateConfigPemIssuerChainArrgs']] = None):
         """
         :param pulumi.Input[str] certificate_authority: This can refer to a CertificateAuthority that was used to create a
                subordinate CertificateAuthority. This field is used for information
                and usability purposes only. The resource name is in the format
                `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
-        :param pulumi.Input['AuthoritySubordinateConfigPemIssuerChainArgs'] pem_issuer_chain: Contains the PEM certificate chain for the issuers of this CertificateAuthority,
+        :param pulumi.Input['AuthoritySubordinateConfigPemIssuerChainArrgs'] pem_issuer_chain: Contains the PEM certificate chain for the issuers of this CertificateAuthority,
                but not pem certificate for this CA itself.
                Structure is documented below.
         """
@@ -1352,7 +1352,7 @@ class AuthoritySubordinateConfigArgs:
 
     @property
     @pulumi.getter(name="pemIssuerChain")
-    def pem_issuer_chain(self) -> Optional[pulumi.Input['AuthoritySubordinateConfigPemIssuerChainArgs']]:
+    def pem_issuer_chain(self) -> Optional[pulumi.Input['AuthoritySubordinateConfigPemIssuerChainArrgs']]:
         """
         Contains the PEM certificate chain for the issuers of this CertificateAuthority,
         but not pem certificate for this CA itself.
@@ -1361,12 +1361,12 @@ class AuthoritySubordinateConfigArgs:
         return pulumi.get(self, "pem_issuer_chain")
 
     @pem_issuer_chain.setter
-    def pem_issuer_chain(self, value: Optional[pulumi.Input['AuthoritySubordinateConfigPemIssuerChainArgs']]):
+    def pem_issuer_chain(self, value: Optional[pulumi.Input['AuthoritySubordinateConfigPemIssuerChainArrgs']]):
         pulumi.set(self, "pem_issuer_chain", value)
 
 
 @pulumi.input_type
-class AuthoritySubordinateConfigPemIssuerChainArgs:
+calass AuthoritySubordinateConfigPemIssuerChainArrgs:
     def __init__(__self__, *,
                  pem_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -1389,7 +1389,7 @@ class AuthoritySubordinateConfigPemIssuerChainArgs:
 
 
 @pulumi.input_type
-class CaPoolIamBindingConditionArgs:
+calass CaPoolIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -1438,7 +1438,7 @@ class CaPoolIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class CaPoolIamMemberConditionArgs:
+calass CaPoolIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -1487,25 +1487,25 @@ class CaPoolIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class CaPoolIssuancePolicyArgs:
+calass CaPoolIssuancePolicyArrgs:
     def __init__(__self__, *,
-                 allowed_issuance_modes: Optional[pulumi.Input['CaPoolIssuancePolicyAllowedIssuanceModesArgs']] = None,
-                 allowed_key_types: Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeArgs']]]] = None,
-                 baseline_values: Optional[pulumi.Input['CaPoolIssuancePolicyBaselineValuesArgs']] = None,
-                 identity_constraints: Optional[pulumi.Input['CaPoolIssuancePolicyIdentityConstraintsArgs']] = None,
+                 allowed_issuance_modes: Optional[pulumi.Input['CaPoolIssuancePolicyAllowedIssuanceModesArrgs']] = None,
+                 allowed_key_types: Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeArrgs']]]] = None,
+                 baseline_values: Optional[pulumi.Input['CaPoolIssuancePolicyBaselineValuesArrgs']] = None,
+                 identity_constraints: Optional[pulumi.Input['CaPoolIssuancePolicyIdentityConstraintsArrgs']] = None,
                  maximum_lifetime: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['CaPoolIssuancePolicyAllowedIssuanceModesArgs'] allowed_issuance_modes: IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
+        :param pulumi.Input['CaPoolIssuancePolicyAllowedIssuanceModesArrgs'] allowed_issuance_modes: IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeArgs']]] allowed_key_types: If any AllowedKeyType is specified, then the certificate request's public key must match one of the key types listed here.
+        :param pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeArrgs']]] allowed_key_types: If any AllowedKeyType is specified, then the certificate request's public key must match one of the key types listed here.
                Otherwise, any key may be used.
                Structure is documented below.
-        :param pulumi.Input['CaPoolIssuancePolicyBaselineValuesArgs'] baseline_values: A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request
+        :param pulumi.Input['CaPoolIssuancePolicyBaselineValuesArrgs'] baseline_values: A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request
                includes conflicting values for the same properties, they will be overwritten by the values defined here. If a certificate
                request uses a CertificateTemplate that defines conflicting predefinedValues for the same properties, the certificate
                issuance request will fail.
                Structure is documented below.
-        :param pulumi.Input['CaPoolIssuancePolicyIdentityConstraintsArgs'] identity_constraints: Describes constraints on identities that may appear in Certificates issued through this CaPool.
+        :param pulumi.Input['CaPoolIssuancePolicyIdentityConstraintsArrgs'] identity_constraints: Describes constraints on identities that may appear in Certificates issued through this CaPool.
                If this is omitted, then this CaPool will not add restrictions on a certificate's identity.
                Structure is documented below.
         :param pulumi.Input[str] maximum_lifetime: The maximum lifetime allowed for issued Certificates. Note that if the issuing CertificateAuthority
@@ -1524,7 +1524,7 @@ class CaPoolIssuancePolicyArgs:
 
     @property
     @pulumi.getter(name="allowedIssuanceModes")
-    def allowed_issuance_modes(self) -> Optional[pulumi.Input['CaPoolIssuancePolicyAllowedIssuanceModesArgs']]:
+    def allowed_issuance_modes(self) -> Optional[pulumi.Input['CaPoolIssuancePolicyAllowedIssuanceModesArrgs']]:
         """
         IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
         Structure is documented below.
@@ -1532,12 +1532,12 @@ class CaPoolIssuancePolicyArgs:
         return pulumi.get(self, "allowed_issuance_modes")
 
     @allowed_issuance_modes.setter
-    def allowed_issuance_modes(self, value: Optional[pulumi.Input['CaPoolIssuancePolicyAllowedIssuanceModesArgs']]):
+    def allowed_issuance_modes(self, value: Optional[pulumi.Input['CaPoolIssuancePolicyAllowedIssuanceModesArrgs']]):
         pulumi.set(self, "allowed_issuance_modes", value)
 
     @property
     @pulumi.getter(name="allowedKeyTypes")
-    def allowed_key_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeArgs']]]]:
+    def allowed_key_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeArrgs']]]]:
         """
         If any AllowedKeyType is specified, then the certificate request's public key must match one of the key types listed here.
         Otherwise, any key may be used.
@@ -1546,12 +1546,12 @@ class CaPoolIssuancePolicyArgs:
         return pulumi.get(self, "allowed_key_types")
 
     @allowed_key_types.setter
-    def allowed_key_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeArgs']]]]):
+    def allowed_key_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeArrgs']]]]):
         pulumi.set(self, "allowed_key_types", value)
 
     @property
     @pulumi.getter(name="baselineValues")
-    def baseline_values(self) -> Optional[pulumi.Input['CaPoolIssuancePolicyBaselineValuesArgs']]:
+    def baseline_values(self) -> Optional[pulumi.Input['CaPoolIssuancePolicyBaselineValuesArrgs']]:
         """
         A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request
         includes conflicting values for the same properties, they will be overwritten by the values defined here. If a certificate
@@ -1562,12 +1562,12 @@ class CaPoolIssuancePolicyArgs:
         return pulumi.get(self, "baseline_values")
 
     @baseline_values.setter
-    def baseline_values(self, value: Optional[pulumi.Input['CaPoolIssuancePolicyBaselineValuesArgs']]):
+    def baseline_values(self, value: Optional[pulumi.Input['CaPoolIssuancePolicyBaselineValuesArrgs']]):
         pulumi.set(self, "baseline_values", value)
 
     @property
     @pulumi.getter(name="identityConstraints")
-    def identity_constraints(self) -> Optional[pulumi.Input['CaPoolIssuancePolicyIdentityConstraintsArgs']]:
+    def identity_constraints(self) -> Optional[pulumi.Input['CaPoolIssuancePolicyIdentityConstraintsArrgs']]:
         """
         Describes constraints on identities that may appear in Certificates issued through this CaPool.
         If this is omitted, then this CaPool will not add restrictions on a certificate's identity.
@@ -1576,7 +1576,7 @@ class CaPoolIssuancePolicyArgs:
         return pulumi.get(self, "identity_constraints")
 
     @identity_constraints.setter
-    def identity_constraints(self, value: Optional[pulumi.Input['CaPoolIssuancePolicyIdentityConstraintsArgs']]):
+    def identity_constraints(self, value: Optional[pulumi.Input['CaPoolIssuancePolicyIdentityConstraintsArrgs']]):
         pulumi.set(self, "identity_constraints", value)
 
     @property
@@ -1594,7 +1594,7 @@ class CaPoolIssuancePolicyArgs:
 
 
 @pulumi.input_type
-class CaPoolIssuancePolicyAllowedIssuanceModesArgs:
+calass CaPoolIssuancePolicyAllowedIssuanceModesArrgs:
     def __init__(__self__, *,
                  allow_config_based_issuance: pulumi.Input[bool],
                  allow_csr_based_issuance: pulumi.Input[bool]):
@@ -1631,14 +1631,14 @@ class CaPoolIssuancePolicyAllowedIssuanceModesArgs:
 
 
 @pulumi.input_type
-class CaPoolIssuancePolicyAllowedKeyTypeArgs:
+calass CaPoolIssuancePolicyAllowedKeyTypeArrgs:
     def __init__(__self__, *,
-                 elliptic_curve: Optional[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs']] = None,
-                 rsa: Optional[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeRsaArgs']] = None):
+                 elliptic_curve: Optional[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArrgs']] = None,
+                 rsa: Optional[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeRsaArrgs']] = None):
         """
-        :param pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs'] elliptic_curve: Represents an allowed Elliptic Curve key type.
+        :param pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArrgs'] elliptic_curve: Represents an allowed Elliptic Curve key type.
                Structure is documented below.
-        :param pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeRsaArgs'] rsa: Describes an RSA key that may be used in a Certificate issued from a CaPool.
+        :param pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeRsaArrgs'] rsa: Describes an RSA key that may be used in a Certificate issued from a CaPool.
                Structure is documented below.
         """
         if elliptic_curve is not None:
@@ -1648,7 +1648,7 @@ class CaPoolIssuancePolicyAllowedKeyTypeArgs:
 
     @property
     @pulumi.getter(name="ellipticCurve")
-    def elliptic_curve(self) -> Optional[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs']]:
+    def elliptic_curve(self) -> Optional[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArrgs']]:
         """
         Represents an allowed Elliptic Curve key type.
         Structure is documented below.
@@ -1656,12 +1656,12 @@ class CaPoolIssuancePolicyAllowedKeyTypeArgs:
         return pulumi.get(self, "elliptic_curve")
 
     @elliptic_curve.setter
-    def elliptic_curve(self, value: Optional[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs']]):
+    def elliptic_curve(self, value: Optional[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArrgs']]):
         pulumi.set(self, "elliptic_curve", value)
 
     @property
     @pulumi.getter
-    def rsa(self) -> Optional[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeRsaArgs']]:
+    def rsa(self) -> Optional[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeRsaArrgs']]:
         """
         Describes an RSA key that may be used in a Certificate issued from a CaPool.
         Structure is documented below.
@@ -1669,12 +1669,12 @@ class CaPoolIssuancePolicyAllowedKeyTypeArgs:
         return pulumi.get(self, "rsa")
 
     @rsa.setter
-    def rsa(self, value: Optional[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeRsaArgs']]):
+    def rsa(self, value: Optional[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeRsaArrgs']]):
         pulumi.set(self, "rsa", value)
 
 
 @pulumi.input_type
-class CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs:
+calass CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArrgs:
     def __init__(__self__, *,
                  signature_algorithm: pulumi.Input[str]):
         """
@@ -1698,7 +1698,7 @@ class CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs:
 
 
 @pulumi.input_type
-class CaPoolIssuancePolicyAllowedKeyTypeRsaArgs:
+calass CaPoolIssuancePolicyAllowedKeyTypeRsaArrgs:
     def __init__(__self__, *,
                  max_modulus_size: Optional[pulumi.Input[str]] = None,
                  min_modulus_size: Optional[pulumi.Input[str]] = None):
@@ -1741,26 +1741,26 @@ class CaPoolIssuancePolicyAllowedKeyTypeRsaArgs:
 
 
 @pulumi.input_type
-class CaPoolIssuancePolicyBaselineValuesArgs:
+calass CaPoolIssuancePolicyBaselineValuesArrgs:
     def __init__(__self__, *,
-                 ca_options: pulumi.Input['CaPoolIssuancePolicyBaselineValuesCaOptionsArgs'],
-                 key_usage: pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageArgs'],
-                 additional_extensions: Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs']]]] = None,
+                 ca_options: pulumi.Input['CaPoolIssuancePolicyBaselineValuesCaOptionsArrgs'],
+                 key_usage: pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageArrgs'],
+                 additional_extensions: Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArrgs']]]] = None,
                  aia_ocsp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 name_constraints: Optional[pulumi.Input['CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs']] = None,
-                 policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesPolicyIdArgs']]]] = None):
+                 name_constraints: Optional[pulumi.Input['CaPoolIssuancePolicyBaselineValuesNameConstraintsArrgs']] = None,
+                 policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesPolicyIdArrgs']]]] = None):
         """
-        :param pulumi.Input['CaPoolIssuancePolicyBaselineValuesCaOptionsArgs'] ca_options: Describes values that are relevant in a CA certificate.
+        :param pulumi.Input['CaPoolIssuancePolicyBaselineValuesCaOptionsArrgs'] ca_options: Describes values that are relevant in a CA certificate.
                Structure is documented below.
-        :param pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageArgs'] key_usage: Indicates the intended use for keys that correspond to a certificate.
+        :param pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageArrgs'] key_usage: Indicates the intended use for keys that correspond to a certificate.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs']]] additional_extensions: Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+        :param pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArrgs']]] additional_extensions: Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] aia_ocsp_servers: Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
                "Authority Information Access" extension in the certificate.
-        :param pulumi.Input['CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs'] name_constraints: Describes the X.509 name constraints extension.
+        :param pulumi.Input['CaPoolIssuancePolicyBaselineValuesNameConstraintsArrgs'] name_constraints: Describes the X.509 name constraints extension.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesPolicyIdArgs']]] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        :param pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesPolicyIdArrgs']]] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
                Structure is documented below.
         """
         pulumi.set(__self__, "ca_options", ca_options)
@@ -1776,7 +1776,7 @@ class CaPoolIssuancePolicyBaselineValuesArgs:
 
     @property
     @pulumi.getter(name="caOptions")
-    def ca_options(self) -> pulumi.Input['CaPoolIssuancePolicyBaselineValuesCaOptionsArgs']:
+    def ca_options(self) -> pulumi.Input['CaPoolIssuancePolicyBaselineValuesCaOptionsArrgs']:
         """
         Describes values that are relevant in a CA certificate.
         Structure is documented below.
@@ -1784,12 +1784,12 @@ class CaPoolIssuancePolicyBaselineValuesArgs:
         return pulumi.get(self, "ca_options")
 
     @ca_options.setter
-    def ca_options(self, value: pulumi.Input['CaPoolIssuancePolicyBaselineValuesCaOptionsArgs']):
+    def ca_options(self, value: pulumi.Input['CaPoolIssuancePolicyBaselineValuesCaOptionsArrgs']):
         pulumi.set(self, "ca_options", value)
 
     @property
     @pulumi.getter(name="keyUsage")
-    def key_usage(self) -> pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageArgs']:
+    def key_usage(self) -> pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageArrgs']:
         """
         Indicates the intended use for keys that correspond to a certificate.
         Structure is documented below.
@@ -1797,12 +1797,12 @@ class CaPoolIssuancePolicyBaselineValuesArgs:
         return pulumi.get(self, "key_usage")
 
     @key_usage.setter
-    def key_usage(self, value: pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageArgs']):
+    def key_usage(self, value: pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageArrgs']):
         pulumi.set(self, "key_usage", value)
 
     @property
     @pulumi.getter(name="additionalExtensions")
-    def additional_extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs']]]]:
+    def additional_extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArrgs']]]]:
         """
         Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
         Structure is documented below.
@@ -1810,7 +1810,7 @@ class CaPoolIssuancePolicyBaselineValuesArgs:
         return pulumi.get(self, "additional_extensions")
 
     @additional_extensions.setter
-    def additional_extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs']]]]):
+    def additional_extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArrgs']]]]):
         pulumi.set(self, "additional_extensions", value)
 
     @property
@@ -1828,7 +1828,7 @@ class CaPoolIssuancePolicyBaselineValuesArgs:
 
     @property
     @pulumi.getter(name="nameConstraints")
-    def name_constraints(self) -> Optional[pulumi.Input['CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs']]:
+    def name_constraints(self) -> Optional[pulumi.Input['CaPoolIssuancePolicyBaselineValuesNameConstraintsArrgs']]:
         """
         Describes the X.509 name constraints extension.
         Structure is documented below.
@@ -1836,12 +1836,12 @@ class CaPoolIssuancePolicyBaselineValuesArgs:
         return pulumi.get(self, "name_constraints")
 
     @name_constraints.setter
-    def name_constraints(self, value: Optional[pulumi.Input['CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs']]):
+    def name_constraints(self, value: Optional[pulumi.Input['CaPoolIssuancePolicyBaselineValuesNameConstraintsArrgs']]):
         pulumi.set(self, "name_constraints", value)
 
     @property
     @pulumi.getter(name="policyIds")
-    def policy_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesPolicyIdArgs']]]]:
+    def policy_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesPolicyIdArrgs']]]]:
         """
         Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
         Structure is documented below.
@@ -1849,20 +1849,20 @@ class CaPoolIssuancePolicyBaselineValuesArgs:
         return pulumi.get(self, "policy_ids")
 
     @policy_ids.setter
-    def policy_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesPolicyIdArgs']]]]):
+    def policy_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesPolicyIdArrgs']]]]):
         pulumi.set(self, "policy_ids", value)
 
 
 @pulumi.input_type
-class CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs:
+calass CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArrgs:
     def __init__(__self__, *,
                  critical: pulumi.Input[bool],
-                 object_id: pulumi.Input['CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgs'],
+                 object_id: pulumi.Input['CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArrgs'],
                  value: pulumi.Input[str]):
         """
         :param pulumi.Input[bool] critical: Indicates whether or not this extension is critical (i.e., if the client does not know how to
                handle this extension, the client should consider this to be an error).
-        :param pulumi.Input['CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgs'] object_id: Describes values that are relevant in a CA certificate.
+        :param pulumi.Input['CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArrgs'] object_id: Describes values that are relevant in a CA certificate.
                Structure is documented below.
         :param pulumi.Input[str] value: The value of this X.509 extension. A base64-encoded string.
         """
@@ -1885,7 +1885,7 @@ class CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs:
 
     @property
     @pulumi.getter(name="objectId")
-    def object_id(self) -> pulumi.Input['CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgs']:
+    def object_id(self) -> pulumi.Input['CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArrgs']:
         """
         Describes values that are relevant in a CA certificate.
         Structure is documented below.
@@ -1893,7 +1893,7 @@ class CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs:
         return pulumi.get(self, "object_id")
 
     @object_id.setter
-    def object_id(self, value: pulumi.Input['CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgs']):
+    def object_id(self, value: pulumi.Input['CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArrgs']):
         pulumi.set(self, "object_id", value)
 
     @property
@@ -1910,7 +1910,7 @@ class CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs:
 
 
 @pulumi.input_type
-class CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgs:
+calass CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArrgs:
     def __init__(__self__, *,
                  object_id_paths: pulumi.Input[Sequence[pulumi.Input[int]]]):
         """
@@ -1932,7 +1932,7 @@ class CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgs:
 
 
 @pulumi.input_type
-class CaPoolIssuancePolicyBaselineValuesCaOptionsArgs:
+calass CaPoolIssuancePolicyBaselineValuesCaOptionsArrgs:
     def __init__(__self__, *,
                  is_ca: Optional[pulumi.Input[bool]] = None,
                  max_issuer_path_length: Optional[pulumi.Input[int]] = None,
@@ -2011,17 +2011,17 @@ class CaPoolIssuancePolicyBaselineValuesCaOptionsArgs:
 
 
 @pulumi.input_type
-class CaPoolIssuancePolicyBaselineValuesKeyUsageArgs:
+calass CaPoolIssuancePolicyBaselineValuesKeyUsageArrgs:
     def __init__(__self__, *,
-                 base_key_usage: pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs'],
-                 extended_key_usage: pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs'],
-                 unknown_extended_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgs']]]] = None):
+                 base_key_usage: pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArrgs'],
+                 extended_key_usage: pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArrgs'],
+                 unknown_extended_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArrgs']]]] = None):
         """
-        :param pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs'] base_key_usage: Describes high-level ways in which a key may be used.
+        :param pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArrgs'] base_key_usage: Describes high-level ways in which a key may be used.
                Structure is documented below.
-        :param pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs'] extended_key_usage: Describes high-level ways in which a key may be used.
+        :param pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArrgs'] extended_key_usage: Describes high-level ways in which a key may be used.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgs']]] unknown_extended_key_usages: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        :param pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArrgs']]] unknown_extended_key_usages: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
                Structure is documented below.
         """
         pulumi.set(__self__, "base_key_usage", base_key_usage)
@@ -2031,7 +2031,7 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsageArgs:
 
     @property
     @pulumi.getter(name="baseKeyUsage")
-    def base_key_usage(self) -> pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs']:
+    def base_key_usage(self) -> pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArrgs']:
         """
         Describes high-level ways in which a key may be used.
         Structure is documented below.
@@ -2039,12 +2039,12 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsageArgs:
         return pulumi.get(self, "base_key_usage")
 
     @base_key_usage.setter
-    def base_key_usage(self, value: pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs']):
+    def base_key_usage(self, value: pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArrgs']):
         pulumi.set(self, "base_key_usage", value)
 
     @property
     @pulumi.getter(name="extendedKeyUsage")
-    def extended_key_usage(self) -> pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs']:
+    def extended_key_usage(self) -> pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArrgs']:
         """
         Describes high-level ways in which a key may be used.
         Structure is documented below.
@@ -2052,12 +2052,12 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsageArgs:
         return pulumi.get(self, "extended_key_usage")
 
     @extended_key_usage.setter
-    def extended_key_usage(self, value: pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs']):
+    def extended_key_usage(self, value: pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArrgs']):
         pulumi.set(self, "extended_key_usage", value)
 
     @property
     @pulumi.getter(name="unknownExtendedKeyUsages")
-    def unknown_extended_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgs']]]]:
+    def unknown_extended_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArrgs']]]]:
         """
         An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         Structure is documented below.
@@ -2065,12 +2065,12 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsageArgs:
         return pulumi.get(self, "unknown_extended_key_usages")
 
     @unknown_extended_key_usages.setter
-    def unknown_extended_key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgs']]]]):
+    def unknown_extended_key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArrgs']]]]):
         pulumi.set(self, "unknown_extended_key_usages", value)
 
 
 @pulumi.input_type
-class CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs:
+calass CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArrgs:
     def __init__(__self__, *,
                  cert_sign: Optional[pulumi.Input[bool]] = None,
                  content_commitment: Optional[pulumi.Input[bool]] = None,
@@ -2221,7 +2221,7 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs:
 
 
 @pulumi.input_type
-class CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs:
+calass CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArrgs:
     def __init__(__self__, *,
                  client_auth: Optional[pulumi.Input[bool]] = None,
                  code_signing: Optional[pulumi.Input[bool]] = None,
@@ -2324,7 +2324,7 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs:
 
 
 @pulumi.input_type
-class CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgs:
+calass CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArrgs:
     def __init__(__self__, *,
                  object_id_paths: pulumi.Input[Sequence[pulumi.Input[int]]]):
         """
@@ -2346,7 +2346,7 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgs:
 
 
 @pulumi.input_type
-class CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs:
+calass CaPoolIssuancePolicyBaselineValuesNameConstraintsArrgs:
     def __init__(__self__, *,
                  critical: pulumi.Input[bool],
                  excluded_dns_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2544,7 +2544,7 @@ class CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs:
 
 
 @pulumi.input_type
-class CaPoolIssuancePolicyBaselineValuesPolicyIdArgs:
+calass CaPoolIssuancePolicyBaselineValuesPolicyIdArrgs:
     def __init__(__self__, *,
                  object_id_paths: pulumi.Input[Sequence[pulumi.Input[int]]]):
         """
@@ -2566,17 +2566,17 @@ class CaPoolIssuancePolicyBaselineValuesPolicyIdArgs:
 
 
 @pulumi.input_type
-class CaPoolIssuancePolicyIdentityConstraintsArgs:
+calass CaPoolIssuancePolicyIdentityConstraintsArrgs:
     def __init__(__self__, *,
                  allow_subject_alt_names_passthrough: pulumi.Input[bool],
                  allow_subject_passthrough: pulumi.Input[bool],
-                 cel_expression: Optional[pulumi.Input['CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs']] = None):
+                 cel_expression: Optional[pulumi.Input['CaPoolIssuancePolicyIdentityConstraintsCelExpressionArrgs']] = None):
         """
         :param pulumi.Input[bool] allow_subject_alt_names_passthrough: If this is set, the SubjectAltNames extension may be copied from a certificate request into the signed certificate.
                Otherwise, the requested SubjectAltNames will be discarded.
         :param pulumi.Input[bool] allow_subject_passthrough: If this is set, the Subject field may be copied from a certificate request into the signed certificate.
                Otherwise, the requested Subject will be discarded.
-        :param pulumi.Input['CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs'] cel_expression: A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a
+        :param pulumi.Input['CaPoolIssuancePolicyIdentityConstraintsCelExpressionArrgs'] cel_expression: A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a
                certificate is signed. To see the full allowed syntax and some examples,
                see https://cloud.google.com/certificate-authority-service/docs/cel-guide
                Structure is documented below.
@@ -2614,7 +2614,7 @@ class CaPoolIssuancePolicyIdentityConstraintsArgs:
 
     @property
     @pulumi.getter(name="celExpression")
-    def cel_expression(self) -> Optional[pulumi.Input['CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs']]:
+    def cel_expression(self) -> Optional[pulumi.Input['CaPoolIssuancePolicyIdentityConstraintsCelExpressionArrgs']]:
         """
         A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a
         certificate is signed. To see the full allowed syntax and some examples,
@@ -2624,12 +2624,12 @@ class CaPoolIssuancePolicyIdentityConstraintsArgs:
         return pulumi.get(self, "cel_expression")
 
     @cel_expression.setter
-    def cel_expression(self, value: Optional[pulumi.Input['CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs']]):
+    def cel_expression(self, value: Optional[pulumi.Input['CaPoolIssuancePolicyIdentityConstraintsCelExpressionArrgs']]):
         pulumi.set(self, "cel_expression", value)
 
 
 @pulumi.input_type
-class CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs:
+calass CaPoolIssuancePolicyIdentityConstraintsCelExpressionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -2699,7 +2699,7 @@ class CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs:
 
 
 @pulumi.input_type
-class CaPoolPublishingOptionsArgs:
+calass CaPoolPublishingOptionsArrgs:
     def __init__(__self__, *,
                  publish_ca_cert: pulumi.Input[bool],
                  publish_crl: pulumi.Input[bool],
@@ -2768,39 +2768,39 @@ class CaPoolPublishingOptionsArgs:
 
 
 @pulumi.input_type
-class CertificateCertificateDescriptionArgs:
+calass CertificateCertificateDescriptionArrgs:
     def __init__(__self__, *,
                  aia_issuing_certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 authority_key_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionAuthorityKeyIdArgs']]]] = None,
-                 cert_fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionCertFingerprintArgs']]]] = None,
+                 authority_key_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionAuthorityKeyIdArrgs']]]] = None,
+                 cert_fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionCertFingerprintArrgs']]]] = None,
                  crl_distribution_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 public_keys: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionPublicKeyArgs']]]] = None,
-                 subject_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionArgs']]]] = None,
-                 subject_key_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectKeyIdArgs']]]] = None,
-                 x509_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionArgs']]]] = None):
+                 public_keys: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionPublicKeyArrgs']]]] = None,
+                 subject_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionArrgs']]]] = None,
+                 subject_key_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectKeyIdArrgs']]]] = None,
+                 x509_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionArrgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] aia_issuing_certificate_urls: (Output)
                Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionAuthorityKeyIdArgs']]] authority_key_ids: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionAuthorityKeyIdArrgs']]] authority_key_ids: (Output)
                Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionCertFingerprintArgs']]] cert_fingerprints: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionCertFingerprintArrgs']]] cert_fingerprints: (Output)
                The hash of the x.509 certificate.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] crl_distribution_points: (Output)
                Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionPublicKeyArgs']]] public_keys: A PublicKey describes a public key.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionPublicKeyArrgs']]] public_keys: A PublicKey describes a public key.
                Structure is documented below.
                
                
                <a name="nested_x509_config"></a>The `x509_config` block supports:
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionArgs']]] subject_descriptions: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionArrgs']]] subject_descriptions: (Output)
                Describes some of the values in a certificate that are related to the subject and lifetime.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectKeyIdArgs']]] subject_key_ids: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectKeyIdArrgs']]] subject_key_ids: (Output)
                Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionArgs']]] x509_descriptions: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionArrgs']]] x509_descriptions: (Output)
                A structured description of the issued X.509 certificate.
                Structure is documented below.
         """
@@ -2836,7 +2836,7 @@ class CertificateCertificateDescriptionArgs:
 
     @property
     @pulumi.getter(name="authorityKeyIds")
-    def authority_key_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionAuthorityKeyIdArgs']]]]:
+    def authority_key_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionAuthorityKeyIdArrgs']]]]:
         """
         (Output)
         Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
@@ -2845,12 +2845,12 @@ class CertificateCertificateDescriptionArgs:
         return pulumi.get(self, "authority_key_ids")
 
     @authority_key_ids.setter
-    def authority_key_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionAuthorityKeyIdArgs']]]]):
+    def authority_key_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionAuthorityKeyIdArrgs']]]]):
         pulumi.set(self, "authority_key_ids", value)
 
     @property
     @pulumi.getter(name="certFingerprints")
-    def cert_fingerprints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionCertFingerprintArgs']]]]:
+    def cert_fingerprints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionCertFingerprintArrgs']]]]:
         """
         (Output)
         The hash of the x.509 certificate.
@@ -2859,7 +2859,7 @@ class CertificateCertificateDescriptionArgs:
         return pulumi.get(self, "cert_fingerprints")
 
     @cert_fingerprints.setter
-    def cert_fingerprints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionCertFingerprintArgs']]]]):
+    def cert_fingerprints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionCertFingerprintArrgs']]]]):
         pulumi.set(self, "cert_fingerprints", value)
 
     @property
@@ -2877,7 +2877,7 @@ class CertificateCertificateDescriptionArgs:
 
     @property
     @pulumi.getter(name="publicKeys")
-    def public_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionPublicKeyArgs']]]]:
+    def public_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionPublicKeyArrgs']]]]:
         """
         A PublicKey describes a public key.
         Structure is documented below.
@@ -2888,12 +2888,12 @@ class CertificateCertificateDescriptionArgs:
         return pulumi.get(self, "public_keys")
 
     @public_keys.setter
-    def public_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionPublicKeyArgs']]]]):
+    def public_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionPublicKeyArrgs']]]]):
         pulumi.set(self, "public_keys", value)
 
     @property
     @pulumi.getter(name="subjectDescriptions")
-    def subject_descriptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionArgs']]]]:
+    def subject_descriptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionArrgs']]]]:
         """
         (Output)
         Describes some of the values in a certificate that are related to the subject and lifetime.
@@ -2902,12 +2902,12 @@ class CertificateCertificateDescriptionArgs:
         return pulumi.get(self, "subject_descriptions")
 
     @subject_descriptions.setter
-    def subject_descriptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionArgs']]]]):
+    def subject_descriptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionArrgs']]]]):
         pulumi.set(self, "subject_descriptions", value)
 
     @property
     @pulumi.getter(name="subjectKeyIds")
-    def subject_key_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectKeyIdArgs']]]]:
+    def subject_key_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectKeyIdArrgs']]]]:
         """
         (Output)
         Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
@@ -2916,12 +2916,12 @@ class CertificateCertificateDescriptionArgs:
         return pulumi.get(self, "subject_key_ids")
 
     @subject_key_ids.setter
-    def subject_key_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectKeyIdArgs']]]]):
+    def subject_key_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectKeyIdArrgs']]]]):
         pulumi.set(self, "subject_key_ids", value)
 
     @property
     @pulumi.getter(name="x509Descriptions")
-    def x509_descriptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionArgs']]]]:
+    def x509_descriptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionArrgs']]]]:
         """
         (Output)
         A structured description of the issued X.509 certificate.
@@ -2930,12 +2930,12 @@ class CertificateCertificateDescriptionArgs:
         return pulumi.get(self, "x509_descriptions")
 
     @x509_descriptions.setter
-    def x509_descriptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionArgs']]]]):
+    def x509_descriptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionArrgs']]]]):
         pulumi.set(self, "x509_descriptions", value)
 
 
 @pulumi.input_type
-class CertificateCertificateDescriptionAuthorityKeyIdArgs:
+calass CertificateCertificateDescriptionAuthorityKeyIdArrgs:
     def __init__(__self__, *,
                  key_id: Optional[pulumi.Input[str]] = None):
         """
@@ -2960,7 +2960,7 @@ class CertificateCertificateDescriptionAuthorityKeyIdArgs:
 
 
 @pulumi.input_type
-class CertificateCertificateDescriptionCertFingerprintArgs:
+calass CertificateCertificateDescriptionCertFingerprintArrgs:
     def __init__(__self__, *,
                  sha256_hash: Optional[pulumi.Input[str]] = None):
         """
@@ -2985,7 +2985,7 @@ class CertificateCertificateDescriptionCertFingerprintArgs:
 
 
 @pulumi.input_type
-class CertificateCertificateDescriptionPublicKeyArgs:
+calass CertificateCertificateDescriptionPublicKeyArrgs:
     def __init__(__self__, *,
                  format: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None):
@@ -3026,14 +3026,14 @@ class CertificateCertificateDescriptionPublicKeyArgs:
 
 
 @pulumi.input_type
-class CertificateCertificateDescriptionSubjectDescriptionArgs:
+calass CertificateCertificateDescriptionSubjectDescriptionArrgs:
     def __init__(__self__, *,
                  hex_serial_number: Optional[pulumi.Input[str]] = None,
                  lifetime: Optional[pulumi.Input[str]] = None,
                  not_after_time: Optional[pulumi.Input[str]] = None,
                  not_before_time: Optional[pulumi.Input[str]] = None,
-                 subject_alt_names: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs']]]] = None,
-                 subjects: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectArgs']]]] = None):
+                 subject_alt_names: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArrgs']]]] = None,
+                 subjects: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectArrgs']]]] = None):
         """
         :param pulumi.Input[str] hex_serial_number: (Output)
                The serial number encoded in lowercase hexadecimal.
@@ -3044,9 +3044,9 @@ class CertificateCertificateDescriptionSubjectDescriptionArgs:
                The time at which the certificate expires.
         :param pulumi.Input[str] not_before_time: (Output)
                The time at which the certificate becomes valid.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs']]] subject_alt_names: The subject alternative name fields.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArrgs']]] subject_alt_names: The subject alternative name fields.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectArgs']]] subjects: Contains distinguished name fields such as the location and organization.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectArrgs']]] subjects: Contains distinguished name fields such as the location and organization.
                Structure is documented below.
         """
         if hex_serial_number is not None:
@@ -3117,7 +3117,7 @@ class CertificateCertificateDescriptionSubjectDescriptionArgs:
 
     @property
     @pulumi.getter(name="subjectAltNames")
-    def subject_alt_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs']]]]:
+    def subject_alt_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArrgs']]]]:
         """
         The subject alternative name fields.
         Structure is documented below.
@@ -3125,12 +3125,12 @@ class CertificateCertificateDescriptionSubjectDescriptionArgs:
         return pulumi.get(self, "subject_alt_names")
 
     @subject_alt_names.setter
-    def subject_alt_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs']]]]):
+    def subject_alt_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArrgs']]]]):
         pulumi.set(self, "subject_alt_names", value)
 
     @property
     @pulumi.getter
-    def subjects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectArgs']]]]:
+    def subjects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectArrgs']]]]:
         """
         Contains distinguished name fields such as the location and organization.
         Structure is documented below.
@@ -3138,12 +3138,12 @@ class CertificateCertificateDescriptionSubjectDescriptionArgs:
         return pulumi.get(self, "subjects")
 
     @subjects.setter
-    def subjects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectArgs']]]]):
+    def subjects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectArrgs']]]]):
         pulumi.set(self, "subjects", value)
 
 
 @pulumi.input_type
-class CertificateCertificateDescriptionSubjectDescriptionSubjectArgs:
+calass CertificateCertificateDescriptionSubjectDescriptionSubjectArrgs:
     def __init__(__self__, *,
                  common_name: Optional[pulumi.Input[str]] = None,
                  country_code: Optional[pulumi.Input[str]] = None,
@@ -3278,15 +3278,15 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectArgs:
 
 
 @pulumi.input_type
-class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs:
+calass CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArrgs:
     def __init__(__self__, *,
-                 custom_sans: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs']]]] = None,
+                 custom_sans: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrgs']]]] = None,
                  dns_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs']]] custom_sans: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrgs']]] custom_sans: (Output)
                Contains additional subject alternative name values.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_names: Contains only valid, fully-qualified host names.
@@ -3307,7 +3307,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs:
 
     @property
     @pulumi.getter(name="customSans")
-    def custom_sans(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs']]]]:
+    def custom_sans(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrgs']]]]:
         """
         (Output)
         Contains additional subject alternative name values.
@@ -3316,7 +3316,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs:
         return pulumi.get(self, "custom_sans")
 
     @custom_sans.setter
-    def custom_sans(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs']]]]):
+    def custom_sans(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrgs']]]]):
         pulumi.set(self, "custom_sans", value)
 
     @property
@@ -3369,15 +3369,15 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs:
 
 
 @pulumi.input_type
-class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs:
+calass CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrgs:
     def __init__(__self__, *,
                  critical: Optional[pulumi.Input[bool]] = None,
-                 obect_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs']]]] = None,
+                 obect_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArrgs']]]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] critical: Indicates whether or not this extension is critical (i.e., if the client does not know how to
                handle this extension, the client should consider this to be an error).
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs']]] obect_ids: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArrgs']]] obect_ids: (Output)
                Describes how some of the technical fields in a certificate should be populated.
                Structure is documented below.
         :param pulumi.Input[str] value: The value of this X.509 extension. A base64-encoded string.
@@ -3404,7 +3404,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
 
     @property
     @pulumi.getter(name="obectIds")
-    def obect_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs']]]]:
+    def obect_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArrgs']]]]:
         """
         (Output)
         Describes how some of the technical fields in a certificate should be populated.
@@ -3413,7 +3413,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
         return pulumi.get(self, "obect_ids")
 
     @obect_ids.setter
-    def obect_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs']]]]):
+    def obect_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArrgs']]]]):
         pulumi.set(self, "obect_ids", value)
 
     @property
@@ -3430,7 +3430,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
 
 
 @pulumi.input_type
-class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs:
+calass CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArrgs:
     def __init__(__self__, *,
                  object_id_paths: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
@@ -3453,7 +3453,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
 
 
 @pulumi.input_type
-class CertificateCertificateDescriptionSubjectKeyIdArgs:
+calass CertificateCertificateDescriptionSubjectKeyIdArrgs:
     def __init__(__self__, *,
                  key_id: Optional[pulumi.Input[str]] = None):
         """
@@ -3478,26 +3478,26 @@ class CertificateCertificateDescriptionSubjectKeyIdArgs:
 
 
 @pulumi.input_type
-class CertificateCertificateDescriptionX509DescriptionArgs:
+calass CertificateCertificateDescriptionX509DescriptionArrgs:
     def __init__(__self__, *,
-                 additional_extensions: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs']]]] = None,
+                 additional_extensions: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrgs']]]] = None,
                  aia_ocsp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 ca_options: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionCaOptionArgs']]]] = None,
-                 key_usages: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageArgs']]]] = None,
-                 name_constraints: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionNameConstraintArgs']]]] = None,
-                 policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionPolicyIdArgs']]]] = None):
+                 ca_options: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionCaOptionArrgs']]]] = None,
+                 key_usages: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageArrgs']]]] = None,
+                 name_constraints: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionNameConstraintArrgs']]]] = None,
+                 policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionPolicyIdArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs']]] additional_extensions: Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrgs']]] additional_extensions: Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] aia_ocsp_servers: Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
                "Authority Information Access" extension in the certificate.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionCaOptionArgs']]] ca_options: Describes values that are relevant in a CA certificate.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionCaOptionArrgs']]] ca_options: Describes values that are relevant in a CA certificate.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageArgs']]] key_usages: Indicates the intended use for keys that correspond to a certificate.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageArrgs']]] key_usages: Indicates the intended use for keys that correspond to a certificate.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionNameConstraintArgs']]] name_constraints: Describes the X.509 name constraints extension.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionNameConstraintArrgs']]] name_constraints: Describes the X.509 name constraints extension.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionPolicyIdArgs']]] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionPolicyIdArrgs']]] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
                Structure is documented below.
         """
         if additional_extensions is not None:
@@ -3515,7 +3515,7 @@ class CertificateCertificateDescriptionX509DescriptionArgs:
 
     @property
     @pulumi.getter(name="additionalExtensions")
-    def additional_extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs']]]]:
+    def additional_extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrgs']]]]:
         """
         Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
         Structure is documented below.
@@ -3523,7 +3523,7 @@ class CertificateCertificateDescriptionX509DescriptionArgs:
         return pulumi.get(self, "additional_extensions")
 
     @additional_extensions.setter
-    def additional_extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs']]]]):
+    def additional_extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrgs']]]]):
         pulumi.set(self, "additional_extensions", value)
 
     @property
@@ -3541,7 +3541,7 @@ class CertificateCertificateDescriptionX509DescriptionArgs:
 
     @property
     @pulumi.getter(name="caOptions")
-    def ca_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionCaOptionArgs']]]]:
+    def ca_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionCaOptionArrgs']]]]:
         """
         Describes values that are relevant in a CA certificate.
         Structure is documented below.
@@ -3549,12 +3549,12 @@ class CertificateCertificateDescriptionX509DescriptionArgs:
         return pulumi.get(self, "ca_options")
 
     @ca_options.setter
-    def ca_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionCaOptionArgs']]]]):
+    def ca_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionCaOptionArrgs']]]]):
         pulumi.set(self, "ca_options", value)
 
     @property
     @pulumi.getter(name="keyUsages")
-    def key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageArgs']]]]:
+    def key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageArrgs']]]]:
         """
         Indicates the intended use for keys that correspond to a certificate.
         Structure is documented below.
@@ -3562,12 +3562,12 @@ class CertificateCertificateDescriptionX509DescriptionArgs:
         return pulumi.get(self, "key_usages")
 
     @key_usages.setter
-    def key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageArgs']]]]):
+    def key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageArrgs']]]]):
         pulumi.set(self, "key_usages", value)
 
     @property
     @pulumi.getter(name="nameConstraints")
-    def name_constraints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionNameConstraintArgs']]]]:
+    def name_constraints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionNameConstraintArrgs']]]]:
         """
         Describes the X.509 name constraints extension.
         Structure is documented below.
@@ -3575,12 +3575,12 @@ class CertificateCertificateDescriptionX509DescriptionArgs:
         return pulumi.get(self, "name_constraints")
 
     @name_constraints.setter
-    def name_constraints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionNameConstraintArgs']]]]):
+    def name_constraints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionNameConstraintArrgs']]]]):
         pulumi.set(self, "name_constraints", value)
 
     @property
     @pulumi.getter(name="policyIds")
-    def policy_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionPolicyIdArgs']]]]:
+    def policy_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionPolicyIdArrgs']]]]:
         """
         Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
         Structure is documented below.
@@ -3588,20 +3588,20 @@ class CertificateCertificateDescriptionX509DescriptionArgs:
         return pulumi.get(self, "policy_ids")
 
     @policy_ids.setter
-    def policy_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionPolicyIdArgs']]]]):
+    def policy_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionPolicyIdArrgs']]]]):
         pulumi.set(self, "policy_ids", value)
 
 
 @pulumi.input_type
-class CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs:
+calass CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrgs:
     def __init__(__self__, *,
                  critical: Optional[pulumi.Input[bool]] = None,
-                 object_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs']]]] = None,
+                 object_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrgs']]]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] critical: Indicates whether or not this extension is critical (i.e., if the client does not know how to
                handle this extension, the client should consider this to be an error).
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs']]] object_ids: Describes values that are relevant in a CA certificate.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrgs']]] object_ids: Describes values that are relevant in a CA certificate.
                Structure is documented below.
         :param pulumi.Input[str] value: The value of this X.509 extension. A base64-encoded string.
         """
@@ -3627,7 +3627,7 @@ class CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs:
 
     @property
     @pulumi.getter(name="objectIds")
-    def object_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs']]]]:
+    def object_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrgs']]]]:
         """
         Describes values that are relevant in a CA certificate.
         Structure is documented below.
@@ -3635,7 +3635,7 @@ class CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs:
         return pulumi.get(self, "object_ids")
 
     @object_ids.setter
-    def object_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs']]]]):
+    def object_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrgs']]]]):
         pulumi.set(self, "object_ids", value)
 
     @property
@@ -3652,7 +3652,7 @@ class CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs:
 
 
 @pulumi.input_type
-class CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs:
+calass CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrgs:
     def __init__(__self__, *,
                  object_id_paths: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
@@ -3675,7 +3675,7 @@ class CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectI
 
 
 @pulumi.input_type
-class CertificateCertificateDescriptionX509DescriptionCaOptionArgs:
+calass CertificateCertificateDescriptionX509DescriptionCaOptionArrgs:
     def __init__(__self__, *,
                  is_ca: Optional[pulumi.Input[bool]] = None,
                  max_issuer_path_length: Optional[pulumi.Input[int]] = None):
@@ -3716,17 +3716,17 @@ class CertificateCertificateDescriptionX509DescriptionCaOptionArgs:
 
 
 @pulumi.input_type
-class CertificateCertificateDescriptionX509DescriptionKeyUsageArgs:
+calass CertificateCertificateDescriptionX509DescriptionKeyUsageArrgs:
     def __init__(__self__, *,
-                 base_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs']]]] = None,
-                 extended_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs']]]] = None,
-                 unknown_extended_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs']]]] = None):
+                 base_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrgs']]]] = None,
+                 extended_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrgs']]]] = None,
+                 unknown_extended_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs']]] base_key_usages: Describes high-level ways in which a key may be used.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrgs']]] base_key_usages: Describes high-level ways in which a key may be used.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs']]] extended_key_usages: Describes high-level ways in which a key may be used.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrgs']]] extended_key_usages: Describes high-level ways in which a key may be used.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs']]] unknown_extended_key_usages: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrgs']]] unknown_extended_key_usages: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
                Structure is documented below.
         """
         if base_key_usages is not None:
@@ -3738,7 +3738,7 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsageArgs:
 
     @property
     @pulumi.getter(name="baseKeyUsages")
-    def base_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs']]]]:
+    def base_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrgs']]]]:
         """
         Describes high-level ways in which a key may be used.
         Structure is documented below.
@@ -3746,12 +3746,12 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsageArgs:
         return pulumi.get(self, "base_key_usages")
 
     @base_key_usages.setter
-    def base_key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs']]]]):
+    def base_key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrgs']]]]):
         pulumi.set(self, "base_key_usages", value)
 
     @property
     @pulumi.getter(name="extendedKeyUsages")
-    def extended_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs']]]]:
+    def extended_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrgs']]]]:
         """
         Describes high-level ways in which a key may be used.
         Structure is documented below.
@@ -3759,12 +3759,12 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsageArgs:
         return pulumi.get(self, "extended_key_usages")
 
     @extended_key_usages.setter
-    def extended_key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs']]]]):
+    def extended_key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrgs']]]]):
         pulumi.set(self, "extended_key_usages", value)
 
     @property
     @pulumi.getter(name="unknownExtendedKeyUsages")
-    def unknown_extended_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs']]]]:
+    def unknown_extended_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrgs']]]]:
         """
         An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         Structure is documented below.
@@ -3772,12 +3772,12 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsageArgs:
         return pulumi.get(self, "unknown_extended_key_usages")
 
     @unknown_extended_key_usages.setter
-    def unknown_extended_key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs']]]]):
+    def unknown_extended_key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrgs']]]]):
         pulumi.set(self, "unknown_extended_key_usages", value)
 
 
 @pulumi.input_type
-class CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs:
+calass CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrgs:
     def __init__(__self__, *,
                  cert_sign: Optional[pulumi.Input[bool]] = None,
                  content_commitment: Optional[pulumi.Input[bool]] = None,
@@ -3928,7 +3928,7 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs:
 
 
 @pulumi.input_type
-class CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs:
+calass CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrgs:
     def __init__(__self__, *,
                  client_auth: Optional[pulumi.Input[bool]] = None,
                  code_signing: Optional[pulumi.Input[bool]] = None,
@@ -4031,7 +4031,7 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageAr
 
 
 @pulumi.input_type
-class CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs:
+calass CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrgs:
     def __init__(__self__, *,
                  object_id_paths: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
@@ -4054,7 +4054,7 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKey
 
 
 @pulumi.input_type
-class CertificateCertificateDescriptionX509DescriptionNameConstraintArgs:
+calass CertificateCertificateDescriptionX509DescriptionNameConstraintArrgs:
     def __init__(__self__, *,
                  critical: Optional[pulumi.Input[bool]] = None,
                  excluded_dns_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -4253,7 +4253,7 @@ class CertificateCertificateDescriptionX509DescriptionNameConstraintArgs:
 
 
 @pulumi.input_type
-class CertificateCertificateDescriptionX509DescriptionPolicyIdArgs:
+calass CertificateCertificateDescriptionX509DescriptionPolicyIdArrgs:
     def __init__(__self__, *,
                  object_id_paths: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
@@ -4276,20 +4276,20 @@ class CertificateCertificateDescriptionX509DescriptionPolicyIdArgs:
 
 
 @pulumi.input_type
-class CertificateConfigArgs:
+calass CertificateConfigArrgs:
     def __init__(__self__, *,
-                 public_key: pulumi.Input['CertificateConfigPublicKeyArgs'],
-                 subject_config: pulumi.Input['CertificateConfigSubjectConfigArgs'],
-                 x509_config: pulumi.Input['CertificateConfigX509ConfigArgs']):
+                 public_key: pulumi.Input['CertificateConfigPublicKeyArrgs'],
+                 subject_config: pulumi.Input['CertificateConfigSubjectConfigArrgs'],
+                 x509_config: pulumi.Input['CertificateConfigX509ConfigArrgs']):
         """
-        :param pulumi.Input['CertificateConfigPublicKeyArgs'] public_key: A PublicKey describes a public key.
+        :param pulumi.Input['CertificateConfigPublicKeyArrgs'] public_key: A PublicKey describes a public key.
                Structure is documented below.
                
                
                <a name="nested_x509_config"></a>The `x509_config` block supports:
-        :param pulumi.Input['CertificateConfigSubjectConfigArgs'] subject_config: Specifies some of the values in a certificate that are related to the subject.
+        :param pulumi.Input['CertificateConfigSubjectConfigArrgs'] subject_config: Specifies some of the values in a certificate that are related to the subject.
                Structure is documented below.
-        :param pulumi.Input['CertificateConfigX509ConfigArgs'] x509_config: Describes how some of the technical X.509 fields in a certificate should be populated.
+        :param pulumi.Input['CertificateConfigX509ConfigArrgs'] x509_config: Describes how some of the technical X.509 fields in a certificate should be populated.
                Structure is documented below.
         """
         pulumi.set(__self__, "public_key", public_key)
@@ -4298,7 +4298,7 @@ class CertificateConfigArgs:
 
     @property
     @pulumi.getter(name="publicKey")
-    def public_key(self) -> pulumi.Input['CertificateConfigPublicKeyArgs']:
+    def public_key(self) -> pulumi.Input['CertificateConfigPublicKeyArrgs']:
         """
         A PublicKey describes a public key.
         Structure is documented below.
@@ -4309,12 +4309,12 @@ class CertificateConfigArgs:
         return pulumi.get(self, "public_key")
 
     @public_key.setter
-    def public_key(self, value: pulumi.Input['CertificateConfigPublicKeyArgs']):
+    def public_key(self, value: pulumi.Input['CertificateConfigPublicKeyArrgs']):
         pulumi.set(self, "public_key", value)
 
     @property
     @pulumi.getter(name="subjectConfig")
-    def subject_config(self) -> pulumi.Input['CertificateConfigSubjectConfigArgs']:
+    def subject_config(self) -> pulumi.Input['CertificateConfigSubjectConfigArrgs']:
         """
         Specifies some of the values in a certificate that are related to the subject.
         Structure is documented below.
@@ -4322,12 +4322,12 @@ class CertificateConfigArgs:
         return pulumi.get(self, "subject_config")
 
     @subject_config.setter
-    def subject_config(self, value: pulumi.Input['CertificateConfigSubjectConfigArgs']):
+    def subject_config(self, value: pulumi.Input['CertificateConfigSubjectConfigArrgs']):
         pulumi.set(self, "subject_config", value)
 
     @property
     @pulumi.getter(name="x509Config")
-    def x509_config(self) -> pulumi.Input['CertificateConfigX509ConfigArgs']:
+    def x509_config(self) -> pulumi.Input['CertificateConfigX509ConfigArrgs']:
         """
         Describes how some of the technical X.509 fields in a certificate should be populated.
         Structure is documented below.
@@ -4335,12 +4335,12 @@ class CertificateConfigArgs:
         return pulumi.get(self, "x509_config")
 
     @x509_config.setter
-    def x509_config(self, value: pulumi.Input['CertificateConfigX509ConfigArgs']):
+    def x509_config(self, value: pulumi.Input['CertificateConfigX509ConfigArrgs']):
         pulumi.set(self, "x509_config", value)
 
 
 @pulumi.input_type
-class CertificateConfigPublicKeyArgs:
+calass CertificateConfigPublicKeyArrgs:
     def __init__(__self__, *,
                  format: pulumi.Input[str],
                  key: Optional[pulumi.Input[str]] = None):
@@ -4380,14 +4380,14 @@ class CertificateConfigPublicKeyArgs:
 
 
 @pulumi.input_type
-class CertificateConfigSubjectConfigArgs:
+calass CertificateConfigSubjectConfigArrgs:
     def __init__(__self__, *,
-                 subject: pulumi.Input['CertificateConfigSubjectConfigSubjectArgs'],
-                 subject_alt_name: Optional[pulumi.Input['CertificateConfigSubjectConfigSubjectAltNameArgs']] = None):
+                 subject: pulumi.Input['CertificateConfigSubjectConfigSubjectArrgs'],
+                 subject_alt_name: Optional[pulumi.Input['CertificateConfigSubjectConfigSubjectAltNameArrgs']] = None):
         """
-        :param pulumi.Input['CertificateConfigSubjectConfigSubjectArgs'] subject: Contains distinguished name fields such as the location and organization.
+        :param pulumi.Input['CertificateConfigSubjectConfigSubjectArrgs'] subject: Contains distinguished name fields such as the location and organization.
                Structure is documented below.
-        :param pulumi.Input['CertificateConfigSubjectConfigSubjectAltNameArgs'] subject_alt_name: The subject alternative name fields.
+        :param pulumi.Input['CertificateConfigSubjectConfigSubjectAltNameArrgs'] subject_alt_name: The subject alternative name fields.
                Structure is documented below.
         """
         pulumi.set(__self__, "subject", subject)
@@ -4396,7 +4396,7 @@ class CertificateConfigSubjectConfigArgs:
 
     @property
     @pulumi.getter
-    def subject(self) -> pulumi.Input['CertificateConfigSubjectConfigSubjectArgs']:
+    def subject(self) -> pulumi.Input['CertificateConfigSubjectConfigSubjectArrgs']:
         """
         Contains distinguished name fields such as the location and organization.
         Structure is documented below.
@@ -4404,12 +4404,12 @@ class CertificateConfigSubjectConfigArgs:
         return pulumi.get(self, "subject")
 
     @subject.setter
-    def subject(self, value: pulumi.Input['CertificateConfigSubjectConfigSubjectArgs']):
+    def subject(self, value: pulumi.Input['CertificateConfigSubjectConfigSubjectArrgs']):
         pulumi.set(self, "subject", value)
 
     @property
     @pulumi.getter(name="subjectAltName")
-    def subject_alt_name(self) -> Optional[pulumi.Input['CertificateConfigSubjectConfigSubjectAltNameArgs']]:
+    def subject_alt_name(self) -> Optional[pulumi.Input['CertificateConfigSubjectConfigSubjectAltNameArrgs']]:
         """
         The subject alternative name fields.
         Structure is documented below.
@@ -4417,12 +4417,12 @@ class CertificateConfigSubjectConfigArgs:
         return pulumi.get(self, "subject_alt_name")
 
     @subject_alt_name.setter
-    def subject_alt_name(self, value: Optional[pulumi.Input['CertificateConfigSubjectConfigSubjectAltNameArgs']]):
+    def subject_alt_name(self, value: Optional[pulumi.Input['CertificateConfigSubjectConfigSubjectAltNameArrgs']]):
         pulumi.set(self, "subject_alt_name", value)
 
 
 @pulumi.input_type
-class CertificateConfigSubjectConfigSubjectArgs:
+calass CertificateConfigSubjectConfigSubjectArrgs:
     def __init__(__self__, *,
                  common_name: pulumi.Input[str],
                  organization: pulumi.Input[str],
@@ -4555,7 +4555,7 @@ class CertificateConfigSubjectConfigSubjectArgs:
 
 
 @pulumi.input_type
-class CertificateConfigSubjectConfigSubjectAltNameArgs:
+calass CertificateConfigSubjectConfigSubjectAltNameArrgs:
     def __init__(__self__, *,
                  dns_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -4626,26 +4626,26 @@ class CertificateConfigSubjectConfigSubjectAltNameArgs:
 
 
 @pulumi.input_type
-class CertificateConfigX509ConfigArgs:
+calass CertificateConfigX509ConfigArrgs:
     def __init__(__self__, *,
-                 key_usage: pulumi.Input['CertificateConfigX509ConfigKeyUsageArgs'],
-                 additional_extensions: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigAdditionalExtensionArgs']]]] = None,
+                 key_usage: pulumi.Input['CertificateConfigX509ConfigKeyUsageArrgs'],
+                 additional_extensions: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigAdditionalExtensionArrgs']]]] = None,
                  aia_ocsp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 ca_options: Optional[pulumi.Input['CertificateConfigX509ConfigCaOptionsArgs']] = None,
-                 name_constraints: Optional[pulumi.Input['CertificateConfigX509ConfigNameConstraintsArgs']] = None,
-                 policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigPolicyIdArgs']]]] = None):
+                 ca_options: Optional[pulumi.Input['CertificateConfigX509ConfigCaOptionsArrgs']] = None,
+                 name_constraints: Optional[pulumi.Input['CertificateConfigX509ConfigNameConstraintsArrgs']] = None,
+                 policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigPolicyIdArrgs']]]] = None):
         """
-        :param pulumi.Input['CertificateConfigX509ConfigKeyUsageArgs'] key_usage: Indicates the intended use for keys that correspond to a certificate.
+        :param pulumi.Input['CertificateConfigX509ConfigKeyUsageArrgs'] key_usage: Indicates the intended use for keys that correspond to a certificate.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigAdditionalExtensionArgs']]] additional_extensions: Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigAdditionalExtensionArrgs']]] additional_extensions: Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] aia_ocsp_servers: Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
                "Authority Information Access" extension in the certificate.
-        :param pulumi.Input['CertificateConfigX509ConfigCaOptionsArgs'] ca_options: Describes values that are relevant in a CA certificate.
+        :param pulumi.Input['CertificateConfigX509ConfigCaOptionsArrgs'] ca_options: Describes values that are relevant in a CA certificate.
                Structure is documented below.
-        :param pulumi.Input['CertificateConfigX509ConfigNameConstraintsArgs'] name_constraints: Describes the X.509 name constraints extension.
+        :param pulumi.Input['CertificateConfigX509ConfigNameConstraintsArrgs'] name_constraints: Describes the X.509 name constraints extension.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigPolicyIdArgs']]] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigPolicyIdArrgs']]] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
                Structure is documented below.
         """
         pulumi.set(__self__, "key_usage", key_usage)
@@ -4662,7 +4662,7 @@ class CertificateConfigX509ConfigArgs:
 
     @property
     @pulumi.getter(name="keyUsage")
-    def key_usage(self) -> pulumi.Input['CertificateConfigX509ConfigKeyUsageArgs']:
+    def key_usage(self) -> pulumi.Input['CertificateConfigX509ConfigKeyUsageArrgs']:
         """
         Indicates the intended use for keys that correspond to a certificate.
         Structure is documented below.
@@ -4670,12 +4670,12 @@ class CertificateConfigX509ConfigArgs:
         return pulumi.get(self, "key_usage")
 
     @key_usage.setter
-    def key_usage(self, value: pulumi.Input['CertificateConfigX509ConfigKeyUsageArgs']):
+    def key_usage(self, value: pulumi.Input['CertificateConfigX509ConfigKeyUsageArrgs']):
         pulumi.set(self, "key_usage", value)
 
     @property
     @pulumi.getter(name="additionalExtensions")
-    def additional_extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigAdditionalExtensionArgs']]]]:
+    def additional_extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigAdditionalExtensionArrgs']]]]:
         """
         Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
         Structure is documented below.
@@ -4683,7 +4683,7 @@ class CertificateConfigX509ConfigArgs:
         return pulumi.get(self, "additional_extensions")
 
     @additional_extensions.setter
-    def additional_extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigAdditionalExtensionArgs']]]]):
+    def additional_extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigAdditionalExtensionArrgs']]]]):
         pulumi.set(self, "additional_extensions", value)
 
     @property
@@ -4701,7 +4701,7 @@ class CertificateConfigX509ConfigArgs:
 
     @property
     @pulumi.getter(name="caOptions")
-    def ca_options(self) -> Optional[pulumi.Input['CertificateConfigX509ConfigCaOptionsArgs']]:
+    def ca_options(self) -> Optional[pulumi.Input['CertificateConfigX509ConfigCaOptionsArrgs']]:
         """
         Describes values that are relevant in a CA certificate.
         Structure is documented below.
@@ -4709,12 +4709,12 @@ class CertificateConfigX509ConfigArgs:
         return pulumi.get(self, "ca_options")
 
     @ca_options.setter
-    def ca_options(self, value: Optional[pulumi.Input['CertificateConfigX509ConfigCaOptionsArgs']]):
+    def ca_options(self, value: Optional[pulumi.Input['CertificateConfigX509ConfigCaOptionsArrgs']]):
         pulumi.set(self, "ca_options", value)
 
     @property
     @pulumi.getter(name="nameConstraints")
-    def name_constraints(self) -> Optional[pulumi.Input['CertificateConfigX509ConfigNameConstraintsArgs']]:
+    def name_constraints(self) -> Optional[pulumi.Input['CertificateConfigX509ConfigNameConstraintsArrgs']]:
         """
         Describes the X.509 name constraints extension.
         Structure is documented below.
@@ -4722,12 +4722,12 @@ class CertificateConfigX509ConfigArgs:
         return pulumi.get(self, "name_constraints")
 
     @name_constraints.setter
-    def name_constraints(self, value: Optional[pulumi.Input['CertificateConfigX509ConfigNameConstraintsArgs']]):
+    def name_constraints(self, value: Optional[pulumi.Input['CertificateConfigX509ConfigNameConstraintsArrgs']]):
         pulumi.set(self, "name_constraints", value)
 
     @property
     @pulumi.getter(name="policyIds")
-    def policy_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigPolicyIdArgs']]]]:
+    def policy_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigPolicyIdArrgs']]]]:
         """
         Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
         Structure is documented below.
@@ -4735,20 +4735,20 @@ class CertificateConfigX509ConfigArgs:
         return pulumi.get(self, "policy_ids")
 
     @policy_ids.setter
-    def policy_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigPolicyIdArgs']]]]):
+    def policy_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigPolicyIdArrgs']]]]):
         pulumi.set(self, "policy_ids", value)
 
 
 @pulumi.input_type
-class CertificateConfigX509ConfigAdditionalExtensionArgs:
+calass CertificateConfigX509ConfigAdditionalExtensionArrgs:
     def __init__(__self__, *,
                  critical: pulumi.Input[bool],
-                 object_id: pulumi.Input['CertificateConfigX509ConfigAdditionalExtensionObjectIdArgs'],
+                 object_id: pulumi.Input['CertificateConfigX509ConfigAdditionalExtensionObjectIdArrgs'],
                  value: pulumi.Input[str]):
         """
         :param pulumi.Input[bool] critical: Indicates whether or not this extension is critical (i.e., if the client does not know how to
                handle this extension, the client should consider this to be an error).
-        :param pulumi.Input['CertificateConfigX509ConfigAdditionalExtensionObjectIdArgs'] object_id: Describes values that are relevant in a CA certificate.
+        :param pulumi.Input['CertificateConfigX509ConfigAdditionalExtensionObjectIdArrgs'] object_id: Describes values that are relevant in a CA certificate.
                Structure is documented below.
         :param pulumi.Input[str] value: The value of this X.509 extension. A base64-encoded string.
         """
@@ -4771,7 +4771,7 @@ class CertificateConfigX509ConfigAdditionalExtensionArgs:
 
     @property
     @pulumi.getter(name="objectId")
-    def object_id(self) -> pulumi.Input['CertificateConfigX509ConfigAdditionalExtensionObjectIdArgs']:
+    def object_id(self) -> pulumi.Input['CertificateConfigX509ConfigAdditionalExtensionObjectIdArrgs']:
         """
         Describes values that are relevant in a CA certificate.
         Structure is documented below.
@@ -4779,7 +4779,7 @@ class CertificateConfigX509ConfigAdditionalExtensionArgs:
         return pulumi.get(self, "object_id")
 
     @object_id.setter
-    def object_id(self, value: pulumi.Input['CertificateConfigX509ConfigAdditionalExtensionObjectIdArgs']):
+    def object_id(self, value: pulumi.Input['CertificateConfigX509ConfigAdditionalExtensionObjectIdArrgs']):
         pulumi.set(self, "object_id", value)
 
     @property
@@ -4796,7 +4796,7 @@ class CertificateConfigX509ConfigAdditionalExtensionArgs:
 
 
 @pulumi.input_type
-class CertificateConfigX509ConfigAdditionalExtensionObjectIdArgs:
+calass CertificateConfigX509ConfigAdditionalExtensionObjectIdArrgs:
     def __init__(__self__, *,
                  object_id_paths: pulumi.Input[Sequence[pulumi.Input[int]]]):
         """
@@ -4818,7 +4818,7 @@ class CertificateConfigX509ConfigAdditionalExtensionObjectIdArgs:
 
 
 @pulumi.input_type
-class CertificateConfigX509ConfigCaOptionsArgs:
+calass CertificateConfigX509ConfigCaOptionsArrgs:
     def __init__(__self__, *,
                  is_ca: Optional[pulumi.Input[bool]] = None,
                  max_issuer_path_length: Optional[pulumi.Input[int]] = None,
@@ -4897,17 +4897,17 @@ class CertificateConfigX509ConfigCaOptionsArgs:
 
 
 @pulumi.input_type
-class CertificateConfigX509ConfigKeyUsageArgs:
+calass CertificateConfigX509ConfigKeyUsageArrgs:
     def __init__(__self__, *,
-                 base_key_usage: pulumi.Input['CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs'],
-                 extended_key_usage: pulumi.Input['CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs'],
-                 unknown_extended_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs']]]] = None):
+                 base_key_usage: pulumi.Input['CertificateConfigX509ConfigKeyUsageBaseKeyUsageArrgs'],
+                 extended_key_usage: pulumi.Input['CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArrgs'],
+                 unknown_extended_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrgs']]]] = None):
         """
-        :param pulumi.Input['CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs'] base_key_usage: Describes high-level ways in which a key may be used.
+        :param pulumi.Input['CertificateConfigX509ConfigKeyUsageBaseKeyUsageArrgs'] base_key_usage: Describes high-level ways in which a key may be used.
                Structure is documented below.
-        :param pulumi.Input['CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs'] extended_key_usage: Describes high-level ways in which a key may be used.
+        :param pulumi.Input['CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArrgs'] extended_key_usage: Describes high-level ways in which a key may be used.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs']]] unknown_extended_key_usages: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrgs']]] unknown_extended_key_usages: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
                Structure is documented below.
         """
         pulumi.set(__self__, "base_key_usage", base_key_usage)
@@ -4917,7 +4917,7 @@ class CertificateConfigX509ConfigKeyUsageArgs:
 
     @property
     @pulumi.getter(name="baseKeyUsage")
-    def base_key_usage(self) -> pulumi.Input['CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs']:
+    def base_key_usage(self) -> pulumi.Input['CertificateConfigX509ConfigKeyUsageBaseKeyUsageArrgs']:
         """
         Describes high-level ways in which a key may be used.
         Structure is documented below.
@@ -4925,12 +4925,12 @@ class CertificateConfigX509ConfigKeyUsageArgs:
         return pulumi.get(self, "base_key_usage")
 
     @base_key_usage.setter
-    def base_key_usage(self, value: pulumi.Input['CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs']):
+    def base_key_usage(self, value: pulumi.Input['CertificateConfigX509ConfigKeyUsageBaseKeyUsageArrgs']):
         pulumi.set(self, "base_key_usage", value)
 
     @property
     @pulumi.getter(name="extendedKeyUsage")
-    def extended_key_usage(self) -> pulumi.Input['CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs']:
+    def extended_key_usage(self) -> pulumi.Input['CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArrgs']:
         """
         Describes high-level ways in which a key may be used.
         Structure is documented below.
@@ -4938,12 +4938,12 @@ class CertificateConfigX509ConfigKeyUsageArgs:
         return pulumi.get(self, "extended_key_usage")
 
     @extended_key_usage.setter
-    def extended_key_usage(self, value: pulumi.Input['CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs']):
+    def extended_key_usage(self, value: pulumi.Input['CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArrgs']):
         pulumi.set(self, "extended_key_usage", value)
 
     @property
     @pulumi.getter(name="unknownExtendedKeyUsages")
-    def unknown_extended_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs']]]]:
+    def unknown_extended_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrgs']]]]:
         """
         An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         Structure is documented below.
@@ -4951,12 +4951,12 @@ class CertificateConfigX509ConfigKeyUsageArgs:
         return pulumi.get(self, "unknown_extended_key_usages")
 
     @unknown_extended_key_usages.setter
-    def unknown_extended_key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs']]]]):
+    def unknown_extended_key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrgs']]]]):
         pulumi.set(self, "unknown_extended_key_usages", value)
 
 
 @pulumi.input_type
-class CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs:
+calass CertificateConfigX509ConfigKeyUsageBaseKeyUsageArrgs:
     def __init__(__self__, *,
                  cert_sign: Optional[pulumi.Input[bool]] = None,
                  content_commitment: Optional[pulumi.Input[bool]] = None,
@@ -5107,7 +5107,7 @@ class CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs:
 
 
 @pulumi.input_type
-class CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs:
+calass CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArrgs:
     def __init__(__self__, *,
                  client_auth: Optional[pulumi.Input[bool]] = None,
                  code_signing: Optional[pulumi.Input[bool]] = None,
@@ -5210,7 +5210,7 @@ class CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs:
 
 
 @pulumi.input_type
-class CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs:
+calass CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrgs:
     def __init__(__self__, *,
                  object_id_paths: pulumi.Input[Sequence[pulumi.Input[int]]]):
         """
@@ -5232,7 +5232,7 @@ class CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs:
 
 
 @pulumi.input_type
-class CertificateConfigX509ConfigNameConstraintsArgs:
+calass CertificateConfigX509ConfigNameConstraintsArrgs:
     def __init__(__self__, *,
                  critical: pulumi.Input[bool],
                  excluded_dns_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -5430,7 +5430,7 @@ class CertificateConfigX509ConfigNameConstraintsArgs:
 
 
 @pulumi.input_type
-class CertificateConfigX509ConfigPolicyIdArgs:
+calass CertificateConfigX509ConfigPolicyIdArrgs:
     def __init__(__self__, *,
                  object_id_paths: pulumi.Input[Sequence[pulumi.Input[int]]]):
         """
@@ -5452,7 +5452,7 @@ class CertificateConfigX509ConfigPolicyIdArgs:
 
 
 @pulumi.input_type
-class CertificateRevocationDetailArgs:
+calass CertificateRevocationDetailArrgs:
     def __init__(__self__, *,
                  revocation_state: Optional[pulumi.Input[str]] = None,
                  revocation_time: Optional[pulumi.Input[str]] = None):
@@ -5495,7 +5495,7 @@ class CertificateRevocationDetailArgs:
 
 
 @pulumi.input_type
-class CertificateTemplateIamBindingConditionArgs:
+calass CertificateTemplateIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -5544,7 +5544,7 @@ class CertificateTemplateIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class CertificateTemplateIamMemberConditionArgs:
+calass CertificateTemplateIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -5593,15 +5593,15 @@ class CertificateTemplateIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class CertificateTemplateIdentityConstraintsArgs:
+calass CertificateTemplateIdentityConstraintsArrgs:
     def __init__(__self__, *,
                  allow_subject_alt_names_passthrough: pulumi.Input[bool],
                  allow_subject_passthrough: pulumi.Input[bool],
-                 cel_expression: Optional[pulumi.Input['CertificateTemplateIdentityConstraintsCelExpressionArgs']] = None):
+                 cel_expression: Optional[pulumi.Input['CertificateTemplateIdentityConstraintsCelExpressionArrgs']] = None):
         """
         :param pulumi.Input[bool] allow_subject_alt_names_passthrough: Required. If this is true, the SubjectAltNames extension may be copied from a certificate request into the signed certificate. Otherwise, the requested SubjectAltNames will be discarded.
         :param pulumi.Input[bool] allow_subject_passthrough: Required. If this is true, the Subject field may be copied from a certificate request into the signed certificate. Otherwise, the requested Subject will be discarded.
-        :param pulumi.Input['CertificateTemplateIdentityConstraintsCelExpressionArgs'] cel_expression: Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+        :param pulumi.Input['CertificateTemplateIdentityConstraintsCelExpressionArrgs'] cel_expression: Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
         """
         pulumi.set(__self__, "allow_subject_alt_names_passthrough", allow_subject_alt_names_passthrough)
         pulumi.set(__self__, "allow_subject_passthrough", allow_subject_passthrough)
@@ -5634,19 +5634,19 @@ class CertificateTemplateIdentityConstraintsArgs:
 
     @property
     @pulumi.getter(name="celExpression")
-    def cel_expression(self) -> Optional[pulumi.Input['CertificateTemplateIdentityConstraintsCelExpressionArgs']]:
+    def cel_expression(self) -> Optional[pulumi.Input['CertificateTemplateIdentityConstraintsCelExpressionArrgs']]:
         """
         Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
         """
         return pulumi.get(self, "cel_expression")
 
     @cel_expression.setter
-    def cel_expression(self, value: Optional[pulumi.Input['CertificateTemplateIdentityConstraintsCelExpressionArgs']]):
+    def cel_expression(self, value: Optional[pulumi.Input['CertificateTemplateIdentityConstraintsCelExpressionArrgs']]):
         pulumi.set(self, "cel_expression", value)
 
 
 @pulumi.input_type
-class CertificateTemplateIdentityConstraintsCelExpressionArgs:
+calass CertificateTemplateIdentityConstraintsCelExpressionArrgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  expression: Optional[pulumi.Input[str]] = None,
@@ -5717,12 +5717,12 @@ class CertificateTemplateIdentityConstraintsCelExpressionArgs:
 
 
 @pulumi.input_type
-class CertificateTemplatePassthroughExtensionsArgs:
+calass CertificateTemplatePassthroughExtensionsArrgs:
     def __init__(__self__, *,
-                 additional_extensions: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs']]]] = None,
+                 additional_extensions: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePassthroughExtensionsAdditionalExtensionArrgs']]]] = None,
                  known_extensions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs']]] additional_extensions: Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePassthroughExtensionsAdditionalExtensionArrgs']]] additional_extensions: Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] known_extensions: Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
         """
         if additional_extensions is not None:
@@ -5732,14 +5732,14 @@ class CertificateTemplatePassthroughExtensionsArgs:
 
     @property
     @pulumi.getter(name="additionalExtensions")
-    def additional_extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs']]]]:
+    def additional_extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePassthroughExtensionsAdditionalExtensionArrgs']]]]:
         """
         Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
         """
         return pulumi.get(self, "additional_extensions")
 
     @additional_extensions.setter
-    def additional_extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs']]]]):
+    def additional_extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePassthroughExtensionsAdditionalExtensionArrgs']]]]):
         pulumi.set(self, "additional_extensions", value)
 
     @property
@@ -5756,7 +5756,7 @@ class CertificateTemplatePassthroughExtensionsArgs:
 
 
 @pulumi.input_type
-class CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs:
+calass CertificateTemplatePassthroughExtensionsAdditionalExtensionArrgs:
     def __init__(__self__, *,
                  object_id_paths: pulumi.Input[Sequence[pulumi.Input[int]]]):
         """
@@ -5778,19 +5778,19 @@ class CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs:
 
 
 @pulumi.input_type
-class CertificateTemplatePredefinedValuesArgs:
+calass CertificateTemplatePredefinedValuesArrgs:
     def __init__(__self__, *,
-                 additional_extensions: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesAdditionalExtensionArgs']]]] = None,
+                 additional_extensions: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesAdditionalExtensionArrgs']]]] = None,
                  aia_ocsp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 ca_options: Optional[pulumi.Input['CertificateTemplatePredefinedValuesCaOptionsArgs']] = None,
-                 key_usage: Optional[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageArgs']] = None,
-                 policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesPolicyIdArgs']]]] = None):
+                 ca_options: Optional[pulumi.Input['CertificateTemplatePredefinedValuesCaOptionsArrgs']] = None,
+                 key_usage: Optional[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageArrgs']] = None,
+                 policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesPolicyIdArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesAdditionalExtensionArgs']]] additional_extensions: Optional. Describes custom X.509 extensions.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesAdditionalExtensionArrgs']]] additional_extensions: Optional. Describes custom X.509 extensions.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] aia_ocsp_servers: Optional. Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the "Authority Information Access" extension in the certificate.
-        :param pulumi.Input['CertificateTemplatePredefinedValuesCaOptionsArgs'] ca_options: Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
-        :param pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageArgs'] key_usage: Optional. Indicates the intended use for keys that correspond to a certificate.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesPolicyIdArgs']]] policy_ids: Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        :param pulumi.Input['CertificateTemplatePredefinedValuesCaOptionsArrgs'] ca_options: Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
+        :param pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageArrgs'] key_usage: Optional. Indicates the intended use for keys that correspond to a certificate.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesPolicyIdArrgs']]] policy_ids: Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
         """
         if additional_extensions is not None:
             pulumi.set(__self__, "additional_extensions", additional_extensions)
@@ -5805,14 +5805,14 @@ class CertificateTemplatePredefinedValuesArgs:
 
     @property
     @pulumi.getter(name="additionalExtensions")
-    def additional_extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesAdditionalExtensionArgs']]]]:
+    def additional_extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesAdditionalExtensionArrgs']]]]:
         """
         Optional. Describes custom X.509 extensions.
         """
         return pulumi.get(self, "additional_extensions")
 
     @additional_extensions.setter
-    def additional_extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesAdditionalExtensionArgs']]]]):
+    def additional_extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesAdditionalExtensionArrgs']]]]):
         pulumi.set(self, "additional_extensions", value)
 
     @property
@@ -5829,49 +5829,49 @@ class CertificateTemplatePredefinedValuesArgs:
 
     @property
     @pulumi.getter(name="caOptions")
-    def ca_options(self) -> Optional[pulumi.Input['CertificateTemplatePredefinedValuesCaOptionsArgs']]:
+    def ca_options(self) -> Optional[pulumi.Input['CertificateTemplatePredefinedValuesCaOptionsArrgs']]:
         """
         Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
         """
         return pulumi.get(self, "ca_options")
 
     @ca_options.setter
-    def ca_options(self, value: Optional[pulumi.Input['CertificateTemplatePredefinedValuesCaOptionsArgs']]):
+    def ca_options(self, value: Optional[pulumi.Input['CertificateTemplatePredefinedValuesCaOptionsArrgs']]):
         pulumi.set(self, "ca_options", value)
 
     @property
     @pulumi.getter(name="keyUsage")
-    def key_usage(self) -> Optional[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageArgs']]:
+    def key_usage(self) -> Optional[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageArrgs']]:
         """
         Optional. Indicates the intended use for keys that correspond to a certificate.
         """
         return pulumi.get(self, "key_usage")
 
     @key_usage.setter
-    def key_usage(self, value: Optional[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageArgs']]):
+    def key_usage(self, value: Optional[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageArrgs']]):
         pulumi.set(self, "key_usage", value)
 
     @property
     @pulumi.getter(name="policyIds")
-    def policy_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesPolicyIdArgs']]]]:
+    def policy_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesPolicyIdArrgs']]]]:
         """
         Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
         """
         return pulumi.get(self, "policy_ids")
 
     @policy_ids.setter
-    def policy_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesPolicyIdArgs']]]]):
+    def policy_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesPolicyIdArrgs']]]]):
         pulumi.set(self, "policy_ids", value)
 
 
 @pulumi.input_type
-class CertificateTemplatePredefinedValuesAdditionalExtensionArgs:
+calass CertificateTemplatePredefinedValuesAdditionalExtensionArrgs:
     def __init__(__self__, *,
-                 object_id: pulumi.Input['CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs'],
+                 object_id: pulumi.Input['CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArrgs'],
                  value: pulumi.Input[str],
                  critical: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input['CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs'] object_id: Required. The OID for this X.509 extension.
+        :param pulumi.Input['CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArrgs'] object_id: Required. The OID for this X.509 extension.
         :param pulumi.Input[str] value: Required. The value of this X.509 extension.
         :param pulumi.Input[bool] critical: Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
         """
@@ -5882,14 +5882,14 @@ class CertificateTemplatePredefinedValuesAdditionalExtensionArgs:
 
     @property
     @pulumi.getter(name="objectId")
-    def object_id(self) -> pulumi.Input['CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs']:
+    def object_id(self) -> pulumi.Input['CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArrgs']:
         """
         Required. The OID for this X.509 extension.
         """
         return pulumi.get(self, "object_id")
 
     @object_id.setter
-    def object_id(self, value: pulumi.Input['CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs']):
+    def object_id(self, value: pulumi.Input['CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArrgs']):
         pulumi.set(self, "object_id", value)
 
     @property
@@ -5918,7 +5918,7 @@ class CertificateTemplatePredefinedValuesAdditionalExtensionArgs:
 
 
 @pulumi.input_type
-class CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs:
+calass CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArrgs:
     def __init__(__self__, *,
                  object_id_paths: pulumi.Input[Sequence[pulumi.Input[int]]]):
         """
@@ -5944,7 +5944,7 @@ class CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs:
 
 
 @pulumi.input_type
-class CertificateTemplatePredefinedValuesCaOptionsArgs:
+calass CertificateTemplatePredefinedValuesCaOptionsArrgs:
     def __init__(__self__, *,
                  is_ca: Optional[pulumi.Input[bool]] = None,
                  max_issuer_path_length: Optional[pulumi.Input[int]] = None):
@@ -5983,15 +5983,15 @@ class CertificateTemplatePredefinedValuesCaOptionsArgs:
 
 
 @pulumi.input_type
-class CertificateTemplatePredefinedValuesKeyUsageArgs:
+calass CertificateTemplatePredefinedValuesKeyUsageArrgs:
     def __init__(__self__, *,
-                 base_key_usage: Optional[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs']] = None,
-                 extended_key_usage: Optional[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs']] = None,
-                 unknown_extended_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs']]]] = None):
+                 base_key_usage: Optional[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArrgs']] = None,
+                 extended_key_usage: Optional[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArrgs']] = None,
+                 unknown_extended_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrgs']]]] = None):
         """
-        :param pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs'] base_key_usage: Describes high-level ways in which a key may be used.
-        :param pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs'] extended_key_usage: Detailed scenarios in which a key may be used.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs']]] unknown_extended_key_usages: Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+        :param pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArrgs'] base_key_usage: Describes high-level ways in which a key may be used.
+        :param pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArrgs'] extended_key_usage: Detailed scenarios in which a key may be used.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrgs']]] unknown_extended_key_usages: Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
         """
         if base_key_usage is not None:
             pulumi.set(__self__, "base_key_usage", base_key_usage)
@@ -6002,43 +6002,43 @@ class CertificateTemplatePredefinedValuesKeyUsageArgs:
 
     @property
     @pulumi.getter(name="baseKeyUsage")
-    def base_key_usage(self) -> Optional[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs']]:
+    def base_key_usage(self) -> Optional[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArrgs']]:
         """
         Describes high-level ways in which a key may be used.
         """
         return pulumi.get(self, "base_key_usage")
 
     @base_key_usage.setter
-    def base_key_usage(self, value: Optional[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs']]):
+    def base_key_usage(self, value: Optional[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArrgs']]):
         pulumi.set(self, "base_key_usage", value)
 
     @property
     @pulumi.getter(name="extendedKeyUsage")
-    def extended_key_usage(self) -> Optional[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs']]:
+    def extended_key_usage(self) -> Optional[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArrgs']]:
         """
         Detailed scenarios in which a key may be used.
         """
         return pulumi.get(self, "extended_key_usage")
 
     @extended_key_usage.setter
-    def extended_key_usage(self, value: Optional[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs']]):
+    def extended_key_usage(self, value: Optional[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArrgs']]):
         pulumi.set(self, "extended_key_usage", value)
 
     @property
     @pulumi.getter(name="unknownExtendedKeyUsages")
-    def unknown_extended_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs']]]]:
+    def unknown_extended_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrgs']]]]:
         """
         Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
         """
         return pulumi.get(self, "unknown_extended_key_usages")
 
     @unknown_extended_key_usages.setter
-    def unknown_extended_key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs']]]]):
+    def unknown_extended_key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrgs']]]]):
         pulumi.set(self, "unknown_extended_key_usages", value)
 
 
 @pulumi.input_type
-class CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs:
+calass CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArrgs:
     def __init__(__self__, *,
                  cert_sign: Optional[pulumi.Input[bool]] = None,
                  content_commitment: Optional[pulumi.Input[bool]] = None,
@@ -6189,7 +6189,7 @@ class CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs:
 
 
 @pulumi.input_type
-class CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs:
+calass CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArrgs:
     def __init__(__self__, *,
                  client_auth: Optional[pulumi.Input[bool]] = None,
                  code_signing: Optional[pulumi.Input[bool]] = None,
@@ -6292,7 +6292,7 @@ class CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs:
 
 
 @pulumi.input_type
-class CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs:
+calass CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrgs:
     def __init__(__self__, *,
                  object_id_paths: pulumi.Input[Sequence[pulumi.Input[int]]]):
         """
@@ -6314,7 +6314,7 @@ class CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs:
 
 
 @pulumi.input_type
-class CertificateTemplatePredefinedValuesPolicyIdArgs:
+calass CertificateTemplatePredefinedValuesPolicyIdArrgs:
     def __init__(__self__, *,
                  object_id_paths: pulumi.Input[Sequence[pulumi.Input[int]]]):
         """

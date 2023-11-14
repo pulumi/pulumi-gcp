@@ -11,19 +11,19 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['CertificateArgs', 'Certificate']
+__all__ = ['CertificateArrgs', 'Certificate']
 
 @pulumi.input_type
-class CertificateArgs:
+calass CertificateArrgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 managed: Optional[pulumi.Input['CertificateManagedArgs']] = None,
+                 managed: Optional[pulumi.Input['CertificateManagedArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
-                 self_managed: Optional[pulumi.Input['CertificateSelfManagedArgs']] = None):
+                 self_managed: Optional[pulumi.Input['CertificateSelfManagedArrgs']] = None):
         """
         The set of arguments for constructing a Certificate resource.
         :param pulumi.Input[str] description: A human-readable description of the resource.
@@ -31,7 +31,7 @@ class CertificateArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The Certificate Manager location. If not specified, "global" is used.
-        :param pulumi.Input['CertificateManagedArgs'] managed: Configuration and state of a Managed Certificate.
+        :param pulumi.Input['CertificateManagedArrgs'] managed: Configuration and state of a Managed Certificate.
                Certificate Manager provisions and renews Managed Certificates
                automatically, for as long as it's authorized to do so.
                Structure is documented below.
@@ -50,7 +50,7 @@ class CertificateArgs:
                served from non-core Google data centers.
                ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
                see https://cloud.google.com/compute/docs/regions-zones
-        :param pulumi.Input['CertificateSelfManagedArgs'] self_managed: Certificate data for a SelfManaged Certificate.
+        :param pulumi.Input['CertificateSelfManagedArrgs'] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
                Structure is documented below.
@@ -112,7 +112,7 @@ class CertificateArgs:
 
     @property
     @pulumi.getter
-    def managed(self) -> Optional[pulumi.Input['CertificateManagedArgs']]:
+    def managed(self) -> Optional[pulumi.Input['CertificateManagedArrgs']]:
         """
         Configuration and state of a Managed Certificate.
         Certificate Manager provisions and renews Managed Certificates
@@ -122,7 +122,7 @@ class CertificateArgs:
         return pulumi.get(self, "managed")
 
     @managed.setter
-    def managed(self, value: Optional[pulumi.Input['CertificateManagedArgs']]):
+    def managed(self, value: Optional[pulumi.Input['CertificateManagedArrgs']]):
         pulumi.set(self, "managed", value)
 
     @property
@@ -175,7 +175,7 @@ class CertificateArgs:
 
     @property
     @pulumi.getter(name="selfManaged")
-    def self_managed(self) -> Optional[pulumi.Input['CertificateSelfManagedArgs']]:
+    def self_managed(self) -> Optional[pulumi.Input['CertificateSelfManagedArrgs']]:
         """
         Certificate data for a SelfManaged Certificate.
         SelfManaged Certificates are uploaded by the user. Updating such
@@ -185,23 +185,23 @@ class CertificateArgs:
         return pulumi.get(self, "self_managed")
 
     @self_managed.setter
-    def self_managed(self, value: Optional[pulumi.Input['CertificateSelfManagedArgs']]):
+    def self_managed(self, value: Optional[pulumi.Input['CertificateSelfManagedArrgs']]):
         pulumi.set(self, "self_managed", value)
 
 
 @pulumi.input_type
-class _CertificateState:
+calass _CertificateState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 managed: Optional[pulumi.Input['CertificateManagedArgs']] = None,
+                 managed: Optional[pulumi.Input['CertificateManagedArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
-                 self_managed: Optional[pulumi.Input['CertificateSelfManagedArgs']] = None):
+                 self_managed: Optional[pulumi.Input['CertificateSelfManagedArrgs']] = None):
         """
         Input properties used for looking up and filtering Certificate resources.
         :param pulumi.Input[str] description: A human-readable description of the resource.
@@ -210,7 +210,7 @@ class _CertificateState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The Certificate Manager location. If not specified, "global" is used.
-        :param pulumi.Input['CertificateManagedArgs'] managed: Configuration and state of a Managed Certificate.
+        :param pulumi.Input['CertificateManagedArrgs'] managed: Configuration and state of a Managed Certificate.
                Certificate Manager provisions and renews Managed Certificates
                automatically, for as long as it's authorized to do so.
                Structure is documented below.
@@ -231,7 +231,7 @@ class _CertificateState:
                served from non-core Google data centers.
                ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
                see https://cloud.google.com/compute/docs/regions-zones
-        :param pulumi.Input['CertificateSelfManagedArgs'] self_managed: Certificate data for a SelfManaged Certificate.
+        :param pulumi.Input['CertificateSelfManagedArrgs'] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
                Structure is documented below.
@@ -309,7 +309,7 @@ class _CertificateState:
 
     @property
     @pulumi.getter
-    def managed(self) -> Optional[pulumi.Input['CertificateManagedArgs']]:
+    def managed(self) -> Optional[pulumi.Input['CertificateManagedArrgs']]:
         """
         Configuration and state of a Managed Certificate.
         Certificate Manager provisions and renews Managed Certificates
@@ -319,7 +319,7 @@ class _CertificateState:
         return pulumi.get(self, "managed")
 
     @managed.setter
-    def managed(self, value: Optional[pulumi.Input['CertificateManagedArgs']]):
+    def managed(self, value: Optional[pulumi.Input['CertificateManagedArrgs']]):
         pulumi.set(self, "managed", value)
 
     @property
@@ -385,7 +385,7 @@ class _CertificateState:
 
     @property
     @pulumi.getter(name="selfManaged")
-    def self_managed(self) -> Optional[pulumi.Input['CertificateSelfManagedArgs']]:
+    def self_managed(self) -> Optional[pulumi.Input['CertificateSelfManagedArrgs']]:
         """
         Certificate data for a SelfManaged Certificate.
         SelfManaged Certificates are uploaded by the user. Updating such
@@ -395,11 +395,11 @@ class _CertificateState:
         return pulumi.get(self, "self_managed")
 
     @self_managed.setter
-    def self_managed(self, value: Optional[pulumi.Input['CertificateSelfManagedArgs']]):
+    def self_managed(self, value: Optional[pulumi.Input['CertificateSelfManagedArrgs']]):
         pulumi.set(self, "self_managed", value)
 
 
-class Certificate(pulumi.CustomResource):
+calass Certificate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -407,11 +407,11 @@ class Certificate(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 managed: Optional[pulumi.Input[pulumi.InputType['CertificateManagedArgs']]] = None,
+                 managed: Optional[pulumi.Input[pulumi.InputType['CertificateManagedArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
-                 self_managed: Optional[pulumi.Input[pulumi.InputType['CertificateSelfManagedArgs']]] = None,
+                 self_managed: Optional[pulumi.Input[pulumi.InputType['CertificateSelfManagedArrgs']]] = None,
                  __props__=None):
         """
         Certificate represents a HTTP-reachable backend for a Certificate.
@@ -439,7 +439,7 @@ class Certificate(pulumi.CustomResource):
             labels={
                 "env": "test",
             },
-            managed=gcp.certificatemanager.CertificateManagedArgs(
+            managed=gcp.certificatemanager.CertificateManagedArrgs(
                 domains=[
                     instance.domain,
                     instance2.domain,
@@ -463,32 +463,32 @@ class Certificate(pulumi.CustomResource):
             location="us-central1",
             pool=pool.name,
             certificate_authority_id="ca-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+            config=gcp.certificateauthority.AuthorityConfigArrgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArrgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArrgs(
                         organization="HashiCorp",
                         common_name="my-certificate-authority",
                     ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArrgs(
                         dns_names=["hashicorp.com"],
                     ),
                 ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArrgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArrgs(
                         is_ca=True,
                     ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArrgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrgs(
                             cert_sign=True,
                             crl_sign=True,
                         ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrgs(
                             server_auth=True,
                         ),
                     ),
                 ),
             ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArrgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
             ),
             deletion_protection=False,
@@ -497,8 +497,8 @@ class Certificate(pulumi.CustomResource):
         # creating certificate_issuance_config to use it in the managed certificate
         issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
             description="sample description for the certificate issuanceConfigs",
-            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
-                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
+            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArrgs(
+                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArrgs(
                     ca_pool=pool.id,
                 ),
             ),
@@ -509,7 +509,7 @@ class Certificate(pulumi.CustomResource):
         default = gcp.certificatemanager.Certificate("default",
             description="The default cert",
             scope="EDGE_CACHE",
-            managed=gcp.certificatemanager.CertificateManagedArgs(
+            managed=gcp.certificatemanager.CertificateManagedArrgs(
                 domains=["terraform.subdomain1.com"],
                 issuance_config=issuanceconfig.id,
             ))
@@ -529,7 +529,7 @@ class Certificate(pulumi.CustomResource):
         default = gcp.certificatemanager.Certificate("default",
             description="Global cert",
             scope="EDGE_CACHE",
-            managed=gcp.certificatemanager.CertificateManagedArgs(
+            managed=gcp.certificatemanager.CertificateManagedArrgs(
                 domains=[
                     instance.domain,
                     instance2.domain,
@@ -549,7 +549,7 @@ class Certificate(pulumi.CustomResource):
         default = gcp.certificatemanager.Certificate("default",
             description="Regional cert",
             location="us-central1",
-            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
+            self_managed=gcp.certificatemanager.CertificateSelfManagedArrgs(
                 pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
                 pem_private_key=(lambda path: open(path).read())("test-fixtures/private-key.pem"),
             ))
@@ -578,7 +578,7 @@ class Certificate(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The Certificate Manager location. If not specified, "global" is used.
-        :param pulumi.Input[pulumi.InputType['CertificateManagedArgs']] managed: Configuration and state of a Managed Certificate.
+        :param pulumi.Input[pulumi.InputType['CertificateManagedArrgs']] managed: Configuration and state of a Managed Certificate.
                Certificate Manager provisions and renews Managed Certificates
                automatically, for as long as it's authorized to do so.
                Structure is documented below.
@@ -597,7 +597,7 @@ class Certificate(pulumi.CustomResource):
                served from non-core Google data centers.
                ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
                see https://cloud.google.com/compute/docs/regions-zones
-        :param pulumi.Input[pulumi.InputType['CertificateSelfManagedArgs']] self_managed: Certificate data for a SelfManaged Certificate.
+        :param pulumi.Input[pulumi.InputType['CertificateSelfManagedArrgs']] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
                Structure is documented below.
@@ -606,7 +606,7 @@ class Certificate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[CertificateArgs] = None,
+                 args: Optional[CertificateArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Certificate represents a HTTP-reachable backend for a Certificate.
@@ -634,7 +634,7 @@ class Certificate(pulumi.CustomResource):
             labels={
                 "env": "test",
             },
-            managed=gcp.certificatemanager.CertificateManagedArgs(
+            managed=gcp.certificatemanager.CertificateManagedArrgs(
                 domains=[
                     instance.domain,
                     instance2.domain,
@@ -658,32 +658,32 @@ class Certificate(pulumi.CustomResource):
             location="us-central1",
             pool=pool.name,
             certificate_authority_id="ca-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+            config=gcp.certificateauthority.AuthorityConfigArrgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArrgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArrgs(
                         organization="HashiCorp",
                         common_name="my-certificate-authority",
                     ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArrgs(
                         dns_names=["hashicorp.com"],
                     ),
                 ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArrgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArrgs(
                         is_ca=True,
                     ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArrgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrgs(
                             cert_sign=True,
                             crl_sign=True,
                         ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrgs(
                             server_auth=True,
                         ),
                     ),
                 ),
             ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArrgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
             ),
             deletion_protection=False,
@@ -692,8 +692,8 @@ class Certificate(pulumi.CustomResource):
         # creating certificate_issuance_config to use it in the managed certificate
         issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
             description="sample description for the certificate issuanceConfigs",
-            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
-                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
+            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArrgs(
+                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArrgs(
                     ca_pool=pool.id,
                 ),
             ),
@@ -704,7 +704,7 @@ class Certificate(pulumi.CustomResource):
         default = gcp.certificatemanager.Certificate("default",
             description="The default cert",
             scope="EDGE_CACHE",
-            managed=gcp.certificatemanager.CertificateManagedArgs(
+            managed=gcp.certificatemanager.CertificateManagedArrgs(
                 domains=["terraform.subdomain1.com"],
                 issuance_config=issuanceconfig.id,
             ))
@@ -724,7 +724,7 @@ class Certificate(pulumi.CustomResource):
         default = gcp.certificatemanager.Certificate("default",
             description="Global cert",
             scope="EDGE_CACHE",
-            managed=gcp.certificatemanager.CertificateManagedArgs(
+            managed=gcp.certificatemanager.CertificateManagedArrgs(
                 domains=[
                     instance.domain,
                     instance2.domain,
@@ -744,7 +744,7 @@ class Certificate(pulumi.CustomResource):
         default = gcp.certificatemanager.Certificate("default",
             description="Regional cert",
             location="us-central1",
-            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
+            self_managed=gcp.certificatemanager.CertificateSelfManagedArrgs(
                 pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
                 pem_private_key=(lambda path: open(path).read())("test-fixtures/private-key.pem"),
             ))
@@ -767,12 +767,12 @@ class Certificate(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param CertificateArgs args: The arguments to use to populate this resource's properties.
+        :param CertificateArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(CertificateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(CertificateArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -784,11 +784,11 @@ class Certificate(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 managed: Optional[pulumi.Input[pulumi.InputType['CertificateManagedArgs']]] = None,
+                 managed: Optional[pulumi.Input[pulumi.InputType['CertificateManagedArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
-                 self_managed: Optional[pulumi.Input[pulumi.InputType['CertificateSelfManagedArgs']]] = None,
+                 self_managed: Optional[pulumi.Input[pulumi.InputType['CertificateSelfManagedArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -796,7 +796,7 @@ class Certificate(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = CertificateArgs.__new__(CertificateArgs)
+            __props__ = CertificateArrgs.__new__(CertificateArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
@@ -824,12 +824,12 @@ class Certificate(pulumi.CustomResource):
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            managed: Optional[pulumi.Input[pulumi.InputType['CertificateManagedArgs']]] = None,
+            managed: Optional[pulumi.Input[pulumi.InputType['CertificateManagedArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             scope: Optional[pulumi.Input[str]] = None,
-            self_managed: Optional[pulumi.Input[pulumi.InputType['CertificateSelfManagedArgs']]] = None) -> 'Certificate':
+            self_managed: Optional[pulumi.Input[pulumi.InputType['CertificateSelfManagedArrgs']]] = None) -> 'Certificate':
         """
         Get an existing Certificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -843,7 +843,7 @@ class Certificate(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The Certificate Manager location. If not specified, "global" is used.
-        :param pulumi.Input[pulumi.InputType['CertificateManagedArgs']] managed: Configuration and state of a Managed Certificate.
+        :param pulumi.Input[pulumi.InputType['CertificateManagedArrgs']] managed: Configuration and state of a Managed Certificate.
                Certificate Manager provisions and renews Managed Certificates
                automatically, for as long as it's authorized to do so.
                Structure is documented below.
@@ -864,7 +864,7 @@ class Certificate(pulumi.CustomResource):
                served from non-core Google data centers.
                ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
                see https://cloud.google.com/compute/docs/regions-zones
-        :param pulumi.Input[pulumi.InputType['CertificateSelfManagedArgs']] self_managed: Certificate data for a SelfManaged Certificate.
+        :param pulumi.Input[pulumi.InputType['CertificateSelfManagedArrgs']] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
                Structure is documented below.

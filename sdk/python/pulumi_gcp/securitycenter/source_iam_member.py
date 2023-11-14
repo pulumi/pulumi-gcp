@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['SourceIamMemberArgs', 'SourceIamMember']
+__all__ = ['SourceIamMemberArrgs', 'SourceIamMember']
 
 @pulumi.input_type
-class SourceIamMemberArgs:
+calass SourceIamMemberArrgs:
     def __init__(__self__, *,
                  member: pulumi.Input[str],
                  organization: pulumi.Input[str],
                  role: pulumi.Input[str],
                  source: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['SourceIamMemberConditionArgs']] = None):
+                 condition: Optional[pulumi.Input['SourceIamMemberConditionArrgs']] = None):
         """
         The set of arguments for constructing a SourceIamMember resource.
         :param pulumi.Input[str] organization: The organization whose Cloud Security Command Center the Source
@@ -81,18 +81,18 @@ class SourceIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['SourceIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['SourceIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['SourceIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['SourceIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
-class _SourceIamMemberState:
+calass _SourceIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['SourceIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['SourceIamMemberConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  organization: Optional[pulumi.Input[str]] = None,
@@ -121,11 +121,11 @@ class _SourceIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['SourceIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['SourceIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['SourceIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['SourceIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -181,12 +181,12 @@ class _SourceIamMemberState:
         pulumi.set(self, "source", value)
 
 
-class SourceIamMember(pulumi.CustomResource):
+calass SourceIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['SourceIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['SourceIamMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  organization: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -241,7 +241,7 @@ class SourceIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SourceIamMemberArgs,
+                 args: SourceIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Cloud Security Command Center's (Cloud SCC) finding source. A finding
@@ -281,12 +281,12 @@ class SourceIamMember(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param SourceIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param SourceIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SourceIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SourceIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -295,7 +295,7 @@ class SourceIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['SourceIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['SourceIamMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  organization: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -307,7 +307,7 @@ class SourceIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SourceIamMemberArgs.__new__(SourceIamMemberArgs)
+            __props__ = SourceIamMemberArrgs.__new__(SourceIamMemberArrgs)
 
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
@@ -333,7 +333,7 @@ class SourceIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['SourceIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['SourceIamMemberConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
             organization: Optional[pulumi.Input[str]] = None,

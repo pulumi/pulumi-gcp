@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['SourceIamBindingArgs', 'SourceIamBinding']
+__all__ = ['SourceIamBindingArrgs', 'SourceIamBinding']
 
 @pulumi.input_type
-class SourceIamBindingArgs:
+calass SourceIamBindingArrgs:
     def __init__(__self__, *,
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  organization: pulumi.Input[str],
                  role: pulumi.Input[str],
                  source: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['SourceIamBindingConditionArgs']] = None):
+                 condition: Optional[pulumi.Input['SourceIamBindingConditionArrgs']] = None):
         """
         The set of arguments for constructing a SourceIamBinding resource.
         :param pulumi.Input[str] organization: The organization whose Cloud Security Command Center the Source
@@ -81,18 +81,18 @@ class SourceIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['SourceIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['SourceIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['SourceIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['SourceIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
-class _SourceIamBindingState:
+calass _SourceIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['SourceIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['SourceIamBindingConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  organization: Optional[pulumi.Input[str]] = None,
@@ -121,11 +121,11 @@ class _SourceIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['SourceIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['SourceIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['SourceIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['SourceIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -181,12 +181,12 @@ class _SourceIamBindingState:
         pulumi.set(self, "source", value)
 
 
-class SourceIamBinding(pulumi.CustomResource):
+calass SourceIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['SourceIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['SourceIamBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  organization: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -241,7 +241,7 @@ class SourceIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SourceIamBindingArgs,
+                 args: SourceIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Cloud Security Command Center's (Cloud SCC) finding source. A finding
@@ -281,12 +281,12 @@ class SourceIamBinding(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param SourceIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param SourceIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SourceIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SourceIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -295,7 +295,7 @@ class SourceIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['SourceIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['SourceIamBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  organization: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -307,7 +307,7 @@ class SourceIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SourceIamBindingArgs.__new__(SourceIamBindingArgs)
+            __props__ = SourceIamBindingArrgs.__new__(SourceIamBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
@@ -333,7 +333,7 @@ class SourceIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['SourceIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['SourceIamBindingConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             organization: Optional[pulumi.Input[str]] = None,

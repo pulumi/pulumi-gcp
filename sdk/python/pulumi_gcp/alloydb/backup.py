@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['BackupArgs', 'Backup']
+__all__ = ['BackupArrgs', 'Backup']
 
 @pulumi.input_type
-class BackupArgs:
+calass BackupArrgs:
     def __init__(__self__, *,
                  backup_id: pulumi.Input[str],
                  cluster_name: pulumi.Input[str],
@@ -22,7 +22,7 @@ class BackupArgs:
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_config: Optional[pulumi.Input['BackupEncryptionConfigArgs']] = None,
+                 encryption_config: Optional[pulumi.Input['BackupEncryptionConfigArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
@@ -41,7 +41,7 @@ class BackupArgs:
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] description: User-provided description of the backup.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Backup.
-        :param pulumi.Input['BackupEncryptionConfigArgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        :param pulumi.Input['BackupEncryptionConfigArrgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
@@ -151,7 +151,7 @@ class BackupArgs:
 
     @property
     @pulumi.getter(name="encryptionConfig")
-    def encryption_config(self) -> Optional[pulumi.Input['BackupEncryptionConfigArgs']]:
+    def encryption_config(self) -> Optional[pulumi.Input['BackupEncryptionConfigArrgs']]:
         """
         EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
         Structure is documented below.
@@ -159,7 +159,7 @@ class BackupArgs:
         return pulumi.get(self, "encryption_config")
 
     @encryption_config.setter
-    def encryption_config(self, value: Optional[pulumi.Input['BackupEncryptionConfigArgs']]):
+    def encryption_config(self, value: Optional[pulumi.Input['BackupEncryptionConfigArrgs']]):
         pulumi.set(self, "encryption_config", value)
 
     @property
@@ -205,7 +205,7 @@ class BackupArgs:
 
 
 @pulumi.input_type
-class _BackupState:
+calass _BackupState:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  backup_id: Optional[pulumi.Input[str]] = None,
@@ -217,10 +217,10 @@ class _BackupState:
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 encryption_config: Optional[pulumi.Input['BackupEncryptionConfigArgs']] = None,
-                 encryption_infos: Optional[pulumi.Input[Sequence[pulumi.Input['BackupEncryptionInfoArgs']]]] = None,
+                 encryption_config: Optional[pulumi.Input['BackupEncryptionConfigArrgs']] = None,
+                 encryption_infos: Optional[pulumi.Input[Sequence[pulumi.Input['BackupEncryptionInfoArrgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 expiry_quantities: Optional[pulumi.Input[Sequence[pulumi.Input['BackupExpiryQuantityArgs']]]] = None,
+                 expiry_quantities: Optional[pulumi.Input[Sequence[pulumi.Input['BackupExpiryQuantityArrgs']]]] = None,
                  expiry_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -252,12 +252,12 @@ class _BackupState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
                Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input['BackupEncryptionConfigArgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        :param pulumi.Input['BackupEncryptionConfigArrgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['BackupEncryptionInfoArgs']]] encryption_infos: EncryptionInfo describes the encryption information of a cluster or a backup.
+        :param pulumi.Input[Sequence[pulumi.Input['BackupEncryptionInfoArrgs']]] encryption_infos: EncryptionInfo describes the encryption information of a cluster or a backup.
                Structure is documented below.
         :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
-        :param pulumi.Input[Sequence[pulumi.Input['BackupExpiryQuantityArgs']]] expiry_quantities: Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
+        :param pulumi.Input[Sequence[pulumi.Input['BackupExpiryQuantityArrgs']]] expiry_quantities: Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
                Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
                Structure is documented below.
         :param pulumi.Input[str] expiry_time: Output only. The time at which after the backup is eligible to be garbage collected.
@@ -467,7 +467,7 @@ class _BackupState:
 
     @property
     @pulumi.getter(name="encryptionConfig")
-    def encryption_config(self) -> Optional[pulumi.Input['BackupEncryptionConfigArgs']]:
+    def encryption_config(self) -> Optional[pulumi.Input['BackupEncryptionConfigArrgs']]:
         """
         EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
         Structure is documented below.
@@ -475,12 +475,12 @@ class _BackupState:
         return pulumi.get(self, "encryption_config")
 
     @encryption_config.setter
-    def encryption_config(self, value: Optional[pulumi.Input['BackupEncryptionConfigArgs']]):
+    def encryption_config(self, value: Optional[pulumi.Input['BackupEncryptionConfigArrgs']]):
         pulumi.set(self, "encryption_config", value)
 
     @property
     @pulumi.getter(name="encryptionInfos")
-    def encryption_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackupEncryptionInfoArgs']]]]:
+    def encryption_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackupEncryptionInfoArrgs']]]]:
         """
         EncryptionInfo describes the encryption information of a cluster or a backup.
         Structure is documented below.
@@ -488,7 +488,7 @@ class _BackupState:
         return pulumi.get(self, "encryption_infos")
 
     @encryption_infos.setter
-    def encryption_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackupEncryptionInfoArgs']]]]):
+    def encryption_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackupEncryptionInfoArrgs']]]]):
         pulumi.set(self, "encryption_infos", value)
 
     @property
@@ -505,7 +505,7 @@ class _BackupState:
 
     @property
     @pulumi.getter(name="expiryQuantities")
-    def expiry_quantities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackupExpiryQuantityArgs']]]]:
+    def expiry_quantities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackupExpiryQuantityArrgs']]]]:
         """
         Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
         Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
@@ -514,7 +514,7 @@ class _BackupState:
         return pulumi.get(self, "expiry_quantities")
 
     @expiry_quantities.setter
-    def expiry_quantities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackupExpiryQuantityArgs']]]]):
+    def expiry_quantities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackupExpiryQuantityArrgs']]]]):
         pulumi.set(self, "expiry_quantities", value)
 
     @property
@@ -674,7 +674,7 @@ class _BackupState:
         pulumi.set(self, "update_time", value)
 
 
-class Backup(pulumi.CustomResource):
+calass Backup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -684,7 +684,7 @@ class Backup(pulumi.CustomResource):
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_config: Optional[pulumi.Input[pulumi.InputType['BackupEncryptionConfigArgs']]] = None,
+                 encryption_config: Optional[pulumi.Input[pulumi.InputType['BackupEncryptionConfigArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -795,7 +795,7 @@ class Backup(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_name: The full resource name of the backup source cluster (e.g., projects/{project}/locations/{location}/clusters/{clusterId}).
         :param pulumi.Input[str] description: User-provided description of the backup.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Backup.
-        :param pulumi.Input[pulumi.InputType['BackupEncryptionConfigArgs']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        :param pulumi.Input[pulumi.InputType['BackupEncryptionConfigArrgs']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
@@ -814,7 +814,7 @@ class Backup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: BackupArgs,
+                 args: BackupArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An AlloyDB Backup.
@@ -911,12 +911,12 @@ class Backup(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param BackupArgs args: The arguments to use to populate this resource's properties.
+        :param BackupArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(BackupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(BackupArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -930,7 +930,7 @@ class Backup(pulumi.CustomResource):
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_config: Optional[pulumi.Input[pulumi.InputType['BackupEncryptionConfigArgs']]] = None,
+                 encryption_config: Optional[pulumi.Input[pulumi.InputType['BackupEncryptionConfigArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -942,7 +942,7 @@ class Backup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = BackupArgs.__new__(BackupArgs)
+            __props__ = BackupArrgs.__new__(BackupArrgs)
 
             __props__.__dict__["annotations"] = annotations
             if backup_id is None and not opts.urn:
@@ -998,10 +998,10 @@ class Backup(pulumi.CustomResource):
             display_name: Optional[pulumi.Input[str]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            encryption_config: Optional[pulumi.Input[pulumi.InputType['BackupEncryptionConfigArgs']]] = None,
-            encryption_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackupEncryptionInfoArgs']]]]] = None,
+            encryption_config: Optional[pulumi.Input[pulumi.InputType['BackupEncryptionConfigArrgs']]] = None,
+            encryption_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackupEncryptionInfoArrgs']]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
-            expiry_quantities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackupExpiryQuantityArgs']]]]] = None,
+            expiry_quantities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackupExpiryQuantityArrgs']]]]] = None,
             expiry_time: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -1038,12 +1038,12 @@ class Backup(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
                Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['BackupEncryptionConfigArgs']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        :param pulumi.Input[pulumi.InputType['BackupEncryptionConfigArrgs']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackupEncryptionInfoArgs']]]] encryption_infos: EncryptionInfo describes the encryption information of a cluster or a backup.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackupEncryptionInfoArrgs']]]] encryption_infos: EncryptionInfo describes the encryption information of a cluster or a backup.
                Structure is documented below.
         :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackupExpiryQuantityArgs']]]] expiry_quantities: Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackupExpiryQuantityArrgs']]]] expiry_quantities: Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
                Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
                Structure is documented below.
         :param pulumi.Input[str] expiry_time: Output only. The time at which after the backup is eligible to be garbage collected.

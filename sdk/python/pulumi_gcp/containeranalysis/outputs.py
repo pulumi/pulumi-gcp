@@ -21,11 +21,11 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class NoteAttestationAuthority(dict):
+calass NoteAttestationAuthority(dict):
     def __init__(__self__, *,
                  hint: 'outputs.NoteAttestationAuthorityHint'):
         """
-        :param 'NoteAttestationAuthorityHintArgs' hint: This submessage provides human-readable hints about the purpose of
+        :param 'NoteAttestationAuthorityHintArrgs' hint: This submessage provides human-readable hints about the purpose of
                the AttestationAuthority. Because the name of a Note acts as its
                resource reference, it is important to disambiguate the canonical
                name of the Note (which might be a UUID for security purposes)
@@ -55,7 +55,7 @@ class NoteAttestationAuthority(dict):
 
 
 @pulumi.output_type
-class NoteAttestationAuthorityHint(dict):
+calass NoteAttestationAuthorityHint(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -96,7 +96,7 @@ class NoteAttestationAuthorityHint(dict):
 
 
 @pulumi.output_type
-class NoteIamBindingCondition(dict):
+calass NoteIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -123,7 +123,7 @@ class NoteIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class NoteIamMemberCondition(dict):
+calass NoteIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -150,7 +150,7 @@ class NoteIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class NoteRelatedUrl(dict):
+calass NoteRelatedUrl(dict):
     def __init__(__self__, *,
                  url: str,
                  label: Optional[str] = None):
@@ -180,7 +180,7 @@ class NoteRelatedUrl(dict):
 
 
 @pulumi.output_type
-class OccurenceAttestation(dict):
+calass OccurenceAttestation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -204,7 +204,7 @@ class OccurenceAttestation(dict):
         """
         :param str serialized_payload: The serialized payload that is verified by one or
                more signatures. A base64-encoded string.
-        :param Sequence['OccurenceAttestationSignatureArgs'] signatures: One or more signatures over serializedPayload.
+        :param Sequence['OccurenceAttestationSignatureArrgs'] signatures: One or more signatures over serializedPayload.
                Verifier implementations should consider this attestation
                message verified if at least one signature verifies
                serializedPayload. See Signature in common.proto for more
@@ -238,7 +238,7 @@ class OccurenceAttestation(dict):
 
 
 @pulumi.output_type
-class OccurenceAttestationSignature(dict):
+calass OccurenceAttestationSignature(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

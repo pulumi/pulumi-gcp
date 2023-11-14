@@ -33,7 +33,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinition(dict):
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinition(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -101,26 +101,26 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinition(dict):
                  timestamp_type_options: Optional['outputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptions'] = None):
         """
         :param str name: The name of the metadata property.
-        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs' date_time_type_options: Date time property. Not supported by CMEK compliant deployment.
+        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArrgs' date_time_type_options: Date time property. Not supported by CMEK compliant deployment.
         :param str display_name: The display-name for the property, used for front-end.
-        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs' enum_type_options: Enum/categorical property.
+        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArrgs' enum_type_options: Enum/categorical property.
                Structure is documented below.
-        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgs' float_type_options: Float property.
-        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgs' integer_type_options: Integer property.
+        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArrgs' float_type_options: Float property.
+        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArrgs' integer_type_options: Integer property.
         :param bool is_filterable: Whether the property can be filtered. If this is a sub-property, all the parent properties must be marked filterable.
         :param bool is_metadata: Whether the property is user supplied metadata.
         :param bool is_repeatable: Whether the property can have multiple values.
         :param bool is_required: Whether the property is mandatory.
         :param bool is_searchable: Indicates that the property should be included in a global search.
-        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgs' map_type_options: Map property.
-        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs' property_type_options: Nested structured data property.
+        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArrgs' map_type_options: Map property.
+        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArrgs' property_type_options: Nested structured data property.
                Structure is documented below.
         :param str retrieval_importance: Stores the retrieval importance.
                Possible values are: `HIGHEST`, `HIGHER`, `HIGH`, `MEDIUM`, `LOW`, `LOWEST`.
-        :param Sequence['DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs'] schema_sources: The schema source information.
+        :param Sequence['DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrgs'] schema_sources: The schema source information.
                Structure is documented below.
-        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs' text_type_options: Text property.
-        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgs' timestamp_type_options: Timestamp property. Not supported by CMEK compliant deployment.
+        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArrgs' text_type_options: Text property.
+        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArrgs' timestamp_type_options: Timestamp property. Not supported by CMEK compliant deployment.
         """
         pulumi.set(__self__, "name", name)
         if date_time_type_options is not None:
@@ -298,13 +298,13 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinition(dict):
 
 
 @pulumi.output_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptions(dict):
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptions(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions(dict):
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -357,25 +357,25 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions(dict):
 
 
 @pulumi.output_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptions(dict):
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptions(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptions(dict):
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptions(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptions(dict):
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptions(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions(dict):
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -396,7 +396,7 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions(dic
     def __init__(__self__, *,
                  property_definitions: Sequence['outputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition']):
         """
-        :param Sequence['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArgs'] property_definitions: Defines the metadata for a schema property.
+        :param Sequence['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArrgs'] property_definitions: Defines the metadata for a schema property.
                Structure is documented below.
         """
         pulumi.set(__self__, "property_definitions", property_definitions)
@@ -412,7 +412,7 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions(dic
 
 
 @pulumi.output_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition(dict):
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -477,24 +477,24 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
                  timestamp_type_options: Optional['outputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptions'] = None):
         """
         :param str name: The name of the metadata property.
-        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArgs' date_time_type_options: Date time property. Not supported by CMEK compliant deployment.
+        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArrgs' date_time_type_options: Date time property. Not supported by CMEK compliant deployment.
         :param str display_name: The display-name for the property, used for front-end.
-        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArgs' enum_type_options: Enum/categorical property.
+        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArrgs' enum_type_options: Enum/categorical property.
                Structure is documented below.
-        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsArgs' float_type_options: Float property.
-        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArgs' integer_type_options: Integer property.
+        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsArrgs' float_type_options: Float property.
+        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArrgs' integer_type_options: Integer property.
         :param bool is_filterable: Whether the property can be filtered. If this is a sub-property, all the parent properties must be marked filterable.
         :param bool is_metadata: Whether the property is user supplied metadata.
         :param bool is_repeatable: Whether the property can have multiple values.
         :param bool is_required: Whether the property is mandatory.
         :param bool is_searchable: Indicates that the property should be included in a global search.
-        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArgs' map_type_options: Map property.
+        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArrgs' map_type_options: Map property.
         :param str retrieval_importance: Stores the retrieval importance.
                Possible values are: `HIGHEST`, `HIGHER`, `HIGH`, `MEDIUM`, `LOW`, `LOWEST`.
-        :param Sequence['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs'] schema_sources: The schema source information.
+        :param Sequence['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArrgs'] schema_sources: The schema source information.
                Structure is documented below.
-        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArgs' text_type_options: Text property.
-        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArgs' timestamp_type_options: Timestamp property. Not supported by CMEK compliant deployment.
+        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArrgs' text_type_options: Text property.
+        :param 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArrgs' timestamp_type_options: Timestamp property. Not supported by CMEK compliant deployment.
         """
         pulumi.set(__self__, "name", name)
         if date_time_type_options is not None:
@@ -661,13 +661,13 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
 
 
 @pulumi.output_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptions(dict):
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptions(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions(dict):
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -720,25 +720,25 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
 
 
 @pulumi.output_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptions(dict):
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptions(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptions(dict):
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptions(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptions(dict):
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptions(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource(dict):
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -786,19 +786,19 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
 
 
 @pulumi.output_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptions(dict):
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptions(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptions(dict):
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptions(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource(dict):
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -846,13 +846,13 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource(dict):
 
 
 @pulumi.output_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptions(dict):
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptions(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptions(dict):
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptions(dict):
     def __init__(__self__):
         pass
 

@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetTransferProjectServiceAccountResult:
+calass GetTransferProjectServiceAccountResult:
     """
     A collection of values returned by getTransferProjectServiceAccount.
     """
@@ -76,7 +76,7 @@ class GetTransferProjectServiceAccountResult:
         return pulumi.get(self, "subject_id")
 
 
-class AwaitableGetTransferProjectServiceAccountResult(GetTransferProjectServiceAccountResult):
+calass AwaitableGetTransferProjectServiceAccountResult(GetTransferProjectServiceAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

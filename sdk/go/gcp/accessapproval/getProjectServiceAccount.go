@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the email address of a project's Access Approval service account.
@@ -120,12 +119,6 @@ func (o GetProjectServiceAccountResultOutput) ToGetProjectServiceAccountResultOu
 
 func (o GetProjectServiceAccountResultOutput) ToGetProjectServiceAccountResultOutputWithContext(ctx context.Context) GetProjectServiceAccountResultOutput {
 	return o
-}
-
-func (o GetProjectServiceAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectServiceAccountResult] {
-	return pulumix.Output[GetProjectServiceAccountResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The email address of the service account. This value is

@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class DatabaseEncryptionConfig(dict):
+calass DatabaseEncryptionConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -55,7 +55,7 @@ class DatabaseEncryptionConfig(dict):
 
 
 @pulumi.output_type
-class DatabaseIAMBindingCondition(dict):
+calass DatabaseIAMBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -82,7 +82,7 @@ class DatabaseIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class DatabaseIAMMemberCondition(dict):
+calass DatabaseIAMMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -109,7 +109,7 @@ class DatabaseIAMMemberCondition(dict):
 
 
 @pulumi.output_type
-class InstanceIAMBindingCondition(dict):
+calass InstanceIAMBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -136,7 +136,7 @@ class InstanceIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class InstanceIAMMemberCondition(dict):
+calass InstanceIAMMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,

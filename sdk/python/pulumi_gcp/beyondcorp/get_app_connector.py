@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetAppConnectorResult:
+calass GetAppConnectorResult:
     """
     A collection of values returned by getAppConnector.
     """
@@ -108,7 +108,7 @@ class GetAppConnectorResult:
         return pulumi.get(self, "state")
 
 
-class AwaitableGetAppConnectorResult(GetAppConnectorResult):
+calass AwaitableGetAppConnectorResult(GetAppConnectorResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

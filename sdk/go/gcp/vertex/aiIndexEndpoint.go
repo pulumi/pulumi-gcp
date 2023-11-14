@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An endpoint indexes are deployed into. An index endpoint can have multiple deployed indexes.
@@ -383,12 +382,6 @@ func (i *AiIndexEndpoint) ToAiIndexEndpointOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointOutput)
 }
 
-func (i *AiIndexEndpoint) ToOutput(ctx context.Context) pulumix.Output[*AiIndexEndpoint] {
-	return pulumix.Output[*AiIndexEndpoint]{
-		OutputState: i.ToAiIndexEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AiIndexEndpointArrayInput is an input type that accepts AiIndexEndpointArray and AiIndexEndpointArrayOutput values.
 // You can construct a concrete instance of `AiIndexEndpointArrayInput` via:
 //
@@ -412,12 +405,6 @@ func (i AiIndexEndpointArray) ToAiIndexEndpointArrayOutput() AiIndexEndpointArra
 
 func (i AiIndexEndpointArray) ToAiIndexEndpointArrayOutputWithContext(ctx context.Context) AiIndexEndpointArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointArrayOutput)
-}
-
-func (i AiIndexEndpointArray) ToOutput(ctx context.Context) pulumix.Output[[]*AiIndexEndpoint] {
-	return pulumix.Output[[]*AiIndexEndpoint]{
-		OutputState: i.ToAiIndexEndpointArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AiIndexEndpointMapInput is an input type that accepts AiIndexEndpointMap and AiIndexEndpointMapOutput values.
@@ -445,12 +432,6 @@ func (i AiIndexEndpointMap) ToAiIndexEndpointMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointMapOutput)
 }
 
-func (i AiIndexEndpointMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AiIndexEndpoint] {
-	return pulumix.Output[map[string]*AiIndexEndpoint]{
-		OutputState: i.ToAiIndexEndpointMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiIndexEndpointOutput struct{ *pulumi.OutputState }
 
 func (AiIndexEndpointOutput) ElementType() reflect.Type {
@@ -463,12 +444,6 @@ func (o AiIndexEndpointOutput) ToAiIndexEndpointOutput() AiIndexEndpointOutput {
 
 func (o AiIndexEndpointOutput) ToAiIndexEndpointOutputWithContext(ctx context.Context) AiIndexEndpointOutput {
 	return o
-}
-
-func (o AiIndexEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[*AiIndexEndpoint] {
-	return pulumix.Output[*AiIndexEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -564,12 +539,6 @@ func (o AiIndexEndpointArrayOutput) ToAiIndexEndpointArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o AiIndexEndpointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AiIndexEndpoint] {
-	return pulumix.Output[[]*AiIndexEndpoint]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AiIndexEndpointArrayOutput) Index(i pulumi.IntInput) AiIndexEndpointOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AiIndexEndpoint {
 		return vs[0].([]*AiIndexEndpoint)[vs[1].(int)]
@@ -588,12 +557,6 @@ func (o AiIndexEndpointMapOutput) ToAiIndexEndpointMapOutput() AiIndexEndpointMa
 
 func (o AiIndexEndpointMapOutput) ToAiIndexEndpointMapOutputWithContext(ctx context.Context) AiIndexEndpointMapOutput {
 	return o
-}
-
-func (o AiIndexEndpointMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AiIndexEndpoint] {
-	return pulumix.Output[map[string]*AiIndexEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiIndexEndpointMapOutput) MapIndex(k pulumi.StringInput) AiIndexEndpointOutput {

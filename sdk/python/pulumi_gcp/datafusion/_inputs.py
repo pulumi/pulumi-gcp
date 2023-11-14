@@ -10,14 +10,14 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'InstanceAcceleratorArgs',
-    'InstanceCryptoKeyConfigArgs',
-    'InstanceEventPublishConfigArgs',
-    'InstanceNetworkConfigArgs',
+    'InstanceAcceleratorArrgs',
+    'InstanceCryptoKeyConfigArrgs',
+    'InstanceEventPublishConfigArrgs',
+    'InstanceNetworkConfigArrgs',
 ]
 
 @pulumi.input_type
-class InstanceAcceleratorArgs:
+calass InstanceAcceleratorArrgs:
     def __init__(__self__, *,
                  accelerator_type: pulumi.Input[str],
                  state: pulumi.Input[str]):
@@ -58,7 +58,7 @@ class InstanceAcceleratorArgs:
 
 
 @pulumi.input_type
-class InstanceCryptoKeyConfigArgs:
+calass InstanceCryptoKeyConfigArrgs:
     def __init__(__self__, *,
                  key_reference: pulumi.Input[str]):
         """
@@ -80,7 +80,7 @@ class InstanceCryptoKeyConfigArgs:
 
 
 @pulumi.input_type
-class InstanceEventPublishConfigArgs:
+calass InstanceEventPublishConfigArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
                  topic: pulumi.Input[str]):
@@ -117,7 +117,7 @@ class InstanceEventPublishConfigArgs:
 
 
 @pulumi.input_type
-class InstanceNetworkConfigArgs:
+calass InstanceNetworkConfigArrgs:
     def __init__(__self__, *,
                  ip_allocation: pulumi.Input[str],
                  network: pulumi.Input[str]):

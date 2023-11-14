@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetKMSKeyRingResult:
+calass GetKMSKeyRingResult:
     """
     A collection of values returned by getKMSKeyRing.
     """
@@ -59,7 +59,7 @@ class GetKMSKeyRingResult:
         return pulumi.get(self, "project")
 
 
-class AwaitableGetKMSKeyRingResult(GetKMSKeyRingResult):
+calass AwaitableGetKMSKeyRingResult(GetKMSKeyRingResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetClusterIstioServiceResult:
+calass GetClusterIstioServiceResult:
     """
     A collection of values returned by getClusterIstioService.
     """
@@ -126,7 +126,7 @@ class GetClusterIstioServiceResult:
         return pulumi.get(self, "user_labels")
 
 
-class AwaitableGetClusterIstioServiceResult(GetClusterIstioServiceResult):
+calass AwaitableGetClusterIstioServiceResult(GetClusterIstioServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

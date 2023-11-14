@@ -11,19 +11,19 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['CxWebhookArgs', 'CxWebhook']
+__all__ = ['CxWebhookArrgs', 'CxWebhook']
 
 @pulumi.input_type
-class CxWebhookArgs:
+calass CxWebhookArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  disabled: Optional[pulumi.Input[bool]] = None,
                  enable_spell_correction: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
-                 generic_web_service: Optional[pulumi.Input['CxWebhookGenericWebServiceArgs']] = None,
+                 generic_web_service: Optional[pulumi.Input['CxWebhookGenericWebServiceArrgs']] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[str]] = None,
-                 service_directory: Optional[pulumi.Input['CxWebhookServiceDirectoryArgs']] = None,
+                 service_directory: Optional[pulumi.Input['CxWebhookServiceDirectoryArrgs']] = None,
                  timeout: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CxWebhook resource.
@@ -34,12 +34,12 @@ class CxWebhookArgs:
         :param pulumi.Input[bool] disabled: Indicates whether the webhook is disabled.
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[bool] enable_stackdriver_logging: Determines whether this agent should log conversation queries.
-        :param pulumi.Input['CxWebhookGenericWebServiceArgs'] generic_web_service: Configuration for a generic web service.
+        :param pulumi.Input['CxWebhookGenericWebServiceArrgs'] generic_web_service: Configuration for a generic web service.
                Structure is documented below.
         :param pulumi.Input[str] parent: The agent to create a webhook for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         :param pulumi.Input[str] security_settings: Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
-        :param pulumi.Input['CxWebhookServiceDirectoryArgs'] service_directory: Configuration for a Service Directory service.
+        :param pulumi.Input['CxWebhookServiceDirectoryArrgs'] service_directory: Configuration for a Service Directory service.
                Structure is documented below.
         :param pulumi.Input[str] timeout: Webhook execution timeout.
         """
@@ -114,7 +114,7 @@ class CxWebhookArgs:
 
     @property
     @pulumi.getter(name="genericWebService")
-    def generic_web_service(self) -> Optional[pulumi.Input['CxWebhookGenericWebServiceArgs']]:
+    def generic_web_service(self) -> Optional[pulumi.Input['CxWebhookGenericWebServiceArrgs']]:
         """
         Configuration for a generic web service.
         Structure is documented below.
@@ -122,7 +122,7 @@ class CxWebhookArgs:
         return pulumi.get(self, "generic_web_service")
 
     @generic_web_service.setter
-    def generic_web_service(self, value: Optional[pulumi.Input['CxWebhookGenericWebServiceArgs']]):
+    def generic_web_service(self, value: Optional[pulumi.Input['CxWebhookGenericWebServiceArrgs']]):
         pulumi.set(self, "generic_web_service", value)
 
     @property
@@ -152,7 +152,7 @@ class CxWebhookArgs:
 
     @property
     @pulumi.getter(name="serviceDirectory")
-    def service_directory(self) -> Optional[pulumi.Input['CxWebhookServiceDirectoryArgs']]:
+    def service_directory(self) -> Optional[pulumi.Input['CxWebhookServiceDirectoryArrgs']]:
         """
         Configuration for a Service Directory service.
         Structure is documented below.
@@ -160,7 +160,7 @@ class CxWebhookArgs:
         return pulumi.get(self, "service_directory")
 
     @service_directory.setter
-    def service_directory(self, value: Optional[pulumi.Input['CxWebhookServiceDirectoryArgs']]):
+    def service_directory(self, value: Optional[pulumi.Input['CxWebhookServiceDirectoryArrgs']]):
         pulumi.set(self, "service_directory", value)
 
     @property
@@ -177,17 +177,17 @@ class CxWebhookArgs:
 
 
 @pulumi.input_type
-class _CxWebhookState:
+calass _CxWebhookState:
     def __init__(__self__, *,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_spell_correction: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
-                 generic_web_service: Optional[pulumi.Input['CxWebhookGenericWebServiceArgs']] = None,
+                 generic_web_service: Optional[pulumi.Input['CxWebhookGenericWebServiceArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[str]] = None,
-                 service_directory: Optional[pulumi.Input['CxWebhookServiceDirectoryArgs']] = None,
+                 service_directory: Optional[pulumi.Input['CxWebhookServiceDirectoryArrgs']] = None,
                  start_flow: Optional[pulumi.Input[str]] = None,
                  timeout: Optional[pulumi.Input[str]] = None):
         """
@@ -199,14 +199,14 @@ class _CxWebhookState:
                - - -
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[bool] enable_stackdriver_logging: Determines whether this agent should log conversation queries.
-        :param pulumi.Input['CxWebhookGenericWebServiceArgs'] generic_web_service: Configuration for a generic web service.
+        :param pulumi.Input['CxWebhookGenericWebServiceArrgs'] generic_web_service: Configuration for a generic web service.
                Structure is documented below.
         :param pulumi.Input[str] name: The unique identifier of the webhook.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
         :param pulumi.Input[str] parent: The agent to create a webhook for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         :param pulumi.Input[str] security_settings: Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
-        :param pulumi.Input['CxWebhookServiceDirectoryArgs'] service_directory: Configuration for a Service Directory service.
+        :param pulumi.Input['CxWebhookServiceDirectoryArrgs'] service_directory: Configuration for a Service Directory service.
                Structure is documented below.
         :param pulumi.Input[str] start_flow: Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param pulumi.Input[str] timeout: Webhook execution timeout.
@@ -287,7 +287,7 @@ class _CxWebhookState:
 
     @property
     @pulumi.getter(name="genericWebService")
-    def generic_web_service(self) -> Optional[pulumi.Input['CxWebhookGenericWebServiceArgs']]:
+    def generic_web_service(self) -> Optional[pulumi.Input['CxWebhookGenericWebServiceArrgs']]:
         """
         Configuration for a generic web service.
         Structure is documented below.
@@ -295,7 +295,7 @@ class _CxWebhookState:
         return pulumi.get(self, "generic_web_service")
 
     @generic_web_service.setter
-    def generic_web_service(self, value: Optional[pulumi.Input['CxWebhookGenericWebServiceArgs']]):
+    def generic_web_service(self, value: Optional[pulumi.Input['CxWebhookGenericWebServiceArrgs']]):
         pulumi.set(self, "generic_web_service", value)
 
     @property
@@ -338,7 +338,7 @@ class _CxWebhookState:
 
     @property
     @pulumi.getter(name="serviceDirectory")
-    def service_directory(self) -> Optional[pulumi.Input['CxWebhookServiceDirectoryArgs']]:
+    def service_directory(self) -> Optional[pulumi.Input['CxWebhookServiceDirectoryArrgs']]:
         """
         Configuration for a Service Directory service.
         Structure is documented below.
@@ -346,7 +346,7 @@ class _CxWebhookState:
         return pulumi.get(self, "service_directory")
 
     @service_directory.setter
-    def service_directory(self, value: Optional[pulumi.Input['CxWebhookServiceDirectoryArgs']]):
+    def service_directory(self, value: Optional[pulumi.Input['CxWebhookServiceDirectoryArrgs']]):
         pulumi.set(self, "service_directory", value)
 
     @property
@@ -374,7 +374,7 @@ class _CxWebhookState:
         pulumi.set(self, "timeout", value)
 
 
-class CxWebhook(pulumi.CustomResource):
+calass CxWebhook(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -383,10 +383,10 @@ class CxWebhook(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_spell_correction: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
-                 generic_web_service: Optional[pulumi.Input[pulumi.InputType['CxWebhookGenericWebServiceArgs']]] = None,
+                 generic_web_service: Optional[pulumi.Input[pulumi.InputType['CxWebhookGenericWebServiceArrgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[str]] = None,
-                 service_directory: Optional[pulumi.Input[pulumi.InputType['CxWebhookServiceDirectoryArgs']]] = None,
+                 service_directory: Optional[pulumi.Input[pulumi.InputType['CxWebhookServiceDirectoryArrgs']]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -419,13 +419,13 @@ class CxWebhook(pulumi.CustomResource):
             avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
-            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
+            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArrgs(
                 enable_speech_adaptation=True,
             ))
         basic_webhook = gcp.diagflow.CxWebhook("basicWebhook",
             parent=agent.id,
             display_name="MyFlow",
-            generic_web_service=gcp.diagflow.CxWebhookGenericWebServiceArgs(
+            generic_web_service=gcp.diagflow.CxWebhookGenericWebServiceArrgs(
                 uri="https://example.com",
             ))
         ```
@@ -451,12 +451,12 @@ class CxWebhook(pulumi.CustomResource):
                - - -
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[bool] enable_stackdriver_logging: Determines whether this agent should log conversation queries.
-        :param pulumi.Input[pulumi.InputType['CxWebhookGenericWebServiceArgs']] generic_web_service: Configuration for a generic web service.
+        :param pulumi.Input[pulumi.InputType['CxWebhookGenericWebServiceArrgs']] generic_web_service: Configuration for a generic web service.
                Structure is documented below.
         :param pulumi.Input[str] parent: The agent to create a webhook for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         :param pulumi.Input[str] security_settings: Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
-        :param pulumi.Input[pulumi.InputType['CxWebhookServiceDirectoryArgs']] service_directory: Configuration for a Service Directory service.
+        :param pulumi.Input[pulumi.InputType['CxWebhookServiceDirectoryArrgs']] service_directory: Configuration for a Service Directory service.
                Structure is documented below.
         :param pulumi.Input[str] timeout: Webhook execution timeout.
         """
@@ -464,7 +464,7 @@ class CxWebhook(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CxWebhookArgs,
+                 args: CxWebhookArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Webhooks host the developer's business logic. During a session, webhooks allow the developer to use the data extracted by Dialogflow's natural language processing to generate dynamic responses, validate collected data, or trigger actions on the backend.
@@ -496,13 +496,13 @@ class CxWebhook(pulumi.CustomResource):
             avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
-            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
+            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArrgs(
                 enable_speech_adaptation=True,
             ))
         basic_webhook = gcp.diagflow.CxWebhook("basicWebhook",
             parent=agent.id,
             display_name="MyFlow",
-            generic_web_service=gcp.diagflow.CxWebhookGenericWebServiceArgs(
+            generic_web_service=gcp.diagflow.CxWebhookGenericWebServiceArrgs(
                 uri="https://example.com",
             ))
         ```
@@ -520,12 +520,12 @@ class CxWebhook(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param CxWebhookArgs args: The arguments to use to populate this resource's properties.
+        :param CxWebhookArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(CxWebhookArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(CxWebhookArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -538,10 +538,10 @@ class CxWebhook(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_spell_correction: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
-                 generic_web_service: Optional[pulumi.Input[pulumi.InputType['CxWebhookGenericWebServiceArgs']]] = None,
+                 generic_web_service: Optional[pulumi.Input[pulumi.InputType['CxWebhookGenericWebServiceArrgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[str]] = None,
-                 service_directory: Optional[pulumi.Input[pulumi.InputType['CxWebhookServiceDirectoryArgs']]] = None,
+                 service_directory: Optional[pulumi.Input[pulumi.InputType['CxWebhookServiceDirectoryArrgs']]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -550,7 +550,7 @@ class CxWebhook(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = CxWebhookArgs.__new__(CxWebhookArgs)
+            __props__ = CxWebhookArrgs.__new__(CxWebhookArrgs)
 
             __props__.__dict__["disabled"] = disabled
             if display_name is None and not opts.urn:
@@ -579,11 +579,11 @@ class CxWebhook(pulumi.CustomResource):
             display_name: Optional[pulumi.Input[str]] = None,
             enable_spell_correction: Optional[pulumi.Input[bool]] = None,
             enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
-            generic_web_service: Optional[pulumi.Input[pulumi.InputType['CxWebhookGenericWebServiceArgs']]] = None,
+            generic_web_service: Optional[pulumi.Input[pulumi.InputType['CxWebhookGenericWebServiceArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
             security_settings: Optional[pulumi.Input[str]] = None,
-            service_directory: Optional[pulumi.Input[pulumi.InputType['CxWebhookServiceDirectoryArgs']]] = None,
+            service_directory: Optional[pulumi.Input[pulumi.InputType['CxWebhookServiceDirectoryArrgs']]] = None,
             start_flow: Optional[pulumi.Input[str]] = None,
             timeout: Optional[pulumi.Input[str]] = None) -> 'CxWebhook':
         """
@@ -600,14 +600,14 @@ class CxWebhook(pulumi.CustomResource):
                - - -
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[bool] enable_stackdriver_logging: Determines whether this agent should log conversation queries.
-        :param pulumi.Input[pulumi.InputType['CxWebhookGenericWebServiceArgs']] generic_web_service: Configuration for a generic web service.
+        :param pulumi.Input[pulumi.InputType['CxWebhookGenericWebServiceArrgs']] generic_web_service: Configuration for a generic web service.
                Structure is documented below.
         :param pulumi.Input[str] name: The unique identifier of the webhook.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
         :param pulumi.Input[str] parent: The agent to create a webhook for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         :param pulumi.Input[str] security_settings: Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
-        :param pulumi.Input[pulumi.InputType['CxWebhookServiceDirectoryArgs']] service_directory: Configuration for a Service Directory service.
+        :param pulumi.Input[pulumi.InputType['CxWebhookServiceDirectoryArrgs']] service_directory: Configuration for a Service Directory service.
                Structure is documented below.
         :param pulumi.Input[str] start_flow: Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param pulumi.Input[str] timeout: Webhook execution timeout.

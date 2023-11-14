@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetProjectServiceAccountResult:
+calass GetProjectServiceAccountResult:
     """
     A collection of values returned by getProjectServiceAccount.
     """
@@ -74,7 +74,7 @@ class GetProjectServiceAccountResult:
         return pulumi.get(self, "user_project")
 
 
-class AwaitableGetProjectServiceAccountResult(GetProjectServiceAccountResult):
+calass AwaitableGetProjectServiceAccountResult(GetProjectServiceAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
@@ -150,7 +150,7 @@ def get_project_service_account(project: Optional[str] = None,
         members=[f"serviceAccount:{gcs_account.email_address}"])
     bucket = gcp.storage.Bucket("bucket",
         location="US",
-        encryption=gcp.storage.BucketEncryptionArgs(
+        encryption=gcp.storage.BucketEncryptionArrgs(
             default_kms_key_name="your-crypto-key-id",
         ),
         opts=pulumi.ResourceOptions(depends_on=[binding]))
@@ -239,7 +239,7 @@ def get_project_service_account_output(project: Optional[pulumi.Input[Optional[s
         members=[f"serviceAccount:{gcs_account.email_address}"])
     bucket = gcp.storage.Bucket("bucket",
         location="US",
-        encryption=gcp.storage.BucketEncryptionArgs(
+        encryption=gcp.storage.BucketEncryptionArrgs(
             default_kms_key_name="your-crypto-key-id",
         ),
         opts=pulumi.ResourceOptions(depends_on=[binding]))

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -297,12 +296,6 @@ func (i *CustomConstraint) ToCustomConstraintOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(CustomConstraintOutput)
 }
 
-func (i *CustomConstraint) ToOutput(ctx context.Context) pulumix.Output[*CustomConstraint] {
-	return pulumix.Output[*CustomConstraint]{
-		OutputState: i.ToCustomConstraintOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CustomConstraintArrayInput is an input type that accepts CustomConstraintArray and CustomConstraintArrayOutput values.
 // You can construct a concrete instance of `CustomConstraintArrayInput` via:
 //
@@ -326,12 +319,6 @@ func (i CustomConstraintArray) ToCustomConstraintArrayOutput() CustomConstraintA
 
 func (i CustomConstraintArray) ToCustomConstraintArrayOutputWithContext(ctx context.Context) CustomConstraintArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomConstraintArrayOutput)
-}
-
-func (i CustomConstraintArray) ToOutput(ctx context.Context) pulumix.Output[[]*CustomConstraint] {
-	return pulumix.Output[[]*CustomConstraint]{
-		OutputState: i.ToCustomConstraintArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CustomConstraintMapInput is an input type that accepts CustomConstraintMap and CustomConstraintMapOutput values.
@@ -359,12 +346,6 @@ func (i CustomConstraintMap) ToCustomConstraintMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(CustomConstraintMapOutput)
 }
 
-func (i CustomConstraintMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomConstraint] {
-	return pulumix.Output[map[string]*CustomConstraint]{
-		OutputState: i.ToCustomConstraintMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CustomConstraintOutput struct{ *pulumi.OutputState }
 
 func (CustomConstraintOutput) ElementType() reflect.Type {
@@ -377,12 +358,6 @@ func (o CustomConstraintOutput) ToCustomConstraintOutput() CustomConstraintOutpu
 
 func (o CustomConstraintOutput) ToCustomConstraintOutputWithContext(ctx context.Context) CustomConstraintOutput {
 	return o
-}
-
-func (o CustomConstraintOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomConstraint] {
-	return pulumix.Output[*CustomConstraint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The action to take if the condition is met.
@@ -447,12 +422,6 @@ func (o CustomConstraintArrayOutput) ToCustomConstraintArrayOutputWithContext(ct
 	return o
 }
 
-func (o CustomConstraintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CustomConstraint] {
-	return pulumix.Output[[]*CustomConstraint]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CustomConstraintArrayOutput) Index(i pulumi.IntInput) CustomConstraintOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CustomConstraint {
 		return vs[0].([]*CustomConstraint)[vs[1].(int)]
@@ -471,12 +440,6 @@ func (o CustomConstraintMapOutput) ToCustomConstraintMapOutput() CustomConstrain
 
 func (o CustomConstraintMapOutput) ToCustomConstraintMapOutputWithContext(ctx context.Context) CustomConstraintMapOutput {
 	return o
-}
-
-func (o CustomConstraintMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomConstraint] {
-	return pulumix.Output[map[string]*CustomConstraint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomConstraintMapOutput) MapIndex(k pulumi.StringInput) CustomConstraintOutput {

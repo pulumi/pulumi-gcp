@@ -10,25 +10,25 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'TriggerDestinationArgs',
-    'TriggerDestinationCloudRunServiceArgs',
-    'TriggerDestinationGkeArgs',
-    'TriggerMatchingCriteriaArgs',
-    'TriggerTransportArgs',
-    'TriggerTransportPubsubArgs',
+    'TriggerDestinationArrgs',
+    'TriggerDestinationCloudRunServiceArrgs',
+    'TriggerDestinationGkeArrgs',
+    'TriggerMatchingCriteriaArrgs',
+    'TriggerTransportArrgs',
+    'TriggerTransportPubsubArrgs',
 ]
 
 @pulumi.input_type
-class TriggerDestinationArgs:
+calass TriggerDestinationArrgs:
     def __init__(__self__, *,
                  cloud_function: Optional[pulumi.Input[str]] = None,
-                 cloud_run_service: Optional[pulumi.Input['TriggerDestinationCloudRunServiceArgs']] = None,
-                 gke: Optional[pulumi.Input['TriggerDestinationGkeArgs']] = None,
+                 cloud_run_service: Optional[pulumi.Input['TriggerDestinationCloudRunServiceArrgs']] = None,
+                 gke: Optional[pulumi.Input['TriggerDestinationGkeArrgs']] = None,
                  workflow: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] cloud_function: [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
-        :param pulumi.Input['TriggerDestinationCloudRunServiceArgs'] cloud_run_service: Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
-        :param pulumi.Input['TriggerDestinationGkeArgs'] gke: A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+        :param pulumi.Input['TriggerDestinationCloudRunServiceArrgs'] cloud_run_service: Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+        :param pulumi.Input['TriggerDestinationGkeArrgs'] gke: A GKE service capable of receiving events. The service should be running in the same project as the trigger.
         :param pulumi.Input[str] workflow: The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
         """
         if cloud_function is not None:
@@ -54,26 +54,26 @@ class TriggerDestinationArgs:
 
     @property
     @pulumi.getter(name="cloudRunService")
-    def cloud_run_service(self) -> Optional[pulumi.Input['TriggerDestinationCloudRunServiceArgs']]:
+    def cloud_run_service(self) -> Optional[pulumi.Input['TriggerDestinationCloudRunServiceArrgs']]:
         """
         Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
         """
         return pulumi.get(self, "cloud_run_service")
 
     @cloud_run_service.setter
-    def cloud_run_service(self, value: Optional[pulumi.Input['TriggerDestinationCloudRunServiceArgs']]):
+    def cloud_run_service(self, value: Optional[pulumi.Input['TriggerDestinationCloudRunServiceArrgs']]):
         pulumi.set(self, "cloud_run_service", value)
 
     @property
     @pulumi.getter
-    def gke(self) -> Optional[pulumi.Input['TriggerDestinationGkeArgs']]:
+    def gke(self) -> Optional[pulumi.Input['TriggerDestinationGkeArrgs']]:
         """
         A GKE service capable of receiving events. The service should be running in the same project as the trigger.
         """
         return pulumi.get(self, "gke")
 
     @gke.setter
-    def gke(self, value: Optional[pulumi.Input['TriggerDestinationGkeArgs']]):
+    def gke(self, value: Optional[pulumi.Input['TriggerDestinationGkeArrgs']]):
         pulumi.set(self, "gke", value)
 
     @property
@@ -90,7 +90,7 @@ class TriggerDestinationArgs:
 
 
 @pulumi.input_type
-class TriggerDestinationCloudRunServiceArgs:
+calass TriggerDestinationCloudRunServiceArrgs:
     def __init__(__self__, *,
                  service: pulumi.Input[str],
                  path: Optional[pulumi.Input[str]] = None,
@@ -144,7 +144,7 @@ class TriggerDestinationCloudRunServiceArgs:
 
 
 @pulumi.input_type
-class TriggerDestinationGkeArgs:
+calass TriggerDestinationGkeArrgs:
     def __init__(__self__, *,
                  cluster: pulumi.Input[str],
                  location: pulumi.Input[str],
@@ -227,7 +227,7 @@ class TriggerDestinationGkeArgs:
 
 
 @pulumi.input_type
-class TriggerMatchingCriteriaArgs:
+calass TriggerMatchingCriteriaArrgs:
     def __init__(__self__, *,
                  attribute: pulumi.Input[str],
                  value: pulumi.Input[str],
@@ -284,30 +284,30 @@ class TriggerMatchingCriteriaArgs:
 
 
 @pulumi.input_type
-class TriggerTransportArgs:
+calass TriggerTransportArrgs:
     def __init__(__self__, *,
-                 pubsub: Optional[pulumi.Input['TriggerTransportPubsubArgs']] = None):
+                 pubsub: Optional[pulumi.Input['TriggerTransportPubsubArrgs']] = None):
         """
-        :param pulumi.Input['TriggerTransportPubsubArgs'] pubsub: The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+        :param pulumi.Input['TriggerTransportPubsubArrgs'] pubsub: The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
         """
         if pubsub is not None:
             pulumi.set(__self__, "pubsub", pubsub)
 
     @property
     @pulumi.getter
-    def pubsub(self) -> Optional[pulumi.Input['TriggerTransportPubsubArgs']]:
+    def pubsub(self) -> Optional[pulumi.Input['TriggerTransportPubsubArrgs']]:
         """
         The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
         """
         return pulumi.get(self, "pubsub")
 
     @pubsub.setter
-    def pubsub(self, value: Optional[pulumi.Input['TriggerTransportPubsubArgs']]):
+    def pubsub(self, value: Optional[pulumi.Input['TriggerTransportPubsubArrgs']]):
         pulumi.set(self, "pubsub", value)
 
 
 @pulumi.input_type
-class TriggerTransportPubsubArgs:
+calass TriggerTransportPubsubArrgs:
     def __init__(__self__, *,
                  subscription: Optional[pulumi.Input[str]] = None,
                  topic: Optional[pulumi.Input[str]] = None):

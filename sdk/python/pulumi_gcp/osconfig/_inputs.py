@@ -10,119 +10,119 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'GuestPoliciesAssignmentArgs',
-    'GuestPoliciesAssignmentGroupLabelArgs',
-    'GuestPoliciesAssignmentOsTypeArgs',
-    'GuestPoliciesPackageArgs',
-    'GuestPoliciesPackageRepositoryArgs',
-    'GuestPoliciesPackageRepositoryAptArgs',
-    'GuestPoliciesPackageRepositoryGooArgs',
-    'GuestPoliciesPackageRepositoryYumArgs',
-    'GuestPoliciesPackageRepositoryZypperArgs',
-    'GuestPoliciesRecipeArgs',
-    'GuestPoliciesRecipeArtifactArgs',
-    'GuestPoliciesRecipeArtifactGcsArgs',
-    'GuestPoliciesRecipeArtifactRemoteArgs',
-    'GuestPoliciesRecipeInstallStepArgs',
-    'GuestPoliciesRecipeInstallStepArchiveExtractionArgs',
-    'GuestPoliciesRecipeInstallStepDpkgInstallationArgs',
-    'GuestPoliciesRecipeInstallStepFileCopyArgs',
-    'GuestPoliciesRecipeInstallStepFileExecArgs',
-    'GuestPoliciesRecipeInstallStepMsiInstallationArgs',
-    'GuestPoliciesRecipeInstallStepRpmInstallationArgs',
-    'GuestPoliciesRecipeInstallStepScriptRunArgs',
-    'GuestPoliciesRecipeUpdateStepArgs',
-    'GuestPoliciesRecipeUpdateStepArchiveExtractionArgs',
-    'GuestPoliciesRecipeUpdateStepDpkgInstallationArgs',
-    'GuestPoliciesRecipeUpdateStepFileCopyArgs',
-    'GuestPoliciesRecipeUpdateStepFileExecArgs',
-    'GuestPoliciesRecipeUpdateStepMsiInstallationArgs',
-    'GuestPoliciesRecipeUpdateStepRpmInstallationArgs',
-    'GuestPoliciesRecipeUpdateStepScriptRunArgs',
-    'OsPolicyAssignmentInstanceFilterArgs',
-    'OsPolicyAssignmentInstanceFilterExclusionLabelArgs',
-    'OsPolicyAssignmentInstanceFilterInclusionLabelArgs',
-    'OsPolicyAssignmentInstanceFilterInventoryArgs',
-    'OsPolicyAssignmentOsPolicyArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourceArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs',
-    'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs',
-    'OsPolicyAssignmentRolloutArgs',
-    'OsPolicyAssignmentRolloutDisruptionBudgetArgs',
-    'PatchDeploymentInstanceFilterArgs',
-    'PatchDeploymentInstanceFilterGroupLabelArgs',
-    'PatchDeploymentOneTimeScheduleArgs',
-    'PatchDeploymentPatchConfigArgs',
-    'PatchDeploymentPatchConfigAptArgs',
-    'PatchDeploymentPatchConfigGooArgs',
-    'PatchDeploymentPatchConfigPostStepArgs',
-    'PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs',
-    'PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs',
-    'PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs',
-    'PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs',
-    'PatchDeploymentPatchConfigPreStepArgs',
-    'PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs',
-    'PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs',
-    'PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs',
-    'PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs',
-    'PatchDeploymentPatchConfigWindowsUpdateArgs',
-    'PatchDeploymentPatchConfigYumArgs',
-    'PatchDeploymentPatchConfigZypperArgs',
-    'PatchDeploymentRecurringScheduleArgs',
-    'PatchDeploymentRecurringScheduleMonthlyArgs',
-    'PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs',
-    'PatchDeploymentRecurringScheduleTimeOfDayArgs',
-    'PatchDeploymentRecurringScheduleTimeZoneArgs',
-    'PatchDeploymentRecurringScheduleWeeklyArgs',
-    'PatchDeploymentRolloutArgs',
-    'PatchDeploymentRolloutDisruptionBudgetArgs',
+    'GuestPoliciesAssignmentArrgs',
+    'GuestPoliciesAssignmentGroupLabelArrgs',
+    'GuestPoliciesAssignmentOsTypeArrgs',
+    'GuestPoliciesPackageArrgs',
+    'GuestPoliciesPackageRepositoryArrgs',
+    'GuestPoliciesPackageRepositoryAptArrgs',
+    'GuestPoliciesPackageRepositoryGooArrgs',
+    'GuestPoliciesPackageRepositoryYumArrgs',
+    'GuestPoliciesPackageRepositoryZypperArrgs',
+    'GuestPoliciesRecipeArrgs',
+    'GuestPoliciesRecipeArtifactArrgs',
+    'GuestPoliciesRecipeArtifactGcsArrgs',
+    'GuestPoliciesRecipeArtifactRemoteArrgs',
+    'GuestPoliciesRecipeInstallStepArrgs',
+    'GuestPoliciesRecipeInstallStepArchiveExtractionArrgs',
+    'GuestPoliciesRecipeInstallStepDpkgInstallationArrgs',
+    'GuestPoliciesRecipeInstallStepFileCopyArrgs',
+    'GuestPoliciesRecipeInstallStepFileExecArrgs',
+    'GuestPoliciesRecipeInstallStepMsiInstallationArrgs',
+    'GuestPoliciesRecipeInstallStepRpmInstallationArrgs',
+    'GuestPoliciesRecipeInstallStepScriptRunArrgs',
+    'GuestPoliciesRecipeUpdateStepArrgs',
+    'GuestPoliciesRecipeUpdateStepArchiveExtractionArrgs',
+    'GuestPoliciesRecipeUpdateStepDpkgInstallationArrgs',
+    'GuestPoliciesRecipeUpdateStepFileCopyArrgs',
+    'GuestPoliciesRecipeUpdateStepFileExecArrgs',
+    'GuestPoliciesRecipeUpdateStepMsiInstallationArrgs',
+    'GuestPoliciesRecipeUpdateStepRpmInstallationArrgs',
+    'GuestPoliciesRecipeUpdateStepScriptRunArrgs',
+    'OsPolicyAssignmentInstanceFilterArrgs',
+    'OsPolicyAssignmentInstanceFilterExclusionLabelArrgs',
+    'OsPolicyAssignmentInstanceFilterInclusionLabelArrgs',
+    'OsPolicyAssignmentInstanceFilterInventoryArrgs',
+    'OsPolicyAssignmentOsPolicyArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceFileArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArrgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArrgs',
+    'OsPolicyAssignmentRolloutArrgs',
+    'OsPolicyAssignmentRolloutDisruptionBudgetArrgs',
+    'PatchDeploymentInstanceFilterArrgs',
+    'PatchDeploymentInstanceFilterGroupLabelArrgs',
+    'PatchDeploymentOneTimeScheduleArrgs',
+    'PatchDeploymentPatchConfigArrgs',
+    'PatchDeploymentPatchConfigAptArrgs',
+    'PatchDeploymentPatchConfigGooArrgs',
+    'PatchDeploymentPatchConfigPostStepArrgs',
+    'PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArrgs',
+    'PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArrgs',
+    'PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArrgs',
+    'PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArrgs',
+    'PatchDeploymentPatchConfigPreStepArrgs',
+    'PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArrgs',
+    'PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArrgs',
+    'PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArrgs',
+    'PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArrgs',
+    'PatchDeploymentPatchConfigWindowsUpdateArrgs',
+    'PatchDeploymentPatchConfigYumArrgs',
+    'PatchDeploymentPatchConfigZypperArrgs',
+    'PatchDeploymentRecurringScheduleArrgs',
+    'PatchDeploymentRecurringScheduleMonthlyArrgs',
+    'PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArrgs',
+    'PatchDeploymentRecurringScheduleTimeOfDayArrgs',
+    'PatchDeploymentRecurringScheduleTimeZoneArrgs',
+    'PatchDeploymentRecurringScheduleWeeklyArrgs',
+    'PatchDeploymentRolloutArrgs',
+    'PatchDeploymentRolloutDisruptionBudgetArrgs',
 ]
 
 @pulumi.input_type
-class GuestPoliciesAssignmentArgs:
+calass GuestPoliciesAssignmentArrgs:
     def __init__(__self__, *,
-                 group_labels: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentGroupLabelArgs']]]] = None,
+                 group_labels: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentGroupLabelArrgs']]]] = None,
                  instance_name_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 os_types: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentOsTypeArgs']]]] = None,
+                 os_types: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentOsTypeArrgs']]]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentGroupLabelArgs']]] group_labels: Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
+        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentGroupLabelArrgs']]] group_labels: Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
                for example "env=prod or env=staging".
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_name_prefixes: Targets VM instances whose name starts with one of these prefixes.
@@ -134,7 +134,7 @@ class GuestPoliciesAssignmentArgs:
                Instance targeting is uncommon and is supported to facilitate the management of changes
                by the instance or to target specific VM instances for development and testing.
                Only supported for project-level policies and must reference instances within this project.
-        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentOsTypeArgs']]] os_types: Targets VM instances matching at least one of the following OS types.
+        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentOsTypeArrgs']]] os_types: Targets VM instances matching at least one of the following OS types.
                VM instances must match all supplied criteria for a given OsType to be included.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Targets instances in any of these zones. Leave empty to target instances in any zone.
@@ -153,7 +153,7 @@ class GuestPoliciesAssignmentArgs:
 
     @property
     @pulumi.getter(name="groupLabels")
-    def group_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentGroupLabelArgs']]]]:
+    def group_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentGroupLabelArrgs']]]]:
         """
         Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
         for example "env=prod or env=staging".
@@ -162,7 +162,7 @@ class GuestPoliciesAssignmentArgs:
         return pulumi.get(self, "group_labels")
 
     @group_labels.setter
-    def group_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentGroupLabelArgs']]]]):
+    def group_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentGroupLabelArrgs']]]]):
         pulumi.set(self, "group_labels", value)
 
     @property
@@ -198,7 +198,7 @@ class GuestPoliciesAssignmentArgs:
 
     @property
     @pulumi.getter(name="osTypes")
-    def os_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentOsTypeArgs']]]]:
+    def os_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentOsTypeArrgs']]]]:
         """
         Targets VM instances matching at least one of the following OS types.
         VM instances must match all supplied criteria for a given OsType to be included.
@@ -207,7 +207,7 @@ class GuestPoliciesAssignmentArgs:
         return pulumi.get(self, "os_types")
 
     @os_types.setter
-    def os_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentOsTypeArgs']]]]):
+    def os_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentOsTypeArrgs']]]]):
         pulumi.set(self, "os_types", value)
 
     @property
@@ -225,7 +225,7 @@ class GuestPoliciesAssignmentArgs:
 
 
 @pulumi.input_type
-class GuestPoliciesAssignmentGroupLabelArgs:
+calass GuestPoliciesAssignmentGroupLabelArrgs:
     def __init__(__self__, *,
                  labels: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         """
@@ -247,7 +247,7 @@ class GuestPoliciesAssignmentGroupLabelArgs:
 
 
 @pulumi.input_type
-class GuestPoliciesAssignmentOsTypeArgs:
+calass GuestPoliciesAssignmentOsTypeArrgs:
     def __init__(__self__, *,
                  os_architecture: Optional[pulumi.Input[str]] = None,
                  os_short_name: Optional[pulumi.Input[str]] = None,
@@ -306,7 +306,7 @@ class GuestPoliciesAssignmentOsTypeArgs:
 
 
 @pulumi.input_type
-class GuestPoliciesPackageArgs:
+calass GuestPoliciesPackageArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  desired_state: Optional[pulumi.Input[str]] = None,
@@ -376,20 +376,20 @@ class GuestPoliciesPackageArgs:
 
 
 @pulumi.input_type
-class GuestPoliciesPackageRepositoryArgs:
+calass GuestPoliciesPackageRepositoryArrgs:
     def __init__(__self__, *,
-                 apt: Optional[pulumi.Input['GuestPoliciesPackageRepositoryAptArgs']] = None,
-                 goo: Optional[pulumi.Input['GuestPoliciesPackageRepositoryGooArgs']] = None,
-                 yum: Optional[pulumi.Input['GuestPoliciesPackageRepositoryYumArgs']] = None,
-                 zypper: Optional[pulumi.Input['GuestPoliciesPackageRepositoryZypperArgs']] = None):
+                 apt: Optional[pulumi.Input['GuestPoliciesPackageRepositoryAptArrgs']] = None,
+                 goo: Optional[pulumi.Input['GuestPoliciesPackageRepositoryGooArrgs']] = None,
+                 yum: Optional[pulumi.Input['GuestPoliciesPackageRepositoryYumArrgs']] = None,
+                 zypper: Optional[pulumi.Input['GuestPoliciesPackageRepositoryZypperArrgs']] = None):
         """
-        :param pulumi.Input['GuestPoliciesPackageRepositoryAptArgs'] apt: An Apt Repository.
+        :param pulumi.Input['GuestPoliciesPackageRepositoryAptArrgs'] apt: An Apt Repository.
                Structure is documented below.
-        :param pulumi.Input['GuestPoliciesPackageRepositoryGooArgs'] goo: A Goo Repository.
+        :param pulumi.Input['GuestPoliciesPackageRepositoryGooArrgs'] goo: A Goo Repository.
                Structure is documented below.
-        :param pulumi.Input['GuestPoliciesPackageRepositoryYumArgs'] yum: A Yum Repository.
+        :param pulumi.Input['GuestPoliciesPackageRepositoryYumArrgs'] yum: A Yum Repository.
                Structure is documented below.
-        :param pulumi.Input['GuestPoliciesPackageRepositoryZypperArgs'] zypper: A Zypper Repository.
+        :param pulumi.Input['GuestPoliciesPackageRepositoryZypperArrgs'] zypper: A Zypper Repository.
                Structure is documented below.
         """
         if apt is not None:
@@ -403,7 +403,7 @@ class GuestPoliciesPackageRepositoryArgs:
 
     @property
     @pulumi.getter
-    def apt(self) -> Optional[pulumi.Input['GuestPoliciesPackageRepositoryAptArgs']]:
+    def apt(self) -> Optional[pulumi.Input['GuestPoliciesPackageRepositoryAptArrgs']]:
         """
         An Apt Repository.
         Structure is documented below.
@@ -411,12 +411,12 @@ class GuestPoliciesPackageRepositoryArgs:
         return pulumi.get(self, "apt")
 
     @apt.setter
-    def apt(self, value: Optional[pulumi.Input['GuestPoliciesPackageRepositoryAptArgs']]):
+    def apt(self, value: Optional[pulumi.Input['GuestPoliciesPackageRepositoryAptArrgs']]):
         pulumi.set(self, "apt", value)
 
     @property
     @pulumi.getter
-    def goo(self) -> Optional[pulumi.Input['GuestPoliciesPackageRepositoryGooArgs']]:
+    def goo(self) -> Optional[pulumi.Input['GuestPoliciesPackageRepositoryGooArrgs']]:
         """
         A Goo Repository.
         Structure is documented below.
@@ -424,12 +424,12 @@ class GuestPoliciesPackageRepositoryArgs:
         return pulumi.get(self, "goo")
 
     @goo.setter
-    def goo(self, value: Optional[pulumi.Input['GuestPoliciesPackageRepositoryGooArgs']]):
+    def goo(self, value: Optional[pulumi.Input['GuestPoliciesPackageRepositoryGooArrgs']]):
         pulumi.set(self, "goo", value)
 
     @property
     @pulumi.getter
-    def yum(self) -> Optional[pulumi.Input['GuestPoliciesPackageRepositoryYumArgs']]:
+    def yum(self) -> Optional[pulumi.Input['GuestPoliciesPackageRepositoryYumArrgs']]:
         """
         A Yum Repository.
         Structure is documented below.
@@ -437,12 +437,12 @@ class GuestPoliciesPackageRepositoryArgs:
         return pulumi.get(self, "yum")
 
     @yum.setter
-    def yum(self, value: Optional[pulumi.Input['GuestPoliciesPackageRepositoryYumArgs']]):
+    def yum(self, value: Optional[pulumi.Input['GuestPoliciesPackageRepositoryYumArrgs']]):
         pulumi.set(self, "yum", value)
 
     @property
     @pulumi.getter
-    def zypper(self) -> Optional[pulumi.Input['GuestPoliciesPackageRepositoryZypperArgs']]:
+    def zypper(self) -> Optional[pulumi.Input['GuestPoliciesPackageRepositoryZypperArrgs']]:
         """
         A Zypper Repository.
         Structure is documented below.
@@ -450,12 +450,12 @@ class GuestPoliciesPackageRepositoryArgs:
         return pulumi.get(self, "zypper")
 
     @zypper.setter
-    def zypper(self, value: Optional[pulumi.Input['GuestPoliciesPackageRepositoryZypperArgs']]):
+    def zypper(self, value: Optional[pulumi.Input['GuestPoliciesPackageRepositoryZypperArrgs']]):
         pulumi.set(self, "zypper", value)
 
 
 @pulumi.input_type
-class GuestPoliciesPackageRepositoryAptArgs:
+calass GuestPoliciesPackageRepositoryAptArrgs:
     def __init__(__self__, *,
                  components: pulumi.Input[Sequence[pulumi.Input[str]]],
                  distribution: pulumi.Input[str],
@@ -545,7 +545,7 @@ class GuestPoliciesPackageRepositoryAptArgs:
 
 
 @pulumi.input_type
-class GuestPoliciesPackageRepositoryGooArgs:
+calass GuestPoliciesPackageRepositoryGooArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  url: pulumi.Input[str]):
@@ -582,7 +582,7 @@ class GuestPoliciesPackageRepositoryGooArgs:
 
 
 @pulumi.input_type
-class GuestPoliciesPackageRepositoryYumArgs:
+calass GuestPoliciesPackageRepositoryYumArrgs:
     def __init__(__self__, *,
                  base_url: pulumi.Input[str],
                  id: pulumi.Input[str],
@@ -653,7 +653,7 @@ class GuestPoliciesPackageRepositoryYumArgs:
 
 
 @pulumi.input_type
-class GuestPoliciesPackageRepositoryZypperArgs:
+calass GuestPoliciesPackageRepositoryZypperArrgs:
     def __init__(__self__, *,
                  base_url: pulumi.Input[str],
                  id: pulumi.Input[str],
@@ -724,20 +724,20 @@ class GuestPoliciesPackageRepositoryZypperArgs:
 
 
 @pulumi.input_type
-class GuestPoliciesRecipeArgs:
+calass GuestPoliciesRecipeArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 artifacts: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArtifactArgs']]]] = None,
+                 artifacts: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArtifactArrgs']]]] = None,
                  desired_state: Optional[pulumi.Input[str]] = None,
-                 install_steps: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeInstallStepArgs']]]] = None,
-                 update_steps: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeUpdateStepArgs']]]] = None,
+                 install_steps: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeInstallStepArrgs']]]] = None,
+                 update_steps: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeUpdateStepArrgs']]]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
                Names are also used to identify resources which helps to determine whether guest policies have conflicts.
                This means that requests to create multiple recipes with the same name and version are rejected since they
                could potentially have conflicting assignments.
-        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArtifactArgs']]] artifacts: Resources available to be used in the steps in the recipe.
+        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArtifactArrgs']]] artifacts: Resources available to be used in the steps in the recipe.
                Structure is documented below.
         :param pulumi.Input[str] desired_state: Default is INSTALLED. The desired state the agent should maintain for this recipe.
                INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
@@ -746,10 +746,10 @@ class GuestPoliciesRecipeArgs:
                REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
                Default value is `INSTALLED`.
                Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
-        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeInstallStepArgs']]] install_steps: Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
+        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeInstallStepArrgs']]] install_steps: Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
                Any steps taken (including partially completed steps) are not rolled back.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeUpdateStepArgs']]] update_steps: Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
+        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeUpdateStepArrgs']]] update_steps: Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
                Any steps taken (including partially completed steps) are not rolled back.
                Structure is documented below.
         :param pulumi.Input[str] version: The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
@@ -783,7 +783,7 @@ class GuestPoliciesRecipeArgs:
 
     @property
     @pulumi.getter
-    def artifacts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArtifactArgs']]]]:
+    def artifacts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArtifactArrgs']]]]:
         """
         Resources available to be used in the steps in the recipe.
         Structure is documented below.
@@ -791,7 +791,7 @@ class GuestPoliciesRecipeArgs:
         return pulumi.get(self, "artifacts")
 
     @artifacts.setter
-    def artifacts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArtifactArgs']]]]):
+    def artifacts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArtifactArrgs']]]]):
         pulumi.set(self, "artifacts", value)
 
     @property
@@ -814,7 +814,7 @@ class GuestPoliciesRecipeArgs:
 
     @property
     @pulumi.getter(name="installSteps")
-    def install_steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeInstallStepArgs']]]]:
+    def install_steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeInstallStepArrgs']]]]:
         """
         Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
         Any steps taken (including partially completed steps) are not rolled back.
@@ -823,12 +823,12 @@ class GuestPoliciesRecipeArgs:
         return pulumi.get(self, "install_steps")
 
     @install_steps.setter
-    def install_steps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeInstallStepArgs']]]]):
+    def install_steps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeInstallStepArrgs']]]]):
         pulumi.set(self, "install_steps", value)
 
     @property
     @pulumi.getter(name="updateSteps")
-    def update_steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeUpdateStepArgs']]]]:
+    def update_steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeUpdateStepArrgs']]]]:
         """
         Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
         Any steps taken (including partially completed steps) are not rolled back.
@@ -837,7 +837,7 @@ class GuestPoliciesRecipeArgs:
         return pulumi.get(self, "update_steps")
 
     @update_steps.setter
-    def update_steps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeUpdateStepArgs']]]]):
+    def update_steps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeUpdateStepArrgs']]]]):
         pulumi.set(self, "update_steps", value)
 
     @property
@@ -854,21 +854,21 @@ class GuestPoliciesRecipeArgs:
 
 
 @pulumi.input_type
-class GuestPoliciesRecipeArtifactArgs:
+calass GuestPoliciesRecipeArtifactArrgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str],
                  allow_insecure: Optional[pulumi.Input[bool]] = None,
-                 gcs: Optional[pulumi.Input['GuestPoliciesRecipeArtifactGcsArgs']] = None,
-                 remote: Optional[pulumi.Input['GuestPoliciesRecipeArtifactRemoteArgs']] = None):
+                 gcs: Optional[pulumi.Input['GuestPoliciesRecipeArtifactGcsArrgs']] = None,
+                 remote: Optional[pulumi.Input['GuestPoliciesRecipeArtifactRemoteArrgs']] = None):
         """
         :param pulumi.Input[str] id: Id of the artifact, which the installation and update steps of this recipe can reference.
                Artifacts in a recipe cannot have the same id.
         :param pulumi.Input[bool] allow_insecure: Defaults to false. When false, recipes are subject to validations based on the artifact type:
                Remote: A checksum must be specified, and only protocols with transport-layer security are permitted.
                GCS: An object generation number must be specified.
-        :param pulumi.Input['GuestPoliciesRecipeArtifactGcsArgs'] gcs: A Google Cloud Storage artifact.
+        :param pulumi.Input['GuestPoliciesRecipeArtifactGcsArrgs'] gcs: A Google Cloud Storage artifact.
                Structure is documented below.
-        :param pulumi.Input['GuestPoliciesRecipeArtifactRemoteArgs'] remote: A generic remote artifact.
+        :param pulumi.Input['GuestPoliciesRecipeArtifactRemoteArrgs'] remote: A generic remote artifact.
                Structure is documented below.
         """
         pulumi.set(__self__, "id", id)
@@ -908,7 +908,7 @@ class GuestPoliciesRecipeArtifactArgs:
 
     @property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['GuestPoliciesRecipeArtifactGcsArgs']]:
+    def gcs(self) -> Optional[pulumi.Input['GuestPoliciesRecipeArtifactGcsArrgs']]:
         """
         A Google Cloud Storage artifact.
         Structure is documented below.
@@ -916,12 +916,12 @@ class GuestPoliciesRecipeArtifactArgs:
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['GuestPoliciesRecipeArtifactGcsArgs']]):
+    def gcs(self, value: Optional[pulumi.Input['GuestPoliciesRecipeArtifactGcsArrgs']]):
         pulumi.set(self, "gcs", value)
 
     @property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['GuestPoliciesRecipeArtifactRemoteArgs']]:
+    def remote(self) -> Optional[pulumi.Input['GuestPoliciesRecipeArtifactRemoteArrgs']]:
         """
         A generic remote artifact.
         Structure is documented below.
@@ -929,12 +929,12 @@ class GuestPoliciesRecipeArtifactArgs:
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['GuestPoliciesRecipeArtifactRemoteArgs']]):
+    def remote(self, value: Optional[pulumi.Input['GuestPoliciesRecipeArtifactRemoteArrgs']]):
         pulumi.set(self, "remote", value)
 
 
 @pulumi.input_type
-class GuestPoliciesRecipeArtifactGcsArgs:
+calass GuestPoliciesRecipeArtifactGcsArrgs:
     def __init__(__self__, *,
                  bucket: Optional[pulumi.Input[str]] = None,
                  generation: Optional[pulumi.Input[int]] = None,
@@ -995,7 +995,7 @@ class GuestPoliciesRecipeArtifactGcsArgs:
 
 
 @pulumi.input_type
-class GuestPoliciesRecipeArtifactRemoteArgs:
+calass GuestPoliciesRecipeArtifactRemoteArrgs:
     def __init__(__self__, *,
                  check_sum: Optional[pulumi.Input[str]] = None,
                  uri: Optional[pulumi.Input[str]] = None):
@@ -1038,29 +1038,29 @@ class GuestPoliciesRecipeArtifactRemoteArgs:
 
 
 @pulumi.input_type
-class GuestPoliciesRecipeInstallStepArgs:
+calass GuestPoliciesRecipeInstallStepArrgs:
     def __init__(__self__, *,
-                 archive_extraction: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepArchiveExtractionArgs']] = None,
-                 dpkg_installation: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepDpkgInstallationArgs']] = None,
-                 file_copy: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepFileCopyArgs']] = None,
-                 file_exec: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepFileExecArgs']] = None,
-                 msi_installation: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepMsiInstallationArgs']] = None,
-                 rpm_installation: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepRpmInstallationArgs']] = None,
-                 script_run: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepScriptRunArgs']] = None):
+                 archive_extraction: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepArchiveExtractionArrgs']] = None,
+                 dpkg_installation: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepDpkgInstallationArrgs']] = None,
+                 file_copy: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepFileCopyArrgs']] = None,
+                 file_exec: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepFileExecArrgs']] = None,
+                 msi_installation: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepMsiInstallationArrgs']] = None,
+                 rpm_installation: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepRpmInstallationArrgs']] = None,
+                 script_run: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepScriptRunArrgs']] = None):
         """
-        :param pulumi.Input['GuestPoliciesRecipeInstallStepArchiveExtractionArgs'] archive_extraction: Extracts an archive into the specified directory.
+        :param pulumi.Input['GuestPoliciesRecipeInstallStepArchiveExtractionArrgs'] archive_extraction: Extracts an archive into the specified directory.
                Structure is documented below.
-        :param pulumi.Input['GuestPoliciesRecipeInstallStepDpkgInstallationArgs'] dpkg_installation: Installs a deb file via dpkg.
+        :param pulumi.Input['GuestPoliciesRecipeInstallStepDpkgInstallationArrgs'] dpkg_installation: Installs a deb file via dpkg.
                Structure is documented below.
-        :param pulumi.Input['GuestPoliciesRecipeInstallStepFileCopyArgs'] file_copy: Copies a file onto the instance.
+        :param pulumi.Input['GuestPoliciesRecipeInstallStepFileCopyArrgs'] file_copy: Copies a file onto the instance.
                Structure is documented below.
-        :param pulumi.Input['GuestPoliciesRecipeInstallStepFileExecArgs'] file_exec: Executes an artifact or local file.
+        :param pulumi.Input['GuestPoliciesRecipeInstallStepFileExecArrgs'] file_exec: Executes an artifact or local file.
                Structure is documented below.
-        :param pulumi.Input['GuestPoliciesRecipeInstallStepMsiInstallationArgs'] msi_installation: Installs an MSI file.
+        :param pulumi.Input['GuestPoliciesRecipeInstallStepMsiInstallationArrgs'] msi_installation: Installs an MSI file.
                Structure is documented below.
-        :param pulumi.Input['GuestPoliciesRecipeInstallStepRpmInstallationArgs'] rpm_installation: Installs an rpm file via the rpm utility.
+        :param pulumi.Input['GuestPoliciesRecipeInstallStepRpmInstallationArrgs'] rpm_installation: Installs an rpm file via the rpm utility.
                Structure is documented below.
-        :param pulumi.Input['GuestPoliciesRecipeInstallStepScriptRunArgs'] script_run: Runs commands in a shell.
+        :param pulumi.Input['GuestPoliciesRecipeInstallStepScriptRunArrgs'] script_run: Runs commands in a shell.
                Structure is documented below.
         """
         if archive_extraction is not None:
@@ -1080,7 +1080,7 @@ class GuestPoliciesRecipeInstallStepArgs:
 
     @property
     @pulumi.getter(name="archiveExtraction")
-    def archive_extraction(self) -> Optional[pulumi.Input['GuestPoliciesRecipeInstallStepArchiveExtractionArgs']]:
+    def archive_extraction(self) -> Optional[pulumi.Input['GuestPoliciesRecipeInstallStepArchiveExtractionArrgs']]:
         """
         Extracts an archive into the specified directory.
         Structure is documented below.
@@ -1088,12 +1088,12 @@ class GuestPoliciesRecipeInstallStepArgs:
         return pulumi.get(self, "archive_extraction")
 
     @archive_extraction.setter
-    def archive_extraction(self, value: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepArchiveExtractionArgs']]):
+    def archive_extraction(self, value: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepArchiveExtractionArrgs']]):
         pulumi.set(self, "archive_extraction", value)
 
     @property
     @pulumi.getter(name="dpkgInstallation")
-    def dpkg_installation(self) -> Optional[pulumi.Input['GuestPoliciesRecipeInstallStepDpkgInstallationArgs']]:
+    def dpkg_installation(self) -> Optional[pulumi.Input['GuestPoliciesRecipeInstallStepDpkgInstallationArrgs']]:
         """
         Installs a deb file via dpkg.
         Structure is documented below.
@@ -1101,12 +1101,12 @@ class GuestPoliciesRecipeInstallStepArgs:
         return pulumi.get(self, "dpkg_installation")
 
     @dpkg_installation.setter
-    def dpkg_installation(self, value: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepDpkgInstallationArgs']]):
+    def dpkg_installation(self, value: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepDpkgInstallationArrgs']]):
         pulumi.set(self, "dpkg_installation", value)
 
     @property
     @pulumi.getter(name="fileCopy")
-    def file_copy(self) -> Optional[pulumi.Input['GuestPoliciesRecipeInstallStepFileCopyArgs']]:
+    def file_copy(self) -> Optional[pulumi.Input['GuestPoliciesRecipeInstallStepFileCopyArrgs']]:
         """
         Copies a file onto the instance.
         Structure is documented below.
@@ -1114,12 +1114,12 @@ class GuestPoliciesRecipeInstallStepArgs:
         return pulumi.get(self, "file_copy")
 
     @file_copy.setter
-    def file_copy(self, value: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepFileCopyArgs']]):
+    def file_copy(self, value: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepFileCopyArrgs']]):
         pulumi.set(self, "file_copy", value)
 
     @property
     @pulumi.getter(name="fileExec")
-    def file_exec(self) -> Optional[pulumi.Input['GuestPoliciesRecipeInstallStepFileExecArgs']]:
+    def file_exec(self) -> Optional[pulumi.Input['GuestPoliciesRecipeInstallStepFileExecArrgs']]:
         """
         Executes an artifact or local file.
         Structure is documented below.
@@ -1127,12 +1127,12 @@ class GuestPoliciesRecipeInstallStepArgs:
         return pulumi.get(self, "file_exec")
 
     @file_exec.setter
-    def file_exec(self, value: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepFileExecArgs']]):
+    def file_exec(self, value: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepFileExecArrgs']]):
         pulumi.set(self, "file_exec", value)
 
     @property
     @pulumi.getter(name="msiInstallation")
-    def msi_installation(self) -> Optional[pulumi.Input['GuestPoliciesRecipeInstallStepMsiInstallationArgs']]:
+    def msi_installation(self) -> Optional[pulumi.Input['GuestPoliciesRecipeInstallStepMsiInstallationArrgs']]:
         """
         Installs an MSI file.
         Structure is documented below.
@@ -1140,12 +1140,12 @@ class GuestPoliciesRecipeInstallStepArgs:
         return pulumi.get(self, "msi_installation")
 
     @msi_installation.setter
-    def msi_installation(self, value: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepMsiInstallationArgs']]):
+    def msi_installation(self, value: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepMsiInstallationArrgs']]):
         pulumi.set(self, "msi_installation", value)
 
     @property
     @pulumi.getter(name="rpmInstallation")
-    def rpm_installation(self) -> Optional[pulumi.Input['GuestPoliciesRecipeInstallStepRpmInstallationArgs']]:
+    def rpm_installation(self) -> Optional[pulumi.Input['GuestPoliciesRecipeInstallStepRpmInstallationArrgs']]:
         """
         Installs an rpm file via the rpm utility.
         Structure is documented below.
@@ -1153,12 +1153,12 @@ class GuestPoliciesRecipeInstallStepArgs:
         return pulumi.get(self, "rpm_installation")
 
     @rpm_installation.setter
-    def rpm_installation(self, value: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepRpmInstallationArgs']]):
+    def rpm_installation(self, value: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepRpmInstallationArrgs']]):
         pulumi.set(self, "rpm_installation", value)
 
     @property
     @pulumi.getter(name="scriptRun")
-    def script_run(self) -> Optional[pulumi.Input['GuestPoliciesRecipeInstallStepScriptRunArgs']]:
+    def script_run(self) -> Optional[pulumi.Input['GuestPoliciesRecipeInstallStepScriptRunArrgs']]:
         """
         Runs commands in a shell.
         Structure is documented below.
@@ -1166,12 +1166,12 @@ class GuestPoliciesRecipeInstallStepArgs:
         return pulumi.get(self, "script_run")
 
     @script_run.setter
-    def script_run(self, value: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepScriptRunArgs']]):
+    def script_run(self, value: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepScriptRunArrgs']]):
         pulumi.set(self, "script_run", value)
 
 
 @pulumi.input_type
-class GuestPoliciesRecipeInstallStepArchiveExtractionArgs:
+calass GuestPoliciesRecipeInstallStepArchiveExtractionArrgs:
     def __init__(__self__, *,
                  artifact_id: pulumi.Input[str],
                  type: pulumi.Input[str],
@@ -1226,7 +1226,7 @@ class GuestPoliciesRecipeInstallStepArchiveExtractionArgs:
 
 
 @pulumi.input_type
-class GuestPoliciesRecipeInstallStepDpkgInstallationArgs:
+calass GuestPoliciesRecipeInstallStepDpkgInstallationArrgs:
     def __init__(__self__, *,
                  artifact_id: pulumi.Input[str]):
         """
@@ -1248,7 +1248,7 @@ class GuestPoliciesRecipeInstallStepDpkgInstallationArgs:
 
 
 @pulumi.input_type
-class GuestPoliciesRecipeInstallStepFileCopyArgs:
+calass GuestPoliciesRecipeInstallStepFileCopyArrgs:
     def __init__(__self__, *,
                  artifact_id: pulumi.Input[str],
                  destination: pulumi.Input[str],
@@ -1329,7 +1329,7 @@ class GuestPoliciesRecipeInstallStepFileCopyArgs:
 
 
 @pulumi.input_type
-class GuestPoliciesRecipeInstallStepFileExecArgs:
+calass GuestPoliciesRecipeInstallStepFileExecArrgs:
     def __init__(__self__, *,
                  allowed_exit_codes: Optional[pulumi.Input[str]] = None,
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1400,7 +1400,7 @@ class GuestPoliciesRecipeInstallStepFileExecArgs:
 
 
 @pulumi.input_type
-class GuestPoliciesRecipeInstallStepMsiInstallationArgs:
+calass GuestPoliciesRecipeInstallStepMsiInstallationArrgs:
     def __init__(__self__, *,
                  artifact_id: pulumi.Input[str],
                  allowed_exit_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
@@ -1454,7 +1454,7 @@ class GuestPoliciesRecipeInstallStepMsiInstallationArgs:
 
 
 @pulumi.input_type
-class GuestPoliciesRecipeInstallStepRpmInstallationArgs:
+calass GuestPoliciesRecipeInstallStepRpmInstallationArrgs:
     def __init__(__self__, *,
                  artifact_id: pulumi.Input[str]):
         """
@@ -1476,7 +1476,7 @@ class GuestPoliciesRecipeInstallStepRpmInstallationArgs:
 
 
 @pulumi.input_type
-class GuestPoliciesRecipeInstallStepScriptRunArgs:
+calass GuestPoliciesRecipeInstallStepScriptRunArrgs:
     def __init__(__self__, *,
                  script: pulumi.Input[str],
                  allowed_exit_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
@@ -1534,29 +1534,29 @@ class GuestPoliciesRecipeInstallStepScriptRunArgs:
 
 
 @pulumi.input_type
-class GuestPoliciesRecipeUpdateStepArgs:
+calass GuestPoliciesRecipeUpdateStepArrgs:
     def __init__(__self__, *,
-                 archive_extraction: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepArchiveExtractionArgs']] = None,
-                 dpkg_installation: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepDpkgInstallationArgs']] = None,
-                 file_copy: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepFileCopyArgs']] = None,
-                 file_exec: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepFileExecArgs']] = None,
-                 msi_installation: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepMsiInstallationArgs']] = None,
-                 rpm_installation: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepRpmInstallationArgs']] = None,
-                 script_run: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepScriptRunArgs']] = None):
+                 archive_extraction: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepArchiveExtractionArrgs']] = None,
+                 dpkg_installation: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepDpkgInstallationArrgs']] = None,
+                 file_copy: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepFileCopyArrgs']] = None,
+                 file_exec: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepFileExecArrgs']] = None,
+                 msi_installation: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepMsiInstallationArrgs']] = None,
+                 rpm_installation: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepRpmInstallationArrgs']] = None,
+                 script_run: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepScriptRunArrgs']] = None):
         """
-        :param pulumi.Input['GuestPoliciesRecipeUpdateStepArchiveExtractionArgs'] archive_extraction: Extracts an archive into the specified directory.
+        :param pulumi.Input['GuestPoliciesRecipeUpdateStepArchiveExtractionArrgs'] archive_extraction: Extracts an archive into the specified directory.
                Structure is documented below.
-        :param pulumi.Input['GuestPoliciesRecipeUpdateStepDpkgInstallationArgs'] dpkg_installation: Installs a deb file via dpkg.
+        :param pulumi.Input['GuestPoliciesRecipeUpdateStepDpkgInstallationArrgs'] dpkg_installation: Installs a deb file via dpkg.
                Structure is documented below.
-        :param pulumi.Input['GuestPoliciesRecipeUpdateStepFileCopyArgs'] file_copy: Copies a file onto the instance.
+        :param pulumi.Input['GuestPoliciesRecipeUpdateStepFileCopyArrgs'] file_copy: Copies a file onto the instance.
                Structure is documented below.
-        :param pulumi.Input['GuestPoliciesRecipeUpdateStepFileExecArgs'] file_exec: Executes an artifact or local file.
+        :param pulumi.Input['GuestPoliciesRecipeUpdateStepFileExecArrgs'] file_exec: Executes an artifact or local file.
                Structure is documented below.
-        :param pulumi.Input['GuestPoliciesRecipeUpdateStepMsiInstallationArgs'] msi_installation: Installs an MSI file.
+        :param pulumi.Input['GuestPoliciesRecipeUpdateStepMsiInstallationArrgs'] msi_installation: Installs an MSI file.
                Structure is documented below.
-        :param pulumi.Input['GuestPoliciesRecipeUpdateStepRpmInstallationArgs'] rpm_installation: Installs an rpm file via the rpm utility.
+        :param pulumi.Input['GuestPoliciesRecipeUpdateStepRpmInstallationArrgs'] rpm_installation: Installs an rpm file via the rpm utility.
                Structure is documented below.
-        :param pulumi.Input['GuestPoliciesRecipeUpdateStepScriptRunArgs'] script_run: Runs commands in a shell.
+        :param pulumi.Input['GuestPoliciesRecipeUpdateStepScriptRunArrgs'] script_run: Runs commands in a shell.
                Structure is documented below.
         """
         if archive_extraction is not None:
@@ -1576,7 +1576,7 @@ class GuestPoliciesRecipeUpdateStepArgs:
 
     @property
     @pulumi.getter(name="archiveExtraction")
-    def archive_extraction(self) -> Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepArchiveExtractionArgs']]:
+    def archive_extraction(self) -> Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepArchiveExtractionArrgs']]:
         """
         Extracts an archive into the specified directory.
         Structure is documented below.
@@ -1584,12 +1584,12 @@ class GuestPoliciesRecipeUpdateStepArgs:
         return pulumi.get(self, "archive_extraction")
 
     @archive_extraction.setter
-    def archive_extraction(self, value: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepArchiveExtractionArgs']]):
+    def archive_extraction(self, value: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepArchiveExtractionArrgs']]):
         pulumi.set(self, "archive_extraction", value)
 
     @property
     @pulumi.getter(name="dpkgInstallation")
-    def dpkg_installation(self) -> Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepDpkgInstallationArgs']]:
+    def dpkg_installation(self) -> Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepDpkgInstallationArrgs']]:
         """
         Installs a deb file via dpkg.
         Structure is documented below.
@@ -1597,12 +1597,12 @@ class GuestPoliciesRecipeUpdateStepArgs:
         return pulumi.get(self, "dpkg_installation")
 
     @dpkg_installation.setter
-    def dpkg_installation(self, value: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepDpkgInstallationArgs']]):
+    def dpkg_installation(self, value: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepDpkgInstallationArrgs']]):
         pulumi.set(self, "dpkg_installation", value)
 
     @property
     @pulumi.getter(name="fileCopy")
-    def file_copy(self) -> Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepFileCopyArgs']]:
+    def file_copy(self) -> Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepFileCopyArrgs']]:
         """
         Copies a file onto the instance.
         Structure is documented below.
@@ -1610,12 +1610,12 @@ class GuestPoliciesRecipeUpdateStepArgs:
         return pulumi.get(self, "file_copy")
 
     @file_copy.setter
-    def file_copy(self, value: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepFileCopyArgs']]):
+    def file_copy(self, value: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepFileCopyArrgs']]):
         pulumi.set(self, "file_copy", value)
 
     @property
     @pulumi.getter(name="fileExec")
-    def file_exec(self) -> Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepFileExecArgs']]:
+    def file_exec(self) -> Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepFileExecArrgs']]:
         """
         Executes an artifact or local file.
         Structure is documented below.
@@ -1623,12 +1623,12 @@ class GuestPoliciesRecipeUpdateStepArgs:
         return pulumi.get(self, "file_exec")
 
     @file_exec.setter
-    def file_exec(self, value: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepFileExecArgs']]):
+    def file_exec(self, value: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepFileExecArrgs']]):
         pulumi.set(self, "file_exec", value)
 
     @property
     @pulumi.getter(name="msiInstallation")
-    def msi_installation(self) -> Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepMsiInstallationArgs']]:
+    def msi_installation(self) -> Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepMsiInstallationArrgs']]:
         """
         Installs an MSI file.
         Structure is documented below.
@@ -1636,12 +1636,12 @@ class GuestPoliciesRecipeUpdateStepArgs:
         return pulumi.get(self, "msi_installation")
 
     @msi_installation.setter
-    def msi_installation(self, value: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepMsiInstallationArgs']]):
+    def msi_installation(self, value: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepMsiInstallationArrgs']]):
         pulumi.set(self, "msi_installation", value)
 
     @property
     @pulumi.getter(name="rpmInstallation")
-    def rpm_installation(self) -> Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepRpmInstallationArgs']]:
+    def rpm_installation(self) -> Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepRpmInstallationArrgs']]:
         """
         Installs an rpm file via the rpm utility.
         Structure is documented below.
@@ -1649,12 +1649,12 @@ class GuestPoliciesRecipeUpdateStepArgs:
         return pulumi.get(self, "rpm_installation")
 
     @rpm_installation.setter
-    def rpm_installation(self, value: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepRpmInstallationArgs']]):
+    def rpm_installation(self, value: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepRpmInstallationArrgs']]):
         pulumi.set(self, "rpm_installation", value)
 
     @property
     @pulumi.getter(name="scriptRun")
-    def script_run(self) -> Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepScriptRunArgs']]:
+    def script_run(self) -> Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepScriptRunArrgs']]:
         """
         Runs commands in a shell.
         Structure is documented below.
@@ -1662,12 +1662,12 @@ class GuestPoliciesRecipeUpdateStepArgs:
         return pulumi.get(self, "script_run")
 
     @script_run.setter
-    def script_run(self, value: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepScriptRunArgs']]):
+    def script_run(self, value: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepScriptRunArrgs']]):
         pulumi.set(self, "script_run", value)
 
 
 @pulumi.input_type
-class GuestPoliciesRecipeUpdateStepArchiveExtractionArgs:
+calass GuestPoliciesRecipeUpdateStepArchiveExtractionArrgs:
     def __init__(__self__, *,
                  artifact_id: pulumi.Input[str],
                  type: pulumi.Input[str],
@@ -1722,7 +1722,7 @@ class GuestPoliciesRecipeUpdateStepArchiveExtractionArgs:
 
 
 @pulumi.input_type
-class GuestPoliciesRecipeUpdateStepDpkgInstallationArgs:
+calass GuestPoliciesRecipeUpdateStepDpkgInstallationArrgs:
     def __init__(__self__, *,
                  artifact_id: pulumi.Input[str]):
         """
@@ -1744,7 +1744,7 @@ class GuestPoliciesRecipeUpdateStepDpkgInstallationArgs:
 
 
 @pulumi.input_type
-class GuestPoliciesRecipeUpdateStepFileCopyArgs:
+calass GuestPoliciesRecipeUpdateStepFileCopyArrgs:
     def __init__(__self__, *,
                  artifact_id: pulumi.Input[str],
                  destination: pulumi.Input[str],
@@ -1825,7 +1825,7 @@ class GuestPoliciesRecipeUpdateStepFileCopyArgs:
 
 
 @pulumi.input_type
-class GuestPoliciesRecipeUpdateStepFileExecArgs:
+calass GuestPoliciesRecipeUpdateStepFileExecArrgs:
     def __init__(__self__, *,
                  allowed_exit_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1896,7 +1896,7 @@ class GuestPoliciesRecipeUpdateStepFileExecArgs:
 
 
 @pulumi.input_type
-class GuestPoliciesRecipeUpdateStepMsiInstallationArgs:
+calass GuestPoliciesRecipeUpdateStepMsiInstallationArrgs:
     def __init__(__self__, *,
                  artifact_id: pulumi.Input[str],
                  allowed_exit_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
@@ -1950,7 +1950,7 @@ class GuestPoliciesRecipeUpdateStepMsiInstallationArgs:
 
 
 @pulumi.input_type
-class GuestPoliciesRecipeUpdateStepRpmInstallationArgs:
+calass GuestPoliciesRecipeUpdateStepRpmInstallationArrgs:
     def __init__(__self__, *,
                  artifact_id: pulumi.Input[str]):
         """
@@ -1972,7 +1972,7 @@ class GuestPoliciesRecipeUpdateStepRpmInstallationArgs:
 
 
 @pulumi.input_type
-class GuestPoliciesRecipeUpdateStepScriptRunArgs:
+calass GuestPoliciesRecipeUpdateStepScriptRunArrgs:
     def __init__(__self__, *,
                  script: pulumi.Input[str],
                  allowed_exit_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
@@ -2030,24 +2030,24 @@ class GuestPoliciesRecipeUpdateStepScriptRunArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentInstanceFilterArgs:
+calass OsPolicyAssignmentInstanceFilterArrgs:
     def __init__(__self__, *,
                  all: Optional[pulumi.Input[bool]] = None,
-                 exclusion_labels: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterExclusionLabelArgs']]]] = None,
-                 inclusion_labels: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInclusionLabelArgs']]]] = None,
-                 inventories: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInventoryArgs']]]] = None):
+                 exclusion_labels: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterExclusionLabelArrgs']]]] = None,
+                 inclusion_labels: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInclusionLabelArrgs']]]] = None,
+                 inventories: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInventoryArrgs']]]] = None):
         """
         :param pulumi.Input[bool] all: Target all VMs in the project. If true, no other criteria
                is permitted.
-        :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterExclusionLabelArgs']]] exclusion_labels: List of label sets used for VM exclusion. If
+        :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterExclusionLabelArrgs']]] exclusion_labels: List of label sets used for VM exclusion. If
                the list has more than one label set, the VM is excluded if any of the label
                sets are applicable for the VM. Structure is
                documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInclusionLabelArgs']]] inclusion_labels: List of label sets used for VM inclusion. If
+        :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInclusionLabelArrgs']]] inclusion_labels: List of label sets used for VM inclusion. If
                the list has more than one `LabelSet`, the VM is included if any of the
                label sets are applicable for the VM. Structure is
                documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInventoryArgs']]] inventories: List of inventories to select VMs. A VM is
+        :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInventoryArrgs']]] inventories: List of inventories to select VMs. A VM is
                selected if its inventory data matches at least one of the following
                inventories. Structure is documented below.
         """
@@ -2075,7 +2075,7 @@ class OsPolicyAssignmentInstanceFilterArgs:
 
     @property
     @pulumi.getter(name="exclusionLabels")
-    def exclusion_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterExclusionLabelArgs']]]]:
+    def exclusion_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterExclusionLabelArrgs']]]]:
         """
         List of label sets used for VM exclusion. If
         the list has more than one label set, the VM is excluded if any of the label
@@ -2085,12 +2085,12 @@ class OsPolicyAssignmentInstanceFilterArgs:
         return pulumi.get(self, "exclusion_labels")
 
     @exclusion_labels.setter
-    def exclusion_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterExclusionLabelArgs']]]]):
+    def exclusion_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterExclusionLabelArrgs']]]]):
         pulumi.set(self, "exclusion_labels", value)
 
     @property
     @pulumi.getter(name="inclusionLabels")
-    def inclusion_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInclusionLabelArgs']]]]:
+    def inclusion_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInclusionLabelArrgs']]]]:
         """
         List of label sets used for VM inclusion. If
         the list has more than one `LabelSet`, the VM is included if any of the
@@ -2100,12 +2100,12 @@ class OsPolicyAssignmentInstanceFilterArgs:
         return pulumi.get(self, "inclusion_labels")
 
     @inclusion_labels.setter
-    def inclusion_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInclusionLabelArgs']]]]):
+    def inclusion_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInclusionLabelArrgs']]]]):
         pulumi.set(self, "inclusion_labels", value)
 
     @property
     @pulumi.getter
-    def inventories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInventoryArgs']]]]:
+    def inventories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInventoryArrgs']]]]:
         """
         List of inventories to select VMs. A VM is
         selected if its inventory data matches at least one of the following
@@ -2114,12 +2114,12 @@ class OsPolicyAssignmentInstanceFilterArgs:
         return pulumi.get(self, "inventories")
 
     @inventories.setter
-    def inventories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInventoryArgs']]]]):
+    def inventories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInventoryArrgs']]]]):
         pulumi.set(self, "inventories", value)
 
 
 @pulumi.input_type
-class OsPolicyAssignmentInstanceFilterExclusionLabelArgs:
+calass OsPolicyAssignmentInstanceFilterExclusionLabelArrgs:
     def __init__(__self__, *,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -2146,7 +2146,7 @@ class OsPolicyAssignmentInstanceFilterExclusionLabelArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentInstanceFilterInclusionLabelArgs:
+calass OsPolicyAssignmentInstanceFilterInclusionLabelArrgs:
     def __init__(__self__, *,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -2173,7 +2173,7 @@ class OsPolicyAssignmentInstanceFilterInclusionLabelArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentInstanceFilterInventoryArgs:
+calass OsPolicyAssignmentInstanceFilterInventoryArrgs:
     def __init__(__self__, *,
                  os_short_name: pulumi.Input[str],
                  os_version: Optional[pulumi.Input[str]] = None):
@@ -2217,11 +2217,11 @@ class OsPolicyAssignmentInstanceFilterInventoryArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyArgs:
+calass OsPolicyAssignmentOsPolicyArrgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str],
                  mode: pulumi.Input[str],
-                 resource_groups: pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupArgs']]],
+                 resource_groups: pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupArrgs']]],
                  allow_no_resource_group_match: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None):
         """
@@ -2234,7 +2234,7 @@ class OsPolicyAssignmentOsPolicyArgs:
                *   Must be unique within the assignment.
         :param pulumi.Input[str] mode: Policy mode Possible values are: `MODE_UNSPECIFIED`,
                `VALIDATION`, `ENFORCEMENT`.
-        :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupArgs']]] resource_groups: List of resource groups for the policy. For a
+        :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupArrgs']]] resource_groups: List of resource groups for the policy. For a
                particular VM, resource groups are evaluated in the order specified and the
                first resource group that is applicable is selected and the rest are
                ignored. If none of the resource groups are applicable for a VM, the VM is
@@ -2289,7 +2289,7 @@ class OsPolicyAssignmentOsPolicyArgs:
 
     @property
     @pulumi.getter(name="resourceGroups")
-    def resource_groups(self) -> pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupArgs']]]:
+    def resource_groups(self) -> pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupArrgs']]]:
         """
         List of resource groups for the policy. For a
         particular VM, resource groups are evaluated in the order specified and the
@@ -2302,7 +2302,7 @@ class OsPolicyAssignmentOsPolicyArgs:
         return pulumi.get(self, "resource_groups")
 
     @resource_groups.setter
-    def resource_groups(self, value: pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupArgs']]]):
+    def resource_groups(self, value: pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupArrgs']]]):
         pulumi.set(self, "resource_groups", value)
 
     @property
@@ -2335,15 +2335,15 @@ class OsPolicyAssignmentOsPolicyArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupArrgs:
     def __init__(__self__, *,
-                 resources: pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceArgs']]],
-                 inventory_filters: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs']]]] = None):
+                 resources: pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceArrgs']]],
+                 inventory_filters: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceArgs']]] resources: List of resources configured for this resource
+        :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceArrgs']]] resources: List of resources configured for this resource
                group. The resources are executed in the exact order specified here.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs']]] inventory_filters: List of inventory filters for the resource
+        :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrgs']]] inventory_filters: List of inventory filters for the resource
                group. The resources in this resource group are applied to the target VM if
                it satisfies at least one of the following inventory filters. For example,
                to apply this resource group to VMs running either `RHEL` or `CentOS`
@@ -2359,7 +2359,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupArgs:
 
     @property
     @pulumi.getter
-    def resources(self) -> pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceArgs']]]:
+    def resources(self) -> pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceArrgs']]]:
         """
         List of resources configured for this resource
         group. The resources are executed in the exact order specified here.
@@ -2368,12 +2368,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupArgs:
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceArgs']]]):
+    def resources(self, value: pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceArrgs']]]):
         pulumi.set(self, "resources", value)
 
     @property
     @pulumi.getter(name="inventoryFilters")
-    def inventory_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs']]]]:
+    def inventory_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrgs']]]]:
         """
         List of inventory filters for the resource
         group. The resources in this resource group are applied to the target VM if
@@ -2388,12 +2388,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupArgs:
         return pulumi.get(self, "inventory_filters")
 
     @inventory_filters.setter
-    def inventory_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs']]]]):
+    def inventory_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrgs']]]]):
         pulumi.set(self, "inventory_filters", value)
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrgs:
     def __init__(__self__, *,
                  os_short_name: pulumi.Input[str],
                  os_version: Optional[pulumi.Input[str]] = None):
@@ -2437,13 +2437,13 @@ class OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceArrgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str],
-                 exec_: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs']] = None,
-                 file: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs']] = None,
-                 pkg: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs']] = None,
-                 repository: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs']] = None):
+                 exec_: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecArrgs']] = None,
+                 file: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArrgs']] = None,
+                 pkg: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArrgs']] = None,
+                 repository: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArrgs']] = None):
         """
         :param pulumi.Input[str] id: The id of the resource with the following restrictions:
                
@@ -2452,13 +2452,13 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs:
                *   Must be between 1-63 characters.
                *   Must end with a number or a letter.
                *   Must be unique within the OS policy.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs'] exec_: Exec resource Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecArrgs'] exec_: Exec resource Structure is
                documented below.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs'] file: File resource Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArrgs'] file: File resource Structure is
                documented below.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs'] pkg: Package resource Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArrgs'] pkg: Package resource Structure is
                documented below.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs'] repository: Package repository resource Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArrgs'] repository: Package repository resource Structure is
                documented below.
         """
         pulumi.set(__self__, "id", id)
@@ -2491,7 +2491,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs:
 
     @property
     @pulumi.getter(name="exec")
-    def exec_(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs']]:
+    def exec_(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecArrgs']]:
         """
         Exec resource Structure is
         documented below.
@@ -2499,12 +2499,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs:
         return pulumi.get(self, "exec_")
 
     @exec_.setter
-    def exec_(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs']]):
+    def exec_(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecArrgs']]):
         pulumi.set(self, "exec_", value)
 
     @property
     @pulumi.getter
-    def file(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs']]:
+    def file(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArrgs']]:
         """
         File resource Structure is
         documented below.
@@ -2512,12 +2512,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs:
         return pulumi.get(self, "file")
 
     @file.setter
-    def file(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs']]):
+    def file(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArrgs']]):
         pulumi.set(self, "file", value)
 
     @property
     @pulumi.getter
-    def pkg(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs']]:
+    def pkg(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArrgs']]:
         """
         Package resource Structure is
         documented below.
@@ -2525,12 +2525,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs:
         return pulumi.get(self, "pkg")
 
     @pkg.setter
-    def pkg(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs']]):
+    def pkg(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArrgs']]):
         pulumi.set(self, "pkg", value)
 
     @property
     @pulumi.getter
-    def repository(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs']]:
+    def repository(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArrgs']]:
         """
         Package repository resource Structure is
         documented below.
@@ -2538,22 +2538,22 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs:
         return pulumi.get(self, "repository")
 
     @repository.setter
-    def repository(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs']]):
+    def repository(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArrgs']]):
         pulumi.set(self, "repository", value)
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceExecArrgs:
     def __init__(__self__, *,
-                 validate: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs'],
-                 enforce: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs']] = None):
+                 validate: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArrgs'],
+                 enforce: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArrgs']] = None):
         """
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs'] validate: What to run to validate this resource is in the
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArrgs'] validate: What to run to validate this resource is in the
                desired state. An exit code of 100 indicates "in desired state", and exit
                code of 101 indicates "not in desired state". Any other exit code indicates
                a failure running validate. Structure is
                documented below.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs'] enforce: What to run to bring this resource into the desired
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArrgs'] enforce: What to run to bring this resource into the desired
                state. An exit code of 100 indicates "success", any other exit code
                indicates a failure running enforce. Structure is
                documented below.
@@ -2564,7 +2564,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs:
 
     @property
     @pulumi.getter
-    def validate(self) -> pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs']:
+    def validate(self) -> pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArrgs']:
         """
         What to run to validate this resource is in the
         desired state. An exit code of 100 indicates "in desired state", and exit
@@ -2575,12 +2575,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs:
         return pulumi.get(self, "validate")
 
     @validate.setter
-    def validate(self, value: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs']):
+    def validate(self, value: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArrgs']):
         pulumi.set(self, "validate", value)
 
     @property
     @pulumi.getter
-    def enforce(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs']]:
+    def enforce(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArrgs']]:
         """
         What to run to bring this resource into the desired
         state. An exit code of 100 indicates "success", any other exit code
@@ -2590,16 +2590,16 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs:
         return pulumi.get(self, "enforce")
 
     @enforce.setter
-    def enforce(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs']]):
+    def enforce(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArrgs']]):
         pulumi.set(self, "enforce", value)
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArrgs:
     def __init__(__self__, *,
                  interpreter: pulumi.Input[str],
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 file: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs']] = None,
+                 file: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArrgs']] = None,
                  output_file_path: Optional[pulumi.Input[str]] = None,
                  script: Optional[pulumi.Input[str]] = None):
         """
@@ -2607,7 +2607,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs:
                are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Optional arguments to pass to the source during
                execution.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs'] file: A remote or local file. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArrgs'] file: A remote or local file. Structure is
                documented below.
         :param pulumi.Input[str] output_file_path: Only recorded for enforce Exec. Path to an
                output file (that is created by this Exec) whose content will be recorded in
@@ -2655,7 +2655,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs:
 
     @property
     @pulumi.getter
-    def file(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs']]:
+    def file(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArrgs']]:
         """
         A remote or local file. Structure is
         documented below.
@@ -2663,7 +2663,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs:
         return pulumi.get(self, "file")
 
     @file.setter
-    def file(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs']]):
+    def file(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArrgs']]):
         pulumi.set(self, "file", value)
 
     @property
@@ -2697,20 +2697,20 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArrgs:
     def __init__(__self__, *,
                  allow_insecure: Optional[pulumi.Input[bool]] = None,
-                 gcs: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']] = None,
+                 gcs: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArrgs']] = None,
                  local_path: Optional[pulumi.Input[str]] = None,
-                 remote: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']] = None):
+                 remote: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArrgs']] = None):
         """
         :param pulumi.Input[bool] allow_insecure: Defaults to false. When false, files are
                subject to validations based on the file type: Remote: A checksum must be
                specified. Cloud Storage: An object generation number must be specified.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs'] gcs: A Cloud Storage object. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArrgs'] gcs: A Cloud Storage object. Structure is
                documented below.
         :param pulumi.Input[str] local_path: A local path within the VM to use.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs'] remote: A generic remote file. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArrgs'] remote: A generic remote file. Structure is
                documented below.
         """
         if allow_insecure is not None:
@@ -2738,7 +2738,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs:
 
     @property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]:
+    def gcs(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArrgs']]:
         """
         A Cloud Storage object. Structure is
         documented below.
@@ -2746,7 +2746,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs:
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]):
+    def gcs(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArrgs']]):
         pulumi.set(self, "gcs", value)
 
     @property
@@ -2763,7 +2763,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs:
 
     @property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]:
+    def remote(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArrgs']]:
         """
         A generic remote file. Structure is
         documented below.
@@ -2771,12 +2771,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs:
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]):
+    def remote(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArrgs']]):
         pulumi.set(self, "remote", value)
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArrgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
                  object: pulumi.Input[str],
@@ -2829,7 +2829,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArrgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[str],
                  sha256_checksum: Optional[pulumi.Input[str]] = None):
@@ -2869,11 +2869,11 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArrgs:
     def __init__(__self__, *,
                  interpreter: pulumi.Input[str],
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 file: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs']] = None,
+                 file: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArrgs']] = None,
                  output_file_path: Optional[pulumi.Input[str]] = None,
                  script: Optional[pulumi.Input[str]] = None):
         """
@@ -2881,7 +2881,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs:
                are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Optional arguments to pass to the source during
                execution.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs'] file: A remote or local file. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArrgs'] file: A remote or local file. Structure is
                documented below.
         :param pulumi.Input[str] output_file_path: Only recorded for enforce Exec. Path to an
                output file (that is created by this Exec) whose content will be recorded in
@@ -2929,7 +2929,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs:
 
     @property
     @pulumi.getter
-    def file(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs']]:
+    def file(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArrgs']]:
         """
         A remote or local file. Structure is
         documented below.
@@ -2937,7 +2937,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs:
         return pulumi.get(self, "file")
 
     @file.setter
-    def file(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs']]):
+    def file(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArrgs']]):
         pulumi.set(self, "file", value)
 
     @property
@@ -2971,20 +2971,20 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArrgs:
     def __init__(__self__, *,
                  allow_insecure: Optional[pulumi.Input[bool]] = None,
-                 gcs: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs']] = None,
+                 gcs: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArrgs']] = None,
                  local_path: Optional[pulumi.Input[str]] = None,
-                 remote: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']] = None):
+                 remote: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArrgs']] = None):
         """
         :param pulumi.Input[bool] allow_insecure: Defaults to false. When false, files are
                subject to validations based on the file type: Remote: A checksum must be
                specified. Cloud Storage: An object generation number must be specified.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs'] gcs: A Cloud Storage object. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArrgs'] gcs: A Cloud Storage object. Structure is
                documented below.
         :param pulumi.Input[str] local_path: A local path within the VM to use.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs'] remote: A generic remote file. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArrgs'] remote: A generic remote file. Structure is
                documented below.
         """
         if allow_insecure is not None:
@@ -3012,7 +3012,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs:
 
     @property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]:
+    def gcs(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArrgs']]:
         """
         A Cloud Storage object. Structure is
         documented below.
@@ -3020,7 +3020,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs:
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]):
+    def gcs(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArrgs']]):
         pulumi.set(self, "gcs", value)
 
     @property
@@ -3037,7 +3037,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs:
 
     @property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]:
+    def remote(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArrgs']]:
         """
         A generic remote file. Structure is
         documented below.
@@ -3045,12 +3045,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs:
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]):
+    def remote(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArrgs']]):
         pulumi.set(self, "remote", value)
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArrgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
                  object: pulumi.Input[str],
@@ -3103,7 +3103,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArrgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[str],
                  sha256_checksum: Optional[pulumi.Input[str]] = None):
@@ -3143,12 +3143,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceFileArrgs:
     def __init__(__self__, *,
                  path: pulumi.Input[str],
                  state: pulumi.Input[str],
                  content: Optional[pulumi.Input[str]] = None,
-                 file: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs']] = None,
+                 file: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArrgs']] = None,
                  permissions: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] path: The absolute path of the file within the VM.
@@ -3156,7 +3156,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs:
                `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`, `CONTENTS_MATCH`.
         :param pulumi.Input[str] content: A a file with this content. The size of the content
                is limited to 1024 characters.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs'] file: A remote or local source. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArrgs'] file: A remote or local source. Structure is
                documented below.
         :param pulumi.Input[str] permissions: Consists of three octal digits which represent, in
                order, the permissions of the owner, group, and other users for the file
@@ -3216,7 +3216,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs:
 
     @property
     @pulumi.getter
-    def file(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs']]:
+    def file(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArrgs']]:
         """
         A remote or local source. Structure is
         documented below.
@@ -3224,7 +3224,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs:
         return pulumi.get(self, "file")
 
     @file.setter
-    def file(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs']]):
+    def file(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArrgs']]):
         pulumi.set(self, "file", value)
 
     @property
@@ -3248,20 +3248,20 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArrgs:
     def __init__(__self__, *,
                  allow_insecure: Optional[pulumi.Input[bool]] = None,
-                 gcs: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs']] = None,
+                 gcs: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArrgs']] = None,
                  local_path: Optional[pulumi.Input[str]] = None,
-                 remote: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs']] = None):
+                 remote: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArrgs']] = None):
         """
         :param pulumi.Input[bool] allow_insecure: Defaults to false. When false, files are
                subject to validations based on the file type: Remote: A checksum must be
                specified. Cloud Storage: An object generation number must be specified.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs'] gcs: A Cloud Storage object. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArrgs'] gcs: A Cloud Storage object. Structure is
                documented below.
         :param pulumi.Input[str] local_path: A local path within the VM to use.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs'] remote: A generic remote file. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArrgs'] remote: A generic remote file. Structure is
                documented below.
         """
         if allow_insecure is not None:
@@ -3289,7 +3289,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs:
 
     @property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs']]:
+    def gcs(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArrgs']]:
         """
         A Cloud Storage object. Structure is
         documented below.
@@ -3297,7 +3297,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs:
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs']]):
+    def gcs(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArrgs']]):
         pulumi.set(self, "gcs", value)
 
     @property
@@ -3314,7 +3314,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs:
 
     @property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs']]:
+    def remote(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArrgs']]:
         """
         A generic remote file. Structure is
         documented below.
@@ -3322,12 +3322,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs:
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs']]):
+    def remote(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArrgs']]):
         pulumi.set(self, "remote", value)
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArrgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
                  object: pulumi.Input[str],
@@ -3380,7 +3380,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArrgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[str],
                  sha256_checksum: Optional[pulumi.Input[str]] = None):
@@ -3420,33 +3420,33 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArrgs:
     def __init__(__self__, *,
                  desired_state: pulumi.Input[str],
-                 apt: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs']] = None,
-                 deb: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs']] = None,
-                 googet: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs']] = None,
-                 msi: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs']] = None,
-                 rpm: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs']] = None,
-                 yum: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs']] = None,
-                 zypper: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs']] = None):
+                 apt: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArrgs']] = None,
+                 deb: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArrgs']] = None,
+                 googet: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArrgs']] = None,
+                 msi: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArrgs']] = None,
+                 rpm: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArrgs']] = None,
+                 yum: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArrgs']] = None,
+                 zypper: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArrgs']] = None):
         """
         :param pulumi.Input[str] desired_state: The desired state the agent should maintain for
                this package. Possible values are: `DESIRED_STATE_UNSPECIFIED`, `INSTALLED`,
                `REMOVED`.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs'] apt: A package managed by Apt. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArrgs'] apt: A package managed by Apt. Structure is
                documented below.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs'] deb: A deb package file. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArrgs'] deb: A deb package file. Structure is
                documented below.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs'] googet: A package managed by GooGet. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArrgs'] googet: A package managed by GooGet. Structure is
                documented below.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs'] msi: An MSI package. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArrgs'] msi: An MSI package. Structure is
                documented below.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs'] rpm: An rpm package file. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArrgs'] rpm: An rpm package file. Structure is
                documented below.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs'] yum: A package managed by YUM. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArrgs'] yum: A package managed by YUM. Structure is
                documented below.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs'] zypper: A package managed by Zypper. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArrgs'] zypper: A package managed by Zypper. Structure is
                documented below.
         """
         pulumi.set(__self__, "desired_state", desired_state)
@@ -3481,7 +3481,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs:
 
     @property
     @pulumi.getter
-    def apt(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs']]:
+    def apt(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArrgs']]:
         """
         A package managed by Apt. Structure is
         documented below.
@@ -3489,12 +3489,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs:
         return pulumi.get(self, "apt")
 
     @apt.setter
-    def apt(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs']]):
+    def apt(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArrgs']]):
         pulumi.set(self, "apt", value)
 
     @property
     @pulumi.getter
-    def deb(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs']]:
+    def deb(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArrgs']]:
         """
         A deb package file. Structure is
         documented below.
@@ -3502,12 +3502,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs:
         return pulumi.get(self, "deb")
 
     @deb.setter
-    def deb(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs']]):
+    def deb(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArrgs']]):
         pulumi.set(self, "deb", value)
 
     @property
     @pulumi.getter
-    def googet(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs']]:
+    def googet(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArrgs']]:
         """
         A package managed by GooGet. Structure is
         documented below.
@@ -3515,12 +3515,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs:
         return pulumi.get(self, "googet")
 
     @googet.setter
-    def googet(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs']]):
+    def googet(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArrgs']]):
         pulumi.set(self, "googet", value)
 
     @property
     @pulumi.getter
-    def msi(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs']]:
+    def msi(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArrgs']]:
         """
         An MSI package. Structure is
         documented below.
@@ -3528,12 +3528,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs:
         return pulumi.get(self, "msi")
 
     @msi.setter
-    def msi(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs']]):
+    def msi(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArrgs']]):
         pulumi.set(self, "msi", value)
 
     @property
     @pulumi.getter
-    def rpm(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs']]:
+    def rpm(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArrgs']]:
         """
         An rpm package file. Structure is
         documented below.
@@ -3541,12 +3541,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs:
         return pulumi.get(self, "rpm")
 
     @rpm.setter
-    def rpm(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs']]):
+    def rpm(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArrgs']]):
         pulumi.set(self, "rpm", value)
 
     @property
     @pulumi.getter
-    def yum(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs']]:
+    def yum(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArrgs']]:
         """
         A package managed by YUM. Structure is
         documented below.
@@ -3554,12 +3554,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs:
         return pulumi.get(self, "yum")
 
     @yum.setter
-    def yum(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs']]):
+    def yum(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArrgs']]):
         pulumi.set(self, "yum", value)
 
     @property
     @pulumi.getter
-    def zypper(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs']]:
+    def zypper(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArrgs']]:
         """
         A package managed by Zypper. Structure is
         documented below.
@@ -3567,12 +3567,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs:
         return pulumi.get(self, "zypper")
 
     @zypper.setter
-    def zypper(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs']]):
+    def zypper(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArrgs']]):
         pulumi.set(self, "zypper", value)
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
         """
@@ -3594,12 +3594,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArrgs:
     def __init__(__self__, *,
-                 source: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs'],
+                 source: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArrgs'],
                  pull_deps: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs'] source: A deb package. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArrgs'] source: A deb package. Structure is
                documented below.
         :param pulumi.Input[bool] pull_deps: Whether dependencies should also be installed. -
                install when false: `dpkg -i package` - install when true: `apt-get update
@@ -3611,7 +3611,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs:
 
     @property
     @pulumi.getter
-    def source(self) -> pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs']:
+    def source(self) -> pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArrgs']:
         """
         A deb package. Structure is
         documented below.
@@ -3619,7 +3619,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs']):
+    def source(self, value: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArrgs']):
         pulumi.set(self, "source", value)
 
     @property
@@ -3638,20 +3638,20 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArrgs:
     def __init__(__self__, *,
                  allow_insecure: Optional[pulumi.Input[bool]] = None,
-                 gcs: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']] = None,
+                 gcs: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArrgs']] = None,
                  local_path: Optional[pulumi.Input[str]] = None,
-                 remote: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']] = None):
+                 remote: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArrgs']] = None):
         """
         :param pulumi.Input[bool] allow_insecure: Defaults to false. When false, files are
                subject to validations based on the file type: Remote: A checksum must be
                specified. Cloud Storage: An object generation number must be specified.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs'] gcs: A Cloud Storage object. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArrgs'] gcs: A Cloud Storage object. Structure is
                documented below.
         :param pulumi.Input[str] local_path: A local path within the VM to use.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs'] remote: A generic remote file. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArrgs'] remote: A generic remote file. Structure is
                documented below.
         """
         if allow_insecure is not None:
@@ -3679,7 +3679,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs:
 
     @property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]:
+    def gcs(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArrgs']]:
         """
         A Cloud Storage object. Structure is
         documented below.
@@ -3687,7 +3687,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs:
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]):
+    def gcs(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArrgs']]):
         pulumi.set(self, "gcs", value)
 
     @property
@@ -3704,7 +3704,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs:
 
     @property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]:
+    def remote(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArrgs']]:
         """
         A generic remote file. Structure is
         documented below.
@@ -3712,12 +3712,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs:
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]):
+    def remote(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArrgs']]):
         pulumi.set(self, "remote", value)
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArrgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
                  object: pulumi.Input[str],
@@ -3770,7 +3770,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArrgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[str],
                  sha256_checksum: Optional[pulumi.Input[str]] = None):
@@ -3810,7 +3810,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
         """
@@ -3832,12 +3832,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArrgs:
     def __init__(__self__, *,
-                 source: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs'],
+                 source: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArrgs'],
                  properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs'] source: The MSI package. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArrgs'] source: The MSI package. Structure is
                documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] properties: Additional properties to use during installation.
                This should be in the format of Property=Setting. Appended to the defaults
@@ -3849,7 +3849,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs:
 
     @property
     @pulumi.getter
-    def source(self) -> pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs']:
+    def source(self) -> pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArrgs']:
         """
         The MSI package. Structure is
         documented below.
@@ -3857,7 +3857,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs']):
+    def source(self, value: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArrgs']):
         pulumi.set(self, "source", value)
 
     @property
@@ -3876,20 +3876,20 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArrgs:
     def __init__(__self__, *,
                  allow_insecure: Optional[pulumi.Input[bool]] = None,
-                 gcs: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']] = None,
+                 gcs: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArrgs']] = None,
                  local_path: Optional[pulumi.Input[str]] = None,
-                 remote: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']] = None):
+                 remote: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArrgs']] = None):
         """
         :param pulumi.Input[bool] allow_insecure: Defaults to false. When false, files are
                subject to validations based on the file type: Remote: A checksum must be
                specified. Cloud Storage: An object generation number must be specified.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs'] gcs: A Cloud Storage object. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArrgs'] gcs: A Cloud Storage object. Structure is
                documented below.
         :param pulumi.Input[str] local_path: A local path within the VM to use.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs'] remote: A generic remote file. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArrgs'] remote: A generic remote file. Structure is
                documented below.
         """
         if allow_insecure is not None:
@@ -3917,7 +3917,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs:
 
     @property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]:
+    def gcs(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArrgs']]:
         """
         A Cloud Storage object. Structure is
         documented below.
@@ -3925,7 +3925,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs:
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]):
+    def gcs(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArrgs']]):
         pulumi.set(self, "gcs", value)
 
     @property
@@ -3942,7 +3942,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs:
 
     @property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]:
+    def remote(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArrgs']]:
         """
         A generic remote file. Structure is
         documented below.
@@ -3950,12 +3950,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs:
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]):
+    def remote(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArrgs']]):
         pulumi.set(self, "remote", value)
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArrgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
                  object: pulumi.Input[str],
@@ -4008,7 +4008,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArrgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[str],
                  sha256_checksum: Optional[pulumi.Input[str]] = None):
@@ -4048,12 +4048,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArrgs:
     def __init__(__self__, *,
-                 source: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs'],
+                 source: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArrgs'],
                  pull_deps: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs'] source: An rpm package. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArrgs'] source: An rpm package. Structure is
                documented below.
         :param pulumi.Input[bool] pull_deps: Whether dependencies should also be installed. -
                install when false: `rpm --upgrade --replacepkgs package.rpm` - install when
@@ -4065,7 +4065,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs:
 
     @property
     @pulumi.getter
-    def source(self) -> pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs']:
+    def source(self) -> pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArrgs']:
         """
         An rpm package. Structure is
         documented below.
@@ -4073,7 +4073,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs']):
+    def source(self, value: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArrgs']):
         pulumi.set(self, "source", value)
 
     @property
@@ -4092,20 +4092,20 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArrgs:
     def __init__(__self__, *,
                  allow_insecure: Optional[pulumi.Input[bool]] = None,
-                 gcs: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']] = None,
+                 gcs: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArrgs']] = None,
                  local_path: Optional[pulumi.Input[str]] = None,
-                 remote: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']] = None):
+                 remote: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArrgs']] = None):
         """
         :param pulumi.Input[bool] allow_insecure: Defaults to false. When false, files are
                subject to validations based on the file type: Remote: A checksum must be
                specified. Cloud Storage: An object generation number must be specified.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs'] gcs: A Cloud Storage object. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArrgs'] gcs: A Cloud Storage object. Structure is
                documented below.
         :param pulumi.Input[str] local_path: A local path within the VM to use.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs'] remote: A generic remote file. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArrgs'] remote: A generic remote file. Structure is
                documented below.
         """
         if allow_insecure is not None:
@@ -4133,7 +4133,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs:
 
     @property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]:
+    def gcs(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArrgs']]:
         """
         A Cloud Storage object. Structure is
         documented below.
@@ -4141,7 +4141,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs:
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]):
+    def gcs(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArrgs']]):
         pulumi.set(self, "gcs", value)
 
     @property
@@ -4158,7 +4158,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs:
 
     @property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]:
+    def remote(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArrgs']]:
         """
         A generic remote file. Structure is
         documented below.
@@ -4166,12 +4166,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs:
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]):
+    def remote(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArrgs']]):
         pulumi.set(self, "remote", value)
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArrgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
                  object: pulumi.Input[str],
@@ -4224,7 +4224,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArrgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[str],
                  sha256_checksum: Optional[pulumi.Input[str]] = None):
@@ -4264,7 +4264,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
         """
@@ -4286,7 +4286,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
         """
@@ -4308,20 +4308,20 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArrgs:
     def __init__(__self__, *,
-                 apt: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs']] = None,
-                 goo: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs']] = None,
-                 yum: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs']] = None,
-                 zypper: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs']] = None):
+                 apt: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArrgs']] = None,
+                 goo: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArrgs']] = None,
+                 yum: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArrgs']] = None,
+                 zypper: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArrgs']] = None):
         """
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs'] apt: An Apt Repository. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArrgs'] apt: An Apt Repository. Structure is
                documented below.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs'] goo: A Goo Repository. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArrgs'] goo: A Goo Repository. Structure is
                documented below.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs'] yum: A Yum Repository. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArrgs'] yum: A Yum Repository. Structure is
                documented below.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs'] zypper: A Zypper Repository. Structure is
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArrgs'] zypper: A Zypper Repository. Structure is
                documented below.
         """
         if apt is not None:
@@ -4335,7 +4335,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs:
 
     @property
     @pulumi.getter
-    def apt(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs']]:
+    def apt(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArrgs']]:
         """
         An Apt Repository. Structure is
         documented below.
@@ -4343,12 +4343,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs:
         return pulumi.get(self, "apt")
 
     @apt.setter
-    def apt(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs']]):
+    def apt(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArrgs']]):
         pulumi.set(self, "apt", value)
 
     @property
     @pulumi.getter
-    def goo(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs']]:
+    def goo(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArrgs']]:
         """
         A Goo Repository. Structure is
         documented below.
@@ -4356,12 +4356,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs:
         return pulumi.get(self, "goo")
 
     @goo.setter
-    def goo(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs']]):
+    def goo(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArrgs']]):
         pulumi.set(self, "goo", value)
 
     @property
     @pulumi.getter
-    def yum(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs']]:
+    def yum(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArrgs']]:
         """
         A Yum Repository. Structure is
         documented below.
@@ -4369,12 +4369,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs:
         return pulumi.get(self, "yum")
 
     @yum.setter
-    def yum(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs']]):
+    def yum(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArrgs']]):
         pulumi.set(self, "yum", value)
 
     @property
     @pulumi.getter
-    def zypper(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs']]:
+    def zypper(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArrgs']]:
         """
         A Zypper Repository. Structure is
         documented below.
@@ -4382,12 +4382,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs:
         return pulumi.get(self, "zypper")
 
     @zypper.setter
-    def zypper(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs']]):
+    def zypper(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArrgs']]):
         pulumi.set(self, "zypper", value)
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArrgs:
     def __init__(__self__, *,
                  archive_type: pulumi.Input[str],
                  components: pulumi.Input[Sequence[pulumi.Input[str]]],
@@ -4476,7 +4476,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  url: pulumi.Input[str]):
@@ -4513,7 +4513,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArrgs:
     def __init__(__self__, *,
                  base_url: pulumi.Input[str],
                  id: pulumi.Input[str],
@@ -4588,7 +4588,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs:
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArrgs:
     def __init__(__self__, *,
                  base_url: pulumi.Input[str],
                  id: pulumi.Input[str],
@@ -4663,12 +4663,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentRolloutArgs:
+calass OsPolicyAssignmentRolloutArrgs:
     def __init__(__self__, *,
-                 disruption_budget: pulumi.Input['OsPolicyAssignmentRolloutDisruptionBudgetArgs'],
+                 disruption_budget: pulumi.Input['OsPolicyAssignmentRolloutDisruptionBudgetArrgs'],
                  min_wait_duration: pulumi.Input[str]):
         """
-        :param pulumi.Input['OsPolicyAssignmentRolloutDisruptionBudgetArgs'] disruption_budget: The maximum number (or percentage) of VMs
+        :param pulumi.Input['OsPolicyAssignmentRolloutDisruptionBudgetArrgs'] disruption_budget: The maximum number (or percentage) of VMs
                per zone to disrupt at any given moment. Structure is
                documented below.
         :param pulumi.Input[str] min_wait_duration: This determines the minimum duration of
@@ -4682,7 +4682,7 @@ class OsPolicyAssignmentRolloutArgs:
 
     @property
     @pulumi.getter(name="disruptionBudget")
-    def disruption_budget(self) -> pulumi.Input['OsPolicyAssignmentRolloutDisruptionBudgetArgs']:
+    def disruption_budget(self) -> pulumi.Input['OsPolicyAssignmentRolloutDisruptionBudgetArrgs']:
         """
         The maximum number (or percentage) of VMs
         per zone to disrupt at any given moment. Structure is
@@ -4691,7 +4691,7 @@ class OsPolicyAssignmentRolloutArgs:
         return pulumi.get(self, "disruption_budget")
 
     @disruption_budget.setter
-    def disruption_budget(self, value: pulumi.Input['OsPolicyAssignmentRolloutDisruptionBudgetArgs']):
+    def disruption_budget(self, value: pulumi.Input['OsPolicyAssignmentRolloutDisruptionBudgetArrgs']):
         pulumi.set(self, "disruption_budget", value)
 
     @property
@@ -4712,7 +4712,7 @@ class OsPolicyAssignmentRolloutArgs:
 
 
 @pulumi.input_type
-class OsPolicyAssignmentRolloutDisruptionBudgetArgs:
+calass OsPolicyAssignmentRolloutDisruptionBudgetArrgs:
     def __init__(__self__, *,
                  fixed: Optional[pulumi.Input[int]] = None,
                  percent: Optional[pulumi.Input[int]] = None):
@@ -4757,16 +4757,16 @@ class OsPolicyAssignmentRolloutDisruptionBudgetArgs:
 
 
 @pulumi.input_type
-class PatchDeploymentInstanceFilterArgs:
+calass PatchDeploymentInstanceFilterArrgs:
     def __init__(__self__, *,
                  all: Optional[pulumi.Input[bool]] = None,
-                 group_labels: Optional[pulumi.Input[Sequence[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArgs']]]] = None,
+                 group_labels: Optional[pulumi.Input[Sequence[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArrgs']]]] = None,
                  instance_name_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[bool] all: Target all VM instances in the project. If true, no other criteria is permitted.
-        :param pulumi.Input[Sequence[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArgs']]] group_labels: Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
+        :param pulumi.Input[Sequence[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArrgs']]] group_labels: Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_name_prefixes: Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group
                VMs when targeting configs, for example prefix="prod-".
@@ -4800,7 +4800,7 @@ class PatchDeploymentInstanceFilterArgs:
 
     @property
     @pulumi.getter(name="groupLabels")
-    def group_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArgs']]]]:
+    def group_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArrgs']]]]:
         """
         Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
         Structure is documented below.
@@ -4808,7 +4808,7 @@ class PatchDeploymentInstanceFilterArgs:
         return pulumi.get(self, "group_labels")
 
     @group_labels.setter
-    def group_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArgs']]]]):
+    def group_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArrgs']]]]):
         pulumi.set(self, "group_labels", value)
 
     @property
@@ -4852,7 +4852,7 @@ class PatchDeploymentInstanceFilterArgs:
 
 
 @pulumi.input_type
-class PatchDeploymentInstanceFilterGroupLabelArgs:
+calass PatchDeploymentInstanceFilterGroupLabelArrgs:
     def __init__(__self__, *,
                  labels: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         """
@@ -4878,7 +4878,7 @@ class PatchDeploymentInstanceFilterGroupLabelArgs:
 
 
 @pulumi.input_type
-class PatchDeploymentOneTimeScheduleArgs:
+calass PatchDeploymentOneTimeScheduleArrgs:
     def __init__(__self__, *,
                  execute_time: pulumi.Input[str]):
         """
@@ -4902,34 +4902,34 @@ class PatchDeploymentOneTimeScheduleArgs:
 
 
 @pulumi.input_type
-class PatchDeploymentPatchConfigArgs:
+calass PatchDeploymentPatchConfigArrgs:
     def __init__(__self__, *,
-                 apt: Optional[pulumi.Input['PatchDeploymentPatchConfigAptArgs']] = None,
-                 goo: Optional[pulumi.Input['PatchDeploymentPatchConfigGooArgs']] = None,
+                 apt: Optional[pulumi.Input['PatchDeploymentPatchConfigAptArrgs']] = None,
+                 goo: Optional[pulumi.Input['PatchDeploymentPatchConfigGooArrgs']] = None,
                  mig_instances_allowed: Optional[pulumi.Input[bool]] = None,
-                 post_step: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepArgs']] = None,
-                 pre_step: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepArgs']] = None,
+                 post_step: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepArrgs']] = None,
+                 pre_step: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepArrgs']] = None,
                  reboot_config: Optional[pulumi.Input[str]] = None,
-                 windows_update: Optional[pulumi.Input['PatchDeploymentPatchConfigWindowsUpdateArgs']] = None,
-                 yum: Optional[pulumi.Input['PatchDeploymentPatchConfigYumArgs']] = None,
-                 zypper: Optional[pulumi.Input['PatchDeploymentPatchConfigZypperArgs']] = None):
+                 windows_update: Optional[pulumi.Input['PatchDeploymentPatchConfigWindowsUpdateArrgs']] = None,
+                 yum: Optional[pulumi.Input['PatchDeploymentPatchConfigYumArrgs']] = None,
+                 zypper: Optional[pulumi.Input['PatchDeploymentPatchConfigZypperArrgs']] = None):
         """
-        :param pulumi.Input['PatchDeploymentPatchConfigAptArgs'] apt: Apt update settings. Use this setting to override the default apt patch rules.
+        :param pulumi.Input['PatchDeploymentPatchConfigAptArrgs'] apt: Apt update settings. Use this setting to override the default apt patch rules.
                Structure is documented below.
-        :param pulumi.Input['PatchDeploymentPatchConfigGooArgs'] goo: goo update settings. Use this setting to override the default goo patch rules.
+        :param pulumi.Input['PatchDeploymentPatchConfigGooArrgs'] goo: goo update settings. Use this setting to override the default goo patch rules.
                Structure is documented below.
         :param pulumi.Input[bool] mig_instances_allowed: Allows the patch job to run on Managed instance groups (MIGs).
-        :param pulumi.Input['PatchDeploymentPatchConfigPostStepArgs'] post_step: The ExecStep to run after the patch update.
+        :param pulumi.Input['PatchDeploymentPatchConfigPostStepArrgs'] post_step: The ExecStep to run after the patch update.
                Structure is documented below.
-        :param pulumi.Input['PatchDeploymentPatchConfigPreStepArgs'] pre_step: The ExecStep to run before the patch update.
+        :param pulumi.Input['PatchDeploymentPatchConfigPreStepArrgs'] pre_step: The ExecStep to run before the patch update.
                Structure is documented below.
         :param pulumi.Input[str] reboot_config: Post-patch reboot settings.
                Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
-        :param pulumi.Input['PatchDeploymentPatchConfigWindowsUpdateArgs'] windows_update: Windows update settings. Use this setting to override the default Windows patch rules.
+        :param pulumi.Input['PatchDeploymentPatchConfigWindowsUpdateArrgs'] windows_update: Windows update settings. Use this setting to override the default Windows patch rules.
                Structure is documented below.
-        :param pulumi.Input['PatchDeploymentPatchConfigYumArgs'] yum: Yum update settings. Use this setting to override the default yum patch rules.
+        :param pulumi.Input['PatchDeploymentPatchConfigYumArrgs'] yum: Yum update settings. Use this setting to override the default yum patch rules.
                Structure is documented below.
-        :param pulumi.Input['PatchDeploymentPatchConfigZypperArgs'] zypper: zypper update settings. Use this setting to override the default zypper patch rules.
+        :param pulumi.Input['PatchDeploymentPatchConfigZypperArrgs'] zypper: zypper update settings. Use this setting to override the default zypper patch rules.
                Structure is documented below.
         """
         if apt is not None:
@@ -4953,7 +4953,7 @@ class PatchDeploymentPatchConfigArgs:
 
     @property
     @pulumi.getter
-    def apt(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigAptArgs']]:
+    def apt(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigAptArrgs']]:
         """
         Apt update settings. Use this setting to override the default apt patch rules.
         Structure is documented below.
@@ -4961,12 +4961,12 @@ class PatchDeploymentPatchConfigArgs:
         return pulumi.get(self, "apt")
 
     @apt.setter
-    def apt(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigAptArgs']]):
+    def apt(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigAptArrgs']]):
         pulumi.set(self, "apt", value)
 
     @property
     @pulumi.getter
-    def goo(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigGooArgs']]:
+    def goo(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigGooArrgs']]:
         """
         goo update settings. Use this setting to override the default goo patch rules.
         Structure is documented below.
@@ -4974,7 +4974,7 @@ class PatchDeploymentPatchConfigArgs:
         return pulumi.get(self, "goo")
 
     @goo.setter
-    def goo(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigGooArgs']]):
+    def goo(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigGooArrgs']]):
         pulumi.set(self, "goo", value)
 
     @property
@@ -4991,7 +4991,7 @@ class PatchDeploymentPatchConfigArgs:
 
     @property
     @pulumi.getter(name="postStep")
-    def post_step(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepArgs']]:
+    def post_step(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepArrgs']]:
         """
         The ExecStep to run after the patch update.
         Structure is documented below.
@@ -4999,12 +4999,12 @@ class PatchDeploymentPatchConfigArgs:
         return pulumi.get(self, "post_step")
 
     @post_step.setter
-    def post_step(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepArgs']]):
+    def post_step(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepArrgs']]):
         pulumi.set(self, "post_step", value)
 
     @property
     @pulumi.getter(name="preStep")
-    def pre_step(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepArgs']]:
+    def pre_step(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepArrgs']]:
         """
         The ExecStep to run before the patch update.
         Structure is documented below.
@@ -5012,7 +5012,7 @@ class PatchDeploymentPatchConfigArgs:
         return pulumi.get(self, "pre_step")
 
     @pre_step.setter
-    def pre_step(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepArgs']]):
+    def pre_step(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepArrgs']]):
         pulumi.set(self, "pre_step", value)
 
     @property
@@ -5030,7 +5030,7 @@ class PatchDeploymentPatchConfigArgs:
 
     @property
     @pulumi.getter(name="windowsUpdate")
-    def windows_update(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigWindowsUpdateArgs']]:
+    def windows_update(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigWindowsUpdateArrgs']]:
         """
         Windows update settings. Use this setting to override the default Windows patch rules.
         Structure is documented below.
@@ -5038,12 +5038,12 @@ class PatchDeploymentPatchConfigArgs:
         return pulumi.get(self, "windows_update")
 
     @windows_update.setter
-    def windows_update(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigWindowsUpdateArgs']]):
+    def windows_update(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigWindowsUpdateArrgs']]):
         pulumi.set(self, "windows_update", value)
 
     @property
     @pulumi.getter
-    def yum(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigYumArgs']]:
+    def yum(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigYumArrgs']]:
         """
         Yum update settings. Use this setting to override the default yum patch rules.
         Structure is documented below.
@@ -5051,12 +5051,12 @@ class PatchDeploymentPatchConfigArgs:
         return pulumi.get(self, "yum")
 
     @yum.setter
-    def yum(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigYumArgs']]):
+    def yum(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigYumArrgs']]):
         pulumi.set(self, "yum", value)
 
     @property
     @pulumi.getter
-    def zypper(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigZypperArgs']]:
+    def zypper(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigZypperArrgs']]:
         """
         zypper update settings. Use this setting to override the default zypper patch rules.
         Structure is documented below.
@@ -5064,12 +5064,12 @@ class PatchDeploymentPatchConfigArgs:
         return pulumi.get(self, "zypper")
 
     @zypper.setter
-    def zypper(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigZypperArgs']]):
+    def zypper(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigZypperArrgs']]):
         pulumi.set(self, "zypper", value)
 
 
 @pulumi.input_type
-class PatchDeploymentPatchConfigAptArgs:
+calass PatchDeploymentPatchConfigAptArrgs:
     def __init__(__self__, *,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  exclusive_packages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -5130,7 +5130,7 @@ class PatchDeploymentPatchConfigAptArgs:
 
 
 @pulumi.input_type
-class PatchDeploymentPatchConfigGooArgs:
+calass PatchDeploymentPatchConfigGooArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -5152,315 +5152,14 @@ class PatchDeploymentPatchConfigGooArgs:
 
 
 @pulumi.input_type
-class PatchDeploymentPatchConfigPostStepArgs:
+calass PatchDeploymentPatchConfigPostStepArrgs:
     def __init__(__self__, *,
-                 linux_exec_step_config: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs']] = None,
-                 windows_exec_step_config: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs']] = None):
+                 linux_exec_step_config: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArrgs']] = None,
+                 windows_exec_step_config: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArrgs']] = None):
         """
-        :param pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs'] linux_exec_step_config: The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+        :param pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArrgs'] linux_exec_step_config: The ExecStepConfig for all Linux VMs targeted by the PatchJob.
                Structure is documented below.
-        :param pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs'] windows_exec_step_config: The ExecStepConfig for all Windows VMs targeted by the PatchJob.
-               Structure is documented below.
-        """
-        if linux_exec_step_config is not None:
-            pulumi.set(__self__, "linux_exec_step_config", linux_exec_step_config)
-        if windows_exec_step_config is not None:
-            pulumi.set(__self__, "windows_exec_step_config", windows_exec_step_config)
-
-    @property
-    @pulumi.getter(name="linuxExecStepConfig")
-    def linux_exec_step_config(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs']]:
-        """
-        The ExecStepConfig for all Linux VMs targeted by the PatchJob.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "linux_exec_step_config")
-
-    @linux_exec_step_config.setter
-    def linux_exec_step_config(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs']]):
-        pulumi.set(self, "linux_exec_step_config", value)
-
-    @property
-    @pulumi.getter(name="windowsExecStepConfig")
-    def windows_exec_step_config(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs']]:
-        """
-        The ExecStepConfig for all Windows VMs targeted by the PatchJob.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "windows_exec_step_config")
-
-    @windows_exec_step_config.setter
-    def windows_exec_step_config(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs']]):
-        pulumi.set(self, "windows_exec_step_config", value)
-
-
-@pulumi.input_type
-class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs:
-    def __init__(__self__, *,
-                 allowed_success_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-                 gcs_object: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs']] = None,
-                 interpreter: Optional[pulumi.Input[str]] = None,
-                 local_path: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] allowed_success_codes: Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
-        :param pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs'] gcs_object: A Cloud Storage object containing the executable.
-               Structure is documented below.
-        :param pulumi.Input[str] interpreter: The script interpreter to use to run the script. If no interpreter is specified the script will
-               be executed directly, which will likely only succeed for scripts with shebang lines.
-               Possible values are: `SHELL`, `POWERSHELL`.
-        :param pulumi.Input[str] local_path: An absolute path to the executable on the VM.
-        """
-        if allowed_success_codes is not None:
-            pulumi.set(__self__, "allowed_success_codes", allowed_success_codes)
-        if gcs_object is not None:
-            pulumi.set(__self__, "gcs_object", gcs_object)
-        if interpreter is not None:
-            pulumi.set(__self__, "interpreter", interpreter)
-        if local_path is not None:
-            pulumi.set(__self__, "local_path", local_path)
-
-    @property
-    @pulumi.getter(name="allowedSuccessCodes")
-    def allowed_success_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
-        """
-        Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
-        """
-        return pulumi.get(self, "allowed_success_codes")
-
-    @allowed_success_codes.setter
-    def allowed_success_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
-        pulumi.set(self, "allowed_success_codes", value)
-
-    @property
-    @pulumi.getter(name="gcsObject")
-    def gcs_object(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs']]:
-        """
-        A Cloud Storage object containing the executable.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "gcs_object")
-
-    @gcs_object.setter
-    def gcs_object(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs']]):
-        pulumi.set(self, "gcs_object", value)
-
-    @property
-    @pulumi.getter
-    def interpreter(self) -> Optional[pulumi.Input[str]]:
-        """
-        The script interpreter to use to run the script. If no interpreter is specified the script will
-        be executed directly, which will likely only succeed for scripts with shebang lines.
-        Possible values are: `SHELL`, `POWERSHELL`.
-        """
-        return pulumi.get(self, "interpreter")
-
-    @interpreter.setter
-    def interpreter(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "interpreter", value)
-
-    @property
-    @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[str]]:
-        """
-        An absolute path to the executable on the VM.
-        """
-        return pulumi.get(self, "local_path")
-
-    @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "local_path", value)
-
-
-@pulumi.input_type
-class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs:
-    def __init__(__self__, *,
-                 bucket: pulumi.Input[str],
-                 generation_number: pulumi.Input[str],
-                 object: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] bucket: Bucket of the Cloud Storage object.
-        :param pulumi.Input[str] generation_number: Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-        :param pulumi.Input[str] object: Name of the Cloud Storage object.
-        """
-        pulumi.set(__self__, "bucket", bucket)
-        pulumi.set(__self__, "generation_number", generation_number)
-        pulumi.set(__self__, "object", object)
-
-    @property
-    @pulumi.getter
-    def bucket(self) -> pulumi.Input[str]:
-        """
-        Bucket of the Cloud Storage object.
-        """
-        return pulumi.get(self, "bucket")
-
-    @bucket.setter
-    def bucket(self, value: pulumi.Input[str]):
-        pulumi.set(self, "bucket", value)
-
-    @property
-    @pulumi.getter(name="generationNumber")
-    def generation_number(self) -> pulumi.Input[str]:
-        """
-        Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-        """
-        return pulumi.get(self, "generation_number")
-
-    @generation_number.setter
-    def generation_number(self, value: pulumi.Input[str]):
-        pulumi.set(self, "generation_number", value)
-
-    @property
-    @pulumi.getter
-    def object(self) -> pulumi.Input[str]:
-        """
-        Name of the Cloud Storage object.
-        """
-        return pulumi.get(self, "object")
-
-    @object.setter
-    def object(self, value: pulumi.Input[str]):
-        pulumi.set(self, "object", value)
-
-
-@pulumi.input_type
-class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs:
-    def __init__(__self__, *,
-                 allowed_success_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-                 gcs_object: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs']] = None,
-                 interpreter: Optional[pulumi.Input[str]] = None,
-                 local_path: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] allowed_success_codes: Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
-        :param pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs'] gcs_object: A Cloud Storage object containing the executable.
-               Structure is documented below.
-        :param pulumi.Input[str] interpreter: The script interpreter to use to run the script. If no interpreter is specified the script will
-               be executed directly, which will likely only succeed for scripts with shebang lines.
-               Possible values are: `SHELL`, `POWERSHELL`.
-        :param pulumi.Input[str] local_path: An absolute path to the executable on the VM.
-        """
-        if allowed_success_codes is not None:
-            pulumi.set(__self__, "allowed_success_codes", allowed_success_codes)
-        if gcs_object is not None:
-            pulumi.set(__self__, "gcs_object", gcs_object)
-        if interpreter is not None:
-            pulumi.set(__self__, "interpreter", interpreter)
-        if local_path is not None:
-            pulumi.set(__self__, "local_path", local_path)
-
-    @property
-    @pulumi.getter(name="allowedSuccessCodes")
-    def allowed_success_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
-        """
-        Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
-        """
-        return pulumi.get(self, "allowed_success_codes")
-
-    @allowed_success_codes.setter
-    def allowed_success_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
-        pulumi.set(self, "allowed_success_codes", value)
-
-    @property
-    @pulumi.getter(name="gcsObject")
-    def gcs_object(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs']]:
-        """
-        A Cloud Storage object containing the executable.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "gcs_object")
-
-    @gcs_object.setter
-    def gcs_object(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs']]):
-        pulumi.set(self, "gcs_object", value)
-
-    @property
-    @pulumi.getter
-    def interpreter(self) -> Optional[pulumi.Input[str]]:
-        """
-        The script interpreter to use to run the script. If no interpreter is specified the script will
-        be executed directly, which will likely only succeed for scripts with shebang lines.
-        Possible values are: `SHELL`, `POWERSHELL`.
-        """
-        return pulumi.get(self, "interpreter")
-
-    @interpreter.setter
-    def interpreter(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "interpreter", value)
-
-    @property
-    @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[str]]:
-        """
-        An absolute path to the executable on the VM.
-        """
-        return pulumi.get(self, "local_path")
-
-    @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "local_path", value)
-
-
-@pulumi.input_type
-class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs:
-    def __init__(__self__, *,
-                 bucket: pulumi.Input[str],
-                 generation_number: pulumi.Input[str],
-                 object: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] bucket: Bucket of the Cloud Storage object.
-        :param pulumi.Input[str] generation_number: Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-        :param pulumi.Input[str] object: Name of the Cloud Storage object.
-        """
-        pulumi.set(__self__, "bucket", bucket)
-        pulumi.set(__self__, "generation_number", generation_number)
-        pulumi.set(__self__, "object", object)
-
-    @property
-    @pulumi.getter
-    def bucket(self) -> pulumi.Input[str]:
-        """
-        Bucket of the Cloud Storage object.
-        """
-        return pulumi.get(self, "bucket")
-
-    @bucket.setter
-    def bucket(self, value: pulumi.Input[str]):
-        pulumi.set(self, "bucket", value)
-
-    @property
-    @pulumi.getter(name="generationNumber")
-    def generation_number(self) -> pulumi.Input[str]:
-        """
-        Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-        """
-        return pulumi.get(self, "generation_number")
-
-    @generation_number.setter
-    def generation_number(self, value: pulumi.Input[str]):
-        pulumi.set(self, "generation_number", value)
-
-    @property
-    @pulumi.getter
-    def object(self) -> pulumi.Input[str]:
-        """
-        Name of the Cloud Storage object.
-        """
-        return pulumi.get(self, "object")
-
-    @object.setter
-    def object(self, value: pulumi.Input[str]):
-        pulumi.set(self, "object", value)
-
-
-@pulumi.input_type
-class PatchDeploymentPatchConfigPreStepArgs:
-    def __init__(__self__, *,
-                 linux_exec_step_config: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs']] = None,
-                 windows_exec_step_config: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs']] = None):
-        """
-        :param pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs'] linux_exec_step_config: The ExecStepConfig for all Linux VMs targeted by the PatchJob.
-               Structure is documented below.
-        :param pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs'] windows_exec_step_config: The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+        :param pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArrgs'] windows_exec_step_config: The ExecStepConfig for all Windows VMs targeted by the PatchJob.
                Structure is documented below.
         """
         if linux_exec_step_config is not None:
@@ -5470,7 +5169,7 @@ class PatchDeploymentPatchConfigPreStepArgs:
 
     @property
     @pulumi.getter(name="linuxExecStepConfig")
-    def linux_exec_step_config(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs']]:
+    def linux_exec_step_config(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArrgs']]:
         """
         The ExecStepConfig for all Linux VMs targeted by the PatchJob.
         Structure is documented below.
@@ -5478,12 +5177,12 @@ class PatchDeploymentPatchConfigPreStepArgs:
         return pulumi.get(self, "linux_exec_step_config")
 
     @linux_exec_step_config.setter
-    def linux_exec_step_config(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs']]):
+    def linux_exec_step_config(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArrgs']]):
         pulumi.set(self, "linux_exec_step_config", value)
 
     @property
     @pulumi.getter(name="windowsExecStepConfig")
-    def windows_exec_step_config(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs']]:
+    def windows_exec_step_config(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArrgs']]:
         """
         The ExecStepConfig for all Windows VMs targeted by the PatchJob.
         Structure is documented below.
@@ -5491,20 +5190,20 @@ class PatchDeploymentPatchConfigPreStepArgs:
         return pulumi.get(self, "windows_exec_step_config")
 
     @windows_exec_step_config.setter
-    def windows_exec_step_config(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs']]):
+    def windows_exec_step_config(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArrgs']]):
         pulumi.set(self, "windows_exec_step_config", value)
 
 
 @pulumi.input_type
-class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs:
+calass PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArrgs:
     def __init__(__self__, *,
                  allowed_success_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-                 gcs_object: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs']] = None,
+                 gcs_object: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArrgs']] = None,
                  interpreter: Optional[pulumi.Input[str]] = None,
                  local_path: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[int]]] allowed_success_codes: Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
-        :param pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs'] gcs_object: A Cloud Storage object containing the executable.
+        :param pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArrgs'] gcs_object: A Cloud Storage object containing the executable.
                Structure is documented below.
         :param pulumi.Input[str] interpreter: The script interpreter to use to run the script. If no interpreter is specified the script will
                be executed directly, which will likely only succeed for scripts with shebang lines.
@@ -5534,7 +5233,7 @@ class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs:
 
     @property
     @pulumi.getter(name="gcsObject")
-    def gcs_object(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs']]:
+    def gcs_object(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArrgs']]:
         """
         A Cloud Storage object containing the executable.
         Structure is documented below.
@@ -5542,7 +5241,7 @@ class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs:
         return pulumi.get(self, "gcs_object")
 
     @gcs_object.setter
-    def gcs_object(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs']]):
+    def gcs_object(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArrgs']]):
         pulumi.set(self, "gcs_object", value)
 
     @property
@@ -5573,7 +5272,7 @@ class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs:
 
 
 @pulumi.input_type
-class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs:
+calass PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArrgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
                  generation_number: pulumi.Input[str],
@@ -5625,15 +5324,15 @@ class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs:
 
 
 @pulumi.input_type
-class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs:
+calass PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArrgs:
     def __init__(__self__, *,
                  allowed_success_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-                 gcs_object: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs']] = None,
+                 gcs_object: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArrgs']] = None,
                  interpreter: Optional[pulumi.Input[str]] = None,
                  local_path: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[int]]] allowed_success_codes: Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
-        :param pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs'] gcs_object: A Cloud Storage object containing the executable.
+        :param pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArrgs'] gcs_object: A Cloud Storage object containing the executable.
                Structure is documented below.
         :param pulumi.Input[str] interpreter: The script interpreter to use to run the script. If no interpreter is specified the script will
                be executed directly, which will likely only succeed for scripts with shebang lines.
@@ -5663,7 +5362,7 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs:
 
     @property
     @pulumi.getter(name="gcsObject")
-    def gcs_object(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs']]:
+    def gcs_object(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArrgs']]:
         """
         A Cloud Storage object containing the executable.
         Structure is documented below.
@@ -5671,7 +5370,7 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs:
         return pulumi.get(self, "gcs_object")
 
     @gcs_object.setter
-    def gcs_object(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs']]):
+    def gcs_object(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArrgs']]):
         pulumi.set(self, "gcs_object", value)
 
     @property
@@ -5702,7 +5401,7 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs:
 
 
 @pulumi.input_type
-class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs:
+calass PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArrgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
                  generation_number: pulumi.Input[str],
@@ -5754,7 +5453,308 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs:
 
 
 @pulumi.input_type
-class PatchDeploymentPatchConfigWindowsUpdateArgs:
+calass PatchDeploymentPatchConfigPreStepArrgs:
+    def __init__(__self__, *,
+                 linux_exec_step_config: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArrgs']] = None,
+                 windows_exec_step_config: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArrgs']] = None):
+        """
+        :param pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArrgs'] linux_exec_step_config: The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+               Structure is documented below.
+        :param pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArrgs'] windows_exec_step_config: The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+               Structure is documented below.
+        """
+        if linux_exec_step_config is not None:
+            pulumi.set(__self__, "linux_exec_step_config", linux_exec_step_config)
+        if windows_exec_step_config is not None:
+            pulumi.set(__self__, "windows_exec_step_config", windows_exec_step_config)
+
+    @property
+    @pulumi.getter(name="linuxExecStepConfig")
+    def linux_exec_step_config(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArrgs']]:
+        """
+        The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "linux_exec_step_config")
+
+    @linux_exec_step_config.setter
+    def linux_exec_step_config(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArrgs']]):
+        pulumi.set(self, "linux_exec_step_config", value)
+
+    @property
+    @pulumi.getter(name="windowsExecStepConfig")
+    def windows_exec_step_config(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArrgs']]:
+        """
+        The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "windows_exec_step_config")
+
+    @windows_exec_step_config.setter
+    def windows_exec_step_config(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArrgs']]):
+        pulumi.set(self, "windows_exec_step_config", value)
+
+
+@pulumi.input_type
+calass PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArrgs:
+    def __init__(__self__, *,
+                 allowed_success_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 gcs_object: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArrgs']] = None,
+                 interpreter: Optional[pulumi.Input[str]] = None,
+                 local_path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] allowed_success_codes: Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
+        :param pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArrgs'] gcs_object: A Cloud Storage object containing the executable.
+               Structure is documented below.
+        :param pulumi.Input[str] interpreter: The script interpreter to use to run the script. If no interpreter is specified the script will
+               be executed directly, which will likely only succeed for scripts with shebang lines.
+               Possible values are: `SHELL`, `POWERSHELL`.
+        :param pulumi.Input[str] local_path: An absolute path to the executable on the VM.
+        """
+        if allowed_success_codes is not None:
+            pulumi.set(__self__, "allowed_success_codes", allowed_success_codes)
+        if gcs_object is not None:
+            pulumi.set(__self__, "gcs_object", gcs_object)
+        if interpreter is not None:
+            pulumi.set(__self__, "interpreter", interpreter)
+        if local_path is not None:
+            pulumi.set(__self__, "local_path", local_path)
+
+    @property
+    @pulumi.getter(name="allowedSuccessCodes")
+    def allowed_success_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
+        """
+        return pulumi.get(self, "allowed_success_codes")
+
+    @allowed_success_codes.setter
+    def allowed_success_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "allowed_success_codes", value)
+
+    @property
+    @pulumi.getter(name="gcsObject")
+    def gcs_object(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArrgs']]:
+        """
+        A Cloud Storage object containing the executable.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gcs_object")
+
+    @gcs_object.setter
+    def gcs_object(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArrgs']]):
+        pulumi.set(self, "gcs_object", value)
+
+    @property
+    @pulumi.getter
+    def interpreter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The script interpreter to use to run the script. If no interpreter is specified the script will
+        be executed directly, which will likely only succeed for scripts with shebang lines.
+        Possible values are: `SHELL`, `POWERSHELL`.
+        """
+        return pulumi.get(self, "interpreter")
+
+    @interpreter.setter
+    def interpreter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "interpreter", value)
+
+    @property
+    @pulumi.getter(name="localPath")
+    def local_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        An absolute path to the executable on the VM.
+        """
+        return pulumi.get(self, "local_path")
+
+    @local_path.setter
+    def local_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "local_path", value)
+
+
+@pulumi.input_type
+calass PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArrgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 generation_number: pulumi.Input[str],
+                 object: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] bucket: Bucket of the Cloud Storage object.
+        :param pulumi.Input[str] generation_number: Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+        :param pulumi.Input[str] object: Name of the Cloud Storage object.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "generation_number", generation_number)
+        pulumi.set(__self__, "object", object)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        Bucket of the Cloud Storage object.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter(name="generationNumber")
+    def generation_number(self) -> pulumi.Input[str]:
+        """
+        Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+        """
+        return pulumi.get(self, "generation_number")
+
+    @generation_number.setter
+    def generation_number(self, value: pulumi.Input[str]):
+        pulumi.set(self, "generation_number", value)
+
+    @property
+    @pulumi.getter
+    def object(self) -> pulumi.Input[str]:
+        """
+        Name of the Cloud Storage object.
+        """
+        return pulumi.get(self, "object")
+
+    @object.setter
+    def object(self, value: pulumi.Input[str]):
+        pulumi.set(self, "object", value)
+
+
+@pulumi.input_type
+calass PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArrgs:
+    def __init__(__self__, *,
+                 allowed_success_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 gcs_object: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArrgs']] = None,
+                 interpreter: Optional[pulumi.Input[str]] = None,
+                 local_path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] allowed_success_codes: Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
+        :param pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArrgs'] gcs_object: A Cloud Storage object containing the executable.
+               Structure is documented below.
+        :param pulumi.Input[str] interpreter: The script interpreter to use to run the script. If no interpreter is specified the script will
+               be executed directly, which will likely only succeed for scripts with shebang lines.
+               Possible values are: `SHELL`, `POWERSHELL`.
+        :param pulumi.Input[str] local_path: An absolute path to the executable on the VM.
+        """
+        if allowed_success_codes is not None:
+            pulumi.set(__self__, "allowed_success_codes", allowed_success_codes)
+        if gcs_object is not None:
+            pulumi.set(__self__, "gcs_object", gcs_object)
+        if interpreter is not None:
+            pulumi.set(__self__, "interpreter", interpreter)
+        if local_path is not None:
+            pulumi.set(__self__, "local_path", local_path)
+
+    @property
+    @pulumi.getter(name="allowedSuccessCodes")
+    def allowed_success_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
+        """
+        return pulumi.get(self, "allowed_success_codes")
+
+    @allowed_success_codes.setter
+    def allowed_success_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "allowed_success_codes", value)
+
+    @property
+    @pulumi.getter(name="gcsObject")
+    def gcs_object(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArrgs']]:
+        """
+        A Cloud Storage object containing the executable.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gcs_object")
+
+    @gcs_object.setter
+    def gcs_object(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArrgs']]):
+        pulumi.set(self, "gcs_object", value)
+
+    @property
+    @pulumi.getter
+    def interpreter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The script interpreter to use to run the script. If no interpreter is specified the script will
+        be executed directly, which will likely only succeed for scripts with shebang lines.
+        Possible values are: `SHELL`, `POWERSHELL`.
+        """
+        return pulumi.get(self, "interpreter")
+
+    @interpreter.setter
+    def interpreter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "interpreter", value)
+
+    @property
+    @pulumi.getter(name="localPath")
+    def local_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        An absolute path to the executable on the VM.
+        """
+        return pulumi.get(self, "local_path")
+
+    @local_path.setter
+    def local_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "local_path", value)
+
+
+@pulumi.input_type
+calass PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArrgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 generation_number: pulumi.Input[str],
+                 object: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] bucket: Bucket of the Cloud Storage object.
+        :param pulumi.Input[str] generation_number: Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+        :param pulumi.Input[str] object: Name of the Cloud Storage object.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "generation_number", generation_number)
+        pulumi.set(__self__, "object", object)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        Bucket of the Cloud Storage object.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter(name="generationNumber")
+    def generation_number(self) -> pulumi.Input[str]:
+        """
+        Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+        """
+        return pulumi.get(self, "generation_number")
+
+    @generation_number.setter
+    def generation_number(self, value: pulumi.Input[str]):
+        pulumi.set(self, "generation_number", value)
+
+    @property
+    @pulumi.getter
+    def object(self) -> pulumi.Input[str]:
+        """
+        Name of the Cloud Storage object.
+        """
+        return pulumi.get(self, "object")
+
+    @object.setter
+    def object(self, value: pulumi.Input[str]):
+        pulumi.set(self, "object", value)
+
+
+@pulumi.input_type
+calass PatchDeploymentPatchConfigWindowsUpdateArrgs:
     def __init__(__self__, *,
                  classifications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -5813,7 +5813,7 @@ class PatchDeploymentPatchConfigWindowsUpdateArgs:
 
 
 @pulumi.input_type
-class PatchDeploymentPatchConfigYumArgs:
+calass PatchDeploymentPatchConfigYumArrgs:
     def __init__(__self__, *,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  exclusive_packages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -5888,7 +5888,7 @@ class PatchDeploymentPatchConfigYumArgs:
 
 
 @pulumi.input_type
-class PatchDeploymentPatchConfigZypperArgs:
+calass PatchDeploymentPatchConfigZypperArrgs:
     def __init__(__self__, *,
                  categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -5993,20 +5993,20 @@ class PatchDeploymentPatchConfigZypperArgs:
 
 
 @pulumi.input_type
-class PatchDeploymentRecurringScheduleArgs:
+calass PatchDeploymentRecurringScheduleArrgs:
     def __init__(__self__, *,
-                 time_of_day: pulumi.Input['PatchDeploymentRecurringScheduleTimeOfDayArgs'],
-                 time_zone: pulumi.Input['PatchDeploymentRecurringScheduleTimeZoneArgs'],
+                 time_of_day: pulumi.Input['PatchDeploymentRecurringScheduleTimeOfDayArrgs'],
+                 time_zone: pulumi.Input['PatchDeploymentRecurringScheduleTimeZoneArrgs'],
                  end_time: Optional[pulumi.Input[str]] = None,
                  last_execute_time: Optional[pulumi.Input[str]] = None,
-                 monthly: Optional[pulumi.Input['PatchDeploymentRecurringScheduleMonthlyArgs']] = None,
+                 monthly: Optional[pulumi.Input['PatchDeploymentRecurringScheduleMonthlyArrgs']] = None,
                  next_execute_time: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 weekly: Optional[pulumi.Input['PatchDeploymentRecurringScheduleWeeklyArgs']] = None):
+                 weekly: Optional[pulumi.Input['PatchDeploymentRecurringScheduleWeeklyArrgs']] = None):
         """
-        :param pulumi.Input['PatchDeploymentRecurringScheduleTimeOfDayArgs'] time_of_day: Time of the day to run a recurring deployment.
+        :param pulumi.Input['PatchDeploymentRecurringScheduleTimeOfDayArrgs'] time_of_day: Time of the day to run a recurring deployment.
                Structure is documented below.
-        :param pulumi.Input['PatchDeploymentRecurringScheduleTimeZoneArgs'] time_zone: Defines the time zone that timeOfDay is relative to. The rules for daylight saving time are
+        :param pulumi.Input['PatchDeploymentRecurringScheduleTimeZoneArrgs'] time_zone: Defines the time zone that timeOfDay is relative to. The rules for daylight saving time are
                determined by the chosen time zone.
                Structure is documented below.
         :param pulumi.Input[str] end_time: The end time at which a recurring patch deployment schedule is no longer active.
@@ -6014,14 +6014,14 @@ class PatchDeploymentRecurringScheduleArgs:
         :param pulumi.Input[str] last_execute_time: (Output)
                The time the last patch job ran successfully.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input['PatchDeploymentRecurringScheduleMonthlyArgs'] monthly: Schedule with monthly executions.
+        :param pulumi.Input['PatchDeploymentRecurringScheduleMonthlyArrgs'] monthly: Schedule with monthly executions.
                Structure is documented below.
         :param pulumi.Input[str] next_execute_time: (Output)
                The time the next patch job is scheduled to run.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] start_time: The time that the recurring schedule becomes effective. Defaults to createTime of the patch deployment.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input['PatchDeploymentRecurringScheduleWeeklyArgs'] weekly: Schedule with weekly executions.
+        :param pulumi.Input['PatchDeploymentRecurringScheduleWeeklyArrgs'] weekly: Schedule with weekly executions.
                Structure is documented below.
         """
         pulumi.set(__self__, "time_of_day", time_of_day)
@@ -6041,7 +6041,7 @@ class PatchDeploymentRecurringScheduleArgs:
 
     @property
     @pulumi.getter(name="timeOfDay")
-    def time_of_day(self) -> pulumi.Input['PatchDeploymentRecurringScheduleTimeOfDayArgs']:
+    def time_of_day(self) -> pulumi.Input['PatchDeploymentRecurringScheduleTimeOfDayArrgs']:
         """
         Time of the day to run a recurring deployment.
         Structure is documented below.
@@ -6049,12 +6049,12 @@ class PatchDeploymentRecurringScheduleArgs:
         return pulumi.get(self, "time_of_day")
 
     @time_of_day.setter
-    def time_of_day(self, value: pulumi.Input['PatchDeploymentRecurringScheduleTimeOfDayArgs']):
+    def time_of_day(self, value: pulumi.Input['PatchDeploymentRecurringScheduleTimeOfDayArrgs']):
         pulumi.set(self, "time_of_day", value)
 
     @property
     @pulumi.getter(name="timeZone")
-    def time_zone(self) -> pulumi.Input['PatchDeploymentRecurringScheduleTimeZoneArgs']:
+    def time_zone(self) -> pulumi.Input['PatchDeploymentRecurringScheduleTimeZoneArrgs']:
         """
         Defines the time zone that timeOfDay is relative to. The rules for daylight saving time are
         determined by the chosen time zone.
@@ -6063,7 +6063,7 @@ class PatchDeploymentRecurringScheduleArgs:
         return pulumi.get(self, "time_zone")
 
     @time_zone.setter
-    def time_zone(self, value: pulumi.Input['PatchDeploymentRecurringScheduleTimeZoneArgs']):
+    def time_zone(self, value: pulumi.Input['PatchDeploymentRecurringScheduleTimeZoneArrgs']):
         pulumi.set(self, "time_zone", value)
 
     @property
@@ -6095,7 +6095,7 @@ class PatchDeploymentRecurringScheduleArgs:
 
     @property
     @pulumi.getter
-    def monthly(self) -> Optional[pulumi.Input['PatchDeploymentRecurringScheduleMonthlyArgs']]:
+    def monthly(self) -> Optional[pulumi.Input['PatchDeploymentRecurringScheduleMonthlyArrgs']]:
         """
         Schedule with monthly executions.
         Structure is documented below.
@@ -6103,7 +6103,7 @@ class PatchDeploymentRecurringScheduleArgs:
         return pulumi.get(self, "monthly")
 
     @monthly.setter
-    def monthly(self, value: Optional[pulumi.Input['PatchDeploymentRecurringScheduleMonthlyArgs']]):
+    def monthly(self, value: Optional[pulumi.Input['PatchDeploymentRecurringScheduleMonthlyArrgs']]):
         pulumi.set(self, "monthly", value)
 
     @property
@@ -6135,7 +6135,7 @@ class PatchDeploymentRecurringScheduleArgs:
 
     @property
     @pulumi.getter
-    def weekly(self) -> Optional[pulumi.Input['PatchDeploymentRecurringScheduleWeeklyArgs']]:
+    def weekly(self) -> Optional[pulumi.Input['PatchDeploymentRecurringScheduleWeeklyArrgs']]:
         """
         Schedule with weekly executions.
         Structure is documented below.
@@ -6143,20 +6143,20 @@ class PatchDeploymentRecurringScheduleArgs:
         return pulumi.get(self, "weekly")
 
     @weekly.setter
-    def weekly(self, value: Optional[pulumi.Input['PatchDeploymentRecurringScheduleWeeklyArgs']]):
+    def weekly(self, value: Optional[pulumi.Input['PatchDeploymentRecurringScheduleWeeklyArrgs']]):
         pulumi.set(self, "weekly", value)
 
 
 @pulumi.input_type
-class PatchDeploymentRecurringScheduleMonthlyArgs:
+calass PatchDeploymentRecurringScheduleMonthlyArrgs:
     def __init__(__self__, *,
                  month_day: Optional[pulumi.Input[int]] = None,
-                 week_day_of_month: Optional[pulumi.Input['PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs']] = None):
+                 week_day_of_month: Optional[pulumi.Input['PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArrgs']] = None):
         """
         :param pulumi.Input[int] month_day: One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month.
                Months without the target day will be skipped. For example, a schedule to run "every month on the 31st"
                will not run in February, April, June, etc.
-        :param pulumi.Input['PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs'] week_day_of_month: Week day in a month.
+        :param pulumi.Input['PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArrgs'] week_day_of_month: Week day in a month.
                Structure is documented below.
         """
         if month_day is not None:
@@ -6180,7 +6180,7 @@ class PatchDeploymentRecurringScheduleMonthlyArgs:
 
     @property
     @pulumi.getter(name="weekDayOfMonth")
-    def week_day_of_month(self) -> Optional[pulumi.Input['PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs']]:
+    def week_day_of_month(self) -> Optional[pulumi.Input['PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArrgs']]:
         """
         Week day in a month.
         Structure is documented below.
@@ -6188,12 +6188,12 @@ class PatchDeploymentRecurringScheduleMonthlyArgs:
         return pulumi.get(self, "week_day_of_month")
 
     @week_day_of_month.setter
-    def week_day_of_month(self, value: Optional[pulumi.Input['PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs']]):
+    def week_day_of_month(self, value: Optional[pulumi.Input['PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArrgs']]):
         pulumi.set(self, "week_day_of_month", value)
 
 
 @pulumi.input_type
-class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs:
+calass PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArrgs:
     def __init__(__self__, *,
                  day_of_week: pulumi.Input[str],
                  week_ordinal: pulumi.Input[int],
@@ -6248,7 +6248,7 @@ class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs:
 
 
 @pulumi.input_type
-class PatchDeploymentRecurringScheduleTimeOfDayArgs:
+calass PatchDeploymentRecurringScheduleTimeOfDayArrgs:
     def __init__(__self__, *,
                  hours: Optional[pulumi.Input[int]] = None,
                  minutes: Optional[pulumi.Input[int]] = None,
@@ -6321,7 +6321,7 @@ class PatchDeploymentRecurringScheduleTimeOfDayArgs:
 
 
 @pulumi.input_type
-class PatchDeploymentRecurringScheduleTimeZoneArgs:
+calass PatchDeploymentRecurringScheduleTimeZoneArrgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str],
                  version: Optional[pulumi.Input[str]] = None):
@@ -6359,7 +6359,7 @@ class PatchDeploymentRecurringScheduleTimeZoneArgs:
 
 
 @pulumi.input_type
-class PatchDeploymentRecurringScheduleWeeklyArgs:
+calass PatchDeploymentRecurringScheduleWeeklyArrgs:
     def __init__(__self__, *,
                  day_of_week: pulumi.Input[str]):
         """
@@ -6383,12 +6383,12 @@ class PatchDeploymentRecurringScheduleWeeklyArgs:
 
 
 @pulumi.input_type
-class PatchDeploymentRolloutArgs:
+calass PatchDeploymentRolloutArrgs:
     def __init__(__self__, *,
-                 disruption_budget: pulumi.Input['PatchDeploymentRolloutDisruptionBudgetArgs'],
+                 disruption_budget: pulumi.Input['PatchDeploymentRolloutDisruptionBudgetArrgs'],
                  mode: pulumi.Input[str]):
         """
-        :param pulumi.Input['PatchDeploymentRolloutDisruptionBudgetArgs'] disruption_budget: The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up.
+        :param pulumi.Input['PatchDeploymentRolloutDisruptionBudgetArrgs'] disruption_budget: The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up.
                During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps.
                A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget.
                For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone.
@@ -6402,7 +6402,7 @@ class PatchDeploymentRolloutArgs:
 
     @property
     @pulumi.getter(name="disruptionBudget")
-    def disruption_budget(self) -> pulumi.Input['PatchDeploymentRolloutDisruptionBudgetArgs']:
+    def disruption_budget(self) -> pulumi.Input['PatchDeploymentRolloutDisruptionBudgetArrgs']:
         """
         The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up.
         During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps.
@@ -6414,7 +6414,7 @@ class PatchDeploymentRolloutArgs:
         return pulumi.get(self, "disruption_budget")
 
     @disruption_budget.setter
-    def disruption_budget(self, value: pulumi.Input['PatchDeploymentRolloutDisruptionBudgetArgs']):
+    def disruption_budget(self, value: pulumi.Input['PatchDeploymentRolloutDisruptionBudgetArrgs']):
         pulumi.set(self, "disruption_budget", value)
 
     @property
@@ -6432,7 +6432,7 @@ class PatchDeploymentRolloutArgs:
 
 
 @pulumi.input_type
-class PatchDeploymentRolloutDisruptionBudgetArgs:
+calass PatchDeploymentRolloutDisruptionBudgetArrgs:
     def __init__(__self__, *,
                  fixed: Optional[pulumi.Input[int]] = None,
                  percentage: Optional[pulumi.Input[int]] = None):

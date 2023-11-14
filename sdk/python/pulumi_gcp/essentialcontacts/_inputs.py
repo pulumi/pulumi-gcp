@@ -10,69 +10,69 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs',
-    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs',
-    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs',
-    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgs',
-    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgs',
-    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgs',
-    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs',
-    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArgs',
-    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArgs',
-    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArgs',
-    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsArgs',
-    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArgs',
-    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArgs',
-    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs',
-    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArgs',
-    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArgs',
-    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs',
-    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs',
-    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgs',
+    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs',
+    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArrgs',
+    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArrgs',
+    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArrgs',
+    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArrgs',
+    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArrgs',
+    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArrgs',
+    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArrgs',
+    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArrgs',
+    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArrgs',
+    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsArrgs',
+    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArrgs',
+    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArrgs',
+    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArrgs',
+    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArrgs',
+    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArrgs',
+    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrgs',
+    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArrgs',
+    'DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArrgs',
 ]
 
 @pulumi.input_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs:
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 date_time_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs']] = None,
+                 date_time_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArrgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 enum_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs']] = None,
-                 float_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgs']] = None,
-                 integer_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgs']] = None,
+                 enum_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArrgs']] = None,
+                 float_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArrgs']] = None,
+                 integer_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArrgs']] = None,
                  is_filterable: Optional[pulumi.Input[bool]] = None,
                  is_metadata: Optional[pulumi.Input[bool]] = None,
                  is_repeatable: Optional[pulumi.Input[bool]] = None,
                  is_required: Optional[pulumi.Input[bool]] = None,
                  is_searchable: Optional[pulumi.Input[bool]] = None,
-                 map_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgs']] = None,
-                 property_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs']] = None,
+                 map_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArrgs']] = None,
+                 property_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArrgs']] = None,
                  retrieval_importance: Optional[pulumi.Input[str]] = None,
-                 schema_sources: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs']]]] = None,
-                 text_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs']] = None,
-                 timestamp_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgs']] = None):
+                 schema_sources: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrgs']]]] = None,
+                 text_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArrgs']] = None,
+                 timestamp_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArrgs']] = None):
         """
         :param pulumi.Input[str] name: The name of the metadata property.
-        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs'] date_time_type_options: Date time property. Not supported by CMEK compliant deployment.
+        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArrgs'] date_time_type_options: Date time property. Not supported by CMEK compliant deployment.
         :param pulumi.Input[str] display_name: The display-name for the property, used for front-end.
-        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs'] enum_type_options: Enum/categorical property.
+        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArrgs'] enum_type_options: Enum/categorical property.
                Structure is documented below.
-        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgs'] float_type_options: Float property.
-        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgs'] integer_type_options: Integer property.
+        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArrgs'] float_type_options: Float property.
+        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArrgs'] integer_type_options: Integer property.
         :param pulumi.Input[bool] is_filterable: Whether the property can be filtered. If this is a sub-property, all the parent properties must be marked filterable.
         :param pulumi.Input[bool] is_metadata: Whether the property is user supplied metadata.
         :param pulumi.Input[bool] is_repeatable: Whether the property can have multiple values.
         :param pulumi.Input[bool] is_required: Whether the property is mandatory.
         :param pulumi.Input[bool] is_searchable: Indicates that the property should be included in a global search.
-        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgs'] map_type_options: Map property.
-        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs'] property_type_options: Nested structured data property.
+        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArrgs'] map_type_options: Map property.
+        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArrgs'] property_type_options: Nested structured data property.
                Structure is documented below.
         :param pulumi.Input[str] retrieval_importance: Stores the retrieval importance.
                Possible values are: `HIGHEST`, `HIGHER`, `HIGH`, `MEDIUM`, `LOW`, `LOWEST`.
-        :param pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs']]] schema_sources: The schema source information.
+        :param pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrgs']]] schema_sources: The schema source information.
                Structure is documented below.
-        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs'] text_type_options: Text property.
-        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgs'] timestamp_type_options: Timestamp property. Not supported by CMEK compliant deployment.
+        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArrgs'] text_type_options: Text property.
+        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArrgs'] timestamp_type_options: Timestamp property. Not supported by CMEK compliant deployment.
         """
         pulumi.set(__self__, "name", name)
         if date_time_type_options is not None:
@@ -122,14 +122,14 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs:
 
     @property
     @pulumi.getter(name="dateTimeTypeOptions")
-    def date_time_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs']]:
+    def date_time_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArrgs']]:
         """
         Date time property. Not supported by CMEK compliant deployment.
         """
         return pulumi.get(self, "date_time_type_options")
 
     @date_time_type_options.setter
-    def date_time_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs']]):
+    def date_time_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArrgs']]):
         pulumi.set(self, "date_time_type_options", value)
 
     @property
@@ -146,7 +146,7 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs:
 
     @property
     @pulumi.getter(name="enumTypeOptions")
-    def enum_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs']]:
+    def enum_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArrgs']]:
         """
         Enum/categorical property.
         Structure is documented below.
@@ -154,31 +154,31 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs:
         return pulumi.get(self, "enum_type_options")
 
     @enum_type_options.setter
-    def enum_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs']]):
+    def enum_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArrgs']]):
         pulumi.set(self, "enum_type_options", value)
 
     @property
     @pulumi.getter(name="floatTypeOptions")
-    def float_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgs']]:
+    def float_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArrgs']]:
         """
         Float property.
         """
         return pulumi.get(self, "float_type_options")
 
     @float_type_options.setter
-    def float_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgs']]):
+    def float_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArrgs']]):
         pulumi.set(self, "float_type_options", value)
 
     @property
     @pulumi.getter(name="integerTypeOptions")
-    def integer_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgs']]:
+    def integer_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArrgs']]:
         """
         Integer property.
         """
         return pulumi.get(self, "integer_type_options")
 
     @integer_type_options.setter
-    def integer_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgs']]):
+    def integer_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArrgs']]):
         pulumi.set(self, "integer_type_options", value)
 
     @property
@@ -243,19 +243,19 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs:
 
     @property
     @pulumi.getter(name="mapTypeOptions")
-    def map_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgs']]:
+    def map_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArrgs']]:
         """
         Map property.
         """
         return pulumi.get(self, "map_type_options")
 
     @map_type_options.setter
-    def map_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgs']]):
+    def map_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArrgs']]):
         pulumi.set(self, "map_type_options", value)
 
     @property
     @pulumi.getter(name="propertyTypeOptions")
-    def property_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs']]:
+    def property_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArrgs']]:
         """
         Nested structured data property.
         Structure is documented below.
@@ -263,7 +263,7 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs:
         return pulumi.get(self, "property_type_options")
 
     @property_type_options.setter
-    def property_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs']]):
+    def property_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArrgs']]):
         pulumi.set(self, "property_type_options", value)
 
     @property
@@ -281,7 +281,7 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs:
 
     @property
     @pulumi.getter(name="schemaSources")
-    def schema_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs']]]]:
+    def schema_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrgs']]]]:
         """
         The schema source information.
         Structure is documented below.
@@ -289,42 +289,42 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs:
         return pulumi.get(self, "schema_sources")
 
     @schema_sources.setter
-    def schema_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs']]]]):
+    def schema_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrgs']]]]):
         pulumi.set(self, "schema_sources", value)
 
     @property
     @pulumi.getter(name="textTypeOptions")
-    def text_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs']]:
+    def text_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArrgs']]:
         """
         Text property.
         """
         return pulumi.get(self, "text_type_options")
 
     @text_type_options.setter
-    def text_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs']]):
+    def text_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArrgs']]):
         pulumi.set(self, "text_type_options", value)
 
     @property
     @pulumi.getter(name="timestampTypeOptions")
-    def timestamp_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgs']]:
+    def timestamp_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArrgs']]:
         """
         Timestamp property. Not supported by CMEK compliant deployment.
         """
         return pulumi.get(self, "timestamp_type_options")
 
     @timestamp_type_options.setter
-    def timestamp_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgs']]):
+    def timestamp_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArrgs']]):
         pulumi.set(self, "timestamp_type_options", value)
 
 
 @pulumi.input_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs:
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArrgs:
     def __init__(__self__):
         pass
 
 
 @pulumi.input_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs:
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArrgs:
     def __init__(__self__, *,
                  possible_values: pulumi.Input[Sequence[pulumi.Input[str]]],
                  validation_check_disabled: Optional[pulumi.Input[bool]] = None):
@@ -366,36 +366,36 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs:
 
 
 @pulumi.input_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgs:
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArrgs:
     def __init__(__self__):
         pass
 
 
 @pulumi.input_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgs:
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArrgs:
     def __init__(__self__):
         pass
 
 
 @pulumi.input_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgs:
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArrgs:
     def __init__(__self__):
         pass
 
 
 @pulumi.input_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs:
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArrgs:
     def __init__(__self__, *,
-                 property_definitions: pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArgs']]]):
+                 property_definitions: pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArgs']]] property_definitions: Defines the metadata for a schema property.
+        :param pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArrgs']]] property_definitions: Defines the metadata for a schema property.
                Structure is documented below.
         """
         pulumi.set(__self__, "property_definitions", property_definitions)
 
     @property
     @pulumi.getter(name="propertyDefinitions")
-    def property_definitions(self) -> pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArgs']]]:
+    def property_definitions(self) -> pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArrgs']]]:
         """
         Defines the metadata for a schema property.
         Structure is documented below.
@@ -403,49 +403,49 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs
         return pulumi.get(self, "property_definitions")
 
     @property_definitions.setter
-    def property_definitions(self, value: pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArgs']]]):
+    def property_definitions(self, value: pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArrgs']]]):
         pulumi.set(self, "property_definitions", value)
 
 
 @pulumi.input_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArgs:
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 date_time_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArgs']] = None,
+                 date_time_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArrgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 enum_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArgs']] = None,
-                 float_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsArgs']] = None,
-                 integer_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArgs']] = None,
+                 enum_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArrgs']] = None,
+                 float_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsArrgs']] = None,
+                 integer_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArrgs']] = None,
                  is_filterable: Optional[pulumi.Input[bool]] = None,
                  is_metadata: Optional[pulumi.Input[bool]] = None,
                  is_repeatable: Optional[pulumi.Input[bool]] = None,
                  is_required: Optional[pulumi.Input[bool]] = None,
                  is_searchable: Optional[pulumi.Input[bool]] = None,
-                 map_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArgs']] = None,
+                 map_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArrgs']] = None,
                  retrieval_importance: Optional[pulumi.Input[str]] = None,
-                 schema_sources: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs']]]] = None,
-                 text_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArgs']] = None,
-                 timestamp_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArgs']] = None):
+                 schema_sources: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArrgs']]]] = None,
+                 text_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArrgs']] = None,
+                 timestamp_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArrgs']] = None):
         """
         :param pulumi.Input[str] name: The name of the metadata property.
-        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArgs'] date_time_type_options: Date time property. Not supported by CMEK compliant deployment.
+        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArrgs'] date_time_type_options: Date time property. Not supported by CMEK compliant deployment.
         :param pulumi.Input[str] display_name: The display-name for the property, used for front-end.
-        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArgs'] enum_type_options: Enum/categorical property.
+        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArrgs'] enum_type_options: Enum/categorical property.
                Structure is documented below.
-        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsArgs'] float_type_options: Float property.
-        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArgs'] integer_type_options: Integer property.
+        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsArrgs'] float_type_options: Float property.
+        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArrgs'] integer_type_options: Integer property.
         :param pulumi.Input[bool] is_filterable: Whether the property can be filtered. If this is a sub-property, all the parent properties must be marked filterable.
         :param pulumi.Input[bool] is_metadata: Whether the property is user supplied metadata.
         :param pulumi.Input[bool] is_repeatable: Whether the property can have multiple values.
         :param pulumi.Input[bool] is_required: Whether the property is mandatory.
         :param pulumi.Input[bool] is_searchable: Indicates that the property should be included in a global search.
-        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArgs'] map_type_options: Map property.
+        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArrgs'] map_type_options: Map property.
         :param pulumi.Input[str] retrieval_importance: Stores the retrieval importance.
                Possible values are: `HIGHEST`, `HIGHER`, `HIGH`, `MEDIUM`, `LOW`, `LOWEST`.
-        :param pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs']]] schema_sources: The schema source information.
+        :param pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArrgs']]] schema_sources: The schema source information.
                Structure is documented below.
-        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArgs'] text_type_options: Text property.
-        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArgs'] timestamp_type_options: Timestamp property. Not supported by CMEK compliant deployment.
+        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArrgs'] text_type_options: Text property.
+        :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArrgs'] timestamp_type_options: Timestamp property. Not supported by CMEK compliant deployment.
         """
         pulumi.set(__self__, "name", name)
         if date_time_type_options is not None:
@@ -493,14 +493,14 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
 
     @property
     @pulumi.getter(name="dateTimeTypeOptions")
-    def date_time_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArgs']]:
+    def date_time_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArrgs']]:
         """
         Date time property. Not supported by CMEK compliant deployment.
         """
         return pulumi.get(self, "date_time_type_options")
 
     @date_time_type_options.setter
-    def date_time_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArgs']]):
+    def date_time_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArrgs']]):
         pulumi.set(self, "date_time_type_options", value)
 
     @property
@@ -517,7 +517,7 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
 
     @property
     @pulumi.getter(name="enumTypeOptions")
-    def enum_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArgs']]:
+    def enum_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArrgs']]:
         """
         Enum/categorical property.
         Structure is documented below.
@@ -525,31 +525,31 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
         return pulumi.get(self, "enum_type_options")
 
     @enum_type_options.setter
-    def enum_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArgs']]):
+    def enum_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArrgs']]):
         pulumi.set(self, "enum_type_options", value)
 
     @property
     @pulumi.getter(name="floatTypeOptions")
-    def float_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsArgs']]:
+    def float_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsArrgs']]:
         """
         Float property.
         """
         return pulumi.get(self, "float_type_options")
 
     @float_type_options.setter
-    def float_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsArgs']]):
+    def float_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsArrgs']]):
         pulumi.set(self, "float_type_options", value)
 
     @property
     @pulumi.getter(name="integerTypeOptions")
-    def integer_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArgs']]:
+    def integer_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArrgs']]:
         """
         Integer property.
         """
         return pulumi.get(self, "integer_type_options")
 
     @integer_type_options.setter
-    def integer_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArgs']]):
+    def integer_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArrgs']]):
         pulumi.set(self, "integer_type_options", value)
 
     @property
@@ -614,14 +614,14 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
 
     @property
     @pulumi.getter(name="mapTypeOptions")
-    def map_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArgs']]:
+    def map_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArrgs']]:
         """
         Map property.
         """
         return pulumi.get(self, "map_type_options")
 
     @map_type_options.setter
-    def map_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArgs']]):
+    def map_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArrgs']]):
         pulumi.set(self, "map_type_options", value)
 
     @property
@@ -639,7 +639,7 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
 
     @property
     @pulumi.getter(name="schemaSources")
-    def schema_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs']]]]:
+    def schema_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArrgs']]]]:
         """
         The schema source information.
         Structure is documented below.
@@ -647,42 +647,42 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
         return pulumi.get(self, "schema_sources")
 
     @schema_sources.setter
-    def schema_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs']]]]):
+    def schema_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArrgs']]]]):
         pulumi.set(self, "schema_sources", value)
 
     @property
     @pulumi.getter(name="textTypeOptions")
-    def text_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArgs']]:
+    def text_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArrgs']]:
         """
         Text property.
         """
         return pulumi.get(self, "text_type_options")
 
     @text_type_options.setter
-    def text_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArgs']]):
+    def text_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArrgs']]):
         pulumi.set(self, "text_type_options", value)
 
     @property
     @pulumi.getter(name="timestampTypeOptions")
-    def timestamp_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArgs']]:
+    def timestamp_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArrgs']]:
         """
         Timestamp property. Not supported by CMEK compliant deployment.
         """
         return pulumi.get(self, "timestamp_type_options")
 
     @timestamp_type_options.setter
-    def timestamp_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArgs']]):
+    def timestamp_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArrgs']]):
         pulumi.set(self, "timestamp_type_options", value)
 
 
 @pulumi.input_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArgs:
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArrgs:
     def __init__(__self__):
         pass
 
 
 @pulumi.input_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArgs:
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArrgs:
     def __init__(__self__, *,
                  possible_values: pulumi.Input[Sequence[pulumi.Input[str]]],
                  validation_check_disabled: Optional[pulumi.Input[bool]] = None):
@@ -724,25 +724,25 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
 
 
 @pulumi.input_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsArgs:
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsArrgs:
     def __init__(__self__):
         pass
 
 
 @pulumi.input_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArgs:
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArrgs:
     def __init__(__self__):
         pass
 
 
 @pulumi.input_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArgs:
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArrgs:
     def __init__(__self__):
         pass
 
 
 @pulumi.input_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs:
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArrgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
                  processor_type: Optional[pulumi.Input[str]] = None):
@@ -781,19 +781,19 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
 
 
 @pulumi.input_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArgs:
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArrgs:
     def __init__(__self__):
         pass
 
 
 @pulumi.input_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArgs:
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArrgs:
     def __init__(__self__):
         pass
 
 
 @pulumi.input_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs:
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
                  processor_type: Optional[pulumi.Input[str]] = None):
@@ -832,13 +832,13 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs:
 
 
 @pulumi.input_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs:
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArrgs:
     def __init__(__self__):
         pass
 
 
 @pulumi.input_type
-class DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgs:
+calass DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArrgs:
     def __init__(__self__):
         pass
 

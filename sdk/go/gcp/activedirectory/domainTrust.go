@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Adds a trust between Active Directory domains
@@ -294,12 +293,6 @@ func (i *DomainTrust) ToDomainTrustOutputWithContext(ctx context.Context) Domain
 	return pulumi.ToOutputWithContext(ctx, i).(DomainTrustOutput)
 }
 
-func (i *DomainTrust) ToOutput(ctx context.Context) pulumix.Output[*DomainTrust] {
-	return pulumix.Output[*DomainTrust]{
-		OutputState: i.ToDomainTrustOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DomainTrustArrayInput is an input type that accepts DomainTrustArray and DomainTrustArrayOutput values.
 // You can construct a concrete instance of `DomainTrustArrayInput` via:
 //
@@ -323,12 +316,6 @@ func (i DomainTrustArray) ToDomainTrustArrayOutput() DomainTrustArrayOutput {
 
 func (i DomainTrustArray) ToDomainTrustArrayOutputWithContext(ctx context.Context) DomainTrustArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainTrustArrayOutput)
-}
-
-func (i DomainTrustArray) ToOutput(ctx context.Context) pulumix.Output[[]*DomainTrust] {
-	return pulumix.Output[[]*DomainTrust]{
-		OutputState: i.ToDomainTrustArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DomainTrustMapInput is an input type that accepts DomainTrustMap and DomainTrustMapOutput values.
@@ -356,12 +343,6 @@ func (i DomainTrustMap) ToDomainTrustMapOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DomainTrustMapOutput)
 }
 
-func (i DomainTrustMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DomainTrust] {
-	return pulumix.Output[map[string]*DomainTrust]{
-		OutputState: i.ToDomainTrustMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DomainTrustOutput struct{ *pulumi.OutputState }
 
 func (DomainTrustOutput) ElementType() reflect.Type {
@@ -374,12 +355,6 @@ func (o DomainTrustOutput) ToDomainTrustOutput() DomainTrustOutput {
 
 func (o DomainTrustOutput) ToDomainTrustOutputWithContext(ctx context.Context) DomainTrustOutput {
 	return o
-}
-
-func (o DomainTrustOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainTrust] {
-	return pulumix.Output[*DomainTrust]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
@@ -443,12 +418,6 @@ func (o DomainTrustArrayOutput) ToDomainTrustArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o DomainTrustArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DomainTrust] {
-	return pulumix.Output[[]*DomainTrust]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DomainTrustArrayOutput) Index(i pulumi.IntInput) DomainTrustOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DomainTrust {
 		return vs[0].([]*DomainTrust)[vs[1].(int)]
@@ -467,12 +436,6 @@ func (o DomainTrustMapOutput) ToDomainTrustMapOutput() DomainTrustMapOutput {
 
 func (o DomainTrustMapOutput) ToDomainTrustMapOutputWithContext(ctx context.Context) DomainTrustMapOutput {
 	return o
-}
-
-func (o DomainTrustMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DomainTrust] {
-	return pulumix.Output[map[string]*DomainTrust]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DomainTrustMapOutput) MapIndex(k pulumi.StringInput) DomainTrustOutput {

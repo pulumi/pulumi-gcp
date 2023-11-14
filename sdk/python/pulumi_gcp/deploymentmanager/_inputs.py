@@ -10,14 +10,14 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'DeploymentLabelArgs',
-    'DeploymentTargetArgs',
-    'DeploymentTargetConfigArgs',
-    'DeploymentTargetImportArgs',
+    'DeploymentLabelArrgs',
+    'DeploymentTargetArrgs',
+    'DeploymentTargetConfigArrgs',
+    'DeploymentTargetImportArrgs',
 ]
 
 @pulumi.input_type
-class DeploymentLabelArgs:
+calass DeploymentLabelArrgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
@@ -56,14 +56,14 @@ class DeploymentLabelArgs:
 
 
 @pulumi.input_type
-class DeploymentTargetArgs:
+calass DeploymentTargetArrgs:
     def __init__(__self__, *,
-                 config: pulumi.Input['DeploymentTargetConfigArgs'],
-                 imports: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentTargetImportArgs']]]] = None):
+                 config: pulumi.Input['DeploymentTargetConfigArrgs'],
+                 imports: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentTargetImportArrgs']]]] = None):
         """
-        :param pulumi.Input['DeploymentTargetConfigArgs'] config: The root configuration file to use for this deployment.
+        :param pulumi.Input['DeploymentTargetConfigArrgs'] config: The root configuration file to use for this deployment.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['DeploymentTargetImportArgs']]] imports: Specifies import files for this configuration. This can be
+        :param pulumi.Input[Sequence[pulumi.Input['DeploymentTargetImportArrgs']]] imports: Specifies import files for this configuration. This can be
                used to import templates or other files. For example, you might
                import a text file in order to use the file in a template.
                Structure is documented below.
@@ -74,7 +74,7 @@ class DeploymentTargetArgs:
 
     @property
     @pulumi.getter
-    def config(self) -> pulumi.Input['DeploymentTargetConfigArgs']:
+    def config(self) -> pulumi.Input['DeploymentTargetConfigArrgs']:
         """
         The root configuration file to use for this deployment.
         Structure is documented below.
@@ -82,12 +82,12 @@ class DeploymentTargetArgs:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: pulumi.Input['DeploymentTargetConfigArgs']):
+    def config(self, value: pulumi.Input['DeploymentTargetConfigArrgs']):
         pulumi.set(self, "config", value)
 
     @property
     @pulumi.getter
-    def imports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentTargetImportArgs']]]]:
+    def imports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentTargetImportArrgs']]]]:
         """
         Specifies import files for this configuration. This can be
         used to import templates or other files. For example, you might
@@ -97,12 +97,12 @@ class DeploymentTargetArgs:
         return pulumi.get(self, "imports")
 
     @imports.setter
-    def imports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentTargetImportArgs']]]]):
+    def imports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentTargetImportArrgs']]]]):
         pulumi.set(self, "imports", value)
 
 
 @pulumi.input_type
-class DeploymentTargetConfigArgs:
+calass DeploymentTargetConfigArrgs:
     def __init__(__self__, *,
                  content: pulumi.Input[str]):
         """
@@ -124,7 +124,7 @@ class DeploymentTargetConfigArgs:
 
 
 @pulumi.input_type
-class DeploymentTargetImportArgs:
+calass DeploymentTargetImportArrgs:
     def __init__(__self__, *,
                  content: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):

@@ -11,31 +11,31 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['BudgetArgs', 'Budget']
+__all__ = ['BudgetArrgs', 'Budget']
 
 @pulumi.input_type
-class BudgetArgs:
+calass BudgetArrgs:
     def __init__(__self__, *,
-                 amount: pulumi.Input['BudgetAmountArgs'],
+                 amount: pulumi.Input['BudgetAmountArrgs'],
                  billing_account: pulumi.Input[str],
-                 all_updates_rule: Optional[pulumi.Input['BudgetAllUpdatesRuleArgs']] = None,
-                 budget_filter: Optional[pulumi.Input['BudgetBudgetFilterArgs']] = None,
+                 all_updates_rule: Optional[pulumi.Input['BudgetAllUpdatesRuleArrgs']] = None,
+                 budget_filter: Optional[pulumi.Input['BudgetBudgetFilterArrgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArgs']]]] = None):
+                 threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArrgs']]]] = None):
         """
         The set of arguments for constructing a Budget resource.
-        :param pulumi.Input['BudgetAmountArgs'] amount: The budgeted amount for each usage period.
+        :param pulumi.Input['BudgetAmountArrgs'] amount: The budgeted amount for each usage period.
                Structure is documented below.
         :param pulumi.Input[str] billing_account: ID of the billing account to set a budget on.
-        :param pulumi.Input['BudgetAllUpdatesRuleArgs'] all_updates_rule: Defines notifications that are sent on every update to the
+        :param pulumi.Input['BudgetAllUpdatesRuleArrgs'] all_updates_rule: Defines notifications that are sent on every update to the
                billing account's spend, regardless of the thresholds defined
                using threshold rules.
                Structure is documented below.
-        :param pulumi.Input['BudgetBudgetFilterArgs'] budget_filter: Filters that define which resources are used to compute the actual
+        :param pulumi.Input['BudgetBudgetFilterArrgs'] budget_filter: Filters that define which resources are used to compute the actual
                spend against the budget.
                Structure is documented below.
         :param pulumi.Input[str] display_name: User data for display name in UI. Must be <= 60 chars.
-        :param pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArgs']]] threshold_rules: Rules that trigger alerts (notifications of thresholds being
+        :param pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArrgs']]] threshold_rules: Rules that trigger alerts (notifications of thresholds being
                crossed) when spend exceeds the specified percentages of the
                budget.
                Structure is documented below.
@@ -53,7 +53,7 @@ class BudgetArgs:
 
     @property
     @pulumi.getter
-    def amount(self) -> pulumi.Input['BudgetAmountArgs']:
+    def amount(self) -> pulumi.Input['BudgetAmountArrgs']:
         """
         The budgeted amount for each usage period.
         Structure is documented below.
@@ -61,7 +61,7 @@ class BudgetArgs:
         return pulumi.get(self, "amount")
 
     @amount.setter
-    def amount(self, value: pulumi.Input['BudgetAmountArgs']):
+    def amount(self, value: pulumi.Input['BudgetAmountArrgs']):
         pulumi.set(self, "amount", value)
 
     @property
@@ -78,7 +78,7 @@ class BudgetArgs:
 
     @property
     @pulumi.getter(name="allUpdatesRule")
-    def all_updates_rule(self) -> Optional[pulumi.Input['BudgetAllUpdatesRuleArgs']]:
+    def all_updates_rule(self) -> Optional[pulumi.Input['BudgetAllUpdatesRuleArrgs']]:
         """
         Defines notifications that are sent on every update to the
         billing account's spend, regardless of the thresholds defined
@@ -88,12 +88,12 @@ class BudgetArgs:
         return pulumi.get(self, "all_updates_rule")
 
     @all_updates_rule.setter
-    def all_updates_rule(self, value: Optional[pulumi.Input['BudgetAllUpdatesRuleArgs']]):
+    def all_updates_rule(self, value: Optional[pulumi.Input['BudgetAllUpdatesRuleArrgs']]):
         pulumi.set(self, "all_updates_rule", value)
 
     @property
     @pulumi.getter(name="budgetFilter")
-    def budget_filter(self) -> Optional[pulumi.Input['BudgetBudgetFilterArgs']]:
+    def budget_filter(self) -> Optional[pulumi.Input['BudgetBudgetFilterArrgs']]:
         """
         Filters that define which resources are used to compute the actual
         spend against the budget.
@@ -102,7 +102,7 @@ class BudgetArgs:
         return pulumi.get(self, "budget_filter")
 
     @budget_filter.setter
-    def budget_filter(self, value: Optional[pulumi.Input['BudgetBudgetFilterArgs']]):
+    def budget_filter(self, value: Optional[pulumi.Input['BudgetBudgetFilterArrgs']]):
         pulumi.set(self, "budget_filter", value)
 
     @property
@@ -119,7 +119,7 @@ class BudgetArgs:
 
     @property
     @pulumi.getter(name="thresholdRules")
-    def threshold_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArgs']]]]:
+    def threshold_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArrgs']]]]:
         """
         Rules that trigger alerts (notifications of thresholds being
         crossed) when spend exceeds the specified percentages of the
@@ -129,37 +129,37 @@ class BudgetArgs:
         return pulumi.get(self, "threshold_rules")
 
     @threshold_rules.setter
-    def threshold_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArgs']]]]):
+    def threshold_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArrgs']]]]):
         pulumi.set(self, "threshold_rules", value)
 
 
 @pulumi.input_type
-class _BudgetState:
+calass _BudgetState:
     def __init__(__self__, *,
-                 all_updates_rule: Optional[pulumi.Input['BudgetAllUpdatesRuleArgs']] = None,
-                 amount: Optional[pulumi.Input['BudgetAmountArgs']] = None,
+                 all_updates_rule: Optional[pulumi.Input['BudgetAllUpdatesRuleArrgs']] = None,
+                 amount: Optional[pulumi.Input['BudgetAmountArrgs']] = None,
                  billing_account: Optional[pulumi.Input[str]] = None,
-                 budget_filter: Optional[pulumi.Input['BudgetBudgetFilterArgs']] = None,
+                 budget_filter: Optional[pulumi.Input['BudgetBudgetFilterArrgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArgs']]]] = None):
+                 threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArrgs']]]] = None):
         """
         Input properties used for looking up and filtering Budget resources.
-        :param pulumi.Input['BudgetAllUpdatesRuleArgs'] all_updates_rule: Defines notifications that are sent on every update to the
+        :param pulumi.Input['BudgetAllUpdatesRuleArrgs'] all_updates_rule: Defines notifications that are sent on every update to the
                billing account's spend, regardless of the thresholds defined
                using threshold rules.
                Structure is documented below.
-        :param pulumi.Input['BudgetAmountArgs'] amount: The budgeted amount for each usage period.
+        :param pulumi.Input['BudgetAmountArrgs'] amount: The budgeted amount for each usage period.
                Structure is documented below.
         :param pulumi.Input[str] billing_account: ID of the billing account to set a budget on.
-        :param pulumi.Input['BudgetBudgetFilterArgs'] budget_filter: Filters that define which resources are used to compute the actual
+        :param pulumi.Input['BudgetBudgetFilterArrgs'] budget_filter: Filters that define which resources are used to compute the actual
                spend against the budget.
                Structure is documented below.
         :param pulumi.Input[str] display_name: User data for display name in UI. Must be <= 60 chars.
         :param pulumi.Input[str] name: Resource name of the budget. The resource name
                implies the scope of a budget. Values are of the form
                billingAccounts/{billingAccountId}/budgets/{budgetId}.
-        :param pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArgs']]] threshold_rules: Rules that trigger alerts (notifications of thresholds being
+        :param pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArrgs']]] threshold_rules: Rules that trigger alerts (notifications of thresholds being
                crossed) when spend exceeds the specified percentages of the
                budget.
                Structure is documented below.
@@ -181,7 +181,7 @@ class _BudgetState:
 
     @property
     @pulumi.getter(name="allUpdatesRule")
-    def all_updates_rule(self) -> Optional[pulumi.Input['BudgetAllUpdatesRuleArgs']]:
+    def all_updates_rule(self) -> Optional[pulumi.Input['BudgetAllUpdatesRuleArrgs']]:
         """
         Defines notifications that are sent on every update to the
         billing account's spend, regardless of the thresholds defined
@@ -191,12 +191,12 @@ class _BudgetState:
         return pulumi.get(self, "all_updates_rule")
 
     @all_updates_rule.setter
-    def all_updates_rule(self, value: Optional[pulumi.Input['BudgetAllUpdatesRuleArgs']]):
+    def all_updates_rule(self, value: Optional[pulumi.Input['BudgetAllUpdatesRuleArrgs']]):
         pulumi.set(self, "all_updates_rule", value)
 
     @property
     @pulumi.getter
-    def amount(self) -> Optional[pulumi.Input['BudgetAmountArgs']]:
+    def amount(self) -> Optional[pulumi.Input['BudgetAmountArrgs']]:
         """
         The budgeted amount for each usage period.
         Structure is documented below.
@@ -204,7 +204,7 @@ class _BudgetState:
         return pulumi.get(self, "amount")
 
     @amount.setter
-    def amount(self, value: Optional[pulumi.Input['BudgetAmountArgs']]):
+    def amount(self, value: Optional[pulumi.Input['BudgetAmountArrgs']]):
         pulumi.set(self, "amount", value)
 
     @property
@@ -221,7 +221,7 @@ class _BudgetState:
 
     @property
     @pulumi.getter(name="budgetFilter")
-    def budget_filter(self) -> Optional[pulumi.Input['BudgetBudgetFilterArgs']]:
+    def budget_filter(self) -> Optional[pulumi.Input['BudgetBudgetFilterArrgs']]:
         """
         Filters that define which resources are used to compute the actual
         spend against the budget.
@@ -230,7 +230,7 @@ class _BudgetState:
         return pulumi.get(self, "budget_filter")
 
     @budget_filter.setter
-    def budget_filter(self, value: Optional[pulumi.Input['BudgetBudgetFilterArgs']]):
+    def budget_filter(self, value: Optional[pulumi.Input['BudgetBudgetFilterArrgs']]):
         pulumi.set(self, "budget_filter", value)
 
     @property
@@ -261,7 +261,7 @@ class _BudgetState:
 
     @property
     @pulumi.getter(name="thresholdRules")
-    def threshold_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArgs']]]]:
+    def threshold_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArrgs']]]]:
         """
         Rules that trigger alerts (notifications of thresholds being
         crossed) when spend exceeds the specified percentages of the
@@ -271,21 +271,21 @@ class _BudgetState:
         return pulumi.get(self, "threshold_rules")
 
     @threshold_rules.setter
-    def threshold_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArgs']]]]):
+    def threshold_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArrgs']]]]):
         pulumi.set(self, "threshold_rules", value)
 
 
-class Budget(pulumi.CustomResource):
+calass Budget(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 all_updates_rule: Optional[pulumi.Input[pulumi.InputType['BudgetAllUpdatesRuleArgs']]] = None,
-                 amount: Optional[pulumi.Input[pulumi.InputType['BudgetAmountArgs']]] = None,
+                 all_updates_rule: Optional[pulumi.Input[pulumi.InputType['BudgetAllUpdatesRuleArrgs']]] = None,
+                 amount: Optional[pulumi.Input[pulumi.InputType['BudgetAmountArrgs']]] = None,
                  billing_account: Optional[pulumi.Input[str]] = None,
-                 budget_filter: Optional[pulumi.Input[pulumi.InputType['BudgetBudgetFilterArgs']]] = None,
+                 budget_filter: Optional[pulumi.Input[pulumi.InputType['BudgetBudgetFilterArrgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BudgetThresholdRuleArgs']]]]] = None,
+                 threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BudgetThresholdRuleArrgs']]]]] = None,
                  __props__=None):
         """
         Budget configuration for a billing account.
@@ -313,13 +313,13 @@ class Budget(pulumi.CustomResource):
         budget = gcp.billing.Budget("budget",
             billing_account=account.id,
             display_name="Example Billing Budget",
-            amount=gcp.billing.BudgetAmountArgs(
-                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArgs(
+            amount=gcp.billing.BudgetAmountArrgs(
+                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArrgs(
                     currency_code="USD",
                     units="100000",
                 ),
             ),
-            threshold_rules=[gcp.billing.BudgetThresholdRuleArgs(
+            threshold_rules=[gcp.billing.BudgetThresholdRuleArrgs(
                 threshold_percent=0.5,
             )])
         ```
@@ -334,13 +334,13 @@ class Budget(pulumi.CustomResource):
         budget = gcp.billing.Budget("budget",
             billing_account=account.id,
             display_name="Example Billing Budget",
-            budget_filter=gcp.billing.BudgetBudgetFilterArgs(
+            budget_filter=gcp.billing.BudgetBudgetFilterArrgs(
                 projects=[f"projects/{project.number}"],
             ),
-            amount=gcp.billing.BudgetAmountArgs(
+            amount=gcp.billing.BudgetAmountArrgs(
                 last_period_amount=True,
             ),
-            threshold_rules=[gcp.billing.BudgetThresholdRuleArgs(
+            threshold_rules=[gcp.billing.BudgetThresholdRuleArrgs(
                 threshold_percent=10,
             )])
         ```
@@ -355,7 +355,7 @@ class Budget(pulumi.CustomResource):
         budget = gcp.billing.Budget("budget",
             billing_account=account.id,
             display_name="Example Billing Budget",
-            budget_filter=gcp.billing.BudgetBudgetFilterArgs(
+            budget_filter=gcp.billing.BudgetBudgetFilterArrgs(
                 projects=[f"projects/{project.number}"],
                 credit_types_treatment="INCLUDE_SPECIFIED_CREDITS",
                 services=["services/24E6-581D-38E5"],
@@ -365,17 +365,17 @@ class Budget(pulumi.CustomResource):
                 ],
                 resource_ancestors=["organizations/123456789"],
             ),
-            amount=gcp.billing.BudgetAmountArgs(
-                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArgs(
+            amount=gcp.billing.BudgetAmountArrgs(
+                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArrgs(
                     currency_code="USD",
                     units="100000",
                 ),
             ),
             threshold_rules=[
-                gcp.billing.BudgetThresholdRuleArgs(
+                gcp.billing.BudgetThresholdRuleArrgs(
                     threshold_percent=0.5,
                 ),
-                gcp.billing.BudgetThresholdRuleArgs(
+                gcp.billing.BudgetThresholdRuleArrgs(
                     threshold_percent=0.9,
                     spend_basis="FORECASTED_SPEND",
                 ),
@@ -398,25 +398,25 @@ class Budget(pulumi.CustomResource):
         budget = gcp.billing.Budget("budget",
             billing_account=account.id,
             display_name="Example Billing Budget",
-            budget_filter=gcp.billing.BudgetBudgetFilterArgs(
+            budget_filter=gcp.billing.BudgetBudgetFilterArrgs(
                 projects=[f"projects/{project.number}"],
             ),
-            amount=gcp.billing.BudgetAmountArgs(
-                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArgs(
+            amount=gcp.billing.BudgetAmountArrgs(
+                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArrgs(
                     currency_code="USD",
                     units="100000",
                 ),
             ),
             threshold_rules=[
-                gcp.billing.BudgetThresholdRuleArgs(
+                gcp.billing.BudgetThresholdRuleArrgs(
                     threshold_percent=1,
                 ),
-                gcp.billing.BudgetThresholdRuleArgs(
+                gcp.billing.BudgetThresholdRuleArrgs(
                     threshold_percent=1,
                     spend_basis="FORECASTED_SPEND",
                 ),
             ],
-            all_updates_rule=gcp.billing.BudgetAllUpdatesRuleArgs(
+            all_updates_rule=gcp.billing.BudgetAllUpdatesRuleArrgs(
                 monitoring_notification_channels=[notification_channel.id],
                 disable_default_iam_recipients=True,
             ))
@@ -432,34 +432,34 @@ class Budget(pulumi.CustomResource):
         budget = gcp.billing.Budget("budget",
             billing_account=account.id,
             display_name="Example Billing Budget",
-            budget_filter=gcp.billing.BudgetBudgetFilterArgs(
+            budget_filter=gcp.billing.BudgetBudgetFilterArrgs(
                 projects=[f"projects/{project.number}"],
                 credit_types_treatment="EXCLUDE_ALL_CREDITS",
                 services=["services/24E6-581D-38E5"],
-                custom_period=gcp.billing.BudgetBudgetFilterCustomPeriodArgs(
-                    start_date=gcp.billing.BudgetBudgetFilterCustomPeriodStartDateArgs(
+                custom_period=gcp.billing.BudgetBudgetFilterCustomPeriodArrgs(
+                    start_date=gcp.billing.BudgetBudgetFilterCustomPeriodStartDateArrgs(
                         year=2022,
                         month=1,
                         day=1,
                     ),
-                    end_date=gcp.billing.BudgetBudgetFilterCustomPeriodEndDateArgs(
+                    end_date=gcp.billing.BudgetBudgetFilterCustomPeriodEndDateArrgs(
                         year=2023,
                         month=12,
                         day=31,
                     ),
                 ),
             ),
-            amount=gcp.billing.BudgetAmountArgs(
-                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArgs(
+            amount=gcp.billing.BudgetAmountArrgs(
+                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArrgs(
                     currency_code="USD",
                     units="100000",
                 ),
             ),
             threshold_rules=[
-                gcp.billing.BudgetThresholdRuleArgs(
+                gcp.billing.BudgetThresholdRuleArrgs(
                     threshold_percent=0.5,
                 ),
-                gcp.billing.BudgetThresholdRuleArgs(
+                gcp.billing.BudgetThresholdRuleArrgs(
                     threshold_percent=0.9,
                 ),
             ])
@@ -483,18 +483,18 @@ class Budget(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BudgetAllUpdatesRuleArgs']] all_updates_rule: Defines notifications that are sent on every update to the
+        :param pulumi.Input[pulumi.InputType['BudgetAllUpdatesRuleArrgs']] all_updates_rule: Defines notifications that are sent on every update to the
                billing account's spend, regardless of the thresholds defined
                using threshold rules.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['BudgetAmountArgs']] amount: The budgeted amount for each usage period.
+        :param pulumi.Input[pulumi.InputType['BudgetAmountArrgs']] amount: The budgeted amount for each usage period.
                Structure is documented below.
         :param pulumi.Input[str] billing_account: ID of the billing account to set a budget on.
-        :param pulumi.Input[pulumi.InputType['BudgetBudgetFilterArgs']] budget_filter: Filters that define which resources are used to compute the actual
+        :param pulumi.Input[pulumi.InputType['BudgetBudgetFilterArrgs']] budget_filter: Filters that define which resources are used to compute the actual
                spend against the budget.
                Structure is documented below.
         :param pulumi.Input[str] display_name: User data for display name in UI. Must be <= 60 chars.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BudgetThresholdRuleArgs']]]] threshold_rules: Rules that trigger alerts (notifications of thresholds being
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BudgetThresholdRuleArrgs']]]] threshold_rules: Rules that trigger alerts (notifications of thresholds being
                crossed) when spend exceeds the specified percentages of the
                budget.
                Structure is documented below.
@@ -503,7 +503,7 @@ class Budget(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: BudgetArgs,
+                 args: BudgetArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Budget configuration for a billing account.
@@ -531,13 +531,13 @@ class Budget(pulumi.CustomResource):
         budget = gcp.billing.Budget("budget",
             billing_account=account.id,
             display_name="Example Billing Budget",
-            amount=gcp.billing.BudgetAmountArgs(
-                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArgs(
+            amount=gcp.billing.BudgetAmountArrgs(
+                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArrgs(
                     currency_code="USD",
                     units="100000",
                 ),
             ),
-            threshold_rules=[gcp.billing.BudgetThresholdRuleArgs(
+            threshold_rules=[gcp.billing.BudgetThresholdRuleArrgs(
                 threshold_percent=0.5,
             )])
         ```
@@ -552,13 +552,13 @@ class Budget(pulumi.CustomResource):
         budget = gcp.billing.Budget("budget",
             billing_account=account.id,
             display_name="Example Billing Budget",
-            budget_filter=gcp.billing.BudgetBudgetFilterArgs(
+            budget_filter=gcp.billing.BudgetBudgetFilterArrgs(
                 projects=[f"projects/{project.number}"],
             ),
-            amount=gcp.billing.BudgetAmountArgs(
+            amount=gcp.billing.BudgetAmountArrgs(
                 last_period_amount=True,
             ),
-            threshold_rules=[gcp.billing.BudgetThresholdRuleArgs(
+            threshold_rules=[gcp.billing.BudgetThresholdRuleArrgs(
                 threshold_percent=10,
             )])
         ```
@@ -573,7 +573,7 @@ class Budget(pulumi.CustomResource):
         budget = gcp.billing.Budget("budget",
             billing_account=account.id,
             display_name="Example Billing Budget",
-            budget_filter=gcp.billing.BudgetBudgetFilterArgs(
+            budget_filter=gcp.billing.BudgetBudgetFilterArrgs(
                 projects=[f"projects/{project.number}"],
                 credit_types_treatment="INCLUDE_SPECIFIED_CREDITS",
                 services=["services/24E6-581D-38E5"],
@@ -583,17 +583,17 @@ class Budget(pulumi.CustomResource):
                 ],
                 resource_ancestors=["organizations/123456789"],
             ),
-            amount=gcp.billing.BudgetAmountArgs(
-                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArgs(
+            amount=gcp.billing.BudgetAmountArrgs(
+                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArrgs(
                     currency_code="USD",
                     units="100000",
                 ),
             ),
             threshold_rules=[
-                gcp.billing.BudgetThresholdRuleArgs(
+                gcp.billing.BudgetThresholdRuleArrgs(
                     threshold_percent=0.5,
                 ),
-                gcp.billing.BudgetThresholdRuleArgs(
+                gcp.billing.BudgetThresholdRuleArrgs(
                     threshold_percent=0.9,
                     spend_basis="FORECASTED_SPEND",
                 ),
@@ -616,25 +616,25 @@ class Budget(pulumi.CustomResource):
         budget = gcp.billing.Budget("budget",
             billing_account=account.id,
             display_name="Example Billing Budget",
-            budget_filter=gcp.billing.BudgetBudgetFilterArgs(
+            budget_filter=gcp.billing.BudgetBudgetFilterArrgs(
                 projects=[f"projects/{project.number}"],
             ),
-            amount=gcp.billing.BudgetAmountArgs(
-                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArgs(
+            amount=gcp.billing.BudgetAmountArrgs(
+                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArrgs(
                     currency_code="USD",
                     units="100000",
                 ),
             ),
             threshold_rules=[
-                gcp.billing.BudgetThresholdRuleArgs(
+                gcp.billing.BudgetThresholdRuleArrgs(
                     threshold_percent=1,
                 ),
-                gcp.billing.BudgetThresholdRuleArgs(
+                gcp.billing.BudgetThresholdRuleArrgs(
                     threshold_percent=1,
                     spend_basis="FORECASTED_SPEND",
                 ),
             ],
-            all_updates_rule=gcp.billing.BudgetAllUpdatesRuleArgs(
+            all_updates_rule=gcp.billing.BudgetAllUpdatesRuleArrgs(
                 monitoring_notification_channels=[notification_channel.id],
                 disable_default_iam_recipients=True,
             ))
@@ -650,34 +650,34 @@ class Budget(pulumi.CustomResource):
         budget = gcp.billing.Budget("budget",
             billing_account=account.id,
             display_name="Example Billing Budget",
-            budget_filter=gcp.billing.BudgetBudgetFilterArgs(
+            budget_filter=gcp.billing.BudgetBudgetFilterArrgs(
                 projects=[f"projects/{project.number}"],
                 credit_types_treatment="EXCLUDE_ALL_CREDITS",
                 services=["services/24E6-581D-38E5"],
-                custom_period=gcp.billing.BudgetBudgetFilterCustomPeriodArgs(
-                    start_date=gcp.billing.BudgetBudgetFilterCustomPeriodStartDateArgs(
+                custom_period=gcp.billing.BudgetBudgetFilterCustomPeriodArrgs(
+                    start_date=gcp.billing.BudgetBudgetFilterCustomPeriodStartDateArrgs(
                         year=2022,
                         month=1,
                         day=1,
                     ),
-                    end_date=gcp.billing.BudgetBudgetFilterCustomPeriodEndDateArgs(
+                    end_date=gcp.billing.BudgetBudgetFilterCustomPeriodEndDateArrgs(
                         year=2023,
                         month=12,
                         day=31,
                     ),
                 ),
             ),
-            amount=gcp.billing.BudgetAmountArgs(
-                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArgs(
+            amount=gcp.billing.BudgetAmountArrgs(
+                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArrgs(
                     currency_code="USD",
                     units="100000",
                 ),
             ),
             threshold_rules=[
-                gcp.billing.BudgetThresholdRuleArgs(
+                gcp.billing.BudgetThresholdRuleArrgs(
                     threshold_percent=0.5,
                 ),
-                gcp.billing.BudgetThresholdRuleArgs(
+                gcp.billing.BudgetThresholdRuleArrgs(
                     threshold_percent=0.9,
                 ),
             ])
@@ -700,12 +700,12 @@ class Budget(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param BudgetArgs args: The arguments to use to populate this resource's properties.
+        :param BudgetArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(BudgetArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(BudgetArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -714,12 +714,12 @@ class Budget(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 all_updates_rule: Optional[pulumi.Input[pulumi.InputType['BudgetAllUpdatesRuleArgs']]] = None,
-                 amount: Optional[pulumi.Input[pulumi.InputType['BudgetAmountArgs']]] = None,
+                 all_updates_rule: Optional[pulumi.Input[pulumi.InputType['BudgetAllUpdatesRuleArrgs']]] = None,
+                 amount: Optional[pulumi.Input[pulumi.InputType['BudgetAmountArrgs']]] = None,
                  billing_account: Optional[pulumi.Input[str]] = None,
-                 budget_filter: Optional[pulumi.Input[pulumi.InputType['BudgetBudgetFilterArgs']]] = None,
+                 budget_filter: Optional[pulumi.Input[pulumi.InputType['BudgetBudgetFilterArrgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BudgetThresholdRuleArgs']]]]] = None,
+                 threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BudgetThresholdRuleArrgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -727,7 +727,7 @@ class Budget(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = BudgetArgs.__new__(BudgetArgs)
+            __props__ = BudgetArrgs.__new__(BudgetArrgs)
 
             __props__.__dict__["all_updates_rule"] = all_updates_rule
             if amount is None and not opts.urn:
@@ -750,13 +750,13 @@ class Budget(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            all_updates_rule: Optional[pulumi.Input[pulumi.InputType['BudgetAllUpdatesRuleArgs']]] = None,
-            amount: Optional[pulumi.Input[pulumi.InputType['BudgetAmountArgs']]] = None,
+            all_updates_rule: Optional[pulumi.Input[pulumi.InputType['BudgetAllUpdatesRuleArrgs']]] = None,
+            amount: Optional[pulumi.Input[pulumi.InputType['BudgetAmountArrgs']]] = None,
             billing_account: Optional[pulumi.Input[str]] = None,
-            budget_filter: Optional[pulumi.Input[pulumi.InputType['BudgetBudgetFilterArgs']]] = None,
+            budget_filter: Optional[pulumi.Input[pulumi.InputType['BudgetBudgetFilterArrgs']]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BudgetThresholdRuleArgs']]]]] = None) -> 'Budget':
+            threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BudgetThresholdRuleArrgs']]]]] = None) -> 'Budget':
         """
         Get an existing Budget resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -764,21 +764,21 @@ class Budget(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BudgetAllUpdatesRuleArgs']] all_updates_rule: Defines notifications that are sent on every update to the
+        :param pulumi.Input[pulumi.InputType['BudgetAllUpdatesRuleArrgs']] all_updates_rule: Defines notifications that are sent on every update to the
                billing account's spend, regardless of the thresholds defined
                using threshold rules.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['BudgetAmountArgs']] amount: The budgeted amount for each usage period.
+        :param pulumi.Input[pulumi.InputType['BudgetAmountArrgs']] amount: The budgeted amount for each usage period.
                Structure is documented below.
         :param pulumi.Input[str] billing_account: ID of the billing account to set a budget on.
-        :param pulumi.Input[pulumi.InputType['BudgetBudgetFilterArgs']] budget_filter: Filters that define which resources are used to compute the actual
+        :param pulumi.Input[pulumi.InputType['BudgetBudgetFilterArrgs']] budget_filter: Filters that define which resources are used to compute the actual
                spend against the budget.
                Structure is documented below.
         :param pulumi.Input[str] display_name: User data for display name in UI. Must be <= 60 chars.
         :param pulumi.Input[str] name: Resource name of the budget. The resource name
                implies the scope of a budget. Values are of the form
                billingAccounts/{billingAccountId}/budgets/{budgetId}.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BudgetThresholdRuleArgs']]]] threshold_rules: Rules that trigger alerts (notifications of thresholds being
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BudgetThresholdRuleArrgs']]]] threshold_rules: Rules that trigger alerts (notifications of thresholds being
                crossed) when spend exceeds the specified percentages of the
                budget.
                Structure is documented below.

@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['BackendBucketSignedUrlKeyArgs', 'BackendBucketSignedUrlKey']
+__all__ = ['BackendBucketSignedUrlKeyArrgs', 'BackendBucketSignedUrlKey']
 
 @pulumi.input_type
-class BackendBucketSignedUrlKeyArgs:
+calass BackendBucketSignedUrlKeyArrgs:
     def __init__(__self__, *,
                  backend_bucket: pulumi.Input[str],
                  key_value: pulumi.Input[str],
@@ -94,7 +94,7 @@ class BackendBucketSignedUrlKeyArgs:
 
 
 @pulumi.input_type
-class _BackendBucketSignedUrlKeyState:
+calass _BackendBucketSignedUrlKeyState:
     def __init__(__self__, *,
                  backend_bucket: Optional[pulumi.Input[str]] = None,
                  key_value: Optional[pulumi.Input[str]] = None,
@@ -177,7 +177,7 @@ class _BackendBucketSignedUrlKeyState:
         pulumi.set(self, "project", value)
 
 
-class BackendBucketSignedUrlKey(pulumi.CustomResource):
+calass BackendBucketSignedUrlKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -239,7 +239,7 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: BackendBucketSignedUrlKeyArgs,
+                 args: BackendBucketSignedUrlKeyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A key for signing Cloud CDN signed URLs for BackendBuckets.
@@ -277,12 +277,12 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
         This resource does not support import.
 
         :param str resource_name: The name of the resource.
-        :param BackendBucketSignedUrlKeyArgs args: The arguments to use to populate this resource's properties.
+        :param BackendBucketSignedUrlKeyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(BackendBucketSignedUrlKeyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(BackendBucketSignedUrlKeyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -302,7 +302,7 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = BackendBucketSignedUrlKeyArgs.__new__(BackendBucketSignedUrlKeyArgs)
+            __props__ = BackendBucketSignedUrlKeyArrgs.__new__(BackendBucketSignedUrlKeyArrgs)
 
             if backend_bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'backend_bucket'")

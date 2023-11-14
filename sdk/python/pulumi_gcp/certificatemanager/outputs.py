@@ -28,7 +28,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class CertificateIssuanceConfigCertificateAuthorityConfig(dict):
+calass CertificateIssuanceConfigCertificateAuthorityConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -49,7 +49,7 @@ class CertificateIssuanceConfigCertificateAuthorityConfig(dict):
     def __init__(__self__, *,
                  certificate_authority_service_config: Optional['outputs.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig'] = None):
         """
-        :param 'CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs' certificate_authority_service_config: Defines a CertificateAuthorityServiceConfig.
+        :param 'CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArrgs' certificate_authority_service_config: Defines a CertificateAuthorityServiceConfig.
                Structure is documented below.
         """
         if certificate_authority_service_config is not None:
@@ -66,7 +66,7 @@ class CertificateIssuanceConfigCertificateAuthorityConfig(dict):
 
 
 @pulumi.output_type
-class CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig(dict):
+calass CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -109,7 +109,7 @@ class CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthoritySer
 
 
 @pulumi.output_type
-class CertificateManaged(dict):
+calass CertificateManaged(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -141,7 +141,7 @@ class CertificateManaged(dict):
                  provisioning_issues: Optional[Sequence['outputs.CertificateManagedProvisioningIssue']] = None,
                  state: Optional[str] = None):
         """
-        :param Sequence['CertificateManagedAuthorizationAttemptInfoArgs'] authorization_attempt_infos: (Output)
+        :param Sequence['CertificateManagedAuthorizationAttemptInfoArrgs'] authorization_attempt_infos: (Output)
                Detailed state of the latest authorization attempt for each domain
                specified for this Managed Certificate.
                Structure is documented below.
@@ -154,7 +154,7 @@ class CertificateManaged(dict):
         :param str issuance_config: The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
                If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
                Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
-        :param Sequence['CertificateManagedProvisioningIssueArgs'] provisioning_issues: (Output)
+        :param Sequence['CertificateManagedProvisioningIssueArrgs'] provisioning_issues: (Output)
                Information about issues with provisioning this Managed Certificate.
                Structure is documented below.
         :param str state: (Output)
@@ -235,7 +235,7 @@ class CertificateManaged(dict):
 
 
 @pulumi.output_type
-class CertificateManagedAuthorizationAttemptInfo(dict):
+calass CertificateManagedAuthorizationAttemptInfo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -319,7 +319,7 @@ class CertificateManagedAuthorizationAttemptInfo(dict):
 
 
 @pulumi.output_type
-class CertificateManagedProvisioningIssue(dict):
+calass CertificateManagedProvisioningIssue(dict):
     def __init__(__self__, *,
                  details: Optional[str] = None,
                  reason: Optional[str] = None):
@@ -358,7 +358,7 @@ class CertificateManagedProvisioningIssue(dict):
 
 
 @pulumi.output_type
-class CertificateMapGclbTarget(dict):
+calass CertificateMapGclbTarget(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -385,7 +385,7 @@ class CertificateMapGclbTarget(dict):
                  target_https_proxy: Optional[str] = None,
                  target_ssl_proxy: Optional[str] = None):
         """
-        :param Sequence['CertificateMapGclbTargetIpConfigArgs'] ip_configs: An IP configuration where this Certificate Map is serving
+        :param Sequence['CertificateMapGclbTargetIpConfigArrgs'] ip_configs: An IP configuration where this Certificate Map is serving
                Structure is documented below.
         :param str target_https_proxy: Proxy name must be in the format projects/*/locations/*/targetHttpsProxies/*.
                This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
@@ -432,7 +432,7 @@ class CertificateMapGclbTarget(dict):
 
 
 @pulumi.output_type
-class CertificateMapGclbTargetIpConfig(dict):
+calass CertificateMapGclbTargetIpConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -480,7 +480,7 @@ class CertificateMapGclbTargetIpConfig(dict):
 
 
 @pulumi.output_type
-class CertificateSelfManaged(dict):
+calass CertificateSelfManaged(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -588,7 +588,7 @@ class CertificateSelfManaged(dict):
 
 
 @pulumi.output_type
-class DnsAuthorizationDnsResourceRecord(dict):
+calass DnsAuthorizationDnsResourceRecord(dict):
     def __init__(__self__, *,
                  data: Optional[str] = None,
                  name: Optional[str] = None,
@@ -645,7 +645,7 @@ class DnsAuthorizationDnsResourceRecord(dict):
 
 
 @pulumi.output_type
-class TrustConfigTrustStore(dict):
+calass TrustConfigTrustStore(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -669,10 +669,10 @@ class TrustConfigTrustStore(dict):
                  intermediate_cas: Optional[Sequence['outputs.TrustConfigTrustStoreIntermediateCa']] = None,
                  trust_anchors: Optional[Sequence['outputs.TrustConfigTrustStoreTrustAnchor']] = None):
         """
-        :param Sequence['TrustConfigTrustStoreIntermediateCaArgs'] intermediate_cas: Set of intermediate CA certificates used for the path building phase of chain validation.
+        :param Sequence['TrustConfigTrustStoreIntermediateCaArrgs'] intermediate_cas: Set of intermediate CA certificates used for the path building phase of chain validation.
                The field is currently not supported if trust config is used for the workload certificate feature.
                Structure is documented below.
-        :param Sequence['TrustConfigTrustStoreTrustAnchorArgs'] trust_anchors: List of Trust Anchors to be used while performing validation against a given TrustStore.
+        :param Sequence['TrustConfigTrustStoreTrustAnchorArrgs'] trust_anchors: List of Trust Anchors to be used while performing validation against a given TrustStore.
                Structure is documented below.
         """
         if intermediate_cas is not None:
@@ -701,7 +701,7 @@ class TrustConfigTrustStore(dict):
 
 
 @pulumi.output_type
-class TrustConfigTrustStoreIntermediateCa(dict):
+calass TrustConfigTrustStoreIntermediateCa(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -741,7 +741,7 @@ class TrustConfigTrustStoreIntermediateCa(dict):
 
 
 @pulumi.output_type
-class TrustConfigTrustStoreTrustAnchor(dict):
+calass TrustConfigTrustStoreTrustAnchor(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -781,7 +781,7 @@ class TrustConfigTrustStoreTrustAnchor(dict):
 
 
 @pulumi.output_type
-class GetCertificateMapGclbTargetResult(dict):
+calass GetCertificateMapGclbTargetResult(dict):
     def __init__(__self__, *,
                  ip_configs: Sequence['outputs.GetCertificateMapGclbTargetIpConfigResult'],
                  target_https_proxy: str,
@@ -807,7 +807,7 @@ class GetCertificateMapGclbTargetResult(dict):
 
 
 @pulumi.output_type
-class GetCertificateMapGclbTargetIpConfigResult(dict):
+calass GetCertificateMapGclbTargetIpConfigResult(dict):
     def __init__(__self__, *,
                  ip_address: str,
                  ports: Sequence[int]):

@@ -10,35 +10,35 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'AuthorizationPolicyRuleArgs',
-    'AuthorizationPolicyRuleDestinationArgs',
-    'AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs',
-    'AuthorizationPolicyRuleSourceArgs',
-    'ClientTlsPolicyClientCertificateArgs',
-    'ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs',
-    'ClientTlsPolicyClientCertificateGrpcEndpointArgs',
-    'ClientTlsPolicyServerValidationCaArgs',
-    'ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs',
-    'ClientTlsPolicyServerValidationCaGrpcEndpointArgs',
-    'ServerTlsPolicyMtlsPolicyArgs',
-    'ServerTlsPolicyMtlsPolicyClientValidationCaArgs',
-    'ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs',
-    'ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs',
-    'ServerTlsPolicyServerCertificateArgs',
-    'ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs',
-    'ServerTlsPolicyServerCertificateGrpcEndpointArgs',
+    'AuthorizationPolicyRuleArrgs',
+    'AuthorizationPolicyRuleDestinationArrgs',
+    'AuthorizationPolicyRuleDestinationHttpHeaderMatchArrgs',
+    'AuthorizationPolicyRuleSourceArrgs',
+    'ClientTlsPolicyClientCertificateArrgs',
+    'ClientTlsPolicyClientCertificateCertificateProviderInstanceArrgs',
+    'ClientTlsPolicyClientCertificateGrpcEndpointArrgs',
+    'ClientTlsPolicyServerValidationCaArrgs',
+    'ClientTlsPolicyServerValidationCaCertificateProviderInstanceArrgs',
+    'ClientTlsPolicyServerValidationCaGrpcEndpointArrgs',
+    'ServerTlsPolicyMtlsPolicyArrgs',
+    'ServerTlsPolicyMtlsPolicyClientValidationCaArrgs',
+    'ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArrgs',
+    'ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArrgs',
+    'ServerTlsPolicyServerCertificateArrgs',
+    'ServerTlsPolicyServerCertificateCertificateProviderInstanceArrgs',
+    'ServerTlsPolicyServerCertificateGrpcEndpointArrgs',
 ]
 
 @pulumi.input_type
-class AuthorizationPolicyRuleArgs:
+calass AuthorizationPolicyRuleArrgs:
     def __init__(__self__, *,
-                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleDestinationArgs']]]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleSourceArgs']]]] = None):
+                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleDestinationArrgs']]]] = None,
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleSourceArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleDestinationArgs']]] destinations: List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers.
+        :param pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleDestinationArrgs']]] destinations: List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers.
                If not set, the action specified in the 'action' field will be applied without any rule checks for the destination.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleSourceArgs']]] sources: List of attributes for the traffic source. All of the sources must match. A source is a match if both principals and ipBlocks match.
+        :param pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleSourceArrgs']]] sources: List of attributes for the traffic source. All of the sources must match. A source is a match if both principals and ipBlocks match.
                If not set, the action specified in the 'action' field will be applied without any rule checks for the source.
                Structure is documented below.
         """
@@ -49,7 +49,7 @@ class AuthorizationPolicyRuleArgs:
 
     @property
     @pulumi.getter
-    def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleDestinationArgs']]]]:
+    def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleDestinationArrgs']]]]:
         """
         List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers.
         If not set, the action specified in the 'action' field will be applied without any rule checks for the destination.
@@ -58,12 +58,12 @@ class AuthorizationPolicyRuleArgs:
         return pulumi.get(self, "destinations")
 
     @destinations.setter
-    def destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleDestinationArgs']]]]):
+    def destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleDestinationArrgs']]]]):
         pulumi.set(self, "destinations", value)
 
     @property
     @pulumi.getter
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleSourceArgs']]]]:
+    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleSourceArrgs']]]]:
         """
         List of attributes for the traffic source. All of the sources must match. A source is a match if both principals and ipBlocks match.
         If not set, the action specified in the 'action' field will be applied without any rule checks for the source.
@@ -72,22 +72,22 @@ class AuthorizationPolicyRuleArgs:
         return pulumi.get(self, "sources")
 
     @sources.setter
-    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleSourceArgs']]]]):
+    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleSourceArrgs']]]]):
         pulumi.set(self, "sources", value)
 
 
 @pulumi.input_type
-class AuthorizationPolicyRuleDestinationArgs:
+calass AuthorizationPolicyRuleDestinationArrgs:
     def __init__(__self__, *,
                  hosts: pulumi.Input[Sequence[pulumi.Input[str]]],
                  methods: pulumi.Input[Sequence[pulumi.Input[str]]],
                  ports: pulumi.Input[Sequence[pulumi.Input[int]]],
-                 http_header_match: Optional[pulumi.Input['AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs']] = None):
+                 http_header_match: Optional[pulumi.Input['AuthorizationPolicyRuleDestinationHttpHeaderMatchArrgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hosts: List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example "*.myorg.com") or a presence (any) match "*".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] methods: A list of HTTP methods to match. At least one method should match. Should not be set for gRPC services.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] ports: List of destination ports to match. At least one port should match.
-        :param pulumi.Input['AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs'] http_header_match: Match against key:value pair in http header. Provides a flexible match based on HTTP headers, for potentially advanced use cases. At least one header should match.
+        :param pulumi.Input['AuthorizationPolicyRuleDestinationHttpHeaderMatchArrgs'] http_header_match: Match against key:value pair in http header. Provides a flexible match based on HTTP headers, for potentially advanced use cases. At least one header should match.
                Avoid using header matches to make authorization decisions unless there is a strong guarantee that requests arrive through a trusted client or proxy.
                Structure is documented below.
         """
@@ -135,7 +135,7 @@ class AuthorizationPolicyRuleDestinationArgs:
 
     @property
     @pulumi.getter(name="httpHeaderMatch")
-    def http_header_match(self) -> Optional[pulumi.Input['AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs']]:
+    def http_header_match(self) -> Optional[pulumi.Input['AuthorizationPolicyRuleDestinationHttpHeaderMatchArrgs']]:
         """
         Match against key:value pair in http header. Provides a flexible match based on HTTP headers, for potentially advanced use cases. At least one header should match.
         Avoid using header matches to make authorization decisions unless there is a strong guarantee that requests arrive through a trusted client or proxy.
@@ -144,12 +144,12 @@ class AuthorizationPolicyRuleDestinationArgs:
         return pulumi.get(self, "http_header_match")
 
     @http_header_match.setter
-    def http_header_match(self, value: Optional[pulumi.Input['AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs']]):
+    def http_header_match(self, value: Optional[pulumi.Input['AuthorizationPolicyRuleDestinationHttpHeaderMatchArrgs']]):
         pulumi.set(self, "http_header_match", value)
 
 
 @pulumi.input_type
-class AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs:
+calass AuthorizationPolicyRuleDestinationHttpHeaderMatchArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str],
                  regex_match: pulumi.Input[str]):
@@ -186,7 +186,7 @@ class AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs:
 
 
 @pulumi.input_type
-class AuthorizationPolicyRuleSourceArgs:
+calass AuthorizationPolicyRuleSourceArrgs:
     def __init__(__self__, *,
                  ip_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  principals: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -229,14 +229,14 @@ class AuthorizationPolicyRuleSourceArgs:
 
 
 @pulumi.input_type
-class ClientTlsPolicyClientCertificateArgs:
+calass ClientTlsPolicyClientCertificateArrgs:
     def __init__(__self__, *,
-                 certificate_provider_instance: Optional[pulumi.Input['ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs']] = None,
-                 grpc_endpoint: Optional[pulumi.Input['ClientTlsPolicyClientCertificateGrpcEndpointArgs']] = None):
+                 certificate_provider_instance: Optional[pulumi.Input['ClientTlsPolicyClientCertificateCertificateProviderInstanceArrgs']] = None,
+                 grpc_endpoint: Optional[pulumi.Input['ClientTlsPolicyClientCertificateGrpcEndpointArrgs']] = None):
         """
-        :param pulumi.Input['ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs'] certificate_provider_instance: The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
+        :param pulumi.Input['ClientTlsPolicyClientCertificateCertificateProviderInstanceArrgs'] certificate_provider_instance: The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
                Structure is documented below.
-        :param pulumi.Input['ClientTlsPolicyClientCertificateGrpcEndpointArgs'] grpc_endpoint: gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+        :param pulumi.Input['ClientTlsPolicyClientCertificateGrpcEndpointArrgs'] grpc_endpoint: gRPC specific configuration to access the gRPC server to obtain the cert and private key.
                Structure is documented below.
         """
         if certificate_provider_instance is not None:
@@ -246,7 +246,7 @@ class ClientTlsPolicyClientCertificateArgs:
 
     @property
     @pulumi.getter(name="certificateProviderInstance")
-    def certificate_provider_instance(self) -> Optional[pulumi.Input['ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs']]:
+    def certificate_provider_instance(self) -> Optional[pulumi.Input['ClientTlsPolicyClientCertificateCertificateProviderInstanceArrgs']]:
         """
         The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
         Structure is documented below.
@@ -254,12 +254,12 @@ class ClientTlsPolicyClientCertificateArgs:
         return pulumi.get(self, "certificate_provider_instance")
 
     @certificate_provider_instance.setter
-    def certificate_provider_instance(self, value: Optional[pulumi.Input['ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs']]):
+    def certificate_provider_instance(self, value: Optional[pulumi.Input['ClientTlsPolicyClientCertificateCertificateProviderInstanceArrgs']]):
         pulumi.set(self, "certificate_provider_instance", value)
 
     @property
     @pulumi.getter(name="grpcEndpoint")
-    def grpc_endpoint(self) -> Optional[pulumi.Input['ClientTlsPolicyClientCertificateGrpcEndpointArgs']]:
+    def grpc_endpoint(self) -> Optional[pulumi.Input['ClientTlsPolicyClientCertificateGrpcEndpointArrgs']]:
         """
         gRPC specific configuration to access the gRPC server to obtain the cert and private key.
         Structure is documented below.
@@ -267,12 +267,12 @@ class ClientTlsPolicyClientCertificateArgs:
         return pulumi.get(self, "grpc_endpoint")
 
     @grpc_endpoint.setter
-    def grpc_endpoint(self, value: Optional[pulumi.Input['ClientTlsPolicyClientCertificateGrpcEndpointArgs']]):
+    def grpc_endpoint(self, value: Optional[pulumi.Input['ClientTlsPolicyClientCertificateGrpcEndpointArrgs']]):
         pulumi.set(self, "grpc_endpoint", value)
 
 
 @pulumi.input_type
-class ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs:
+calass ClientTlsPolicyClientCertificateCertificateProviderInstanceArrgs:
     def __init__(__self__, *,
                  plugin_instance: pulumi.Input[str]):
         """
@@ -294,7 +294,7 @@ class ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs:
 
 
 @pulumi.input_type
-class ClientTlsPolicyClientCertificateGrpcEndpointArgs:
+calass ClientTlsPolicyClientCertificateGrpcEndpointArrgs:
     def __init__(__self__, *,
                  target_uri: pulumi.Input[str]):
         """
@@ -316,14 +316,14 @@ class ClientTlsPolicyClientCertificateGrpcEndpointArgs:
 
 
 @pulumi.input_type
-class ClientTlsPolicyServerValidationCaArgs:
+calass ClientTlsPolicyServerValidationCaArrgs:
     def __init__(__self__, *,
-                 certificate_provider_instance: Optional[pulumi.Input['ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs']] = None,
-                 grpc_endpoint: Optional[pulumi.Input['ClientTlsPolicyServerValidationCaGrpcEndpointArgs']] = None):
+                 certificate_provider_instance: Optional[pulumi.Input['ClientTlsPolicyServerValidationCaCertificateProviderInstanceArrgs']] = None,
+                 grpc_endpoint: Optional[pulumi.Input['ClientTlsPolicyServerValidationCaGrpcEndpointArrgs']] = None):
         """
-        :param pulumi.Input['ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs'] certificate_provider_instance: The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
+        :param pulumi.Input['ClientTlsPolicyServerValidationCaCertificateProviderInstanceArrgs'] certificate_provider_instance: The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
                Structure is documented below.
-        :param pulumi.Input['ClientTlsPolicyServerValidationCaGrpcEndpointArgs'] grpc_endpoint: gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+        :param pulumi.Input['ClientTlsPolicyServerValidationCaGrpcEndpointArrgs'] grpc_endpoint: gRPC specific configuration to access the gRPC server to obtain the cert and private key.
                Structure is documented below.
         """
         if certificate_provider_instance is not None:
@@ -333,7 +333,7 @@ class ClientTlsPolicyServerValidationCaArgs:
 
     @property
     @pulumi.getter(name="certificateProviderInstance")
-    def certificate_provider_instance(self) -> Optional[pulumi.Input['ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs']]:
+    def certificate_provider_instance(self) -> Optional[pulumi.Input['ClientTlsPolicyServerValidationCaCertificateProviderInstanceArrgs']]:
         """
         The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
         Structure is documented below.
@@ -341,12 +341,12 @@ class ClientTlsPolicyServerValidationCaArgs:
         return pulumi.get(self, "certificate_provider_instance")
 
     @certificate_provider_instance.setter
-    def certificate_provider_instance(self, value: Optional[pulumi.Input['ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs']]):
+    def certificate_provider_instance(self, value: Optional[pulumi.Input['ClientTlsPolicyServerValidationCaCertificateProviderInstanceArrgs']]):
         pulumi.set(self, "certificate_provider_instance", value)
 
     @property
     @pulumi.getter(name="grpcEndpoint")
-    def grpc_endpoint(self) -> Optional[pulumi.Input['ClientTlsPolicyServerValidationCaGrpcEndpointArgs']]:
+    def grpc_endpoint(self) -> Optional[pulumi.Input['ClientTlsPolicyServerValidationCaGrpcEndpointArrgs']]:
         """
         gRPC specific configuration to access the gRPC server to obtain the cert and private key.
         Structure is documented below.
@@ -354,12 +354,12 @@ class ClientTlsPolicyServerValidationCaArgs:
         return pulumi.get(self, "grpc_endpoint")
 
     @grpc_endpoint.setter
-    def grpc_endpoint(self, value: Optional[pulumi.Input['ClientTlsPolicyServerValidationCaGrpcEndpointArgs']]):
+    def grpc_endpoint(self, value: Optional[pulumi.Input['ClientTlsPolicyServerValidationCaGrpcEndpointArrgs']]):
         pulumi.set(self, "grpc_endpoint", value)
 
 
 @pulumi.input_type
-class ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs:
+calass ClientTlsPolicyServerValidationCaCertificateProviderInstanceArrgs:
     def __init__(__self__, *,
                  plugin_instance: pulumi.Input[str]):
         """
@@ -381,7 +381,7 @@ class ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs:
 
 
 @pulumi.input_type
-class ClientTlsPolicyServerValidationCaGrpcEndpointArgs:
+calass ClientTlsPolicyServerValidationCaGrpcEndpointArrgs:
     def __init__(__self__, *,
                  target_uri: pulumi.Input[str]):
         """
@@ -403,13 +403,13 @@ class ClientTlsPolicyServerValidationCaGrpcEndpointArgs:
 
 
 @pulumi.input_type
-class ServerTlsPolicyMtlsPolicyArgs:
+calass ServerTlsPolicyMtlsPolicyArrgs:
     def __init__(__self__, *,
-                 client_validation_cas: Optional[pulumi.Input[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArgs']]]] = None,
+                 client_validation_cas: Optional[pulumi.Input[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArrgs']]]] = None,
                  client_validation_mode: Optional[pulumi.Input[str]] = None,
                  client_validation_trust_config: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArgs']]] client_validation_cas: Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
+        :param pulumi.Input[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArrgs']]] client_validation_cas: Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
                Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
                Structure is documented below.
         :param pulumi.Input[str] client_validation_mode: When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
@@ -428,7 +428,7 @@ class ServerTlsPolicyMtlsPolicyArgs:
 
     @property
     @pulumi.getter(name="clientValidationCas")
-    def client_validation_cas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArgs']]]]:
+    def client_validation_cas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArrgs']]]]:
         """
         Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
         Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
@@ -437,7 +437,7 @@ class ServerTlsPolicyMtlsPolicyArgs:
         return pulumi.get(self, "client_validation_cas")
 
     @client_validation_cas.setter
-    def client_validation_cas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArgs']]]]):
+    def client_validation_cas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArrgs']]]]):
         pulumi.set(self, "client_validation_cas", value)
 
     @property
@@ -470,15 +470,15 @@ class ServerTlsPolicyMtlsPolicyArgs:
 
 
 @pulumi.input_type
-class ServerTlsPolicyMtlsPolicyClientValidationCaArgs:
+calass ServerTlsPolicyMtlsPolicyClientValidationCaArrgs:
     def __init__(__self__, *,
-                 certificate_provider_instance: Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs']] = None,
-                 grpc_endpoint: Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs']] = None):
+                 certificate_provider_instance: Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArrgs']] = None,
+                 grpc_endpoint: Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArrgs']] = None):
         """
-        :param pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs'] certificate_provider_instance: Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
+        :param pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArrgs'] certificate_provider_instance: Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
                Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
                Structure is documented below.
-        :param pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs'] grpc_endpoint: gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+        :param pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArrgs'] grpc_endpoint: gRPC specific configuration to access the gRPC server to obtain the cert and private key.
                Structure is documented below.
         """
         if certificate_provider_instance is not None:
@@ -488,7 +488,7 @@ class ServerTlsPolicyMtlsPolicyClientValidationCaArgs:
 
     @property
     @pulumi.getter(name="certificateProviderInstance")
-    def certificate_provider_instance(self) -> Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs']]:
+    def certificate_provider_instance(self) -> Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArrgs']]:
         """
         Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
         Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
@@ -497,12 +497,12 @@ class ServerTlsPolicyMtlsPolicyClientValidationCaArgs:
         return pulumi.get(self, "certificate_provider_instance")
 
     @certificate_provider_instance.setter
-    def certificate_provider_instance(self, value: Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs']]):
+    def certificate_provider_instance(self, value: Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArrgs']]):
         pulumi.set(self, "certificate_provider_instance", value)
 
     @property
     @pulumi.getter(name="grpcEndpoint")
-    def grpc_endpoint(self) -> Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs']]:
+    def grpc_endpoint(self) -> Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArrgs']]:
         """
         gRPC specific configuration to access the gRPC server to obtain the cert and private key.
         Structure is documented below.
@@ -510,12 +510,12 @@ class ServerTlsPolicyMtlsPolicyClientValidationCaArgs:
         return pulumi.get(self, "grpc_endpoint")
 
     @grpc_endpoint.setter
-    def grpc_endpoint(self, value: Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs']]):
+    def grpc_endpoint(self, value: Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArrgs']]):
         pulumi.set(self, "grpc_endpoint", value)
 
 
 @pulumi.input_type
-class ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs:
+calass ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArrgs:
     def __init__(__self__, *,
                  plugin_instance: pulumi.Input[str]):
         """
@@ -537,7 +537,7 @@ class ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs
 
 
 @pulumi.input_type
-class ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs:
+calass ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArrgs:
     def __init__(__self__, *,
                  target_uri: pulumi.Input[str]):
         """
@@ -559,15 +559,15 @@ class ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs:
 
 
 @pulumi.input_type
-class ServerTlsPolicyServerCertificateArgs:
+calass ServerTlsPolicyServerCertificateArrgs:
     def __init__(__self__, *,
-                 certificate_provider_instance: Optional[pulumi.Input['ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs']] = None,
-                 grpc_endpoint: Optional[pulumi.Input['ServerTlsPolicyServerCertificateGrpcEndpointArgs']] = None):
+                 certificate_provider_instance: Optional[pulumi.Input['ServerTlsPolicyServerCertificateCertificateProviderInstanceArrgs']] = None,
+                 grpc_endpoint: Optional[pulumi.Input['ServerTlsPolicyServerCertificateGrpcEndpointArrgs']] = None):
         """
-        :param pulumi.Input['ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs'] certificate_provider_instance: Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
+        :param pulumi.Input['ServerTlsPolicyServerCertificateCertificateProviderInstanceArrgs'] certificate_provider_instance: Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
                Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
                Structure is documented below.
-        :param pulumi.Input['ServerTlsPolicyServerCertificateGrpcEndpointArgs'] grpc_endpoint: gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+        :param pulumi.Input['ServerTlsPolicyServerCertificateGrpcEndpointArrgs'] grpc_endpoint: gRPC specific configuration to access the gRPC server to obtain the cert and private key.
                Structure is documented below.
         """
         if certificate_provider_instance is not None:
@@ -577,7 +577,7 @@ class ServerTlsPolicyServerCertificateArgs:
 
     @property
     @pulumi.getter(name="certificateProviderInstance")
-    def certificate_provider_instance(self) -> Optional[pulumi.Input['ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs']]:
+    def certificate_provider_instance(self) -> Optional[pulumi.Input['ServerTlsPolicyServerCertificateCertificateProviderInstanceArrgs']]:
         """
         Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
         Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
@@ -586,12 +586,12 @@ class ServerTlsPolicyServerCertificateArgs:
         return pulumi.get(self, "certificate_provider_instance")
 
     @certificate_provider_instance.setter
-    def certificate_provider_instance(self, value: Optional[pulumi.Input['ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs']]):
+    def certificate_provider_instance(self, value: Optional[pulumi.Input['ServerTlsPolicyServerCertificateCertificateProviderInstanceArrgs']]):
         pulumi.set(self, "certificate_provider_instance", value)
 
     @property
     @pulumi.getter(name="grpcEndpoint")
-    def grpc_endpoint(self) -> Optional[pulumi.Input['ServerTlsPolicyServerCertificateGrpcEndpointArgs']]:
+    def grpc_endpoint(self) -> Optional[pulumi.Input['ServerTlsPolicyServerCertificateGrpcEndpointArrgs']]:
         """
         gRPC specific configuration to access the gRPC server to obtain the cert and private key.
         Structure is documented below.
@@ -599,12 +599,12 @@ class ServerTlsPolicyServerCertificateArgs:
         return pulumi.get(self, "grpc_endpoint")
 
     @grpc_endpoint.setter
-    def grpc_endpoint(self, value: Optional[pulumi.Input['ServerTlsPolicyServerCertificateGrpcEndpointArgs']]):
+    def grpc_endpoint(self, value: Optional[pulumi.Input['ServerTlsPolicyServerCertificateGrpcEndpointArrgs']]):
         pulumi.set(self, "grpc_endpoint", value)
 
 
 @pulumi.input_type
-class ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs:
+calass ServerTlsPolicyServerCertificateCertificateProviderInstanceArrgs:
     def __init__(__self__, *,
                  plugin_instance: pulumi.Input[str]):
         """
@@ -626,7 +626,7 @@ class ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs:
 
 
 @pulumi.input_type
-class ServerTlsPolicyServerCertificateGrpcEndpointArgs:
+calass ServerTlsPolicyServerCertificateGrpcEndpointArrgs:
     def __init__(__self__, *,
                  target_uri: pulumi.Input[str]):
         """

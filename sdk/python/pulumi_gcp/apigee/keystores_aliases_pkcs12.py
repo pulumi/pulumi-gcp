@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['KeystoresAliasesPkcs12Args', 'KeystoresAliasesPkcs12']
+__all__ = ['KeystoresAliasesPkcs12Arrgs', 'KeystoresAliasesPkcs12']
 
 @pulumi.input_type
-class KeystoresAliasesPkcs12Args:
+calass KeystoresAliasesPkcs12Arrgs:
     def __init__(__self__, *,
                  alias: pulumi.Input[str],
                  environment: pulumi.Input[str],
@@ -132,10 +132,10 @@ class KeystoresAliasesPkcs12Args:
 
 
 @pulumi.input_type
-class _KeystoresAliasesPkcs12State:
+calass _KeystoresAliasesPkcs12State:
     def __init__(__self__, *,
                  alias: Optional[pulumi.Input[str]] = None,
-                 certs_infos: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoArgs']]]] = None,
+                 certs_infos: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoArrgs']]]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  file: Optional[pulumi.Input[str]] = None,
                  filehash: Optional[pulumi.Input[str]] = None,
@@ -146,7 +146,7 @@ class _KeystoresAliasesPkcs12State:
         """
         Input properties used for looking up and filtering KeystoresAliasesPkcs12 resources.
         :param pulumi.Input[str] alias: Alias Name
-        :param pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoArgs']]] certs_infos: Chain of certificates under this alias.
+        :param pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoArrgs']]] certs_infos: Chain of certificates under this alias.
                Structure is documented below.
         :param pulumi.Input[str] environment: Environment associated with the alias
         :param pulumi.Input[str] file: PKCS12 file content
@@ -191,7 +191,7 @@ class _KeystoresAliasesPkcs12State:
 
     @property
     @pulumi.getter(name="certsInfos")
-    def certs_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoArgs']]]]:
+    def certs_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoArrgs']]]]:
         """
         Chain of certificates under this alias.
         Structure is documented below.
@@ -199,7 +199,7 @@ class _KeystoresAliasesPkcs12State:
         return pulumi.get(self, "certs_infos")
 
     @certs_infos.setter
-    def certs_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoArgs']]]]):
+    def certs_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoArrgs']]]]):
         pulumi.set(self, "certs_infos", value)
 
     @property
@@ -289,7 +289,7 @@ class _KeystoresAliasesPkcs12State:
         pulumi.set(self, "type", value)
 
 
-class KeystoresAliasesPkcs12(pulumi.CustomResource):
+calass KeystoresAliasesPkcs12(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -339,7 +339,7 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: KeystoresAliasesPkcs12Args,
+                 args: KeystoresAliasesPkcs12Arrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An alias from a pkcs12 file.
@@ -363,12 +363,12 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param KeystoresAliasesPkcs12Args args: The arguments to use to populate this resource's properties.
+        :param KeystoresAliasesPkcs12Arrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(KeystoresAliasesPkcs12Args, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(KeystoresAliasesPkcs12Arrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -391,7 +391,7 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = KeystoresAliasesPkcs12Args.__new__(KeystoresAliasesPkcs12Args)
+            __props__ = KeystoresAliasesPkcs12Arrgs.__new__(KeystoresAliasesPkcs12Arrgs)
 
             if alias is None and not opts.urn:
                 raise TypeError("Missing required property 'alias'")
@@ -425,7 +425,7 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             alias: Optional[pulumi.Input[str]] = None,
-            certs_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeystoresAliasesPkcs12CertsInfoArgs']]]]] = None,
+            certs_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeystoresAliasesPkcs12CertsInfoArrgs']]]]] = None,
             environment: Optional[pulumi.Input[str]] = None,
             file: Optional[pulumi.Input[str]] = None,
             filehash: Optional[pulumi.Input[str]] = None,
@@ -441,7 +441,7 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alias: Alias Name
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeystoresAliasesPkcs12CertsInfoArgs']]]] certs_infos: Chain of certificates under this alias.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeystoresAliasesPkcs12CertsInfoArrgs']]]] certs_infos: Chain of certificates under this alias.
                Structure is documented below.
         :param pulumi.Input[str] environment: Environment associated with the alias
         :param pulumi.Input[str] file: PKCS12 file content
