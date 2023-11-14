@@ -119,8 +119,7 @@ type CryptoKey struct {
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
 	// If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration pulumi.StringOutput `pulumi:"destroyScheduledDuration"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Whether this key may contain imported versions only.
 	ImportOnly pulumi.BoolOutput `pulumi:"importOnly"`
@@ -198,8 +197,7 @@ type cryptoKeyState struct {
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
 	// If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration *string `pulumi:"destroyScheduledDuration"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Whether this key may contain imported versions only.
 	ImportOnly *bool `pulumi:"importOnly"`
@@ -240,8 +238,7 @@ type CryptoKeyState struct {
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
 	// If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Whether this key may contain imported versions only.
 	ImportOnly pulumi.BoolPtrInput
@@ -472,8 +469,7 @@ func (o CryptoKeyOutput) DestroyScheduledDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.StringOutput { return v.DestroyScheduledDuration }).(pulumi.StringOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o CryptoKeyOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

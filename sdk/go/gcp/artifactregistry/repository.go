@@ -399,8 +399,7 @@ type Repository struct {
 	// Docker repository config contains repository level configuration for the repositories of docker type.
 	// Structure is documented below.
 	DockerConfig RepositoryDockerConfigPtrOutput `pulumi:"dockerConfig"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The format of packages that are stored in the repository. Supported formats
 	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
@@ -510,8 +509,7 @@ type repositoryState struct {
 	// Docker repository config contains repository level configuration for the repositories of docker type.
 	// Structure is documented below.
 	DockerConfig *RepositoryDockerConfig `pulumi:"dockerConfig"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The format of packages that are stored in the repository. Supported formats
 	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
@@ -581,8 +579,7 @@ type RepositoryState struct {
 	// Docker repository config contains repository level configuration for the repositories of docker type.
 	// Structure is documented below.
 	DockerConfig RepositoryDockerConfigPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The format of packages that are stored in the repository. Supported formats
 	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
@@ -898,8 +895,7 @@ func (o RepositoryOutput) DockerConfig() RepositoryDockerConfigPtrOutput {
 	return o.ApplyT(func(v *Repository) RepositoryDockerConfigPtrOutput { return v.DockerConfig }).(RepositoryDockerConfigPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o RepositoryOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

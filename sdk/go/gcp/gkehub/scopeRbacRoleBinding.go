@@ -51,8 +51,7 @@ type ScopeRbacRoleBinding struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Time the RBAC Role Binding was deleted in UTC.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Principal that is be authorized in the cluster (at least of one the oneof
 	// is required). Updating one will unset the other automatically.
@@ -140,8 +139,7 @@ type scopeRbacRoleBindingState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Time the RBAC Role Binding was deleted in UTC.
 	DeleteTime *string `pulumi:"deleteTime"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Principal that is be authorized in the cluster (at least of one the oneof
 	// is required). Updating one will unset the other automatically.
@@ -186,8 +184,7 @@ type ScopeRbacRoleBindingState struct {
 	CreateTime pulumi.StringPtrInput
 	// Time the RBAC Role Binding was deleted in UTC.
 	DeleteTime pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Principal that is be authorized in the cluster (at least of one the oneof
 	// is required). Updating one will unset the other automatically.
@@ -407,8 +404,7 @@ func (o ScopeRbacRoleBindingOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScopeRbacRoleBinding) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o ScopeRbacRoleBindingOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ScopeRbacRoleBinding) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

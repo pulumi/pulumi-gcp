@@ -9699,6 +9699,10 @@ export namespace cloudrun {
          */
         annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * (Output)
+         * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+         */
         effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * (Output)
@@ -9879,6 +9883,10 @@ export namespace cloudrun {
          */
         annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * (Output)
+         * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+         */
         effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * (Output)

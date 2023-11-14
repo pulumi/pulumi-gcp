@@ -241,8 +241,7 @@ class _BackupPlanState:
                (except deletes), including the deactivated field itself. It also prevents any new Backups
                from being created via this BackupPlan (including scheduled Backups).
         :param pulumi.Input[str] description: User specified descriptive string for this BackupPlan.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: etag is used for optimistic concurrency control as a way to help prevent simultaneous
                updates of a backup plan from overwriting each other. It is strongly suggested that
                systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates
@@ -375,8 +374,7 @@ class _BackupPlanState:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -1012,8 +1010,7 @@ class BackupPlan(pulumi.CustomResource):
                (except deletes), including the deactivated field itself. It also prevents any new Backups
                from being created via this BackupPlan (including scheduled Backups).
         :param pulumi.Input[str] description: User specified descriptive string for this BackupPlan.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: etag is used for optimistic concurrency control as a way to help prevent simultaneous
                updates of a backup plan from overwriting each other. It is strongly suggested that
                systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates
@@ -1114,8 +1111,7 @@ class BackupPlan(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 

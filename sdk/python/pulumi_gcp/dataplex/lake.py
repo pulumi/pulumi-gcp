@@ -171,8 +171,7 @@ class _LakeState:
         :param pulumi.Input[str] create_time: Output only. The time when the lake was created.
         :param pulumi.Input[str] description: Optional. Description of the lake.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
-        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for the lake.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -277,8 +276,7 @@ class _LakeState:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -622,8 +620,7 @@ class Lake(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Output only. The time when the lake was created.
         :param pulumi.Input[str] description: Optional. Description of the lake.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
-        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for the lake.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -701,8 +698,7 @@ class Lake(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 

@@ -138,7 +138,7 @@ import (
 //			}
 //			_, err := random.NewRandomId(ctx, "bigDataJobNameSuffix", &random.RandomIdArgs{
 //				ByteLength: pulumi.Int(4),
-//				Keepers: pulumi.Map{
+//				Keepers: pulumi.StringMap{
 //					"region":          pulumi.Any(_var.Region),
 //					"subscription_id": pulumi.String(bigDataJobSubscriptionId),
 //				},
@@ -177,8 +177,7 @@ type Job struct {
 
 	// List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
 	AdditionalExperiments pulumi.StringArrayOutput `pulumi:"additionalExperiments"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
 	EnableStreamingEngine pulumi.BoolPtrOutput `pulumi:"enableStreamingEngine"`
@@ -275,8 +274,7 @@ func GetJob(ctx *pulumi.Context,
 type jobState struct {
 	// List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
 	AdditionalExperiments []string `pulumi:"additionalExperiments"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
 	EnableStreamingEngine *bool `pulumi:"enableStreamingEngine"`
@@ -333,8 +331,7 @@ type jobState struct {
 type JobState struct {
 	// List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
 	AdditionalExperiments pulumi.StringArrayInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
 	EnableStreamingEngine pulumi.BoolPtrInput
@@ -603,8 +600,7 @@ func (o JobOutput) AdditionalExperiments() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringArrayOutput { return v.AdditionalExperiments }).(pulumi.StringArrayOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o JobOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

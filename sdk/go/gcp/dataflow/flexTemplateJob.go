@@ -91,7 +91,7 @@ import (
 //			}
 //			_, err := random.NewRandomId(ctx, "bigDataJobNameSuffix", &random.RandomIdArgs{
 //				ByteLength: pulumi.Int(4),
-//				Keepers: pulumi.Map{
+//				Keepers: pulumi.StringMap{
 //					"region":          pulumi.Any(_var.Region),
 //					"subscription_id": pulumi.String(bigDataJobSubscriptionId),
 //				},

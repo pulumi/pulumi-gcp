@@ -108,8 +108,7 @@ type Backup struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Amount of bytes that will be downloaded if the backup is restored.
 	DownloadBytes pulumi.StringOutput `pulumi:"downloadBytes"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// KMS key name used for data encryption.
 	KmsKeyName pulumi.StringOutput `pulumi:"kmsKeyName"`
@@ -200,8 +199,7 @@ type backupState struct {
 	Description *string `pulumi:"description"`
 	// Amount of bytes that will be downloaded if the backup is restored.
 	DownloadBytes *string `pulumi:"downloadBytes"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// KMS key name used for data encryption.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
@@ -249,8 +247,7 @@ type BackupState struct {
 	Description pulumi.StringPtrInput
 	// Amount of bytes that will be downloaded if the backup is restored.
 	DownloadBytes pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// KMS key name used for data encryption.
 	KmsKeyName pulumi.StringPtrInput
@@ -483,8 +480,7 @@ func (o BackupOutput) DownloadBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.DownloadBytes }).(pulumi.StringOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o BackupOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

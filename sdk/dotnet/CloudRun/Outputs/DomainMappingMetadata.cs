@@ -25,6 +25,10 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Annotations;
         public readonly ImmutableDictionary<string, string>? EffectiveAnnotations;
+        /// <summary>
+        /// (Output)
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? EffectiveLabels;
         /// <summary>
         /// (Output)

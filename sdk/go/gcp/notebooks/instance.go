@@ -238,8 +238,7 @@ type Instance struct {
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
 	// Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
 	DiskEncryption pulumi.StringPtrOutput `pulumi:"diskEncryption"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Whether the end user authorizes Google Cloud to install GPU driver
 	// on this instance. If this field is empty or set to false, the GPU driver
@@ -402,8 +401,7 @@ type instanceState struct {
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
 	// Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
 	DiskEncryption *string `pulumi:"diskEncryption"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Whether the end user authorizes Google Cloud to install GPU driver
 	// on this instance. If this field is empty or set to false, the GPU driver
@@ -526,8 +524,7 @@ type InstanceState struct {
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
 	// Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
 	DiskEncryption pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Whether the end user authorizes Google Cloud to install GPU driver
 	// on this instance. If this field is empty or set to false, the GPU driver
@@ -1014,8 +1011,7 @@ func (o InstanceOutput) DiskEncryption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DiskEncryption }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

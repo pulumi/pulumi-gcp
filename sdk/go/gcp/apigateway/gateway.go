@@ -118,8 +118,7 @@ type Gateway struct {
 	DefaultHostname pulumi.StringOutput `pulumi:"defaultHostname"`
 	// A user-visible name for the API.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
 	//
@@ -190,8 +189,7 @@ type gatewayState struct {
 	DefaultHostname *string `pulumi:"defaultHostname"`
 	// A user-visible name for the API.
 	DisplayName *string `pulumi:"displayName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
 	//
@@ -222,8 +220,7 @@ type GatewayState struct {
 	DefaultHostname pulumi.StringPtrInput
 	// A user-visible name for the API.
 	DisplayName pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
 	//
@@ -422,8 +419,7 @@ func (o GatewayOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o GatewayOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

@@ -63,6 +63,10 @@ public final class GetImageResult {
      * 
      */
     private String labelFingerprint;
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
     private Map<String,String> labels;
     /**
      * @return A list of applicable license URI.
@@ -178,6 +182,10 @@ public final class GetImageResult {
     public String labelFingerprint() {
         return this.labelFingerprint;
     }
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
     public Map<String,String> labels() {
         return this.labels;
     }

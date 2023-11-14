@@ -63,6 +63,10 @@ public final class GetFunctionResult {
      */
     private String ingressSettings;
     private String kmsKeyName;
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
     private Map<String,Object> labels;
     /**
      * @return The limit on the maximum number of function instances that may coexist at a given time. If unset or set to `0`, the API default will be used.
@@ -201,6 +205,10 @@ public final class GetFunctionResult {
     public String kmsKeyName() {
         return this.kmsKeyName;
     }
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
     public Map<String,Object> labels() {
         return this.labels;
     }

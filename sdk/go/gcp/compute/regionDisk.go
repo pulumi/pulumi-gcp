@@ -228,8 +228,7 @@ type RegionDisk struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey RegionDiskDiskEncryptionKeyPtrOutput `pulumi:"diskEncryptionKey"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
@@ -387,8 +386,7 @@ type regionDiskState struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey *RegionDiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
@@ -509,8 +507,7 @@ type RegionDiskState struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey RegionDiskDiskEncryptionKeyPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
@@ -940,8 +937,7 @@ func (o RegionDiskOutput) DiskEncryptionKey() RegionDiskDiskEncryptionKeyPtrOutp
 	return o.ApplyT(func(v *RegionDisk) RegionDiskDiskEncryptionKeyPtrOutput { return v.DiskEncryptionKey }).(RegionDiskDiskEncryptionKeyPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o RegionDiskOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RegionDisk) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

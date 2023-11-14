@@ -144,8 +144,7 @@ type CertificateIssuanceConfig struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// One or more paragraphs of text description of a CertificateIssuanceConfig.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Key algorithm to use when generating the private key.
 	// Possible values are: `RSA_2048`, `ECDSA_P256`.
@@ -237,8 +236,7 @@ type certificateIssuanceConfigState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// One or more paragraphs of text description of a CertificateIssuanceConfig.
 	Description *string `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Key algorithm to use when generating the private key.
 	// Possible values are: `RSA_2048`, `ECDSA_P256`.
@@ -284,8 +282,7 @@ type CertificateIssuanceConfigState struct {
 	CreateTime pulumi.StringPtrInput
 	// One or more paragraphs of text description of a CertificateIssuanceConfig.
 	Description pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Key algorithm to use when generating the private key.
 	// Possible values are: `RSA_2048`, `ECDSA_P256`.
@@ -523,8 +520,7 @@ func (o CertificateIssuanceConfigOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateIssuanceConfig) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o CertificateIssuanceConfigOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CertificateIssuanceConfig) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

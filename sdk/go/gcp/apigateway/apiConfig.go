@@ -109,8 +109,7 @@ type ApiConfig struct {
 	ApiConfigIdPrefix pulumi.StringOutput `pulumi:"apiConfigIdPrefix"`
 	// A user-visible name for the API.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Immutable. Gateway specific configuration.
 	// If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
@@ -192,8 +191,7 @@ type apiConfigState struct {
 	ApiConfigIdPrefix *string `pulumi:"apiConfigIdPrefix"`
 	// A user-visible name for the API.
 	DisplayName *string `pulumi:"displayName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Immutable. Gateway specific configuration.
 	// If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
@@ -238,8 +236,7 @@ type ApiConfigState struct {
 	ApiConfigIdPrefix pulumi.StringPtrInput
 	// A user-visible name for the API.
 	DisplayName pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Immutable. Gateway specific configuration.
 	// If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
@@ -483,8 +480,7 @@ func (o ApiConfigOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiConfig) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o ApiConfigOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ApiConfig) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

@@ -203,6 +203,9 @@ class GetDiskResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
         return pulumi.get(self, "labels")
 
     @property

@@ -52,6 +52,10 @@ public final class GetDiskResult {
      * 
      */
     private String labelFingerprint;
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
     private Map<String,String> labels;
     /**
      * @return Last attach timestamp in RFC3339 text format.
@@ -195,6 +199,10 @@ public final class GetDiskResult {
     public String labelFingerprint() {
         return this.labelFingerprint;
     }
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
     public Map<String,String> labels() {
         return this.labels;
     }

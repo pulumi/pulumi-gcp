@@ -293,8 +293,7 @@ type FhirStore struct {
 	// attempts to read the historical versions.
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	DisableResourceVersioning pulumi.BoolPtrOutput `pulumi:"disableResourceVersioning"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Whether to allow the bulk import API to accept history bundles and directly insert historical resource
 	// versions into the FHIR store. Importing resource histories creates resource interactions that appear to have
@@ -413,8 +412,7 @@ type fhirStoreState struct {
 	// attempts to read the historical versions.
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	DisableResourceVersioning *bool `pulumi:"disableResourceVersioning"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Whether to allow the bulk import API to accept history bundles and directly insert historical resource
 	// versions into the FHIR store. Importing resource histories creates resource interactions that appear to have
@@ -496,8 +494,7 @@ type FhirStoreState struct {
 	// attempts to read the historical versions.
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	DisableResourceVersioning pulumi.BoolPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Whether to allow the bulk import API to accept history bundles and directly insert historical resource
 	// versions into the FHIR store. Importing resource histories creates resource interactions that appear to have
@@ -859,8 +856,7 @@ func (o FhirStoreOutput) DisableResourceVersioning() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FhirStore) pulumi.BoolPtrOutput { return v.DisableResourceVersioning }).(pulumi.BoolPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o FhirStoreOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *FhirStore) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

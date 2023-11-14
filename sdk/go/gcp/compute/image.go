@@ -163,8 +163,7 @@ type Image struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Size of the image when restored onto a persistent disk (in GB).
 	DiskSizeGb pulumi.IntOutput `pulumi:"diskSizeGb"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The name of the image family to which this image belongs. You can
 	// create disks by specifying an image family instead of a specific
@@ -282,8 +281,7 @@ type imageState struct {
 	Description *string `pulumi:"description"`
 	// Size of the image when restored onto a persistent disk (in GB).
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The name of the image family to which this image belongs. You can
 	// create disks by specifying an image family instead of a specific
@@ -367,8 +365,7 @@ type ImageState struct {
 	Description pulumi.StringPtrInput
 	// Size of the image when restored onto a persistent disk (in GB).
 	DiskSizeGb pulumi.IntPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The name of the image family to which this image belongs. You can
 	// create disks by specifying an image family instead of a specific
@@ -717,8 +714,7 @@ func (o ImageOutput) DiskSizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v *Image) pulumi.IntOutput { return v.DiskSizeGb }).(pulumi.IntOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o ImageOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

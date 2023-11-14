@@ -422,8 +422,22 @@ class _TableState:
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `=destroy` or `=update` that would delete the instance will fail.
         :param pulumi.Input[str] description: The field description.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+               
+               * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
+               
+               ~>**NOTE:** Because this field expects a JSON string, any changes to the
+               string will create a diff, even if the JSON itself hasn't changed.
+               If the API returns a different value for the same schema, e.g. it
+               switched the order of values or replaced `STRUCT` field type with `RECORD`
+               field type, we currently cannot suppress the recurring diff this causes.
+               As a workaround, we recommend using the schema as returned by the API.
+               
+               ~>**NOTE:**  If you use `external_data_configuration`
+               documented below and do **not** set
+               `external_data_configuration.connection_id`, schemas must be specified
+               with `external_data_configuration.schema`. Otherwise, schemas must be
+               specified with this top-level field.
         :param pulumi.Input['TableEncryptionConfigurationArgs'] encryption_configuration: Specifies how the table should be encrypted.
                If left blank, the table will be encrypted with a Google-managed key; that process
                is transparent to the user.  Structure is documented below.
@@ -608,8 +622,22 @@ class _TableState:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+
+        * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
+
+        ~>**NOTE:** Because this field expects a JSON string, any changes to the
+        string will create a diff, even if the JSON itself hasn't changed.
+        If the API returns a different value for the same schema, e.g. it
+        switched the order of values or replaced `STRUCT` field type with `RECORD`
+        field type, we currently cannot suppress the recurring diff this causes.
+        As a workaround, we recommend using the schema as returned by the API.
+
+        ~>**NOTE:**  If you use `external_data_configuration`
+        documented below and do **not** set
+        `external_data_configuration.connection_id`, schemas must be specified
+        with `external_data_configuration.schema`. Otherwise, schemas must be
+        specified with this top-level field.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -1300,8 +1328,22 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `=destroy` or `=update` that would delete the instance will fail.
         :param pulumi.Input[str] description: The field description.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+               
+               * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
+               
+               ~>**NOTE:** Because this field expects a JSON string, any changes to the
+               string will create a diff, even if the JSON itself hasn't changed.
+               If the API returns a different value for the same schema, e.g. it
+               switched the order of values or replaced `STRUCT` field type with `RECORD`
+               field type, we currently cannot suppress the recurring diff this causes.
+               As a workaround, we recommend using the schema as returned by the API.
+               
+               ~>**NOTE:**  If you use `external_data_configuration`
+               documented below and do **not** set
+               `external_data_configuration.connection_id`, schemas must be specified
+               with `external_data_configuration.schema`. Otherwise, schemas must be
+               specified with this top-level field.
         :param pulumi.Input[pulumi.InputType['TableEncryptionConfigurationArgs']] encryption_configuration: Specifies how the table should be encrypted.
                If left blank, the table will be encrypted with a Google-managed key; that process
                is transparent to the user.  Structure is documented below.
@@ -1442,8 +1484,22 @@ class Table(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+
+        * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
+
+        ~>**NOTE:** Because this field expects a JSON string, any changes to the
+        string will create a diff, even if the JSON itself hasn't changed.
+        If the API returns a different value for the same schema, e.g. it
+        switched the order of values or replaced `STRUCT` field type with `RECORD`
+        field type, we currently cannot suppress the recurring diff this causes.
+        As a workaround, we recommend using the schema as returned by the API.
+
+        ~>**NOTE:**  If you use `external_data_configuration`
+        documented below and do **not** set
+        `external_data_configuration.connection_id`, schemas must be specified
+        with `external_data_configuration.schema`. Otherwise, schemas must be
+        specified with this top-level field.
         """
         return pulumi.get(self, "effective_labels")
 

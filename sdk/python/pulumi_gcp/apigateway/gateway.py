@@ -148,8 +148,7 @@ class _GatewayState:
                When changing api configs please ensure the new config is a new resource and the lifecycle rule `create_before_destroy` is set.
         :param pulumi.Input[str] default_hostname: The default API Gateway host name of the form {gatewayId}-{hash}.{region_code}.gateway.dev.
         :param pulumi.Input[str] display_name: A user-visible name for the API.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] gateway_id: Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
                
                
@@ -227,8 +226,7 @@ class _GatewayState:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -539,8 +537,7 @@ class Gateway(pulumi.CustomResource):
                When changing api configs please ensure the new config is a new resource and the lifecycle rule `create_before_destroy` is set.
         :param pulumi.Input[str] default_hostname: The default API Gateway host name of the form {gatewayId}-{hash}.{region_code}.gateway.dev.
         :param pulumi.Input[str] display_name: A user-visible name for the API.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] gateway_id: Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
                
                
@@ -601,8 +598,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 

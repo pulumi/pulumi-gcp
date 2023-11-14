@@ -209,8 +209,7 @@ class _ZoneState:
         :param pulumi.Input[str] description: Optional. Description of the zone.
         :param pulumi.Input['ZoneDiscoverySpecArgs'] discovery_spec: Required. Specification of the discovery feature applied to data in this zone.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
-        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the zone.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -325,8 +324,7 @@ class _ZoneState:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -710,8 +708,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[str] description: Optional. Description of the zone.
         :param pulumi.Input[pulumi.InputType['ZoneDiscoverySpecArgs']] discovery_spec: Required. Specification of the discovery feature applied to data in this zone.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
-        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the zone.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -794,8 +791,7 @@ class Zone(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 

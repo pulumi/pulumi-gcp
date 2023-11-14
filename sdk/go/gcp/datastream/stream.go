@@ -835,8 +835,7 @@ type Stream struct {
 	DestinationConfig StreamDestinationConfigOutput `pulumi:"destinationConfig"`
 	// Display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Labels.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -926,8 +925,7 @@ type streamState struct {
 	DestinationConfig *StreamDestinationConfig `pulumi:"destinationConfig"`
 	// Display name.
 	DisplayName *string `pulumi:"displayName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Labels.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -968,8 +966,7 @@ type StreamState struct {
 	DestinationConfig StreamDestinationConfigPtrInput
 	// Display name.
 	DisplayName pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Labels.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1207,8 +1204,7 @@ func (o StreamOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o StreamOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

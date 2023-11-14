@@ -75,8 +75,7 @@ type Domain struct {
 	//
 	// ***
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The fully-qualified domain name of the exposed domain used by clients to connect to the service.
 	// Similar to what would be chosen for an Active Directory set up on an internal network.
@@ -156,8 +155,7 @@ type domainState struct {
 	//
 	// ***
 	DomainName *string `pulumi:"domainName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The fully-qualified domain name of the exposed domain used by clients to connect to the service.
 	// Similar to what would be chosen for an Active Directory set up on an internal network.
@@ -194,8 +192,7 @@ type DomainState struct {
 	//
 	// ***
 	DomainName pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The fully-qualified domain name of the exposed domain used by clients to connect to the service.
 	// Similar to what would be chosen for an Active Directory set up on an internal network.
@@ -410,8 +407,7 @@ func (o DomainOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o DomainOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

@@ -229,8 +229,7 @@ type EnterpriseKey struct {
 	//
 	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
 	// Settings for keys that can be used by iOS apps.
 	IosSettings EnterpriseKeyIosSettingsPtrOutput `pulumi:"iosSettings"`
@@ -297,8 +296,7 @@ type enterpriseKeyState struct {
 	//
 	// ***
 	DisplayName *string `pulumi:"displayName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
 	// Settings for keys that can be used by iOS apps.
 	IosSettings *EnterpriseKeyIosSettings `pulumi:"iosSettings"`
@@ -328,8 +326,7 @@ type EnterpriseKeyState struct {
 	//
 	// ***
 	DisplayName pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.MapInput
 	// Settings for keys that can be used by iOS apps.
 	IosSettings EnterpriseKeyIosSettingsPtrInput
@@ -527,8 +524,7 @@ func (o EnterpriseKeyOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnterpriseKey) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o EnterpriseKeyOutput) EffectiveLabels() pulumi.MapOutput {
 	return o.ApplyT(func(v *EnterpriseKey) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
 }

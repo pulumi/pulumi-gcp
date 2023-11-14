@@ -124,8 +124,7 @@ type Asset struct {
 	DiscoveryStatuses AssetDiscoveryStatusArrayOutput `pulumi:"discoveryStatuses"`
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
 	// Optional. User defined labels for the asset.
 	//
@@ -218,8 +217,7 @@ type assetState struct {
 	DiscoveryStatuses []AssetDiscoveryStatus `pulumi:"discoveryStatuses"`
 	// Optional. User friendly display name.
 	DisplayName *string `pulumi:"displayName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
 	// Optional. User defined labels for the asset.
 	//
@@ -263,8 +261,7 @@ type AssetState struct {
 	DiscoveryStatuses AssetDiscoveryStatusArrayInput
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.MapInput
 	// Optional. User defined labels for the asset.
 	//
@@ -493,8 +490,7 @@ func (o AssetOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o AssetOutput) EffectiveLabels() pulumi.MapOutput {
 	return o.ApplyT(func(v *Asset) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
 }

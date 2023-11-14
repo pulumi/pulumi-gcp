@@ -175,8 +175,7 @@ type Function struct {
 	DockerRegistry pulumi.StringOutput `pulumi:"dockerRegistry"`
 	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
 	DockerRepository pulumi.StringPtrOutput `pulumi:"dockerRepository"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Name of the function that will be executed when the Google Cloud Function is triggered.
 	EntryPoint pulumi.StringPtrOutput `pulumi:"entryPoint"`
@@ -290,8 +289,7 @@ type functionState struct {
 	DockerRegistry *string `pulumi:"dockerRegistry"`
 	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
 	DockerRepository *string `pulumi:"dockerRepository"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Name of the function that will be executed when the Google Cloud Function is triggered.
 	EntryPoint *string `pulumi:"entryPoint"`
@@ -368,8 +366,7 @@ type FunctionState struct {
 	DockerRegistry pulumi.StringPtrInput
 	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
 	DockerRepository pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Name of the function that will be executed when the Google Cloud Function is triggered.
 	EntryPoint pulumi.StringPtrInput
@@ -721,8 +718,7 @@ func (o FunctionOutput) DockerRepository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.DockerRepository }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o FunctionOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

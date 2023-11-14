@@ -115,6 +115,9 @@ export interface GetImageResult {
      * A fingerprint for the labels being applied to this image.
      */
     readonly labelFingerprint: string;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
     readonly labels: {[key: string]: string};
     /**
      * A list of applicable license URI.

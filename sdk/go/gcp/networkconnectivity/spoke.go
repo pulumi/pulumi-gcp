@@ -183,8 +183,7 @@ type Spoke struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// An optional description of the spoke.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub pulumi.StringOutput `pulumi:"hub"`
@@ -262,8 +261,7 @@ type spokeState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// An optional description of the spoke.
 	Description *string `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub *string `pulumi:"hub"`
@@ -301,8 +299,7 @@ type SpokeState struct {
 	CreateTime pulumi.StringPtrInput
 	// An optional description of the spoke.
 	Description pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.MapInput
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub pulumi.StringPtrInput
@@ -513,8 +510,7 @@ func (o SpokeOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o SpokeOutput) EffectiveLabels() pulumi.MapOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
 }

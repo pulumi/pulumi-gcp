@@ -368,8 +368,7 @@ class _AuthorityState:
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
                state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
         :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
                such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
                (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -551,8 +550,7 @@ class _AuthorityState:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -1475,8 +1473,7 @@ class Authority(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
                state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
         :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
                such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
                (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -1615,8 +1612,7 @@ class Authority(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 

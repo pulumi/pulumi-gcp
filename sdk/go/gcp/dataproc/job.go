@@ -103,8 +103,11 @@ type Job struct {
 	DriverControlsFilesUri pulumi.StringOutput `pulumi:"driverControlsFilesUri"`
 	// A URI pointing to the location of the stdout of the job's driver program.
 	DriverOutputResourceUri pulumi.StringOutput `pulumi:"driverOutputResourceUri"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	//
+	// * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+	//
+	// * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// By default, you can only delete inactive jobs within
 	// Dataproc. Setting this to true, and calling destroy, will ensure that the
@@ -188,8 +191,11 @@ type jobState struct {
 	DriverControlsFilesUri *string `pulumi:"driverControlsFilesUri"`
 	// A URI pointing to the location of the stdout of the job's driver program.
 	DriverOutputResourceUri *string `pulumi:"driverOutputResourceUri"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	//
+	// * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+	//
+	// * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// By default, you can only delete inactive jobs within
 	// Dataproc. Setting this to true, and calling destroy, will ensure that the
@@ -236,8 +242,11 @@ type JobState struct {
 	DriverControlsFilesUri pulumi.StringPtrInput
 	// A URI pointing to the location of the stdout of the job's driver program.
 	DriverOutputResourceUri pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	//
+	// * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+	//
+	// * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
 	EffectiveLabels pulumi.StringMapInput
 	// By default, you can only delete inactive jobs within
 	// Dataproc. Setting this to true, and calling destroy, will ensure that the
@@ -479,8 +488,11 @@ func (o JobOutput) DriverOutputResourceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.DriverOutputResourceUri }).(pulumi.StringOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+//
+// * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+//
+// * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
 func (o JobOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

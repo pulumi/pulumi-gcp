@@ -144,8 +144,7 @@ type MetastoreFederation struct {
 	// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
 	// Structure is documented below.
 	BackendMetastores MetastoreFederationBackendMetastoreArrayOutput `pulumi:"backendMetastores"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The URI of the endpoint used to access the metastore federation.
 	EndpointUri pulumi.StringOutput `pulumi:"endpointUri"`
@@ -224,8 +223,7 @@ type metastoreFederationState struct {
 	// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
 	// Structure is documented below.
 	BackendMetastores []MetastoreFederationBackendMetastore `pulumi:"backendMetastores"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The URI of the endpoint used to access the metastore federation.
 	EndpointUri *string `pulumi:"endpointUri"`
@@ -261,8 +259,7 @@ type MetastoreFederationState struct {
 	// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
 	// Structure is documented below.
 	BackendMetastores MetastoreFederationBackendMetastoreArrayInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The URI of the endpoint used to access the metastore federation.
 	EndpointUri pulumi.StringPtrInput
@@ -460,8 +457,7 @@ func (o MetastoreFederationOutput) BackendMetastores() MetastoreFederationBacken
 	}).(MetastoreFederationBackendMetastoreArrayOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o MetastoreFederationOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

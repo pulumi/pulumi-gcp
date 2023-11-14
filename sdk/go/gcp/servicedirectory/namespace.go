@@ -78,8 +78,7 @@ import (
 type Namespace struct {
 	pulumi.CustomResourceState
 
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Resource labels associated with this Namespace. No more than 64 user
 	// labels can be associated with a given resource. Label keys and values can
@@ -149,8 +148,7 @@ func GetNamespace(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Namespace resources.
 type namespaceState struct {
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Resource labels associated with this Namespace. No more than 64 user
 	// labels can be associated with a given resource. Label keys and values can
@@ -180,8 +178,7 @@ type namespaceState struct {
 }
 
 type NamespaceState struct {
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Resource labels associated with this Namespace. No more than 64 user
 	// labels can be associated with a given resource. Label keys and values can
@@ -370,8 +367,7 @@ func (o NamespaceOutput) ToOutput(ctx context.Context) pulumix.Output[*Namespace
 	}
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o NamespaceOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

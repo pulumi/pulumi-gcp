@@ -421,8 +421,8 @@ type Job struct {
 	// Copies a table.
 	// Structure is documented below.
 	Copy JobCopyPtrOutput `pulumi:"copy"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// (Output)
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Configures an extract job.
 	// Structure is documented below.
@@ -503,8 +503,8 @@ type jobState struct {
 	// Copies a table.
 	// Structure is documented below.
 	Copy *JobCopy `pulumi:"copy"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// (Output)
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Configures an extract job.
 	// Structure is documented below.
@@ -548,8 +548,8 @@ type JobState struct {
 	// Copies a table.
 	// Structure is documented below.
 	Copy JobCopyPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// (Output)
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Configures an extract job.
 	// Structure is documented below.
@@ -771,8 +771,8 @@ func (o JobOutput) Copy() JobCopyPtrOutput {
 	return o.ApplyT(func(v *Job) JobCopyPtrOutput { return v.Copy }).(JobCopyPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// (Output)
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o JobOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

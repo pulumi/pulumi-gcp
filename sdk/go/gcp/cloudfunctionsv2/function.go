@@ -342,8 +342,7 @@ type Function struct {
 	BuildConfig FunctionBuildConfigPtrOutput `pulumi:"buildConfig"`
 	// User-provided description of a function.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The environment the function is hosted on.
 	Environment pulumi.StringOutput `pulumi:"environment"`
@@ -427,8 +426,7 @@ type functionState struct {
 	BuildConfig *FunctionBuildConfig `pulumi:"buildConfig"`
 	// User-provided description of a function.
 	Description *string `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The environment the function is hosted on.
 	Environment *string `pulumi:"environment"`
@@ -475,8 +473,7 @@ type FunctionState struct {
 	BuildConfig FunctionBuildConfigPtrInput
 	// User-provided description of a function.
 	Description pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The environment the function is hosted on.
 	Environment pulumi.StringPtrInput
@@ -712,8 +709,7 @@ func (o FunctionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o FunctionOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

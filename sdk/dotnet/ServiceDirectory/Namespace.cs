@@ -67,8 +67,7 @@ namespace Pulumi.Gcp.ServiceDirectory
     public partial class Namespace : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        /// clients and services.
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
@@ -228,8 +227,7 @@ namespace Pulumi.Gcp.ServiceDirectory
         private InputMap<string>? _effectiveLabels;
 
         /// <summary>
-        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        /// clients and services.
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
         public InputMap<string> EffectiveLabels
         {

@@ -317,8 +317,7 @@ type Instance struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Display name for an instance.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Option to enable granular role-based access control.
 	EnableRbac pulumi.BoolPtrOutput `pulumi:"enableRbac"`
@@ -449,8 +448,7 @@ type instanceState struct {
 	Description *string `pulumi:"description"`
 	// Display name for an instance.
 	DisplayName *string `pulumi:"displayName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Option to enable granular role-based access control.
 	EnableRbac *bool `pulumi:"enableRbac"`
@@ -544,8 +542,7 @@ type InstanceState struct {
 	Description pulumi.StringPtrInput
 	// Display name for an instance.
 	DisplayName pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Option to enable granular role-based access control.
 	EnableRbac pulumi.BoolPtrInput
@@ -907,8 +904,7 @@ func (o InstanceOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

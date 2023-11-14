@@ -87,9 +87,10 @@ type LookupFunctionResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Controls what traffic can reach the function.
-	IngressSettings string                 `pulumi:"ingressSettings"`
-	KmsKeyName      string                 `pulumi:"kmsKeyName"`
-	Labels          map[string]interface{} `pulumi:"labels"`
+	IngressSettings string `pulumi:"ingressSettings"`
+	KmsKeyName      string `pulumi:"kmsKeyName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	Labels map[string]interface{} `pulumi:"labels"`
 	// The limit on the maximum number of function instances that may coexist at a given time. If unset or set to `0`, the API default will be used.
 	MaxInstances int `pulumi:"maxInstances"`
 	MinInstances int `pulumi:"minInstances"`
@@ -240,6 +241,7 @@ func (o LookupFunctionResultOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o LookupFunctionResultOutput) Labels() pulumi.MapOutput {
 	return o.ApplyT(func(v LookupFunctionResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
 }

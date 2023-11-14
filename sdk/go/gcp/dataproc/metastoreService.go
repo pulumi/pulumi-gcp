@@ -255,8 +255,7 @@ type MetastoreService struct {
 	// Default value is `MYSQL`.
 	// Possible values are: `MYSQL`, `SPANNER`.
 	DatabaseType pulumi.StringPtrOutput `pulumi:"databaseType"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Information used to configure the Dataproc Metastore service to encrypt
 	// customer data at rest.
@@ -369,8 +368,7 @@ type metastoreServiceState struct {
 	// Default value is `MYSQL`.
 	// Possible values are: `MYSQL`, `SPANNER`.
 	DatabaseType *string `pulumi:"databaseType"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Information used to configure the Dataproc Metastore service to encrypt
 	// customer data at rest.
@@ -446,8 +444,7 @@ type MetastoreServiceState struct {
 	// Default value is `MYSQL`.
 	// Possible values are: `MYSQL`, `SPANNER`.
 	DatabaseType pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Information used to configure the Dataproc Metastore service to encrypt
 	// customer data at rest.
@@ -760,8 +757,7 @@ func (o MetastoreServiceOutput) DatabaseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringPtrOutput { return v.DatabaseType }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o MetastoreServiceOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

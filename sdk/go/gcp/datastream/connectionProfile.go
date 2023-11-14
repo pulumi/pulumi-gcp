@@ -264,8 +264,7 @@ type ConnectionProfile struct {
 	ConnectionProfileId pulumi.StringOutput `pulumi:"connectionProfileId"`
 	// Display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Forward SSH tunnel connectivity.
 	// Structure is documented below.
@@ -353,8 +352,7 @@ type connectionProfileState struct {
 	ConnectionProfileId *string `pulumi:"connectionProfileId"`
 	// Display name.
 	DisplayName *string `pulumi:"displayName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Forward SSH tunnel connectivity.
 	// Structure is documented below.
@@ -399,8 +397,7 @@ type ConnectionProfileState struct {
 	ConnectionProfileId pulumi.StringPtrInput
 	// Display name.
 	DisplayName pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Forward SSH tunnel connectivity.
 	// Structure is documented below.
@@ -645,8 +642,7 @@ func (o ConnectionProfileOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o ConnectionProfileOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

@@ -50,16 +50,14 @@ public final class ScopeRbacRoleBindingState extends com.pulumi.resources.Resour
     }
 
     /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
     @Import(name="effectiveLabels")
     private @Nullable Output<Map<String,String>> effectiveLabels;
 
     /**
-     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
     public Optional<Output<Map<String,String>>> effectiveLabels() {
@@ -351,8 +349,7 @@ public final class ScopeRbacRoleBindingState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-         * clients and services.
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
          * 
          * @return builder
          * 
@@ -363,8 +360,7 @@ public final class ScopeRbacRoleBindingState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-         * clients and services.
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
          * 
          * @return builder
          * 

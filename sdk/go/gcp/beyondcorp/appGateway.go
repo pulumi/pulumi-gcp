@@ -118,8 +118,7 @@ type AppGateway struct {
 	AllocatedConnections AppGatewayAllocatedConnectionArrayOutput `pulumi:"allocatedConnections"`
 	// An arbitrary user-provided name for the AppGateway.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The type of hosting used by the AppGateway.
 	// Default value is `HOST_TYPE_UNSPECIFIED`.
@@ -192,8 +191,7 @@ type appGatewayState struct {
 	AllocatedConnections []AppGatewayAllocatedConnection `pulumi:"allocatedConnections"`
 	// An arbitrary user-provided name for the AppGateway.
 	DisplayName *string `pulumi:"displayName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The type of hosting used by the AppGateway.
 	// Default value is `HOST_TYPE_UNSPECIFIED`.
@@ -232,8 +230,7 @@ type AppGatewayState struct {
 	AllocatedConnections AppGatewayAllocatedConnectionArrayInput
 	// An arbitrary user-provided name for the AppGateway.
 	DisplayName pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The type of hosting used by the AppGateway.
 	// Default value is `HOST_TYPE_UNSPECIFIED`.
@@ -447,8 +444,7 @@ func (o AppGatewayOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppGateway) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o AppGatewayOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AppGateway) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

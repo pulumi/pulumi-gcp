@@ -94,6 +94,9 @@ export interface GetFunctionResult {
      */
     readonly ingressSettings: string;
     readonly kmsKeyName: string;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
     readonly labels: {[key: string]: any};
     /**
      * The limit on the maximum number of function instances that may coexist at a given time. If unset or set to `0`, the API default will be used.

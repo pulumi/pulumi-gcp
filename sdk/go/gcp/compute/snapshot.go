@@ -171,8 +171,7 @@ type Snapshot struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Size of the snapshot, specified in GB.
 	DiskSizeGb pulumi.IntOutput `pulumi:"diskSizeGb"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The fingerprint used for optimistic locking of this resource. Used
 	// internally during updates.
@@ -286,8 +285,7 @@ type snapshotState struct {
 	Description *string `pulumi:"description"`
 	// Size of the snapshot, specified in GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The fingerprint used for optimistic locking of this resource. Used
 	// internally during updates.
@@ -364,8 +362,7 @@ type SnapshotState struct {
 	Description pulumi.StringPtrInput
 	// Size of the snapshot, specified in GB.
 	DiskSizeGb pulumi.IntPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The fingerprint used for optimistic locking of this resource. Used
 	// internally during updates.
@@ -673,8 +670,7 @@ func (o SnapshotOutput) DiskSizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.IntOutput { return v.DiskSizeGb }).(pulumi.IntOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o SnapshotOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

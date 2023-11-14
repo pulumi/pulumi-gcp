@@ -137,8 +137,7 @@ type AddressGroup struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Free-text description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// List of items.
 	Items pulumi.StringArrayOutput `pulumi:"items"`
@@ -221,8 +220,7 @@ type addressGroupState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Free-text description of the resource.
 	Description *string `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// List of items.
 	Items []string `pulumi:"items"`
@@ -262,8 +260,7 @@ type AddressGroupState struct {
 	CreateTime pulumi.StringPtrInput
 	// Free-text description of the resource.
 	Description pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// List of items.
 	Items pulumi.StringArrayInput
@@ -481,8 +478,7 @@ func (o AddressGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AddressGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o AddressGroupOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AddressGroup) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

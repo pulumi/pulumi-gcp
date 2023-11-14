@@ -163,8 +163,7 @@ type Node struct {
 	CidrBlock pulumi.StringOutput `pulumi:"cidrBlock"`
 	// The user-supplied description of the TPU. Maximum of 512 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Resource labels to represent user provided metadata.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -263,8 +262,7 @@ type nodeState struct {
 	CidrBlock *string `pulumi:"cidrBlock"`
 	// The user-supplied description of the TPU. Maximum of 512 characters.
 	Description *string `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Resource labels to represent user provided metadata.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -323,8 +321,7 @@ type NodeState struct {
 	CidrBlock pulumi.StringPtrInput
 	// The user-supplied description of the TPU. Maximum of 512 characters.
 	Description pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Resource labels to represent user provided metadata.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -595,8 +592,7 @@ func (o NodeOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o NodeOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

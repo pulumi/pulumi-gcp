@@ -389,6 +389,7 @@ func Provider() tfbridge.ProviderInfo {
 		Version:                     version.Version,
 		MetadataInfo:                tfbridge.NewProviderMetadata(metadata),
 		UpstreamRepoPath:            "./upstream",
+		DocRules:                    &tfbridge.DocRuleInfo{EditRules: editRules},
 		XSkipDetailedDiffForChanges: true,
 		Config: map[string]*tfbridge.SchemaInfo{
 			"project": {

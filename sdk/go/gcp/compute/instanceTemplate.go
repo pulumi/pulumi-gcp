@@ -253,8 +253,7 @@ type InstanceTemplate struct {
 	// This can be specified multiple times for multiple disks. Structure is
 	// documented below.
 	Disks InstanceTemplateDiskArrayOutput `pulumi:"disks"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
@@ -396,8 +395,7 @@ type instanceTemplateState struct {
 	// This can be specified multiple times for multiple disks. Structure is
 	// documented below.
 	Disks []InstanceTemplateDisk `pulumi:"disks"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
@@ -499,8 +497,7 @@ type InstanceTemplateState struct {
 	// This can be specified multiple times for multiple disks. Structure is
 	// documented below.
 	Disks InstanceTemplateDiskArrayInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
@@ -914,8 +911,7 @@ func (o InstanceTemplateOutput) Disks() InstanceTemplateDiskArrayOutput {
 	return o.ApplyT(func(v *InstanceTemplate) InstanceTemplateDiskArrayOutput { return v.Disks }).(InstanceTemplateDiskArrayOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o InstanceTemplateOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InstanceTemplate) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

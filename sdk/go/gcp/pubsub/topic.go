@@ -197,8 +197,7 @@ import (
 type Topic struct {
 	pulumi.CustomResourceState
 
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The resource name of the Cloud KMS CryptoKey to be used to protect access
 	// to messages published on this topic. Your project's PubSub service account
@@ -274,8 +273,7 @@ func GetTopic(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Topic resources.
 type topicState struct {
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The resource name of the Cloud KMS CryptoKey to be used to protect access
 	// to messages published on this topic. Your project's PubSub service account
@@ -317,8 +315,7 @@ type topicState struct {
 }
 
 type TopicState struct {
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The resource name of the Cloud KMS CryptoKey to be used to protect access
 	// to messages published on this topic. Your project's PubSub service account
@@ -549,8 +546,7 @@ func (o TopicOutput) ToOutput(ctx context.Context) pulumix.Output[*Topic] {
 	}
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o TopicOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

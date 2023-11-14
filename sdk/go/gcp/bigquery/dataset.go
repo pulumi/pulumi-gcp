@@ -364,8 +364,7 @@ type Dataset struct {
 	DeleteContentsOnDestroy pulumi.BoolPtrOutput `pulumi:"deleteContentsOnDestroy"`
 	// A user-friendly description of the dataset
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// A hash of the resource.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -511,8 +510,7 @@ type datasetState struct {
 	DeleteContentsOnDestroy *bool `pulumi:"deleteContentsOnDestroy"`
 	// A user-friendly description of the dataset
 	Description *string `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// A hash of the resource.
 	Etag *string `pulumi:"etag"`
@@ -621,8 +619,7 @@ type DatasetState struct {
 	DeleteContentsOnDestroy pulumi.BoolPtrInput
 	// A user-friendly description of the dataset
 	Description pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// A hash of the resource.
 	Etag pulumi.StringPtrInput
@@ -1063,8 +1060,7 @@ func (o DatasetOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o DatasetOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

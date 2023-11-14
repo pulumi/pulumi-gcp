@@ -157,8 +157,7 @@ class _SnapshotState:
         Input properties used for looking up and filtering Snapshot resources.
         :param pulumi.Input[str] create_time: The time when the snapshot was created in RFC3339 text format.
         :param pulumi.Input[str] description: A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] filesystem_used_bytes: The amount of bytes needed to allocate a full copy of the snapshot content.
         :param pulumi.Input[str] instance: The resource name of the filestore instance.
                
@@ -233,8 +232,7 @@ class _SnapshotState:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -618,8 +616,7 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The time when the snapshot was created in RFC3339 text format.
         :param pulumi.Input[str] description: A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] filesystem_used_bytes: The amount of bytes needed to allocate a full copy of the snapshot content.
         :param pulumi.Input[str] instance: The resource name of the filestore instance.
                
@@ -680,8 +677,7 @@ class Snapshot(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 

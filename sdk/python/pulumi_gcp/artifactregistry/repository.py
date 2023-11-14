@@ -331,8 +331,7 @@ class _RepositoryState:
         :param pulumi.Input[str] description: The user-provided description of the repository.
         :param pulumi.Input['RepositoryDockerConfigArgs'] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] format: The format of packages that are stored in the repository. Supported formats
                can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
                You can only create alpha formats if you are a member of the
@@ -480,8 +479,7 @@ class _RepositoryState:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -1287,8 +1285,7 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[str] description: The user-provided description of the repository.
         :param pulumi.Input[pulumi.InputType['RepositoryDockerConfigArgs']] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] format: The format of packages that are stored in the repository. Supported formats
                can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
                You can only create alpha formats if you are a member of the
@@ -1402,8 +1399,7 @@ class Repository(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
