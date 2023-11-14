@@ -1,17 +1,14 @@
-From 29043cce037e5bb734b3c9eab1af86bef9bdb345 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Guinevere Saenger <guinevere@pulumi.com>
 Date: Wed, 4 Oct 2023 12:49:17 -0700
 Subject: [PATCH 3/9] rebase bigquery_dataset
 
----
- .../services/bigquery/resource_bigquery_dataset.go     | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
 
 diff --git a/google-beta/services/bigquery/resource_bigquery_dataset.go b/google-beta/services/bigquery/resource_bigquery_dataset.go
-index d09ee5b55..e277b5cc1 100644
+index 31f0a3ca6..b5d10f94e 100644
 --- a/google-beta/services/bigquery/resource_bigquery_dataset.go
 +++ b/google-beta/services/bigquery/resource_bigquery_dataset.go
-@@ -676,14 +676,20 @@ func resourceBigQueryDatasetRead(d *schema.ResourceData, meta interface{}) error
+@@ -682,14 +682,20 @@ func resourceBigQueryDatasetRead(d *schema.ResourceData, meta interface{}) error
  	if err := d.Set("storage_billing_model", flattenBigQueryDatasetStorageBillingModel(res["storageBillingModel"], d, config)); err != nil {
  		return fmt.Errorf("Error reading Dataset: %s", err)
  	}
@@ -34,6 +31,3 @@ index d09ee5b55..e277b5cc1 100644
  	}
  
  	return nil
--- 
-2.40.0
-

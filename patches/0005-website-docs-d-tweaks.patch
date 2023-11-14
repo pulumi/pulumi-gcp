@@ -1,41 +1,8 @@
-From 9fa7c8c96b645e659877a836b763cfd8e947ea19 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Daniel Bradley <daniel@pulumi.com>
 Date: Tue, 7 Mar 2023 11:16:06 +0000
 Subject: [PATCH 5/9] website/docs/d tweaks
 
----
- website/docs/d/cloud_run_service.html.markdown      |  2 +-
- website/docs/d/composer_environment.html.markdown   |  1 -
- .../docs/d/compute_forwarding_rule.html.markdown    |  2 +-
- .../d/compute_global_forwarding_rule.html.markdown  |  2 +-
- website/docs/d/compute_instance.html.markdown       | 13 ++++++-------
- .../docs/d/compute_instance_template.html.markdown  |  4 ++--
- website/docs/d/compute_node_types.html.markdown     |  2 +-
- .../d/compute_region_ssl_certificate.html.markdown  |  2 +-
- .../docs/d/compute_resource_policy.html.markdown    |  3 ---
- website/docs/d/compute_router.html.markdown         |  2 +-
- .../docs/d/compute_ssl_certificate.html.markdown    |  2 +-
- website/docs/d/compute_zones.html.markdown          |  2 +-
- website/docs/d/container_cluster.html.markdown      |  2 +-
- .../docs/d/container_engine_versions.html.markdown  |  4 ++--
- website/docs/d/dns_managed_zone.html.markdown       |  2 +-
- website/docs/d/firebase_web_app.html.markdown       |  4 ----
- .../docs/d/firebase_web_app_config.html.markdown    |  5 +----
- .../docs/d/folder_organization_policy.html.markdown |  2 +-
- .../docs/d/iam_workload_identity_pool.html.markdown |  7 +------
- ...am_workload_identity_pool_provider.html.markdown |  5 +----
- website/docs/d/iap_client.html.markdown             |  2 +-
- website/docs/d/project.html.markdown                |  2 +-
- .../d/project_organization_policy.html.markdown     |  2 +-
- website/docs/d/pubsub_topic.html.markdown           |  2 +-
- website/docs/d/redis_instance.html.markdown         |  2 +-
- website/docs/d/runtimeconfig_config.html.markdown   |  2 +-
- website/docs/d/runtimeconfig_variable.html.markdown |  2 +-
- .../docs/d/service_account_id_token.html.markdown   |  6 +++---
- website/docs/d/spanner_instance.html.markdown       |  2 +-
- website/docs/d/sql_database_instance.html.markdown  |  2 +-
- .../d/storage_project_service_account.html.markdown |  6 +++---
- 31 files changed, 39 insertions(+), 59 deletions(-)
 
 diff --git a/website/docs/d/cloud_run_service.html.markdown b/website/docs/d/cloud_run_service.html.markdown
 index 1144e5590..9a39ce74e 100644
@@ -132,7 +99,7 @@ index 1d3e8dc06..d2da6cbb6 100644
  <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
  
 diff --git a/website/docs/d/compute_instance_template.html.markdown b/website/docs/d/compute_instance_template.html.markdown
-index 3142f0af8..bca620fc0 100644
+index 7249ae2c5..58807a3b8 100644
 --- a/website/docs/d/compute_instance_template.html.markdown
 +++ b/website/docs/d/compute_instance_template.html.markdown
 @@ -65,7 +65,7 @@ The following arguments are supported:
@@ -144,7 +111,7 @@ index 3142f0af8..bca620fc0 100644
  
  * `name_prefix` - Creates a unique name beginning with the specified
    prefix. Conflicts with `name`.
-@@ -210,7 +210,7 @@ The `disk_encryption_key` block supports:
+@@ -215,7 +215,7 @@ The `disk_encryption_key` block supports:
  * `access_config` - Access configurations, i.e. IPs via which this
      instance can be accessed via the Internet. Omit to ensure that the instance
      is not accessible from the Internet (this means that ssh provisioners will
@@ -502,6 +469,3 @@ index d0494f08b..0ebec0d7e 100644
  
  For more information see
  [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
--- 
-2.40.0
-
