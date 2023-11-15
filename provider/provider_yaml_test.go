@@ -59,7 +59,8 @@ func TestSecretManagerSecret(t *testing.T) {
 }
 
 func TestSqlUser(t *testing.T) {
-	runTest(t, test(t, "test-programs/sql-user"))
+	runTest(t, test(t, "test-programs/sql-user",
+		providertest.WithDiffValidation(providertest.NoReplacements())))
 }
 
 func TestBigQueryTable(t *testing.T) {

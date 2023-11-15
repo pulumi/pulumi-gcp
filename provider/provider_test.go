@@ -40,7 +40,7 @@ func test(t *testing.T, dir string, opts ...providertest.Option) *providertest.P
 
 	opts = append(opts,
 		providertest.WithProviderName("gcp"),
-		providertest.WithBaselineVersion("7.0.0"),
+		providertest.WithBaselineVersion("6.67.0"),
 		providertest.WithResourceProviderServer(providerServer(t)),
 		providertest.WithSkippedUpgradeTestMode(providertest.UpgradeTestMode_Quick,
 			"TODO[pulumi/providertest#28] Skipping Quick mode because of panics and implicit dependency on Configure"),
