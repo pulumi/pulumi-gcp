@@ -10,86 +10,86 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'AssetDiscoverySpecArgs',
-    'AssetDiscoverySpecCsvOptionsArgs',
-    'AssetDiscoverySpecJsonOptionsArgs',
-    'AssetDiscoveryStatusArgs',
-    'AssetDiscoveryStatusStatArgs',
-    'AssetIamBindingConditionArgs',
-    'AssetIamMemberConditionArgs',
-    'AssetResourceSpecArgs',
-    'AssetResourceStatusArgs',
-    'AssetSecurityStatusArgs',
-    'DatascanDataArgs',
-    'DatascanDataProfileSpecArgs',
-    'DatascanDataProfileSpecExcludeFieldsArgs',
-    'DatascanDataProfileSpecIncludeFieldsArgs',
-    'DatascanDataProfileSpecPostScanActionsArgs',
-    'DatascanDataProfileSpecPostScanActionsBigqueryExportArgs',
-    'DatascanDataQualitySpecArgs',
-    'DatascanDataQualitySpecPostScanActionsArgs',
-    'DatascanDataQualitySpecPostScanActionsBigqueryExportArgs',
-    'DatascanDataQualitySpecRuleArgs',
-    'DatascanDataQualitySpecRuleNonNullExpectationArgs',
-    'DatascanDataQualitySpecRuleRangeExpectationArgs',
-    'DatascanDataQualitySpecRuleRegexExpectationArgs',
-    'DatascanDataQualitySpecRuleRowConditionExpectationArgs',
-    'DatascanDataQualitySpecRuleSetExpectationArgs',
-    'DatascanDataQualitySpecRuleStatisticRangeExpectationArgs',
-    'DatascanDataQualitySpecRuleTableConditionExpectationArgs',
-    'DatascanDataQualitySpecRuleUniquenessExpectationArgs',
-    'DatascanExecutionSpecArgs',
-    'DatascanExecutionSpecTriggerArgs',
-    'DatascanExecutionSpecTriggerOnDemandArgs',
-    'DatascanExecutionSpecTriggerScheduleArgs',
-    'DatascanExecutionStatusArgs',
-    'DatascanIamBindingConditionArgs',
-    'DatascanIamMemberConditionArgs',
-    'LakeAssetStatusArgs',
-    'LakeIamBindingConditionArgs',
-    'LakeIamMemberConditionArgs',
-    'LakeMetastoreArgs',
-    'LakeMetastoreStatusArgs',
-    'TaskExecutionSpecArgs',
-    'TaskExecutionStatusArgs',
-    'TaskExecutionStatusLatestJobArgs',
-    'TaskIamBindingConditionArgs',
-    'TaskIamMemberConditionArgs',
-    'TaskNotebookArgs',
-    'TaskNotebookInfrastructureSpecArgs',
-    'TaskNotebookInfrastructureSpecBatchArgs',
-    'TaskNotebookInfrastructureSpecContainerImageArgs',
-    'TaskNotebookInfrastructureSpecVpcNetworkArgs',
-    'TaskSparkArgs',
-    'TaskSparkInfrastructureSpecArgs',
-    'TaskSparkInfrastructureSpecBatchArgs',
-    'TaskSparkInfrastructureSpecContainerImageArgs',
-    'TaskSparkInfrastructureSpecVpcNetworkArgs',
-    'TaskTriggerSpecArgs',
-    'ZoneAssetStatusArgs',
-    'ZoneDiscoverySpecArgs',
-    'ZoneDiscoverySpecCsvOptionsArgs',
-    'ZoneDiscoverySpecJsonOptionsArgs',
-    'ZoneIamBindingConditionArgs',
-    'ZoneIamMemberConditionArgs',
-    'ZoneResourceSpecArgs',
+    'AssetDiscoverySpecArrgs',
+    'AssetDiscoverySpecCsvOptionsArrgs',
+    'AssetDiscoverySpecJsonOptionsArrgs',
+    'AssetDiscoveryStatusArrgs',
+    'AssetDiscoveryStatusStatArrgs',
+    'AssetIamBindingConditionArrgs',
+    'AssetIamMemberConditionArrgs',
+    'AssetResourceSpecArrgs',
+    'AssetResourceStatusArrgs',
+    'AssetSecurityStatusArrgs',
+    'DatascanDataArrgs',
+    'DatascanDataProfileSpecArrgs',
+    'DatascanDataProfileSpecExcludeFieldsArrgs',
+    'DatascanDataProfileSpecIncludeFieldsArrgs',
+    'DatascanDataProfileSpecPostScanActionsArrgs',
+    'DatascanDataProfileSpecPostScanActionsBigqueryExportArrgs',
+    'DatascanDataQualitySpecArrgs',
+    'DatascanDataQualitySpecPostScanActionsArrgs',
+    'DatascanDataQualitySpecPostScanActionsBigqueryExportArrgs',
+    'DatascanDataQualitySpecRuleArrgs',
+    'DatascanDataQualitySpecRuleNonNullExpectationArrgs',
+    'DatascanDataQualitySpecRuleRangeExpectationArrgs',
+    'DatascanDataQualitySpecRuleRegexExpectationArrgs',
+    'DatascanDataQualitySpecRuleRowConditionExpectationArrgs',
+    'DatascanDataQualitySpecRuleSetExpectationArrgs',
+    'DatascanDataQualitySpecRuleStatisticRangeExpectationArrgs',
+    'DatascanDataQualitySpecRuleTableConditionExpectationArrgs',
+    'DatascanDataQualitySpecRuleUniquenessExpectationArrgs',
+    'DatascanExecutionSpecArrgs',
+    'DatascanExecutionSpecTriggerArrgs',
+    'DatascanExecutionSpecTriggerOnDemandArrgs',
+    'DatascanExecutionSpecTriggerScheduleArrgs',
+    'DatascanExecutionStatusArrgs',
+    'DatascanIamBindingConditionArrgs',
+    'DatascanIamMemberConditionArrgs',
+    'LakeAssetStatusArrgs',
+    'LakeIamBindingConditionArrgs',
+    'LakeIamMemberConditionArrgs',
+    'LakeMetastoreArrgs',
+    'LakeMetastoreStatusArrgs',
+    'TaskExecutionSpecArrgs',
+    'TaskExecutionStatusArrgs',
+    'TaskExecutionStatusLatestJobArrgs',
+    'TaskIamBindingConditionArrgs',
+    'TaskIamMemberConditionArrgs',
+    'TaskNotebookArrgs',
+    'TaskNotebookInfrastructureSpecArrgs',
+    'TaskNotebookInfrastructureSpecBatchArrgs',
+    'TaskNotebookInfrastructureSpecContainerImageArrgs',
+    'TaskNotebookInfrastructureSpecVpcNetworkArrgs',
+    'TaskSparkArrgs',
+    'TaskSparkInfrastructureSpecArrgs',
+    'TaskSparkInfrastructureSpecBatchArrgs',
+    'TaskSparkInfrastructureSpecContainerImageArrgs',
+    'TaskSparkInfrastructureSpecVpcNetworkArrgs',
+    'TaskTriggerSpecArrgs',
+    'ZoneAssetStatusArrgs',
+    'ZoneDiscoverySpecArrgs',
+    'ZoneDiscoverySpecCsvOptionsArrgs',
+    'ZoneDiscoverySpecJsonOptionsArrgs',
+    'ZoneIamBindingConditionArrgs',
+    'ZoneIamMemberConditionArrgs',
+    'ZoneResourceSpecArrgs',
 ]
 
 @pulumi.input_type
-class AssetDiscoverySpecArgs:
+calass AssetDiscoverySpecArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
-                 csv_options: Optional[pulumi.Input['AssetDiscoverySpecCsvOptionsArgs']] = None,
+                 csv_options: Optional[pulumi.Input['AssetDiscoverySpecCsvOptionsArrgs']] = None,
                  exclude_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  include_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 json_options: Optional[pulumi.Input['AssetDiscoverySpecJsonOptionsArgs']] = None,
+                 json_options: Optional[pulumi.Input['AssetDiscoverySpecJsonOptionsArrgs']] = None,
                  schedule: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] enabled: Required. Whether discovery is enabled.
-        :param pulumi.Input['AssetDiscoverySpecCsvOptionsArgs'] csv_options: Optional. Configuration for CSV data.
+        :param pulumi.Input['AssetDiscoverySpecCsvOptionsArrgs'] csv_options: Optional. Configuration for CSV data.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_patterns: Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] include_patterns: Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
-        :param pulumi.Input['AssetDiscoverySpecJsonOptionsArgs'] json_options: Optional. Configuration for Json data.
+        :param pulumi.Input['AssetDiscoverySpecJsonOptionsArrgs'] json_options: Optional. Configuration for Json data.
         :param pulumi.Input[str] schedule: Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -118,14 +118,14 @@ class AssetDiscoverySpecArgs:
 
     @property
     @pulumi.getter(name="csvOptions")
-    def csv_options(self) -> Optional[pulumi.Input['AssetDiscoverySpecCsvOptionsArgs']]:
+    def csv_options(self) -> Optional[pulumi.Input['AssetDiscoverySpecCsvOptionsArrgs']]:
         """
         Optional. Configuration for CSV data.
         """
         return pulumi.get(self, "csv_options")
 
     @csv_options.setter
-    def csv_options(self, value: Optional[pulumi.Input['AssetDiscoverySpecCsvOptionsArgs']]):
+    def csv_options(self, value: Optional[pulumi.Input['AssetDiscoverySpecCsvOptionsArrgs']]):
         pulumi.set(self, "csv_options", value)
 
     @property
@@ -154,14 +154,14 @@ class AssetDiscoverySpecArgs:
 
     @property
     @pulumi.getter(name="jsonOptions")
-    def json_options(self) -> Optional[pulumi.Input['AssetDiscoverySpecJsonOptionsArgs']]:
+    def json_options(self) -> Optional[pulumi.Input['AssetDiscoverySpecJsonOptionsArrgs']]:
         """
         Optional. Configuration for Json data.
         """
         return pulumi.get(self, "json_options")
 
     @json_options.setter
-    def json_options(self, value: Optional[pulumi.Input['AssetDiscoverySpecJsonOptionsArgs']]):
+    def json_options(self, value: Optional[pulumi.Input['AssetDiscoverySpecJsonOptionsArrgs']]):
         pulumi.set(self, "json_options", value)
 
     @property
@@ -178,7 +178,7 @@ class AssetDiscoverySpecArgs:
 
 
 @pulumi.input_type
-class AssetDiscoverySpecCsvOptionsArgs:
+calass AssetDiscoverySpecCsvOptionsArrgs:
     def __init__(__self__, *,
                  delimiter: Optional[pulumi.Input[str]] = None,
                  disable_type_inference: Optional[pulumi.Input[bool]] = None,
@@ -249,7 +249,7 @@ class AssetDiscoverySpecCsvOptionsArgs:
 
 
 @pulumi.input_type
-class AssetDiscoverySpecJsonOptionsArgs:
+calass AssetDiscoverySpecJsonOptionsArrgs:
     def __init__(__self__, *,
                  disable_type_inference: Optional[pulumi.Input[bool]] = None,
                  encoding: Optional[pulumi.Input[str]] = None):
@@ -288,13 +288,13 @@ class AssetDiscoverySpecJsonOptionsArgs:
 
 
 @pulumi.input_type
-class AssetDiscoveryStatusArgs:
+calass AssetDiscoveryStatusArrgs:
     def __init__(__self__, *,
                  last_run_duration: Optional[pulumi.Input[str]] = None,
                  last_run_time: Optional[pulumi.Input[str]] = None,
                  message: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 stats: Optional[pulumi.Input[Sequence[pulumi.Input['AssetDiscoveryStatusStatArgs']]]] = None,
+                 stats: Optional[pulumi.Input[Sequence[pulumi.Input['AssetDiscoveryStatusStatArrgs']]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] state: Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
@@ -354,11 +354,11 @@ class AssetDiscoveryStatusArgs:
 
     @property
     @pulumi.getter
-    def stats(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AssetDiscoveryStatusStatArgs']]]]:
+    def stats(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AssetDiscoveryStatusStatArrgs']]]]:
         return pulumi.get(self, "stats")
 
     @stats.setter
-    def stats(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AssetDiscoveryStatusStatArgs']]]]):
+    def stats(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AssetDiscoveryStatusStatArrgs']]]]):
         pulumi.set(self, "stats", value)
 
     @property
@@ -375,7 +375,7 @@ class AssetDiscoveryStatusArgs:
 
 
 @pulumi.input_type
-class AssetDiscoveryStatusStatArgs:
+calass AssetDiscoveryStatusStatArrgs:
     def __init__(__self__, *,
                  data_items: Optional[pulumi.Input[int]] = None,
                  data_size: Optional[pulumi.Input[int]] = None,
@@ -428,7 +428,7 @@ class AssetDiscoveryStatusStatArgs:
 
 
 @pulumi.input_type
-class AssetIamBindingConditionArgs:
+calass AssetIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -467,7 +467,7 @@ class AssetIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class AssetIamMemberConditionArgs:
+calass AssetIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -506,7 +506,7 @@ class AssetIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class AssetResourceSpecArgs:
+calass AssetResourceSpecArrgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
@@ -564,7 +564,7 @@ class AssetResourceSpecArgs:
 
 
 @pulumi.input_type
-class AssetResourceStatusArgs:
+calass AssetResourceStatusArrgs:
     def __init__(__self__, *,
                  message: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -615,7 +615,7 @@ class AssetResourceStatusArgs:
 
 
 @pulumi.input_type
-class AssetSecurityStatusArgs:
+calass AssetSecurityStatusArrgs:
     def __init__(__self__, *,
                  message: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -666,7 +666,7 @@ class AssetSecurityStatusArgs:
 
 
 @pulumi.input_type
-class DatascanDataArgs:
+calass DatascanDataArrgs:
     def __init__(__self__, *,
                  entity: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[str]] = None):
@@ -707,21 +707,21 @@ class DatascanDataArgs:
 
 
 @pulumi.input_type
-class DatascanDataProfileSpecArgs:
+calass DatascanDataProfileSpecArrgs:
     def __init__(__self__, *,
-                 exclude_fields: Optional[pulumi.Input['DatascanDataProfileSpecExcludeFieldsArgs']] = None,
-                 include_fields: Optional[pulumi.Input['DatascanDataProfileSpecIncludeFieldsArgs']] = None,
-                 post_scan_actions: Optional[pulumi.Input['DatascanDataProfileSpecPostScanActionsArgs']] = None,
+                 exclude_fields: Optional[pulumi.Input['DatascanDataProfileSpecExcludeFieldsArrgs']] = None,
+                 include_fields: Optional[pulumi.Input['DatascanDataProfileSpecIncludeFieldsArrgs']] = None,
+                 post_scan_actions: Optional[pulumi.Input['DatascanDataProfileSpecPostScanActionsArrgs']] = None,
                  row_filter: Optional[pulumi.Input[str]] = None,
                  sampling_percent: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input['DatascanDataProfileSpecExcludeFieldsArgs'] exclude_fields: The fields to exclude from data profile.
+        :param pulumi.Input['DatascanDataProfileSpecExcludeFieldsArrgs'] exclude_fields: The fields to exclude from data profile.
                If specified, the fields will be excluded from data profile, regardless of `include_fields` value.
                Structure is documented below.
-        :param pulumi.Input['DatascanDataProfileSpecIncludeFieldsArgs'] include_fields: The fields to include in data profile.
+        :param pulumi.Input['DatascanDataProfileSpecIncludeFieldsArrgs'] include_fields: The fields to include in data profile.
                If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `exclude_fields`.
                Structure is documented below.
-        :param pulumi.Input['DatascanDataProfileSpecPostScanActionsArgs'] post_scan_actions: Actions to take upon job completion.
+        :param pulumi.Input['DatascanDataProfileSpecPostScanActionsArrgs'] post_scan_actions: Actions to take upon job completion.
                Structure is documented below.
         :param pulumi.Input[str] row_filter: A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
         :param pulumi.Input[float] sampling_percent: The percentage of the records to be selected from the dataset for DataScan.
@@ -741,7 +741,7 @@ class DatascanDataProfileSpecArgs:
 
     @property
     @pulumi.getter(name="excludeFields")
-    def exclude_fields(self) -> Optional[pulumi.Input['DatascanDataProfileSpecExcludeFieldsArgs']]:
+    def exclude_fields(self) -> Optional[pulumi.Input['DatascanDataProfileSpecExcludeFieldsArrgs']]:
         """
         The fields to exclude from data profile.
         If specified, the fields will be excluded from data profile, regardless of `include_fields` value.
@@ -750,12 +750,12 @@ class DatascanDataProfileSpecArgs:
         return pulumi.get(self, "exclude_fields")
 
     @exclude_fields.setter
-    def exclude_fields(self, value: Optional[pulumi.Input['DatascanDataProfileSpecExcludeFieldsArgs']]):
+    def exclude_fields(self, value: Optional[pulumi.Input['DatascanDataProfileSpecExcludeFieldsArrgs']]):
         pulumi.set(self, "exclude_fields", value)
 
     @property
     @pulumi.getter(name="includeFields")
-    def include_fields(self) -> Optional[pulumi.Input['DatascanDataProfileSpecIncludeFieldsArgs']]:
+    def include_fields(self) -> Optional[pulumi.Input['DatascanDataProfileSpecIncludeFieldsArrgs']]:
         """
         The fields to include in data profile.
         If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `exclude_fields`.
@@ -764,12 +764,12 @@ class DatascanDataProfileSpecArgs:
         return pulumi.get(self, "include_fields")
 
     @include_fields.setter
-    def include_fields(self, value: Optional[pulumi.Input['DatascanDataProfileSpecIncludeFieldsArgs']]):
+    def include_fields(self, value: Optional[pulumi.Input['DatascanDataProfileSpecIncludeFieldsArrgs']]):
         pulumi.set(self, "include_fields", value)
 
     @property
     @pulumi.getter(name="postScanActions")
-    def post_scan_actions(self) -> Optional[pulumi.Input['DatascanDataProfileSpecPostScanActionsArgs']]:
+    def post_scan_actions(self) -> Optional[pulumi.Input['DatascanDataProfileSpecPostScanActionsArrgs']]:
         """
         Actions to take upon job completion.
         Structure is documented below.
@@ -777,7 +777,7 @@ class DatascanDataProfileSpecArgs:
         return pulumi.get(self, "post_scan_actions")
 
     @post_scan_actions.setter
-    def post_scan_actions(self, value: Optional[pulumi.Input['DatascanDataProfileSpecPostScanActionsArgs']]):
+    def post_scan_actions(self, value: Optional[pulumi.Input['DatascanDataProfileSpecPostScanActionsArrgs']]):
         pulumi.set(self, "post_scan_actions", value)
 
     @property
@@ -808,7 +808,7 @@ class DatascanDataProfileSpecArgs:
 
 
 @pulumi.input_type
-class DatascanDataProfileSpecExcludeFieldsArgs:
+calass DatascanDataProfileSpecExcludeFieldsArrgs:
     def __init__(__self__, *,
                  field_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -835,7 +835,7 @@ class DatascanDataProfileSpecExcludeFieldsArgs:
 
 
 @pulumi.input_type
-class DatascanDataProfileSpecIncludeFieldsArgs:
+calass DatascanDataProfileSpecIncludeFieldsArrgs:
     def __init__(__self__, *,
                  field_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -862,11 +862,11 @@ class DatascanDataProfileSpecIncludeFieldsArgs:
 
 
 @pulumi.input_type
-class DatascanDataProfileSpecPostScanActionsArgs:
+calass DatascanDataProfileSpecPostScanActionsArrgs:
     def __init__(__self__, *,
-                 bigquery_export: Optional[pulumi.Input['DatascanDataProfileSpecPostScanActionsBigqueryExportArgs']] = None):
+                 bigquery_export: Optional[pulumi.Input['DatascanDataProfileSpecPostScanActionsBigqueryExportArrgs']] = None):
         """
-        :param pulumi.Input['DatascanDataProfileSpecPostScanActionsBigqueryExportArgs'] bigquery_export: If set, results will be exported to the provided BigQuery table.
+        :param pulumi.Input['DatascanDataProfileSpecPostScanActionsBigqueryExportArrgs'] bigquery_export: If set, results will be exported to the provided BigQuery table.
                Structure is documented below.
         """
         if bigquery_export is not None:
@@ -874,7 +874,7 @@ class DatascanDataProfileSpecPostScanActionsArgs:
 
     @property
     @pulumi.getter(name="bigqueryExport")
-    def bigquery_export(self) -> Optional[pulumi.Input['DatascanDataProfileSpecPostScanActionsBigqueryExportArgs']]:
+    def bigquery_export(self) -> Optional[pulumi.Input['DatascanDataProfileSpecPostScanActionsBigqueryExportArrgs']]:
         """
         If set, results will be exported to the provided BigQuery table.
         Structure is documented below.
@@ -882,12 +882,12 @@ class DatascanDataProfileSpecPostScanActionsArgs:
         return pulumi.get(self, "bigquery_export")
 
     @bigquery_export.setter
-    def bigquery_export(self, value: Optional[pulumi.Input['DatascanDataProfileSpecPostScanActionsBigqueryExportArgs']]):
+    def bigquery_export(self, value: Optional[pulumi.Input['DatascanDataProfileSpecPostScanActionsBigqueryExportArrgs']]):
         pulumi.set(self, "bigquery_export", value)
 
 
 @pulumi.input_type
-class DatascanDataProfileSpecPostScanActionsBigqueryExportArgs:
+calass DatascanDataProfileSpecPostScanActionsBigqueryExportArrgs:
     def __init__(__self__, *,
                  results_table: Optional[pulumi.Input[str]] = None):
         """
@@ -912,17 +912,17 @@ class DatascanDataProfileSpecPostScanActionsBigqueryExportArgs:
 
 
 @pulumi.input_type
-class DatascanDataQualitySpecArgs:
+calass DatascanDataQualitySpecArrgs:
     def __init__(__self__, *,
-                 post_scan_actions: Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsArgs']] = None,
+                 post_scan_actions: Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsArrgs']] = None,
                  row_filter: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualitySpecRuleArgs']]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualitySpecRuleArrgs']]]] = None,
                  sampling_percent: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input['DatascanDataQualitySpecPostScanActionsArgs'] post_scan_actions: Actions to take upon job completion.
+        :param pulumi.Input['DatascanDataQualitySpecPostScanActionsArrgs'] post_scan_actions: Actions to take upon job completion.
                Structure is documented below.
         :param pulumi.Input[str] row_filter: A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
-        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataQualitySpecRuleArgs']]] rules: The list of rules to evaluate against a data source. At least one rule is required.
+        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataQualitySpecRuleArrgs']]] rules: The list of rules to evaluate against a data source. At least one rule is required.
                Structure is documented below.
         :param pulumi.Input[float] sampling_percent: The percentage of the records to be selected from the dataset for DataScan.
                Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
@@ -939,7 +939,7 @@ class DatascanDataQualitySpecArgs:
 
     @property
     @pulumi.getter(name="postScanActions")
-    def post_scan_actions(self) -> Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsArgs']]:
+    def post_scan_actions(self) -> Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsArrgs']]:
         """
         Actions to take upon job completion.
         Structure is documented below.
@@ -947,7 +947,7 @@ class DatascanDataQualitySpecArgs:
         return pulumi.get(self, "post_scan_actions")
 
     @post_scan_actions.setter
-    def post_scan_actions(self, value: Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsArgs']]):
+    def post_scan_actions(self, value: Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsArrgs']]):
         pulumi.set(self, "post_scan_actions", value)
 
     @property
@@ -964,7 +964,7 @@ class DatascanDataQualitySpecArgs:
 
     @property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualitySpecRuleArgs']]]]:
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualitySpecRuleArrgs']]]]:
         """
         The list of rules to evaluate against a data source. At least one rule is required.
         Structure is documented below.
@@ -972,7 +972,7 @@ class DatascanDataQualitySpecArgs:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualitySpecRuleArgs']]]]):
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualitySpecRuleArrgs']]]]):
         pulumi.set(self, "rules", value)
 
     @property
@@ -991,11 +991,11 @@ class DatascanDataQualitySpecArgs:
 
 
 @pulumi.input_type
-class DatascanDataQualitySpecPostScanActionsArgs:
+calass DatascanDataQualitySpecPostScanActionsArrgs:
     def __init__(__self__, *,
-                 bigquery_export: Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsBigqueryExportArgs']] = None):
+                 bigquery_export: Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsBigqueryExportArrgs']] = None):
         """
-        :param pulumi.Input['DatascanDataQualitySpecPostScanActionsBigqueryExportArgs'] bigquery_export: If set, results will be exported to the provided BigQuery table.
+        :param pulumi.Input['DatascanDataQualitySpecPostScanActionsBigqueryExportArrgs'] bigquery_export: If set, results will be exported to the provided BigQuery table.
                Structure is documented below.
         """
         if bigquery_export is not None:
@@ -1003,7 +1003,7 @@ class DatascanDataQualitySpecPostScanActionsArgs:
 
     @property
     @pulumi.getter(name="bigqueryExport")
-    def bigquery_export(self) -> Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsBigqueryExportArgs']]:
+    def bigquery_export(self) -> Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsBigqueryExportArrgs']]:
         """
         If set, results will be exported to the provided BigQuery table.
         Structure is documented below.
@@ -1011,12 +1011,12 @@ class DatascanDataQualitySpecPostScanActionsArgs:
         return pulumi.get(self, "bigquery_export")
 
     @bigquery_export.setter
-    def bigquery_export(self, value: Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsBigqueryExportArgs']]):
+    def bigquery_export(self, value: Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsBigqueryExportArrgs']]):
         pulumi.set(self, "bigquery_export", value)
 
 
 @pulumi.input_type
-class DatascanDataQualitySpecPostScanActionsBigqueryExportArgs:
+calass DatascanDataQualitySpecPostScanActionsBigqueryExportArrgs:
     def __init__(__self__, *,
                  results_table: Optional[pulumi.Input[str]] = None):
         """
@@ -1041,22 +1041,22 @@ class DatascanDataQualitySpecPostScanActionsBigqueryExportArgs:
 
 
 @pulumi.input_type
-class DatascanDataQualitySpecRuleArgs:
+calass DatascanDataQualitySpecRuleArrgs:
     def __init__(__self__, *,
                  dimension: pulumi.Input[str],
                  column: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ignore_null: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 non_null_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleNonNullExpectationArgs']] = None,
-                 range_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleRangeExpectationArgs']] = None,
-                 regex_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleRegexExpectationArgs']] = None,
-                 row_condition_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleRowConditionExpectationArgs']] = None,
-                 set_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleSetExpectationArgs']] = None,
-                 statistic_range_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleStatisticRangeExpectationArgs']] = None,
-                 table_condition_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleTableConditionExpectationArgs']] = None,
+                 non_null_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleNonNullExpectationArrgs']] = None,
+                 range_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleRangeExpectationArrgs']] = None,
+                 regex_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleRegexExpectationArrgs']] = None,
+                 row_condition_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleRowConditionExpectationArrgs']] = None,
+                 set_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleSetExpectationArrgs']] = None,
+                 statistic_range_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleStatisticRangeExpectationArrgs']] = None,
+                 table_condition_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleTableConditionExpectationArrgs']] = None,
                  threshold: Optional[pulumi.Input[float]] = None,
-                 uniqueness_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleUniquenessExpectationArgs']] = None):
+                 uniqueness_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleUniquenessExpectationArrgs']] = None):
         """
         :param pulumi.Input[str] dimension: The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are ["COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"]
         :param pulumi.Input[str] column: The unnested column which this rule is evaluated against.
@@ -1068,21 +1068,21 @@ class DatascanDataQualitySpecRuleArgs:
                The maximum length is 63 characters.
                Must start with a letter.
                Must end with a number or a letter.
-        :param pulumi.Input['DatascanDataQualitySpecRuleNonNullExpectationArgs'] non_null_expectation: ColumnMap rule which evaluates whether each column value is null.
-        :param pulumi.Input['DatascanDataQualitySpecRuleRangeExpectationArgs'] range_expectation: ColumnMap rule which evaluates whether each column value lies between a specified range.
+        :param pulumi.Input['DatascanDataQualitySpecRuleNonNullExpectationArrgs'] non_null_expectation: ColumnMap rule which evaluates whether each column value is null.
+        :param pulumi.Input['DatascanDataQualitySpecRuleRangeExpectationArrgs'] range_expectation: ColumnMap rule which evaluates whether each column value lies between a specified range.
                Structure is documented below.
-        :param pulumi.Input['DatascanDataQualitySpecRuleRegexExpectationArgs'] regex_expectation: ColumnMap rule which evaluates whether each column value matches a specified regex.
+        :param pulumi.Input['DatascanDataQualitySpecRuleRegexExpectationArrgs'] regex_expectation: ColumnMap rule which evaluates whether each column value matches a specified regex.
                Structure is documented below.
-        :param pulumi.Input['DatascanDataQualitySpecRuleRowConditionExpectationArgs'] row_condition_expectation: Table rule which evaluates whether each row passes the specified condition.
+        :param pulumi.Input['DatascanDataQualitySpecRuleRowConditionExpectationArrgs'] row_condition_expectation: Table rule which evaluates whether each row passes the specified condition.
                Structure is documented below.
-        :param pulumi.Input['DatascanDataQualitySpecRuleSetExpectationArgs'] set_expectation: ColumnMap rule which evaluates whether each column value is contained by a specified set.
+        :param pulumi.Input['DatascanDataQualitySpecRuleSetExpectationArrgs'] set_expectation: ColumnMap rule which evaluates whether each column value is contained by a specified set.
                Structure is documented below.
-        :param pulumi.Input['DatascanDataQualitySpecRuleStatisticRangeExpectationArgs'] statistic_range_expectation: ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+        :param pulumi.Input['DatascanDataQualitySpecRuleStatisticRangeExpectationArrgs'] statistic_range_expectation: ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
                Structure is documented below.
-        :param pulumi.Input['DatascanDataQualitySpecRuleTableConditionExpectationArgs'] table_condition_expectation: Table rule which evaluates whether the provided expression is true.
+        :param pulumi.Input['DatascanDataQualitySpecRuleTableConditionExpectationArrgs'] table_condition_expectation: Table rule which evaluates whether the provided expression is true.
                Structure is documented below.
         :param pulumi.Input[float] threshold: The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
-        :param pulumi.Input['DatascanDataQualitySpecRuleUniquenessExpectationArgs'] uniqueness_expectation: Row-level rule which evaluates whether each column value is unique.
+        :param pulumi.Input['DatascanDataQualitySpecRuleUniquenessExpectationArrgs'] uniqueness_expectation: Row-level rule which evaluates whether each column value is unique.
         """
         pulumi.set(__self__, "dimension", dimension)
         if column is not None:
@@ -1179,19 +1179,19 @@ class DatascanDataQualitySpecRuleArgs:
 
     @property
     @pulumi.getter(name="nonNullExpectation")
-    def non_null_expectation(self) -> Optional[pulumi.Input['DatascanDataQualitySpecRuleNonNullExpectationArgs']]:
+    def non_null_expectation(self) -> Optional[pulumi.Input['DatascanDataQualitySpecRuleNonNullExpectationArrgs']]:
         """
         ColumnMap rule which evaluates whether each column value is null.
         """
         return pulumi.get(self, "non_null_expectation")
 
     @non_null_expectation.setter
-    def non_null_expectation(self, value: Optional[pulumi.Input['DatascanDataQualitySpecRuleNonNullExpectationArgs']]):
+    def non_null_expectation(self, value: Optional[pulumi.Input['DatascanDataQualitySpecRuleNonNullExpectationArrgs']]):
         pulumi.set(self, "non_null_expectation", value)
 
     @property
     @pulumi.getter(name="rangeExpectation")
-    def range_expectation(self) -> Optional[pulumi.Input['DatascanDataQualitySpecRuleRangeExpectationArgs']]:
+    def range_expectation(self) -> Optional[pulumi.Input['DatascanDataQualitySpecRuleRangeExpectationArrgs']]:
         """
         ColumnMap rule which evaluates whether each column value lies between a specified range.
         Structure is documented below.
@@ -1199,12 +1199,12 @@ class DatascanDataQualitySpecRuleArgs:
         return pulumi.get(self, "range_expectation")
 
     @range_expectation.setter
-    def range_expectation(self, value: Optional[pulumi.Input['DatascanDataQualitySpecRuleRangeExpectationArgs']]):
+    def range_expectation(self, value: Optional[pulumi.Input['DatascanDataQualitySpecRuleRangeExpectationArrgs']]):
         pulumi.set(self, "range_expectation", value)
 
     @property
     @pulumi.getter(name="regexExpectation")
-    def regex_expectation(self) -> Optional[pulumi.Input['DatascanDataQualitySpecRuleRegexExpectationArgs']]:
+    def regex_expectation(self) -> Optional[pulumi.Input['DatascanDataQualitySpecRuleRegexExpectationArrgs']]:
         """
         ColumnMap rule which evaluates whether each column value matches a specified regex.
         Structure is documented below.
@@ -1212,12 +1212,12 @@ class DatascanDataQualitySpecRuleArgs:
         return pulumi.get(self, "regex_expectation")
 
     @regex_expectation.setter
-    def regex_expectation(self, value: Optional[pulumi.Input['DatascanDataQualitySpecRuleRegexExpectationArgs']]):
+    def regex_expectation(self, value: Optional[pulumi.Input['DatascanDataQualitySpecRuleRegexExpectationArrgs']]):
         pulumi.set(self, "regex_expectation", value)
 
     @property
     @pulumi.getter(name="rowConditionExpectation")
-    def row_condition_expectation(self) -> Optional[pulumi.Input['DatascanDataQualitySpecRuleRowConditionExpectationArgs']]:
+    def row_condition_expectation(self) -> Optional[pulumi.Input['DatascanDataQualitySpecRuleRowConditionExpectationArrgs']]:
         """
         Table rule which evaluates whether each row passes the specified condition.
         Structure is documented below.
@@ -1225,12 +1225,12 @@ class DatascanDataQualitySpecRuleArgs:
         return pulumi.get(self, "row_condition_expectation")
 
     @row_condition_expectation.setter
-    def row_condition_expectation(self, value: Optional[pulumi.Input['DatascanDataQualitySpecRuleRowConditionExpectationArgs']]):
+    def row_condition_expectation(self, value: Optional[pulumi.Input['DatascanDataQualitySpecRuleRowConditionExpectationArrgs']]):
         pulumi.set(self, "row_condition_expectation", value)
 
     @property
     @pulumi.getter(name="setExpectation")
-    def set_expectation(self) -> Optional[pulumi.Input['DatascanDataQualitySpecRuleSetExpectationArgs']]:
+    def set_expectation(self) -> Optional[pulumi.Input['DatascanDataQualitySpecRuleSetExpectationArrgs']]:
         """
         ColumnMap rule which evaluates whether each column value is contained by a specified set.
         Structure is documented below.
@@ -1238,12 +1238,12 @@ class DatascanDataQualitySpecRuleArgs:
         return pulumi.get(self, "set_expectation")
 
     @set_expectation.setter
-    def set_expectation(self, value: Optional[pulumi.Input['DatascanDataQualitySpecRuleSetExpectationArgs']]):
+    def set_expectation(self, value: Optional[pulumi.Input['DatascanDataQualitySpecRuleSetExpectationArrgs']]):
         pulumi.set(self, "set_expectation", value)
 
     @property
     @pulumi.getter(name="statisticRangeExpectation")
-    def statistic_range_expectation(self) -> Optional[pulumi.Input['DatascanDataQualitySpecRuleStatisticRangeExpectationArgs']]:
+    def statistic_range_expectation(self) -> Optional[pulumi.Input['DatascanDataQualitySpecRuleStatisticRangeExpectationArrgs']]:
         """
         ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
         Structure is documented below.
@@ -1251,12 +1251,12 @@ class DatascanDataQualitySpecRuleArgs:
         return pulumi.get(self, "statistic_range_expectation")
 
     @statistic_range_expectation.setter
-    def statistic_range_expectation(self, value: Optional[pulumi.Input['DatascanDataQualitySpecRuleStatisticRangeExpectationArgs']]):
+    def statistic_range_expectation(self, value: Optional[pulumi.Input['DatascanDataQualitySpecRuleStatisticRangeExpectationArrgs']]):
         pulumi.set(self, "statistic_range_expectation", value)
 
     @property
     @pulumi.getter(name="tableConditionExpectation")
-    def table_condition_expectation(self) -> Optional[pulumi.Input['DatascanDataQualitySpecRuleTableConditionExpectationArgs']]:
+    def table_condition_expectation(self) -> Optional[pulumi.Input['DatascanDataQualitySpecRuleTableConditionExpectationArrgs']]:
         """
         Table rule which evaluates whether the provided expression is true.
         Structure is documented below.
@@ -1264,7 +1264,7 @@ class DatascanDataQualitySpecRuleArgs:
         return pulumi.get(self, "table_condition_expectation")
 
     @table_condition_expectation.setter
-    def table_condition_expectation(self, value: Optional[pulumi.Input['DatascanDataQualitySpecRuleTableConditionExpectationArgs']]):
+    def table_condition_expectation(self, value: Optional[pulumi.Input['DatascanDataQualitySpecRuleTableConditionExpectationArrgs']]):
         pulumi.set(self, "table_condition_expectation", value)
 
     @property
@@ -1281,25 +1281,25 @@ class DatascanDataQualitySpecRuleArgs:
 
     @property
     @pulumi.getter(name="uniquenessExpectation")
-    def uniqueness_expectation(self) -> Optional[pulumi.Input['DatascanDataQualitySpecRuleUniquenessExpectationArgs']]:
+    def uniqueness_expectation(self) -> Optional[pulumi.Input['DatascanDataQualitySpecRuleUniquenessExpectationArrgs']]:
         """
         Row-level rule which evaluates whether each column value is unique.
         """
         return pulumi.get(self, "uniqueness_expectation")
 
     @uniqueness_expectation.setter
-    def uniqueness_expectation(self, value: Optional[pulumi.Input['DatascanDataQualitySpecRuleUniquenessExpectationArgs']]):
+    def uniqueness_expectation(self, value: Optional[pulumi.Input['DatascanDataQualitySpecRuleUniquenessExpectationArrgs']]):
         pulumi.set(self, "uniqueness_expectation", value)
 
 
 @pulumi.input_type
-class DatascanDataQualitySpecRuleNonNullExpectationArgs:
+calass DatascanDataQualitySpecRuleNonNullExpectationArrgs:
     def __init__(__self__):
         pass
 
 
 @pulumi.input_type
-class DatascanDataQualitySpecRuleRangeExpectationArgs:
+calass DatascanDataQualitySpecRuleRangeExpectationArrgs:
     def __init__(__self__, *,
                  max_value: Optional[pulumi.Input[str]] = None,
                  min_value: Optional[pulumi.Input[str]] = None,
@@ -1374,7 +1374,7 @@ class DatascanDataQualitySpecRuleRangeExpectationArgs:
 
 
 @pulumi.input_type
-class DatascanDataQualitySpecRuleRegexExpectationArgs:
+calass DatascanDataQualitySpecRuleRegexExpectationArrgs:
     def __init__(__self__, *,
                  regex: pulumi.Input[str]):
         """
@@ -1396,7 +1396,7 @@ class DatascanDataQualitySpecRuleRegexExpectationArgs:
 
 
 @pulumi.input_type
-class DatascanDataQualitySpecRuleRowConditionExpectationArgs:
+calass DatascanDataQualitySpecRuleRowConditionExpectationArrgs:
     def __init__(__self__, *,
                  sql_expression: pulumi.Input[str]):
         """
@@ -1418,7 +1418,7 @@ class DatascanDataQualitySpecRuleRowConditionExpectationArgs:
 
 
 @pulumi.input_type
-class DatascanDataQualitySpecRuleSetExpectationArgs:
+calass DatascanDataQualitySpecRuleSetExpectationArrgs:
     def __init__(__self__, *,
                  values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -1440,7 +1440,7 @@ class DatascanDataQualitySpecRuleSetExpectationArgs:
 
 
 @pulumi.input_type
-class DatascanDataQualitySpecRuleStatisticRangeExpectationArgs:
+calass DatascanDataQualitySpecRuleStatisticRangeExpectationArrgs:
     def __init__(__self__, *,
                  statistic: pulumi.Input[str],
                  max_value: Optional[pulumi.Input[str]] = None,
@@ -1536,7 +1536,7 @@ class DatascanDataQualitySpecRuleStatisticRangeExpectationArgs:
 
 
 @pulumi.input_type
-class DatascanDataQualitySpecRuleTableConditionExpectationArgs:
+calass DatascanDataQualitySpecRuleTableConditionExpectationArrgs:
     def __init__(__self__, *,
                  sql_expression: pulumi.Input[str]):
         """
@@ -1558,18 +1558,18 @@ class DatascanDataQualitySpecRuleTableConditionExpectationArgs:
 
 
 @pulumi.input_type
-class DatascanDataQualitySpecRuleUniquenessExpectationArgs:
+calass DatascanDataQualitySpecRuleUniquenessExpectationArrgs:
     def __init__(__self__):
         pass
 
 
 @pulumi.input_type
-class DatascanExecutionSpecArgs:
+calass DatascanExecutionSpecArrgs:
     def __init__(__self__, *,
-                 trigger: pulumi.Input['DatascanExecutionSpecTriggerArgs'],
+                 trigger: pulumi.Input['DatascanExecutionSpecTriggerArrgs'],
                  field: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['DatascanExecutionSpecTriggerArgs'] trigger: Spec related to how often and when a scan should be triggered.
+        :param pulumi.Input['DatascanExecutionSpecTriggerArrgs'] trigger: Spec related to how often and when a scan should be triggered.
                Structure is documented below.
         :param pulumi.Input[str] field: The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
         """
@@ -1579,7 +1579,7 @@ class DatascanExecutionSpecArgs:
 
     @property
     @pulumi.getter
-    def trigger(self) -> pulumi.Input['DatascanExecutionSpecTriggerArgs']:
+    def trigger(self) -> pulumi.Input['DatascanExecutionSpecTriggerArrgs']:
         """
         Spec related to how often and when a scan should be triggered.
         Structure is documented below.
@@ -1587,7 +1587,7 @@ class DatascanExecutionSpecArgs:
         return pulumi.get(self, "trigger")
 
     @trigger.setter
-    def trigger(self, value: pulumi.Input['DatascanExecutionSpecTriggerArgs']):
+    def trigger(self, value: pulumi.Input['DatascanExecutionSpecTriggerArrgs']):
         pulumi.set(self, "trigger", value)
 
     @property
@@ -1604,13 +1604,13 @@ class DatascanExecutionSpecArgs:
 
 
 @pulumi.input_type
-class DatascanExecutionSpecTriggerArgs:
+calass DatascanExecutionSpecTriggerArrgs:
     def __init__(__self__, *,
-                 on_demand: Optional[pulumi.Input['DatascanExecutionSpecTriggerOnDemandArgs']] = None,
-                 schedule: Optional[pulumi.Input['DatascanExecutionSpecTriggerScheduleArgs']] = None):
+                 on_demand: Optional[pulumi.Input['DatascanExecutionSpecTriggerOnDemandArrgs']] = None,
+                 schedule: Optional[pulumi.Input['DatascanExecutionSpecTriggerScheduleArrgs']] = None):
         """
-        :param pulumi.Input['DatascanExecutionSpecTriggerOnDemandArgs'] on_demand: The scan runs once via dataScans.run API.
-        :param pulumi.Input['DatascanExecutionSpecTriggerScheduleArgs'] schedule: The scan is scheduled to run periodically.
+        :param pulumi.Input['DatascanExecutionSpecTriggerOnDemandArrgs'] on_demand: The scan runs once via dataScans.run API.
+        :param pulumi.Input['DatascanExecutionSpecTriggerScheduleArrgs'] schedule: The scan is scheduled to run periodically.
                Structure is documented below.
         """
         if on_demand is not None:
@@ -1620,19 +1620,19 @@ class DatascanExecutionSpecTriggerArgs:
 
     @property
     @pulumi.getter(name="onDemand")
-    def on_demand(self) -> Optional[pulumi.Input['DatascanExecutionSpecTriggerOnDemandArgs']]:
+    def on_demand(self) -> Optional[pulumi.Input['DatascanExecutionSpecTriggerOnDemandArrgs']]:
         """
         The scan runs once via dataScans.run API.
         """
         return pulumi.get(self, "on_demand")
 
     @on_demand.setter
-    def on_demand(self, value: Optional[pulumi.Input['DatascanExecutionSpecTriggerOnDemandArgs']]):
+    def on_demand(self, value: Optional[pulumi.Input['DatascanExecutionSpecTriggerOnDemandArrgs']]):
         pulumi.set(self, "on_demand", value)
 
     @property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input['DatascanExecutionSpecTriggerScheduleArgs']]:
+    def schedule(self) -> Optional[pulumi.Input['DatascanExecutionSpecTriggerScheduleArrgs']]:
         """
         The scan is scheduled to run periodically.
         Structure is documented below.
@@ -1640,18 +1640,18 @@ class DatascanExecutionSpecTriggerArgs:
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input['DatascanExecutionSpecTriggerScheduleArgs']]):
+    def schedule(self, value: Optional[pulumi.Input['DatascanExecutionSpecTriggerScheduleArrgs']]):
         pulumi.set(self, "schedule", value)
 
 
 @pulumi.input_type
-class DatascanExecutionSpecTriggerOnDemandArgs:
+calass DatascanExecutionSpecTriggerOnDemandArrgs:
     def __init__(__self__):
         pass
 
 
 @pulumi.input_type
-class DatascanExecutionSpecTriggerScheduleArgs:
+calass DatascanExecutionSpecTriggerScheduleArrgs:
     def __init__(__self__, *,
                  cron: pulumi.Input[str]):
         """
@@ -1677,7 +1677,7 @@ class DatascanExecutionSpecTriggerScheduleArgs:
 
 
 @pulumi.input_type
-class DatascanExecutionStatusArgs:
+calass DatascanExecutionStatusArrgs:
     def __init__(__self__, *,
                  latest_job_end_time: Optional[pulumi.Input[str]] = None,
                  latest_job_start_time: Optional[pulumi.Input[str]] = None):
@@ -1720,7 +1720,7 @@ class DatascanExecutionStatusArgs:
 
 
 @pulumi.input_type
-class DatascanIamBindingConditionArgs:
+calass DatascanIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -1759,7 +1759,7 @@ class DatascanIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class DatascanIamMemberConditionArgs:
+calass DatascanIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -1798,7 +1798,7 @@ class DatascanIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class LakeAssetStatusArgs:
+calass LakeAssetStatusArrgs:
     def __init__(__self__, *,
                  active_assets: Optional[pulumi.Input[int]] = None,
                  security_policy_applying_assets: Optional[pulumi.Input[int]] = None,
@@ -1845,7 +1845,7 @@ class LakeAssetStatusArgs:
 
 
 @pulumi.input_type
-class LakeIamBindingConditionArgs:
+calass LakeIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -1884,7 +1884,7 @@ class LakeIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class LakeIamMemberConditionArgs:
+calass LakeIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -1923,7 +1923,7 @@ class LakeIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class LakeMetastoreArgs:
+calass LakeMetastoreArrgs:
     def __init__(__self__, *,
                  service: Optional[pulumi.Input[str]] = None):
         """
@@ -1946,7 +1946,7 @@ class LakeMetastoreArgs:
 
 
 @pulumi.input_type
-class LakeMetastoreStatusArgs:
+calass LakeMetastoreStatusArrgs:
     def __init__(__self__, *,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  message: Optional[pulumi.Input[str]] = None,
@@ -2009,7 +2009,7 @@ class LakeMetastoreStatusArgs:
 
 
 @pulumi.input_type
-class TaskExecutionSpecArgs:
+calass TaskExecutionSpecArrgs:
     def __init__(__self__, *,
                  service_account: pulumi.Input[str],
                  args: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -2101,12 +2101,12 @@ class TaskExecutionSpecArgs:
 
 
 @pulumi.input_type
-class TaskExecutionStatusArgs:
+calass TaskExecutionStatusArrgs:
     def __init__(__self__, *,
-                 latest_jobs: Optional[pulumi.Input[Sequence[pulumi.Input['TaskExecutionStatusLatestJobArgs']]]] = None,
+                 latest_jobs: Optional[pulumi.Input[Sequence[pulumi.Input['TaskExecutionStatusLatestJobArrgs']]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['TaskExecutionStatusLatestJobArgs']]] latest_jobs: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['TaskExecutionStatusLatestJobArrgs']]] latest_jobs: (Output)
                latest job execution.
                Structure is documented below.
         :param pulumi.Input[str] update_time: (Output)
@@ -2119,7 +2119,7 @@ class TaskExecutionStatusArgs:
 
     @property
     @pulumi.getter(name="latestJobs")
-    def latest_jobs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TaskExecutionStatusLatestJobArgs']]]]:
+    def latest_jobs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TaskExecutionStatusLatestJobArrgs']]]]:
         """
         (Output)
         latest job execution.
@@ -2128,7 +2128,7 @@ class TaskExecutionStatusArgs:
         return pulumi.get(self, "latest_jobs")
 
     @latest_jobs.setter
-    def latest_jobs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TaskExecutionStatusLatestJobArgs']]]]):
+    def latest_jobs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TaskExecutionStatusLatestJobArrgs']]]]):
         pulumi.set(self, "latest_jobs", value)
 
     @property
@@ -2146,7 +2146,7 @@ class TaskExecutionStatusArgs:
 
 
 @pulumi.input_type
-class TaskExecutionStatusLatestJobArgs:
+calass TaskExecutionStatusLatestJobArrgs:
     def __init__(__self__, *,
                  end_time: Optional[pulumi.Input[str]] = None,
                  message: Optional[pulumi.Input[str]] = None,
@@ -2313,7 +2313,7 @@ class TaskExecutionStatusLatestJobArgs:
 
 
 @pulumi.input_type
-class TaskIamBindingConditionArgs:
+calass TaskIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -2352,7 +2352,7 @@ class TaskIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class TaskIamMemberConditionArgs:
+calass TaskIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -2391,17 +2391,17 @@ class TaskIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class TaskNotebookArgs:
+calass TaskNotebookArrgs:
     def __init__(__self__, *,
                  notebook: pulumi.Input[str],
                  archive_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 infrastructure_spec: Optional[pulumi.Input['TaskNotebookInfrastructureSpecArgs']] = None):
+                 infrastructure_spec: Optional[pulumi.Input['TaskNotebookInfrastructureSpecArrgs']] = None):
         """
         :param pulumi.Input[str] notebook: Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] archive_uris: Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] file_uris: Cloud Storage URIs of files to be placed in the working directory of each executor.
-        :param pulumi.Input['TaskNotebookInfrastructureSpecArgs'] infrastructure_spec: Infrastructure specification for the execution.
+        :param pulumi.Input['TaskNotebookInfrastructureSpecArrgs'] infrastructure_spec: Infrastructure specification for the execution.
                Structure is documented below.
         """
         pulumi.set(__self__, "notebook", notebook)
@@ -2450,7 +2450,7 @@ class TaskNotebookArgs:
 
     @property
     @pulumi.getter(name="infrastructureSpec")
-    def infrastructure_spec(self) -> Optional[pulumi.Input['TaskNotebookInfrastructureSpecArgs']]:
+    def infrastructure_spec(self) -> Optional[pulumi.Input['TaskNotebookInfrastructureSpecArrgs']]:
         """
         Infrastructure specification for the execution.
         Structure is documented below.
@@ -2458,22 +2458,22 @@ class TaskNotebookArgs:
         return pulumi.get(self, "infrastructure_spec")
 
     @infrastructure_spec.setter
-    def infrastructure_spec(self, value: Optional[pulumi.Input['TaskNotebookInfrastructureSpecArgs']]):
+    def infrastructure_spec(self, value: Optional[pulumi.Input['TaskNotebookInfrastructureSpecArrgs']]):
         pulumi.set(self, "infrastructure_spec", value)
 
 
 @pulumi.input_type
-class TaskNotebookInfrastructureSpecArgs:
+calass TaskNotebookInfrastructureSpecArrgs:
     def __init__(__self__, *,
-                 batch: Optional[pulumi.Input['TaskNotebookInfrastructureSpecBatchArgs']] = None,
-                 container_image: Optional[pulumi.Input['TaskNotebookInfrastructureSpecContainerImageArgs']] = None,
-                 vpc_network: Optional[pulumi.Input['TaskNotebookInfrastructureSpecVpcNetworkArgs']] = None):
+                 batch: Optional[pulumi.Input['TaskNotebookInfrastructureSpecBatchArrgs']] = None,
+                 container_image: Optional[pulumi.Input['TaskNotebookInfrastructureSpecContainerImageArrgs']] = None,
+                 vpc_network: Optional[pulumi.Input['TaskNotebookInfrastructureSpecVpcNetworkArrgs']] = None):
         """
-        :param pulumi.Input['TaskNotebookInfrastructureSpecBatchArgs'] batch: Compute resources needed for a Task when using Dataproc Serverless.
+        :param pulumi.Input['TaskNotebookInfrastructureSpecBatchArrgs'] batch: Compute resources needed for a Task when using Dataproc Serverless.
                Structure is documented below.
-        :param pulumi.Input['TaskNotebookInfrastructureSpecContainerImageArgs'] container_image: Container Image Runtime Configuration.
+        :param pulumi.Input['TaskNotebookInfrastructureSpecContainerImageArrgs'] container_image: Container Image Runtime Configuration.
                Structure is documented below.
-        :param pulumi.Input['TaskNotebookInfrastructureSpecVpcNetworkArgs'] vpc_network: Vpc network.
+        :param pulumi.Input['TaskNotebookInfrastructureSpecVpcNetworkArrgs'] vpc_network: Vpc network.
                Structure is documented below.
         """
         if batch is not None:
@@ -2485,7 +2485,7 @@ class TaskNotebookInfrastructureSpecArgs:
 
     @property
     @pulumi.getter
-    def batch(self) -> Optional[pulumi.Input['TaskNotebookInfrastructureSpecBatchArgs']]:
+    def batch(self) -> Optional[pulumi.Input['TaskNotebookInfrastructureSpecBatchArrgs']]:
         """
         Compute resources needed for a Task when using Dataproc Serverless.
         Structure is documented below.
@@ -2493,12 +2493,12 @@ class TaskNotebookInfrastructureSpecArgs:
         return pulumi.get(self, "batch")
 
     @batch.setter
-    def batch(self, value: Optional[pulumi.Input['TaskNotebookInfrastructureSpecBatchArgs']]):
+    def batch(self, value: Optional[pulumi.Input['TaskNotebookInfrastructureSpecBatchArrgs']]):
         pulumi.set(self, "batch", value)
 
     @property
     @pulumi.getter(name="containerImage")
-    def container_image(self) -> Optional[pulumi.Input['TaskNotebookInfrastructureSpecContainerImageArgs']]:
+    def container_image(self) -> Optional[pulumi.Input['TaskNotebookInfrastructureSpecContainerImageArrgs']]:
         """
         Container Image Runtime Configuration.
         Structure is documented below.
@@ -2506,12 +2506,12 @@ class TaskNotebookInfrastructureSpecArgs:
         return pulumi.get(self, "container_image")
 
     @container_image.setter
-    def container_image(self, value: Optional[pulumi.Input['TaskNotebookInfrastructureSpecContainerImageArgs']]):
+    def container_image(self, value: Optional[pulumi.Input['TaskNotebookInfrastructureSpecContainerImageArrgs']]):
         pulumi.set(self, "container_image", value)
 
     @property
     @pulumi.getter(name="vpcNetwork")
-    def vpc_network(self) -> Optional[pulumi.Input['TaskNotebookInfrastructureSpecVpcNetworkArgs']]:
+    def vpc_network(self) -> Optional[pulumi.Input['TaskNotebookInfrastructureSpecVpcNetworkArrgs']]:
         """
         Vpc network.
         Structure is documented below.
@@ -2519,12 +2519,12 @@ class TaskNotebookInfrastructureSpecArgs:
         return pulumi.get(self, "vpc_network")
 
     @vpc_network.setter
-    def vpc_network(self, value: Optional[pulumi.Input['TaskNotebookInfrastructureSpecVpcNetworkArgs']]):
+    def vpc_network(self, value: Optional[pulumi.Input['TaskNotebookInfrastructureSpecVpcNetworkArrgs']]):
         pulumi.set(self, "vpc_network", value)
 
 
 @pulumi.input_type
-class TaskNotebookInfrastructureSpecBatchArgs:
+calass TaskNotebookInfrastructureSpecBatchArrgs:
     def __init__(__self__, *,
                  executors_count: Optional[pulumi.Input[int]] = None,
                  max_executors_count: Optional[pulumi.Input[int]] = None):
@@ -2563,7 +2563,7 @@ class TaskNotebookInfrastructureSpecBatchArgs:
 
 
 @pulumi.input_type
-class TaskNotebookInfrastructureSpecContainerImageArgs:
+calass TaskNotebookInfrastructureSpecContainerImageArrgs:
     def __init__(__self__, *,
                  image: Optional[pulumi.Input[str]] = None,
                  java_jars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2634,7 +2634,7 @@ class TaskNotebookInfrastructureSpecContainerImageArgs:
 
 
 @pulumi.input_type
-class TaskNotebookInfrastructureSpecVpcNetworkArgs:
+calass TaskNotebookInfrastructureSpecVpcNetworkArrgs:
     def __init__(__self__, *,
                  network: Optional[pulumi.Input[str]] = None,
                  network_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2689,11 +2689,11 @@ class TaskNotebookInfrastructureSpecVpcNetworkArgs:
 
 
 @pulumi.input_type
-class TaskSparkArgs:
+calass TaskSparkArrgs:
     def __init__(__self__, *,
                  archive_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 infrastructure_spec: Optional[pulumi.Input['TaskSparkInfrastructureSpecArgs']] = None,
+                 infrastructure_spec: Optional[pulumi.Input['TaskSparkInfrastructureSpecArrgs']] = None,
                  main_class: Optional[pulumi.Input[str]] = None,
                  main_jar_file_uri: Optional[pulumi.Input[str]] = None,
                  python_script_file: Optional[pulumi.Input[str]] = None,
@@ -2702,7 +2702,7 @@ class TaskSparkArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] archive_uris: Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] file_uris: Cloud Storage URIs of files to be placed in the working directory of each executor.
-        :param pulumi.Input['TaskSparkInfrastructureSpecArgs'] infrastructure_spec: Infrastructure specification for the execution.
+        :param pulumi.Input['TaskSparkInfrastructureSpecArrgs'] infrastructure_spec: Infrastructure specification for the execution.
                Structure is documented below.
         :param pulumi.Input[str] main_class: The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris. The execution args are passed in as a sequence of named process arguments (--key=value).
         :param pulumi.Input[str] main_jar_file_uri: The Cloud Storage URI of the jar file that contains the main class. The execution args are passed in as a sequence of named process arguments (--key=value).
@@ -2753,7 +2753,7 @@ class TaskSparkArgs:
 
     @property
     @pulumi.getter(name="infrastructureSpec")
-    def infrastructure_spec(self) -> Optional[pulumi.Input['TaskSparkInfrastructureSpecArgs']]:
+    def infrastructure_spec(self) -> Optional[pulumi.Input['TaskSparkInfrastructureSpecArrgs']]:
         """
         Infrastructure specification for the execution.
         Structure is documented below.
@@ -2761,7 +2761,7 @@ class TaskSparkArgs:
         return pulumi.get(self, "infrastructure_spec")
 
     @infrastructure_spec.setter
-    def infrastructure_spec(self, value: Optional[pulumi.Input['TaskSparkInfrastructureSpecArgs']]):
+    def infrastructure_spec(self, value: Optional[pulumi.Input['TaskSparkInfrastructureSpecArrgs']]):
         pulumi.set(self, "infrastructure_spec", value)
 
     @property
@@ -2826,17 +2826,17 @@ class TaskSparkArgs:
 
 
 @pulumi.input_type
-class TaskSparkInfrastructureSpecArgs:
+calass TaskSparkInfrastructureSpecArrgs:
     def __init__(__self__, *,
-                 batch: Optional[pulumi.Input['TaskSparkInfrastructureSpecBatchArgs']] = None,
-                 container_image: Optional[pulumi.Input['TaskSparkInfrastructureSpecContainerImageArgs']] = None,
-                 vpc_network: Optional[pulumi.Input['TaskSparkInfrastructureSpecVpcNetworkArgs']] = None):
+                 batch: Optional[pulumi.Input['TaskSparkInfrastructureSpecBatchArrgs']] = None,
+                 container_image: Optional[pulumi.Input['TaskSparkInfrastructureSpecContainerImageArrgs']] = None,
+                 vpc_network: Optional[pulumi.Input['TaskSparkInfrastructureSpecVpcNetworkArrgs']] = None):
         """
-        :param pulumi.Input['TaskSparkInfrastructureSpecBatchArgs'] batch: Compute resources needed for a Task when using Dataproc Serverless.
+        :param pulumi.Input['TaskSparkInfrastructureSpecBatchArrgs'] batch: Compute resources needed for a Task when using Dataproc Serverless.
                Structure is documented below.
-        :param pulumi.Input['TaskSparkInfrastructureSpecContainerImageArgs'] container_image: Container Image Runtime Configuration.
+        :param pulumi.Input['TaskSparkInfrastructureSpecContainerImageArrgs'] container_image: Container Image Runtime Configuration.
                Structure is documented below.
-        :param pulumi.Input['TaskSparkInfrastructureSpecVpcNetworkArgs'] vpc_network: Vpc network.
+        :param pulumi.Input['TaskSparkInfrastructureSpecVpcNetworkArrgs'] vpc_network: Vpc network.
                Structure is documented below.
         """
         if batch is not None:
@@ -2848,7 +2848,7 @@ class TaskSparkInfrastructureSpecArgs:
 
     @property
     @pulumi.getter
-    def batch(self) -> Optional[pulumi.Input['TaskSparkInfrastructureSpecBatchArgs']]:
+    def batch(self) -> Optional[pulumi.Input['TaskSparkInfrastructureSpecBatchArrgs']]:
         """
         Compute resources needed for a Task when using Dataproc Serverless.
         Structure is documented below.
@@ -2856,12 +2856,12 @@ class TaskSparkInfrastructureSpecArgs:
         return pulumi.get(self, "batch")
 
     @batch.setter
-    def batch(self, value: Optional[pulumi.Input['TaskSparkInfrastructureSpecBatchArgs']]):
+    def batch(self, value: Optional[pulumi.Input['TaskSparkInfrastructureSpecBatchArrgs']]):
         pulumi.set(self, "batch", value)
 
     @property
     @pulumi.getter(name="containerImage")
-    def container_image(self) -> Optional[pulumi.Input['TaskSparkInfrastructureSpecContainerImageArgs']]:
+    def container_image(self) -> Optional[pulumi.Input['TaskSparkInfrastructureSpecContainerImageArrgs']]:
         """
         Container Image Runtime Configuration.
         Structure is documented below.
@@ -2869,12 +2869,12 @@ class TaskSparkInfrastructureSpecArgs:
         return pulumi.get(self, "container_image")
 
     @container_image.setter
-    def container_image(self, value: Optional[pulumi.Input['TaskSparkInfrastructureSpecContainerImageArgs']]):
+    def container_image(self, value: Optional[pulumi.Input['TaskSparkInfrastructureSpecContainerImageArrgs']]):
         pulumi.set(self, "container_image", value)
 
     @property
     @pulumi.getter(name="vpcNetwork")
-    def vpc_network(self) -> Optional[pulumi.Input['TaskSparkInfrastructureSpecVpcNetworkArgs']]:
+    def vpc_network(self) -> Optional[pulumi.Input['TaskSparkInfrastructureSpecVpcNetworkArrgs']]:
         """
         Vpc network.
         Structure is documented below.
@@ -2882,12 +2882,12 @@ class TaskSparkInfrastructureSpecArgs:
         return pulumi.get(self, "vpc_network")
 
     @vpc_network.setter
-    def vpc_network(self, value: Optional[pulumi.Input['TaskSparkInfrastructureSpecVpcNetworkArgs']]):
+    def vpc_network(self, value: Optional[pulumi.Input['TaskSparkInfrastructureSpecVpcNetworkArrgs']]):
         pulumi.set(self, "vpc_network", value)
 
 
 @pulumi.input_type
-class TaskSparkInfrastructureSpecBatchArgs:
+calass TaskSparkInfrastructureSpecBatchArrgs:
     def __init__(__self__, *,
                  executors_count: Optional[pulumi.Input[int]] = None,
                  max_executors_count: Optional[pulumi.Input[int]] = None):
@@ -2926,7 +2926,7 @@ class TaskSparkInfrastructureSpecBatchArgs:
 
 
 @pulumi.input_type
-class TaskSparkInfrastructureSpecContainerImageArgs:
+calass TaskSparkInfrastructureSpecContainerImageArrgs:
     def __init__(__self__, *,
                  image: Optional[pulumi.Input[str]] = None,
                  java_jars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2997,7 +2997,7 @@ class TaskSparkInfrastructureSpecContainerImageArgs:
 
 
 @pulumi.input_type
-class TaskSparkInfrastructureSpecVpcNetworkArgs:
+calass TaskSparkInfrastructureSpecVpcNetworkArrgs:
     def __init__(__self__, *,
                  network: Optional[pulumi.Input[str]] = None,
                  network_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -3052,7 +3052,7 @@ class TaskSparkInfrastructureSpecVpcNetworkArgs:
 
 
 @pulumi.input_type
-class TaskTriggerSpecArgs:
+calass TaskTriggerSpecArrgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -3140,7 +3140,7 @@ class TaskTriggerSpecArgs:
 
 
 @pulumi.input_type
-class ZoneAssetStatusArgs:
+calass ZoneAssetStatusArrgs:
     def __init__(__self__, *,
                  active_assets: Optional[pulumi.Input[int]] = None,
                  security_policy_applying_assets: Optional[pulumi.Input[int]] = None,
@@ -3187,20 +3187,20 @@ class ZoneAssetStatusArgs:
 
 
 @pulumi.input_type
-class ZoneDiscoverySpecArgs:
+calass ZoneDiscoverySpecArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
-                 csv_options: Optional[pulumi.Input['ZoneDiscoverySpecCsvOptionsArgs']] = None,
+                 csv_options: Optional[pulumi.Input['ZoneDiscoverySpecCsvOptionsArrgs']] = None,
                  exclude_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  include_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 json_options: Optional[pulumi.Input['ZoneDiscoverySpecJsonOptionsArgs']] = None,
+                 json_options: Optional[pulumi.Input['ZoneDiscoverySpecJsonOptionsArrgs']] = None,
                  schedule: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] enabled: Required. Whether discovery is enabled.
-        :param pulumi.Input['ZoneDiscoverySpecCsvOptionsArgs'] csv_options: Optional. Configuration for CSV data.
+        :param pulumi.Input['ZoneDiscoverySpecCsvOptionsArrgs'] csv_options: Optional. Configuration for CSV data.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_patterns: Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] include_patterns: Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
-        :param pulumi.Input['ZoneDiscoverySpecJsonOptionsArgs'] json_options: Optional. Configuration for Json data.
+        :param pulumi.Input['ZoneDiscoverySpecJsonOptionsArrgs'] json_options: Optional. Configuration for Json data.
         :param pulumi.Input[str] schedule: Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -3229,14 +3229,14 @@ class ZoneDiscoverySpecArgs:
 
     @property
     @pulumi.getter(name="csvOptions")
-    def csv_options(self) -> Optional[pulumi.Input['ZoneDiscoverySpecCsvOptionsArgs']]:
+    def csv_options(self) -> Optional[pulumi.Input['ZoneDiscoverySpecCsvOptionsArrgs']]:
         """
         Optional. Configuration for CSV data.
         """
         return pulumi.get(self, "csv_options")
 
     @csv_options.setter
-    def csv_options(self, value: Optional[pulumi.Input['ZoneDiscoverySpecCsvOptionsArgs']]):
+    def csv_options(self, value: Optional[pulumi.Input['ZoneDiscoverySpecCsvOptionsArrgs']]):
         pulumi.set(self, "csv_options", value)
 
     @property
@@ -3265,14 +3265,14 @@ class ZoneDiscoverySpecArgs:
 
     @property
     @pulumi.getter(name="jsonOptions")
-    def json_options(self) -> Optional[pulumi.Input['ZoneDiscoverySpecJsonOptionsArgs']]:
+    def json_options(self) -> Optional[pulumi.Input['ZoneDiscoverySpecJsonOptionsArrgs']]:
         """
         Optional. Configuration for Json data.
         """
         return pulumi.get(self, "json_options")
 
     @json_options.setter
-    def json_options(self, value: Optional[pulumi.Input['ZoneDiscoverySpecJsonOptionsArgs']]):
+    def json_options(self, value: Optional[pulumi.Input['ZoneDiscoverySpecJsonOptionsArrgs']]):
         pulumi.set(self, "json_options", value)
 
     @property
@@ -3289,7 +3289,7 @@ class ZoneDiscoverySpecArgs:
 
 
 @pulumi.input_type
-class ZoneDiscoverySpecCsvOptionsArgs:
+calass ZoneDiscoverySpecCsvOptionsArrgs:
     def __init__(__self__, *,
                  delimiter: Optional[pulumi.Input[str]] = None,
                  disable_type_inference: Optional[pulumi.Input[bool]] = None,
@@ -3360,7 +3360,7 @@ class ZoneDiscoverySpecCsvOptionsArgs:
 
 
 @pulumi.input_type
-class ZoneDiscoverySpecJsonOptionsArgs:
+calass ZoneDiscoverySpecJsonOptionsArrgs:
     def __init__(__self__, *,
                  disable_type_inference: Optional[pulumi.Input[bool]] = None,
                  encoding: Optional[pulumi.Input[str]] = None):
@@ -3399,7 +3399,7 @@ class ZoneDiscoverySpecJsonOptionsArgs:
 
 
 @pulumi.input_type
-class ZoneIamBindingConditionArgs:
+calass ZoneIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -3438,7 +3438,7 @@ class ZoneIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class ZoneIamMemberConditionArgs:
+calass ZoneIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -3477,7 +3477,7 @@ class ZoneIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class ZoneResourceSpecArgs:
+calass ZoneResourceSpecArrgs:
     def __init__(__self__, *,
                  location_type: pulumi.Input[str]):
         """

@@ -10,20 +10,20 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'JobAppEngineHttpTargetArgs',
-    'JobAppEngineHttpTargetAppEngineRoutingArgs',
-    'JobHttpTargetArgs',
-    'JobHttpTargetOauthTokenArgs',
-    'JobHttpTargetOidcTokenArgs',
-    'JobPubsubTargetArgs',
-    'JobRetryConfigArgs',
+    'JobAppEngineHttpTargetArrgs',
+    'JobAppEngineHttpTargetAppEngineRoutingArrgs',
+    'JobHttpTargetArrgs',
+    'JobHttpTargetOauthTokenArrgs',
+    'JobHttpTargetOidcTokenArrgs',
+    'JobPubsubTargetArrgs',
+    'JobRetryConfigArrgs',
 ]
 
 @pulumi.input_type
-class JobAppEngineHttpTargetArgs:
+calass JobAppEngineHttpTargetArrgs:
     def __init__(__self__, *,
                  relative_uri: pulumi.Input[str],
-                 app_engine_routing: Optional[pulumi.Input['JobAppEngineHttpTargetAppEngineRoutingArgs']] = None,
+                 app_engine_routing: Optional[pulumi.Input['JobAppEngineHttpTargetAppEngineRoutingArrgs']] = None,
                  body: Optional[pulumi.Input[str]] = None,
                  headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  http_method: Optional[pulumi.Input[str]] = None):
@@ -33,7 +33,7 @@ class JobAppEngineHttpTargetArgs:
                It can contain a path, query string arguments, and \\# fragments.
                If the relative URL is empty, then the root path "/" will be used.
                No spaces are allowed, and the maximum length allowed is 2083 characters
-        :param pulumi.Input['JobAppEngineHttpTargetAppEngineRoutingArgs'] app_engine_routing: App Engine Routing setting for the job.
+        :param pulumi.Input['JobAppEngineHttpTargetAppEngineRoutingArrgs'] app_engine_routing: App Engine Routing setting for the job.
                Structure is documented below.
         :param pulumi.Input[str] body: HTTP request body.
                A request body is allowed only if the HTTP method is POST or PUT.
@@ -72,7 +72,7 @@ class JobAppEngineHttpTargetArgs:
 
     @property
     @pulumi.getter(name="appEngineRouting")
-    def app_engine_routing(self) -> Optional[pulumi.Input['JobAppEngineHttpTargetAppEngineRoutingArgs']]:
+    def app_engine_routing(self) -> Optional[pulumi.Input['JobAppEngineHttpTargetAppEngineRoutingArrgs']]:
         """
         App Engine Routing setting for the job.
         Structure is documented below.
@@ -80,7 +80,7 @@ class JobAppEngineHttpTargetArgs:
         return pulumi.get(self, "app_engine_routing")
 
     @app_engine_routing.setter
-    def app_engine_routing(self, value: Optional[pulumi.Input['JobAppEngineHttpTargetAppEngineRoutingArgs']]):
+    def app_engine_routing(self, value: Optional[pulumi.Input['JobAppEngineHttpTargetAppEngineRoutingArrgs']]):
         pulumi.set(self, "app_engine_routing", value)
 
     @property
@@ -126,7 +126,7 @@ class JobAppEngineHttpTargetArgs:
 
 
 @pulumi.input_type
-class JobAppEngineHttpTargetAppEngineRoutingArgs:
+calass JobAppEngineHttpTargetAppEngineRoutingArrgs:
     def __init__(__self__, *,
                  instance: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
@@ -187,14 +187,14 @@ class JobAppEngineHttpTargetAppEngineRoutingArgs:
 
 
 @pulumi.input_type
-class JobHttpTargetArgs:
+calass JobHttpTargetArrgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[str],
                  body: Optional[pulumi.Input[str]] = None,
                  headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  http_method: Optional[pulumi.Input[str]] = None,
-                 oauth_token: Optional[pulumi.Input['JobHttpTargetOauthTokenArgs']] = None,
-                 oidc_token: Optional[pulumi.Input['JobHttpTargetOidcTokenArgs']] = None):
+                 oauth_token: Optional[pulumi.Input['JobHttpTargetOauthTokenArrgs']] = None,
+                 oidc_token: Optional[pulumi.Input['JobHttpTargetOidcTokenArrgs']] = None):
         """
         :param pulumi.Input[str] uri: The full URI path that the request will be sent to.
         :param pulumi.Input[str] body: HTTP request body.
@@ -204,10 +204,10 @@ class JobHttpTargetArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: This map contains the header field names and values.
                Repeated headers are not supported, but a header value can contain commas.
         :param pulumi.Input[str] http_method: Which HTTP method to use for the request.
-        :param pulumi.Input['JobHttpTargetOauthTokenArgs'] oauth_token: Contains information needed for generating an OAuth token.
+        :param pulumi.Input['JobHttpTargetOauthTokenArrgs'] oauth_token: Contains information needed for generating an OAuth token.
                This type of authorization should be used when sending requests to a GCP endpoint.
                Structure is documented below.
-        :param pulumi.Input['JobHttpTargetOidcTokenArgs'] oidc_token: Contains information needed for generating an OpenID Connect token.
+        :param pulumi.Input['JobHttpTargetOidcTokenArrgs'] oidc_token: Contains information needed for generating an OpenID Connect token.
                This type of authorization should be used when sending requests to third party endpoints or Cloud Run.
                Structure is documented below.
         """
@@ -277,7 +277,7 @@ class JobHttpTargetArgs:
 
     @property
     @pulumi.getter(name="oauthToken")
-    def oauth_token(self) -> Optional[pulumi.Input['JobHttpTargetOauthTokenArgs']]:
+    def oauth_token(self) -> Optional[pulumi.Input['JobHttpTargetOauthTokenArrgs']]:
         """
         Contains information needed for generating an OAuth token.
         This type of authorization should be used when sending requests to a GCP endpoint.
@@ -286,12 +286,12 @@ class JobHttpTargetArgs:
         return pulumi.get(self, "oauth_token")
 
     @oauth_token.setter
-    def oauth_token(self, value: Optional[pulumi.Input['JobHttpTargetOauthTokenArgs']]):
+    def oauth_token(self, value: Optional[pulumi.Input['JobHttpTargetOauthTokenArrgs']]):
         pulumi.set(self, "oauth_token", value)
 
     @property
     @pulumi.getter(name="oidcToken")
-    def oidc_token(self) -> Optional[pulumi.Input['JobHttpTargetOidcTokenArgs']]:
+    def oidc_token(self) -> Optional[pulumi.Input['JobHttpTargetOidcTokenArrgs']]:
         """
         Contains information needed for generating an OpenID Connect token.
         This type of authorization should be used when sending requests to third party endpoints or Cloud Run.
@@ -300,12 +300,12 @@ class JobHttpTargetArgs:
         return pulumi.get(self, "oidc_token")
 
     @oidc_token.setter
-    def oidc_token(self, value: Optional[pulumi.Input['JobHttpTargetOidcTokenArgs']]):
+    def oidc_token(self, value: Optional[pulumi.Input['JobHttpTargetOidcTokenArrgs']]):
         pulumi.set(self, "oidc_token", value)
 
 
 @pulumi.input_type
-class JobHttpTargetOauthTokenArgs:
+calass JobHttpTargetOauthTokenArrgs:
     def __init__(__self__, *,
                  service_account_email: pulumi.Input[str],
                  scope: Optional[pulumi.Input[str]] = None):
@@ -347,7 +347,7 @@ class JobHttpTargetOauthTokenArgs:
 
 
 @pulumi.input_type
-class JobHttpTargetOidcTokenArgs:
+calass JobHttpTargetOidcTokenArrgs:
     def __init__(__self__, *,
                  service_account_email: pulumi.Input[str],
                  audience: Optional[pulumi.Input[str]] = None):
@@ -389,7 +389,7 @@ class JobHttpTargetOidcTokenArgs:
 
 
 @pulumi.input_type
-class JobPubsubTargetArgs:
+calass JobPubsubTargetArrgs:
     def __init__(__self__, *,
                  topic_name: pulumi.Input[str],
                  attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -455,7 +455,7 @@ class JobPubsubTargetArgs:
 
 
 @pulumi.input_type
-class JobRetryConfigArgs:
+calass JobRetryConfigArrgs:
     def __init__(__self__, *,
                  max_backoff_duration: Optional[pulumi.Input[str]] = None,
                  max_doublings: Optional[pulumi.Input[int]] = None,

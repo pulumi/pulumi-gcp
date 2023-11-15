@@ -31,7 +31,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class WorkstationClusterCondition(dict):
+calass WorkstationClusterCondition(dict):
     def __init__(__self__, *,
                  code: Optional[int] = None,
                  details: Optional[Sequence[Mapping[str, Any]]] = None,
@@ -80,7 +80,7 @@ class WorkstationClusterCondition(dict):
 
 
 @pulumi.output_type
-class WorkstationClusterDomainConfig(dict):
+calass WorkstationClusterDomainConfig(dict):
     def __init__(__self__, *,
                  domain: str):
         """
@@ -98,7 +98,7 @@ class WorkstationClusterDomainConfig(dict):
 
 
 @pulumi.output_type
-class WorkstationClusterPrivateClusterConfig(dict):
+calass WorkstationClusterPrivateClusterConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -189,7 +189,7 @@ class WorkstationClusterPrivateClusterConfig(dict):
 
 
 @pulumi.output_type
-class WorkstationConfigCondition(dict):
+calass WorkstationConfigCondition(dict):
     def __init__(__self__, *,
                  code: Optional[int] = None,
                  details: Optional[Sequence[Mapping[str, Any]]] = None,
@@ -238,7 +238,7 @@ class WorkstationConfigCondition(dict):
 
 
 @pulumi.output_type
-class WorkstationConfigContainer(dict):
+calass WorkstationConfigContainer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -338,7 +338,7 @@ class WorkstationConfigContainer(dict):
 
 
 @pulumi.output_type
-class WorkstationConfigEncryptionKey(dict):
+calass WorkstationConfigEncryptionKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -386,7 +386,7 @@ class WorkstationConfigEncryptionKey(dict):
 
 
 @pulumi.output_type
-class WorkstationConfigHost(dict):
+calass WorkstationConfigHost(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -407,7 +407,7 @@ class WorkstationConfigHost(dict):
     def __init__(__self__, *,
                  gce_instance: Optional['outputs.WorkstationConfigHostGceInstance'] = None):
         """
-        :param 'WorkstationConfigHostGceInstanceArgs' gce_instance: A runtime using a Compute Engine instance.
+        :param 'WorkstationConfigHostGceInstanceArrgs' gce_instance: A runtime using a Compute Engine instance.
                Structure is documented below.
         """
         if gce_instance is not None:
@@ -424,7 +424,7 @@ class WorkstationConfigHost(dict):
 
 
 @pulumi.output_type
-class WorkstationConfigHostGceInstance(dict):
+calass WorkstationConfigHostGceInstance(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -471,10 +471,10 @@ class WorkstationConfigHostGceInstance(dict):
                  shielded_instance_config: Optional['outputs.WorkstationConfigHostGceInstanceShieldedInstanceConfig'] = None,
                  tags: Optional[Sequence[str]] = None):
         """
-        :param Sequence['WorkstationConfigHostGceInstanceAcceleratorArgs'] accelerators: An accelerator card attached to the instance.
+        :param Sequence['WorkstationConfigHostGceInstanceAcceleratorArrgs'] accelerators: An accelerator card attached to the instance.
                Structure is documented below.
         :param int boot_disk_size_gb: Size of the boot disk in GB.
-        :param 'WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs' confidential_instance_config: A set of Compute Engine Confidential VM instance options.
+        :param 'WorkstationConfigHostGceInstanceConfidentialInstanceConfigArrgs' confidential_instance_config: A set of Compute Engine Confidential VM instance options.
                Structure is documented below.
         :param bool disable_public_ip_addresses: Whether instances have no public IP address.
         :param bool enable_nested_virtualization: Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
@@ -483,7 +483,7 @@ class WorkstationConfigHostGceInstance(dict):
         :param int pool_size: Number of instances to pool for faster workstation startup.
         :param str service_account: Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
         :param Sequence[str] service_account_scopes: Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
-        :param 'WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs' shielded_instance_config: A set of Compute Engine Shielded instance options.
+        :param 'WorkstationConfigHostGceInstanceShieldedInstanceConfigArrgs' shielded_instance_config: A set of Compute Engine Shielded instance options.
                Structure is documented below.
         :param Sequence[str] tags: Network tags to add to the Compute Engine machines backing the Workstations.
         """
@@ -604,7 +604,7 @@ class WorkstationConfigHostGceInstance(dict):
 
 
 @pulumi.output_type
-class WorkstationConfigHostGceInstanceAccelerator(dict):
+calass WorkstationConfigHostGceInstanceAccelerator(dict):
     def __init__(__self__, *,
                  count: int,
                  type: str):
@@ -633,7 +633,7 @@ class WorkstationConfigHostGceInstanceAccelerator(dict):
 
 
 @pulumi.output_type
-class WorkstationConfigHostGceInstanceConfidentialInstanceConfig(dict):
+calass WorkstationConfigHostGceInstanceConfidentialInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -669,7 +669,7 @@ class WorkstationConfigHostGceInstanceConfidentialInstanceConfig(dict):
 
 
 @pulumi.output_type
-class WorkstationConfigHostGceInstanceShieldedInstanceConfig(dict):
+calass WorkstationConfigHostGceInstanceShieldedInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -733,7 +733,7 @@ class WorkstationConfigHostGceInstanceShieldedInstanceConfig(dict):
 
 
 @pulumi.output_type
-class WorkstationConfigIamBindingCondition(dict):
+calass WorkstationConfigIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -760,7 +760,7 @@ class WorkstationConfigIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class WorkstationConfigIamMemberCondition(dict):
+calass WorkstationConfigIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -787,7 +787,7 @@ class WorkstationConfigIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class WorkstationConfigPersistentDirectory(dict):
+calass WorkstationConfigPersistentDirectory(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -811,7 +811,7 @@ class WorkstationConfigPersistentDirectory(dict):
                  gce_pd: Optional['outputs.WorkstationConfigPersistentDirectoryGcePd'] = None,
                  mount_path: Optional[str] = None):
         """
-        :param 'WorkstationConfigPersistentDirectoryGcePdArgs' gce_pd: A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
+        :param 'WorkstationConfigPersistentDirectoryGcePdArrgs' gce_pd: A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
                Structure is documented below.
         :param str mount_path: Location of this directory in the running workstation.
         """
@@ -839,7 +839,7 @@ class WorkstationConfigPersistentDirectory(dict):
 
 
 @pulumi.output_type
-class WorkstationConfigPersistentDirectoryGcePd(dict):
+calass WorkstationConfigPersistentDirectoryGcePd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -935,7 +935,7 @@ class WorkstationConfigPersistentDirectoryGcePd(dict):
 
 
 @pulumi.output_type
-class WorkstationIamBindingCondition(dict):
+calass WorkstationIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -962,7 +962,7 @@ class WorkstationIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class WorkstationIamMemberCondition(dict):
+calass WorkstationIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,

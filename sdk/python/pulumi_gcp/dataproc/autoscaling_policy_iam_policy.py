@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['AutoscalingPolicyIamPolicyArgs', 'AutoscalingPolicyIamPolicy']
+__all__ = ['AutoscalingPolicyIamPolicyArrgs', 'AutoscalingPolicyIamPolicy']
 
 @pulumi.input_type
-class AutoscalingPolicyIamPolicyArgs:
+calass AutoscalingPolicyIamPolicyArrgs:
     def __init__(__self__, *,
                  policy_data: pulumi.Input[str],
                  policy_id: pulumi.Input[str],
@@ -120,7 +120,7 @@ class AutoscalingPolicyIamPolicyArgs:
 
 
 @pulumi.input_type
-class _AutoscalingPolicyIamPolicyState:
+calass _AutoscalingPolicyIamPolicyState:
     def __init__(__self__, *,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -245,7 +245,7 @@ class _AutoscalingPolicyIamPolicyState:
         pulumi.set(self, "project", value)
 
 
-class AutoscalingPolicyIamPolicy(pulumi.CustomResource):
+calass AutoscalingPolicyIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -276,7 +276,7 @@ class AutoscalingPolicyIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -369,7 +369,7 @@ class AutoscalingPolicyIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AutoscalingPolicyIamPolicyArgs,
+                 args: AutoscalingPolicyIamPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Dataproc AutoscalingPolicy. Each of these resources serves a different use case:
@@ -392,7 +392,7 @@ class AutoscalingPolicyIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -456,12 +456,12 @@ class AutoscalingPolicyIamPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param AutoscalingPolicyIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param AutoscalingPolicyIamPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AutoscalingPolicyIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AutoscalingPolicyIamPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -481,7 +481,7 @@ class AutoscalingPolicyIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AutoscalingPolicyIamPolicyArgs.__new__(AutoscalingPolicyIamPolicyArgs)
+            __props__ = AutoscalingPolicyIamPolicyArrgs.__new__(AutoscalingPolicyIamPolicyArrgs)
 
             __props__.__dict__["location"] = location
             if policy_data is None and not opts.urn:

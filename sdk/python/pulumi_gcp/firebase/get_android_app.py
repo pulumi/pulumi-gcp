@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetAndroidAppResult:
+calass GetAndroidAppResult:
     """
     A collection of values returned by getAndroidApp.
     """
@@ -139,7 +139,7 @@ class GetAndroidAppResult:
         return pulumi.get(self, "sha256_hashes")
 
 
-class AwaitableGetAndroidAppResult(GetAndroidAppResult):
+calass AwaitableGetAndroidAppResult(GetAndroidAppResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

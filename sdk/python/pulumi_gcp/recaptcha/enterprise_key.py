@@ -11,18 +11,18 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['EnterpriseKeyArgs', 'EnterpriseKey']
+__all__ = ['EnterpriseKeyArrgs', 'EnterpriseKey']
 
 @pulumi.input_type
-class EnterpriseKeyArgs:
+calass EnterpriseKeyArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
-                 android_settings: Optional[pulumi.Input['EnterpriseKeyAndroidSettingsArgs']] = None,
-                 ios_settings: Optional[pulumi.Input['EnterpriseKeyIosSettingsArgs']] = None,
+                 android_settings: Optional[pulumi.Input['EnterpriseKeyAndroidSettingsArrgs']] = None,
+                 ios_settings: Optional[pulumi.Input['EnterpriseKeyIosSettingsArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 testing_options: Optional[pulumi.Input['EnterpriseKeyTestingOptionsArgs']] = None,
-                 web_settings: Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']] = None):
+                 testing_options: Optional[pulumi.Input['EnterpriseKeyTestingOptionsArrgs']] = None,
+                 web_settings: Optional[pulumi.Input['EnterpriseKeyWebSettingsArrgs']] = None):
         """
         The set of arguments for constructing a EnterpriseKey resource.
         :param pulumi.Input[str] display_name: Human-readable display name of this key. Modifiable by user.
@@ -30,15 +30,15 @@ class EnterpriseKeyArgs:
                
                
                - - -
-        :param pulumi.Input['EnterpriseKeyAndroidSettingsArgs'] android_settings: Settings for keys that can be used by Android apps.
-        :param pulumi.Input['EnterpriseKeyIosSettingsArgs'] ios_settings: Settings for keys that can be used by iOS apps.
+        :param pulumi.Input['EnterpriseKeyAndroidSettingsArrgs'] android_settings: Settings for keys that can be used by Android apps.
+        :param pulumi.Input['EnterpriseKeyIosSettingsArrgs'] ios_settings: Settings for keys that can be used by iOS apps.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input['EnterpriseKeyTestingOptionsArgs'] testing_options: Options for user acceptance testing.
-        :param pulumi.Input['EnterpriseKeyWebSettingsArgs'] web_settings: Settings for keys that can be used by websites.
+        :param pulumi.Input['EnterpriseKeyTestingOptionsArrgs'] testing_options: Options for user acceptance testing.
+        :param pulumi.Input['EnterpriseKeyWebSettingsArrgs'] web_settings: Settings for keys that can be used by websites.
         """
         pulumi.set(__self__, "display_name", display_name)
         if android_settings is not None:
@@ -72,26 +72,26 @@ class EnterpriseKeyArgs:
 
     @property
     @pulumi.getter(name="androidSettings")
-    def android_settings(self) -> Optional[pulumi.Input['EnterpriseKeyAndroidSettingsArgs']]:
+    def android_settings(self) -> Optional[pulumi.Input['EnterpriseKeyAndroidSettingsArrgs']]:
         """
         Settings for keys that can be used by Android apps.
         """
         return pulumi.get(self, "android_settings")
 
     @android_settings.setter
-    def android_settings(self, value: Optional[pulumi.Input['EnterpriseKeyAndroidSettingsArgs']]):
+    def android_settings(self, value: Optional[pulumi.Input['EnterpriseKeyAndroidSettingsArrgs']]):
         pulumi.set(self, "android_settings", value)
 
     @property
     @pulumi.getter(name="iosSettings")
-    def ios_settings(self) -> Optional[pulumi.Input['EnterpriseKeyIosSettingsArgs']]:
+    def ios_settings(self) -> Optional[pulumi.Input['EnterpriseKeyIosSettingsArrgs']]:
         """
         Settings for keys that can be used by iOS apps.
         """
         return pulumi.get(self, "ios_settings")
 
     @ios_settings.setter
-    def ios_settings(self, value: Optional[pulumi.Input['EnterpriseKeyIosSettingsArgs']]):
+    def ios_settings(self, value: Optional[pulumi.Input['EnterpriseKeyIosSettingsArrgs']]):
         pulumi.set(self, "ios_settings", value)
 
     @property
@@ -123,46 +123,46 @@ class EnterpriseKeyArgs:
 
     @property
     @pulumi.getter(name="testingOptions")
-    def testing_options(self) -> Optional[pulumi.Input['EnterpriseKeyTestingOptionsArgs']]:
+    def testing_options(self) -> Optional[pulumi.Input['EnterpriseKeyTestingOptionsArrgs']]:
         """
         Options for user acceptance testing.
         """
         return pulumi.get(self, "testing_options")
 
     @testing_options.setter
-    def testing_options(self, value: Optional[pulumi.Input['EnterpriseKeyTestingOptionsArgs']]):
+    def testing_options(self, value: Optional[pulumi.Input['EnterpriseKeyTestingOptionsArrgs']]):
         pulumi.set(self, "testing_options", value)
 
     @property
     @pulumi.getter(name="webSettings")
-    def web_settings(self) -> Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']]:
+    def web_settings(self) -> Optional[pulumi.Input['EnterpriseKeyWebSettingsArrgs']]:
         """
         Settings for keys that can be used by websites.
         """
         return pulumi.get(self, "web_settings")
 
     @web_settings.setter
-    def web_settings(self, value: Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']]):
+    def web_settings(self, value: Optional[pulumi.Input['EnterpriseKeyWebSettingsArrgs']]):
         pulumi.set(self, "web_settings", value)
 
 
 @pulumi.input_type
-class _EnterpriseKeyState:
+calass _EnterpriseKeyState:
     def __init__(__self__, *,
-                 android_settings: Optional[pulumi.Input['EnterpriseKeyAndroidSettingsArgs']] = None,
+                 android_settings: Optional[pulumi.Input['EnterpriseKeyAndroidSettingsArrgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 ios_settings: Optional[pulumi.Input['EnterpriseKeyIosSettingsArgs']] = None,
+                 ios_settings: Optional[pulumi.Input['EnterpriseKeyIosSettingsArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 testing_options: Optional[pulumi.Input['EnterpriseKeyTestingOptionsArgs']] = None,
-                 web_settings: Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']] = None):
+                 testing_options: Optional[pulumi.Input['EnterpriseKeyTestingOptionsArrgs']] = None,
+                 web_settings: Optional[pulumi.Input['EnterpriseKeyWebSettingsArrgs']] = None):
         """
         Input properties used for looking up and filtering EnterpriseKey resources.
-        :param pulumi.Input['EnterpriseKeyAndroidSettingsArgs'] android_settings: Settings for keys that can be used by Android apps.
+        :param pulumi.Input['EnterpriseKeyAndroidSettingsArrgs'] android_settings: Settings for keys that can be used by Android apps.
         :param pulumi.Input[str] create_time: The timestamp corresponding to the creation of this Key.
         :param pulumi.Input[str] display_name: Human-readable display name of this key. Modifiable by user.
                
@@ -170,7 +170,7 @@ class _EnterpriseKeyState:
                
                - - -
         :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input['EnterpriseKeyIosSettingsArgs'] ios_settings: Settings for keys that can be used by iOS apps.
+        :param pulumi.Input['EnterpriseKeyIosSettingsArrgs'] ios_settings: Settings for keys that can be used by iOS apps.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -178,8 +178,8 @@ class _EnterpriseKeyState:
         :param pulumi.Input[str] name: The resource name for the Key in the format "projects/{project}/keys/{key}".
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input['EnterpriseKeyTestingOptionsArgs'] testing_options: Options for user acceptance testing.
-        :param pulumi.Input['EnterpriseKeyWebSettingsArgs'] web_settings: Settings for keys that can be used by websites.
+        :param pulumi.Input['EnterpriseKeyTestingOptionsArrgs'] testing_options: Options for user acceptance testing.
+        :param pulumi.Input['EnterpriseKeyWebSettingsArrgs'] web_settings: Settings for keys that can be used by websites.
         """
         if android_settings is not None:
             pulumi.set(__self__, "android_settings", android_settings)
@@ -206,14 +206,14 @@ class _EnterpriseKeyState:
 
     @property
     @pulumi.getter(name="androidSettings")
-    def android_settings(self) -> Optional[pulumi.Input['EnterpriseKeyAndroidSettingsArgs']]:
+    def android_settings(self) -> Optional[pulumi.Input['EnterpriseKeyAndroidSettingsArrgs']]:
         """
         Settings for keys that can be used by Android apps.
         """
         return pulumi.get(self, "android_settings")
 
     @android_settings.setter
-    def android_settings(self, value: Optional[pulumi.Input['EnterpriseKeyAndroidSettingsArgs']]):
+    def android_settings(self, value: Optional[pulumi.Input['EnterpriseKeyAndroidSettingsArrgs']]):
         pulumi.set(self, "android_settings", value)
 
     @property
@@ -258,14 +258,14 @@ class _EnterpriseKeyState:
 
     @property
     @pulumi.getter(name="iosSettings")
-    def ios_settings(self) -> Optional[pulumi.Input['EnterpriseKeyIosSettingsArgs']]:
+    def ios_settings(self) -> Optional[pulumi.Input['EnterpriseKeyIosSettingsArrgs']]:
         """
         Settings for keys that can be used by iOS apps.
         """
         return pulumi.get(self, "ios_settings")
 
     @ios_settings.setter
-    def ios_settings(self, value: Optional[pulumi.Input['EnterpriseKeyIosSettingsArgs']]):
+    def ios_settings(self, value: Optional[pulumi.Input['EnterpriseKeyIosSettingsArrgs']]):
         pulumi.set(self, "ios_settings", value)
 
     @property
@@ -321,41 +321,41 @@ class _EnterpriseKeyState:
 
     @property
     @pulumi.getter(name="testingOptions")
-    def testing_options(self) -> Optional[pulumi.Input['EnterpriseKeyTestingOptionsArgs']]:
+    def testing_options(self) -> Optional[pulumi.Input['EnterpriseKeyTestingOptionsArrgs']]:
         """
         Options for user acceptance testing.
         """
         return pulumi.get(self, "testing_options")
 
     @testing_options.setter
-    def testing_options(self, value: Optional[pulumi.Input['EnterpriseKeyTestingOptionsArgs']]):
+    def testing_options(self, value: Optional[pulumi.Input['EnterpriseKeyTestingOptionsArrgs']]):
         pulumi.set(self, "testing_options", value)
 
     @property
     @pulumi.getter(name="webSettings")
-    def web_settings(self) -> Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']]:
+    def web_settings(self) -> Optional[pulumi.Input['EnterpriseKeyWebSettingsArrgs']]:
         """
         Settings for keys that can be used by websites.
         """
         return pulumi.get(self, "web_settings")
 
     @web_settings.setter
-    def web_settings(self, value: Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']]):
+    def web_settings(self, value: Optional[pulumi.Input['EnterpriseKeyWebSettingsArrgs']]):
         pulumi.set(self, "web_settings", value)
 
 
-class EnterpriseKey(pulumi.CustomResource):
+calass EnterpriseKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 android_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyAndroidSettingsArgs']]] = None,
+                 android_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyAndroidSettingsArrgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 ios_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyIosSettingsArgs']]] = None,
+                 ios_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyIosSettingsArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 testing_options: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyTestingOptionsArgs']]] = None,
-                 web_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyWebSettingsArgs']]] = None,
+                 testing_options: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyTestingOptionsArrgs']]] = None,
+                 web_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyWebSettingsArrgs']]] = None,
                  __props__=None):
         """
         The RecaptchaEnterprise Key resource
@@ -368,7 +368,7 @@ class EnterpriseKey(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.recaptcha.EnterpriseKey("primary",
-            android_settings=gcp.recaptcha.EnterpriseKeyAndroidSettingsArgs(
+            android_settings=gcp.recaptcha.EnterpriseKeyAndroidSettingsArrgs(
                 allow_all_package_names=True,
                 allowed_package_names=[],
             ),
@@ -377,7 +377,7 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             project="my-project-name",
-            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
+            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArrgs(
                 testing_score=0.8,
             ))
         ```
@@ -389,7 +389,7 @@ class EnterpriseKey(pulumi.CustomResource):
 
         primary = gcp.recaptcha.EnterpriseKey("primary",
             display_name="display-name-one",
-            ios_settings=gcp.recaptcha.EnterpriseKeyIosSettingsArgs(
+            ios_settings=gcp.recaptcha.EnterpriseKeyIosSettingsArrgs(
                 allow_all_bundle_ids=True,
                 allowed_bundle_ids=[],
             ),
@@ -397,7 +397,7 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             project="my-project-name",
-            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
+            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArrgs(
                 testing_score=1,
             ))
         ```
@@ -411,7 +411,7 @@ class EnterpriseKey(pulumi.CustomResource):
             display_name="display-name-one",
             labels={},
             project="my-project-name",
-            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
+            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArrgs(
                 allow_all_domains=True,
                 integration_type="SCORE",
             ))
@@ -428,11 +428,11 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             project="my-project-name",
-            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
+            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArrgs(
                 testing_challenge="NOCAPTCHA",
                 testing_score=0.5,
             ),
-            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
+            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArrgs(
                 allow_all_domains=True,
                 allowed_domains=[],
                 challenge_security_preference="USABILITY",
@@ -451,10 +451,10 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             project="my-project-name",
-            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
+            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArrgs(
                 testing_score=0.5,
             ),
-            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
+            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArrgs(
                 allow_all_domains=True,
                 allow_amp_traffic=False,
                 allowed_domains=[],
@@ -488,26 +488,26 @@ class EnterpriseKey(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['EnterpriseKeyAndroidSettingsArgs']] android_settings: Settings for keys that can be used by Android apps.
+        :param pulumi.Input[pulumi.InputType['EnterpriseKeyAndroidSettingsArrgs']] android_settings: Settings for keys that can be used by Android apps.
         :param pulumi.Input[str] display_name: Human-readable display name of this key. Modifiable by user.
                
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['EnterpriseKeyIosSettingsArgs']] ios_settings: Settings for keys that can be used by iOS apps.
+        :param pulumi.Input[pulumi.InputType['EnterpriseKeyIosSettingsArrgs']] ios_settings: Settings for keys that can be used by iOS apps.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[pulumi.InputType['EnterpriseKeyTestingOptionsArgs']] testing_options: Options for user acceptance testing.
-        :param pulumi.Input[pulumi.InputType['EnterpriseKeyWebSettingsArgs']] web_settings: Settings for keys that can be used by websites.
+        :param pulumi.Input[pulumi.InputType['EnterpriseKeyTestingOptionsArrgs']] testing_options: Options for user acceptance testing.
+        :param pulumi.Input[pulumi.InputType['EnterpriseKeyWebSettingsArrgs']] web_settings: Settings for keys that can be used by websites.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: EnterpriseKeyArgs,
+                 args: EnterpriseKeyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The RecaptchaEnterprise Key resource
@@ -520,7 +520,7 @@ class EnterpriseKey(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.recaptcha.EnterpriseKey("primary",
-            android_settings=gcp.recaptcha.EnterpriseKeyAndroidSettingsArgs(
+            android_settings=gcp.recaptcha.EnterpriseKeyAndroidSettingsArrgs(
                 allow_all_package_names=True,
                 allowed_package_names=[],
             ),
@@ -529,7 +529,7 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             project="my-project-name",
-            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
+            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArrgs(
                 testing_score=0.8,
             ))
         ```
@@ -541,7 +541,7 @@ class EnterpriseKey(pulumi.CustomResource):
 
         primary = gcp.recaptcha.EnterpriseKey("primary",
             display_name="display-name-one",
-            ios_settings=gcp.recaptcha.EnterpriseKeyIosSettingsArgs(
+            ios_settings=gcp.recaptcha.EnterpriseKeyIosSettingsArrgs(
                 allow_all_bundle_ids=True,
                 allowed_bundle_ids=[],
             ),
@@ -549,7 +549,7 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             project="my-project-name",
-            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
+            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArrgs(
                 testing_score=1,
             ))
         ```
@@ -563,7 +563,7 @@ class EnterpriseKey(pulumi.CustomResource):
             display_name="display-name-one",
             labels={},
             project="my-project-name",
-            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
+            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArrgs(
                 allow_all_domains=True,
                 integration_type="SCORE",
             ))
@@ -580,11 +580,11 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             project="my-project-name",
-            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
+            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArrgs(
                 testing_challenge="NOCAPTCHA",
                 testing_score=0.5,
             ),
-            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
+            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArrgs(
                 allow_all_domains=True,
                 allowed_domains=[],
                 challenge_security_preference="USABILITY",
@@ -603,10 +603,10 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             project="my-project-name",
-            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
+            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArrgs(
                 testing_score=0.5,
             ),
-            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
+            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArrgs(
                 allow_all_domains=True,
                 allow_amp_traffic=False,
                 allowed_domains=[],
@@ -639,12 +639,12 @@ class EnterpriseKey(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param EnterpriseKeyArgs args: The arguments to use to populate this resource's properties.
+        :param EnterpriseKeyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(EnterpriseKeyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(EnterpriseKeyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -653,13 +653,13 @@ class EnterpriseKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 android_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyAndroidSettingsArgs']]] = None,
+                 android_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyAndroidSettingsArrgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 ios_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyIosSettingsArgs']]] = None,
+                 ios_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyIosSettingsArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 testing_options: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyTestingOptionsArgs']]] = None,
-                 web_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyWebSettingsArgs']]] = None,
+                 testing_options: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyTestingOptionsArrgs']]] = None,
+                 web_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyWebSettingsArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -667,7 +667,7 @@ class EnterpriseKey(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = EnterpriseKeyArgs.__new__(EnterpriseKeyArgs)
+            __props__ = EnterpriseKeyArrgs.__new__(EnterpriseKeyArrgs)
 
             __props__.__dict__["android_settings"] = android_settings
             if display_name is None and not opts.urn:
@@ -694,17 +694,17 @@ class EnterpriseKey(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            android_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyAndroidSettingsArgs']]] = None,
+            android_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyAndroidSettingsArrgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            ios_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyIosSettingsArgs']]] = None,
+            ios_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyIosSettingsArrgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            testing_options: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyTestingOptionsArgs']]] = None,
-            web_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyWebSettingsArgs']]] = None) -> 'EnterpriseKey':
+            testing_options: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyTestingOptionsArrgs']]] = None,
+            web_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyWebSettingsArrgs']]] = None) -> 'EnterpriseKey':
         """
         Get an existing EnterpriseKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -712,7 +712,7 @@ class EnterpriseKey(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['EnterpriseKeyAndroidSettingsArgs']] android_settings: Settings for keys that can be used by Android apps.
+        :param pulumi.Input[pulumi.InputType['EnterpriseKeyAndroidSettingsArrgs']] android_settings: Settings for keys that can be used by Android apps.
         :param pulumi.Input[str] create_time: The timestamp corresponding to the creation of this Key.
         :param pulumi.Input[str] display_name: Human-readable display name of this key. Modifiable by user.
                
@@ -720,7 +720,7 @@ class EnterpriseKey(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['EnterpriseKeyIosSettingsArgs']] ios_settings: Settings for keys that can be used by iOS apps.
+        :param pulumi.Input[pulumi.InputType['EnterpriseKeyIosSettingsArrgs']] ios_settings: Settings for keys that can be used by iOS apps.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -728,8 +728,8 @@ class EnterpriseKey(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name for the Key in the format "projects/{project}/keys/{key}".
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['EnterpriseKeyTestingOptionsArgs']] testing_options: Options for user acceptance testing.
-        :param pulumi.Input[pulumi.InputType['EnterpriseKeyWebSettingsArgs']] web_settings: Settings for keys that can be used by websites.
+        :param pulumi.Input[pulumi.InputType['EnterpriseKeyTestingOptionsArrgs']] testing_options: Options for user acceptance testing.
+        :param pulumi.Input[pulumi.InputType['EnterpriseKeyWebSettingsArrgs']] web_settings: Settings for keys that can be used by websites.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

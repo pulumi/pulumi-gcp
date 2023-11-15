@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['SchemaArgs', 'Schema']
+__all__ = ['SchemaArrgs', 'Schema']
 
 @pulumi.input_type
-class SchemaArgs:
+calass SchemaArrgs:
     def __init__(__self__, *,
                  definition: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -108,7 +108,7 @@ class SchemaArgs:
 
 
 @pulumi.input_type
-class _SchemaState:
+calass _SchemaState:
     def __init__(__self__, *,
                  definition: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -203,7 +203,7 @@ class _SchemaState:
         pulumi.set(self, "type", value)
 
 
-class Schema(pulumi.CustomResource):
+calass Schema(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -264,7 +264,7 @@ class Schema(pulumi.CustomResource):
         string timestamp_request = 3;
         string timestamp_response = 4;
         }\"\"\")
-        example_topic = gcp.pubsub.Topic("exampleTopic", schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
+        example_topic = gcp.pubsub.Topic("exampleTopic", schema_settings=gcp.pubsub.TopicSchemaSettingsArrgs(
             schema="projects/my-project-name/schemas/example",
             encoding="JSON",
         ),
@@ -318,7 +318,7 @@ class Schema(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[SchemaArgs] = None,
+                 args: Optional[SchemaArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A schema is a format that messages must follow,
@@ -371,7 +371,7 @@ class Schema(pulumi.CustomResource):
         string timestamp_request = 3;
         string timestamp_response = 4;
         }\"\"\")
-        example_topic = gcp.pubsub.Topic("exampleTopic", schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
+        example_topic = gcp.pubsub.Topic("exampleTopic", schema_settings=gcp.pubsub.TopicSchemaSettingsArrgs(
             schema="projects/my-project-name/schemas/example",
             encoding="JSON",
         ),
@@ -403,12 +403,12 @@ class Schema(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param SchemaArgs args: The arguments to use to populate this resource's properties.
+        :param SchemaArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SchemaArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SchemaArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -428,7 +428,7 @@ class Schema(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SchemaArgs.__new__(SchemaArgs)
+            __props__ = SchemaArrgs.__new__(SchemaArrgs)
 
             __props__.__dict__["definition"] = definition
             __props__.__dict__["name"] = name

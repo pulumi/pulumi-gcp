@@ -11,42 +11,42 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AzureClusterArgs', 'AzureCluster']
+__all__ = ['AzureClusterArrgs', 'AzureCluster']
 
 @pulumi.input_type
-class AzureClusterArgs:
+calass AzureClusterArrgs:
     def __init__(__self__, *,
-                 authorization: pulumi.Input['AzureClusterAuthorizationArgs'],
+                 authorization: pulumi.Input['AzureClusterAuthorizationArrgs'],
                  azure_region: pulumi.Input[str],
-                 control_plane: pulumi.Input['AzureClusterControlPlaneArgs'],
-                 fleet: pulumi.Input['AzureClusterFleetArgs'],
+                 control_plane: pulumi.Input['AzureClusterControlPlaneArrgs'],
+                 fleet: pulumi.Input['AzureClusterFleetArrgs'],
                  location: pulumi.Input[str],
-                 networking: pulumi.Input['AzureClusterNetworkingArgs'],
+                 networking: pulumi.Input['AzureClusterNetworkingArrgs'],
                  resource_group_id: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 azure_services_authentication: Optional[pulumi.Input['AzureClusterAzureServicesAuthenticationArgs']] = None,
+                 azure_services_authentication: Optional[pulumi.Input['AzureClusterAzureServicesAuthenticationArrgs']] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 logging_config: Optional[pulumi.Input['AzureClusterLoggingConfigArgs']] = None,
+                 logging_config: Optional[pulumi.Input['AzureClusterLoggingConfigArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AzureCluster resource.
-        :param pulumi.Input['AzureClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
+        :param pulumi.Input['AzureClusterAuthorizationArrgs'] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[str] azure_region: The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
-        :param pulumi.Input['AzureClusterControlPlaneArgs'] control_plane: Configuration related to the cluster control plane.
-        :param pulumi.Input['AzureClusterFleetArgs'] fleet: Fleet configuration.
+        :param pulumi.Input['AzureClusterControlPlaneArrgs'] control_plane: Configuration related to the cluster control plane.
+        :param pulumi.Input['AzureClusterFleetArrgs'] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input['AzureClusterNetworkingArgs'] networking: Cluster-wide networking configuration.
+        :param pulumi.Input['AzureClusterNetworkingArrgs'] networking: Cluster-wide networking configuration.
         :param pulumi.Input[str] resource_group_id: The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input['AzureClusterAzureServicesAuthenticationArgs'] azure_services_authentication: Azure authentication configuration for management of Azure resources
+        :param pulumi.Input['AzureClusterAzureServicesAuthenticationArrgs'] azure_services_authentication: Azure authentication configuration for management of Azure resources
         :param pulumi.Input[str] client: Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
-        :param pulumi.Input['AzureClusterLoggingConfigArgs'] logging_config: (Beta only) Logging configuration.
+        :param pulumi.Input['AzureClusterLoggingConfigArrgs'] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
         """
@@ -74,14 +74,14 @@ class AzureClusterArgs:
 
     @property
     @pulumi.getter
-    def authorization(self) -> pulumi.Input['AzureClusterAuthorizationArgs']:
+    def authorization(self) -> pulumi.Input['AzureClusterAuthorizationArrgs']:
         """
         Configuration related to the cluster RBAC settings.
         """
         return pulumi.get(self, "authorization")
 
     @authorization.setter
-    def authorization(self, value: pulumi.Input['AzureClusterAuthorizationArgs']):
+    def authorization(self, value: pulumi.Input['AzureClusterAuthorizationArrgs']):
         pulumi.set(self, "authorization", value)
 
     @property
@@ -98,26 +98,26 @@ class AzureClusterArgs:
 
     @property
     @pulumi.getter(name="controlPlane")
-    def control_plane(self) -> pulumi.Input['AzureClusterControlPlaneArgs']:
+    def control_plane(self) -> pulumi.Input['AzureClusterControlPlaneArrgs']:
         """
         Configuration related to the cluster control plane.
         """
         return pulumi.get(self, "control_plane")
 
     @control_plane.setter
-    def control_plane(self, value: pulumi.Input['AzureClusterControlPlaneArgs']):
+    def control_plane(self, value: pulumi.Input['AzureClusterControlPlaneArrgs']):
         pulumi.set(self, "control_plane", value)
 
     @property
     @pulumi.getter
-    def fleet(self) -> pulumi.Input['AzureClusterFleetArgs']:
+    def fleet(self) -> pulumi.Input['AzureClusterFleetArrgs']:
         """
         Fleet configuration.
         """
         return pulumi.get(self, "fleet")
 
     @fleet.setter
-    def fleet(self, value: pulumi.Input['AzureClusterFleetArgs']):
+    def fleet(self, value: pulumi.Input['AzureClusterFleetArrgs']):
         pulumi.set(self, "fleet", value)
 
     @property
@@ -134,14 +134,14 @@ class AzureClusterArgs:
 
     @property
     @pulumi.getter
-    def networking(self) -> pulumi.Input['AzureClusterNetworkingArgs']:
+    def networking(self) -> pulumi.Input['AzureClusterNetworkingArrgs']:
         """
         Cluster-wide networking configuration.
         """
         return pulumi.get(self, "networking")
 
     @networking.setter
-    def networking(self, value: pulumi.Input['AzureClusterNetworkingArgs']):
+    def networking(self, value: pulumi.Input['AzureClusterNetworkingArrgs']):
         pulumi.set(self, "networking", value)
 
     @property
@@ -173,14 +173,14 @@ class AzureClusterArgs:
 
     @property
     @pulumi.getter(name="azureServicesAuthentication")
-    def azure_services_authentication(self) -> Optional[pulumi.Input['AzureClusterAzureServicesAuthenticationArgs']]:
+    def azure_services_authentication(self) -> Optional[pulumi.Input['AzureClusterAzureServicesAuthenticationArrgs']]:
         """
         Azure authentication configuration for management of Azure resources
         """
         return pulumi.get(self, "azure_services_authentication")
 
     @azure_services_authentication.setter
-    def azure_services_authentication(self, value: Optional[pulumi.Input['AzureClusterAzureServicesAuthenticationArgs']]):
+    def azure_services_authentication(self, value: Optional[pulumi.Input['AzureClusterAzureServicesAuthenticationArrgs']]):
         pulumi.set(self, "azure_services_authentication", value)
 
     @property
@@ -209,14 +209,14 @@ class AzureClusterArgs:
 
     @property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['AzureClusterLoggingConfigArgs']]:
+    def logging_config(self) -> Optional[pulumi.Input['AzureClusterLoggingConfigArrgs']]:
         """
         (Beta only) Logging configuration.
         """
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['AzureClusterLoggingConfigArgs']]):
+    def logging_config(self, value: Optional[pulumi.Input['AzureClusterLoggingConfigArrgs']]):
         pulumi.set(self, "logging_config", value)
 
     @property
@@ -245,60 +245,60 @@ class AzureClusterArgs:
 
 
 @pulumi.input_type
-class _AzureClusterState:
+calass _AzureClusterState:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 authorization: Optional[pulumi.Input['AzureClusterAuthorizationArgs']] = None,
+                 authorization: Optional[pulumi.Input['AzureClusterAuthorizationArrgs']] = None,
                  azure_region: Optional[pulumi.Input[str]] = None,
-                 azure_services_authentication: Optional[pulumi.Input['AzureClusterAzureServicesAuthenticationArgs']] = None,
+                 azure_services_authentication: Optional[pulumi.Input['AzureClusterAzureServicesAuthenticationArrgs']] = None,
                  client: Optional[pulumi.Input[str]] = None,
-                 control_plane: Optional[pulumi.Input['AzureClusterControlPlaneArgs']] = None,
+                 control_plane: Optional[pulumi.Input['AzureClusterControlPlaneArrgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 fleet: Optional[pulumi.Input['AzureClusterFleetArgs']] = None,
+                 fleet: Optional[pulumi.Input['AzureClusterFleetArrgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 logging_config: Optional[pulumi.Input['AzureClusterLoggingConfigArgs']] = None,
+                 logging_config: Optional[pulumi.Input['AzureClusterLoggingConfigArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networking: Optional[pulumi.Input['AzureClusterNetworkingArgs']] = None,
+                 networking: Optional[pulumi.Input['AzureClusterNetworkingArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reconciling: Optional[pulumi.Input[bool]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
-                 workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AzureClusterWorkloadIdentityConfigArgs']]]] = None):
+                 workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AzureClusterWorkloadIdentityConfigArrgs']]]] = None):
         """
         Input properties used for looking up and filtering AzureCluster resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input['AzureClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
+        :param pulumi.Input['AzureClusterAuthorizationArrgs'] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[str] azure_region: The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
-        :param pulumi.Input['AzureClusterAzureServicesAuthenticationArgs'] azure_services_authentication: Azure authentication configuration for management of Azure resources
+        :param pulumi.Input['AzureClusterAzureServicesAuthenticationArrgs'] azure_services_authentication: Azure authentication configuration for management of Azure resources
         :param pulumi.Input[str] client: Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
-        :param pulumi.Input['AzureClusterControlPlaneArgs'] control_plane: Configuration related to the cluster control plane.
+        :param pulumi.Input['AzureClusterControlPlaneArrgs'] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
                Terraform, other clients and services.
         :param pulumi.Input[str] endpoint: Output only. The endpoint of the cluster's API server.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-        :param pulumi.Input['AzureClusterFleetArgs'] fleet: Fleet configuration.
+        :param pulumi.Input['AzureClusterFleetArrgs'] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input['AzureClusterLoggingConfigArgs'] logging_config: (Beta only) Logging configuration.
+        :param pulumi.Input['AzureClusterLoggingConfigArrgs'] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
-        :param pulumi.Input['AzureClusterNetworkingArgs'] networking: Cluster-wide networking configuration.
+        :param pulumi.Input['AzureClusterNetworkingArrgs'] networking: Cluster-wide networking configuration.
         :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently changes in flight to the cluster.
         :param pulumi.Input[str] resource_group_id: The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
         :param pulumi.Input[str] state: Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the cluster.
         :param pulumi.Input[str] update_time: Output only. The time at which this cluster was last updated.
-        :param pulumi.Input[Sequence[pulumi.Input['AzureClusterWorkloadIdentityConfigArgs']]] workload_identity_configs: Output only. Workload Identity settings.
+        :param pulumi.Input[Sequence[pulumi.Input['AzureClusterWorkloadIdentityConfigArrgs']]] workload_identity_configs: Output only. Workload Identity settings.
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -364,14 +364,14 @@ class _AzureClusterState:
 
     @property
     @pulumi.getter
-    def authorization(self) -> Optional[pulumi.Input['AzureClusterAuthorizationArgs']]:
+    def authorization(self) -> Optional[pulumi.Input['AzureClusterAuthorizationArrgs']]:
         """
         Configuration related to the cluster RBAC settings.
         """
         return pulumi.get(self, "authorization")
 
     @authorization.setter
-    def authorization(self, value: Optional[pulumi.Input['AzureClusterAuthorizationArgs']]):
+    def authorization(self, value: Optional[pulumi.Input['AzureClusterAuthorizationArrgs']]):
         pulumi.set(self, "authorization", value)
 
     @property
@@ -388,14 +388,14 @@ class _AzureClusterState:
 
     @property
     @pulumi.getter(name="azureServicesAuthentication")
-    def azure_services_authentication(self) -> Optional[pulumi.Input['AzureClusterAzureServicesAuthenticationArgs']]:
+    def azure_services_authentication(self) -> Optional[pulumi.Input['AzureClusterAzureServicesAuthenticationArrgs']]:
         """
         Azure authentication configuration for management of Azure resources
         """
         return pulumi.get(self, "azure_services_authentication")
 
     @azure_services_authentication.setter
-    def azure_services_authentication(self, value: Optional[pulumi.Input['AzureClusterAzureServicesAuthenticationArgs']]):
+    def azure_services_authentication(self, value: Optional[pulumi.Input['AzureClusterAzureServicesAuthenticationArrgs']]):
         pulumi.set(self, "azure_services_authentication", value)
 
     @property
@@ -412,14 +412,14 @@ class _AzureClusterState:
 
     @property
     @pulumi.getter(name="controlPlane")
-    def control_plane(self) -> Optional[pulumi.Input['AzureClusterControlPlaneArgs']]:
+    def control_plane(self) -> Optional[pulumi.Input['AzureClusterControlPlaneArrgs']]:
         """
         Configuration related to the cluster control plane.
         """
         return pulumi.get(self, "control_plane")
 
     @control_plane.setter
-    def control_plane(self, value: Optional[pulumi.Input['AzureClusterControlPlaneArgs']]):
+    def control_plane(self, value: Optional[pulumi.Input['AzureClusterControlPlaneArrgs']]):
         pulumi.set(self, "control_plane", value)
 
     @property
@@ -485,14 +485,14 @@ class _AzureClusterState:
 
     @property
     @pulumi.getter
-    def fleet(self) -> Optional[pulumi.Input['AzureClusterFleetArgs']]:
+    def fleet(self) -> Optional[pulumi.Input['AzureClusterFleetArrgs']]:
         """
         Fleet configuration.
         """
         return pulumi.get(self, "fleet")
 
     @fleet.setter
-    def fleet(self, value: Optional[pulumi.Input['AzureClusterFleetArgs']]):
+    def fleet(self, value: Optional[pulumi.Input['AzureClusterFleetArrgs']]):
         pulumi.set(self, "fleet", value)
 
     @property
@@ -509,14 +509,14 @@ class _AzureClusterState:
 
     @property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['AzureClusterLoggingConfigArgs']]:
+    def logging_config(self) -> Optional[pulumi.Input['AzureClusterLoggingConfigArrgs']]:
         """
         (Beta only) Logging configuration.
         """
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['AzureClusterLoggingConfigArgs']]):
+    def logging_config(self, value: Optional[pulumi.Input['AzureClusterLoggingConfigArrgs']]):
         pulumi.set(self, "logging_config", value)
 
     @property
@@ -533,14 +533,14 @@ class _AzureClusterState:
 
     @property
     @pulumi.getter
-    def networking(self) -> Optional[pulumi.Input['AzureClusterNetworkingArgs']]:
+    def networking(self) -> Optional[pulumi.Input['AzureClusterNetworkingArrgs']]:
         """
         Cluster-wide networking configuration.
         """
         return pulumi.get(self, "networking")
 
     @networking.setter
-    def networking(self, value: Optional[pulumi.Input['AzureClusterNetworkingArgs']]):
+    def networking(self, value: Optional[pulumi.Input['AzureClusterNetworkingArrgs']]):
         pulumi.set(self, "networking", value)
 
     @property
@@ -617,34 +617,34 @@ class _AzureClusterState:
 
     @property
     @pulumi.getter(name="workloadIdentityConfigs")
-    def workload_identity_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AzureClusterWorkloadIdentityConfigArgs']]]]:
+    def workload_identity_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AzureClusterWorkloadIdentityConfigArrgs']]]]:
         """
         Output only. Workload Identity settings.
         """
         return pulumi.get(self, "workload_identity_configs")
 
     @workload_identity_configs.setter
-    def workload_identity_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AzureClusterWorkloadIdentityConfigArgs']]]]):
+    def workload_identity_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AzureClusterWorkloadIdentityConfigArrgs']]]]):
         pulumi.set(self, "workload_identity_configs", value)
 
 
-class AzureCluster(pulumi.CustomResource):
+calass AzureCluster(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 authorization: Optional[pulumi.Input[pulumi.InputType['AzureClusterAuthorizationArgs']]] = None,
+                 authorization: Optional[pulumi.Input[pulumi.InputType['AzureClusterAuthorizationArrgs']]] = None,
                  azure_region: Optional[pulumi.Input[str]] = None,
-                 azure_services_authentication: Optional[pulumi.Input[pulumi.InputType['AzureClusterAzureServicesAuthenticationArgs']]] = None,
+                 azure_services_authentication: Optional[pulumi.Input[pulumi.InputType['AzureClusterAzureServicesAuthenticationArrgs']]] = None,
                  client: Optional[pulumi.Input[str]] = None,
-                 control_plane: Optional[pulumi.Input[pulumi.InputType['AzureClusterControlPlaneArgs']]] = None,
+                 control_plane: Optional[pulumi.Input[pulumi.InputType['AzureClusterControlPlaneArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 fleet: Optional[pulumi.Input[pulumi.InputType['AzureClusterFleetArgs']]] = None,
+                 fleet: Optional[pulumi.Input[pulumi.InputType['AzureClusterFleetArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 logging_config: Optional[pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArgs']]] = None,
+                 logging_config: Optional[pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networking: Optional[pulumi.Input[pulumi.InputType['AzureClusterNetworkingArgs']]] = None,
+                 networking: Optional[pulumi.Input[pulumi.InputType['AzureClusterNetworkingArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -668,28 +668,28 @@ class AzureCluster(pulumi.CustomResource):
             project="my-project-name",
             tenant_id="12345678-1234-1234-1234-123456789111")
         primary = gcp.container.AzureCluster("primary",
-            authorization=gcp.container.AzureClusterAuthorizationArgs(
-                admin_groups=[gcp.container.AzureClusterAuthorizationAdminGroupArgs(
+            authorization=gcp.container.AzureClusterAuthorizationArrgs(
+                admin_groups=[gcp.container.AzureClusterAuthorizationAdminGroupArrgs(
                     group="group@domain.com",
                 )],
-                admin_users=[gcp.container.AzureClusterAuthorizationAdminUserArgs(
+                admin_users=[gcp.container.AzureClusterAuthorizationAdminUserArrgs(
                     username="mmv2@google.com",
                 )],
             ),
             azure_region="westus2",
             client=basic.name.apply(lambda name: f"projects/my-project-number/locations/us-west1/azureClients/{name}"),
-            control_plane=gcp.container.AzureClusterControlPlaneArgs(
-                ssh_config=gcp.container.AzureClusterControlPlaneSshConfigArgs(
+            control_plane=gcp.container.AzureClusterControlPlaneArrgs(
+                ssh_config=gcp.container.AzureClusterControlPlaneSshConfigArrgs(
                     authorized_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
                 ),
                 subnet_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
                 version=versions.valid_versions[0],
             ),
-            fleet=gcp.container.AzureClusterFleetArgs(
+            fleet=gcp.container.AzureClusterFleetArrgs(
                 project="my-project-number",
             ),
             location="us-west1",
-            networking=gcp.container.AzureClusterNetworkingArgs(
+            networking=gcp.container.AzureClusterNetworkingArrgs(
                 pod_address_cidr_blocks=["10.200.0.0/16"],
                 service_address_cidr_blocks=["10.32.0.0/24"],
                 virtual_network_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
@@ -712,33 +712,33 @@ class AzureCluster(pulumi.CustomResource):
             project="my-project-name",
             opts=pulumi.ResourceOptions(provider=google_beta))
         primary = gcp.container.AzureCluster("primary",
-            authorization=gcp.container.AzureClusterAuthorizationArgs(
-                admin_users=[gcp.container.AzureClusterAuthorizationAdminUserArgs(
+            authorization=gcp.container.AzureClusterAuthorizationArrgs(
+                admin_users=[gcp.container.AzureClusterAuthorizationAdminUserArrgs(
                     username="mmv2@google.com",
                 )],
             ),
             azure_region="westus2",
             client=basic.name.apply(lambda name: f"projects/my-project-number/locations/us-west1/azureClients/{name}"),
-            control_plane=gcp.container.AzureClusterControlPlaneArgs(
-                ssh_config=gcp.container.AzureClusterControlPlaneSshConfigArgs(
+            control_plane=gcp.container.AzureClusterControlPlaneArrgs(
+                ssh_config=gcp.container.AzureClusterControlPlaneSshConfigArrgs(
                     authorized_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
                 ),
                 subnet_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
                 version=versions.valid_versions[0],
             ),
-            fleet=gcp.container.AzureClusterFleetArgs(
+            fleet=gcp.container.AzureClusterFleetArrgs(
                 project="my-project-number",
             ),
             location="us-west1",
-            networking=gcp.container.AzureClusterNetworkingArgs(
+            networking=gcp.container.AzureClusterNetworkingArrgs(
                 pod_address_cidr_blocks=["10.200.0.0/16"],
                 service_address_cidr_blocks=["10.32.0.0/24"],
                 virtual_network_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
             ),
             resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
             project="my-project-name",
-            logging_config=gcp.container.AzureClusterLoggingConfigArgs(
-                component_config=gcp.container.AzureClusterLoggingConfigComponentConfigArgs(
+            logging_config=gcp.container.AzureClusterLoggingConfigArrgs(
+                component_config=gcp.container.AzureClusterLoggingConfigComponentConfigArrgs(
                     enable_components=[
                         "system_components",
                         "workloads",
@@ -778,17 +778,17 @@ class AzureCluster(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['AzureClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
+        :param pulumi.Input[pulumi.InputType['AzureClusterAuthorizationArrgs']] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[str] azure_region: The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
-        :param pulumi.Input[pulumi.InputType['AzureClusterAzureServicesAuthenticationArgs']] azure_services_authentication: Azure authentication configuration for management of Azure resources
+        :param pulumi.Input[pulumi.InputType['AzureClusterAzureServicesAuthenticationArrgs']] azure_services_authentication: Azure authentication configuration for management of Azure resources
         :param pulumi.Input[str] client: Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
-        :param pulumi.Input[pulumi.InputType['AzureClusterControlPlaneArgs']] control_plane: Configuration related to the cluster control plane.
+        :param pulumi.Input[pulumi.InputType['AzureClusterControlPlaneArrgs']] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
-        :param pulumi.Input[pulumi.InputType['AzureClusterFleetArgs']] fleet: Fleet configuration.
+        :param pulumi.Input[pulumi.InputType['AzureClusterFleetArrgs']] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArgs']] logging_config: (Beta only) Logging configuration.
+        :param pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArrgs']] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
-        :param pulumi.Input[pulumi.InputType['AzureClusterNetworkingArgs']] networking: Cluster-wide networking configuration.
+        :param pulumi.Input[pulumi.InputType['AzureClusterNetworkingArrgs']] networking: Cluster-wide networking configuration.
         :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
         :param pulumi.Input[str] resource_group_id: The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
         """
@@ -796,7 +796,7 @@ class AzureCluster(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AzureClusterArgs,
+                 args: AzureClusterArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An Anthos cluster running on Azure.
@@ -818,28 +818,28 @@ class AzureCluster(pulumi.CustomResource):
             project="my-project-name",
             tenant_id="12345678-1234-1234-1234-123456789111")
         primary = gcp.container.AzureCluster("primary",
-            authorization=gcp.container.AzureClusterAuthorizationArgs(
-                admin_groups=[gcp.container.AzureClusterAuthorizationAdminGroupArgs(
+            authorization=gcp.container.AzureClusterAuthorizationArrgs(
+                admin_groups=[gcp.container.AzureClusterAuthorizationAdminGroupArrgs(
                     group="group@domain.com",
                 )],
-                admin_users=[gcp.container.AzureClusterAuthorizationAdminUserArgs(
+                admin_users=[gcp.container.AzureClusterAuthorizationAdminUserArrgs(
                     username="mmv2@google.com",
                 )],
             ),
             azure_region="westus2",
             client=basic.name.apply(lambda name: f"projects/my-project-number/locations/us-west1/azureClients/{name}"),
-            control_plane=gcp.container.AzureClusterControlPlaneArgs(
-                ssh_config=gcp.container.AzureClusterControlPlaneSshConfigArgs(
+            control_plane=gcp.container.AzureClusterControlPlaneArrgs(
+                ssh_config=gcp.container.AzureClusterControlPlaneSshConfigArrgs(
                     authorized_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
                 ),
                 subnet_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
                 version=versions.valid_versions[0],
             ),
-            fleet=gcp.container.AzureClusterFleetArgs(
+            fleet=gcp.container.AzureClusterFleetArrgs(
                 project="my-project-number",
             ),
             location="us-west1",
-            networking=gcp.container.AzureClusterNetworkingArgs(
+            networking=gcp.container.AzureClusterNetworkingArrgs(
                 pod_address_cidr_blocks=["10.200.0.0/16"],
                 service_address_cidr_blocks=["10.32.0.0/24"],
                 virtual_network_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
@@ -862,33 +862,33 @@ class AzureCluster(pulumi.CustomResource):
             project="my-project-name",
             opts=pulumi.ResourceOptions(provider=google_beta))
         primary = gcp.container.AzureCluster("primary",
-            authorization=gcp.container.AzureClusterAuthorizationArgs(
-                admin_users=[gcp.container.AzureClusterAuthorizationAdminUserArgs(
+            authorization=gcp.container.AzureClusterAuthorizationArrgs(
+                admin_users=[gcp.container.AzureClusterAuthorizationAdminUserArrgs(
                     username="mmv2@google.com",
                 )],
             ),
             azure_region="westus2",
             client=basic.name.apply(lambda name: f"projects/my-project-number/locations/us-west1/azureClients/{name}"),
-            control_plane=gcp.container.AzureClusterControlPlaneArgs(
-                ssh_config=gcp.container.AzureClusterControlPlaneSshConfigArgs(
+            control_plane=gcp.container.AzureClusterControlPlaneArrgs(
+                ssh_config=gcp.container.AzureClusterControlPlaneSshConfigArrgs(
                     authorized_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
                 ),
                 subnet_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
                 version=versions.valid_versions[0],
             ),
-            fleet=gcp.container.AzureClusterFleetArgs(
+            fleet=gcp.container.AzureClusterFleetArrgs(
                 project="my-project-number",
             ),
             location="us-west1",
-            networking=gcp.container.AzureClusterNetworkingArgs(
+            networking=gcp.container.AzureClusterNetworkingArrgs(
                 pod_address_cidr_blocks=["10.200.0.0/16"],
                 service_address_cidr_blocks=["10.32.0.0/24"],
                 virtual_network_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
             ),
             resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
             project="my-project-name",
-            logging_config=gcp.container.AzureClusterLoggingConfigArgs(
-                component_config=gcp.container.AzureClusterLoggingConfigComponentConfigArgs(
+            logging_config=gcp.container.AzureClusterLoggingConfigArrgs(
+                component_config=gcp.container.AzureClusterLoggingConfigComponentConfigArrgs(
                     enable_components=[
                         "system_components",
                         "workloads",
@@ -923,12 +923,12 @@ class AzureCluster(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AzureClusterArgs args: The arguments to use to populate this resource's properties.
+        :param AzureClusterArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AzureClusterArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AzureClusterArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -938,17 +938,17 @@ class AzureCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 authorization: Optional[pulumi.Input[pulumi.InputType['AzureClusterAuthorizationArgs']]] = None,
+                 authorization: Optional[pulumi.Input[pulumi.InputType['AzureClusterAuthorizationArrgs']]] = None,
                  azure_region: Optional[pulumi.Input[str]] = None,
-                 azure_services_authentication: Optional[pulumi.Input[pulumi.InputType['AzureClusterAzureServicesAuthenticationArgs']]] = None,
+                 azure_services_authentication: Optional[pulumi.Input[pulumi.InputType['AzureClusterAzureServicesAuthenticationArrgs']]] = None,
                  client: Optional[pulumi.Input[str]] = None,
-                 control_plane: Optional[pulumi.Input[pulumi.InputType['AzureClusterControlPlaneArgs']]] = None,
+                 control_plane: Optional[pulumi.Input[pulumi.InputType['AzureClusterControlPlaneArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 fleet: Optional[pulumi.Input[pulumi.InputType['AzureClusterFleetArgs']]] = None,
+                 fleet: Optional[pulumi.Input[pulumi.InputType['AzureClusterFleetArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 logging_config: Optional[pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArgs']]] = None,
+                 logging_config: Optional[pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networking: Optional[pulumi.Input[pulumi.InputType['AzureClusterNetworkingArgs']]] = None,
+                 networking: Optional[pulumi.Input[pulumi.InputType['AzureClusterNetworkingArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -958,7 +958,7 @@ class AzureCluster(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AzureClusterArgs.__new__(AzureClusterArgs)
+            __props__ = AzureClusterArrgs.__new__(AzureClusterArrgs)
 
             __props__.__dict__["annotations"] = annotations
             if authorization is None and not opts.urn:
@@ -1008,28 +1008,28 @@ class AzureCluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            authorization: Optional[pulumi.Input[pulumi.InputType['AzureClusterAuthorizationArgs']]] = None,
+            authorization: Optional[pulumi.Input[pulumi.InputType['AzureClusterAuthorizationArrgs']]] = None,
             azure_region: Optional[pulumi.Input[str]] = None,
-            azure_services_authentication: Optional[pulumi.Input[pulumi.InputType['AzureClusterAzureServicesAuthenticationArgs']]] = None,
+            azure_services_authentication: Optional[pulumi.Input[pulumi.InputType['AzureClusterAzureServicesAuthenticationArrgs']]] = None,
             client: Optional[pulumi.Input[str]] = None,
-            control_plane: Optional[pulumi.Input[pulumi.InputType['AzureClusterControlPlaneArgs']]] = None,
+            control_plane: Optional[pulumi.Input[pulumi.InputType['AzureClusterControlPlaneArrgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
-            fleet: Optional[pulumi.Input[pulumi.InputType['AzureClusterFleetArgs']]] = None,
+            fleet: Optional[pulumi.Input[pulumi.InputType['AzureClusterFleetArrgs']]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            logging_config: Optional[pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArgs']]] = None,
+            logging_config: Optional[pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            networking: Optional[pulumi.Input[pulumi.InputType['AzureClusterNetworkingArgs']]] = None,
+            networking: Optional[pulumi.Input[pulumi.InputType['AzureClusterNetworkingArrgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
-            workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AzureClusterWorkloadIdentityConfigArgs']]]]] = None) -> 'AzureCluster':
+            workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AzureClusterWorkloadIdentityConfigArrgs']]]]] = None) -> 'AzureCluster':
         """
         Get an existing AzureCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1041,29 +1041,29 @@ class AzureCluster(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['AzureClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
+        :param pulumi.Input[pulumi.InputType['AzureClusterAuthorizationArrgs']] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[str] azure_region: The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
-        :param pulumi.Input[pulumi.InputType['AzureClusterAzureServicesAuthenticationArgs']] azure_services_authentication: Azure authentication configuration for management of Azure resources
+        :param pulumi.Input[pulumi.InputType['AzureClusterAzureServicesAuthenticationArrgs']] azure_services_authentication: Azure authentication configuration for management of Azure resources
         :param pulumi.Input[str] client: Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
-        :param pulumi.Input[pulumi.InputType['AzureClusterControlPlaneArgs']] control_plane: Configuration related to the cluster control plane.
+        :param pulumi.Input[pulumi.InputType['AzureClusterControlPlaneArrgs']] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
                Terraform, other clients and services.
         :param pulumi.Input[str] endpoint: Output only. The endpoint of the cluster's API server.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-        :param pulumi.Input[pulumi.InputType['AzureClusterFleetArgs']] fleet: Fleet configuration.
+        :param pulumi.Input[pulumi.InputType['AzureClusterFleetArrgs']] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArgs']] logging_config: (Beta only) Logging configuration.
+        :param pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArrgs']] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
-        :param pulumi.Input[pulumi.InputType['AzureClusterNetworkingArgs']] networking: Cluster-wide networking configuration.
+        :param pulumi.Input[pulumi.InputType['AzureClusterNetworkingArrgs']] networking: Cluster-wide networking configuration.
         :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently changes in flight to the cluster.
         :param pulumi.Input[str] resource_group_id: The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
         :param pulumi.Input[str] state: Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the cluster.
         :param pulumi.Input[str] update_time: Output only. The time at which this cluster was last updated.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AzureClusterWorkloadIdentityConfigArgs']]]] workload_identity_configs: Output only. Workload Identity settings.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AzureClusterWorkloadIdentityConfigArrgs']]]] workload_identity_configs: Output only. Workload Identity settings.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

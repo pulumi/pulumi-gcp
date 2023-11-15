@@ -104,7 +104,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class AccessLevelBasic(dict):
+calass AccessLevelBasic(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -126,7 +126,7 @@ class AccessLevelBasic(dict):
                  conditions: Sequence['outputs.AccessLevelBasicCondition'],
                  combining_function: Optional[str] = None):
         """
-        :param Sequence['AccessLevelBasicConditionArgs'] conditions: A set of requirements for the AccessLevel to be granted.
+        :param Sequence['AccessLevelBasicConditionArrgs'] conditions: A set of requirements for the AccessLevel to be granted.
                Structure is documented below.
         :param str combining_function: How the conditions list should be combined to determine if a request
                is granted this AccessLevel. If AND is used, each Condition in
@@ -165,7 +165,7 @@ class AccessLevelBasic(dict):
 
 
 @pulumi.output_type
-class AccessLevelBasicCondition(dict):
+calass AccessLevelBasicCondition(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -198,7 +198,7 @@ class AccessLevelBasicCondition(dict):
                  required_access_levels: Optional[Sequence[str]] = None,
                  vpc_network_sources: Optional[Sequence['outputs.AccessLevelBasicConditionVpcNetworkSource']] = None):
         """
-        :param 'AccessLevelBasicConditionDevicePolicyArgs' device_policy: Device specific restrictions, all restrictions must hold for
+        :param 'AccessLevelBasicConditionDevicePolicyArrgs' device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
                allowed.
                Structure is documented below.
@@ -230,7 +230,7 @@ class AccessLevelBasicCondition(dict):
                does not exist is an error. All access levels listed must be
                granted for the Condition to be true.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-        :param Sequence['AccessLevelBasicConditionVpcNetworkSourceArgs'] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        :param Sequence['AccessLevelBasicConditionVpcNetworkSourceArrgs'] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
                Structure is documented below.
         """
         if device_policy is not None:
@@ -333,7 +333,7 @@ class AccessLevelBasicCondition(dict):
 
 
 @pulumi.output_type
-class AccessLevelBasicConditionDevicePolicy(dict):
+calass AccessLevelBasicConditionDevicePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -375,7 +375,7 @@ class AccessLevelBasicConditionDevicePolicy(dict):
         :param Sequence[str] allowed_encryption_statuses: A list of allowed encryptions statuses.
                An empty list allows all statuses.
                Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
-        :param Sequence['AccessLevelBasicConditionDevicePolicyOsConstraintArgs'] os_constraints: A list of allowed OS versions.
+        :param Sequence['AccessLevelBasicConditionDevicePolicyOsConstraintArrgs'] os_constraints: A list of allowed OS versions.
                An empty list allows all types and all versions.
                Structure is documented below.
         :param bool require_admin_approval: Whether the device needs to be approved by the customer admin.
@@ -453,7 +453,7 @@ class AccessLevelBasicConditionDevicePolicy(dict):
 
 
 @pulumi.output_type
-class AccessLevelBasicConditionDevicePolicyOsConstraint(dict):
+calass AccessLevelBasicConditionDevicePolicyOsConstraint(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -522,7 +522,7 @@ class AccessLevelBasicConditionDevicePolicyOsConstraint(dict):
 
 
 @pulumi.output_type
-class AccessLevelBasicConditionVpcNetworkSource(dict):
+calass AccessLevelBasicConditionVpcNetworkSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -543,7 +543,7 @@ class AccessLevelBasicConditionVpcNetworkSource(dict):
     def __init__(__self__, *,
                  vpc_subnetwork: Optional['outputs.AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork'] = None):
         """
-        :param 'AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs' vpc_subnetwork: Sub networks within a VPC network.
+        :param 'AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArrgs' vpc_subnetwork: Sub networks within a VPC network.
                Structure is documented below.
         """
         if vpc_subnetwork is not None:
@@ -560,7 +560,7 @@ class AccessLevelBasicConditionVpcNetworkSource(dict):
 
 
 @pulumi.output_type
-class AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork(dict):
+calass AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -607,7 +607,7 @@ class AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork(dict):
 
 
 @pulumi.output_type
-class AccessLevelConditionDevicePolicy(dict):
+calass AccessLevelConditionDevicePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -649,7 +649,7 @@ class AccessLevelConditionDevicePolicy(dict):
         :param Sequence[str] allowed_encryption_statuses: A list of allowed encryptions statuses.
                An empty list allows all statuses.
                Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
-        :param Sequence['AccessLevelConditionDevicePolicyOsConstraintArgs'] os_constraints: A list of allowed OS versions.
+        :param Sequence['AccessLevelConditionDevicePolicyOsConstraintArrgs'] os_constraints: A list of allowed OS versions.
                An empty list allows all types and all versions.
                Structure is documented below.
         :param bool require_admin_approval: Whether the device needs to be approved by the customer admin.
@@ -727,7 +727,7 @@ class AccessLevelConditionDevicePolicy(dict):
 
 
 @pulumi.output_type
-class AccessLevelConditionDevicePolicyOsConstraint(dict):
+calass AccessLevelConditionDevicePolicyOsConstraint(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -782,7 +782,7 @@ class AccessLevelConditionDevicePolicyOsConstraint(dict):
 
 
 @pulumi.output_type
-class AccessLevelConditionVpcNetworkSource(dict):
+calass AccessLevelConditionVpcNetworkSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -803,7 +803,7 @@ class AccessLevelConditionVpcNetworkSource(dict):
     def __init__(__self__, *,
                  vpc_subnetwork: Optional['outputs.AccessLevelConditionVpcNetworkSourceVpcSubnetwork'] = None):
         """
-        :param 'AccessLevelConditionVpcNetworkSourceVpcSubnetworkArgs' vpc_subnetwork: Sub networks within a VPC network.
+        :param 'AccessLevelConditionVpcNetworkSourceVpcSubnetworkArrgs' vpc_subnetwork: Sub networks within a VPC network.
                Structure is documented below.
         """
         if vpc_subnetwork is not None:
@@ -820,7 +820,7 @@ class AccessLevelConditionVpcNetworkSource(dict):
 
 
 @pulumi.output_type
-class AccessLevelConditionVpcNetworkSourceVpcSubnetwork(dict):
+calass AccessLevelConditionVpcNetworkSourceVpcSubnetwork(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -867,11 +867,11 @@ class AccessLevelConditionVpcNetworkSourceVpcSubnetwork(dict):
 
 
 @pulumi.output_type
-class AccessLevelCustom(dict):
+calass AccessLevelCustom(dict):
     def __init__(__self__, *,
                  expr: 'outputs.AccessLevelCustomExpr'):
         """
-        :param 'AccessLevelCustomExprArgs' expr: Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+        :param 'AccessLevelCustomExprArrgs' expr: Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
                This page details the objects and attributes that are used to the build the CEL expressions for
                custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
                Structure is documented below.
@@ -891,7 +891,7 @@ class AccessLevelCustom(dict):
 
 
 @pulumi.output_type
-class AccessLevelCustomExpr(dict):
+calass AccessLevelCustomExpr(dict):
     def __init__(__self__, *,
                  expression: str,
                  description: Optional[str] = None,
@@ -945,7 +945,7 @@ class AccessLevelCustomExpr(dict):
 
 
 @pulumi.output_type
-class AccessLevelsAccessLevel(dict):
+calass AccessLevelsAccessLevel(dict):
     def __init__(__self__, *,
                  name: str,
                  title: str,
@@ -957,9 +957,9 @@ class AccessLevelsAccessLevel(dict):
                with a letter and only include alphanumeric and '_'.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
         :param str title: Human readable title. Must be unique within the Policy.
-        :param 'AccessLevelsAccessLevelBasicArgs' basic: A set of predefined conditions for the access level and a combining function.
+        :param 'AccessLevelsAccessLevelBasicArrgs' basic: A set of predefined conditions for the access level and a combining function.
                Structure is documented below.
-        :param 'AccessLevelsAccessLevelCustomArgs' custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+        :param 'AccessLevelsAccessLevelCustomArrgs' custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
                See CEL spec at: https://github.com/google/cel-spec.
                Structure is documented below.
         :param str description: Description of the AccessLevel and its use. Does not affect behavior.
@@ -1020,7 +1020,7 @@ class AccessLevelsAccessLevel(dict):
 
 
 @pulumi.output_type
-class AccessLevelsAccessLevelBasic(dict):
+calass AccessLevelsAccessLevelBasic(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1042,7 +1042,7 @@ class AccessLevelsAccessLevelBasic(dict):
                  conditions: Sequence['outputs.AccessLevelsAccessLevelBasicCondition'],
                  combining_function: Optional[str] = None):
         """
-        :param Sequence['AccessLevelsAccessLevelBasicConditionArgs'] conditions: A set of requirements for the AccessLevel to be granted.
+        :param Sequence['AccessLevelsAccessLevelBasicConditionArrgs'] conditions: A set of requirements for the AccessLevel to be granted.
                Structure is documented below.
         :param str combining_function: How the conditions list should be combined to determine if a request
                is granted this AccessLevel. If AND is used, each Condition in
@@ -1081,7 +1081,7 @@ class AccessLevelsAccessLevelBasic(dict):
 
 
 @pulumi.output_type
-class AccessLevelsAccessLevelBasicCondition(dict):
+calass AccessLevelsAccessLevelBasicCondition(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1114,7 +1114,7 @@ class AccessLevelsAccessLevelBasicCondition(dict):
                  required_access_levels: Optional[Sequence[str]] = None,
                  vpc_network_sources: Optional[Sequence['outputs.AccessLevelsAccessLevelBasicConditionVpcNetworkSource']] = None):
         """
-        :param 'AccessLevelsAccessLevelBasicConditionDevicePolicyArgs' device_policy: Device specific restrictions, all restrictions must hold for
+        :param 'AccessLevelsAccessLevelBasicConditionDevicePolicyArrgs' device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
                allowed.
                Structure is documented below.
@@ -1146,7 +1146,7 @@ class AccessLevelsAccessLevelBasicCondition(dict):
                does not exist is an error. All access levels listed must be
                granted for the Condition to be true.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-        :param Sequence['AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs'] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        :param Sequence['AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrgs'] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
                Structure is documented below.
         """
         if device_policy is not None:
@@ -1249,7 +1249,7 @@ class AccessLevelsAccessLevelBasicCondition(dict):
 
 
 @pulumi.output_type
-class AccessLevelsAccessLevelBasicConditionDevicePolicy(dict):
+calass AccessLevelsAccessLevelBasicConditionDevicePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1291,7 +1291,7 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicy(dict):
         :param Sequence[str] allowed_encryption_statuses: A list of allowed encryptions statuses.
                An empty list allows all statuses.
                Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
-        :param Sequence['AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs'] os_constraints: A list of allowed OS versions.
+        :param Sequence['AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrgs'] os_constraints: A list of allowed OS versions.
                An empty list allows all types and all versions.
                Structure is documented below.
         :param bool require_admin_approval: Whether the device needs to be approved by the customer admin.
@@ -1369,7 +1369,7 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicy(dict):
 
 
 @pulumi.output_type
-class AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint(dict):
+calass AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1424,7 +1424,7 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint(dict):
 
 
 @pulumi.output_type
-class AccessLevelsAccessLevelBasicConditionVpcNetworkSource(dict):
+calass AccessLevelsAccessLevelBasicConditionVpcNetworkSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1445,7 +1445,7 @@ class AccessLevelsAccessLevelBasicConditionVpcNetworkSource(dict):
     def __init__(__self__, *,
                  vpc_subnetwork: Optional['outputs.AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork'] = None):
         """
-        :param 'AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs' vpc_subnetwork: Sub networks within a VPC network.
+        :param 'AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArrgs' vpc_subnetwork: Sub networks within a VPC network.
                Structure is documented below.
         """
         if vpc_subnetwork is not None:
@@ -1462,7 +1462,7 @@ class AccessLevelsAccessLevelBasicConditionVpcNetworkSource(dict):
 
 
 @pulumi.output_type
-class AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork(dict):
+calass AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1509,11 +1509,11 @@ class AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork(dict):
 
 
 @pulumi.output_type
-class AccessLevelsAccessLevelCustom(dict):
+calass AccessLevelsAccessLevelCustom(dict):
     def __init__(__self__, *,
                  expr: 'outputs.AccessLevelsAccessLevelCustomExpr'):
         """
-        :param 'AccessLevelsAccessLevelCustomExprArgs' expr: Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+        :param 'AccessLevelsAccessLevelCustomExprArrgs' expr: Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
                This page details the objects and attributes that are used to the build the CEL expressions for
                custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
                Structure is documented below.
@@ -1533,7 +1533,7 @@ class AccessLevelsAccessLevelCustom(dict):
 
 
 @pulumi.output_type
-class AccessLevelsAccessLevelCustomExpr(dict):
+calass AccessLevelsAccessLevelCustomExpr(dict):
     def __init__(__self__, *,
                  expression: str,
                  description: Optional[str] = None,
@@ -1587,7 +1587,7 @@ class AccessLevelsAccessLevelCustomExpr(dict):
 
 
 @pulumi.output_type
-class AccessPolicyIamBindingCondition(dict):
+calass AccessPolicyIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -1614,7 +1614,7 @@ class AccessPolicyIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class AccessPolicyIamMemberCondition(dict):
+calass AccessPolicyIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -1641,7 +1641,7 @@ class AccessPolicyIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterEgressPolicyEgressFrom(dict):
+calass ServicePerimeterEgressPolicyEgressFrom(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1676,7 +1676,7 @@ class ServicePerimeterEgressPolicyEgressFrom(dict):
                Possible values are: `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         :param str source_restriction: Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
                Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
-        :param Sequence['ServicePerimeterEgressPolicyEgressFromSourceArgs'] sources: Sources that this EgressPolicy authorizes access from.
+        :param Sequence['ServicePerimeterEgressPolicyEgressFromSourceArrgs'] sources: Sources that this EgressPolicy authorizes access from.
                Structure is documented below.
         """
         if identities is not None:
@@ -1729,7 +1729,7 @@ class ServicePerimeterEgressPolicyEgressFrom(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterEgressPolicyEgressFromSource(dict):
+calass ServicePerimeterEgressPolicyEgressFromSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1765,7 +1765,7 @@ class ServicePerimeterEgressPolicyEgressFromSource(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterEgressPolicyEgressTo(dict):
+calass ServicePerimeterEgressPolicyEgressTo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1791,7 +1791,7 @@ class ServicePerimeterEgressPolicyEgressTo(dict):
         :param Sequence[str] external_resources: A list of external resources that are allowed to be accessed. A request
                matches if it contains an external resource in this list (Example:
                s3://bucket/path). Currently '*' is not allowed.
-        :param Sequence['ServicePerimeterEgressPolicyEgressToOperationArgs'] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
+        :param Sequence['ServicePerimeterEgressPolicyEgressToOperationArrgs'] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
         :param Sequence[str] resources: A list of resources, currently only projects in the form
@@ -1841,7 +1841,7 @@ class ServicePerimeterEgressPolicyEgressTo(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterEgressPolicyEgressToOperation(dict):
+calass ServicePerimeterEgressPolicyEgressToOperation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1865,7 +1865,7 @@ class ServicePerimeterEgressPolicyEgressToOperation(dict):
                  method_selectors: Optional[Sequence['outputs.ServicePerimeterEgressPolicyEgressToOperationMethodSelector']] = None,
                  service_name: Optional[str] = None):
         """
-        :param Sequence['ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArgs'] method_selectors: API methods or permissions to allow. Method or permission must belong
+        :param Sequence['ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArrgs'] method_selectors: API methods or permissions to allow. Method or permission must belong
                to the service specified by `serviceName` field. A single MethodSelector
                entry with `*` specified for the `method` field will allow all methods
                AND permissions for the service specified in `serviceName`.
@@ -1903,7 +1903,7 @@ class ServicePerimeterEgressPolicyEgressToOperation(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterEgressPolicyEgressToOperationMethodSelector(dict):
+calass ServicePerimeterEgressPolicyEgressToOperationMethodSelector(dict):
     def __init__(__self__, *,
                  method: Optional[str] = None,
                  permission: Optional[str] = None):
@@ -1940,7 +1940,7 @@ class ServicePerimeterEgressPolicyEgressToOperationMethodSelector(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterIngressPolicyIngressFrom(dict):
+calass ServicePerimeterIngressPolicyIngressFrom(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1970,7 +1970,7 @@ class ServicePerimeterIngressPolicyIngressFrom(dict):
                perimeter. If left unspecified, then members of `identities` field will be
                allowed access.
                Possible values are: `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
-        :param Sequence['ServicePerimeterIngressPolicyIngressFromSourceArgs'] sources: Sources that this `IngressPolicy` authorizes access from.
+        :param Sequence['ServicePerimeterIngressPolicyIngressFromSourceArrgs'] sources: Sources that this `IngressPolicy` authorizes access from.
                Structure is documented below.
         """
         if identities is not None:
@@ -2012,7 +2012,7 @@ class ServicePerimeterIngressPolicyIngressFrom(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterIngressPolicyIngressFromSource(dict):
+calass ServicePerimeterIngressPolicyIngressFromSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2084,12 +2084,12 @@ class ServicePerimeterIngressPolicyIngressFromSource(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterIngressPolicyIngressTo(dict):
+calass ServicePerimeterIngressPolicyIngressTo(dict):
     def __init__(__self__, *,
                  operations: Optional[Sequence['outputs.ServicePerimeterIngressPolicyIngressToOperation']] = None,
                  resources: Optional[Sequence[str]] = None):
         """
-        :param Sequence['ServicePerimeterIngressPolicyIngressToOperationArgs'] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
+        :param Sequence['ServicePerimeterIngressPolicyIngressToOperationArrgs'] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
                Structure is documented below.
         :param Sequence[str] resources: A list of resources, currently only projects in the form
@@ -2133,7 +2133,7 @@ class ServicePerimeterIngressPolicyIngressTo(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterIngressPolicyIngressToOperation(dict):
+calass ServicePerimeterIngressPolicyIngressToOperation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2157,7 +2157,7 @@ class ServicePerimeterIngressPolicyIngressToOperation(dict):
                  method_selectors: Optional[Sequence['outputs.ServicePerimeterIngressPolicyIngressToOperationMethodSelector']] = None,
                  service_name: Optional[str] = None):
         """
-        :param Sequence['ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArgs'] method_selectors: API methods or permissions to allow. Method or permission must belong to
+        :param Sequence['ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArrgs'] method_selectors: API methods or permissions to allow. Method or permission must belong to
                the service specified by serviceName field. A single `MethodSelector` entry
                with `*` specified for the method field will allow all methods AND
                permissions for the service specified in `serviceName`.
@@ -2195,7 +2195,7 @@ class ServicePerimeterIngressPolicyIngressToOperation(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterIngressPolicyIngressToOperationMethodSelector(dict):
+calass ServicePerimeterIngressPolicyIngressToOperationMethodSelector(dict):
     def __init__(__self__, *,
                  method: Optional[str] = None,
                  permission: Optional[str] = None):
@@ -2232,7 +2232,7 @@ class ServicePerimeterIngressPolicyIngressToOperationMethodSelector(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterSpec(dict):
+calass ServicePerimeterSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2275,12 +2275,12 @@ class ServicePerimeterSpec(dict):
                origins within the perimeter. For Service Perimeter Bridge, must
                be empty.
                Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
-        :param Sequence['ServicePerimeterSpecEgressPolicyArgs'] egress_policies: List of EgressPolicies to apply to the perimeter. A perimeter may
+        :param Sequence['ServicePerimeterSpecEgressPolicyArrgs'] egress_policies: List of EgressPolicies to apply to the perimeter. A perimeter may
                have multiple EgressPolicies, each of which is evaluated separately.
                Access is granted if any EgressPolicy grants it. Must be empty for
                a perimeter bridge.
                Structure is documented below.
-        :param Sequence['ServicePerimeterSpecIngressPolicyArgs'] ingress_policies: List of `IngressPolicies` to apply to the perimeter. A perimeter may
+        :param Sequence['ServicePerimeterSpecIngressPolicyArrgs'] ingress_policies: List of `IngressPolicies` to apply to the perimeter. A perimeter may
                have multiple `IngressPolicies`, each of which is evaluated
                separately. Access is granted if any `Ingress Policy` grants it.
                Must be empty for a perimeter bridge.
@@ -2293,7 +2293,7 @@ class ServicePerimeterSpec(dict):
                `storage.googleapis.com` is specified, access to the storage
                buckets inside the perimeter must meet the perimeter's access
                restrictions.
-        :param 'ServicePerimeterSpecVpcAccessibleServicesArgs' vpc_accessible_services: Specifies how APIs are allowed to communicate within the Service
+        :param 'ServicePerimeterSpecVpcAccessibleServicesArrgs' vpc_accessible_services: Specifies how APIs are allowed to communicate within the Service
                Perimeter.
                Structure is documented below.
         """
@@ -2384,7 +2384,7 @@ class ServicePerimeterSpec(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterSpecEgressPolicy(dict):
+calass ServicePerimeterSpecEgressPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2408,9 +2408,9 @@ class ServicePerimeterSpecEgressPolicy(dict):
                  egress_from: Optional['outputs.ServicePerimeterSpecEgressPolicyEgressFrom'] = None,
                  egress_to: Optional['outputs.ServicePerimeterSpecEgressPolicyEgressTo'] = None):
         """
-        :param 'ServicePerimeterSpecEgressPolicyEgressFromArgs' egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+        :param 'ServicePerimeterSpecEgressPolicyEgressFromArrgs' egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
-        :param 'ServicePerimeterSpecEgressPolicyEgressToArgs' egress_to: Defines the conditions on the `ApiOperation` and destination resources that
+        :param 'ServicePerimeterSpecEgressPolicyEgressToArrgs' egress_to: Defines the conditions on the `ApiOperation` and destination resources that
                cause this `EgressPolicy` to apply.
                Structure is documented below.
         """
@@ -2440,7 +2440,7 @@ class ServicePerimeterSpecEgressPolicy(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterSpecEgressPolicyEgressFrom(dict):
+calass ServicePerimeterSpecEgressPolicyEgressFrom(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2475,7 +2475,7 @@ class ServicePerimeterSpecEgressPolicyEgressFrom(dict):
                Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         :param str source_restriction: Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
                Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
-        :param Sequence['ServicePerimeterSpecEgressPolicyEgressFromSourceArgs'] sources: Sources that this EgressPolicy authorizes access from.
+        :param Sequence['ServicePerimeterSpecEgressPolicyEgressFromSourceArrgs'] sources: Sources that this EgressPolicy authorizes access from.
                Structure is documented below.
         """
         if identities is not None:
@@ -2528,7 +2528,7 @@ class ServicePerimeterSpecEgressPolicyEgressFrom(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterSpecEgressPolicyEgressFromSource(dict):
+calass ServicePerimeterSpecEgressPolicyEgressFromSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2564,7 +2564,7 @@ class ServicePerimeterSpecEgressPolicyEgressFromSource(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterSpecEgressPolicyEgressTo(dict):
+calass ServicePerimeterSpecEgressPolicyEgressTo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2590,7 +2590,7 @@ class ServicePerimeterSpecEgressPolicyEgressTo(dict):
         :param Sequence[str] external_resources: A list of external resources that are allowed to be accessed. A request
                matches if it contains an external resource in this list (Example:
                s3://bucket/path). Currently '*' is not allowed.
-        :param Sequence['ServicePerimeterSpecEgressPolicyEgressToOperationArgs'] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
+        :param Sequence['ServicePerimeterSpecEgressPolicyEgressToOperationArrgs'] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
         :param Sequence[str] resources: A list of resources, currently only projects in the form
@@ -2640,7 +2640,7 @@ class ServicePerimeterSpecEgressPolicyEgressTo(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterSpecEgressPolicyEgressToOperation(dict):
+calass ServicePerimeterSpecEgressPolicyEgressToOperation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2664,7 +2664,7 @@ class ServicePerimeterSpecEgressPolicyEgressToOperation(dict):
                  method_selectors: Optional[Sequence['outputs.ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector']] = None,
                  service_name: Optional[str] = None):
         """
-        :param Sequence['ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs'] method_selectors: API methods or permissions to allow. Method or permission must belong
+        :param Sequence['ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrgs'] method_selectors: API methods or permissions to allow. Method or permission must belong
                to the service specified by `serviceName` field. A single MethodSelector
                entry with `*` specified for the `method` field will allow all methods
                AND permissions for the service specified in `serviceName`.
@@ -2702,7 +2702,7 @@ class ServicePerimeterSpecEgressPolicyEgressToOperation(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector(dict):
+calass ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector(dict):
     def __init__(__self__, *,
                  method: Optional[str] = None,
                  permission: Optional[str] = None):
@@ -2739,7 +2739,7 @@ class ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterSpecIngressPolicy(dict):
+calass ServicePerimeterSpecIngressPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2763,10 +2763,10 @@ class ServicePerimeterSpecIngressPolicy(dict):
                  ingress_from: Optional['outputs.ServicePerimeterSpecIngressPolicyIngressFrom'] = None,
                  ingress_to: Optional['outputs.ServicePerimeterSpecIngressPolicyIngressTo'] = None):
         """
-        :param 'ServicePerimeterSpecIngressPolicyIngressFromArgs' ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
+        :param 'ServicePerimeterSpecIngressPolicyIngressFromArrgs' ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
                to apply.
                Structure is documented below.
-        :param 'ServicePerimeterSpecIngressPolicyIngressToArgs' ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
+        :param 'ServicePerimeterSpecIngressPolicyIngressToArrgs' ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
                this `IngressPolicy` to apply.
                Structure is documented below.
         """
@@ -2797,7 +2797,7 @@ class ServicePerimeterSpecIngressPolicy(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterSpecIngressPolicyIngressFrom(dict):
+calass ServicePerimeterSpecIngressPolicyIngressFrom(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2827,7 +2827,7 @@ class ServicePerimeterSpecIngressPolicyIngressFrom(dict):
                perimeter. If left unspecified, then members of `identities` field will be
                allowed access.
                Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
-        :param Sequence['ServicePerimeterSpecIngressPolicyIngressFromSourceArgs'] sources: Sources that this `IngressPolicy` authorizes access from.
+        :param Sequence['ServicePerimeterSpecIngressPolicyIngressFromSourceArrgs'] sources: Sources that this `IngressPolicy` authorizes access from.
                Structure is documented below.
         """
         if identities is not None:
@@ -2869,7 +2869,7 @@ class ServicePerimeterSpecIngressPolicyIngressFrom(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterSpecIngressPolicyIngressFromSource(dict):
+calass ServicePerimeterSpecIngressPolicyIngressFromSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2927,12 +2927,12 @@ class ServicePerimeterSpecIngressPolicyIngressFromSource(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterSpecIngressPolicyIngressTo(dict):
+calass ServicePerimeterSpecIngressPolicyIngressTo(dict):
     def __init__(__self__, *,
                  operations: Optional[Sequence['outputs.ServicePerimeterSpecIngressPolicyIngressToOperation']] = None,
                  resources: Optional[Sequence[str]] = None):
         """
-        :param Sequence['ServicePerimeterSpecIngressPolicyIngressToOperationArgs'] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
+        :param Sequence['ServicePerimeterSpecIngressPolicyIngressToOperationArrgs'] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
                Structure is documented below.
         :param Sequence[str] resources: A list of resources, currently only projects in the form
@@ -2976,7 +2976,7 @@ class ServicePerimeterSpecIngressPolicyIngressTo(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterSpecIngressPolicyIngressToOperation(dict):
+calass ServicePerimeterSpecIngressPolicyIngressToOperation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3000,7 +3000,7 @@ class ServicePerimeterSpecIngressPolicyIngressToOperation(dict):
                  method_selectors: Optional[Sequence['outputs.ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector']] = None,
                  service_name: Optional[str] = None):
         """
-        :param Sequence['ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs'] method_selectors: API methods or permissions to allow. Method or permission must belong
+        :param Sequence['ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrgs'] method_selectors: API methods or permissions to allow. Method or permission must belong
                to the service specified by `serviceName` field. A single MethodSelector
                entry with `*` specified for the `method` field will allow all methods
                AND permissions for the service specified in `serviceName`.
@@ -3038,7 +3038,7 @@ class ServicePerimeterSpecIngressPolicyIngressToOperation(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector(dict):
+calass ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector(dict):
     def __init__(__self__, *,
                  method: Optional[str] = None,
                  permission: Optional[str] = None):
@@ -3075,7 +3075,7 @@ class ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterSpecVpcAccessibleServices(dict):
+calass ServicePerimeterSpecVpcAccessibleServices(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3129,7 +3129,7 @@ class ServicePerimeterSpecVpcAccessibleServices(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterStatus(dict):
+calass ServicePerimeterStatus(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3172,12 +3172,12 @@ class ServicePerimeterStatus(dict):
                origins within the perimeter. For Service Perimeter Bridge, must
                be empty.
                Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
-        :param Sequence['ServicePerimeterStatusEgressPolicyArgs'] egress_policies: List of EgressPolicies to apply to the perimeter. A perimeter may
+        :param Sequence['ServicePerimeterStatusEgressPolicyArrgs'] egress_policies: List of EgressPolicies to apply to the perimeter. A perimeter may
                have multiple EgressPolicies, each of which is evaluated separately.
                Access is granted if any EgressPolicy grants it. Must be empty for
                a perimeter bridge.
                Structure is documented below.
-        :param Sequence['ServicePerimeterStatusIngressPolicyArgs'] ingress_policies: List of `IngressPolicies` to apply to the perimeter. A perimeter may
+        :param Sequence['ServicePerimeterStatusIngressPolicyArrgs'] ingress_policies: List of `IngressPolicies` to apply to the perimeter. A perimeter may
                have multiple `IngressPolicies`, each of which is evaluated
                separately. Access is granted if any `Ingress Policy` grants it.
                Must be empty for a perimeter bridge.
@@ -3190,7 +3190,7 @@ class ServicePerimeterStatus(dict):
                `storage.googleapis.com` is specified, access to the storage
                buckets inside the perimeter must meet the perimeter's access
                restrictions.
-        :param 'ServicePerimeterStatusVpcAccessibleServicesArgs' vpc_accessible_services: Specifies how APIs are allowed to communicate within the Service
+        :param 'ServicePerimeterStatusVpcAccessibleServicesArrgs' vpc_accessible_services: Specifies how APIs are allowed to communicate within the Service
                Perimeter.
                Structure is documented below.
         """
@@ -3281,7 +3281,7 @@ class ServicePerimeterStatus(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterStatusEgressPolicy(dict):
+calass ServicePerimeterStatusEgressPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3305,9 +3305,9 @@ class ServicePerimeterStatusEgressPolicy(dict):
                  egress_from: Optional['outputs.ServicePerimeterStatusEgressPolicyEgressFrom'] = None,
                  egress_to: Optional['outputs.ServicePerimeterStatusEgressPolicyEgressTo'] = None):
         """
-        :param 'ServicePerimeterStatusEgressPolicyEgressFromArgs' egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+        :param 'ServicePerimeterStatusEgressPolicyEgressFromArrgs' egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
-        :param 'ServicePerimeterStatusEgressPolicyEgressToArgs' egress_to: Defines the conditions on the `ApiOperation` and destination resources that
+        :param 'ServicePerimeterStatusEgressPolicyEgressToArrgs' egress_to: Defines the conditions on the `ApiOperation` and destination resources that
                cause this `EgressPolicy` to apply.
                Structure is documented below.
         """
@@ -3337,7 +3337,7 @@ class ServicePerimeterStatusEgressPolicy(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterStatusEgressPolicyEgressFrom(dict):
+calass ServicePerimeterStatusEgressPolicyEgressFrom(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3372,7 +3372,7 @@ class ServicePerimeterStatusEgressPolicyEgressFrom(dict):
                Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         :param str source_restriction: Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
                Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
-        :param Sequence['ServicePerimeterStatusEgressPolicyEgressFromSourceArgs'] sources: Sources that this EgressPolicy authorizes access from.
+        :param Sequence['ServicePerimeterStatusEgressPolicyEgressFromSourceArrgs'] sources: Sources that this EgressPolicy authorizes access from.
                Structure is documented below.
         """
         if identities is not None:
@@ -3425,7 +3425,7 @@ class ServicePerimeterStatusEgressPolicyEgressFrom(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterStatusEgressPolicyEgressFromSource(dict):
+calass ServicePerimeterStatusEgressPolicyEgressFromSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3461,7 +3461,7 @@ class ServicePerimeterStatusEgressPolicyEgressFromSource(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterStatusEgressPolicyEgressTo(dict):
+calass ServicePerimeterStatusEgressPolicyEgressTo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3487,7 +3487,7 @@ class ServicePerimeterStatusEgressPolicyEgressTo(dict):
         :param Sequence[str] external_resources: A list of external resources that are allowed to be accessed. A request
                matches if it contains an external resource in this list (Example:
                s3://bucket/path). Currently '*' is not allowed.
-        :param Sequence['ServicePerimeterStatusEgressPolicyEgressToOperationArgs'] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
+        :param Sequence['ServicePerimeterStatusEgressPolicyEgressToOperationArrgs'] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
         :param Sequence[str] resources: A list of resources, currently only projects in the form
@@ -3537,7 +3537,7 @@ class ServicePerimeterStatusEgressPolicyEgressTo(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterStatusEgressPolicyEgressToOperation(dict):
+calass ServicePerimeterStatusEgressPolicyEgressToOperation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3561,7 +3561,7 @@ class ServicePerimeterStatusEgressPolicyEgressToOperation(dict):
                  method_selectors: Optional[Sequence['outputs.ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector']] = None,
                  service_name: Optional[str] = None):
         """
-        :param Sequence['ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs'] method_selectors: API methods or permissions to allow. Method or permission must belong
+        :param Sequence['ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrgs'] method_selectors: API methods or permissions to allow. Method or permission must belong
                to the service specified by `serviceName` field. A single MethodSelector
                entry with `*` specified for the `method` field will allow all methods
                AND permissions for the service specified in `serviceName`.
@@ -3599,7 +3599,7 @@ class ServicePerimeterStatusEgressPolicyEgressToOperation(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector(dict):
+calass ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector(dict):
     def __init__(__self__, *,
                  method: Optional[str] = None,
                  permission: Optional[str] = None):
@@ -3636,7 +3636,7 @@ class ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterStatusIngressPolicy(dict):
+calass ServicePerimeterStatusIngressPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3660,10 +3660,10 @@ class ServicePerimeterStatusIngressPolicy(dict):
                  ingress_from: Optional['outputs.ServicePerimeterStatusIngressPolicyIngressFrom'] = None,
                  ingress_to: Optional['outputs.ServicePerimeterStatusIngressPolicyIngressTo'] = None):
         """
-        :param 'ServicePerimeterStatusIngressPolicyIngressFromArgs' ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
+        :param 'ServicePerimeterStatusIngressPolicyIngressFromArrgs' ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
                to apply.
                Structure is documented below.
-        :param 'ServicePerimeterStatusIngressPolicyIngressToArgs' ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
+        :param 'ServicePerimeterStatusIngressPolicyIngressToArrgs' ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
                this `IngressPolicy` to apply.
                Structure is documented below.
         """
@@ -3694,7 +3694,7 @@ class ServicePerimeterStatusIngressPolicy(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterStatusIngressPolicyIngressFrom(dict):
+calass ServicePerimeterStatusIngressPolicyIngressFrom(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3724,7 +3724,7 @@ class ServicePerimeterStatusIngressPolicyIngressFrom(dict):
                perimeter. If left unspecified, then members of `identities` field will be
                allowed access.
                Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
-        :param Sequence['ServicePerimeterStatusIngressPolicyIngressFromSourceArgs'] sources: Sources that this `IngressPolicy` authorizes access from.
+        :param Sequence['ServicePerimeterStatusIngressPolicyIngressFromSourceArrgs'] sources: Sources that this `IngressPolicy` authorizes access from.
                Structure is documented below.
         """
         if identities is not None:
@@ -3766,7 +3766,7 @@ class ServicePerimeterStatusIngressPolicyIngressFrom(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterStatusIngressPolicyIngressFromSource(dict):
+calass ServicePerimeterStatusIngressPolicyIngressFromSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3824,12 +3824,12 @@ class ServicePerimeterStatusIngressPolicyIngressFromSource(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterStatusIngressPolicyIngressTo(dict):
+calass ServicePerimeterStatusIngressPolicyIngressTo(dict):
     def __init__(__self__, *,
                  operations: Optional[Sequence['outputs.ServicePerimeterStatusIngressPolicyIngressToOperation']] = None,
                  resources: Optional[Sequence[str]] = None):
         """
-        :param Sequence['ServicePerimeterStatusIngressPolicyIngressToOperationArgs'] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
+        :param Sequence['ServicePerimeterStatusIngressPolicyIngressToOperationArrgs'] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
                Structure is documented below.
         :param Sequence[str] resources: A list of resources, currently only projects in the form
@@ -3873,7 +3873,7 @@ class ServicePerimeterStatusIngressPolicyIngressTo(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterStatusIngressPolicyIngressToOperation(dict):
+calass ServicePerimeterStatusIngressPolicyIngressToOperation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3897,7 +3897,7 @@ class ServicePerimeterStatusIngressPolicyIngressToOperation(dict):
                  method_selectors: Optional[Sequence['outputs.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector']] = None,
                  service_name: Optional[str] = None):
         """
-        :param Sequence['ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs'] method_selectors: API methods or permissions to allow. Method or permission must belong
+        :param Sequence['ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrgs'] method_selectors: API methods or permissions to allow. Method or permission must belong
                to the service specified by `serviceName` field. A single MethodSelector
                entry with `*` specified for the `method` field will allow all methods
                AND permissions for the service specified in `serviceName`.
@@ -3935,7 +3935,7 @@ class ServicePerimeterStatusIngressPolicyIngressToOperation(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector(dict):
+calass ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector(dict):
     def __init__(__self__, *,
                  method: Optional[str] = None,
                  permission: Optional[str] = None):
@@ -3972,7 +3972,7 @@ class ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector(dict):
 
 
 @pulumi.output_type
-class ServicePerimeterStatusVpcAccessibleServices(dict):
+calass ServicePerimeterStatusVpcAccessibleServices(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4026,7 +4026,7 @@ class ServicePerimeterStatusVpcAccessibleServices(dict):
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeter(dict):
+calass ServicePerimetersServicePerimeter(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4085,12 +4085,12 @@ class ServicePerimetersServicePerimeter(dict):
                themselves.
                Default value is `PERIMETER_TYPE_REGULAR`.
                Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
-        :param 'ServicePerimetersServicePerimeterSpecArgs' spec: Proposed (or dry run) ServicePerimeter configuration.
+        :param 'ServicePerimetersServicePerimeterSpecArrgs' spec: Proposed (or dry run) ServicePerimeter configuration.
                This configuration allows to specify and test ServicePerimeter configuration
                without enforcing actual access restrictions. Only allowed to be set when
                the `useExplicitDryRunSpec` flag is set.
                Structure is documented below.
-        :param 'ServicePerimetersServicePerimeterStatusArgs' status: ServicePerimeter configuration. Specifies sets of resources,
+        :param 'ServicePerimetersServicePerimeterStatusArrgs' status: ServicePerimeter configuration. Specifies sets of resources,
                restricted services and access levels that determine
                perimeter content and boundaries.
                Structure is documented below.
@@ -4232,7 +4232,7 @@ class ServicePerimetersServicePerimeter(dict):
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterSpec(dict):
+calass ServicePerimetersServicePerimeterSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4275,12 +4275,12 @@ class ServicePerimetersServicePerimeterSpec(dict):
                origins within the perimeter. For Service Perimeter Bridge, must
                be empty.
                Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
-        :param Sequence['ServicePerimetersServicePerimeterSpecEgressPolicyArgs'] egress_policies: List of EgressPolicies to apply to the perimeter. A perimeter may
+        :param Sequence['ServicePerimetersServicePerimeterSpecEgressPolicyArrgs'] egress_policies: List of EgressPolicies to apply to the perimeter. A perimeter may
                have multiple EgressPolicies, each of which is evaluated separately.
                Access is granted if any EgressPolicy grants it. Must be empty for
                a perimeter bridge.
                Structure is documented below.
-        :param Sequence['ServicePerimetersServicePerimeterSpecIngressPolicyArgs'] ingress_policies: List of `IngressPolicies` to apply to the perimeter. A perimeter may
+        :param Sequence['ServicePerimetersServicePerimeterSpecIngressPolicyArrgs'] ingress_policies: List of `IngressPolicies` to apply to the perimeter. A perimeter may
                have multiple `IngressPolicies`, each of which is evaluated
                separately. Access is granted if any `Ingress Policy` grants it.
                Must be empty for a perimeter bridge.
@@ -4293,7 +4293,7 @@ class ServicePerimetersServicePerimeterSpec(dict):
                `storage.googleapis.com` is specified, access to the storage
                buckets inside the perimeter must meet the perimeter's access
                restrictions.
-        :param 'ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs' vpc_accessible_services: Specifies how APIs are allowed to communicate within the Service
+        :param 'ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArrgs' vpc_accessible_services: Specifies how APIs are allowed to communicate within the Service
                Perimeter.
                Structure is documented below.
         """
@@ -4384,7 +4384,7 @@ class ServicePerimetersServicePerimeterSpec(dict):
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterSpecEgressPolicy(dict):
+calass ServicePerimetersServicePerimeterSpecEgressPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4408,9 +4408,9 @@ class ServicePerimetersServicePerimeterSpecEgressPolicy(dict):
                  egress_from: Optional['outputs.ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom'] = None,
                  egress_to: Optional['outputs.ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo'] = None):
         """
-        :param 'ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs' egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+        :param 'ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArrgs' egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
-        :param 'ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs' egress_to: Defines the conditions on the `ApiOperation` and destination resources that
+        :param 'ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArrgs' egress_to: Defines the conditions on the `ApiOperation` and destination resources that
                cause this `EgressPolicy` to apply.
                Structure is documented below.
         """
@@ -4440,7 +4440,7 @@ class ServicePerimetersServicePerimeterSpecEgressPolicy(dict):
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom(dict):
+calass ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4475,7 +4475,7 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom(dict):
                Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         :param str source_restriction: Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
                Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
-        :param Sequence['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs'] sources: Sources that this EgressPolicy authorizes access from.
+        :param Sequence['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrgs'] sources: Sources that this EgressPolicy authorizes access from.
                Structure is documented below.
         """
         if identities is not None:
@@ -4528,7 +4528,7 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom(dict):
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource(dict):
+calass ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4564,7 +4564,7 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource(dict):
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo(dict):
+calass ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4590,7 +4590,7 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo(dict):
         :param Sequence[str] external_resources: A list of external resources that are allowed to be accessed. A request
                matches if it contains an external resource in this list (Example:
                s3://bucket/path). Currently '*' is not allowed.
-        :param Sequence['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs'] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
+        :param Sequence['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrgs'] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
         :param Sequence[str] resources: A list of resources, currently only projects in the form
@@ -4640,7 +4640,7 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo(dict):
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation(dict):
+calass ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4664,7 +4664,7 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation(dict):
                  method_selectors: Optional[Sequence['outputs.ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector']] = None,
                  service_name: Optional[str] = None):
         """
-        :param Sequence['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs'] method_selectors: API methods or permissions to allow. Method or permission must belong
+        :param Sequence['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrgs'] method_selectors: API methods or permissions to allow. Method or permission must belong
                to the service specified by `serviceName` field. A single MethodSelector
                entry with `*` specified for the `method` field will allow all methods
                AND permissions for the service specified in `serviceName`.
@@ -4702,7 +4702,7 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation(dict):
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector(dict):
+calass ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector(dict):
     def __init__(__self__, *,
                  method: Optional[str] = None,
                  permission: Optional[str] = None):
@@ -4739,7 +4739,7 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSe
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterSpecIngressPolicy(dict):
+calass ServicePerimetersServicePerimeterSpecIngressPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4763,10 +4763,10 @@ class ServicePerimetersServicePerimeterSpecIngressPolicy(dict):
                  ingress_from: Optional['outputs.ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom'] = None,
                  ingress_to: Optional['outputs.ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo'] = None):
         """
-        :param 'ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs' ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
+        :param 'ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArrgs' ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
                to apply.
                Structure is documented below.
-        :param 'ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs' ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
+        :param 'ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArrgs' ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
                this `IngressPolicy` to apply.
                Structure is documented below.
         """
@@ -4797,7 +4797,7 @@ class ServicePerimetersServicePerimeterSpecIngressPolicy(dict):
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom(dict):
+calass ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4827,7 +4827,7 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom(dict):
                perimeter. If left unspecified, then members of `identities` field will be
                allowed access.
                Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
-        :param Sequence['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs'] sources: Sources that this `IngressPolicy` authorizes access from.
+        :param Sequence['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrgs'] sources: Sources that this `IngressPolicy` authorizes access from.
                Structure is documented below.
         """
         if identities is not None:
@@ -4869,7 +4869,7 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom(dict):
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource(dict):
+calass ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4927,12 +4927,12 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource(dict):
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo(dict):
+calass ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo(dict):
     def __init__(__self__, *,
                  operations: Optional[Sequence['outputs.ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation']] = None,
                  resources: Optional[Sequence[str]] = None):
         """
-        :param Sequence['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs'] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
+        :param Sequence['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrgs'] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
                Structure is documented below.
         :param Sequence[str] resources: A list of resources, currently only projects in the form
@@ -4976,7 +4976,7 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo(dict):
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation(dict):
+calass ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5000,7 +5000,7 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation(dict)
                  method_selectors: Optional[Sequence['outputs.ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector']] = None,
                  service_name: Optional[str] = None):
         """
-        :param Sequence['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs'] method_selectors: API methods or permissions to allow. Method or permission must belong
+        :param Sequence['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrgs'] method_selectors: API methods or permissions to allow. Method or permission must belong
                to the service specified by `serviceName` field. A single MethodSelector
                entry with `*` specified for the `method` field will allow all methods
                AND permissions for the service specified in `serviceName`.
@@ -5038,7 +5038,7 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation(dict)
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector(dict):
+calass ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector(dict):
     def __init__(__self__, *,
                  method: Optional[str] = None,
                  permission: Optional[str] = None):
@@ -5075,7 +5075,7 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethod
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterSpecVpcAccessibleServices(dict):
+calass ServicePerimetersServicePerimeterSpecVpcAccessibleServices(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5129,7 +5129,7 @@ class ServicePerimetersServicePerimeterSpecVpcAccessibleServices(dict):
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterStatus(dict):
+calass ServicePerimetersServicePerimeterStatus(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5172,12 +5172,12 @@ class ServicePerimetersServicePerimeterStatus(dict):
                origins within the perimeter. For Service Perimeter Bridge, must
                be empty.
                Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
-        :param Sequence['ServicePerimetersServicePerimeterStatusEgressPolicyArgs'] egress_policies: List of EgressPolicies to apply to the perimeter. A perimeter may
+        :param Sequence['ServicePerimetersServicePerimeterStatusEgressPolicyArrgs'] egress_policies: List of EgressPolicies to apply to the perimeter. A perimeter may
                have multiple EgressPolicies, each of which is evaluated separately.
                Access is granted if any EgressPolicy grants it. Must be empty for
                a perimeter bridge.
                Structure is documented below.
-        :param Sequence['ServicePerimetersServicePerimeterStatusIngressPolicyArgs'] ingress_policies: List of `IngressPolicies` to apply to the perimeter. A perimeter may
+        :param Sequence['ServicePerimetersServicePerimeterStatusIngressPolicyArrgs'] ingress_policies: List of `IngressPolicies` to apply to the perimeter. A perimeter may
                have multiple `IngressPolicies`, each of which is evaluated
                separately. Access is granted if any `Ingress Policy` grants it.
                Must be empty for a perimeter bridge.
@@ -5190,7 +5190,7 @@ class ServicePerimetersServicePerimeterStatus(dict):
                `storage.googleapis.com` is specified, access to the storage
                buckets inside the perimeter must meet the perimeter's access
                restrictions.
-        :param 'ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs' vpc_accessible_services: Specifies how APIs are allowed to communicate within the Service
+        :param 'ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArrgs' vpc_accessible_services: Specifies how APIs are allowed to communicate within the Service
                Perimeter.
                Structure is documented below.
         """
@@ -5281,7 +5281,7 @@ class ServicePerimetersServicePerimeterStatus(dict):
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterStatusEgressPolicy(dict):
+calass ServicePerimetersServicePerimeterStatusEgressPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5305,9 +5305,9 @@ class ServicePerimetersServicePerimeterStatusEgressPolicy(dict):
                  egress_from: Optional['outputs.ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom'] = None,
                  egress_to: Optional['outputs.ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo'] = None):
         """
-        :param 'ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs' egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+        :param 'ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArrgs' egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
-        :param 'ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs' egress_to: Defines the conditions on the `ApiOperation` and destination resources that
+        :param 'ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArrgs' egress_to: Defines the conditions on the `ApiOperation` and destination resources that
                cause this `EgressPolicy` to apply.
                Structure is documented below.
         """
@@ -5337,7 +5337,7 @@ class ServicePerimetersServicePerimeterStatusEgressPolicy(dict):
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom(dict):
+calass ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5372,7 +5372,7 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom(dict):
                Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         :param str source_restriction: Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
                Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
-        :param Sequence['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs'] sources: Sources that this EgressPolicy authorizes access from.
+        :param Sequence['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrgs'] sources: Sources that this EgressPolicy authorizes access from.
                Structure is documented below.
         """
         if identities is not None:
@@ -5425,7 +5425,7 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom(dict):
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource(dict):
+calass ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5461,7 +5461,7 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource(dict):
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo(dict):
+calass ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5487,7 +5487,7 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo(dict):
         :param Sequence[str] external_resources: A list of external resources that are allowed to be accessed. A request
                matches if it contains an external resource in this list (Example:
                s3://bucket/path). Currently '*' is not allowed.
-        :param Sequence['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs'] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
+        :param Sequence['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrgs'] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
         :param Sequence[str] resources: A list of resources, currently only projects in the form
@@ -5537,7 +5537,7 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo(dict):
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation(dict):
+calass ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5561,7 +5561,7 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation(dict)
                  method_selectors: Optional[Sequence['outputs.ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector']] = None,
                  service_name: Optional[str] = None):
         """
-        :param Sequence['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs'] method_selectors: API methods or permissions to allow. Method or permission must belong
+        :param Sequence['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrgs'] method_selectors: API methods or permissions to allow. Method or permission must belong
                to the service specified by `serviceName` field. A single MethodSelector
                entry with `*` specified for the `method` field will allow all methods
                AND permissions for the service specified in `serviceName`.
@@ -5599,7 +5599,7 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation(dict)
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector(dict):
+calass ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector(dict):
     def __init__(__self__, *,
                  method: Optional[str] = None,
                  permission: Optional[str] = None):
@@ -5636,7 +5636,7 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethod
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterStatusIngressPolicy(dict):
+calass ServicePerimetersServicePerimeterStatusIngressPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5660,10 +5660,10 @@ class ServicePerimetersServicePerimeterStatusIngressPolicy(dict):
                  ingress_from: Optional['outputs.ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom'] = None,
                  ingress_to: Optional['outputs.ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo'] = None):
         """
-        :param 'ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs' ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
+        :param 'ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArrgs' ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
                to apply.
                Structure is documented below.
-        :param 'ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs' ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
+        :param 'ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArrgs' ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
                this `IngressPolicy` to apply.
                Structure is documented below.
         """
@@ -5694,7 +5694,7 @@ class ServicePerimetersServicePerimeterStatusIngressPolicy(dict):
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom(dict):
+calass ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5724,7 +5724,7 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom(dict):
                perimeter. If left unspecified, then members of `identities` field will be
                allowed access.
                Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
-        :param Sequence['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs'] sources: Sources that this `IngressPolicy` authorizes access from.
+        :param Sequence['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrgs'] sources: Sources that this `IngressPolicy` authorizes access from.
                Structure is documented below.
         """
         if identities is not None:
@@ -5766,7 +5766,7 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom(dict):
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource(dict):
+calass ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5824,12 +5824,12 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource(dict
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo(dict):
+calass ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo(dict):
     def __init__(__self__, *,
                  operations: Optional[Sequence['outputs.ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation']] = None,
                  resources: Optional[Sequence[str]] = None):
         """
-        :param Sequence['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs'] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
+        :param Sequence['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrgs'] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
                Structure is documented below.
         :param Sequence[str] resources: A list of resources, currently only projects in the form
@@ -5873,7 +5873,7 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo(dict):
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation(dict):
+calass ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5897,7 +5897,7 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation(dic
                  method_selectors: Optional[Sequence['outputs.ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector']] = None,
                  service_name: Optional[str] = None):
         """
-        :param Sequence['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs'] method_selectors: API methods or permissions to allow. Method or permission must belong
+        :param Sequence['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrgs'] method_selectors: API methods or permissions to allow. Method or permission must belong
                to the service specified by `serviceName` field. A single MethodSelector
                entry with `*` specified for the `method` field will allow all methods
                AND permissions for the service specified in `serviceName`.
@@ -5935,7 +5935,7 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation(dic
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector(dict):
+calass ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector(dict):
     def __init__(__self__, *,
                  method: Optional[str] = None,
                  permission: Optional[str] = None):
@@ -5972,7 +5972,7 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMeth
 
 
 @pulumi.output_type
-class ServicePerimetersServicePerimeterStatusVpcAccessibleServices(dict):
+calass ServicePerimetersServicePerimeterStatusVpcAccessibleServices(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

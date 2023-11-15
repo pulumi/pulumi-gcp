@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['TargetGrpcProxyArgs', 'TargetGrpcProxy']
+__all__ = ['TargetGrpcProxyArrgs', 'TargetGrpcProxy']
 
 @pulumi.input_type
-class TargetGrpcProxyArgs:
+calass TargetGrpcProxyArrgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -142,7 +142,7 @@ class TargetGrpcProxyArgs:
 
 
 @pulumi.input_type
-class _TargetGrpcProxyState:
+calass _TargetGrpcProxyState:
     def __init__(__self__, *,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -347,7 +347,7 @@ class _TargetGrpcProxyState:
         pulumi.set(self, "validate_for_proxyless", value)
 
 
-class TargetGrpcProxy(pulumi.CustomResource):
+calass TargetGrpcProxy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -429,7 +429,7 @@ class TargetGrpcProxy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[TargetGrpcProxyArgs] = None,
+                 args: Optional[TargetGrpcProxyArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a Target gRPC Proxy resource. A target gRPC proxy is a component
@@ -470,12 +470,12 @@ class TargetGrpcProxy(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param TargetGrpcProxyArgs args: The arguments to use to populate this resource's properties.
+        :param TargetGrpcProxyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(TargetGrpcProxyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TargetGrpcProxyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -496,7 +496,7 @@ class TargetGrpcProxy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = TargetGrpcProxyArgs.__new__(TargetGrpcProxyArgs)
+            __props__ = TargetGrpcProxyArrgs.__new__(TargetGrpcProxyArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name

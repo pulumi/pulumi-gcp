@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['CryptoKeyVersionArgs', 'CryptoKeyVersion']
+__all__ = ['CryptoKeyVersionArrgs', 'CryptoKeyVersion']
 
 @pulumi.input_type
-class CryptoKeyVersionArgs:
+calass CryptoKeyVersionArrgs:
     def __init__(__self__, *,
                  crypto_key: pulumi.Input[str],
                  state: Optional[pulumi.Input[str]] = None):
@@ -63,10 +63,10 @@ class CryptoKeyVersionArgs:
 
 
 @pulumi.input_type
-class _CryptoKeyVersionState:
+calass _CryptoKeyVersionState:
     def __init__(__self__, *,
                  algorithm: Optional[pulumi.Input[str]] = None,
-                 attestations: Optional[pulumi.Input[Sequence[pulumi.Input['CryptoKeyVersionAttestationArgs']]]] = None,
+                 attestations: Optional[pulumi.Input[Sequence[pulumi.Input['CryptoKeyVersionAttestationArrgs']]]] = None,
                  crypto_key: Optional[pulumi.Input[str]] = None,
                  generate_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -75,7 +75,7 @@ class _CryptoKeyVersionState:
         """
         Input properties used for looking up and filtering CryptoKeyVersion resources.
         :param pulumi.Input[str] algorithm: The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
-        :param pulumi.Input[Sequence[pulumi.Input['CryptoKeyVersionAttestationArgs']]] attestations: Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+        :param pulumi.Input[Sequence[pulumi.Input['CryptoKeyVersionAttestationArrgs']]] attestations: Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
                Only provided for key versions with protectionLevel HSM.
                Structure is documented below.
         :param pulumi.Input[str] crypto_key: The name of the cryptoKey associated with the CryptoKeyVersions.
@@ -118,7 +118,7 @@ class _CryptoKeyVersionState:
 
     @property
     @pulumi.getter
-    def attestations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CryptoKeyVersionAttestationArgs']]]]:
+    def attestations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CryptoKeyVersionAttestationArrgs']]]]:
         """
         Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
         Only provided for key versions with protectionLevel HSM.
@@ -127,7 +127,7 @@ class _CryptoKeyVersionState:
         return pulumi.get(self, "attestations")
 
     @attestations.setter
-    def attestations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CryptoKeyVersionAttestationArgs']]]]):
+    def attestations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CryptoKeyVersionAttestationArrgs']]]]):
         pulumi.set(self, "attestations", value)
 
     @property
@@ -196,7 +196,7 @@ class _CryptoKeyVersionState:
         pulumi.set(self, "state", value)
 
 
-class CryptoKeyVersion(pulumi.CustomResource):
+calass CryptoKeyVersion(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -259,7 +259,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CryptoKeyVersionArgs,
+                 args: CryptoKeyVersionArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A `CryptoKeyVersion` represents an individual cryptographic key, and the associated key material.
@@ -303,12 +303,12 @@ class CryptoKeyVersion(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param CryptoKeyVersionArgs args: The arguments to use to populate this resource's properties.
+        :param CryptoKeyVersionArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(CryptoKeyVersionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(CryptoKeyVersionArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -326,7 +326,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = CryptoKeyVersionArgs.__new__(CryptoKeyVersionArgs)
+            __props__ = CryptoKeyVersionArrgs.__new__(CryptoKeyVersionArrgs)
 
             if crypto_key is None and not opts.urn:
                 raise TypeError("Missing required property 'crypto_key'")
@@ -348,7 +348,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             algorithm: Optional[pulumi.Input[str]] = None,
-            attestations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CryptoKeyVersionAttestationArgs']]]]] = None,
+            attestations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CryptoKeyVersionAttestationArrgs']]]]] = None,
             crypto_key: Optional[pulumi.Input[str]] = None,
             generate_time: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -362,7 +362,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] algorithm: The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CryptoKeyVersionAttestationArgs']]]] attestations: Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CryptoKeyVersionAttestationArrgs']]]] attestations: Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
                Only provided for key versions with protectionLevel HSM.
                Structure is documented below.
         :param pulumi.Input[str] crypto_key: The name of the cryptoKey associated with the CryptoKeyVersions.

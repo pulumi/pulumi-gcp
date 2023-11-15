@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['RegionSslPolicyArgs', 'RegionSslPolicy']
+__all__ = ['RegionSslPolicyArrgs', 'RegionSslPolicy']
 
 @pulumi.input_type
-class RegionSslPolicyArgs:
+calass RegionSslPolicyArrgs:
     def __init__(__self__, *,
                  region: pulumi.Input[str],
                  custom_features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -185,7 +185,7 @@ class RegionSslPolicyArgs:
 
 
 @pulumi.input_type
-class _RegionSslPolicyState:
+calass _RegionSslPolicyState:
     def __init__(__self__, *,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  custom_features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -424,7 +424,7 @@ class _RegionSslPolicyState:
         pulumi.set(self, "self_link", value)
 
 
-class RegionSslPolicy(pulumi.CustomResource):
+calass RegionSslPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -516,7 +516,7 @@ class RegionSslPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RegionSslPolicyArgs,
+                 args: RegionSslPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a Regional SSL policy. SSL policies give you the ability to control the
@@ -557,12 +557,12 @@ class RegionSslPolicy(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param RegionSslPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param RegionSslPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RegionSslPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(RegionSslPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -585,7 +585,7 @@ class RegionSslPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RegionSslPolicyArgs.__new__(RegionSslPolicyArgs)
+            __props__ = RegionSslPolicyArrgs.__new__(RegionSslPolicyArrgs)
 
             __props__.__dict__["custom_features"] = custom_features
             __props__.__dict__["description"] = description

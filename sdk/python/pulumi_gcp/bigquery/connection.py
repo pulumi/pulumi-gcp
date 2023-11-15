@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ConnectionArgs', 'Connection']
+__all__ = ['ConnectionArrgs', 'Connection']
 
 @pulumi.input_type
-class ConnectionArgs:
+calass ConnectionArrgs:
     def __init__(__self__, *,
-                 aws: Optional[pulumi.Input['ConnectionAwsArgs']] = None,
-                 azure: Optional[pulumi.Input['ConnectionAzureArgs']] = None,
-                 cloud_resource: Optional[pulumi.Input['ConnectionCloudResourceArgs']] = None,
-                 cloud_spanner: Optional[pulumi.Input['ConnectionCloudSpannerArgs']] = None,
-                 cloud_sql: Optional[pulumi.Input['ConnectionCloudSqlArgs']] = None,
+                 aws: Optional[pulumi.Input['ConnectionAwsArrgs']] = None,
+                 azure: Optional[pulumi.Input['ConnectionAzureArrgs']] = None,
+                 cloud_resource: Optional[pulumi.Input['ConnectionCloudResourceArrgs']] = None,
+                 cloud_spanner: Optional[pulumi.Input['ConnectionCloudSpannerArrgs']] = None,
+                 cloud_sql: Optional[pulumi.Input['ConnectionCloudSqlArrgs']] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
@@ -28,15 +28,15 @@ class ConnectionArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Connection resource.
-        :param pulumi.Input['ConnectionAwsArgs'] aws: Connection properties specific to Amazon Web Services.
+        :param pulumi.Input['ConnectionAwsArrgs'] aws: Connection properties specific to Amazon Web Services.
                Structure is documented below.
-        :param pulumi.Input['ConnectionAzureArgs'] azure: Container for connection properties specific to Azure.
+        :param pulumi.Input['ConnectionAzureArrgs'] azure: Container for connection properties specific to Azure.
                Structure is documented below.
-        :param pulumi.Input['ConnectionCloudResourceArgs'] cloud_resource: Container for connection properties for delegation of access to GCP resources.
+        :param pulumi.Input['ConnectionCloudResourceArrgs'] cloud_resource: Container for connection properties for delegation of access to GCP resources.
                Structure is documented below.
-        :param pulumi.Input['ConnectionCloudSpannerArgs'] cloud_spanner: Connection properties specific to Cloud Spanner
+        :param pulumi.Input['ConnectionCloudSpannerArrgs'] cloud_spanner: Connection properties specific to Cloud Spanner
                Structure is documented below.
-        :param pulumi.Input['ConnectionCloudSqlArgs'] cloud_sql: Connection properties specific to the Cloud SQL.
+        :param pulumi.Input['ConnectionCloudSqlArrgs'] cloud_sql: Connection properties specific to the Cloud SQL.
                Structure is documented below.
         :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
         :param pulumi.Input[str] description: A descriptive description for the connection
@@ -74,7 +74,7 @@ class ConnectionArgs:
 
     @property
     @pulumi.getter
-    def aws(self) -> Optional[pulumi.Input['ConnectionAwsArgs']]:
+    def aws(self) -> Optional[pulumi.Input['ConnectionAwsArrgs']]:
         """
         Connection properties specific to Amazon Web Services.
         Structure is documented below.
@@ -82,12 +82,12 @@ class ConnectionArgs:
         return pulumi.get(self, "aws")
 
     @aws.setter
-    def aws(self, value: Optional[pulumi.Input['ConnectionAwsArgs']]):
+    def aws(self, value: Optional[pulumi.Input['ConnectionAwsArrgs']]):
         pulumi.set(self, "aws", value)
 
     @property
     @pulumi.getter
-    def azure(self) -> Optional[pulumi.Input['ConnectionAzureArgs']]:
+    def azure(self) -> Optional[pulumi.Input['ConnectionAzureArrgs']]:
         """
         Container for connection properties specific to Azure.
         Structure is documented below.
@@ -95,12 +95,12 @@ class ConnectionArgs:
         return pulumi.get(self, "azure")
 
     @azure.setter
-    def azure(self, value: Optional[pulumi.Input['ConnectionAzureArgs']]):
+    def azure(self, value: Optional[pulumi.Input['ConnectionAzureArrgs']]):
         pulumi.set(self, "azure", value)
 
     @property
     @pulumi.getter(name="cloudResource")
-    def cloud_resource(self) -> Optional[pulumi.Input['ConnectionCloudResourceArgs']]:
+    def cloud_resource(self) -> Optional[pulumi.Input['ConnectionCloudResourceArrgs']]:
         """
         Container for connection properties for delegation of access to GCP resources.
         Structure is documented below.
@@ -108,12 +108,12 @@ class ConnectionArgs:
         return pulumi.get(self, "cloud_resource")
 
     @cloud_resource.setter
-    def cloud_resource(self, value: Optional[pulumi.Input['ConnectionCloudResourceArgs']]):
+    def cloud_resource(self, value: Optional[pulumi.Input['ConnectionCloudResourceArrgs']]):
         pulumi.set(self, "cloud_resource", value)
 
     @property
     @pulumi.getter(name="cloudSpanner")
-    def cloud_spanner(self) -> Optional[pulumi.Input['ConnectionCloudSpannerArgs']]:
+    def cloud_spanner(self) -> Optional[pulumi.Input['ConnectionCloudSpannerArrgs']]:
         """
         Connection properties specific to Cloud Spanner
         Structure is documented below.
@@ -121,12 +121,12 @@ class ConnectionArgs:
         return pulumi.get(self, "cloud_spanner")
 
     @cloud_spanner.setter
-    def cloud_spanner(self, value: Optional[pulumi.Input['ConnectionCloudSpannerArgs']]):
+    def cloud_spanner(self, value: Optional[pulumi.Input['ConnectionCloudSpannerArrgs']]):
         pulumi.set(self, "cloud_spanner", value)
 
     @property
     @pulumi.getter(name="cloudSql")
-    def cloud_sql(self) -> Optional[pulumi.Input['ConnectionCloudSqlArgs']]:
+    def cloud_sql(self) -> Optional[pulumi.Input['ConnectionCloudSqlArrgs']]:
         """
         Connection properties specific to the Cloud SQL.
         Structure is documented below.
@@ -134,7 +134,7 @@ class ConnectionArgs:
         return pulumi.get(self, "cloud_sql")
 
     @cloud_sql.setter
-    def cloud_sql(self, value: Optional[pulumi.Input['ConnectionCloudSqlArgs']]):
+    def cloud_sql(self, value: Optional[pulumi.Input['ConnectionCloudSqlArrgs']]):
         pulumi.set(self, "cloud_sql", value)
 
     @property
@@ -206,13 +206,13 @@ class ConnectionArgs:
 
 
 @pulumi.input_type
-class _ConnectionState:
+calass _ConnectionState:
     def __init__(__self__, *,
-                 aws: Optional[pulumi.Input['ConnectionAwsArgs']] = None,
-                 azure: Optional[pulumi.Input['ConnectionAzureArgs']] = None,
-                 cloud_resource: Optional[pulumi.Input['ConnectionCloudResourceArgs']] = None,
-                 cloud_spanner: Optional[pulumi.Input['ConnectionCloudSpannerArgs']] = None,
-                 cloud_sql: Optional[pulumi.Input['ConnectionCloudSqlArgs']] = None,
+                 aws: Optional[pulumi.Input['ConnectionAwsArrgs']] = None,
+                 azure: Optional[pulumi.Input['ConnectionAzureArrgs']] = None,
+                 cloud_resource: Optional[pulumi.Input['ConnectionCloudResourceArrgs']] = None,
+                 cloud_spanner: Optional[pulumi.Input['ConnectionCloudSpannerArrgs']] = None,
+                 cloud_sql: Optional[pulumi.Input['ConnectionCloudSqlArrgs']] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
@@ -222,15 +222,15 @@ class _ConnectionState:
                  project: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
-        :param pulumi.Input['ConnectionAwsArgs'] aws: Connection properties specific to Amazon Web Services.
+        :param pulumi.Input['ConnectionAwsArrgs'] aws: Connection properties specific to Amazon Web Services.
                Structure is documented below.
-        :param pulumi.Input['ConnectionAzureArgs'] azure: Container for connection properties specific to Azure.
+        :param pulumi.Input['ConnectionAzureArrgs'] azure: Container for connection properties specific to Azure.
                Structure is documented below.
-        :param pulumi.Input['ConnectionCloudResourceArgs'] cloud_resource: Container for connection properties for delegation of access to GCP resources.
+        :param pulumi.Input['ConnectionCloudResourceArrgs'] cloud_resource: Container for connection properties for delegation of access to GCP resources.
                Structure is documented below.
-        :param pulumi.Input['ConnectionCloudSpannerArgs'] cloud_spanner: Connection properties specific to Cloud Spanner
+        :param pulumi.Input['ConnectionCloudSpannerArrgs'] cloud_spanner: Connection properties specific to Cloud Spanner
                Structure is documented below.
-        :param pulumi.Input['ConnectionCloudSqlArgs'] cloud_sql: Connection properties specific to the Cloud SQL.
+        :param pulumi.Input['ConnectionCloudSqlArrgs'] cloud_sql: Connection properties specific to the Cloud SQL.
                Structure is documented below.
         :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
         :param pulumi.Input[str] description: A descriptive description for the connection
@@ -275,7 +275,7 @@ class _ConnectionState:
 
     @property
     @pulumi.getter
-    def aws(self) -> Optional[pulumi.Input['ConnectionAwsArgs']]:
+    def aws(self) -> Optional[pulumi.Input['ConnectionAwsArrgs']]:
         """
         Connection properties specific to Amazon Web Services.
         Structure is documented below.
@@ -283,12 +283,12 @@ class _ConnectionState:
         return pulumi.get(self, "aws")
 
     @aws.setter
-    def aws(self, value: Optional[pulumi.Input['ConnectionAwsArgs']]):
+    def aws(self, value: Optional[pulumi.Input['ConnectionAwsArrgs']]):
         pulumi.set(self, "aws", value)
 
     @property
     @pulumi.getter
-    def azure(self) -> Optional[pulumi.Input['ConnectionAzureArgs']]:
+    def azure(self) -> Optional[pulumi.Input['ConnectionAzureArrgs']]:
         """
         Container for connection properties specific to Azure.
         Structure is documented below.
@@ -296,12 +296,12 @@ class _ConnectionState:
         return pulumi.get(self, "azure")
 
     @azure.setter
-    def azure(self, value: Optional[pulumi.Input['ConnectionAzureArgs']]):
+    def azure(self, value: Optional[pulumi.Input['ConnectionAzureArrgs']]):
         pulumi.set(self, "azure", value)
 
     @property
     @pulumi.getter(name="cloudResource")
-    def cloud_resource(self) -> Optional[pulumi.Input['ConnectionCloudResourceArgs']]:
+    def cloud_resource(self) -> Optional[pulumi.Input['ConnectionCloudResourceArrgs']]:
         """
         Container for connection properties for delegation of access to GCP resources.
         Structure is documented below.
@@ -309,12 +309,12 @@ class _ConnectionState:
         return pulumi.get(self, "cloud_resource")
 
     @cloud_resource.setter
-    def cloud_resource(self, value: Optional[pulumi.Input['ConnectionCloudResourceArgs']]):
+    def cloud_resource(self, value: Optional[pulumi.Input['ConnectionCloudResourceArrgs']]):
         pulumi.set(self, "cloud_resource", value)
 
     @property
     @pulumi.getter(name="cloudSpanner")
-    def cloud_spanner(self) -> Optional[pulumi.Input['ConnectionCloudSpannerArgs']]:
+    def cloud_spanner(self) -> Optional[pulumi.Input['ConnectionCloudSpannerArrgs']]:
         """
         Connection properties specific to Cloud Spanner
         Structure is documented below.
@@ -322,12 +322,12 @@ class _ConnectionState:
         return pulumi.get(self, "cloud_spanner")
 
     @cloud_spanner.setter
-    def cloud_spanner(self, value: Optional[pulumi.Input['ConnectionCloudSpannerArgs']]):
+    def cloud_spanner(self, value: Optional[pulumi.Input['ConnectionCloudSpannerArrgs']]):
         pulumi.set(self, "cloud_spanner", value)
 
     @property
     @pulumi.getter(name="cloudSql")
-    def cloud_sql(self) -> Optional[pulumi.Input['ConnectionCloudSqlArgs']]:
+    def cloud_sql(self) -> Optional[pulumi.Input['ConnectionCloudSqlArrgs']]:
         """
         Connection properties specific to the Cloud SQL.
         Structure is documented below.
@@ -335,7 +335,7 @@ class _ConnectionState:
         return pulumi.get(self, "cloud_sql")
 
     @cloud_sql.setter
-    def cloud_sql(self, value: Optional[pulumi.Input['ConnectionCloudSqlArgs']]):
+    def cloud_sql(self, value: Optional[pulumi.Input['ConnectionCloudSqlArrgs']]):
         pulumi.set(self, "cloud_sql", value)
 
     @property
@@ -431,16 +431,16 @@ class _ConnectionState:
         pulumi.set(self, "project", value)
 
 
-class Connection(pulumi.CustomResource):
+calass Connection(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws: Optional[pulumi.Input[pulumi.InputType['ConnectionAwsArgs']]] = None,
-                 azure: Optional[pulumi.Input[pulumi.InputType['ConnectionAzureArgs']]] = None,
-                 cloud_resource: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudResourceArgs']]] = None,
-                 cloud_spanner: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSpannerArgs']]] = None,
-                 cloud_sql: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']]] = None,
+                 aws: Optional[pulumi.Input[pulumi.InputType['ConnectionAwsArrgs']]] = None,
+                 azure: Optional[pulumi.Input[pulumi.InputType['ConnectionAzureArrgs']]] = None,
+                 cloud_resource: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudResourceArrgs']]] = None,
+                 cloud_spanner: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSpannerArrgs']]] = None,
+                 cloud_sql: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSqlArrgs']]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
@@ -468,7 +468,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         connection = gcp.bigquery.Connection("connection",
-            cloud_resource=gcp.bigquery.ConnectionCloudResourceArgs(),
+            cloud_resource=gcp.bigquery.ConnectionCloudResourceArrgs(),
             connection_id="my-connection",
             description="a riveting description",
             friendly_name="👋",
@@ -484,7 +484,7 @@ class Connection(pulumi.CustomResource):
         instance = gcp.sql.DatabaseInstance("instance",
             database_version="POSTGRES_11",
             region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+            settings=gcp.sql.DatabaseInstanceSettingsArrgs(
                 tier="db-f1-micro",
             ),
             deletion_protection=True)
@@ -499,11 +499,11 @@ class Connection(pulumi.CustomResource):
             friendly_name="👋",
             description="a riveting description",
             location="US",
-            cloud_sql=gcp.bigquery.ConnectionCloudSqlArgs(
+            cloud_sql=gcp.bigquery.ConnectionCloudSqlArrgs(
                 instance_id=instance.connection_name,
                 database=db.name,
                 type="POSTGRES",
-                credential=gcp.bigquery.ConnectionCloudSqlCredentialArgs(
+                credential=gcp.bigquery.ConnectionCloudSqlCredentialArrgs(
                     username=user.name,
                     password=user.password,
                 ),
@@ -519,7 +519,7 @@ class Connection(pulumi.CustomResource):
         instance = gcp.sql.DatabaseInstance("instance",
             database_version="POSTGRES_11",
             region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+            settings=gcp.sql.DatabaseInstanceSettingsArrgs(
                 tier="db-f1-micro",
             ),
             deletion_protection=True)
@@ -535,11 +535,11 @@ class Connection(pulumi.CustomResource):
             location="US",
             friendly_name="👋",
             description="a riveting description",
-            cloud_sql=gcp.bigquery.ConnectionCloudSqlArgs(
+            cloud_sql=gcp.bigquery.ConnectionCloudSqlArrgs(
                 instance_id=instance.connection_name,
                 database=db.name,
                 type="POSTGRES",
-                credential=gcp.bigquery.ConnectionCloudSqlCredentialArgs(
+                credential=gcp.bigquery.ConnectionCloudSqlCredentialArrgs(
                     username=user.name,
                     password=user.password,
                 ),
@@ -552,8 +552,8 @@ class Connection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         connection = gcp.bigquery.Connection("connection",
-            aws=gcp.bigquery.ConnectionAwsArgs(
-                access_role=gcp.bigquery.ConnectionAwsAccessRoleArgs(
+            aws=gcp.bigquery.ConnectionAwsArrgs(
+                access_role=gcp.bigquery.ConnectionAwsAccessRoleArrgs(
                     iam_role_id="arn:aws:iam::999999999999:role/omnirole",
                 ),
             ),
@@ -569,7 +569,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         connection = gcp.bigquery.Connection("connection",
-            azure=gcp.bigquery.ConnectionAzureArgs(
+            azure=gcp.bigquery.ConnectionAzureArrgs(
                 customer_tenant_id="customer-tenant-id",
                 federated_application_client_id="b43eeeee-eeee-eeee-eeee-a480155501ce",
             ),
@@ -585,7 +585,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         connection = gcp.bigquery.Connection("connection",
-            cloud_spanner=gcp.bigquery.ConnectionCloudSpannerArgs(
+            cloud_spanner=gcp.bigquery.ConnectionCloudSpannerArrgs(
                 database="projects/project/instances/instance/databases/database",
                 database_role="database_role",
             ),
@@ -601,7 +601,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         connection = gcp.bigquery.Connection("connection",
-            cloud_spanner=gcp.bigquery.ConnectionCloudSpannerArgs(
+            cloud_spanner=gcp.bigquery.ConnectionCloudSpannerArrgs(
                 database="projects/project/instances/instance/databases/database",
                 max_parallelism=100,
                 use_data_boost=True,
@@ -639,15 +639,15 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConnectionAwsArgs']] aws: Connection properties specific to Amazon Web Services.
+        :param pulumi.Input[pulumi.InputType['ConnectionAwsArrgs']] aws: Connection properties specific to Amazon Web Services.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionAzureArgs']] azure: Container for connection properties specific to Azure.
+        :param pulumi.Input[pulumi.InputType['ConnectionAzureArrgs']] azure: Container for connection properties specific to Azure.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionCloudResourceArgs']] cloud_resource: Container for connection properties for delegation of access to GCP resources.
+        :param pulumi.Input[pulumi.InputType['ConnectionCloudResourceArrgs']] cloud_resource: Container for connection properties for delegation of access to GCP resources.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionCloudSpannerArgs']] cloud_spanner: Connection properties specific to Cloud Spanner
+        :param pulumi.Input[pulumi.InputType['ConnectionCloudSpannerArrgs']] cloud_spanner: Connection properties specific to Cloud Spanner
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']] cloud_sql: Connection properties specific to the Cloud SQL.
+        :param pulumi.Input[pulumi.InputType['ConnectionCloudSqlArrgs']] cloud_sql: Connection properties specific to the Cloud SQL.
                Structure is documented below.
         :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
         :param pulumi.Input[str] description: A descriptive description for the connection
@@ -666,7 +666,7 @@ class Connection(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[ConnectionArgs] = None,
+                 args: Optional[ConnectionArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A connection allows BigQuery connections to external data sources..
@@ -689,7 +689,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         connection = gcp.bigquery.Connection("connection",
-            cloud_resource=gcp.bigquery.ConnectionCloudResourceArgs(),
+            cloud_resource=gcp.bigquery.ConnectionCloudResourceArrgs(),
             connection_id="my-connection",
             description="a riveting description",
             friendly_name="👋",
@@ -705,7 +705,7 @@ class Connection(pulumi.CustomResource):
         instance = gcp.sql.DatabaseInstance("instance",
             database_version="POSTGRES_11",
             region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+            settings=gcp.sql.DatabaseInstanceSettingsArrgs(
                 tier="db-f1-micro",
             ),
             deletion_protection=True)
@@ -720,11 +720,11 @@ class Connection(pulumi.CustomResource):
             friendly_name="👋",
             description="a riveting description",
             location="US",
-            cloud_sql=gcp.bigquery.ConnectionCloudSqlArgs(
+            cloud_sql=gcp.bigquery.ConnectionCloudSqlArrgs(
                 instance_id=instance.connection_name,
                 database=db.name,
                 type="POSTGRES",
-                credential=gcp.bigquery.ConnectionCloudSqlCredentialArgs(
+                credential=gcp.bigquery.ConnectionCloudSqlCredentialArrgs(
                     username=user.name,
                     password=user.password,
                 ),
@@ -740,7 +740,7 @@ class Connection(pulumi.CustomResource):
         instance = gcp.sql.DatabaseInstance("instance",
             database_version="POSTGRES_11",
             region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+            settings=gcp.sql.DatabaseInstanceSettingsArrgs(
                 tier="db-f1-micro",
             ),
             deletion_protection=True)
@@ -756,11 +756,11 @@ class Connection(pulumi.CustomResource):
             location="US",
             friendly_name="👋",
             description="a riveting description",
-            cloud_sql=gcp.bigquery.ConnectionCloudSqlArgs(
+            cloud_sql=gcp.bigquery.ConnectionCloudSqlArrgs(
                 instance_id=instance.connection_name,
                 database=db.name,
                 type="POSTGRES",
-                credential=gcp.bigquery.ConnectionCloudSqlCredentialArgs(
+                credential=gcp.bigquery.ConnectionCloudSqlCredentialArrgs(
                     username=user.name,
                     password=user.password,
                 ),
@@ -773,8 +773,8 @@ class Connection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         connection = gcp.bigquery.Connection("connection",
-            aws=gcp.bigquery.ConnectionAwsArgs(
-                access_role=gcp.bigquery.ConnectionAwsAccessRoleArgs(
+            aws=gcp.bigquery.ConnectionAwsArrgs(
+                access_role=gcp.bigquery.ConnectionAwsAccessRoleArrgs(
                     iam_role_id="arn:aws:iam::999999999999:role/omnirole",
                 ),
             ),
@@ -790,7 +790,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         connection = gcp.bigquery.Connection("connection",
-            azure=gcp.bigquery.ConnectionAzureArgs(
+            azure=gcp.bigquery.ConnectionAzureArrgs(
                 customer_tenant_id="customer-tenant-id",
                 federated_application_client_id="b43eeeee-eeee-eeee-eeee-a480155501ce",
             ),
@@ -806,7 +806,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         connection = gcp.bigquery.Connection("connection",
-            cloud_spanner=gcp.bigquery.ConnectionCloudSpannerArgs(
+            cloud_spanner=gcp.bigquery.ConnectionCloudSpannerArrgs(
                 database="projects/project/instances/instance/databases/database",
                 database_role="database_role",
             ),
@@ -822,7 +822,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         connection = gcp.bigquery.Connection("connection",
-            cloud_spanner=gcp.bigquery.ConnectionCloudSpannerArgs(
+            cloud_spanner=gcp.bigquery.ConnectionCloudSpannerArrgs(
                 database="projects/project/instances/instance/databases/database",
                 max_parallelism=100,
                 use_data_boost=True,
@@ -859,12 +859,12 @@ class Connection(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ConnectionArgs args: The arguments to use to populate this resource's properties.
+        :param ConnectionArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ConnectionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ConnectionArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -873,11 +873,11 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws: Optional[pulumi.Input[pulumi.InputType['ConnectionAwsArgs']]] = None,
-                 azure: Optional[pulumi.Input[pulumi.InputType['ConnectionAzureArgs']]] = None,
-                 cloud_resource: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudResourceArgs']]] = None,
-                 cloud_spanner: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSpannerArgs']]] = None,
-                 cloud_sql: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']]] = None,
+                 aws: Optional[pulumi.Input[pulumi.InputType['ConnectionAwsArrgs']]] = None,
+                 azure: Optional[pulumi.Input[pulumi.InputType['ConnectionAzureArrgs']]] = None,
+                 cloud_resource: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudResourceArrgs']]] = None,
+                 cloud_spanner: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSpannerArrgs']]] = None,
+                 cloud_sql: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSqlArrgs']]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
@@ -890,7 +890,7 @@ class Connection(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ConnectionArgs.__new__(ConnectionArgs)
+            __props__ = ConnectionArrgs.__new__(ConnectionArrgs)
 
             __props__.__dict__["aws"] = aws
             __props__.__dict__["azure"] = azure
@@ -914,11 +914,11 @@ class Connection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aws: Optional[pulumi.Input[pulumi.InputType['ConnectionAwsArgs']]] = None,
-            azure: Optional[pulumi.Input[pulumi.InputType['ConnectionAzureArgs']]] = None,
-            cloud_resource: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudResourceArgs']]] = None,
-            cloud_spanner: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSpannerArgs']]] = None,
-            cloud_sql: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']]] = None,
+            aws: Optional[pulumi.Input[pulumi.InputType['ConnectionAwsArrgs']]] = None,
+            azure: Optional[pulumi.Input[pulumi.InputType['ConnectionAzureArrgs']]] = None,
+            cloud_resource: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudResourceArrgs']]] = None,
+            cloud_spanner: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSpannerArrgs']]] = None,
+            cloud_sql: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSqlArrgs']]] = None,
             connection_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             friendly_name: Optional[pulumi.Input[str]] = None,
@@ -933,15 +933,15 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConnectionAwsArgs']] aws: Connection properties specific to Amazon Web Services.
+        :param pulumi.Input[pulumi.InputType['ConnectionAwsArrgs']] aws: Connection properties specific to Amazon Web Services.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionAzureArgs']] azure: Container for connection properties specific to Azure.
+        :param pulumi.Input[pulumi.InputType['ConnectionAzureArrgs']] azure: Container for connection properties specific to Azure.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionCloudResourceArgs']] cloud_resource: Container for connection properties for delegation of access to GCP resources.
+        :param pulumi.Input[pulumi.InputType['ConnectionCloudResourceArrgs']] cloud_resource: Container for connection properties for delegation of access to GCP resources.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionCloudSpannerArgs']] cloud_spanner: Connection properties specific to Cloud Spanner
+        :param pulumi.Input[pulumi.InputType['ConnectionCloudSpannerArrgs']] cloud_spanner: Connection properties specific to Cloud Spanner
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']] cloud_sql: Connection properties specific to the Cloud SQL.
+        :param pulumi.Input[pulumi.InputType['ConnectionCloudSqlArrgs']] cloud_sql: Connection properties specific to the Cloud SQL.
                Structure is documented below.
         :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
         :param pulumi.Input[str] description: A descriptive description for the connection

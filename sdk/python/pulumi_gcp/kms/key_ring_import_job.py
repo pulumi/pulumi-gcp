@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['KeyRingImportJobArgs', 'KeyRingImportJob']
+__all__ = ['KeyRingImportJobArrgs', 'KeyRingImportJob']
 
 @pulumi.input_type
-class KeyRingImportJobArgs:
+calass KeyRingImportJobArrgs:
     def __init__(__self__, *,
                  import_job_id: pulumi.Input[str],
                  import_method: pulumi.Input[str],
@@ -96,20 +96,20 @@ class KeyRingImportJobArgs:
 
 
 @pulumi.input_type
-class _KeyRingImportJobState:
+calass _KeyRingImportJobState:
     def __init__(__self__, *,
-                 attestations: Optional[pulumi.Input[Sequence[pulumi.Input['KeyRingImportJobAttestationArgs']]]] = None,
+                 attestations: Optional[pulumi.Input[Sequence[pulumi.Input['KeyRingImportJobAttestationArrgs']]]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  import_job_id: Optional[pulumi.Input[str]] = None,
                  import_method: Optional[pulumi.Input[str]] = None,
                  key_ring: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  protection_level: Optional[pulumi.Input[str]] = None,
-                 public_keys: Optional[pulumi.Input[Sequence[pulumi.Input['KeyRingImportJobPublicKeyArgs']]]] = None,
+                 public_keys: Optional[pulumi.Input[Sequence[pulumi.Input['KeyRingImportJobPublicKeyArrgs']]]] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering KeyRingImportJob resources.
-        :param pulumi.Input[Sequence[pulumi.Input['KeyRingImportJobAttestationArgs']]] attestations: Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
+        :param pulumi.Input[Sequence[pulumi.Input['KeyRingImportJobAttestationArrgs']]] attestations: Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
                Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
                Only present if the chosen ImportMethod is one with a protection level of HSM.
                Structure is documented below.
@@ -127,7 +127,7 @@ class _KeyRingImportJobState:
         :param pulumi.Input[str] protection_level: The protection level of the ImportJob. This must match the protectionLevel of the
                versionTemplate on the CryptoKey you attempt to import into.
                Possible values are: `SOFTWARE`, `HSM`, `EXTERNAL`.
-        :param pulumi.Input[Sequence[pulumi.Input['KeyRingImportJobPublicKeyArgs']]] public_keys: The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
+        :param pulumi.Input[Sequence[pulumi.Input['KeyRingImportJobPublicKeyArrgs']]] public_keys: The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
                Structure is documented below.
         :param pulumi.Input[str] state: The current state of the ImportJob, indicating if it can be used.
         """
@@ -152,7 +152,7 @@ class _KeyRingImportJobState:
 
     @property
     @pulumi.getter
-    def attestations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeyRingImportJobAttestationArgs']]]]:
+    def attestations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeyRingImportJobAttestationArrgs']]]]:
         """
         Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
         Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
@@ -162,7 +162,7 @@ class _KeyRingImportJobState:
         return pulumi.get(self, "attestations")
 
     @attestations.setter
-    def attestations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeyRingImportJobAttestationArgs']]]]):
+    def attestations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeyRingImportJobAttestationArrgs']]]]):
         pulumi.set(self, "attestations", value)
 
     @property
@@ -247,7 +247,7 @@ class _KeyRingImportJobState:
 
     @property
     @pulumi.getter(name="publicKeys")
-    def public_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeyRingImportJobPublicKeyArgs']]]]:
+    def public_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeyRingImportJobPublicKeyArrgs']]]]:
         """
         The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
         Structure is documented below.
@@ -255,7 +255,7 @@ class _KeyRingImportJobState:
         return pulumi.get(self, "public_keys")
 
     @public_keys.setter
-    def public_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeyRingImportJobPublicKeyArgs']]]]):
+    def public_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeyRingImportJobPublicKeyArrgs']]]]):
         pulumi.set(self, "public_keys", value)
 
     @property
@@ -271,7 +271,7 @@ class _KeyRingImportJobState:
         pulumi.set(self, "state", value)
 
 
-class KeyRingImportJob(pulumi.CustomResource):
+calass KeyRingImportJob(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -333,7 +333,7 @@ class KeyRingImportJob(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: KeyRingImportJobArgs,
+                 args: KeyRingImportJobArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A `KeyRingImportJob` can be used to create `CryptoKeys` and `CryptoKeyVersions` using pre-existing
@@ -370,12 +370,12 @@ class KeyRingImportJob(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param KeyRingImportJobArgs args: The arguments to use to populate this resource's properties.
+        :param KeyRingImportJobArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(KeyRingImportJobArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(KeyRingImportJobArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -395,7 +395,7 @@ class KeyRingImportJob(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = KeyRingImportJobArgs.__new__(KeyRingImportJobArgs)
+            __props__ = KeyRingImportJobArrgs.__new__(KeyRingImportJobArrgs)
 
             if import_job_id is None and not opts.urn:
                 raise TypeError("Missing required property 'import_job_id'")
@@ -424,14 +424,14 @@ class KeyRingImportJob(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attestations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeyRingImportJobAttestationArgs']]]]] = None,
+            attestations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeyRingImportJobAttestationArrgs']]]]] = None,
             expire_time: Optional[pulumi.Input[str]] = None,
             import_job_id: Optional[pulumi.Input[str]] = None,
             import_method: Optional[pulumi.Input[str]] = None,
             key_ring: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             protection_level: Optional[pulumi.Input[str]] = None,
-            public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeyRingImportJobPublicKeyArgs']]]]] = None,
+            public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeyRingImportJobPublicKeyArrgs']]]]] = None,
             state: Optional[pulumi.Input[str]] = None) -> 'KeyRingImportJob':
         """
         Get an existing KeyRingImportJob resource's state with the given name, id, and optional extra
@@ -440,7 +440,7 @@ class KeyRingImportJob(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeyRingImportJobAttestationArgs']]]] attestations: Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeyRingImportJobAttestationArrgs']]]] attestations: Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
                Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
                Only present if the chosen ImportMethod is one with a protection level of HSM.
                Structure is documented below.
@@ -458,7 +458,7 @@ class KeyRingImportJob(pulumi.CustomResource):
         :param pulumi.Input[str] protection_level: The protection level of the ImportJob. This must match the protectionLevel of the
                versionTemplate on the CryptoKey you attempt to import into.
                Possible values are: `SOFTWARE`, `HSM`, `EXTERNAL`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeyRingImportJobPublicKeyArgs']]]] public_keys: The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeyRingImportJobPublicKeyArrgs']]]] public_keys: The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
                Structure is documented below.
         :param pulumi.Input[str] state: The current state of the ImportJob, indicating if it can be used.
         """

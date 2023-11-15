@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['WebIamPolicyArgs', 'WebIamPolicy']
+__all__ = ['WebIamPolicyArrgs', 'WebIamPolicy']
 
 @pulumi.input_type
-class WebIamPolicyArgs:
+calass WebIamPolicyArrgs:
     def __init__(__self__, *,
                  policy_data: pulumi.Input[str],
                  project: Optional[pulumi.Input[str]] = None):
@@ -79,7 +79,7 @@ class WebIamPolicyArgs:
 
 
 @pulumi.input_type
-class _WebIamPolicyState:
+calass _WebIamPolicyState:
     def __init__(__self__, *,
                  etag: Optional[pulumi.Input[str]] = None,
                  policy_data: Optional[pulumi.Input[str]] = None,
@@ -162,7 +162,7 @@ class _WebIamPolicyState:
         pulumi.set(self, "project", value)
 
 
-class WebIamPolicy(pulumi.CustomResource):
+calass WebIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -193,7 +193,7 @@ class WebIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
         )])
@@ -208,10 +208,10 @@ class WebIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -243,7 +243,7 @@ class WebIamPolicy(pulumi.CustomResource):
             project=google_project_service["project_service"]["project"],
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.iap.WebIamBindingConditionArgs(
+            condition=gcp.iap.WebIamBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -271,7 +271,7 @@ class WebIamPolicy(pulumi.CustomResource):
             project=google_project_service["project_service"]["project"],
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com",
-            condition=gcp.iap.WebIamMemberConditionArgs(
+            condition=gcp.iap.WebIamMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -325,7 +325,7 @@ class WebIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: WebIamPolicyArgs,
+                 args: WebIamPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Identity-Aware Proxy Web. Each of these resources serves a different use case:
@@ -350,7 +350,7 @@ class WebIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
         )])
@@ -365,10 +365,10 @@ class WebIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -400,7 +400,7 @@ class WebIamPolicy(pulumi.CustomResource):
             project=google_project_service["project_service"]["project"],
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.iap.WebIamBindingConditionArgs(
+            condition=gcp.iap.WebIamBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -428,7 +428,7 @@ class WebIamPolicy(pulumi.CustomResource):
             project=google_project_service["project_service"]["project"],
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com",
-            condition=gcp.iap.WebIamMemberConditionArgs(
+            condition=gcp.iap.WebIamMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -460,12 +460,12 @@ class WebIamPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param WebIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param WebIamPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(WebIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(WebIamPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -483,7 +483,7 @@ class WebIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = WebIamPolicyArgs.__new__(WebIamPolicyArgs)
+            __props__ = WebIamPolicyArrgs.__new__(WebIamPolicyArrgs)
 
             if policy_data is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_data'")

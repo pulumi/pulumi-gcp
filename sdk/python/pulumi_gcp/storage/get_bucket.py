@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetBucketResult:
+calass GetBucketResult:
     """
     A collection of values returned by getBucket.
     """
@@ -228,7 +228,7 @@ class GetBucketResult:
         return pulumi.get(self, "websites")
 
 
-class AwaitableGetBucketResult(GetBucketResult):
+calass AwaitableGetBucketResult(GetBucketResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

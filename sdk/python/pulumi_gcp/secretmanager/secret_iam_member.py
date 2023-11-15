@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['SecretIamMemberArgs', 'SecretIamMember']
+__all__ = ['SecretIamMemberArrgs', 'SecretIamMember']
 
 @pulumi.input_type
-class SecretIamMemberArgs:
+calass SecretIamMemberArrgs:
     def __init__(__self__, *,
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
                  secret_id: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['SecretIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['SecretIamMemberConditionArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SecretIamMember resource.
@@ -83,11 +83,11 @@ class SecretIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['SecretIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['SecretIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['SecretIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['SecretIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -117,9 +117,9 @@ class SecretIamMemberArgs:
 
 
 @pulumi.input_type
-class _SecretIamMemberState:
+calass _SecretIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['SecretIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['SecretIamMemberConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -161,11 +161,11 @@ class _SecretIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['SecretIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['SecretIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['SecretIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['SecretIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -238,12 +238,12 @@ class _SecretIamMemberState:
         pulumi.set(self, "secret_id", value)
 
 
-class SecretIamMember(pulumi.CustomResource):
+calass SecretIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['SecretIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['SecretIamMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -270,7 +270,7 @@ class SecretIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/secretmanager.secretAccessor",
             members=["user:jane@example.com"],
         )])
@@ -354,7 +354,7 @@ class SecretIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SecretIamMemberArgs,
+                 args: SecretIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Secret Manager Secret. Each of these resources serves a different use case:
@@ -377,7 +377,7 @@ class SecretIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/secretmanager.secretAccessor",
             members=["user:jane@example.com"],
         )])
@@ -438,12 +438,12 @@ class SecretIamMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param SecretIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param SecretIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SecretIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SecretIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -452,7 +452,7 @@ class SecretIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['SecretIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['SecretIamMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -464,7 +464,7 @@ class SecretIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SecretIamMemberArgs.__new__(SecretIamMemberArgs)
+            __props__ = SecretIamMemberArrgs.__new__(SecretIamMemberArrgs)
 
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
@@ -488,7 +488,7 @@ class SecretIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['SecretIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['SecretIamMemberConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,

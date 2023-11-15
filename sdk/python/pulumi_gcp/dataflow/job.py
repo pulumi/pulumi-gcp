@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['JobArgs', 'Job']
+__all__ = ['JobArrgs', 'Job']
 
 @pulumi.input_type
-class JobArgs:
+calass JobArrgs:
     def __init__(__self__, *,
                  temp_gcs_location: pulumi.Input[str],
                  template_gcs_path: pulumi.Input[str],
@@ -346,7 +346,7 @@ class JobArgs:
 
 
 @pulumi.input_type
-class _JobState:
+calass _JobState:
     def __init__(__self__, *,
                  additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -761,7 +761,7 @@ class _JobState:
         pulumi.set(self, "zone", value)
 
 
-class Job(pulumi.CustomResource):
+calass Job(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -915,7 +915,7 @@ class Job(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: JobArgs,
+                 args: JobArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a job on Dataflow, which is an implementation of Apache Beam running on Google Compute Engine. For more information see
@@ -1015,12 +1015,12 @@ class Job(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param JobArgs args: The arguments to use to populate this resource's properties.
+        :param JobArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(JobArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(JobArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1056,7 +1056,7 @@ class Job(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = JobArgs.__new__(JobArgs)
+            __props__ = JobArrgs.__new__(JobArrgs)
 
             __props__.__dict__["additional_experiments"] = additional_experiments
             __props__.__dict__["enable_streaming_engine"] = enable_streaming_engine

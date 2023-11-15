@@ -24,7 +24,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class InstanceAdminSettings(dict):
+calass InstanceAdminSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -54,7 +54,7 @@ class InstanceAdminSettings(dict):
 
 
 @pulumi.output_type
-class InstanceDenyMaintenancePeriod(dict):
+calass InstanceDenyMaintenancePeriod(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -79,11 +79,11 @@ class InstanceDenyMaintenancePeriod(dict):
                  start_date: 'outputs.InstanceDenyMaintenancePeriodStartDate',
                  time: 'outputs.InstanceDenyMaintenancePeriodTime'):
         """
-        :param 'InstanceDenyMaintenancePeriodEndDateArgs' end_date: Required. Start date of the deny maintenance period
+        :param 'InstanceDenyMaintenancePeriodEndDateArrgs' end_date: Required. Start date of the deny maintenance period
                Structure is documented below.
-        :param 'InstanceDenyMaintenancePeriodStartDateArgs' start_date: Required. Start date of the deny maintenance period
+        :param 'InstanceDenyMaintenancePeriodStartDateArrgs' start_date: Required. Start date of the deny maintenance period
                Structure is documented below.
-        :param 'InstanceDenyMaintenancePeriodTimeArgs' time: Required. Start time of the window in UTC time.
+        :param 'InstanceDenyMaintenancePeriodTimeArrgs' time: Required. Start time of the window in UTC time.
                Structure is documented below.
         """
         pulumi.set(__self__, "end_date", end_date)
@@ -119,7 +119,7 @@ class InstanceDenyMaintenancePeriod(dict):
 
 
 @pulumi.output_type
-class InstanceDenyMaintenancePeriodEndDate(dict):
+calass InstanceDenyMaintenancePeriodEndDate(dict):
     def __init__(__self__, *,
                  day: Optional[int] = None,
                  month: Optional[int] = None,
@@ -168,7 +168,7 @@ class InstanceDenyMaintenancePeriodEndDate(dict):
 
 
 @pulumi.output_type
-class InstanceDenyMaintenancePeriodStartDate(dict):
+calass InstanceDenyMaintenancePeriodStartDate(dict):
     def __init__(__self__, *,
                  day: Optional[int] = None,
                  month: Optional[int] = None,
@@ -217,7 +217,7 @@ class InstanceDenyMaintenancePeriodStartDate(dict):
 
 
 @pulumi.output_type
-class InstanceDenyMaintenancePeriodTime(dict):
+calass InstanceDenyMaintenancePeriodTime(dict):
     def __init__(__self__, *,
                  hours: Optional[int] = None,
                  minutes: Optional[int] = None,
@@ -272,7 +272,7 @@ class InstanceDenyMaintenancePeriodTime(dict):
 
 
 @pulumi.output_type
-class InstanceEncryptionConfig(dict):
+calass InstanceEncryptionConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -340,7 +340,7 @@ class InstanceEncryptionConfig(dict):
 
 
 @pulumi.output_type
-class InstanceMaintenanceWindow(dict):
+calass InstanceMaintenanceWindow(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -373,7 +373,7 @@ class InstanceMaintenanceWindow(dict):
                - SATURDAY: Saturday
                - SUNDAY: Sunday
                Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        :param 'InstanceMaintenanceWindowStartTimeArgs' start_time: Required. Start time of the window in UTC time.
+        :param 'InstanceMaintenanceWindowStartTimeArrgs' start_time: Required. Start time of the window in UTC time.
                Structure is documented below.
         """
         pulumi.set(__self__, "day_of_week", day_of_week)
@@ -406,7 +406,7 @@ class InstanceMaintenanceWindow(dict):
 
 
 @pulumi.output_type
-class InstanceMaintenanceWindowStartTime(dict):
+calass InstanceMaintenanceWindowStartTime(dict):
     def __init__(__self__, *,
                  hours: Optional[int] = None,
                  minutes: Optional[int] = None,
@@ -461,7 +461,7 @@ class InstanceMaintenanceWindowStartTime(dict):
 
 
 @pulumi.output_type
-class InstanceOauthConfig(dict):
+calass InstanceOauthConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -509,7 +509,7 @@ class InstanceOauthConfig(dict):
 
 
 @pulumi.output_type
-class InstanceUserMetadata(dict):
+calass InstanceUserMetadata(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

@@ -11,22 +11,22 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['GuestPoliciesArgs', 'GuestPolicies']
+__all__ = ['GuestPoliciesArrgs', 'GuestPolicies']
 
 @pulumi.input_type
-class GuestPoliciesArgs:
+calass GuestPoliciesArrgs:
     def __init__(__self__, *,
-                 assignment: pulumi.Input['GuestPoliciesAssignmentArgs'],
+                 assignment: pulumi.Input['GuestPoliciesAssignmentArrgs'],
                  guest_policy_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]]] = None,
-                 packages: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]]] = None,
+                 package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArrgs']]]] = None,
+                 packages: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArrgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 recipes: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]] = None):
+                 recipes: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArrgs']]]] = None):
         """
         The set of arguments for constructing a GuestPolicies resource.
-        :param pulumi.Input['GuestPoliciesAssignmentArgs'] assignment: Specifies the VM instances that are assigned to this policy. This allows you to target sets
+        :param pulumi.Input['GuestPoliciesAssignmentArrgs'] assignment: Specifies the VM instances that are assigned to this policy. This allows you to target sets
                or groups of VM instances by different parameters such as labels, names, OS, or zones.
                If left empty, all VM instances underneath this policy are targeted.
                At the same level in the resource hierarchy (that is within a project), the service prevents
@@ -42,15 +42,15 @@ class GuestPoliciesArgs:
                * Must be unique within the project.
         :param pulumi.Input[str] description: Description of the guest policy. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] etag: The etag for this guest policy. If this is provided on update, it must match the server's etag.
-        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]] package_repositories: A list of package repositories to configure on the VM instance.
+        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArrgs']]] package_repositories: A list of package repositories to configure on the VM instance.
                This is done before any other configs are applied so they can use these repos.
                Package repositories are only configured if the corresponding package manager(s) are available.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]] packages: The software packages to be managed by this policy.
+        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArrgs']]] packages: The software packages to be managed by this policy.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]] recipes: A list of Recipes to install on the VM instance.
+        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArrgs']]] recipes: A list of Recipes to install on the VM instance.
                Structure is documented below.
         """
         pulumi.set(__self__, "assignment", assignment)
@@ -70,7 +70,7 @@ class GuestPoliciesArgs:
 
     @property
     @pulumi.getter
-    def assignment(self) -> pulumi.Input['GuestPoliciesAssignmentArgs']:
+    def assignment(self) -> pulumi.Input['GuestPoliciesAssignmentArrgs']:
         """
         Specifies the VM instances that are assigned to this policy. This allows you to target sets
         or groups of VM instances by different parameters such as labels, names, OS, or zones.
@@ -84,7 +84,7 @@ class GuestPoliciesArgs:
         return pulumi.get(self, "assignment")
 
     @assignment.setter
-    def assignment(self, value: pulumi.Input['GuestPoliciesAssignmentArgs']):
+    def assignment(self, value: pulumi.Input['GuestPoliciesAssignmentArrgs']):
         pulumi.set(self, "assignment", value)
 
     @property
@@ -130,7 +130,7 @@ class GuestPoliciesArgs:
 
     @property
     @pulumi.getter(name="packageRepositories")
-    def package_repositories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]]]:
+    def package_repositories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArrgs']]]]:
         """
         A list of package repositories to configure on the VM instance.
         This is done before any other configs are applied so they can use these repos.
@@ -140,12 +140,12 @@ class GuestPoliciesArgs:
         return pulumi.get(self, "package_repositories")
 
     @package_repositories.setter
-    def package_repositories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]]]):
+    def package_repositories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArrgs']]]]):
         pulumi.set(self, "package_repositories", value)
 
     @property
     @pulumi.getter
-    def packages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]]]:
+    def packages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArrgs']]]]:
         """
         The software packages to be managed by this policy.
         Structure is documented below.
@@ -153,7 +153,7 @@ class GuestPoliciesArgs:
         return pulumi.get(self, "packages")
 
     @packages.setter
-    def packages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]]]):
+    def packages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArrgs']]]]):
         pulumi.set(self, "packages", value)
 
     @property
@@ -171,7 +171,7 @@ class GuestPoliciesArgs:
 
     @property
     @pulumi.getter
-    def recipes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]]:
+    def recipes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArrgs']]]]:
         """
         A list of Recipes to install on the VM instance.
         Structure is documented below.
@@ -179,27 +179,27 @@ class GuestPoliciesArgs:
         return pulumi.get(self, "recipes")
 
     @recipes.setter
-    def recipes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]]):
+    def recipes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArrgs']]]]):
         pulumi.set(self, "recipes", value)
 
 
 @pulumi.input_type
-class _GuestPoliciesState:
+calass _GuestPoliciesState:
     def __init__(__self__, *,
-                 assignment: Optional[pulumi.Input['GuestPoliciesAssignmentArgs']] = None,
+                 assignment: Optional[pulumi.Input['GuestPoliciesAssignmentArrgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  guest_policy_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]]] = None,
-                 packages: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]]] = None,
+                 package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArrgs']]]] = None,
+                 packages: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArrgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 recipes: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]] = None,
+                 recipes: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArrgs']]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GuestPolicies resources.
-        :param pulumi.Input['GuestPoliciesAssignmentArgs'] assignment: Specifies the VM instances that are assigned to this policy. This allows you to target sets
+        :param pulumi.Input['GuestPoliciesAssignmentArrgs'] assignment: Specifies the VM instances that are assigned to this policy. This allows you to target sets
                or groups of VM instances by different parameters such as labels, names, OS, or zones.
                If left empty, all VM instances underneath this policy are targeted.
                At the same level in the resource hierarchy (that is within a project), the service prevents
@@ -218,15 +218,15 @@ class _GuestPoliciesState:
                * Must end with a number or a letter.
                * Must be unique within the project.
         :param pulumi.Input[str] name: The name of the repository.
-        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]] package_repositories: A list of package repositories to configure on the VM instance.
+        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArrgs']]] package_repositories: A list of package repositories to configure on the VM instance.
                This is done before any other configs are applied so they can use these repos.
                Package repositories are only configured if the corresponding package manager(s) are available.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]] packages: The software packages to be managed by this policy.
+        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArrgs']]] packages: The software packages to be managed by this policy.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]] recipes: A list of Recipes to install on the VM instance.
+        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArrgs']]] recipes: A list of Recipes to install on the VM instance.
                Structure is documented below.
         :param pulumi.Input[str] update_time: Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
                Example: "2014-10-02T15:01:23.045123456Z".
@@ -256,7 +256,7 @@ class _GuestPoliciesState:
 
     @property
     @pulumi.getter
-    def assignment(self) -> Optional[pulumi.Input['GuestPoliciesAssignmentArgs']]:
+    def assignment(self) -> Optional[pulumi.Input['GuestPoliciesAssignmentArrgs']]:
         """
         Specifies the VM instances that are assigned to this policy. This allows you to target sets
         or groups of VM instances by different parameters such as labels, names, OS, or zones.
@@ -270,7 +270,7 @@ class _GuestPoliciesState:
         return pulumi.get(self, "assignment")
 
     @assignment.setter
-    def assignment(self, value: Optional[pulumi.Input['GuestPoliciesAssignmentArgs']]):
+    def assignment(self, value: Optional[pulumi.Input['GuestPoliciesAssignmentArrgs']]):
         pulumi.set(self, "assignment", value)
 
     @property
@@ -341,7 +341,7 @@ class _GuestPoliciesState:
 
     @property
     @pulumi.getter(name="packageRepositories")
-    def package_repositories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]]]:
+    def package_repositories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArrgs']]]]:
         """
         A list of package repositories to configure on the VM instance.
         This is done before any other configs are applied so they can use these repos.
@@ -351,12 +351,12 @@ class _GuestPoliciesState:
         return pulumi.get(self, "package_repositories")
 
     @package_repositories.setter
-    def package_repositories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]]]):
+    def package_repositories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArrgs']]]]):
         pulumi.set(self, "package_repositories", value)
 
     @property
     @pulumi.getter
-    def packages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]]]:
+    def packages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArrgs']]]]:
         """
         The software packages to be managed by this policy.
         Structure is documented below.
@@ -364,7 +364,7 @@ class _GuestPoliciesState:
         return pulumi.get(self, "packages")
 
     @packages.setter
-    def packages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]]]):
+    def packages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArrgs']]]]):
         pulumi.set(self, "packages", value)
 
     @property
@@ -382,7 +382,7 @@ class _GuestPoliciesState:
 
     @property
     @pulumi.getter
-    def recipes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]]:
+    def recipes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArrgs']]]]:
         """
         A list of Recipes to install on the VM instance.
         Structure is documented below.
@@ -390,7 +390,7 @@ class _GuestPoliciesState:
         return pulumi.get(self, "recipes")
 
     @recipes.setter
-    def recipes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]]):
+    def recipes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArrgs']]]]):
         pulumi.set(self, "recipes", value)
 
     @property
@@ -407,19 +407,19 @@ class _GuestPoliciesState:
         pulumi.set(self, "update_time", value)
 
 
-class GuestPolicies(pulumi.CustomResource):
+calass GuestPolicies(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assignment: Optional[pulumi.Input[pulumi.InputType['GuestPoliciesAssignmentArgs']]] = None,
+                 assignment: Optional[pulumi.Input[pulumi.InputType['GuestPoliciesAssignmentArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  guest_policy_id: Optional[pulumi.Input[str]] = None,
-                 package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArgs']]]]] = None,
-                 packages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArgs']]]]] = None,
+                 package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArrgs']]]]] = None,
+                 packages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArrgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 recipes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArgs']]]]] = None,
+                 recipes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArrgs']]]]] = None,
                  __props__=None):
         """
         An OS Config resource representing a guest configuration policy. These policies represent
@@ -449,12 +449,12 @@ class GuestPolicies(pulumi.CustomResource):
                 "foo",
                 "bar",
             ],
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image=my_image.self_link,
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 network="default",
             )],
             metadata={
@@ -463,10 +463,10 @@ class GuestPolicies(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         guest_policies = gcp.osconfig.GuestPolicies("guestPolicies",
             guest_policy_id="guest-policy",
-            assignment=gcp.osconfig.GuestPoliciesAssignmentArgs(
+            assignment=gcp.osconfig.GuestPoliciesAssignmentArrgs(
                 instances=[foobar.id],
             ),
-            packages=[gcp.osconfig.GuestPoliciesPackageArgs(
+            packages=[gcp.osconfig.GuestPoliciesPackageArrgs(
                 name="my-package",
                 desired_state="UPDATED",
             )],
@@ -480,15 +480,15 @@ class GuestPolicies(pulumi.CustomResource):
 
         guest_policies = gcp.osconfig.GuestPolicies("guestPolicies",
             guest_policy_id="guest-policy",
-            assignment=gcp.osconfig.GuestPoliciesAssignmentArgs(
+            assignment=gcp.osconfig.GuestPoliciesAssignmentArrgs(
                 group_labels=[
-                    gcp.osconfig.GuestPoliciesAssignmentGroupLabelArgs(
+                    gcp.osconfig.GuestPoliciesAssignmentGroupLabelArrgs(
                         labels={
                             "color": "red",
                             "env": "test",
                         },
                     ),
-                    gcp.osconfig.GuestPoliciesAssignmentGroupLabelArgs(
+                    gcp.osconfig.GuestPoliciesAssignmentGroupLabelArrgs(
                         labels={
                             "color": "blue",
                             "env": "test",
@@ -497,31 +497,31 @@ class GuestPolicies(pulumi.CustomResource):
                 ],
             ),
             packages=[
-                gcp.osconfig.GuestPoliciesPackageArgs(
+                gcp.osconfig.GuestPoliciesPackageArrgs(
                     name="my-package",
                     desired_state="INSTALLED",
                 ),
-                gcp.osconfig.GuestPoliciesPackageArgs(
+                gcp.osconfig.GuestPoliciesPackageArrgs(
                     name="bad-package-1",
                     desired_state="REMOVED",
                 ),
-                gcp.osconfig.GuestPoliciesPackageArgs(
+                gcp.osconfig.GuestPoliciesPackageArrgs(
                     name="bad-package-2",
                     desired_state="REMOVED",
                     manager="APT",
                 ),
             ],
             package_repositories=[
-                gcp.osconfig.GuestPoliciesPackageRepositoryArgs(
-                    apt=gcp.osconfig.GuestPoliciesPackageRepositoryAptArgs(
+                gcp.osconfig.GuestPoliciesPackageRepositoryArrgs(
+                    apt=gcp.osconfig.GuestPoliciesPackageRepositoryAptArrgs(
                         uri="https://packages.cloud.google.com/apt",
                         archive_type="DEB",
                         distribution="cloud-sdk-stretch",
                         components=["main"],
                     ),
                 ),
-                gcp.osconfig.GuestPoliciesPackageRepositoryArgs(
-                    yum=gcp.osconfig.GuestPoliciesPackageRepositoryYumArgs(
+                gcp.osconfig.GuestPoliciesPackageRepositoryArrgs(
+                    yum=gcp.osconfig.GuestPoliciesPackageRepositoryYumArrgs(
                         id="google-cloud-sdk",
                         display_name="Google Cloud SDK",
                         base_url="https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64",
@@ -542,25 +542,25 @@ class GuestPolicies(pulumi.CustomResource):
 
         guest_policies = gcp.osconfig.GuestPolicies("guestPolicies",
             guest_policy_id="guest-policy",
-            assignment=gcp.osconfig.GuestPoliciesAssignmentArgs(
+            assignment=gcp.osconfig.GuestPoliciesAssignmentArrgs(
                 zones=[
                     "us-east1-b",
                     "us-east1-d",
                 ],
             ),
-            recipes=[gcp.osconfig.GuestPoliciesRecipeArgs(
+            recipes=[gcp.osconfig.GuestPoliciesRecipeArrgs(
                 name="guest-policy-recipe",
                 desired_state="INSTALLED",
-                artifacts=[gcp.osconfig.GuestPoliciesRecipeArtifactArgs(
+                artifacts=[gcp.osconfig.GuestPoliciesRecipeArtifactArrgs(
                     id="guest-policy-artifact-id",
-                    gcs=gcp.osconfig.GuestPoliciesRecipeArtifactGcsArgs(
+                    gcs=gcp.osconfig.GuestPoliciesRecipeArtifactGcsArrgs(
                         bucket="my-bucket",
                         object="executable.msi",
                         generation=1546030865175603,
                     ),
                 )],
-                install_steps=[gcp.osconfig.GuestPoliciesRecipeInstallStepArgs(
-                    msi_installation=gcp.osconfig.GuestPoliciesRecipeInstallStepMsiInstallationArgs(
+                install_steps=[gcp.osconfig.GuestPoliciesRecipeInstallStepArrgs(
+                    msi_installation=gcp.osconfig.GuestPoliciesRecipeInstallStepMsiInstallationArrgs(
                         artifact_id="guest-policy-artifact-id",
                     ),
                 )],
@@ -594,7 +594,7 @@ class GuestPolicies(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GuestPoliciesAssignmentArgs']] assignment: Specifies the VM instances that are assigned to this policy. This allows you to target sets
+        :param pulumi.Input[pulumi.InputType['GuestPoliciesAssignmentArrgs']] assignment: Specifies the VM instances that are assigned to this policy. This allows you to target sets
                or groups of VM instances by different parameters such as labels, names, OS, or zones.
                If left empty, all VM instances underneath this policy are targeted.
                At the same level in the resource hierarchy (that is within a project), the service prevents
@@ -610,22 +610,22 @@ class GuestPolicies(pulumi.CustomResource):
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
                * Must be unique within the project.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArgs']]]] package_repositories: A list of package repositories to configure on the VM instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArrgs']]]] package_repositories: A list of package repositories to configure on the VM instance.
                This is done before any other configs are applied so they can use these repos.
                Package repositories are only configured if the corresponding package manager(s) are available.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArgs']]]] packages: The software packages to be managed by this policy.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArrgs']]]] packages: The software packages to be managed by this policy.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArgs']]]] recipes: A list of Recipes to install on the VM instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArrgs']]]] recipes: A list of Recipes to install on the VM instance.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: GuestPoliciesArgs,
+                 args: GuestPoliciesArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An OS Config resource representing a guest configuration policy. These policies represent
@@ -655,12 +655,12 @@ class GuestPolicies(pulumi.CustomResource):
                 "foo",
                 "bar",
             ],
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image=my_image.self_link,
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 network="default",
             )],
             metadata={
@@ -669,10 +669,10 @@ class GuestPolicies(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         guest_policies = gcp.osconfig.GuestPolicies("guestPolicies",
             guest_policy_id="guest-policy",
-            assignment=gcp.osconfig.GuestPoliciesAssignmentArgs(
+            assignment=gcp.osconfig.GuestPoliciesAssignmentArrgs(
                 instances=[foobar.id],
             ),
-            packages=[gcp.osconfig.GuestPoliciesPackageArgs(
+            packages=[gcp.osconfig.GuestPoliciesPackageArrgs(
                 name="my-package",
                 desired_state="UPDATED",
             )],
@@ -686,15 +686,15 @@ class GuestPolicies(pulumi.CustomResource):
 
         guest_policies = gcp.osconfig.GuestPolicies("guestPolicies",
             guest_policy_id="guest-policy",
-            assignment=gcp.osconfig.GuestPoliciesAssignmentArgs(
+            assignment=gcp.osconfig.GuestPoliciesAssignmentArrgs(
                 group_labels=[
-                    gcp.osconfig.GuestPoliciesAssignmentGroupLabelArgs(
+                    gcp.osconfig.GuestPoliciesAssignmentGroupLabelArrgs(
                         labels={
                             "color": "red",
                             "env": "test",
                         },
                     ),
-                    gcp.osconfig.GuestPoliciesAssignmentGroupLabelArgs(
+                    gcp.osconfig.GuestPoliciesAssignmentGroupLabelArrgs(
                         labels={
                             "color": "blue",
                             "env": "test",
@@ -703,31 +703,31 @@ class GuestPolicies(pulumi.CustomResource):
                 ],
             ),
             packages=[
-                gcp.osconfig.GuestPoliciesPackageArgs(
+                gcp.osconfig.GuestPoliciesPackageArrgs(
                     name="my-package",
                     desired_state="INSTALLED",
                 ),
-                gcp.osconfig.GuestPoliciesPackageArgs(
+                gcp.osconfig.GuestPoliciesPackageArrgs(
                     name="bad-package-1",
                     desired_state="REMOVED",
                 ),
-                gcp.osconfig.GuestPoliciesPackageArgs(
+                gcp.osconfig.GuestPoliciesPackageArrgs(
                     name="bad-package-2",
                     desired_state="REMOVED",
                     manager="APT",
                 ),
             ],
             package_repositories=[
-                gcp.osconfig.GuestPoliciesPackageRepositoryArgs(
-                    apt=gcp.osconfig.GuestPoliciesPackageRepositoryAptArgs(
+                gcp.osconfig.GuestPoliciesPackageRepositoryArrgs(
+                    apt=gcp.osconfig.GuestPoliciesPackageRepositoryAptArrgs(
                         uri="https://packages.cloud.google.com/apt",
                         archive_type="DEB",
                         distribution="cloud-sdk-stretch",
                         components=["main"],
                     ),
                 ),
-                gcp.osconfig.GuestPoliciesPackageRepositoryArgs(
-                    yum=gcp.osconfig.GuestPoliciesPackageRepositoryYumArgs(
+                gcp.osconfig.GuestPoliciesPackageRepositoryArrgs(
+                    yum=gcp.osconfig.GuestPoliciesPackageRepositoryYumArrgs(
                         id="google-cloud-sdk",
                         display_name="Google Cloud SDK",
                         base_url="https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64",
@@ -748,25 +748,25 @@ class GuestPolicies(pulumi.CustomResource):
 
         guest_policies = gcp.osconfig.GuestPolicies("guestPolicies",
             guest_policy_id="guest-policy",
-            assignment=gcp.osconfig.GuestPoliciesAssignmentArgs(
+            assignment=gcp.osconfig.GuestPoliciesAssignmentArrgs(
                 zones=[
                     "us-east1-b",
                     "us-east1-d",
                 ],
             ),
-            recipes=[gcp.osconfig.GuestPoliciesRecipeArgs(
+            recipes=[gcp.osconfig.GuestPoliciesRecipeArrgs(
                 name="guest-policy-recipe",
                 desired_state="INSTALLED",
-                artifacts=[gcp.osconfig.GuestPoliciesRecipeArtifactArgs(
+                artifacts=[gcp.osconfig.GuestPoliciesRecipeArtifactArrgs(
                     id="guest-policy-artifact-id",
-                    gcs=gcp.osconfig.GuestPoliciesRecipeArtifactGcsArgs(
+                    gcs=gcp.osconfig.GuestPoliciesRecipeArtifactGcsArrgs(
                         bucket="my-bucket",
                         object="executable.msi",
                         generation=1546030865175603,
                     ),
                 )],
-                install_steps=[gcp.osconfig.GuestPoliciesRecipeInstallStepArgs(
-                    msi_installation=gcp.osconfig.GuestPoliciesRecipeInstallStepMsiInstallationArgs(
+                install_steps=[gcp.osconfig.GuestPoliciesRecipeInstallStepArrgs(
+                    msi_installation=gcp.osconfig.GuestPoliciesRecipeInstallStepMsiInstallationArrgs(
                         artifact_id="guest-policy-artifact-id",
                     ),
                 )],
@@ -799,12 +799,12 @@ class GuestPolicies(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param GuestPoliciesArgs args: The arguments to use to populate this resource's properties.
+        :param GuestPoliciesArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(GuestPoliciesArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(GuestPoliciesArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -813,14 +813,14 @@ class GuestPolicies(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assignment: Optional[pulumi.Input[pulumi.InputType['GuestPoliciesAssignmentArgs']]] = None,
+                 assignment: Optional[pulumi.Input[pulumi.InputType['GuestPoliciesAssignmentArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  guest_policy_id: Optional[pulumi.Input[str]] = None,
-                 package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArgs']]]]] = None,
-                 packages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArgs']]]]] = None,
+                 package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArrgs']]]]] = None,
+                 packages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArrgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 recipes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArgs']]]]] = None,
+                 recipes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArrgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -828,7 +828,7 @@ class GuestPolicies(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = GuestPoliciesArgs.__new__(GuestPoliciesArgs)
+            __props__ = GuestPoliciesArrgs.__new__(GuestPoliciesArrgs)
 
             if assignment is None and not opts.urn:
                 raise TypeError("Missing required property 'assignment'")
@@ -855,16 +855,16 @@ class GuestPolicies(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            assignment: Optional[pulumi.Input[pulumi.InputType['GuestPoliciesAssignmentArgs']]] = None,
+            assignment: Optional[pulumi.Input[pulumi.InputType['GuestPoliciesAssignmentArrgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             guest_policy_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArgs']]]]] = None,
-            packages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArgs']]]]] = None,
+            package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArrgs']]]]] = None,
+            packages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArrgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            recipes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArgs']]]]] = None,
+            recipes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArrgs']]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'GuestPolicies':
         """
         Get an existing GuestPolicies resource's state with the given name, id, and optional extra
@@ -873,7 +873,7 @@ class GuestPolicies(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GuestPoliciesAssignmentArgs']] assignment: Specifies the VM instances that are assigned to this policy. This allows you to target sets
+        :param pulumi.Input[pulumi.InputType['GuestPoliciesAssignmentArrgs']] assignment: Specifies the VM instances that are assigned to this policy. This allows you to target sets
                or groups of VM instances by different parameters such as labels, names, OS, or zones.
                If left empty, all VM instances underneath this policy are targeted.
                At the same level in the resource hierarchy (that is within a project), the service prevents
@@ -892,15 +892,15 @@ class GuestPolicies(pulumi.CustomResource):
                * Must end with a number or a letter.
                * Must be unique within the project.
         :param pulumi.Input[str] name: The name of the repository.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArgs']]]] package_repositories: A list of package repositories to configure on the VM instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArrgs']]]] package_repositories: A list of package repositories to configure on the VM instance.
                This is done before any other configs are applied so they can use these repos.
                Package repositories are only configured if the corresponding package manager(s) are available.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArgs']]]] packages: The software packages to be managed by this policy.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArrgs']]]] packages: The software packages to be managed by this policy.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArgs']]]] recipes: A list of Recipes to install on the VM instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArrgs']]]] recipes: A list of Recipes to install on the VM instance.
                Structure is documented below.
         :param pulumi.Input[str] update_time: Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
                Example: "2014-10-02T15:01:23.045123456Z".

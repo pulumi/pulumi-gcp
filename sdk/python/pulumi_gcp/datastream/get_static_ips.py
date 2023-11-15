@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetStaticIpsResult:
+calass GetStaticIpsResult:
     """
     A collection of values returned by getStaticIps.
     """
@@ -62,7 +62,7 @@ class GetStaticIpsResult:
         return pulumi.get(self, "static_ips")
 
 
-class AwaitableGetStaticIpsResult(GetStaticIpsResult):
+calass AwaitableGetStaticIpsResult(GetStaticIpsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

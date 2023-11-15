@@ -10,29 +10,29 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'FunctionEventTriggerArgs',
-    'FunctionEventTriggerFailurePolicyArgs',
-    'FunctionIamBindingConditionArgs',
-    'FunctionIamMemberConditionArgs',
-    'FunctionSecretEnvironmentVariableArgs',
-    'FunctionSecretVolumeArgs',
-    'FunctionSecretVolumeVersionArgs',
-    'FunctionSourceRepositoryArgs',
+    'FunctionEventTriggerArrgs',
+    'FunctionEventTriggerFailurePolicyArrgs',
+    'FunctionIamBindingConditionArrgs',
+    'FunctionIamMemberConditionArrgs',
+    'FunctionSecretEnvironmentVariableArrgs',
+    'FunctionSecretVolumeArrgs',
+    'FunctionSecretVolumeVersionArrgs',
+    'FunctionSourceRepositoryArrgs',
 ]
 
 @pulumi.input_type
-class FunctionEventTriggerArgs:
+calass FunctionEventTriggerArrgs:
     def __init__(__self__, *,
                  event_type: pulumi.Input[str],
                  resource: pulumi.Input[str],
-                 failure_policy: Optional[pulumi.Input['FunctionEventTriggerFailurePolicyArgs']] = None):
+                 failure_policy: Optional[pulumi.Input['FunctionEventTriggerFailurePolicyArrgs']] = None):
         """
         :param pulumi.Input[str] event_type: The type of event to observe. For example: `"google.storage.object.finalize"`.
                See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/) for a
                full reference of accepted triggers.
         :param pulumi.Input[str] resource: Required. The name or partial URI of the resource from
                which to observe events. For example, `"myBucket"` or `"projects/my-project/topics/my-topic"`
-        :param pulumi.Input['FunctionEventTriggerFailurePolicyArgs'] failure_policy: Specifies policy for failed executions. Structure is documented below.
+        :param pulumi.Input['FunctionEventTriggerFailurePolicyArrgs'] failure_policy: Specifies policy for failed executions. Structure is documented below.
         """
         pulumi.set(__self__, "event_type", event_type)
         pulumi.set(__self__, "resource", resource)
@@ -68,19 +68,19 @@ class FunctionEventTriggerArgs:
 
     @property
     @pulumi.getter(name="failurePolicy")
-    def failure_policy(self) -> Optional[pulumi.Input['FunctionEventTriggerFailurePolicyArgs']]:
+    def failure_policy(self) -> Optional[pulumi.Input['FunctionEventTriggerFailurePolicyArrgs']]:
         """
         Specifies policy for failed executions. Structure is documented below.
         """
         return pulumi.get(self, "failure_policy")
 
     @failure_policy.setter
-    def failure_policy(self, value: Optional[pulumi.Input['FunctionEventTriggerFailurePolicyArgs']]):
+    def failure_policy(self, value: Optional[pulumi.Input['FunctionEventTriggerFailurePolicyArrgs']]):
         pulumi.set(self, "failure_policy", value)
 
 
 @pulumi.input_type
-class FunctionEventTriggerFailurePolicyArgs:
+calass FunctionEventTriggerFailurePolicyArrgs:
     def __init__(__self__, *,
                  retry: pulumi.Input[bool]):
         """
@@ -102,7 +102,7 @@ class FunctionEventTriggerFailurePolicyArgs:
 
 
 @pulumi.input_type
-class FunctionIamBindingConditionArgs:
+calass FunctionIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -141,7 +141,7 @@ class FunctionIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class FunctionIamMemberConditionArgs:
+calass FunctionIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -180,7 +180,7 @@ class FunctionIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class FunctionSecretEnvironmentVariableArgs:
+calass FunctionSecretEnvironmentVariableArrgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  secret: pulumi.Input[str],
@@ -248,17 +248,17 @@ class FunctionSecretEnvironmentVariableArgs:
 
 
 @pulumi.input_type
-class FunctionSecretVolumeArgs:
+calass FunctionSecretVolumeArrgs:
     def __init__(__self__, *,
                  mount_path: pulumi.Input[str],
                  secret: pulumi.Input[str],
                  project_id: Optional[pulumi.Input[str]] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeVersionArgs']]]] = None):
+                 versions: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeVersionArrgs']]]] = None):
         """
         :param pulumi.Input[str] mount_path: The path within the container to mount the secret volume. For example, setting the mount_path as "/etc/secrets" would mount the secret value files under the "/etc/secrets" directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: "/etc/secrets" Restricted mount paths: "/cloudsql", "/dev/log", "/pod", "/proc", "/var/log".
         :param pulumi.Input[str] secret: ID of the secret in secret manager (not the full resource name).
         :param pulumi.Input[str] project_id: Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
-        :param pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeVersionArgs']]] versions: List of secret versions to mount for this secret. If empty, the "latest" version of the secret will be made available in a file named after the secret under the mount point. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeVersionArrgs']]] versions: List of secret versions to mount for this secret. If empty, the "latest" version of the secret will be made available in a file named after the secret under the mount point. Structure is documented below.
         """
         pulumi.set(__self__, "mount_path", mount_path)
         pulumi.set(__self__, "secret", secret)
@@ -305,19 +305,19 @@ class FunctionSecretVolumeArgs:
 
     @property
     @pulumi.getter
-    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeVersionArgs']]]]:
+    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeVersionArrgs']]]]:
         """
         List of secret versions to mount for this secret. If empty, the "latest" version of the secret will be made available in a file named after the secret under the mount point. Structure is documented below.
         """
         return pulumi.get(self, "versions")
 
     @versions.setter
-    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeVersionArgs']]]]):
+    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeVersionArrgs']]]]):
         pulumi.set(self, "versions", value)
 
 
 @pulumi.input_type
-class FunctionSecretVolumeVersionArgs:
+calass FunctionSecretVolumeVersionArrgs:
     def __init__(__self__, *,
                  path: pulumi.Input[str],
                  version: pulumi.Input[str]):
@@ -354,7 +354,7 @@ class FunctionSecretVolumeVersionArgs:
 
 
 @pulumi.input_type
-class FunctionSourceRepositoryArgs:
+calass FunctionSourceRepositoryArrgs:
     def __init__(__self__, *,
                  url: pulumi.Input[str],
                  deployed_url: Optional[pulumi.Input[str]] = None):

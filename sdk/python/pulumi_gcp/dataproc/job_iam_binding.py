@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['JobIAMBindingArgs', 'JobIAMBinding']
+__all__ = ['JobIAMBindingArrgs', 'JobIAMBinding']
 
 @pulumi.input_type
-class JobIAMBindingArgs:
+calass JobIAMBindingArrgs:
     def __init__(__self__, *,
                  job_id: pulumi.Input[str],
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['JobIAMBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['JobIAMBindingConditionArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
         """
@@ -80,11 +80,11 @@ class JobIAMBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['JobIAMBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['JobIAMBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['JobIAMBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['JobIAMBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -115,9 +115,9 @@ class JobIAMBindingArgs:
 
 
 @pulumi.input_type
-class _JobIAMBindingState:
+calass _JobIAMBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['JobIAMBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['JobIAMBindingConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -154,11 +154,11 @@ class _JobIAMBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['JobIAMBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['JobIAMBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['JobIAMBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['JobIAMBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -234,12 +234,12 @@ class _JobIAMBindingState:
         pulumi.set(self, "role", value)
 
 
-class JobIAMBinding(pulumi.CustomResource):
+calass JobIAMBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['JobIAMBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['JobIAMBindingConditionArrgs']]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -263,7 +263,7 @@ class JobIAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -330,7 +330,7 @@ class JobIAMBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: JobIAMBindingArgs,
+                 args: JobIAMBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage IAM policies on dataproc jobs. Each of these resources serves a different use case:
@@ -349,7 +349,7 @@ class JobIAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -401,12 +401,12 @@ class JobIAMBinding(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param JobIAMBindingArgs args: The arguments to use to populate this resource's properties.
+        :param JobIAMBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(JobIAMBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(JobIAMBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -415,7 +415,7 @@ class JobIAMBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['JobIAMBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['JobIAMBindingConditionArrgs']]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -428,7 +428,7 @@ class JobIAMBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = JobIAMBindingArgs.__new__(JobIAMBindingArgs)
+            __props__ = JobIAMBindingArrgs.__new__(JobIAMBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if job_id is None and not opts.urn:
@@ -453,7 +453,7 @@ class JobIAMBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['JobIAMBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['JobIAMBindingConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             job_id: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

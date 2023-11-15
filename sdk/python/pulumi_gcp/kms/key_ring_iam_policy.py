@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['KeyRingIAMPolicyArgs', 'KeyRingIAMPolicy']
+__all__ = ['KeyRingIAMPolicyArrgs', 'KeyRingIAMPolicy']
 
 @pulumi.input_type
-class KeyRingIAMPolicyArgs:
+calass KeyRingIAMPolicyArrgs:
     def __init__(__self__, *,
                  key_ring_id: pulumi.Input[str],
                  policy_data: pulumi.Input[str]):
@@ -76,7 +76,7 @@ class KeyRingIAMPolicyArgs:
 
 
 @pulumi.input_type
-class _KeyRingIAMPolicyState:
+calass _KeyRingIAMPolicyState:
     def __init__(__self__, *,
                  etag: Optional[pulumi.Input[str]] = None,
                  key_ring_id: Optional[pulumi.Input[str]] = None,
@@ -157,7 +157,7 @@ class _KeyRingIAMPolicyState:
         pulumi.set(self, "policy_data", value)
 
 
-class KeyRingIAMPolicy(pulumi.CustomResource):
+calass KeyRingIAMPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -183,7 +183,7 @@ class KeyRingIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         keyring = gcp.kms.KeyRing("keyring", location="global")
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -199,10 +199,10 @@ class KeyRingIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         keyring = gcp.kms.KeyRing("keyring", location="global")
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -232,7 +232,7 @@ class KeyRingIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         key_ring = gcp.kms.KeyRingIAMBinding("keyRing",
-            condition=gcp.kms.KeyRingIAMBindingConditionArgs(
+            condition=gcp.kms.KeyRingIAMBindingConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -261,7 +261,7 @@ class KeyRingIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         key_ring = gcp.kms.KeyRingIAMMember("keyRing",
-            condition=gcp.kms.KeyRingIAMMemberConditionArgs(
+            condition=gcp.kms.KeyRingIAMMemberConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -309,7 +309,7 @@ class KeyRingIAMPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: KeyRingIAMPolicyArgs,
+                 args: KeyRingIAMPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for KMS key ring. Each of these resources serves a different use case:
@@ -329,7 +329,7 @@ class KeyRingIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         keyring = gcp.kms.KeyRing("keyring", location="global")
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -345,10 +345,10 @@ class KeyRingIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         keyring = gcp.kms.KeyRing("keyring", location="global")
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -378,7 +378,7 @@ class KeyRingIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         key_ring = gcp.kms.KeyRingIAMBinding("keyRing",
-            condition=gcp.kms.KeyRingIAMBindingConditionArgs(
+            condition=gcp.kms.KeyRingIAMBindingConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -407,7 +407,7 @@ class KeyRingIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         key_ring = gcp.kms.KeyRingIAMMember("keyRing",
-            condition=gcp.kms.KeyRingIAMMemberConditionArgs(
+            condition=gcp.kms.KeyRingIAMMemberConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -434,12 +434,12 @@ class KeyRingIAMPolicy(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param KeyRingIAMPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param KeyRingIAMPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(KeyRingIAMPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(KeyRingIAMPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -457,7 +457,7 @@ class KeyRingIAMPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = KeyRingIAMPolicyArgs.__new__(KeyRingIAMPolicyArgs)
+            __props__ = KeyRingIAMPolicyArrgs.__new__(KeyRingIAMPolicyArrgs)
 
             if key_ring_id is None and not opts.urn:
                 raise TypeError("Missing required property 'key_ring_id'")

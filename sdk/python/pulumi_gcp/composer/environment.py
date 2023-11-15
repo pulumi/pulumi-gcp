@@ -11,20 +11,20 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['EnvironmentArgs', 'Environment']
+__all__ = ['EnvironmentArrgs', 'Environment']
 
 @pulumi.input_type
-class EnvironmentArgs:
+calass EnvironmentArrgs:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input['EnvironmentConfigArgs']] = None,
+                 config: Optional[pulumi.Input['EnvironmentConfigArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 storage_config: Optional[pulumi.Input['EnvironmentStorageConfigArgs']] = None):
+                 storage_config: Optional[pulumi.Input['EnvironmentStorageConfigArrgs']] = None):
         """
         The set of arguments for constructing a Environment resource.
-        :param pulumi.Input['EnvironmentConfigArgs'] config: Configuration parameters for this environment.
+        :param pulumi.Input['EnvironmentConfigArrgs'] config: Configuration parameters for this environment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
                are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
                must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
@@ -35,7 +35,7 @@ class EnvironmentArgs:
         :param pulumi.Input[str] name: Name of the environment.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The location or Compute Engine region for the environment.
-        :param pulumi.Input['EnvironmentStorageConfigArgs'] storage_config: Configuration options for storage used by Composer environment.
+        :param pulumi.Input['EnvironmentStorageConfigArrgs'] storage_config: Configuration options for storage used by Composer environment.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -52,14 +52,14 @@ class EnvironmentArgs:
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['EnvironmentConfigArgs']]:
+    def config(self) -> Optional[pulumi.Input['EnvironmentConfigArrgs']]:
         """
         Configuration parameters for this environment.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['EnvironmentConfigArgs']]):
+    def config(self, value: Optional[pulumi.Input['EnvironmentConfigArrgs']]):
         pulumi.set(self, "config", value)
 
     @property
@@ -118,31 +118,31 @@ class EnvironmentArgs:
 
     @property
     @pulumi.getter(name="storageConfig")
-    def storage_config(self) -> Optional[pulumi.Input['EnvironmentStorageConfigArgs']]:
+    def storage_config(self) -> Optional[pulumi.Input['EnvironmentStorageConfigArrgs']]:
         """
         Configuration options for storage used by Composer environment.
         """
         return pulumi.get(self, "storage_config")
 
     @storage_config.setter
-    def storage_config(self, value: Optional[pulumi.Input['EnvironmentStorageConfigArgs']]):
+    def storage_config(self, value: Optional[pulumi.Input['EnvironmentStorageConfigArrgs']]):
         pulumi.set(self, "storage_config", value)
 
 
 @pulumi.input_type
-class _EnvironmentState:
+calass _EnvironmentState:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input['EnvironmentConfigArgs']] = None,
+                 config: Optional[pulumi.Input['EnvironmentConfigArrgs']] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 storage_config: Optional[pulumi.Input['EnvironmentStorageConfigArgs']] = None):
+                 storage_config: Optional[pulumi.Input['EnvironmentStorageConfigArrgs']] = None):
         """
         Input properties used for looking up and filtering Environment resources.
-        :param pulumi.Input['EnvironmentConfigArgs'] config: Configuration parameters for this environment.
+        :param pulumi.Input['EnvironmentConfigArrgs'] config: Configuration parameters for this environment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
                clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
@@ -156,7 +156,7 @@ class _EnvironmentState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] region: The location or Compute Engine region for the environment.
-        :param pulumi.Input['EnvironmentStorageConfigArgs'] storage_config: Configuration options for storage used by Composer environment.
+        :param pulumi.Input['EnvironmentStorageConfigArrgs'] storage_config: Configuration options for storage used by Composer environment.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -177,14 +177,14 @@ class _EnvironmentState:
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['EnvironmentConfigArgs']]:
+    def config(self) -> Optional[pulumi.Input['EnvironmentConfigArrgs']]:
         """
         Configuration parameters for this environment.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['EnvironmentConfigArgs']]):
+    def config(self, value: Optional[pulumi.Input['EnvironmentConfigArrgs']]):
         pulumi.set(self, "config", value)
 
     @property
@@ -268,28 +268,28 @@ class _EnvironmentState:
 
     @property
     @pulumi.getter(name="storageConfig")
-    def storage_config(self) -> Optional[pulumi.Input['EnvironmentStorageConfigArgs']]:
+    def storage_config(self) -> Optional[pulumi.Input['EnvironmentStorageConfigArrgs']]:
         """
         Configuration options for storage used by Composer environment.
         """
         return pulumi.get(self, "storage_config")
 
     @storage_config.setter
-    def storage_config(self, value: Optional[pulumi.Input['EnvironmentStorageConfigArgs']]):
+    def storage_config(self, value: Optional[pulumi.Input['EnvironmentStorageConfigArrgs']]):
         pulumi.set(self, "storage_config", value)
 
 
-class Environment(pulumi.CustomResource):
+calass Environment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[pulumi.InputType['EnvironmentConfigArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 storage_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentStorageConfigArgs']]] = None,
+                 storage_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentStorageConfigArrgs']]] = None,
                  __props__=None):
         """
         ## Import
@@ -318,7 +318,7 @@ class Environment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']] config: Configuration parameters for this environment.
+        :param pulumi.Input[pulumi.InputType['EnvironmentConfigArrgs']] config: Configuration parameters for this environment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
                are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
                must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
@@ -329,13 +329,13 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the environment.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The location or Compute Engine region for the environment.
-        :param pulumi.Input[pulumi.InputType['EnvironmentStorageConfigArgs']] storage_config: Configuration options for storage used by Composer environment.
+        :param pulumi.Input[pulumi.InputType['EnvironmentStorageConfigArrgs']] storage_config: Configuration options for storage used by Composer environment.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[EnvironmentArgs] = None,
+                 args: Optional[EnvironmentArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Import
@@ -363,12 +363,12 @@ class Environment(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param EnvironmentArgs args: The arguments to use to populate this resource's properties.
+        :param EnvironmentArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(EnvironmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(EnvironmentArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -377,12 +377,12 @@ class Environment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[pulumi.InputType['EnvironmentConfigArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 storage_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentStorageConfigArgs']]] = None,
+                 storage_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentStorageConfigArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -390,7 +390,7 @@ class Environment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = EnvironmentArgs.__new__(EnvironmentArgs)
+            __props__ = EnvironmentArrgs.__new__(EnvironmentArrgs)
 
             __props__.__dict__["config"] = config
             __props__.__dict__["labels"] = labels
@@ -412,14 +412,14 @@ class Environment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: Optional[pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']]] = None,
+            config: Optional[pulumi.Input[pulumi.InputType['EnvironmentConfigArrgs']]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            storage_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentStorageConfigArgs']]] = None) -> 'Environment':
+            storage_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentStorageConfigArrgs']]] = None) -> 'Environment':
         """
         Get an existing Environment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -427,7 +427,7 @@ class Environment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']] config: Configuration parameters for this environment.
+        :param pulumi.Input[pulumi.InputType['EnvironmentConfigArrgs']] config: Configuration parameters for this environment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
                clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
@@ -441,7 +441,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] region: The location or Compute Engine region for the environment.
-        :param pulumi.Input[pulumi.InputType['EnvironmentStorageConfigArgs']] storage_config: Configuration options for storage used by Composer environment.
+        :param pulumi.Input[pulumi.InputType['EnvironmentStorageConfigArrgs']] storage_config: Configuration options for storage used by Composer environment.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

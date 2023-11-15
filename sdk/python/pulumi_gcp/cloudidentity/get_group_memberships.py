@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetGroupMembershipsResult:
+calass GetGroupMembershipsResult:
     """
     A collection of values returned by getGroupMemberships.
     """
@@ -55,7 +55,7 @@ class GetGroupMembershipsResult:
         return pulumi.get(self, "memberships")
 
 
-class AwaitableGetGroupMembershipsResult(GetGroupMembershipsResult):
+calass AwaitableGetGroupMembershipsResult(GetGroupMembershipsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

@@ -10,33 +10,33 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'ExtensionsInstanceConfigArgs',
-    'ExtensionsInstanceErrorStatusArgs',
-    'ExtensionsInstanceRuntimeDataArgs',
-    'ExtensionsInstanceRuntimeDataFatalErrorArgs',
-    'ExtensionsInstanceRuntimeDataProcessingStateArgs',
-    'HostingCustomDomainCertArgs',
-    'HostingCustomDomainCertVerificationArgs',
-    'HostingCustomDomainCertVerificationDnsArgs',
-    'HostingCustomDomainCertVerificationDnsDesiredArgs',
-    'HostingCustomDomainCertVerificationDnsDesiredRecordArgs',
-    'HostingCustomDomainCertVerificationDnsDiscoveredArgs',
-    'HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs',
-    'HostingCustomDomainCertVerificationHttpArgs',
-    'HostingCustomDomainIssueArgs',
-    'HostingCustomDomainRequiredDnsUpdateArgs',
-    'HostingCustomDomainRequiredDnsUpdateDesiredArgs',
-    'HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs',
-    'HostingCustomDomainRequiredDnsUpdateDiscoveredArgs',
-    'HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs',
-    'HostingVersionConfigArgs',
-    'HostingVersionConfigRedirectArgs',
-    'HostingVersionConfigRewriteArgs',
-    'HostingVersionConfigRewriteRunArgs',
+    'ExtensionsInstanceConfigArrgs',
+    'ExtensionsInstanceErrorStatusArrgs',
+    'ExtensionsInstanceRuntimeDataArrgs',
+    'ExtensionsInstanceRuntimeDataFatalErrorArrgs',
+    'ExtensionsInstanceRuntimeDataProcessingStateArrgs',
+    'HostingCustomDomainCertArrgs',
+    'HostingCustomDomainCertVerificationArrgs',
+    'HostingCustomDomainCertVerificationDnsArrgs',
+    'HostingCustomDomainCertVerificationDnsDesiredArrgs',
+    'HostingCustomDomainCertVerificationDnsDesiredRecordArrgs',
+    'HostingCustomDomainCertVerificationDnsDiscoveredArrgs',
+    'HostingCustomDomainCertVerificationDnsDiscoveredRecordArrgs',
+    'HostingCustomDomainCertVerificationHttpArrgs',
+    'HostingCustomDomainIssueArrgs',
+    'HostingCustomDomainRequiredDnsUpdateArrgs',
+    'HostingCustomDomainRequiredDnsUpdateDesiredArrgs',
+    'HostingCustomDomainRequiredDnsUpdateDesiredRecordArrgs',
+    'HostingCustomDomainRequiredDnsUpdateDiscoveredArrgs',
+    'HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrgs',
+    'HostingVersionConfigArrgs',
+    'HostingVersionConfigRedirectArrgs',
+    'HostingVersionConfigRewriteArrgs',
+    'HostingVersionConfigRewriteRunArrgs',
 ]
 
 @pulumi.input_type
-class ExtensionsInstanceConfigArgs:
+calass ExtensionsInstanceConfigArrgs:
     def __init__(__self__, *,
                  extension_ref: pulumi.Input[str],
                  params: pulumi.Input[Mapping[str, pulumi.Input[str]]],
@@ -209,7 +209,7 @@ class ExtensionsInstanceConfigArgs:
 
 
 @pulumi.input_type
-class ExtensionsInstanceErrorStatusArgs:
+calass ExtensionsInstanceErrorStatusArrgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[int]] = None,
                  details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
@@ -264,15 +264,15 @@ class ExtensionsInstanceErrorStatusArgs:
 
 
 @pulumi.input_type
-class ExtensionsInstanceRuntimeDataArgs:
+calass ExtensionsInstanceRuntimeDataArrgs:
     def __init__(__self__, *,
-                 fatal_error: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArgs']] = None,
-                 processing_state: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArgs']] = None,
+                 fatal_error: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArrgs']] = None,
+                 processing_state: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArrgs']] = None,
                  state_update_time: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArgs'] fatal_error: The fatal error state for the extension instance
+        :param pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArrgs'] fatal_error: The fatal error state for the extension instance
                Structure is documented below.
-        :param pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArgs'] processing_state: The processing state for the extension instance
+        :param pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArrgs'] processing_state: The processing state for the extension instance
                Structure is documented below.
         :param pulumi.Input[str] state_update_time: The time of the last state update.
         """
@@ -285,7 +285,7 @@ class ExtensionsInstanceRuntimeDataArgs:
 
     @property
     @pulumi.getter(name="fatalError")
-    def fatal_error(self) -> Optional[pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArgs']]:
+    def fatal_error(self) -> Optional[pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArrgs']]:
         """
         The fatal error state for the extension instance
         Structure is documented below.
@@ -293,12 +293,12 @@ class ExtensionsInstanceRuntimeDataArgs:
         return pulumi.get(self, "fatal_error")
 
     @fatal_error.setter
-    def fatal_error(self, value: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArgs']]):
+    def fatal_error(self, value: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArrgs']]):
         pulumi.set(self, "fatal_error", value)
 
     @property
     @pulumi.getter(name="processingState")
-    def processing_state(self) -> Optional[pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArgs']]:
+    def processing_state(self) -> Optional[pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArrgs']]:
         """
         The processing state for the extension instance
         Structure is documented below.
@@ -306,7 +306,7 @@ class ExtensionsInstanceRuntimeDataArgs:
         return pulumi.get(self, "processing_state")
 
     @processing_state.setter
-    def processing_state(self, value: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArgs']]):
+    def processing_state(self, value: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArrgs']]):
         pulumi.set(self, "processing_state", value)
 
     @property
@@ -323,7 +323,7 @@ class ExtensionsInstanceRuntimeDataArgs:
 
 
 @pulumi.input_type
-class ExtensionsInstanceRuntimeDataFatalErrorArgs:
+calass ExtensionsInstanceRuntimeDataFatalErrorArrgs:
     def __init__(__self__, *,
                  error_message: Optional[pulumi.Input[str]] = None):
         """
@@ -350,7 +350,7 @@ class ExtensionsInstanceRuntimeDataFatalErrorArgs:
 
 
 @pulumi.input_type
-class ExtensionsInstanceRuntimeDataProcessingStateArgs:
+calass ExtensionsInstanceRuntimeDataProcessingStateArrgs:
     def __init__(__self__, *,
                  detail_message: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None):
@@ -395,11 +395,11 @@ class ExtensionsInstanceRuntimeDataProcessingStateArgs:
 
 
 @pulumi.input_type
-class HostingCustomDomainCertArgs:
+calass HostingCustomDomainCertArrgs:
     def __init__(__self__, *,
                  state: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 verification: Optional[pulumi.Input['HostingCustomDomainCertVerificationArgs']] = None):
+                 verification: Optional[pulumi.Input['HostingCustomDomainCertVerificationArrgs']] = None):
         """
         :param pulumi.Input[str] state: The state of the certificate. Only the `CERT_ACTIVE` and
                `CERT_EXPIRING_SOON` states provide SSL coverage for a domain name. If the
@@ -407,7 +407,7 @@ class HostingCustomDomainCertArgs:
                before, that formerly-active cert provides SSL coverage for the domain name
                until the current cert propagates.
         :param pulumi.Input[str] type: The record's type, which determines what data the record contains.
-        :param pulumi.Input['HostingCustomDomainCertVerificationArgs'] verification: A set of ACME challenges you can add to your DNS records or existing,
+        :param pulumi.Input['HostingCustomDomainCertVerificationArrgs'] verification: A set of ACME challenges you can add to your DNS records or existing,
                non-Hosting hosting provider to allow Hosting to create an SSL certificate
                for your domain name before you point traffic toward hosting. You can use
                thse challenges as part of a zero downtime transition from your old
@@ -451,7 +451,7 @@ class HostingCustomDomainCertArgs:
 
     @property
     @pulumi.getter
-    def verification(self) -> Optional[pulumi.Input['HostingCustomDomainCertVerificationArgs']]:
+    def verification(self) -> Optional[pulumi.Input['HostingCustomDomainCertVerificationArrgs']]:
         """
         A set of ACME challenges you can add to your DNS records or existing,
         non-Hosting hosting provider to allow Hosting to create an SSL certificate
@@ -463,20 +463,20 @@ class HostingCustomDomainCertArgs:
         return pulumi.get(self, "verification")
 
     @verification.setter
-    def verification(self, value: Optional[pulumi.Input['HostingCustomDomainCertVerificationArgs']]):
+    def verification(self, value: Optional[pulumi.Input['HostingCustomDomainCertVerificationArrgs']]):
         pulumi.set(self, "verification", value)
 
 
 @pulumi.input_type
-class HostingCustomDomainCertVerificationArgs:
+calass HostingCustomDomainCertVerificationArrgs:
     def __init__(__self__, *,
-                 dns: Optional[pulumi.Input['HostingCustomDomainCertVerificationDnsArgs']] = None,
-                 http: Optional[pulumi.Input['HostingCustomDomainCertVerificationHttpArgs']] = None):
+                 dns: Optional[pulumi.Input['HostingCustomDomainCertVerificationDnsArrgs']] = None,
+                 http: Optional[pulumi.Input['HostingCustomDomainCertVerificationHttpArrgs']] = None):
         """
-        :param pulumi.Input['HostingCustomDomainCertVerificationDnsArgs'] dns: A `TXT` record to add to your DNS records that confirms your intent to
+        :param pulumi.Input['HostingCustomDomainCertVerificationDnsArrgs'] dns: A `TXT` record to add to your DNS records that confirms your intent to
                let Hosting create an SSL cert for your domain name.
                Structure is documented below.
-        :param pulumi.Input['HostingCustomDomainCertVerificationHttpArgs'] http: A file to add to your existing, non-Hosting hosting service that confirms
+        :param pulumi.Input['HostingCustomDomainCertVerificationHttpArrgs'] http: A file to add to your existing, non-Hosting hosting service that confirms
                your intent to let Hosting create an SSL cert for your domain name.
                Structure is documented below.
         """
@@ -487,7 +487,7 @@ class HostingCustomDomainCertVerificationArgs:
 
     @property
     @pulumi.getter
-    def dns(self) -> Optional[pulumi.Input['HostingCustomDomainCertVerificationDnsArgs']]:
+    def dns(self) -> Optional[pulumi.Input['HostingCustomDomainCertVerificationDnsArrgs']]:
         """
         A `TXT` record to add to your DNS records that confirms your intent to
         let Hosting create an SSL cert for your domain name.
@@ -496,12 +496,12 @@ class HostingCustomDomainCertVerificationArgs:
         return pulumi.get(self, "dns")
 
     @dns.setter
-    def dns(self, value: Optional[pulumi.Input['HostingCustomDomainCertVerificationDnsArgs']]):
+    def dns(self, value: Optional[pulumi.Input['HostingCustomDomainCertVerificationDnsArrgs']]):
         pulumi.set(self, "dns", value)
 
     @property
     @pulumi.getter
-    def http(self) -> Optional[pulumi.Input['HostingCustomDomainCertVerificationHttpArgs']]:
+    def http(self) -> Optional[pulumi.Input['HostingCustomDomainCertVerificationHttpArrgs']]:
         """
         A file to add to your existing, non-Hosting hosting service that confirms
         your intent to let Hosting create an SSL cert for your domain name.
@@ -510,21 +510,21 @@ class HostingCustomDomainCertVerificationArgs:
         return pulumi.get(self, "http")
 
     @http.setter
-    def http(self, value: Optional[pulumi.Input['HostingCustomDomainCertVerificationHttpArgs']]):
+    def http(self, value: Optional[pulumi.Input['HostingCustomDomainCertVerificationHttpArrgs']]):
         pulumi.set(self, "http", value)
 
 
 @pulumi.input_type
-class HostingCustomDomainCertVerificationDnsArgs:
+calass HostingCustomDomainCertVerificationDnsArrgs:
     def __init__(__self__, *,
                  check_time: Optional[pulumi.Input[str]] = None,
-                 desireds: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredArgs']]]] = None,
-                 discovereds: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredArgs']]]] = None):
+                 desireds: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredArrgs']]]] = None,
+                 discovereds: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredArrgs']]]] = None):
         """
         :param pulumi.Input[str] check_time: (Output)
                The last time Hosting checked your CustomDomain's DNS records.
-        :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredArgs']]] desireds: A text string to serve at the path.
-        :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredArgs']]] discovereds: Whether Hosting was able to find the required file contents on the
+        :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredArrgs']]] desireds: A text string to serve at the path.
+        :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredArrgs']]] discovereds: Whether Hosting was able to find the required file contents on the
                specified path during its last check.
         """
         if check_time is not None:
@@ -549,19 +549,19 @@ class HostingCustomDomainCertVerificationDnsArgs:
 
     @property
     @pulumi.getter
-    def desireds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredArgs']]]]:
+    def desireds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredArrgs']]]]:
         """
         A text string to serve at the path.
         """
         return pulumi.get(self, "desireds")
 
     @desireds.setter
-    def desireds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredArgs']]]]):
+    def desireds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredArrgs']]]]):
         pulumi.set(self, "desireds", value)
 
     @property
     @pulumi.getter
-    def discovereds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredArgs']]]]:
+    def discovereds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredArrgs']]]]:
         """
         Whether Hosting was able to find the required file contents on the
         specified path during its last check.
@@ -569,18 +569,18 @@ class HostingCustomDomainCertVerificationDnsArgs:
         return pulumi.get(self, "discovereds")
 
     @discovereds.setter
-    def discovereds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredArgs']]]]):
+    def discovereds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredArrgs']]]]):
         pulumi.set(self, "discovereds", value)
 
 
 @pulumi.input_type
-class HostingCustomDomainCertVerificationDnsDesiredArgs:
+calass HostingCustomDomainCertVerificationDnsDesiredArrgs:
     def __init__(__self__, *,
                  domain_name: Optional[pulumi.Input[str]] = None,
-                 records: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredRecordArgs']]]] = None):
+                 records: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredRecordArrgs']]]] = None):
         """
         :param pulumi.Input[str] domain_name: The domain name the record pertains to, e.g. `foo.bar.com.`.
-        :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredRecordArgs']]] records: Records on the domain
+        :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredRecordArrgs']]] records: Records on the domain
                Structure is documented below.
         """
         if domain_name is not None:
@@ -602,7 +602,7 @@ class HostingCustomDomainCertVerificationDnsDesiredArgs:
 
     @property
     @pulumi.getter
-    def records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredRecordArgs']]]]:
+    def records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredRecordArrgs']]]]:
         """
         Records on the domain
         Structure is documented below.
@@ -610,12 +610,12 @@ class HostingCustomDomainCertVerificationDnsDesiredArgs:
         return pulumi.get(self, "records")
 
     @records.setter
-    def records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredRecordArgs']]]]):
+    def records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredRecordArrgs']]]]):
         pulumi.set(self, "records", value)
 
 
 @pulumi.input_type
-class HostingCustomDomainCertVerificationDnsDesiredRecordArgs:
+calass HostingCustomDomainCertVerificationDnsDesiredRecordArrgs:
     def __init__(__self__, *,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  rdata: Optional[pulumi.Input[str]] = None,
@@ -698,13 +698,13 @@ class HostingCustomDomainCertVerificationDnsDesiredRecordArgs:
 
 
 @pulumi.input_type
-class HostingCustomDomainCertVerificationDnsDiscoveredArgs:
+calass HostingCustomDomainCertVerificationDnsDiscoveredArrgs:
     def __init__(__self__, *,
                  domain_name: Optional[pulumi.Input[str]] = None,
-                 records: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs']]]] = None):
+                 records: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredRecordArrgs']]]] = None):
         """
         :param pulumi.Input[str] domain_name: The domain name the record pertains to, e.g. `foo.bar.com.`.
-        :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs']]] records: Records on the domain
+        :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredRecordArrgs']]] records: Records on the domain
                Structure is documented below.
         """
         if domain_name is not None:
@@ -726,7 +726,7 @@ class HostingCustomDomainCertVerificationDnsDiscoveredArgs:
 
     @property
     @pulumi.getter
-    def records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs']]]]:
+    def records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredRecordArrgs']]]]:
         """
         Records on the domain
         Structure is documented below.
@@ -734,12 +734,12 @@ class HostingCustomDomainCertVerificationDnsDiscoveredArgs:
         return pulumi.get(self, "records")
 
     @records.setter
-    def records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs']]]]):
+    def records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredRecordArrgs']]]]):
         pulumi.set(self, "records", value)
 
 
 @pulumi.input_type
-class HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs:
+calass HostingCustomDomainCertVerificationDnsDiscoveredRecordArrgs:
     def __init__(__self__, *,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  rdata: Optional[pulumi.Input[str]] = None,
@@ -822,7 +822,7 @@ class HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs:
 
 
 @pulumi.input_type
-class HostingCustomDomainCertVerificationHttpArgs:
+calass HostingCustomDomainCertVerificationHttpArrgs:
     def __init__(__self__, *,
                  desired: Optional[pulumi.Input[str]] = None,
                  discovered: Optional[pulumi.Input[str]] = None,
@@ -897,7 +897,7 @@ class HostingCustomDomainCertVerificationHttpArgs:
 
 
 @pulumi.input_type
-class HostingCustomDomainIssueArgs:
+calass HostingCustomDomainIssueArrgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[int]] = None,
                  details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
@@ -952,16 +952,16 @@ class HostingCustomDomainIssueArgs:
 
 
 @pulumi.input_type
-class HostingCustomDomainRequiredDnsUpdateArgs:
+calass HostingCustomDomainRequiredDnsUpdateArrgs:
     def __init__(__self__, *,
                  check_time: Optional[pulumi.Input[str]] = None,
-                 desireds: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredArgs']]]] = None,
-                 discovereds: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredArgs']]]] = None):
+                 desireds: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredArrgs']]]] = None,
+                 discovereds: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredArrgs']]]] = None):
         """
         :param pulumi.Input[str] check_time: (Output)
                The last time Hosting checked your CustomDomain's DNS records.
-        :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredArgs']]] desireds: A text string to serve at the path.
-        :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredArgs']]] discovereds: Whether Hosting was able to find the required file contents on the
+        :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredArrgs']]] desireds: A text string to serve at the path.
+        :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredArrgs']]] discovereds: Whether Hosting was able to find the required file contents on the
                specified path during its last check.
         """
         if check_time is not None:
@@ -986,19 +986,19 @@ class HostingCustomDomainRequiredDnsUpdateArgs:
 
     @property
     @pulumi.getter
-    def desireds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredArgs']]]]:
+    def desireds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredArrgs']]]]:
         """
         A text string to serve at the path.
         """
         return pulumi.get(self, "desireds")
 
     @desireds.setter
-    def desireds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredArgs']]]]):
+    def desireds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredArrgs']]]]):
         pulumi.set(self, "desireds", value)
 
     @property
     @pulumi.getter
-    def discovereds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredArgs']]]]:
+    def discovereds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredArrgs']]]]:
         """
         Whether Hosting was able to find the required file contents on the
         specified path during its last check.
@@ -1006,18 +1006,18 @@ class HostingCustomDomainRequiredDnsUpdateArgs:
         return pulumi.get(self, "discovereds")
 
     @discovereds.setter
-    def discovereds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredArgs']]]]):
+    def discovereds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredArrgs']]]]):
         pulumi.set(self, "discovereds", value)
 
 
 @pulumi.input_type
-class HostingCustomDomainRequiredDnsUpdateDesiredArgs:
+calass HostingCustomDomainRequiredDnsUpdateDesiredArrgs:
     def __init__(__self__, *,
                  domain_name: Optional[pulumi.Input[str]] = None,
-                 records: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs']]]] = None):
+                 records: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredRecordArrgs']]]] = None):
         """
         :param pulumi.Input[str] domain_name: The domain name the record pertains to, e.g. `foo.bar.com.`.
-        :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs']]] records: Records on the domain
+        :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredRecordArrgs']]] records: Records on the domain
                Structure is documented below.
         """
         if domain_name is not None:
@@ -1039,7 +1039,7 @@ class HostingCustomDomainRequiredDnsUpdateDesiredArgs:
 
     @property
     @pulumi.getter
-    def records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs']]]]:
+    def records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredRecordArrgs']]]]:
         """
         Records on the domain
         Structure is documented below.
@@ -1047,12 +1047,12 @@ class HostingCustomDomainRequiredDnsUpdateDesiredArgs:
         return pulumi.get(self, "records")
 
     @records.setter
-    def records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs']]]]):
+    def records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredRecordArrgs']]]]):
         pulumi.set(self, "records", value)
 
 
 @pulumi.input_type
-class HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs:
+calass HostingCustomDomainRequiredDnsUpdateDesiredRecordArrgs:
     def __init__(__self__, *,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  rdata: Optional[pulumi.Input[str]] = None,
@@ -1135,13 +1135,13 @@ class HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs:
 
 
 @pulumi.input_type
-class HostingCustomDomainRequiredDnsUpdateDiscoveredArgs:
+calass HostingCustomDomainRequiredDnsUpdateDiscoveredArrgs:
     def __init__(__self__, *,
                  domain_name: Optional[pulumi.Input[str]] = None,
-                 records: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs']]]] = None):
+                 records: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrgs']]]] = None):
         """
         :param pulumi.Input[str] domain_name: The domain name the record pertains to, e.g. `foo.bar.com.`.
-        :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs']]] records: Records on the domain
+        :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrgs']]] records: Records on the domain
                Structure is documented below.
         """
         if domain_name is not None:
@@ -1163,7 +1163,7 @@ class HostingCustomDomainRequiredDnsUpdateDiscoveredArgs:
 
     @property
     @pulumi.getter
-    def records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs']]]]:
+    def records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrgs']]]]:
         """
         Records on the domain
         Structure is documented below.
@@ -1171,12 +1171,12 @@ class HostingCustomDomainRequiredDnsUpdateDiscoveredArgs:
         return pulumi.get(self, "records")
 
     @records.setter
-    def records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs']]]]):
+    def records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrgs']]]]):
         pulumi.set(self, "records", value)
 
 
 @pulumi.input_type
-class HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs:
+calass HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrgs:
     def __init__(__self__, *,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  rdata: Optional[pulumi.Input[str]] = None,
@@ -1259,15 +1259,15 @@ class HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs:
 
 
 @pulumi.input_type
-class HostingVersionConfigArgs:
+calass HostingVersionConfigArrgs:
     def __init__(__self__, *,
-                 redirects: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRedirectArgs']]]] = None,
-                 rewrites: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRewriteArgs']]]] = None):
+                 redirects: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRedirectArrgs']]]] = None,
+                 rewrites: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRewriteArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRedirectArgs']]] redirects: An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
+        :param pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRedirectArrgs']]] redirects: An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
                triggers Hosting to respond with a redirect to the specified destination path.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRewriteArgs']]] rewrites: An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the
+        :param pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRewriteArrgs']]] rewrites: An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the
                request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
                Structure is documented below.
         """
@@ -1278,7 +1278,7 @@ class HostingVersionConfigArgs:
 
     @property
     @pulumi.getter
-    def redirects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRedirectArgs']]]]:
+    def redirects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRedirectArrgs']]]]:
         """
         An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
         triggers Hosting to respond with a redirect to the specified destination path.
@@ -1287,12 +1287,12 @@ class HostingVersionConfigArgs:
         return pulumi.get(self, "redirects")
 
     @redirects.setter
-    def redirects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRedirectArgs']]]]):
+    def redirects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRedirectArrgs']]]]):
         pulumi.set(self, "redirects", value)
 
     @property
     @pulumi.getter
-    def rewrites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRewriteArgs']]]]:
+    def rewrites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRewriteArrgs']]]]:
         """
         An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the
         request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
@@ -1301,12 +1301,12 @@ class HostingVersionConfigArgs:
         return pulumi.get(self, "rewrites")
 
     @rewrites.setter
-    def rewrites(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRewriteArgs']]]]):
+    def rewrites(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRewriteArrgs']]]]):
         pulumi.set(self, "rewrites", value)
 
 
 @pulumi.input_type
-class HostingVersionConfigRedirectArgs:
+calass HostingVersionConfigRedirectArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  status_code: pulumi.Input[int],
@@ -1385,17 +1385,17 @@ class HostingVersionConfigRedirectArgs:
 
 
 @pulumi.input_type
-class HostingVersionConfigRewriteArgs:
+calass HostingVersionConfigRewriteArrgs:
     def __init__(__self__, *,
                  function: Optional[pulumi.Input[str]] = None,
                  glob: Optional[pulumi.Input[str]] = None,
                  regex: Optional[pulumi.Input[str]] = None,
-                 run: Optional[pulumi.Input['HostingVersionConfigRewriteRunArgs']] = None):
+                 run: Optional[pulumi.Input['HostingVersionConfigRewriteRunArrgs']] = None):
         """
         :param pulumi.Input[str] function: The function to proxy requests to. Must match the exported function name exactly.
         :param pulumi.Input[str] glob: The user-supplied glob to match against the request URL path.
         :param pulumi.Input[str] regex: The user-supplied RE2 regular expression to match against the request URL path.
-        :param pulumi.Input['HostingVersionConfigRewriteRunArgs'] run: The request will be forwarded to Cloud Run.
+        :param pulumi.Input['HostingVersionConfigRewriteRunArrgs'] run: The request will be forwarded to Cloud Run.
                Structure is documented below.
         """
         if function is not None:
@@ -1445,7 +1445,7 @@ class HostingVersionConfigRewriteArgs:
 
     @property
     @pulumi.getter
-    def run(self) -> Optional[pulumi.Input['HostingVersionConfigRewriteRunArgs']]:
+    def run(self) -> Optional[pulumi.Input['HostingVersionConfigRewriteRunArrgs']]:
         """
         The request will be forwarded to Cloud Run.
         Structure is documented below.
@@ -1453,12 +1453,12 @@ class HostingVersionConfigRewriteArgs:
         return pulumi.get(self, "run")
 
     @run.setter
-    def run(self, value: Optional[pulumi.Input['HostingVersionConfigRewriteRunArgs']]):
+    def run(self, value: Optional[pulumi.Input['HostingVersionConfigRewriteRunArrgs']]):
         pulumi.set(self, "run", value)
 
 
 @pulumi.input_type
-class HostingVersionConfigRewriteRunArgs:
+calass HostingVersionConfigRewriteRunArrgs:
     def __init__(__self__, *,
                  service_id: pulumi.Input[str],
                  region: Optional[pulumi.Input[str]] = None):

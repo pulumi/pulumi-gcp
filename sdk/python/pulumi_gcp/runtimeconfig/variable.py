@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['VariableArgs', 'Variable']
+__all__ = ['VariableArrgs', 'Variable']
 
 @pulumi.input_type
-class VariableArgs:
+calass VariableArrgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
@@ -111,7 +111,7 @@ class VariableArgs:
 
 
 @pulumi.input_type
-class _VariableState:
+calass _VariableState:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -230,7 +230,7 @@ class _VariableState:
         pulumi.set(self, "value", value)
 
 
-class Variable(pulumi.CustomResource):
+calass Variable(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -313,7 +313,7 @@ class Variable(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: VariableArgs,
+                 args: VariableArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -369,12 +369,12 @@ class Variable(pulumi.CustomResource):
          When importing using only the name, the provider project must be set.
 
         :param str resource_name: The name of the resource.
-        :param VariableArgs args: The arguments to use to populate this resource's properties.
+        :param VariableArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(VariableArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(VariableArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -395,7 +395,7 @@ class Variable(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = VariableArgs.__new__(VariableArgs)
+            __props__ = VariableArrgs.__new__(VariableArrgs)
 
             __props__.__dict__["name"] = name
             if parent is None and not opts.urn:

@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['WorkstationArgs', 'Workstation']
+__all__ = ['WorkstationArrgs', 'Workstation']
 
 @pulumi.input_type
-class WorkstationArgs:
+calass WorkstationArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  workstation_cluster_id: pulumi.Input[str],
@@ -176,7 +176,7 @@ class WorkstationArgs:
 
 
 @pulumi.input_type
-class _WorkstationState:
+calass _WorkstationState:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -479,7 +479,7 @@ class _WorkstationState:
         pulumi.set(self, "workstation_id", value)
 
 
-class Workstation(pulumi.CustomResource):
+calass Workstation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -525,8 +525,8 @@ class Workstation(pulumi.CustomResource):
             workstation_config_id="workstation-config",
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
+            host=gcp.workstations.WorkstationConfigHostArrgs(
+                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArrgs(
                     machine_type="e2-standard-4",
                     boot_disk_size_gb=35,
                     disable_public_ip_addresses=True,
@@ -598,7 +598,7 @@ class Workstation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: WorkstationArgs,
+                 args: WorkstationArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -631,8 +631,8 @@ class Workstation(pulumi.CustomResource):
             workstation_config_id="workstation-config",
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
+            host=gcp.workstations.WorkstationConfigHostArrgs(
+                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArrgs(
                     machine_type="e2-standard-4",
                     boot_disk_size_gb=35,
                     disable_public_ip_addresses=True,
@@ -681,12 +681,12 @@ class Workstation(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param WorkstationArgs args: The arguments to use to populate this resource's properties.
+        :param WorkstationArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(WorkstationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(WorkstationArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -711,7 +711,7 @@ class Workstation(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = WorkstationArgs.__new__(WorkstationArgs)
+            __props__ = WorkstationArrgs.__new__(WorkstationArrgs)
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["display_name"] = display_name

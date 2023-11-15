@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['NodeArgs', 'Node']
+__all__ = ['NodeArrgs', 'Node']
 
 @pulumi.input_type
-class NodeArgs:
+calass NodeArrgs:
     def __init__(__self__, *,
                  accelerator_type: pulumi.Input[str],
                  tensorflow_version: pulumi.Input[str],
@@ -24,7 +24,7 @@ class NodeArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 scheduling_config: Optional[pulumi.Input['NodeSchedulingConfigArgs']] = None,
+                 scheduling_config: Optional[pulumi.Input['NodeSchedulingConfigArrgs']] = None,
                  use_service_networking: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
@@ -53,7 +53,7 @@ class NodeArgs:
                used.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['NodeSchedulingConfigArgs'] scheduling_config: Sets the scheduling options for this TPU instance.
+        :param pulumi.Input['NodeSchedulingConfigArrgs'] scheduling_config: Sets the scheduling options for this TPU instance.
                Structure is documented below.
         :param pulumi.Input[bool] use_service_networking: Whether the VPC peering for the node is set up through Service Networking API.
                The VPC Peering should be set up before provisioning the node. If this field is set,
@@ -196,7 +196,7 @@ class NodeArgs:
 
     @property
     @pulumi.getter(name="schedulingConfig")
-    def scheduling_config(self) -> Optional[pulumi.Input['NodeSchedulingConfigArgs']]:
+    def scheduling_config(self) -> Optional[pulumi.Input['NodeSchedulingConfigArrgs']]:
         """
         Sets the scheduling options for this TPU instance.
         Structure is documented below.
@@ -204,7 +204,7 @@ class NodeArgs:
         return pulumi.get(self, "scheduling_config")
 
     @scheduling_config.setter
-    def scheduling_config(self, value: Optional[pulumi.Input['NodeSchedulingConfigArgs']]):
+    def scheduling_config(self, value: Optional[pulumi.Input['NodeSchedulingConfigArrgs']]):
         pulumi.set(self, "scheduling_config", value)
 
     @property
@@ -236,7 +236,7 @@ class NodeArgs:
 
 
 @pulumi.input_type
-class _NodeState:
+calass _NodeState:
     def __init__(__self__, *,
                  accelerator_type: Optional[pulumi.Input[str]] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
@@ -245,10 +245,10 @@ class _NodeState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['NodeNetworkEndpointArgs']]]] = None,
+                 network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['NodeNetworkEndpointArrgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 scheduling_config: Optional[pulumi.Input['NodeSchedulingConfigArgs']] = None,
+                 scheduling_config: Optional[pulumi.Input['NodeSchedulingConfigArrgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  tensorflow_version: Optional[pulumi.Input[str]] = None,
                  use_service_networking: Optional[pulumi.Input[bool]] = None,
@@ -274,7 +274,7 @@ class _NodeState:
                preexisting Compute Engine network inside of the project on which
                this API has been activated. If none is provided, "default" will be
                used.
-        :param pulumi.Input[Sequence[pulumi.Input['NodeNetworkEndpointArgs']]] network_endpoints: The network endpoints where TPU workers can be accessed and sent work.
+        :param pulumi.Input[Sequence[pulumi.Input['NodeNetworkEndpointArrgs']]] network_endpoints: The network endpoints where TPU workers can be accessed and sent work.
                It is recommended that Tensorflow clients of the node first reach out
                to the first (index 0) entry.
                Structure is documented below.
@@ -282,7 +282,7 @@ class _NodeState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input['NodeSchedulingConfigArgs'] scheduling_config: Sets the scheduling options for this TPU instance.
+        :param pulumi.Input['NodeSchedulingConfigArrgs'] scheduling_config: Sets the scheduling options for this TPU instance.
                Structure is documented below.
         :param pulumi.Input[str] service_account: The service account used to run the tensor flow services within the
                node. To share resources, including Google Cloud Storage data, with
@@ -427,7 +427,7 @@ class _NodeState:
 
     @property
     @pulumi.getter(name="networkEndpoints")
-    def network_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeNetworkEndpointArgs']]]]:
+    def network_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeNetworkEndpointArrgs']]]]:
         """
         The network endpoints where TPU workers can be accessed and sent work.
         It is recommended that Tensorflow clients of the node first reach out
@@ -437,7 +437,7 @@ class _NodeState:
         return pulumi.get(self, "network_endpoints")
 
     @network_endpoints.setter
-    def network_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeNetworkEndpointArgs']]]]):
+    def network_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeNetworkEndpointArrgs']]]]):
         pulumi.set(self, "network_endpoints", value)
 
     @property
@@ -468,7 +468,7 @@ class _NodeState:
 
     @property
     @pulumi.getter(name="schedulingConfig")
-    def scheduling_config(self) -> Optional[pulumi.Input['NodeSchedulingConfigArgs']]:
+    def scheduling_config(self) -> Optional[pulumi.Input['NodeSchedulingConfigArrgs']]:
         """
         Sets the scheduling options for this TPU instance.
         Structure is documented below.
@@ -476,7 +476,7 @@ class _NodeState:
         return pulumi.get(self, "scheduling_config")
 
     @scheduling_config.setter
-    def scheduling_config(self, value: Optional[pulumi.Input['NodeSchedulingConfigArgs']]):
+    def scheduling_config(self, value: Optional[pulumi.Input['NodeSchedulingConfigArrgs']]):
         pulumi.set(self, "scheduling_config", value)
 
     @property
@@ -537,7 +537,7 @@ class _NodeState:
         pulumi.set(self, "zone", value)
 
 
-class Node(pulumi.CustomResource):
+calass Node(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -549,7 +549,7 @@ class Node(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 scheduling_config: Optional[pulumi.Input[pulumi.InputType['NodeSchedulingConfigArgs']]] = None,
+                 scheduling_config: Optional[pulumi.Input[pulumi.InputType['NodeSchedulingConfigArrgs']]] = None,
                  tensorflow_version: Optional[pulumi.Input[str]] = None,
                  use_service_networking: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -604,7 +604,7 @@ class Node(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             },
-            scheduling_config=gcp.tpu.NodeSchedulingConfigArgs(
+            scheduling_config=gcp.tpu.NodeSchedulingConfigArrgs(
                 preemptible=True,
             ))
         ```
@@ -659,7 +659,7 @@ class Node(pulumi.CustomResource):
                used.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['NodeSchedulingConfigArgs']] scheduling_config: Sets the scheduling options for this TPU instance.
+        :param pulumi.Input[pulumi.InputType['NodeSchedulingConfigArrgs']] scheduling_config: Sets the scheduling options for this TPU instance.
                Structure is documented below.
         :param pulumi.Input[str] tensorflow_version: The version of Tensorflow running in the Node.
                
@@ -675,7 +675,7 @@ class Node(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: NodeArgs,
+                 args: NodeArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Cloud TPU instance.
@@ -727,7 +727,7 @@ class Node(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             },
-            scheduling_config=gcp.tpu.NodeSchedulingConfigArgs(
+            scheduling_config=gcp.tpu.NodeSchedulingConfigArrgs(
                 preemptible=True,
             ))
         ```
@@ -761,12 +761,12 @@ class Node(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param NodeArgs args: The arguments to use to populate this resource's properties.
+        :param NodeArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(NodeArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(NodeArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -782,7 +782,7 @@ class Node(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 scheduling_config: Optional[pulumi.Input[pulumi.InputType['NodeSchedulingConfigArgs']]] = None,
+                 scheduling_config: Optional[pulumi.Input[pulumi.InputType['NodeSchedulingConfigArrgs']]] = None,
                  tensorflow_version: Optional[pulumi.Input[str]] = None,
                  use_service_networking: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -793,7 +793,7 @@ class Node(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = NodeArgs.__new__(NodeArgs)
+            __props__ = NodeArrgs.__new__(NodeArrgs)
 
             if accelerator_type is None and not opts.urn:
                 raise TypeError("Missing required property 'accelerator_type'")
@@ -833,10 +833,10 @@ class Node(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
-            network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeNetworkEndpointArgs']]]]] = None,
+            network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeNetworkEndpointArrgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            scheduling_config: Optional[pulumi.Input[pulumi.InputType['NodeSchedulingConfigArgs']]] = None,
+            scheduling_config: Optional[pulumi.Input[pulumi.InputType['NodeSchedulingConfigArrgs']]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
             tensorflow_version: Optional[pulumi.Input[str]] = None,
             use_service_networking: Optional[pulumi.Input[bool]] = None,
@@ -867,7 +867,7 @@ class Node(pulumi.CustomResource):
                preexisting Compute Engine network inside of the project on which
                this API has been activated. If none is provided, "default" will be
                used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeNetworkEndpointArgs']]]] network_endpoints: The network endpoints where TPU workers can be accessed and sent work.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeNetworkEndpointArrgs']]]] network_endpoints: The network endpoints where TPU workers can be accessed and sent work.
                It is recommended that Tensorflow clients of the node first reach out
                to the first (index 0) entry.
                Structure is documented below.
@@ -875,7 +875,7 @@ class Node(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['NodeSchedulingConfigArgs']] scheduling_config: Sets the scheduling options for this TPU instance.
+        :param pulumi.Input[pulumi.InputType['NodeSchedulingConfigArrgs']] scheduling_config: Sets the scheduling options for this TPU instance.
                Structure is documented below.
         :param pulumi.Input[str] service_account: The service account used to run the tensor flow services within the
                node. To share resources, including Google Cloud Storage data, with

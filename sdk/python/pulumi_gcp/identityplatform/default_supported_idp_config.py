@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['DefaultSupportedIdpConfigArgs', 'DefaultSupportedIdpConfig']
+__all__ = ['DefaultSupportedIdpConfigArrgs', 'DefaultSupportedIdpConfig']
 
 @pulumi.input_type
-class DefaultSupportedIdpConfigArgs:
+calass DefaultSupportedIdpConfigArrgs:
     def __init__(__self__, *,
                  client_id: pulumi.Input[str],
                  client_secret: pulumi.Input[str],
@@ -125,7 +125,7 @@ class DefaultSupportedIdpConfigArgs:
 
 
 @pulumi.input_type
-class _DefaultSupportedIdpConfigState:
+calass _DefaultSupportedIdpConfigState:
     def __init__(__self__, *,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
@@ -256,7 +256,7 @@ class _DefaultSupportedIdpConfigState:
         pulumi.set(self, "project", value)
 
 
-class DefaultSupportedIdpConfig(pulumi.CustomResource):
+calass DefaultSupportedIdpConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -338,7 +338,7 @@ class DefaultSupportedIdpConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DefaultSupportedIdpConfigArgs,
+                 args: DefaultSupportedIdpConfigArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Configurations options for authenticating with a the standard set of Identity Toolkit-trusted IDPs.
@@ -386,12 +386,12 @@ class DefaultSupportedIdpConfig(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param DefaultSupportedIdpConfigArgs args: The arguments to use to populate this resource's properties.
+        :param DefaultSupportedIdpConfigArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DefaultSupportedIdpConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DefaultSupportedIdpConfigArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -412,7 +412,7 @@ class DefaultSupportedIdpConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DefaultSupportedIdpConfigArgs.__new__(DefaultSupportedIdpConfigArgs)
+            __props__ = DefaultSupportedIdpConfigArrgs.__new__(DefaultSupportedIdpConfigArrgs)
 
             if client_id is None and not opts.urn:
                 raise TypeError("Missing required property 'client_id'")

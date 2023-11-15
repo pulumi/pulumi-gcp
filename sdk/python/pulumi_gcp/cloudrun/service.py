@@ -11,18 +11,18 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ServiceArgs', 'Service']
+__all__ = ['ServiceArrgs', 'Service']
 
 @pulumi.input_type
-class ServiceArgs:
+calass ServiceArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  autogenerate_revision_name: Optional[pulumi.Input[bool]] = None,
-                 metadata: Optional[pulumi.Input['ServiceMetadataArgs']] = None,
+                 metadata: Optional[pulumi.Input['ServiceMetadataArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 template: Optional[pulumi.Input['ServiceTemplateArgs']] = None,
-                 traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]] = None):
+                 template: Optional[pulumi.Input['ServiceTemplateArrgs']] = None,
+                 traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArrgs']]]] = None):
         """
         The set of arguments for constructing a Service resource.
         :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
@@ -31,7 +31,7 @@ class ServiceArgs:
                is also set.
                (For legacy support, if `template.metadata.name` is unset in state while
                this field is set to false, the revision name will still autogenerate.)
-        :param pulumi.Input['ServiceMetadataArgs'] metadata: Metadata associated with this Service, including name, namespace, labels,
+        :param pulumi.Input['ServiceMetadataArrgs'] metadata: Metadata associated with this Service, including name, namespace, labels,
                and annotations.
                Structure is documented below.
         :param pulumi.Input[str] name: Name must be unique within a Google Cloud project and region.
@@ -40,7 +40,7 @@ class ServiceArgs:
                More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['ServiceTemplateArgs'] template: template holds the latest specification for the Revision to
+        :param pulumi.Input['ServiceTemplateArrgs'] template: template holds the latest specification for the Revision to
                be stamped out. The template references the container image, and may also
                include labels and annotations that should be attached to the Revision.
                To correlate a Revision, and/or to force a Revision to be created when the
@@ -50,7 +50,7 @@ class ServiceArgs:
                Cloud Run does not currently support referencing a build that is
                responsible for materializing the container image from source.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArrgs']]] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions
                and Configurations
                Structure is documented below.
         """
@@ -98,7 +98,7 @@ class ServiceArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['ServiceMetadataArgs']]:
+    def metadata(self) -> Optional[pulumi.Input['ServiceMetadataArrgs']]:
         """
         Metadata associated with this Service, including name, namespace, labels,
         and annotations.
@@ -107,7 +107,7 @@ class ServiceArgs:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['ServiceMetadataArgs']]):
+    def metadata(self, value: Optional[pulumi.Input['ServiceMetadataArrgs']]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -140,7 +140,7 @@ class ServiceArgs:
 
     @property
     @pulumi.getter
-    def template(self) -> Optional[pulumi.Input['ServiceTemplateArgs']]:
+    def template(self) -> Optional[pulumi.Input['ServiceTemplateArrgs']]:
         """
         template holds the latest specification for the Revision to
         be stamped out. The template references the container image, and may also
@@ -156,12 +156,12 @@ class ServiceArgs:
         return pulumi.get(self, "template")
 
     @template.setter
-    def template(self, value: Optional[pulumi.Input['ServiceTemplateArgs']]):
+    def template(self, value: Optional[pulumi.Input['ServiceTemplateArrgs']]):
         pulumi.set(self, "template", value)
 
     @property
     @pulumi.getter
-    def traffics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]]:
+    def traffics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArrgs']]]]:
         """
         Traffic specifies how to distribute traffic over a collection of Knative Revisions
         and Configurations
@@ -170,21 +170,21 @@ class ServiceArgs:
         return pulumi.get(self, "traffics")
 
     @traffics.setter
-    def traffics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]]):
+    def traffics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArrgs']]]]):
         pulumi.set(self, "traffics", value)
 
 
 @pulumi.input_type
-class _ServiceState:
+calass _ServiceState:
     def __init__(__self__, *,
                  autogenerate_revision_name: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input['ServiceMetadataArgs']] = None,
+                 metadata: Optional[pulumi.Input['ServiceMetadataArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceStatusArgs']]]] = None,
-                 template: Optional[pulumi.Input['ServiceTemplateArgs']] = None,
-                 traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]] = None):
+                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceStatusArrgs']]]] = None,
+                 template: Optional[pulumi.Input['ServiceTemplateArrgs']] = None,
+                 traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArrgs']]]] = None):
         """
         Input properties used for looking up and filtering Service resources.
         :param pulumi.Input[bool] autogenerate_revision_name: If set to `true`, the revision name (template.metadata.name) will be omitted and
@@ -193,7 +193,7 @@ class _ServiceState:
                (For legacy support, if `template.metadata.name` is unset in state while
                this field is set to false, the revision name will still autogenerate.)
         :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
-        :param pulumi.Input['ServiceMetadataArgs'] metadata: Metadata associated with this Service, including name, namespace, labels,
+        :param pulumi.Input['ServiceMetadataArrgs'] metadata: Metadata associated with this Service, including name, namespace, labels,
                and annotations.
                Structure is documented below.
         :param pulumi.Input[str] name: Name must be unique within a Google Cloud project and region.
@@ -202,9 +202,9 @@ class _ServiceState:
                More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceStatusArgs']]] statuses: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceStatusArrgs']]] statuses: (Output)
                Status of the condition, one of True, False, Unknown.
-        :param pulumi.Input['ServiceTemplateArgs'] template: template holds the latest specification for the Revision to
+        :param pulumi.Input['ServiceTemplateArrgs'] template: template holds the latest specification for the Revision to
                be stamped out. The template references the container image, and may also
                include labels and annotations that should be attached to the Revision.
                To correlate a Revision, and/or to force a Revision to be created when the
@@ -214,7 +214,7 @@ class _ServiceState:
                Cloud Run does not currently support referencing a build that is
                responsible for materializing the container image from source.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArrgs']]] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions
                and Configurations
                Structure is documented below.
         """
@@ -265,7 +265,7 @@ class _ServiceState:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['ServiceMetadataArgs']]:
+    def metadata(self) -> Optional[pulumi.Input['ServiceMetadataArrgs']]:
         """
         Metadata associated with this Service, including name, namespace, labels,
         and annotations.
@@ -274,7 +274,7 @@ class _ServiceState:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['ServiceMetadataArgs']]):
+    def metadata(self, value: Optional[pulumi.Input['ServiceMetadataArrgs']]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -307,7 +307,7 @@ class _ServiceState:
 
     @property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceStatusArgs']]]]:
+    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceStatusArrgs']]]]:
         """
         (Output)
         Status of the condition, one of True, False, Unknown.
@@ -315,12 +315,12 @@ class _ServiceState:
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceStatusArgs']]]]):
+    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceStatusArrgs']]]]):
         pulumi.set(self, "statuses", value)
 
     @property
     @pulumi.getter
-    def template(self) -> Optional[pulumi.Input['ServiceTemplateArgs']]:
+    def template(self) -> Optional[pulumi.Input['ServiceTemplateArrgs']]:
         """
         template holds the latest specification for the Revision to
         be stamped out. The template references the container image, and may also
@@ -336,12 +336,12 @@ class _ServiceState:
         return pulumi.get(self, "template")
 
     @template.setter
-    def template(self, value: Optional[pulumi.Input['ServiceTemplateArgs']]):
+    def template(self, value: Optional[pulumi.Input['ServiceTemplateArrgs']]):
         pulumi.set(self, "template", value)
 
     @property
     @pulumi.getter
-    def traffics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]]:
+    def traffics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArrgs']]]]:
         """
         Traffic specifies how to distribute traffic over a collection of Knative Revisions
         and Configurations
@@ -350,22 +350,22 @@ class _ServiceState:
         return pulumi.get(self, "traffics")
 
     @traffics.setter
-    def traffics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]]):
+    def traffics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArrgs']]]]):
         pulumi.set(self, "traffics", value)
 
 
-class Service(pulumi.CustomResource):
+calass Service(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autogenerate_revision_name: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['ServiceMetadataArgs']]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['ServiceMetadataArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 template: Optional[pulumi.Input[pulumi.InputType['ServiceTemplateArgs']]] = None,
-                 traffics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]]] = None,
+                 template: Optional[pulumi.Input[pulumi.InputType['ServiceTemplateArrgs']]] = None,
+                 traffics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArrgs']]]]] = None,
                  __props__=None):
         """
         A Cloud Run service has a unique endpoint and autoscales containers.
@@ -388,14 +388,14 @@ class Service(pulumi.CustomResource):
 
         default = gcp.cloudrun.Service("default",
             location="us-central1",
-            template=gcp.cloudrun.ServiceTemplateArgs(
-                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
-                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+            template=gcp.cloudrun.ServiceTemplateArrgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArrgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArrgs(
                         image="gcr.io/cloudrun/hello",
                     )],
                 ),
             ),
-            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+            traffics=[gcp.cloudrun.ServiceTrafficArrgs(
                 percent=100,
                 latest_revision=True,
             )])
@@ -413,9 +413,9 @@ class Service(pulumi.CustomResource):
         topic = gcp.pubsub.Topic("topic")
         subscription = gcp.pubsub.Subscription("subscription",
             topic=topic.name,
-            push_config=gcp.pubsub.SubscriptionPushConfigArgs(
+            push_config=gcp.pubsub.SubscriptionPushConfigArrgs(
                 push_endpoint=default.statuses[0].url,
-                oidc_token=gcp.pubsub.SubscriptionPushConfigOidcTokenArgs(
+                oidc_token=gcp.pubsub.SubscriptionPushConfigOidcTokenArrgs(
                     service_account_email=sa.email,
                 ),
                 attributes={
@@ -431,14 +431,14 @@ class Service(pulumi.CustomResource):
 
         default = gcp.cloudrun.Service("default",
             location="us-central1",
-            template=gcp.cloudrun.ServiceTemplateArgs(
-                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
-                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+            template=gcp.cloudrun.ServiceTemplateArrgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArrgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArrgs(
                         image="us-docker.pkg.dev/cloudrun/container/hello",
                     )],
                 ),
             ),
-            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+            traffics=[gcp.cloudrun.ServiceTrafficArrgs(
                 latest_revision=True,
                 percent=100,
             )])
@@ -452,19 +452,19 @@ class Service(pulumi.CustomResource):
         instance = gcp.sql.DatabaseInstance("instance",
             region="us-east1",
             database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+            settings=gcp.sql.DatabaseInstanceSettingsArrgs(
                 tier="db-f1-micro",
             ),
             deletion_protection=True)
         default = gcp.cloudrun.Service("default",
             location="us-central1",
-            template=gcp.cloudrun.ServiceTemplateArgs(
-                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
-                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+            template=gcp.cloudrun.ServiceTemplateArrgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArrgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArrgs(
                         image="us-docker.pkg.dev/cloudrun/container/hello",
                     )],
                 ),
-                metadata=gcp.cloudrun.ServiceTemplateMetadataArgs(
+                metadata=gcp.cloudrun.ServiceTemplateMetadataArrgs(
                     annotations={
                         "autoscaling.knative.dev/maxScale": "1000",
                         "run.googleapis.com/cloudsql-instances": instance.connection_name,
@@ -482,14 +482,14 @@ class Service(pulumi.CustomResource):
 
         default = gcp.cloudrun.Service("default",
             location="us-central1",
-            template=gcp.cloudrun.ServiceTemplateArgs(
-                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
-                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+            template=gcp.cloudrun.ServiceTemplateArrgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArrgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArrgs(
                         image="us-docker.pkg.dev/cloudrun/container/hello",
                     )],
                 ),
             ))
-        noauth_iam_policy = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        noauth_iam_policy = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/run.invoker",
             members=["allUsers"],
         )])
@@ -507,28 +507,28 @@ class Service(pulumi.CustomResource):
 
         default = gcp.cloudrun.Service("default",
             location="us-central1",
-            template=gcp.cloudrun.ServiceTemplateArgs(
-                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
-                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+            template=gcp.cloudrun.ServiceTemplateArrgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArrgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArrgs(
                         image="us-docker.pkg.dev/cloudrun/container/hello",
-                        startup_probe=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeArgs(
+                        startup_probe=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeArrgs(
                             initial_delay_seconds=0,
                             timeout_seconds=1,
                             period_seconds=3,
                             failure_threshold=1,
-                            tcp_socket=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeTcpSocketArgs(
+                            tcp_socket=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeTcpSocketArrgs(
                                 port=8080,
                             ),
                         ),
-                        liveness_probe=gcp.cloudrun.ServiceTemplateSpecContainerLivenessProbeArgs(
-                            http_get=gcp.cloudrun.ServiceTemplateSpecContainerLivenessProbeHttpGetArgs(
+                        liveness_probe=gcp.cloudrun.ServiceTemplateSpecContainerLivenessProbeArrgs(
+                            http_get=gcp.cloudrun.ServiceTemplateSpecContainerLivenessProbeHttpGetArrgs(
                                 path="/",
                             ),
                         ),
                     )],
                 ),
             ),
-            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+            traffics=[gcp.cloudrun.ServiceTrafficArrgs(
                 percent=100,
                 latest_revision=True,
             )])
@@ -542,53 +542,53 @@ class Service(pulumi.CustomResource):
 
         default = gcp.cloudrun.Service("default",
             location="us-central1",
-            metadata=gcp.cloudrun.ServiceMetadataArgs(
+            metadata=gcp.cloudrun.ServiceMetadataArrgs(
                 annotations={
                     "run.googleapis.com/launch-stage": "BETA",
                 },
             ),
-            template=gcp.cloudrun.ServiceTemplateArgs(
-                metadata=gcp.cloudrun.ServiceTemplateMetadataArgs(
+            template=gcp.cloudrun.ServiceTemplateArrgs(
+                metadata=gcp.cloudrun.ServiceTemplateMetadataArrgs(
                     annotations={
                         "run.googleapis.com/container-dependencies": json.dumps({
                             "hello-1": ["hello-2"],
                         }),
                     },
                 ),
-                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArrgs(
                     containers=[
-                        gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        gcp.cloudrun.ServiceTemplateSpecContainerArrgs(
                             name="hello-1",
-                            ports=[gcp.cloudrun.ServiceTemplateSpecContainerPortArgs(
+                            ports=[gcp.cloudrun.ServiceTemplateSpecContainerPortArrgs(
                                 container_port=8080,
                             )],
                             image="us-docker.pkg.dev/cloudrun/container/hello",
-                            volume_mounts=[gcp.cloudrun.ServiceTemplateSpecContainerVolumeMountArgs(
+                            volume_mounts=[gcp.cloudrun.ServiceTemplateSpecContainerVolumeMountArrgs(
                                 name="shared-volume",
                                 mount_path="/mnt/shared",
                             )],
                         ),
-                        gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        gcp.cloudrun.ServiceTemplateSpecContainerArrgs(
                             name="hello-2",
                             image="us-docker.pkg.dev/cloudrun/container/hello",
-                            envs=[gcp.cloudrun.ServiceTemplateSpecContainerEnvArgs(
+                            envs=[gcp.cloudrun.ServiceTemplateSpecContainerEnvArrgs(
                                 name="PORT",
                                 value="8081",
                             )],
-                            startup_probe=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeArgs(
-                                http_get=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeHttpGetArgs(
+                            startup_probe=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeArrgs(
+                                http_get=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeHttpGetArrgs(
                                     port=8081,
                                 ),
                             ),
-                            volume_mounts=[gcp.cloudrun.ServiceTemplateSpecContainerVolumeMountArgs(
+                            volume_mounts=[gcp.cloudrun.ServiceTemplateSpecContainerVolumeMountArrgs(
                                 name="shared-volume",
                                 mount_path="/mnt/shared",
                             )],
                         ),
                     ],
-                    volumes=[gcp.cloudrun.ServiceTemplateSpecVolumeArgs(
+                    volumes=[gcp.cloudrun.ServiceTemplateSpecVolumeArrgs(
                         name="shared-volume",
-                        empty_dir=gcp.cloudrun.ServiceTemplateSpecVolumeEmptyDirArgs(
+                        empty_dir=gcp.cloudrun.ServiceTemplateSpecVolumeEmptyDirArrgs(
                             medium="Memory",
                             size_limit="128Mi",
                         ),
@@ -630,7 +630,7 @@ class Service(pulumi.CustomResource):
                (For legacy support, if `template.metadata.name` is unset in state while
                this field is set to false, the revision name will still autogenerate.)
         :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
-        :param pulumi.Input[pulumi.InputType['ServiceMetadataArgs']] metadata: Metadata associated with this Service, including name, namespace, labels,
+        :param pulumi.Input[pulumi.InputType['ServiceMetadataArrgs']] metadata: Metadata associated with this Service, including name, namespace, labels,
                and annotations.
                Structure is documented below.
         :param pulumi.Input[str] name: Name must be unique within a Google Cloud project and region.
@@ -639,7 +639,7 @@ class Service(pulumi.CustomResource):
                More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['ServiceTemplateArgs']] template: template holds the latest specification for the Revision to
+        :param pulumi.Input[pulumi.InputType['ServiceTemplateArrgs']] template: template holds the latest specification for the Revision to
                be stamped out. The template references the container image, and may also
                include labels and annotations that should be attached to the Revision.
                To correlate a Revision, and/or to force a Revision to be created when the
@@ -649,7 +649,7 @@ class Service(pulumi.CustomResource):
                Cloud Run does not currently support referencing a build that is
                responsible for materializing the container image from source.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArrgs']]]] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions
                and Configurations
                Structure is documented below.
         """
@@ -657,7 +657,7 @@ class Service(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ServiceArgs,
+                 args: ServiceArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Cloud Run service has a unique endpoint and autoscales containers.
@@ -680,14 +680,14 @@ class Service(pulumi.CustomResource):
 
         default = gcp.cloudrun.Service("default",
             location="us-central1",
-            template=gcp.cloudrun.ServiceTemplateArgs(
-                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
-                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+            template=gcp.cloudrun.ServiceTemplateArrgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArrgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArrgs(
                         image="gcr.io/cloudrun/hello",
                     )],
                 ),
             ),
-            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+            traffics=[gcp.cloudrun.ServiceTrafficArrgs(
                 percent=100,
                 latest_revision=True,
             )])
@@ -705,9 +705,9 @@ class Service(pulumi.CustomResource):
         topic = gcp.pubsub.Topic("topic")
         subscription = gcp.pubsub.Subscription("subscription",
             topic=topic.name,
-            push_config=gcp.pubsub.SubscriptionPushConfigArgs(
+            push_config=gcp.pubsub.SubscriptionPushConfigArrgs(
                 push_endpoint=default.statuses[0].url,
-                oidc_token=gcp.pubsub.SubscriptionPushConfigOidcTokenArgs(
+                oidc_token=gcp.pubsub.SubscriptionPushConfigOidcTokenArrgs(
                     service_account_email=sa.email,
                 ),
                 attributes={
@@ -723,14 +723,14 @@ class Service(pulumi.CustomResource):
 
         default = gcp.cloudrun.Service("default",
             location="us-central1",
-            template=gcp.cloudrun.ServiceTemplateArgs(
-                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
-                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+            template=gcp.cloudrun.ServiceTemplateArrgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArrgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArrgs(
                         image="us-docker.pkg.dev/cloudrun/container/hello",
                     )],
                 ),
             ),
-            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+            traffics=[gcp.cloudrun.ServiceTrafficArrgs(
                 latest_revision=True,
                 percent=100,
             )])
@@ -744,19 +744,19 @@ class Service(pulumi.CustomResource):
         instance = gcp.sql.DatabaseInstance("instance",
             region="us-east1",
             database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+            settings=gcp.sql.DatabaseInstanceSettingsArrgs(
                 tier="db-f1-micro",
             ),
             deletion_protection=True)
         default = gcp.cloudrun.Service("default",
             location="us-central1",
-            template=gcp.cloudrun.ServiceTemplateArgs(
-                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
-                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+            template=gcp.cloudrun.ServiceTemplateArrgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArrgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArrgs(
                         image="us-docker.pkg.dev/cloudrun/container/hello",
                     )],
                 ),
-                metadata=gcp.cloudrun.ServiceTemplateMetadataArgs(
+                metadata=gcp.cloudrun.ServiceTemplateMetadataArrgs(
                     annotations={
                         "autoscaling.knative.dev/maxScale": "1000",
                         "run.googleapis.com/cloudsql-instances": instance.connection_name,
@@ -774,14 +774,14 @@ class Service(pulumi.CustomResource):
 
         default = gcp.cloudrun.Service("default",
             location="us-central1",
-            template=gcp.cloudrun.ServiceTemplateArgs(
-                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
-                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+            template=gcp.cloudrun.ServiceTemplateArrgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArrgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArrgs(
                         image="us-docker.pkg.dev/cloudrun/container/hello",
                     )],
                 ),
             ))
-        noauth_iam_policy = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        noauth_iam_policy = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/run.invoker",
             members=["allUsers"],
         )])
@@ -799,28 +799,28 @@ class Service(pulumi.CustomResource):
 
         default = gcp.cloudrun.Service("default",
             location="us-central1",
-            template=gcp.cloudrun.ServiceTemplateArgs(
-                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
-                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+            template=gcp.cloudrun.ServiceTemplateArrgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArrgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArrgs(
                         image="us-docker.pkg.dev/cloudrun/container/hello",
-                        startup_probe=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeArgs(
+                        startup_probe=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeArrgs(
                             initial_delay_seconds=0,
                             timeout_seconds=1,
                             period_seconds=3,
                             failure_threshold=1,
-                            tcp_socket=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeTcpSocketArgs(
+                            tcp_socket=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeTcpSocketArrgs(
                                 port=8080,
                             ),
                         ),
-                        liveness_probe=gcp.cloudrun.ServiceTemplateSpecContainerLivenessProbeArgs(
-                            http_get=gcp.cloudrun.ServiceTemplateSpecContainerLivenessProbeHttpGetArgs(
+                        liveness_probe=gcp.cloudrun.ServiceTemplateSpecContainerLivenessProbeArrgs(
+                            http_get=gcp.cloudrun.ServiceTemplateSpecContainerLivenessProbeHttpGetArrgs(
                                 path="/",
                             ),
                         ),
                     )],
                 ),
             ),
-            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+            traffics=[gcp.cloudrun.ServiceTrafficArrgs(
                 percent=100,
                 latest_revision=True,
             )])
@@ -834,53 +834,53 @@ class Service(pulumi.CustomResource):
 
         default = gcp.cloudrun.Service("default",
             location="us-central1",
-            metadata=gcp.cloudrun.ServiceMetadataArgs(
+            metadata=gcp.cloudrun.ServiceMetadataArrgs(
                 annotations={
                     "run.googleapis.com/launch-stage": "BETA",
                 },
             ),
-            template=gcp.cloudrun.ServiceTemplateArgs(
-                metadata=gcp.cloudrun.ServiceTemplateMetadataArgs(
+            template=gcp.cloudrun.ServiceTemplateArrgs(
+                metadata=gcp.cloudrun.ServiceTemplateMetadataArrgs(
                     annotations={
                         "run.googleapis.com/container-dependencies": json.dumps({
                             "hello-1": ["hello-2"],
                         }),
                     },
                 ),
-                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArrgs(
                     containers=[
-                        gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        gcp.cloudrun.ServiceTemplateSpecContainerArrgs(
                             name="hello-1",
-                            ports=[gcp.cloudrun.ServiceTemplateSpecContainerPortArgs(
+                            ports=[gcp.cloudrun.ServiceTemplateSpecContainerPortArrgs(
                                 container_port=8080,
                             )],
                             image="us-docker.pkg.dev/cloudrun/container/hello",
-                            volume_mounts=[gcp.cloudrun.ServiceTemplateSpecContainerVolumeMountArgs(
+                            volume_mounts=[gcp.cloudrun.ServiceTemplateSpecContainerVolumeMountArrgs(
                                 name="shared-volume",
                                 mount_path="/mnt/shared",
                             )],
                         ),
-                        gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        gcp.cloudrun.ServiceTemplateSpecContainerArrgs(
                             name="hello-2",
                             image="us-docker.pkg.dev/cloudrun/container/hello",
-                            envs=[gcp.cloudrun.ServiceTemplateSpecContainerEnvArgs(
+                            envs=[gcp.cloudrun.ServiceTemplateSpecContainerEnvArrgs(
                                 name="PORT",
                                 value="8081",
                             )],
-                            startup_probe=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeArgs(
-                                http_get=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeHttpGetArgs(
+                            startup_probe=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeArrgs(
+                                http_get=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeHttpGetArrgs(
                                     port=8081,
                                 ),
                             ),
-                            volume_mounts=[gcp.cloudrun.ServiceTemplateSpecContainerVolumeMountArgs(
+                            volume_mounts=[gcp.cloudrun.ServiceTemplateSpecContainerVolumeMountArrgs(
                                 name="shared-volume",
                                 mount_path="/mnt/shared",
                             )],
                         ),
                     ],
-                    volumes=[gcp.cloudrun.ServiceTemplateSpecVolumeArgs(
+                    volumes=[gcp.cloudrun.ServiceTemplateSpecVolumeArrgs(
                         name="shared-volume",
-                        empty_dir=gcp.cloudrun.ServiceTemplateSpecVolumeEmptyDirArgs(
+                        empty_dir=gcp.cloudrun.ServiceTemplateSpecVolumeEmptyDirArrgs(
                             medium="Memory",
                             size_limit="128Mi",
                         ),
@@ -915,12 +915,12 @@ class Service(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ServiceArgs args: The arguments to use to populate this resource's properties.
+        :param ServiceArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ServiceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ServiceArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -931,11 +931,11 @@ class Service(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autogenerate_revision_name: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['ServiceMetadataArgs']]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['ServiceMetadataArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 template: Optional[pulumi.Input[pulumi.InputType['ServiceTemplateArgs']]] = None,
-                 traffics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]]] = None,
+                 template: Optional[pulumi.Input[pulumi.InputType['ServiceTemplateArrgs']]] = None,
+                 traffics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArrgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -943,7 +943,7 @@ class Service(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ServiceArgs.__new__(ServiceArgs)
+            __props__ = ServiceArrgs.__new__(ServiceArrgs)
 
             __props__.__dict__["autogenerate_revision_name"] = autogenerate_revision_name
             if location is None and not opts.urn:
@@ -967,12 +967,12 @@ class Service(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             autogenerate_revision_name: Optional[pulumi.Input[bool]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            metadata: Optional[pulumi.Input[pulumi.InputType['ServiceMetadataArgs']]] = None,
+            metadata: Optional[pulumi.Input[pulumi.InputType['ServiceMetadataArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceStatusArgs']]]]] = None,
-            template: Optional[pulumi.Input[pulumi.InputType['ServiceTemplateArgs']]] = None,
-            traffics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]]] = None) -> 'Service':
+            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceStatusArrgs']]]]] = None,
+            template: Optional[pulumi.Input[pulumi.InputType['ServiceTemplateArrgs']]] = None,
+            traffics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArrgs']]]]] = None) -> 'Service':
         """
         Get an existing Service resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -986,7 +986,7 @@ class Service(pulumi.CustomResource):
                (For legacy support, if `template.metadata.name` is unset in state while
                this field is set to false, the revision name will still autogenerate.)
         :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
-        :param pulumi.Input[pulumi.InputType['ServiceMetadataArgs']] metadata: Metadata associated with this Service, including name, namespace, labels,
+        :param pulumi.Input[pulumi.InputType['ServiceMetadataArrgs']] metadata: Metadata associated with this Service, including name, namespace, labels,
                and annotations.
                Structure is documented below.
         :param pulumi.Input[str] name: Name must be unique within a Google Cloud project and region.
@@ -995,9 +995,9 @@ class Service(pulumi.CustomResource):
                More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceStatusArgs']]]] statuses: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceStatusArrgs']]]] statuses: (Output)
                Status of the condition, one of True, False, Unknown.
-        :param pulumi.Input[pulumi.InputType['ServiceTemplateArgs']] template: template holds the latest specification for the Revision to
+        :param pulumi.Input[pulumi.InputType['ServiceTemplateArrgs']] template: template holds the latest specification for the Revision to
                be stamped out. The template references the container image, and may also
                include labels and annotations that should be attached to the Revision.
                To correlate a Revision, and/or to force a Revision to be created when the
@@ -1007,7 +1007,7 @@ class Service(pulumi.CustomResource):
                Cloud Run does not currently support referencing a build that is
                responsible for materializing the container image from source.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArrgs']]]] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions
                and Configurations
                Structure is documented below.
         """

@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['OrganizationSecurityPolicyAssociationArgs', 'OrganizationSecurityPolicyAssociation']
+__all__ = ['OrganizationSecurityPolicyAssociationArrgs', 'OrganizationSecurityPolicyAssociation']
 
 @pulumi.input_type
-class OrganizationSecurityPolicyAssociationArgs:
+calass OrganizationSecurityPolicyAssociationArrgs:
     def __init__(__self__, *,
                  attachment_id: pulumi.Input[str],
                  policy_id: pulumi.Input[str],
@@ -72,7 +72,7 @@ class OrganizationSecurityPolicyAssociationArgs:
 
 
 @pulumi.input_type
-class _OrganizationSecurityPolicyAssociationState:
+calass _OrganizationSecurityPolicyAssociationState:
     def __init__(__self__, *,
                  attachment_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -149,7 +149,7 @@ class _OrganizationSecurityPolicyAssociationState:
         pulumi.set(self, "policy_id", value)
 
 
-class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
+calass OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -187,18 +187,18 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
             action="allow",
             direction="INGRESS",
             enable_logging=True,
-            match=gcp.compute.OrganizationSecurityPolicyRuleMatchArgs(
-                config=gcp.compute.OrganizationSecurityPolicyRuleMatchConfigArgs(
+            match=gcp.compute.OrganizationSecurityPolicyRuleMatchArrgs(
+                config=gcp.compute.OrganizationSecurityPolicyRuleMatchConfigArrgs(
                     src_ip_ranges=[
                         "192.168.0.0/16",
                         "10.0.0.0/8",
                     ],
                     layer4_configs=[
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
+                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrgs(
                             ip_protocol="tcp",
                             ports=["22"],
                         ),
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
+                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrgs(
                             ip_protocol="icmp",
                         ),
                     ],
@@ -241,7 +241,7 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: OrganizationSecurityPolicyAssociationArgs,
+                 args: OrganizationSecurityPolicyAssociationArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An association for the OrganizationSecurityPolicy.
@@ -272,18 +272,18 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
             action="allow",
             direction="INGRESS",
             enable_logging=True,
-            match=gcp.compute.OrganizationSecurityPolicyRuleMatchArgs(
-                config=gcp.compute.OrganizationSecurityPolicyRuleMatchConfigArgs(
+            match=gcp.compute.OrganizationSecurityPolicyRuleMatchArrgs(
+                config=gcp.compute.OrganizationSecurityPolicyRuleMatchConfigArrgs(
                     src_ip_ranges=[
                         "192.168.0.0/16",
                         "10.0.0.0/8",
                     ],
                     layer4_configs=[
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
+                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrgs(
                             ip_protocol="tcp",
                             ports=["22"],
                         ),
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
+                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrgs(
                             ip_protocol="icmp",
                         ),
                     ],
@@ -314,12 +314,12 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param OrganizationSecurityPolicyAssociationArgs args: The arguments to use to populate this resource's properties.
+        :param OrganizationSecurityPolicyAssociationArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(OrganizationSecurityPolicyAssociationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(OrganizationSecurityPolicyAssociationArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -338,7 +338,7 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = OrganizationSecurityPolicyAssociationArgs.__new__(OrganizationSecurityPolicyAssociationArgs)
+            __props__ = OrganizationSecurityPolicyAssociationArrgs.__new__(OrganizationSecurityPolicyAssociationArrgs)
 
             if attachment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'attachment_id'")

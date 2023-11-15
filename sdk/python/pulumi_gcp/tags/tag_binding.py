@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['TagBindingArgs', 'TagBinding']
+__all__ = ['TagBindingArrgs', 'TagBinding']
 
 @pulumi.input_type
-class TagBindingArgs:
+calass TagBindingArrgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[str],
                  tag_value: pulumi.Input[str]):
@@ -56,7 +56,7 @@ class TagBindingArgs:
 
 
 @pulumi.input_type
-class _TagBindingState:
+calass _TagBindingState:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -117,7 +117,7 @@ class _TagBindingState:
         pulumi.set(self, "tag_value", value)
 
 
-class TagBinding(pulumi.CustomResource):
+calass TagBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -189,7 +189,7 @@ class TagBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TagBindingArgs,
+                 args: TagBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A TagBinding represents a connection between a TagValue and a cloud resource (currently project, folder, or organization). Once a TagBinding is created, the TagValue is applied to all the descendants of the cloud resource.
@@ -244,12 +244,12 @@ class TagBinding(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param TagBindingArgs args: The arguments to use to populate this resource's properties.
+        :param TagBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(TagBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TagBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -267,7 +267,7 @@ class TagBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = TagBindingArgs.__new__(TagBindingArgs)
+            __props__ = TagBindingArrgs.__new__(TagBindingArrgs)
 
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")

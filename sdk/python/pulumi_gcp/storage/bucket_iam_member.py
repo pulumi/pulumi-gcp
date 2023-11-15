@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['BucketIAMMemberArgs', 'BucketIAMMember']
+__all__ = ['BucketIAMMemberArrgs', 'BucketIAMMember']
 
 @pulumi.input_type
-class BucketIAMMemberArgs:
+calass BucketIAMMemberArrgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['BucketIAMMemberConditionArgs']] = None):
+                 condition: Optional[pulumi.Input['BucketIAMMemberConditionArrgs']] = None):
         """
         The set of arguments for constructing a BucketIAMMember resource.
         :param pulumi.Input[str] bucket: Used to find the parent resource to bind the IAM policy to
@@ -38,7 +38,7 @@ class BucketIAMMemberArgs:
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input['BucketIAMMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['BucketIAMMemberConditionArrgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         """
         pulumi.set(__self__, "bucket", bucket)
@@ -96,7 +96,7 @@ class BucketIAMMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['BucketIAMMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['BucketIAMMemberConditionArrgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -104,15 +104,15 @@ class BucketIAMMemberArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['BucketIAMMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['BucketIAMMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
-class _BucketIAMMemberState:
+calass _BucketIAMMemberState:
     def __init__(__self__, *,
                  bucket: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input['BucketIAMMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['BucketIAMMemberConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None):
@@ -131,7 +131,7 @@ class _BucketIAMMemberState:
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
-        :param pulumi.Input['BucketIAMMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['BucketIAMMemberConditionArrgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] role: The role that should be applied. Only one
@@ -175,7 +175,7 @@ class _BucketIAMMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['BucketIAMMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['BucketIAMMemberConditionArrgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -183,7 +183,7 @@ class _BucketIAMMemberState:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['BucketIAMMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['BucketIAMMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -222,13 +222,13 @@ class _BucketIAMMemberState:
         pulumi.set(self, "role", value)
 
 
-class BucketIAMMember(pulumi.CustomResource):
+calass BucketIAMMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['BucketIAMMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['BucketIAMMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -255,7 +255,7 @@ class BucketIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/storage.admin",
             members=["user:jane@example.com"],
         )])
@@ -270,10 +270,10 @@ class BucketIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/storage.admin",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -305,7 +305,7 @@ class BucketIAMMember(pulumi.CustomResource):
             bucket=google_storage_bucket["default"]["name"],
             role="roles/storage.admin",
             members=["user:jane@example.com"],
-            condition=gcp.storage.BucketIAMBindingConditionArgs(
+            condition=gcp.storage.BucketIAMBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -333,7 +333,7 @@ class BucketIAMMember(pulumi.CustomResource):
             bucket=google_storage_bucket["default"]["name"],
             role="roles/storage.admin",
             member="user:jane@example.com",
-            condition=gcp.storage.BucketIAMMemberConditionArgs(
+            condition=gcp.storage.BucketIAMMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -379,7 +379,7 @@ class BucketIAMMember(pulumi.CustomResource):
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
-        :param pulumi.Input[pulumi.InputType['BucketIAMMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['BucketIAMMemberConditionArrgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -389,7 +389,7 @@ class BucketIAMMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: BucketIAMMemberArgs,
+                 args: BucketIAMMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Cloud Storage Bucket. Each of these resources serves a different use case:
@@ -414,7 +414,7 @@ class BucketIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/storage.admin",
             members=["user:jane@example.com"],
         )])
@@ -429,10 +429,10 @@ class BucketIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/storage.admin",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -464,7 +464,7 @@ class BucketIAMMember(pulumi.CustomResource):
             bucket=google_storage_bucket["default"]["name"],
             role="roles/storage.admin",
             members=["user:jane@example.com"],
-            condition=gcp.storage.BucketIAMBindingConditionArgs(
+            condition=gcp.storage.BucketIAMBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -492,7 +492,7 @@ class BucketIAMMember(pulumi.CustomResource):
             bucket=google_storage_bucket["default"]["name"],
             role="roles/storage.admin",
             member="user:jane@example.com",
-            condition=gcp.storage.BucketIAMMemberConditionArgs(
+            condition=gcp.storage.BucketIAMMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -524,12 +524,12 @@ class BucketIAMMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param BucketIAMMemberArgs args: The arguments to use to populate this resource's properties.
+        :param BucketIAMMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(BucketIAMMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(BucketIAMMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -539,7 +539,7 @@ class BucketIAMMember(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['BucketIAMMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['BucketIAMMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -549,7 +549,7 @@ class BucketIAMMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = BucketIAMMemberArgs.__new__(BucketIAMMemberArgs)
+            __props__ = BucketIAMMemberArrgs.__new__(BucketIAMMemberArrgs)
 
             if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")
@@ -573,7 +573,7 @@ class BucketIAMMember(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket: Optional[pulumi.Input[str]] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['BucketIAMMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['BucketIAMMemberConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
             role: Optional[pulumi.Input[str]] = None) -> 'BucketIAMMember':
@@ -597,7 +597,7 @@ class BucketIAMMember(pulumi.CustomResource):
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
-        :param pulumi.Input[pulumi.InputType['BucketIAMMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['BucketIAMMemberConditionArrgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] role: The role that should be applied. Only one

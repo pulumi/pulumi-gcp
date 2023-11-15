@@ -10,21 +10,21 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'NodeNetworkEndpointArgs',
-    'NodeSchedulingConfigArgs',
-    'V2VmAcceleratorConfigArgs',
-    'V2VmDataDiskArgs',
-    'V2VmNetworkConfigArgs',
-    'V2VmNetworkEndpointArgs',
-    'V2VmNetworkEndpointAccessConfigArgs',
-    'V2VmSchedulingConfigArgs',
-    'V2VmServiceAccountArgs',
-    'V2VmShieldedInstanceConfigArgs',
-    'V2VmSymptomArgs',
+    'NodeNetworkEndpointArrgs',
+    'NodeSchedulingConfigArrgs',
+    'V2VmAcceleratorConfigArrgs',
+    'V2VmDataDiskArrgs',
+    'V2VmNetworkConfigArrgs',
+    'V2VmNetworkEndpointArrgs',
+    'V2VmNetworkEndpointAccessConfigArrgs',
+    'V2VmSchedulingConfigArrgs',
+    'V2VmServiceAccountArrgs',
+    'V2VmShieldedInstanceConfigArrgs',
+    'V2VmSymptomArrgs',
 ]
 
 @pulumi.input_type
-class NodeNetworkEndpointArgs:
+calass NodeNetworkEndpointArrgs:
     def __init__(__self__, *,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None):
@@ -67,7 +67,7 @@ class NodeNetworkEndpointArgs:
 
 
 @pulumi.input_type
-class NodeSchedulingConfigArgs:
+calass NodeSchedulingConfigArrgs:
     def __init__(__self__, *,
                  preemptible: pulumi.Input[bool]):
         """
@@ -89,7 +89,7 @@ class NodeSchedulingConfigArgs:
 
 
 @pulumi.input_type
-class V2VmAcceleratorConfigArgs:
+calass V2VmAcceleratorConfigArrgs:
     def __init__(__self__, *,
                  topology: pulumi.Input[str],
                  type: pulumi.Input[str]):
@@ -128,7 +128,7 @@ class V2VmAcceleratorConfigArgs:
 
 
 @pulumi.input_type
-class V2VmDataDiskArgs:
+calass V2VmDataDiskArrgs:
     def __init__(__self__, *,
                  source_disk: pulumi.Input[str],
                  mode: Optional[pulumi.Input[str]] = None):
@@ -174,7 +174,7 @@ class V2VmDataDiskArgs:
 
 
 @pulumi.input_type
-class V2VmNetworkConfigArgs:
+calass V2VmNetworkConfigArrgs:
     def __init__(__self__, *,
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
                  enable_external_ips: Optional[pulumi.Input[bool]] = None,
@@ -261,13 +261,13 @@ class V2VmNetworkConfigArgs:
 
 
 @pulumi.input_type
-class V2VmNetworkEndpointArgs:
+calass V2VmNetworkEndpointArrgs:
     def __init__(__self__, *,
-                 access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkEndpointAccessConfigArgs']]]] = None,
+                 access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkEndpointAccessConfigArrgs']]]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['V2VmNetworkEndpointAccessConfigArgs']]] access_configs: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['V2VmNetworkEndpointAccessConfigArrgs']]] access_configs: (Output)
                The access config for the TPU worker.
                Structure is documented below.
         :param pulumi.Input[str] ip_address: (Output)
@@ -284,7 +284,7 @@ class V2VmNetworkEndpointArgs:
 
     @property
     @pulumi.getter(name="accessConfigs")
-    def access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkEndpointAccessConfigArgs']]]]:
+    def access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkEndpointAccessConfigArrgs']]]]:
         """
         (Output)
         The access config for the TPU worker.
@@ -293,7 +293,7 @@ class V2VmNetworkEndpointArgs:
         return pulumi.get(self, "access_configs")
 
     @access_configs.setter
-    def access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkEndpointAccessConfigArgs']]]]):
+    def access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkEndpointAccessConfigArrgs']]]]):
         pulumi.set(self, "access_configs", value)
 
     @property
@@ -324,7 +324,7 @@ class V2VmNetworkEndpointArgs:
 
 
 @pulumi.input_type
-class V2VmNetworkEndpointAccessConfigArgs:
+calass V2VmNetworkEndpointAccessConfigArrgs:
     def __init__(__self__, *,
                  external_ip: Optional[pulumi.Input[str]] = None):
         """
@@ -349,7 +349,7 @@ class V2VmNetworkEndpointAccessConfigArgs:
 
 
 @pulumi.input_type
-class V2VmSchedulingConfigArgs:
+calass V2VmSchedulingConfigArrgs:
     def __init__(__self__, *,
                  preemptible: Optional[pulumi.Input[bool]] = None,
                  reserved: Optional[pulumi.Input[bool]] = None):
@@ -388,7 +388,7 @@ class V2VmSchedulingConfigArgs:
 
 
 @pulumi.input_type
-class V2VmServiceAccountArgs:
+calass V2VmServiceAccountArrgs:
     def __init__(__self__, *,
                  email: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -429,7 +429,7 @@ class V2VmServiceAccountArgs:
 
 
 @pulumi.input_type
-class V2VmShieldedInstanceConfigArgs:
+calass V2VmShieldedInstanceConfigArrgs:
     def __init__(__self__, *,
                  enable_secure_boot: pulumi.Input[bool]):
         """
@@ -451,7 +451,7 @@ class V2VmShieldedInstanceConfigArgs:
 
 
 @pulumi.input_type
-class V2VmSymptomArgs:
+calass V2VmSymptomArrgs:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  details: Optional[pulumi.Input[str]] = None,

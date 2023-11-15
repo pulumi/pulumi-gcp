@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['DiskIamPolicyArgs', 'DiskIamPolicy']
+__all__ = ['DiskIamPolicyArrgs', 'DiskIamPolicy']
 
 @pulumi.input_type
-class DiskIamPolicyArgs:
+calass DiskIamPolicyArrgs:
     def __init__(__self__, *,
                  policy_data: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
@@ -115,7 +115,7 @@ class DiskIamPolicyArgs:
 
 
 @pulumi.input_type
-class _DiskIamPolicyState:
+calass _DiskIamPolicyState:
     def __init__(__self__, *,
                  etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -234,7 +234,7 @@ class _DiskIamPolicyState:
         pulumi.set(self, "zone", value)
 
 
-class DiskIamPolicy(pulumi.CustomResource):
+calass DiskIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -265,7 +265,7 @@ class DiskIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -352,7 +352,7 @@ class DiskIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DiskIamPolicyArgs,
+                 args: DiskIamPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Compute Engine Disk. Each of these resources serves a different use case:
@@ -375,7 +375,7 @@ class DiskIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -436,12 +436,12 @@ class DiskIamPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param DiskIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param DiskIamPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DiskIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DiskIamPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -461,7 +461,7 @@ class DiskIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DiskIamPolicyArgs.__new__(DiskIamPolicyArgs)
+            __props__ = DiskIamPolicyArrgs.__new__(DiskIamPolicyArrgs)
 
             __props__.__dict__["name"] = name
             if policy_data is None and not opts.urn:

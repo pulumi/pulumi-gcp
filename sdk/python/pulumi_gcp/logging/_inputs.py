@@ -10,33 +10,33 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'BillingAccountBucketConfigCmekSettingsArgs',
-    'BillingAccountBucketConfigIndexConfigArgs',
-    'BillingAccountSinkBigqueryOptionsArgs',
-    'BillingAccountSinkExclusionArgs',
-    'FolderBucketConfigCmekSettingsArgs',
-    'FolderBucketConfigIndexConfigArgs',
-    'FolderSinkBigqueryOptionsArgs',
-    'FolderSinkExclusionArgs',
-    'LinkedDatasetBigqueryDatasetArgs',
-    'MetricBucketOptionsArgs',
-    'MetricBucketOptionsExplicitBucketsArgs',
-    'MetricBucketOptionsExponentialBucketsArgs',
-    'MetricBucketOptionsLinearBucketsArgs',
-    'MetricMetricDescriptorArgs',
-    'MetricMetricDescriptorLabelArgs',
-    'OrganizationBucketConfigCmekSettingsArgs',
-    'OrganizationBucketConfigIndexConfigArgs',
-    'OrganizationSinkBigqueryOptionsArgs',
-    'OrganizationSinkExclusionArgs',
-    'ProjectBucketConfigCmekSettingsArgs',
-    'ProjectBucketConfigIndexConfigArgs',
-    'ProjectSinkBigqueryOptionsArgs',
-    'ProjectSinkExclusionArgs',
+    'BillingAccountBucketConfigCmekSettingsArrgs',
+    'BillingAccountBucketConfigIndexConfigArrgs',
+    'BillingAccountSinkBigqueryOptionsArrgs',
+    'BillingAccountSinkExclusionArrgs',
+    'FolderBucketConfigCmekSettingsArrgs',
+    'FolderBucketConfigIndexConfigArrgs',
+    'FolderSinkBigqueryOptionsArrgs',
+    'FolderSinkExclusionArrgs',
+    'LinkedDatasetBigqueryDatasetArrgs',
+    'MetricBucketOptionsArrgs',
+    'MetricBucketOptionsExplicitBucketsArrgs',
+    'MetricBucketOptionsExponentialBucketsArrgs',
+    'MetricBucketOptionsLinearBucketsArrgs',
+    'MetricMetricDescriptorArrgs',
+    'MetricMetricDescriptorLabelArrgs',
+    'OrganizationBucketConfigCmekSettingsArrgs',
+    'OrganizationBucketConfigIndexConfigArrgs',
+    'OrganizationSinkBigqueryOptionsArrgs',
+    'OrganizationSinkExclusionArrgs',
+    'ProjectBucketConfigCmekSettingsArrgs',
+    'ProjectBucketConfigIndexConfigArrgs',
+    'ProjectSinkBigqueryOptionsArrgs',
+    'ProjectSinkExclusionArrgs',
 ]
 
 @pulumi.input_type
-class BillingAccountBucketConfigCmekSettingsArgs:
+calass BillingAccountBucketConfigCmekSettingsArrgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[str],
                  kms_key_version_name: Optional[pulumi.Input[str]] = None,
@@ -94,7 +94,7 @@ class BillingAccountBucketConfigCmekSettingsArgs:
 
 
 @pulumi.input_type
-class BillingAccountBucketConfigIndexConfigArgs:
+calass BillingAccountBucketConfigIndexConfigArrgs:
     def __init__(__self__, *,
                  field_path: pulumi.Input[str],
                  type: pulumi.Input[str]):
@@ -133,7 +133,7 @@ class BillingAccountBucketConfigIndexConfigArgs:
 
 
 @pulumi.input_type
-class BillingAccountSinkBigqueryOptionsArgs:
+calass BillingAccountSinkBigqueryOptionsArrgs:
     def __init__(__self__, *,
                  use_partitioned_tables: pulumi.Input[bool]):
         """
@@ -161,7 +161,7 @@ class BillingAccountSinkBigqueryOptionsArgs:
 
 
 @pulumi.input_type
-class BillingAccountSinkExclusionArgs:
+calass BillingAccountSinkExclusionArrgs:
     def __init__(__self__, *,
                  filter: pulumi.Input[str],
                  name: pulumi.Input[str],
@@ -232,7 +232,7 @@ class BillingAccountSinkExclusionArgs:
 
 
 @pulumi.input_type
-class FolderBucketConfigCmekSettingsArgs:
+calass FolderBucketConfigCmekSettingsArrgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[str],
                  kms_key_version_name: Optional[pulumi.Input[str]] = None,
@@ -290,7 +290,7 @@ class FolderBucketConfigCmekSettingsArgs:
 
 
 @pulumi.input_type
-class FolderBucketConfigIndexConfigArgs:
+calass FolderBucketConfigIndexConfigArrgs:
     def __init__(__self__, *,
                  field_path: pulumi.Input[str],
                  type: pulumi.Input[str]):
@@ -329,7 +329,7 @@ class FolderBucketConfigIndexConfigArgs:
 
 
 @pulumi.input_type
-class FolderSinkBigqueryOptionsArgs:
+calass FolderSinkBigqueryOptionsArrgs:
     def __init__(__self__, *,
                  use_partitioned_tables: pulumi.Input[bool]):
         """
@@ -357,7 +357,7 @@ class FolderSinkBigqueryOptionsArgs:
 
 
 @pulumi.input_type
-class FolderSinkExclusionArgs:
+calass FolderSinkExclusionArrgs:
     def __init__(__self__, *,
                  filter: pulumi.Input[str],
                  name: pulumi.Input[str],
@@ -428,7 +428,7 @@ class FolderSinkExclusionArgs:
 
 
 @pulumi.input_type
-class LinkedDatasetBigqueryDatasetArgs:
+calass LinkedDatasetBigqueryDatasetArrgs:
     def __init__(__self__, *,
                  dataset_id: Optional[pulumi.Input[str]] = None):
         """
@@ -459,18 +459,18 @@ class LinkedDatasetBigqueryDatasetArgs:
 
 
 @pulumi.input_type
-class MetricBucketOptionsArgs:
+calass MetricBucketOptionsArrgs:
     def __init__(__self__, *,
-                 explicit_buckets: Optional[pulumi.Input['MetricBucketOptionsExplicitBucketsArgs']] = None,
-                 exponential_buckets: Optional[pulumi.Input['MetricBucketOptionsExponentialBucketsArgs']] = None,
-                 linear_buckets: Optional[pulumi.Input['MetricBucketOptionsLinearBucketsArgs']] = None):
+                 explicit_buckets: Optional[pulumi.Input['MetricBucketOptionsExplicitBucketsArrgs']] = None,
+                 exponential_buckets: Optional[pulumi.Input['MetricBucketOptionsExponentialBucketsArrgs']] = None,
+                 linear_buckets: Optional[pulumi.Input['MetricBucketOptionsLinearBucketsArrgs']] = None):
         """
-        :param pulumi.Input['MetricBucketOptionsExplicitBucketsArgs'] explicit_buckets: Specifies a set of buckets with arbitrary widths.
+        :param pulumi.Input['MetricBucketOptionsExplicitBucketsArrgs'] explicit_buckets: Specifies a set of buckets with arbitrary widths.
                Structure is documented below.
-        :param pulumi.Input['MetricBucketOptionsExponentialBucketsArgs'] exponential_buckets: Specifies an exponential sequence of buckets that have a width that is proportional to the value of
+        :param pulumi.Input['MetricBucketOptionsExponentialBucketsArrgs'] exponential_buckets: Specifies an exponential sequence of buckets that have a width that is proportional to the value of
                the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.
                Structure is documented below.
-        :param pulumi.Input['MetricBucketOptionsLinearBucketsArgs'] linear_buckets: Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
+        :param pulumi.Input['MetricBucketOptionsLinearBucketsArrgs'] linear_buckets: Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
                Each bucket represents a constant absolute uncertainty on the specific value in the bucket.
                Structure is documented below.
         """
@@ -483,7 +483,7 @@ class MetricBucketOptionsArgs:
 
     @property
     @pulumi.getter(name="explicitBuckets")
-    def explicit_buckets(self) -> Optional[pulumi.Input['MetricBucketOptionsExplicitBucketsArgs']]:
+    def explicit_buckets(self) -> Optional[pulumi.Input['MetricBucketOptionsExplicitBucketsArrgs']]:
         """
         Specifies a set of buckets with arbitrary widths.
         Structure is documented below.
@@ -491,12 +491,12 @@ class MetricBucketOptionsArgs:
         return pulumi.get(self, "explicit_buckets")
 
     @explicit_buckets.setter
-    def explicit_buckets(self, value: Optional[pulumi.Input['MetricBucketOptionsExplicitBucketsArgs']]):
+    def explicit_buckets(self, value: Optional[pulumi.Input['MetricBucketOptionsExplicitBucketsArrgs']]):
         pulumi.set(self, "explicit_buckets", value)
 
     @property
     @pulumi.getter(name="exponentialBuckets")
-    def exponential_buckets(self) -> Optional[pulumi.Input['MetricBucketOptionsExponentialBucketsArgs']]:
+    def exponential_buckets(self) -> Optional[pulumi.Input['MetricBucketOptionsExponentialBucketsArrgs']]:
         """
         Specifies an exponential sequence of buckets that have a width that is proportional to the value of
         the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.
@@ -505,12 +505,12 @@ class MetricBucketOptionsArgs:
         return pulumi.get(self, "exponential_buckets")
 
     @exponential_buckets.setter
-    def exponential_buckets(self, value: Optional[pulumi.Input['MetricBucketOptionsExponentialBucketsArgs']]):
+    def exponential_buckets(self, value: Optional[pulumi.Input['MetricBucketOptionsExponentialBucketsArrgs']]):
         pulumi.set(self, "exponential_buckets", value)
 
     @property
     @pulumi.getter(name="linearBuckets")
-    def linear_buckets(self) -> Optional[pulumi.Input['MetricBucketOptionsLinearBucketsArgs']]:
+    def linear_buckets(self) -> Optional[pulumi.Input['MetricBucketOptionsLinearBucketsArrgs']]:
         """
         Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
         Each bucket represents a constant absolute uncertainty on the specific value in the bucket.
@@ -519,12 +519,12 @@ class MetricBucketOptionsArgs:
         return pulumi.get(self, "linear_buckets")
 
     @linear_buckets.setter
-    def linear_buckets(self, value: Optional[pulumi.Input['MetricBucketOptionsLinearBucketsArgs']]):
+    def linear_buckets(self, value: Optional[pulumi.Input['MetricBucketOptionsLinearBucketsArrgs']]):
         pulumi.set(self, "linear_buckets", value)
 
 
 @pulumi.input_type
-class MetricBucketOptionsExplicitBucketsArgs:
+calass MetricBucketOptionsExplicitBucketsArrgs:
     def __init__(__self__, *,
                  bounds: pulumi.Input[Sequence[pulumi.Input[float]]]):
         """
@@ -546,7 +546,7 @@ class MetricBucketOptionsExplicitBucketsArgs:
 
 
 @pulumi.input_type
-class MetricBucketOptionsExponentialBucketsArgs:
+calass MetricBucketOptionsExponentialBucketsArrgs:
     def __init__(__self__, *,
                  growth_factor: pulumi.Input[float],
                  num_finite_buckets: pulumi.Input[int],
@@ -598,7 +598,7 @@ class MetricBucketOptionsExponentialBucketsArgs:
 
 
 @pulumi.input_type
-class MetricBucketOptionsLinearBucketsArgs:
+calass MetricBucketOptionsLinearBucketsArrgs:
     def __init__(__self__, *,
                  num_finite_buckets: pulumi.Input[int],
                  offset: pulumi.Input[float],
@@ -650,12 +650,12 @@ class MetricBucketOptionsLinearBucketsArgs:
 
 
 @pulumi.input_type
-class MetricMetricDescriptorArgs:
+calass MetricMetricDescriptorArrgs:
     def __init__(__self__, *,
                  metric_kind: pulumi.Input[str],
                  value_type: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['MetricMetricDescriptorLabelArgs']]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['MetricMetricDescriptorLabelArrgs']]]] = None,
                  unit: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] metric_kind: Whether the metric records instantaneous values, changes to a value, etc.
@@ -669,7 +669,7 @@ class MetricMetricDescriptorArgs:
         :param pulumi.Input[str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case
                without an ending period, for example "Request count". This field is optional but it is
                recommended to be set for any metrics associated with user-visible concepts, such as Quota.
-        :param pulumi.Input[Sequence[pulumi.Input['MetricMetricDescriptorLabelArgs']]] labels: The set of labels that can be used to describe a specific instance of this metric type. For
+        :param pulumi.Input[Sequence[pulumi.Input['MetricMetricDescriptorLabelArrgs']]] labels: The set of labels that can be used to describe a specific instance of this metric type. For
                example, the appengine.googleapis.com/http/server/response_latencies metric type has a label
                for the HTTP response code, response_code, so you can look at latencies for successful responses
                or just for responses that failed.
@@ -733,7 +733,7 @@ class MetricMetricDescriptorArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetricMetricDescriptorLabelArgs']]]]:
+    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetricMetricDescriptorLabelArrgs']]]]:
         """
         The set of labels that can be used to describe a specific instance of this metric type. For
         example, the appengine.googleapis.com/http/server/response_latencies metric type has a label
@@ -744,7 +744,7 @@ class MetricMetricDescriptorArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetricMetricDescriptorLabelArgs']]]]):
+    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetricMetricDescriptorLabelArrgs']]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -763,7 +763,7 @@ class MetricMetricDescriptorArgs:
 
 
 @pulumi.input_type
-class MetricMetricDescriptorLabelArgs:
+calass MetricMetricDescriptorLabelArrgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -821,7 +821,7 @@ class MetricMetricDescriptorLabelArgs:
 
 
 @pulumi.input_type
-class OrganizationBucketConfigCmekSettingsArgs:
+calass OrganizationBucketConfigCmekSettingsArrgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[str],
                  kms_key_version_name: Optional[pulumi.Input[str]] = None,
@@ -879,7 +879,7 @@ class OrganizationBucketConfigCmekSettingsArgs:
 
 
 @pulumi.input_type
-class OrganizationBucketConfigIndexConfigArgs:
+calass OrganizationBucketConfigIndexConfigArrgs:
     def __init__(__self__, *,
                  field_path: pulumi.Input[str],
                  type: pulumi.Input[str]):
@@ -918,7 +918,7 @@ class OrganizationBucketConfigIndexConfigArgs:
 
 
 @pulumi.input_type
-class OrganizationSinkBigqueryOptionsArgs:
+calass OrganizationSinkBigqueryOptionsArrgs:
     def __init__(__self__, *,
                  use_partitioned_tables: pulumi.Input[bool]):
         """
@@ -946,7 +946,7 @@ class OrganizationSinkBigqueryOptionsArgs:
 
 
 @pulumi.input_type
-class OrganizationSinkExclusionArgs:
+calass OrganizationSinkExclusionArrgs:
     def __init__(__self__, *,
                  filter: pulumi.Input[str],
                  name: pulumi.Input[str],
@@ -1017,7 +1017,7 @@ class OrganizationSinkExclusionArgs:
 
 
 @pulumi.input_type
-class ProjectBucketConfigCmekSettingsArgs:
+calass ProjectBucketConfigCmekSettingsArrgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[str],
                  kms_key_version_name: Optional[pulumi.Input[str]] = None,
@@ -1111,7 +1111,7 @@ class ProjectBucketConfigCmekSettingsArgs:
 
 
 @pulumi.input_type
-class ProjectBucketConfigIndexConfigArgs:
+calass ProjectBucketConfigIndexConfigArrgs:
     def __init__(__self__, *,
                  field_path: pulumi.Input[str],
                  type: pulumi.Input[str]):
@@ -1150,7 +1150,7 @@ class ProjectBucketConfigIndexConfigArgs:
 
 
 @pulumi.input_type
-class ProjectSinkBigqueryOptionsArgs:
+calass ProjectSinkBigqueryOptionsArrgs:
     def __init__(__self__, *,
                  use_partitioned_tables: pulumi.Input[bool]):
         """
@@ -1178,7 +1178,7 @@ class ProjectSinkBigqueryOptionsArgs:
 
 
 @pulumi.input_type
-class ProjectSinkExclusionArgs:
+calass ProjectSinkExclusionArrgs:
     def __init__(__self__, *,
                  filter: pulumi.Input[str],
                  name: pulumi.Input[str],

@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AuthorizationPolicyArgs', 'AuthorizationPolicy']
+__all__ = ['AuthorizationPolicyArrgs', 'AuthorizationPolicy']
 
 @pulumi.input_type
-class AuthorizationPolicyArgs:
+calass AuthorizationPolicyArrgs:
     def __init__(__self__, *,
                  action: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -22,7 +22,7 @@ class AuthorizationPolicyArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleArgs']]]] = None):
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleArrgs']]]] = None):
         """
         The set of arguments for constructing a AuthorizationPolicy resource.
         :param pulumi.Input[str] action: The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
@@ -39,7 +39,7 @@ class AuthorizationPolicyArgs:
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleArgs']]] rules: List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
+        :param pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleArrgs']]] rules: List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
                A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
                Structure is documented below.
         """
@@ -139,7 +139,7 @@ class AuthorizationPolicyArgs:
 
     @property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleArgs']]]]:
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleArrgs']]]]:
         """
         List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
         A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
@@ -148,12 +148,12 @@ class AuthorizationPolicyArgs:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleArgs']]]]):
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleArrgs']]]]):
         pulumi.set(self, "rules", value)
 
 
 @pulumi.input_type
-class _AuthorizationPolicyState:
+calass _AuthorizationPolicyState:
     def __init__(__self__, *,
                  action: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -164,7 +164,7 @@ class _AuthorizationPolicyState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleArgs']]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleArrgs']]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AuthorizationPolicy resources.
@@ -186,7 +186,7 @@ class _AuthorizationPolicyState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleArgs']]] rules: List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
+        :param pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleArrgs']]] rules: List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
                A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
                Structure is documented below.
         :param pulumi.Input[str] update_time: Time the AuthorizationPolicy was updated in UTC.
@@ -333,7 +333,7 @@ class _AuthorizationPolicyState:
 
     @property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleArgs']]]]:
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleArrgs']]]]:
         """
         List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
         A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
@@ -342,7 +342,7 @@ class _AuthorizationPolicyState:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleArgs']]]]):
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleArrgs']]]]):
         pulumi.set(self, "rules", value)
 
     @property
@@ -358,7 +358,7 @@ class _AuthorizationPolicyState:
         pulumi.set(self, "update_time", value)
 
 
-class AuthorizationPolicy(pulumi.CustomResource):
+calass AuthorizationPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -369,7 +369,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorizationPolicyRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorizationPolicyRuleArrgs']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -385,8 +385,8 @@ class AuthorizationPolicy(pulumi.CustomResource):
             },
             description="my description",
             action="ALLOW",
-            rules=[gcp.networksecurity.AuthorizationPolicyRuleArgs(
-                sources=[gcp.networksecurity.AuthorizationPolicyRuleSourceArgs(
+            rules=[gcp.networksecurity.AuthorizationPolicyRuleArrgs(
+                sources=[gcp.networksecurity.AuthorizationPolicyRuleSourceArrgs(
                     principals=["namespace/*"],
                     ip_blocks=["1.2.3.0/24"],
                 )],
@@ -405,16 +405,16 @@ class AuthorizationPolicy(pulumi.CustomResource):
             },
             description="my description",
             action="ALLOW",
-            rules=[gcp.networksecurity.AuthorizationPolicyRuleArgs(
-                sources=[gcp.networksecurity.AuthorizationPolicyRuleSourceArgs(
+            rules=[gcp.networksecurity.AuthorizationPolicyRuleArrgs(
+                sources=[gcp.networksecurity.AuthorizationPolicyRuleSourceArrgs(
                     principals=["namespace/*"],
                     ip_blocks=["1.2.3.0/24"],
                 )],
-                destinations=[gcp.networksecurity.AuthorizationPolicyRuleDestinationArgs(
+                destinations=[gcp.networksecurity.AuthorizationPolicyRuleDestinationArrgs(
                     hosts=["mydomain.*"],
                     ports=[8080],
                     methods=["GET"],
-                    http_header_match=gcp.networksecurity.AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs(
+                    http_header_match=gcp.networksecurity.AuthorizationPolicyRuleDestinationHttpHeaderMatchArrgs(
                         header_name=":method",
                         regex_match="GET",
                     ),
@@ -463,7 +463,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorizationPolicyRuleArgs']]]] rules: List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorizationPolicyRuleArrgs']]]] rules: List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
                A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
                Structure is documented below.
         """
@@ -471,7 +471,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AuthorizationPolicyArgs,
+                 args: AuthorizationPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -487,8 +487,8 @@ class AuthorizationPolicy(pulumi.CustomResource):
             },
             description="my description",
             action="ALLOW",
-            rules=[gcp.networksecurity.AuthorizationPolicyRuleArgs(
-                sources=[gcp.networksecurity.AuthorizationPolicyRuleSourceArgs(
+            rules=[gcp.networksecurity.AuthorizationPolicyRuleArrgs(
+                sources=[gcp.networksecurity.AuthorizationPolicyRuleSourceArrgs(
                     principals=["namespace/*"],
                     ip_blocks=["1.2.3.0/24"],
                 )],
@@ -507,16 +507,16 @@ class AuthorizationPolicy(pulumi.CustomResource):
             },
             description="my description",
             action="ALLOW",
-            rules=[gcp.networksecurity.AuthorizationPolicyRuleArgs(
-                sources=[gcp.networksecurity.AuthorizationPolicyRuleSourceArgs(
+            rules=[gcp.networksecurity.AuthorizationPolicyRuleArrgs(
+                sources=[gcp.networksecurity.AuthorizationPolicyRuleSourceArrgs(
                     principals=["namespace/*"],
                     ip_blocks=["1.2.3.0/24"],
                 )],
-                destinations=[gcp.networksecurity.AuthorizationPolicyRuleDestinationArgs(
+                destinations=[gcp.networksecurity.AuthorizationPolicyRuleDestinationArrgs(
                     hosts=["mydomain.*"],
                     ports=[8080],
                     methods=["GET"],
-                    http_header_match=gcp.networksecurity.AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs(
+                    http_header_match=gcp.networksecurity.AuthorizationPolicyRuleDestinationHttpHeaderMatchArrgs(
                         header_name=":method",
                         regex_match="GET",
                     ),
@@ -550,12 +550,12 @@ class AuthorizationPolicy(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AuthorizationPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param AuthorizationPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AuthorizationPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AuthorizationPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -570,7 +570,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorizationPolicyRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorizationPolicyRuleArrgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -578,7 +578,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AuthorizationPolicyArgs.__new__(AuthorizationPolicyArgs)
+            __props__ = AuthorizationPolicyArrgs.__new__(AuthorizationPolicyArrgs)
 
             if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")
@@ -614,7 +614,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorizationPolicyRuleArgs']]]]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorizationPolicyRuleArrgs']]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'AuthorizationPolicy':
         """
         Get an existing AuthorizationPolicy resource's state with the given name, id, and optional extra
@@ -641,7 +641,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorizationPolicyRuleArgs']]]] rules: List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorizationPolicyRuleArrgs']]]] rules: List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
                A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
                Structure is documented below.
         :param pulumi.Input[str] update_time: Time the AuthorizationPolicy was updated in UTC.

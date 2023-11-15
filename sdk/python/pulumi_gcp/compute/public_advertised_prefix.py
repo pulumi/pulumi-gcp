@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['PublicAdvertisedPrefixArgs', 'PublicAdvertisedPrefix']
+__all__ = ['PublicAdvertisedPrefixArrgs', 'PublicAdvertisedPrefix']
 
 @pulumi.input_type
-class PublicAdvertisedPrefixArgs:
+calass PublicAdvertisedPrefixArrgs:
     def __init__(__self__, *,
                  dns_verification_ip: pulumi.Input[str],
                  ip_cidr_range: pulumi.Input[str],
@@ -116,7 +116,7 @@ class PublicAdvertisedPrefixArgs:
 
 
 @pulumi.input_type
-class _PublicAdvertisedPrefixState:
+calass _PublicAdvertisedPrefixState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_verification_ip: Optional[pulumi.Input[str]] = None,
@@ -237,7 +237,7 @@ class _PublicAdvertisedPrefixState:
         pulumi.set(self, "self_link", value)
 
 
-class PublicAdvertisedPrefix(pulumi.CustomResource):
+calass PublicAdvertisedPrefix(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -315,7 +315,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: PublicAdvertisedPrefixArgs,
+                 args: PublicAdvertisedPrefixArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a PublicAdvertisedPrefix for use with bring your own IP addresses (BYOIP).
@@ -364,12 +364,12 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param PublicAdvertisedPrefixArgs args: The arguments to use to populate this resource's properties.
+        :param PublicAdvertisedPrefixArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(PublicAdvertisedPrefixArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(PublicAdvertisedPrefixArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -390,7 +390,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = PublicAdvertisedPrefixArgs.__new__(PublicAdvertisedPrefixArgs)
+            __props__ = PublicAdvertisedPrefixArrgs.__new__(PublicAdvertisedPrefixArrgs)
 
             __props__.__dict__["description"] = description
             if dns_verification_ip is None and not opts.urn:

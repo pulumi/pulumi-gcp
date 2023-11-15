@@ -11,14 +11,14 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['RegionDiskIamMemberArgs', 'RegionDiskIamMember']
+__all__ = ['RegionDiskIamMemberArrgs', 'RegionDiskIamMember']
 
 @pulumi.input_type
-class RegionDiskIamMemberArgs:
+calass RegionDiskIamMemberArrgs:
     def __init__(__self__, *,
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['RegionDiskIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['RegionDiskIamMemberConditionArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
@@ -79,11 +79,11 @@ class RegionDiskIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['RegionDiskIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['RegionDiskIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['RegionDiskIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['RegionDiskIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -134,9 +134,9 @@ class RegionDiskIamMemberArgs:
 
 
 @pulumi.input_type
-class _RegionDiskIamMemberState:
+calass _RegionDiskIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['RegionDiskIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['RegionDiskIamMemberConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -182,11 +182,11 @@ class _RegionDiskIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['RegionDiskIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['RegionDiskIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['RegionDiskIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['RegionDiskIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -271,12 +271,12 @@ class _RegionDiskIamMemberState:
         pulumi.set(self, "role", value)
 
 
-class RegionDiskIamMember(pulumi.CustomResource):
+calass RegionDiskIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['RegionDiskIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['RegionDiskIamMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -304,7 +304,7 @@ class RegionDiskIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -389,7 +389,7 @@ class RegionDiskIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RegionDiskIamMemberArgs,
+                 args: RegionDiskIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Compute Engine Disk. Each of these resources serves a different use case:
@@ -412,7 +412,7 @@ class RegionDiskIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -473,12 +473,12 @@ class RegionDiskIamMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param RegionDiskIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param RegionDiskIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RegionDiskIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(RegionDiskIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -487,7 +487,7 @@ class RegionDiskIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['RegionDiskIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['RegionDiskIamMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -500,7 +500,7 @@ class RegionDiskIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RegionDiskIamMemberArgs.__new__(RegionDiskIamMemberArgs)
+            __props__ = RegionDiskIamMemberArrgs.__new__(RegionDiskIamMemberArrgs)
 
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
@@ -523,7 +523,7 @@ class RegionDiskIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['RegionDiskIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['RegionDiskIamMemberConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,

@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['AiFeatureStoreEntityTypeFeatureArgs', 'AiFeatureStoreEntityTypeFeature']
+__all__ = ['AiFeatureStoreEntityTypeFeatureArrgs', 'AiFeatureStoreEntityTypeFeature']
 
 @pulumi.input_type
-class AiFeatureStoreEntityTypeFeatureArgs:
+calass AiFeatureStoreEntityTypeFeatureArrgs:
     def __init__(__self__, *,
                  entitytype: pulumi.Input[str],
                  value_type: pulumi.Input[str],
@@ -110,7 +110,7 @@ class AiFeatureStoreEntityTypeFeatureArgs:
 
 
 @pulumi.input_type
-class _AiFeatureStoreEntityTypeFeatureState:
+calass _AiFeatureStoreEntityTypeFeatureState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -307,7 +307,7 @@ class _AiFeatureStoreEntityTypeFeatureState:
         pulumi.set(self, "value_type", value)
 
 
-class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
+calass AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -339,7 +339,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArrgs(
                 fixed_node_count=2,
             ))
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
@@ -365,7 +365,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArrgs(
                 fixed_node_count=2,
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -374,15 +374,15 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
                 "foo": "bar",
             },
             featurestore=featurestore.id,
-            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs(
-                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
+            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArrgs(
+                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArrgs(
                     disabled=False,
                     monitoring_interval="86400s",
                 ),
-                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs(
+                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArrgs(
                     value=0.3,
                 ),
-                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
+                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArrgs(
                     value=0.3,
                 ),
             ),
@@ -430,7 +430,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AiFeatureStoreEntityTypeFeatureArgs,
+                 args: AiFeatureStoreEntityTypeFeatureArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Feature Metadata information that describes an attribute of an entity type. For example, apple is an entity type, and color is a feature that describes apple.
@@ -453,7 +453,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArrgs(
                 fixed_node_count=2,
             ))
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
@@ -479,7 +479,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArrgs(
                 fixed_node_count=2,
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -488,15 +488,15 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
                 "foo": "bar",
             },
             featurestore=featurestore.id,
-            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs(
-                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
+            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArrgs(
+                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArrgs(
                     disabled=False,
                     monitoring_interval="86400s",
                 ),
-                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs(
+                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArrgs(
                     value=0.3,
                 ),
-                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
+                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArrgs(
                     value=0.3,
                 ),
             ),
@@ -527,12 +527,12 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AiFeatureStoreEntityTypeFeatureArgs args: The arguments to use to populate this resource's properties.
+        :param AiFeatureStoreEntityTypeFeatureArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AiFeatureStoreEntityTypeFeatureArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AiFeatureStoreEntityTypeFeatureArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -553,7 +553,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AiFeatureStoreEntityTypeFeatureArgs.__new__(AiFeatureStoreEntityTypeFeatureArgs)
+            __props__ = AiFeatureStoreEntityTypeFeatureArrgs.__new__(AiFeatureStoreEntityTypeFeatureArrgs)
 
             __props__.__dict__["description"] = description
             if entitytype is None and not opts.urn:

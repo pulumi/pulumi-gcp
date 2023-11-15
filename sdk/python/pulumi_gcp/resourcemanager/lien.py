@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['LienArgs', 'Lien']
+__all__ = ['LienArrgs', 'Lien']
 
 @pulumi.input_type
-class LienArgs:
+calass LienArrgs:
     def __init__(__self__, *,
                  origin: pulumi.Input[str],
                  parent: pulumi.Input[str],
@@ -106,7 +106,7 @@ class LienArgs:
 
 
 @pulumi.input_type
-class _LienState:
+calass _LienState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -235,7 +235,7 @@ class _LienState:
         pulumi.set(self, "restrictions", value)
 
 
-class Lien(pulumi.CustomResource):
+calass Lien(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -303,7 +303,7 @@ class Lien(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: LienArgs,
+                 args: LienArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Lien represents an encumbrance on the actions that can be performed on a resource.
@@ -340,12 +340,12 @@ class Lien(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param LienArgs args: The arguments to use to populate this resource's properties.
+        :param LienArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(LienArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(LienArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -365,7 +365,7 @@ class Lien(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = LienArgs.__new__(LienArgs)
+            __props__ = LienArrgs.__new__(LienArrgs)
 
             if origin is None and not opts.urn:
                 raise TypeError("Missing required property 'origin'")

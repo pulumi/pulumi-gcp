@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['GlobalNetworkEndpointArgs', 'GlobalNetworkEndpoint']
+__all__ = ['GlobalNetworkEndpointArrgs', 'GlobalNetworkEndpoint']
 
 @pulumi.input_type
-class GlobalNetworkEndpointArgs:
+calass GlobalNetworkEndpointArrgs:
     def __init__(__self__, *,
                  global_network_endpoint_group: pulumi.Input[str],
                  port: pulumi.Input[int],
@@ -108,7 +108,7 @@ class GlobalNetworkEndpointArgs:
 
 
 @pulumi.input_type
-class _GlobalNetworkEndpointState:
+calass _GlobalNetworkEndpointState:
     def __init__(__self__, *,
                  fqdn: Optional[pulumi.Input[str]] = None,
                  global_network_endpoint_group: Optional[pulumi.Input[str]] = None,
@@ -205,7 +205,7 @@ class _GlobalNetworkEndpointState:
         pulumi.set(self, "project", value)
 
 
-class GlobalNetworkEndpoint(pulumi.CustomResource):
+calass GlobalNetworkEndpoint(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -284,7 +284,7 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: GlobalNetworkEndpointArgs,
+                 args: GlobalNetworkEndpointArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Global Network endpoint represents a IP address and port combination that exists outside of GCP.
@@ -338,12 +338,12 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param GlobalNetworkEndpointArgs args: The arguments to use to populate this resource's properties.
+        :param GlobalNetworkEndpointArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(GlobalNetworkEndpointArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(GlobalNetworkEndpointArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -364,7 +364,7 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = GlobalNetworkEndpointArgs.__new__(GlobalNetworkEndpointArgs)
+            __props__ = GlobalNetworkEndpointArrgs.__new__(GlobalNetworkEndpointArrgs)
 
             __props__.__dict__["fqdn"] = fqdn
             if global_network_endpoint_group is None and not opts.urn:

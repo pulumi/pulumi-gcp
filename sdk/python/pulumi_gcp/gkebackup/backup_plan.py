@@ -11,21 +11,21 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['BackupPlanArgs', 'BackupPlan']
+__all__ = ['BackupPlanArrgs', 'BackupPlan']
 
 @pulumi.input_type
-class BackupPlanArgs:
+calass BackupPlanArrgs:
     def __init__(__self__, *,
                  cluster: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 backup_config: Optional[pulumi.Input['BackupPlanBackupConfigArgs']] = None,
-                 backup_schedule: Optional[pulumi.Input['BackupPlanBackupScheduleArgs']] = None,
+                 backup_config: Optional[pulumi.Input['BackupPlanBackupConfigArrgs']] = None,
+                 backup_schedule: Optional[pulumi.Input['BackupPlanBackupScheduleArrgs']] = None,
                  deactivated: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 retention_policy: Optional[pulumi.Input['BackupPlanRetentionPolicyArgs']] = None):
+                 retention_policy: Optional[pulumi.Input['BackupPlanRetentionPolicyArrgs']] = None):
         """
         The set of arguments for constructing a BackupPlan resource.
         :param pulumi.Input[str] cluster: The source cluster from which Backups will be created via this BackupPlan.
@@ -33,9 +33,9 @@ class BackupPlanArgs:
                
                
                - - -
-        :param pulumi.Input['BackupPlanBackupConfigArgs'] backup_config: Defines the configuration of Backups created via this BackupPlan.
+        :param pulumi.Input['BackupPlanBackupConfigArrgs'] backup_config: Defines the configuration of Backups created via this BackupPlan.
                Structure is documented below.
-        :param pulumi.Input['BackupPlanBackupScheduleArgs'] backup_schedule: Defines a schedule for automatic Backup creation via this BackupPlan.
+        :param pulumi.Input['BackupPlanBackupScheduleArrgs'] backup_schedule: Defines a schedule for automatic Backup creation via this BackupPlan.
                Structure is documented below.
         :param pulumi.Input[bool] deactivated: This flag indicates whether this BackupPlan has been deactivated.
                Setting this field to True locks the BackupPlan such that no further updates will be allowed
@@ -51,7 +51,7 @@ class BackupPlanArgs:
         :param pulumi.Input[str] name: The full name of the BackupPlan Resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['BackupPlanRetentionPolicyArgs'] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
+        :param pulumi.Input['BackupPlanRetentionPolicyArrgs'] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
                Structure is documented below.
         """
         pulumi.set(__self__, "cluster", cluster)
@@ -102,7 +102,7 @@ class BackupPlanArgs:
 
     @property
     @pulumi.getter(name="backupConfig")
-    def backup_config(self) -> Optional[pulumi.Input['BackupPlanBackupConfigArgs']]:
+    def backup_config(self) -> Optional[pulumi.Input['BackupPlanBackupConfigArrgs']]:
         """
         Defines the configuration of Backups created via this BackupPlan.
         Structure is documented below.
@@ -110,12 +110,12 @@ class BackupPlanArgs:
         return pulumi.get(self, "backup_config")
 
     @backup_config.setter
-    def backup_config(self, value: Optional[pulumi.Input['BackupPlanBackupConfigArgs']]):
+    def backup_config(self, value: Optional[pulumi.Input['BackupPlanBackupConfigArrgs']]):
         pulumi.set(self, "backup_config", value)
 
     @property
     @pulumi.getter(name="backupSchedule")
-    def backup_schedule(self) -> Optional[pulumi.Input['BackupPlanBackupScheduleArgs']]:
+    def backup_schedule(self) -> Optional[pulumi.Input['BackupPlanBackupScheduleArrgs']]:
         """
         Defines a schedule for automatic Backup creation via this BackupPlan.
         Structure is documented below.
@@ -123,7 +123,7 @@ class BackupPlanArgs:
         return pulumi.get(self, "backup_schedule")
 
     @backup_schedule.setter
-    def backup_schedule(self, value: Optional[pulumi.Input['BackupPlanBackupScheduleArgs']]):
+    def backup_schedule(self, value: Optional[pulumi.Input['BackupPlanBackupScheduleArrgs']]):
         pulumi.set(self, "backup_schedule", value)
 
     @property
@@ -197,7 +197,7 @@ class BackupPlanArgs:
 
     @property
     @pulumi.getter(name="retentionPolicy")
-    def retention_policy(self) -> Optional[pulumi.Input['BackupPlanRetentionPolicyArgs']]:
+    def retention_policy(self) -> Optional[pulumi.Input['BackupPlanRetentionPolicyArrgs']]:
         """
         RetentionPolicy governs lifecycle of Backups created under this plan.
         Structure is documented below.
@@ -205,15 +205,15 @@ class BackupPlanArgs:
         return pulumi.get(self, "retention_policy")
 
     @retention_policy.setter
-    def retention_policy(self, value: Optional[pulumi.Input['BackupPlanRetentionPolicyArgs']]):
+    def retention_policy(self, value: Optional[pulumi.Input['BackupPlanRetentionPolicyArrgs']]):
         pulumi.set(self, "retention_policy", value)
 
 
 @pulumi.input_type
-class _BackupPlanState:
+calass _BackupPlanState:
     def __init__(__self__, *,
-                 backup_config: Optional[pulumi.Input['BackupPlanBackupConfigArgs']] = None,
-                 backup_schedule: Optional[pulumi.Input['BackupPlanBackupScheduleArgs']] = None,
+                 backup_config: Optional[pulumi.Input['BackupPlanBackupConfigArrgs']] = None,
+                 backup_schedule: Optional[pulumi.Input['BackupPlanBackupScheduleArrgs']] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
                  deactivated: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -225,15 +225,15 @@ class _BackupPlanState:
                  project: Optional[pulumi.Input[str]] = None,
                  protected_pod_count: Optional[pulumi.Input[int]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 retention_policy: Optional[pulumi.Input['BackupPlanRetentionPolicyArgs']] = None,
+                 retention_policy: Optional[pulumi.Input['BackupPlanRetentionPolicyArrgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  state_reason: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering BackupPlan resources.
-        :param pulumi.Input['BackupPlanBackupConfigArgs'] backup_config: Defines the configuration of Backups created via this BackupPlan.
+        :param pulumi.Input['BackupPlanBackupConfigArrgs'] backup_config: Defines the configuration of Backups created via this BackupPlan.
                Structure is documented below.
-        :param pulumi.Input['BackupPlanBackupScheduleArgs'] backup_schedule: Defines a schedule for automatic Backup creation via this BackupPlan.
+        :param pulumi.Input['BackupPlanBackupScheduleArrgs'] backup_schedule: Defines a schedule for automatic Backup creation via this BackupPlan.
                Structure is documented below.
         :param pulumi.Input[str] cluster: The source cluster from which Backups will be created via this BackupPlan.
         :param pulumi.Input[bool] deactivated: This flag indicates whether this BackupPlan has been deactivated.
@@ -264,7 +264,7 @@ class _BackupPlanState:
         :param pulumi.Input[int] protected_pod_count: The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input['BackupPlanRetentionPolicyArgs'] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
+        :param pulumi.Input['BackupPlanRetentionPolicyArrgs'] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
                Structure is documented below.
         :param pulumi.Input[str] state: The State of the BackupPlan.
         :param pulumi.Input[str] state_reason: Detailed description of why BackupPlan is in its current state.
@@ -307,7 +307,7 @@ class _BackupPlanState:
 
     @property
     @pulumi.getter(name="backupConfig")
-    def backup_config(self) -> Optional[pulumi.Input['BackupPlanBackupConfigArgs']]:
+    def backup_config(self) -> Optional[pulumi.Input['BackupPlanBackupConfigArrgs']]:
         """
         Defines the configuration of Backups created via this BackupPlan.
         Structure is documented below.
@@ -315,12 +315,12 @@ class _BackupPlanState:
         return pulumi.get(self, "backup_config")
 
     @backup_config.setter
-    def backup_config(self, value: Optional[pulumi.Input['BackupPlanBackupConfigArgs']]):
+    def backup_config(self, value: Optional[pulumi.Input['BackupPlanBackupConfigArrgs']]):
         pulumi.set(self, "backup_config", value)
 
     @property
     @pulumi.getter(name="backupSchedule")
-    def backup_schedule(self) -> Optional[pulumi.Input['BackupPlanBackupScheduleArgs']]:
+    def backup_schedule(self) -> Optional[pulumi.Input['BackupPlanBackupScheduleArrgs']]:
         """
         Defines a schedule for automatic Backup creation via this BackupPlan.
         Structure is documented below.
@@ -328,7 +328,7 @@ class _BackupPlanState:
         return pulumi.get(self, "backup_schedule")
 
     @backup_schedule.setter
-    def backup_schedule(self, value: Optional[pulumi.Input['BackupPlanBackupScheduleArgs']]):
+    def backup_schedule(self, value: Optional[pulumi.Input['BackupPlanBackupScheduleArrgs']]):
         pulumi.set(self, "backup_schedule", value)
 
     @property
@@ -483,7 +483,7 @@ class _BackupPlanState:
 
     @property
     @pulumi.getter(name="retentionPolicy")
-    def retention_policy(self) -> Optional[pulumi.Input['BackupPlanRetentionPolicyArgs']]:
+    def retention_policy(self) -> Optional[pulumi.Input['BackupPlanRetentionPolicyArrgs']]:
         """
         RetentionPolicy governs lifecycle of Backups created under this plan.
         Structure is documented below.
@@ -491,7 +491,7 @@ class _BackupPlanState:
         return pulumi.get(self, "retention_policy")
 
     @retention_policy.setter
-    def retention_policy(self, value: Optional[pulumi.Input['BackupPlanRetentionPolicyArgs']]):
+    def retention_policy(self, value: Optional[pulumi.Input['BackupPlanRetentionPolicyArrgs']]):
         pulumi.set(self, "retention_policy", value)
 
     @property
@@ -531,13 +531,13 @@ class _BackupPlanState:
         pulumi.set(self, "uid", value)
 
 
-class BackupPlan(pulumi.CustomResource):
+calass BackupPlan(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_config: Optional[pulumi.Input[pulumi.InputType['BackupPlanBackupConfigArgs']]] = None,
-                 backup_schedule: Optional[pulumi.Input[pulumi.InputType['BackupPlanBackupScheduleArgs']]] = None,
+                 backup_config: Optional[pulumi.Input[pulumi.InputType['BackupPlanBackupConfigArrgs']]] = None,
+                 backup_schedule: Optional[pulumi.Input[pulumi.InputType['BackupPlanBackupScheduleArrgs']]] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
                  deactivated: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -545,7 +545,7 @@ class BackupPlan(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 retention_policy: Optional[pulumi.Input[pulumi.InputType['BackupPlanRetentionPolicyArgs']]] = None,
+                 retention_policy: Optional[pulumi.Input[pulumi.InputType['BackupPlanRetentionPolicyArrgs']]] = None,
                  __props__=None):
         """
         Represents a Backup Plan instance.
@@ -566,11 +566,11 @@ class BackupPlan(pulumi.CustomResource):
         primary = gcp.container.Cluster("primary",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArrgs(
                 workload_pool="my-project-name.svc.id.goog",
             ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+            addons_config=gcp.container.ClusterAddonsConfigArrgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArrgs(
                     enabled=True,
                 ),
             ),
@@ -578,7 +578,7 @@ class BackupPlan(pulumi.CustomResource):
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArrgs(
                 include_volume_data=True,
                 include_secrets=True,
                 all_namespaces=True,
@@ -593,12 +593,12 @@ class BackupPlan(pulumi.CustomResource):
         primary = gcp.container.Cluster("primary",
             location="us-central1",
             enable_autopilot=True,
-            ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(),
-            release_channel=gcp.container.ClusterReleaseChannelArgs(
+            ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArrgs(),
+            release_channel=gcp.container.ClusterReleaseChannelArrgs(
                 channel="RAPID",
             ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+            addons_config=gcp.container.ClusterAddonsConfigArrgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArrgs(
                     enabled=True,
                 ),
             ),
@@ -606,7 +606,7 @@ class BackupPlan(pulumi.CustomResource):
         autopilot = gcp.gkebackup.BackupPlan("autopilot",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArrgs(
                 include_volume_data=True,
                 include_secrets=True,
                 all_namespaces=True,
@@ -621,11 +621,11 @@ class BackupPlan(pulumi.CustomResource):
         primary = gcp.container.Cluster("primary",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArrgs(
                 workload_pool="my-project-name.svc.id.goog",
             ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+            addons_config=gcp.container.ClusterAddonsConfigArrgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArrgs(
                     enabled=True,
                 ),
             ),
@@ -635,16 +635,16 @@ class BackupPlan(pulumi.CustomResource):
         cmek = gcp.gkebackup.BackupPlan("cmek",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArrgs(
                 include_volume_data=True,
                 include_secrets=True,
-                selected_namespaces=gcp.gkebackup.BackupPlanBackupConfigSelectedNamespacesArgs(
+                selected_namespaces=gcp.gkebackup.BackupPlanBackupConfigSelectedNamespacesArrgs(
                     namespaces=[
                         "default",
                         "test",
                     ],
                 ),
-                encryption_key=gcp.gkebackup.BackupPlanBackupConfigEncryptionKeyArgs(
+                encryption_key=gcp.gkebackup.BackupPlanBackupConfigEncryptionKeyArrgs(
                     gcp_kms_encryption_key=crypto_key.id,
                 ),
             ))
@@ -658,11 +658,11 @@ class BackupPlan(pulumi.CustomResource):
         primary = gcp.container.Cluster("primary",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArrgs(
                 workload_pool="my-project-name.svc.id.goog",
             ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+            addons_config=gcp.container.ClusterAddonsConfigArrgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArrgs(
                     enabled=True,
                 ),
             ),
@@ -670,23 +670,23 @@ class BackupPlan(pulumi.CustomResource):
         full = gcp.gkebackup.BackupPlan("full",
             cluster=primary.id,
             location="us-central1",
-            retention_policy=gcp.gkebackup.BackupPlanRetentionPolicyArgs(
+            retention_policy=gcp.gkebackup.BackupPlanRetentionPolicyArrgs(
                 backup_delete_lock_days=30,
                 backup_retain_days=180,
             ),
-            backup_schedule=gcp.gkebackup.BackupPlanBackupScheduleArgs(
+            backup_schedule=gcp.gkebackup.BackupPlanBackupScheduleArrgs(
                 cron_schedule="0 9 * * 1",
             ),
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArrgs(
                 include_volume_data=True,
                 include_secrets=True,
-                selected_applications=gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsArgs(
+                selected_applications=gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsArrgs(
                     namespaced_names=[
-                        gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs(
+                        gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrgs(
                             name="app1",
                             namespace="ns1",
                         ),
-                        gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs(
+                        gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrgs(
                             name="app2",
                             namespace="ns2",
                         ),
@@ -721,9 +721,9 @@ class BackupPlan(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BackupPlanBackupConfigArgs']] backup_config: Defines the configuration of Backups created via this BackupPlan.
+        :param pulumi.Input[pulumi.InputType['BackupPlanBackupConfigArrgs']] backup_config: Defines the configuration of Backups created via this BackupPlan.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['BackupPlanBackupScheduleArgs']] backup_schedule: Defines a schedule for automatic Backup creation via this BackupPlan.
+        :param pulumi.Input[pulumi.InputType['BackupPlanBackupScheduleArrgs']] backup_schedule: Defines a schedule for automatic Backup creation via this BackupPlan.
                Structure is documented below.
         :param pulumi.Input[str] cluster: The source cluster from which Backups will be created via this BackupPlan.
         :param pulumi.Input[bool] deactivated: This flag indicates whether this BackupPlan has been deactivated.
@@ -744,14 +744,14 @@ class BackupPlan(pulumi.CustomResource):
         :param pulumi.Input[str] name: The full name of the BackupPlan Resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['BackupPlanRetentionPolicyArgs']] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
+        :param pulumi.Input[pulumi.InputType['BackupPlanRetentionPolicyArrgs']] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: BackupPlanArgs,
+                 args: BackupPlanArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a Backup Plan instance.
@@ -772,11 +772,11 @@ class BackupPlan(pulumi.CustomResource):
         primary = gcp.container.Cluster("primary",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArrgs(
                 workload_pool="my-project-name.svc.id.goog",
             ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+            addons_config=gcp.container.ClusterAddonsConfigArrgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArrgs(
                     enabled=True,
                 ),
             ),
@@ -784,7 +784,7 @@ class BackupPlan(pulumi.CustomResource):
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArrgs(
                 include_volume_data=True,
                 include_secrets=True,
                 all_namespaces=True,
@@ -799,12 +799,12 @@ class BackupPlan(pulumi.CustomResource):
         primary = gcp.container.Cluster("primary",
             location="us-central1",
             enable_autopilot=True,
-            ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(),
-            release_channel=gcp.container.ClusterReleaseChannelArgs(
+            ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArrgs(),
+            release_channel=gcp.container.ClusterReleaseChannelArrgs(
                 channel="RAPID",
             ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+            addons_config=gcp.container.ClusterAddonsConfigArrgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArrgs(
                     enabled=True,
                 ),
             ),
@@ -812,7 +812,7 @@ class BackupPlan(pulumi.CustomResource):
         autopilot = gcp.gkebackup.BackupPlan("autopilot",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArrgs(
                 include_volume_data=True,
                 include_secrets=True,
                 all_namespaces=True,
@@ -827,11 +827,11 @@ class BackupPlan(pulumi.CustomResource):
         primary = gcp.container.Cluster("primary",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArrgs(
                 workload_pool="my-project-name.svc.id.goog",
             ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+            addons_config=gcp.container.ClusterAddonsConfigArrgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArrgs(
                     enabled=True,
                 ),
             ),
@@ -841,16 +841,16 @@ class BackupPlan(pulumi.CustomResource):
         cmek = gcp.gkebackup.BackupPlan("cmek",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArrgs(
                 include_volume_data=True,
                 include_secrets=True,
-                selected_namespaces=gcp.gkebackup.BackupPlanBackupConfigSelectedNamespacesArgs(
+                selected_namespaces=gcp.gkebackup.BackupPlanBackupConfigSelectedNamespacesArrgs(
                     namespaces=[
                         "default",
                         "test",
                     ],
                 ),
-                encryption_key=gcp.gkebackup.BackupPlanBackupConfigEncryptionKeyArgs(
+                encryption_key=gcp.gkebackup.BackupPlanBackupConfigEncryptionKeyArrgs(
                     gcp_kms_encryption_key=crypto_key.id,
                 ),
             ))
@@ -864,11 +864,11 @@ class BackupPlan(pulumi.CustomResource):
         primary = gcp.container.Cluster("primary",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArrgs(
                 workload_pool="my-project-name.svc.id.goog",
             ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+            addons_config=gcp.container.ClusterAddonsConfigArrgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArrgs(
                     enabled=True,
                 ),
             ),
@@ -876,23 +876,23 @@ class BackupPlan(pulumi.CustomResource):
         full = gcp.gkebackup.BackupPlan("full",
             cluster=primary.id,
             location="us-central1",
-            retention_policy=gcp.gkebackup.BackupPlanRetentionPolicyArgs(
+            retention_policy=gcp.gkebackup.BackupPlanRetentionPolicyArrgs(
                 backup_delete_lock_days=30,
                 backup_retain_days=180,
             ),
-            backup_schedule=gcp.gkebackup.BackupPlanBackupScheduleArgs(
+            backup_schedule=gcp.gkebackup.BackupPlanBackupScheduleArrgs(
                 cron_schedule="0 9 * * 1",
             ),
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArrgs(
                 include_volume_data=True,
                 include_secrets=True,
-                selected_applications=gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsArgs(
+                selected_applications=gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsArrgs(
                     namespaced_names=[
-                        gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs(
+                        gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrgs(
                             name="app1",
                             namespace="ns1",
                         ),
-                        gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs(
+                        gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrgs(
                             name="app2",
                             namespace="ns2",
                         ),
@@ -926,12 +926,12 @@ class BackupPlan(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param BackupPlanArgs args: The arguments to use to populate this resource's properties.
+        :param BackupPlanArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(BackupPlanArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(BackupPlanArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -940,8 +940,8 @@ class BackupPlan(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_config: Optional[pulumi.Input[pulumi.InputType['BackupPlanBackupConfigArgs']]] = None,
-                 backup_schedule: Optional[pulumi.Input[pulumi.InputType['BackupPlanBackupScheduleArgs']]] = None,
+                 backup_config: Optional[pulumi.Input[pulumi.InputType['BackupPlanBackupConfigArrgs']]] = None,
+                 backup_schedule: Optional[pulumi.Input[pulumi.InputType['BackupPlanBackupScheduleArrgs']]] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
                  deactivated: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -949,7 +949,7 @@ class BackupPlan(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 retention_policy: Optional[pulumi.Input[pulumi.InputType['BackupPlanRetentionPolicyArgs']]] = None,
+                 retention_policy: Optional[pulumi.Input[pulumi.InputType['BackupPlanRetentionPolicyArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -957,7 +957,7 @@ class BackupPlan(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = BackupPlanArgs.__new__(BackupPlanArgs)
+            __props__ = BackupPlanArrgs.__new__(BackupPlanArrgs)
 
             __props__.__dict__["backup_config"] = backup_config
             __props__.__dict__["backup_schedule"] = backup_schedule
@@ -992,8 +992,8 @@ class BackupPlan(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_config: Optional[pulumi.Input[pulumi.InputType['BackupPlanBackupConfigArgs']]] = None,
-            backup_schedule: Optional[pulumi.Input[pulumi.InputType['BackupPlanBackupScheduleArgs']]] = None,
+            backup_config: Optional[pulumi.Input[pulumi.InputType['BackupPlanBackupConfigArrgs']]] = None,
+            backup_schedule: Optional[pulumi.Input[pulumi.InputType['BackupPlanBackupScheduleArrgs']]] = None,
             cluster: Optional[pulumi.Input[str]] = None,
             deactivated: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -1005,7 +1005,7 @@ class BackupPlan(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             protected_pod_count: Optional[pulumi.Input[int]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            retention_policy: Optional[pulumi.Input[pulumi.InputType['BackupPlanRetentionPolicyArgs']]] = None,
+            retention_policy: Optional[pulumi.Input[pulumi.InputType['BackupPlanRetentionPolicyArrgs']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             state_reason: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None) -> 'BackupPlan':
@@ -1016,9 +1016,9 @@ class BackupPlan(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BackupPlanBackupConfigArgs']] backup_config: Defines the configuration of Backups created via this BackupPlan.
+        :param pulumi.Input[pulumi.InputType['BackupPlanBackupConfigArrgs']] backup_config: Defines the configuration of Backups created via this BackupPlan.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['BackupPlanBackupScheduleArgs']] backup_schedule: Defines a schedule for automatic Backup creation via this BackupPlan.
+        :param pulumi.Input[pulumi.InputType['BackupPlanBackupScheduleArrgs']] backup_schedule: Defines a schedule for automatic Backup creation via this BackupPlan.
                Structure is documented below.
         :param pulumi.Input[str] cluster: The source cluster from which Backups will be created via this BackupPlan.
         :param pulumi.Input[bool] deactivated: This flag indicates whether this BackupPlan has been deactivated.
@@ -1049,7 +1049,7 @@ class BackupPlan(pulumi.CustomResource):
         :param pulumi.Input[int] protected_pod_count: The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['BackupPlanRetentionPolicyArgs']] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
+        :param pulumi.Input[pulumi.InputType['BackupPlanRetentionPolicyArrgs']] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
                Structure is documented below.
         :param pulumi.Input[str] state: The State of the BackupPlan.
         :param pulumi.Input[str] state_reason: Detailed description of why BackupPlan is in its current state.

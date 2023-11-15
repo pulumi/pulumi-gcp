@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['SshPublicKeyArgs', 'SshPublicKey']
+__all__ = ['SshPublicKeyArrgs', 'SshPublicKey']
 
 @pulumi.input_type
-class SshPublicKeyArgs:
+calass SshPublicKeyArrgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  user: pulumi.Input[str],
@@ -88,7 +88,7 @@ class SshPublicKeyArgs:
 
 
 @pulumi.input_type
-class _SshPublicKeyState:
+calass _SshPublicKeyState:
     def __init__(__self__, *,
                  expiration_time_usec: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
@@ -181,7 +181,7 @@ class _SshPublicKeyState:
         pulumi.set(self, "user", value)
 
 
-class SshPublicKey(pulumi.CustomResource):
+calass SshPublicKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -247,7 +247,7 @@ class SshPublicKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SshPublicKeyArgs,
+                 args: SshPublicKeyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The SSH public key information associated with a Google account.
@@ -292,12 +292,12 @@ class SshPublicKey(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param SshPublicKeyArgs args: The arguments to use to populate this resource's properties.
+        :param SshPublicKeyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SshPublicKeyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SshPublicKeyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -317,7 +317,7 @@ class SshPublicKey(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SshPublicKeyArgs.__new__(SshPublicKeyArgs)
+            __props__ = SshPublicKeyArrgs.__new__(SshPublicKeyArrgs)
 
             __props__.__dict__["expiration_time_usec"] = expiration_time_usec
             if key is None and not opts.urn:

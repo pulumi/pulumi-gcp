@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['CryptoKeyArgs', 'CryptoKey']
+__all__ = ['CryptoKeyArrgs', 'CryptoKey']
 
 @pulumi.input_type
-class CryptoKeyArgs:
+calass CryptoKeyArrgs:
     def __init__(__self__, *,
                  key_ring: pulumi.Input[str],
                  destroy_scheduled_duration: Optional[pulumi.Input[str]] = None,
@@ -24,7 +24,7 @@ class CryptoKeyArgs:
                  purpose: Optional[pulumi.Input[str]] = None,
                  rotation_period: Optional[pulumi.Input[str]] = None,
                  skip_initial_version_creation: Optional[pulumi.Input[bool]] = None,
-                 version_template: Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']] = None):
+                 version_template: Optional[pulumi.Input['CryptoKeyVersionTemplateArrgs']] = None):
         """
         The set of arguments for constructing a CryptoKey resource.
         :param pulumi.Input[str] key_ring: The KeyRing that this key belongs to.
@@ -50,7 +50,7 @@ class CryptoKeyArgs:
                letter `s` (seconds). It must be greater than a day (ie, 86400).
         :param pulumi.Input[bool] skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
                You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
-        :param pulumi.Input['CryptoKeyVersionTemplateArgs'] version_template: A template describing settings for new crypto key versions.
+        :param pulumi.Input['CryptoKeyVersionTemplateArrgs'] version_template: A template describing settings for new crypto key versions.
                Structure is documented below.
         """
         pulumi.set(__self__, "key_ring", key_ring)
@@ -184,7 +184,7 @@ class CryptoKeyArgs:
 
     @property
     @pulumi.getter(name="versionTemplate")
-    def version_template(self) -> Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']]:
+    def version_template(self) -> Optional[pulumi.Input['CryptoKeyVersionTemplateArrgs']]:
         """
         A template describing settings for new crypto key versions.
         Structure is documented below.
@@ -192,12 +192,12 @@ class CryptoKeyArgs:
         return pulumi.get(self, "version_template")
 
     @version_template.setter
-    def version_template(self, value: Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']]):
+    def version_template(self, value: Optional[pulumi.Input['CryptoKeyVersionTemplateArrgs']]):
         pulumi.set(self, "version_template", value)
 
 
 @pulumi.input_type
-class _CryptoKeyState:
+calass _CryptoKeyState:
     def __init__(__self__, *,
                  destroy_scheduled_duration: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -209,7 +209,7 @@ class _CryptoKeyState:
                  purpose: Optional[pulumi.Input[str]] = None,
                  rotation_period: Optional[pulumi.Input[str]] = None,
                  skip_initial_version_creation: Optional[pulumi.Input[bool]] = None,
-                 version_template: Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']] = None):
+                 version_template: Optional[pulumi.Input['CryptoKeyVersionTemplateArrgs']] = None):
         """
         Input properties used for looking up and filtering CryptoKey resources.
         :param pulumi.Input[str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
@@ -238,7 +238,7 @@ class _CryptoKeyState:
                letter `s` (seconds). It must be greater than a day (ie, 86400).
         :param pulumi.Input[bool] skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
                You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
-        :param pulumi.Input['CryptoKeyVersionTemplateArgs'] version_template: A template describing settings for new crypto key versions.
+        :param pulumi.Input['CryptoKeyVersionTemplateArrgs'] version_template: A template describing settings for new crypto key versions.
                Structure is documented below.
         """
         if destroy_scheduled_duration is not None:
@@ -402,7 +402,7 @@ class _CryptoKeyState:
 
     @property
     @pulumi.getter(name="versionTemplate")
-    def version_template(self) -> Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']]:
+    def version_template(self) -> Optional[pulumi.Input['CryptoKeyVersionTemplateArrgs']]:
         """
         A template describing settings for new crypto key versions.
         Structure is documented below.
@@ -410,11 +410,11 @@ class _CryptoKeyState:
         return pulumi.get(self, "version_template")
 
     @version_template.setter
-    def version_template(self, value: Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']]):
+    def version_template(self, value: Optional[pulumi.Input['CryptoKeyVersionTemplateArrgs']]):
         pulumi.set(self, "version_template", value)
 
 
-class CryptoKey(pulumi.CustomResource):
+calass CryptoKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -427,7 +427,7 @@ class CryptoKey(pulumi.CustomResource):
                  purpose: Optional[pulumi.Input[str]] = None,
                  rotation_period: Optional[pulumi.Input[str]] = None,
                  skip_initial_version_creation: Optional[pulumi.Input[bool]] = None,
-                 version_template: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']]] = None,
+                 version_template: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArrgs']]] = None,
                  __props__=None):
         """
         A `CryptoKey` represents a logical key that can be used for cryptographic operations.
@@ -468,7 +468,7 @@ class CryptoKey(pulumi.CustomResource):
         example_asymmetric_sign_key = gcp.kms.CryptoKey("example-asymmetric-sign-key",
             key_ring=keyring.id,
             purpose="ASYMMETRIC_SIGN",
-            version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
+            version_template=gcp.kms.CryptoKeyVersionTemplateArrgs(
                 algorithm="EC_SIGN_P384_SHA384",
             ))
         ```
@@ -518,14 +518,14 @@ class CryptoKey(pulumi.CustomResource):
                letter `s` (seconds). It must be greater than a day (ie, 86400).
         :param pulumi.Input[bool] skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
                You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
-        :param pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']] version_template: A template describing settings for new crypto key versions.
+        :param pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArrgs']] version_template: A template describing settings for new crypto key versions.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CryptoKeyArgs,
+                 args: CryptoKeyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A `CryptoKey` represents a logical key that can be used for cryptographic operations.
@@ -566,7 +566,7 @@ class CryptoKey(pulumi.CustomResource):
         example_asymmetric_sign_key = gcp.kms.CryptoKey("example-asymmetric-sign-key",
             key_ring=keyring.id,
             purpose="ASYMMETRIC_SIGN",
-            version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
+            version_template=gcp.kms.CryptoKeyVersionTemplateArrgs(
                 algorithm="EC_SIGN_P384_SHA384",
             ))
         ```
@@ -592,12 +592,12 @@ class CryptoKey(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param CryptoKeyArgs args: The arguments to use to populate this resource's properties.
+        :param CryptoKeyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(CryptoKeyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(CryptoKeyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -614,7 +614,7 @@ class CryptoKey(pulumi.CustomResource):
                  purpose: Optional[pulumi.Input[str]] = None,
                  rotation_period: Optional[pulumi.Input[str]] = None,
                  skip_initial_version_creation: Optional[pulumi.Input[bool]] = None,
-                 version_template: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']]] = None,
+                 version_template: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -622,7 +622,7 @@ class CryptoKey(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = CryptoKeyArgs.__new__(CryptoKeyArgs)
+            __props__ = CryptoKeyArrgs.__new__(CryptoKeyArrgs)
 
             __props__.__dict__["destroy_scheduled_duration"] = destroy_scheduled_duration
             __props__.__dict__["import_only"] = import_only
@@ -659,7 +659,7 @@ class CryptoKey(pulumi.CustomResource):
             purpose: Optional[pulumi.Input[str]] = None,
             rotation_period: Optional[pulumi.Input[str]] = None,
             skip_initial_version_creation: Optional[pulumi.Input[bool]] = None,
-            version_template: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']]] = None) -> 'CryptoKey':
+            version_template: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArrgs']]] = None) -> 'CryptoKey':
         """
         Get an existing CryptoKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -693,7 +693,7 @@ class CryptoKey(pulumi.CustomResource):
                letter `s` (seconds). It must be greater than a day (ie, 86400).
         :param pulumi.Input[bool] skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
                You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
-        :param pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']] version_template: A template describing settings for new crypto key versions.
+        :param pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArrgs']] version_template: A template describing settings for new crypto key versions.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

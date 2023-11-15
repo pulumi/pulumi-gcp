@@ -52,7 +52,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class AiDatasetEncryptionSpec(dict):
+calass AiDatasetEncryptionSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -90,7 +90,7 @@ class AiDatasetEncryptionSpec(dict):
 
 
 @pulumi.output_type
-class AiEndpointDeployedModel(dict):
+calass AiEndpointDeployedModel(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -140,12 +140,12 @@ class AiEndpointDeployedModel(dict):
                  service_account: Optional[str] = None,
                  shared_resources: Optional[str] = None):
         """
-        :param Sequence['AiEndpointDeployedModelAutomaticResourceArgs'] automatic_resources: (Output)
+        :param Sequence['AiEndpointDeployedModelAutomaticResourceArrgs'] automatic_resources: (Output)
                A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
                Structure is documented below.
         :param str create_time: (Output)
                Output only. Timestamp when the DeployedModel was created.
-        :param Sequence['AiEndpointDeployedModelDedicatedResourceArgs'] dedicated_resources: (Output)
+        :param Sequence['AiEndpointDeployedModelDedicatedResourceArrgs'] dedicated_resources: (Output)
                A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
                Structure is documented below.
         :param str display_name: Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -159,7 +159,7 @@ class AiEndpointDeployedModel(dict):
                The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel's Endpoint.
         :param str model_version_id: (Output)
                Output only. The version ID of the model that is deployed.
-        :param Sequence['AiEndpointDeployedModelPrivateEndpointArgs'] private_endpoints: (Output)
+        :param Sequence['AiEndpointDeployedModelPrivateEndpointArrgs'] private_endpoints: (Output)
                Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
                Structure is documented below.
         :param str service_account: (Output)
@@ -304,7 +304,7 @@ class AiEndpointDeployedModel(dict):
 
 
 @pulumi.output_type
-class AiEndpointDeployedModelAutomaticResource(dict):
+calass AiEndpointDeployedModelAutomaticResource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -358,7 +358,7 @@ class AiEndpointDeployedModelAutomaticResource(dict):
 
 
 @pulumi.output_type
-class AiEndpointDeployedModelDedicatedResource(dict):
+calass AiEndpointDeployedModelDedicatedResource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -388,10 +388,10 @@ class AiEndpointDeployedModelDedicatedResource(dict):
                  max_replica_count: Optional[int] = None,
                  min_replica_count: Optional[int] = None):
         """
-        :param Sequence['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs'] autoscaling_metric_specs: (Output)
+        :param Sequence['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrgs'] autoscaling_metric_specs: (Output)
                The metric specifications that overrides a resource utilization metric (CPU utilization, accelerator's duty cycle, and so on) target value (default to 60 if not set). At most one entry is allowed per metric. If machine_spec.accelerator_count is above 0, the autoscaling will be based on both CPU utilization and accelerator's duty cycle metrics and scale up when either metrics exceeds its target value while scale down if both metrics are under their target value. The default target value is 60 for both metrics. If machine_spec.accelerator_count is 0, the autoscaling will be based on CPU utilization metric only with default target value 60 if not explicitly set. For example, in the case of Online Prediction, if you want to override target CPU utilization to 80, you should set autoscaling_metric_specs.metric_name to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and autoscaling_metric_specs.target to `80`.
                Structure is documented below.
-        :param Sequence['AiEndpointDeployedModelDedicatedResourceMachineSpecArgs'] machine_specs: (Output)
+        :param Sequence['AiEndpointDeployedModelDedicatedResourceMachineSpecArrgs'] machine_specs: (Output)
                The specification of a single machine used by the prediction.
                Structure is documented below.
         :param int max_replica_count: (Output)
@@ -448,7 +448,7 @@ class AiEndpointDeployedModelDedicatedResource(dict):
 
 
 @pulumi.output_type
-class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec(dict):
+calass AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -500,7 +500,7 @@ class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec(dict):
 
 
 @pulumi.output_type
-class AiEndpointDeployedModelDedicatedResourceMachineSpec(dict):
+calass AiEndpointDeployedModelDedicatedResourceMachineSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -570,7 +570,7 @@ class AiEndpointDeployedModelDedicatedResourceMachineSpec(dict):
 
 
 @pulumi.output_type
-class AiEndpointDeployedModelPrivateEndpoint(dict):
+calass AiEndpointDeployedModelPrivateEndpoint(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -656,7 +656,7 @@ class AiEndpointDeployedModelPrivateEndpoint(dict):
 
 
 @pulumi.output_type
-class AiEndpointEncryptionSpec(dict):
+calass AiEndpointEncryptionSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -691,7 +691,7 @@ class AiEndpointEncryptionSpec(dict):
 
 
 @pulumi.output_type
-class AiFeatureStoreEncryptionSpec(dict):
+calass AiFeatureStoreEncryptionSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -726,7 +726,7 @@ class AiFeatureStoreEncryptionSpec(dict):
 
 
 @pulumi.output_type
-class AiFeatureStoreEntityTypeIamBindingCondition(dict):
+calass AiFeatureStoreEntityTypeIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -753,7 +753,7 @@ class AiFeatureStoreEntityTypeIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class AiFeatureStoreEntityTypeIamMemberCondition(dict):
+calass AiFeatureStoreEntityTypeIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -780,7 +780,7 @@ class AiFeatureStoreEntityTypeIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class AiFeatureStoreEntityTypeMonitoringConfig(dict):
+calass AiFeatureStoreEntityTypeMonitoringConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -810,13 +810,13 @@ class AiFeatureStoreEntityTypeMonitoringConfig(dict):
                  numerical_threshold_config: Optional['outputs.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig'] = None,
                  snapshot_analysis: Optional['outputs.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis'] = None):
         """
-        :param 'AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs' categorical_threshold_config: Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
+        :param 'AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArrgs' categorical_threshold_config: Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
                Structure is documented below.
-        :param 'AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs' import_features_analysis: The config for ImportFeatures Analysis Based Feature Monitoring.
+        :param 'AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArrgs' import_features_analysis: The config for ImportFeatures Analysis Based Feature Monitoring.
                Structure is documented below.
-        :param 'AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs' numerical_threshold_config: Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
+        :param 'AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArrgs' numerical_threshold_config: Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
                Structure is documented below.
-        :param 'AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs' snapshot_analysis: The config for Snapshot Analysis Based Feature Monitoring.
+        :param 'AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArrgs' snapshot_analysis: The config for Snapshot Analysis Based Feature Monitoring.
                Structure is documented below.
         """
         if categorical_threshold_config is not None:
@@ -866,7 +866,7 @@ class AiFeatureStoreEntityTypeMonitoringConfig(dict):
 
 
 @pulumi.output_type
-class AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig(dict):
+calass AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig(dict):
     def __init__(__self__, *,
                  value: float):
         """
@@ -884,7 +884,7 @@ class AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig(dict):
 
 
 @pulumi.output_type
-class AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis(dict):
+calass AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -944,7 +944,7 @@ class AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis(dict):
 
 
 @pulumi.output_type
-class AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig(dict):
+calass AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig(dict):
     def __init__(__self__, *,
                  value: float):
         """
@@ -962,7 +962,7 @@ class AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig(dict):
 
 
 @pulumi.output_type
-class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis(dict):
+calass AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1039,7 +1039,7 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis(dict):
 
 
 @pulumi.output_type
-class AiFeatureStoreIamBindingCondition(dict):
+calass AiFeatureStoreIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -1066,7 +1066,7 @@ class AiFeatureStoreIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class AiFeatureStoreIamMemberCondition(dict):
+calass AiFeatureStoreIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -1093,7 +1093,7 @@ class AiFeatureStoreIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class AiFeatureStoreOnlineServingConfig(dict):
+calass AiFeatureStoreOnlineServingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1116,7 +1116,7 @@ class AiFeatureStoreOnlineServingConfig(dict):
                  scaling: Optional['outputs.AiFeatureStoreOnlineServingConfigScaling'] = None):
         """
         :param int fixed_node_count: The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
-        :param 'AiFeatureStoreOnlineServingConfigScalingArgs' scaling: Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
+        :param 'AiFeatureStoreOnlineServingConfigScalingArrgs' scaling: Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
                Structure is documented below.
         """
         if fixed_node_count is not None:
@@ -1143,7 +1143,7 @@ class AiFeatureStoreOnlineServingConfig(dict):
 
 
 @pulumi.output_type
-class AiFeatureStoreOnlineServingConfigScaling(dict):
+calass AiFeatureStoreOnlineServingConfigScaling(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1191,7 +1191,7 @@ class AiFeatureStoreOnlineServingConfigScaling(dict):
 
 
 @pulumi.output_type
-class AiIndexDeployedIndex(dict):
+calass AiIndexDeployedIndex(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1245,7 +1245,7 @@ class AiIndexDeployedIndex(dict):
 
 
 @pulumi.output_type
-class AiIndexEndpointPrivateServiceConnectConfig(dict):
+calass AiIndexEndpointPrivateServiceConnectConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1294,7 +1294,7 @@ class AiIndexEndpointPrivateServiceConnectConfig(dict):
 
 
 @pulumi.output_type
-class AiIndexIndexStat(dict):
+calass AiIndexIndexStat(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1348,7 +1348,7 @@ class AiIndexIndexStat(dict):
 
 
 @pulumi.output_type
-class AiIndexMetadata(dict):
+calass AiIndexMetadata(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1379,7 +1379,7 @@ class AiIndexMetadata(dict):
                Index field can be also updated as part of the same call.
                The expected structure and format of the files this URI points to is
                described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
-        :param 'AiIndexMetadataConfigArgs' config: The configuration of the Matching Engine Index.
+        :param 'AiIndexMetadataConfigArrgs' config: The configuration of the Matching Engine Index.
                Structure is documented below.
         :param bool is_complete_overwrite: If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
                then existing content of the Index will be replaced by the data from the contentsDeltaUri.
@@ -1423,7 +1423,7 @@ class AiIndexMetadata(dict):
 
 
 @pulumi.output_type
-class AiIndexMetadataConfig(dict):
+calass AiIndexMetadataConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1458,7 +1458,7 @@ class AiIndexMetadataConfig(dict):
                  shard_size: Optional[str] = None):
         """
         :param int dimensions: The number of dimensions of the input vectors.
-        :param 'AiIndexMetadataConfigAlgorithmConfigArgs' algorithm_config: The configuration with regard to the algorithms used for efficient search.
+        :param 'AiIndexMetadataConfigAlgorithmConfigArrgs' algorithm_config: The configuration with regard to the algorithms used for efficient search.
                Structure is documented below.
         :param int approximate_neighbors_count: The default number of neighbors to find via approximate search before exact reordering is
                performed. Exact reordering is a procedure where results returned by an
@@ -1554,7 +1554,7 @@ class AiIndexMetadataConfig(dict):
 
 
 @pulumi.output_type
-class AiIndexMetadataConfigAlgorithmConfig(dict):
+calass AiIndexMetadataConfigAlgorithmConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1578,9 +1578,9 @@ class AiIndexMetadataConfigAlgorithmConfig(dict):
                  brute_force_config: Optional['outputs.AiIndexMetadataConfigAlgorithmConfigBruteForceConfig'] = None,
                  tree_ah_config: Optional['outputs.AiIndexMetadataConfigAlgorithmConfigTreeAhConfig'] = None):
         """
-        :param 'AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs' brute_force_config: Configuration options for using brute force search, which simply implements the
+        :param 'AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrgs' brute_force_config: Configuration options for using brute force search, which simply implements the
                standard linear search in the database for each query.
-        :param 'AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs' tree_ah_config: Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
+        :param 'AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrgs' tree_ah_config: Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
                Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
                Structure is documented below.
         """
@@ -1610,13 +1610,13 @@ class AiIndexMetadataConfigAlgorithmConfig(dict):
 
 
 @pulumi.output_type
-class AiIndexMetadataConfigAlgorithmConfigBruteForceConfig(dict):
+calass AiIndexMetadataConfigAlgorithmConfigBruteForceConfig(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class AiIndexMetadataConfigAlgorithmConfigTreeAhConfig(dict):
+calass AiIndexMetadataConfigAlgorithmConfigTreeAhConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1668,7 +1668,7 @@ class AiIndexMetadataConfigAlgorithmConfigTreeAhConfig(dict):
 
 
 @pulumi.output_type
-class AiMetadataStoreEncryptionSpec(dict):
+calass AiMetadataStoreEncryptionSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1706,7 +1706,7 @@ class AiMetadataStoreEncryptionSpec(dict):
 
 
 @pulumi.output_type
-class AiMetadataStoreState(dict):
+calass AiMetadataStoreState(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1744,7 +1744,7 @@ class AiMetadataStoreState(dict):
 
 
 @pulumi.output_type
-class AiTensorboardEncryptionSpec(dict):
+calass AiTensorboardEncryptionSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1781,7 +1781,7 @@ class AiTensorboardEncryptionSpec(dict):
 
 
 @pulumi.output_type
-class GetAiIndexDeployedIndexResult(dict):
+calass GetAiIndexDeployedIndexResult(dict):
     def __init__(__self__, *,
                  deployed_index_id: str,
                  index_endpoint: str):
@@ -1800,7 +1800,7 @@ class GetAiIndexDeployedIndexResult(dict):
 
 
 @pulumi.output_type
-class GetAiIndexIndexStatResult(dict):
+calass GetAiIndexIndexStatResult(dict):
     def __init__(__self__, *,
                  shards_count: int,
                  vectors_count: str):
@@ -1819,7 +1819,7 @@ class GetAiIndexIndexStatResult(dict):
 
 
 @pulumi.output_type
-class GetAiIndexMetadataResult(dict):
+calass GetAiIndexMetadataResult(dict):
     def __init__(__self__, *,
                  configs: Sequence['outputs.GetAiIndexMetadataConfigResult'],
                  contents_delta_uri: str,
@@ -1845,7 +1845,7 @@ class GetAiIndexMetadataResult(dict):
 
 
 @pulumi.output_type
-class GetAiIndexMetadataConfigResult(dict):
+calass GetAiIndexMetadataConfigResult(dict):
     def __init__(__self__, *,
                  algorithm_configs: Sequence['outputs.GetAiIndexMetadataConfigAlgorithmConfigResult'],
                  approximate_neighbors_count: int,
@@ -1892,7 +1892,7 @@ class GetAiIndexMetadataConfigResult(dict):
 
 
 @pulumi.output_type
-class GetAiIndexMetadataConfigAlgorithmConfigResult(dict):
+calass GetAiIndexMetadataConfigAlgorithmConfigResult(dict):
     def __init__(__self__, *,
                  brute_force_configs: Sequence['outputs.GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigResult'],
                  tree_ah_configs: Sequence['outputs.GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigResult']):
@@ -1911,13 +1911,13 @@ class GetAiIndexMetadataConfigAlgorithmConfigResult(dict):
 
 
 @pulumi.output_type
-class GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigResult(dict):
+calass GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigResult(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigResult(dict):
+calass GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigResult(dict):
     def __init__(__self__, *,
                  leaf_node_embedding_count: int,
                  leaf_nodes_to_search_percent: int):

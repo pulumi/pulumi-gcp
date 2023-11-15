@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DomainMappingArgs', 'DomainMapping']
+__all__ = ['DomainMappingArrgs', 'DomainMapping']
 
 @pulumi.input_type
-class DomainMappingArgs:
+calass DomainMappingArrgs:
     def __init__(__self__, *,
                  domain_name: pulumi.Input[str],
                  override_strategy: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 ssl_settings: Optional[pulumi.Input['DomainMappingSslSettingsArgs']] = None):
+                 ssl_settings: Optional[pulumi.Input['DomainMappingSslSettingsArrgs']] = None):
         """
         The set of arguments for constructing a DomainMapping resource.
         :param pulumi.Input[str] domain_name: Relative name of the domain serving the application. Example: example.com.
@@ -32,7 +32,7 @@ class DomainMappingArgs:
                Possible values are: `STRICT`, `OVERRIDE`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['DomainMappingSslSettingsArgs'] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+        :param pulumi.Input['DomainMappingSslSettingsArrgs'] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
                Structure is documented below.
         """
         pulumi.set(__self__, "domain_name", domain_name)
@@ -88,7 +88,7 @@ class DomainMappingArgs:
 
     @property
     @pulumi.getter(name="sslSettings")
-    def ssl_settings(self) -> Optional[pulumi.Input['DomainMappingSslSettingsArgs']]:
+    def ssl_settings(self) -> Optional[pulumi.Input['DomainMappingSslSettingsArrgs']]:
         """
         SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
         Structure is documented below.
@@ -96,19 +96,19 @@ class DomainMappingArgs:
         return pulumi.get(self, "ssl_settings")
 
     @ssl_settings.setter
-    def ssl_settings(self, value: Optional[pulumi.Input['DomainMappingSslSettingsArgs']]):
+    def ssl_settings(self, value: Optional[pulumi.Input['DomainMappingSslSettingsArrgs']]):
         pulumi.set(self, "ssl_settings", value)
 
 
 @pulumi.input_type
-class _DomainMappingState:
+calass _DomainMappingState:
     def __init__(__self__, *,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  override_strategy: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 resource_records: Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingResourceRecordArgs']]]] = None,
-                 ssl_settings: Optional[pulumi.Input['DomainMappingSslSettingsArgs']] = None):
+                 resource_records: Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingResourceRecordArrgs']]]] = None,
+                 ssl_settings: Optional[pulumi.Input['DomainMappingSslSettingsArrgs']] = None):
         """
         Input properties used for looking up and filtering DomainMapping resources.
         :param pulumi.Input[str] domain_name: Relative name of the domain serving the application. Example: example.com.
@@ -122,10 +122,10 @@ class _DomainMappingState:
                Possible values are: `STRICT`, `OVERRIDE`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainMappingResourceRecordArgs']]] resource_records: The resource records required to configure this domain mapping. These records must be added to the domain's DNS
+        :param pulumi.Input[Sequence[pulumi.Input['DomainMappingResourceRecordArrgs']]] resource_records: The resource records required to configure this domain mapping. These records must be added to the domain's DNS
                configuration in order to serve the application via this domain mapping.
                Structure is documented below.
-        :param pulumi.Input['DomainMappingSslSettingsArgs'] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+        :param pulumi.Input['DomainMappingSslSettingsArrgs'] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
                Structure is documented below.
         """
         if domain_name is not None:
@@ -198,7 +198,7 @@ class _DomainMappingState:
 
     @property
     @pulumi.getter(name="resourceRecords")
-    def resource_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingResourceRecordArgs']]]]:
+    def resource_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingResourceRecordArrgs']]]]:
         """
         The resource records required to configure this domain mapping. These records must be added to the domain's DNS
         configuration in order to serve the application via this domain mapping.
@@ -207,12 +207,12 @@ class _DomainMappingState:
         return pulumi.get(self, "resource_records")
 
     @resource_records.setter
-    def resource_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingResourceRecordArgs']]]]):
+    def resource_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingResourceRecordArrgs']]]]):
         pulumi.set(self, "resource_records", value)
 
     @property
     @pulumi.getter(name="sslSettings")
-    def ssl_settings(self) -> Optional[pulumi.Input['DomainMappingSslSettingsArgs']]:
+    def ssl_settings(self) -> Optional[pulumi.Input['DomainMappingSslSettingsArrgs']]:
         """
         SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
         Structure is documented below.
@@ -220,11 +220,11 @@ class _DomainMappingState:
         return pulumi.get(self, "ssl_settings")
 
     @ssl_settings.setter
-    def ssl_settings(self, value: Optional[pulumi.Input['DomainMappingSslSettingsArgs']]):
+    def ssl_settings(self, value: Optional[pulumi.Input['DomainMappingSslSettingsArrgs']]):
         pulumi.set(self, "ssl_settings", value)
 
 
-class DomainMapping(pulumi.CustomResource):
+calass DomainMapping(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -232,7 +232,7 @@ class DomainMapping(pulumi.CustomResource):
                  domain_name: Optional[pulumi.Input[str]] = None,
                  override_strategy: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 ssl_settings: Optional[pulumi.Input[pulumi.InputType['DomainMappingSslSettingsArgs']]] = None,
+                 ssl_settings: Optional[pulumi.Input[pulumi.InputType['DomainMappingSslSettingsArrgs']]] = None,
                  __props__=None):
         """
         A domain serving an App Engine application.
@@ -252,7 +252,7 @@ class DomainMapping(pulumi.CustomResource):
 
         domain_mapping = gcp.appengine.DomainMapping("domainMapping",
             domain_name="verified-domain.com",
-            ssl_settings=gcp.appengine.DomainMappingSslSettingsArgs(
+            ssl_settings=gcp.appengine.DomainMappingSslSettingsArrgs(
                 ssl_management_type="AUTOMATIC",
             ))
         ```
@@ -293,14 +293,14 @@ class DomainMapping(pulumi.CustomResource):
                Possible values are: `STRICT`, `OVERRIDE`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['DomainMappingSslSettingsArgs']] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+        :param pulumi.Input[pulumi.InputType['DomainMappingSslSettingsArrgs']] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DomainMappingArgs,
+                 args: DomainMappingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A domain serving an App Engine application.
@@ -320,7 +320,7 @@ class DomainMapping(pulumi.CustomResource):
 
         domain_mapping = gcp.appengine.DomainMapping("domainMapping",
             domain_name="verified-domain.com",
-            ssl_settings=gcp.appengine.DomainMappingSslSettingsArgs(
+            ssl_settings=gcp.appengine.DomainMappingSslSettingsArrgs(
                 ssl_management_type="AUTOMATIC",
             ))
         ```
@@ -350,12 +350,12 @@ class DomainMapping(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param DomainMappingArgs args: The arguments to use to populate this resource's properties.
+        :param DomainMappingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DomainMappingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DomainMappingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -367,7 +367,7 @@ class DomainMapping(pulumi.CustomResource):
                  domain_name: Optional[pulumi.Input[str]] = None,
                  override_strategy: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 ssl_settings: Optional[pulumi.Input[pulumi.InputType['DomainMappingSslSettingsArgs']]] = None,
+                 ssl_settings: Optional[pulumi.Input[pulumi.InputType['DomainMappingSslSettingsArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -375,7 +375,7 @@ class DomainMapping(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DomainMappingArgs.__new__(DomainMappingArgs)
+            __props__ = DomainMappingArrgs.__new__(DomainMappingArrgs)
 
             if domain_name is None and not opts.urn:
                 raise TypeError("Missing required property 'domain_name'")
@@ -399,8 +399,8 @@ class DomainMapping(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             override_strategy: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            resource_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainMappingResourceRecordArgs']]]]] = None,
-            ssl_settings: Optional[pulumi.Input[pulumi.InputType['DomainMappingSslSettingsArgs']]] = None) -> 'DomainMapping':
+            resource_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainMappingResourceRecordArrgs']]]]] = None,
+            ssl_settings: Optional[pulumi.Input[pulumi.InputType['DomainMappingSslSettingsArrgs']]] = None) -> 'DomainMapping':
         """
         Get an existing DomainMapping resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -419,10 +419,10 @@ class DomainMapping(pulumi.CustomResource):
                Possible values are: `STRICT`, `OVERRIDE`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainMappingResourceRecordArgs']]]] resource_records: The resource records required to configure this domain mapping. These records must be added to the domain's DNS
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainMappingResourceRecordArrgs']]]] resource_records: The resource records required to configure this domain mapping. These records must be added to the domain's DNS
                configuration in order to serve the application via this domain mapping.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['DomainMappingSslSettingsArgs']] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+        :param pulumi.Input[pulumi.InputType['DomainMappingSslSettingsArrgs']] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

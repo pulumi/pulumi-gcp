@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['PolicyTagIamMemberArgs', 'PolicyTagIamMember']
+__all__ = ['PolicyTagIamMemberArrgs', 'PolicyTagIamMember']
 
 @pulumi.input_type
-class PolicyTagIamMemberArgs:
+calass PolicyTagIamMemberArrgs:
     def __init__(__self__, *,
                  member: pulumi.Input[str],
                  policy_tag: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['PolicyTagIamMemberConditionArgs']] = None):
+                 condition: Optional[pulumi.Input['PolicyTagIamMemberConditionArrgs']] = None):
         """
         The set of arguments for constructing a PolicyTagIamMember resource.
         :param pulumi.Input[str] policy_tag: Used to find the parent resource to bind the IAM policy to
@@ -94,18 +94,18 @@ class PolicyTagIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['PolicyTagIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['PolicyTagIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['PolicyTagIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['PolicyTagIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
-class _PolicyTagIamMemberState:
+calass _PolicyTagIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['PolicyTagIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['PolicyTagIamMemberConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  policy_tag: Optional[pulumi.Input[str]] = None,
@@ -143,11 +143,11 @@ class _PolicyTagIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['PolicyTagIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['PolicyTagIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['PolicyTagIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['PolicyTagIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -210,12 +210,12 @@ class _PolicyTagIamMemberState:
         pulumi.set(self, "role", value)
 
 
-class PolicyTagIamMember(pulumi.CustomResource):
+calass PolicyTagIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['PolicyTagIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['PolicyTagIamMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  policy_tag: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -241,7 +241,7 @@ class PolicyTagIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -321,7 +321,7 @@ class PolicyTagIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: PolicyTagIamMemberArgs,
+                 args: PolicyTagIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Data catalog PolicyTag. Each of these resources serves a different use case:
@@ -344,7 +344,7 @@ class PolicyTagIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -402,12 +402,12 @@ class PolicyTagIamMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param PolicyTagIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param PolicyTagIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(PolicyTagIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(PolicyTagIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -416,7 +416,7 @@ class PolicyTagIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['PolicyTagIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['PolicyTagIamMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  policy_tag: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -427,7 +427,7 @@ class PolicyTagIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = PolicyTagIamMemberArgs.__new__(PolicyTagIamMemberArgs)
+            __props__ = PolicyTagIamMemberArrgs.__new__(PolicyTagIamMemberArrgs)
 
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
@@ -450,7 +450,7 @@ class PolicyTagIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['PolicyTagIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['PolicyTagIamMemberConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
             policy_tag: Optional[pulumi.Input[str]] = None,

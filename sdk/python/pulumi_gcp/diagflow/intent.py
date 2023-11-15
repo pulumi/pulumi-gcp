@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['IntentArgs', 'Intent']
+__all__ = ['IntentArrgs', 'Intent']
 
 @pulumi.input_type
-class IntentArgs:
+calass IntentArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  action: Optional[pulumi.Input[str]] = None,
@@ -253,13 +253,13 @@ class IntentArgs:
 
 
 @pulumi.input_type
-class _IntentState:
+calass _IntentState:
     def __init__(__self__, *,
                  action: Optional[pulumi.Input[str]] = None,
                  default_response_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 followup_intent_infos: Optional[pulumi.Input[Sequence[pulumi.Input['IntentFollowupIntentInfoArgs']]]] = None,
+                 followup_intent_infos: Optional[pulumi.Input[Sequence[pulumi.Input['IntentFollowupIntentInfoArrgs']]]] = None,
                  input_context_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  is_fallback: Optional[pulumi.Input[bool]] = None,
                  ml_disabled: Optional[pulumi.Input[bool]] = None,
@@ -284,7 +284,7 @@ class _IntentState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
                the contexts must be present in the active user session for an event to trigger this intent. See the
                [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
-        :param pulumi.Input[Sequence[pulumi.Input['IntentFollowupIntentInfoArgs']]] followup_intent_infos: Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
+        :param pulumi.Input[Sequence[pulumi.Input['IntentFollowupIntentInfoArrgs']]] followup_intent_infos: Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
                only in the output.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] input_context_names: The list of context names required for this intent to be triggered.
@@ -402,7 +402,7 @@ class _IntentState:
 
     @property
     @pulumi.getter(name="followupIntentInfos")
-    def followup_intent_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntentFollowupIntentInfoArgs']]]]:
+    def followup_intent_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntentFollowupIntentInfoArrgs']]]]:
         """
         Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
         only in the output.
@@ -411,7 +411,7 @@ class _IntentState:
         return pulumi.get(self, "followup_intent_infos")
 
     @followup_intent_infos.setter
-    def followup_intent_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IntentFollowupIntentInfoArgs']]]]):
+    def followup_intent_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IntentFollowupIntentInfoArrgs']]]]):
         pulumi.set(self, "followup_intent_infos", value)
 
     @property
@@ -550,7 +550,7 @@ class _IntentState:
         pulumi.set(self, "webhook_state", value)
 
 
-class Intent(pulumi.CustomResource):
+calass Intent(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -688,7 +688,7 @@ class Intent(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: IntentArgs,
+                 args: IntentArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a Dialogflow intent. Intents convert a number of user expressions or patterns into an action. An action
@@ -772,12 +772,12 @@ class Intent(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param IntentArgs args: The arguments to use to populate this resource's properties.
+        :param IntentArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(IntentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(IntentArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -805,7 +805,7 @@ class Intent(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = IntentArgs.__new__(IntentArgs)
+            __props__ = IntentArrgs.__new__(IntentArrgs)
 
             __props__.__dict__["action"] = action
             __props__.__dict__["default_response_platforms"] = default_response_platforms
@@ -838,7 +838,7 @@ class Intent(pulumi.CustomResource):
             default_response_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            followup_intent_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntentFollowupIntentInfoArgs']]]]] = None,
+            followup_intent_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntentFollowupIntentInfoArrgs']]]]] = None,
             input_context_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             is_fallback: Optional[pulumi.Input[bool]] = None,
             ml_disabled: Optional[pulumi.Input[bool]] = None,
@@ -868,7 +868,7 @@ class Intent(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
                the contexts must be present in the active user session for an event to trigger this intent. See the
                [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntentFollowupIntentInfoArgs']]]] followup_intent_infos: Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntentFollowupIntentInfoArrgs']]]] followup_intent_infos: Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
                only in the output.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] input_context_names: The list of context names required for this intent to be triggered.

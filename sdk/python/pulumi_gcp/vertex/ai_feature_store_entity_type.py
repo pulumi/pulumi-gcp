@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AiFeatureStoreEntityTypeArgs', 'AiFeatureStoreEntityType']
+__all__ = ['AiFeatureStoreEntityTypeArrgs', 'AiFeatureStoreEntityType']
 
 @pulumi.input_type
-class AiFeatureStoreEntityTypeArgs:
+calass AiFeatureStoreEntityTypeArrgs:
     def __init__(__self__, *,
                  featurestore: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 monitoring_config: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs']] = None,
+                 monitoring_config: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  offline_storage_ttl_days: Optional[pulumi.Input[int]] = None):
         """
@@ -33,7 +33,7 @@ class AiFeatureStoreEntityTypeArgs:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs'] monitoring_config: The default monitoring configuration for all Features under this EntityType.
+        :param pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArrgs'] monitoring_config: The default monitoring configuration for all Features under this EntityType.
                If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
@@ -97,7 +97,7 @@ class AiFeatureStoreEntityTypeArgs:
 
     @property
     @pulumi.getter(name="monitoringConfig")
-    def monitoring_config(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs']]:
+    def monitoring_config(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArrgs']]:
         """
         The default monitoring configuration for all Features under this EntityType.
         If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
@@ -106,7 +106,7 @@ class AiFeatureStoreEntityTypeArgs:
         return pulumi.get(self, "monitoring_config")
 
     @monitoring_config.setter
-    def monitoring_config(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs']]):
+    def monitoring_config(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArrgs']]):
         pulumi.set(self, "monitoring_config", value)
 
     @property
@@ -137,7 +137,7 @@ class AiFeatureStoreEntityTypeArgs:
 
 
 @pulumi.input_type
-class _AiFeatureStoreEntityTypeState:
+calass _AiFeatureStoreEntityTypeState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -145,7 +145,7 @@ class _AiFeatureStoreEntityTypeState:
                  etag: Optional[pulumi.Input[str]] = None,
                  featurestore: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 monitoring_config: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs']] = None,
+                 monitoring_config: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  offline_storage_ttl_days: Optional[pulumi.Input[int]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -165,7 +165,7 @@ class _AiFeatureStoreEntityTypeState:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs'] monitoring_config: The default monitoring configuration for all Features under this EntityType.
+        :param pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArrgs'] monitoring_config: The default monitoring configuration for all Features under this EntityType.
                If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
@@ -282,7 +282,7 @@ class _AiFeatureStoreEntityTypeState:
 
     @property
     @pulumi.getter(name="monitoringConfig")
-    def monitoring_config(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs']]:
+    def monitoring_config(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArrgs']]:
         """
         The default monitoring configuration for all Features under this EntityType.
         If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
@@ -291,7 +291,7 @@ class _AiFeatureStoreEntityTypeState:
         return pulumi.get(self, "monitoring_config")
 
     @monitoring_config.setter
-    def monitoring_config(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs']]):
+    def monitoring_config(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArrgs']]):
         pulumi.set(self, "monitoring_config", value)
 
     @property
@@ -358,7 +358,7 @@ class _AiFeatureStoreEntityTypeState:
         pulumi.set(self, "update_time", value)
 
 
-class AiFeatureStoreEntityType(pulumi.CustomResource):
+calass AiFeatureStoreEntityType(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -366,7 +366,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  featurestore: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 monitoring_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeMonitoringConfigArgs']]] = None,
+                 monitoring_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeMonitoringConfigArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  offline_storage_ttl_days: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -391,10 +391,10 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArrgs(
                 fixed_node_count=2,
             ),
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
+            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArrgs(
                 kms_key_name="kms-name",
             ))
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
@@ -403,19 +403,19 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             },
             description="test description",
             featurestore=featurestore.id,
-            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs(
-                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
+            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArrgs(
+                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArrgs(
                     disabled=False,
                     monitoring_interval_days=1,
                     staleness_days=21,
                 ),
-                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
+                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArrgs(
                     value=0.8,
                 ),
-                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs(
+                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArrgs(
                     value=10,
                 ),
-                import_features_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs(
+                import_features_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArrgs(
                     state="ENABLED",
                     anomaly_detection_baseline="PREVIOUS_IMPORT_FEATURES_STATS",
                 ),
@@ -432,10 +432,10 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArrgs(
                 fixed_node_count=2,
             ),
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
+            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArrgs(
                 kms_key_name="kms-name",
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -444,15 +444,15 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                 "foo": "bar",
             },
             featurestore=featurestore.id,
-            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs(
-                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
+            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArrgs(
+                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArrgs(
                     disabled=False,
                     monitoring_interval="86400s",
                 ),
-                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs(
+                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArrgs(
                     value=0.3,
                 ),
-                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
+                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArrgs(
                     value=0.3,
                 ),
             ),
@@ -487,7 +487,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeMonitoringConfigArgs']] monitoring_config: The default monitoring configuration for all Features under this EntityType.
+        :param pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeMonitoringConfigArrgs']] monitoring_config: The default monitoring configuration for all Features under this EntityType.
                If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
@@ -499,7 +499,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AiFeatureStoreEntityTypeArgs,
+                 args: AiFeatureStoreEntityTypeArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An entity type is a type of object in a system that needs to be modeled and have stored information about. For example, driver is an entity type, and driver0 is an instance of an entity type driver.
@@ -522,10 +522,10 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArrgs(
                 fixed_node_count=2,
             ),
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
+            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArrgs(
                 kms_key_name="kms-name",
             ))
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
@@ -534,19 +534,19 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             },
             description="test description",
             featurestore=featurestore.id,
-            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs(
-                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
+            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArrgs(
+                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArrgs(
                     disabled=False,
                     monitoring_interval_days=1,
                     staleness_days=21,
                 ),
-                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
+                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArrgs(
                     value=0.8,
                 ),
-                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs(
+                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArrgs(
                     value=10,
                 ),
-                import_features_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs(
+                import_features_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArrgs(
                     state="ENABLED",
                     anomaly_detection_baseline="PREVIOUS_IMPORT_FEATURES_STATS",
                 ),
@@ -563,10 +563,10 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArrgs(
                 fixed_node_count=2,
             ),
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
+            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArrgs(
                 kms_key_name="kms-name",
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -575,15 +575,15 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                 "foo": "bar",
             },
             featurestore=featurestore.id,
-            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs(
-                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
+            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArrgs(
+                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArrgs(
                     disabled=False,
                     monitoring_interval="86400s",
                 ),
-                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs(
+                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArrgs(
                     value=0.3,
                 ),
-                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
+                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArrgs(
                     value=0.3,
                 ),
             ),
@@ -608,12 +608,12 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AiFeatureStoreEntityTypeArgs args: The arguments to use to populate this resource's properties.
+        :param AiFeatureStoreEntityTypeArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AiFeatureStoreEntityTypeArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AiFeatureStoreEntityTypeArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -625,7 +625,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  featurestore: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 monitoring_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeMonitoringConfigArgs']]] = None,
+                 monitoring_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeMonitoringConfigArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  offline_storage_ttl_days: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -635,7 +635,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AiFeatureStoreEntityTypeArgs.__new__(AiFeatureStoreEntityTypeArgs)
+            __props__ = AiFeatureStoreEntityTypeArrgs.__new__(AiFeatureStoreEntityTypeArrgs)
 
             __props__.__dict__["description"] = description
             if featurestore is None and not opts.urn:
@@ -669,7 +669,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             etag: Optional[pulumi.Input[str]] = None,
             featurestore: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            monitoring_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeMonitoringConfigArgs']]] = None,
+            monitoring_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeMonitoringConfigArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             offline_storage_ttl_days: Optional[pulumi.Input[int]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -694,7 +694,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeMonitoringConfigArgs']] monitoring_config: The default monitoring configuration for all Features under this EntityType.
+        :param pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeMonitoringConfigArrgs']] monitoring_config: The default monitoring configuration for all Features under this EntityType.
                If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.

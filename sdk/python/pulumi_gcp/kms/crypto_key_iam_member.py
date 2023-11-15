@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['CryptoKeyIAMMemberArgs', 'CryptoKeyIAMMember']
+__all__ = ['CryptoKeyIAMMemberArrgs', 'CryptoKeyIAMMember']
 
 @pulumi.input_type
-class CryptoKeyIAMMemberArgs:
+calass CryptoKeyIAMMemberArrgs:
     def __init__(__self__, *,
                  crypto_key_id: pulumi.Input[str],
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['CryptoKeyIAMMemberConditionArgs']] = None):
+                 condition: Optional[pulumi.Input['CryptoKeyIAMMemberConditionArrgs']] = None):
         """
         The set of arguments for constructing a CryptoKeyIAMMember resource.
         :param pulumi.Input[str] crypto_key_id: The crypto key ID, in the form
@@ -37,7 +37,7 @@ class CryptoKeyIAMMemberArgs:
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         :param pulumi.Input[str] role: The role that should be applied. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input['CryptoKeyIAMMemberConditionArgs'] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['CryptoKeyIAMMemberConditionArrgs'] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         """
         pulumi.set(__self__, "crypto_key_id", crypto_key_id)
@@ -94,7 +94,7 @@ class CryptoKeyIAMMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['CryptoKeyIAMMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['CryptoKeyIAMMemberConditionArrgs']]:
         """
         ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -102,21 +102,21 @@ class CryptoKeyIAMMemberArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['CryptoKeyIAMMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['CryptoKeyIAMMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
-class _CryptoKeyIAMMemberState:
+calass _CryptoKeyIAMMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['CryptoKeyIAMMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['CryptoKeyIAMMemberConditionArrgs']] = None,
                  crypto_key_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CryptoKeyIAMMember resources.
-        :param pulumi.Input['CryptoKeyIAMMemberConditionArgs'] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['CryptoKeyIAMMemberConditionArrgs'] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] crypto_key_id: The crypto key ID, in the form
                `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
@@ -148,7 +148,7 @@ class _CryptoKeyIAMMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['CryptoKeyIAMMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['CryptoKeyIAMMemberConditionArrgs']]:
         """
         ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -156,7 +156,7 @@ class _CryptoKeyIAMMemberState:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['CryptoKeyIAMMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['CryptoKeyIAMMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -218,12 +218,12 @@ class _CryptoKeyIAMMemberState:
         pulumi.set(self, "role", value)
 
 
-class CryptoKeyIAMMember(pulumi.CustomResource):
+calass CryptoKeyIAMMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['CryptoKeyIAMMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['CryptoKeyIAMMemberConditionArrgs']]] = None,
                  crypto_key_id: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -247,7 +247,7 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
         key = gcp.kms.CryptoKey("key",
             key_ring=keyring.id,
             rotation_period="100000s")
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/cloudkms.cryptoKeyEncrypter",
             members=["user:jane@example.com"],
         )])
@@ -262,8 +262,8 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -293,7 +293,7 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
             crypto_key_id=google_kms_crypto_key["key"]["id"],
             role="roles/cloudkms.cryptoKeyEncrypter",
             members=["user:jane@example.com"],
-            condition=gcp.kms.CryptoKeyIAMBindingConditionArgs(
+            condition=gcp.kms.CryptoKeyIAMBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -320,7 +320,7 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
             crypto_key_id=google_kms_crypto_key["key"]["id"],
             role="roles/cloudkms.cryptoKeyEncrypter",
             member="user:jane@example.com",
-            condition=gcp.kms.CryptoKeyIAMMemberConditionArgs(
+            condition=gcp.kms.CryptoKeyIAMMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -345,7 +345,7 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CryptoKeyIAMMemberConditionArgs']] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['CryptoKeyIAMMemberConditionArrgs']] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] crypto_key_id: The crypto key ID, in the form
                `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
@@ -367,7 +367,7 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CryptoKeyIAMMemberArgs,
+                 args: CryptoKeyIAMMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for KMS crypto key. Each of these resources serves a different use case:
@@ -388,7 +388,7 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
         key = gcp.kms.CryptoKey("key",
             key_ring=keyring.id,
             rotation_period="100000s")
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/cloudkms.cryptoKeyEncrypter",
             members=["user:jane@example.com"],
         )])
@@ -403,8 +403,8 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -434,7 +434,7 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
             crypto_key_id=google_kms_crypto_key["key"]["id"],
             role="roles/cloudkms.cryptoKeyEncrypter",
             members=["user:jane@example.com"],
-            condition=gcp.kms.CryptoKeyIAMBindingConditionArgs(
+            condition=gcp.kms.CryptoKeyIAMBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -461,7 +461,7 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
             crypto_key_id=google_kms_crypto_key["key"]["id"],
             role="roles/cloudkms.cryptoKeyEncrypter",
             member="user:jane@example.com",
-            condition=gcp.kms.CryptoKeyIAMMemberConditionArgs(
+            condition=gcp.kms.CryptoKeyIAMMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -485,12 +485,12 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param CryptoKeyIAMMemberArgs args: The arguments to use to populate this resource's properties.
+        :param CryptoKeyIAMMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(CryptoKeyIAMMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(CryptoKeyIAMMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -499,7 +499,7 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['CryptoKeyIAMMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['CryptoKeyIAMMemberConditionArrgs']]] = None,
                  crypto_key_id: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -510,7 +510,7 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = CryptoKeyIAMMemberArgs.__new__(CryptoKeyIAMMemberArgs)
+            __props__ = CryptoKeyIAMMemberArrgs.__new__(CryptoKeyIAMMemberArrgs)
 
             __props__.__dict__["condition"] = condition
             if crypto_key_id is None and not opts.urn:
@@ -533,7 +533,7 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['CryptoKeyIAMMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['CryptoKeyIAMMemberConditionArrgs']]] = None,
             crypto_key_id: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
@@ -545,7 +545,7 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CryptoKeyIAMMemberConditionArgs']] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['CryptoKeyIAMMemberConditionArrgs']] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] crypto_key_id: The crypto key ID, in the form
                `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or

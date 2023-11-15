@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['EnvironmentArgs', 'Environment']
+__all__ = ['EnvironmentArrgs', 'Environment']
 
 @pulumi.input_type
-class EnvironmentArgs:
+calass EnvironmentArrgs:
     def __init__(__self__, *,
                  org_id: pulumi.Input[str],
                  api_proxy_type: Optional[pulumi.Input[str]] = None,
@@ -22,7 +22,7 @@ class EnvironmentArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_config: Optional[pulumi.Input['EnvironmentNodeConfigArgs']] = None,
+                 node_config: Optional[pulumi.Input['EnvironmentNodeConfigArrgs']] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Environment resource.
@@ -45,7 +45,7 @@ class EnvironmentArgs:
         :param pulumi.Input[str] description: Description of the environment.
         :param pulumi.Input[str] display_name: Display name of the environment.
         :param pulumi.Input[str] name: The resource ID of the environment.
-        :param pulumi.Input['EnvironmentNodeConfigArgs'] node_config: NodeConfig for setting the min/max number of nodes associated with the environment.
+        :param pulumi.Input['EnvironmentNodeConfigArrgs'] node_config: NodeConfig for setting the min/max number of nodes associated with the environment.
                Structure is documented below.
         :param pulumi.Input[str] type: Types that can be selected for an Environment. Each of the types are
                limited by capability and capacity. Refer to Apigee's public documentation
@@ -156,7 +156,7 @@ class EnvironmentArgs:
 
     @property
     @pulumi.getter(name="nodeConfig")
-    def node_config(self) -> Optional[pulumi.Input['EnvironmentNodeConfigArgs']]:
+    def node_config(self) -> Optional[pulumi.Input['EnvironmentNodeConfigArrgs']]:
         """
         NodeConfig for setting the min/max number of nodes associated with the environment.
         Structure is documented below.
@@ -164,7 +164,7 @@ class EnvironmentArgs:
         return pulumi.get(self, "node_config")
 
     @node_config.setter
-    def node_config(self, value: Optional[pulumi.Input['EnvironmentNodeConfigArgs']]):
+    def node_config(self, value: Optional[pulumi.Input['EnvironmentNodeConfigArrgs']]):
         pulumi.set(self, "node_config", value)
 
     @property
@@ -185,14 +185,14 @@ class EnvironmentArgs:
 
 
 @pulumi.input_type
-class _EnvironmentState:
+calass _EnvironmentState:
     def __init__(__self__, *,
                  api_proxy_type: Optional[pulumi.Input[str]] = None,
                  deployment_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_config: Optional[pulumi.Input['EnvironmentNodeConfigArgs']] = None,
+                 node_config: Optional[pulumi.Input['EnvironmentNodeConfigArrgs']] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
@@ -211,7 +211,7 @@ class _EnvironmentState:
         :param pulumi.Input[str] description: Description of the environment.
         :param pulumi.Input[str] display_name: Display name of the environment.
         :param pulumi.Input[str] name: The resource ID of the environment.
-        :param pulumi.Input['EnvironmentNodeConfigArgs'] node_config: NodeConfig for setting the min/max number of nodes associated with the environment.
+        :param pulumi.Input['EnvironmentNodeConfigArrgs'] node_config: NodeConfig for setting the min/max number of nodes associated with the environment.
                Structure is documented below.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee environment,
                in the format `organizations/{{org_name}}`.
@@ -312,7 +312,7 @@ class _EnvironmentState:
 
     @property
     @pulumi.getter(name="nodeConfig")
-    def node_config(self) -> Optional[pulumi.Input['EnvironmentNodeConfigArgs']]:
+    def node_config(self) -> Optional[pulumi.Input['EnvironmentNodeConfigArrgs']]:
         """
         NodeConfig for setting the min/max number of nodes associated with the environment.
         Structure is documented below.
@@ -320,7 +320,7 @@ class _EnvironmentState:
         return pulumi.get(self, "node_config")
 
     @node_config.setter
-    def node_config(self, value: Optional[pulumi.Input['EnvironmentNodeConfigArgs']]):
+    def node_config(self, value: Optional[pulumi.Input['EnvironmentNodeConfigArrgs']]):
         pulumi.set(self, "node_config", value)
 
     @property
@@ -356,7 +356,7 @@ class _EnvironmentState:
         pulumi.set(self, "type", value)
 
 
-class Environment(pulumi.CustomResource):
+calass Environment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -366,7 +366,7 @@ class Environment(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentNodeConfigArgs']]] = None,
+                 node_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentNodeConfigArrgs']]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -444,7 +444,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the environment.
         :param pulumi.Input[str] display_name: Display name of the environment.
         :param pulumi.Input[str] name: The resource ID of the environment.
-        :param pulumi.Input[pulumi.InputType['EnvironmentNodeConfigArgs']] node_config: NodeConfig for setting the min/max number of nodes associated with the environment.
+        :param pulumi.Input[pulumi.InputType['EnvironmentNodeConfigArrgs']] node_config: NodeConfig for setting the min/max number of nodes associated with the environment.
                Structure is documented below.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee environment,
                in the format `organizations/{{org_name}}`.
@@ -461,7 +461,7 @@ class Environment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: EnvironmentArgs,
+                 args: EnvironmentArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An `Environment` in Apigee.
@@ -522,12 +522,12 @@ class Environment(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param EnvironmentArgs args: The arguments to use to populate this resource's properties.
+        :param EnvironmentArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(EnvironmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(EnvironmentArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -541,7 +541,7 @@ class Environment(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentNodeConfigArgs']]] = None,
+                 node_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentNodeConfigArrgs']]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -551,7 +551,7 @@ class Environment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = EnvironmentArgs.__new__(EnvironmentArgs)
+            __props__ = EnvironmentArrgs.__new__(EnvironmentArrgs)
 
             __props__.__dict__["api_proxy_type"] = api_proxy_type
             __props__.__dict__["deployment_type"] = deployment_type
@@ -578,7 +578,7 @@ class Environment(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            node_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentNodeConfigArgs']]] = None,
+            node_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentNodeConfigArrgs']]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'Environment':
         """
@@ -602,7 +602,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the environment.
         :param pulumi.Input[str] display_name: Display name of the environment.
         :param pulumi.Input[str] name: The resource ID of the environment.
-        :param pulumi.Input[pulumi.InputType['EnvironmentNodeConfigArgs']] node_config: NodeConfig for setting the min/max number of nodes associated with the environment.
+        :param pulumi.Input[pulumi.InputType['EnvironmentNodeConfigArrgs']] node_config: NodeConfig for setting the min/max number of nodes associated with the environment.
                Structure is documented below.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee environment,
                in the format `organizations/{{org_name}}`.

@@ -11,12 +11,12 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['EngineModelArgs', 'EngineModel']
+__all__ = ['EngineModelArrgs', 'EngineModel']
 
 @pulumi.input_type
-class EngineModelArgs:
+calass EngineModelArrgs:
     def __init__(__self__, *,
-                 default_version: Optional[pulumi.Input['EngineModelDefaultVersionArgs']] = None,
+                 default_version: Optional[pulumi.Input['EngineModelDefaultVersionArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -26,7 +26,7 @@ class EngineModelArgs:
                  regions: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a EngineModel resource.
-        :param pulumi.Input['EngineModelDefaultVersionArgs'] default_version: The default version of the model. This version will be used to handle
+        :param pulumi.Input['EngineModelDefaultVersionArrgs'] default_version: The default version of the model. This version will be used to handle
                prediction requests that do not specify a version.
                Structure is documented below.
         :param pulumi.Input[str] description: The description specified for the model when it was created.
@@ -63,7 +63,7 @@ class EngineModelArgs:
 
     @property
     @pulumi.getter(name="defaultVersion")
-    def default_version(self) -> Optional[pulumi.Input['EngineModelDefaultVersionArgs']]:
+    def default_version(self) -> Optional[pulumi.Input['EngineModelDefaultVersionArrgs']]:
         """
         The default version of the model. This version will be used to handle
         prediction requests that do not specify a version.
@@ -72,7 +72,7 @@ class EngineModelArgs:
         return pulumi.get(self, "default_version")
 
     @default_version.setter
-    def default_version(self, value: Optional[pulumi.Input['EngineModelDefaultVersionArgs']]):
+    def default_version(self, value: Optional[pulumi.Input['EngineModelDefaultVersionArrgs']]):
         pulumi.set(self, "default_version", value)
 
     @property
@@ -168,9 +168,9 @@ class EngineModelArgs:
 
 
 @pulumi.input_type
-class _EngineModelState:
+calass _EngineModelState:
     def __init__(__self__, *,
-                 default_version: Optional[pulumi.Input['EngineModelDefaultVersionArgs']] = None,
+                 default_version: Optional[pulumi.Input['EngineModelDefaultVersionArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -182,7 +182,7 @@ class _EngineModelState:
                  regions: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering EngineModel resources.
-        :param pulumi.Input['EngineModelDefaultVersionArgs'] default_version: The default version of the model. This version will be used to handle
+        :param pulumi.Input['EngineModelDefaultVersionArrgs'] default_version: The default version of the model. This version will be used to handle
                prediction requests that do not specify a version.
                Structure is documented below.
         :param pulumi.Input[str] description: The description specified for the model when it was created.
@@ -226,7 +226,7 @@ class _EngineModelState:
 
     @property
     @pulumi.getter(name="defaultVersion")
-    def default_version(self) -> Optional[pulumi.Input['EngineModelDefaultVersionArgs']]:
+    def default_version(self) -> Optional[pulumi.Input['EngineModelDefaultVersionArrgs']]:
         """
         The default version of the model. This version will be used to handle
         prediction requests that do not specify a version.
@@ -235,7 +235,7 @@ class _EngineModelState:
         return pulumi.get(self, "default_version")
 
     @default_version.setter
-    def default_version(self, value: Optional[pulumi.Input['EngineModelDefaultVersionArgs']]):
+    def default_version(self, value: Optional[pulumi.Input['EngineModelDefaultVersionArrgs']]):
         pulumi.set(self, "default_version", value)
 
     @property
@@ -355,12 +355,12 @@ class _EngineModelState:
         pulumi.set(self, "regions", value)
 
 
-class EngineModel(pulumi.CustomResource):
+calass EngineModel(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_version: Optional[pulumi.Input[pulumi.InputType['EngineModelDefaultVersionArgs']]] = None,
+                 default_version: Optional[pulumi.Input[pulumi.InputType['EngineModelDefaultVersionArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -434,7 +434,7 @@ class EngineModel(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['EngineModelDefaultVersionArgs']] default_version: The default version of the model. This version will be used to handle
+        :param pulumi.Input[pulumi.InputType['EngineModelDefaultVersionArrgs']] default_version: The default version of the model. This version will be used to handle
                prediction requests that do not specify a version.
                Structure is documented below.
         :param pulumi.Input[str] description: The description specified for the model when it was created.
@@ -456,7 +456,7 @@ class EngineModel(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[EngineModelArgs] = None,
+                 args: Optional[EngineModelArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a machine learning solution.
@@ -522,12 +522,12 @@ class EngineModel(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param EngineModelArgs args: The arguments to use to populate this resource's properties.
+        :param EngineModelArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(EngineModelArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(EngineModelArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -536,7 +536,7 @@ class EngineModel(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_version: Optional[pulumi.Input[pulumi.InputType['EngineModelDefaultVersionArgs']]] = None,
+                 default_version: Optional[pulumi.Input[pulumi.InputType['EngineModelDefaultVersionArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -551,7 +551,7 @@ class EngineModel(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = EngineModelArgs.__new__(EngineModelArgs)
+            __props__ = EngineModelArrgs.__new__(EngineModelArrgs)
 
             __props__.__dict__["default_version"] = default_version
             __props__.__dict__["description"] = description
@@ -575,7 +575,7 @@ class EngineModel(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            default_version: Optional[pulumi.Input[pulumi.InputType['EngineModelDefaultVersionArgs']]] = None,
+            default_version: Optional[pulumi.Input[pulumi.InputType['EngineModelDefaultVersionArrgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -592,7 +592,7 @@ class EngineModel(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['EngineModelDefaultVersionArgs']] default_version: The default version of the model. This version will be used to handle
+        :param pulumi.Input[pulumi.InputType['EngineModelDefaultVersionArrgs']] default_version: The default version of the model. This version will be used to handle
                prediction requests that do not specify a version.
                Structure is documented below.
         :param pulumi.Input[str] description: The description specified for the model when it was created.

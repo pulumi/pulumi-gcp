@@ -11,22 +11,22 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ConnectionProfileArgs', 'ConnectionProfile']
+__all__ = ['ConnectionProfileArrgs', 'ConnectionProfile']
 
 @pulumi.input_type
-class ConnectionProfileArgs:
+calass ConnectionProfileArrgs:
     def __init__(__self__, *,
                  connection_profile_id: pulumi.Input[str],
                  display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 bigquery_profile: Optional[pulumi.Input['ConnectionProfileBigqueryProfileArgs']] = None,
-                 forward_ssh_connectivity: Optional[pulumi.Input['ConnectionProfileForwardSshConnectivityArgs']] = None,
-                 gcs_profile: Optional[pulumi.Input['ConnectionProfileGcsProfileArgs']] = None,
+                 bigquery_profile: Optional[pulumi.Input['ConnectionProfileBigqueryProfileArrgs']] = None,
+                 forward_ssh_connectivity: Optional[pulumi.Input['ConnectionProfileForwardSshConnectivityArrgs']] = None,
+                 gcs_profile: Optional[pulumi.Input['ConnectionProfileGcsProfileArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 mysql_profile: Optional[pulumi.Input['ConnectionProfileMysqlProfileArgs']] = None,
-                 oracle_profile: Optional[pulumi.Input['ConnectionProfileOracleProfileArgs']] = None,
-                 postgresql_profile: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileArgs']] = None,
-                 private_connectivity: Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArgs']] = None,
+                 mysql_profile: Optional[pulumi.Input['ConnectionProfileMysqlProfileArrgs']] = None,
+                 oracle_profile: Optional[pulumi.Input['ConnectionProfileOracleProfileArrgs']] = None,
+                 postgresql_profile: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileArrgs']] = None,
+                 private_connectivity: Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ConnectionProfile resource.
@@ -36,21 +36,21 @@ class ConnectionProfileArgs:
                
                
                - - -
-        :param pulumi.Input['ConnectionProfileBigqueryProfileArgs'] bigquery_profile: BigQuery warehouse profile.
-        :param pulumi.Input['ConnectionProfileForwardSshConnectivityArgs'] forward_ssh_connectivity: Forward SSH tunnel connectivity.
+        :param pulumi.Input['ConnectionProfileBigqueryProfileArrgs'] bigquery_profile: BigQuery warehouse profile.
+        :param pulumi.Input['ConnectionProfileForwardSshConnectivityArrgs'] forward_ssh_connectivity: Forward SSH tunnel connectivity.
                Structure is documented below.
-        :param pulumi.Input['ConnectionProfileGcsProfileArgs'] gcs_profile: Cloud Storage bucket profile.
+        :param pulumi.Input['ConnectionProfileGcsProfileArrgs'] gcs_profile: Cloud Storage bucket profile.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input['ConnectionProfileMysqlProfileArgs'] mysql_profile: MySQL database profile.
+        :param pulumi.Input['ConnectionProfileMysqlProfileArrgs'] mysql_profile: MySQL database profile.
                Structure is documented below.
-        :param pulumi.Input['ConnectionProfileOracleProfileArgs'] oracle_profile: Oracle database profile.
+        :param pulumi.Input['ConnectionProfileOracleProfileArrgs'] oracle_profile: Oracle database profile.
                Structure is documented below.
-        :param pulumi.Input['ConnectionProfilePostgresqlProfileArgs'] postgresql_profile: PostgreSQL database profile.
+        :param pulumi.Input['ConnectionProfilePostgresqlProfileArrgs'] postgresql_profile: PostgreSQL database profile.
                Structure is documented below.
-        :param pulumi.Input['ConnectionProfilePrivateConnectivityArgs'] private_connectivity: Private connectivity.
+        :param pulumi.Input['ConnectionProfilePrivateConnectivityArrgs'] private_connectivity: Private connectivity.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -118,19 +118,19 @@ class ConnectionProfileArgs:
 
     @property
     @pulumi.getter(name="bigqueryProfile")
-    def bigquery_profile(self) -> Optional[pulumi.Input['ConnectionProfileBigqueryProfileArgs']]:
+    def bigquery_profile(self) -> Optional[pulumi.Input['ConnectionProfileBigqueryProfileArrgs']]:
         """
         BigQuery warehouse profile.
         """
         return pulumi.get(self, "bigquery_profile")
 
     @bigquery_profile.setter
-    def bigquery_profile(self, value: Optional[pulumi.Input['ConnectionProfileBigqueryProfileArgs']]):
+    def bigquery_profile(self, value: Optional[pulumi.Input['ConnectionProfileBigqueryProfileArrgs']]):
         pulumi.set(self, "bigquery_profile", value)
 
     @property
     @pulumi.getter(name="forwardSshConnectivity")
-    def forward_ssh_connectivity(self) -> Optional[pulumi.Input['ConnectionProfileForwardSshConnectivityArgs']]:
+    def forward_ssh_connectivity(self) -> Optional[pulumi.Input['ConnectionProfileForwardSshConnectivityArrgs']]:
         """
         Forward SSH tunnel connectivity.
         Structure is documented below.
@@ -138,12 +138,12 @@ class ConnectionProfileArgs:
         return pulumi.get(self, "forward_ssh_connectivity")
 
     @forward_ssh_connectivity.setter
-    def forward_ssh_connectivity(self, value: Optional[pulumi.Input['ConnectionProfileForwardSshConnectivityArgs']]):
+    def forward_ssh_connectivity(self, value: Optional[pulumi.Input['ConnectionProfileForwardSshConnectivityArrgs']]):
         pulumi.set(self, "forward_ssh_connectivity", value)
 
     @property
     @pulumi.getter(name="gcsProfile")
-    def gcs_profile(self) -> Optional[pulumi.Input['ConnectionProfileGcsProfileArgs']]:
+    def gcs_profile(self) -> Optional[pulumi.Input['ConnectionProfileGcsProfileArrgs']]:
         """
         Cloud Storage bucket profile.
         Structure is documented below.
@@ -151,7 +151,7 @@ class ConnectionProfileArgs:
         return pulumi.get(self, "gcs_profile")
 
     @gcs_profile.setter
-    def gcs_profile(self, value: Optional[pulumi.Input['ConnectionProfileGcsProfileArgs']]):
+    def gcs_profile(self, value: Optional[pulumi.Input['ConnectionProfileGcsProfileArrgs']]):
         pulumi.set(self, "gcs_profile", value)
 
     @property
@@ -170,7 +170,7 @@ class ConnectionProfileArgs:
 
     @property
     @pulumi.getter(name="mysqlProfile")
-    def mysql_profile(self) -> Optional[pulumi.Input['ConnectionProfileMysqlProfileArgs']]:
+    def mysql_profile(self) -> Optional[pulumi.Input['ConnectionProfileMysqlProfileArrgs']]:
         """
         MySQL database profile.
         Structure is documented below.
@@ -178,12 +178,12 @@ class ConnectionProfileArgs:
         return pulumi.get(self, "mysql_profile")
 
     @mysql_profile.setter
-    def mysql_profile(self, value: Optional[pulumi.Input['ConnectionProfileMysqlProfileArgs']]):
+    def mysql_profile(self, value: Optional[pulumi.Input['ConnectionProfileMysqlProfileArrgs']]):
         pulumi.set(self, "mysql_profile", value)
 
     @property
     @pulumi.getter(name="oracleProfile")
-    def oracle_profile(self) -> Optional[pulumi.Input['ConnectionProfileOracleProfileArgs']]:
+    def oracle_profile(self) -> Optional[pulumi.Input['ConnectionProfileOracleProfileArrgs']]:
         """
         Oracle database profile.
         Structure is documented below.
@@ -191,12 +191,12 @@ class ConnectionProfileArgs:
         return pulumi.get(self, "oracle_profile")
 
     @oracle_profile.setter
-    def oracle_profile(self, value: Optional[pulumi.Input['ConnectionProfileOracleProfileArgs']]):
+    def oracle_profile(self, value: Optional[pulumi.Input['ConnectionProfileOracleProfileArrgs']]):
         pulumi.set(self, "oracle_profile", value)
 
     @property
     @pulumi.getter(name="postgresqlProfile")
-    def postgresql_profile(self) -> Optional[pulumi.Input['ConnectionProfilePostgresqlProfileArgs']]:
+    def postgresql_profile(self) -> Optional[pulumi.Input['ConnectionProfilePostgresqlProfileArrgs']]:
         """
         PostgreSQL database profile.
         Structure is documented below.
@@ -204,12 +204,12 @@ class ConnectionProfileArgs:
         return pulumi.get(self, "postgresql_profile")
 
     @postgresql_profile.setter
-    def postgresql_profile(self, value: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileArgs']]):
+    def postgresql_profile(self, value: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileArrgs']]):
         pulumi.set(self, "postgresql_profile", value)
 
     @property
     @pulumi.getter(name="privateConnectivity")
-    def private_connectivity(self) -> Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArgs']]:
+    def private_connectivity(self) -> Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArrgs']]:
         """
         Private connectivity.
         Structure is documented below.
@@ -217,7 +217,7 @@ class ConnectionProfileArgs:
         return pulumi.get(self, "private_connectivity")
 
     @private_connectivity.setter
-    def private_connectivity(self, value: Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArgs']]):
+    def private_connectivity(self, value: Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArrgs']]):
         pulumi.set(self, "private_connectivity", value)
 
     @property
@@ -235,32 +235,32 @@ class ConnectionProfileArgs:
 
 
 @pulumi.input_type
-class _ConnectionProfileState:
+calass _ConnectionProfileState:
     def __init__(__self__, *,
-                 bigquery_profile: Optional[pulumi.Input['ConnectionProfileBigqueryProfileArgs']] = None,
+                 bigquery_profile: Optional[pulumi.Input['ConnectionProfileBigqueryProfileArrgs']] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 forward_ssh_connectivity: Optional[pulumi.Input['ConnectionProfileForwardSshConnectivityArgs']] = None,
-                 gcs_profile: Optional[pulumi.Input['ConnectionProfileGcsProfileArgs']] = None,
+                 forward_ssh_connectivity: Optional[pulumi.Input['ConnectionProfileForwardSshConnectivityArrgs']] = None,
+                 gcs_profile: Optional[pulumi.Input['ConnectionProfileGcsProfileArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 mysql_profile: Optional[pulumi.Input['ConnectionProfileMysqlProfileArgs']] = None,
+                 mysql_profile: Optional[pulumi.Input['ConnectionProfileMysqlProfileArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 oracle_profile: Optional[pulumi.Input['ConnectionProfileOracleProfileArgs']] = None,
-                 postgresql_profile: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileArgs']] = None,
-                 private_connectivity: Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArgs']] = None,
+                 oracle_profile: Optional[pulumi.Input['ConnectionProfileOracleProfileArrgs']] = None,
+                 postgresql_profile: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileArrgs']] = None,
+                 private_connectivity: Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering ConnectionProfile resources.
-        :param pulumi.Input['ConnectionProfileBigqueryProfileArgs'] bigquery_profile: BigQuery warehouse profile.
+        :param pulumi.Input['ConnectionProfileBigqueryProfileArrgs'] bigquery_profile: BigQuery warehouse profile.
         :param pulumi.Input[str] connection_profile_id: The connection profile identifier.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input['ConnectionProfileForwardSshConnectivityArgs'] forward_ssh_connectivity: Forward SSH tunnel connectivity.
+        :param pulumi.Input['ConnectionProfileForwardSshConnectivityArrgs'] forward_ssh_connectivity: Forward SSH tunnel connectivity.
                Structure is documented below.
-        :param pulumi.Input['ConnectionProfileGcsProfileArgs'] gcs_profile: Cloud Storage bucket profile.
+        :param pulumi.Input['ConnectionProfileGcsProfileArrgs'] gcs_profile: Cloud Storage bucket profile.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -269,14 +269,14 @@ class _ConnectionProfileState:
                
                
                - - -
-        :param pulumi.Input['ConnectionProfileMysqlProfileArgs'] mysql_profile: MySQL database profile.
+        :param pulumi.Input['ConnectionProfileMysqlProfileArrgs'] mysql_profile: MySQL database profile.
                Structure is documented below.
         :param pulumi.Input[str] name: The resource's name.
-        :param pulumi.Input['ConnectionProfileOracleProfileArgs'] oracle_profile: Oracle database profile.
+        :param pulumi.Input['ConnectionProfileOracleProfileArrgs'] oracle_profile: Oracle database profile.
                Structure is documented below.
-        :param pulumi.Input['ConnectionProfilePostgresqlProfileArgs'] postgresql_profile: PostgreSQL database profile.
+        :param pulumi.Input['ConnectionProfilePostgresqlProfileArrgs'] postgresql_profile: PostgreSQL database profile.
                Structure is documented below.
-        :param pulumi.Input['ConnectionProfilePrivateConnectivityArgs'] private_connectivity: Private connectivity.
+        :param pulumi.Input['ConnectionProfilePrivateConnectivityArrgs'] private_connectivity: Private connectivity.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -316,14 +316,14 @@ class _ConnectionProfileState:
 
     @property
     @pulumi.getter(name="bigqueryProfile")
-    def bigquery_profile(self) -> Optional[pulumi.Input['ConnectionProfileBigqueryProfileArgs']]:
+    def bigquery_profile(self) -> Optional[pulumi.Input['ConnectionProfileBigqueryProfileArrgs']]:
         """
         BigQuery warehouse profile.
         """
         return pulumi.get(self, "bigquery_profile")
 
     @bigquery_profile.setter
-    def bigquery_profile(self, value: Optional[pulumi.Input['ConnectionProfileBigqueryProfileArgs']]):
+    def bigquery_profile(self, value: Optional[pulumi.Input['ConnectionProfileBigqueryProfileArrgs']]):
         pulumi.set(self, "bigquery_profile", value)
 
     @property
@@ -364,7 +364,7 @@ class _ConnectionProfileState:
 
     @property
     @pulumi.getter(name="forwardSshConnectivity")
-    def forward_ssh_connectivity(self) -> Optional[pulumi.Input['ConnectionProfileForwardSshConnectivityArgs']]:
+    def forward_ssh_connectivity(self) -> Optional[pulumi.Input['ConnectionProfileForwardSshConnectivityArrgs']]:
         """
         Forward SSH tunnel connectivity.
         Structure is documented below.
@@ -372,12 +372,12 @@ class _ConnectionProfileState:
         return pulumi.get(self, "forward_ssh_connectivity")
 
     @forward_ssh_connectivity.setter
-    def forward_ssh_connectivity(self, value: Optional[pulumi.Input['ConnectionProfileForwardSshConnectivityArgs']]):
+    def forward_ssh_connectivity(self, value: Optional[pulumi.Input['ConnectionProfileForwardSshConnectivityArrgs']]):
         pulumi.set(self, "forward_ssh_connectivity", value)
 
     @property
     @pulumi.getter(name="gcsProfile")
-    def gcs_profile(self) -> Optional[pulumi.Input['ConnectionProfileGcsProfileArgs']]:
+    def gcs_profile(self) -> Optional[pulumi.Input['ConnectionProfileGcsProfileArrgs']]:
         """
         Cloud Storage bucket profile.
         Structure is documented below.
@@ -385,7 +385,7 @@ class _ConnectionProfileState:
         return pulumi.get(self, "gcs_profile")
 
     @gcs_profile.setter
-    def gcs_profile(self, value: Optional[pulumi.Input['ConnectionProfileGcsProfileArgs']]):
+    def gcs_profile(self, value: Optional[pulumi.Input['ConnectionProfileGcsProfileArrgs']]):
         pulumi.set(self, "gcs_profile", value)
 
     @property
@@ -419,7 +419,7 @@ class _ConnectionProfileState:
 
     @property
     @pulumi.getter(name="mysqlProfile")
-    def mysql_profile(self) -> Optional[pulumi.Input['ConnectionProfileMysqlProfileArgs']]:
+    def mysql_profile(self) -> Optional[pulumi.Input['ConnectionProfileMysqlProfileArrgs']]:
         """
         MySQL database profile.
         Structure is documented below.
@@ -427,7 +427,7 @@ class _ConnectionProfileState:
         return pulumi.get(self, "mysql_profile")
 
     @mysql_profile.setter
-    def mysql_profile(self, value: Optional[pulumi.Input['ConnectionProfileMysqlProfileArgs']]):
+    def mysql_profile(self, value: Optional[pulumi.Input['ConnectionProfileMysqlProfileArrgs']]):
         pulumi.set(self, "mysql_profile", value)
 
     @property
@@ -444,7 +444,7 @@ class _ConnectionProfileState:
 
     @property
     @pulumi.getter(name="oracleProfile")
-    def oracle_profile(self) -> Optional[pulumi.Input['ConnectionProfileOracleProfileArgs']]:
+    def oracle_profile(self) -> Optional[pulumi.Input['ConnectionProfileOracleProfileArrgs']]:
         """
         Oracle database profile.
         Structure is documented below.
@@ -452,12 +452,12 @@ class _ConnectionProfileState:
         return pulumi.get(self, "oracle_profile")
 
     @oracle_profile.setter
-    def oracle_profile(self, value: Optional[pulumi.Input['ConnectionProfileOracleProfileArgs']]):
+    def oracle_profile(self, value: Optional[pulumi.Input['ConnectionProfileOracleProfileArrgs']]):
         pulumi.set(self, "oracle_profile", value)
 
     @property
     @pulumi.getter(name="postgresqlProfile")
-    def postgresql_profile(self) -> Optional[pulumi.Input['ConnectionProfilePostgresqlProfileArgs']]:
+    def postgresql_profile(self) -> Optional[pulumi.Input['ConnectionProfilePostgresqlProfileArrgs']]:
         """
         PostgreSQL database profile.
         Structure is documented below.
@@ -465,12 +465,12 @@ class _ConnectionProfileState:
         return pulumi.get(self, "postgresql_profile")
 
     @postgresql_profile.setter
-    def postgresql_profile(self, value: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileArgs']]):
+    def postgresql_profile(self, value: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileArrgs']]):
         pulumi.set(self, "postgresql_profile", value)
 
     @property
     @pulumi.getter(name="privateConnectivity")
-    def private_connectivity(self) -> Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArgs']]:
+    def private_connectivity(self) -> Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArrgs']]:
         """
         Private connectivity.
         Structure is documented below.
@@ -478,7 +478,7 @@ class _ConnectionProfileState:
         return pulumi.get(self, "private_connectivity")
 
     @private_connectivity.setter
-    def private_connectivity(self, value: Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArgs']]):
+    def private_connectivity(self, value: Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArrgs']]):
         pulumi.set(self, "private_connectivity", value)
 
     @property
@@ -508,22 +508,22 @@ class _ConnectionProfileState:
         pulumi.set(self, "pulumi_labels", value)
 
 
-class ConnectionProfile(pulumi.CustomResource):
+calass ConnectionProfile(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileBigqueryProfileArgs']]] = None,
+                 bigquery_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileBigqueryProfileArrgs']]] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 forward_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileForwardSshConnectivityArgs']]] = None,
-                 gcs_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileGcsProfileArgs']]] = None,
+                 forward_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileForwardSshConnectivityArrgs']]] = None,
+                 gcs_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileGcsProfileArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 mysql_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileMysqlProfileArgs']]] = None,
-                 oracle_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileOracleProfileArgs']]] = None,
-                 postgresql_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlProfileArgs']]] = None,
-                 private_connectivity: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePrivateConnectivityArgs']]] = None,
+                 mysql_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileMysqlProfileArrgs']]] = None,
+                 oracle_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileOracleProfileArrgs']]] = None,
+                 postgresql_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlProfileArrgs']]] = None,
+                 private_connectivity: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePrivateConnectivityArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -549,7 +549,7 @@ class ConnectionProfile(pulumi.CustomResource):
         default = gcp.datastream.ConnectionProfile("default",
             connection_profile_id="my-profile",
             display_name="Connection profile",
-            gcs_profile=gcp.datastream.ConnectionProfileGcsProfileArgs(
+            gcs_profile=gcp.datastream.ConnectionProfileGcsProfileArrgs(
                 bucket="my-bucket",
                 root_path="/path",
             ),
@@ -569,7 +569,7 @@ class ConnectionProfile(pulumi.CustomResource):
             labels={
                 "key": "value",
             },
-            vpc_peering_config=gcp.datastream.PrivateConnectionVpcPeeringConfigArgs(
+            vpc_peering_config=gcp.datastream.PrivateConnectionVpcPeeringConfigArrgs(
                 vpc=default_network.id,
                 subnet="10.0.0.0/29",
             ))
@@ -577,8 +577,8 @@ class ConnectionProfile(pulumi.CustomResource):
             display_name="Connection profile",
             location="us-central1",
             connection_profile_id="my-profile",
-            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs(),
-            private_connectivity=gcp.datastream.ConnectionProfilePrivateConnectivityArgs(
+            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArrgs(),
+            private_connectivity=gcp.datastream.ConnectionProfilePrivateConnectivityArrgs(
                 private_connection=private_connection.id,
             ))
         ```
@@ -591,13 +591,13 @@ class ConnectionProfile(pulumi.CustomResource):
         default = gcp.datastream.ConnectionProfile("default",
             connection_profile_id="my-profile",
             display_name="Connection profile",
-            forward_ssh_connectivity=gcp.datastream.ConnectionProfileForwardSshConnectivityArgs(
+            forward_ssh_connectivity=gcp.datastream.ConnectionProfileForwardSshConnectivityArrgs(
                 hostname="google.com",
                 password="swordfish",
                 port=8022,
                 username="my-user",
             ),
-            gcs_profile=gcp.datastream.ConnectionProfileGcsProfileArgs(
+            gcs_profile=gcp.datastream.ConnectionProfileGcsProfileArrgs(
                 bucket="my-bucket",
                 root_path="/path",
             ),
@@ -616,23 +616,23 @@ class ConnectionProfile(pulumi.CustomResource):
         instance = gcp.sql.DatabaseInstance("instance",
             database_version="POSTGRES_14",
             region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+            settings=gcp.sql.DatabaseInstanceSettingsArrgs(
                 tier="db-f1-micro",
-                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
+                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArrgs(
                     authorized_networks=[
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrgs(
                             value="34.71.242.81",
                         ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrgs(
                             value="34.72.28.29",
                         ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrgs(
                             value="34.67.6.157",
                         ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrgs(
                             value="34.67.234.134",
                         ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrgs(
                             value="34.72.239.218",
                         ),
                     ],
@@ -650,7 +650,7 @@ class ConnectionProfile(pulumi.CustomResource):
             display_name="Connection profile",
             location="us-central1",
             connection_profile_id="my-profile",
-            postgresql_profile=gcp.datastream.ConnectionProfilePostgresqlProfileArgs(
+            postgresql_profile=gcp.datastream.ConnectionProfilePostgresqlProfileArrgs(
                 hostname=instance.public_ip_address,
                 username=user.name,
                 password=user.password,
@@ -684,12 +684,12 @@ class ConnectionProfile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConnectionProfileBigqueryProfileArgs']] bigquery_profile: BigQuery warehouse profile.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfileBigqueryProfileArrgs']] bigquery_profile: BigQuery warehouse profile.
         :param pulumi.Input[str] connection_profile_id: The connection profile identifier.
         :param pulumi.Input[str] display_name: Display name.
-        :param pulumi.Input[pulumi.InputType['ConnectionProfileForwardSshConnectivityArgs']] forward_ssh_connectivity: Forward SSH tunnel connectivity.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfileForwardSshConnectivityArrgs']] forward_ssh_connectivity: Forward SSH tunnel connectivity.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionProfileGcsProfileArgs']] gcs_profile: Cloud Storage bucket profile.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfileGcsProfileArrgs']] gcs_profile: Cloud Storage bucket profile.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -698,13 +698,13 @@ class ConnectionProfile(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['ConnectionProfileMysqlProfileArgs']] mysql_profile: MySQL database profile.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfileMysqlProfileArrgs']] mysql_profile: MySQL database profile.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionProfileOracleProfileArgs']] oracle_profile: Oracle database profile.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfileOracleProfileArrgs']] oracle_profile: Oracle database profile.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlProfileArgs']] postgresql_profile: PostgreSQL database profile.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlProfileArrgs']] postgresql_profile: PostgreSQL database profile.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionProfilePrivateConnectivityArgs']] private_connectivity: Private connectivity.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfilePrivateConnectivityArrgs']] private_connectivity: Private connectivity.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -713,7 +713,7 @@ class ConnectionProfile(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ConnectionProfileArgs,
+                 args: ConnectionProfileArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A set of reusable connection configurations to be used as a source or destination for a stream.
@@ -738,7 +738,7 @@ class ConnectionProfile(pulumi.CustomResource):
         default = gcp.datastream.ConnectionProfile("default",
             connection_profile_id="my-profile",
             display_name="Connection profile",
-            gcs_profile=gcp.datastream.ConnectionProfileGcsProfileArgs(
+            gcs_profile=gcp.datastream.ConnectionProfileGcsProfileArrgs(
                 bucket="my-bucket",
                 root_path="/path",
             ),
@@ -758,7 +758,7 @@ class ConnectionProfile(pulumi.CustomResource):
             labels={
                 "key": "value",
             },
-            vpc_peering_config=gcp.datastream.PrivateConnectionVpcPeeringConfigArgs(
+            vpc_peering_config=gcp.datastream.PrivateConnectionVpcPeeringConfigArrgs(
                 vpc=default_network.id,
                 subnet="10.0.0.0/29",
             ))
@@ -766,8 +766,8 @@ class ConnectionProfile(pulumi.CustomResource):
             display_name="Connection profile",
             location="us-central1",
             connection_profile_id="my-profile",
-            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs(),
-            private_connectivity=gcp.datastream.ConnectionProfilePrivateConnectivityArgs(
+            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArrgs(),
+            private_connectivity=gcp.datastream.ConnectionProfilePrivateConnectivityArrgs(
                 private_connection=private_connection.id,
             ))
         ```
@@ -780,13 +780,13 @@ class ConnectionProfile(pulumi.CustomResource):
         default = gcp.datastream.ConnectionProfile("default",
             connection_profile_id="my-profile",
             display_name="Connection profile",
-            forward_ssh_connectivity=gcp.datastream.ConnectionProfileForwardSshConnectivityArgs(
+            forward_ssh_connectivity=gcp.datastream.ConnectionProfileForwardSshConnectivityArrgs(
                 hostname="google.com",
                 password="swordfish",
                 port=8022,
                 username="my-user",
             ),
-            gcs_profile=gcp.datastream.ConnectionProfileGcsProfileArgs(
+            gcs_profile=gcp.datastream.ConnectionProfileGcsProfileArrgs(
                 bucket="my-bucket",
                 root_path="/path",
             ),
@@ -805,23 +805,23 @@ class ConnectionProfile(pulumi.CustomResource):
         instance = gcp.sql.DatabaseInstance("instance",
             database_version="POSTGRES_14",
             region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+            settings=gcp.sql.DatabaseInstanceSettingsArrgs(
                 tier="db-f1-micro",
-                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
+                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArrgs(
                     authorized_networks=[
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrgs(
                             value="34.71.242.81",
                         ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrgs(
                             value="34.72.28.29",
                         ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrgs(
                             value="34.67.6.157",
                         ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrgs(
                             value="34.67.234.134",
                         ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrgs(
                             value="34.72.239.218",
                         ),
                     ],
@@ -839,7 +839,7 @@ class ConnectionProfile(pulumi.CustomResource):
             display_name="Connection profile",
             location="us-central1",
             connection_profile_id="my-profile",
-            postgresql_profile=gcp.datastream.ConnectionProfilePostgresqlProfileArgs(
+            postgresql_profile=gcp.datastream.ConnectionProfilePostgresqlProfileArrgs(
                 hostname=instance.public_ip_address,
                 username=user.name,
                 password=user.password,
@@ -872,12 +872,12 @@ class ConnectionProfile(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ConnectionProfileArgs args: The arguments to use to populate this resource's properties.
+        :param ConnectionProfileArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ConnectionProfileArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ConnectionProfileArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -886,17 +886,17 @@ class ConnectionProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileBigqueryProfileArgs']]] = None,
+                 bigquery_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileBigqueryProfileArrgs']]] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 forward_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileForwardSshConnectivityArgs']]] = None,
-                 gcs_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileGcsProfileArgs']]] = None,
+                 forward_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileForwardSshConnectivityArrgs']]] = None,
+                 gcs_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileGcsProfileArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 mysql_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileMysqlProfileArgs']]] = None,
-                 oracle_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileOracleProfileArgs']]] = None,
-                 postgresql_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlProfileArgs']]] = None,
-                 private_connectivity: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePrivateConnectivityArgs']]] = None,
+                 mysql_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileMysqlProfileArrgs']]] = None,
+                 oracle_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileOracleProfileArrgs']]] = None,
+                 postgresql_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlProfileArrgs']]] = None,
+                 private_connectivity: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePrivateConnectivityArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -905,7 +905,7 @@ class ConnectionProfile(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ConnectionProfileArgs.__new__(ConnectionProfileArgs)
+            __props__ = ConnectionProfileArrgs.__new__(ConnectionProfileArrgs)
 
             __props__.__dict__["bigquery_profile"] = bigquery_profile
             if connection_profile_id is None and not opts.urn:
@@ -940,19 +940,19 @@ class ConnectionProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bigquery_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileBigqueryProfileArgs']]] = None,
+            bigquery_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileBigqueryProfileArrgs']]] = None,
             connection_profile_id: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            forward_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileForwardSshConnectivityArgs']]] = None,
-            gcs_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileGcsProfileArgs']]] = None,
+            forward_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileForwardSshConnectivityArrgs']]] = None,
+            gcs_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileGcsProfileArrgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            mysql_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileMysqlProfileArgs']]] = None,
+            mysql_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileMysqlProfileArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            oracle_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileOracleProfileArgs']]] = None,
-            postgresql_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlProfileArgs']]] = None,
-            private_connectivity: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePrivateConnectivityArgs']]] = None,
+            oracle_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileOracleProfileArrgs']]] = None,
+            postgresql_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlProfileArrgs']]] = None,
+            private_connectivity: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePrivateConnectivityArrgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'ConnectionProfile':
         """
@@ -962,13 +962,13 @@ class ConnectionProfile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConnectionProfileBigqueryProfileArgs']] bigquery_profile: BigQuery warehouse profile.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfileBigqueryProfileArrgs']] bigquery_profile: BigQuery warehouse profile.
         :param pulumi.Input[str] connection_profile_id: The connection profile identifier.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['ConnectionProfileForwardSshConnectivityArgs']] forward_ssh_connectivity: Forward SSH tunnel connectivity.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfileForwardSshConnectivityArrgs']] forward_ssh_connectivity: Forward SSH tunnel connectivity.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionProfileGcsProfileArgs']] gcs_profile: Cloud Storage bucket profile.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfileGcsProfileArrgs']] gcs_profile: Cloud Storage bucket profile.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -977,14 +977,14 @@ class ConnectionProfile(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['ConnectionProfileMysqlProfileArgs']] mysql_profile: MySQL database profile.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfileMysqlProfileArrgs']] mysql_profile: MySQL database profile.
                Structure is documented below.
         :param pulumi.Input[str] name: The resource's name.
-        :param pulumi.Input[pulumi.InputType['ConnectionProfileOracleProfileArgs']] oracle_profile: Oracle database profile.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfileOracleProfileArrgs']] oracle_profile: Oracle database profile.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlProfileArgs']] postgresql_profile: PostgreSQL database profile.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlProfileArrgs']] postgresql_profile: PostgreSQL database profile.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionProfilePrivateConnectivityArgs']] private_connectivity: Private connectivity.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfilePrivateConnectivityArrgs']] private_connectivity: Private connectivity.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

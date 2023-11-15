@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['VPNTunnelArgs', 'VPNTunnel']
+__all__ = ['VPNTunnelArrgs', 'VPNTunnel']
 
 @pulumi.input_type
-class VPNTunnelArgs:
+calass VPNTunnelArrgs:
     def __init__(__self__, *,
                  shared_secret: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -347,7 +347,7 @@ class VPNTunnelArgs:
 
 
 @pulumi.input_type
-class _VPNTunnelState:
+calass _VPNTunnelState:
     def __init__(__self__, *,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -812,7 +812,7 @@ class _VPNTunnelState:
         pulumi.set(self, "vpn_gateway_interface", value)
 
 
-class VPNTunnel(pulumi.CustomResource):
+calass VPNTunnel(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -1015,7 +1015,7 @@ class VPNTunnel(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: VPNTunnelArgs,
+                 args: VPNTunnelArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         VPN tunnel resource.
@@ -1146,12 +1146,12 @@ class VPNTunnel(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param VPNTunnelArgs args: The arguments to use to populate this resource's properties.
+        :param VPNTunnelArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(VPNTunnelArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(VPNTunnelArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1184,7 +1184,7 @@ class VPNTunnel(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = VPNTunnelArgs.__new__(VPNTunnelArgs)
+            __props__ = VPNTunnelArrgs.__new__(VPNTunnelArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["ike_version"] = ike_version

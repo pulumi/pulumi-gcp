@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ScopeArgs', 'Scope']
+__all__ = ['ScopeArrgs', 'Scope']
 
 @pulumi.input_type
-class ScopeArgs:
+calass ScopeArrgs:
     def __init__(__self__, *,
                  scope_id: pulumi.Input[str],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -83,7 +83,7 @@ class ScopeArgs:
 
 
 @pulumi.input_type
-class _ScopeState:
+calass _ScopeState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
@@ -93,7 +93,7 @@ class _ScopeState:
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  scope_id: Optional[pulumi.Input[str]] = None,
-                 states: Optional[pulumi.Input[Sequence[pulumi.Input['ScopeStateArgs']]]] = None,
+                 states: Optional[pulumi.Input[Sequence[pulumi.Input['ScopeStateArrgs']]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -114,7 +114,7 @@ class _ScopeState:
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input['ScopeStateArgs']]] states: State of the scope resource.
+        :param pulumi.Input[Sequence[pulumi.Input['ScopeStateArrgs']]] states: State of the scope resource.
                Structure is documented below.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[str] update_time: Time the Scope was updated in UTC.
@@ -248,7 +248,7 @@ class _ScopeState:
 
     @property
     @pulumi.getter
-    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScopeStateArgs']]]]:
+    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScopeStateArrgs']]]]:
         """
         State of the scope resource.
         Structure is documented below.
@@ -256,7 +256,7 @@ class _ScopeState:
         return pulumi.get(self, "states")
 
     @states.setter
-    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScopeStateArgs']]]]):
+    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScopeStateArrgs']]]]):
         pulumi.set(self, "states", value)
 
     @property
@@ -284,7 +284,7 @@ class _ScopeState:
         pulumi.set(self, "update_time", value)
 
 
-class Scope(pulumi.CustomResource):
+calass Scope(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -359,7 +359,7 @@ class Scope(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ScopeArgs,
+                 args: ScopeArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Scope represents a Scope in a Fleet.
@@ -411,12 +411,12 @@ class Scope(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ScopeArgs args: The arguments to use to populate this resource's properties.
+        :param ScopeArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ScopeArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ScopeArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -435,7 +435,7 @@ class Scope(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ScopeArgs.__new__(ScopeArgs)
+            __props__ = ScopeArrgs.__new__(ScopeArrgs)
 
             __props__.__dict__["labels"] = labels
             __props__.__dict__["project"] = project
@@ -470,7 +470,7 @@ class Scope(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             scope_id: Optional[pulumi.Input[str]] = None,
-            states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScopeStateArgs']]]]] = None,
+            states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScopeStateArrgs']]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Scope':
         """
@@ -496,7 +496,7 @@ class Scope(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScopeStateArgs']]]] states: State of the scope resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScopeStateArrgs']]]] states: State of the scope resource.
                Structure is documented below.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[str] update_time: Time the Scope was updated in UTC.

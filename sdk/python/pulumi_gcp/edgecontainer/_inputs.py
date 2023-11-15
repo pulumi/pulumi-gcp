@@ -10,36 +10,36 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'ClusterAuthorizationArgs',
-    'ClusterAuthorizationAdminUsersArgs',
-    'ClusterControlPlaneArgs',
-    'ClusterControlPlaneEncryptionArgs',
-    'ClusterControlPlaneEncryptionKmsStatusArgs',
-    'ClusterControlPlaneLocalArgs',
-    'ClusterControlPlaneRemoteArgs',
-    'ClusterFleetArgs',
-    'ClusterMaintenanceEventArgs',
-    'ClusterMaintenancePolicyArgs',
-    'ClusterMaintenancePolicyWindowArgs',
-    'ClusterMaintenancePolicyWindowRecurringWindowArgs',
-    'ClusterMaintenancePolicyWindowRecurringWindowWindowArgs',
-    'ClusterNetworkingArgs',
-    'ClusterSystemAddonsConfigArgs',
-    'ClusterSystemAddonsConfigIngressArgs',
-    'NodePoolLocalDiskEncryptionArgs',
-    'NodePoolNodeConfigArgs',
-    'VpnConnectionDetailArgs',
-    'VpnConnectionDetailCloudRouterArgs',
-    'VpnConnectionDetailCloudVpnArgs',
-    'VpnConnectionVpcProjectArgs',
+    'ClusterAuthorizationArrgs',
+    'ClusterAuthorizationAdminUsersArrgs',
+    'ClusterControlPlaneArrgs',
+    'ClusterControlPlaneEncryptionArrgs',
+    'ClusterControlPlaneEncryptionKmsStatusArrgs',
+    'ClusterControlPlaneLocalArrgs',
+    'ClusterControlPlaneRemoteArrgs',
+    'ClusterFleetArrgs',
+    'ClusterMaintenanceEventArrgs',
+    'ClusterMaintenancePolicyArrgs',
+    'ClusterMaintenancePolicyWindowArrgs',
+    'ClusterMaintenancePolicyWindowRecurringWindowArrgs',
+    'ClusterMaintenancePolicyWindowRecurringWindowWindowArrgs',
+    'ClusterNetworkingArrgs',
+    'ClusterSystemAddonsConfigArrgs',
+    'ClusterSystemAddonsConfigIngressArrgs',
+    'NodePoolLocalDiskEncryptionArrgs',
+    'NodePoolNodeConfigArrgs',
+    'VpnConnectionDetailArrgs',
+    'VpnConnectionDetailCloudRouterArrgs',
+    'VpnConnectionDetailCloudVpnArrgs',
+    'VpnConnectionVpcProjectArrgs',
 ]
 
 @pulumi.input_type
-class ClusterAuthorizationArgs:
+calass ClusterAuthorizationArrgs:
     def __init__(__self__, *,
-                 admin_users: pulumi.Input['ClusterAuthorizationAdminUsersArgs']):
+                 admin_users: pulumi.Input['ClusterAuthorizationAdminUsersArrgs']):
         """
-        :param pulumi.Input['ClusterAuthorizationAdminUsersArgs'] admin_users: User that will be granted the cluster-admin role on the cluster, providing
+        :param pulumi.Input['ClusterAuthorizationAdminUsersArrgs'] admin_users: User that will be granted the cluster-admin role on the cluster, providing
                full access to the cluster. Currently, this is a singular field, but will
                be expanded to allow multiple admins in the future.
                Structure is documented below.
@@ -48,7 +48,7 @@ class ClusterAuthorizationArgs:
 
     @property
     @pulumi.getter(name="adminUsers")
-    def admin_users(self) -> pulumi.Input['ClusterAuthorizationAdminUsersArgs']:
+    def admin_users(self) -> pulumi.Input['ClusterAuthorizationAdminUsersArrgs']:
         """
         User that will be granted the cluster-admin role on the cluster, providing
         full access to the cluster. Currently, this is a singular field, but will
@@ -58,12 +58,12 @@ class ClusterAuthorizationArgs:
         return pulumi.get(self, "admin_users")
 
     @admin_users.setter
-    def admin_users(self, value: pulumi.Input['ClusterAuthorizationAdminUsersArgs']):
+    def admin_users(self, value: pulumi.Input['ClusterAuthorizationAdminUsersArrgs']):
         pulumi.set(self, "admin_users", value)
 
 
 @pulumi.input_type
-class ClusterAuthorizationAdminUsersArgs:
+calass ClusterAuthorizationAdminUsersArrgs:
     def __init__(__self__, *,
                  username: pulumi.Input[str]):
         """
@@ -89,14 +89,14 @@ class ClusterAuthorizationAdminUsersArgs:
 
 
 @pulumi.input_type
-class ClusterControlPlaneArgs:
+calass ClusterControlPlaneArrgs:
     def __init__(__self__, *,
-                 local: Optional[pulumi.Input['ClusterControlPlaneLocalArgs']] = None,
-                 remote: Optional[pulumi.Input['ClusterControlPlaneRemoteArgs']] = None):
+                 local: Optional[pulumi.Input['ClusterControlPlaneLocalArrgs']] = None,
+                 remote: Optional[pulumi.Input['ClusterControlPlaneRemoteArrgs']] = None):
         """
-        :param pulumi.Input['ClusterControlPlaneLocalArgs'] local: Local control plane configuration.
+        :param pulumi.Input['ClusterControlPlaneLocalArrgs'] local: Local control plane configuration.
                Structure is documented below.
-        :param pulumi.Input['ClusterControlPlaneRemoteArgs'] remote: Remote control plane configuration.
+        :param pulumi.Input['ClusterControlPlaneRemoteArrgs'] remote: Remote control plane configuration.
                Structure is documented below.
         """
         if local is not None:
@@ -106,7 +106,7 @@ class ClusterControlPlaneArgs:
 
     @property
     @pulumi.getter
-    def local(self) -> Optional[pulumi.Input['ClusterControlPlaneLocalArgs']]:
+    def local(self) -> Optional[pulumi.Input['ClusterControlPlaneLocalArrgs']]:
         """
         Local control plane configuration.
         Structure is documented below.
@@ -114,12 +114,12 @@ class ClusterControlPlaneArgs:
         return pulumi.get(self, "local")
 
     @local.setter
-    def local(self, value: Optional[pulumi.Input['ClusterControlPlaneLocalArgs']]):
+    def local(self, value: Optional[pulumi.Input['ClusterControlPlaneLocalArrgs']]):
         pulumi.set(self, "local", value)
 
     @property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['ClusterControlPlaneRemoteArgs']]:
+    def remote(self) -> Optional[pulumi.Input['ClusterControlPlaneRemoteArrgs']]:
         """
         Remote control plane configuration.
         Structure is documented below.
@@ -127,17 +127,17 @@ class ClusterControlPlaneArgs:
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['ClusterControlPlaneRemoteArgs']]):
+    def remote(self, value: Optional[pulumi.Input['ClusterControlPlaneRemoteArrgs']]):
         pulumi.set(self, "remote", value)
 
 
 @pulumi.input_type
-class ClusterControlPlaneEncryptionArgs:
+calass ClusterControlPlaneEncryptionArrgs:
     def __init__(__self__, *,
                  kms_key: Optional[pulumi.Input[str]] = None,
                  kms_key_active_version: Optional[pulumi.Input[str]] = None,
                  kms_key_state: Optional[pulumi.Input[str]] = None,
-                 kms_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterControlPlaneEncryptionKmsStatusArgs']]]] = None):
+                 kms_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterControlPlaneEncryptionKmsStatusArrgs']]]] = None):
         """
         :param pulumi.Input[str] kms_key: The Cloud KMS CryptoKey e.g.
                projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
@@ -151,7 +151,7 @@ class ClusterControlPlaneEncryptionArgs:
                nodes may go offline as they cannot access their local data. This can be
                caused by a lack of permissions to use the key, or if the key is disabled
                or deleted.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterControlPlaneEncryptionKmsStatusArgs']]] kms_statuses: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterControlPlaneEncryptionKmsStatusArrgs']]] kms_statuses: (Output)
                Error status returned by Cloud KMS when using this key. This field may be
                populated only if `kms_key_state` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
                If populated, this field contains the error status reported by Cloud KMS.
@@ -216,7 +216,7 @@ class ClusterControlPlaneEncryptionArgs:
 
     @property
     @pulumi.getter(name="kmsStatuses")
-    def kms_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterControlPlaneEncryptionKmsStatusArgs']]]]:
+    def kms_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterControlPlaneEncryptionKmsStatusArrgs']]]]:
         """
         (Output)
         Error status returned by Cloud KMS when using this key. This field may be
@@ -230,12 +230,12 @@ class ClusterControlPlaneEncryptionArgs:
         return pulumi.get(self, "kms_statuses")
 
     @kms_statuses.setter
-    def kms_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterControlPlaneEncryptionKmsStatusArgs']]]]):
+    def kms_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterControlPlaneEncryptionKmsStatusArrgs']]]]):
         pulumi.set(self, "kms_statuses", value)
 
 
 @pulumi.input_type
-class ClusterControlPlaneEncryptionKmsStatusArgs:
+calass ClusterControlPlaneEncryptionKmsStatusArrgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[int]] = None,
                  message: Optional[pulumi.Input[str]] = None):
@@ -278,7 +278,7 @@ class ClusterControlPlaneEncryptionKmsStatusArgs:
 
 
 @pulumi.input_type
-class ClusterControlPlaneLocalArgs:
+calass ClusterControlPlaneLocalArrgs:
     def __init__(__self__, *,
                  machine_filter: Optional[pulumi.Input[str]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
@@ -359,7 +359,7 @@ class ClusterControlPlaneLocalArgs:
 
 
 @pulumi.input_type
-class ClusterControlPlaneRemoteArgs:
+calass ClusterControlPlaneRemoteArrgs:
     def __init__(__self__, *,
                  node_location: Optional[pulumi.Input[str]] = None):
         """
@@ -384,7 +384,7 @@ class ClusterControlPlaneRemoteArgs:
 
 
 @pulumi.input_type
-class ClusterFleetArgs:
+calass ClusterFleetArrgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  membership: Optional[pulumi.Input[str]] = None):
@@ -432,7 +432,7 @@ class ClusterFleetArgs:
 
 
 @pulumi.input_type
-class ClusterMaintenanceEventArgs:
+calass ClusterMaintenanceEventArrgs:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
@@ -621,18 +621,18 @@ class ClusterMaintenanceEventArgs:
 
 
 @pulumi.input_type
-class ClusterMaintenancePolicyArgs:
+calass ClusterMaintenancePolicyArrgs:
     def __init__(__self__, *,
-                 window: pulumi.Input['ClusterMaintenancePolicyWindowArgs']):
+                 window: pulumi.Input['ClusterMaintenancePolicyWindowArrgs']):
         """
-        :param pulumi.Input['ClusterMaintenancePolicyWindowArgs'] window: Specifies the maintenance window in which maintenance may be performed.
+        :param pulumi.Input['ClusterMaintenancePolicyWindowArrgs'] window: Specifies the maintenance window in which maintenance may be performed.
                Structure is documented below.
         """
         pulumi.set(__self__, "window", window)
 
     @property
     @pulumi.getter
-    def window(self) -> pulumi.Input['ClusterMaintenancePolicyWindowArgs']:
+    def window(self) -> pulumi.Input['ClusterMaintenancePolicyWindowArrgs']:
         """
         Specifies the maintenance window in which maintenance may be performed.
         Structure is documented below.
@@ -640,23 +640,23 @@ class ClusterMaintenancePolicyArgs:
         return pulumi.get(self, "window")
 
     @window.setter
-    def window(self, value: pulumi.Input['ClusterMaintenancePolicyWindowArgs']):
+    def window(self, value: pulumi.Input['ClusterMaintenancePolicyWindowArrgs']):
         pulumi.set(self, "window", value)
 
 
 @pulumi.input_type
-class ClusterMaintenancePolicyWindowArgs:
+calass ClusterMaintenancePolicyWindowArrgs:
     def __init__(__self__, *,
-                 recurring_window: pulumi.Input['ClusterMaintenancePolicyWindowRecurringWindowArgs']):
+                 recurring_window: pulumi.Input['ClusterMaintenancePolicyWindowRecurringWindowArrgs']):
         """
-        :param pulumi.Input['ClusterMaintenancePolicyWindowRecurringWindowArgs'] recurring_window: Represents an arbitrary window of time that recurs.
+        :param pulumi.Input['ClusterMaintenancePolicyWindowRecurringWindowArrgs'] recurring_window: Represents an arbitrary window of time that recurs.
                Structure is documented below.
         """
         pulumi.set(__self__, "recurring_window", recurring_window)
 
     @property
     @pulumi.getter(name="recurringWindow")
-    def recurring_window(self) -> pulumi.Input['ClusterMaintenancePolicyWindowRecurringWindowArgs']:
+    def recurring_window(self) -> pulumi.Input['ClusterMaintenancePolicyWindowRecurringWindowArrgs']:
         """
         Represents an arbitrary window of time that recurs.
         Structure is documented below.
@@ -664,20 +664,20 @@ class ClusterMaintenancePolicyWindowArgs:
         return pulumi.get(self, "recurring_window")
 
     @recurring_window.setter
-    def recurring_window(self, value: pulumi.Input['ClusterMaintenancePolicyWindowRecurringWindowArgs']):
+    def recurring_window(self, value: pulumi.Input['ClusterMaintenancePolicyWindowRecurringWindowArrgs']):
         pulumi.set(self, "recurring_window", value)
 
 
 @pulumi.input_type
-class ClusterMaintenancePolicyWindowRecurringWindowArgs:
+calass ClusterMaintenancePolicyWindowRecurringWindowArrgs:
     def __init__(__self__, *,
                  recurrence: Optional[pulumi.Input[str]] = None,
-                 window: Optional[pulumi.Input['ClusterMaintenancePolicyWindowRecurringWindowWindowArgs']] = None):
+                 window: Optional[pulumi.Input['ClusterMaintenancePolicyWindowRecurringWindowWindowArrgs']] = None):
         """
         :param pulumi.Input[str] recurrence: An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
                this window recurs. They go on for the span of time between the start and
                end time.
-        :param pulumi.Input['ClusterMaintenancePolicyWindowRecurringWindowWindowArgs'] window: Represents an arbitrary window of time.
+        :param pulumi.Input['ClusterMaintenancePolicyWindowRecurringWindowWindowArrgs'] window: Represents an arbitrary window of time.
                Structure is documented below.
         """
         if recurrence is not None:
@@ -701,7 +701,7 @@ class ClusterMaintenancePolicyWindowRecurringWindowArgs:
 
     @property
     @pulumi.getter
-    def window(self) -> Optional[pulumi.Input['ClusterMaintenancePolicyWindowRecurringWindowWindowArgs']]:
+    def window(self) -> Optional[pulumi.Input['ClusterMaintenancePolicyWindowRecurringWindowWindowArrgs']]:
         """
         Represents an arbitrary window of time.
         Structure is documented below.
@@ -709,12 +709,12 @@ class ClusterMaintenancePolicyWindowRecurringWindowArgs:
         return pulumi.get(self, "window")
 
     @window.setter
-    def window(self, value: Optional[pulumi.Input['ClusterMaintenancePolicyWindowRecurringWindowWindowArgs']]):
+    def window(self, value: Optional[pulumi.Input['ClusterMaintenancePolicyWindowRecurringWindowWindowArrgs']]):
         pulumi.set(self, "window", value)
 
 
 @pulumi.input_type
-class ClusterMaintenancePolicyWindowRecurringWindowWindowArgs:
+calass ClusterMaintenancePolicyWindowRecurringWindowWindowArrgs:
     def __init__(__self__, *,
                  end_time: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None):
@@ -755,7 +755,7 @@ class ClusterMaintenancePolicyWindowRecurringWindowWindowArgs:
 
 
 @pulumi.input_type
-class ClusterNetworkingArgs:
+calass ClusterNetworkingArrgs:
     def __init__(__self__, *,
                  cluster_ipv4_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
                  services_ipv4_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
@@ -862,11 +862,11 @@ class ClusterNetworkingArgs:
 
 
 @pulumi.input_type
-class ClusterSystemAddonsConfigArgs:
+calass ClusterSystemAddonsConfigArrgs:
     def __init__(__self__, *,
-                 ingress: Optional[pulumi.Input['ClusterSystemAddonsConfigIngressArgs']] = None):
+                 ingress: Optional[pulumi.Input['ClusterSystemAddonsConfigIngressArrgs']] = None):
         """
-        :param pulumi.Input['ClusterSystemAddonsConfigIngressArgs'] ingress: Config for the Ingress add-on which allows customers to create an Ingress
+        :param pulumi.Input['ClusterSystemAddonsConfigIngressArrgs'] ingress: Config for the Ingress add-on which allows customers to create an Ingress
                object to manage external access to the servers in a cluster. The add-on
                consists of istiod and istio-ingress.
                Structure is documented below.
@@ -876,7 +876,7 @@ class ClusterSystemAddonsConfigArgs:
 
     @property
     @pulumi.getter
-    def ingress(self) -> Optional[pulumi.Input['ClusterSystemAddonsConfigIngressArgs']]:
+    def ingress(self) -> Optional[pulumi.Input['ClusterSystemAddonsConfigIngressArrgs']]:
         """
         Config for the Ingress add-on which allows customers to create an Ingress
         object to manage external access to the servers in a cluster. The add-on
@@ -886,12 +886,12 @@ class ClusterSystemAddonsConfigArgs:
         return pulumi.get(self, "ingress")
 
     @ingress.setter
-    def ingress(self, value: Optional[pulumi.Input['ClusterSystemAddonsConfigIngressArgs']]):
+    def ingress(self, value: Optional[pulumi.Input['ClusterSystemAddonsConfigIngressArrgs']]):
         pulumi.set(self, "ingress", value)
 
 
 @pulumi.input_type
-class ClusterSystemAddonsConfigIngressArgs:
+calass ClusterSystemAddonsConfigIngressArrgs:
     def __init__(__self__, *,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  ipv4_vip: Optional[pulumi.Input[str]] = None):
@@ -930,7 +930,7 @@ class ClusterSystemAddonsConfigIngressArgs:
 
 
 @pulumi.input_type
-class NodePoolLocalDiskEncryptionArgs:
+calass NodePoolLocalDiskEncryptionArrgs:
     def __init__(__self__, *,
                  kms_key: Optional[pulumi.Input[str]] = None,
                  kms_key_active_version: Optional[pulumi.Input[str]] = None,
@@ -993,7 +993,7 @@ class NodePoolLocalDiskEncryptionArgs:
 
 
 @pulumi.input_type
-class NodePoolNodeConfigArgs:
+calass NodePoolNodeConfigArrgs:
     def __init__(__self__, *,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -1016,17 +1016,17 @@ class NodePoolNodeConfigArgs:
 
 
 @pulumi.input_type
-class VpnConnectionDetailArgs:
+calass VpnConnectionDetailArrgs:
     def __init__(__self__, *,
-                 cloud_routers: Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudRouterArgs']]]] = None,
-                 cloud_vpns: Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudVpnArgs']]]] = None,
+                 cloud_routers: Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudRouterArrgs']]]] = None,
+                 cloud_vpns: Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudVpnArrgs']]]] = None,
                  error: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudRouterArgs']]] cloud_routers: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudRouterArrgs']]] cloud_routers: (Output)
                The Cloud Router info.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudVpnArgs']]] cloud_vpns: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudVpnArrgs']]] cloud_vpns: (Output)
                Each connection has multiple Cloud VPN gateways.
                Structure is documented below.
         :param pulumi.Input[str] error: (Output)
@@ -1045,7 +1045,7 @@ class VpnConnectionDetailArgs:
 
     @property
     @pulumi.getter(name="cloudRouters")
-    def cloud_routers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudRouterArgs']]]]:
+    def cloud_routers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudRouterArrgs']]]]:
         """
         (Output)
         The Cloud Router info.
@@ -1054,12 +1054,12 @@ class VpnConnectionDetailArgs:
         return pulumi.get(self, "cloud_routers")
 
     @cloud_routers.setter
-    def cloud_routers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudRouterArgs']]]]):
+    def cloud_routers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudRouterArrgs']]]]):
         pulumi.set(self, "cloud_routers", value)
 
     @property
     @pulumi.getter(name="cloudVpns")
-    def cloud_vpns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudVpnArgs']]]]:
+    def cloud_vpns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudVpnArrgs']]]]:
         """
         (Output)
         Each connection has multiple Cloud VPN gateways.
@@ -1068,7 +1068,7 @@ class VpnConnectionDetailArgs:
         return pulumi.get(self, "cloud_vpns")
 
     @cloud_vpns.setter
-    def cloud_vpns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudVpnArgs']]]]):
+    def cloud_vpns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudVpnArrgs']]]]):
         pulumi.set(self, "cloud_vpns", value)
 
     @property
@@ -1099,7 +1099,7 @@ class VpnConnectionDetailArgs:
 
 
 @pulumi.input_type
-class VpnConnectionDetailCloudRouterArgs:
+calass VpnConnectionDetailCloudRouterArrgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None):
         """
@@ -1122,7 +1122,7 @@ class VpnConnectionDetailCloudRouterArgs:
 
 
 @pulumi.input_type
-class VpnConnectionDetailCloudVpnArgs:
+calass VpnConnectionDetailCloudVpnArrgs:
     def __init__(__self__, *,
                  gateway: Optional[pulumi.Input[str]] = None):
         """
@@ -1147,7 +1147,7 @@ class VpnConnectionDetailCloudVpnArgs:
 
 
 @pulumi.input_type
-class VpnConnectionVpcProjectArgs:
+calass VpnConnectionVpcProjectArrgs:
     def __init__(__self__, *,
                  project_id: Optional[pulumi.Input[str]] = None):
         """

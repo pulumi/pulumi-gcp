@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetEnvironmentResult:
+calass GetEnvironmentResult:
     """
     A collection of values returned by getEnvironment.
     """
@@ -103,7 +103,7 @@ class GetEnvironmentResult:
         return pulumi.get(self, "storage_configs")
 
 
-class AwaitableGetEnvironmentResult(GetEnvironmentResult):
+calass AwaitableGetEnvironmentResult(GetEnvironmentResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

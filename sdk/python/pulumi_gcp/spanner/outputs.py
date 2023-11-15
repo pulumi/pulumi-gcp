@@ -25,7 +25,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class DatabaseEncryptionConfig(dict):
+calass DatabaseEncryptionConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -62,7 +62,7 @@ class DatabaseEncryptionConfig(dict):
 
 
 @pulumi.output_type
-class DatabaseIAMBindingCondition(dict):
+calass DatabaseIAMBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -89,7 +89,7 @@ class DatabaseIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class DatabaseIAMMemberCondition(dict):
+calass DatabaseIAMMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -116,7 +116,7 @@ class DatabaseIAMMemberCondition(dict):
 
 
 @pulumi.output_type
-class InstanceAutoscalingConfig(dict):
+calass InstanceAutoscalingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -140,10 +140,10 @@ class InstanceAutoscalingConfig(dict):
                  autoscaling_limits: Optional['outputs.InstanceAutoscalingConfigAutoscalingLimits'] = None,
                  autoscaling_targets: Optional['outputs.InstanceAutoscalingConfigAutoscalingTargets'] = None):
         """
-        :param 'InstanceAutoscalingConfigAutoscalingLimitsArgs' autoscaling_limits: Defines scale in controls to reduce the risk of response latency
+        :param 'InstanceAutoscalingConfigAutoscalingLimitsArrgs' autoscaling_limits: Defines scale in controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
-        :param 'InstanceAutoscalingConfigAutoscalingTargetsArgs' autoscaling_targets: Defines scale in controls to reduce the risk of response latency
+        :param 'InstanceAutoscalingConfigAutoscalingTargetsArrgs' autoscaling_targets: Defines scale in controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
         """
@@ -174,7 +174,7 @@ class InstanceAutoscalingConfig(dict):
 
 
 @pulumi.output_type
-class InstanceAutoscalingConfigAutoscalingLimits(dict):
+calass InstanceAutoscalingConfigAutoscalingLimits(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -230,7 +230,7 @@ class InstanceAutoscalingConfigAutoscalingLimits(dict):
 
 
 @pulumi.output_type
-class InstanceAutoscalingConfigAutoscalingTargets(dict):
+calass InstanceAutoscalingConfigAutoscalingTargets(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -288,7 +288,7 @@ class InstanceAutoscalingConfigAutoscalingTargets(dict):
 
 
 @pulumi.output_type
-class InstanceIAMBindingCondition(dict):
+calass InstanceIAMBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -315,7 +315,7 @@ class InstanceIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class InstanceIAMMemberCondition(dict):
+calass InstanceIAMMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -342,7 +342,7 @@ class InstanceIAMMemberCondition(dict):
 
 
 @pulumi.output_type
-class GetInstanceAutoscalingConfigResult(dict):
+calass GetInstanceAutoscalingConfigResult(dict):
     def __init__(__self__, *,
                  autoscaling_limits: Sequence['outputs.GetInstanceAutoscalingConfigAutoscalingLimitResult'],
                  autoscaling_targets: Sequence['outputs.GetInstanceAutoscalingConfigAutoscalingTargetResult']):
@@ -361,7 +361,7 @@ class GetInstanceAutoscalingConfigResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceAutoscalingConfigAutoscalingLimitResult(dict):
+calass GetInstanceAutoscalingConfigAutoscalingLimitResult(dict):
     def __init__(__self__, *,
                  max_processing_units: int,
                  min_processing_units: int):
@@ -380,7 +380,7 @@ class GetInstanceAutoscalingConfigAutoscalingLimitResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceAutoscalingConfigAutoscalingTargetResult(dict):
+calass GetInstanceAutoscalingConfigAutoscalingTargetResult(dict):
     def __init__(__self__, *,
                  high_priority_cpu_utilization_percent: int,
                  storage_utilization_percent: int):

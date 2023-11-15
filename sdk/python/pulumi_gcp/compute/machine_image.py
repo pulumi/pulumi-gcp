@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['MachineImageArgs', 'MachineImage']
+__all__ = ['MachineImageArrgs', 'MachineImage']
 
 @pulumi.input_type
-class MachineImageArgs:
+calass MachineImageArrgs:
     def __init__(__self__, *,
                  source_instance: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  guest_flush: Optional[pulumi.Input[bool]] = None,
-                 machine_image_encryption_key: Optional[pulumi.Input['MachineImageMachineImageEncryptionKeyArgs']] = None,
+                 machine_image_encryption_key: Optional[pulumi.Input['MachineImageMachineImageEncryptionKeyArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -31,7 +31,7 @@ class MachineImageArgs:
         :param pulumi.Input[str] description: A text description of the resource.
         :param pulumi.Input[bool] guest_flush: Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
                Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
-        :param pulumi.Input['MachineImageMachineImageEncryptionKeyArgs'] machine_image_encryption_key: Encrypts the machine image using a customer-supplied encryption key.
+        :param pulumi.Input['MachineImageMachineImageEncryptionKeyArrgs'] machine_image_encryption_key: Encrypts the machine image using a customer-supplied encryption key.
                After you encrypt a machine image with a customer-supplied key, you must
                provide the same key if you use the machine image later (e.g. to create a
                instance from the image)
@@ -94,7 +94,7 @@ class MachineImageArgs:
 
     @property
     @pulumi.getter(name="machineImageEncryptionKey")
-    def machine_image_encryption_key(self) -> Optional[pulumi.Input['MachineImageMachineImageEncryptionKeyArgs']]:
+    def machine_image_encryption_key(self) -> Optional[pulumi.Input['MachineImageMachineImageEncryptionKeyArrgs']]:
         """
         Encrypts the machine image using a customer-supplied encryption key.
         After you encrypt a machine image with a customer-supplied key, you must
@@ -105,7 +105,7 @@ class MachineImageArgs:
         return pulumi.get(self, "machine_image_encryption_key")
 
     @machine_image_encryption_key.setter
-    def machine_image_encryption_key(self, value: Optional[pulumi.Input['MachineImageMachineImageEncryptionKeyArgs']]):
+    def machine_image_encryption_key(self, value: Optional[pulumi.Input['MachineImageMachineImageEncryptionKeyArrgs']]):
         pulumi.set(self, "machine_image_encryption_key", value)
 
     @property
@@ -135,11 +135,11 @@ class MachineImageArgs:
 
 
 @pulumi.input_type
-class _MachineImageState:
+calass _MachineImageState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  guest_flush: Optional[pulumi.Input[bool]] = None,
-                 machine_image_encryption_key: Optional[pulumi.Input['MachineImageMachineImageEncryptionKeyArgs']] = None,
+                 machine_image_encryption_key: Optional[pulumi.Input['MachineImageMachineImageEncryptionKeyArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -150,7 +150,7 @@ class _MachineImageState:
         :param pulumi.Input[str] description: A text description of the resource.
         :param pulumi.Input[bool] guest_flush: Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
                Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
-        :param pulumi.Input['MachineImageMachineImageEncryptionKeyArgs'] machine_image_encryption_key: Encrypts the machine image using a customer-supplied encryption key.
+        :param pulumi.Input['MachineImageMachineImageEncryptionKeyArrgs'] machine_image_encryption_key: Encrypts the machine image using a customer-supplied encryption key.
                After you encrypt a machine image with a customer-supplied key, you must
                provide the same key if you use the machine image later (e.g. to create a
                instance from the image)
@@ -209,7 +209,7 @@ class _MachineImageState:
 
     @property
     @pulumi.getter(name="machineImageEncryptionKey")
-    def machine_image_encryption_key(self) -> Optional[pulumi.Input['MachineImageMachineImageEncryptionKeyArgs']]:
+    def machine_image_encryption_key(self) -> Optional[pulumi.Input['MachineImageMachineImageEncryptionKeyArrgs']]:
         """
         Encrypts the machine image using a customer-supplied encryption key.
         After you encrypt a machine image with a customer-supplied key, you must
@@ -220,7 +220,7 @@ class _MachineImageState:
         return pulumi.get(self, "machine_image_encryption_key")
 
     @machine_image_encryption_key.setter
-    def machine_image_encryption_key(self, value: Optional[pulumi.Input['MachineImageMachineImageEncryptionKeyArgs']]):
+    def machine_image_encryption_key(self, value: Optional[pulumi.Input['MachineImageMachineImageEncryptionKeyArrgs']]):
         pulumi.set(self, "machine_image_encryption_key", value)
 
     @property
@@ -288,14 +288,14 @@ class _MachineImageState:
         pulumi.set(self, "storage_locations", value)
 
 
-class MachineImage(pulumi.CustomResource):
+calass MachineImage(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  guest_flush: Optional[pulumi.Input[bool]] = None,
-                 machine_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['MachineImageMachineImageEncryptionKeyArgs']]] = None,
+                 machine_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['MachineImageMachineImageEncryptionKeyArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  source_instance: Optional[pulumi.Input[str]] = None,
@@ -320,12 +320,12 @@ class MachineImage(pulumi.CustomResource):
 
         vm = gcp.compute.Instance("vm",
             machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image="debian-cloud/debian-11",
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 network="default",
             )],
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -340,12 +340,12 @@ class MachineImage(pulumi.CustomResource):
 
         vm = gcp.compute.Instance("vm",
             machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image="debian-cloud/debian-11",
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 network="default",
             )],
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -355,7 +355,7 @@ class MachineImage(pulumi.CustomResource):
         opts=pulumi.ResourceOptions(provider=google_beta))
         image = gcp.compute.MachineImage("image",
             source_instance=vm.self_link,
-            machine_image_encryption_key=gcp.compute.MachineImageMachineImageEncryptionKeyArgs(
+            machine_image_encryption_key=gcp.compute.MachineImageMachineImageEncryptionKeyArrgs(
                 kms_key_name=crypto_key.id,
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -390,7 +390,7 @@ class MachineImage(pulumi.CustomResource):
         :param pulumi.Input[str] description: A text description of the resource.
         :param pulumi.Input[bool] guest_flush: Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
                Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
-        :param pulumi.Input[pulumi.InputType['MachineImageMachineImageEncryptionKeyArgs']] machine_image_encryption_key: Encrypts the machine image using a customer-supplied encryption key.
+        :param pulumi.Input[pulumi.InputType['MachineImageMachineImageEncryptionKeyArrgs']] machine_image_encryption_key: Encrypts the machine image using a customer-supplied encryption key.
                After you encrypt a machine image with a customer-supplied key, you must
                provide the same key if you use the machine image later (e.g. to create a
                instance from the image)
@@ -407,7 +407,7 @@ class MachineImage(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: MachineImageArgs,
+                 args: MachineImageArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a Machine Image resource. Machine images store all the configuration,
@@ -429,12 +429,12 @@ class MachineImage(pulumi.CustomResource):
 
         vm = gcp.compute.Instance("vm",
             machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image="debian-cloud/debian-11",
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 network="default",
             )],
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -449,12 +449,12 @@ class MachineImage(pulumi.CustomResource):
 
         vm = gcp.compute.Instance("vm",
             machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image="debian-cloud/debian-11",
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 network="default",
             )],
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -464,7 +464,7 @@ class MachineImage(pulumi.CustomResource):
         opts=pulumi.ResourceOptions(provider=google_beta))
         image = gcp.compute.MachineImage("image",
             source_instance=vm.self_link,
-            machine_image_encryption_key=gcp.compute.MachineImageMachineImageEncryptionKeyArgs(
+            machine_image_encryption_key=gcp.compute.MachineImageMachineImageEncryptionKeyArrgs(
                 kms_key_name=crypto_key.id,
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -495,12 +495,12 @@ class MachineImage(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param MachineImageArgs args: The arguments to use to populate this resource's properties.
+        :param MachineImageArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(MachineImageArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(MachineImageArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -511,7 +511,7 @@ class MachineImage(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  guest_flush: Optional[pulumi.Input[bool]] = None,
-                 machine_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['MachineImageMachineImageEncryptionKeyArgs']]] = None,
+                 machine_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['MachineImageMachineImageEncryptionKeyArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  source_instance: Optional[pulumi.Input[str]] = None,
@@ -522,7 +522,7 @@ class MachineImage(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = MachineImageArgs.__new__(MachineImageArgs)
+            __props__ = MachineImageArrgs.__new__(MachineImageArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["guest_flush"] = guest_flush
@@ -546,7 +546,7 @@ class MachineImage(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             guest_flush: Optional[pulumi.Input[bool]] = None,
-            machine_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['MachineImageMachineImageEncryptionKeyArgs']]] = None,
+            machine_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['MachineImageMachineImageEncryptionKeyArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
@@ -562,7 +562,7 @@ class MachineImage(pulumi.CustomResource):
         :param pulumi.Input[str] description: A text description of the resource.
         :param pulumi.Input[bool] guest_flush: Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
                Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
-        :param pulumi.Input[pulumi.InputType['MachineImageMachineImageEncryptionKeyArgs']] machine_image_encryption_key: Encrypts the machine image using a customer-supplied encryption key.
+        :param pulumi.Input[pulumi.InputType['MachineImageMachineImageEncryptionKeyArrgs']] machine_image_encryption_key: Encrypts the machine image using a customer-supplied encryption key.
                After you encrypt a machine image with a customer-supplied key, you must
                provide the same key if you use the machine image later (e.g. to create a
                instance from the image)

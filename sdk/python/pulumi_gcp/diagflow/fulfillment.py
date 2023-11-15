@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['FulfillmentArgs', 'Fulfillment']
+__all__ = ['FulfillmentArrgs', 'Fulfillment']
 
 @pulumi.input_type
-class FulfillmentArgs:
+calass FulfillmentArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 features: Optional[pulumi.Input[Sequence[pulumi.Input['FulfillmentFeatureArgs']]]] = None,
-                 generic_web_service: Optional[pulumi.Input['FulfillmentGenericWebServiceArgs']] = None,
+                 features: Optional[pulumi.Input[Sequence[pulumi.Input['FulfillmentFeatureArrgs']]]] = None,
+                 generic_web_service: Optional[pulumi.Input['FulfillmentGenericWebServiceArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Fulfillment resource.
@@ -28,9 +28,9 @@ class FulfillmentArgs:
                
                - - -
         :param pulumi.Input[bool] enabled: Whether fulfillment is enabled.
-        :param pulumi.Input[Sequence[pulumi.Input['FulfillmentFeatureArgs']]] features: The field defines whether the fulfillment is enabled for certain features.
+        :param pulumi.Input[Sequence[pulumi.Input['FulfillmentFeatureArrgs']]] features: The field defines whether the fulfillment is enabled for certain features.
                Structure is documented below.
-        :param pulumi.Input['FulfillmentGenericWebServiceArgs'] generic_web_service: Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
+        :param pulumi.Input['FulfillmentGenericWebServiceArrgs'] generic_web_service: Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -74,7 +74,7 @@ class FulfillmentArgs:
 
     @property
     @pulumi.getter
-    def features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FulfillmentFeatureArgs']]]]:
+    def features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FulfillmentFeatureArrgs']]]]:
         """
         The field defines whether the fulfillment is enabled for certain features.
         Structure is documented below.
@@ -82,12 +82,12 @@ class FulfillmentArgs:
         return pulumi.get(self, "features")
 
     @features.setter
-    def features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FulfillmentFeatureArgs']]]]):
+    def features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FulfillmentFeatureArrgs']]]]):
         pulumi.set(self, "features", value)
 
     @property
     @pulumi.getter(name="genericWebService")
-    def generic_web_service(self) -> Optional[pulumi.Input['FulfillmentGenericWebServiceArgs']]:
+    def generic_web_service(self) -> Optional[pulumi.Input['FulfillmentGenericWebServiceArrgs']]:
         """
         Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
         Structure is documented below.
@@ -95,7 +95,7 @@ class FulfillmentArgs:
         return pulumi.get(self, "generic_web_service")
 
     @generic_web_service.setter
-    def generic_web_service(self, value: Optional[pulumi.Input['FulfillmentGenericWebServiceArgs']]):
+    def generic_web_service(self, value: Optional[pulumi.Input['FulfillmentGenericWebServiceArrgs']]):
         pulumi.set(self, "generic_web_service", value)
 
     @property
@@ -113,12 +113,12 @@ class FulfillmentArgs:
 
 
 @pulumi.input_type
-class _FulfillmentState:
+calass _FulfillmentState:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 features: Optional[pulumi.Input[Sequence[pulumi.Input['FulfillmentFeatureArgs']]]] = None,
-                 generic_web_service: Optional[pulumi.Input['FulfillmentGenericWebServiceArgs']] = None,
+                 features: Optional[pulumi.Input[Sequence[pulumi.Input['FulfillmentFeatureArrgs']]]] = None,
+                 generic_web_service: Optional[pulumi.Input['FulfillmentGenericWebServiceArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -128,9 +128,9 @@ class _FulfillmentState:
                
                - - -
         :param pulumi.Input[bool] enabled: Whether fulfillment is enabled.
-        :param pulumi.Input[Sequence[pulumi.Input['FulfillmentFeatureArgs']]] features: The field defines whether the fulfillment is enabled for certain features.
+        :param pulumi.Input[Sequence[pulumi.Input['FulfillmentFeatureArrgs']]] features: The field defines whether the fulfillment is enabled for certain features.
                Structure is documented below.
-        :param pulumi.Input['FulfillmentGenericWebServiceArgs'] generic_web_service: Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
+        :param pulumi.Input['FulfillmentGenericWebServiceArrgs'] generic_web_service: Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
                Structure is documented below.
         :param pulumi.Input[str] name: The unique identifier of the fulfillment.
                Format: projects/<Project ID>/agent/fulfillment - projects/<Project ID>/locations/<Location ID>/agent/fulfillment
@@ -179,7 +179,7 @@ class _FulfillmentState:
 
     @property
     @pulumi.getter
-    def features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FulfillmentFeatureArgs']]]]:
+    def features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FulfillmentFeatureArrgs']]]]:
         """
         The field defines whether the fulfillment is enabled for certain features.
         Structure is documented below.
@@ -187,12 +187,12 @@ class _FulfillmentState:
         return pulumi.get(self, "features")
 
     @features.setter
-    def features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FulfillmentFeatureArgs']]]]):
+    def features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FulfillmentFeatureArrgs']]]]):
         pulumi.set(self, "features", value)
 
     @property
     @pulumi.getter(name="genericWebService")
-    def generic_web_service(self) -> Optional[pulumi.Input['FulfillmentGenericWebServiceArgs']]:
+    def generic_web_service(self) -> Optional[pulumi.Input['FulfillmentGenericWebServiceArrgs']]:
         """
         Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
         Structure is documented below.
@@ -200,7 +200,7 @@ class _FulfillmentState:
         return pulumi.get(self, "generic_web_service")
 
     @generic_web_service.setter
-    def generic_web_service(self, value: Optional[pulumi.Input['FulfillmentGenericWebServiceArgs']]):
+    def generic_web_service(self, value: Optional[pulumi.Input['FulfillmentGenericWebServiceArrgs']]):
         pulumi.set(self, "generic_web_service", value)
 
     @property
@@ -230,15 +230,15 @@ class _FulfillmentState:
         pulumi.set(self, "project", value)
 
 
-class Fulfillment(pulumi.CustomResource):
+calass Fulfillment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FulfillmentFeatureArgs']]]]] = None,
-                 generic_web_service: Optional[pulumi.Input[pulumi.InputType['FulfillmentGenericWebServiceArgs']]] = None,
+                 features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FulfillmentFeatureArrgs']]]]] = None,
+                 generic_web_service: Optional[pulumi.Input[pulumi.InputType['FulfillmentGenericWebServiceArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -264,7 +264,7 @@ class Fulfillment(pulumi.CustomResource):
         basic_fulfillment = gcp.diagflow.Fulfillment("basicFulfillment",
             display_name="basic-fulfillment",
             enabled=True,
-            generic_web_service=gcp.diagflow.FulfillmentGenericWebServiceArgs(
+            generic_web_service=gcp.diagflow.FulfillmentGenericWebServiceArrgs(
                 uri="https://google.com",
                 username="admin",
                 password="password",
@@ -298,9 +298,9 @@ class Fulfillment(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[bool] enabled: Whether fulfillment is enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FulfillmentFeatureArgs']]]] features: The field defines whether the fulfillment is enabled for certain features.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FulfillmentFeatureArrgs']]]] features: The field defines whether the fulfillment is enabled for certain features.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['FulfillmentGenericWebServiceArgs']] generic_web_service: Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
+        :param pulumi.Input[pulumi.InputType['FulfillmentGenericWebServiceArrgs']] generic_web_service: Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -309,7 +309,7 @@ class Fulfillment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FulfillmentArgs,
+                 args: FulfillmentArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         By default, your agent responds to a matched intent with a static response. If you're using one of the integration options, you can provide a more dynamic response by using fulfillment. When you enable fulfillment for an intent, Dialogflow responds to that intent by calling a service that you define. For example, if an end-user wants to schedule a haircut on Friday, your service can check your database and respond to the end-user with availability information for Friday.
@@ -334,7 +334,7 @@ class Fulfillment(pulumi.CustomResource):
         basic_fulfillment = gcp.diagflow.Fulfillment("basicFulfillment",
             display_name="basic-fulfillment",
             enabled=True,
-            generic_web_service=gcp.diagflow.FulfillmentGenericWebServiceArgs(
+            generic_web_service=gcp.diagflow.FulfillmentGenericWebServiceArrgs(
                 uri="https://google.com",
                 username="admin",
                 password="password",
@@ -362,12 +362,12 @@ class Fulfillment(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param FulfillmentArgs args: The arguments to use to populate this resource's properties.
+        :param FulfillmentArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(FulfillmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(FulfillmentArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -378,8 +378,8 @@ class Fulfillment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FulfillmentFeatureArgs']]]]] = None,
-                 generic_web_service: Optional[pulumi.Input[pulumi.InputType['FulfillmentGenericWebServiceArgs']]] = None,
+                 features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FulfillmentFeatureArrgs']]]]] = None,
+                 generic_web_service: Optional[pulumi.Input[pulumi.InputType['FulfillmentGenericWebServiceArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -388,7 +388,7 @@ class Fulfillment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = FulfillmentArgs.__new__(FulfillmentArgs)
+            __props__ = FulfillmentArrgs.__new__(FulfillmentArrgs)
 
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -410,8 +410,8 @@ class Fulfillment(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
-            features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FulfillmentFeatureArgs']]]]] = None,
-            generic_web_service: Optional[pulumi.Input[pulumi.InputType['FulfillmentGenericWebServiceArgs']]] = None,
+            features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FulfillmentFeatureArrgs']]]]] = None,
+            generic_web_service: Optional[pulumi.Input[pulumi.InputType['FulfillmentGenericWebServiceArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None) -> 'Fulfillment':
         """
@@ -426,9 +426,9 @@ class Fulfillment(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[bool] enabled: Whether fulfillment is enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FulfillmentFeatureArgs']]]] features: The field defines whether the fulfillment is enabled for certain features.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FulfillmentFeatureArrgs']]]] features: The field defines whether the fulfillment is enabled for certain features.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['FulfillmentGenericWebServiceArgs']] generic_web_service: Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
+        :param pulumi.Input[pulumi.InputType['FulfillmentGenericWebServiceArrgs']] generic_web_service: Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
                Structure is documented below.
         :param pulumi.Input[str] name: The unique identifier of the fulfillment.
                Format: projects/<Project ID>/agent/fulfillment - projects/<Project ID>/locations/<Location ID>/agent/fulfillment

@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['AttachedDiskArgs', 'AttachedDisk']
+__all__ = ['AttachedDiskArrgs', 'AttachedDisk']
 
 @pulumi.input_type
-class AttachedDiskArgs:
+calass AttachedDiskArrgs:
     def __init__(__self__, *,
                  disk: pulumi.Input[str],
                  instance: pulumi.Input[str],
@@ -158,7 +158,7 @@ class AttachedDiskArgs:
 
 
 @pulumi.input_type
-class _AttachedDiskState:
+calass _AttachedDiskState:
     def __init__(__self__, *,
                  device_name: Optional[pulumi.Input[str]] = None,
                  disk: Optional[pulumi.Input[str]] = None,
@@ -305,7 +305,7 @@ class _AttachedDiskState:
         pulumi.set(self, "zone", value)
 
 
-class AttachedDisk(pulumi.CustomResource):
+calass AttachedDisk(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -341,12 +341,12 @@ class AttachedDisk(pulumi.CustomResource):
         default_instance = gcp.compute.Instance("defaultInstance",
             machine_type="e2-medium",
             zone="us-west1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image="debian-cloud/debian-11",
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 network="default",
             )])
         default_attached_disk = gcp.compute.AttachedDisk("defaultAttachedDisk",
@@ -409,7 +409,7 @@ class AttachedDisk(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AttachedDiskArgs,
+                 args: AttachedDiskArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Persistent disks can be attached to a compute instance using the `attached_disk`
@@ -435,12 +435,12 @@ class AttachedDisk(pulumi.CustomResource):
         default_instance = gcp.compute.Instance("defaultInstance",
             machine_type="e2-medium",
             zone="us-west1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image="debian-cloud/debian-11",
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 network="default",
             )])
         default_attached_disk = gcp.compute.AttachedDisk("defaultAttachedDisk",
@@ -469,12 +469,12 @@ class AttachedDisk(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AttachedDiskArgs args: The arguments to use to populate this resource's properties.
+        :param AttachedDiskArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AttachedDiskArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AttachedDiskArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -496,7 +496,7 @@ class AttachedDisk(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AttachedDiskArgs.__new__(AttachedDiskArgs)
+            __props__ = AttachedDiskArrgs.__new__(AttachedDiskArrgs)
 
             __props__.__dict__["device_name"] = device_name
             if disk is None and not opts.urn:

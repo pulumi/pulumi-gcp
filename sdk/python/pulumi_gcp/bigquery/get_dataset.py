@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetDatasetResult:
+calass GetDatasetResult:
     """
     A collection of values returned by getDataset.
     """
@@ -204,7 +204,7 @@ class GetDatasetResult:
         return pulumi.get(self, "storage_billing_model")
 
 
-class AwaitableGetDatasetResult(GetDatasetResult):
+calass AwaitableGetDatasetResult(GetDatasetResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

@@ -59,7 +59,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class EnvironmentConfig(dict):
+calass EnvironmentConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -249,7 +249,7 @@ class EnvironmentConfig(dict):
 
 
 @pulumi.output_type
-class EnvironmentConfigDatabaseConfig(dict):
+calass EnvironmentConfigDatabaseConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -278,7 +278,7 @@ class EnvironmentConfigDatabaseConfig(dict):
 
 
 @pulumi.output_type
-class EnvironmentConfigEncryptionConfig(dict):
+calass EnvironmentConfigEncryptionConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -307,7 +307,7 @@ class EnvironmentConfigEncryptionConfig(dict):
 
 
 @pulumi.output_type
-class EnvironmentConfigMaintenanceWindow(dict):
+calass EnvironmentConfigMaintenanceWindow(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -352,7 +352,7 @@ class EnvironmentConfigMaintenanceWindow(dict):
 
 
 @pulumi.output_type
-class EnvironmentConfigMasterAuthorizedNetworksConfig(dict):
+calass EnvironmentConfigMasterAuthorizedNetworksConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -389,7 +389,7 @@ class EnvironmentConfigMasterAuthorizedNetworksConfig(dict):
 
 
 @pulumi.output_type
-class EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock(dict):
+calass EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -428,7 +428,7 @@ class EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock(dict):
 
 
 @pulumi.output_type
-class EnvironmentConfigNodeConfig(dict):
+calass EnvironmentConfigNodeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -550,7 +550,7 @@ class EnvironmentConfigNodeConfig(dict):
 
 
 @pulumi.output_type
-class EnvironmentConfigNodeConfigIpAllocationPolicy(dict):
+calass EnvironmentConfigNodeConfigIpAllocationPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -620,7 +620,7 @@ class EnvironmentConfigNodeConfigIpAllocationPolicy(dict):
 
 
 @pulumi.output_type
-class EnvironmentConfigPrivateEnvironmentConfig(dict):
+calass EnvironmentConfigPrivateEnvironmentConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -720,7 +720,7 @@ class EnvironmentConfigPrivateEnvironmentConfig(dict):
 
 
 @pulumi.output_type
-class EnvironmentConfigRecoveryConfig(dict):
+calass EnvironmentConfigRecoveryConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -750,7 +750,7 @@ class EnvironmentConfigRecoveryConfig(dict):
 
 
 @pulumi.output_type
-class EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig(dict):
+calass EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -807,7 +807,7 @@ class EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig(dict):
 
 
 @pulumi.output_type
-class EnvironmentConfigSoftwareConfig(dict):
+calass EnvironmentConfigSoftwareConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -897,7 +897,7 @@ class EnvironmentConfigSoftwareConfig(dict):
 
 
 @pulumi.output_type
-class EnvironmentConfigSoftwareConfigCloudDataLineageIntegration(dict):
+calass EnvironmentConfigSoftwareConfigCloudDataLineageIntegration(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -909,7 +909,7 @@ class EnvironmentConfigSoftwareConfigCloudDataLineageIntegration(dict):
 
 
 @pulumi.output_type
-class EnvironmentConfigWebServerConfig(dict):
+calass EnvironmentConfigWebServerConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -938,7 +938,7 @@ class EnvironmentConfigWebServerConfig(dict):
 
 
 @pulumi.output_type
-class EnvironmentConfigWebServerNetworkAccessControl(dict):
+calass EnvironmentConfigWebServerNetworkAccessControl(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -968,7 +968,7 @@ class EnvironmentConfigWebServerNetworkAccessControl(dict):
 
 
 @pulumi.output_type
-class EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange(dict):
+calass EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange(dict):
     def __init__(__self__, *,
                  value: str,
                  description: Optional[str] = None):
@@ -988,7 +988,7 @@ class EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange(dict):
 
 
 @pulumi.output_type
-class EnvironmentConfigWorkloadsConfig(dict):
+calass EnvironmentConfigWorkloadsConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1042,7 +1042,7 @@ class EnvironmentConfigWorkloadsConfig(dict):
 
 
 @pulumi.output_type
-class EnvironmentConfigWorkloadsConfigScheduler(dict):
+calass EnvironmentConfigWorkloadsConfigScheduler(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1098,7 +1098,7 @@ class EnvironmentConfigWorkloadsConfigScheduler(dict):
 
 
 @pulumi.output_type
-class EnvironmentConfigWorkloadsConfigTriggerer(dict):
+calass EnvironmentConfigWorkloadsConfigTriggerer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1141,7 +1141,7 @@ class EnvironmentConfigWorkloadsConfigTriggerer(dict):
 
 
 @pulumi.output_type
-class EnvironmentConfigWorkloadsConfigWebServer(dict):
+calass EnvironmentConfigWorkloadsConfigWebServer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1189,7 +1189,7 @@ class EnvironmentConfigWorkloadsConfigWebServer(dict):
 
 
 @pulumi.output_type
-class EnvironmentConfigWorkloadsConfigWorker(dict):
+calass EnvironmentConfigWorkloadsConfigWorker(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1257,7 +1257,7 @@ class EnvironmentConfigWorkloadsConfigWorker(dict):
 
 
 @pulumi.output_type
-class EnvironmentStorageConfig(dict):
+calass EnvironmentStorageConfig(dict):
     def __init__(__self__, *,
                  bucket: str):
         pulumi.set(__self__, "bucket", bucket)
@@ -1269,7 +1269,7 @@ class EnvironmentStorageConfig(dict):
 
 
 @pulumi.output_type
-class GetEnvironmentConfigResult(dict):
+calass GetEnvironmentConfigResult(dict):
     def __init__(__self__, *,
                  airflow_uri: str,
                  dag_gcs_prefix: str,
@@ -1393,7 +1393,7 @@ class GetEnvironmentConfigResult(dict):
 
 
 @pulumi.output_type
-class GetEnvironmentConfigDatabaseConfigResult(dict):
+calass GetEnvironmentConfigDatabaseConfigResult(dict):
     def __init__(__self__, *,
                  machine_type: str):
         pulumi.set(__self__, "machine_type", machine_type)
@@ -1405,7 +1405,7 @@ class GetEnvironmentConfigDatabaseConfigResult(dict):
 
 
 @pulumi.output_type
-class GetEnvironmentConfigEncryptionConfigResult(dict):
+calass GetEnvironmentConfigEncryptionConfigResult(dict):
     def __init__(__self__, *,
                  kms_key_name: str):
         pulumi.set(__self__, "kms_key_name", kms_key_name)
@@ -1417,7 +1417,7 @@ class GetEnvironmentConfigEncryptionConfigResult(dict):
 
 
 @pulumi.output_type
-class GetEnvironmentConfigMaintenanceWindowResult(dict):
+calass GetEnvironmentConfigMaintenanceWindowResult(dict):
     def __init__(__self__, *,
                  end_time: str,
                  recurrence: str,
@@ -1443,7 +1443,7 @@ class GetEnvironmentConfigMaintenanceWindowResult(dict):
 
 
 @pulumi.output_type
-class GetEnvironmentConfigMasterAuthorizedNetworksConfigResult(dict):
+calass GetEnvironmentConfigMasterAuthorizedNetworksConfigResult(dict):
     def __init__(__self__, *,
                  cidr_blocks: Sequence['outputs.GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockResult'],
                  enabled: bool):
@@ -1462,7 +1462,7 @@ class GetEnvironmentConfigMasterAuthorizedNetworksConfigResult(dict):
 
 
 @pulumi.output_type
-class GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockResult(dict):
+calass GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockResult(dict):
     def __init__(__self__, *,
                  cidr_block: str,
                  display_name: str):
@@ -1481,7 +1481,7 @@ class GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockResult(dict):
 
 
 @pulumi.output_type
-class GetEnvironmentConfigNodeConfigResult(dict):
+calass GetEnvironmentConfigNodeConfigResult(dict):
     def __init__(__self__, *,
                  disk_size_gb: int,
                  enable_ip_masq_agent: bool,
@@ -1563,7 +1563,7 @@ class GetEnvironmentConfigNodeConfigResult(dict):
 
 
 @pulumi.output_type
-class GetEnvironmentConfigNodeConfigIpAllocationPolicyResult(dict):
+calass GetEnvironmentConfigNodeConfigIpAllocationPolicyResult(dict):
     def __init__(__self__, *,
                  cluster_ipv4_cidr_block: str,
                  cluster_secondary_range_name: str,
@@ -1603,7 +1603,7 @@ class GetEnvironmentConfigNodeConfigIpAllocationPolicyResult(dict):
 
 
 @pulumi.output_type
-class GetEnvironmentConfigPrivateEnvironmentConfigResult(dict):
+calass GetEnvironmentConfigPrivateEnvironmentConfigResult(dict):
     def __init__(__self__, *,
                  cloud_composer_connection_subnetwork: str,
                  cloud_composer_network_ipv4_cidr_block: str,
@@ -1664,7 +1664,7 @@ class GetEnvironmentConfigPrivateEnvironmentConfigResult(dict):
 
 
 @pulumi.output_type
-class GetEnvironmentConfigRecoveryConfigResult(dict):
+calass GetEnvironmentConfigRecoveryConfigResult(dict):
     def __init__(__self__, *,
                  scheduled_snapshots_configs: Sequence['outputs.GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigResult']):
         pulumi.set(__self__, "scheduled_snapshots_configs", scheduled_snapshots_configs)
@@ -1676,7 +1676,7 @@ class GetEnvironmentConfigRecoveryConfigResult(dict):
 
 
 @pulumi.output_type
-class GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigResult(dict):
+calass GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigResult(dict):
     def __init__(__self__, *,
                  enabled: bool,
                  snapshot_creation_schedule: str,
@@ -1709,7 +1709,7 @@ class GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigResult(dict):
 
 
 @pulumi.output_type
-class GetEnvironmentConfigSoftwareConfigResult(dict):
+calass GetEnvironmentConfigSoftwareConfigResult(dict):
     def __init__(__self__, *,
                  airflow_config_overrides: Mapping[str, str],
                  cloud_data_lineage_integrations: Sequence['outputs.GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationResult'],
@@ -1763,7 +1763,7 @@ class GetEnvironmentConfigSoftwareConfigResult(dict):
 
 
 @pulumi.output_type
-class GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationResult(dict):
+calass GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -1775,7 +1775,7 @@ class GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationResult(dict):
 
 
 @pulumi.output_type
-class GetEnvironmentConfigWebServerConfigResult(dict):
+calass GetEnvironmentConfigWebServerConfigResult(dict):
     def __init__(__self__, *,
                  machine_type: str):
         pulumi.set(__self__, "machine_type", machine_type)
@@ -1787,7 +1787,7 @@ class GetEnvironmentConfigWebServerConfigResult(dict):
 
 
 @pulumi.output_type
-class GetEnvironmentConfigWebServerNetworkAccessControlResult(dict):
+calass GetEnvironmentConfigWebServerNetworkAccessControlResult(dict):
     def __init__(__self__, *,
                  allowed_ip_ranges: Sequence['outputs.GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeResult']):
         pulumi.set(__self__, "allowed_ip_ranges", allowed_ip_ranges)
@@ -1799,7 +1799,7 @@ class GetEnvironmentConfigWebServerNetworkAccessControlResult(dict):
 
 
 @pulumi.output_type
-class GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeResult(dict):
+calass GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeResult(dict):
     def __init__(__self__, *,
                  description: str,
                  value: str):
@@ -1818,7 +1818,7 @@ class GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeResult(dict
 
 
 @pulumi.output_type
-class GetEnvironmentConfigWorkloadsConfigResult(dict):
+calass GetEnvironmentConfigWorkloadsConfigResult(dict):
     def __init__(__self__, *,
                  schedulers: Sequence['outputs.GetEnvironmentConfigWorkloadsConfigSchedulerResult'],
                  triggerers: Sequence['outputs.GetEnvironmentConfigWorkloadsConfigTriggererResult'],
@@ -1851,7 +1851,7 @@ class GetEnvironmentConfigWorkloadsConfigResult(dict):
 
 
 @pulumi.output_type
-class GetEnvironmentConfigWorkloadsConfigSchedulerResult(dict):
+calass GetEnvironmentConfigWorkloadsConfigSchedulerResult(dict):
     def __init__(__self__, *,
                  count: int,
                  cpu: float,
@@ -1884,7 +1884,7 @@ class GetEnvironmentConfigWorkloadsConfigSchedulerResult(dict):
 
 
 @pulumi.output_type
-class GetEnvironmentConfigWorkloadsConfigTriggererResult(dict):
+calass GetEnvironmentConfigWorkloadsConfigTriggererResult(dict):
     def __init__(__self__, *,
                  count: int,
                  cpu: float,
@@ -1910,7 +1910,7 @@ class GetEnvironmentConfigWorkloadsConfigTriggererResult(dict):
 
 
 @pulumi.output_type
-class GetEnvironmentConfigWorkloadsConfigWebServerResult(dict):
+calass GetEnvironmentConfigWorkloadsConfigWebServerResult(dict):
     def __init__(__self__, *,
                  cpu: float,
                  memory_gb: float,
@@ -1936,7 +1936,7 @@ class GetEnvironmentConfigWorkloadsConfigWebServerResult(dict):
 
 
 @pulumi.output_type
-class GetEnvironmentConfigWorkloadsConfigWorkerResult(dict):
+calass GetEnvironmentConfigWorkloadsConfigWorkerResult(dict):
     def __init__(__self__, *,
                  cpu: float,
                  max_count: int,
@@ -1976,7 +1976,7 @@ class GetEnvironmentConfigWorkloadsConfigWorkerResult(dict):
 
 
 @pulumi.output_type
-class GetEnvironmentStorageConfigResult(dict):
+calass GetEnvironmentStorageConfigResult(dict):
     def __init__(__self__, *,
                  bucket: str):
         pulumi.set(__self__, "bucket", bucket)
@@ -1988,7 +1988,7 @@ class GetEnvironmentStorageConfigResult(dict):
 
 
 @pulumi.output_type
-class GetImageVersionsImageVersionResult(dict):
+calass GetImageVersionsImageVersionResult(dict):
     def __init__(__self__, *,
                  image_version_id: str,
                  supported_python_versions: Sequence[str]):

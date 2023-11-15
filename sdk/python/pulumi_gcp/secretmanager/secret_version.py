@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['SecretVersionArgs', 'SecretVersion']
+__all__ = ['SecretVersionArrgs', 'SecretVersion']
 
 @pulumi.input_type
-class SecretVersionArgs:
+calass SecretVersionArrgs:
     def __init__(__self__, *,
                  secret: pulumi.Input[str],
                  secret_data: pulumi.Input[str],
@@ -116,7 +116,7 @@ class SecretVersionArgs:
 
 
 @pulumi.input_type
-class _SecretVersionState:
+calass _SecretVersionState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
@@ -287,7 +287,7 @@ class _SecretVersionState:
         pulumi.set(self, "version", value)
 
 
-class SecretVersion(pulumi.CustomResource):
+calass SecretVersion(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -316,8 +316,8 @@ class SecretVersion(pulumi.CustomResource):
             labels={
                 "label": "my-label",
             },
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArrgs(),
             ))
         secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
             secret=secret_basic.id,
@@ -331,9 +331,9 @@ class SecretVersion(pulumi.CustomResource):
 
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-version",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
-                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArrgs(
+                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArrgs(
                         location="us-central1",
                     )],
                 ),
@@ -351,9 +351,9 @@ class SecretVersion(pulumi.CustomResource):
 
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-version",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
-                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArrgs(
+                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArrgs(
                         location="us-central1",
                     )],
                 ),
@@ -372,9 +372,9 @@ class SecretVersion(pulumi.CustomResource):
 
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-version",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
-                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArrgs(
+                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArrgs(
                         location="us-central1",
                     )],
                 ),
@@ -422,7 +422,7 @@ class SecretVersion(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SecretVersionArgs,
+                 args: SecretVersionArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A secret version resource.
@@ -442,8 +442,8 @@ class SecretVersion(pulumi.CustomResource):
             labels={
                 "label": "my-label",
             },
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArrgs(),
             ))
         secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
             secret=secret_basic.id,
@@ -457,9 +457,9 @@ class SecretVersion(pulumi.CustomResource):
 
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-version",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
-                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArrgs(
+                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArrgs(
                         location="us-central1",
                     )],
                 ),
@@ -477,9 +477,9 @@ class SecretVersion(pulumi.CustomResource):
 
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-version",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
-                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArrgs(
+                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArrgs(
                         location="us-central1",
                     )],
                 ),
@@ -498,9 +498,9 @@ class SecretVersion(pulumi.CustomResource):
 
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-version",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
-                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArrgs(
+                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArrgs(
                         location="us-central1",
                     )],
                 ),
@@ -528,12 +528,12 @@ class SecretVersion(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param SecretVersionArgs args: The arguments to use to populate this resource's properties.
+        :param SecretVersionArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SecretVersionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SecretVersionArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -554,7 +554,7 @@ class SecretVersion(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SecretVersionArgs.__new__(SecretVersionArgs)
+            __props__ = SecretVersionArrgs.__new__(SecretVersionArrgs)
 
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["enabled"] = enabled

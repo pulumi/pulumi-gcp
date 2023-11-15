@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class TagKeyIamBindingCondition(dict):
+calass TagKeyIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -44,7 +44,7 @@ class TagKeyIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class TagKeyIamMemberCondition(dict):
+calass TagKeyIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -71,7 +71,7 @@ class TagKeyIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class TagValueIamBindingCondition(dict):
+calass TagValueIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -98,7 +98,7 @@ class TagValueIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class TagValueIamMemberCondition(dict):
+calass TagValueIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,

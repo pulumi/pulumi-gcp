@@ -72,7 +72,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class BucketAutoclass(dict):
+calass BucketAutoclass(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -119,7 +119,7 @@ class BucketAutoclass(dict):
 
 
 @pulumi.output_type
-class BucketCor(dict):
+calass BucketCor(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -193,7 +193,7 @@ class BucketCor(dict):
 
 
 @pulumi.output_type
-class BucketCustomPlacementConfig(dict):
+calass BucketCustomPlacementConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -228,7 +228,7 @@ class BucketCustomPlacementConfig(dict):
 
 
 @pulumi.output_type
-class BucketEncryption(dict):
+calass BucketEncryption(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -289,7 +289,7 @@ class BucketEncryption(dict):
 
 
 @pulumi.output_type
-class BucketIAMBindingCondition(dict):
+calass BucketIAMBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -338,7 +338,7 @@ class BucketIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class BucketIAMMemberCondition(dict):
+calass BucketIAMMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -387,13 +387,13 @@ class BucketIAMMemberCondition(dict):
 
 
 @pulumi.output_type
-class BucketLifecycleRule(dict):
+calass BucketLifecycleRule(dict):
     def __init__(__self__, *,
                  action: 'outputs.BucketLifecycleRuleAction',
                  condition: 'outputs.BucketLifecycleRuleCondition'):
         """
-        :param 'BucketLifecycleRuleActionArgs' action: The Lifecycle Rule's action configuration. A single block of this type is supported. Structure is documented below.
-        :param 'BucketLifecycleRuleConditionArgs' condition: The Lifecycle Rule's condition configuration. A single block of this type is supported. Structure is documented below.
+        :param 'BucketLifecycleRuleActionArrgs' action: The Lifecycle Rule's action configuration. A single block of this type is supported. Structure is documented below.
+        :param 'BucketLifecycleRuleConditionArrgs' condition: The Lifecycle Rule's condition configuration. A single block of this type is supported. Structure is documented below.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "condition", condition)
@@ -416,7 +416,7 @@ class BucketLifecycleRule(dict):
 
 
 @pulumi.output_type
-class BucketLifecycleRuleAction(dict):
+calass BucketLifecycleRuleAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -463,7 +463,7 @@ class BucketLifecycleRuleAction(dict):
 
 
 @pulumi.output_type
-class BucketLifecycleRuleCondition(dict):
+calass BucketLifecycleRuleCondition(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -637,7 +637,7 @@ class BucketLifecycleRuleCondition(dict):
 
 
 @pulumi.output_type
-class BucketLogging(dict):
+calass BucketLogging(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -688,7 +688,7 @@ class BucketLogging(dict):
 
 
 @pulumi.output_type
-class BucketObjectCustomerEncryption(dict):
+calass BucketObjectCustomerEncryption(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -737,7 +737,7 @@ class BucketObjectCustomerEncryption(dict):
 
 
 @pulumi.output_type
-class BucketObjectRetention(dict):
+calass BucketObjectRetention(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -787,7 +787,7 @@ class BucketObjectRetention(dict):
 
 
 @pulumi.output_type
-class BucketRetentionPolicy(dict):
+calass BucketRetentionPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -836,7 +836,7 @@ class BucketRetentionPolicy(dict):
 
 
 @pulumi.output_type
-class BucketVersioning(dict):
+calass BucketVersioning(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -854,7 +854,7 @@ class BucketVersioning(dict):
 
 
 @pulumi.output_type
-class BucketWebsite(dict):
+calass BucketWebsite(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -908,7 +908,7 @@ class BucketWebsite(dict):
 
 
 @pulumi.output_type
-class DefaultObjectAccessControlProjectTeam(dict):
+calass DefaultObjectAccessControlProjectTeam(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -958,7 +958,7 @@ class DefaultObjectAccessControlProjectTeam(dict):
 
 
 @pulumi.output_type
-class InsightsReportConfigCsvOptions(dict):
+calass InsightsReportConfigCsvOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1024,7 +1024,7 @@ class InsightsReportConfigCsvOptions(dict):
 
 
 @pulumi.output_type
-class InsightsReportConfigFrequencyOptions(dict):
+calass InsightsReportConfigFrequencyOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1049,11 +1049,11 @@ class InsightsReportConfigFrequencyOptions(dict):
                  frequency: str,
                  start_date: 'outputs.InsightsReportConfigFrequencyOptionsStartDate'):
         """
-        :param 'InsightsReportConfigFrequencyOptionsEndDateArgs' end_date: The date to stop generating inventory reports. For example, {"day": 15, "month": 9, "year": 2022}.
+        :param 'InsightsReportConfigFrequencyOptionsEndDateArrgs' end_date: The date to stop generating inventory reports. For example, {"day": 15, "month": 9, "year": 2022}.
                Structure is documented below.
         :param str frequency: The frequency in which inventory reports are generated. Values are DAILY or WEEKLY.
                Possible values are: `DAILY`, `WEEKLY`.
-        :param 'InsightsReportConfigFrequencyOptionsStartDateArgs' start_date: The date to start generating inventory reports. For example, {"day": 15, "month": 8, "year": 2022}.
+        :param 'InsightsReportConfigFrequencyOptionsStartDateArrgs' start_date: The date to start generating inventory reports. For example, {"day": 15, "month": 8, "year": 2022}.
                Structure is documented below.
         """
         pulumi.set(__self__, "end_date", end_date)
@@ -1089,7 +1089,7 @@ class InsightsReportConfigFrequencyOptions(dict):
 
 
 @pulumi.output_type
-class InsightsReportConfigFrequencyOptionsEndDate(dict):
+calass InsightsReportConfigFrequencyOptionsEndDate(dict):
     def __init__(__self__, *,
                  day: int,
                  month: int,
@@ -1129,7 +1129,7 @@ class InsightsReportConfigFrequencyOptionsEndDate(dict):
 
 
 @pulumi.output_type
-class InsightsReportConfigFrequencyOptionsStartDate(dict):
+calass InsightsReportConfigFrequencyOptionsStartDate(dict):
     def __init__(__self__, *,
                  day: int,
                  month: int,
@@ -1169,7 +1169,7 @@ class InsightsReportConfigFrequencyOptionsStartDate(dict):
 
 
 @pulumi.output_type
-class InsightsReportConfigObjectMetadataReportOptions(dict):
+calass InsightsReportConfigObjectMetadataReportOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1197,9 +1197,9 @@ class InsightsReportConfigObjectMetadataReportOptions(dict):
                  storage_filters: Optional['outputs.InsightsReportConfigObjectMetadataReportOptionsStorageFilters'] = None):
         """
         :param Sequence[str] metadata_fields: The metadata fields included in an inventory report.
-        :param 'InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs' storage_destination_options: Options for where the inventory reports are stored.
+        :param 'InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArrgs' storage_destination_options: Options for where the inventory reports are stored.
                Structure is documented below.
-        :param 'InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs' storage_filters: A nested object resource
+        :param 'InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArrgs' storage_filters: A nested object resource
                Structure is documented below.
         """
         pulumi.set(__self__, "metadata_fields", metadata_fields)
@@ -1235,7 +1235,7 @@ class InsightsReportConfigObjectMetadataReportOptions(dict):
 
 
 @pulumi.output_type
-class InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions(dict):
+calass InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1282,7 +1282,7 @@ class InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions(d
 
 
 @pulumi.output_type
-class InsightsReportConfigObjectMetadataReportOptionsStorageFilters(dict):
+calass InsightsReportConfigObjectMetadataReportOptionsStorageFilters(dict):
     def __init__(__self__, *,
                  bucket: Optional[str] = None):
         """
@@ -1301,7 +1301,7 @@ class InsightsReportConfigObjectMetadataReportOptionsStorageFilters(dict):
 
 
 @pulumi.output_type
-class ObjectAccessControlProjectTeam(dict):
+calass ObjectAccessControlProjectTeam(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1351,7 +1351,7 @@ class ObjectAccessControlProjectTeam(dict):
 
 
 @pulumi.output_type
-class TransferAgentPoolBandwidthLimit(dict):
+calass TransferAgentPoolBandwidthLimit(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1386,7 +1386,7 @@ class TransferAgentPoolBandwidthLimit(dict):
 
 
 @pulumi.output_type
-class TransferJobEventStream(dict):
+calass TransferJobEventStream(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1447,7 +1447,7 @@ class TransferJobEventStream(dict):
 
 
 @pulumi.output_type
-class TransferJobNotificationConfig(dict):
+calass TransferJobNotificationConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1509,7 +1509,7 @@ class TransferJobNotificationConfig(dict):
 
 
 @pulumi.output_type
-class TransferJobSchedule(dict):
+calass TransferJobSchedule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1539,10 +1539,10 @@ class TransferJobSchedule(dict):
                  schedule_end_date: Optional['outputs.TransferJobScheduleScheduleEndDate'] = None,
                  start_time_of_day: Optional['outputs.TransferJobScheduleStartTimeOfDay'] = None):
         """
-        :param 'TransferJobScheduleScheduleStartDateArgs' schedule_start_date: The first day the recurring transfer is scheduled to run. If `schedule_start_date` is in the past, the transfer will run for the first time on the following day. Structure documented below.
+        :param 'TransferJobScheduleScheduleStartDateArrgs' schedule_start_date: The first day the recurring transfer is scheduled to run. If `schedule_start_date` is in the past, the transfer will run for the first time on the following day. Structure documented below.
         :param str repeat_interval: Interval between the start of each scheduled transfer. If unspecified, the default value is 24 hours. This value may not be less than 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        :param 'TransferJobScheduleScheduleEndDateArgs' schedule_end_date: The last day the recurring transfer will be run. If `schedule_end_date` is the same as `schedule_start_date`, the transfer will be executed only once. Structure documented below.
-        :param 'TransferJobScheduleStartTimeOfDayArgs' start_time_of_day: The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
+        :param 'TransferJobScheduleScheduleEndDateArrgs' schedule_end_date: The last day the recurring transfer will be run. If `schedule_end_date` is the same as `schedule_start_date`, the transfer will be executed only once. Structure documented below.
+        :param 'TransferJobScheduleStartTimeOfDayArrgs' start_time_of_day: The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
         """
         pulumi.set(__self__, "schedule_start_date", schedule_start_date)
         if repeat_interval is not None:
@@ -1586,7 +1586,7 @@ class TransferJobSchedule(dict):
 
 
 @pulumi.output_type
-class TransferJobScheduleScheduleEndDate(dict):
+calass TransferJobScheduleScheduleEndDate(dict):
     def __init__(__self__, *,
                  day: int,
                  month: int,
@@ -1630,7 +1630,7 @@ class TransferJobScheduleScheduleEndDate(dict):
 
 
 @pulumi.output_type
-class TransferJobScheduleScheduleStartDate(dict):
+calass TransferJobScheduleScheduleStartDate(dict):
     def __init__(__self__, *,
                  day: int,
                  month: int,
@@ -1674,7 +1674,7 @@ class TransferJobScheduleScheduleStartDate(dict):
 
 
 @pulumi.output_type
-class TransferJobScheduleStartTimeOfDay(dict):
+calass TransferJobScheduleStartTimeOfDay(dict):
     def __init__(__self__, *,
                  hours: int,
                  minutes: int,
@@ -1725,7 +1725,7 @@ class TransferJobScheduleStartTimeOfDay(dict):
 
 
 @pulumi.output_type
-class TransferJobTransferSpec(dict):
+calass TransferJobTransferSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1776,17 +1776,17 @@ class TransferJobTransferSpec(dict):
                  source_agent_pool_name: Optional[str] = None,
                  transfer_options: Optional['outputs.TransferJobTransferSpecTransferOptions'] = None):
         """
-        :param 'TransferJobTransferSpecAwsS3DataSourceArgs' aws_s3_data_source: An AWS S3 data source. Structure documented below.
-        :param 'TransferJobTransferSpecAzureBlobStorageDataSourceArgs' azure_blob_storage_data_source: An Azure Blob Storage data source. Structure documented below.
-        :param 'TransferJobTransferSpecGcsDataSinkArgs' gcs_data_sink: A Google Cloud Storage data sink. Structure documented below.
-        :param 'TransferJobTransferSpecGcsDataSourceArgs' gcs_data_source: A Google Cloud Storage data source. Structure documented below.
-        :param 'TransferJobTransferSpecHttpDataSourceArgs' http_data_source: A HTTP URL data source. Structure documented below.
-        :param 'TransferJobTransferSpecObjectConditionsArgs' object_conditions: Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
-        :param 'TransferJobTransferSpecPosixDataSinkArgs' posix_data_sink: A POSIX data sink. Structure documented below.
-        :param 'TransferJobTransferSpecPosixDataSourceArgs' posix_data_source: A POSIX filesystem data source. Structure documented below.
+        :param 'TransferJobTransferSpecAwsS3DataSourceArrgs' aws_s3_data_source: An AWS S3 data source. Structure documented below.
+        :param 'TransferJobTransferSpecAzureBlobStorageDataSourceArrgs' azure_blob_storage_data_source: An Azure Blob Storage data source. Structure documented below.
+        :param 'TransferJobTransferSpecGcsDataSinkArrgs' gcs_data_sink: A Google Cloud Storage data sink. Structure documented below.
+        :param 'TransferJobTransferSpecGcsDataSourceArrgs' gcs_data_source: A Google Cloud Storage data source. Structure documented below.
+        :param 'TransferJobTransferSpecHttpDataSourceArrgs' http_data_source: A HTTP URL data source. Structure documented below.
+        :param 'TransferJobTransferSpecObjectConditionsArrgs' object_conditions: Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
+        :param 'TransferJobTransferSpecPosixDataSinkArrgs' posix_data_sink: A POSIX data sink. Structure documented below.
+        :param 'TransferJobTransferSpecPosixDataSourceArrgs' posix_data_source: A POSIX filesystem data source. Structure documented below.
         :param str sink_agent_pool_name: Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
         :param str source_agent_pool_name: Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
-        :param 'TransferJobTransferSpecTransferOptionsArgs' transfer_options: Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+        :param 'TransferJobTransferSpecTransferOptionsArrgs' transfer_options: Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
         """
         if aws_s3_data_source is not None:
             pulumi.set(__self__, "aws_s3_data_source", aws_s3_data_source)
@@ -1901,7 +1901,7 @@ class TransferJobTransferSpec(dict):
 
 
 @pulumi.output_type
-class TransferJobTransferSpecAwsS3DataSource(dict):
+calass TransferJobTransferSpecAwsS3DataSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1930,7 +1930,7 @@ class TransferJobTransferSpecAwsS3DataSource(dict):
                  role_arn: Optional[str] = None):
         """
         :param str bucket_name: Google Cloud Storage bucket name.
-        :param 'TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs' aws_access_key: AWS credentials block.
+        :param 'TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArrgs' aws_access_key: AWS credentials block.
         :param str path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         :param str role_arn: The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
         """
@@ -1976,7 +1976,7 @@ class TransferJobTransferSpecAwsS3DataSource(dict):
 
 
 @pulumi.output_type
-class TransferJobTransferSpecAwsS3DataSourceAwsAccessKey(dict):
+calass TransferJobTransferSpecAwsS3DataSourceAwsAccessKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2024,7 +2024,7 @@ class TransferJobTransferSpecAwsS3DataSourceAwsAccessKey(dict):
 
 
 @pulumi.output_type
-class TransferJobTransferSpecAzureBlobStorageDataSource(dict):
+calass TransferJobTransferSpecAzureBlobStorageDataSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2050,7 +2050,7 @@ class TransferJobTransferSpecAzureBlobStorageDataSource(dict):
                  storage_account: str,
                  path: Optional[str] = None):
         """
-        :param 'TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs' azure_credentials: Credentials used to authenticate API requests to Azure block.
+        :param 'TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArrgs' azure_credentials: Credentials used to authenticate API requests to Azure block.
         :param str container: The container to transfer from the Azure Storage account.`
         :param str storage_account: The name of the Azure Storage account.
         :param str path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
@@ -2095,7 +2095,7 @@ class TransferJobTransferSpecAzureBlobStorageDataSource(dict):
 
 
 @pulumi.output_type
-class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials(dict):
+calass TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2134,7 +2134,7 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials(dict):
 
 
 @pulumi.output_type
-class TransferJobTransferSpecGcsDataSink(dict):
+calass TransferJobTransferSpecGcsDataSink(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2181,7 +2181,7 @@ class TransferJobTransferSpecGcsDataSink(dict):
 
 
 @pulumi.output_type
-class TransferJobTransferSpecGcsDataSource(dict):
+calass TransferJobTransferSpecGcsDataSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2228,7 +2228,7 @@ class TransferJobTransferSpecGcsDataSource(dict):
 
 
 @pulumi.output_type
-class TransferJobTransferSpecHttpDataSource(dict):
+calass TransferJobTransferSpecHttpDataSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2263,7 +2263,7 @@ class TransferJobTransferSpecHttpDataSource(dict):
 
 
 @pulumi.output_type
-class TransferJobTransferSpecObjectConditions(dict):
+calass TransferJobTransferSpecObjectConditions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2369,7 +2369,7 @@ class TransferJobTransferSpecObjectConditions(dict):
 
 
 @pulumi.output_type
-class TransferJobTransferSpecPosixDataSink(dict):
+calass TransferJobTransferSpecPosixDataSink(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2404,7 +2404,7 @@ class TransferJobTransferSpecPosixDataSink(dict):
 
 
 @pulumi.output_type
-class TransferJobTransferSpecPosixDataSource(dict):
+calass TransferJobTransferSpecPosixDataSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2443,7 +2443,7 @@ class TransferJobTransferSpecPosixDataSource(dict):
 
 
 @pulumi.output_type
-class TransferJobTransferSpecTransferOptions(dict):
+calass TransferJobTransferSpecTransferOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2523,7 +2523,7 @@ class TransferJobTransferSpecTransferOptions(dict):
 
 
 @pulumi.output_type
-class GetBucketAutoclassResult(dict):
+calass GetBucketAutoclassResult(dict):
     def __init__(__self__, *,
                  enabled: bool,
                  terminal_storage_class: str):
@@ -2542,7 +2542,7 @@ class GetBucketAutoclassResult(dict):
 
 
 @pulumi.output_type
-class GetBucketCorResult(dict):
+calass GetBucketCorResult(dict):
     def __init__(__self__, *,
                  max_age_seconds: int,
                  methods: Sequence[str],
@@ -2575,7 +2575,7 @@ class GetBucketCorResult(dict):
 
 
 @pulumi.output_type
-class GetBucketCustomPlacementConfigResult(dict):
+calass GetBucketCustomPlacementConfigResult(dict):
     def __init__(__self__, *,
                  data_locations: Sequence[str]):
         pulumi.set(__self__, "data_locations", data_locations)
@@ -2587,7 +2587,7 @@ class GetBucketCustomPlacementConfigResult(dict):
 
 
 @pulumi.output_type
-class GetBucketEncryptionResult(dict):
+calass GetBucketEncryptionResult(dict):
     def __init__(__self__, *,
                  default_kms_key_name: str):
         pulumi.set(__self__, "default_kms_key_name", default_kms_key_name)
@@ -2599,7 +2599,7 @@ class GetBucketEncryptionResult(dict):
 
 
 @pulumi.output_type
-class GetBucketLifecycleRuleResult(dict):
+calass GetBucketLifecycleRuleResult(dict):
     def __init__(__self__, *,
                  actions: Sequence['outputs.GetBucketLifecycleRuleActionResult'],
                  conditions: Sequence['outputs.GetBucketLifecycleRuleConditionResult']):
@@ -2618,7 +2618,7 @@ class GetBucketLifecycleRuleResult(dict):
 
 
 @pulumi.output_type
-class GetBucketLifecycleRuleActionResult(dict):
+calass GetBucketLifecycleRuleActionResult(dict):
     def __init__(__self__, *,
                  storage_class: str,
                  type: str):
@@ -2637,7 +2637,7 @@ class GetBucketLifecycleRuleActionResult(dict):
 
 
 @pulumi.output_type
-class GetBucketLifecycleRuleConditionResult(dict):
+calass GetBucketLifecycleRuleConditionResult(dict):
     def __init__(__self__, *,
                  age: int,
                  created_before: str,
@@ -2719,7 +2719,7 @@ class GetBucketLifecycleRuleConditionResult(dict):
 
 
 @pulumi.output_type
-class GetBucketLoggingResult(dict):
+calass GetBucketLoggingResult(dict):
     def __init__(__self__, *,
                  log_bucket: str,
                  log_object_prefix: str):
@@ -2738,7 +2738,7 @@ class GetBucketLoggingResult(dict):
 
 
 @pulumi.output_type
-class GetBucketObjectContentCustomerEncryptionResult(dict):
+calass GetBucketObjectContentCustomerEncryptionResult(dict):
     def __init__(__self__, *,
                  encryption_algorithm: str,
                  encryption_key: str):
@@ -2757,7 +2757,7 @@ class GetBucketObjectContentCustomerEncryptionResult(dict):
 
 
 @pulumi.output_type
-class GetBucketObjectContentRetentionResult(dict):
+calass GetBucketObjectContentRetentionResult(dict):
     def __init__(__self__, *,
                  mode: str,
                  retain_until_time: str):
@@ -2776,7 +2776,7 @@ class GetBucketObjectContentRetentionResult(dict):
 
 
 @pulumi.output_type
-class GetBucketObjectCustomerEncryptionResult(dict):
+calass GetBucketObjectCustomerEncryptionResult(dict):
     def __init__(__self__, *,
                  encryption_algorithm: str,
                  encryption_key: str):
@@ -2795,7 +2795,7 @@ class GetBucketObjectCustomerEncryptionResult(dict):
 
 
 @pulumi.output_type
-class GetBucketObjectRetentionResult(dict):
+calass GetBucketObjectRetentionResult(dict):
     def __init__(__self__, *,
                  mode: str,
                  retain_until_time: str):
@@ -2814,7 +2814,7 @@ class GetBucketObjectRetentionResult(dict):
 
 
 @pulumi.output_type
-class GetBucketRetentionPolicyResult(dict):
+calass GetBucketRetentionPolicyResult(dict):
     def __init__(__self__, *,
                  is_locked: bool,
                  retention_period: int):
@@ -2833,7 +2833,7 @@ class GetBucketRetentionPolicyResult(dict):
 
 
 @pulumi.output_type
-class GetBucketVersioningResult(dict):
+calass GetBucketVersioningResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -2845,7 +2845,7 @@ class GetBucketVersioningResult(dict):
 
 
 @pulumi.output_type
-class GetBucketWebsiteResult(dict):
+calass GetBucketWebsiteResult(dict):
     def __init__(__self__, *,
                  main_page_suffix: str,
                  not_found_page: str):

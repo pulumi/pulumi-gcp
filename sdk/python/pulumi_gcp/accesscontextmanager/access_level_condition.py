@@ -11,26 +11,26 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AccessLevelConditionArgs', 'AccessLevelCondition']
+__all__ = ['AccessLevelConditionArrgs', 'AccessLevelCondition']
 
 @pulumi.input_type
-class AccessLevelConditionArgs:
+calass AccessLevelConditionArrgs:
     def __init__(__self__, *,
                  access_level: pulumi.Input[str],
-                 device_policy: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArgs']] = None,
+                 device_policy: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArrgs']] = None,
                  ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  negate: Optional[pulumi.Input[bool]] = None,
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]]] = None):
+                 vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArrgs']]]] = None):
         """
         The set of arguments for constructing a AccessLevelCondition resource.
         :param pulumi.Input[str] access_level: The name of the Access Level to add this condition to.
                
                
                - - -
-        :param pulumi.Input['AccessLevelConditionDevicePolicyArgs'] device_policy: Device specific restrictions, all restrictions must hold for
+        :param pulumi.Input['AccessLevelConditionDevicePolicyArrgs'] device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
                allowed.
                Structure is documented below.
@@ -62,7 +62,7 @@ class AccessLevelConditionArgs:
                does not exist is an error. All access levels listed must be
                granted for the Condition to be true.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-        :param pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArrgs']]] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
                Structure is documented below.
         """
         pulumi.set(__self__, "access_level", access_level)
@@ -98,7 +98,7 @@ class AccessLevelConditionArgs:
 
     @property
     @pulumi.getter(name="devicePolicy")
-    def device_policy(self) -> Optional[pulumi.Input['AccessLevelConditionDevicePolicyArgs']]:
+    def device_policy(self) -> Optional[pulumi.Input['AccessLevelConditionDevicePolicyArrgs']]:
         """
         Device specific restrictions, all restrictions must hold for
         the Condition to be true. If not specified, all devices are
@@ -108,7 +108,7 @@ class AccessLevelConditionArgs:
         return pulumi.get(self, "device_policy")
 
     @device_policy.setter
-    def device_policy(self, value: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArgs']]):
+    def device_policy(self, value: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArrgs']]):
         pulumi.set(self, "device_policy", value)
 
     @property
@@ -196,7 +196,7 @@ class AccessLevelConditionArgs:
 
     @property
     @pulumi.getter(name="vpcNetworkSources")
-    def vpc_network_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]]]:
+    def vpc_network_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArrgs']]]]:
         """
         The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
         Structure is documented below.
@@ -204,28 +204,28 @@ class AccessLevelConditionArgs:
         return pulumi.get(self, "vpc_network_sources")
 
     @vpc_network_sources.setter
-    def vpc_network_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]]]):
+    def vpc_network_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArrgs']]]]):
         pulumi.set(self, "vpc_network_sources", value)
 
 
 @pulumi.input_type
-class _AccessLevelConditionState:
+calass _AccessLevelConditionState:
     def __init__(__self__, *,
                  access_level: Optional[pulumi.Input[str]] = None,
-                 device_policy: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArgs']] = None,
+                 device_policy: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArrgs']] = None,
                  ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  negate: Optional[pulumi.Input[bool]] = None,
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]]] = None):
+                 vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArrgs']]]] = None):
         """
         Input properties used for looking up and filtering AccessLevelCondition resources.
         :param pulumi.Input[str] access_level: The name of the Access Level to add this condition to.
                
                
                - - -
-        :param pulumi.Input['AccessLevelConditionDevicePolicyArgs'] device_policy: Device specific restrictions, all restrictions must hold for
+        :param pulumi.Input['AccessLevelConditionDevicePolicyArrgs'] device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
                allowed.
                Structure is documented below.
@@ -257,7 +257,7 @@ class _AccessLevelConditionState:
                does not exist is an error. All access levels listed must be
                granted for the Condition to be true.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-        :param pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArrgs']]] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
                Structure is documented below.
         """
         if access_level is not None:
@@ -294,7 +294,7 @@ class _AccessLevelConditionState:
 
     @property
     @pulumi.getter(name="devicePolicy")
-    def device_policy(self) -> Optional[pulumi.Input['AccessLevelConditionDevicePolicyArgs']]:
+    def device_policy(self) -> Optional[pulumi.Input['AccessLevelConditionDevicePolicyArrgs']]:
         """
         Device specific restrictions, all restrictions must hold for
         the Condition to be true. If not specified, all devices are
@@ -304,7 +304,7 @@ class _AccessLevelConditionState:
         return pulumi.get(self, "device_policy")
 
     @device_policy.setter
-    def device_policy(self, value: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArgs']]):
+    def device_policy(self, value: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArrgs']]):
         pulumi.set(self, "device_policy", value)
 
     @property
@@ -392,7 +392,7 @@ class _AccessLevelConditionState:
 
     @property
     @pulumi.getter(name="vpcNetworkSources")
-    def vpc_network_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]]]:
+    def vpc_network_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArrgs']]]]:
         """
         The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
         Structure is documented below.
@@ -400,23 +400,23 @@ class _AccessLevelConditionState:
         return pulumi.get(self, "vpc_network_sources")
 
     @vpc_network_sources.setter
-    def vpc_network_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]]]):
+    def vpc_network_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArrgs']]]]):
         pulumi.set(self, "vpc_network_sources", value)
 
 
-class AccessLevelCondition(pulumi.CustomResource):
+calass AccessLevelCondition(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_level: Optional[pulumi.Input[str]] = None,
-                 device_policy: Optional[pulumi.Input[pulumi.InputType['AccessLevelConditionDevicePolicyArgs']]] = None,
+                 device_policy: Optional[pulumi.Input[pulumi.InputType['AccessLevelConditionDevicePolicyArrgs']]] = None,
                  ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  negate: Optional[pulumi.Input[bool]] = None,
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessLevelConditionVpcNetworkSourceArgs']]]]] = None,
+                 vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessLevelConditionVpcNetworkSourceArrgs']]]]] = None,
                  __props__=None):
         """
         Allows configuring a single access level condition to be appended to an access level's conditions.
@@ -453,11 +453,11 @@ class AccessLevelCondition(pulumi.CustomResource):
         access_level_service_account = gcp.accesscontextmanager.AccessLevel("access-level-service-account",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             title="chromeos_no_lock",
-            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
-                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
+            basic=gcp.accesscontextmanager.AccessLevelBasicArrgs(
+                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArrgs(
+                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArrgs(
                         require_screen_lock=True,
-                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
+                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArrgs(
                             os_type="DESKTOP_CHROME_OS",
                         )],
                     ),
@@ -478,11 +478,11 @@ class AccessLevelCondition(pulumi.CustomResource):
                 created_later.email.apply(lambda email: f"serviceAccount:{email}"),
             ],
             negate=False,
-            device_policy=gcp.accesscontextmanager.AccessLevelConditionDevicePolicyArgs(
+            device_policy=gcp.accesscontextmanager.AccessLevelConditionDevicePolicyArrgs(
                 require_screen_lock=False,
                 require_admin_approval=False,
                 require_corp_owned=True,
-                os_constraints=[gcp.accesscontextmanager.AccessLevelConditionDevicePolicyOsConstraintArgs(
+                os_constraints=[gcp.accesscontextmanager.AccessLevelConditionDevicePolicyOsConstraintArrgs(
                     os_type="DESKTOP_CHROME_OS",
                 )],
             ),
@@ -502,7 +502,7 @@ class AccessLevelCondition(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['AccessLevelConditionDevicePolicyArgs']] device_policy: Device specific restrictions, all restrictions must hold for
+        :param pulumi.Input[pulumi.InputType['AccessLevelConditionDevicePolicyArrgs']] device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
                allowed.
                Structure is documented below.
@@ -534,14 +534,14 @@ class AccessLevelCondition(pulumi.CustomResource):
                does not exist is an error. All access levels listed must be
                granted for the Condition to be true.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessLevelConditionVpcNetworkSourceArgs']]]] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessLevelConditionVpcNetworkSourceArrgs']]]] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AccessLevelConditionArgs,
+                 args: AccessLevelConditionArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Allows configuring a single access level condition to be appended to an access level's conditions.
@@ -578,11 +578,11 @@ class AccessLevelCondition(pulumi.CustomResource):
         access_level_service_account = gcp.accesscontextmanager.AccessLevel("access-level-service-account",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             title="chromeos_no_lock",
-            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
-                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
+            basic=gcp.accesscontextmanager.AccessLevelBasicArrgs(
+                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArrgs(
+                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArrgs(
                         require_screen_lock=True,
-                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
+                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArrgs(
                             os_type="DESKTOP_CHROME_OS",
                         )],
                     ),
@@ -603,11 +603,11 @@ class AccessLevelCondition(pulumi.CustomResource):
                 created_later.email.apply(lambda email: f"serviceAccount:{email}"),
             ],
             negate=False,
-            device_policy=gcp.accesscontextmanager.AccessLevelConditionDevicePolicyArgs(
+            device_policy=gcp.accesscontextmanager.AccessLevelConditionDevicePolicyArrgs(
                 require_screen_lock=False,
                 require_admin_approval=False,
                 require_corp_owned=True,
-                os_constraints=[gcp.accesscontextmanager.AccessLevelConditionDevicePolicyOsConstraintArgs(
+                os_constraints=[gcp.accesscontextmanager.AccessLevelConditionDevicePolicyOsConstraintArrgs(
                     os_type="DESKTOP_CHROME_OS",
                 )],
             ),
@@ -622,12 +622,12 @@ class AccessLevelCondition(pulumi.CustomResource):
         This resource does not support import.
 
         :param str resource_name: The name of the resource.
-        :param AccessLevelConditionArgs args: The arguments to use to populate this resource's properties.
+        :param AccessLevelConditionArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AccessLevelConditionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AccessLevelConditionArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -637,13 +637,13 @@ class AccessLevelCondition(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_level: Optional[pulumi.Input[str]] = None,
-                 device_policy: Optional[pulumi.Input[pulumi.InputType['AccessLevelConditionDevicePolicyArgs']]] = None,
+                 device_policy: Optional[pulumi.Input[pulumi.InputType['AccessLevelConditionDevicePolicyArrgs']]] = None,
                  ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  negate: Optional[pulumi.Input[bool]] = None,
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessLevelConditionVpcNetworkSourceArgs']]]]] = None,
+                 vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessLevelConditionVpcNetworkSourceArrgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -651,7 +651,7 @@ class AccessLevelCondition(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AccessLevelConditionArgs.__new__(AccessLevelConditionArgs)
+            __props__ = AccessLevelConditionArrgs.__new__(AccessLevelConditionArrgs)
 
             if access_level is None and not opts.urn:
                 raise TypeError("Missing required property 'access_level'")
@@ -674,13 +674,13 @@ class AccessLevelCondition(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_level: Optional[pulumi.Input[str]] = None,
-            device_policy: Optional[pulumi.Input[pulumi.InputType['AccessLevelConditionDevicePolicyArgs']]] = None,
+            device_policy: Optional[pulumi.Input[pulumi.InputType['AccessLevelConditionDevicePolicyArrgs']]] = None,
             ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             negate: Optional[pulumi.Input[bool]] = None,
             regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessLevelConditionVpcNetworkSourceArgs']]]]] = None) -> 'AccessLevelCondition':
+            vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessLevelConditionVpcNetworkSourceArrgs']]]]] = None) -> 'AccessLevelCondition':
         """
         Get an existing AccessLevelCondition resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -692,7 +692,7 @@ class AccessLevelCondition(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['AccessLevelConditionDevicePolicyArgs']] device_policy: Device specific restrictions, all restrictions must hold for
+        :param pulumi.Input[pulumi.InputType['AccessLevelConditionDevicePolicyArrgs']] device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
                allowed.
                Structure is documented below.
@@ -724,7 +724,7 @@ class AccessLevelCondition(pulumi.CustomResource):
                does not exist is an error. All access levels listed must be
                granted for the Condition to be true.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessLevelConditionVpcNetworkSourceArgs']]]] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessLevelConditionVpcNetworkSourceArrgs']]]] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

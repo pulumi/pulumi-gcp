@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['SubnetworkIAMPolicyArgs', 'SubnetworkIAMPolicy']
+__all__ = ['SubnetworkIAMPolicyArrgs', 'SubnetworkIAMPolicy']
 
 @pulumi.input_type
-class SubnetworkIAMPolicyArgs:
+calass SubnetworkIAMPolicyArrgs:
     def __init__(__self__, *,
                  policy_data: pulumi.Input[str],
                  subnetwork: pulumi.Input[str],
@@ -116,7 +116,7 @@ class SubnetworkIAMPolicyArgs:
 
 
 @pulumi.input_type
-class _SubnetworkIAMPolicyState:
+calass _SubnetworkIAMPolicyState:
     def __init__(__self__, *,
                  etag: Optional[pulumi.Input[str]] = None,
                  policy_data: Optional[pulumi.Input[str]] = None,
@@ -237,7 +237,7 @@ class _SubnetworkIAMPolicyState:
         pulumi.set(self, "subnetwork", value)
 
 
-class SubnetworkIAMPolicy(pulumi.CustomResource):
+calass SubnetworkIAMPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -270,7 +270,7 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/compute.networkUser",
             members=["user:jane@example.com"],
         )])
@@ -287,10 +287,10 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/compute.networkUser",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -328,7 +328,7 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
             role="roles/compute.networkUser",
             members=["user:jane@example.com"],
-            condition=gcp.compute.SubnetworkIAMBindingConditionArgs(
+            condition=gcp.compute.SubnetworkIAMBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -360,7 +360,7 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
             role="roles/compute.networkUser",
             member="user:jane@example.com",
-            condition=gcp.compute.SubnetworkIAMMemberConditionArgs(
+            condition=gcp.compute.SubnetworkIAMMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -419,7 +419,7 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SubnetworkIAMPolicyArgs,
+                 args: SubnetworkIAMPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Compute Engine Subnetwork. Each of these resources serves a different use case:
@@ -444,7 +444,7 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/compute.networkUser",
             members=["user:jane@example.com"],
         )])
@@ -461,10 +461,10 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/compute.networkUser",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -502,7 +502,7 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
             role="roles/compute.networkUser",
             members=["user:jane@example.com"],
-            condition=gcp.compute.SubnetworkIAMBindingConditionArgs(
+            condition=gcp.compute.SubnetworkIAMBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -534,7 +534,7 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
             role="roles/compute.networkUser",
             member="user:jane@example.com",
-            condition=gcp.compute.SubnetworkIAMMemberConditionArgs(
+            condition=gcp.compute.SubnetworkIAMMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -566,12 +566,12 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param SubnetworkIAMPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param SubnetworkIAMPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SubnetworkIAMPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SubnetworkIAMPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -591,7 +591,7 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SubnetworkIAMPolicyArgs.__new__(SubnetworkIAMPolicyArgs)
+            __props__ = SubnetworkIAMPolicyArrgs.__new__(SubnetworkIAMPolicyArrgs)
 
             if policy_data is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_data'")

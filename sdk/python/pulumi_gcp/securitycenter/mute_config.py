@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['MuteConfigArgs', 'MuteConfig']
+__all__ = ['MuteConfigArrgs', 'MuteConfig']
 
 @pulumi.input_type
-class MuteConfigArgs:
+calass MuteConfigArrgs:
     def __init__(__self__, *,
                  filter: pulumi.Input[str],
                  mute_config_id: pulumi.Input[str],
@@ -99,7 +99,7 @@ class MuteConfigArgs:
 
 
 @pulumi.input_type
-class _MuteConfigState:
+calass _MuteConfigState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -268,7 +268,7 @@ class _MuteConfigState:
         pulumi.set(self, "update_time", value)
 
 
-class MuteConfig(pulumi.CustomResource):
+calass MuteConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -338,7 +338,7 @@ class MuteConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: MuteConfigArgs,
+                 args: MuteConfigArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Mute Findings is a volume management feature in Security Command Center
@@ -381,12 +381,12 @@ class MuteConfig(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param MuteConfigArgs args: The arguments to use to populate this resource's properties.
+        :param MuteConfigArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(MuteConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(MuteConfigArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -406,7 +406,7 @@ class MuteConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = MuteConfigArgs.__new__(MuteConfigArgs)
+            __props__ = MuteConfigArrgs.__new__(MuteConfigArrgs)
 
             __props__.__dict__["description"] = description
             if filter is None and not opts.urn:

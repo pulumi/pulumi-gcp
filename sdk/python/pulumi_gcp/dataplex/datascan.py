@@ -11,32 +11,32 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DatascanArgs', 'Datascan']
+__all__ = ['DatascanArrgs', 'Datascan']
 
 @pulumi.input_type
-class DatascanArgs:
+calass DatascanArrgs:
     def __init__(__self__, *,
-                 data: pulumi.Input['DatascanDataArgs'],
+                 data: pulumi.Input['DatascanDataArrgs'],
                  data_scan_id: pulumi.Input[str],
-                 execution_spec: pulumi.Input['DatascanExecutionSpecArgs'],
+                 execution_spec: pulumi.Input['DatascanExecutionSpecArrgs'],
                  location: pulumi.Input[str],
-                 data_profile_spec: Optional[pulumi.Input['DatascanDataProfileSpecArgs']] = None,
-                 data_quality_spec: Optional[pulumi.Input['DatascanDataQualitySpecArgs']] = None,
+                 data_profile_spec: Optional[pulumi.Input['DatascanDataProfileSpecArrgs']] = None,
+                 data_quality_spec: Optional[pulumi.Input['DatascanDataQualitySpecArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Datascan resource.
-        :param pulumi.Input['DatascanDataArgs'] data: The data source for DataScan.
+        :param pulumi.Input['DatascanDataArrgs'] data: The data source for DataScan.
                Structure is documented below.
         :param pulumi.Input[str] data_scan_id: DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
-        :param pulumi.Input['DatascanExecutionSpecArgs'] execution_spec: DataScan execution settings.
+        :param pulumi.Input['DatascanExecutionSpecArrgs'] execution_spec: DataScan execution settings.
                Structure is documented below.
         :param pulumi.Input[str] location: The location where the data scan should reside.
-        :param pulumi.Input['DatascanDataProfileSpecArgs'] data_profile_spec: DataProfileScan related setting.
+        :param pulumi.Input['DatascanDataProfileSpecArrgs'] data_profile_spec: DataProfileScan related setting.
                Structure is documented below.
-        :param pulumi.Input['DatascanDataQualitySpecArgs'] data_quality_spec: DataQualityScan related setting.
+        :param pulumi.Input['DatascanDataQualitySpecArrgs'] data_quality_spec: DataQualityScan related setting.
                Structure is documented below.
         :param pulumi.Input[str] description: Description of the rule.
                The maximum length is 1,024 characters.
@@ -67,7 +67,7 @@ class DatascanArgs:
 
     @property
     @pulumi.getter
-    def data(self) -> pulumi.Input['DatascanDataArgs']:
+    def data(self) -> pulumi.Input['DatascanDataArrgs']:
         """
         The data source for DataScan.
         Structure is documented below.
@@ -75,7 +75,7 @@ class DatascanArgs:
         return pulumi.get(self, "data")
 
     @data.setter
-    def data(self, value: pulumi.Input['DatascanDataArgs']):
+    def data(self, value: pulumi.Input['DatascanDataArrgs']):
         pulumi.set(self, "data", value)
 
     @property
@@ -92,7 +92,7 @@ class DatascanArgs:
 
     @property
     @pulumi.getter(name="executionSpec")
-    def execution_spec(self) -> pulumi.Input['DatascanExecutionSpecArgs']:
+    def execution_spec(self) -> pulumi.Input['DatascanExecutionSpecArrgs']:
         """
         DataScan execution settings.
         Structure is documented below.
@@ -100,7 +100,7 @@ class DatascanArgs:
         return pulumi.get(self, "execution_spec")
 
     @execution_spec.setter
-    def execution_spec(self, value: pulumi.Input['DatascanExecutionSpecArgs']):
+    def execution_spec(self, value: pulumi.Input['DatascanExecutionSpecArrgs']):
         pulumi.set(self, "execution_spec", value)
 
     @property
@@ -117,7 +117,7 @@ class DatascanArgs:
 
     @property
     @pulumi.getter(name="dataProfileSpec")
-    def data_profile_spec(self) -> Optional[pulumi.Input['DatascanDataProfileSpecArgs']]:
+    def data_profile_spec(self) -> Optional[pulumi.Input['DatascanDataProfileSpecArrgs']]:
         """
         DataProfileScan related setting.
         Structure is documented below.
@@ -125,12 +125,12 @@ class DatascanArgs:
         return pulumi.get(self, "data_profile_spec")
 
     @data_profile_spec.setter
-    def data_profile_spec(self, value: Optional[pulumi.Input['DatascanDataProfileSpecArgs']]):
+    def data_profile_spec(self, value: Optional[pulumi.Input['DatascanDataProfileSpecArrgs']]):
         pulumi.set(self, "data_profile_spec", value)
 
     @property
     @pulumi.getter(name="dataQualitySpec")
-    def data_quality_spec(self) -> Optional[pulumi.Input['DatascanDataQualitySpecArgs']]:
+    def data_quality_spec(self) -> Optional[pulumi.Input['DatascanDataQualitySpecArrgs']]:
         """
         DataQualityScan related setting.
         Structure is documented below.
@@ -138,7 +138,7 @@ class DatascanArgs:
         return pulumi.get(self, "data_quality_spec")
 
     @data_quality_spec.setter
-    def data_quality_spec(self, value: Optional[pulumi.Input['DatascanDataQualitySpecArgs']]):
+    def data_quality_spec(self, value: Optional[pulumi.Input['DatascanDataQualitySpecArrgs']]):
         pulumi.set(self, "data_quality_spec", value)
 
     @property
@@ -196,18 +196,18 @@ class DatascanArgs:
 
 
 @pulumi.input_type
-class _DatascanState:
+calass _DatascanState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 data: Optional[pulumi.Input['DatascanDataArgs']] = None,
-                 data_profile_spec: Optional[pulumi.Input['DatascanDataProfileSpecArgs']] = None,
-                 data_quality_spec: Optional[pulumi.Input['DatascanDataQualitySpecArgs']] = None,
+                 data: Optional[pulumi.Input['DatascanDataArrgs']] = None,
+                 data_profile_spec: Optional[pulumi.Input['DatascanDataProfileSpecArrgs']] = None,
+                 data_quality_spec: Optional[pulumi.Input['DatascanDataQualitySpecArrgs']] = None,
                  data_scan_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 execution_spec: Optional[pulumi.Input['DatascanExecutionSpecArgs']] = None,
-                 execution_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanExecutionStatusArgs']]]] = None,
+                 execution_spec: Optional[pulumi.Input['DatascanExecutionSpecArrgs']] = None,
+                 execution_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanExecutionStatusArrgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -220,20 +220,20 @@ class _DatascanState:
         """
         Input properties used for looking up and filtering Datascan resources.
         :param pulumi.Input[str] create_time: The time when the scan was created.
-        :param pulumi.Input['DatascanDataArgs'] data: The data source for DataScan.
+        :param pulumi.Input['DatascanDataArrgs'] data: The data source for DataScan.
                Structure is documented below.
-        :param pulumi.Input['DatascanDataProfileSpecArgs'] data_profile_spec: DataProfileScan related setting.
+        :param pulumi.Input['DatascanDataProfileSpecArrgs'] data_profile_spec: DataProfileScan related setting.
                Structure is documented below.
-        :param pulumi.Input['DatascanDataQualitySpecArgs'] data_quality_spec: DataQualityScan related setting.
+        :param pulumi.Input['DatascanDataQualitySpecArrgs'] data_quality_spec: DataQualityScan related setting.
                Structure is documented below.
         :param pulumi.Input[str] data_scan_id: DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
         :param pulumi.Input[str] description: Description of the rule.
                The maximum length is 1,024 characters.
         :param pulumi.Input[str] display_name: User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input['DatascanExecutionSpecArgs'] execution_spec: DataScan execution settings.
+        :param pulumi.Input['DatascanExecutionSpecArrgs'] execution_spec: DataScan execution settings.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['DatascanExecutionStatusArgs']]] execution_statuses: Status of the data scan execution.
+        :param pulumi.Input[Sequence[pulumi.Input['DatascanExecutionStatusArrgs']]] execution_statuses: Status of the data scan execution.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the scan. A list of key->value pairs.
                
@@ -307,7 +307,7 @@ class _DatascanState:
 
     @property
     @pulumi.getter
-    def data(self) -> Optional[pulumi.Input['DatascanDataArgs']]:
+    def data(self) -> Optional[pulumi.Input['DatascanDataArrgs']]:
         """
         The data source for DataScan.
         Structure is documented below.
@@ -315,12 +315,12 @@ class _DatascanState:
         return pulumi.get(self, "data")
 
     @data.setter
-    def data(self, value: Optional[pulumi.Input['DatascanDataArgs']]):
+    def data(self, value: Optional[pulumi.Input['DatascanDataArrgs']]):
         pulumi.set(self, "data", value)
 
     @property
     @pulumi.getter(name="dataProfileSpec")
-    def data_profile_spec(self) -> Optional[pulumi.Input['DatascanDataProfileSpecArgs']]:
+    def data_profile_spec(self) -> Optional[pulumi.Input['DatascanDataProfileSpecArrgs']]:
         """
         DataProfileScan related setting.
         Structure is documented below.
@@ -328,12 +328,12 @@ class _DatascanState:
         return pulumi.get(self, "data_profile_spec")
 
     @data_profile_spec.setter
-    def data_profile_spec(self, value: Optional[pulumi.Input['DatascanDataProfileSpecArgs']]):
+    def data_profile_spec(self, value: Optional[pulumi.Input['DatascanDataProfileSpecArrgs']]):
         pulumi.set(self, "data_profile_spec", value)
 
     @property
     @pulumi.getter(name="dataQualitySpec")
-    def data_quality_spec(self) -> Optional[pulumi.Input['DatascanDataQualitySpecArgs']]:
+    def data_quality_spec(self) -> Optional[pulumi.Input['DatascanDataQualitySpecArrgs']]:
         """
         DataQualityScan related setting.
         Structure is documented below.
@@ -341,7 +341,7 @@ class _DatascanState:
         return pulumi.get(self, "data_quality_spec")
 
     @data_quality_spec.setter
-    def data_quality_spec(self, value: Optional[pulumi.Input['DatascanDataQualitySpecArgs']]):
+    def data_quality_spec(self, value: Optional[pulumi.Input['DatascanDataQualitySpecArrgs']]):
         pulumi.set(self, "data_quality_spec", value)
 
     @property
@@ -395,7 +395,7 @@ class _DatascanState:
 
     @property
     @pulumi.getter(name="executionSpec")
-    def execution_spec(self) -> Optional[pulumi.Input['DatascanExecutionSpecArgs']]:
+    def execution_spec(self) -> Optional[pulumi.Input['DatascanExecutionSpecArrgs']]:
         """
         DataScan execution settings.
         Structure is documented below.
@@ -403,12 +403,12 @@ class _DatascanState:
         return pulumi.get(self, "execution_spec")
 
     @execution_spec.setter
-    def execution_spec(self, value: Optional[pulumi.Input['DatascanExecutionSpecArgs']]):
+    def execution_spec(self, value: Optional[pulumi.Input['DatascanExecutionSpecArrgs']]):
         pulumi.set(self, "execution_spec", value)
 
     @property
     @pulumi.getter(name="executionStatuses")
-    def execution_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanExecutionStatusArgs']]]]:
+    def execution_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanExecutionStatusArrgs']]]]:
         """
         Status of the data scan execution.
         Structure is documented below.
@@ -416,7 +416,7 @@ class _DatascanState:
         return pulumi.get(self, "execution_statuses")
 
     @execution_statuses.setter
-    def execution_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanExecutionStatusArgs']]]]):
+    def execution_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanExecutionStatusArrgs']]]]):
         pulumi.set(self, "execution_statuses", value)
 
     @property
@@ -537,18 +537,18 @@ class _DatascanState:
         pulumi.set(self, "update_time", value)
 
 
-class Datascan(pulumi.CustomResource):
+calass Datascan(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data: Optional[pulumi.Input[pulumi.InputType['DatascanDataArgs']]] = None,
-                 data_profile_spec: Optional[pulumi.Input[pulumi.InputType['DatascanDataProfileSpecArgs']]] = None,
-                 data_quality_spec: Optional[pulumi.Input[pulumi.InputType['DatascanDataQualitySpecArgs']]] = None,
+                 data: Optional[pulumi.Input[pulumi.InputType['DatascanDataArrgs']]] = None,
+                 data_profile_spec: Optional[pulumi.Input[pulumi.InputType['DatascanDataProfileSpecArrgs']]] = None,
+                 data_quality_spec: Optional[pulumi.Input[pulumi.InputType['DatascanDataQualitySpecArrgs']]] = None,
                  data_scan_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 execution_spec: Optional[pulumi.Input[pulumi.InputType['DatascanExecutionSpecArgs']]] = None,
+                 execution_spec: Optional[pulumi.Input[pulumi.InputType['DatascanExecutionSpecArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -570,14 +570,14 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         basic_profile = gcp.dataplex.Datascan("basicProfile",
-            data=gcp.dataplex.DatascanDataArgs(
+            data=gcp.dataplex.DatascanDataArrgs(
                 resource="//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
             ),
-            data_profile_spec=gcp.dataplex.DatascanDataProfileSpecArgs(),
+            data_profile_spec=gcp.dataplex.DatascanDataProfileSpecArrgs(),
             data_scan_id="dataprofile-basic",
-            execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
-                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
-                    on_demand=gcp.dataplex.DatascanExecutionSpecTriggerOnDemandArgs(),
+            execution_spec=gcp.dataplex.DatascanExecutionSpecArrgs(
+                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArrgs(
+                    on_demand=gcp.dataplex.DatascanExecutionSpecTriggerOnDemandArrgs(),
                 ),
             ),
             location="us-central1",
@@ -603,27 +603,27 @@ class Datascan(pulumi.CustomResource):
             labels={
                 "author": "billing",
             },
-            data=gcp.dataplex.DatascanDataArgs(
+            data=gcp.dataplex.DatascanDataArrgs(
                 resource="//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
             ),
-            execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
-                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
-                    schedule=gcp.dataplex.DatascanExecutionSpecTriggerScheduleArgs(
+            execution_spec=gcp.dataplex.DatascanExecutionSpecArrgs(
+                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArrgs(
+                    schedule=gcp.dataplex.DatascanExecutionSpecTriggerScheduleArrgs(
                         cron="TZ=America/New_York 1 1 * * *",
                     ),
                 ),
             ),
-            data_profile_spec=gcp.dataplex.DatascanDataProfileSpecArgs(
+            data_profile_spec=gcp.dataplex.DatascanDataProfileSpecArrgs(
                 sampling_percent=80,
                 row_filter="word_count > 10",
-                include_fields=gcp.dataplex.DatascanDataProfileSpecIncludeFieldsArgs(
+                include_fields=gcp.dataplex.DatascanDataProfileSpecIncludeFieldsArrgs(
                     field_names=["word_count"],
                 ),
-                exclude_fields=gcp.dataplex.DatascanDataProfileSpecExcludeFieldsArgs(
+                exclude_fields=gcp.dataplex.DatascanDataProfileSpecExcludeFieldsArrgs(
                     field_names=["property_type"],
                 ),
-                post_scan_actions=gcp.dataplex.DatascanDataProfileSpecPostScanActionsArgs(
-                    bigquery_export=gcp.dataplex.DatascanDataProfileSpecPostScanActionsBigqueryExportArgs(
+                post_scan_actions=gcp.dataplex.DatascanDataProfileSpecPostScanActionsArrgs(
+                    bigquery_export=gcp.dataplex.DatascanDataProfileSpecPostScanActionsBigqueryExportArrgs(
                         results_table="//bigquery.googleapis.com/projects/my-project-name/datasets/dataplex_dataset/tables/profile_export",
                     ),
                 ),
@@ -638,23 +638,23 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         basic_quality = gcp.dataplex.Datascan("basicQuality",
-            data=gcp.dataplex.DatascanDataArgs(
+            data=gcp.dataplex.DatascanDataArrgs(
                 resource="//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
             ),
-            data_quality_spec=gcp.dataplex.DatascanDataQualitySpecArgs(
-                rules=[gcp.dataplex.DatascanDataQualitySpecRuleArgs(
+            data_quality_spec=gcp.dataplex.DatascanDataQualitySpecArrgs(
+                rules=[gcp.dataplex.DatascanDataQualitySpecRuleArrgs(
                     description="rule 1 for validity dimension",
                     dimension="VALIDITY",
                     name="rule1",
-                    table_condition_expectation=gcp.dataplex.DatascanDataQualitySpecRuleTableConditionExpectationArgs(
+                    table_condition_expectation=gcp.dataplex.DatascanDataQualitySpecRuleTableConditionExpectationArrgs(
                         sql_expression="COUNT(*) > 0",
                     ),
                 )],
             ),
             data_scan_id="dataquality-basic",
-            execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
-                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
-                    on_demand=gcp.dataplex.DatascanExecutionSpecTriggerOnDemandArgs(),
+            execution_spec=gcp.dataplex.DatascanExecutionSpecArrgs(
+                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArrgs(
+                    on_demand=gcp.dataplex.DatascanExecutionSpecTriggerOnDemandArrgs(),
                 ),
             ),
             location="us-central1",
@@ -667,23 +667,23 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         full_quality = gcp.dataplex.Datascan("fullQuality",
-            data=gcp.dataplex.DatascanDataArgs(
+            data=gcp.dataplex.DatascanDataArrgs(
                 resource="//bigquery.googleapis.com/projects/bigquery-public-data/datasets/austin_bikeshare/tables/bikeshare_stations",
             ),
-            data_quality_spec=gcp.dataplex.DatascanDataQualitySpecArgs(
+            data_quality_spec=gcp.dataplex.DatascanDataQualitySpecArrgs(
                 row_filter="station_id > 1000",
                 rules=[
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
+                    gcp.dataplex.DatascanDataQualitySpecRuleArrgs(
                         column="address",
                         dimension="VALIDITY",
-                        non_null_expectation=gcp.dataplex.DatascanDataQualitySpecRuleNonNullExpectationArgs(),
+                        non_null_expectation=gcp.dataplex.DatascanDataQualitySpecRuleNonNullExpectationArrgs(),
                         threshold=0.99,
                     ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
+                    gcp.dataplex.DatascanDataQualitySpecRuleArrgs(
                         column="council_district",
                         dimension="VALIDITY",
                         ignore_null=True,
-                        range_expectation=gcp.dataplex.DatascanDataQualitySpecRuleRangeExpectationArgs(
+                        range_expectation=gcp.dataplex.DatascanDataQualitySpecRuleRangeExpectationArrgs(
                             max_value="10",
                             min_value="1",
                             strict_max_enabled=False,
@@ -691,34 +691,34 @@ class Datascan(pulumi.CustomResource):
                         ),
                         threshold=0.9,
                     ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
+                    gcp.dataplex.DatascanDataQualitySpecRuleArrgs(
                         column="power_type",
                         dimension="VALIDITY",
                         ignore_null=False,
-                        regex_expectation=gcp.dataplex.DatascanDataQualitySpecRuleRegexExpectationArgs(
+                        regex_expectation=gcp.dataplex.DatascanDataQualitySpecRuleRegexExpectationArrgs(
                             regex=".*solar.*",
                         ),
                     ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
+                    gcp.dataplex.DatascanDataQualitySpecRuleArrgs(
                         column="property_type",
                         dimension="VALIDITY",
                         ignore_null=False,
-                        set_expectation=gcp.dataplex.DatascanDataQualitySpecRuleSetExpectationArgs(
+                        set_expectation=gcp.dataplex.DatascanDataQualitySpecRuleSetExpectationArrgs(
                             values=[
                                 "sidewalk",
                                 "parkland",
                             ],
                         ),
                     ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
+                    gcp.dataplex.DatascanDataQualitySpecRuleArrgs(
                         column="address",
                         dimension="UNIQUENESS",
-                        uniqueness_expectation=gcp.dataplex.DatascanDataQualitySpecRuleUniquenessExpectationArgs(),
+                        uniqueness_expectation=gcp.dataplex.DatascanDataQualitySpecRuleUniquenessExpectationArrgs(),
                     ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
+                    gcp.dataplex.DatascanDataQualitySpecRuleArrgs(
                         column="number_of_docks",
                         dimension="VALIDITY",
-                        statistic_range_expectation=gcp.dataplex.DatascanDataQualitySpecRuleStatisticRangeExpectationArgs(
+                        statistic_range_expectation=gcp.dataplex.DatascanDataQualitySpecRuleStatisticRangeExpectationArrgs(
                             max_value="15",
                             min_value="5",
                             statistic="MEAN",
@@ -726,16 +726,16 @@ class Datascan(pulumi.CustomResource):
                             strict_min_enabled=True,
                         ),
                     ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
+                    gcp.dataplex.DatascanDataQualitySpecRuleArrgs(
                         column="footprint_length",
                         dimension="VALIDITY",
-                        row_condition_expectation=gcp.dataplex.DatascanDataQualitySpecRuleRowConditionExpectationArgs(
+                        row_condition_expectation=gcp.dataplex.DatascanDataQualitySpecRuleRowConditionExpectationArrgs(
                             sql_expression="footprint_length > 0 AND footprint_length <= 10",
                         ),
                     ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
+                    gcp.dataplex.DatascanDataQualitySpecRuleArrgs(
                         dimension="VALIDITY",
-                        table_condition_expectation=gcp.dataplex.DatascanDataQualitySpecRuleTableConditionExpectationArgs(
+                        table_condition_expectation=gcp.dataplex.DatascanDataQualitySpecRuleTableConditionExpectationArrgs(
                             sql_expression="COUNT(*) > 0",
                         ),
                     ),
@@ -745,10 +745,10 @@ class Datascan(pulumi.CustomResource):
             data_scan_id="dataquality-full",
             description="Example resource - Full Datascan Quality",
             display_name="Full Datascan Quality",
-            execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
+            execution_spec=gcp.dataplex.DatascanExecutionSpecArrgs(
                 field="modified_date",
-                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
-                    schedule=gcp.dataplex.DatascanExecutionSpecTriggerScheduleArgs(
+                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArrgs(
+                    schedule=gcp.dataplex.DatascanExecutionSpecTriggerScheduleArrgs(
                         cron="TZ=America/New_York 1 1 * * *",
                     ),
                 ),
@@ -790,17 +790,17 @@ class Datascan(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DatascanDataArgs']] data: The data source for DataScan.
+        :param pulumi.Input[pulumi.InputType['DatascanDataArrgs']] data: The data source for DataScan.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['DatascanDataProfileSpecArgs']] data_profile_spec: DataProfileScan related setting.
+        :param pulumi.Input[pulumi.InputType['DatascanDataProfileSpecArrgs']] data_profile_spec: DataProfileScan related setting.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['DatascanDataQualitySpecArgs']] data_quality_spec: DataQualityScan related setting.
+        :param pulumi.Input[pulumi.InputType['DatascanDataQualitySpecArrgs']] data_quality_spec: DataQualityScan related setting.
                Structure is documented below.
         :param pulumi.Input[str] data_scan_id: DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
         :param pulumi.Input[str] description: Description of the rule.
                The maximum length is 1,024 characters.
         :param pulumi.Input[str] display_name: User friendly display name.
-        :param pulumi.Input[pulumi.InputType['DatascanExecutionSpecArgs']] execution_spec: DataScan execution settings.
+        :param pulumi.Input[pulumi.InputType['DatascanExecutionSpecArrgs']] execution_spec: DataScan execution settings.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the scan. A list of key->value pairs.
                
@@ -814,7 +814,7 @@ class Datascan(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DatascanArgs,
+                 args: DatascanArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a user-visible job which provides the insights for the related data source.
@@ -833,14 +833,14 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         basic_profile = gcp.dataplex.Datascan("basicProfile",
-            data=gcp.dataplex.DatascanDataArgs(
+            data=gcp.dataplex.DatascanDataArrgs(
                 resource="//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
             ),
-            data_profile_spec=gcp.dataplex.DatascanDataProfileSpecArgs(),
+            data_profile_spec=gcp.dataplex.DatascanDataProfileSpecArrgs(),
             data_scan_id="dataprofile-basic",
-            execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
-                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
-                    on_demand=gcp.dataplex.DatascanExecutionSpecTriggerOnDemandArgs(),
+            execution_spec=gcp.dataplex.DatascanExecutionSpecArrgs(
+                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArrgs(
+                    on_demand=gcp.dataplex.DatascanExecutionSpecTriggerOnDemandArrgs(),
                 ),
             ),
             location="us-central1",
@@ -866,27 +866,27 @@ class Datascan(pulumi.CustomResource):
             labels={
                 "author": "billing",
             },
-            data=gcp.dataplex.DatascanDataArgs(
+            data=gcp.dataplex.DatascanDataArrgs(
                 resource="//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
             ),
-            execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
-                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
-                    schedule=gcp.dataplex.DatascanExecutionSpecTriggerScheduleArgs(
+            execution_spec=gcp.dataplex.DatascanExecutionSpecArrgs(
+                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArrgs(
+                    schedule=gcp.dataplex.DatascanExecutionSpecTriggerScheduleArrgs(
                         cron="TZ=America/New_York 1 1 * * *",
                     ),
                 ),
             ),
-            data_profile_spec=gcp.dataplex.DatascanDataProfileSpecArgs(
+            data_profile_spec=gcp.dataplex.DatascanDataProfileSpecArrgs(
                 sampling_percent=80,
                 row_filter="word_count > 10",
-                include_fields=gcp.dataplex.DatascanDataProfileSpecIncludeFieldsArgs(
+                include_fields=gcp.dataplex.DatascanDataProfileSpecIncludeFieldsArrgs(
                     field_names=["word_count"],
                 ),
-                exclude_fields=gcp.dataplex.DatascanDataProfileSpecExcludeFieldsArgs(
+                exclude_fields=gcp.dataplex.DatascanDataProfileSpecExcludeFieldsArrgs(
                     field_names=["property_type"],
                 ),
-                post_scan_actions=gcp.dataplex.DatascanDataProfileSpecPostScanActionsArgs(
-                    bigquery_export=gcp.dataplex.DatascanDataProfileSpecPostScanActionsBigqueryExportArgs(
+                post_scan_actions=gcp.dataplex.DatascanDataProfileSpecPostScanActionsArrgs(
+                    bigquery_export=gcp.dataplex.DatascanDataProfileSpecPostScanActionsBigqueryExportArrgs(
                         results_table="//bigquery.googleapis.com/projects/my-project-name/datasets/dataplex_dataset/tables/profile_export",
                     ),
                 ),
@@ -901,23 +901,23 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         basic_quality = gcp.dataplex.Datascan("basicQuality",
-            data=gcp.dataplex.DatascanDataArgs(
+            data=gcp.dataplex.DatascanDataArrgs(
                 resource="//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
             ),
-            data_quality_spec=gcp.dataplex.DatascanDataQualitySpecArgs(
-                rules=[gcp.dataplex.DatascanDataQualitySpecRuleArgs(
+            data_quality_spec=gcp.dataplex.DatascanDataQualitySpecArrgs(
+                rules=[gcp.dataplex.DatascanDataQualitySpecRuleArrgs(
                     description="rule 1 for validity dimension",
                     dimension="VALIDITY",
                     name="rule1",
-                    table_condition_expectation=gcp.dataplex.DatascanDataQualitySpecRuleTableConditionExpectationArgs(
+                    table_condition_expectation=gcp.dataplex.DatascanDataQualitySpecRuleTableConditionExpectationArrgs(
                         sql_expression="COUNT(*) > 0",
                     ),
                 )],
             ),
             data_scan_id="dataquality-basic",
-            execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
-                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
-                    on_demand=gcp.dataplex.DatascanExecutionSpecTriggerOnDemandArgs(),
+            execution_spec=gcp.dataplex.DatascanExecutionSpecArrgs(
+                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArrgs(
+                    on_demand=gcp.dataplex.DatascanExecutionSpecTriggerOnDemandArrgs(),
                 ),
             ),
             location="us-central1",
@@ -930,23 +930,23 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         full_quality = gcp.dataplex.Datascan("fullQuality",
-            data=gcp.dataplex.DatascanDataArgs(
+            data=gcp.dataplex.DatascanDataArrgs(
                 resource="//bigquery.googleapis.com/projects/bigquery-public-data/datasets/austin_bikeshare/tables/bikeshare_stations",
             ),
-            data_quality_spec=gcp.dataplex.DatascanDataQualitySpecArgs(
+            data_quality_spec=gcp.dataplex.DatascanDataQualitySpecArrgs(
                 row_filter="station_id > 1000",
                 rules=[
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
+                    gcp.dataplex.DatascanDataQualitySpecRuleArrgs(
                         column="address",
                         dimension="VALIDITY",
-                        non_null_expectation=gcp.dataplex.DatascanDataQualitySpecRuleNonNullExpectationArgs(),
+                        non_null_expectation=gcp.dataplex.DatascanDataQualitySpecRuleNonNullExpectationArrgs(),
                         threshold=0.99,
                     ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
+                    gcp.dataplex.DatascanDataQualitySpecRuleArrgs(
                         column="council_district",
                         dimension="VALIDITY",
                         ignore_null=True,
-                        range_expectation=gcp.dataplex.DatascanDataQualitySpecRuleRangeExpectationArgs(
+                        range_expectation=gcp.dataplex.DatascanDataQualitySpecRuleRangeExpectationArrgs(
                             max_value="10",
                             min_value="1",
                             strict_max_enabled=False,
@@ -954,34 +954,34 @@ class Datascan(pulumi.CustomResource):
                         ),
                         threshold=0.9,
                     ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
+                    gcp.dataplex.DatascanDataQualitySpecRuleArrgs(
                         column="power_type",
                         dimension="VALIDITY",
                         ignore_null=False,
-                        regex_expectation=gcp.dataplex.DatascanDataQualitySpecRuleRegexExpectationArgs(
+                        regex_expectation=gcp.dataplex.DatascanDataQualitySpecRuleRegexExpectationArrgs(
                             regex=".*solar.*",
                         ),
                     ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
+                    gcp.dataplex.DatascanDataQualitySpecRuleArrgs(
                         column="property_type",
                         dimension="VALIDITY",
                         ignore_null=False,
-                        set_expectation=gcp.dataplex.DatascanDataQualitySpecRuleSetExpectationArgs(
+                        set_expectation=gcp.dataplex.DatascanDataQualitySpecRuleSetExpectationArrgs(
                             values=[
                                 "sidewalk",
                                 "parkland",
                             ],
                         ),
                     ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
+                    gcp.dataplex.DatascanDataQualitySpecRuleArrgs(
                         column="address",
                         dimension="UNIQUENESS",
-                        uniqueness_expectation=gcp.dataplex.DatascanDataQualitySpecRuleUniquenessExpectationArgs(),
+                        uniqueness_expectation=gcp.dataplex.DatascanDataQualitySpecRuleUniquenessExpectationArrgs(),
                     ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
+                    gcp.dataplex.DatascanDataQualitySpecRuleArrgs(
                         column="number_of_docks",
                         dimension="VALIDITY",
-                        statistic_range_expectation=gcp.dataplex.DatascanDataQualitySpecRuleStatisticRangeExpectationArgs(
+                        statistic_range_expectation=gcp.dataplex.DatascanDataQualitySpecRuleStatisticRangeExpectationArrgs(
                             max_value="15",
                             min_value="5",
                             statistic="MEAN",
@@ -989,16 +989,16 @@ class Datascan(pulumi.CustomResource):
                             strict_min_enabled=True,
                         ),
                     ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
+                    gcp.dataplex.DatascanDataQualitySpecRuleArrgs(
                         column="footprint_length",
                         dimension="VALIDITY",
-                        row_condition_expectation=gcp.dataplex.DatascanDataQualitySpecRuleRowConditionExpectationArgs(
+                        row_condition_expectation=gcp.dataplex.DatascanDataQualitySpecRuleRowConditionExpectationArrgs(
                             sql_expression="footprint_length > 0 AND footprint_length <= 10",
                         ),
                     ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
+                    gcp.dataplex.DatascanDataQualitySpecRuleArrgs(
                         dimension="VALIDITY",
-                        table_condition_expectation=gcp.dataplex.DatascanDataQualitySpecRuleTableConditionExpectationArgs(
+                        table_condition_expectation=gcp.dataplex.DatascanDataQualitySpecRuleTableConditionExpectationArrgs(
                             sql_expression="COUNT(*) > 0",
                         ),
                     ),
@@ -1008,10 +1008,10 @@ class Datascan(pulumi.CustomResource):
             data_scan_id="dataquality-full",
             description="Example resource - Full Datascan Quality",
             display_name="Full Datascan Quality",
-            execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
+            execution_spec=gcp.dataplex.DatascanExecutionSpecArrgs(
                 field="modified_date",
-                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
-                    schedule=gcp.dataplex.DatascanExecutionSpecTriggerScheduleArgs(
+                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArrgs(
+                    schedule=gcp.dataplex.DatascanExecutionSpecTriggerScheduleArrgs(
                         cron="TZ=America/New_York 1 1 * * *",
                     ),
                 ),
@@ -1052,12 +1052,12 @@ class Datascan(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param DatascanArgs args: The arguments to use to populate this resource's properties.
+        :param DatascanArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DatascanArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DatascanArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1066,13 +1066,13 @@ class Datascan(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data: Optional[pulumi.Input[pulumi.InputType['DatascanDataArgs']]] = None,
-                 data_profile_spec: Optional[pulumi.Input[pulumi.InputType['DatascanDataProfileSpecArgs']]] = None,
-                 data_quality_spec: Optional[pulumi.Input[pulumi.InputType['DatascanDataQualitySpecArgs']]] = None,
+                 data: Optional[pulumi.Input[pulumi.InputType['DatascanDataArrgs']]] = None,
+                 data_profile_spec: Optional[pulumi.Input[pulumi.InputType['DatascanDataProfileSpecArrgs']]] = None,
+                 data_quality_spec: Optional[pulumi.Input[pulumi.InputType['DatascanDataQualitySpecArrgs']]] = None,
                  data_scan_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 execution_spec: Optional[pulumi.Input[pulumi.InputType['DatascanExecutionSpecArgs']]] = None,
+                 execution_spec: Optional[pulumi.Input[pulumi.InputType['DatascanExecutionSpecArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -1083,7 +1083,7 @@ class Datascan(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DatascanArgs.__new__(DatascanArgs)
+            __props__ = DatascanArrgs.__new__(DatascanArrgs)
 
             if data is None and not opts.urn:
                 raise TypeError("Missing required property 'data'")
@@ -1125,15 +1125,15 @@ class Datascan(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            data: Optional[pulumi.Input[pulumi.InputType['DatascanDataArgs']]] = None,
-            data_profile_spec: Optional[pulumi.Input[pulumi.InputType['DatascanDataProfileSpecArgs']]] = None,
-            data_quality_spec: Optional[pulumi.Input[pulumi.InputType['DatascanDataQualitySpecArgs']]] = None,
+            data: Optional[pulumi.Input[pulumi.InputType['DatascanDataArrgs']]] = None,
+            data_profile_spec: Optional[pulumi.Input[pulumi.InputType['DatascanDataProfileSpecArrgs']]] = None,
+            data_quality_spec: Optional[pulumi.Input[pulumi.InputType['DatascanDataQualitySpecArrgs']]] = None,
             data_scan_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            execution_spec: Optional[pulumi.Input[pulumi.InputType['DatascanExecutionSpecArgs']]] = None,
-            execution_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatascanExecutionStatusArgs']]]]] = None,
+            execution_spec: Optional[pulumi.Input[pulumi.InputType['DatascanExecutionSpecArrgs']]] = None,
+            execution_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatascanExecutionStatusArrgs']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -1151,20 +1151,20 @@ class Datascan(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The time when the scan was created.
-        :param pulumi.Input[pulumi.InputType['DatascanDataArgs']] data: The data source for DataScan.
+        :param pulumi.Input[pulumi.InputType['DatascanDataArrgs']] data: The data source for DataScan.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['DatascanDataProfileSpecArgs']] data_profile_spec: DataProfileScan related setting.
+        :param pulumi.Input[pulumi.InputType['DatascanDataProfileSpecArrgs']] data_profile_spec: DataProfileScan related setting.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['DatascanDataQualitySpecArgs']] data_quality_spec: DataQualityScan related setting.
+        :param pulumi.Input[pulumi.InputType['DatascanDataQualitySpecArrgs']] data_quality_spec: DataQualityScan related setting.
                Structure is documented below.
         :param pulumi.Input[str] data_scan_id: DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
         :param pulumi.Input[str] description: Description of the rule.
                The maximum length is 1,024 characters.
         :param pulumi.Input[str] display_name: User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['DatascanExecutionSpecArgs']] execution_spec: DataScan execution settings.
+        :param pulumi.Input[pulumi.InputType['DatascanExecutionSpecArrgs']] execution_spec: DataScan execution settings.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatascanExecutionStatusArgs']]]] execution_statuses: Status of the data scan execution.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatascanExecutionStatusArrgs']]]] execution_statuses: Status of the data scan execution.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the scan. A list of key->value pairs.
                

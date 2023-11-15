@@ -11,22 +11,22 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DeploymentArgs', 'Deployment']
+__all__ = ['DeploymentArrgs', 'Deployment']
 
 @pulumi.input_type
-class DeploymentArgs:
+calass DeploymentArrgs:
     def __init__(__self__, *,
-                 target: pulumi.Input['DeploymentTargetArgs'],
+                 target: pulumi.Input['DeploymentTargetArrgs'],
                  create_policy: Optional[pulumi.Input[str]] = None,
                  delete_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArgs']]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArrgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Deployment resource.
-        :param pulumi.Input['DeploymentTargetArgs'] target: Parameters that define your deployment, including the deployment
+        :param pulumi.Input['DeploymentTargetArrgs'] target: Parameters that define your deployment, including the deployment
                configuration and relevant templates.
                Structure is documented below.
         :param pulumi.Input[str] create_policy: Set the policy to use for creating new resources. Only used on
@@ -45,7 +45,7 @@ class DeploymentArgs:
                Default value is `DELETE`.
                Possible values are: `ABANDON`, `DELETE`.
         :param pulumi.Input[str] description: Optional user-provided description of deployment.
-        :param pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArgs']]] labels: Key-value pairs to apply to this labels.
+        :param pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArrgs']]] labels: Key-value pairs to apply to this labels.
                Structure is documented below.
         :param pulumi.Input[str] name: Unique name for the deployment
         :param pulumi.Input[bool] preview: If set to true, a deployment is created with "shell" resources
@@ -77,7 +77,7 @@ class DeploymentArgs:
 
     @property
     @pulumi.getter
-    def target(self) -> pulumi.Input['DeploymentTargetArgs']:
+    def target(self) -> pulumi.Input['DeploymentTargetArrgs']:
         """
         Parameters that define your deployment, including the deployment
         configuration and relevant templates.
@@ -86,7 +86,7 @@ class DeploymentArgs:
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: pulumi.Input['DeploymentTargetArgs']):
+    def target(self, value: pulumi.Input['DeploymentTargetArrgs']):
         pulumi.set(self, "target", value)
 
     @property
@@ -140,7 +140,7 @@ class DeploymentArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArgs']]]]:
+    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArrgs']]]]:
         """
         Key-value pairs to apply to this labels.
         Structure is documented below.
@@ -148,7 +148,7 @@ class DeploymentArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArgs']]]]):
+    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArrgs']]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -197,19 +197,19 @@ class DeploymentArgs:
 
 
 @pulumi.input_type
-class _DeploymentState:
+calass _DeploymentState:
     def __init__(__self__, *,
                  create_policy: Optional[pulumi.Input[str]] = None,
                  delete_policy: Optional[pulumi.Input[str]] = None,
                  deployment_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArgs']]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArrgs']]]] = None,
                  manifest: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 target: Optional[pulumi.Input['DeploymentTargetArgs']] = None):
+                 target: Optional[pulumi.Input['DeploymentTargetArrgs']] = None):
         """
         Input properties used for looking up and filtering Deployment resources.
         :param pulumi.Input[str] create_policy: Set the policy to use for creating new resources. Only used on
@@ -229,7 +229,7 @@ class _DeploymentState:
                Possible values are: `ABANDON`, `DELETE`.
         :param pulumi.Input[str] deployment_id: Unique identifier for deployment. Output only.
         :param pulumi.Input[str] description: Optional user-provided description of deployment.
-        :param pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArgs']]] labels: Key-value pairs to apply to this labels.
+        :param pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArrgs']]] labels: Key-value pairs to apply to this labels.
                Structure is documented below.
         :param pulumi.Input[str] manifest: Output only. URL of the manifest representing the last manifest that
                was successfully deployed.
@@ -245,7 +245,7 @@ class _DeploymentState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: Output only. Server defined URL for the resource.
-        :param pulumi.Input['DeploymentTargetArgs'] target: Parameters that define your deployment, including the deployment
+        :param pulumi.Input['DeploymentTargetArrgs'] target: Parameters that define your deployment, including the deployment
                configuration and relevant templates.
                Structure is documented below.
         """
@@ -335,7 +335,7 @@ class _DeploymentState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArgs']]]]:
+    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArrgs']]]]:
         """
         Key-value pairs to apply to this labels.
         Structure is documented below.
@@ -343,7 +343,7 @@ class _DeploymentState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArgs']]]]):
+    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArrgs']]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -417,7 +417,7 @@ class _DeploymentState:
 
     @property
     @pulumi.getter
-    def target(self) -> Optional[pulumi.Input['DeploymentTargetArgs']]:
+    def target(self) -> Optional[pulumi.Input['DeploymentTargetArrgs']]:
         """
         Parameters that define your deployment, including the deployment
         configuration and relevant templates.
@@ -426,11 +426,11 @@ class _DeploymentState:
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: Optional[pulumi.Input['DeploymentTargetArgs']]):
+    def target(self, value: Optional[pulumi.Input['DeploymentTargetArrgs']]):
         pulumi.set(self, "target", value)
 
 
-class Deployment(pulumi.CustomResource):
+calass Deployment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -438,11 +438,11 @@ class Deployment(pulumi.CustomResource):
                  create_policy: Optional[pulumi.Input[str]] = None,
                  delete_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelArrgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 target: Optional[pulumi.Input[pulumi.InputType['DeploymentTargetArgs']]] = None,
+                 target: Optional[pulumi.Input[pulumi.InputType['DeploymentTargetArrgs']]] = None,
                  __props__=None):
         """
         A collection of resources that are deployed and managed together using
@@ -467,12 +467,12 @@ class Deployment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         deployment = gcp.deploymentmanager.Deployment("deployment",
-            target=gcp.deploymentmanager.DeploymentTargetArgs(
-                config=gcp.deploymentmanager.DeploymentTargetConfigArgs(
+            target=gcp.deploymentmanager.DeploymentTargetArrgs(
+                config=gcp.deploymentmanager.DeploymentTargetConfigArrgs(
                     content=(lambda path: open(path).read())("path/to/config.yml"),
                 ),
             ),
-            labels=[gcp.deploymentmanager.DeploymentLabelArgs(
+            labels=[gcp.deploymentmanager.DeploymentLabelArrgs(
                 key="foo",
                 value="bar",
             )])
@@ -520,7 +520,7 @@ class Deployment(pulumi.CustomResource):
                Default value is `DELETE`.
                Possible values are: `ABANDON`, `DELETE`.
         :param pulumi.Input[str] description: Optional user-provided description of deployment.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelArgs']]]] labels: Key-value pairs to apply to this labels.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelArrgs']]]] labels: Key-value pairs to apply to this labels.
                Structure is documented below.
         :param pulumi.Input[str] name: Unique name for the deployment
         :param pulumi.Input[bool] preview: If set to true, a deployment is created with "shell" resources
@@ -533,7 +533,7 @@ class Deployment(pulumi.CustomResource):
                to true or if other fields are updated while preview is true.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['DeploymentTargetArgs']] target: Parameters that define your deployment, including the deployment
+        :param pulumi.Input[pulumi.InputType['DeploymentTargetArrgs']] target: Parameters that define your deployment, including the deployment
                configuration and relevant templates.
                Structure is documented below.
         """
@@ -541,7 +541,7 @@ class Deployment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DeploymentArgs,
+                 args: DeploymentArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A collection of resources that are deployed and managed together using
@@ -566,12 +566,12 @@ class Deployment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         deployment = gcp.deploymentmanager.Deployment("deployment",
-            target=gcp.deploymentmanager.DeploymentTargetArgs(
-                config=gcp.deploymentmanager.DeploymentTargetConfigArgs(
+            target=gcp.deploymentmanager.DeploymentTargetArrgs(
+                config=gcp.deploymentmanager.DeploymentTargetConfigArrgs(
                     content=(lambda path: open(path).read())("path/to/config.yml"),
                 ),
             ),
-            labels=[gcp.deploymentmanager.DeploymentLabelArgs(
+            labels=[gcp.deploymentmanager.DeploymentLabelArrgs(
                 key="foo",
                 value="bar",
             )])
@@ -602,12 +602,12 @@ class Deployment(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param DeploymentArgs args: The arguments to use to populate this resource's properties.
+        :param DeploymentArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DeploymentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DeploymentArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -619,11 +619,11 @@ class Deployment(pulumi.CustomResource):
                  create_policy: Optional[pulumi.Input[str]] = None,
                  delete_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelArrgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 target: Optional[pulumi.Input[pulumi.InputType['DeploymentTargetArgs']]] = None,
+                 target: Optional[pulumi.Input[pulumi.InputType['DeploymentTargetArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -631,7 +631,7 @@ class Deployment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DeploymentArgs.__new__(DeploymentArgs)
+            __props__ = DeploymentArrgs.__new__(DeploymentArrgs)
 
             __props__.__dict__["create_policy"] = create_policy
             __props__.__dict__["delete_policy"] = delete_policy
@@ -660,13 +660,13 @@ class Deployment(pulumi.CustomResource):
             delete_policy: Optional[pulumi.Input[str]] = None,
             deployment_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelArgs']]]]] = None,
+            labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelArrgs']]]]] = None,
             manifest: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             preview: Optional[pulumi.Input[bool]] = None,
             project: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            target: Optional[pulumi.Input[pulumi.InputType['DeploymentTargetArgs']]] = None) -> 'Deployment':
+            target: Optional[pulumi.Input[pulumi.InputType['DeploymentTargetArrgs']]] = None) -> 'Deployment':
         """
         Get an existing Deployment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -691,7 +691,7 @@ class Deployment(pulumi.CustomResource):
                Possible values are: `ABANDON`, `DELETE`.
         :param pulumi.Input[str] deployment_id: Unique identifier for deployment. Output only.
         :param pulumi.Input[str] description: Optional user-provided description of deployment.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelArgs']]]] labels: Key-value pairs to apply to this labels.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelArrgs']]]] labels: Key-value pairs to apply to this labels.
                Structure is documented below.
         :param pulumi.Input[str] manifest: Output only. URL of the manifest representing the last manifest that
                was successfully deployed.
@@ -707,7 +707,7 @@ class Deployment(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: Output only. Server defined URL for the resource.
-        :param pulumi.Input[pulumi.InputType['DeploymentTargetArgs']] target: Parameters that define your deployment, including the deployment
+        :param pulumi.Input[pulumi.InputType['DeploymentTargetArrgs']] target: Parameters that define your deployment, including the deployment
                configuration and relevant templates.
                Structure is documented below.
         """

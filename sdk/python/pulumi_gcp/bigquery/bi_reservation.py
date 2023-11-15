@@ -11,13 +11,13 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['BiReservationArgs', 'BiReservation']
+__all__ = ['BiReservationArrgs', 'BiReservation']
 
 @pulumi.input_type
-class BiReservationArgs:
+calass BiReservationArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 preferred_tables: Optional[pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]]] = None,
+                 preferred_tables: Optional[pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArrgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None):
         """
@@ -26,7 +26,7 @@ class BiReservationArgs:
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]] preferred_tables: Preferred tables to use BI capacity for.
+        :param pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArrgs']]] preferred_tables: Preferred tables to use BI capacity for.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -57,7 +57,7 @@ class BiReservationArgs:
 
     @property
     @pulumi.getter(name="preferredTables")
-    def preferred_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]]]:
+    def preferred_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArrgs']]]]:
         """
         Preferred tables to use BI capacity for.
         Structure is documented below.
@@ -65,7 +65,7 @@ class BiReservationArgs:
         return pulumi.get(self, "preferred_tables")
 
     @preferred_tables.setter
-    def preferred_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]]]):
+    def preferred_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArrgs']]]]):
         pulumi.set(self, "preferred_tables", value)
 
     @property
@@ -95,11 +95,11 @@ class BiReservationArgs:
 
 
 @pulumi.input_type
-class _BiReservationState:
+calass _BiReservationState:
     def __init__(__self__, *,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 preferred_tables: Optional[pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]]] = None,
+                 preferred_tables: Optional[pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArrgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
@@ -110,7 +110,7 @@ class _BiReservationState:
                
                - - -
         :param pulumi.Input[str] name: The resource name of the singleton BI reservation. Reservation names have the form `projects/{projectId}/locations/{locationId}/biReservation`.
-        :param pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]] preferred_tables: Preferred tables to use BI capacity for.
+        :param pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArrgs']]] preferred_tables: Preferred tables to use BI capacity for.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -160,7 +160,7 @@ class _BiReservationState:
 
     @property
     @pulumi.getter(name="preferredTables")
-    def preferred_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]]]:
+    def preferred_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArrgs']]]]:
         """
         Preferred tables to use BI capacity for.
         Structure is documented below.
@@ -168,7 +168,7 @@ class _BiReservationState:
         return pulumi.get(self, "preferred_tables")
 
     @preferred_tables.setter
-    def preferred_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]]]):
+    def preferred_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArrgs']]]]):
         pulumi.set(self, "preferred_tables", value)
 
     @property
@@ -210,13 +210,13 @@ class _BiReservationState:
         pulumi.set(self, "update_time", value)
 
 
-class BiReservation(pulumi.CustomResource):
+calass BiReservation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 preferred_tables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BiReservationPreferredTableArgs']]]]] = None,
+                 preferred_tables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BiReservationPreferredTableArrgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -271,7 +271,7 @@ class BiReservation(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BiReservationPreferredTableArgs']]]] preferred_tables: Preferred tables to use BI capacity for.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BiReservationPreferredTableArrgs']]]] preferred_tables: Preferred tables to use BI capacity for.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -281,7 +281,7 @@ class BiReservation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: BiReservationArgs,
+                 args: BiReservationArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a BI Reservation.
@@ -329,12 +329,12 @@ class BiReservation(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param BiReservationArgs args: The arguments to use to populate this resource's properties.
+        :param BiReservationArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(BiReservationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(BiReservationArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -344,7 +344,7 @@ class BiReservation(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 preferred_tables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BiReservationPreferredTableArgs']]]]] = None,
+                 preferred_tables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BiReservationPreferredTableArrgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -354,7 +354,7 @@ class BiReservation(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = BiReservationArgs.__new__(BiReservationArgs)
+            __props__ = BiReservationArrgs.__new__(BiReservationArrgs)
 
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -376,7 +376,7 @@ class BiReservation(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            preferred_tables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BiReservationPreferredTableArgs']]]]] = None,
+            preferred_tables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BiReservationPreferredTableArrgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             size: Optional[pulumi.Input[int]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'BiReservation':
@@ -392,7 +392,7 @@ class BiReservation(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[str] name: The resource name of the singleton BI reservation. Reservation names have the form `projects/{projectId}/locations/{locationId}/biReservation`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BiReservationPreferredTableArgs']]]] preferred_tables: Preferred tables to use BI capacity for.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BiReservationPreferredTableArrgs']]]] preferred_tables: Preferred tables to use BI capacity for.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

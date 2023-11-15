@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Hl7StoreIamBindingArgs', 'Hl7StoreIamBinding']
+__all__ = ['Hl7StoreIamBindingArrgs', 'Hl7StoreIamBinding']
 
 @pulumi.input_type
-class Hl7StoreIamBindingArgs:
+calass Hl7StoreIamBindingArrgs:
     def __init__(__self__, *,
                  hl7_v2_store_id: pulumi.Input[str],
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['Hl7StoreIamBindingConditionArgs']] = None):
+                 condition: Optional[pulumi.Input['Hl7StoreIamBindingConditionArrgs']] = None):
         """
         The set of arguments for constructing a Hl7StoreIamBinding resource.
         :param pulumi.Input[str] hl7_v2_store_id: The HL7v2 store ID, in the form
@@ -94,18 +94,18 @@ class Hl7StoreIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['Hl7StoreIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['Hl7StoreIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['Hl7StoreIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['Hl7StoreIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
-class _Hl7StoreIamBindingState:
+calass _Hl7StoreIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['Hl7StoreIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['Hl7StoreIamBindingConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  hl7_v2_store_id: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -143,11 +143,11 @@ class _Hl7StoreIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['Hl7StoreIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['Hl7StoreIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['Hl7StoreIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['Hl7StoreIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -210,12 +210,12 @@ class _Hl7StoreIamBindingState:
         pulumi.set(self, "role", value)
 
 
-class Hl7StoreIamBinding(pulumi.CustomResource):
+calass Hl7StoreIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['Hl7StoreIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['Hl7StoreIamBindingConditionArrgs']]] = None,
                  hl7_v2_store_id: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -237,7 +237,7 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -309,7 +309,7 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Hl7StoreIamBindingArgs,
+                 args: Hl7StoreIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Healthcare HL7v2 store. Each of these resources serves a different use case:
@@ -328,7 +328,7 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -378,12 +378,12 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param Hl7StoreIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param Hl7StoreIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(Hl7StoreIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(Hl7StoreIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -392,7 +392,7 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['Hl7StoreIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['Hl7StoreIamBindingConditionArrgs']]] = None,
                  hl7_v2_store_id: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -403,7 +403,7 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = Hl7StoreIamBindingArgs.__new__(Hl7StoreIamBindingArgs)
+            __props__ = Hl7StoreIamBindingArrgs.__new__(Hl7StoreIamBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if hl7_v2_store_id is None and not opts.urn:
@@ -426,7 +426,7 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['Hl7StoreIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['Hl7StoreIamBindingConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             hl7_v2_store_id: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

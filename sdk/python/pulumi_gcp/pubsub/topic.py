@@ -11,18 +11,18 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['TopicArgs', 'Topic']
+__all__ = ['TopicArrgs', 'Topic']
 
 @pulumi.input_type
-class TopicArgs:
+calass TopicArrgs:
     def __init__(__self__, *,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
-                 message_storage_policy: Optional[pulumi.Input['TopicMessageStoragePolicyArgs']] = None,
+                 message_storage_policy: Optional[pulumi.Input['TopicMessageStoragePolicyArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 schema_settings: Optional[pulumi.Input['TopicSchemaSettingsArgs']] = None):
+                 schema_settings: Optional[pulumi.Input['TopicSchemaSettingsArrgs']] = None):
         """
         The set of arguments for constructing a Topic resource.
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS CryptoKey to be used to protect access
@@ -42,7 +42,7 @@ class TopicArgs:
                set, message retention is controlled by settings on individual subscriptions.
                The rotation period has the format of a decimal number, followed by the
                letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
-        :param pulumi.Input['TopicMessageStoragePolicyArgs'] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
+        :param pulumi.Input['TopicMessageStoragePolicyArrgs'] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
                messages published to the topic may be stored. If not present, then no
                constraints are in effect.
                Structure is documented below.
@@ -52,7 +52,7 @@ class TopicArgs:
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['TopicSchemaSettingsArgs'] schema_settings: Settings for validating messages published against a schema.
+        :param pulumi.Input['TopicSchemaSettingsArrgs'] schema_settings: Settings for validating messages published against a schema.
                Structure is documented below.
         """
         if kms_key_name is not None:
@@ -122,7 +122,7 @@ class TopicArgs:
 
     @property
     @pulumi.getter(name="messageStoragePolicy")
-    def message_storage_policy(self) -> Optional[pulumi.Input['TopicMessageStoragePolicyArgs']]:
+    def message_storage_policy(self) -> Optional[pulumi.Input['TopicMessageStoragePolicyArrgs']]:
         """
         Policy constraining the set of Google Cloud Platform regions where
         messages published to the topic may be stored. If not present, then no
@@ -132,7 +132,7 @@ class TopicArgs:
         return pulumi.get(self, "message_storage_policy")
 
     @message_storage_policy.setter
-    def message_storage_policy(self, value: Optional[pulumi.Input['TopicMessageStoragePolicyArgs']]):
+    def message_storage_policy(self, value: Optional[pulumi.Input['TopicMessageStoragePolicyArrgs']]):
         pulumi.set(self, "message_storage_policy", value)
 
     @property
@@ -165,7 +165,7 @@ class TopicArgs:
 
     @property
     @pulumi.getter(name="schemaSettings")
-    def schema_settings(self) -> Optional[pulumi.Input['TopicSchemaSettingsArgs']]:
+    def schema_settings(self) -> Optional[pulumi.Input['TopicSchemaSettingsArrgs']]:
         """
         Settings for validating messages published against a schema.
         Structure is documented below.
@@ -173,22 +173,22 @@ class TopicArgs:
         return pulumi.get(self, "schema_settings")
 
     @schema_settings.setter
-    def schema_settings(self, value: Optional[pulumi.Input['TopicSchemaSettingsArgs']]):
+    def schema_settings(self, value: Optional[pulumi.Input['TopicSchemaSettingsArrgs']]):
         pulumi.set(self, "schema_settings", value)
 
 
 @pulumi.input_type
-class _TopicState:
+calass _TopicState:
     def __init__(__self__, *,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
-                 message_storage_policy: Optional[pulumi.Input['TopicMessageStoragePolicyArgs']] = None,
+                 message_storage_policy: Optional[pulumi.Input['TopicMessageStoragePolicyArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 schema_settings: Optional[pulumi.Input['TopicSchemaSettingsArgs']] = None):
+                 schema_settings: Optional[pulumi.Input['TopicSchemaSettingsArrgs']] = None):
         """
         Input properties used for looking up and filtering Topic resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -209,7 +209,7 @@ class _TopicState:
                set, message retention is controlled by settings on individual subscriptions.
                The rotation period has the format of a decimal number, followed by the
                letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
-        :param pulumi.Input['TopicMessageStoragePolicyArgs'] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
+        :param pulumi.Input['TopicMessageStoragePolicyArrgs'] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
                messages published to the topic may be stored. If not present, then no
                constraints are in effect.
                Structure is documented below.
@@ -221,7 +221,7 @@ class _TopicState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input['TopicSchemaSettingsArgs'] schema_settings: Settings for validating messages published against a schema.
+        :param pulumi.Input['TopicSchemaSettingsArrgs'] schema_settings: Settings for validating messages published against a schema.
                Structure is documented below.
         """
         if effective_labels is not None:
@@ -307,7 +307,7 @@ class _TopicState:
 
     @property
     @pulumi.getter(name="messageStoragePolicy")
-    def message_storage_policy(self) -> Optional[pulumi.Input['TopicMessageStoragePolicyArgs']]:
+    def message_storage_policy(self) -> Optional[pulumi.Input['TopicMessageStoragePolicyArrgs']]:
         """
         Policy constraining the set of Google Cloud Platform regions where
         messages published to the topic may be stored. If not present, then no
@@ -317,7 +317,7 @@ class _TopicState:
         return pulumi.get(self, "message_storage_policy")
 
     @message_storage_policy.setter
-    def message_storage_policy(self, value: Optional[pulumi.Input['TopicMessageStoragePolicyArgs']]):
+    def message_storage_policy(self, value: Optional[pulumi.Input['TopicMessageStoragePolicyArrgs']]):
         pulumi.set(self, "message_storage_policy", value)
 
     @property
@@ -363,7 +363,7 @@ class _TopicState:
 
     @property
     @pulumi.getter(name="schemaSettings")
-    def schema_settings(self) -> Optional[pulumi.Input['TopicSchemaSettingsArgs']]:
+    def schema_settings(self) -> Optional[pulumi.Input['TopicSchemaSettingsArrgs']]:
         """
         Settings for validating messages published against a schema.
         Structure is documented below.
@@ -371,11 +371,11 @@ class _TopicState:
         return pulumi.get(self, "schema_settings")
 
     @schema_settings.setter
-    def schema_settings(self, value: Optional[pulumi.Input['TopicSchemaSettingsArgs']]):
+    def schema_settings(self, value: Optional[pulumi.Input['TopicSchemaSettingsArrgs']]):
         pulumi.set(self, "schema_settings", value)
 
 
-class Topic(pulumi.CustomResource):
+calass Topic(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -383,10 +383,10 @@ class Topic(pulumi.CustomResource):
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
-                 message_storage_policy: Optional[pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArgs']]] = None,
+                 message_storage_policy: Optional[pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 schema_settings: Optional[pulumi.Input[pulumi.InputType['TopicSchemaSettingsArgs']]] = None,
+                 schema_settings: Optional[pulumi.Input[pulumi.InputType['TopicSchemaSettingsArrgs']]] = None,
                  __props__=None):
         """
         A named resource to which messages are sent by publishers.
@@ -429,7 +429,7 @@ class Topic(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        example = gcp.pubsub.Topic("example", message_storage_policy=gcp.pubsub.TopicMessageStoragePolicyArgs(
+        example = gcp.pubsub.Topic("example", message_storage_policy=gcp.pubsub.TopicMessageStoragePolicyArrgs(
             allowed_persistence_regions=["europe-west3"],
         ))
         ```
@@ -456,7 +456,7 @@ class Topic(pulumi.CustomResource):
           ]
         }
         \"\"\")
-        example_topic = gcp.pubsub.Topic("exampleTopic", schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
+        example_topic = gcp.pubsub.Topic("exampleTopic", schema_settings=gcp.pubsub.TopicSchemaSettingsArrgs(
             schema="projects/my-project-name/schemas/example",
             encoding="JSON",
         ),
@@ -506,7 +506,7 @@ class Topic(pulumi.CustomResource):
                set, message retention is controlled by settings on individual subscriptions.
                The rotation period has the format of a decimal number, followed by the
                letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
-        :param pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArgs']] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
+        :param pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArrgs']] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
                messages published to the topic may be stored. If not present, then no
                constraints are in effect.
                Structure is documented below.
@@ -516,14 +516,14 @@ class Topic(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['TopicSchemaSettingsArgs']] schema_settings: Settings for validating messages published against a schema.
+        :param pulumi.Input[pulumi.InputType['TopicSchemaSettingsArrgs']] schema_settings: Settings for validating messages published against a schema.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[TopicArgs] = None,
+                 args: Optional[TopicArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A named resource to which messages are sent by publishers.
@@ -566,7 +566,7 @@ class Topic(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        example = gcp.pubsub.Topic("example", message_storage_policy=gcp.pubsub.TopicMessageStoragePolicyArgs(
+        example = gcp.pubsub.Topic("example", message_storage_policy=gcp.pubsub.TopicMessageStoragePolicyArrgs(
             allowed_persistence_regions=["europe-west3"],
         ))
         ```
@@ -593,7 +593,7 @@ class Topic(pulumi.CustomResource):
           ]
         }
         \"\"\")
-        example_topic = gcp.pubsub.Topic("exampleTopic", schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
+        example_topic = gcp.pubsub.Topic("exampleTopic", schema_settings=gcp.pubsub.TopicSchemaSettingsArrgs(
             schema="projects/my-project-name/schemas/example",
             encoding="JSON",
         ),
@@ -625,12 +625,12 @@ class Topic(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param TopicArgs args: The arguments to use to populate this resource's properties.
+        :param TopicArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(TopicArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TopicArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -642,10 +642,10 @@ class Topic(pulumi.CustomResource):
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
-                 message_storage_policy: Optional[pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArgs']]] = None,
+                 message_storage_policy: Optional[pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 schema_settings: Optional[pulumi.Input[pulumi.InputType['TopicSchemaSettingsArgs']]] = None,
+                 schema_settings: Optional[pulumi.Input[pulumi.InputType['TopicSchemaSettingsArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -653,7 +653,7 @@ class Topic(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = TopicArgs.__new__(TopicArgs)
+            __props__ = TopicArrgs.__new__(TopicArrgs)
 
             __props__.__dict__["kms_key_name"] = kms_key_name
             __props__.__dict__["labels"] = labels
@@ -680,11 +680,11 @@ class Topic(pulumi.CustomResource):
             kms_key_name: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             message_retention_duration: Optional[pulumi.Input[str]] = None,
-            message_storage_policy: Optional[pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArgs']]] = None,
+            message_storage_policy: Optional[pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            schema_settings: Optional[pulumi.Input[pulumi.InputType['TopicSchemaSettingsArgs']]] = None) -> 'Topic':
+            schema_settings: Optional[pulumi.Input[pulumi.InputType['TopicSchemaSettingsArrgs']]] = None) -> 'Topic':
         """
         Get an existing Topic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -710,7 +710,7 @@ class Topic(pulumi.CustomResource):
                set, message retention is controlled by settings on individual subscriptions.
                The rotation period has the format of a decimal number, followed by the
                letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
-        :param pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArgs']] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
+        :param pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArrgs']] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
                messages published to the topic may be stored. If not present, then no
                constraints are in effect.
                Structure is documented below.
@@ -722,7 +722,7 @@ class Topic(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['TopicSchemaSettingsArgs']] schema_settings: Settings for validating messages published against a schema.
+        :param pulumi.Input[pulumi.InputType['TopicSchemaSettingsArrgs']] schema_settings: Settings for validating messages published against a schema.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

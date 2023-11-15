@@ -11,20 +11,20 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ManagementServerArgs', 'ManagementServer']
+__all__ = ['ManagementServerArrgs', 'ManagementServer']
 
 @pulumi.input_type
-class ManagementServerArgs:
+calass ManagementServerArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 networks: pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArgs']]],
+                 networks: pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArrgs']]],
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ManagementServer resource.
         :param pulumi.Input[str] location: The location for the management server (management console)
-        :param pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArgs']]] networks: Network details to create management server (management console).
+        :param pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArrgs']]] networks: Network details to create management server (management console).
                Structure is documented below.
         :param pulumi.Input[str] name: The name of management server (management console)
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -56,7 +56,7 @@ class ManagementServerArgs:
 
     @property
     @pulumi.getter
-    def networks(self) -> pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArgs']]]:
+    def networks(self) -> pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArrgs']]]:
         """
         Network details to create management server (management console).
         Structure is documented below.
@@ -64,7 +64,7 @@ class ManagementServerArgs:
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArgs']]]):
+    def networks(self, value: pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArrgs']]]):
         pulumi.set(self, "networks", value)
 
     @property
@@ -108,22 +108,22 @@ class ManagementServerArgs:
 
 
 @pulumi.input_type
-class _ManagementServerState:
+calass _ManagementServerState:
     def __init__(__self__, *,
                  location: Optional[pulumi.Input[str]] = None,
-                 management_uris: Optional[pulumi.Input[Sequence[pulumi.Input['ManagementServerManagementUriArgs']]]] = None,
+                 management_uris: Optional[pulumi.Input[Sequence[pulumi.Input['ManagementServerManagementUriArrgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArgs']]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArrgs']]]] = None,
                  oauth2_client_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ManagementServer resources.
         :param pulumi.Input[str] location: The location for the management server (management console)
-        :param pulumi.Input[Sequence[pulumi.Input['ManagementServerManagementUriArgs']]] management_uris: The management console URI
+        :param pulumi.Input[Sequence[pulumi.Input['ManagementServerManagementUriArrgs']]] management_uris: The management console URI
                Structure is documented below.
         :param pulumi.Input[str] name: The name of management server (management console)
-        :param pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArgs']]] networks: Network details to create management server (management console).
+        :param pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArrgs']]] networks: Network details to create management server (management console).
                Structure is documented below.
         :param pulumi.Input[str] oauth2_client_id: The oauth2ClientId of management console.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -161,7 +161,7 @@ class _ManagementServerState:
 
     @property
     @pulumi.getter(name="managementUris")
-    def management_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagementServerManagementUriArgs']]]]:
+    def management_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagementServerManagementUriArrgs']]]]:
         """
         The management console URI
         Structure is documented below.
@@ -169,7 +169,7 @@ class _ManagementServerState:
         return pulumi.get(self, "management_uris")
 
     @management_uris.setter
-    def management_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagementServerManagementUriArgs']]]]):
+    def management_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagementServerManagementUriArrgs']]]]):
         pulumi.set(self, "management_uris", value)
 
     @property
@@ -186,7 +186,7 @@ class _ManagementServerState:
 
     @property
     @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArgs']]]]:
+    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArrgs']]]]:
         """
         Network details to create management server (management console).
         Structure is documented below.
@@ -194,7 +194,7 @@ class _ManagementServerState:
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArgs']]]]):
+    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArrgs']]]]):
         pulumi.set(self, "networks", value)
 
     @property
@@ -237,14 +237,14 @@ class _ManagementServerState:
         pulumi.set(self, "type", value)
 
 
-class ManagementServer(pulumi.CustomResource):
+calass ManagementServer(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagementServerNetworkArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagementServerNetworkArrgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -271,7 +271,7 @@ class ManagementServer(pulumi.CustomResource):
         ms_console = gcp.backupdisasterrecovery.ManagementServer("ms-console",
             location="us-central1",
             type="BACKUP_RESTORE",
-            networks=[gcp.backupdisasterrecovery.ManagementServerNetworkArgs(
+            networks=[gcp.backupdisasterrecovery.ManagementServerNetworkArrgs(
                 network=default_network.id,
                 peering_mode="PRIVATE_SERVICE_ACCESS",
             )],
@@ -307,7 +307,7 @@ class ManagementServer(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The location for the management server (management console)
         :param pulumi.Input[str] name: The name of management server (management console)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagementServerNetworkArgs']]]] networks: Network details to create management server (management console).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagementServerNetworkArrgs']]]] networks: Network details to create management server (management console).
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -319,7 +319,7 @@ class ManagementServer(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ManagementServerArgs,
+                 args: ManagementServerArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -344,7 +344,7 @@ class ManagementServer(pulumi.CustomResource):
         ms_console = gcp.backupdisasterrecovery.ManagementServer("ms-console",
             location="us-central1",
             type="BACKUP_RESTORE",
-            networks=[gcp.backupdisasterrecovery.ManagementServerNetworkArgs(
+            networks=[gcp.backupdisasterrecovery.ManagementServerNetworkArrgs(
                 network=default_network.id,
                 peering_mode="PRIVATE_SERVICE_ACCESS",
             )],
@@ -377,12 +377,12 @@ class ManagementServer(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ManagementServerArgs args: The arguments to use to populate this resource's properties.
+        :param ManagementServerArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ManagementServerArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ManagementServerArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -393,7 +393,7 @@ class ManagementServer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagementServerNetworkArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagementServerNetworkArrgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -403,7 +403,7 @@ class ManagementServer(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ManagementServerArgs.__new__(ManagementServerArgs)
+            __props__ = ManagementServerArrgs.__new__(ManagementServerArrgs)
 
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -427,9 +427,9 @@ class ManagementServer(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             location: Optional[pulumi.Input[str]] = None,
-            management_uris: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagementServerManagementUriArgs']]]]] = None,
+            management_uris: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagementServerManagementUriArrgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagementServerNetworkArgs']]]]] = None,
+            networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagementServerNetworkArrgs']]]]] = None,
             oauth2_client_id: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'ManagementServer':
@@ -441,10 +441,10 @@ class ManagementServer(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The location for the management server (management console)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagementServerManagementUriArgs']]]] management_uris: The management console URI
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagementServerManagementUriArrgs']]]] management_uris: The management console URI
                Structure is documented below.
         :param pulumi.Input[str] name: The name of management server (management console)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagementServerNetworkArgs']]]] networks: Network details to create management server (management console).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagementServerNetworkArrgs']]]] networks: Network details to create management server (management console).
                Structure is documented below.
         :param pulumi.Input[str] oauth2_client_id: The oauth2ClientId of management console.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.

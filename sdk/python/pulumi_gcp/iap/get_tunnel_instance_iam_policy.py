@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetTunnelInstanceIamPolicyResult:
+calass GetTunnelInstanceIamPolicyResult:
     """
     A collection of values returned by getTunnelInstanceIamPolicy.
     """
@@ -82,7 +82,7 @@ class GetTunnelInstanceIamPolicyResult:
         return pulumi.get(self, "zone")
 
 
-class AwaitableGetTunnelInstanceIamPolicyResult(GetTunnelInstanceIamPolicyResult):
+calass AwaitableGetTunnelInstanceIamPolicyResult(GetTunnelInstanceIamPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

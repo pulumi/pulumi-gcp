@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['TenantArgs', 'Tenant']
+__all__ = ['TenantArrgs', 'Tenant']
 
 @pulumi.input_type
-class TenantArgs:
+calass TenantArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  allow_password_signup: Optional[pulumi.Input[bool]] = None,
@@ -111,7 +111,7 @@ class TenantArgs:
 
 
 @pulumi.input_type
-class _TenantState:
+calass _TenantState:
     def __init__(__self__, *,
                  allow_password_signup: Optional[pulumi.Input[bool]] = None,
                  disable_auth: Optional[pulumi.Input[bool]] = None,
@@ -226,7 +226,7 @@ class _TenantState:
         pulumi.set(self, "project", value)
 
 
-class Tenant(pulumi.CustomResource):
+calass Tenant(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -301,7 +301,7 @@ class Tenant(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TenantArgs,
+                 args: TenantArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Tenant configuration in a multi-tenant project.
@@ -350,12 +350,12 @@ class Tenant(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param TenantArgs args: The arguments to use to populate this resource's properties.
+        :param TenantArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(TenantArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TenantArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -376,7 +376,7 @@ class Tenant(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = TenantArgs.__new__(TenantArgs)
+            __props__ = TenantArrgs.__new__(TenantArrgs)
 
             __props__.__dict__["allow_password_signup"] = allow_password_signup
             __props__.__dict__["disable_auth"] = disable_auth

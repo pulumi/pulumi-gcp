@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['DicomStoreIamPolicyArgs', 'DicomStoreIamPolicy']
+__all__ = ['DicomStoreIamPolicyArrgs', 'DicomStoreIamPolicy']
 
 @pulumi.input_type
-class DicomStoreIamPolicyArgs:
+calass DicomStoreIamPolicyArrgs:
     def __init__(__self__, *,
                  dicom_store_id: pulumi.Input[str],
                  policy_data: pulumi.Input[str]):
@@ -76,7 +76,7 @@ class DicomStoreIamPolicyArgs:
 
 
 @pulumi.input_type
-class _DicomStoreIamPolicyState:
+calass _DicomStoreIamPolicyState:
     def __init__(__self__, *,
                  dicom_store_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -157,7 +157,7 @@ class _DicomStoreIamPolicyState:
         pulumi.set(self, "policy_data", value)
 
 
-class DicomStoreIamPolicy(pulumi.CustomResource):
+calass DicomStoreIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -182,7 +182,7 @@ class DicomStoreIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -253,7 +253,7 @@ class DicomStoreIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DicomStoreIamPolicyArgs,
+                 args: DicomStoreIamPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Healthcare DICOM store. Each of these resources serves a different use case:
@@ -272,7 +272,7 @@ class DicomStoreIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -322,12 +322,12 @@ class DicomStoreIamPolicy(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param DicomStoreIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param DicomStoreIamPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DicomStoreIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DicomStoreIamPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -345,7 +345,7 @@ class DicomStoreIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DicomStoreIamPolicyArgs.__new__(DicomStoreIamPolicyArgs)
+            __props__ = DicomStoreIamPolicyArrgs.__new__(DicomStoreIamPolicyArrgs)
 
             if dicom_store_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dicom_store_id'")

@@ -10,18 +10,18 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'DatabaseEncryptionConfigArgs',
-    'DatabaseIAMBindingConditionArgs',
-    'DatabaseIAMMemberConditionArgs',
-    'InstanceAutoscalingConfigArgs',
-    'InstanceAutoscalingConfigAutoscalingLimitsArgs',
-    'InstanceAutoscalingConfigAutoscalingTargetsArgs',
-    'InstanceIAMBindingConditionArgs',
-    'InstanceIAMMemberConditionArgs',
+    'DatabaseEncryptionConfigArrgs',
+    'DatabaseIAMBindingConditionArrgs',
+    'DatabaseIAMMemberConditionArrgs',
+    'InstanceAutoscalingConfigArrgs',
+    'InstanceAutoscalingConfigAutoscalingLimitsArrgs',
+    'InstanceAutoscalingConfigAutoscalingTargetsArrgs',
+    'InstanceIAMBindingConditionArrgs',
+    'InstanceIAMMemberConditionArrgs',
 ]
 
 @pulumi.input_type
-class DatabaseEncryptionConfigArgs:
+calass DatabaseEncryptionConfigArrgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[str]):
         """
@@ -45,7 +45,7 @@ class DatabaseEncryptionConfigArgs:
 
 
 @pulumi.input_type
-class DatabaseIAMBindingConditionArgs:
+calass DatabaseIAMBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -84,7 +84,7 @@ class DatabaseIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class DatabaseIAMMemberConditionArgs:
+calass DatabaseIAMMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -123,15 +123,15 @@ class DatabaseIAMMemberConditionArgs:
 
 
 @pulumi.input_type
-class InstanceAutoscalingConfigArgs:
+calass InstanceAutoscalingConfigArrgs:
     def __init__(__self__, *,
-                 autoscaling_limits: Optional[pulumi.Input['InstanceAutoscalingConfigAutoscalingLimitsArgs']] = None,
-                 autoscaling_targets: Optional[pulumi.Input['InstanceAutoscalingConfigAutoscalingTargetsArgs']] = None):
+                 autoscaling_limits: Optional[pulumi.Input['InstanceAutoscalingConfigAutoscalingLimitsArrgs']] = None,
+                 autoscaling_targets: Optional[pulumi.Input['InstanceAutoscalingConfigAutoscalingTargetsArrgs']] = None):
         """
-        :param pulumi.Input['InstanceAutoscalingConfigAutoscalingLimitsArgs'] autoscaling_limits: Defines scale in controls to reduce the risk of response latency
+        :param pulumi.Input['InstanceAutoscalingConfigAutoscalingLimitsArrgs'] autoscaling_limits: Defines scale in controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
-        :param pulumi.Input['InstanceAutoscalingConfigAutoscalingTargetsArgs'] autoscaling_targets: Defines scale in controls to reduce the risk of response latency
+        :param pulumi.Input['InstanceAutoscalingConfigAutoscalingTargetsArrgs'] autoscaling_targets: Defines scale in controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
         """
@@ -142,7 +142,7 @@ class InstanceAutoscalingConfigArgs:
 
     @property
     @pulumi.getter(name="autoscalingLimits")
-    def autoscaling_limits(self) -> Optional[pulumi.Input['InstanceAutoscalingConfigAutoscalingLimitsArgs']]:
+    def autoscaling_limits(self) -> Optional[pulumi.Input['InstanceAutoscalingConfigAutoscalingLimitsArrgs']]:
         """
         Defines scale in controls to reduce the risk of response latency
         and outages due to abrupt scale-in events
@@ -151,12 +151,12 @@ class InstanceAutoscalingConfigArgs:
         return pulumi.get(self, "autoscaling_limits")
 
     @autoscaling_limits.setter
-    def autoscaling_limits(self, value: Optional[pulumi.Input['InstanceAutoscalingConfigAutoscalingLimitsArgs']]):
+    def autoscaling_limits(self, value: Optional[pulumi.Input['InstanceAutoscalingConfigAutoscalingLimitsArrgs']]):
         pulumi.set(self, "autoscaling_limits", value)
 
     @property
     @pulumi.getter(name="autoscalingTargets")
-    def autoscaling_targets(self) -> Optional[pulumi.Input['InstanceAutoscalingConfigAutoscalingTargetsArgs']]:
+    def autoscaling_targets(self) -> Optional[pulumi.Input['InstanceAutoscalingConfigAutoscalingTargetsArrgs']]:
         """
         Defines scale in controls to reduce the risk of response latency
         and outages due to abrupt scale-in events
@@ -165,12 +165,12 @@ class InstanceAutoscalingConfigArgs:
         return pulumi.get(self, "autoscaling_targets")
 
     @autoscaling_targets.setter
-    def autoscaling_targets(self, value: Optional[pulumi.Input['InstanceAutoscalingConfigAutoscalingTargetsArgs']]):
+    def autoscaling_targets(self, value: Optional[pulumi.Input['InstanceAutoscalingConfigAutoscalingTargetsArrgs']]):
         pulumi.set(self, "autoscaling_targets", value)
 
 
 @pulumi.input_type
-class InstanceAutoscalingConfigAutoscalingLimitsArgs:
+calass InstanceAutoscalingConfigAutoscalingLimitsArrgs:
     def __init__(__self__, *,
                  max_processing_units: Optional[pulumi.Input[int]] = None,
                  min_processing_units: Optional[pulumi.Input[int]] = None):
@@ -215,7 +215,7 @@ class InstanceAutoscalingConfigAutoscalingLimitsArgs:
 
 
 @pulumi.input_type
-class InstanceAutoscalingConfigAutoscalingTargetsArgs:
+calass InstanceAutoscalingConfigAutoscalingTargetsArrgs:
     def __init__(__self__, *,
                  high_priority_cpu_utilization_percent: Optional[pulumi.Input[int]] = None,
                  storage_utilization_percent: Optional[pulumi.Input[int]] = None):
@@ -262,7 +262,7 @@ class InstanceAutoscalingConfigAutoscalingTargetsArgs:
 
 
 @pulumi.input_type
-class InstanceIAMBindingConditionArgs:
+calass InstanceIAMBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -301,7 +301,7 @@ class InstanceIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class InstanceIAMMemberConditionArgs:
+calass InstanceIAMMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],

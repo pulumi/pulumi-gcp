@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['RecordSetArgs', 'RecordSet']
+__all__ = ['RecordSetArrgs', 'RecordSet']
 
 @pulumi.input_type
-class RecordSetArgs:
+calass RecordSetArrgs:
     def __init__(__self__, *,
                  managed_zone: pulumi.Input[str],
                  name: pulumi.Input[str],
                  type: pulumi.Input[str],
                  project: Optional[pulumi.Input[str]] = None,
-                 routing_policy: Optional[pulumi.Input['RecordSetRoutingPolicyArgs']] = None,
+                 routing_policy: Optional[pulumi.Input['RecordSetRoutingPolicyArrgs']] = None,
                  rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[int]] = None):
         """
@@ -33,7 +33,7 @@ class RecordSetArgs:
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input['RecordSetRoutingPolicyArgs'] routing_policy: The configuration for steering traffic based on query.
+        :param pulumi.Input['RecordSetRoutingPolicyArrgs'] routing_policy: The configuration for steering traffic based on query.
                Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
@@ -108,7 +108,7 @@ class RecordSetArgs:
 
     @property
     @pulumi.getter(name="routingPolicy")
-    def routing_policy(self) -> Optional[pulumi.Input['RecordSetRoutingPolicyArgs']]:
+    def routing_policy(self) -> Optional[pulumi.Input['RecordSetRoutingPolicyArrgs']]:
         """
         The configuration for steering traffic based on query.
         Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
@@ -117,7 +117,7 @@ class RecordSetArgs:
         return pulumi.get(self, "routing_policy")
 
     @routing_policy.setter
-    def routing_policy(self, value: Optional[pulumi.Input['RecordSetRoutingPolicyArgs']]):
+    def routing_policy(self, value: Optional[pulumi.Input['RecordSetRoutingPolicyArrgs']]):
         pulumi.set(self, "routing_policy", value)
 
     @property
@@ -149,12 +149,12 @@ class RecordSetArgs:
 
 
 @pulumi.input_type
-class _RecordSetState:
+calass _RecordSetState:
     def __init__(__self__, *,
                  managed_zone: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 routing_policy: Optional[pulumi.Input['RecordSetRoutingPolicyArgs']] = None,
+                 routing_policy: Optional[pulumi.Input['RecordSetRoutingPolicyArrgs']] = None,
                  rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None):
@@ -165,7 +165,7 @@ class _RecordSetState:
         :param pulumi.Input[str] name: The DNS name this record set will apply to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input['RecordSetRoutingPolicyArgs'] routing_policy: The configuration for steering traffic based on query.
+        :param pulumi.Input['RecordSetRoutingPolicyArrgs'] routing_policy: The configuration for steering traffic based on query.
                Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
@@ -232,7 +232,7 @@ class _RecordSetState:
 
     @property
     @pulumi.getter(name="routingPolicy")
-    def routing_policy(self) -> Optional[pulumi.Input['RecordSetRoutingPolicyArgs']]:
+    def routing_policy(self) -> Optional[pulumi.Input['RecordSetRoutingPolicyArrgs']]:
         """
         The configuration for steering traffic based on query.
         Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
@@ -241,7 +241,7 @@ class _RecordSetState:
         return pulumi.get(self, "routing_policy")
 
     @routing_policy.setter
-    def routing_policy(self, value: Optional[pulumi.Input['RecordSetRoutingPolicyArgs']]):
+    def routing_policy(self, value: Optional[pulumi.Input['RecordSetRoutingPolicyArrgs']]):
         pulumi.set(self, "routing_policy", value)
 
     @property
@@ -286,7 +286,7 @@ class _RecordSetState:
         pulumi.set(self, "type", value)
 
 
-class RecordSet(pulumi.CustomResource):
+calass RecordSet(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -294,7 +294,7 @@ class RecordSet(pulumi.CustomResource):
                  managed_zone: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 routing_policy: Optional[pulumi.Input[pulumi.InputType['RecordSetRoutingPolicyArgs']]] = None,
+                 routing_policy: Optional[pulumi.Input[pulumi.InputType['RecordSetRoutingPolicyArrgs']]] = None,
                  rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -310,14 +310,14 @@ class RecordSet(pulumi.CustomResource):
         frontend_instance = gcp.compute.Instance("frontendInstance",
             machine_type="g1-small",
             zone="us-central1-b",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image="debian-cloud/debian-11",
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 network="default",
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArrgs()],
             )])
         prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
         frontend_record_set = gcp.dns.RecordSet("frontendRecordSet",
@@ -405,13 +405,13 @@ class RecordSet(pulumi.CustomResource):
             managed_zone=google_dns_managed_zone["prod"]["name"],
             type="A",
             ttl=300,
-            routing_policy=gcp.dns.RecordSetRoutingPolicyArgs(
+            routing_policy=gcp.dns.RecordSetRoutingPolicyArrgs(
                 geos=[
-                    gcp.dns.RecordSetRoutingPolicyGeoArgs(
+                    gcp.dns.RecordSetRoutingPolicyGeoArrgs(
                         location="asia-east1",
                         rrdatas=["10.128.1.1"],
                     ),
-                    gcp.dns.RecordSetRoutingPolicyGeoArgs(
+                    gcp.dns.RecordSetRoutingPolicyGeoArrgs(
                         location="us-central1",
                         rrdatas=["10.130.1.1"],
                     ),
@@ -439,11 +439,11 @@ class RecordSet(pulumi.CustomResource):
             managed_zone=prod_managed_zone.name,
             type="A",
             ttl=300,
-            routing_policy=gcp.dns.RecordSetRoutingPolicyArgs(
-                primary_backup=gcp.dns.RecordSetRoutingPolicyPrimaryBackupArgs(
+            routing_policy=gcp.dns.RecordSetRoutingPolicyArrgs(
+                primary_backup=gcp.dns.RecordSetRoutingPolicyPrimaryBackupArrgs(
                     trickle_ratio=0.1,
-                    primary=gcp.dns.RecordSetRoutingPolicyPrimaryBackupPrimaryArgs(
-                        internal_load_balancers=[gcp.dns.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs(
+                    primary=gcp.dns.RecordSetRoutingPolicyPrimaryBackupPrimaryArrgs(
+                        internal_load_balancers=[gcp.dns.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrgs(
                             load_balancer_type="regionalL4ilb",
                             ip_address=prod_forwarding_rule.ip_address,
                             port="80",
@@ -454,11 +454,11 @@ class RecordSet(pulumi.CustomResource):
                         )],
                     ),
                     backup_geos=[
-                        gcp.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs(
+                        gcp.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoArrgs(
                             location="asia-east1",
                             rrdatas=["10.128.1.1"],
                         ),
-                        gcp.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs(
+                        gcp.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoArrgs(
                             location="us-west1",
                             rrdatas=["10.130.1.1"],
                         ),
@@ -500,7 +500,7 @@ class RecordSet(pulumi.CustomResource):
         :param pulumi.Input[str] name: The DNS name this record set will apply to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['RecordSetRoutingPolicyArgs']] routing_policy: The configuration for steering traffic based on query.
+        :param pulumi.Input[pulumi.InputType['RecordSetRoutingPolicyArrgs']] routing_policy: The configuration for steering traffic based on query.
                Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
@@ -516,7 +516,7 @@ class RecordSet(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RecordSetArgs,
+                 args: RecordSetArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -529,14 +529,14 @@ class RecordSet(pulumi.CustomResource):
         frontend_instance = gcp.compute.Instance("frontendInstance",
             machine_type="g1-small",
             zone="us-central1-b",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image="debian-cloud/debian-11",
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 network="default",
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArrgs()],
             )])
         prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
         frontend_record_set = gcp.dns.RecordSet("frontendRecordSet",
@@ -624,13 +624,13 @@ class RecordSet(pulumi.CustomResource):
             managed_zone=google_dns_managed_zone["prod"]["name"],
             type="A",
             ttl=300,
-            routing_policy=gcp.dns.RecordSetRoutingPolicyArgs(
+            routing_policy=gcp.dns.RecordSetRoutingPolicyArrgs(
                 geos=[
-                    gcp.dns.RecordSetRoutingPolicyGeoArgs(
+                    gcp.dns.RecordSetRoutingPolicyGeoArrgs(
                         location="asia-east1",
                         rrdatas=["10.128.1.1"],
                     ),
-                    gcp.dns.RecordSetRoutingPolicyGeoArgs(
+                    gcp.dns.RecordSetRoutingPolicyGeoArrgs(
                         location="us-central1",
                         rrdatas=["10.130.1.1"],
                     ),
@@ -658,11 +658,11 @@ class RecordSet(pulumi.CustomResource):
             managed_zone=prod_managed_zone.name,
             type="A",
             ttl=300,
-            routing_policy=gcp.dns.RecordSetRoutingPolicyArgs(
-                primary_backup=gcp.dns.RecordSetRoutingPolicyPrimaryBackupArgs(
+            routing_policy=gcp.dns.RecordSetRoutingPolicyArrgs(
+                primary_backup=gcp.dns.RecordSetRoutingPolicyPrimaryBackupArrgs(
                     trickle_ratio=0.1,
-                    primary=gcp.dns.RecordSetRoutingPolicyPrimaryBackupPrimaryArgs(
-                        internal_load_balancers=[gcp.dns.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs(
+                    primary=gcp.dns.RecordSetRoutingPolicyPrimaryBackupPrimaryArrgs(
+                        internal_load_balancers=[gcp.dns.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrgs(
                             load_balancer_type="regionalL4ilb",
                             ip_address=prod_forwarding_rule.ip_address,
                             port="80",
@@ -673,11 +673,11 @@ class RecordSet(pulumi.CustomResource):
                         )],
                     ),
                     backup_geos=[
-                        gcp.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs(
+                        gcp.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoArrgs(
                             location="asia-east1",
                             rrdatas=["10.128.1.1"],
                         ),
-                        gcp.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs(
+                        gcp.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoArrgs(
                             location="us-west1",
                             rrdatas=["10.130.1.1"],
                         ),
@@ -713,12 +713,12 @@ class RecordSet(pulumi.CustomResource):
          NoteThe record name must include the trailing dot at the end.
 
         :param str resource_name: The name of the resource.
-        :param RecordSetArgs args: The arguments to use to populate this resource's properties.
+        :param RecordSetArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RecordSetArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(RecordSetArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -730,7 +730,7 @@ class RecordSet(pulumi.CustomResource):
                  managed_zone: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 routing_policy: Optional[pulumi.Input[pulumi.InputType['RecordSetRoutingPolicyArgs']]] = None,
+                 routing_policy: Optional[pulumi.Input[pulumi.InputType['RecordSetRoutingPolicyArrgs']]] = None,
                  rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -741,7 +741,7 @@ class RecordSet(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RecordSetArgs.__new__(RecordSetArgs)
+            __props__ = RecordSetArrgs.__new__(RecordSetArrgs)
 
             if managed_zone is None and not opts.urn:
                 raise TypeError("Missing required property 'managed_zone'")
@@ -769,7 +769,7 @@ class RecordSet(pulumi.CustomResource):
             managed_zone: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            routing_policy: Optional[pulumi.Input[pulumi.InputType['RecordSetRoutingPolicyArgs']]] = None,
+            routing_policy: Optional[pulumi.Input[pulumi.InputType['RecordSetRoutingPolicyArrgs']]] = None,
             rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ttl: Optional[pulumi.Input[int]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'RecordSet':
@@ -785,7 +785,7 @@ class RecordSet(pulumi.CustomResource):
         :param pulumi.Input[str] name: The DNS name this record set will apply to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['RecordSetRoutingPolicyArgs']] routing_policy: The configuration for steering traffic based on query.
+        :param pulumi.Input[pulumi.InputType['RecordSetRoutingPolicyArrgs']] routing_policy: The configuration for steering traffic based on query.
                Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string

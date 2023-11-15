@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['ConfigArgs', 'Config']
+__all__ = ['ConfigArrgs', 'Config']
 
 @pulumi.input_type
-class ConfigArgs:
+calass ConfigArrgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -76,7 +76,7 @@ class ConfigArgs:
 
 
 @pulumi.input_type
-class _ConfigState:
+calass _ConfigState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -139,7 +139,7 @@ class _ConfigState:
         pulumi.set(self, "project", value)
 
 
-class Config(pulumi.CustomResource):
+calass Config(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -196,7 +196,7 @@ class Config(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[ConfigArgs] = None,
+                 args: Optional[ConfigArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -233,12 +233,12 @@ class Config(pulumi.CustomResource):
          When importing using only the name, the provider project must be set.
 
         :param str resource_name: The name of the resource.
-        :param ConfigArgs args: The arguments to use to populate this resource's properties.
+        :param ConfigArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ConfigArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -257,7 +257,7 @@ class Config(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ConfigArgs.__new__(ConfigArgs)
+            __props__ = ConfigArrgs.__new__(ConfigArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name

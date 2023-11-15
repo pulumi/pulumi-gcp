@@ -10,22 +10,22 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'AttestorAttestationAuthorityNoteArgs',
-    'AttestorAttestationAuthorityNotePublicKeyArgs',
-    'AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs',
-    'AttestorIamBindingConditionArgs',
-    'AttestorIamMemberConditionArgs',
-    'PolicyAdmissionWhitelistPatternArgs',
-    'PolicyClusterAdmissionRuleArgs',
-    'PolicyDefaultAdmissionRuleArgs',
+    'AttestorAttestationAuthorityNoteArrgs',
+    'AttestorAttestationAuthorityNotePublicKeyArrgs',
+    'AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArrgs',
+    'AttestorIamBindingConditionArrgs',
+    'AttestorIamMemberConditionArrgs',
+    'PolicyAdmissionWhitelistPatternArrgs',
+    'PolicyClusterAdmissionRuleArrgs',
+    'PolicyDefaultAdmissionRuleArrgs',
 ]
 
 @pulumi.input_type
-class AttestorAttestationAuthorityNoteArgs:
+calass AttestorAttestationAuthorityNoteArrgs:
     def __init__(__self__, *,
                  note_reference: pulumi.Input[str],
                  delegation_service_account_email: Optional[pulumi.Input[str]] = None,
-                 public_keys: Optional[pulumi.Input[Sequence[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyArgs']]]] = None):
+                 public_keys: Optional[pulumi.Input[Sequence[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyArrgs']]]] = None):
         """
         :param pulumi.Input[str] note_reference: The resource name of a ATTESTATION_AUTHORITY Note, created by the
                user. If the Note is in a different project from the Attestor, it
@@ -44,7 +44,7 @@ class AttestorAttestationAuthorityNoteArgs:
                callers should not make any other assumptions about the service
                account email; future versions may use an email based on a
                different naming pattern.
-        :param pulumi.Input[Sequence[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyArgs']]] public_keys: Public keys that verify attestations signed by this attestor. This
+        :param pulumi.Input[Sequence[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyArrgs']]] public_keys: Public keys that verify attestations signed by this attestor. This
                field may be updated.
                If this field is non-empty, one of the specified public keys must
                verify that an attestation was signed by this attestor for the
@@ -100,7 +100,7 @@ class AttestorAttestationAuthorityNoteArgs:
 
     @property
     @pulumi.getter(name="publicKeys")
-    def public_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyArgs']]]]:
+    def public_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyArrgs']]]]:
         """
         Public keys that verify attestations signed by this attestor. This
         field may be updated.
@@ -114,17 +114,17 @@ class AttestorAttestationAuthorityNoteArgs:
         return pulumi.get(self, "public_keys")
 
     @public_keys.setter
-    def public_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyArgs']]]]):
+    def public_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyArrgs']]]]):
         pulumi.set(self, "public_keys", value)
 
 
 @pulumi.input_type
-class AttestorAttestationAuthorityNotePublicKeyArgs:
+calass AttestorAttestationAuthorityNotePublicKeyArrgs:
     def __init__(__self__, *,
                  ascii_armored_pgp_public_key: Optional[pulumi.Input[str]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 pkix_public_key: Optional[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs']] = None):
+                 pkix_public_key: Optional[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArrgs']] = None):
         """
         :param pulumi.Input[str] ascii_armored_pgp_public_key: ASCII-armored representation of a PGP public key, as the
                entire output by the command
@@ -142,7 +142,7 @@ class AttestorAttestationAuthorityNotePublicKeyArgs:
                field exactly. Additional restrictions on this field can
                be imposed based on which public key type is encapsulated.
                See the documentation on publicKey cases below for details.
-        :param pulumi.Input['AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs'] pkix_public_key: A raw PKIX SubjectPublicKeyInfo format public key.
+        :param pulumi.Input['AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArrgs'] pkix_public_key: A raw PKIX SubjectPublicKeyInfo format public key.
                NOTE: id may be explicitly provided by the caller when using this
                type of public key, but it MUST be a valid RFC3986 URI. If id is left
                blank, a default one will be computed based on the digest of the DER
@@ -209,7 +209,7 @@ class AttestorAttestationAuthorityNotePublicKeyArgs:
 
     @property
     @pulumi.getter(name="pkixPublicKey")
-    def pkix_public_key(self) -> Optional[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs']]:
+    def pkix_public_key(self) -> Optional[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArrgs']]:
         """
         A raw PKIX SubjectPublicKeyInfo format public key.
         NOTE: id may be explicitly provided by the caller when using this
@@ -221,12 +221,12 @@ class AttestorAttestationAuthorityNotePublicKeyArgs:
         return pulumi.get(self, "pkix_public_key")
 
     @pkix_public_key.setter
-    def pkix_public_key(self, value: Optional[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs']]):
+    def pkix_public_key(self, value: Optional[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArrgs']]):
         pulumi.set(self, "pkix_public_key", value)
 
 
 @pulumi.input_type
-class AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs:
+calass AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArrgs:
     def __init__(__self__, *,
                  public_key_pem: Optional[pulumi.Input[str]] = None,
                  signature_algorithm: Optional[pulumi.Input[str]] = None):
@@ -279,7 +279,7 @@ class AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs:
 
 
 @pulumi.input_type
-class AttestorIamBindingConditionArgs:
+calass AttestorIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -318,7 +318,7 @@ class AttestorIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class AttestorIamMemberConditionArgs:
+calass AttestorIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -357,7 +357,7 @@ class AttestorIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class PolicyAdmissionWhitelistPatternArgs:
+calass PolicyAdmissionWhitelistPatternArrgs:
     def __init__(__self__, *,
                  name_pattern: pulumi.Input[str]):
         """
@@ -385,7 +385,7 @@ class PolicyAdmissionWhitelistPatternArgs:
 
 
 @pulumi.input_type
-class PolicyClusterAdmissionRuleArgs:
+calass PolicyClusterAdmissionRuleArrgs:
     def __init__(__self__, *,
                  cluster: pulumi.Input[str],
                  enforcement_mode: pulumi.Input[str],
@@ -471,7 +471,7 @@ class PolicyClusterAdmissionRuleArgs:
 
 
 @pulumi.input_type
-class PolicyDefaultAdmissionRuleArgs:
+calass PolicyDefaultAdmissionRuleArrgs:
     def __init__(__self__, *,
                  enforcement_mode: pulumi.Input[str],
                  evaluation_mode: pulumi.Input[str],

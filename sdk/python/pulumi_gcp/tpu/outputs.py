@@ -25,7 +25,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class NodeNetworkEndpoint(dict):
+calass NodeNetworkEndpoint(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -77,7 +77,7 @@ class NodeNetworkEndpoint(dict):
 
 
 @pulumi.output_type
-class NodeSchedulingConfig(dict):
+calass NodeSchedulingConfig(dict):
     def __init__(__self__, *,
                  preemptible: bool):
         """
@@ -95,7 +95,7 @@ class NodeSchedulingConfig(dict):
 
 
 @pulumi.output_type
-class V2VmAcceleratorConfig(dict):
+calass V2VmAcceleratorConfig(dict):
     def __init__(__self__, *,
                  topology: str,
                  type: str):
@@ -126,7 +126,7 @@ class V2VmAcceleratorConfig(dict):
 
 
 @pulumi.output_type
-class V2VmDataDisk(dict):
+calass V2VmDataDisk(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -181,7 +181,7 @@ class V2VmDataDisk(dict):
 
 
 @pulumi.output_type
-class V2VmNetworkConfig(dict):
+calass V2VmNetworkConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -271,7 +271,7 @@ class V2VmNetworkConfig(dict):
 
 
 @pulumi.output_type
-class V2VmNetworkEndpoint(dict):
+calass V2VmNetworkEndpoint(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -296,7 +296,7 @@ class V2VmNetworkEndpoint(dict):
                  ip_address: Optional[str] = None,
                  port: Optional[int] = None):
         """
-        :param Sequence['V2VmNetworkEndpointAccessConfigArgs'] access_configs: (Output)
+        :param Sequence['V2VmNetworkEndpointAccessConfigArrgs'] access_configs: (Output)
                The access config for the TPU worker.
                Structure is documented below.
         :param str ip_address: (Output)
@@ -341,7 +341,7 @@ class V2VmNetworkEndpoint(dict):
 
 
 @pulumi.output_type
-class V2VmNetworkEndpointAccessConfig(dict):
+calass V2VmNetworkEndpointAccessConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -379,7 +379,7 @@ class V2VmNetworkEndpointAccessConfig(dict):
 
 
 @pulumi.output_type
-class V2VmSchedulingConfig(dict):
+calass V2VmSchedulingConfig(dict):
     def __init__(__self__, *,
                  preemptible: Optional[bool] = None,
                  reserved: Optional[bool] = None):
@@ -410,7 +410,7 @@ class V2VmSchedulingConfig(dict):
 
 
 @pulumi.output_type
-class V2VmServiceAccount(dict):
+calass V2VmServiceAccount(dict):
     def __init__(__self__, *,
                  email: Optional[str] = None,
                  scopes: Optional[Sequence[str]] = None):
@@ -443,7 +443,7 @@ class V2VmServiceAccount(dict):
 
 
 @pulumi.output_type
-class V2VmShieldedInstanceConfig(dict):
+calass V2VmShieldedInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -478,7 +478,7 @@ class V2VmShieldedInstanceConfig(dict):
 
 
 @pulumi.output_type
-class V2VmSymptom(dict):
+calass V2VmSymptom(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

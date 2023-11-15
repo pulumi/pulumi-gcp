@@ -10,41 +10,41 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'AiDatasetEncryptionSpecArgs',
-    'AiEndpointDeployedModelArgs',
-    'AiEndpointDeployedModelAutomaticResourceArgs',
-    'AiEndpointDeployedModelDedicatedResourceArgs',
-    'AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs',
-    'AiEndpointDeployedModelDedicatedResourceMachineSpecArgs',
-    'AiEndpointDeployedModelPrivateEndpointArgs',
-    'AiEndpointEncryptionSpecArgs',
-    'AiFeatureStoreEncryptionSpecArgs',
-    'AiFeatureStoreEntityTypeIamBindingConditionArgs',
-    'AiFeatureStoreEntityTypeIamMemberConditionArgs',
-    'AiFeatureStoreEntityTypeMonitoringConfigArgs',
-    'AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs',
-    'AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs',
-    'AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs',
-    'AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs',
-    'AiFeatureStoreIamBindingConditionArgs',
-    'AiFeatureStoreIamMemberConditionArgs',
-    'AiFeatureStoreOnlineServingConfigArgs',
-    'AiFeatureStoreOnlineServingConfigScalingArgs',
-    'AiIndexDeployedIndexArgs',
-    'AiIndexEndpointPrivateServiceConnectConfigArgs',
-    'AiIndexIndexStatArgs',
-    'AiIndexMetadataArgs',
-    'AiIndexMetadataConfigArgs',
-    'AiIndexMetadataConfigAlgorithmConfigArgs',
-    'AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs',
-    'AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs',
-    'AiMetadataStoreEncryptionSpecArgs',
-    'AiMetadataStoreStateArgs',
-    'AiTensorboardEncryptionSpecArgs',
+    'AiDatasetEncryptionSpecArrgs',
+    'AiEndpointDeployedModelArrgs',
+    'AiEndpointDeployedModelAutomaticResourceArrgs',
+    'AiEndpointDeployedModelDedicatedResourceArrgs',
+    'AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrgs',
+    'AiEndpointDeployedModelDedicatedResourceMachineSpecArrgs',
+    'AiEndpointDeployedModelPrivateEndpointArrgs',
+    'AiEndpointEncryptionSpecArrgs',
+    'AiFeatureStoreEncryptionSpecArrgs',
+    'AiFeatureStoreEntityTypeIamBindingConditionArrgs',
+    'AiFeatureStoreEntityTypeIamMemberConditionArrgs',
+    'AiFeatureStoreEntityTypeMonitoringConfigArrgs',
+    'AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArrgs',
+    'AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArrgs',
+    'AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArrgs',
+    'AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArrgs',
+    'AiFeatureStoreIamBindingConditionArrgs',
+    'AiFeatureStoreIamMemberConditionArrgs',
+    'AiFeatureStoreOnlineServingConfigArrgs',
+    'AiFeatureStoreOnlineServingConfigScalingArrgs',
+    'AiIndexDeployedIndexArrgs',
+    'AiIndexEndpointPrivateServiceConnectConfigArrgs',
+    'AiIndexIndexStatArrgs',
+    'AiIndexMetadataArrgs',
+    'AiIndexMetadataConfigArrgs',
+    'AiIndexMetadataConfigAlgorithmConfigArrgs',
+    'AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrgs',
+    'AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrgs',
+    'AiMetadataStoreEncryptionSpecArrgs',
+    'AiMetadataStoreStateArrgs',
+    'AiTensorboardEncryptionSpecArrgs',
 ]
 
 @pulumi.input_type
-class AiDatasetEncryptionSpecArgs:
+calass AiDatasetEncryptionSpecArrgs:
     def __init__(__self__, *,
                  kms_key_name: Optional[pulumi.Input[str]] = None):
         """
@@ -69,27 +69,27 @@ class AiDatasetEncryptionSpecArgs:
 
 
 @pulumi.input_type
-class AiEndpointDeployedModelArgs:
+calass AiEndpointDeployedModelArrgs:
     def __init__(__self__, *,
-                 automatic_resources: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArgs']]]] = None,
+                 automatic_resources: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArrgs']]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 dedicated_resources: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceArgs']]]] = None,
+                 dedicated_resources: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceArrgs']]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_access_logging: Optional[pulumi.Input[bool]] = None,
                  enable_container_logging: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  model: Optional[pulumi.Input[str]] = None,
                  model_version_id: Optional[pulumi.Input[str]] = None,
-                 private_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelPrivateEndpointArgs']]]] = None,
+                 private_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelPrivateEndpointArrgs']]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  shared_resources: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArgs']]] automatic_resources: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArrgs']]] automatic_resources: (Output)
                A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
                Structure is documented below.
         :param pulumi.Input[str] create_time: (Output)
                Output only. Timestamp when the DeployedModel was created.
-        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceArgs']]] dedicated_resources: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceArrgs']]] dedicated_resources: (Output)
                A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
                Structure is documented below.
         :param pulumi.Input[str] display_name: Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -103,7 +103,7 @@ class AiEndpointDeployedModelArgs:
                The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel's Endpoint.
         :param pulumi.Input[str] model_version_id: (Output)
                Output only. The version ID of the model that is deployed.
-        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelPrivateEndpointArgs']]] private_endpoints: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelPrivateEndpointArrgs']]] private_endpoints: (Output)
                Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
                Structure is documented below.
         :param pulumi.Input[str] service_account: (Output)
@@ -138,7 +138,7 @@ class AiEndpointDeployedModelArgs:
 
     @property
     @pulumi.getter(name="automaticResources")
-    def automatic_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArgs']]]]:
+    def automatic_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArrgs']]]]:
         """
         (Output)
         A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
@@ -147,7 +147,7 @@ class AiEndpointDeployedModelArgs:
         return pulumi.get(self, "automatic_resources")
 
     @automatic_resources.setter
-    def automatic_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArgs']]]]):
+    def automatic_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArrgs']]]]):
         pulumi.set(self, "automatic_resources", value)
 
     @property
@@ -165,7 +165,7 @@ class AiEndpointDeployedModelArgs:
 
     @property
     @pulumi.getter(name="dedicatedResources")
-    def dedicated_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceArgs']]]]:
+    def dedicated_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceArrgs']]]]:
         """
         (Output)
         A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
@@ -174,7 +174,7 @@ class AiEndpointDeployedModelArgs:
         return pulumi.get(self, "dedicated_resources")
 
     @dedicated_resources.setter
-    def dedicated_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceArgs']]]]):
+    def dedicated_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceArrgs']]]]):
         pulumi.set(self, "dedicated_resources", value)
 
     @property
@@ -256,7 +256,7 @@ class AiEndpointDeployedModelArgs:
 
     @property
     @pulumi.getter(name="privateEndpoints")
-    def private_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelPrivateEndpointArgs']]]]:
+    def private_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelPrivateEndpointArrgs']]]]:
         """
         (Output)
         Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
@@ -265,7 +265,7 @@ class AiEndpointDeployedModelArgs:
         return pulumi.get(self, "private_endpoints")
 
     @private_endpoints.setter
-    def private_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelPrivateEndpointArgs']]]]):
+    def private_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelPrivateEndpointArrgs']]]]):
         pulumi.set(self, "private_endpoints", value)
 
     @property
@@ -296,7 +296,7 @@ class AiEndpointDeployedModelArgs:
 
 
 @pulumi.input_type
-class AiEndpointDeployedModelAutomaticResourceArgs:
+calass AiEndpointDeployedModelAutomaticResourceArrgs:
     def __init__(__self__, *,
                  max_replica_count: Optional[pulumi.Input[int]] = None,
                  min_replica_count: Optional[pulumi.Input[int]] = None):
@@ -339,17 +339,17 @@ class AiEndpointDeployedModelAutomaticResourceArgs:
 
 
 @pulumi.input_type
-class AiEndpointDeployedModelDedicatedResourceArgs:
+calass AiEndpointDeployedModelDedicatedResourceArrgs:
     def __init__(__self__, *,
-                 autoscaling_metric_specs: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs']]]] = None,
-                 machine_specs: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceMachineSpecArgs']]]] = None,
+                 autoscaling_metric_specs: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrgs']]]] = None,
+                 machine_specs: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceMachineSpecArrgs']]]] = None,
                  max_replica_count: Optional[pulumi.Input[int]] = None,
                  min_replica_count: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs']]] autoscaling_metric_specs: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrgs']]] autoscaling_metric_specs: (Output)
                The metric specifications that overrides a resource utilization metric (CPU utilization, accelerator's duty cycle, and so on) target value (default to 60 if not set). At most one entry is allowed per metric. If machine_spec.accelerator_count is above 0, the autoscaling will be based on both CPU utilization and accelerator's duty cycle metrics and scale up when either metrics exceeds its target value while scale down if both metrics are under their target value. The default target value is 60 for both metrics. If machine_spec.accelerator_count is 0, the autoscaling will be based on CPU utilization metric only with default target value 60 if not explicitly set. For example, in the case of Online Prediction, if you want to override target CPU utilization to 80, you should set autoscaling_metric_specs.metric_name to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and autoscaling_metric_specs.target to `80`.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceMachineSpecArgs']]] machine_specs: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceMachineSpecArrgs']]] machine_specs: (Output)
                The specification of a single machine used by the prediction.
                Structure is documented below.
         :param pulumi.Input[int] max_replica_count: (Output)
@@ -368,7 +368,7 @@ class AiEndpointDeployedModelDedicatedResourceArgs:
 
     @property
     @pulumi.getter(name="autoscalingMetricSpecs")
-    def autoscaling_metric_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs']]]]:
+    def autoscaling_metric_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrgs']]]]:
         """
         (Output)
         The metric specifications that overrides a resource utilization metric (CPU utilization, accelerator's duty cycle, and so on) target value (default to 60 if not set). At most one entry is allowed per metric. If machine_spec.accelerator_count is above 0, the autoscaling will be based on both CPU utilization and accelerator's duty cycle metrics and scale up when either metrics exceeds its target value while scale down if both metrics are under their target value. The default target value is 60 for both metrics. If machine_spec.accelerator_count is 0, the autoscaling will be based on CPU utilization metric only with default target value 60 if not explicitly set. For example, in the case of Online Prediction, if you want to override target CPU utilization to 80, you should set autoscaling_metric_specs.metric_name to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and autoscaling_metric_specs.target to `80`.
@@ -377,12 +377,12 @@ class AiEndpointDeployedModelDedicatedResourceArgs:
         return pulumi.get(self, "autoscaling_metric_specs")
 
     @autoscaling_metric_specs.setter
-    def autoscaling_metric_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs']]]]):
+    def autoscaling_metric_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrgs']]]]):
         pulumi.set(self, "autoscaling_metric_specs", value)
 
     @property
     @pulumi.getter(name="machineSpecs")
-    def machine_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceMachineSpecArgs']]]]:
+    def machine_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceMachineSpecArrgs']]]]:
         """
         (Output)
         The specification of a single machine used by the prediction.
@@ -391,7 +391,7 @@ class AiEndpointDeployedModelDedicatedResourceArgs:
         return pulumi.get(self, "machine_specs")
 
     @machine_specs.setter
-    def machine_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceMachineSpecArgs']]]]):
+    def machine_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceMachineSpecArrgs']]]]):
         pulumi.set(self, "machine_specs", value)
 
     @property
@@ -422,7 +422,7 @@ class AiEndpointDeployedModelDedicatedResourceArgs:
 
 
 @pulumi.input_type
-class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs:
+calass AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrgs:
     def __init__(__self__, *,
                  metric_name: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[int]] = None):
@@ -465,7 +465,7 @@ class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs:
 
 
 @pulumi.input_type
-class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs:
+calass AiEndpointDeployedModelDedicatedResourceMachineSpecArrgs:
     def __init__(__self__, *,
                  accelerator_count: Optional[pulumi.Input[int]] = None,
                  accelerator_type: Optional[pulumi.Input[str]] = None,
@@ -526,7 +526,7 @@ class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs:
 
 
 @pulumi.input_type
-class AiEndpointDeployedModelPrivateEndpointArgs:
+calass AiEndpointDeployedModelPrivateEndpointArrgs:
     def __init__(__self__, *,
                  explain_http_uri: Optional[pulumi.Input[str]] = None,
                  health_http_uri: Optional[pulumi.Input[str]] = None,
@@ -605,7 +605,7 @@ class AiEndpointDeployedModelPrivateEndpointArgs:
 
 
 @pulumi.input_type
-class AiEndpointEncryptionSpecArgs:
+calass AiEndpointEncryptionSpecArrgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[str]):
         """
@@ -627,7 +627,7 @@ class AiEndpointEncryptionSpecArgs:
 
 
 @pulumi.input_type
-class AiFeatureStoreEncryptionSpecArgs:
+calass AiFeatureStoreEncryptionSpecArrgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[str]):
         """
@@ -649,7 +649,7 @@ class AiFeatureStoreEncryptionSpecArgs:
 
 
 @pulumi.input_type
-class AiFeatureStoreEntityTypeIamBindingConditionArgs:
+calass AiFeatureStoreEntityTypeIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -688,7 +688,7 @@ class AiFeatureStoreEntityTypeIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class AiFeatureStoreEntityTypeIamMemberConditionArgs:
+calass AiFeatureStoreEntityTypeIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -727,20 +727,20 @@ class AiFeatureStoreEntityTypeIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class AiFeatureStoreEntityTypeMonitoringConfigArgs:
+calass AiFeatureStoreEntityTypeMonitoringConfigArrgs:
     def __init__(__self__, *,
-                 categorical_threshold_config: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs']] = None,
-                 import_features_analysis: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs']] = None,
-                 numerical_threshold_config: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs']] = None,
-                 snapshot_analysis: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs']] = None):
+                 categorical_threshold_config: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArrgs']] = None,
+                 import_features_analysis: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArrgs']] = None,
+                 numerical_threshold_config: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArrgs']] = None,
+                 snapshot_analysis: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArrgs']] = None):
         """
-        :param pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs'] categorical_threshold_config: Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
+        :param pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArrgs'] categorical_threshold_config: Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
                Structure is documented below.
-        :param pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs'] import_features_analysis: The config for ImportFeatures Analysis Based Feature Monitoring.
+        :param pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArrgs'] import_features_analysis: The config for ImportFeatures Analysis Based Feature Monitoring.
                Structure is documented below.
-        :param pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs'] numerical_threshold_config: Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
+        :param pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArrgs'] numerical_threshold_config: Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
                Structure is documented below.
-        :param pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs'] snapshot_analysis: The config for Snapshot Analysis Based Feature Monitoring.
+        :param pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArrgs'] snapshot_analysis: The config for Snapshot Analysis Based Feature Monitoring.
                Structure is documented below.
         """
         if categorical_threshold_config is not None:
@@ -754,7 +754,7 @@ class AiFeatureStoreEntityTypeMonitoringConfigArgs:
 
     @property
     @pulumi.getter(name="categoricalThresholdConfig")
-    def categorical_threshold_config(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs']]:
+    def categorical_threshold_config(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArrgs']]:
         """
         Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
         Structure is documented below.
@@ -762,12 +762,12 @@ class AiFeatureStoreEntityTypeMonitoringConfigArgs:
         return pulumi.get(self, "categorical_threshold_config")
 
     @categorical_threshold_config.setter
-    def categorical_threshold_config(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs']]):
+    def categorical_threshold_config(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArrgs']]):
         pulumi.set(self, "categorical_threshold_config", value)
 
     @property
     @pulumi.getter(name="importFeaturesAnalysis")
-    def import_features_analysis(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs']]:
+    def import_features_analysis(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArrgs']]:
         """
         The config for ImportFeatures Analysis Based Feature Monitoring.
         Structure is documented below.
@@ -775,12 +775,12 @@ class AiFeatureStoreEntityTypeMonitoringConfigArgs:
         return pulumi.get(self, "import_features_analysis")
 
     @import_features_analysis.setter
-    def import_features_analysis(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs']]):
+    def import_features_analysis(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArrgs']]):
         pulumi.set(self, "import_features_analysis", value)
 
     @property
     @pulumi.getter(name="numericalThresholdConfig")
-    def numerical_threshold_config(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs']]:
+    def numerical_threshold_config(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArrgs']]:
         """
         Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
         Structure is documented below.
@@ -788,12 +788,12 @@ class AiFeatureStoreEntityTypeMonitoringConfigArgs:
         return pulumi.get(self, "numerical_threshold_config")
 
     @numerical_threshold_config.setter
-    def numerical_threshold_config(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs']]):
+    def numerical_threshold_config(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArrgs']]):
         pulumi.set(self, "numerical_threshold_config", value)
 
     @property
     @pulumi.getter(name="snapshotAnalysis")
-    def snapshot_analysis(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs']]:
+    def snapshot_analysis(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArrgs']]:
         """
         The config for Snapshot Analysis Based Feature Monitoring.
         Structure is documented below.
@@ -801,12 +801,12 @@ class AiFeatureStoreEntityTypeMonitoringConfigArgs:
         return pulumi.get(self, "snapshot_analysis")
 
     @snapshot_analysis.setter
-    def snapshot_analysis(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs']]):
+    def snapshot_analysis(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArrgs']]):
         pulumi.set(self, "snapshot_analysis", value)
 
 
 @pulumi.input_type
-class AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs:
+calass AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArrgs:
     def __init__(__self__, *,
                  value: pulumi.Input[float]):
         """
@@ -828,7 +828,7 @@ class AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs:
 
 
 @pulumi.input_type
-class AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs:
+calass AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArrgs:
     def __init__(__self__, *,
                  anomaly_detection_baseline: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None):
@@ -879,7 +879,7 @@ class AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs:
 
 
 @pulumi.input_type
-class AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs:
+calass AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArrgs:
     def __init__(__self__, *,
                  value: pulumi.Input[float]):
         """
@@ -901,7 +901,7 @@ class AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs:
 
 
 @pulumi.input_type
-class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs:
+calass AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArrgs:
     def __init__(__self__, *,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  monitoring_interval: Optional[pulumi.Input[str]] = None,
@@ -976,7 +976,7 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs:
 
 
 @pulumi.input_type
-class AiFeatureStoreIamBindingConditionArgs:
+calass AiFeatureStoreIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -1015,7 +1015,7 @@ class AiFeatureStoreIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class AiFeatureStoreIamMemberConditionArgs:
+calass AiFeatureStoreIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -1054,13 +1054,13 @@ class AiFeatureStoreIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class AiFeatureStoreOnlineServingConfigArgs:
+calass AiFeatureStoreOnlineServingConfigArrgs:
     def __init__(__self__, *,
                  fixed_node_count: Optional[pulumi.Input[int]] = None,
-                 scaling: Optional[pulumi.Input['AiFeatureStoreOnlineServingConfigScalingArgs']] = None):
+                 scaling: Optional[pulumi.Input['AiFeatureStoreOnlineServingConfigScalingArrgs']] = None):
         """
         :param pulumi.Input[int] fixed_node_count: The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
-        :param pulumi.Input['AiFeatureStoreOnlineServingConfigScalingArgs'] scaling: Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
+        :param pulumi.Input['AiFeatureStoreOnlineServingConfigScalingArrgs'] scaling: Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
                Structure is documented below.
         """
         if fixed_node_count is not None:
@@ -1082,7 +1082,7 @@ class AiFeatureStoreOnlineServingConfigArgs:
 
     @property
     @pulumi.getter
-    def scaling(self) -> Optional[pulumi.Input['AiFeatureStoreOnlineServingConfigScalingArgs']]:
+    def scaling(self) -> Optional[pulumi.Input['AiFeatureStoreOnlineServingConfigScalingArrgs']]:
         """
         Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
         Structure is documented below.
@@ -1090,12 +1090,12 @@ class AiFeatureStoreOnlineServingConfigArgs:
         return pulumi.get(self, "scaling")
 
     @scaling.setter
-    def scaling(self, value: Optional[pulumi.Input['AiFeatureStoreOnlineServingConfigScalingArgs']]):
+    def scaling(self, value: Optional[pulumi.Input['AiFeatureStoreOnlineServingConfigScalingArrgs']]):
         pulumi.set(self, "scaling", value)
 
 
 @pulumi.input_type
-class AiFeatureStoreOnlineServingConfigScalingArgs:
+calass AiFeatureStoreOnlineServingConfigScalingArrgs:
     def __init__(__self__, *,
                  max_node_count: pulumi.Input[int],
                  min_node_count: pulumi.Input[int]):
@@ -1132,7 +1132,7 @@ class AiFeatureStoreOnlineServingConfigScalingArgs:
 
 
 @pulumi.input_type
-class AiIndexDeployedIndexArgs:
+calass AiIndexDeployedIndexArrgs:
     def __init__(__self__, *,
                  deployed_index_id: Optional[pulumi.Input[str]] = None,
                  index_endpoint: Optional[pulumi.Input[str]] = None):
@@ -1175,7 +1175,7 @@ class AiIndexDeployedIndexArgs:
 
 
 @pulumi.input_type
-class AiIndexEndpointPrivateServiceConnectConfigArgs:
+calass AiIndexEndpointPrivateServiceConnectConfigArrgs:
     def __init__(__self__, *,
                  enable_private_service_connect: pulumi.Input[bool],
                  project_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -1213,7 +1213,7 @@ class AiIndexEndpointPrivateServiceConnectConfigArgs:
 
 
 @pulumi.input_type
-class AiIndexIndexStatArgs:
+calass AiIndexIndexStatArrgs:
     def __init__(__self__, *,
                  shards_count: Optional[pulumi.Input[int]] = None,
                  vectors_count: Optional[pulumi.Input[str]] = None):
@@ -1256,10 +1256,10 @@ class AiIndexIndexStatArgs:
 
 
 @pulumi.input_type
-class AiIndexMetadataArgs:
+calass AiIndexMetadataArrgs:
     def __init__(__self__, *,
                  contents_delta_uri: pulumi.Input[str],
-                 config: Optional[pulumi.Input['AiIndexMetadataConfigArgs']] = None,
+                 config: Optional[pulumi.Input['AiIndexMetadataConfigArrgs']] = None,
                  is_complete_overwrite: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] contents_delta_uri: Allows inserting, updating  or deleting the contents of the Matching Engine Index.
@@ -1268,7 +1268,7 @@ class AiIndexMetadataArgs:
                Index field can be also updated as part of the same call.
                The expected structure and format of the files this URI points to is
                described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
-        :param pulumi.Input['AiIndexMetadataConfigArgs'] config: The configuration of the Matching Engine Index.
+        :param pulumi.Input['AiIndexMetadataConfigArrgs'] config: The configuration of the Matching Engine Index.
                Structure is documented below.
         :param pulumi.Input[bool] is_complete_overwrite: If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
                then existing content of the Index will be replaced by the data from the contentsDeltaUri.
@@ -1298,7 +1298,7 @@ class AiIndexMetadataArgs:
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['AiIndexMetadataConfigArgs']]:
+    def config(self) -> Optional[pulumi.Input['AiIndexMetadataConfigArrgs']]:
         """
         The configuration of the Matching Engine Index.
         Structure is documented below.
@@ -1306,7 +1306,7 @@ class AiIndexMetadataArgs:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['AiIndexMetadataConfigArgs']]):
+    def config(self, value: Optional[pulumi.Input['AiIndexMetadataConfigArrgs']]):
         pulumi.set(self, "config", value)
 
     @property
@@ -1324,17 +1324,17 @@ class AiIndexMetadataArgs:
 
 
 @pulumi.input_type
-class AiIndexMetadataConfigArgs:
+calass AiIndexMetadataConfigArrgs:
     def __init__(__self__, *,
                  dimensions: pulumi.Input[int],
-                 algorithm_config: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigArgs']] = None,
+                 algorithm_config: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigArrgs']] = None,
                  approximate_neighbors_count: Optional[pulumi.Input[int]] = None,
                  distance_measure_type: Optional[pulumi.Input[str]] = None,
                  feature_norm_type: Optional[pulumi.Input[str]] = None,
                  shard_size: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] dimensions: The number of dimensions of the input vectors.
-        :param pulumi.Input['AiIndexMetadataConfigAlgorithmConfigArgs'] algorithm_config: The configuration with regard to the algorithms used for efficient search.
+        :param pulumi.Input['AiIndexMetadataConfigAlgorithmConfigArrgs'] algorithm_config: The configuration with regard to the algorithms used for efficient search.
                Structure is documented below.
         :param pulumi.Input[int] approximate_neighbors_count: The default number of neighbors to find via approximate search before exact reordering is
                performed. Exact reordering is a procedure where results returned by an
@@ -1380,7 +1380,7 @@ class AiIndexMetadataConfigArgs:
 
     @property
     @pulumi.getter(name="algorithmConfig")
-    def algorithm_config(self) -> Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigArgs']]:
+    def algorithm_config(self) -> Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigArrgs']]:
         """
         The configuration with regard to the algorithms used for efficient search.
         Structure is documented below.
@@ -1388,7 +1388,7 @@ class AiIndexMetadataConfigArgs:
         return pulumi.get(self, "algorithm_config")
 
     @algorithm_config.setter
-    def algorithm_config(self, value: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigArgs']]):
+    def algorithm_config(self, value: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigArrgs']]):
         pulumi.set(self, "algorithm_config", value)
 
     @property
@@ -1454,14 +1454,14 @@ class AiIndexMetadataConfigArgs:
 
 
 @pulumi.input_type
-class AiIndexMetadataConfigAlgorithmConfigArgs:
+calass AiIndexMetadataConfigAlgorithmConfigArrgs:
     def __init__(__self__, *,
-                 brute_force_config: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs']] = None,
-                 tree_ah_config: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs']] = None):
+                 brute_force_config: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrgs']] = None,
+                 tree_ah_config: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrgs']] = None):
         """
-        :param pulumi.Input['AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs'] brute_force_config: Configuration options for using brute force search, which simply implements the
+        :param pulumi.Input['AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrgs'] brute_force_config: Configuration options for using brute force search, which simply implements the
                standard linear search in the database for each query.
-        :param pulumi.Input['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs'] tree_ah_config: Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
+        :param pulumi.Input['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrgs'] tree_ah_config: Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
                Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
                Structure is documented below.
         """
@@ -1472,7 +1472,7 @@ class AiIndexMetadataConfigAlgorithmConfigArgs:
 
     @property
     @pulumi.getter(name="bruteForceConfig")
-    def brute_force_config(self) -> Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs']]:
+    def brute_force_config(self) -> Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrgs']]:
         """
         Configuration options for using brute force search, which simply implements the
         standard linear search in the database for each query.
@@ -1480,12 +1480,12 @@ class AiIndexMetadataConfigAlgorithmConfigArgs:
         return pulumi.get(self, "brute_force_config")
 
     @brute_force_config.setter
-    def brute_force_config(self, value: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs']]):
+    def brute_force_config(self, value: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrgs']]):
         pulumi.set(self, "brute_force_config", value)
 
     @property
     @pulumi.getter(name="treeAhConfig")
-    def tree_ah_config(self) -> Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs']]:
+    def tree_ah_config(self) -> Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrgs']]:
         """
         Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
         Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
@@ -1494,18 +1494,18 @@ class AiIndexMetadataConfigAlgorithmConfigArgs:
         return pulumi.get(self, "tree_ah_config")
 
     @tree_ah_config.setter
-    def tree_ah_config(self, value: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs']]):
+    def tree_ah_config(self, value: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrgs']]):
         pulumi.set(self, "tree_ah_config", value)
 
 
 @pulumi.input_type
-class AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs:
+calass AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrgs:
     def __init__(__self__):
         pass
 
 
 @pulumi.input_type
-class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs:
+calass AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrgs:
     def __init__(__self__, *,
                  leaf_node_embedding_count: Optional[pulumi.Input[int]] = None,
                  leaf_nodes_to_search_percent: Optional[pulumi.Input[int]] = None):
@@ -1546,7 +1546,7 @@ class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs:
 
 
 @pulumi.input_type
-class AiMetadataStoreEncryptionSpecArgs:
+calass AiMetadataStoreEncryptionSpecArrgs:
     def __init__(__self__, *,
                  kms_key_name: Optional[pulumi.Input[str]] = None):
         """
@@ -1571,7 +1571,7 @@ class AiMetadataStoreEncryptionSpecArgs:
 
 
 @pulumi.input_type
-class AiMetadataStoreStateArgs:
+calass AiMetadataStoreStateArrgs:
     def __init__(__self__, *,
                  disk_utilization_bytes: Optional[pulumi.Input[str]] = None):
         """
@@ -1596,7 +1596,7 @@ class AiMetadataStoreStateArgs:
 
 
 @pulumi.input_type
-class AiTensorboardEncryptionSpecArgs:
+calass AiTensorboardEncryptionSpecArrgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[str]):
         """

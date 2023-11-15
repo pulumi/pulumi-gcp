@@ -11,20 +11,20 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ApiConfigArgs', 'ApiConfig']
+__all__ = ['ApiConfigArrgs', 'ApiConfig']
 
 @pulumi.input_type
-class ApiConfigArgs:
+calass ApiConfigArrgs:
     def __init__(__self__, *,
                  api: pulumi.Input[str],
                  api_config_id: Optional[pulumi.Input[str]] = None,
                  api_config_id_prefix: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 gateway_config: Optional[pulumi.Input['ApiConfigGatewayConfigArgs']] = None,
-                 grpc_services: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigGrpcServiceArgs']]]] = None,
+                 gateway_config: Optional[pulumi.Input['ApiConfigGatewayConfigArrgs']] = None,
+                 grpc_services: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigGrpcServiceArrgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 managed_service_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArgs']]]] = None,
-                 openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArgs']]]] = None,
+                 managed_service_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArrgs']]]] = None,
+                 openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArrgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ApiConfig resource.
@@ -36,19 +36,19 @@ class ApiConfigArgs:
         :param pulumi.Input[str] api_config_id_prefix: Creates a unique name beginning with the
                specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
         :param pulumi.Input[str] display_name: A user-visible name for the API.
-        :param pulumi.Input['ApiConfigGatewayConfigArgs'] gateway_config: Immutable. Gateway specific configuration.
+        :param pulumi.Input['ApiConfigGatewayConfigArrgs'] gateway_config: Immutable. Gateway specific configuration.
                If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ApiConfigGrpcServiceArgs']]] grpc_services: gRPC service definition files. If specified, openapiDocuments must not be included.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiConfigGrpcServiceArrgs']]] grpc_services: gRPC service definition files. If specified, openapiDocuments must not be included.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArgs']]] managed_service_configs: Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArrgs']]] managed_service_configs: Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
                If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArgs']]] openapi_documents: OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArrgs']]] openapi_documents: OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -127,7 +127,7 @@ class ApiConfigArgs:
 
     @property
     @pulumi.getter(name="gatewayConfig")
-    def gateway_config(self) -> Optional[pulumi.Input['ApiConfigGatewayConfigArgs']]:
+    def gateway_config(self) -> Optional[pulumi.Input['ApiConfigGatewayConfigArrgs']]:
         """
         Immutable. Gateway specific configuration.
         If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
@@ -136,12 +136,12 @@ class ApiConfigArgs:
         return pulumi.get(self, "gateway_config")
 
     @gateway_config.setter
-    def gateway_config(self, value: Optional[pulumi.Input['ApiConfigGatewayConfigArgs']]):
+    def gateway_config(self, value: Optional[pulumi.Input['ApiConfigGatewayConfigArrgs']]):
         pulumi.set(self, "gateway_config", value)
 
     @property
     @pulumi.getter(name="grpcServices")
-    def grpc_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigGrpcServiceArgs']]]]:
+    def grpc_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigGrpcServiceArrgs']]]]:
         """
         gRPC service definition files. If specified, openapiDocuments must not be included.
         Structure is documented below.
@@ -149,7 +149,7 @@ class ApiConfigArgs:
         return pulumi.get(self, "grpc_services")
 
     @grpc_services.setter
-    def grpc_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigGrpcServiceArgs']]]]):
+    def grpc_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigGrpcServiceArrgs']]]]):
         pulumi.set(self, "grpc_services", value)
 
     @property
@@ -169,7 +169,7 @@ class ApiConfigArgs:
 
     @property
     @pulumi.getter(name="managedServiceConfigs")
-    def managed_service_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArgs']]]]:
+    def managed_service_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArrgs']]]]:
         """
         Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
         If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
@@ -178,12 +178,12 @@ class ApiConfigArgs:
         return pulumi.get(self, "managed_service_configs")
 
     @managed_service_configs.setter
-    def managed_service_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArgs']]]]):
+    def managed_service_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArrgs']]]]):
         pulumi.set(self, "managed_service_configs", value)
 
     @property
     @pulumi.getter(name="openapiDocuments")
-    def openapi_documents(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArgs']]]]:
+    def openapi_documents(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArrgs']]]]:
         """
         OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
         Structure is documented below.
@@ -191,7 +191,7 @@ class ApiConfigArgs:
         return pulumi.get(self, "openapi_documents")
 
     @openapi_documents.setter
-    def openapi_documents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArgs']]]]):
+    def openapi_documents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArrgs']]]]):
         pulumi.set(self, "openapi_documents", value)
 
     @property
@@ -209,19 +209,19 @@ class ApiConfigArgs:
 
 
 @pulumi.input_type
-class _ApiConfigState:
+calass _ApiConfigState:
     def __init__(__self__, *,
                  api: Optional[pulumi.Input[str]] = None,
                  api_config_id: Optional[pulumi.Input[str]] = None,
                  api_config_id_prefix: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 gateway_config: Optional[pulumi.Input['ApiConfigGatewayConfigArgs']] = None,
-                 grpc_services: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigGrpcServiceArgs']]]] = None,
+                 gateway_config: Optional[pulumi.Input['ApiConfigGatewayConfigArrgs']] = None,
+                 grpc_services: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigGrpcServiceArrgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 managed_service_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArgs']]]] = None,
+                 managed_service_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArrgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArgs']]]] = None,
+                 openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArrgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  service_config_id: Optional[pulumi.Input[str]] = None):
@@ -236,20 +236,20 @@ class _ApiConfigState:
                specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
         :param pulumi.Input[str] display_name: A user-visible name for the API.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input['ApiConfigGatewayConfigArgs'] gateway_config: Immutable. Gateway specific configuration.
+        :param pulumi.Input['ApiConfigGatewayConfigArrgs'] gateway_config: Immutable. Gateway specific configuration.
                If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ApiConfigGrpcServiceArgs']]] grpc_services: gRPC service definition files. If specified, openapiDocuments must not be included.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiConfigGrpcServiceArrgs']]] grpc_services: gRPC service definition files. If specified, openapiDocuments must not be included.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArgs']]] managed_service_configs: Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArrgs']]] managed_service_configs: Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
                If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
                Structure is documented below.
         :param pulumi.Input[str] name: The resource name of the API Config.
-        :param pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArgs']]] openapi_documents: OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArrgs']]] openapi_documents: OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -352,7 +352,7 @@ class _ApiConfigState:
 
     @property
     @pulumi.getter(name="gatewayConfig")
-    def gateway_config(self) -> Optional[pulumi.Input['ApiConfigGatewayConfigArgs']]:
+    def gateway_config(self) -> Optional[pulumi.Input['ApiConfigGatewayConfigArrgs']]:
         """
         Immutable. Gateway specific configuration.
         If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
@@ -361,12 +361,12 @@ class _ApiConfigState:
         return pulumi.get(self, "gateway_config")
 
     @gateway_config.setter
-    def gateway_config(self, value: Optional[pulumi.Input['ApiConfigGatewayConfigArgs']]):
+    def gateway_config(self, value: Optional[pulumi.Input['ApiConfigGatewayConfigArrgs']]):
         pulumi.set(self, "gateway_config", value)
 
     @property
     @pulumi.getter(name="grpcServices")
-    def grpc_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigGrpcServiceArgs']]]]:
+    def grpc_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigGrpcServiceArrgs']]]]:
         """
         gRPC service definition files. If specified, openapiDocuments must not be included.
         Structure is documented below.
@@ -374,7 +374,7 @@ class _ApiConfigState:
         return pulumi.get(self, "grpc_services")
 
     @grpc_services.setter
-    def grpc_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigGrpcServiceArgs']]]]):
+    def grpc_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigGrpcServiceArrgs']]]]):
         pulumi.set(self, "grpc_services", value)
 
     @property
@@ -394,7 +394,7 @@ class _ApiConfigState:
 
     @property
     @pulumi.getter(name="managedServiceConfigs")
-    def managed_service_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArgs']]]]:
+    def managed_service_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArrgs']]]]:
         """
         Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
         If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
@@ -403,7 +403,7 @@ class _ApiConfigState:
         return pulumi.get(self, "managed_service_configs")
 
     @managed_service_configs.setter
-    def managed_service_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArgs']]]]):
+    def managed_service_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArrgs']]]]):
         pulumi.set(self, "managed_service_configs", value)
 
     @property
@@ -420,7 +420,7 @@ class _ApiConfigState:
 
     @property
     @pulumi.getter(name="openapiDocuments")
-    def openapi_documents(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArgs']]]]:
+    def openapi_documents(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArrgs']]]]:
         """
         OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
         Structure is documented below.
@@ -428,7 +428,7 @@ class _ApiConfigState:
         return pulumi.get(self, "openapi_documents")
 
     @openapi_documents.setter
-    def openapi_documents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArgs']]]]):
+    def openapi_documents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArrgs']]]]):
         pulumi.set(self, "openapi_documents", value)
 
     @property
@@ -470,7 +470,7 @@ class _ApiConfigState:
         pulumi.set(self, "service_config_id", value)
 
 
-class ApiConfig(pulumi.CustomResource):
+calass ApiConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -479,11 +479,11 @@ class ApiConfig(pulumi.CustomResource):
                  api_config_id: Optional[pulumi.Input[str]] = None,
                  api_config_id_prefix: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 gateway_config: Optional[pulumi.Input[pulumi.InputType['ApiConfigGatewayConfigArgs']]] = None,
-                 grpc_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigGrpcServiceArgs']]]]] = None,
+                 gateway_config: Optional[pulumi.Input[pulumi.InputType['ApiConfigGatewayConfigArrgs']]] = None,
+                 grpc_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigGrpcServiceArrgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 managed_service_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigManagedServiceConfigArgs']]]]] = None,
-                 openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigOpenapiDocumentArgs']]]]] = None,
+                 managed_service_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigManagedServiceConfigArrgs']]]]] = None,
+                 openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigOpenapiDocumentArrgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -508,8 +508,8 @@ class ApiConfig(pulumi.CustomResource):
         api_cfg_api_config = gcp.apigateway.ApiConfig("apiCfgApiConfig",
             api=api_cfg_api.api_id,
             api_config_id="my-config",
-            openapi_documents=[gcp.apigateway.ApiConfigOpenapiDocumentArgs(
-                document=gcp.apigateway.ApiConfigOpenapiDocumentDocumentArgs(
+            openapi_documents=[gcp.apigateway.ApiConfigOpenapiDocumentArrgs(
+                document=gcp.apigateway.ApiConfigOpenapiDocumentDocumentArrgs(
                     path="spec.yaml",
                     contents=(lambda path: base64.b64encode(open(path).read().encode()).decode())("test-fixtures/openapi.yaml"),
                 ),
@@ -551,19 +551,19 @@ class ApiConfig(pulumi.CustomResource):
         :param pulumi.Input[str] api_config_id_prefix: Creates a unique name beginning with the
                specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
         :param pulumi.Input[str] display_name: A user-visible name for the API.
-        :param pulumi.Input[pulumi.InputType['ApiConfigGatewayConfigArgs']] gateway_config: Immutable. Gateway specific configuration.
+        :param pulumi.Input[pulumi.InputType['ApiConfigGatewayConfigArrgs']] gateway_config: Immutable. Gateway specific configuration.
                If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigGrpcServiceArgs']]]] grpc_services: gRPC service definition files. If specified, openapiDocuments must not be included.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigGrpcServiceArrgs']]]] grpc_services: gRPC service definition files. If specified, openapiDocuments must not be included.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigManagedServiceConfigArgs']]]] managed_service_configs: Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigManagedServiceConfigArrgs']]]] managed_service_configs: Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
                If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigOpenapiDocumentArgs']]]] openapi_documents: OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigOpenapiDocumentArrgs']]]] openapi_documents: OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -572,7 +572,7 @@ class ApiConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ApiConfigArgs,
+                 args: ApiConfigArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An API Configuration is an association of an API Controller Config and a Gateway Config
@@ -596,8 +596,8 @@ class ApiConfig(pulumi.CustomResource):
         api_cfg_api_config = gcp.apigateway.ApiConfig("apiCfgApiConfig",
             api=api_cfg_api.api_id,
             api_config_id="my-config",
-            openapi_documents=[gcp.apigateway.ApiConfigOpenapiDocumentArgs(
-                document=gcp.apigateway.ApiConfigOpenapiDocumentDocumentArgs(
+            openapi_documents=[gcp.apigateway.ApiConfigOpenapiDocumentArrgs(
+                document=gcp.apigateway.ApiConfigOpenapiDocumentDocumentArrgs(
                     path="spec.yaml",
                     contents=(lambda path: base64.b64encode(open(path).read().encode()).decode())("test-fixtures/openapi.yaml"),
                 ),
@@ -630,12 +630,12 @@ class ApiConfig(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ApiConfigArgs args: The arguments to use to populate this resource's properties.
+        :param ApiConfigArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ApiConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ApiConfigArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -648,11 +648,11 @@ class ApiConfig(pulumi.CustomResource):
                  api_config_id: Optional[pulumi.Input[str]] = None,
                  api_config_id_prefix: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 gateway_config: Optional[pulumi.Input[pulumi.InputType['ApiConfigGatewayConfigArgs']]] = None,
-                 grpc_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigGrpcServiceArgs']]]]] = None,
+                 gateway_config: Optional[pulumi.Input[pulumi.InputType['ApiConfigGatewayConfigArrgs']]] = None,
+                 grpc_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigGrpcServiceArrgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 managed_service_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigManagedServiceConfigArgs']]]]] = None,
-                 openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigOpenapiDocumentArgs']]]]] = None,
+                 managed_service_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigManagedServiceConfigArrgs']]]]] = None,
+                 openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigOpenapiDocumentArrgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -661,7 +661,7 @@ class ApiConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ApiConfigArgs.__new__(ApiConfigArgs)
+            __props__ = ApiConfigArrgs.__new__(ApiConfigArrgs)
 
             if api is None and not opts.urn:
                 raise TypeError("Missing required property 'api'")
@@ -696,12 +696,12 @@ class ApiConfig(pulumi.CustomResource):
             api_config_id_prefix: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            gateway_config: Optional[pulumi.Input[pulumi.InputType['ApiConfigGatewayConfigArgs']]] = None,
-            grpc_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigGrpcServiceArgs']]]]] = None,
+            gateway_config: Optional[pulumi.Input[pulumi.InputType['ApiConfigGatewayConfigArrgs']]] = None,
+            grpc_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigGrpcServiceArrgs']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            managed_service_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigManagedServiceConfigArgs']]]]] = None,
+            managed_service_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigManagedServiceConfigArrgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigOpenapiDocumentArgs']]]]] = None,
+            openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigOpenapiDocumentArrgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             service_config_id: Optional[pulumi.Input[str]] = None) -> 'ApiConfig':
@@ -721,20 +721,20 @@ class ApiConfig(pulumi.CustomResource):
                specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
         :param pulumi.Input[str] display_name: A user-visible name for the API.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['ApiConfigGatewayConfigArgs']] gateway_config: Immutable. Gateway specific configuration.
+        :param pulumi.Input[pulumi.InputType['ApiConfigGatewayConfigArrgs']] gateway_config: Immutable. Gateway specific configuration.
                If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigGrpcServiceArgs']]]] grpc_services: gRPC service definition files. If specified, openapiDocuments must not be included.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigGrpcServiceArrgs']]]] grpc_services: gRPC service definition files. If specified, openapiDocuments must not be included.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigManagedServiceConfigArgs']]]] managed_service_configs: Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigManagedServiceConfigArrgs']]]] managed_service_configs: Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
                If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
                Structure is documented below.
         :param pulumi.Input[str] name: The resource name of the API Config.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigOpenapiDocumentArgs']]]] openapi_documents: OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigOpenapiDocumentArrgs']]]] openapi_documents: OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

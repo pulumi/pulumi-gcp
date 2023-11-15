@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['TenantOauthIdpConfigArgs', 'TenantOauthIdpConfig']
+__all__ = ['TenantOauthIdpConfigArrgs', 'TenantOauthIdpConfig']
 
 @pulumi.input_type
-class TenantOauthIdpConfigArgs:
+calass TenantOauthIdpConfigArrgs:
     def __init__(__self__, *,
                  client_id: pulumi.Input[str],
                  display_name: pulumi.Input[str],
@@ -152,7 +152,7 @@ class TenantOauthIdpConfigArgs:
 
 
 @pulumi.input_type
-class _TenantOauthIdpConfigState:
+calass _TenantOauthIdpConfigState:
     def __init__(__self__, *,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
@@ -295,7 +295,7 @@ class _TenantOauthIdpConfigState:
         pulumi.set(self, "tenant", value)
 
 
-class TenantOauthIdpConfig(pulumi.CustomResource):
+calass TenantOauthIdpConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -376,7 +376,7 @@ class TenantOauthIdpConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TenantOauthIdpConfigArgs,
+                 args: TenantOauthIdpConfigArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         OIDC IdP configuration for a Identity Toolkit project within a tenant.
@@ -427,12 +427,12 @@ class TenantOauthIdpConfig(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param TenantOauthIdpConfigArgs args: The arguments to use to populate this resource's properties.
+        :param TenantOauthIdpConfigArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(TenantOauthIdpConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TenantOauthIdpConfigArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -456,7 +456,7 @@ class TenantOauthIdpConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = TenantOauthIdpConfigArgs.__new__(TenantOauthIdpConfigArgs)
+            __props__ = TenantOauthIdpConfigArrgs.__new__(TenantOauthIdpConfigArrgs)
 
             if client_id is None and not opts.urn:
                 raise TypeError("Missing required property 'client_id'")

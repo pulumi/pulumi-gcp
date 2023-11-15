@@ -76,7 +76,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class AlertPolicyAlertStrategy(dict):
+calass AlertPolicyAlertStrategy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -104,10 +104,10 @@ class AlertPolicyAlertStrategy(dict):
                  notification_rate_limit: Optional['outputs.AlertPolicyAlertStrategyNotificationRateLimit'] = None):
         """
         :param str auto_close: If an alert policy that was active has no data for this long, any open incidents will close.
-        :param Sequence['AlertPolicyAlertStrategyNotificationChannelStrategyArgs'] notification_channel_strategies: Control over how the notification channels in `notification_channels`
+        :param Sequence['AlertPolicyAlertStrategyNotificationChannelStrategyArrgs'] notification_channel_strategies: Control over how the notification channels in `notification_channels`
                are notified when this alert fires, on a per-channel basis.
                Structure is documented below.
-        :param 'AlertPolicyAlertStrategyNotificationRateLimitArgs' notification_rate_limit: Required for alert policies with a LogMatch condition.
+        :param 'AlertPolicyAlertStrategyNotificationRateLimitArrgs' notification_rate_limit: Required for alert policies with a LogMatch condition.
                This limit is not implemented for alert policies that are not log-based.
                Structure is documented below.
         """
@@ -148,7 +148,7 @@ class AlertPolicyAlertStrategy(dict):
 
 
 @pulumi.output_type
-class AlertPolicyAlertStrategyNotificationChannelStrategy(dict):
+calass AlertPolicyAlertStrategyNotificationChannelStrategy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -204,7 +204,7 @@ class AlertPolicyAlertStrategyNotificationChannelStrategy(dict):
 
 
 @pulumi.output_type
-class AlertPolicyAlertStrategyNotificationRateLimit(dict):
+calass AlertPolicyAlertStrategyNotificationRateLimit(dict):
     def __init__(__self__, *,
                  period: Optional[str] = None):
         """
@@ -223,7 +223,7 @@ class AlertPolicyAlertStrategyNotificationRateLimit(dict):
 
 
 @pulumi.output_type
-class AlertPolicyCondition(dict):
+calass AlertPolicyCondition(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -265,20 +265,20 @@ class AlertPolicyCondition(dict):
                incidents. To avoid confusion, don't use the same
                display name for multiple conditions in the same
                policy.
-        :param 'AlertPolicyConditionConditionAbsentArgs' condition_absent: A condition that checks that a time series
+        :param 'AlertPolicyConditionConditionAbsentArrgs' condition_absent: A condition that checks that a time series
                continues to receive new data points.
                Structure is documented below.
-        :param 'AlertPolicyConditionConditionMatchedLogArgs' condition_matched_log: A condition that checks for log messages matching given constraints.
+        :param 'AlertPolicyConditionConditionMatchedLogArrgs' condition_matched_log: A condition that checks for log messages matching given constraints.
                If set, no other conditions can be present.
                Structure is documented below.
-        :param 'AlertPolicyConditionConditionMonitoringQueryLanguageArgs' condition_monitoring_query_language: A Monitoring Query Language query that outputs a boolean stream
+        :param 'AlertPolicyConditionConditionMonitoringQueryLanguageArrgs' condition_monitoring_query_language: A Monitoring Query Language query that outputs a boolean stream
                Structure is documented below.
-        :param 'AlertPolicyConditionConditionPrometheusQueryLanguageArgs' condition_prometheus_query_language: A condition type that allows alert policies to be defined using
+        :param 'AlertPolicyConditionConditionPrometheusQueryLanguageArrgs' condition_prometheus_query_language: A condition type that allows alert policies to be defined using
                Prometheus Query Language (PromQL).
                The PrometheusQueryLanguageCondition message contains information
                from a Prometheus alerting rule and its associated rule group.
                Structure is documented below.
-        :param 'AlertPolicyConditionConditionThresholdArgs' condition_threshold: A condition that compares a time series against a
+        :param 'AlertPolicyConditionConditionThresholdArrgs' condition_threshold: A condition that compares a time series against a
                threshold.
                Structure is documented below.
         :param str name: (Output)
@@ -382,7 +382,7 @@ class AlertPolicyCondition(dict):
 
 
 @pulumi.output_type
-class AlertPolicyConditionConditionAbsent(dict):
+calass AlertPolicyConditionConditionAbsent(dict):
     def __init__(__self__, *,
                  duration: str,
                  aggregations: Optional[Sequence['outputs.AlertPolicyConditionConditionAbsentAggregation']] = None,
@@ -394,7 +394,7 @@ class AlertPolicyConditionConditionAbsent(dict):
                failing. Currently, only values that are a
                multiple of a minute--e.g. 60s, 120s, or 300s
                --are supported.
-        :param Sequence['AlertPolicyConditionConditionAbsentAggregationArgs'] aggregations: Specifies the alignment of data points in
+        :param Sequence['AlertPolicyConditionConditionAbsentAggregationArrgs'] aggregations: Specifies the alignment of data points in
                individual time series as well as how to
                combine the retrieved time series together
                (such as when aggregating multiple streams
@@ -416,7 +416,7 @@ class AlertPolicyConditionConditionAbsent(dict):
                resource labels, and metric labels. This
                field may not exceed 2048 Unicode characters
                in length.
-        :param 'AlertPolicyConditionConditionAbsentTriggerArgs' trigger: The number/percent of time series for which
+        :param 'AlertPolicyConditionConditionAbsentTriggerArrgs' trigger: The number/percent of time series for which
                the comparison must hold in order for the
                condition to trigger. If unspecified, then
                the condition will trigger if the comparison
@@ -496,7 +496,7 @@ class AlertPolicyConditionConditionAbsent(dict):
 
 
 @pulumi.output_type
-class AlertPolicyConditionConditionAbsentAggregation(dict):
+calass AlertPolicyConditionConditionAbsentAggregation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -716,7 +716,7 @@ class AlertPolicyConditionConditionAbsentAggregation(dict):
 
 
 @pulumi.output_type
-class AlertPolicyConditionConditionAbsentTrigger(dict):
+calass AlertPolicyConditionConditionAbsentTrigger(dict):
     def __init__(__self__, *,
                  count: Optional[int] = None,
                  percent: Optional[float] = None):
@@ -755,7 +755,7 @@ class AlertPolicyConditionConditionAbsentTrigger(dict):
 
 
 @pulumi.output_type
-class AlertPolicyConditionConditionMatchedLog(dict):
+calass AlertPolicyConditionConditionMatchedLog(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -814,7 +814,7 @@ class AlertPolicyConditionConditionMatchedLog(dict):
 
 
 @pulumi.output_type
-class AlertPolicyConditionConditionMonitoringQueryLanguage(dict):
+calass AlertPolicyConditionConditionMonitoringQueryLanguage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -858,7 +858,7 @@ class AlertPolicyConditionConditionMonitoringQueryLanguage(dict):
                metric-threshold conditions are evaluated when
                data stops arriving.
                Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
-        :param 'AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs' trigger: The number/percent of time series for which
+        :param 'AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArrgs' trigger: The number/percent of time series for which
                the comparison must hold in order for the
                condition to trigger. If unspecified, then
                the condition will trigger if the comparison
@@ -934,7 +934,7 @@ class AlertPolicyConditionConditionMonitoringQueryLanguage(dict):
 
 
 @pulumi.output_type
-class AlertPolicyConditionConditionMonitoringQueryLanguageTrigger(dict):
+calass AlertPolicyConditionConditionMonitoringQueryLanguageTrigger(dict):
     def __init__(__self__, *,
                  count: Optional[int] = None,
                  percent: Optional[float] = None):
@@ -973,7 +973,7 @@ class AlertPolicyConditionConditionMonitoringQueryLanguageTrigger(dict):
 
 
 @pulumi.output_type
-class AlertPolicyConditionConditionPrometheusQueryLanguage(dict):
+calass AlertPolicyConditionConditionPrometheusQueryLanguage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1132,7 +1132,7 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage(dict):
 
 
 @pulumi.output_type
-class AlertPolicyConditionConditionThreshold(dict):
+calass AlertPolicyConditionConditionThreshold(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1194,7 +1194,7 @@ class AlertPolicyConditionConditionThreshold(dict):
                generate spurious alerts, but short enough
                that unhealthy states are detected and
                alerted on quickly.
-        :param Sequence['AlertPolicyConditionConditionThresholdAggregationArgs'] aggregations: Specifies the alignment of data points in
+        :param Sequence['AlertPolicyConditionConditionThresholdAggregationArrgs'] aggregations: Specifies the alignment of data points in
                individual time series as well as how to
                combine the retrieved time series together
                (such as when aggregating multiple streams
@@ -1208,7 +1208,7 @@ class AlertPolicyConditionConditionThreshold(dict):
                ListTimeSeries method when debugging this
                field.
                Structure is documented below.
-        :param Sequence['AlertPolicyConditionConditionThresholdDenominatorAggregationArgs'] denominator_aggregations: Specifies the alignment of data points in
+        :param Sequence['AlertPolicyConditionConditionThresholdDenominatorAggregationArrgs'] denominator_aggregations: Specifies the alignment of data points in
                individual time series selected by
                denominatorFilter as well as how to combine
                the retrieved time series together (such as
@@ -1256,7 +1256,7 @@ class AlertPolicyConditionConditionThreshold(dict):
                resource labels, and metric labels. This
                field may not exceed 2048 Unicode characters
                in length.
-        :param 'AlertPolicyConditionConditionThresholdForecastOptionsArgs' forecast_options: When this field is present, the `MetricThreshold`
+        :param 'AlertPolicyConditionConditionThresholdForecastOptionsArrgs' forecast_options: When this field is present, the `MetricThreshold`
                condition forecasts whether the time series is
                predicted to violate the threshold within the
                `forecastHorizon`. When this field is not set, the
@@ -1265,7 +1265,7 @@ class AlertPolicyConditionConditionThreshold(dict):
                Structure is documented below.
         :param float threshold_value: A value against which to compare the time
                series.
-        :param 'AlertPolicyConditionConditionThresholdTriggerArgs' trigger: The number/percent of time series for which
+        :param 'AlertPolicyConditionConditionThresholdTriggerArrgs' trigger: The number/percent of time series for which
                the comparison must hold in order for the
                condition to trigger. If unspecified, then
                the condition will trigger if the comparison
@@ -1470,7 +1470,7 @@ class AlertPolicyConditionConditionThreshold(dict):
 
 
 @pulumi.output_type
-class AlertPolicyConditionConditionThresholdAggregation(dict):
+calass AlertPolicyConditionConditionThresholdAggregation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1690,7 +1690,7 @@ class AlertPolicyConditionConditionThresholdAggregation(dict):
 
 
 @pulumi.output_type
-class AlertPolicyConditionConditionThresholdDenominatorAggregation(dict):
+calass AlertPolicyConditionConditionThresholdDenominatorAggregation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1910,7 +1910,7 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregation(dict):
 
 
 @pulumi.output_type
-class AlertPolicyConditionConditionThresholdForecastOptions(dict):
+calass AlertPolicyConditionConditionThresholdForecastOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1955,7 +1955,7 @@ class AlertPolicyConditionConditionThresholdForecastOptions(dict):
 
 
 @pulumi.output_type
-class AlertPolicyConditionConditionThresholdTrigger(dict):
+calass AlertPolicyConditionConditionThresholdTrigger(dict):
     def __init__(__self__, *,
                  count: Optional[int] = None,
                  percent: Optional[float] = None):
@@ -1994,7 +1994,7 @@ class AlertPolicyConditionConditionThresholdTrigger(dict):
 
 
 @pulumi.output_type
-class AlertPolicyCreationRecord(dict):
+calass AlertPolicyCreationRecord(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2048,7 +2048,7 @@ class AlertPolicyCreationRecord(dict):
 
 
 @pulumi.output_type
-class AlertPolicyDocumentation(dict):
+calass AlertPolicyDocumentation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2122,7 +2122,7 @@ class AlertPolicyDocumentation(dict):
 
 
 @pulumi.output_type
-class CustomServiceTelemetry(dict):
+calass CustomServiceTelemetry(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2162,7 +2162,7 @@ class CustomServiceTelemetry(dict):
 
 
 @pulumi.output_type
-class GenericServiceBasicService(dict):
+calass GenericServiceBasicService(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2216,7 +2216,7 @@ class GenericServiceBasicService(dict):
 
 
 @pulumi.output_type
-class GenericServiceTelemetry(dict):
+calass GenericServiceTelemetry(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2256,7 +2256,7 @@ class GenericServiceTelemetry(dict):
 
 
 @pulumi.output_type
-class MetricDescriptorLabel(dict):
+calass MetricDescriptorLabel(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2319,7 +2319,7 @@ class MetricDescriptorLabel(dict):
 
 
 @pulumi.output_type
-class MetricDescriptorMetadata(dict):
+calass MetricDescriptorMetadata(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2369,7 +2369,7 @@ class MetricDescriptorMetadata(dict):
 
 
 @pulumi.output_type
-class NotificationChannelSensitiveLabels(dict):
+calass NotificationChannelSensitiveLabels(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2437,7 +2437,7 @@ class NotificationChannelSensitiveLabels(dict):
 
 
 @pulumi.output_type
-class SloBasicSli(dict):
+calass SloBasicSli(dict):
     def __init__(__self__, *,
                  availability: Optional['outputs.SloBasicSliAvailability'] = None,
                  latency: Optional['outputs.SloBasicSliLatency'] = None,
@@ -2445,9 +2445,9 @@ class SloBasicSli(dict):
                  methods: Optional[Sequence[str]] = None,
                  versions: Optional[Sequence[str]] = None):
         """
-        :param 'SloBasicSliAvailabilityArgs' availability: Availability based SLI, dervied from count of requests made to this service that return successfully.
+        :param 'SloBasicSliAvailabilityArrgs' availability: Availability based SLI, dervied from count of requests made to this service that return successfully.
                Structure is documented below.
-        :param 'SloBasicSliLatencyArgs' latency: Parameters for a latency threshold SLI.
+        :param 'SloBasicSliLatencyArrgs' latency: Parameters for a latency threshold SLI.
                Structure is documented below.
         :param Sequence[str] locations: An optional set of locations to which this SLI is relevant.
                Telemetry from other locations will not be used to calculate
@@ -2538,7 +2538,7 @@ class SloBasicSli(dict):
 
 
 @pulumi.output_type
-class SloBasicSliAvailability(dict):
+calass SloBasicSliAvailability(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None):
         """
@@ -2557,7 +2557,7 @@ class SloBasicSliAvailability(dict):
 
 
 @pulumi.output_type
-class SloBasicSliLatency(dict):
+calass SloBasicSliLatency(dict):
     def __init__(__self__, *,
                  threshold: str):
         """
@@ -2579,7 +2579,7 @@ class SloBasicSliLatency(dict):
 
 
 @pulumi.output_type
-class SloRequestBasedSli(dict):
+calass SloRequestBasedSli(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2603,14 +2603,14 @@ class SloRequestBasedSli(dict):
                  distribution_cut: Optional['outputs.SloRequestBasedSliDistributionCut'] = None,
                  good_total_ratio: Optional['outputs.SloRequestBasedSliGoodTotalRatio'] = None):
         """
-        :param 'SloRequestBasedSliDistributionCutArgs' distribution_cut: Used when good_service is defined by a count of values aggregated in a
+        :param 'SloRequestBasedSliDistributionCutArrgs' distribution_cut: Used when good_service is defined by a count of values aggregated in a
                Distribution that fall into a good range. The total_service is the
                total count of all values aggregated in the Distribution.
                Defines a distribution TimeSeries filter and thresholds used for
                measuring good service and total service.
                Exactly one of `distribution_cut` or `good_total_ratio` can be set.
                Structure is documented below.
-        :param 'SloRequestBasedSliGoodTotalRatioArgs' good_total_ratio: A means to compute a ratio of `good_service` to `total_service`.
+        :param 'SloRequestBasedSliGoodTotalRatioArrgs' good_total_ratio: A means to compute a ratio of `good_service` to `total_service`.
                Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
                Must specify exactly two of good, bad, and total service filters.
                The relationship good_service + bad_service = total_service
@@ -2653,7 +2653,7 @@ class SloRequestBasedSli(dict):
 
 
 @pulumi.output_type
-class SloRequestBasedSliDistributionCut(dict):
+calass SloRequestBasedSliDistributionCut(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2679,7 +2679,7 @@ class SloRequestBasedSliDistributionCut(dict):
                aggregating values to quantify the good service provided.
                Must have ValueType = DISTRIBUTION and
                MetricKind = DELTA or MetricKind = CUMULATIVE.
-        :param 'SloRequestBasedSliDistributionCutRangeArgs' range: Range of numerical values. The computed good_service
+        :param 'SloRequestBasedSliDistributionCutRangeArrgs' range: Range of numerical values. The computed good_service
                will be the count of values x in the Distribution such
                that range.min <= x <= range.max. inclusive of min and
                max. Open ranges can be defined by setting
@@ -2715,7 +2715,7 @@ class SloRequestBasedSliDistributionCut(dict):
 
 
 @pulumi.output_type
-class SloRequestBasedSliDistributionCutRange(dict):
+calass SloRequestBasedSliDistributionCutRange(dict):
     def __init__(__self__, *,
                  max: Optional[float] = None,
                  min: Optional[float] = None):
@@ -2754,7 +2754,7 @@ class SloRequestBasedSliDistributionCutRange(dict):
 
 
 @pulumi.output_type
-class SloRequestBasedSliGoodTotalRatio(dict):
+calass SloRequestBasedSliGoodTotalRatio(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2852,7 +2852,7 @@ class SloRequestBasedSliGoodTotalRatio(dict):
 
 
 @pulumi.output_type
-class SloWindowsBasedSli(dict):
+calass SloWindowsBasedSli(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2890,12 +2890,12 @@ class SloWindowsBasedSli(dict):
                appear in the window. One of `good_bad_metric_filter`,
                `good_total_ratio_threshold`, `metric_mean_in_range`,
                `metric_sum_in_range` must be set for `windows_based_sli`.
-        :param 'SloWindowsBasedSliGoodTotalRatioThresholdArgs' good_total_ratio_threshold: Criterion that describes a window as good if its performance is
+        :param 'SloWindowsBasedSliGoodTotalRatioThresholdArrgs' good_total_ratio_threshold: Criterion that describes a window as good if its performance is
                high enough. One of `good_bad_metric_filter`,
                `good_total_ratio_threshold`, `metric_mean_in_range`,
                `metric_sum_in_range` must be set for `windows_based_sli`.
                Structure is documented below.
-        :param 'SloWindowsBasedSliMetricMeanInRangeArgs' metric_mean_in_range: Criterion that describes a window as good if the metric's value
+        :param 'SloWindowsBasedSliMetricMeanInRangeArrgs' metric_mean_in_range: Criterion that describes a window as good if the metric's value
                is in a good range, *averaged* across returned streams.
                One of `good_bad_metric_filter`,
                `good_total_ratio_threshold`, `metric_mean_in_range`,
@@ -2903,7 +2903,7 @@ class SloWindowsBasedSli(dict):
                Average value X of `time_series` should satisfy
                `range.min <= X <= range.max` for a good window.
                Structure is documented below.
-        :param 'SloWindowsBasedSliMetricSumInRangeArgs' metric_sum_in_range: Criterion that describes a window as good if the metric's value
+        :param 'SloWindowsBasedSliMetricSumInRangeArrgs' metric_sum_in_range: Criterion that describes a window as good if the metric's value
                is in a good range, *summed* across returned streams.
                Summed value `X` of `time_series` should satisfy
                `range.min <= X <= range.max` for a good window.
@@ -2992,7 +2992,7 @@ class SloWindowsBasedSli(dict):
 
 
 @pulumi.output_type
-class SloWindowsBasedSliGoodTotalRatioThreshold(dict):
+calass SloWindowsBasedSliGoodTotalRatioThreshold(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3015,9 +3015,9 @@ class SloWindowsBasedSliGoodTotalRatioThreshold(dict):
                  performance: Optional['outputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformance'] = None,
                  threshold: Optional[float] = None):
         """
-        :param 'SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs' basic_sli_performance: Basic SLI to evaluate to judge window quality.
+        :param 'SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArrgs' basic_sli_performance: Basic SLI to evaluate to judge window quality.
                Structure is documented below.
-        :param 'SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs' performance: Request-based SLI to evaluate to judge window quality.
+        :param 'SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArrgs' performance: Request-based SLI to evaluate to judge window quality.
                Structure is documented below.
         :param float threshold: If window performance >= threshold, the window is counted
                as good.
@@ -3058,7 +3058,7 @@ class SloWindowsBasedSliGoodTotalRatioThreshold(dict):
 
 
 @pulumi.output_type
-class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance(dict):
+calass SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance(dict):
     def __init__(__self__, *,
                  availability: Optional['outputs.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability'] = None,
                  latency: Optional['outputs.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency'] = None,
@@ -3066,9 +3066,9 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance(dict):
                  methods: Optional[Sequence[str]] = None,
                  versions: Optional[Sequence[str]] = None):
         """
-        :param 'SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs' availability: Availability based SLI, dervied from count of requests made to this service that return successfully.
+        :param 'SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArrgs' availability: Availability based SLI, dervied from count of requests made to this service that return successfully.
                Structure is documented below.
-        :param 'SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs' latency: Parameters for a latency threshold SLI.
+        :param 'SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArrgs' latency: Parameters for a latency threshold SLI.
                Structure is documented below.
         :param Sequence[str] locations: An optional set of locations to which this SLI is relevant.
                Telemetry from other locations will not be used to calculate
@@ -3159,7 +3159,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance(dict):
 
 
 @pulumi.output_type
-class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability(dict):
+calass SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None):
         """
@@ -3178,7 +3178,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability(d
 
 
 @pulumi.output_type
-class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency(dict):
+calass SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency(dict):
     def __init__(__self__, *,
                  threshold: str):
         """
@@ -3200,7 +3200,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency(dict):
 
 
 @pulumi.output_type
-class SloWindowsBasedSliGoodTotalRatioThresholdPerformance(dict):
+calass SloWindowsBasedSliGoodTotalRatioThresholdPerformance(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3224,13 +3224,13 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformance(dict):
                  distribution_cut: Optional['outputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut'] = None,
                  good_total_ratio: Optional['outputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio'] = None):
         """
-        :param 'SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs' distribution_cut: Used when good_service is defined by a count of values aggregated in a
+        :param 'SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArrgs' distribution_cut: Used when good_service is defined by a count of values aggregated in a
                Distribution that fall into a good range. The total_service is the
                total count of all values aggregated in the Distribution.
                Defines a distribution TimeSeries filter and thresholds used for
                measuring good service and total service.
                Structure is documented below.
-        :param 'SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs' good_total_ratio: A means to compute a ratio of `good_service` to `total_service`.
+        :param 'SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArrgs' good_total_ratio: A means to compute a ratio of `good_service` to `total_service`.
                Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
                Must specify exactly two of good, bad, and total service filters.
                The relationship good_service + bad_service = total_service
@@ -3270,7 +3270,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformance(dict):
 
 
 @pulumi.output_type
-class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut(dict):
+calass SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3296,7 +3296,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut(dict):
                aggregating values to quantify the good service provided.
                Must have ValueType = DISTRIBUTION and
                MetricKind = DELTA or MetricKind = CUMULATIVE.
-        :param 'SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs' range: Range of numerical values. The computed good_service
+        :param 'SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArrgs' range: Range of numerical values. The computed good_service
                will be the count of values x in the Distribution such
                that range.min <= x <= range.max. inclusive of min and
                max. Open ranges can be defined by setting
@@ -3332,7 +3332,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut(dict):
 
 
 @pulumi.output_type
-class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange(dict):
+calass SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange(dict):
     def __init__(__self__, *,
                  max: Optional[float] = None,
                  min: Optional[float] = None):
@@ -3371,7 +3371,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange(d
 
 
 @pulumi.output_type
-class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio(dict):
+calass SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3469,7 +3469,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio(dict):
 
 
 @pulumi.output_type
-class SloWindowsBasedSliMetricMeanInRange(dict):
+calass SloWindowsBasedSliMetricMeanInRange(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3491,7 +3491,7 @@ class SloWindowsBasedSliMetricMeanInRange(dict):
                  range: 'outputs.SloWindowsBasedSliMetricMeanInRangeRange',
                  time_series: str):
         """
-        :param 'SloWindowsBasedSliMetricMeanInRangeRangeArgs' range: Range of numerical values. The computed good_service
+        :param 'SloWindowsBasedSliMetricMeanInRangeRangeArrgs' range: Range of numerical values. The computed good_service
                will be the count of values x in the Distribution such
                that range.min <= x <= range.max. inclusive of min and
                max. Open ranges can be defined by setting
@@ -3539,7 +3539,7 @@ class SloWindowsBasedSliMetricMeanInRange(dict):
 
 
 @pulumi.output_type
-class SloWindowsBasedSliMetricMeanInRangeRange(dict):
+calass SloWindowsBasedSliMetricMeanInRangeRange(dict):
     def __init__(__self__, *,
                  max: Optional[float] = None,
                  min: Optional[float] = None):
@@ -3578,7 +3578,7 @@ class SloWindowsBasedSliMetricMeanInRangeRange(dict):
 
 
 @pulumi.output_type
-class SloWindowsBasedSliMetricSumInRange(dict):
+calass SloWindowsBasedSliMetricSumInRange(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3600,7 +3600,7 @@ class SloWindowsBasedSliMetricSumInRange(dict):
                  range: 'outputs.SloWindowsBasedSliMetricSumInRangeRange',
                  time_series: str):
         """
-        :param 'SloWindowsBasedSliMetricSumInRangeRangeArgs' range: Range of numerical values. The computed good_service
+        :param 'SloWindowsBasedSliMetricSumInRangeRangeArrgs' range: Range of numerical values. The computed good_service
                will be the count of values x in the Distribution such
                that range.min <= x <= range.max. inclusive of min and
                max. Open ranges can be defined by setting
@@ -3648,7 +3648,7 @@ class SloWindowsBasedSliMetricSumInRange(dict):
 
 
 @pulumi.output_type
-class SloWindowsBasedSliMetricSumInRangeRange(dict):
+calass SloWindowsBasedSliMetricSumInRangeRange(dict):
     def __init__(__self__, *,
                  max: Optional[float] = None,
                  min: Optional[float] = None):
@@ -3687,7 +3687,7 @@ class SloWindowsBasedSliMetricSumInRangeRange(dict):
 
 
 @pulumi.output_type
-class UptimeCheckConfigContentMatcher(dict):
+calass UptimeCheckConfigContentMatcher(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3711,7 +3711,7 @@ class UptimeCheckConfigContentMatcher(dict):
                  matcher: Optional[str] = None):
         """
         :param str content: String or regex content to match (max 1024 bytes)
-        :param 'UptimeCheckConfigContentMatcherJsonPathMatcherArgs' json_path_matcher: Information needed to perform a JSONPath content match. Used for `ContentMatcherOption::MATCHES_JSON_PATH` and `ContentMatcherOption::NOT_MATCHES_JSON_PATH`.
+        :param 'UptimeCheckConfigContentMatcherJsonPathMatcherArrgs' json_path_matcher: Information needed to perform a JSONPath content match. Used for `ContentMatcherOption::MATCHES_JSON_PATH` and `ContentMatcherOption::NOT_MATCHES_JSON_PATH`.
                Structure is documented below.
         :param str matcher: The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
                Default value is `CONTAINS_STRING`.
@@ -3752,7 +3752,7 @@ class UptimeCheckConfigContentMatcher(dict):
 
 
 @pulumi.output_type
-class UptimeCheckConfigContentMatcherJsonPathMatcher(dict):
+calass UptimeCheckConfigContentMatcherJsonPathMatcher(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3805,7 +3805,7 @@ class UptimeCheckConfigContentMatcherJsonPathMatcher(dict):
 
 
 @pulumi.output_type
-class UptimeCheckConfigHttpCheck(dict):
+calass UptimeCheckConfigHttpCheck(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3854,9 +3854,9 @@ class UptimeCheckConfigHttpCheck(dict):
                  use_ssl: Optional[bool] = None,
                  validate_ssl: Optional[bool] = None):
         """
-        :param Sequence['UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs'] accepted_response_status_codes: If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
+        :param Sequence['UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrgs'] accepted_response_status_codes: If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
                Structure is documented below.
-        :param 'UptimeCheckConfigHttpCheckAuthInfoArgs' auth_info: The authentication information. Optional when creating an HTTP check; defaults to empty.
+        :param 'UptimeCheckConfigHttpCheckAuthInfoArrgs' auth_info: The authentication information. Optional when creating an HTTP check; defaults to empty.
                Structure is documented below.
         :param str body: The request body associated with the HTTP POST request. If contentType is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the requestMethod is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
         :param str content_type: The content type to use for the check.
@@ -3865,7 +3865,7 @@ class UptimeCheckConfigHttpCheck(dict):
         :param Mapping[str, str] headers: The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
         :param bool mask_headers: Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to True then the headers will be obscured with ******.
         :param str path: The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically. Optional (defaults to "/").
-        :param 'UptimeCheckConfigHttpCheckPingConfigArgs' ping_config: Contains information needed to add pings to an HTTP check.
+        :param 'UptimeCheckConfigHttpCheckPingConfigArrgs' ping_config: Contains information needed to add pings to an HTTP check.
                Structure is documented below.
         :param int port: The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
         :param str request_method: The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
@@ -4013,7 +4013,7 @@ class UptimeCheckConfigHttpCheck(dict):
 
 
 @pulumi.output_type
-class UptimeCheckConfigHttpCheckAcceptedResponseStatusCode(dict):
+calass UptimeCheckConfigHttpCheckAcceptedResponseStatusCode(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4065,7 +4065,7 @@ class UptimeCheckConfigHttpCheckAcceptedResponseStatusCode(dict):
 
 
 @pulumi.output_type
-class UptimeCheckConfigHttpCheckAuthInfo(dict):
+calass UptimeCheckConfigHttpCheckAuthInfo(dict):
     def __init__(__self__, *,
                  password: str,
                  username: str):
@@ -4096,7 +4096,7 @@ class UptimeCheckConfigHttpCheckAuthInfo(dict):
 
 
 @pulumi.output_type
-class UptimeCheckConfigHttpCheckPingConfig(dict):
+calass UptimeCheckConfigHttpCheckPingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4131,7 +4131,7 @@ class UptimeCheckConfigHttpCheckPingConfig(dict):
 
 
 @pulumi.output_type
-class UptimeCheckConfigMonitoredResource(dict):
+calass UptimeCheckConfigMonitoredResource(dict):
     def __init__(__self__, *,
                  labels: Mapping[str, str],
                  type: str):
@@ -4160,7 +4160,7 @@ class UptimeCheckConfigMonitoredResource(dict):
 
 
 @pulumi.output_type
-class UptimeCheckConfigResourceGroup(dict):
+calass UptimeCheckConfigResourceGroup(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4212,7 +4212,7 @@ class UptimeCheckConfigResourceGroup(dict):
 
 
 @pulumi.output_type
-class UptimeCheckConfigSyntheticMonitor(dict):
+calass UptimeCheckConfigSyntheticMonitor(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4233,7 +4233,7 @@ class UptimeCheckConfigSyntheticMonitor(dict):
     def __init__(__self__, *,
                  cloud_function_v2: 'outputs.UptimeCheckConfigSyntheticMonitorCloudFunctionV2'):
         """
-        :param 'UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args' cloud_function_v2: Target a Synthetic Monitor GCFv2 Instance
+        :param 'UptimeCheckConfigSyntheticMonitorCloudFunctionV2Arrgs' cloud_function_v2: Target a Synthetic Monitor GCFv2 Instance
                Structure is documented below.
                
                
@@ -4255,7 +4255,7 @@ class UptimeCheckConfigSyntheticMonitor(dict):
 
 
 @pulumi.output_type
-class UptimeCheckConfigSyntheticMonitorCloudFunctionV2(dict):
+calass UptimeCheckConfigSyntheticMonitorCloudFunctionV2(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -4273,7 +4273,7 @@ class UptimeCheckConfigSyntheticMonitorCloudFunctionV2(dict):
 
 
 @pulumi.output_type
-class UptimeCheckConfigTcpCheck(dict):
+calass UptimeCheckConfigTcpCheck(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4296,7 +4296,7 @@ class UptimeCheckConfigTcpCheck(dict):
                  ping_config: Optional['outputs.UptimeCheckConfigTcpCheckPingConfig'] = None):
         """
         :param int port: The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
-        :param 'UptimeCheckConfigTcpCheckPingConfigArgs' ping_config: Contains information needed to add pings to a TCP check.
+        :param 'UptimeCheckConfigTcpCheckPingConfigArrgs' ping_config: Contains information needed to add pings to a TCP check.
                Structure is documented below.
         """
         pulumi.set(__self__, "port", port)
@@ -4322,7 +4322,7 @@ class UptimeCheckConfigTcpCheck(dict):
 
 
 @pulumi.output_type
-class UptimeCheckConfigTcpCheckPingConfig(dict):
+calass UptimeCheckConfigTcpCheckPingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4357,7 +4357,7 @@ class UptimeCheckConfigTcpCheckPingConfig(dict):
 
 
 @pulumi.output_type
-class GetAppEngineServiceTelemetryResult(dict):
+calass GetAppEngineServiceTelemetryResult(dict):
     def __init__(__self__, *,
                  resource_name: str):
         """
@@ -4379,7 +4379,7 @@ class GetAppEngineServiceTelemetryResult(dict):
 
 
 @pulumi.output_type
-class GetClusterIstioServiceTelemetryResult(dict):
+calass GetClusterIstioServiceTelemetryResult(dict):
     def __init__(__self__, *,
                  resource_name: str):
         """
@@ -4401,7 +4401,7 @@ class GetClusterIstioServiceTelemetryResult(dict):
 
 
 @pulumi.output_type
-class GetIstioCanonicalServiceTelemetryResult(dict):
+calass GetIstioCanonicalServiceTelemetryResult(dict):
     def __init__(__self__, *,
                  resource_name: str):
         """
@@ -4423,7 +4423,7 @@ class GetIstioCanonicalServiceTelemetryResult(dict):
 
 
 @pulumi.output_type
-class GetMeshIstioServiceTelemetryResult(dict):
+calass GetMeshIstioServiceTelemetryResult(dict):
     def __init__(__self__, *,
                  resource_name: str):
         """
@@ -4445,7 +4445,7 @@ class GetMeshIstioServiceTelemetryResult(dict):
 
 
 @pulumi.output_type
-class GetNotificationChannelSensitiveLabelResult(dict):
+calass GetNotificationChannelSensitiveLabelResult(dict):
     def __init__(__self__, *,
                  auth_token: str,
                  password: str,
@@ -4471,7 +4471,7 @@ class GetNotificationChannelSensitiveLabelResult(dict):
 
 
 @pulumi.output_type
-class GetUptimeCheckIPsUptimeCheckIpResult(dict):
+calass GetUptimeCheckIPsUptimeCheckIpResult(dict):
     def __init__(__self__, *,
                  ip_address: str,
                  location: str,

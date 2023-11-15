@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetRegionSslCertificateResult:
+calass GetRegionSslCertificateResult:
     """
     A collection of values returned by getRegionSslCertificate.
     """
@@ -123,7 +123,7 @@ class GetRegionSslCertificateResult:
         return pulumi.get(self, "self_link")
 
 
-class AwaitableGetRegionSslCertificateResult(GetRegionSslCertificateResult):
+calass AwaitableGetRegionSslCertificateResult(GetRegionSslCertificateResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

@@ -10,17 +10,17 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'WorkloadComplianceStatusArgs',
-    'WorkloadEkmProvisioningResponseArgs',
-    'WorkloadKmsSettingsArgs',
-    'WorkloadPartnerPermissionsArgs',
-    'WorkloadResourceArgs',
-    'WorkloadResourceSettingArgs',
-    'WorkloadSaaEnrollmentResponseArgs',
+    'WorkloadComplianceStatusArrgs',
+    'WorkloadEkmProvisioningResponseArrgs',
+    'WorkloadKmsSettingsArrgs',
+    'WorkloadPartnerPermissionsArrgs',
+    'WorkloadResourceArrgs',
+    'WorkloadResourceSettingArrgs',
+    'WorkloadSaaEnrollmentResponseArrgs',
 ]
 
 @pulumi.input_type
-class WorkloadComplianceStatusArgs:
+calass WorkloadComplianceStatusArrgs:
     def __init__(__self__, *,
                  acknowledged_violation_counts: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  active_violation_counts: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
@@ -49,7 +49,7 @@ class WorkloadComplianceStatusArgs:
 
 
 @pulumi.input_type
-class WorkloadEkmProvisioningResponseArgs:
+calass WorkloadEkmProvisioningResponseArrgs:
     def __init__(__self__, *,
                  ekm_provisioning_error_domain: Optional[pulumi.Input[str]] = None,
                  ekm_provisioning_error_mapping: Optional[pulumi.Input[str]] = None,
@@ -90,7 +90,7 @@ class WorkloadEkmProvisioningResponseArgs:
 
 
 @pulumi.input_type
-class WorkloadKmsSettingsArgs:
+calass WorkloadKmsSettingsArrgs:
     def __init__(__self__, *,
                  next_rotation_time: pulumi.Input[str],
                  rotation_period: pulumi.Input[str]):
@@ -127,7 +127,7 @@ class WorkloadKmsSettingsArgs:
 
 
 @pulumi.input_type
-class WorkloadPartnerPermissionsArgs:
+calass WorkloadPartnerPermissionsArrgs:
     def __init__(__self__, *,
                  assured_workloads_monitoring: Optional[pulumi.Input[bool]] = None,
                  data_logs_viewer: Optional[pulumi.Input[bool]] = None,
@@ -182,7 +182,7 @@ class WorkloadPartnerPermissionsArgs:
 
 
 @pulumi.input_type
-class WorkloadResourceArgs:
+calass WorkloadResourceArrgs:
     def __init__(__self__, *,
                  resource_id: Optional[pulumi.Input[int]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None):
@@ -221,7 +221,7 @@ class WorkloadResourceArgs:
 
 
 @pulumi.input_type
-class WorkloadResourceSettingArgs:
+calass WorkloadResourceSettingArrgs:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
                  resource_id: Optional[pulumi.Input[str]] = None,
@@ -276,7 +276,7 @@ class WorkloadResourceSettingArgs:
 
 
 @pulumi.input_type
-class WorkloadSaaEnrollmentResponseArgs:
+calass WorkloadSaaEnrollmentResponseArrgs:
     def __init__(__self__, *,
                  setup_errors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  setup_status: Optional[pulumi.Input[str]] = None):

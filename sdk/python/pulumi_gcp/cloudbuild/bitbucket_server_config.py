@@ -11,18 +11,18 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['BitbucketServerConfigArgs', 'BitbucketServerConfig']
+__all__ = ['BitbucketServerConfigArrgs', 'BitbucketServerConfig']
 
 @pulumi.input_type
-class BitbucketServerConfigArgs:
+calass BitbucketServerConfigArrgs:
     def __init__(__self__, *,
                  api_key: pulumi.Input[str],
                  config_id: pulumi.Input[str],
                  host_uri: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 secrets: pulumi.Input['BitbucketServerConfigSecretsArgs'],
+                 secrets: pulumi.Input['BitbucketServerConfigSecretsArrgs'],
                  username: pulumi.Input[str],
-                 connected_repositories: Optional[pulumi.Input[Sequence[pulumi.Input['BitbucketServerConfigConnectedRepositoryArgs']]]] = None,
+                 connected_repositories: Optional[pulumi.Input[Sequence[pulumi.Input['BitbucketServerConfigConnectedRepositoryArrgs']]]] = None,
                  peered_network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  ssl_ca: Optional[pulumi.Input[str]] = None):
@@ -34,10 +34,10 @@ class BitbucketServerConfigArgs:
         :param pulumi.Input[str] host_uri: Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
                If you need to change it, please create another BitbucketServerConfig.
         :param pulumi.Input[str] location: The location of this bitbucket server config.
-        :param pulumi.Input['BitbucketServerConfigSecretsArgs'] secrets: Secret Manager secrets needed by the config.
+        :param pulumi.Input['BitbucketServerConfigSecretsArrgs'] secrets: Secret Manager secrets needed by the config.
                Structure is documented below.
         :param pulumi.Input[str] username: Username of the account Cloud Build will use on Bitbucket Server.
-        :param pulumi.Input[Sequence[pulumi.Input['BitbucketServerConfigConnectedRepositoryArgs']]] connected_repositories: Connected Bitbucket Server repositories for this config.
+        :param pulumi.Input[Sequence[pulumi.Input['BitbucketServerConfigConnectedRepositoryArrgs']]] connected_repositories: Connected Bitbucket Server repositories for this config.
                Structure is documented below.
         :param pulumi.Input[str] peered_network: The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
                This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
@@ -114,7 +114,7 @@ class BitbucketServerConfigArgs:
 
     @property
     @pulumi.getter
-    def secrets(self) -> pulumi.Input['BitbucketServerConfigSecretsArgs']:
+    def secrets(self) -> pulumi.Input['BitbucketServerConfigSecretsArrgs']:
         """
         Secret Manager secrets needed by the config.
         Structure is documented below.
@@ -122,7 +122,7 @@ class BitbucketServerConfigArgs:
         return pulumi.get(self, "secrets")
 
     @secrets.setter
-    def secrets(self, value: pulumi.Input['BitbucketServerConfigSecretsArgs']):
+    def secrets(self, value: pulumi.Input['BitbucketServerConfigSecretsArrgs']):
         pulumi.set(self, "secrets", value)
 
     @property
@@ -139,7 +139,7 @@ class BitbucketServerConfigArgs:
 
     @property
     @pulumi.getter(name="connectedRepositories")
-    def connected_repositories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BitbucketServerConfigConnectedRepositoryArgs']]]]:
+    def connected_repositories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BitbucketServerConfigConnectedRepositoryArrgs']]]]:
         """
         Connected Bitbucket Server repositories for this config.
         Structure is documented below.
@@ -147,7 +147,7 @@ class BitbucketServerConfigArgs:
         return pulumi.get(self, "connected_repositories")
 
     @connected_repositories.setter
-    def connected_repositories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BitbucketServerConfigConnectedRepositoryArgs']]]]):
+    def connected_repositories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BitbucketServerConfigConnectedRepositoryArrgs']]]]):
         pulumi.set(self, "connected_repositories", value)
 
     @property
@@ -192,17 +192,17 @@ class BitbucketServerConfigArgs:
 
 
 @pulumi.input_type
-class _BitbucketServerConfigState:
+calass _BitbucketServerConfigState:
     def __init__(__self__, *,
                  api_key: Optional[pulumi.Input[str]] = None,
                  config_id: Optional[pulumi.Input[str]] = None,
-                 connected_repositories: Optional[pulumi.Input[Sequence[pulumi.Input['BitbucketServerConfigConnectedRepositoryArgs']]]] = None,
+                 connected_repositories: Optional[pulumi.Input[Sequence[pulumi.Input['BitbucketServerConfigConnectedRepositoryArrgs']]]] = None,
                  host_uri: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  peered_network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 secrets: Optional[pulumi.Input['BitbucketServerConfigSecretsArgs']] = None,
+                 secrets: Optional[pulumi.Input['BitbucketServerConfigSecretsArrgs']] = None,
                  ssl_ca: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  webhook_key: Optional[pulumi.Input[str]] = None):
@@ -211,7 +211,7 @@ class _BitbucketServerConfigState:
         :param pulumi.Input[str] api_key: Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed.
                Changing this field will result in deleting/ recreating the resource.
         :param pulumi.Input[str] config_id: The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name.
-        :param pulumi.Input[Sequence[pulumi.Input['BitbucketServerConfigConnectedRepositoryArgs']]] connected_repositories: Connected Bitbucket Server repositories for this config.
+        :param pulumi.Input[Sequence[pulumi.Input['BitbucketServerConfigConnectedRepositoryArrgs']]] connected_repositories: Connected Bitbucket Server repositories for this config.
                Structure is documented below.
         :param pulumi.Input[str] host_uri: Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
                If you need to change it, please create another BitbucketServerConfig.
@@ -223,7 +223,7 @@ class _BitbucketServerConfigState:
                projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['BitbucketServerConfigSecretsArgs'] secrets: Secret Manager secrets needed by the config.
+        :param pulumi.Input['BitbucketServerConfigSecretsArrgs'] secrets: Secret Manager secrets needed by the config.
                Structure is documented below.
         :param pulumi.Input[str] ssl_ca: SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
         :param pulumi.Input[str] username: Username of the account Cloud Build will use on Bitbucket Server.
@@ -281,7 +281,7 @@ class _BitbucketServerConfigState:
 
     @property
     @pulumi.getter(name="connectedRepositories")
-    def connected_repositories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BitbucketServerConfigConnectedRepositoryArgs']]]]:
+    def connected_repositories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BitbucketServerConfigConnectedRepositoryArrgs']]]]:
         """
         Connected Bitbucket Server repositories for this config.
         Structure is documented below.
@@ -289,7 +289,7 @@ class _BitbucketServerConfigState:
         return pulumi.get(self, "connected_repositories")
 
     @connected_repositories.setter
-    def connected_repositories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BitbucketServerConfigConnectedRepositoryArgs']]]]):
+    def connected_repositories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BitbucketServerConfigConnectedRepositoryArrgs']]]]):
         pulumi.set(self, "connected_repositories", value)
 
     @property
@@ -359,7 +359,7 @@ class _BitbucketServerConfigState:
 
     @property
     @pulumi.getter
-    def secrets(self) -> Optional[pulumi.Input['BitbucketServerConfigSecretsArgs']]:
+    def secrets(self) -> Optional[pulumi.Input['BitbucketServerConfigSecretsArrgs']]:
         """
         Secret Manager secrets needed by the config.
         Structure is documented below.
@@ -367,7 +367,7 @@ class _BitbucketServerConfigState:
         return pulumi.get(self, "secrets")
 
     @secrets.setter
-    def secrets(self, value: Optional[pulumi.Input['BitbucketServerConfigSecretsArgs']]):
+    def secrets(self, value: Optional[pulumi.Input['BitbucketServerConfigSecretsArrgs']]):
         pulumi.set(self, "secrets", value)
 
     @property
@@ -407,19 +407,19 @@ class _BitbucketServerConfigState:
         pulumi.set(self, "webhook_key", value)
 
 
-class BitbucketServerConfig(pulumi.CustomResource):
+calass BitbucketServerConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_key: Optional[pulumi.Input[str]] = None,
                  config_id: Optional[pulumi.Input[str]] = None,
-                 connected_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BitbucketServerConfigConnectedRepositoryArgs']]]]] = None,
+                 connected_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BitbucketServerConfigConnectedRepositoryArrgs']]]]] = None,
                  host_uri: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  peered_network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 secrets: Optional[pulumi.Input[pulumi.InputType['BitbucketServerConfigSecretsArgs']]] = None,
+                 secrets: Optional[pulumi.Input[pulumi.InputType['BitbucketServerConfigSecretsArrgs']]] = None,
                  ssl_ca: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -444,7 +444,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
             config_id="bbs-config",
             host_uri="https://bbs.com",
             location="us-central1",
-            secrets=gcp.cloudbuild.BitbucketServerConfigSecretsArgs(
+            secrets=gcp.cloudbuild.BitbucketServerConfigSecretsArrgs(
                 admin_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
                 read_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
                 webhook_secret_version_name="projects/myProject/secrets/mybbspat/versions/1",
@@ -461,18 +461,18 @@ class BitbucketServerConfig(pulumi.CustomResource):
             api_key="<api-key>",
             config_id="bbs-config",
             connected_repositories=[
-                gcp.cloudbuild.BitbucketServerConfigConnectedRepositoryArgs(
+                gcp.cloudbuild.BitbucketServerConfigConnectedRepositoryArrgs(
                     project_key="DEV",
                     repo_slug="repo1",
                 ),
-                gcp.cloudbuild.BitbucketServerConfigConnectedRepositoryArgs(
+                gcp.cloudbuild.BitbucketServerConfigConnectedRepositoryArrgs(
                     project_key="PROD",
                     repo_slug="repo1",
                 ),
             ],
             host_uri="https://bbs.com",
             location="us-central1",
-            secrets=gcp.cloudbuild.BitbucketServerConfigSecretsArgs(
+            secrets=gcp.cloudbuild.BitbucketServerConfigSecretsArrgs(
                 admin_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
                 read_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
                 webhook_secret_version_name="projects/myProject/secrets/mybbspat/versions/1",
@@ -509,7 +509,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
         :param pulumi.Input[str] api_key: Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed.
                Changing this field will result in deleting/ recreating the resource.
         :param pulumi.Input[str] config_id: The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BitbucketServerConfigConnectedRepositoryArgs']]]] connected_repositories: Connected Bitbucket Server repositories for this config.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BitbucketServerConfigConnectedRepositoryArrgs']]]] connected_repositories: Connected Bitbucket Server repositories for this config.
                Structure is documented below.
         :param pulumi.Input[str] host_uri: Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
                If you need to change it, please create another BitbucketServerConfig.
@@ -520,7 +520,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
                projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['BitbucketServerConfigSecretsArgs']] secrets: Secret Manager secrets needed by the config.
+        :param pulumi.Input[pulumi.InputType['BitbucketServerConfigSecretsArrgs']] secrets: Secret Manager secrets needed by the config.
                Structure is documented below.
         :param pulumi.Input[str] ssl_ca: SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
         :param pulumi.Input[str] username: Username of the account Cloud Build will use on Bitbucket Server.
@@ -529,7 +529,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: BitbucketServerConfigArgs,
+                 args: BitbucketServerConfigArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         BitbucketServerConfig represents the configuration for a Bitbucket Server.
@@ -552,7 +552,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
             config_id="bbs-config",
             host_uri="https://bbs.com",
             location="us-central1",
-            secrets=gcp.cloudbuild.BitbucketServerConfigSecretsArgs(
+            secrets=gcp.cloudbuild.BitbucketServerConfigSecretsArrgs(
                 admin_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
                 read_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
                 webhook_secret_version_name="projects/myProject/secrets/mybbspat/versions/1",
@@ -569,18 +569,18 @@ class BitbucketServerConfig(pulumi.CustomResource):
             api_key="<api-key>",
             config_id="bbs-config",
             connected_repositories=[
-                gcp.cloudbuild.BitbucketServerConfigConnectedRepositoryArgs(
+                gcp.cloudbuild.BitbucketServerConfigConnectedRepositoryArrgs(
                     project_key="DEV",
                     repo_slug="repo1",
                 ),
-                gcp.cloudbuild.BitbucketServerConfigConnectedRepositoryArgs(
+                gcp.cloudbuild.BitbucketServerConfigConnectedRepositoryArrgs(
                     project_key="PROD",
                     repo_slug="repo1",
                 ),
             ],
             host_uri="https://bbs.com",
             location="us-central1",
-            secrets=gcp.cloudbuild.BitbucketServerConfigSecretsArgs(
+            secrets=gcp.cloudbuild.BitbucketServerConfigSecretsArrgs(
                 admin_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
                 read_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
                 webhook_secret_version_name="projects/myProject/secrets/mybbspat/versions/1",
@@ -613,12 +613,12 @@ class BitbucketServerConfig(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param BitbucketServerConfigArgs args: The arguments to use to populate this resource's properties.
+        :param BitbucketServerConfigArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(BitbucketServerConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(BitbucketServerConfigArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -629,12 +629,12 @@ class BitbucketServerConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_key: Optional[pulumi.Input[str]] = None,
                  config_id: Optional[pulumi.Input[str]] = None,
-                 connected_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BitbucketServerConfigConnectedRepositoryArgs']]]]] = None,
+                 connected_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BitbucketServerConfigConnectedRepositoryArrgs']]]]] = None,
                  host_uri: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  peered_network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 secrets: Optional[pulumi.Input[pulumi.InputType['BitbucketServerConfigSecretsArgs']]] = None,
+                 secrets: Optional[pulumi.Input[pulumi.InputType['BitbucketServerConfigSecretsArrgs']]] = None,
                  ssl_ca: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -644,7 +644,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = BitbucketServerConfigArgs.__new__(BitbucketServerConfigArgs)
+            __props__ = BitbucketServerConfigArrgs.__new__(BitbucketServerConfigArrgs)
 
             if api_key is None and not opts.urn:
                 raise TypeError("Missing required property 'api_key'")
@@ -682,13 +682,13 @@ class BitbucketServerConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             api_key: Optional[pulumi.Input[str]] = None,
             config_id: Optional[pulumi.Input[str]] = None,
-            connected_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BitbucketServerConfigConnectedRepositoryArgs']]]]] = None,
+            connected_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BitbucketServerConfigConnectedRepositoryArrgs']]]]] = None,
             host_uri: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             peered_network: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            secrets: Optional[pulumi.Input[pulumi.InputType['BitbucketServerConfigSecretsArgs']]] = None,
+            secrets: Optional[pulumi.Input[pulumi.InputType['BitbucketServerConfigSecretsArrgs']]] = None,
             ssl_ca: Optional[pulumi.Input[str]] = None,
             username: Optional[pulumi.Input[str]] = None,
             webhook_key: Optional[pulumi.Input[str]] = None) -> 'BitbucketServerConfig':
@@ -702,7 +702,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
         :param pulumi.Input[str] api_key: Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed.
                Changing this field will result in deleting/ recreating the resource.
         :param pulumi.Input[str] config_id: The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BitbucketServerConfigConnectedRepositoryArgs']]]] connected_repositories: Connected Bitbucket Server repositories for this config.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BitbucketServerConfigConnectedRepositoryArrgs']]]] connected_repositories: Connected Bitbucket Server repositories for this config.
                Structure is documented below.
         :param pulumi.Input[str] host_uri: Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
                If you need to change it, please create another BitbucketServerConfig.
@@ -714,7 +714,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
                projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['BitbucketServerConfigSecretsArgs']] secrets: Secret Manager secrets needed by the config.
+        :param pulumi.Input[pulumi.InputType['BitbucketServerConfigSecretsArrgs']] secrets: Secret Manager secrets needed by the config.
                Structure is documented below.
         :param pulumi.Input[str] ssl_ca: SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
         :param pulumi.Input[str] username: Username of the account Cloud Build will use on Bitbucket Server.

@@ -10,37 +10,37 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'BackupEncryptionConfigArgs',
-    'BackupEncryptionInfoArgs',
-    'BackupExpiryQuantityArgs',
-    'ClusterAutomatedBackupPolicyArgs',
-    'ClusterAutomatedBackupPolicyEncryptionConfigArgs',
-    'ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs',
-    'ClusterAutomatedBackupPolicyTimeBasedRetentionArgs',
-    'ClusterAutomatedBackupPolicyWeeklyScheduleArgs',
-    'ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs',
-    'ClusterBackupSourceArgs',
-    'ClusterContinuousBackupConfigArgs',
-    'ClusterContinuousBackupConfigEncryptionConfigArgs',
-    'ClusterContinuousBackupInfoArgs',
-    'ClusterContinuousBackupInfoEncryptionInfoArgs',
-    'ClusterEncryptionConfigArgs',
-    'ClusterEncryptionInfoArgs',
-    'ClusterInitialUserArgs',
-    'ClusterMigrationSourceArgs',
-    'ClusterNetworkConfigArgs',
-    'ClusterRestoreBackupSourceArgs',
-    'ClusterRestoreContinuousBackupSourceArgs',
-    'ClusterSecondaryConfigArgs',
-    'InstanceClientConnectionConfigArgs',
-    'InstanceClientConnectionConfigSslConfigArgs',
-    'InstanceMachineConfigArgs',
-    'InstanceQueryInsightsConfigArgs',
-    'InstanceReadPoolConfigArgs',
+    'BackupEncryptionConfigArrgs',
+    'BackupEncryptionInfoArrgs',
+    'BackupExpiryQuantityArrgs',
+    'ClusterAutomatedBackupPolicyArrgs',
+    'ClusterAutomatedBackupPolicyEncryptionConfigArrgs',
+    'ClusterAutomatedBackupPolicyQuantityBasedRetentionArrgs',
+    'ClusterAutomatedBackupPolicyTimeBasedRetentionArrgs',
+    'ClusterAutomatedBackupPolicyWeeklyScheduleArrgs',
+    'ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrgs',
+    'ClusterBackupSourceArrgs',
+    'ClusterContinuousBackupConfigArrgs',
+    'ClusterContinuousBackupConfigEncryptionConfigArrgs',
+    'ClusterContinuousBackupInfoArrgs',
+    'ClusterContinuousBackupInfoEncryptionInfoArrgs',
+    'ClusterEncryptionConfigArrgs',
+    'ClusterEncryptionInfoArrgs',
+    'ClusterInitialUserArrgs',
+    'ClusterMigrationSourceArrgs',
+    'ClusterNetworkConfigArrgs',
+    'ClusterRestoreBackupSourceArrgs',
+    'ClusterRestoreContinuousBackupSourceArrgs',
+    'ClusterSecondaryConfigArrgs',
+    'InstanceClientConnectionConfigArrgs',
+    'InstanceClientConnectionConfigSslConfigArrgs',
+    'InstanceMachineConfigArrgs',
+    'InstanceQueryInsightsConfigArrgs',
+    'InstanceReadPoolConfigArrgs',
 ]
 
 @pulumi.input_type
-class BackupEncryptionConfigArgs:
+calass BackupEncryptionConfigArrgs:
     def __init__(__self__, *,
                  kms_key_name: Optional[pulumi.Input[str]] = None):
         """
@@ -63,7 +63,7 @@ class BackupEncryptionConfigArgs:
 
 
 @pulumi.input_type
-class BackupEncryptionInfoArgs:
+calass BackupEncryptionInfoArrgs:
     def __init__(__self__, *,
                  encryption_type: Optional[pulumi.Input[str]] = None,
                  kms_key_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -106,7 +106,7 @@ class BackupEncryptionInfoArgs:
 
 
 @pulumi.input_type
-class BackupExpiryQuantityArgs:
+calass BackupExpiryQuantityArrgs:
     def __init__(__self__, *,
                  retention_count: Optional[pulumi.Input[int]] = None,
                  total_retention_count: Optional[pulumi.Input[int]] = None):
@@ -149,30 +149,30 @@ class BackupExpiryQuantityArgs:
 
 
 @pulumi.input_type
-class ClusterAutomatedBackupPolicyArgs:
+calass ClusterAutomatedBackupPolicyArrgs:
     def __init__(__self__, *,
                  backup_window: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 encryption_config: Optional[pulumi.Input['ClusterAutomatedBackupPolicyEncryptionConfigArgs']] = None,
+                 encryption_config: Optional[pulumi.Input['ClusterAutomatedBackupPolicyEncryptionConfigArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 quantity_based_retention: Optional[pulumi.Input['ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs']] = None,
-                 time_based_retention: Optional[pulumi.Input['ClusterAutomatedBackupPolicyTimeBasedRetentionArgs']] = None,
-                 weekly_schedule: Optional[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleArgs']] = None):
+                 quantity_based_retention: Optional[pulumi.Input['ClusterAutomatedBackupPolicyQuantityBasedRetentionArrgs']] = None,
+                 time_based_retention: Optional[pulumi.Input['ClusterAutomatedBackupPolicyTimeBasedRetentionArrgs']] = None,
+                 weekly_schedule: Optional[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleArrgs']] = None):
         """
         :param pulumi.Input[str] backup_window: The length of the time window during which a backup can be taken. If a backup does not succeed within this time window, it will be canceled and considered failed.
                The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it will default to 1 hour.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         :param pulumi.Input[bool] enabled: Whether automated backups are enabled.
-        :param pulumi.Input['ClusterAutomatedBackupPolicyEncryptionConfigArgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        :param pulumi.Input['ClusterAutomatedBackupPolicyEncryptionConfigArrgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to backups created using this configuration.
         :param pulumi.Input[str] location: The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
-        :param pulumi.Input['ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs'] quantity_based_retention: Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
+        :param pulumi.Input['ClusterAutomatedBackupPolicyQuantityBasedRetentionArrgs'] quantity_based_retention: Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
                Structure is documented below.
-        :param pulumi.Input['ClusterAutomatedBackupPolicyTimeBasedRetentionArgs'] time_based_retention: Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
+        :param pulumi.Input['ClusterAutomatedBackupPolicyTimeBasedRetentionArrgs'] time_based_retention: Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
                Structure is documented below.
-        :param pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleArgs'] weekly_schedule: Weekly schedule for the Backup.
+        :param pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleArrgs'] weekly_schedule: Weekly schedule for the Backup.
                Structure is documented below.
         """
         if backup_window is not None:
@@ -220,7 +220,7 @@ class ClusterAutomatedBackupPolicyArgs:
 
     @property
     @pulumi.getter(name="encryptionConfig")
-    def encryption_config(self) -> Optional[pulumi.Input['ClusterAutomatedBackupPolicyEncryptionConfigArgs']]:
+    def encryption_config(self) -> Optional[pulumi.Input['ClusterAutomatedBackupPolicyEncryptionConfigArrgs']]:
         """
         EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
         Structure is documented below.
@@ -228,7 +228,7 @@ class ClusterAutomatedBackupPolicyArgs:
         return pulumi.get(self, "encryption_config")
 
     @encryption_config.setter
-    def encryption_config(self, value: Optional[pulumi.Input['ClusterAutomatedBackupPolicyEncryptionConfigArgs']]):
+    def encryption_config(self, value: Optional[pulumi.Input['ClusterAutomatedBackupPolicyEncryptionConfigArrgs']]):
         pulumi.set(self, "encryption_config", value)
 
     @property
@@ -257,7 +257,7 @@ class ClusterAutomatedBackupPolicyArgs:
 
     @property
     @pulumi.getter(name="quantityBasedRetention")
-    def quantity_based_retention(self) -> Optional[pulumi.Input['ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs']]:
+    def quantity_based_retention(self) -> Optional[pulumi.Input['ClusterAutomatedBackupPolicyQuantityBasedRetentionArrgs']]:
         """
         Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
         Structure is documented below.
@@ -265,12 +265,12 @@ class ClusterAutomatedBackupPolicyArgs:
         return pulumi.get(self, "quantity_based_retention")
 
     @quantity_based_retention.setter
-    def quantity_based_retention(self, value: Optional[pulumi.Input['ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs']]):
+    def quantity_based_retention(self, value: Optional[pulumi.Input['ClusterAutomatedBackupPolicyQuantityBasedRetentionArrgs']]):
         pulumi.set(self, "quantity_based_retention", value)
 
     @property
     @pulumi.getter(name="timeBasedRetention")
-    def time_based_retention(self) -> Optional[pulumi.Input['ClusterAutomatedBackupPolicyTimeBasedRetentionArgs']]:
+    def time_based_retention(self) -> Optional[pulumi.Input['ClusterAutomatedBackupPolicyTimeBasedRetentionArrgs']]:
         """
         Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
         Structure is documented below.
@@ -278,12 +278,12 @@ class ClusterAutomatedBackupPolicyArgs:
         return pulumi.get(self, "time_based_retention")
 
     @time_based_retention.setter
-    def time_based_retention(self, value: Optional[pulumi.Input['ClusterAutomatedBackupPolicyTimeBasedRetentionArgs']]):
+    def time_based_retention(self, value: Optional[pulumi.Input['ClusterAutomatedBackupPolicyTimeBasedRetentionArrgs']]):
         pulumi.set(self, "time_based_retention", value)
 
     @property
     @pulumi.getter(name="weeklySchedule")
-    def weekly_schedule(self) -> Optional[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleArgs']]:
+    def weekly_schedule(self) -> Optional[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleArrgs']]:
         """
         Weekly schedule for the Backup.
         Structure is documented below.
@@ -291,12 +291,12 @@ class ClusterAutomatedBackupPolicyArgs:
         return pulumi.get(self, "weekly_schedule")
 
     @weekly_schedule.setter
-    def weekly_schedule(self, value: Optional[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleArgs']]):
+    def weekly_schedule(self, value: Optional[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleArrgs']]):
         pulumi.set(self, "weekly_schedule", value)
 
 
 @pulumi.input_type
-class ClusterAutomatedBackupPolicyEncryptionConfigArgs:
+calass ClusterAutomatedBackupPolicyEncryptionConfigArrgs:
     def __init__(__self__, *,
                  kms_key_name: Optional[pulumi.Input[str]] = None):
         """
@@ -319,7 +319,7 @@ class ClusterAutomatedBackupPolicyEncryptionConfigArgs:
 
 
 @pulumi.input_type
-class ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs:
+calass ClusterAutomatedBackupPolicyQuantityBasedRetentionArrgs:
     def __init__(__self__, *,
                  count: Optional[pulumi.Input[int]] = None):
         """
@@ -342,7 +342,7 @@ class ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs:
 
 
 @pulumi.input_type
-class ClusterAutomatedBackupPolicyTimeBasedRetentionArgs:
+calass ClusterAutomatedBackupPolicyTimeBasedRetentionArrgs:
     def __init__(__self__, *,
                  retention_period: Optional[pulumi.Input[str]] = None):
         """
@@ -367,12 +367,12 @@ class ClusterAutomatedBackupPolicyTimeBasedRetentionArgs:
 
 
 @pulumi.input_type
-class ClusterAutomatedBackupPolicyWeeklyScheduleArgs:
+calass ClusterAutomatedBackupPolicyWeeklyScheduleArrgs:
     def __init__(__self__, *,
-                 start_times: pulumi.Input[Sequence[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs']]],
+                 start_times: pulumi.Input[Sequence[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrgs']]],
                  days_of_weeks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs']]] start_times: The times during the day to start a backup. At least one start time must be provided. The start times are assumed to be in UTC and to be an exact hour (e.g., 04:00:00).
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrgs']]] start_times: The times during the day to start a backup. At least one start time must be provided. The start times are assumed to be in UTC and to be an exact hour (e.g., 04:00:00).
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] days_of_weeks: The days of the week to perform a backup. At least one day of the week must be provided.
                Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
@@ -383,7 +383,7 @@ class ClusterAutomatedBackupPolicyWeeklyScheduleArgs:
 
     @property
     @pulumi.getter(name="startTimes")
-    def start_times(self) -> pulumi.Input[Sequence[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs']]]:
+    def start_times(self) -> pulumi.Input[Sequence[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrgs']]]:
         """
         The times during the day to start a backup. At least one start time must be provided. The start times are assumed to be in UTC and to be an exact hour (e.g., 04:00:00).
         Structure is documented below.
@@ -391,7 +391,7 @@ class ClusterAutomatedBackupPolicyWeeklyScheduleArgs:
         return pulumi.get(self, "start_times")
 
     @start_times.setter
-    def start_times(self, value: pulumi.Input[Sequence[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs']]]):
+    def start_times(self, value: pulumi.Input[Sequence[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrgs']]]):
         pulumi.set(self, "start_times", value)
 
     @property
@@ -409,7 +409,7 @@ class ClusterAutomatedBackupPolicyWeeklyScheduleArgs:
 
 
 @pulumi.input_type
-class ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs:
+calass ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrgs:
     def __init__(__self__, *,
                  hours: Optional[pulumi.Input[int]] = None,
                  minutes: Optional[pulumi.Input[int]] = None,
@@ -480,7 +480,7 @@ class ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs:
 
 
 @pulumi.input_type
-class ClusterBackupSourceArgs:
+calass ClusterBackupSourceArrgs:
     def __init__(__self__, *,
                  backup_name: Optional[pulumi.Input[str]] = None):
         """
@@ -503,14 +503,14 @@ class ClusterBackupSourceArgs:
 
 
 @pulumi.input_type
-class ClusterContinuousBackupConfigArgs:
+calass ClusterContinuousBackupConfigArrgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 encryption_config: Optional[pulumi.Input['ClusterContinuousBackupConfigEncryptionConfigArgs']] = None,
+                 encryption_config: Optional[pulumi.Input['ClusterContinuousBackupConfigEncryptionConfigArrgs']] = None,
                  recovery_window_days: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[bool] enabled: Whether continuous backup recovery is enabled. If not set, defaults to true.
-        :param pulumi.Input['ClusterContinuousBackupConfigEncryptionConfigArgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        :param pulumi.Input['ClusterContinuousBackupConfigEncryptionConfigArrgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
         :param pulumi.Input[int] recovery_window_days: The numbers of days that are eligible to restore from using PITR. To support the entire recovery window, backups and logs are retained for one day more than the recovery window.
                If not set, defaults to 14 days.
@@ -536,7 +536,7 @@ class ClusterContinuousBackupConfigArgs:
 
     @property
     @pulumi.getter(name="encryptionConfig")
-    def encryption_config(self) -> Optional[pulumi.Input['ClusterContinuousBackupConfigEncryptionConfigArgs']]:
+    def encryption_config(self) -> Optional[pulumi.Input['ClusterContinuousBackupConfigEncryptionConfigArrgs']]:
         """
         EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
         Structure is documented below.
@@ -544,7 +544,7 @@ class ClusterContinuousBackupConfigArgs:
         return pulumi.get(self, "encryption_config")
 
     @encryption_config.setter
-    def encryption_config(self, value: Optional[pulumi.Input['ClusterContinuousBackupConfigEncryptionConfigArgs']]):
+    def encryption_config(self, value: Optional[pulumi.Input['ClusterContinuousBackupConfigEncryptionConfigArrgs']]):
         pulumi.set(self, "encryption_config", value)
 
     @property
@@ -562,7 +562,7 @@ class ClusterContinuousBackupConfigArgs:
 
 
 @pulumi.input_type
-class ClusterContinuousBackupConfigEncryptionConfigArgs:
+calass ClusterContinuousBackupConfigEncryptionConfigArrgs:
     def __init__(__self__, *,
                  kms_key_name: Optional[pulumi.Input[str]] = None):
         """
@@ -585,18 +585,18 @@ class ClusterContinuousBackupConfigEncryptionConfigArgs:
 
 
 @pulumi.input_type
-class ClusterContinuousBackupInfoArgs:
+calass ClusterContinuousBackupInfoArrgs:
     def __init__(__self__, *,
                  earliest_restorable_time: Optional[pulumi.Input[str]] = None,
                  enabled_time: Optional[pulumi.Input[str]] = None,
-                 encryption_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoEncryptionInfoArgs']]]] = None,
+                 encryption_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoEncryptionInfoArrgs']]]] = None,
                  schedules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] earliest_restorable_time: (Output)
                The earliest restorable time that can be restored to. Output only field.
         :param pulumi.Input[str] enabled_time: (Output)
                When ContinuousBackup was most recently enabled. Set to null if ContinuousBackup is not enabled.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoEncryptionInfoArgs']]] encryption_infos: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoEncryptionInfoArrgs']]] encryption_infos: (Output)
                Output only. The encryption information for the WALs and backups required for ContinuousBackup.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] schedules: (Output)
@@ -639,7 +639,7 @@ class ClusterContinuousBackupInfoArgs:
 
     @property
     @pulumi.getter(name="encryptionInfos")
-    def encryption_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoEncryptionInfoArgs']]]]:
+    def encryption_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoEncryptionInfoArrgs']]]]:
         """
         (Output)
         Output only. The encryption information for the WALs and backups required for ContinuousBackup.
@@ -648,7 +648,7 @@ class ClusterContinuousBackupInfoArgs:
         return pulumi.get(self, "encryption_infos")
 
     @encryption_infos.setter
-    def encryption_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoEncryptionInfoArgs']]]]):
+    def encryption_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoEncryptionInfoArrgs']]]]):
         pulumi.set(self, "encryption_infos", value)
 
     @property
@@ -666,7 +666,7 @@ class ClusterContinuousBackupInfoArgs:
 
 
 @pulumi.input_type
-class ClusterContinuousBackupInfoEncryptionInfoArgs:
+calass ClusterContinuousBackupInfoEncryptionInfoArrgs:
     def __init__(__self__, *,
                  encryption_type: Optional[pulumi.Input[str]] = None,
                  kms_key_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -709,7 +709,7 @@ class ClusterContinuousBackupInfoEncryptionInfoArgs:
 
 
 @pulumi.input_type
-class ClusterEncryptionConfigArgs:
+calass ClusterEncryptionConfigArrgs:
     def __init__(__self__, *,
                  kms_key_name: Optional[pulumi.Input[str]] = None):
         """
@@ -732,7 +732,7 @@ class ClusterEncryptionConfigArgs:
 
 
 @pulumi.input_type
-class ClusterEncryptionInfoArgs:
+calass ClusterEncryptionInfoArrgs:
     def __init__(__self__, *,
                  encryption_type: Optional[pulumi.Input[str]] = None,
                  kms_key_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -775,7 +775,7 @@ class ClusterEncryptionInfoArgs:
 
 
 @pulumi.input_type
-class ClusterInitialUserArgs:
+calass ClusterInitialUserArrgs:
     def __init__(__self__, *,
                  password: pulumi.Input[str],
                  user: Optional[pulumi.Input[str]] = None):
@@ -815,7 +815,7 @@ class ClusterInitialUserArgs:
 
 
 @pulumi.input_type
-class ClusterMigrationSourceArgs:
+calass ClusterMigrationSourceArrgs:
     def __init__(__self__, *,
                  host_port: Optional[pulumi.Input[str]] = None,
                  reference_id: Optional[pulumi.Input[str]] = None,
@@ -870,7 +870,7 @@ class ClusterMigrationSourceArgs:
 
 
 @pulumi.input_type
-class ClusterNetworkConfigArgs:
+calass ClusterNetworkConfigArrgs:
     def __init__(__self__, *,
                  allocated_ip_range: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None):
@@ -913,7 +913,7 @@ class ClusterNetworkConfigArgs:
 
 
 @pulumi.input_type
-class ClusterRestoreBackupSourceArgs:
+calass ClusterRestoreBackupSourceArrgs:
     def __init__(__self__, *,
                  backup_name: pulumi.Input[str]):
         """
@@ -935,7 +935,7 @@ class ClusterRestoreBackupSourceArgs:
 
 
 @pulumi.input_type
-class ClusterRestoreContinuousBackupSourceArgs:
+calass ClusterRestoreContinuousBackupSourceArrgs:
     def __init__(__self__, *,
                  cluster: pulumi.Input[str],
                  point_in_time: pulumi.Input[str]):
@@ -972,7 +972,7 @@ class ClusterRestoreContinuousBackupSourceArgs:
 
 
 @pulumi.input_type
-class ClusterSecondaryConfigArgs:
+calass ClusterSecondaryConfigArrgs:
     def __init__(__self__, *,
                  primary_cluster_name: pulumi.Input[str]):
         """
@@ -996,13 +996,13 @@ class ClusterSecondaryConfigArgs:
 
 
 @pulumi.input_type
-class InstanceClientConnectionConfigArgs:
+calass InstanceClientConnectionConfigArrgs:
     def __init__(__self__, *,
                  require_connectors: Optional[pulumi.Input[bool]] = None,
-                 ssl_config: Optional[pulumi.Input['InstanceClientConnectionConfigSslConfigArgs']] = None):
+                 ssl_config: Optional[pulumi.Input['InstanceClientConnectionConfigSslConfigArrgs']] = None):
         """
         :param pulumi.Input[bool] require_connectors: Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
-        :param pulumi.Input['InstanceClientConnectionConfigSslConfigArgs'] ssl_config: SSL config option for this instance.
+        :param pulumi.Input['InstanceClientConnectionConfigSslConfigArrgs'] ssl_config: SSL config option for this instance.
                Structure is documented below.
         """
         if require_connectors is not None:
@@ -1024,7 +1024,7 @@ class InstanceClientConnectionConfigArgs:
 
     @property
     @pulumi.getter(name="sslConfig")
-    def ssl_config(self) -> Optional[pulumi.Input['InstanceClientConnectionConfigSslConfigArgs']]:
+    def ssl_config(self) -> Optional[pulumi.Input['InstanceClientConnectionConfigSslConfigArrgs']]:
         """
         SSL config option for this instance.
         Structure is documented below.
@@ -1032,12 +1032,12 @@ class InstanceClientConnectionConfigArgs:
         return pulumi.get(self, "ssl_config")
 
     @ssl_config.setter
-    def ssl_config(self, value: Optional[pulumi.Input['InstanceClientConnectionConfigSslConfigArgs']]):
+    def ssl_config(self, value: Optional[pulumi.Input['InstanceClientConnectionConfigSslConfigArrgs']]):
         pulumi.set(self, "ssl_config", value)
 
 
 @pulumi.input_type
-class InstanceClientConnectionConfigSslConfigArgs:
+calass InstanceClientConnectionConfigSslConfigArrgs:
     def __init__(__self__, *,
                  ssl_mode: Optional[pulumi.Input[str]] = None):
         """
@@ -1062,7 +1062,7 @@ class InstanceClientConnectionConfigSslConfigArgs:
 
 
 @pulumi.input_type
-class InstanceMachineConfigArgs:
+calass InstanceMachineConfigArrgs:
     def __init__(__self__, *,
                  cpu_count: Optional[pulumi.Input[int]] = None):
         """
@@ -1085,7 +1085,7 @@ class InstanceMachineConfigArgs:
 
 
 @pulumi.input_type
-class InstanceQueryInsightsConfigArgs:
+calass InstanceQueryInsightsConfigArrgs:
     def __init__(__self__, *,
                  query_plans_per_minute: Optional[pulumi.Input[int]] = None,
                  query_string_length: Optional[pulumi.Input[int]] = None,
@@ -1156,7 +1156,7 @@ class InstanceQueryInsightsConfigArgs:
 
 
 @pulumi.input_type
-class InstanceReadPoolConfigArgs:
+calass InstanceReadPoolConfigArrgs:
     def __init__(__self__, *,
                  node_count: Optional[pulumi.Input[int]] = None):
         """

@@ -11,17 +11,17 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['PreventionStoredInfoTypeArgs', 'PreventionStoredInfoType']
+__all__ = ['PreventionStoredInfoTypeArrgs', 'PreventionStoredInfoType']
 
 @pulumi.input_type
-class PreventionStoredInfoTypeArgs:
+calass PreventionStoredInfoTypeArrgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 dictionary: Optional[pulumi.Input['PreventionStoredInfoTypeDictionaryArgs']] = None,
+                 dictionary: Optional[pulumi.Input['PreventionStoredInfoTypeDictionaryArrgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 large_custom_dictionary: Optional[pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryArgs']] = None,
-                 regex: Optional[pulumi.Input['PreventionStoredInfoTypeRegexArgs']] = None,
+                 large_custom_dictionary: Optional[pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryArrgs']] = None,
+                 regex: Optional[pulumi.Input['PreventionStoredInfoTypeRegexArrgs']] = None,
                  stored_info_type_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PreventionStoredInfoType resource.
@@ -34,12 +34,12 @@ class PreventionStoredInfoTypeArgs:
                
                - - -
         :param pulumi.Input[str] description: A description of the info type.
-        :param pulumi.Input['PreventionStoredInfoTypeDictionaryArgs'] dictionary: Dictionary which defines the rule.
+        :param pulumi.Input['PreventionStoredInfoTypeDictionaryArrgs'] dictionary: Dictionary which defines the rule.
                Structure is documented below.
         :param pulumi.Input[str] display_name: User set display name of the info type.
-        :param pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryArgs'] large_custom_dictionary: Dictionary which defines the rule.
+        :param pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryArrgs'] large_custom_dictionary: Dictionary which defines the rule.
                Structure is documented below.
-        :param pulumi.Input['PreventionStoredInfoTypeRegexArgs'] regex: Regular expression which defines the rule.
+        :param pulumi.Input['PreventionStoredInfoTypeRegexArrgs'] regex: Regular expression which defines the rule.
                Structure is documented below.
         :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
                that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is 100
@@ -92,7 +92,7 @@ class PreventionStoredInfoTypeArgs:
 
     @property
     @pulumi.getter
-    def dictionary(self) -> Optional[pulumi.Input['PreventionStoredInfoTypeDictionaryArgs']]:
+    def dictionary(self) -> Optional[pulumi.Input['PreventionStoredInfoTypeDictionaryArrgs']]:
         """
         Dictionary which defines the rule.
         Structure is documented below.
@@ -100,7 +100,7 @@ class PreventionStoredInfoTypeArgs:
         return pulumi.get(self, "dictionary")
 
     @dictionary.setter
-    def dictionary(self, value: Optional[pulumi.Input['PreventionStoredInfoTypeDictionaryArgs']]):
+    def dictionary(self, value: Optional[pulumi.Input['PreventionStoredInfoTypeDictionaryArrgs']]):
         pulumi.set(self, "dictionary", value)
 
     @property
@@ -117,7 +117,7 @@ class PreventionStoredInfoTypeArgs:
 
     @property
     @pulumi.getter(name="largeCustomDictionary")
-    def large_custom_dictionary(self) -> Optional[pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryArgs']]:
+    def large_custom_dictionary(self) -> Optional[pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryArrgs']]:
         """
         Dictionary which defines the rule.
         Structure is documented below.
@@ -125,12 +125,12 @@ class PreventionStoredInfoTypeArgs:
         return pulumi.get(self, "large_custom_dictionary")
 
     @large_custom_dictionary.setter
-    def large_custom_dictionary(self, value: Optional[pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryArgs']]):
+    def large_custom_dictionary(self, value: Optional[pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryArrgs']]):
         pulumi.set(self, "large_custom_dictionary", value)
 
     @property
     @pulumi.getter
-    def regex(self) -> Optional[pulumi.Input['PreventionStoredInfoTypeRegexArgs']]:
+    def regex(self) -> Optional[pulumi.Input['PreventionStoredInfoTypeRegexArrgs']]:
         """
         Regular expression which defines the rule.
         Structure is documented below.
@@ -138,7 +138,7 @@ class PreventionStoredInfoTypeArgs:
         return pulumi.get(self, "regex")
 
     @regex.setter
-    def regex(self, value: Optional[pulumi.Input['PreventionStoredInfoTypeRegexArgs']]):
+    def regex(self, value: Optional[pulumi.Input['PreventionStoredInfoTypeRegexArrgs']]):
         pulumi.set(self, "regex", value)
 
     @property
@@ -157,23 +157,23 @@ class PreventionStoredInfoTypeArgs:
 
 
 @pulumi.input_type
-class _PreventionStoredInfoTypeState:
+calass _PreventionStoredInfoTypeState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
-                 dictionary: Optional[pulumi.Input['PreventionStoredInfoTypeDictionaryArgs']] = None,
+                 dictionary: Optional[pulumi.Input['PreventionStoredInfoTypeDictionaryArrgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 large_custom_dictionary: Optional[pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryArgs']] = None,
+                 large_custom_dictionary: Optional[pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 regex: Optional[pulumi.Input['PreventionStoredInfoTypeRegexArgs']] = None,
+                 regex: Optional[pulumi.Input['PreventionStoredInfoTypeRegexArrgs']] = None,
                  stored_info_type_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PreventionStoredInfoType resources.
         :param pulumi.Input[str] description: A description of the info type.
-        :param pulumi.Input['PreventionStoredInfoTypeDictionaryArgs'] dictionary: Dictionary which defines the rule.
+        :param pulumi.Input['PreventionStoredInfoTypeDictionaryArrgs'] dictionary: Dictionary which defines the rule.
                Structure is documented below.
         :param pulumi.Input[str] display_name: User set display name of the info type.
-        :param pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryArgs'] large_custom_dictionary: Dictionary which defines the rule.
+        :param pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryArrgs'] large_custom_dictionary: Dictionary which defines the rule.
                Structure is documented below.
         :param pulumi.Input[str] name: Name describing the field.
         :param pulumi.Input[str] parent: The parent of the info type in any of the following formats:
@@ -184,7 +184,7 @@ class _PreventionStoredInfoTypeState:
                
                
                - - -
-        :param pulumi.Input['PreventionStoredInfoTypeRegexArgs'] regex: Regular expression which defines the rule.
+        :param pulumi.Input['PreventionStoredInfoTypeRegexArrgs'] regex: Regular expression which defines the rule.
                Structure is documented below.
         :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
                that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is 100
@@ -221,7 +221,7 @@ class _PreventionStoredInfoTypeState:
 
     @property
     @pulumi.getter
-    def dictionary(self) -> Optional[pulumi.Input['PreventionStoredInfoTypeDictionaryArgs']]:
+    def dictionary(self) -> Optional[pulumi.Input['PreventionStoredInfoTypeDictionaryArrgs']]:
         """
         Dictionary which defines the rule.
         Structure is documented below.
@@ -229,7 +229,7 @@ class _PreventionStoredInfoTypeState:
         return pulumi.get(self, "dictionary")
 
     @dictionary.setter
-    def dictionary(self, value: Optional[pulumi.Input['PreventionStoredInfoTypeDictionaryArgs']]):
+    def dictionary(self, value: Optional[pulumi.Input['PreventionStoredInfoTypeDictionaryArrgs']]):
         pulumi.set(self, "dictionary", value)
 
     @property
@@ -246,7 +246,7 @@ class _PreventionStoredInfoTypeState:
 
     @property
     @pulumi.getter(name="largeCustomDictionary")
-    def large_custom_dictionary(self) -> Optional[pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryArgs']]:
+    def large_custom_dictionary(self) -> Optional[pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryArrgs']]:
         """
         Dictionary which defines the rule.
         Structure is documented below.
@@ -254,7 +254,7 @@ class _PreventionStoredInfoTypeState:
         return pulumi.get(self, "large_custom_dictionary")
 
     @large_custom_dictionary.setter
-    def large_custom_dictionary(self, value: Optional[pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryArgs']]):
+    def large_custom_dictionary(self, value: Optional[pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryArrgs']]):
         pulumi.set(self, "large_custom_dictionary", value)
 
     @property
@@ -290,7 +290,7 @@ class _PreventionStoredInfoTypeState:
 
     @property
     @pulumi.getter
-    def regex(self) -> Optional[pulumi.Input['PreventionStoredInfoTypeRegexArgs']]:
+    def regex(self) -> Optional[pulumi.Input['PreventionStoredInfoTypeRegexArrgs']]:
         """
         Regular expression which defines the rule.
         Structure is documented below.
@@ -298,7 +298,7 @@ class _PreventionStoredInfoTypeState:
         return pulumi.get(self, "regex")
 
     @regex.setter
-    def regex(self, value: Optional[pulumi.Input['PreventionStoredInfoTypeRegexArgs']]):
+    def regex(self, value: Optional[pulumi.Input['PreventionStoredInfoTypeRegexArrgs']]):
         pulumi.set(self, "regex", value)
 
     @property
@@ -316,17 +316,17 @@ class _PreventionStoredInfoTypeState:
         pulumi.set(self, "stored_info_type_id", value)
 
 
-class PreventionStoredInfoType(pulumi.CustomResource):
+calass PreventionStoredInfoType(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 dictionary: Optional[pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeDictionaryArgs']]] = None,
+                 dictionary: Optional[pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeDictionaryArrgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 large_custom_dictionary: Optional[pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeLargeCustomDictionaryArgs']]] = None,
+                 large_custom_dictionary: Optional[pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeLargeCustomDictionaryArrgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 regex: Optional[pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeRegexArgs']]] = None,
+                 regex: Optional[pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeRegexArrgs']]] = None,
                  stored_info_type_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -349,7 +349,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
             description="Description",
             display_name="Displayname",
             parent="projects/my-project-name",
-            regex=gcp.dataloss.PreventionStoredInfoTypeRegexArgs(
+            regex=gcp.dataloss.PreventionStoredInfoTypeRegexArrgs(
                 group_indexes=[2],
                 pattern="patient",
             ))
@@ -362,8 +362,8 @@ class PreventionStoredInfoType(pulumi.CustomResource):
 
         dictionary = gcp.dataloss.PreventionStoredInfoType("dictionary",
             description="Description",
-            dictionary=gcp.dataloss.PreventionStoredInfoTypeDictionaryArgs(
-                word_list=gcp.dataloss.PreventionStoredInfoTypeDictionaryWordListArgs(
+            dictionary=gcp.dataloss.PreventionStoredInfoTypeDictionaryArrgs(
+                word_list=gcp.dataloss.PreventionStoredInfoTypeDictionaryWordListArrgs(
                     words=[
                         "word",
                         "word2",
@@ -389,11 +389,11 @@ class PreventionStoredInfoType(pulumi.CustomResource):
             parent="projects/my-project-name",
             description="Description",
             display_name="Displayname",
-            large_custom_dictionary=gcp.dataloss.PreventionStoredInfoTypeLargeCustomDictionaryArgs(
-                cloud_storage_file_set=gcp.dataloss.PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs(
+            large_custom_dictionary=gcp.dataloss.PreventionStoredInfoTypeLargeCustomDictionaryArrgs(
+                cloud_storage_file_set=gcp.dataloss.PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArrgs(
                     url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"gs://{bucket_name}/{object_name}"),
                 ),
-                output_path=gcp.dataloss.PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs(
+                output_path=gcp.dataloss.PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArrgs(
                     path=bucket.name.apply(lambda name: f"gs://{name}/output/dictionary.txt"),
                 ),
             ))
@@ -408,7 +408,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
             description="Description",
             display_name="Displayname",
             parent="projects/my-project-name",
-            regex=gcp.dataloss.PreventionStoredInfoTypeRegexArgs(
+            regex=gcp.dataloss.PreventionStoredInfoTypeRegexArrgs(
                 group_indexes=[2],
                 pattern="patient",
             ),
@@ -438,10 +438,10 @@ class PreventionStoredInfoType(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the info type.
-        :param pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeDictionaryArgs']] dictionary: Dictionary which defines the rule.
+        :param pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeDictionaryArrgs']] dictionary: Dictionary which defines the rule.
                Structure is documented below.
         :param pulumi.Input[str] display_name: User set display name of the info type.
-        :param pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeLargeCustomDictionaryArgs']] large_custom_dictionary: Dictionary which defines the rule.
+        :param pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeLargeCustomDictionaryArrgs']] large_custom_dictionary: Dictionary which defines the rule.
                Structure is documented below.
         :param pulumi.Input[str] parent: The parent of the info type in any of the following formats:
                * `projects/{{project}}`
@@ -451,7 +451,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeRegexArgs']] regex: Regular expression which defines the rule.
+        :param pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeRegexArrgs']] regex: Regular expression which defines the rule.
                Structure is documented below.
         :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
                that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is 100
@@ -461,7 +461,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: PreventionStoredInfoTypeArgs,
+                 args: PreventionStoredInfoTypeArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Allows creation of custom info types.
@@ -483,7 +483,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
             description="Description",
             display_name="Displayname",
             parent="projects/my-project-name",
-            regex=gcp.dataloss.PreventionStoredInfoTypeRegexArgs(
+            regex=gcp.dataloss.PreventionStoredInfoTypeRegexArrgs(
                 group_indexes=[2],
                 pattern="patient",
             ))
@@ -496,8 +496,8 @@ class PreventionStoredInfoType(pulumi.CustomResource):
 
         dictionary = gcp.dataloss.PreventionStoredInfoType("dictionary",
             description="Description",
-            dictionary=gcp.dataloss.PreventionStoredInfoTypeDictionaryArgs(
-                word_list=gcp.dataloss.PreventionStoredInfoTypeDictionaryWordListArgs(
+            dictionary=gcp.dataloss.PreventionStoredInfoTypeDictionaryArrgs(
+                word_list=gcp.dataloss.PreventionStoredInfoTypeDictionaryWordListArrgs(
                     words=[
                         "word",
                         "word2",
@@ -523,11 +523,11 @@ class PreventionStoredInfoType(pulumi.CustomResource):
             parent="projects/my-project-name",
             description="Description",
             display_name="Displayname",
-            large_custom_dictionary=gcp.dataloss.PreventionStoredInfoTypeLargeCustomDictionaryArgs(
-                cloud_storage_file_set=gcp.dataloss.PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs(
+            large_custom_dictionary=gcp.dataloss.PreventionStoredInfoTypeLargeCustomDictionaryArrgs(
+                cloud_storage_file_set=gcp.dataloss.PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArrgs(
                     url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"gs://{bucket_name}/{object_name}"),
                 ),
-                output_path=gcp.dataloss.PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs(
+                output_path=gcp.dataloss.PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArrgs(
                     path=bucket.name.apply(lambda name: f"gs://{name}/output/dictionary.txt"),
                 ),
             ))
@@ -542,7 +542,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
             description="Description",
             display_name="Displayname",
             parent="projects/my-project-name",
-            regex=gcp.dataloss.PreventionStoredInfoTypeRegexArgs(
+            regex=gcp.dataloss.PreventionStoredInfoTypeRegexArrgs(
                 group_indexes=[2],
                 pattern="patient",
             ),
@@ -570,12 +570,12 @@ class PreventionStoredInfoType(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param PreventionStoredInfoTypeArgs args: The arguments to use to populate this resource's properties.
+        :param PreventionStoredInfoTypeArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(PreventionStoredInfoTypeArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(PreventionStoredInfoTypeArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -585,11 +585,11 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 dictionary: Optional[pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeDictionaryArgs']]] = None,
+                 dictionary: Optional[pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeDictionaryArrgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 large_custom_dictionary: Optional[pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeLargeCustomDictionaryArgs']]] = None,
+                 large_custom_dictionary: Optional[pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeLargeCustomDictionaryArrgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 regex: Optional[pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeRegexArgs']]] = None,
+                 regex: Optional[pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeRegexArrgs']]] = None,
                  stored_info_type_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -598,7 +598,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = PreventionStoredInfoTypeArgs.__new__(PreventionStoredInfoTypeArgs)
+            __props__ = PreventionStoredInfoTypeArrgs.__new__(PreventionStoredInfoTypeArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["dictionary"] = dictionary
@@ -621,12 +621,12 @@ class PreventionStoredInfoType(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
-            dictionary: Optional[pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeDictionaryArgs']]] = None,
+            dictionary: Optional[pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeDictionaryArrgs']]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            large_custom_dictionary: Optional[pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeLargeCustomDictionaryArgs']]] = None,
+            large_custom_dictionary: Optional[pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeLargeCustomDictionaryArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
-            regex: Optional[pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeRegexArgs']]] = None,
+            regex: Optional[pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeRegexArrgs']]] = None,
             stored_info_type_id: Optional[pulumi.Input[str]] = None) -> 'PreventionStoredInfoType':
         """
         Get an existing PreventionStoredInfoType resource's state with the given name, id, and optional extra
@@ -636,10 +636,10 @@ class PreventionStoredInfoType(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the info type.
-        :param pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeDictionaryArgs']] dictionary: Dictionary which defines the rule.
+        :param pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeDictionaryArrgs']] dictionary: Dictionary which defines the rule.
                Structure is documented below.
         :param pulumi.Input[str] display_name: User set display name of the info type.
-        :param pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeLargeCustomDictionaryArgs']] large_custom_dictionary: Dictionary which defines the rule.
+        :param pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeLargeCustomDictionaryArrgs']] large_custom_dictionary: Dictionary which defines the rule.
                Structure is documented below.
         :param pulumi.Input[str] name: Name describing the field.
         :param pulumi.Input[str] parent: The parent of the info type in any of the following formats:
@@ -650,7 +650,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeRegexArgs']] regex: Regular expression which defines the rule.
+        :param pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeRegexArrgs']] regex: Regular expression which defines the rule.
                Structure is documented below.
         :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
                that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is 100

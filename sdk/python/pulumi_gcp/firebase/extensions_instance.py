@@ -11,17 +11,17 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ExtensionsInstanceArgs', 'ExtensionsInstance']
+__all__ = ['ExtensionsInstanceArrgs', 'ExtensionsInstance']
 
 @pulumi.input_type
-class ExtensionsInstanceArgs:
+calass ExtensionsInstanceArrgs:
     def __init__(__self__, *,
-                 config: pulumi.Input['ExtensionsInstanceConfigArgs'],
+                 config: pulumi.Input['ExtensionsInstanceConfigArrgs'],
                  instance_id: pulumi.Input[str],
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ExtensionsInstance resource.
-        :param pulumi.Input['ExtensionsInstanceConfigArgs'] config: The current Config of the Extension Instance.
+        :param pulumi.Input['ExtensionsInstanceConfigArrgs'] config: The current Config of the Extension Instance.
                Structure is documented below.
         :param pulumi.Input[str] instance_id: The ID to use for the Extension Instance, which will become the final
                component of the instance's name.
@@ -35,7 +35,7 @@ class ExtensionsInstanceArgs:
 
     @property
     @pulumi.getter
-    def config(self) -> pulumi.Input['ExtensionsInstanceConfigArgs']:
+    def config(self) -> pulumi.Input['ExtensionsInstanceConfigArrgs']:
         """
         The current Config of the Extension Instance.
         Structure is documented below.
@@ -43,7 +43,7 @@ class ExtensionsInstanceArgs:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: pulumi.Input['ExtensionsInstanceConfigArgs']):
+    def config(self, value: pulumi.Input['ExtensionsInstanceConfigArrgs']):
         pulumi.set(self, "config", value)
 
     @property
@@ -74,28 +74,28 @@ class ExtensionsInstanceArgs:
 
 
 @pulumi.input_type
-class _ExtensionsInstanceState:
+calass _ExtensionsInstanceState:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input['ExtensionsInstanceConfigArgs']] = None,
+                 config: Optional[pulumi.Input['ExtensionsInstanceConfigArrgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 error_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceErrorStatusArgs']]]] = None,
+                 error_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceErrorStatusArrgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  last_operation_name: Optional[pulumi.Input[str]] = None,
                  last_operation_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 runtime_datas: Optional[pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceRuntimeDataArgs']]]] = None,
+                 runtime_datas: Optional[pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceRuntimeDataArrgs']]]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ExtensionsInstance resources.
-        :param pulumi.Input['ExtensionsInstanceConfigArgs'] config: The current Config of the Extension Instance.
+        :param pulumi.Input['ExtensionsInstanceConfigArrgs'] config: The current Config of the Extension Instance.
                Structure is documented below.
         :param pulumi.Input[str] create_time: (Output)
                The time at which the Extension Instance Config was created.
-        :param pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceErrorStatusArgs']]] error_statuses: If this Instance has `state: ERRORED`, the error messages
+        :param pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceErrorStatusArrgs']]] error_statuses: If this Instance has `state: ERRORED`, the error messages
                will be found here.
                Structure is documented below.
         :param pulumi.Input[str] etag: A weak etag that is computed by the server based on other configuration
@@ -110,7 +110,7 @@ class _ExtensionsInstanceState:
                The unique identifier for this configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceRuntimeDataArgs']]] runtime_datas: Data set by the extension instance at runtime.
+        :param pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceRuntimeDataArrgs']]] runtime_datas: Data set by the extension instance at runtime.
                Structure is documented below.
         :param pulumi.Input[str] service_account_email: The email of the service account to be used at runtime by compute resources
                created for the operation of the Extension instance.
@@ -146,7 +146,7 @@ class _ExtensionsInstanceState:
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['ExtensionsInstanceConfigArgs']]:
+    def config(self) -> Optional[pulumi.Input['ExtensionsInstanceConfigArrgs']]:
         """
         The current Config of the Extension Instance.
         Structure is documented below.
@@ -154,7 +154,7 @@ class _ExtensionsInstanceState:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['ExtensionsInstanceConfigArgs']]):
+    def config(self, value: Optional[pulumi.Input['ExtensionsInstanceConfigArrgs']]):
         pulumi.set(self, "config", value)
 
     @property
@@ -172,7 +172,7 @@ class _ExtensionsInstanceState:
 
     @property
     @pulumi.getter(name="errorStatuses")
-    def error_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceErrorStatusArgs']]]]:
+    def error_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceErrorStatusArrgs']]]]:
         """
         If this Instance has `state: ERRORED`, the error messages
         will be found here.
@@ -181,7 +181,7 @@ class _ExtensionsInstanceState:
         return pulumi.get(self, "error_statuses")
 
     @error_statuses.setter
-    def error_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceErrorStatusArgs']]]]):
+    def error_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceErrorStatusArrgs']]]]):
         pulumi.set(self, "error_statuses", value)
 
     @property
@@ -264,7 +264,7 @@ class _ExtensionsInstanceState:
 
     @property
     @pulumi.getter(name="runtimeDatas")
-    def runtime_datas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceRuntimeDataArgs']]]]:
+    def runtime_datas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceRuntimeDataArrgs']]]]:
         """
         Data set by the extension instance at runtime.
         Structure is documented below.
@@ -272,7 +272,7 @@ class _ExtensionsInstanceState:
         return pulumi.get(self, "runtime_datas")
 
     @runtime_datas.setter
-    def runtime_datas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceRuntimeDataArgs']]]]):
+    def runtime_datas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceRuntimeDataArrgs']]]]):
         pulumi.set(self, "runtime_datas", value)
 
     @property
@@ -313,12 +313,12 @@ class _ExtensionsInstanceState:
         pulumi.set(self, "update_time", value)
 
 
-class ExtensionsInstance(pulumi.CustomResource):
+calass ExtensionsInstance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['ExtensionsInstanceConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[pulumi.InputType['ExtensionsInstanceConfigArrgs']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -339,7 +339,7 @@ class ExtensionsInstance(pulumi.CustomResource):
         resize_image = gcp.firebase.ExtensionsInstance("resizeImage",
             project="my-project-name",
             instance_id="storage-resize-images",
-            config=gcp.firebase.ExtensionsInstanceConfigArgs(
+            config=gcp.firebase.ExtensionsInstanceConfigArrgs(
                 extension_ref="firebase/storage-resize-images",
                 extension_version="0.1.37",
                 params={
@@ -391,7 +391,7 @@ class ExtensionsInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ExtensionsInstanceConfigArgs']] config: The current Config of the Extension Instance.
+        :param pulumi.Input[pulumi.InputType['ExtensionsInstanceConfigArrgs']] config: The current Config of the Extension Instance.
                Structure is documented below.
         :param pulumi.Input[str] instance_id: The ID to use for the Extension Instance, which will become the final
                component of the instance's name.
@@ -402,7 +402,7 @@ class ExtensionsInstance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ExtensionsInstanceArgs,
+                 args: ExtensionsInstanceArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -421,7 +421,7 @@ class ExtensionsInstance(pulumi.CustomResource):
         resize_image = gcp.firebase.ExtensionsInstance("resizeImage",
             project="my-project-name",
             instance_id="storage-resize-images",
-            config=gcp.firebase.ExtensionsInstanceConfigArgs(
+            config=gcp.firebase.ExtensionsInstanceConfigArrgs(
                 extension_ref="firebase/storage-resize-images",
                 extension_version="0.1.37",
                 params={
@@ -472,12 +472,12 @@ class ExtensionsInstance(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ExtensionsInstanceArgs args: The arguments to use to populate this resource's properties.
+        :param ExtensionsInstanceArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ExtensionsInstanceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ExtensionsInstanceArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -486,7 +486,7 @@ class ExtensionsInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['ExtensionsInstanceConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[pulumi.InputType['ExtensionsInstanceConfigArrgs']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -496,7 +496,7 @@ class ExtensionsInstance(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ExtensionsInstanceArgs.__new__(ExtensionsInstanceArgs)
+            __props__ = ExtensionsInstanceArrgs.__new__(ExtensionsInstanceArrgs)
 
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
@@ -525,16 +525,16 @@ class ExtensionsInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: Optional[pulumi.Input[pulumi.InputType['ExtensionsInstanceConfigArgs']]] = None,
+            config: Optional[pulumi.Input[pulumi.InputType['ExtensionsInstanceConfigArrgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            error_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExtensionsInstanceErrorStatusArgs']]]]] = None,
+            error_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExtensionsInstanceErrorStatusArrgs']]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             last_operation_name: Optional[pulumi.Input[str]] = None,
             last_operation_type: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            runtime_datas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExtensionsInstanceRuntimeDataArgs']]]]] = None,
+            runtime_datas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExtensionsInstanceRuntimeDataArrgs']]]]] = None,
             service_account_email: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'ExtensionsInstance':
@@ -545,11 +545,11 @@ class ExtensionsInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ExtensionsInstanceConfigArgs']] config: The current Config of the Extension Instance.
+        :param pulumi.Input[pulumi.InputType['ExtensionsInstanceConfigArrgs']] config: The current Config of the Extension Instance.
                Structure is documented below.
         :param pulumi.Input[str] create_time: (Output)
                The time at which the Extension Instance Config was created.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExtensionsInstanceErrorStatusArgs']]]] error_statuses: If this Instance has `state: ERRORED`, the error messages
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExtensionsInstanceErrorStatusArrgs']]]] error_statuses: If this Instance has `state: ERRORED`, the error messages
                will be found here.
                Structure is documented below.
         :param pulumi.Input[str] etag: A weak etag that is computed by the server based on other configuration
@@ -564,7 +564,7 @@ class ExtensionsInstance(pulumi.CustomResource):
                The unique identifier for this configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExtensionsInstanceRuntimeDataArgs']]]] runtime_datas: Data set by the extension instance at runtime.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExtensionsInstanceRuntimeDataArrgs']]]] runtime_datas: Data set by the extension instance at runtime.
                Structure is documented below.
         :param pulumi.Input[str] service_account_email: The email of the service account to be used at runtime by compute resources
                created for the operation of the Extension instance.

@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['NetworkFirewallPolicyArgs', 'NetworkFirewallPolicy']
+__all__ = ['NetworkFirewallPolicyArrgs', 'NetworkFirewallPolicy']
 
 @pulumi.input_type
-class NetworkFirewallPolicyArgs:
+calass NetworkFirewallPolicyArrgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -76,7 +76,7 @@ class NetworkFirewallPolicyArgs:
 
 
 @pulumi.input_type
-class _NetworkFirewallPolicyState:
+calass _NetworkFirewallPolicyState:
     def __init__(__self__, *,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -235,7 +235,7 @@ class _NetworkFirewallPolicyState:
         pulumi.set(self, "self_link_with_id", value)
 
 
-class NetworkFirewallPolicy(pulumi.CustomResource):
+calass NetworkFirewallPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -296,7 +296,7 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[NetworkFirewallPolicyArgs] = None,
+                 args: Optional[NetworkFirewallPolicyArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Compute NetworkFirewallPolicy resource
@@ -337,12 +337,12 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param NetworkFirewallPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param NetworkFirewallPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(NetworkFirewallPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(NetworkFirewallPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -361,7 +361,7 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = NetworkFirewallPolicyArgs.__new__(NetworkFirewallPolicyArgs)
+            __props__ = NetworkFirewallPolicyArrgs.__new__(NetworkFirewallPolicyArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name

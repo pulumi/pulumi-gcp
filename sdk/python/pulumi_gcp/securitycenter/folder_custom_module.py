@@ -11,18 +11,18 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['FolderCustomModuleArgs', 'FolderCustomModule']
+__all__ = ['FolderCustomModuleArrgs', 'FolderCustomModule']
 
 @pulumi.input_type
-class FolderCustomModuleArgs:
+calass FolderCustomModuleArrgs:
     def __init__(__self__, *,
-                 custom_config: pulumi.Input['FolderCustomModuleCustomConfigArgs'],
+                 custom_config: pulumi.Input['FolderCustomModuleCustomConfigArrgs'],
                  display_name: pulumi.Input[str],
                  enablement_state: pulumi.Input[str],
                  folder: pulumi.Input[str]):
         """
         The set of arguments for constructing a FolderCustomModule resource.
-        :param pulumi.Input['FolderCustomModuleCustomConfigArgs'] custom_config: The user specified custom configuration for the module.
+        :param pulumi.Input['FolderCustomModuleCustomConfigArrgs'] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
         :param pulumi.Input[str] display_name: The display name of the Security Health Analytics custom module. This
                display name becomes the finding category for all findings that are
@@ -40,7 +40,7 @@ class FolderCustomModuleArgs:
 
     @property
     @pulumi.getter(name="customConfig")
-    def custom_config(self) -> pulumi.Input['FolderCustomModuleCustomConfigArgs']:
+    def custom_config(self) -> pulumi.Input['FolderCustomModuleCustomConfigArrgs']:
         """
         The user specified custom configuration for the module.
         Structure is documented below.
@@ -48,7 +48,7 @@ class FolderCustomModuleArgs:
         return pulumi.get(self, "custom_config")
 
     @custom_config.setter
-    def custom_config(self, value: pulumi.Input['FolderCustomModuleCustomConfigArgs']):
+    def custom_config(self, value: pulumi.Input['FolderCustomModuleCustomConfigArrgs']):
         pulumi.set(self, "custom_config", value)
 
     @property
@@ -94,10 +94,10 @@ class FolderCustomModuleArgs:
 
 
 @pulumi.input_type
-class _FolderCustomModuleState:
+calass _FolderCustomModuleState:
     def __init__(__self__, *,
                  ancestor_module: Optional[pulumi.Input[str]] = None,
-                 custom_config: Optional[pulumi.Input['FolderCustomModuleCustomConfigArgs']] = None,
+                 custom_config: Optional[pulumi.Input['FolderCustomModuleCustomConfigArrgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enablement_state: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
@@ -109,7 +109,7 @@ class _FolderCustomModuleState:
         :param pulumi.Input[str] ancestor_module: If empty, indicates that the custom module was created in the organization, folder,
                or project in which you are viewing the custom module. Otherwise, ancestor_module
                specifies the organization or folder from which the custom module is inherited.
-        :param pulumi.Input['FolderCustomModuleCustomConfigArgs'] custom_config: The user specified custom configuration for the module.
+        :param pulumi.Input['FolderCustomModuleCustomConfigArrgs'] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
         :param pulumi.Input[str] display_name: The display name of the Security Health Analytics custom module. This
                display name becomes the finding category for all findings that are
@@ -158,7 +158,7 @@ class _FolderCustomModuleState:
 
     @property
     @pulumi.getter(name="customConfig")
-    def custom_config(self) -> Optional[pulumi.Input['FolderCustomModuleCustomConfigArgs']]:
+    def custom_config(self) -> Optional[pulumi.Input['FolderCustomModuleCustomConfigArrgs']]:
         """
         The user specified custom configuration for the module.
         Structure is documented below.
@@ -166,7 +166,7 @@ class _FolderCustomModuleState:
         return pulumi.get(self, "custom_config")
 
     @custom_config.setter
-    def custom_config(self, value: Optional[pulumi.Input['FolderCustomModuleCustomConfigArgs']]):
+    def custom_config(self, value: Optional[pulumi.Input['FolderCustomModuleCustomConfigArrgs']]):
         pulumi.set(self, "custom_config", value)
 
     @property
@@ -249,12 +249,12 @@ class _FolderCustomModuleState:
         pulumi.set(self, "update_time", value)
 
 
-class FolderCustomModule(pulumi.CustomResource):
+calass FolderCustomModule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_config: Optional[pulumi.Input[pulumi.InputType['FolderCustomModuleCustomConfigArgs']]] = None,
+                 custom_config: Optional[pulumi.Input[pulumi.InputType['FolderCustomModuleCustomConfigArrgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enablement_state: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
@@ -286,11 +286,11 @@ class FolderCustomModule(pulumi.CustomResource):
             folder=folder.folder_id,
             display_name="basic_custom_module",
             enablement_state="ENABLED",
-            custom_config=gcp.securitycenter.FolderCustomModuleCustomConfigArgs(
-                predicate=gcp.securitycenter.FolderCustomModuleCustomConfigPredicateArgs(
+            custom_config=gcp.securitycenter.FolderCustomModuleCustomConfigArrgs(
+                predicate=gcp.securitycenter.FolderCustomModuleCustomConfigPredicateArrgs(
                     expression="resource.rotationPeriod > duration(\\"2592000s\\")",
                 ),
-                resource_selector=gcp.securitycenter.FolderCustomModuleCustomConfigResourceSelectorArgs(
+                resource_selector=gcp.securitycenter.FolderCustomModuleCustomConfigResourceSelectorArrgs(
                     resource_types=["cloudkms.googleapis.com/CryptoKey"],
                 ),
                 description="The rotation period of the identified cryptokey resource exceeds 30 days.",
@@ -311,17 +311,17 @@ class FolderCustomModule(pulumi.CustomResource):
             folder=folder.folder_id,
             display_name="full_custom_module",
             enablement_state="ENABLED",
-            custom_config=gcp.securitycenter.FolderCustomModuleCustomConfigArgs(
-                predicate=gcp.securitycenter.FolderCustomModuleCustomConfigPredicateArgs(
+            custom_config=gcp.securitycenter.FolderCustomModuleCustomConfigArrgs(
+                predicate=gcp.securitycenter.FolderCustomModuleCustomConfigPredicateArrgs(
                     expression="resource.rotationPeriod > duration(\\"2592000s\\")",
                     title="Purpose of the expression",
                     description="description of the expression",
                     location="location of the expression",
                 ),
-                custom_output=gcp.securitycenter.FolderCustomModuleCustomConfigCustomOutputArgs(
-                    properties=[gcp.securitycenter.FolderCustomModuleCustomConfigCustomOutputPropertyArgs(
+                custom_output=gcp.securitycenter.FolderCustomModuleCustomConfigCustomOutputArrgs(
+                    properties=[gcp.securitycenter.FolderCustomModuleCustomConfigCustomOutputPropertyArrgs(
                         name="duration",
-                        value_expression=gcp.securitycenter.FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs(
+                        value_expression=gcp.securitycenter.FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionArrgs(
                             expression="resource.rotationPeriod",
                             title="Purpose of the expression",
                             description="description of the expression",
@@ -329,7 +329,7 @@ class FolderCustomModule(pulumi.CustomResource):
                         ),
                     )],
                 ),
-                resource_selector=gcp.securitycenter.FolderCustomModuleCustomConfigResourceSelectorArgs(
+                resource_selector=gcp.securitycenter.FolderCustomModuleCustomConfigResourceSelectorArrgs(
                     resource_types=["cloudkms.googleapis.com/CryptoKey"],
                 ),
                 severity="LOW",
@@ -360,7 +360,7 @@ class FolderCustomModule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['FolderCustomModuleCustomConfigArgs']] custom_config: The user specified custom configuration for the module.
+        :param pulumi.Input[pulumi.InputType['FolderCustomModuleCustomConfigArrgs']] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
         :param pulumi.Input[str] display_name: The display name of the Security Health Analytics custom module. This
                display name becomes the finding category for all findings that are
@@ -375,7 +375,7 @@ class FolderCustomModule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FolderCustomModuleArgs,
+                 args: FolderCustomModuleArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents an instance of a Security Health Analytics custom module, including
@@ -404,11 +404,11 @@ class FolderCustomModule(pulumi.CustomResource):
             folder=folder.folder_id,
             display_name="basic_custom_module",
             enablement_state="ENABLED",
-            custom_config=gcp.securitycenter.FolderCustomModuleCustomConfigArgs(
-                predicate=gcp.securitycenter.FolderCustomModuleCustomConfigPredicateArgs(
+            custom_config=gcp.securitycenter.FolderCustomModuleCustomConfigArrgs(
+                predicate=gcp.securitycenter.FolderCustomModuleCustomConfigPredicateArrgs(
                     expression="resource.rotationPeriod > duration(\\"2592000s\\")",
                 ),
-                resource_selector=gcp.securitycenter.FolderCustomModuleCustomConfigResourceSelectorArgs(
+                resource_selector=gcp.securitycenter.FolderCustomModuleCustomConfigResourceSelectorArrgs(
                     resource_types=["cloudkms.googleapis.com/CryptoKey"],
                 ),
                 description="The rotation period of the identified cryptokey resource exceeds 30 days.",
@@ -429,17 +429,17 @@ class FolderCustomModule(pulumi.CustomResource):
             folder=folder.folder_id,
             display_name="full_custom_module",
             enablement_state="ENABLED",
-            custom_config=gcp.securitycenter.FolderCustomModuleCustomConfigArgs(
-                predicate=gcp.securitycenter.FolderCustomModuleCustomConfigPredicateArgs(
+            custom_config=gcp.securitycenter.FolderCustomModuleCustomConfigArrgs(
+                predicate=gcp.securitycenter.FolderCustomModuleCustomConfigPredicateArrgs(
                     expression="resource.rotationPeriod > duration(\\"2592000s\\")",
                     title="Purpose of the expression",
                     description="description of the expression",
                     location="location of the expression",
                 ),
-                custom_output=gcp.securitycenter.FolderCustomModuleCustomConfigCustomOutputArgs(
-                    properties=[gcp.securitycenter.FolderCustomModuleCustomConfigCustomOutputPropertyArgs(
+                custom_output=gcp.securitycenter.FolderCustomModuleCustomConfigCustomOutputArrgs(
+                    properties=[gcp.securitycenter.FolderCustomModuleCustomConfigCustomOutputPropertyArrgs(
                         name="duration",
-                        value_expression=gcp.securitycenter.FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs(
+                        value_expression=gcp.securitycenter.FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionArrgs(
                             expression="resource.rotationPeriod",
                             title="Purpose of the expression",
                             description="description of the expression",
@@ -447,7 +447,7 @@ class FolderCustomModule(pulumi.CustomResource):
                         ),
                     )],
                 ),
-                resource_selector=gcp.securitycenter.FolderCustomModuleCustomConfigResourceSelectorArgs(
+                resource_selector=gcp.securitycenter.FolderCustomModuleCustomConfigResourceSelectorArrgs(
                     resource_types=["cloudkms.googleapis.com/CryptoKey"],
                 ),
                 severity="LOW",
@@ -477,12 +477,12 @@ class FolderCustomModule(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param FolderCustomModuleArgs args: The arguments to use to populate this resource's properties.
+        :param FolderCustomModuleArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(FolderCustomModuleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(FolderCustomModuleArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -491,7 +491,7 @@ class FolderCustomModule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_config: Optional[pulumi.Input[pulumi.InputType['FolderCustomModuleCustomConfigArgs']]] = None,
+                 custom_config: Optional[pulumi.Input[pulumi.InputType['FolderCustomModuleCustomConfigArrgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enablement_state: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
@@ -502,7 +502,7 @@ class FolderCustomModule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = FolderCustomModuleArgs.__new__(FolderCustomModuleArgs)
+            __props__ = FolderCustomModuleArrgs.__new__(FolderCustomModuleArrgs)
 
             if custom_config is None and not opts.urn:
                 raise TypeError("Missing required property 'custom_config'")
@@ -531,7 +531,7 @@ class FolderCustomModule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             ancestor_module: Optional[pulumi.Input[str]] = None,
-            custom_config: Optional[pulumi.Input[pulumi.InputType['FolderCustomModuleCustomConfigArgs']]] = None,
+            custom_config: Optional[pulumi.Input[pulumi.InputType['FolderCustomModuleCustomConfigArrgs']]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             enablement_state: Optional[pulumi.Input[str]] = None,
             folder: Optional[pulumi.Input[str]] = None,
@@ -548,7 +548,7 @@ class FolderCustomModule(pulumi.CustomResource):
         :param pulumi.Input[str] ancestor_module: If empty, indicates that the custom module was created in the organization, folder,
                or project in which you are viewing the custom module. Otherwise, ancestor_module
                specifies the organization or folder from which the custom module is inherited.
-        :param pulumi.Input[pulumi.InputType['FolderCustomModuleCustomConfigArgs']] custom_config: The user specified custom configuration for the module.
+        :param pulumi.Input[pulumi.InputType['FolderCustomModuleCustomConfigArrgs']] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
         :param pulumi.Input[str] display_name: The display name of the Security Health Analytics custom module. This
                display name becomes the finding category for all findings that are

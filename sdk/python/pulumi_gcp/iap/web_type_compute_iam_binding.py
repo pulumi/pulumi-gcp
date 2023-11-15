@@ -11,21 +11,21 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['WebTypeComputeIamBindingArgs', 'WebTypeComputeIamBinding']
+__all__ = ['WebTypeComputeIamBindingArrgs', 'WebTypeComputeIamBinding']
 
 @pulumi.input_type
-class WebTypeComputeIamBindingArgs:
+calass WebTypeComputeIamBindingArrgs:
     def __init__(__self__, *,
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['WebTypeComputeIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['WebTypeComputeIamBindingConditionArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WebTypeComputeIamBinding resource.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `iap.WebTypeComputeIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input['WebTypeComputeIamBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['WebTypeComputeIamBindingConditionArrgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -74,7 +74,7 @@ class WebTypeComputeIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['WebTypeComputeIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['WebTypeComputeIamBindingConditionArrgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -82,7 +82,7 @@ class WebTypeComputeIamBindingArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['WebTypeComputeIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['WebTypeComputeIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -112,16 +112,16 @@ class WebTypeComputeIamBindingArgs:
 
 
 @pulumi.input_type
-class _WebTypeComputeIamBindingState:
+calass _WebTypeComputeIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['WebTypeComputeIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['WebTypeComputeIamBindingConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering WebTypeComputeIamBinding resources.
-        :param pulumi.Input['WebTypeComputeIamBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['WebTypeComputeIamBindingConditionArrgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -155,7 +155,7 @@ class _WebTypeComputeIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['WebTypeComputeIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['WebTypeComputeIamBindingConditionArrgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -163,7 +163,7 @@ class _WebTypeComputeIamBindingState:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['WebTypeComputeIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['WebTypeComputeIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -227,12 +227,12 @@ class _WebTypeComputeIamBindingState:
         pulumi.set(self, "role", value)
 
 
-class WebTypeComputeIamBinding(pulumi.CustomResource):
+calass WebTypeComputeIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['WebTypeComputeIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['WebTypeComputeIamBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -260,7 +260,7 @@ class WebTypeComputeIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
         )])
@@ -275,10 +275,10 @@ class WebTypeComputeIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -310,7 +310,7 @@ class WebTypeComputeIamBinding(pulumi.CustomResource):
             project=google_project_service["project_service"]["project"],
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.iap.WebTypeComputeIamBindingConditionArgs(
+            condition=gcp.iap.WebTypeComputeIamBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -338,7 +338,7 @@ class WebTypeComputeIamBinding(pulumi.CustomResource):
             project=google_project_service["project_service"]["project"],
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com",
-            condition=gcp.iap.WebTypeComputeIamMemberConditionArgs(
+            condition=gcp.iap.WebTypeComputeIamMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -371,7 +371,7 @@ class WebTypeComputeIamBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['WebTypeComputeIamBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['WebTypeComputeIamBindingConditionArrgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -395,7 +395,7 @@ class WebTypeComputeIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: WebTypeComputeIamBindingArgs,
+                 args: WebTypeComputeIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Identity-Aware Proxy WebTypeCompute. Each of these resources serves a different use case:
@@ -420,7 +420,7 @@ class WebTypeComputeIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
         )])
@@ -435,10 +435,10 @@ class WebTypeComputeIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -470,7 +470,7 @@ class WebTypeComputeIamBinding(pulumi.CustomResource):
             project=google_project_service["project_service"]["project"],
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.iap.WebTypeComputeIamBindingConditionArgs(
+            condition=gcp.iap.WebTypeComputeIamBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -498,7 +498,7 @@ class WebTypeComputeIamBinding(pulumi.CustomResource):
             project=google_project_service["project_service"]["project"],
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com",
-            condition=gcp.iap.WebTypeComputeIamMemberConditionArgs(
+            condition=gcp.iap.WebTypeComputeIamMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -530,12 +530,12 @@ class WebTypeComputeIamBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param WebTypeComputeIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param WebTypeComputeIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(WebTypeComputeIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(WebTypeComputeIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -544,7 +544,7 @@ class WebTypeComputeIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['WebTypeComputeIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['WebTypeComputeIamBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -555,7 +555,7 @@ class WebTypeComputeIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = WebTypeComputeIamBindingArgs.__new__(WebTypeComputeIamBindingArgs)
+            __props__ = WebTypeComputeIamBindingArrgs.__new__(WebTypeComputeIamBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
@@ -576,7 +576,7 @@ class WebTypeComputeIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['WebTypeComputeIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['WebTypeComputeIamBindingConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -588,7 +588,7 @@ class WebTypeComputeIamBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['WebTypeComputeIamBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['WebTypeComputeIamBindingConditionArrgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.

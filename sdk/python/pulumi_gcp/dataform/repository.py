@@ -11,20 +11,20 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['RepositoryArgs', 'Repository']
+__all__ = ['RepositoryArrgs', 'Repository']
 
 @pulumi.input_type
-class RepositoryArgs:
+calass RepositoryArrgs:
     def __init__(__self__, *,
-                 git_remote_settings: Optional[pulumi.Input['RepositoryGitRemoteSettingsArgs']] = None,
+                 git_remote_settings: Optional[pulumi.Input['RepositoryGitRemoteSettingsArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 workspace_compilation_overrides: Optional[pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs']] = None):
+                 workspace_compilation_overrides: Optional[pulumi.Input['RepositoryWorkspaceCompilationOverridesArrgs']] = None):
         """
         The set of arguments for constructing a Repository resource.
-        :param pulumi.Input['RepositoryGitRemoteSettingsArgs'] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
+        :param pulumi.Input['RepositoryGitRemoteSettingsArrgs'] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
                Structure is documented below.
         :param pulumi.Input[str] name: The repository's name.
                
@@ -34,7 +34,7 @@ class RepositoryArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region
         :param pulumi.Input[str] service_account: The service account to run workflow invocations under.
-        :param pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs'] workspace_compilation_overrides: If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+        :param pulumi.Input['RepositoryWorkspaceCompilationOverridesArrgs'] workspace_compilation_overrides: If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
                Structure is documented below.
         """
         if git_remote_settings is not None:
@@ -52,7 +52,7 @@ class RepositoryArgs:
 
     @property
     @pulumi.getter(name="gitRemoteSettings")
-    def git_remote_settings(self) -> Optional[pulumi.Input['RepositoryGitRemoteSettingsArgs']]:
+    def git_remote_settings(self) -> Optional[pulumi.Input['RepositoryGitRemoteSettingsArrgs']]:
         """
         Optional. If set, configures this repository to be linked to a Git remote.
         Structure is documented below.
@@ -60,7 +60,7 @@ class RepositoryArgs:
         return pulumi.get(self, "git_remote_settings")
 
     @git_remote_settings.setter
-    def git_remote_settings(self, value: Optional[pulumi.Input['RepositoryGitRemoteSettingsArgs']]):
+    def git_remote_settings(self, value: Optional[pulumi.Input['RepositoryGitRemoteSettingsArrgs']]):
         pulumi.set(self, "git_remote_settings", value)
 
     @property
@@ -117,7 +117,7 @@ class RepositoryArgs:
 
     @property
     @pulumi.getter(name="workspaceCompilationOverrides")
-    def workspace_compilation_overrides(self) -> Optional[pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs']]:
+    def workspace_compilation_overrides(self) -> Optional[pulumi.Input['RepositoryWorkspaceCompilationOverridesArrgs']]:
         """
         If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
         Structure is documented below.
@@ -125,22 +125,22 @@ class RepositoryArgs:
         return pulumi.get(self, "workspace_compilation_overrides")
 
     @workspace_compilation_overrides.setter
-    def workspace_compilation_overrides(self, value: Optional[pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs']]):
+    def workspace_compilation_overrides(self, value: Optional[pulumi.Input['RepositoryWorkspaceCompilationOverridesArrgs']]):
         pulumi.set(self, "workspace_compilation_overrides", value)
 
 
 @pulumi.input_type
-class _RepositoryState:
+calass _RepositoryState:
     def __init__(__self__, *,
-                 git_remote_settings: Optional[pulumi.Input['RepositoryGitRemoteSettingsArgs']] = None,
+                 git_remote_settings: Optional[pulumi.Input['RepositoryGitRemoteSettingsArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 workspace_compilation_overrides: Optional[pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs']] = None):
+                 workspace_compilation_overrides: Optional[pulumi.Input['RepositoryWorkspaceCompilationOverridesArrgs']] = None):
         """
         Input properties used for looking up and filtering Repository resources.
-        :param pulumi.Input['RepositoryGitRemoteSettingsArgs'] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
+        :param pulumi.Input['RepositoryGitRemoteSettingsArrgs'] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
                Structure is documented below.
         :param pulumi.Input[str] name: The repository's name.
                
@@ -150,7 +150,7 @@ class _RepositoryState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region
         :param pulumi.Input[str] service_account: The service account to run workflow invocations under.
-        :param pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs'] workspace_compilation_overrides: If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+        :param pulumi.Input['RepositoryWorkspaceCompilationOverridesArrgs'] workspace_compilation_overrides: If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
                Structure is documented below.
         """
         if git_remote_settings is not None:
@@ -168,7 +168,7 @@ class _RepositoryState:
 
     @property
     @pulumi.getter(name="gitRemoteSettings")
-    def git_remote_settings(self) -> Optional[pulumi.Input['RepositoryGitRemoteSettingsArgs']]:
+    def git_remote_settings(self) -> Optional[pulumi.Input['RepositoryGitRemoteSettingsArrgs']]:
         """
         Optional. If set, configures this repository to be linked to a Git remote.
         Structure is documented below.
@@ -176,7 +176,7 @@ class _RepositoryState:
         return pulumi.get(self, "git_remote_settings")
 
     @git_remote_settings.setter
-    def git_remote_settings(self, value: Optional[pulumi.Input['RepositoryGitRemoteSettingsArgs']]):
+    def git_remote_settings(self, value: Optional[pulumi.Input['RepositoryGitRemoteSettingsArrgs']]):
         pulumi.set(self, "git_remote_settings", value)
 
     @property
@@ -233,7 +233,7 @@ class _RepositoryState:
 
     @property
     @pulumi.getter(name="workspaceCompilationOverrides")
-    def workspace_compilation_overrides(self) -> Optional[pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs']]:
+    def workspace_compilation_overrides(self) -> Optional[pulumi.Input['RepositoryWorkspaceCompilationOverridesArrgs']]:
         """
         If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
         Structure is documented below.
@@ -241,21 +241,21 @@ class _RepositoryState:
         return pulumi.get(self, "workspace_compilation_overrides")
 
     @workspace_compilation_overrides.setter
-    def workspace_compilation_overrides(self, value: Optional[pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs']]):
+    def workspace_compilation_overrides(self, value: Optional[pulumi.Input['RepositoryWorkspaceCompilationOverridesArrgs']]):
         pulumi.set(self, "workspace_compilation_overrides", value)
 
 
-class Repository(pulumi.CustomResource):
+calass Repository(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 git_remote_settings: Optional[pulumi.Input[pulumi.InputType['RepositoryGitRemoteSettingsArgs']]] = None,
+                 git_remote_settings: Optional[pulumi.Input[pulumi.InputType['RepositoryGitRemoteSettingsArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 workspace_compilation_overrides: Optional[pulumi.Input[pulumi.InputType['RepositoryWorkspaceCompilationOverridesArgs']]] = None,
+                 workspace_compilation_overrides: Optional[pulumi.Input[pulumi.InputType['RepositoryWorkspaceCompilationOverridesArrgs']]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -268,8 +268,8 @@ class Repository(pulumi.CustomResource):
         git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArrgs(),
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         secret_version = gcp.secretmanager.SecretVersion("secretVersion",
@@ -277,12 +277,12 @@ class Repository(pulumi.CustomResource):
             secret_data="secret-data",
             opts=pulumi.ResourceOptions(provider=google_beta))
         dataform_respository = gcp.dataform.Repository("dataformRespository",
-            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
+            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArrgs(
                 url=git_repository.url,
                 default_branch="main",
                 authentication_token_secret_version=secret_version.id,
             ),
-            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArgs(
+            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArrgs(
                 default_database="database",
                 schema_suffix="_suffix",
                 table_prefix="prefix_",
@@ -298,8 +298,8 @@ class Repository(pulumi.CustomResource):
         git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArrgs(),
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         secret_version = gcp.secretmanager.SecretVersion("secretVersion",
@@ -307,15 +307,15 @@ class Repository(pulumi.CustomResource):
             secret_data="secret-data",
             opts=pulumi.ResourceOptions(provider=google_beta))
         dataform_respository = gcp.dataform.Repository("dataformRespository",
-            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
+            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArrgs(
                 url=git_repository.url,
                 default_branch="main",
-                ssh_authentication_config=gcp.dataform.RepositoryGitRemoteSettingsSshAuthenticationConfigArgs(
+                ssh_authentication_config=gcp.dataform.RepositoryGitRemoteSettingsSshAuthenticationConfigArrgs(
                     user_private_key_secret_version=secret_version.id,
                     host_public_key="ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU",
                 ),
             ),
-            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArgs(
+            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArrgs(
                 default_database="database",
                 schema_suffix="_suffix",
                 table_prefix="prefix_",
@@ -354,7 +354,7 @@ class Repository(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RepositoryGitRemoteSettingsArgs']] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
+        :param pulumi.Input[pulumi.InputType['RepositoryGitRemoteSettingsArrgs']] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
                Structure is documented below.
         :param pulumi.Input[str] name: The repository's name.
                
@@ -364,14 +364,14 @@ class Repository(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region
         :param pulumi.Input[str] service_account: The service account to run workflow invocations under.
-        :param pulumi.Input[pulumi.InputType['RepositoryWorkspaceCompilationOverridesArgs']] workspace_compilation_overrides: If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+        :param pulumi.Input[pulumi.InputType['RepositoryWorkspaceCompilationOverridesArrgs']] workspace_compilation_overrides: If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[RepositoryArgs] = None,
+                 args: Optional[RepositoryArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -384,8 +384,8 @@ class Repository(pulumi.CustomResource):
         git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArrgs(),
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         secret_version = gcp.secretmanager.SecretVersion("secretVersion",
@@ -393,12 +393,12 @@ class Repository(pulumi.CustomResource):
             secret_data="secret-data",
             opts=pulumi.ResourceOptions(provider=google_beta))
         dataform_respository = gcp.dataform.Repository("dataformRespository",
-            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
+            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArrgs(
                 url=git_repository.url,
                 default_branch="main",
                 authentication_token_secret_version=secret_version.id,
             ),
-            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArgs(
+            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArrgs(
                 default_database="database",
                 schema_suffix="_suffix",
                 table_prefix="prefix_",
@@ -414,8 +414,8 @@ class Repository(pulumi.CustomResource):
         git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArrgs(),
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         secret_version = gcp.secretmanager.SecretVersion("secretVersion",
@@ -423,15 +423,15 @@ class Repository(pulumi.CustomResource):
             secret_data="secret-data",
             opts=pulumi.ResourceOptions(provider=google_beta))
         dataform_respository = gcp.dataform.Repository("dataformRespository",
-            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
+            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArrgs(
                 url=git_repository.url,
                 default_branch="main",
-                ssh_authentication_config=gcp.dataform.RepositoryGitRemoteSettingsSshAuthenticationConfigArgs(
+                ssh_authentication_config=gcp.dataform.RepositoryGitRemoteSettingsSshAuthenticationConfigArrgs(
                     user_private_key_secret_version=secret_version.id,
                     host_public_key="ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU",
                 ),
             ),
-            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArgs(
+            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArrgs(
                 default_database="database",
                 schema_suffix="_suffix",
                 table_prefix="prefix_",
@@ -469,12 +469,12 @@ class Repository(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param RepositoryArgs args: The arguments to use to populate this resource's properties.
+        :param RepositoryArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RepositoryArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(RepositoryArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -483,12 +483,12 @@ class Repository(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 git_remote_settings: Optional[pulumi.Input[pulumi.InputType['RepositoryGitRemoteSettingsArgs']]] = None,
+                 git_remote_settings: Optional[pulumi.Input[pulumi.InputType['RepositoryGitRemoteSettingsArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 workspace_compilation_overrides: Optional[pulumi.Input[pulumi.InputType['RepositoryWorkspaceCompilationOverridesArgs']]] = None,
+                 workspace_compilation_overrides: Optional[pulumi.Input[pulumi.InputType['RepositoryWorkspaceCompilationOverridesArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -496,7 +496,7 @@ class Repository(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RepositoryArgs.__new__(RepositoryArgs)
+            __props__ = RepositoryArrgs.__new__(RepositoryArrgs)
 
             __props__.__dict__["git_remote_settings"] = git_remote_settings
             __props__.__dict__["name"] = name
@@ -514,12 +514,12 @@ class Repository(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            git_remote_settings: Optional[pulumi.Input[pulumi.InputType['RepositoryGitRemoteSettingsArgs']]] = None,
+            git_remote_settings: Optional[pulumi.Input[pulumi.InputType['RepositoryGitRemoteSettingsArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
-            workspace_compilation_overrides: Optional[pulumi.Input[pulumi.InputType['RepositoryWorkspaceCompilationOverridesArgs']]] = None) -> 'Repository':
+            workspace_compilation_overrides: Optional[pulumi.Input[pulumi.InputType['RepositoryWorkspaceCompilationOverridesArrgs']]] = None) -> 'Repository':
         """
         Get an existing Repository resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -527,7 +527,7 @@ class Repository(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RepositoryGitRemoteSettingsArgs']] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
+        :param pulumi.Input[pulumi.InputType['RepositoryGitRemoteSettingsArrgs']] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
                Structure is documented below.
         :param pulumi.Input[str] name: The repository's name.
                
@@ -537,7 +537,7 @@ class Repository(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region
         :param pulumi.Input[str] service_account: The service account to run workflow invocations under.
-        :param pulumi.Input[pulumi.InputType['RepositoryWorkspaceCompilationOverridesArgs']] workspace_compilation_overrides: If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+        :param pulumi.Input[pulumi.InputType['RepositoryWorkspaceCompilationOverridesArrgs']] workspace_compilation_overrides: If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

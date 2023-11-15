@@ -10,26 +10,26 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'CertificateIssuanceConfigCertificateAuthorityConfigArgs',
-    'CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs',
-    'CertificateManagedArgs',
-    'CertificateManagedAuthorizationAttemptInfoArgs',
-    'CertificateManagedProvisioningIssueArgs',
-    'CertificateMapGclbTargetArgs',
-    'CertificateMapGclbTargetIpConfigArgs',
-    'CertificateSelfManagedArgs',
-    'DnsAuthorizationDnsResourceRecordArgs',
-    'TrustConfigTrustStoreArgs',
-    'TrustConfigTrustStoreIntermediateCaArgs',
-    'TrustConfigTrustStoreTrustAnchorArgs',
+    'CertificateIssuanceConfigCertificateAuthorityConfigArrgs',
+    'CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArrgs',
+    'CertificateManagedArrgs',
+    'CertificateManagedAuthorizationAttemptInfoArrgs',
+    'CertificateManagedProvisioningIssueArrgs',
+    'CertificateMapGclbTargetArrgs',
+    'CertificateMapGclbTargetIpConfigArrgs',
+    'CertificateSelfManagedArrgs',
+    'DnsAuthorizationDnsResourceRecordArrgs',
+    'TrustConfigTrustStoreArrgs',
+    'TrustConfigTrustStoreIntermediateCaArrgs',
+    'TrustConfigTrustStoreTrustAnchorArrgs',
 ]
 
 @pulumi.input_type
-class CertificateIssuanceConfigCertificateAuthorityConfigArgs:
+calass CertificateIssuanceConfigCertificateAuthorityConfigArrgs:
     def __init__(__self__, *,
-                 certificate_authority_service_config: Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs']] = None):
+                 certificate_authority_service_config: Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArrgs']] = None):
         """
-        :param pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs'] certificate_authority_service_config: Defines a CertificateAuthorityServiceConfig.
+        :param pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArrgs'] certificate_authority_service_config: Defines a CertificateAuthorityServiceConfig.
                Structure is documented below.
         """
         if certificate_authority_service_config is not None:
@@ -37,7 +37,7 @@ class CertificateIssuanceConfigCertificateAuthorityConfigArgs:
 
     @property
     @pulumi.getter(name="certificateAuthorityServiceConfig")
-    def certificate_authority_service_config(self) -> Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs']]:
+    def certificate_authority_service_config(self) -> Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArrgs']]:
         """
         Defines a CertificateAuthorityServiceConfig.
         Structure is documented below.
@@ -45,12 +45,12 @@ class CertificateIssuanceConfigCertificateAuthorityConfigArgs:
         return pulumi.get(self, "certificate_authority_service_config")
 
     @certificate_authority_service_config.setter
-    def certificate_authority_service_config(self, value: Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs']]):
+    def certificate_authority_service_config(self, value: Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArrgs']]):
         pulumi.set(self, "certificate_authority_service_config", value)
 
 
 @pulumi.input_type
-class CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs:
+calass CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArrgs:
     def __init__(__self__, *,
                  ca_pool: pulumi.Input[str]):
         """
@@ -80,16 +80,16 @@ class CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthoritySer
 
 
 @pulumi.input_type
-class CertificateManagedArgs:
+calass CertificateManagedArrgs:
     def __init__(__self__, *,
-                 authorization_attempt_infos: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedAuthorizationAttemptInfoArgs']]]] = None,
+                 authorization_attempt_infos: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedAuthorizationAttemptInfoArrgs']]]] = None,
                  dns_authorizations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  issuance_config: Optional[pulumi.Input[str]] = None,
-                 provisioning_issues: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArgs']]]] = None,
+                 provisioning_issues: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArrgs']]]] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateManagedAuthorizationAttemptInfoArgs']]] authorization_attempt_infos: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateManagedAuthorizationAttemptInfoArrgs']]] authorization_attempt_infos: (Output)
                Detailed state of the latest authorization attempt for each domain
                specified for this Managed Certificate.
                Structure is documented below.
@@ -102,7 +102,7 @@ class CertificateManagedArgs:
         :param pulumi.Input[str] issuance_config: The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
                If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
                Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArgs']]] provisioning_issues: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArrgs']]] provisioning_issues: (Output)
                Information about issues with provisioning this Managed Certificate.
                Structure is documented below.
         :param pulumi.Input[str] state: (Output)
@@ -123,7 +123,7 @@ class CertificateManagedArgs:
 
     @property
     @pulumi.getter(name="authorizationAttemptInfos")
-    def authorization_attempt_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedAuthorizationAttemptInfoArgs']]]]:
+    def authorization_attempt_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedAuthorizationAttemptInfoArrgs']]]]:
         """
         (Output)
         Detailed state of the latest authorization attempt for each domain
@@ -136,7 +136,7 @@ class CertificateManagedArgs:
         return pulumi.get(self, "authorization_attempt_infos")
 
     @authorization_attempt_infos.setter
-    def authorization_attempt_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedAuthorizationAttemptInfoArgs']]]]):
+    def authorization_attempt_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedAuthorizationAttemptInfoArrgs']]]]):
         pulumi.set(self, "authorization_attempt_infos", value)
 
     @property
@@ -180,7 +180,7 @@ class CertificateManagedArgs:
 
     @property
     @pulumi.getter(name="provisioningIssues")
-    def provisioning_issues(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArgs']]]]:
+    def provisioning_issues(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArrgs']]]]:
         """
         (Output)
         Information about issues with provisioning this Managed Certificate.
@@ -189,7 +189,7 @@ class CertificateManagedArgs:
         return pulumi.get(self, "provisioning_issues")
 
     @provisioning_issues.setter
-    def provisioning_issues(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArgs']]]]):
+    def provisioning_issues(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArrgs']]]]):
         pulumi.set(self, "provisioning_issues", value)
 
     @property
@@ -207,7 +207,7 @@ class CertificateManagedArgs:
 
 
 @pulumi.input_type
-class CertificateManagedAuthorizationAttemptInfoArgs:
+calass CertificateManagedAuthorizationAttemptInfoArrgs:
     def __init__(__self__, *,
                  details: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
@@ -290,7 +290,7 @@ class CertificateManagedAuthorizationAttemptInfoArgs:
 
 
 @pulumi.input_type
-class CertificateManagedProvisioningIssueArgs:
+calass CertificateManagedProvisioningIssueArrgs:
     def __init__(__self__, *,
                  details: Optional[pulumi.Input[str]] = None,
                  reason: Optional[pulumi.Input[str]] = None):
@@ -337,13 +337,13 @@ class CertificateManagedProvisioningIssueArgs:
 
 
 @pulumi.input_type
-class CertificateMapGclbTargetArgs:
+calass CertificateMapGclbTargetArrgs:
     def __init__(__self__, *,
-                 ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetIpConfigArgs']]]] = None,
+                 ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetIpConfigArrgs']]]] = None,
                  target_https_proxy: Optional[pulumi.Input[str]] = None,
                  target_ssl_proxy: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetIpConfigArgs']]] ip_configs: An IP configuration where this Certificate Map is serving
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetIpConfigArrgs']]] ip_configs: An IP configuration where this Certificate Map is serving
                Structure is documented below.
         :param pulumi.Input[str] target_https_proxy: Proxy name must be in the format projects/*/locations/*/targetHttpsProxies/*.
                This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
@@ -361,7 +361,7 @@ class CertificateMapGclbTargetArgs:
 
     @property
     @pulumi.getter(name="ipConfigs")
-    def ip_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetIpConfigArgs']]]]:
+    def ip_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetIpConfigArrgs']]]]:
         """
         An IP configuration where this Certificate Map is serving
         Structure is documented below.
@@ -369,7 +369,7 @@ class CertificateMapGclbTargetArgs:
         return pulumi.get(self, "ip_configs")
 
     @ip_configs.setter
-    def ip_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetIpConfigArgs']]]]):
+    def ip_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetIpConfigArrgs']]]]):
         pulumi.set(self, "ip_configs", value)
 
     @property
@@ -402,7 +402,7 @@ class CertificateMapGclbTargetArgs:
 
 
 @pulumi.input_type
-class CertificateMapGclbTargetIpConfigArgs:
+calass CertificateMapGclbTargetIpConfigArrgs:
     def __init__(__self__, *,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
@@ -441,7 +441,7 @@ class CertificateMapGclbTargetIpConfigArgs:
 
 
 @pulumi.input_type
-class CertificateSelfManagedArgs:
+calass CertificateSelfManagedArrgs:
     def __init__(__self__, *,
                  certificate_pem: Optional[pulumi.Input[str]] = None,
                  pem_certificate: Optional[pulumi.Input[str]] = None,
@@ -548,7 +548,7 @@ class CertificateSelfManagedArgs:
 
 
 @pulumi.input_type
-class DnsAuthorizationDnsResourceRecordArgs:
+calass DnsAuthorizationDnsResourceRecordArrgs:
     def __init__(__self__, *,
                  data: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -617,15 +617,15 @@ class DnsAuthorizationDnsResourceRecordArgs:
 
 
 @pulumi.input_type
-class TrustConfigTrustStoreArgs:
+calass TrustConfigTrustStoreArrgs:
     def __init__(__self__, *,
-                 intermediate_cas: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreIntermediateCaArgs']]]] = None,
-                 trust_anchors: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreTrustAnchorArgs']]]] = None):
+                 intermediate_cas: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreIntermediateCaArrgs']]]] = None,
+                 trust_anchors: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreTrustAnchorArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreIntermediateCaArgs']]] intermediate_cas: Set of intermediate CA certificates used for the path building phase of chain validation.
+        :param pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreIntermediateCaArrgs']]] intermediate_cas: Set of intermediate CA certificates used for the path building phase of chain validation.
                The field is currently not supported if trust config is used for the workload certificate feature.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreTrustAnchorArgs']]] trust_anchors: List of Trust Anchors to be used while performing validation against a given TrustStore.
+        :param pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreTrustAnchorArrgs']]] trust_anchors: List of Trust Anchors to be used while performing validation against a given TrustStore.
                Structure is documented below.
         """
         if intermediate_cas is not None:
@@ -635,7 +635,7 @@ class TrustConfigTrustStoreArgs:
 
     @property
     @pulumi.getter(name="intermediateCas")
-    def intermediate_cas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreIntermediateCaArgs']]]]:
+    def intermediate_cas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreIntermediateCaArrgs']]]]:
         """
         Set of intermediate CA certificates used for the path building phase of chain validation.
         The field is currently not supported if trust config is used for the workload certificate feature.
@@ -644,12 +644,12 @@ class TrustConfigTrustStoreArgs:
         return pulumi.get(self, "intermediate_cas")
 
     @intermediate_cas.setter
-    def intermediate_cas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreIntermediateCaArgs']]]]):
+    def intermediate_cas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreIntermediateCaArrgs']]]]):
         pulumi.set(self, "intermediate_cas", value)
 
     @property
     @pulumi.getter(name="trustAnchors")
-    def trust_anchors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreTrustAnchorArgs']]]]:
+    def trust_anchors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreTrustAnchorArrgs']]]]:
         """
         List of Trust Anchors to be used while performing validation against a given TrustStore.
         Structure is documented below.
@@ -657,12 +657,12 @@ class TrustConfigTrustStoreArgs:
         return pulumi.get(self, "trust_anchors")
 
     @trust_anchors.setter
-    def trust_anchors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreTrustAnchorArgs']]]]):
+    def trust_anchors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreTrustAnchorArrgs']]]]):
         pulumi.set(self, "trust_anchors", value)
 
 
 @pulumi.input_type
-class TrustConfigTrustStoreIntermediateCaArgs:
+calass TrustConfigTrustStoreIntermediateCaArrgs:
     def __init__(__self__, *,
                  pem_certificate: Optional[pulumi.Input[str]] = None):
         """
@@ -689,7 +689,7 @@ class TrustConfigTrustStoreIntermediateCaArgs:
 
 
 @pulumi.input_type
-class TrustConfigTrustStoreTrustAnchorArgs:
+calass TrustConfigTrustStoreTrustAnchorArrgs:
     def __init__(__self__, *,
                  pem_certificate: Optional[pulumi.Input[str]] = None):
         """

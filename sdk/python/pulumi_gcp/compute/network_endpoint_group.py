@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['NetworkEndpointGroupArgs', 'NetworkEndpointGroup']
+__all__ = ['NetworkEndpointGroupArrgs', 'NetworkEndpointGroup']
 
 @pulumi.input_type
-class NetworkEndpointGroupArgs:
+calass NetworkEndpointGroupArrgs:
     def __init__(__self__, *,
                  network: pulumi.Input[str],
                  default_port: Optional[pulumi.Input[int]] = None,
@@ -191,7 +191,7 @@ class NetworkEndpointGroupArgs:
 
 
 @pulumi.input_type
-class _NetworkEndpointGroupState:
+calass _NetworkEndpointGroupState:
     def __init__(__self__, *,
                  default_port: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -402,7 +402,7 @@ class _NetworkEndpointGroupState:
         pulumi.set(self, "zone", value)
 
 
-class NetworkEndpointGroup(pulumi.CustomResource):
+calass NetworkEndpointGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -539,7 +539,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: NetworkEndpointGroupArgs,
+                 args: NetworkEndpointGroupArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Network endpoint groups (NEGs) are zonal resources that represent
@@ -628,12 +628,12 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param NetworkEndpointGroupArgs args: The arguments to use to populate this resource's properties.
+        :param NetworkEndpointGroupArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(NetworkEndpointGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(NetworkEndpointGroupArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -657,7 +657,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = NetworkEndpointGroupArgs.__new__(NetworkEndpointGroupArgs)
+            __props__ = NetworkEndpointGroupArrgs.__new__(NetworkEndpointGroupArrgs)
 
             __props__.__dict__["default_port"] = default_port
             __props__.__dict__["description"] = description

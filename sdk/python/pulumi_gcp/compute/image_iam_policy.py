@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['ImageIamPolicyArgs', 'ImageIamPolicy']
+__all__ = ['ImageIamPolicyArrgs', 'ImageIamPolicy']
 
 @pulumi.input_type
-class ImageIamPolicyArgs:
+calass ImageIamPolicyArrgs:
     def __init__(__self__, *,
                  image: pulumi.Input[str],
                  policy_data: pulumi.Input[str],
@@ -94,7 +94,7 @@ class ImageIamPolicyArgs:
 
 
 @pulumi.input_type
-class _ImageIamPolicyState:
+calass _ImageIamPolicyState:
     def __init__(__self__, *,
                  etag: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
@@ -193,7 +193,7 @@ class _ImageIamPolicyState:
         pulumi.set(self, "project", value)
 
 
-class ImageIamPolicy(pulumi.CustomResource):
+calass ImageIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -225,7 +225,7 @@ class ImageIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/compute.imageUser",
             members=["user:jane@example.com"],
         )])
@@ -241,10 +241,10 @@ class ImageIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/compute.imageUser",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -279,7 +279,7 @@ class ImageIamPolicy(pulumi.CustomResource):
             image=google_compute_image["example"]["name"],
             role="roles/compute.imageUser",
             members=["user:jane@example.com"],
-            condition=gcp.compute.ImageIamBindingConditionArgs(
+            condition=gcp.compute.ImageIamBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -309,7 +309,7 @@ class ImageIamPolicy(pulumi.CustomResource):
             image=google_compute_image["example"]["name"],
             role="roles/compute.imageUser",
             member="user:jane@example.com",
-            condition=gcp.compute.ImageIamMemberConditionArgs(
+            condition=gcp.compute.ImageIamMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -364,7 +364,7 @@ class ImageIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ImageIamPolicyArgs,
+                 args: ImageIamPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Compute Engine Image. Each of these resources serves a different use case:
@@ -389,7 +389,7 @@ class ImageIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/compute.imageUser",
             members=["user:jane@example.com"],
         )])
@@ -405,10 +405,10 @@ class ImageIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/compute.imageUser",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -443,7 +443,7 @@ class ImageIamPolicy(pulumi.CustomResource):
             image=google_compute_image["example"]["name"],
             role="roles/compute.imageUser",
             members=["user:jane@example.com"],
-            condition=gcp.compute.ImageIamBindingConditionArgs(
+            condition=gcp.compute.ImageIamBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -473,7 +473,7 @@ class ImageIamPolicy(pulumi.CustomResource):
             image=google_compute_image["example"]["name"],
             role="roles/compute.imageUser",
             member="user:jane@example.com",
-            condition=gcp.compute.ImageIamMemberConditionArgs(
+            condition=gcp.compute.ImageIamMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -505,12 +505,12 @@ class ImageIamPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param ImageIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param ImageIamPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ImageIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ImageIamPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -529,7 +529,7 @@ class ImageIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ImageIamPolicyArgs.__new__(ImageIamPolicyArgs)
+            __props__ = ImageIamPolicyArrgs.__new__(ImageIamPolicyArrgs)
 
             if image is None and not opts.urn:
                 raise TypeError("Missing required property 'image'")

@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['MembershipRbacRoleBindingArgs', 'MembershipRbacRoleBinding']
+__all__ = ['MembershipRbacRoleBindingArrgs', 'MembershipRbacRoleBinding']
 
 @pulumi.input_type
-class MembershipRbacRoleBindingArgs:
+calass MembershipRbacRoleBindingArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  membership_id: pulumi.Input[str],
                  membership_rbac_role_binding_id: pulumi.Input[str],
-                 role: pulumi.Input['MembershipRbacRoleBindingRoleArgs'],
+                 role: pulumi.Input['MembershipRbacRoleBindingRoleArrgs'],
                  user: pulumi.Input[str],
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -27,7 +27,7 @@ class MembershipRbacRoleBindingArgs:
         :param pulumi.Input[str] location: Location of the Membership
         :param pulumi.Input[str] membership_id: Id of the membership
         :param pulumi.Input[str] membership_rbac_role_binding_id: The client-provided identifier of the RBAC Role Binding.
-        :param pulumi.Input['MembershipRbacRoleBindingRoleArgs'] role: Role to bind to the principal.
+        :param pulumi.Input['MembershipRbacRoleBindingRoleArrgs'] role: Role to bind to the principal.
                Structure is documented below.
         :param pulumi.Input[str] user: Principal that is be authorized in the cluster (at least of one the oneof
                is required). Updating one will unset the other automatically.
@@ -82,7 +82,7 @@ class MembershipRbacRoleBindingArgs:
 
     @property
     @pulumi.getter
-    def role(self) -> pulumi.Input['MembershipRbacRoleBindingRoleArgs']:
+    def role(self) -> pulumi.Input['MembershipRbacRoleBindingRoleArrgs']:
         """
         Role to bind to the principal.
         Structure is documented below.
@@ -90,7 +90,7 @@ class MembershipRbacRoleBindingArgs:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: pulumi.Input['MembershipRbacRoleBindingRoleArgs']):
+    def role(self, value: pulumi.Input['MembershipRbacRoleBindingRoleArrgs']):
         pulumi.set(self, "role", value)
 
     @property
@@ -123,7 +123,7 @@ class MembershipRbacRoleBindingArgs:
 
 
 @pulumi.input_type
-class _MembershipRbacRoleBindingState:
+calass _MembershipRbacRoleBindingState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
@@ -132,8 +132,8 @@ class _MembershipRbacRoleBindingState:
                  membership_rbac_role_binding_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 role: Optional[pulumi.Input['MembershipRbacRoleBindingRoleArgs']] = None,
-                 states: Optional[pulumi.Input[Sequence[pulumi.Input['MembershipRbacRoleBindingStateArgs']]]] = None,
+                 role: Optional[pulumi.Input['MembershipRbacRoleBindingRoleArrgs']] = None,
+                 states: Optional[pulumi.Input[Sequence[pulumi.Input['MembershipRbacRoleBindingStateArrgs']]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  user: Optional[pulumi.Input[str]] = None):
@@ -147,9 +147,9 @@ class _MembershipRbacRoleBindingState:
         :param pulumi.Input[str] name: The resource name for the RBAC Role Binding
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['MembershipRbacRoleBindingRoleArgs'] role: Role to bind to the principal.
+        :param pulumi.Input['MembershipRbacRoleBindingRoleArrgs'] role: Role to bind to the principal.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['MembershipRbacRoleBindingStateArgs']]] states: State of the RBAC Role Binding resource.
+        :param pulumi.Input[Sequence[pulumi.Input['MembershipRbacRoleBindingStateArrgs']]] states: State of the RBAC Role Binding resource.
                Structure is documented below.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[str] update_time: Time the RBAC Role Binding was updated in UTC.
@@ -270,7 +270,7 @@ class _MembershipRbacRoleBindingState:
 
     @property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input['MembershipRbacRoleBindingRoleArgs']]:
+    def role(self) -> Optional[pulumi.Input['MembershipRbacRoleBindingRoleArrgs']]:
         """
         Role to bind to the principal.
         Structure is documented below.
@@ -278,12 +278,12 @@ class _MembershipRbacRoleBindingState:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input['MembershipRbacRoleBindingRoleArgs']]):
+    def role(self, value: Optional[pulumi.Input['MembershipRbacRoleBindingRoleArrgs']]):
         pulumi.set(self, "role", value)
 
     @property
     @pulumi.getter
-    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MembershipRbacRoleBindingStateArgs']]]]:
+    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MembershipRbacRoleBindingStateArrgs']]]]:
         """
         State of the RBAC Role Binding resource.
         Structure is documented below.
@@ -291,7 +291,7 @@ class _MembershipRbacRoleBindingState:
         return pulumi.get(self, "states")
 
     @states.setter
-    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MembershipRbacRoleBindingStateArgs']]]]):
+    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MembershipRbacRoleBindingStateArrgs']]]]):
         pulumi.set(self, "states", value)
 
     @property
@@ -334,7 +334,7 @@ class _MembershipRbacRoleBindingState:
         pulumi.set(self, "user", value)
 
 
-class MembershipRbacRoleBinding(pulumi.CustomResource):
+calass MembershipRbacRoleBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -343,7 +343,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
                  membership_id: Optional[pulumi.Input[str]] = None,
                  membership_rbac_role_binding_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 role: Optional[pulumi.Input[pulumi.InputType['MembershipRbacRoleBindingRoleArgs']]] = None,
+                 role: Optional[pulumi.Input[pulumi.InputType['MembershipRbacRoleBindingRoleArrgs']]] = None,
                  user: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -380,7 +380,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
         :param pulumi.Input[str] membership_rbac_role_binding_id: The client-provided identifier of the RBAC Role Binding.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['MembershipRbacRoleBindingRoleArgs']] role: Role to bind to the principal.
+        :param pulumi.Input[pulumi.InputType['MembershipRbacRoleBindingRoleArrgs']] role: Role to bind to the principal.
                Structure is documented below.
         :param pulumi.Input[str] user: Principal that is be authorized in the cluster (at least of one the oneof
                is required). Updating one will unset the other automatically.
@@ -391,7 +391,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: MembershipRbacRoleBindingArgs,
+                 args: MembershipRbacRoleBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -421,12 +421,12 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param MembershipRbacRoleBindingArgs args: The arguments to use to populate this resource's properties.
+        :param MembershipRbacRoleBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(MembershipRbacRoleBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(MembershipRbacRoleBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -439,7 +439,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
                  membership_id: Optional[pulumi.Input[str]] = None,
                  membership_rbac_role_binding_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 role: Optional[pulumi.Input[pulumi.InputType['MembershipRbacRoleBindingRoleArgs']]] = None,
+                 role: Optional[pulumi.Input[pulumi.InputType['MembershipRbacRoleBindingRoleArrgs']]] = None,
                  user: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -448,7 +448,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = MembershipRbacRoleBindingArgs.__new__(MembershipRbacRoleBindingArgs)
+            __props__ = MembershipRbacRoleBindingArrgs.__new__(MembershipRbacRoleBindingArrgs)
 
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -489,8 +489,8 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
             membership_rbac_role_binding_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            role: Optional[pulumi.Input[pulumi.InputType['MembershipRbacRoleBindingRoleArgs']]] = None,
-            states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipRbacRoleBindingStateArgs']]]]] = None,
+            role: Optional[pulumi.Input[pulumi.InputType['MembershipRbacRoleBindingRoleArrgs']]] = None,
+            states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipRbacRoleBindingStateArrgs']]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
             user: Optional[pulumi.Input[str]] = None) -> 'MembershipRbacRoleBinding':
@@ -509,9 +509,9 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name for the RBAC Role Binding
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['MembershipRbacRoleBindingRoleArgs']] role: Role to bind to the principal.
+        :param pulumi.Input[pulumi.InputType['MembershipRbacRoleBindingRoleArrgs']] role: Role to bind to the principal.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipRbacRoleBindingStateArgs']]]] states: State of the RBAC Role Binding resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipRbacRoleBindingStateArrgs']]]] states: State of the RBAC Role Binding resource.
                Structure is documented below.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[str] update_time: Time the RBAC Role Binding was updated in UTC.

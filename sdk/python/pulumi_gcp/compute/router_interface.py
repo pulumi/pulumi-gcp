@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['RouterInterfaceArgs', 'RouterInterface']
+__all__ = ['RouterInterfaceArrgs', 'RouterInterface']
 
 @pulumi.input_type
-class RouterInterfaceArgs:
+calass RouterInterfaceArrgs:
     def __init__(__self__, *,
                  router: pulumi.Input[str],
                  interconnect_attachment: Optional[pulumi.Input[str]] = None,
@@ -211,7 +211,7 @@ class RouterInterfaceArgs:
 
 
 @pulumi.input_type
-class _RouterInterfaceState:
+calass _RouterInterfaceState:
     def __init__(__self__, *,
                  interconnect_attachment: Optional[pulumi.Input[str]] = None,
                  ip_range: Optional[pulumi.Input[str]] = None,
@@ -410,7 +410,7 @@ class _RouterInterfaceState:
         pulumi.set(self, "vpn_tunnel", value)
 
 
-class RouterInterface(pulumi.CustomResource):
+calass RouterInterface(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -498,7 +498,7 @@ class RouterInterface(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RouterInterfaceArgs,
+                 args: RouterInterfaceArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Cloud Router interface. For more information see
@@ -540,12 +540,12 @@ class RouterInterface(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param RouterInterfaceArgs args: The arguments to use to populate this resource's properties.
+        :param RouterInterfaceArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RouterInterfaceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(RouterInterfaceArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -571,7 +571,7 @@ class RouterInterface(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RouterInterfaceArgs.__new__(RouterInterfaceArgs)
+            __props__ = RouterInterfaceArrgs.__new__(RouterInterfaceArrgs)
 
             __props__.__dict__["interconnect_attachment"] = interconnect_attachment
             __props__.__dict__["ip_range"] = ip_range

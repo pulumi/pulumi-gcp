@@ -11,20 +11,20 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['HostingVersionArgs', 'HostingVersion']
+__all__ = ['HostingVersionArrgs', 'HostingVersion']
 
 @pulumi.input_type
-class HostingVersionArgs:
+calass HostingVersionArrgs:
     def __init__(__self__, *,
                  site_id: pulumi.Input[str],
-                 config: Optional[pulumi.Input['HostingVersionConfigArgs']] = None):
+                 config: Optional[pulumi.Input['HostingVersionConfigArrgs']] = None):
         """
         The set of arguments for constructing a HostingVersion resource.
         :param pulumi.Input[str] site_id: Required. The ID of the site in which to create this Version.
                
                
                - - -
-        :param pulumi.Input['HostingVersionConfigArgs'] config: The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
+        :param pulumi.Input['HostingVersionConfigArrgs'] config: The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
                Structure is documented below.
         """
         pulumi.set(__self__, "site_id", site_id)
@@ -48,7 +48,7 @@ class HostingVersionArgs:
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['HostingVersionConfigArgs']]:
+    def config(self) -> Optional[pulumi.Input['HostingVersionConfigArrgs']]:
         """
         The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
         Structure is documented below.
@@ -56,20 +56,20 @@ class HostingVersionArgs:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['HostingVersionConfigArgs']]):
+    def config(self, value: Optional[pulumi.Input['HostingVersionConfigArrgs']]):
         pulumi.set(self, "config", value)
 
 
 @pulumi.input_type
-class _HostingVersionState:
+calass _HostingVersionState:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input['HostingVersionConfigArgs']] = None,
+                 config: Optional[pulumi.Input['HostingVersionConfigArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
                  version_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering HostingVersion resources.
-        :param pulumi.Input['HostingVersionConfigArgs'] config: The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
+        :param pulumi.Input['HostingVersionConfigArrgs'] config: The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
                Structure is documented below.
         :param pulumi.Input[str] name: The fully-qualified resource name for the version, in the format:
                sites/SITE_ID/versions/VERSION_ID
@@ -90,7 +90,7 @@ class _HostingVersionState:
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['HostingVersionConfigArgs']]:
+    def config(self) -> Optional[pulumi.Input['HostingVersionConfigArrgs']]:
         """
         The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
         Structure is documented below.
@@ -98,7 +98,7 @@ class _HostingVersionState:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['HostingVersionConfigArgs']]):
+    def config(self, value: Optional[pulumi.Input['HostingVersionConfigArrgs']]):
         pulumi.set(self, "config", value)
 
     @property
@@ -142,12 +142,12 @@ class _HostingVersionState:
         pulumi.set(self, "version_id", value)
 
 
-class HostingVersion(pulumi.CustomResource):
+calass HostingVersion(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['HostingVersionConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[pulumi.InputType['HostingVersionConfigArrgs']]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -164,8 +164,8 @@ class HostingVersion(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         default_hosting_version = gcp.firebase.HostingVersion("defaultHostingVersion",
             site_id=default_hosting_site.site_id,
-            config=gcp.firebase.HostingVersionConfigArgs(
-                redirects=[gcp.firebase.HostingVersionConfigRedirectArgs(
+            config=gcp.firebase.HostingVersionConfigArrgs(
+                redirects=[gcp.firebase.HostingVersionConfigRedirectArrgs(
                     glob="/google/**",
                     status_code=302,
                     location="https://www.google.com",
@@ -192,18 +192,18 @@ class HostingVersion(pulumi.CustomResource):
             project="my-project-name",
             location="us-central1",
             ingress="INGRESS_TRAFFIC_ALL",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
+            template=gcp.cloudrunv2.ServiceTemplateArrgs(
+                containers=[gcp.cloudrunv2.ServiceTemplateContainerArrgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
                 )],
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         default_hosting_version = gcp.firebase.HostingVersion("defaultHostingVersion",
             site_id=default_hosting_site.site_id,
-            config=gcp.firebase.HostingVersionConfigArgs(
-                rewrites=[gcp.firebase.HostingVersionConfigRewriteArgs(
+            config=gcp.firebase.HostingVersionConfigArrgs(
+                rewrites=[gcp.firebase.HostingVersionConfigRewriteArrgs(
                     glob="/hello/**",
-                    run=gcp.firebase.HostingVersionConfigRewriteRunArgs(
+                    run=gcp.firebase.HostingVersionConfigRewriteRunArrgs(
                         service_id=default_service.name,
                         region=default_service.location,
                     ),
@@ -248,8 +248,8 @@ class HostingVersion(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         default_hosting_version = gcp.firebase.HostingVersion("defaultHostingVersion",
             site_id=default_hosting_site.site_id,
-            config=gcp.firebase.HostingVersionConfigArgs(
-                rewrites=[gcp.firebase.HostingVersionConfigRewriteArgs(
+            config=gcp.firebase.HostingVersionConfigArrgs(
+                rewrites=[gcp.firebase.HostingVersionConfigRewriteArrgs(
                     glob="/hello/**",
                     function=function.name,
                 )],
@@ -284,7 +284,7 @@ class HostingVersion(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['HostingVersionConfigArgs']] config: The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
+        :param pulumi.Input[pulumi.InputType['HostingVersionConfigArrgs']] config: The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
                Structure is documented below.
         :param pulumi.Input[str] site_id: Required. The ID of the site in which to create this Version.
                
@@ -295,7 +295,7 @@ class HostingVersion(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: HostingVersionArgs,
+                 args: HostingVersionArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -311,8 +311,8 @@ class HostingVersion(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         default_hosting_version = gcp.firebase.HostingVersion("defaultHostingVersion",
             site_id=default_hosting_site.site_id,
-            config=gcp.firebase.HostingVersionConfigArgs(
-                redirects=[gcp.firebase.HostingVersionConfigRedirectArgs(
+            config=gcp.firebase.HostingVersionConfigArrgs(
+                redirects=[gcp.firebase.HostingVersionConfigRedirectArrgs(
                     glob="/google/**",
                     status_code=302,
                     location="https://www.google.com",
@@ -339,18 +339,18 @@ class HostingVersion(pulumi.CustomResource):
             project="my-project-name",
             location="us-central1",
             ingress="INGRESS_TRAFFIC_ALL",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
+            template=gcp.cloudrunv2.ServiceTemplateArrgs(
+                containers=[gcp.cloudrunv2.ServiceTemplateContainerArrgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
                 )],
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         default_hosting_version = gcp.firebase.HostingVersion("defaultHostingVersion",
             site_id=default_hosting_site.site_id,
-            config=gcp.firebase.HostingVersionConfigArgs(
-                rewrites=[gcp.firebase.HostingVersionConfigRewriteArgs(
+            config=gcp.firebase.HostingVersionConfigArrgs(
+                rewrites=[gcp.firebase.HostingVersionConfigRewriteArrgs(
                     glob="/hello/**",
-                    run=gcp.firebase.HostingVersionConfigRewriteRunArgs(
+                    run=gcp.firebase.HostingVersionConfigRewriteRunArrgs(
                         service_id=default_service.name,
                         region=default_service.location,
                     ),
@@ -395,8 +395,8 @@ class HostingVersion(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         default_hosting_version = gcp.firebase.HostingVersion("defaultHostingVersion",
             site_id=default_hosting_site.site_id,
-            config=gcp.firebase.HostingVersionConfigArgs(
-                rewrites=[gcp.firebase.HostingVersionConfigRewriteArgs(
+            config=gcp.firebase.HostingVersionConfigArrgs(
+                rewrites=[gcp.firebase.HostingVersionConfigRewriteArrgs(
                     glob="/hello/**",
                     function=function.name,
                 )],
@@ -430,12 +430,12 @@ class HostingVersion(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param HostingVersionArgs args: The arguments to use to populate this resource's properties.
+        :param HostingVersionArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(HostingVersionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(HostingVersionArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -444,7 +444,7 @@ class HostingVersion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['HostingVersionConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[pulumi.InputType['HostingVersionConfigArrgs']]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -453,7 +453,7 @@ class HostingVersion(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = HostingVersionArgs.__new__(HostingVersionArgs)
+            __props__ = HostingVersionArrgs.__new__(HostingVersionArrgs)
 
             __props__.__dict__["config"] = config
             if site_id is None and not opts.urn:
@@ -471,7 +471,7 @@ class HostingVersion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: Optional[pulumi.Input[pulumi.InputType['HostingVersionConfigArgs']]] = None,
+            config: Optional[pulumi.Input[pulumi.InputType['HostingVersionConfigArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             site_id: Optional[pulumi.Input[str]] = None,
             version_id: Optional[pulumi.Input[str]] = None) -> 'HostingVersion':
@@ -482,7 +482,7 @@ class HostingVersion(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['HostingVersionConfigArgs']] config: The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
+        :param pulumi.Input[pulumi.InputType['HostingVersionConfigArrgs']] config: The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
                Structure is documented below.
         :param pulumi.Input[str] name: The fully-qualified resource name for the version, in the format:
                sites/SITE_ID/versions/VERSION_ID

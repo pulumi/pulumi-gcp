@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['OauthIdpConfigArgs', 'OauthIdpConfig']
+__all__ = ['OauthIdpConfigArrgs', 'OauthIdpConfig']
 
 @pulumi.input_type
-class OauthIdpConfigArgs:
+calass OauthIdpConfigArrgs:
     def __init__(__self__, *,
                  client_id: pulumi.Input[str],
                  issuer: pulumi.Input[str],
@@ -138,7 +138,7 @@ class OauthIdpConfigArgs:
 
 
 @pulumi.input_type
-class _OauthIdpConfigState:
+calass _OauthIdpConfigState:
     def __init__(__self__, *,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
@@ -265,7 +265,7 @@ class _OauthIdpConfigState:
         pulumi.set(self, "project", value)
 
 
-class OauthIdpConfig(pulumi.CustomResource):
+calass OauthIdpConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -342,7 +342,7 @@ class OauthIdpConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: OauthIdpConfigArgs,
+                 args: OauthIdpConfigArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         OIDC IdP configuration for a Identity Toolkit project.
@@ -391,12 +391,12 @@ class OauthIdpConfig(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param OauthIdpConfigArgs args: The arguments to use to populate this resource's properties.
+        :param OauthIdpConfigArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(OauthIdpConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(OauthIdpConfigArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -419,7 +419,7 @@ class OauthIdpConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = OauthIdpConfigArgs.__new__(OauthIdpConfigArgs)
+            __props__ = OauthIdpConfigArrgs.__new__(OauthIdpConfigArrgs)
 
             if client_id is None and not opts.urn:
                 raise TypeError("Missing required property 'client_id'")

@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['TargetHttpsProxyArgs', 'TargetHttpsProxy']
+__all__ = ['TargetHttpsProxyArrgs', 'TargetHttpsProxy']
 
 @pulumi.input_type
-class TargetHttpsProxyArgs:
+calass TargetHttpsProxyArrgs:
     def __init__(__self__, *,
                  url_map: pulumi.Input[str],
                  certificate_manager_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -289,7 +289,7 @@ class TargetHttpsProxyArgs:
 
 
 @pulumi.input_type
-class _TargetHttpsProxyState:
+calass _TargetHttpsProxyState:
     def __init__(__self__, *,
                  certificate_manager_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  certificate_map: Optional[pulumi.Input[str]] = None,
@@ -614,7 +614,7 @@ class _TargetHttpsProxyState:
         pulumi.set(self, "url_map", value)
 
 
-class TargetHttpsProxy(pulumi.CustomResource):
+calass TargetHttpsProxy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -651,7 +651,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
         default_certificate = gcp.certificatemanager.Certificate("defaultCertificate",
             scope="ALL_REGIONS",
-            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
+            self_managed=gcp.certificatemanager.CertificateSelfManagedArrgs(
                 pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
                 pem_private_key=(lambda path: open(path).read())("test-fixtures/private-key.pem"),
             ))
@@ -663,14 +663,14 @@ class TargetHttpsProxy(pulumi.CustomResource):
         default_url_map = gcp.compute.URLMap("defaultURLMap",
             description="a description",
             default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
+            host_rules=[gcp.compute.URLMapHostRuleArrgs(
                 hosts=["mysite.com"],
                 path_matcher="allpaths",
             )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+            path_matchers=[gcp.compute.URLMapPathMatcherArrgs(
                 name="allpaths",
                 default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
+                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArrgs(
                     paths=["/*"],
                     service=default_backend_service.id,
                 )],
@@ -763,7 +763,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TargetHttpsProxyArgs,
+                 args: TargetHttpsProxyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a TargetHttpsProxy resource, which is used by one or more
@@ -784,7 +784,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
         default_certificate = gcp.certificatemanager.Certificate("defaultCertificate",
             scope="ALL_REGIONS",
-            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
+            self_managed=gcp.certificatemanager.CertificateSelfManagedArrgs(
                 pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
                 pem_private_key=(lambda path: open(path).read())("test-fixtures/private-key.pem"),
             ))
@@ -796,14 +796,14 @@ class TargetHttpsProxy(pulumi.CustomResource):
         default_url_map = gcp.compute.URLMap("defaultURLMap",
             description="a description",
             default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
+            host_rules=[gcp.compute.URLMapHostRuleArrgs(
                 hosts=["mysite.com"],
                 path_matcher="allpaths",
             )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+            path_matchers=[gcp.compute.URLMapPathMatcherArrgs(
                 name="allpaths",
                 default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
+                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArrgs(
                     paths=["/*"],
                     service=default_backend_service.id,
                 )],
@@ -839,12 +839,12 @@ class TargetHttpsProxy(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param TargetHttpsProxyArgs args: The arguments to use to populate this resource's properties.
+        :param TargetHttpsProxyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(TargetHttpsProxyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TargetHttpsProxyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -872,7 +872,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = TargetHttpsProxyArgs.__new__(TargetHttpsProxyArgs)
+            __props__ = TargetHttpsProxyArrgs.__new__(TargetHttpsProxyArrgs)
 
             __props__.__dict__["certificate_manager_certificates"] = certificate_manager_certificates
             __props__.__dict__["certificate_map"] = certificate_map

@@ -10,22 +10,22 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'BackupScheduleDailyRecurrenceArgs',
-    'BackupScheduleWeeklyRecurrenceArgs',
-    'FieldIndexConfigArgs',
-    'FieldIndexConfigIndexArgs',
-    'FieldTtlConfigArgs',
-    'IndexFieldArgs',
+    'BackupScheduleDailyRecurrenceArrgs',
+    'BackupScheduleWeeklyRecurrenceArrgs',
+    'FieldIndexConfigArrgs',
+    'FieldIndexConfigIndexArrgs',
+    'FieldTtlConfigArrgs',
+    'IndexFieldArrgs',
 ]
 
 @pulumi.input_type
-class BackupScheduleDailyRecurrenceArgs:
+calass BackupScheduleDailyRecurrenceArrgs:
     def __init__(__self__):
         pass
 
 
 @pulumi.input_type
-class BackupScheduleWeeklyRecurrenceArgs:
+calass BackupScheduleWeeklyRecurrenceArrgs:
     def __init__(__self__, *,
                  day: Optional[pulumi.Input[str]] = None):
         """
@@ -50,11 +50,11 @@ class BackupScheduleWeeklyRecurrenceArgs:
 
 
 @pulumi.input_type
-class FieldIndexConfigArgs:
+calass FieldIndexConfigArrgs:
     def __init__(__self__, *,
-                 indexes: Optional[pulumi.Input[Sequence[pulumi.Input['FieldIndexConfigIndexArgs']]]] = None):
+                 indexes: Optional[pulumi.Input[Sequence[pulumi.Input['FieldIndexConfigIndexArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['FieldIndexConfigIndexArgs']]] indexes: The indexes to configure on the field. Order or array contains must be specified.
+        :param pulumi.Input[Sequence[pulumi.Input['FieldIndexConfigIndexArrgs']]] indexes: The indexes to configure on the field. Order or array contains must be specified.
                Structure is documented below.
         """
         if indexes is not None:
@@ -62,7 +62,7 @@ class FieldIndexConfigArgs:
 
     @property
     @pulumi.getter
-    def indexes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FieldIndexConfigIndexArgs']]]]:
+    def indexes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FieldIndexConfigIndexArrgs']]]]:
         """
         The indexes to configure on the field. Order or array contains must be specified.
         Structure is documented below.
@@ -70,12 +70,12 @@ class FieldIndexConfigArgs:
         return pulumi.get(self, "indexes")
 
     @indexes.setter
-    def indexes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FieldIndexConfigIndexArgs']]]]):
+    def indexes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FieldIndexConfigIndexArrgs']]]]):
         pulumi.set(self, "indexes", value)
 
 
 @pulumi.input_type
-class FieldIndexConfigIndexArgs:
+calass FieldIndexConfigIndexArrgs:
     def __init__(__self__, *,
                  array_config: Optional[pulumi.Input[str]] = None,
                  order: Optional[pulumi.Input[str]] = None,
@@ -146,7 +146,7 @@ class FieldIndexConfigIndexArgs:
 
 
 @pulumi.input_type
-class FieldTtlConfigArgs:
+calass FieldTtlConfigArrgs:
     def __init__(__self__, *,
                  state: Optional[pulumi.Input[str]] = None):
         """
@@ -171,7 +171,7 @@ class FieldTtlConfigArgs:
 
 
 @pulumi.input_type
-class IndexFieldArgs:
+calass IndexFieldArrgs:
     def __init__(__self__, *,
                  array_config: Optional[pulumi.Input[str]] = None,
                  field_path: Optional[pulumi.Input[str]] = None,

@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetManagementServerResult:
+calass GetManagementServerResult:
     """
     A collection of values returned by getManagementServer.
     """
@@ -92,7 +92,7 @@ class GetManagementServerResult:
         return pulumi.get(self, "type")
 
 
-class AwaitableGetManagementServerResult(GetManagementServerResult):
+calass AwaitableGetManagementServerResult(GetManagementServerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['DocumentAiProcessorArgs', 'DocumentAiProcessor']
+__all__ = ['DocumentAiProcessorArrgs', 'DocumentAiProcessor']
 
 @pulumi.input_type
-class DocumentAiProcessorArgs:
+calass DocumentAiProcessorArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
@@ -105,7 +105,7 @@ class DocumentAiProcessorArgs:
 
 
 @pulumi.input_type
-class _DocumentAiProcessorState:
+calass _DocumentAiProcessorState:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -216,7 +216,7 @@ class _DocumentAiProcessorState:
         pulumi.set(self, "type", value)
 
 
-class DocumentAiProcessor(pulumi.CustomResource):
+calass DocumentAiProcessor(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -289,7 +289,7 @@ class DocumentAiProcessor(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DocumentAiProcessorArgs,
+                 args: DocumentAiProcessorArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The first-class citizen for Document AI. Each processor defines how to extract structural information from a document.
@@ -338,12 +338,12 @@ class DocumentAiProcessor(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param DocumentAiProcessorArgs args: The arguments to use to populate this resource's properties.
+        :param DocumentAiProcessorArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DocumentAiProcessorArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DocumentAiProcessorArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -364,7 +364,7 @@ class DocumentAiProcessor(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DocumentAiProcessorArgs.__new__(DocumentAiProcessorArgs)
+            __props__ = DocumentAiProcessorArrgs.__new__(DocumentAiProcessorArrgs)
 
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")

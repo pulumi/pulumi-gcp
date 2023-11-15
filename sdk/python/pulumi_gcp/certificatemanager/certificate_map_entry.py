@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['CertificateMapEntryArgs', 'CertificateMapEntry']
+__all__ = ['CertificateMapEntryArrgs', 'CertificateMapEntry']
 
 @pulumi.input_type
-class CertificateMapEntryArgs:
+calass CertificateMapEntryArrgs:
     def __init__(__self__, *,
                  certificates: pulumi.Input[Sequence[pulumi.Input[str]]],
                  map: pulumi.Input[str],
@@ -176,7 +176,7 @@ class CertificateMapEntryArgs:
 
 
 @pulumi.input_type
-class _CertificateMapEntryState:
+calass _CertificateMapEntryState:
     def __init__(__self__, *,
                  certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -431,7 +431,7 @@ class _CertificateMapEntryState:
         pulumi.set(self, "update_time", value)
 
 
-class CertificateMapEntry(pulumi.CustomResource):
+calass CertificateMapEntry(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -471,7 +471,7 @@ class CertificateMapEntry(pulumi.CustomResource):
         certificate = gcp.certificatemanager.Certificate("certificate",
             description="The default cert",
             scope="DEFAULT",
-            managed=gcp.certificatemanager.CertificateManagedArgs(
+            managed=gcp.certificatemanager.CertificateManagedArrgs(
                 domains=[
                     instance.domain,
                     instance2.domain,
@@ -546,7 +546,7 @@ class CertificateMapEntry(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CertificateMapEntryArgs,
+                 args: CertificateMapEntryArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         CertificateMapEntry is a list of certificate configurations,
@@ -574,7 +574,7 @@ class CertificateMapEntry(pulumi.CustomResource):
         certificate = gcp.certificatemanager.Certificate("certificate",
             description="The default cert",
             scope="DEFAULT",
-            managed=gcp.certificatemanager.CertificateManagedArgs(
+            managed=gcp.certificatemanager.CertificateManagedArrgs(
                 domains=[
                     instance.domain,
                     instance2.domain,
@@ -620,12 +620,12 @@ class CertificateMapEntry(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param CertificateMapEntryArgs args: The arguments to use to populate this resource's properties.
+        :param CertificateMapEntryArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(CertificateMapEntryArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(CertificateMapEntryArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -649,7 +649,7 @@ class CertificateMapEntry(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = CertificateMapEntryArgs.__new__(CertificateMapEntryArgs)
+            __props__ = CertificateMapEntryArrgs.__new__(CertificateMapEntryArrgs)
 
             if certificates is None and not opts.urn:
                 raise TypeError("Missing required property 'certificates'")

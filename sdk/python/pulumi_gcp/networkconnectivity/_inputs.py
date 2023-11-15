@@ -10,24 +10,24 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'HubRoutingVpcArgs',
-    'PolicyBasedRouteFilterArgs',
-    'PolicyBasedRouteInterconnectAttachmentArgs',
-    'PolicyBasedRouteVirtualMachineArgs',
-    'PolicyBasedRouteWarningArgs',
-    'ServiceConnectionPolicyPscConfigArgs',
-    'ServiceConnectionPolicyPscConnectionArgs',
-    'ServiceConnectionPolicyPscConnectionErrorArgs',
-    'ServiceConnectionPolicyPscConnectionErrorInfoArgs',
-    'SpokeLinkedInterconnectAttachmentsArgs',
-    'SpokeLinkedRouterApplianceInstancesArgs',
-    'SpokeLinkedRouterApplianceInstancesInstanceArgs',
-    'SpokeLinkedVpcNetworkArgs',
-    'SpokeLinkedVpnTunnelsArgs',
+    'HubRoutingVpcArrgs',
+    'PolicyBasedRouteFilterArrgs',
+    'PolicyBasedRouteInterconnectAttachmentArrgs',
+    'PolicyBasedRouteVirtualMachineArrgs',
+    'PolicyBasedRouteWarningArrgs',
+    'ServiceConnectionPolicyPscConfigArrgs',
+    'ServiceConnectionPolicyPscConnectionArrgs',
+    'ServiceConnectionPolicyPscConnectionErrorArrgs',
+    'ServiceConnectionPolicyPscConnectionErrorInfoArrgs',
+    'SpokeLinkedInterconnectAttachmentsArrgs',
+    'SpokeLinkedRouterApplianceInstancesArrgs',
+    'SpokeLinkedRouterApplianceInstancesInstanceArrgs',
+    'SpokeLinkedVpcNetworkArrgs',
+    'SpokeLinkedVpnTunnelsArrgs',
 ]
 
 @pulumi.input_type
-class HubRoutingVpcArgs:
+calass HubRoutingVpcArrgs:
     def __init__(__self__, *,
                  uri: Optional[pulumi.Input[str]] = None):
         if uri is not None:
@@ -44,7 +44,7 @@ class HubRoutingVpcArgs:
 
 
 @pulumi.input_type
-class PolicyBasedRouteFilterArgs:
+calass PolicyBasedRouteFilterArrgs:
     def __init__(__self__, *,
                  protocol_version: pulumi.Input[str],
                  dest_range: Optional[pulumi.Input[str]] = None,
@@ -120,7 +120,7 @@ class PolicyBasedRouteFilterArgs:
 
 
 @pulumi.input_type
-class PolicyBasedRouteInterconnectAttachmentArgs:
+calass PolicyBasedRouteInterconnectAttachmentArrgs:
     def __init__(__self__, *,
                  region: pulumi.Input[str]):
         """
@@ -142,7 +142,7 @@ class PolicyBasedRouteInterconnectAttachmentArgs:
 
 
 @pulumi.input_type
-class PolicyBasedRouteVirtualMachineArgs:
+calass PolicyBasedRouteVirtualMachineArrgs:
     def __init__(__self__, *,
                  tags: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -164,7 +164,7 @@ class PolicyBasedRouteVirtualMachineArgs:
 
 
 @pulumi.input_type
-class PolicyBasedRouteWarningArgs:
+calass PolicyBasedRouteWarningArrgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -225,7 +225,7 @@ class PolicyBasedRouteWarningArgs:
 
 
 @pulumi.input_type
-class ServiceConnectionPolicyPscConfigArgs:
+calass ServiceConnectionPolicyPscConfigArrgs:
     def __init__(__self__, *,
                  subnetworks: pulumi.Input[Sequence[pulumi.Input[str]]],
                  limit: Optional[pulumi.Input[str]] = None):
@@ -263,13 +263,13 @@ class ServiceConnectionPolicyPscConfigArgs:
 
 
 @pulumi.input_type
-class ServiceConnectionPolicyPscConnectionArgs:
+calass ServiceConnectionPolicyPscConnectionArrgs:
     def __init__(__self__, *,
                  consumer_address: Optional[pulumi.Input[str]] = None,
                  consumer_forwarding_rule: Optional[pulumi.Input[str]] = None,
                  consumer_target_project: Optional[pulumi.Input[str]] = None,
-                 error: Optional[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorArgs']] = None,
-                 error_info: Optional[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorInfoArgs']] = None,
+                 error: Optional[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorArrgs']] = None,
+                 error_info: Optional[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorInfoArrgs']] = None,
                  error_type: Optional[pulumi.Input[str]] = None,
                  gce_operation: Optional[pulumi.Input[str]] = None,
                  psc_connection_id: Optional[pulumi.Input[str]] = None,
@@ -278,9 +278,9 @@ class ServiceConnectionPolicyPscConnectionArgs:
         :param pulumi.Input[str] consumer_address: The resource reference of the consumer address.
         :param pulumi.Input[str] consumer_forwarding_rule: The resource reference of the PSC Forwarding Rule within the consumer VPC.
         :param pulumi.Input[str] consumer_target_project: The project where the PSC connection is created.
-        :param pulumi.Input['ServiceConnectionPolicyPscConnectionErrorArgs'] error: The most recent error during operating this connection.
+        :param pulumi.Input['ServiceConnectionPolicyPscConnectionErrorArrgs'] error: The most recent error during operating this connection.
                Structure is documented below.
-        :param pulumi.Input['ServiceConnectionPolicyPscConnectionErrorInfoArgs'] error_info: The error info for the latest error during operating this connection.
+        :param pulumi.Input['ServiceConnectionPolicyPscConnectionErrorInfoArrgs'] error_info: The error info for the latest error during operating this connection.
                Structure is documented below.
         :param pulumi.Input[str] error_type: The error type indicates whether the error is consumer facing, producer
                facing or system internal.
@@ -347,7 +347,7 @@ class ServiceConnectionPolicyPscConnectionArgs:
 
     @property
     @pulumi.getter
-    def error(self) -> Optional[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorArgs']]:
+    def error(self) -> Optional[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorArrgs']]:
         """
         The most recent error during operating this connection.
         Structure is documented below.
@@ -355,12 +355,12 @@ class ServiceConnectionPolicyPscConnectionArgs:
         return pulumi.get(self, "error")
 
     @error.setter
-    def error(self, value: Optional[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorArgs']]):
+    def error(self, value: Optional[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorArrgs']]):
         pulumi.set(self, "error", value)
 
     @property
     @pulumi.getter(name="errorInfo")
-    def error_info(self) -> Optional[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorInfoArgs']]:
+    def error_info(self) -> Optional[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorInfoArrgs']]:
         """
         The error info for the latest error during operating this connection.
         Structure is documented below.
@@ -368,7 +368,7 @@ class ServiceConnectionPolicyPscConnectionArgs:
         return pulumi.get(self, "error_info")
 
     @error_info.setter
-    def error_info(self, value: Optional[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorInfoArgs']]):
+    def error_info(self, value: Optional[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorInfoArrgs']]):
         pulumi.set(self, "error_info", value)
 
     @property
@@ -424,7 +424,7 @@ class ServiceConnectionPolicyPscConnectionArgs:
 
 
 @pulumi.input_type
-class ServiceConnectionPolicyPscConnectionErrorArgs:
+calass ServiceConnectionPolicyPscConnectionErrorArrgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[int]] = None,
                  details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
@@ -481,7 +481,7 @@ class ServiceConnectionPolicyPscConnectionErrorArgs:
 
 
 @pulumi.input_type
-class ServiceConnectionPolicyPscConnectionErrorInfoArgs:
+calass ServiceConnectionPolicyPscConnectionErrorInfoArrgs:
     def __init__(__self__, *,
                  domain: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -536,7 +536,7 @@ class ServiceConnectionPolicyPscConnectionErrorInfoArgs:
 
 
 @pulumi.input_type
-class SpokeLinkedInterconnectAttachmentsArgs:
+calass SpokeLinkedInterconnectAttachmentsArrgs:
     def __init__(__self__, *,
                  site_to_site_data_transfer: pulumi.Input[bool],
                  uris: pulumi.Input[Sequence[pulumi.Input[str]]]):
@@ -573,12 +573,12 @@ class SpokeLinkedInterconnectAttachmentsArgs:
 
 
 @pulumi.input_type
-class SpokeLinkedRouterApplianceInstancesArgs:
+calass SpokeLinkedRouterApplianceInstancesArrgs:
     def __init__(__self__, *,
-                 instances: pulumi.Input[Sequence[pulumi.Input['SpokeLinkedRouterApplianceInstancesInstanceArgs']]],
+                 instances: pulumi.Input[Sequence[pulumi.Input['SpokeLinkedRouterApplianceInstancesInstanceArrgs']]],
                  site_to_site_data_transfer: pulumi.Input[bool]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['SpokeLinkedRouterApplianceInstancesInstanceArgs']]] instances: The list of router appliance instances
+        :param pulumi.Input[Sequence[pulumi.Input['SpokeLinkedRouterApplianceInstancesInstanceArrgs']]] instances: The list of router appliance instances
         :param pulumi.Input[bool] site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
         """
         pulumi.set(__self__, "instances", instances)
@@ -586,14 +586,14 @@ class SpokeLinkedRouterApplianceInstancesArgs:
 
     @property
     @pulumi.getter
-    def instances(self) -> pulumi.Input[Sequence[pulumi.Input['SpokeLinkedRouterApplianceInstancesInstanceArgs']]]:
+    def instances(self) -> pulumi.Input[Sequence[pulumi.Input['SpokeLinkedRouterApplianceInstancesInstanceArrgs']]]:
         """
         The list of router appliance instances
         """
         return pulumi.get(self, "instances")
 
     @instances.setter
-    def instances(self, value: pulumi.Input[Sequence[pulumi.Input['SpokeLinkedRouterApplianceInstancesInstanceArgs']]]):
+    def instances(self, value: pulumi.Input[Sequence[pulumi.Input['SpokeLinkedRouterApplianceInstancesInstanceArrgs']]]):
         pulumi.set(self, "instances", value)
 
     @property
@@ -610,7 +610,7 @@ class SpokeLinkedRouterApplianceInstancesArgs:
 
 
 @pulumi.input_type
-class SpokeLinkedRouterApplianceInstancesInstanceArgs:
+calass SpokeLinkedRouterApplianceInstancesInstanceArrgs:
     def __init__(__self__, *,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  virtual_machine: Optional[pulumi.Input[str]] = None):
@@ -653,7 +653,7 @@ class SpokeLinkedRouterApplianceInstancesInstanceArgs:
 
 
 @pulumi.input_type
-class SpokeLinkedVpcNetworkArgs:
+calass SpokeLinkedVpcNetworkArrgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[str],
                  exclude_export_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -691,7 +691,7 @@ class SpokeLinkedVpcNetworkArgs:
 
 
 @pulumi.input_type
-class SpokeLinkedVpnTunnelsArgs:
+calass SpokeLinkedVpnTunnelsArrgs:
     def __init__(__self__, *,
                  site_to_site_data_transfer: pulumi.Input[bool],
                  uris: pulumi.Input[Sequence[pulumi.Input[str]]]):

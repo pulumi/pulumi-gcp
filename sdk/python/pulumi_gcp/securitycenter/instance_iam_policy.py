@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['InstanceIamPolicyArgs', 'InstanceIamPolicy']
+__all__ = ['InstanceIamPolicyArrgs', 'InstanceIamPolicy']
 
 @pulumi.input_type
-class InstanceIamPolicyArgs:
+calass InstanceIamPolicyArrgs:
     def __init__(__self__, *,
                  policy_data: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
@@ -81,7 +81,7 @@ class InstanceIamPolicyArgs:
 
 
 @pulumi.input_type
-class _InstanceIamPolicyState:
+calass _InstanceIamPolicyState:
     def __init__(__self__, *,
                  etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -162,7 +162,7 @@ class _InstanceIamPolicyState:
         pulumi.set(self, "region", value)
 
 
-class InstanceIamPolicy(pulumi.CustomResource):
+calass InstanceIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -217,11 +217,11 @@ class InstanceIamPolicy(pulumi.CustomResource):
             labels={
                 "example_key": "example_value",
             },
-            network_config=gcp.datafusion.InstanceNetworkConfigArgs(
+            network_config=gcp.datafusion.InstanceNetworkConfigArrgs(
                 network="default",
                 ip_allocation=pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
             ),
-            accelerators=[gcp.datafusion.InstanceAcceleratorArgs(
+            accelerators=[gcp.datafusion.InstanceAcceleratorArrgs(
                 accelerator_type="CDC",
                 state="ENABLED",
             )])
@@ -242,7 +242,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
         cmek = gcp.datafusion.Instance("cmek",
             region="us-central1",
             type="BASIC",
-            crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArgs(
+            crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArrgs(
                 key_reference=crypto_key.id,
             ),
             opts=pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
@@ -268,7 +268,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
         event_instance = gcp.datafusion.Instance("eventInstance",
             region="us-central1",
             type="BASIC",
-            event_publish_config=gcp.datafusion.InstanceEventPublishConfigArgs(
+            event_publish_config=gcp.datafusion.InstanceEventPublishConfigArrgs(
                 enabled=True,
                 topic=event_topic.id,
             ))
@@ -324,7 +324,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: InstanceIamPolicyArgs,
+                 args: InstanceIamPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a Data Fusion instance.
@@ -371,11 +371,11 @@ class InstanceIamPolicy(pulumi.CustomResource):
             labels={
                 "example_key": "example_value",
             },
-            network_config=gcp.datafusion.InstanceNetworkConfigArgs(
+            network_config=gcp.datafusion.InstanceNetworkConfigArrgs(
                 network="default",
                 ip_allocation=pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
             ),
-            accelerators=[gcp.datafusion.InstanceAcceleratorArgs(
+            accelerators=[gcp.datafusion.InstanceAcceleratorArrgs(
                 accelerator_type="CDC",
                 state="ENABLED",
             )])
@@ -396,7 +396,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
         cmek = gcp.datafusion.Instance("cmek",
             region="us-central1",
             type="BASIC",
-            crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArgs(
+            crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArrgs(
                 key_reference=crypto_key.id,
             ),
             opts=pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
@@ -422,7 +422,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
         event_instance = gcp.datafusion.Instance("eventInstance",
             region="us-central1",
             type="BASIC",
-            event_publish_config=gcp.datafusion.InstanceEventPublishConfigArgs(
+            event_publish_config=gcp.datafusion.InstanceEventPublishConfigArrgs(
                 enabled=True,
                 topic=event_topic.id,
             ))
@@ -468,12 +468,12 @@ class InstanceIamPolicy(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param InstanceIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param InstanceIamPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(InstanceIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(InstanceIamPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -493,7 +493,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = InstanceIamPolicyArgs.__new__(InstanceIamPolicyArgs)
+            __props__ = InstanceIamPolicyArrgs.__new__(InstanceIamPolicyArrgs)
 
             __props__.__dict__["name"] = name
             if policy_data is None and not opts.urn:

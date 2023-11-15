@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['CertificateTemplateIamPolicyArgs', 'CertificateTemplateIamPolicy']
+__all__ = ['CertificateTemplateIamPolicyArrgs', 'CertificateTemplateIamPolicy']
 
 @pulumi.input_type
-class CertificateTemplateIamPolicyArgs:
+calass CertificateTemplateIamPolicyArrgs:
     def __init__(__self__, *,
                  certificate_template: pulumi.Input[str],
                  policy_data: pulumi.Input[str],
@@ -106,7 +106,7 @@ class CertificateTemplateIamPolicyArgs:
 
 
 @pulumi.input_type
-class _CertificateTemplateIamPolicyState:
+calass _CertificateTemplateIamPolicyState:
     def __init__(__self__, *,
                  certificate_template: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -217,7 +217,7 @@ class _CertificateTemplateIamPolicyState:
         pulumi.set(self, "project", value)
 
 
-class CertificateTemplateIamPolicy(pulumi.CustomResource):
+calass CertificateTemplateIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -250,7 +250,7 @@ class CertificateTemplateIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/privateca.templateUser",
             members=["user:jane@example.com"],
         )])
@@ -265,10 +265,10 @@ class CertificateTemplateIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/privateca.templateUser",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -300,7 +300,7 @@ class CertificateTemplateIamPolicy(pulumi.CustomResource):
             certificate_template=google_privateca_certificate_template["default"]["id"],
             role="roles/privateca.templateUser",
             members=["user:jane@example.com"],
-            condition=gcp.certificateauthority.CertificateTemplateIamBindingConditionArgs(
+            condition=gcp.certificateauthority.CertificateTemplateIamBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -328,7 +328,7 @@ class CertificateTemplateIamPolicy(pulumi.CustomResource):
             certificate_template=google_privateca_certificate_template["default"]["id"],
             role="roles/privateca.templateUser",
             member="user:jane@example.com",
-            condition=gcp.certificateauthority.CertificateTemplateIamMemberConditionArgs(
+            condition=gcp.certificateauthority.CertificateTemplateIamMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -383,7 +383,7 @@ class CertificateTemplateIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CertificateTemplateIamPolicyArgs,
+                 args: CertificateTemplateIamPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Certificate Authority Service CertificateTemplate. Each of these resources serves a different use case:
@@ -408,7 +408,7 @@ class CertificateTemplateIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/privateca.templateUser",
             members=["user:jane@example.com"],
         )])
@@ -423,10 +423,10 @@ class CertificateTemplateIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/privateca.templateUser",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -458,7 +458,7 @@ class CertificateTemplateIamPolicy(pulumi.CustomResource):
             certificate_template=google_privateca_certificate_template["default"]["id"],
             role="roles/privateca.templateUser",
             members=["user:jane@example.com"],
-            condition=gcp.certificateauthority.CertificateTemplateIamBindingConditionArgs(
+            condition=gcp.certificateauthority.CertificateTemplateIamBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -486,7 +486,7 @@ class CertificateTemplateIamPolicy(pulumi.CustomResource):
             certificate_template=google_privateca_certificate_template["default"]["id"],
             role="roles/privateca.templateUser",
             member="user:jane@example.com",
-            condition=gcp.certificateauthority.CertificateTemplateIamMemberConditionArgs(
+            condition=gcp.certificateauthority.CertificateTemplateIamMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -518,12 +518,12 @@ class CertificateTemplateIamPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param CertificateTemplateIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param CertificateTemplateIamPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(CertificateTemplateIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(CertificateTemplateIamPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -543,7 +543,7 @@ class CertificateTemplateIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = CertificateTemplateIamPolicyArgs.__new__(CertificateTemplateIamPolicyArgs)
+            __props__ = CertificateTemplateIamPolicyArrgs.__new__(CertificateTemplateIamPolicyArrgs)
 
             if certificate_template is None and not opts.urn:
                 raise TypeError("Missing required property 'certificate_template'")

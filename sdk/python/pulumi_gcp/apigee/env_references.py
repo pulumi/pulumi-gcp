@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['EnvReferencesArgs', 'EnvReferences']
+__all__ = ['EnvReferencesArrgs', 'EnvReferences']
 
 @pulumi.input_type
-class EnvReferencesArgs:
+calass EnvReferencesArrgs:
     def __init__(__self__, *,
                  env_id: pulumi.Input[str],
                  refers: pulumi.Input[str],
@@ -105,7 +105,7 @@ class EnvReferencesArgs:
 
 
 @pulumi.input_type
-class _EnvReferencesState:
+calass _EnvReferencesState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  env_id: Optional[pulumi.Input[str]] = None,
@@ -200,7 +200,7 @@ class _EnvReferencesState:
         pulumi.set(self, "resource_type", value)
 
 
-class EnvReferences(pulumi.CustomResource):
+calass EnvReferences(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -256,7 +256,7 @@ class EnvReferences(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: EnvReferencesArgs,
+                 args: EnvReferencesArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An `Environment Reference` in Apigee.
@@ -288,12 +288,12 @@ class EnvReferences(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param EnvReferencesArgs args: The arguments to use to populate this resource's properties.
+        :param EnvReferencesArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(EnvReferencesArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(EnvReferencesArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -314,7 +314,7 @@ class EnvReferences(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = EnvReferencesArgs.__new__(EnvReferencesArgs)
+            __props__ = EnvReferencesArrgs.__new__(EnvReferencesArrgs)
 
             __props__.__dict__["description"] = description
             if env_id is None and not opts.urn:

@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['JobIAMPolicyArgs', 'JobIAMPolicy']
+__all__ = ['JobIAMPolicyArrgs', 'JobIAMPolicy']
 
 @pulumi.input_type
-class JobIAMPolicyArgs:
+calass JobIAMPolicyArrgs:
     def __init__(__self__, *,
                  job_id: pulumi.Input[str],
                  policy_data: pulumi.Input[str],
@@ -86,7 +86,7 @@ class JobIAMPolicyArgs:
 
 
 @pulumi.input_type
-class _JobIAMPolicyState:
+calass _JobIAMPolicyState:
     def __init__(__self__, *,
                  etag: Optional[pulumi.Input[str]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
@@ -177,7 +177,7 @@ class _JobIAMPolicyState:
         pulumi.set(self, "region", value)
 
 
-class JobIAMPolicy(pulumi.CustomResource):
+calass JobIAMPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -204,7 +204,7 @@ class JobIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -269,7 +269,7 @@ class JobIAMPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: JobIAMPolicyArgs,
+                 args: JobIAMPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage IAM policies on dataproc jobs. Each of these resources serves a different use case:
@@ -288,7 +288,7 @@ class JobIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -340,12 +340,12 @@ class JobIAMPolicy(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param JobIAMPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param JobIAMPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(JobIAMPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(JobIAMPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -365,7 +365,7 @@ class JobIAMPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = JobIAMPolicyArgs.__new__(JobIAMPolicyArgs)
+            __props__ = JobIAMPolicyArrgs.__new__(JobIAMPolicyArrgs)
 
             if job_id is None and not opts.urn:
                 raise TypeError("Missing required property 'job_id'")

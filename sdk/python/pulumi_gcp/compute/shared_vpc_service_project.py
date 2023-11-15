@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['SharedVPCServiceProjectArgs', 'SharedVPCServiceProject']
+__all__ = ['SharedVPCServiceProjectArrgs', 'SharedVPCServiceProject']
 
 @pulumi.input_type
-class SharedVPCServiceProjectArgs:
+calass SharedVPCServiceProjectArrgs:
     def __init__(__self__, *,
                  host_project: pulumi.Input[str],
                  service_project: pulumi.Input[str],
@@ -66,7 +66,7 @@ class SharedVPCServiceProjectArgs:
 
 
 @pulumi.input_type
-class _SharedVPCServiceProjectState:
+calass _SharedVPCServiceProjectState:
     def __init__(__self__, *,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  host_project: Optional[pulumi.Input[str]] = None,
@@ -121,7 +121,7 @@ class _SharedVPCServiceProjectState:
         pulumi.set(self, "service_project", value)
 
 
-class SharedVPCServiceProject(pulumi.CustomResource):
+calass SharedVPCServiceProject(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -182,7 +182,7 @@ class SharedVPCServiceProject(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SharedVPCServiceProjectArgs,
+                 args: SharedVPCServiceProjectArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Enables the Google Compute Engine
@@ -227,12 +227,12 @@ class SharedVPCServiceProject(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param SharedVPCServiceProjectArgs args: The arguments to use to populate this resource's properties.
+        :param SharedVPCServiceProjectArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SharedVPCServiceProjectArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SharedVPCServiceProjectArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -251,7 +251,7 @@ class SharedVPCServiceProject(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SharedVPCServiceProjectArgs.__new__(SharedVPCServiceProjectArgs)
+            __props__ = SharedVPCServiceProjectArrgs.__new__(SharedVPCServiceProjectArrgs)
 
             __props__.__dict__["deletion_policy"] = deletion_policy
             if host_project is None and not opts.urn:

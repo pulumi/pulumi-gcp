@@ -10,532 +10,532 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'AutoscalerAutoscalingPolicyArgs',
-    'AutoscalerAutoscalingPolicyCpuUtilizationArgs',
-    'AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs',
-    'AutoscalerAutoscalingPolicyMetricArgs',
-    'AutoscalerAutoscalingPolicyScaleDownControlArgs',
-    'AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs',
-    'AutoscalerAutoscalingPolicyScaleInControlArgs',
-    'AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs',
-    'AutoscalerAutoscalingPolicyScalingScheduleArgs',
-    'BackendBucketCdnPolicyArgs',
-    'BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs',
-    'BackendBucketCdnPolicyCacheKeyPolicyArgs',
-    'BackendBucketCdnPolicyNegativeCachingPolicyArgs',
-    'BackendBucketIamBindingConditionArgs',
-    'BackendBucketIamMemberConditionArgs',
-    'BackendServiceBackendArgs',
-    'BackendServiceCdnPolicyArgs',
-    'BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs',
-    'BackendServiceCdnPolicyCacheKeyPolicyArgs',
-    'BackendServiceCdnPolicyNegativeCachingPolicyArgs',
-    'BackendServiceCircuitBreakersArgs',
-    'BackendServiceCircuitBreakersConnectTimeoutArgs',
-    'BackendServiceConsistentHashArgs',
-    'BackendServiceConsistentHashHttpCookieArgs',
-    'BackendServiceConsistentHashHttpCookieTtlArgs',
-    'BackendServiceIamBindingConditionArgs',
-    'BackendServiceIamMemberConditionArgs',
-    'BackendServiceIapArgs',
-    'BackendServiceLocalityLbPolicyArgs',
-    'BackendServiceLocalityLbPolicyCustomPolicyArgs',
-    'BackendServiceLocalityLbPolicyPolicyArgs',
-    'BackendServiceLogConfigArgs',
-    'BackendServiceOutlierDetectionArgs',
-    'BackendServiceOutlierDetectionBaseEjectionTimeArgs',
-    'BackendServiceOutlierDetectionIntervalArgs',
-    'BackendServiceSecuritySettingsArgs',
-    'DiskAsyncPrimaryDiskArgs',
-    'DiskAsyncReplicationSecondaryDiskArgs',
-    'DiskDiskEncryptionKeyArgs',
-    'DiskGuestOsFeatureArgs',
-    'DiskIamBindingConditionArgs',
-    'DiskIamMemberConditionArgs',
-    'DiskSourceImageEncryptionKeyArgs',
-    'DiskSourceSnapshotEncryptionKeyArgs',
-    'ExternalVpnGatewayInterfaceArgs',
-    'FirewallAllowArgs',
-    'FirewallDenyArgs',
-    'FirewallLogConfigArgs',
-    'FirewallPolicyRuleMatchArgs',
-    'FirewallPolicyRuleMatchLayer4ConfigArgs',
-    'ForwardingRuleServiceDirectoryRegistrationsArgs',
-    'GlobalForwardingRuleMetadataFilterArgs',
-    'GlobalForwardingRuleMetadataFilterFilterLabelArgs',
-    'HaVpnGatewayVpnInterfaceArgs',
-    'HealthCheckGrpcHealthCheckArgs',
-    'HealthCheckHttp2HealthCheckArgs',
-    'HealthCheckHttpHealthCheckArgs',
-    'HealthCheckHttpsHealthCheckArgs',
-    'HealthCheckLogConfigArgs',
-    'HealthCheckSslHealthCheckArgs',
-    'HealthCheckTcpHealthCheckArgs',
-    'ImageGuestOsFeatureArgs',
-    'ImageIamBindingConditionArgs',
-    'ImageIamMemberConditionArgs',
-    'ImageImageEncryptionKeyArgs',
-    'ImageRawDiskArgs',
-    'InstanceAdvancedMachineFeaturesArgs',
-    'InstanceAttachedDiskArgs',
-    'InstanceBootDiskArgs',
-    'InstanceBootDiskInitializeParamsArgs',
-    'InstanceConfidentialInstanceConfigArgs',
-    'InstanceFromMachineImageAdvancedMachineFeaturesArgs',
-    'InstanceFromMachineImageAttachedDiskArgs',
-    'InstanceFromMachineImageBootDiskArgs',
-    'InstanceFromMachineImageBootDiskInitializeParamsArgs',
-    'InstanceFromMachineImageConfidentialInstanceConfigArgs',
-    'InstanceFromMachineImageGuestAcceleratorArgs',
-    'InstanceFromMachineImageNetworkInterfaceArgs',
-    'InstanceFromMachineImageNetworkInterfaceAccessConfigArgs',
-    'InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs',
-    'InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs',
-    'InstanceFromMachineImageNetworkPerformanceConfigArgs',
-    'InstanceFromMachineImageParamsArgs',
-    'InstanceFromMachineImageReservationAffinityArgs',
-    'InstanceFromMachineImageReservationAffinitySpecificReservationArgs',
-    'InstanceFromMachineImageSchedulingArgs',
-    'InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs',
-    'InstanceFromMachineImageSchedulingMaxRunDurationArgs',
-    'InstanceFromMachineImageSchedulingNodeAffinityArgs',
-    'InstanceFromMachineImageScratchDiskArgs',
-    'InstanceFromMachineImageServiceAccountArgs',
-    'InstanceFromMachineImageShieldedInstanceConfigArgs',
-    'InstanceFromTemplateAdvancedMachineFeaturesArgs',
-    'InstanceFromTemplateAttachedDiskArgs',
-    'InstanceFromTemplateBootDiskArgs',
-    'InstanceFromTemplateBootDiskInitializeParamsArgs',
-    'InstanceFromTemplateConfidentialInstanceConfigArgs',
-    'InstanceFromTemplateGuestAcceleratorArgs',
-    'InstanceFromTemplateNetworkInterfaceArgs',
-    'InstanceFromTemplateNetworkInterfaceAccessConfigArgs',
-    'InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs',
-    'InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs',
-    'InstanceFromTemplateNetworkPerformanceConfigArgs',
-    'InstanceFromTemplateParamsArgs',
-    'InstanceFromTemplateReservationAffinityArgs',
-    'InstanceFromTemplateReservationAffinitySpecificReservationArgs',
-    'InstanceFromTemplateSchedulingArgs',
-    'InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgs',
-    'InstanceFromTemplateSchedulingMaxRunDurationArgs',
-    'InstanceFromTemplateSchedulingNodeAffinityArgs',
-    'InstanceFromTemplateScratchDiskArgs',
-    'InstanceFromTemplateServiceAccountArgs',
-    'InstanceFromTemplateShieldedInstanceConfigArgs',
-    'InstanceGroupManagerAllInstancesConfigArgs',
-    'InstanceGroupManagerAutoHealingPoliciesArgs',
-    'InstanceGroupManagerInstanceLifecyclePolicyArgs',
-    'InstanceGroupManagerNamedPortArgs',
-    'InstanceGroupManagerStatefulDiskArgs',
-    'InstanceGroupManagerStatefulExternalIpArgs',
-    'InstanceGroupManagerStatefulInternalIpArgs',
-    'InstanceGroupManagerStatusArgs',
-    'InstanceGroupManagerStatusAllInstancesConfigArgs',
-    'InstanceGroupManagerStatusStatefulArgs',
-    'InstanceGroupManagerStatusStatefulPerInstanceConfigArgs',
-    'InstanceGroupManagerStatusVersionTargetArgs',
-    'InstanceGroupManagerUpdatePolicyArgs',
-    'InstanceGroupManagerVersionArgs',
-    'InstanceGroupManagerVersionTargetSizeArgs',
-    'InstanceGroupNamedPortArgs',
-    'InstanceGuestAcceleratorArgs',
-    'InstanceIAMBindingConditionArgs',
-    'InstanceIAMMemberConditionArgs',
-    'InstanceNetworkInterfaceArgs',
-    'InstanceNetworkInterfaceAccessConfigArgs',
-    'InstanceNetworkInterfaceAliasIpRangeArgs',
-    'InstanceNetworkInterfaceIpv6AccessConfigArgs',
-    'InstanceNetworkPerformanceConfigArgs',
-    'InstanceParamsArgs',
-    'InstanceReservationAffinityArgs',
-    'InstanceReservationAffinitySpecificReservationArgs',
-    'InstanceSchedulingArgs',
-    'InstanceSchedulingLocalSsdRecoveryTimeoutArgs',
-    'InstanceSchedulingMaxRunDurationArgs',
-    'InstanceSchedulingNodeAffinityArgs',
-    'InstanceScratchDiskArgs',
-    'InstanceServiceAccountArgs',
-    'InstanceSettingsMetadataArgs',
-    'InstanceShieldedInstanceConfigArgs',
-    'InstanceTemplateAdvancedMachineFeaturesArgs',
-    'InstanceTemplateConfidentialInstanceConfigArgs',
-    'InstanceTemplateDiskArgs',
-    'InstanceTemplateDiskDiskEncryptionKeyArgs',
-    'InstanceTemplateDiskSourceImageEncryptionKeyArgs',
-    'InstanceTemplateDiskSourceSnapshotEncryptionKeyArgs',
-    'InstanceTemplateGuestAcceleratorArgs',
-    'InstanceTemplateNetworkInterfaceArgs',
-    'InstanceTemplateNetworkInterfaceAccessConfigArgs',
-    'InstanceTemplateNetworkInterfaceAliasIpRangeArgs',
-    'InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs',
-    'InstanceTemplateNetworkPerformanceConfigArgs',
-    'InstanceTemplateReservationAffinityArgs',
-    'InstanceTemplateReservationAffinitySpecificReservationArgs',
-    'InstanceTemplateSchedulingArgs',
-    'InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs',
-    'InstanceTemplateSchedulingMaxRunDurationArgs',
-    'InstanceTemplateSchedulingNodeAffinityArgs',
-    'InstanceTemplateServiceAccountArgs',
-    'InstanceTemplateShieldedInstanceConfigArgs',
-    'InterconnectAttachmentPrivateInterconnectInfoArgs',
-    'MachineImageIamBindingConditionArgs',
-    'MachineImageIamMemberConditionArgs',
-    'MachineImageMachineImageEncryptionKeyArgs',
-    'ManagedSslCertificateManagedArgs',
-    'MangedSslCertificateManagedArgs',
-    'NetworkAttachmentConnectionEndpointArgs',
-    'NetworkEndpointListNetworkEndpointArgs',
-    'NetworkFirewallPolicyRuleMatchArgs',
-    'NetworkFirewallPolicyRuleMatchLayer4ConfigArgs',
-    'NetworkFirewallPolicyRuleMatchSrcSecureTagArgs',
-    'NetworkFirewallPolicyRuleTargetSecureTagArgs',
-    'NodeGroupAutoscalingPolicyArgs',
-    'NodeGroupMaintenanceWindowArgs',
-    'NodeGroupShareSettingsArgs',
-    'NodeGroupShareSettingsProjectMapArgs',
-    'NodeTemplateNodeTypeFlexibilityArgs',
-    'NodeTemplateServerBindingArgs',
-    'OrganizationSecurityPolicyRuleMatchArgs',
-    'OrganizationSecurityPolicyRuleMatchConfigArgs',
-    'OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs',
-    'PacketMirroringCollectorIlbArgs',
-    'PacketMirroringFilterArgs',
-    'PacketMirroringMirroredResourcesArgs',
-    'PacketMirroringMirroredResourcesInstanceArgs',
-    'PacketMirroringMirroredResourcesSubnetworkArgs',
-    'PacketMirroringNetworkArgs',
-    'PerInstanceConfigPreservedStateArgs',
-    'PerInstanceConfigPreservedStateDiskArgs',
-    'PerInstanceConfigPreservedStateExternalIpArgs',
-    'PerInstanceConfigPreservedStateExternalIpIpAddressArgs',
-    'PerInstanceConfigPreservedStateInternalIpArgs',
-    'PerInstanceConfigPreservedStateInternalIpIpAddressArgs',
-    'RegionAutoscalerAutoscalingPolicyArgs',
-    'RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs',
-    'RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs',
-    'RegionAutoscalerAutoscalingPolicyMetricArgs',
-    'RegionAutoscalerAutoscalingPolicyScaleDownControlArgs',
-    'RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs',
-    'RegionAutoscalerAutoscalingPolicyScaleInControlArgs',
-    'RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs',
-    'RegionAutoscalerAutoscalingPolicyScalingScheduleArgs',
-    'RegionBackendServiceBackendArgs',
-    'RegionBackendServiceCdnPolicyArgs',
-    'RegionBackendServiceCdnPolicyCacheKeyPolicyArgs',
-    'RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs',
-    'RegionBackendServiceCircuitBreakersArgs',
-    'RegionBackendServiceCircuitBreakersConnectTimeoutArgs',
-    'RegionBackendServiceConnectionTrackingPolicyArgs',
-    'RegionBackendServiceConsistentHashArgs',
-    'RegionBackendServiceConsistentHashHttpCookieArgs',
-    'RegionBackendServiceConsistentHashHttpCookieTtlArgs',
-    'RegionBackendServiceFailoverPolicyArgs',
-    'RegionBackendServiceIamBindingConditionArgs',
-    'RegionBackendServiceIamMemberConditionArgs',
-    'RegionBackendServiceIapArgs',
-    'RegionBackendServiceLogConfigArgs',
-    'RegionBackendServiceOutlierDetectionArgs',
-    'RegionBackendServiceOutlierDetectionBaseEjectionTimeArgs',
-    'RegionBackendServiceOutlierDetectionIntervalArgs',
-    'RegionBackendServiceSubsettingArgs',
-    'RegionCommitmentLicenseResourceArgs',
-    'RegionCommitmentResourceArgs',
-    'RegionDiskAsyncPrimaryDiskArgs',
-    'RegionDiskDiskEncryptionKeyArgs',
-    'RegionDiskGuestOsFeatureArgs',
-    'RegionDiskIamBindingConditionArgs',
-    'RegionDiskIamMemberConditionArgs',
-    'RegionDiskSourceSnapshotEncryptionKeyArgs',
-    'RegionHealthCheckGrpcHealthCheckArgs',
-    'RegionHealthCheckHttp2HealthCheckArgs',
-    'RegionHealthCheckHttpHealthCheckArgs',
-    'RegionHealthCheckHttpsHealthCheckArgs',
-    'RegionHealthCheckLogConfigArgs',
-    'RegionHealthCheckSslHealthCheckArgs',
-    'RegionHealthCheckTcpHealthCheckArgs',
-    'RegionInstanceGroupManagerAllInstancesConfigArgs',
-    'RegionInstanceGroupManagerAutoHealingPoliciesArgs',
-    'RegionInstanceGroupManagerInstanceLifecyclePolicyArgs',
-    'RegionInstanceGroupManagerNamedPortArgs',
-    'RegionInstanceGroupManagerStatefulDiskArgs',
-    'RegionInstanceGroupManagerStatefulExternalIpArgs',
-    'RegionInstanceGroupManagerStatefulInternalIpArgs',
-    'RegionInstanceGroupManagerStatusArgs',
-    'RegionInstanceGroupManagerStatusAllInstancesConfigArgs',
-    'RegionInstanceGroupManagerStatusStatefulArgs',
-    'RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs',
-    'RegionInstanceGroupManagerStatusVersionTargetArgs',
-    'RegionInstanceGroupManagerUpdatePolicyArgs',
-    'RegionInstanceGroupManagerVersionArgs',
-    'RegionInstanceGroupManagerVersionTargetSizeArgs',
-    'RegionInstanceTemplateAdvancedMachineFeaturesArgs',
-    'RegionInstanceTemplateConfidentialInstanceConfigArgs',
-    'RegionInstanceTemplateDiskArgs',
-    'RegionInstanceTemplateDiskDiskEncryptionKeyArgs',
-    'RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs',
-    'RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs',
-    'RegionInstanceTemplateGuestAcceleratorArgs',
-    'RegionInstanceTemplateNetworkInterfaceArgs',
-    'RegionInstanceTemplateNetworkInterfaceAccessConfigArgs',
-    'RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs',
-    'RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs',
-    'RegionInstanceTemplateNetworkPerformanceConfigArgs',
-    'RegionInstanceTemplateReservationAffinityArgs',
-    'RegionInstanceTemplateReservationAffinitySpecificReservationArgs',
-    'RegionInstanceTemplateSchedulingArgs',
-    'RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs',
-    'RegionInstanceTemplateSchedulingMaxRunDurationArgs',
-    'RegionInstanceTemplateSchedulingNodeAffinityArgs',
-    'RegionInstanceTemplateServiceAccountArgs',
-    'RegionInstanceTemplateShieldedInstanceConfigArgs',
-    'RegionNetworkEndpointGroupAppEngineArgs',
-    'RegionNetworkEndpointGroupCloudFunctionArgs',
-    'RegionNetworkEndpointGroupCloudRunArgs',
-    'RegionNetworkEndpointGroupServerlessDeploymentArgs',
-    'RegionNetworkFirewallPolicyRuleMatchArgs',
-    'RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs',
-    'RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs',
-    'RegionNetworkFirewallPolicyRuleTargetSecureTagArgs',
-    'RegionPerInstanceConfigPreservedStateArgs',
-    'RegionPerInstanceConfigPreservedStateDiskArgs',
-    'RegionPerInstanceConfigPreservedStateExternalIpArgs',
-    'RegionPerInstanceConfigPreservedStateExternalIpIpAddressArgs',
-    'RegionPerInstanceConfigPreservedStateInternalIpArgs',
-    'RegionPerInstanceConfigPreservedStateInternalIpIpAddressArgs',
-    'RegionSecurityPolicyDdosProtectionConfigArgs',
-    'RegionSecurityPolicyRuleMatchArgs',
-    'RegionSecurityPolicyRuleMatchConfigArgs',
-    'RegionSecurityPolicyRuleNetworkMatchArgs',
-    'RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs',
-    'RegionSecurityPolicyUserDefinedFieldArgs',
-    'RegionUrlMapDefaultRouteActionArgs',
-    'RegionUrlMapDefaultRouteActionCorsPolicyArgs',
-    'RegionUrlMapDefaultRouteActionFaultInjectionPolicyArgs',
-    'RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArgs',
-    'RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArgs',
-    'RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs',
-    'RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs',
-    'RegionUrlMapDefaultRouteActionRetryPolicyArgs',
-    'RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs',
-    'RegionUrlMapDefaultRouteActionTimeoutArgs',
-    'RegionUrlMapDefaultRouteActionUrlRewriteArgs',
-    'RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs',
-    'RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs',
-    'RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs',
-    'RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs',
-    'RegionUrlMapDefaultUrlRedirectArgs',
-    'RegionUrlMapHostRuleArgs',
-    'RegionUrlMapPathMatcherArgs',
-    'RegionUrlMapPathMatcherDefaultUrlRedirectArgs',
-    'RegionUrlMapPathMatcherPathRuleArgs',
-    'RegionUrlMapPathMatcherPathRuleRouteActionArgs',
-    'RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs',
-    'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs',
-    'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs',
-    'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs',
-    'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs',
-    'RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs',
-    'RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs',
-    'RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs',
-    'RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs',
-    'RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs',
-    'RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs',
-    'RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs',
-    'RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs',
-    'RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs',
-    'RegionUrlMapPathMatcherPathRuleUrlRedirectArgs',
-    'RegionUrlMapPathMatcherRouteRuleArgs',
-    'RegionUrlMapPathMatcherRouteRuleHeaderActionArgs',
-    'RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs',
-    'RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs',
-    'RegionUrlMapPathMatcherRouteRuleMatchRuleArgs',
-    'RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs',
-    'RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs',
-    'RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs',
-    'RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs',
-    'RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs',
-    'RegionUrlMapPathMatcherRouteRuleRouteActionArgs',
-    'RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArgs',
-    'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs',
-    'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs',
-    'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs',
-    'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs',
-    'RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs',
-    'RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgs',
-    'RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs',
-    'RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArgs',
-    'RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs',
-    'RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs',
-    'RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs',
-    'RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs',
-    'RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs',
-    'RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs',
-    'RegionUrlMapTestArgs',
-    'ReservationShareSettingsArgs',
-    'ReservationShareSettingsProjectMapArgs',
-    'ReservationSpecificReservationArgs',
-    'ReservationSpecificReservationInstancePropertiesArgs',
-    'ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs',
-    'ReservationSpecificReservationInstancePropertiesLocalSsdArgs',
-    'ResourcePolicyDiskConsistencyGroupPolicyArgs',
-    'ResourcePolicyGroupPlacementPolicyArgs',
-    'ResourcePolicyInstanceSchedulePolicyArgs',
-    'ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs',
-    'ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs',
-    'ResourcePolicySnapshotSchedulePolicyArgs',
-    'ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs',
-    'ResourcePolicySnapshotSchedulePolicyScheduleArgs',
-    'ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs',
-    'ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs',
-    'ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs',
-    'ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs',
-    'ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs',
-    'RouterBgpArgs',
-    'RouterBgpAdvertisedIpRangeArgs',
-    'RouterNatLogConfigArgs',
-    'RouterNatRuleArgs',
-    'RouterNatRuleActionArgs',
-    'RouterNatSubnetworkArgs',
-    'RouterPeerAdvertisedIpRangeArgs',
-    'RouterPeerBfdArgs',
-    'SecurityPolicyAdaptiveProtectionConfigArgs',
-    'SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs',
-    'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs',
-    'SecurityPolicyAdvancedOptionsConfigArgs',
-    'SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs',
-    'SecurityPolicyRecaptchaOptionsConfigArgs',
-    'SecurityPolicyRuleArgs',
-    'SecurityPolicyRuleHeaderActionArgs',
-    'SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs',
-    'SecurityPolicyRuleMatchArgs',
-    'SecurityPolicyRuleMatchConfigArgs',
-    'SecurityPolicyRuleMatchExprArgs',
-    'SecurityPolicyRulePreconfiguredWafConfigArgs',
-    'SecurityPolicyRulePreconfiguredWafConfigExclusionArgs',
-    'SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs',
-    'SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs',
-    'SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs',
-    'SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs',
-    'SecurityPolicyRuleRateLimitOptionsArgs',
-    'SecurityPolicyRuleRateLimitOptionsBanThresholdArgs',
-    'SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs',
-    'SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs',
-    'SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs',
-    'SecurityPolicyRuleRedirectOptionsArgs',
-    'SecurityScanConfigAuthenticationArgs',
-    'SecurityScanConfigAuthenticationCustomAccountArgs',
-    'SecurityScanConfigAuthenticationGoogleAccountArgs',
-    'SecurityScanConfigScheduleArgs',
-    'ServiceAttachmentConnectedEndpointArgs',
-    'ServiceAttachmentConsumerAcceptListArgs',
-    'SnapshotIamBindingConditionArgs',
-    'SnapshotIamMemberConditionArgs',
-    'SnapshotSnapshotEncryptionKeyArgs',
-    'SnapshotSourceDiskEncryptionKeyArgs',
-    'SubnetworkIAMBindingConditionArgs',
-    'SubnetworkIAMMemberConditionArgs',
-    'SubnetworkLogConfigArgs',
-    'SubnetworkSecondaryIpRangeArgs',
-    'URLMapDefaultRouteActionArgs',
-    'URLMapDefaultRouteActionCorsPolicyArgs',
-    'URLMapDefaultRouteActionFaultInjectionPolicyArgs',
-    'URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs',
-    'URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs',
-    'URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs',
-    'URLMapDefaultRouteActionRequestMirrorPolicyArgs',
-    'URLMapDefaultRouteActionRetryPolicyArgs',
-    'URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs',
-    'URLMapDefaultRouteActionTimeoutArgs',
-    'URLMapDefaultRouteActionUrlRewriteArgs',
-    'URLMapDefaultRouteActionWeightedBackendServiceArgs',
-    'URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs',
-    'URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs',
-    'URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs',
-    'URLMapDefaultUrlRedirectArgs',
-    'URLMapHeaderActionArgs',
-    'URLMapHeaderActionRequestHeadersToAddArgs',
-    'URLMapHeaderActionResponseHeadersToAddArgs',
-    'URLMapHostRuleArgs',
-    'URLMapPathMatcherArgs',
-    'URLMapPathMatcherDefaultRouteActionArgs',
-    'URLMapPathMatcherDefaultRouteActionCorsPolicyArgs',
-    'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs',
-    'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgs',
-    'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs',
-    'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs',
-    'URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs',
-    'URLMapPathMatcherDefaultRouteActionRetryPolicyArgs',
-    'URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgs',
-    'URLMapPathMatcherDefaultRouteActionTimeoutArgs',
-    'URLMapPathMatcherDefaultRouteActionUrlRewriteArgs',
-    'URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs',
-    'URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs',
-    'URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs',
-    'URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs',
-    'URLMapPathMatcherDefaultUrlRedirectArgs',
-    'URLMapPathMatcherHeaderActionArgs',
-    'URLMapPathMatcherHeaderActionRequestHeadersToAddArgs',
-    'URLMapPathMatcherHeaderActionResponseHeadersToAddArgs',
-    'URLMapPathMatcherPathRuleArgs',
-    'URLMapPathMatcherPathRuleRouteActionArgs',
-    'URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs',
-    'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs',
-    'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs',
-    'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs',
-    'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs',
-    'URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs',
-    'URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs',
-    'URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs',
-    'URLMapPathMatcherPathRuleRouteActionTimeoutArgs',
-    'URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs',
-    'URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs',
-    'URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs',
-    'URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs',
-    'URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs',
-    'URLMapPathMatcherPathRuleUrlRedirectArgs',
-    'URLMapPathMatcherRouteRuleArgs',
-    'URLMapPathMatcherRouteRuleHeaderActionArgs',
-    'URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs',
-    'URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs',
-    'URLMapPathMatcherRouteRuleMatchRuleArgs',
-    'URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs',
-    'URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs',
-    'URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs',
-    'URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs',
-    'URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs',
-    'URLMapPathMatcherRouteRuleRouteActionArgs',
-    'URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs',
-    'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs',
-    'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs',
-    'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs',
-    'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs',
-    'URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs',
-    'URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs',
-    'URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs',
-    'URLMapPathMatcherRouteRuleRouteActionTimeoutArgs',
-    'URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs',
-    'URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs',
-    'URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs',
-    'URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs',
-    'URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs',
-    'URLMapPathMatcherRouteRuleUrlRedirectArgs',
-    'URLMapTestArgs',
+    'AutoscalerAutoscalingPolicyArrgs',
+    'AutoscalerAutoscalingPolicyCpuUtilizationArrgs',
+    'AutoscalerAutoscalingPolicyLoadBalancingUtilizationArrgs',
+    'AutoscalerAutoscalingPolicyMetricArrgs',
+    'AutoscalerAutoscalingPolicyScaleDownControlArrgs',
+    'AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArrgs',
+    'AutoscalerAutoscalingPolicyScaleInControlArrgs',
+    'AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArrgs',
+    'AutoscalerAutoscalingPolicyScalingScheduleArrgs',
+    'BackendBucketCdnPolicyArrgs',
+    'BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrgs',
+    'BackendBucketCdnPolicyCacheKeyPolicyArrgs',
+    'BackendBucketCdnPolicyNegativeCachingPolicyArrgs',
+    'BackendBucketIamBindingConditionArrgs',
+    'BackendBucketIamMemberConditionArrgs',
+    'BackendServiceBackendArrgs',
+    'BackendServiceCdnPolicyArrgs',
+    'BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrgs',
+    'BackendServiceCdnPolicyCacheKeyPolicyArrgs',
+    'BackendServiceCdnPolicyNegativeCachingPolicyArrgs',
+    'BackendServiceCircuitBreakersArrgs',
+    'BackendServiceCircuitBreakersConnectTimeoutArrgs',
+    'BackendServiceConsistentHashArrgs',
+    'BackendServiceConsistentHashHttpCookieArrgs',
+    'BackendServiceConsistentHashHttpCookieTtlArrgs',
+    'BackendServiceIamBindingConditionArrgs',
+    'BackendServiceIamMemberConditionArrgs',
+    'BackendServiceIapArrgs',
+    'BackendServiceLocalityLbPolicyArrgs',
+    'BackendServiceLocalityLbPolicyCustomPolicyArrgs',
+    'BackendServiceLocalityLbPolicyPolicyArrgs',
+    'BackendServiceLogConfigArrgs',
+    'BackendServiceOutlierDetectionArrgs',
+    'BackendServiceOutlierDetectionBaseEjectionTimeArrgs',
+    'BackendServiceOutlierDetectionIntervalArrgs',
+    'BackendServiceSecuritySettingsArrgs',
+    'DiskAsyncPrimaryDiskArrgs',
+    'DiskAsyncReplicationSecondaryDiskArrgs',
+    'DiskDiskEncryptionKeyArrgs',
+    'DiskGuestOsFeatureArrgs',
+    'DiskIamBindingConditionArrgs',
+    'DiskIamMemberConditionArrgs',
+    'DiskSourceImageEncryptionKeyArrgs',
+    'DiskSourceSnapshotEncryptionKeyArrgs',
+    'ExternalVpnGatewayInterfaceArrgs',
+    'FirewallAllowArrgs',
+    'FirewallDenyArrgs',
+    'FirewallLogConfigArrgs',
+    'FirewallPolicyRuleMatchArrgs',
+    'FirewallPolicyRuleMatchLayer4ConfigArrgs',
+    'ForwardingRuleServiceDirectoryRegistrationsArrgs',
+    'GlobalForwardingRuleMetadataFilterArrgs',
+    'GlobalForwardingRuleMetadataFilterFilterLabelArrgs',
+    'HaVpnGatewayVpnInterfaceArrgs',
+    'HealthCheckGrpcHealthCheckArrgs',
+    'HealthCheckHttp2HealthCheckArrgs',
+    'HealthCheckHttpHealthCheckArrgs',
+    'HealthCheckHttpsHealthCheckArrgs',
+    'HealthCheckLogConfigArrgs',
+    'HealthCheckSslHealthCheckArrgs',
+    'HealthCheckTcpHealthCheckArrgs',
+    'ImageGuestOsFeatureArrgs',
+    'ImageIamBindingConditionArrgs',
+    'ImageIamMemberConditionArrgs',
+    'ImageImageEncryptionKeyArrgs',
+    'ImageRawDiskArrgs',
+    'InstanceAdvancedMachineFeaturesArrgs',
+    'InstanceAttachedDiskArrgs',
+    'InstanceBootDiskArrgs',
+    'InstanceBootDiskInitializeParamsArrgs',
+    'InstanceConfidentialInstanceConfigArrgs',
+    'InstanceFromMachineImageAdvancedMachineFeaturesArrgs',
+    'InstanceFromMachineImageAttachedDiskArrgs',
+    'InstanceFromMachineImageBootDiskArrgs',
+    'InstanceFromMachineImageBootDiskInitializeParamsArrgs',
+    'InstanceFromMachineImageConfidentialInstanceConfigArrgs',
+    'InstanceFromMachineImageGuestAcceleratorArrgs',
+    'InstanceFromMachineImageNetworkInterfaceArrgs',
+    'InstanceFromMachineImageNetworkInterfaceAccessConfigArrgs',
+    'InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrgs',
+    'InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArrgs',
+    'InstanceFromMachineImageNetworkPerformanceConfigArrgs',
+    'InstanceFromMachineImageParamsArrgs',
+    'InstanceFromMachineImageReservationAffinityArrgs',
+    'InstanceFromMachineImageReservationAffinitySpecificReservationArrgs',
+    'InstanceFromMachineImageSchedulingArrgs',
+    'InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArrgs',
+    'InstanceFromMachineImageSchedulingMaxRunDurationArrgs',
+    'InstanceFromMachineImageSchedulingNodeAffinityArrgs',
+    'InstanceFromMachineImageScratchDiskArrgs',
+    'InstanceFromMachineImageServiceAccountArrgs',
+    'InstanceFromMachineImageShieldedInstanceConfigArrgs',
+    'InstanceFromTemplateAdvancedMachineFeaturesArrgs',
+    'InstanceFromTemplateAttachedDiskArrgs',
+    'InstanceFromTemplateBootDiskArrgs',
+    'InstanceFromTemplateBootDiskInitializeParamsArrgs',
+    'InstanceFromTemplateConfidentialInstanceConfigArrgs',
+    'InstanceFromTemplateGuestAcceleratorArrgs',
+    'InstanceFromTemplateNetworkInterfaceArrgs',
+    'InstanceFromTemplateNetworkInterfaceAccessConfigArrgs',
+    'InstanceFromTemplateNetworkInterfaceAliasIpRangeArrgs',
+    'InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArrgs',
+    'InstanceFromTemplateNetworkPerformanceConfigArrgs',
+    'InstanceFromTemplateParamsArrgs',
+    'InstanceFromTemplateReservationAffinityArrgs',
+    'InstanceFromTemplateReservationAffinitySpecificReservationArrgs',
+    'InstanceFromTemplateSchedulingArrgs',
+    'InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArrgs',
+    'InstanceFromTemplateSchedulingMaxRunDurationArrgs',
+    'InstanceFromTemplateSchedulingNodeAffinityArrgs',
+    'InstanceFromTemplateScratchDiskArrgs',
+    'InstanceFromTemplateServiceAccountArrgs',
+    'InstanceFromTemplateShieldedInstanceConfigArrgs',
+    'InstanceGroupManagerAllInstancesConfigArrgs',
+    'InstanceGroupManagerAutoHealingPoliciesArrgs',
+    'InstanceGroupManagerInstanceLifecyclePolicyArrgs',
+    'InstanceGroupManagerNamedPortArrgs',
+    'InstanceGroupManagerStatefulDiskArrgs',
+    'InstanceGroupManagerStatefulExternalIpArrgs',
+    'InstanceGroupManagerStatefulInternalIpArrgs',
+    'InstanceGroupManagerStatusArrgs',
+    'InstanceGroupManagerStatusAllInstancesConfigArrgs',
+    'InstanceGroupManagerStatusStatefulArrgs',
+    'InstanceGroupManagerStatusStatefulPerInstanceConfigArrgs',
+    'InstanceGroupManagerStatusVersionTargetArrgs',
+    'InstanceGroupManagerUpdatePolicyArrgs',
+    'InstanceGroupManagerVersionArrgs',
+    'InstanceGroupManagerVersionTargetSizeArrgs',
+    'InstanceGroupNamedPortArrgs',
+    'InstanceGuestAcceleratorArrgs',
+    'InstanceIAMBindingConditionArrgs',
+    'InstanceIAMMemberConditionArrgs',
+    'InstanceNetworkInterfaceArrgs',
+    'InstanceNetworkInterfaceAccessConfigArrgs',
+    'InstanceNetworkInterfaceAliasIpRangeArrgs',
+    'InstanceNetworkInterfaceIpv6AccessConfigArrgs',
+    'InstanceNetworkPerformanceConfigArrgs',
+    'InstanceParamsArrgs',
+    'InstanceReservationAffinityArrgs',
+    'InstanceReservationAffinitySpecificReservationArrgs',
+    'InstanceSchedulingArrgs',
+    'InstanceSchedulingLocalSsdRecoveryTimeoutArrgs',
+    'InstanceSchedulingMaxRunDurationArrgs',
+    'InstanceSchedulingNodeAffinityArrgs',
+    'InstanceScratchDiskArrgs',
+    'InstanceServiceAccountArrgs',
+    'InstanceSettingsMetadataArrgs',
+    'InstanceShieldedInstanceConfigArrgs',
+    'InstanceTemplateAdvancedMachineFeaturesArrgs',
+    'InstanceTemplateConfidentialInstanceConfigArrgs',
+    'InstanceTemplateDiskArrgs',
+    'InstanceTemplateDiskDiskEncryptionKeyArrgs',
+    'InstanceTemplateDiskSourceImageEncryptionKeyArrgs',
+    'InstanceTemplateDiskSourceSnapshotEncryptionKeyArrgs',
+    'InstanceTemplateGuestAcceleratorArrgs',
+    'InstanceTemplateNetworkInterfaceArrgs',
+    'InstanceTemplateNetworkInterfaceAccessConfigArrgs',
+    'InstanceTemplateNetworkInterfaceAliasIpRangeArrgs',
+    'InstanceTemplateNetworkInterfaceIpv6AccessConfigArrgs',
+    'InstanceTemplateNetworkPerformanceConfigArrgs',
+    'InstanceTemplateReservationAffinityArrgs',
+    'InstanceTemplateReservationAffinitySpecificReservationArrgs',
+    'InstanceTemplateSchedulingArrgs',
+    'InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrgs',
+    'InstanceTemplateSchedulingMaxRunDurationArrgs',
+    'InstanceTemplateSchedulingNodeAffinityArrgs',
+    'InstanceTemplateServiceAccountArrgs',
+    'InstanceTemplateShieldedInstanceConfigArrgs',
+    'InterconnectAttachmentPrivateInterconnectInfoArrgs',
+    'MachineImageIamBindingConditionArrgs',
+    'MachineImageIamMemberConditionArrgs',
+    'MachineImageMachineImageEncryptionKeyArrgs',
+    'ManagedSslCertificateManagedArrgs',
+    'MangedSslCertificateManagedArrgs',
+    'NetworkAttachmentConnectionEndpointArrgs',
+    'NetworkEndpointListNetworkEndpointArrgs',
+    'NetworkFirewallPolicyRuleMatchArrgs',
+    'NetworkFirewallPolicyRuleMatchLayer4ConfigArrgs',
+    'NetworkFirewallPolicyRuleMatchSrcSecureTagArrgs',
+    'NetworkFirewallPolicyRuleTargetSecureTagArrgs',
+    'NodeGroupAutoscalingPolicyArrgs',
+    'NodeGroupMaintenanceWindowArrgs',
+    'NodeGroupShareSettingsArrgs',
+    'NodeGroupShareSettingsProjectMapArrgs',
+    'NodeTemplateNodeTypeFlexibilityArrgs',
+    'NodeTemplateServerBindingArrgs',
+    'OrganizationSecurityPolicyRuleMatchArrgs',
+    'OrganizationSecurityPolicyRuleMatchConfigArrgs',
+    'OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrgs',
+    'PacketMirroringCollectorIlbArrgs',
+    'PacketMirroringFilterArrgs',
+    'PacketMirroringMirroredResourcesArrgs',
+    'PacketMirroringMirroredResourcesInstanceArrgs',
+    'PacketMirroringMirroredResourcesSubnetworkArrgs',
+    'PacketMirroringNetworkArrgs',
+    'PerInstanceConfigPreservedStateArrgs',
+    'PerInstanceConfigPreservedStateDiskArrgs',
+    'PerInstanceConfigPreservedStateExternalIpArrgs',
+    'PerInstanceConfigPreservedStateExternalIpIpAddressArrgs',
+    'PerInstanceConfigPreservedStateInternalIpArrgs',
+    'PerInstanceConfigPreservedStateInternalIpIpAddressArrgs',
+    'RegionAutoscalerAutoscalingPolicyArrgs',
+    'RegionAutoscalerAutoscalingPolicyCpuUtilizationArrgs',
+    'RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArrgs',
+    'RegionAutoscalerAutoscalingPolicyMetricArrgs',
+    'RegionAutoscalerAutoscalingPolicyScaleDownControlArrgs',
+    'RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArrgs',
+    'RegionAutoscalerAutoscalingPolicyScaleInControlArrgs',
+    'RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArrgs',
+    'RegionAutoscalerAutoscalingPolicyScalingScheduleArrgs',
+    'RegionBackendServiceBackendArrgs',
+    'RegionBackendServiceCdnPolicyArrgs',
+    'RegionBackendServiceCdnPolicyCacheKeyPolicyArrgs',
+    'RegionBackendServiceCdnPolicyNegativeCachingPolicyArrgs',
+    'RegionBackendServiceCircuitBreakersArrgs',
+    'RegionBackendServiceCircuitBreakersConnectTimeoutArrgs',
+    'RegionBackendServiceConnectionTrackingPolicyArrgs',
+    'RegionBackendServiceConsistentHashArrgs',
+    'RegionBackendServiceConsistentHashHttpCookieArrgs',
+    'RegionBackendServiceConsistentHashHttpCookieTtlArrgs',
+    'RegionBackendServiceFailoverPolicyArrgs',
+    'RegionBackendServiceIamBindingConditionArrgs',
+    'RegionBackendServiceIamMemberConditionArrgs',
+    'RegionBackendServiceIapArrgs',
+    'RegionBackendServiceLogConfigArrgs',
+    'RegionBackendServiceOutlierDetectionArrgs',
+    'RegionBackendServiceOutlierDetectionBaseEjectionTimeArrgs',
+    'RegionBackendServiceOutlierDetectionIntervalArrgs',
+    'RegionBackendServiceSubsettingArrgs',
+    'RegionCommitmentLicenseResourceArrgs',
+    'RegionCommitmentResourceArrgs',
+    'RegionDiskAsyncPrimaryDiskArrgs',
+    'RegionDiskDiskEncryptionKeyArrgs',
+    'RegionDiskGuestOsFeatureArrgs',
+    'RegionDiskIamBindingConditionArrgs',
+    'RegionDiskIamMemberConditionArrgs',
+    'RegionDiskSourceSnapshotEncryptionKeyArrgs',
+    'RegionHealthCheckGrpcHealthCheckArrgs',
+    'RegionHealthCheckHttp2HealthCheckArrgs',
+    'RegionHealthCheckHttpHealthCheckArrgs',
+    'RegionHealthCheckHttpsHealthCheckArrgs',
+    'RegionHealthCheckLogConfigArrgs',
+    'RegionHealthCheckSslHealthCheckArrgs',
+    'RegionHealthCheckTcpHealthCheckArrgs',
+    'RegionInstanceGroupManagerAllInstancesConfigArrgs',
+    'RegionInstanceGroupManagerAutoHealingPoliciesArrgs',
+    'RegionInstanceGroupManagerInstanceLifecyclePolicyArrgs',
+    'RegionInstanceGroupManagerNamedPortArrgs',
+    'RegionInstanceGroupManagerStatefulDiskArrgs',
+    'RegionInstanceGroupManagerStatefulExternalIpArrgs',
+    'RegionInstanceGroupManagerStatefulInternalIpArrgs',
+    'RegionInstanceGroupManagerStatusArrgs',
+    'RegionInstanceGroupManagerStatusAllInstancesConfigArrgs',
+    'RegionInstanceGroupManagerStatusStatefulArrgs',
+    'RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrgs',
+    'RegionInstanceGroupManagerStatusVersionTargetArrgs',
+    'RegionInstanceGroupManagerUpdatePolicyArrgs',
+    'RegionInstanceGroupManagerVersionArrgs',
+    'RegionInstanceGroupManagerVersionTargetSizeArrgs',
+    'RegionInstanceTemplateAdvancedMachineFeaturesArrgs',
+    'RegionInstanceTemplateConfidentialInstanceConfigArrgs',
+    'RegionInstanceTemplateDiskArrgs',
+    'RegionInstanceTemplateDiskDiskEncryptionKeyArrgs',
+    'RegionInstanceTemplateDiskSourceImageEncryptionKeyArrgs',
+    'RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrgs',
+    'RegionInstanceTemplateGuestAcceleratorArrgs',
+    'RegionInstanceTemplateNetworkInterfaceArrgs',
+    'RegionInstanceTemplateNetworkInterfaceAccessConfigArrgs',
+    'RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrgs',
+    'RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrgs',
+    'RegionInstanceTemplateNetworkPerformanceConfigArrgs',
+    'RegionInstanceTemplateReservationAffinityArrgs',
+    'RegionInstanceTemplateReservationAffinitySpecificReservationArrgs',
+    'RegionInstanceTemplateSchedulingArrgs',
+    'RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrgs',
+    'RegionInstanceTemplateSchedulingMaxRunDurationArrgs',
+    'RegionInstanceTemplateSchedulingNodeAffinityArrgs',
+    'RegionInstanceTemplateServiceAccountArrgs',
+    'RegionInstanceTemplateShieldedInstanceConfigArrgs',
+    'RegionNetworkEndpointGroupAppEngineArrgs',
+    'RegionNetworkEndpointGroupCloudFunctionArrgs',
+    'RegionNetworkEndpointGroupCloudRunArrgs',
+    'RegionNetworkEndpointGroupServerlessDeploymentArrgs',
+    'RegionNetworkFirewallPolicyRuleMatchArrgs',
+    'RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArrgs',
+    'RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArrgs',
+    'RegionNetworkFirewallPolicyRuleTargetSecureTagArrgs',
+    'RegionPerInstanceConfigPreservedStateArrgs',
+    'RegionPerInstanceConfigPreservedStateDiskArrgs',
+    'RegionPerInstanceConfigPreservedStateExternalIpArrgs',
+    'RegionPerInstanceConfigPreservedStateExternalIpIpAddressArrgs',
+    'RegionPerInstanceConfigPreservedStateInternalIpArrgs',
+    'RegionPerInstanceConfigPreservedStateInternalIpIpAddressArrgs',
+    'RegionSecurityPolicyDdosProtectionConfigArrgs',
+    'RegionSecurityPolicyRuleMatchArrgs',
+    'RegionSecurityPolicyRuleMatchConfigArrgs',
+    'RegionSecurityPolicyRuleNetworkMatchArrgs',
+    'RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrgs',
+    'RegionSecurityPolicyUserDefinedFieldArrgs',
+    'RegionUrlMapDefaultRouteActionArrgs',
+    'RegionUrlMapDefaultRouteActionCorsPolicyArrgs',
+    'RegionUrlMapDefaultRouteActionFaultInjectionPolicyArrgs',
+    'RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArrgs',
+    'RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArrgs',
+    'RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArrgs',
+    'RegionUrlMapDefaultRouteActionRequestMirrorPolicyArrgs',
+    'RegionUrlMapDefaultRouteActionRetryPolicyArrgs',
+    'RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArrgs',
+    'RegionUrlMapDefaultRouteActionTimeoutArrgs',
+    'RegionUrlMapDefaultRouteActionUrlRewriteArrgs',
+    'RegionUrlMapDefaultRouteActionWeightedBackendServiceArrgs',
+    'RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArrgs',
+    'RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs',
+    'RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs',
+    'RegionUrlMapDefaultUrlRedirectArrgs',
+    'RegionUrlMapHostRuleArrgs',
+    'RegionUrlMapPathMatcherArrgs',
+    'RegionUrlMapPathMatcherDefaultUrlRedirectArrgs',
+    'RegionUrlMapPathMatcherPathRuleArrgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionArrgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArrgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArrgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArrgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArrgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArrgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArrgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArrgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArrgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArrgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArrgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs',
+    'RegionUrlMapPathMatcherPathRuleUrlRedirectArrgs',
+    'RegionUrlMapPathMatcherRouteRuleArrgs',
+    'RegionUrlMapPathMatcherRouteRuleHeaderActionArrgs',
+    'RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrgs',
+    'RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrgs',
+    'RegionUrlMapPathMatcherRouteRuleMatchRuleArrgs',
+    'RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArrgs',
+    'RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArrgs',
+    'RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArrgs',
+    'RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrgs',
+    'RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionArrgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArrgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArrgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArrgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArrgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArrgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArrgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArrgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArrgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArrgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArrgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs',
+    'RegionUrlMapPathMatcherRouteRuleUrlRedirectArrgs',
+    'RegionUrlMapTestArrgs',
+    'ReservationShareSettingsArrgs',
+    'ReservationShareSettingsProjectMapArrgs',
+    'ReservationSpecificReservationArrgs',
+    'ReservationSpecificReservationInstancePropertiesArrgs',
+    'ReservationSpecificReservationInstancePropertiesGuestAcceleratorArrgs',
+    'ReservationSpecificReservationInstancePropertiesLocalSsdArrgs',
+    'ResourcePolicyDiskConsistencyGroupPolicyArrgs',
+    'ResourcePolicyGroupPlacementPolicyArrgs',
+    'ResourcePolicyInstanceSchedulePolicyArrgs',
+    'ResourcePolicyInstanceSchedulePolicyVmStartScheduleArrgs',
+    'ResourcePolicyInstanceSchedulePolicyVmStopScheduleArrgs',
+    'ResourcePolicySnapshotSchedulePolicyArrgs',
+    'ResourcePolicySnapshotSchedulePolicyRetentionPolicyArrgs',
+    'ResourcePolicySnapshotSchedulePolicyScheduleArrgs',
+    'ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrgs',
+    'ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrgs',
+    'ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrgs',
+    'ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrgs',
+    'ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArrgs',
+    'RouterBgpArrgs',
+    'RouterBgpAdvertisedIpRangeArrgs',
+    'RouterNatLogConfigArrgs',
+    'RouterNatRuleArrgs',
+    'RouterNatRuleActionArrgs',
+    'RouterNatSubnetworkArrgs',
+    'RouterPeerAdvertisedIpRangeArrgs',
+    'RouterPeerBfdArrgs',
+    'SecurityPolicyAdaptiveProtectionConfigArrgs',
+    'SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrgs',
+    'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrgs',
+    'SecurityPolicyAdvancedOptionsConfigArrgs',
+    'SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrgs',
+    'SecurityPolicyRecaptchaOptionsConfigArrgs',
+    'SecurityPolicyRuleArrgs',
+    'SecurityPolicyRuleHeaderActionArrgs',
+    'SecurityPolicyRuleHeaderActionRequestHeadersToAddArrgs',
+    'SecurityPolicyRuleMatchArrgs',
+    'SecurityPolicyRuleMatchConfigArrgs',
+    'SecurityPolicyRuleMatchExprArrgs',
+    'SecurityPolicyRulePreconfiguredWafConfigArrgs',
+    'SecurityPolicyRulePreconfiguredWafConfigExclusionArrgs',
+    'SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrgs',
+    'SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrgs',
+    'SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrgs',
+    'SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrgs',
+    'SecurityPolicyRuleRateLimitOptionsArrgs',
+    'SecurityPolicyRuleRateLimitOptionsBanThresholdArrgs',
+    'SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrgs',
+    'SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArrgs',
+    'SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArrgs',
+    'SecurityPolicyRuleRedirectOptionsArrgs',
+    'SecurityScanConfigAuthenticationArrgs',
+    'SecurityScanConfigAuthenticationCustomAccountArrgs',
+    'SecurityScanConfigAuthenticationGoogleAccountArrgs',
+    'SecurityScanConfigScheduleArrgs',
+    'ServiceAttachmentConnectedEndpointArrgs',
+    'ServiceAttachmentConsumerAcceptListArrgs',
+    'SnapshotIamBindingConditionArrgs',
+    'SnapshotIamMemberConditionArrgs',
+    'SnapshotSnapshotEncryptionKeyArrgs',
+    'SnapshotSourceDiskEncryptionKeyArrgs',
+    'SubnetworkIAMBindingConditionArrgs',
+    'SubnetworkIAMMemberConditionArrgs',
+    'SubnetworkLogConfigArrgs',
+    'SubnetworkSecondaryIpRangeArrgs',
+    'URLMapDefaultRouteActionArrgs',
+    'URLMapDefaultRouteActionCorsPolicyArrgs',
+    'URLMapDefaultRouteActionFaultInjectionPolicyArrgs',
+    'URLMapDefaultRouteActionFaultInjectionPolicyAbortArrgs',
+    'URLMapDefaultRouteActionFaultInjectionPolicyDelayArrgs',
+    'URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArrgs',
+    'URLMapDefaultRouteActionRequestMirrorPolicyArrgs',
+    'URLMapDefaultRouteActionRetryPolicyArrgs',
+    'URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArrgs',
+    'URLMapDefaultRouteActionTimeoutArrgs',
+    'URLMapDefaultRouteActionUrlRewriteArrgs',
+    'URLMapDefaultRouteActionWeightedBackendServiceArrgs',
+    'URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArrgs',
+    'URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs',
+    'URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs',
+    'URLMapDefaultUrlRedirectArrgs',
+    'URLMapHeaderActionArrgs',
+    'URLMapHeaderActionRequestHeadersToAddArrgs',
+    'URLMapHeaderActionResponseHeadersToAddArrgs',
+    'URLMapHostRuleArrgs',
+    'URLMapPathMatcherArrgs',
+    'URLMapPathMatcherDefaultRouteActionArrgs',
+    'URLMapPathMatcherDefaultRouteActionCorsPolicyArrgs',
+    'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArrgs',
+    'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArrgs',
+    'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArrgs',
+    'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArrgs',
+    'URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArrgs',
+    'URLMapPathMatcherDefaultRouteActionRetryPolicyArrgs',
+    'URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArrgs',
+    'URLMapPathMatcherDefaultRouteActionTimeoutArrgs',
+    'URLMapPathMatcherDefaultRouteActionUrlRewriteArrgs',
+    'URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArrgs',
+    'URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArrgs',
+    'URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs',
+    'URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs',
+    'URLMapPathMatcherDefaultUrlRedirectArrgs',
+    'URLMapPathMatcherHeaderActionArrgs',
+    'URLMapPathMatcherHeaderActionRequestHeadersToAddArrgs',
+    'URLMapPathMatcherHeaderActionResponseHeadersToAddArrgs',
+    'URLMapPathMatcherPathRuleArrgs',
+    'URLMapPathMatcherPathRuleRouteActionArrgs',
+    'URLMapPathMatcherPathRuleRouteActionCorsPolicyArrgs',
+    'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArrgs',
+    'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArrgs',
+    'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArrgs',
+    'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs',
+    'URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArrgs',
+    'URLMapPathMatcherPathRuleRouteActionRetryPolicyArrgs',
+    'URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArrgs',
+    'URLMapPathMatcherPathRuleRouteActionTimeoutArrgs',
+    'URLMapPathMatcherPathRuleRouteActionUrlRewriteArrgs',
+    'URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrgs',
+    'URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArrgs',
+    'URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs',
+    'URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs',
+    'URLMapPathMatcherPathRuleUrlRedirectArrgs',
+    'URLMapPathMatcherRouteRuleArrgs',
+    'URLMapPathMatcherRouteRuleHeaderActionArrgs',
+    'URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrgs',
+    'URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrgs',
+    'URLMapPathMatcherRouteRuleMatchRuleArrgs',
+    'URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrgs',
+    'URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArrgs',
+    'URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrgs',
+    'URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrgs',
+    'URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrgs',
+    'URLMapPathMatcherRouteRuleRouteActionArrgs',
+    'URLMapPathMatcherRouteRuleRouteActionCorsPolicyArrgs',
+    'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArrgs',
+    'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArrgs',
+    'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArrgs',
+    'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs',
+    'URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArrgs',
+    'URLMapPathMatcherRouteRuleRouteActionRetryPolicyArrgs',
+    'URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArrgs',
+    'URLMapPathMatcherRouteRuleRouteActionTimeoutArrgs',
+    'URLMapPathMatcherRouteRuleRouteActionUrlRewriteArrgs',
+    'URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrgs',
+    'URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArrgs',
+    'URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs',
+    'URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs',
+    'URLMapPathMatcherRouteRuleUrlRedirectArrgs',
+    'URLMapTestArrgs',
 ]
 
 @pulumi.input_type
-class AutoscalerAutoscalingPolicyArgs:
+calass AutoscalerAutoscalingPolicyArrgs:
     def __init__(__self__, *,
                  max_replicas: pulumi.Input[int],
                  min_replicas: pulumi.Input[int],
                  cooldown_period: Optional[pulumi.Input[int]] = None,
-                 cpu_utilization: Optional[pulumi.Input['AutoscalerAutoscalingPolicyCpuUtilizationArgs']] = None,
-                 load_balancing_utilization: Optional[pulumi.Input['AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs']] = None,
-                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input['AutoscalerAutoscalingPolicyMetricArgs']]]] = None,
+                 cpu_utilization: Optional[pulumi.Input['AutoscalerAutoscalingPolicyCpuUtilizationArrgs']] = None,
+                 load_balancing_utilization: Optional[pulumi.Input['AutoscalerAutoscalingPolicyLoadBalancingUtilizationArrgs']] = None,
+                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input['AutoscalerAutoscalingPolicyMetricArrgs']]]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
-                 scale_down_control: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlArgs']] = None,
-                 scale_in_control: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlArgs']] = None,
-                 scaling_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['AutoscalerAutoscalingPolicyScalingScheduleArgs']]]] = None):
+                 scale_down_control: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlArrgs']] = None,
+                 scale_in_control: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlArrgs']] = None,
+                 scaling_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['AutoscalerAutoscalingPolicyScalingScheduleArrgs']]]] = None):
         """
         :param pulumi.Input[int] max_replicas: The maximum number of instances that the autoscaler can scale up
                to. This is required when creating or updating an autoscaler. The
@@ -554,22 +554,22 @@ class AutoscalerAutoscalingPolicyArgs:
                numerous factors. We recommend that you test how long an
                instance may take to initialize. To do this, create an instance
                and time the startup process.
-        :param pulumi.Input['AutoscalerAutoscalingPolicyCpuUtilizationArgs'] cpu_utilization: Defines the CPU utilization policy that allows the autoscaler to
+        :param pulumi.Input['AutoscalerAutoscalingPolicyCpuUtilizationArrgs'] cpu_utilization: Defines the CPU utilization policy that allows the autoscaler to
                scale based on the average CPU utilization of a managed instance
                group.
                Structure is documented below.
-        :param pulumi.Input['AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs'] load_balancing_utilization: Configuration parameters of autoscaling based on a load balancer.
+        :param pulumi.Input['AutoscalerAutoscalingPolicyLoadBalancingUtilizationArrgs'] load_balancing_utilization: Configuration parameters of autoscaling based on a load balancer.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['AutoscalerAutoscalingPolicyMetricArgs']]] metrics: Configuration parameters of autoscaling based on a custom metric.
+        :param pulumi.Input[Sequence[pulumi.Input['AutoscalerAutoscalingPolicyMetricArrgs']]] metrics: Configuration parameters of autoscaling based on a custom metric.
                Structure is documented below.
         :param pulumi.Input[str] mode: Defines operating mode for this policy.
-        :param pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlArgs'] scale_down_control: Defines scale down controls to reduce the risk of response latency
+        :param pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlArrgs'] scale_down_control: Defines scale down controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
-        :param pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlArgs'] scale_in_control: Defines scale in controls to reduce the risk of response latency
+        :param pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlArrgs'] scale_in_control: Defines scale in controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['AutoscalerAutoscalingPolicyScalingScheduleArgs']]] scaling_schedules: Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+        :param pulumi.Input[Sequence[pulumi.Input['AutoscalerAutoscalingPolicyScalingScheduleArrgs']]] scaling_schedules: Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
                Structure is documented below.
         """
         pulumi.set(__self__, "max_replicas", max_replicas)
@@ -643,7 +643,7 @@ class AutoscalerAutoscalingPolicyArgs:
 
     @property
     @pulumi.getter(name="cpuUtilization")
-    def cpu_utilization(self) -> Optional[pulumi.Input['AutoscalerAutoscalingPolicyCpuUtilizationArgs']]:
+    def cpu_utilization(self) -> Optional[pulumi.Input['AutoscalerAutoscalingPolicyCpuUtilizationArrgs']]:
         """
         Defines the CPU utilization policy that allows the autoscaler to
         scale based on the average CPU utilization of a managed instance
@@ -653,12 +653,12 @@ class AutoscalerAutoscalingPolicyArgs:
         return pulumi.get(self, "cpu_utilization")
 
     @cpu_utilization.setter
-    def cpu_utilization(self, value: Optional[pulumi.Input['AutoscalerAutoscalingPolicyCpuUtilizationArgs']]):
+    def cpu_utilization(self, value: Optional[pulumi.Input['AutoscalerAutoscalingPolicyCpuUtilizationArrgs']]):
         pulumi.set(self, "cpu_utilization", value)
 
     @property
     @pulumi.getter(name="loadBalancingUtilization")
-    def load_balancing_utilization(self) -> Optional[pulumi.Input['AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs']]:
+    def load_balancing_utilization(self) -> Optional[pulumi.Input['AutoscalerAutoscalingPolicyLoadBalancingUtilizationArrgs']]:
         """
         Configuration parameters of autoscaling based on a load balancer.
         Structure is documented below.
@@ -666,12 +666,12 @@ class AutoscalerAutoscalingPolicyArgs:
         return pulumi.get(self, "load_balancing_utilization")
 
     @load_balancing_utilization.setter
-    def load_balancing_utilization(self, value: Optional[pulumi.Input['AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs']]):
+    def load_balancing_utilization(self, value: Optional[pulumi.Input['AutoscalerAutoscalingPolicyLoadBalancingUtilizationArrgs']]):
         pulumi.set(self, "load_balancing_utilization", value)
 
     @property
     @pulumi.getter
-    def metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AutoscalerAutoscalingPolicyMetricArgs']]]]:
+    def metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AutoscalerAutoscalingPolicyMetricArrgs']]]]:
         """
         Configuration parameters of autoscaling based on a custom metric.
         Structure is documented below.
@@ -679,7 +679,7 @@ class AutoscalerAutoscalingPolicyArgs:
         return pulumi.get(self, "metrics")
 
     @metrics.setter
-    def metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AutoscalerAutoscalingPolicyMetricArgs']]]]):
+    def metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AutoscalerAutoscalingPolicyMetricArrgs']]]]):
         pulumi.set(self, "metrics", value)
 
     @property
@@ -696,7 +696,7 @@ class AutoscalerAutoscalingPolicyArgs:
 
     @property
     @pulumi.getter(name="scaleDownControl")
-    def scale_down_control(self) -> Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlArgs']]:
+    def scale_down_control(self) -> Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlArrgs']]:
         """
         Defines scale down controls to reduce the risk of response latency
         and outages due to abrupt scale-in events
@@ -705,12 +705,12 @@ class AutoscalerAutoscalingPolicyArgs:
         return pulumi.get(self, "scale_down_control")
 
     @scale_down_control.setter
-    def scale_down_control(self, value: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlArgs']]):
+    def scale_down_control(self, value: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlArrgs']]):
         pulumi.set(self, "scale_down_control", value)
 
     @property
     @pulumi.getter(name="scaleInControl")
-    def scale_in_control(self) -> Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlArgs']]:
+    def scale_in_control(self) -> Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlArrgs']]:
         """
         Defines scale in controls to reduce the risk of response latency
         and outages due to abrupt scale-in events
@@ -719,12 +719,12 @@ class AutoscalerAutoscalingPolicyArgs:
         return pulumi.get(self, "scale_in_control")
 
     @scale_in_control.setter
-    def scale_in_control(self, value: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlArgs']]):
+    def scale_in_control(self, value: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlArrgs']]):
         pulumi.set(self, "scale_in_control", value)
 
     @property
     @pulumi.getter(name="scalingSchedules")
-    def scaling_schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AutoscalerAutoscalingPolicyScalingScheduleArgs']]]]:
+    def scaling_schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AutoscalerAutoscalingPolicyScalingScheduleArrgs']]]]:
         """
         Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
         Structure is documented below.
@@ -732,12 +732,12 @@ class AutoscalerAutoscalingPolicyArgs:
         return pulumi.get(self, "scaling_schedules")
 
     @scaling_schedules.setter
-    def scaling_schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AutoscalerAutoscalingPolicyScalingScheduleArgs']]]]):
+    def scaling_schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AutoscalerAutoscalingPolicyScalingScheduleArrgs']]]]):
         pulumi.set(self, "scaling_schedules", value)
 
 
 @pulumi.input_type
-class AutoscalerAutoscalingPolicyCpuUtilizationArgs:
+calass AutoscalerAutoscalingPolicyCpuUtilizationArrgs:
     def __init__(__self__, *,
                  target: pulumi.Input[float],
                  predictive_method: Optional[pulumi.Input[str]] = None):
@@ -799,7 +799,7 @@ class AutoscalerAutoscalingPolicyCpuUtilizationArgs:
 
 
 @pulumi.input_type
-class AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs:
+calass AutoscalerAutoscalingPolicyLoadBalancingUtilizationArrgs:
     def __init__(__self__, *,
                  target: pulumi.Input[float]):
         """
@@ -825,7 +825,7 @@ class AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs:
 
 
 @pulumi.input_type
-class AutoscalerAutoscalingPolicyMetricArgs:
+calass AutoscalerAutoscalingPolicyMetricArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  filter: Optional[pulumi.Input[str]] = None,
@@ -1011,12 +1011,12 @@ class AutoscalerAutoscalingPolicyMetricArgs:
 
 
 @pulumi.input_type
-class AutoscalerAutoscalingPolicyScaleDownControlArgs:
+calass AutoscalerAutoscalingPolicyScaleDownControlArrgs:
     def __init__(__self__, *,
-                 max_scaled_down_replicas: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs']] = None,
+                 max_scaled_down_replicas: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArrgs']] = None,
                  time_window_sec: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs'] max_scaled_down_replicas: A nested object resource
+        :param pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArrgs'] max_scaled_down_replicas: A nested object resource
                Structure is documented below.
         :param pulumi.Input[int] time_window_sec: How long back autoscaling should look when computing recommendations
                to include directives regarding slower scale down, as described above.
@@ -1028,7 +1028,7 @@ class AutoscalerAutoscalingPolicyScaleDownControlArgs:
 
     @property
     @pulumi.getter(name="maxScaledDownReplicas")
-    def max_scaled_down_replicas(self) -> Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs']]:
+    def max_scaled_down_replicas(self) -> Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArrgs']]:
         """
         A nested object resource
         Structure is documented below.
@@ -1036,7 +1036,7 @@ class AutoscalerAutoscalingPolicyScaleDownControlArgs:
         return pulumi.get(self, "max_scaled_down_replicas")
 
     @max_scaled_down_replicas.setter
-    def max_scaled_down_replicas(self, value: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs']]):
+    def max_scaled_down_replicas(self, value: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArrgs']]):
         pulumi.set(self, "max_scaled_down_replicas", value)
 
     @property
@@ -1054,7 +1054,7 @@ class AutoscalerAutoscalingPolicyScaleDownControlArgs:
 
 
 @pulumi.input_type
-class AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs:
+calass AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArrgs:
     def __init__(__self__, *,
                  fixed: Optional[pulumi.Input[int]] = None,
                  percent: Optional[pulumi.Input[int]] = None):
@@ -1097,12 +1097,12 @@ class AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs:
 
 
 @pulumi.input_type
-class AutoscalerAutoscalingPolicyScaleInControlArgs:
+calass AutoscalerAutoscalingPolicyScaleInControlArrgs:
     def __init__(__self__, *,
-                 max_scaled_in_replicas: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs']] = None,
+                 max_scaled_in_replicas: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArrgs']] = None,
                  time_window_sec: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs'] max_scaled_in_replicas: A nested object resource
+        :param pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArrgs'] max_scaled_in_replicas: A nested object resource
                Structure is documented below.
         :param pulumi.Input[int] time_window_sec: How long back autoscaling should look when computing recommendations
                to include directives regarding slower scale down, as described above.
@@ -1114,7 +1114,7 @@ class AutoscalerAutoscalingPolicyScaleInControlArgs:
 
     @property
     @pulumi.getter(name="maxScaledInReplicas")
-    def max_scaled_in_replicas(self) -> Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs']]:
+    def max_scaled_in_replicas(self) -> Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArrgs']]:
         """
         A nested object resource
         Structure is documented below.
@@ -1122,7 +1122,7 @@ class AutoscalerAutoscalingPolicyScaleInControlArgs:
         return pulumi.get(self, "max_scaled_in_replicas")
 
     @max_scaled_in_replicas.setter
-    def max_scaled_in_replicas(self, value: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs']]):
+    def max_scaled_in_replicas(self, value: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArrgs']]):
         pulumi.set(self, "max_scaled_in_replicas", value)
 
     @property
@@ -1140,7 +1140,7 @@ class AutoscalerAutoscalingPolicyScaleInControlArgs:
 
 
 @pulumi.input_type
-class AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs:
+calass AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArrgs:
     def __init__(__self__, *,
                  fixed: Optional[pulumi.Input[int]] = None,
                  percent: Optional[pulumi.Input[int]] = None):
@@ -1183,7 +1183,7 @@ class AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs:
 
 
 @pulumi.input_type
-class AutoscalerAutoscalingPolicyScalingScheduleArgs:
+calass AutoscalerAutoscalingPolicyScalingScheduleArrgs:
     def __init__(__self__, *,
                  duration_sec: pulumi.Input[int],
                  min_required_replicas: pulumi.Input[int],
@@ -1298,23 +1298,23 @@ class AutoscalerAutoscalingPolicyScalingScheduleArgs:
 
 
 @pulumi.input_type
-class BackendBucketCdnPolicyArgs:
+calass BackendBucketCdnPolicyArrgs:
     def __init__(__self__, *,
-                 bypass_cache_on_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs']]]] = None,
-                 cache_key_policy: Optional[pulumi.Input['BackendBucketCdnPolicyCacheKeyPolicyArgs']] = None,
+                 bypass_cache_on_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrgs']]]] = None,
+                 cache_key_policy: Optional[pulumi.Input['BackendBucketCdnPolicyCacheKeyPolicyArrgs']] = None,
                  cache_mode: Optional[pulumi.Input[str]] = None,
                  client_ttl: Optional[pulumi.Input[int]] = None,
                  default_ttl: Optional[pulumi.Input[int]] = None,
                  max_ttl: Optional[pulumi.Input[int]] = None,
                  negative_caching: Optional[pulumi.Input[bool]] = None,
-                 negative_caching_policies: Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyNegativeCachingPolicyArgs']]]] = None,
+                 negative_caching_policies: Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyNegativeCachingPolicyArrgs']]]] = None,
                  request_coalescing: Optional[pulumi.Input[bool]] = None,
                  serve_while_stale: Optional[pulumi.Input[int]] = None,
                  signed_url_cache_max_age_sec: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs']]] bypass_cache_on_request_headers: Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+        :param pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrgs']]] bypass_cache_on_request_headers: Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
                Structure is documented below.
-        :param pulumi.Input['BackendBucketCdnPolicyCacheKeyPolicyArgs'] cache_key_policy: The CacheKeyPolicy for this CdnPolicy.
+        :param pulumi.Input['BackendBucketCdnPolicyCacheKeyPolicyArrgs'] cache_key_policy: The CacheKeyPolicy for this CdnPolicy.
                Structure is documented below.
         :param pulumi.Input[str] cache_mode: Specifies the cache setting for all responses from this backend.
                The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
@@ -1324,7 +1324,7 @@ class BackendBucketCdnPolicyArgs:
                that do not have an existing valid TTL (max-age or s-max-age).
         :param pulumi.Input[int] max_ttl: Specifies the maximum allowed TTL for cached content served by this origin.
         :param pulumi.Input[bool] negative_caching: Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
-        :param pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyNegativeCachingPolicyArgs']]] negative_caching_policies: Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+        :param pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyNegativeCachingPolicyArrgs']]] negative_caching_policies: Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
                Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
                Structure is documented below.
         :param pulumi.Input[bool] request_coalescing: If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
@@ -1363,7 +1363,7 @@ class BackendBucketCdnPolicyArgs:
 
     @property
     @pulumi.getter(name="bypassCacheOnRequestHeaders")
-    def bypass_cache_on_request_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs']]]]:
+    def bypass_cache_on_request_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrgs']]]]:
         """
         Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
         Structure is documented below.
@@ -1371,12 +1371,12 @@ class BackendBucketCdnPolicyArgs:
         return pulumi.get(self, "bypass_cache_on_request_headers")
 
     @bypass_cache_on_request_headers.setter
-    def bypass_cache_on_request_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs']]]]):
+    def bypass_cache_on_request_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrgs']]]]):
         pulumi.set(self, "bypass_cache_on_request_headers", value)
 
     @property
     @pulumi.getter(name="cacheKeyPolicy")
-    def cache_key_policy(self) -> Optional[pulumi.Input['BackendBucketCdnPolicyCacheKeyPolicyArgs']]:
+    def cache_key_policy(self) -> Optional[pulumi.Input['BackendBucketCdnPolicyCacheKeyPolicyArrgs']]:
         """
         The CacheKeyPolicy for this CdnPolicy.
         Structure is documented below.
@@ -1384,7 +1384,7 @@ class BackendBucketCdnPolicyArgs:
         return pulumi.get(self, "cache_key_policy")
 
     @cache_key_policy.setter
-    def cache_key_policy(self, value: Optional[pulumi.Input['BackendBucketCdnPolicyCacheKeyPolicyArgs']]):
+    def cache_key_policy(self, value: Optional[pulumi.Input['BackendBucketCdnPolicyCacheKeyPolicyArrgs']]):
         pulumi.set(self, "cache_key_policy", value)
 
     @property
@@ -1452,7 +1452,7 @@ class BackendBucketCdnPolicyArgs:
 
     @property
     @pulumi.getter(name="negativeCachingPolicies")
-    def negative_caching_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyNegativeCachingPolicyArgs']]]]:
+    def negative_caching_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyNegativeCachingPolicyArrgs']]]]:
         """
         Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
         Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
@@ -1461,7 +1461,7 @@ class BackendBucketCdnPolicyArgs:
         return pulumi.get(self, "negative_caching_policies")
 
     @negative_caching_policies.setter
-    def negative_caching_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyNegativeCachingPolicyArgs']]]]):
+    def negative_caching_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyNegativeCachingPolicyArrgs']]]]):
         pulumi.set(self, "negative_caching_policies", value)
 
     @property
@@ -1509,7 +1509,7 @@ class BackendBucketCdnPolicyArgs:
 
 
 @pulumi.input_type
-class BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs:
+calass BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrgs:
     def __init__(__self__, *,
                  header_name: Optional[pulumi.Input[str]] = None):
         """
@@ -1532,7 +1532,7 @@ class BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs:
 
 
 @pulumi.input_type
-class BackendBucketCdnPolicyCacheKeyPolicyArgs:
+calass BackendBucketCdnPolicyCacheKeyPolicyArrgs:
     def __init__(__self__, *,
                  include_http_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  query_string_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -1577,7 +1577,7 @@ class BackendBucketCdnPolicyCacheKeyPolicyArgs:
 
 
 @pulumi.input_type
-class BackendBucketCdnPolicyNegativeCachingPolicyArgs:
+calass BackendBucketCdnPolicyNegativeCachingPolicyArrgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[int]] = None,
                  ttl: Optional[pulumi.Input[int]] = None):
@@ -1620,7 +1620,7 @@ class BackendBucketCdnPolicyNegativeCachingPolicyArgs:
 
 
 @pulumi.input_type
-class BackendBucketIamBindingConditionArgs:
+calass BackendBucketIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -1659,7 +1659,7 @@ class BackendBucketIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class BackendBucketIamMemberConditionArgs:
+calass BackendBucketIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -1698,7 +1698,7 @@ class BackendBucketIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class BackendServiceBackendArgs:
+calass BackendServiceBackendArrgs:
     def __init__(__self__, *,
                  group: pulumi.Input[str],
                  balancing_mode: Optional[pulumi.Input[str]] = None,
@@ -1982,23 +1982,23 @@ class BackendServiceBackendArgs:
 
 
 @pulumi.input_type
-class BackendServiceCdnPolicyArgs:
+calass BackendServiceCdnPolicyArrgs:
     def __init__(__self__, *,
-                 bypass_cache_on_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs']]]] = None,
-                 cache_key_policy: Optional[pulumi.Input['BackendServiceCdnPolicyCacheKeyPolicyArgs']] = None,
+                 bypass_cache_on_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrgs']]]] = None,
+                 cache_key_policy: Optional[pulumi.Input['BackendServiceCdnPolicyCacheKeyPolicyArrgs']] = None,
                  cache_mode: Optional[pulumi.Input[str]] = None,
                  client_ttl: Optional[pulumi.Input[int]] = None,
                  default_ttl: Optional[pulumi.Input[int]] = None,
                  max_ttl: Optional[pulumi.Input[int]] = None,
                  negative_caching: Optional[pulumi.Input[bool]] = None,
-                 negative_caching_policies: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyNegativeCachingPolicyArgs']]]] = None,
+                 negative_caching_policies: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyNegativeCachingPolicyArrgs']]]] = None,
                  serve_while_stale: Optional[pulumi.Input[int]] = None,
                  signed_url_cache_max_age_sec: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs']]] bypass_cache_on_request_headers: Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified.
+        :param pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrgs']]] bypass_cache_on_request_headers: Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified.
                The cache is bypassed for all cdnPolicy.cacheMode settings.
                Structure is documented below.
-        :param pulumi.Input['BackendServiceCdnPolicyCacheKeyPolicyArgs'] cache_key_policy: The CacheKeyPolicy for this CdnPolicy.
+        :param pulumi.Input['BackendServiceCdnPolicyCacheKeyPolicyArrgs'] cache_key_policy: The CacheKeyPolicy for this CdnPolicy.
                Structure is documented below.
         :param pulumi.Input[str] cache_mode: Specifies the cache setting for all responses from this backend.
                The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
@@ -2008,7 +2008,7 @@ class BackendServiceCdnPolicyArgs:
                that do not have an existing valid TTL (max-age or s-max-age).
         :param pulumi.Input[int] max_ttl: Specifies the maximum allowed TTL for cached content served by this origin.
         :param pulumi.Input[bool] negative_caching: Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
-        :param pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyNegativeCachingPolicyArgs']]] negative_caching_policies: Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+        :param pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyNegativeCachingPolicyArrgs']]] negative_caching_policies: Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
                Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
                Structure is documented below.
         :param pulumi.Input[int] serve_while_stale: Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
@@ -2045,7 +2045,7 @@ class BackendServiceCdnPolicyArgs:
 
     @property
     @pulumi.getter(name="bypassCacheOnRequestHeaders")
-    def bypass_cache_on_request_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs']]]]:
+    def bypass_cache_on_request_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrgs']]]]:
         """
         Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified.
         The cache is bypassed for all cdnPolicy.cacheMode settings.
@@ -2054,12 +2054,12 @@ class BackendServiceCdnPolicyArgs:
         return pulumi.get(self, "bypass_cache_on_request_headers")
 
     @bypass_cache_on_request_headers.setter
-    def bypass_cache_on_request_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs']]]]):
+    def bypass_cache_on_request_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrgs']]]]):
         pulumi.set(self, "bypass_cache_on_request_headers", value)
 
     @property
     @pulumi.getter(name="cacheKeyPolicy")
-    def cache_key_policy(self) -> Optional[pulumi.Input['BackendServiceCdnPolicyCacheKeyPolicyArgs']]:
+    def cache_key_policy(self) -> Optional[pulumi.Input['BackendServiceCdnPolicyCacheKeyPolicyArrgs']]:
         """
         The CacheKeyPolicy for this CdnPolicy.
         Structure is documented below.
@@ -2067,7 +2067,7 @@ class BackendServiceCdnPolicyArgs:
         return pulumi.get(self, "cache_key_policy")
 
     @cache_key_policy.setter
-    def cache_key_policy(self, value: Optional[pulumi.Input['BackendServiceCdnPolicyCacheKeyPolicyArgs']]):
+    def cache_key_policy(self, value: Optional[pulumi.Input['BackendServiceCdnPolicyCacheKeyPolicyArrgs']]):
         pulumi.set(self, "cache_key_policy", value)
 
     @property
@@ -2135,7 +2135,7 @@ class BackendServiceCdnPolicyArgs:
 
     @property
     @pulumi.getter(name="negativeCachingPolicies")
-    def negative_caching_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyNegativeCachingPolicyArgs']]]]:
+    def negative_caching_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyNegativeCachingPolicyArrgs']]]]:
         """
         Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
         Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
@@ -2144,7 +2144,7 @@ class BackendServiceCdnPolicyArgs:
         return pulumi.get(self, "negative_caching_policies")
 
     @negative_caching_policies.setter
-    def negative_caching_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyNegativeCachingPolicyArgs']]]]):
+    def negative_caching_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyNegativeCachingPolicyArrgs']]]]):
         pulumi.set(self, "negative_caching_policies", value)
 
     @property
@@ -2181,7 +2181,7 @@ class BackendServiceCdnPolicyArgs:
 
 
 @pulumi.input_type
-class BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs:
+calass BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str]):
         """
@@ -2203,7 +2203,7 @@ class BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs:
 
 
 @pulumi.input_type
-class BackendServiceCdnPolicyCacheKeyPolicyArgs:
+calass BackendServiceCdnPolicyCacheKeyPolicyArrgs:
     def __init__(__self__, *,
                  include_host: Optional[pulumi.Input[bool]] = None,
                  include_http_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2350,7 +2350,7 @@ class BackendServiceCdnPolicyCacheKeyPolicyArgs:
 
 
 @pulumi.input_type
-class BackendServiceCdnPolicyNegativeCachingPolicyArgs:
+calass BackendServiceCdnPolicyNegativeCachingPolicyArrgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[int]] = None,
                  ttl: Optional[pulumi.Input[int]] = None):
@@ -2393,16 +2393,16 @@ class BackendServiceCdnPolicyNegativeCachingPolicyArgs:
 
 
 @pulumi.input_type
-class BackendServiceCircuitBreakersArgs:
+calass BackendServiceCircuitBreakersArrgs:
     def __init__(__self__, *,
-                 connect_timeout: Optional[pulumi.Input['BackendServiceCircuitBreakersConnectTimeoutArgs']] = None,
+                 connect_timeout: Optional[pulumi.Input['BackendServiceCircuitBreakersConnectTimeoutArrgs']] = None,
                  max_connections: Optional[pulumi.Input[int]] = None,
                  max_pending_requests: Optional[pulumi.Input[int]] = None,
                  max_requests: Optional[pulumi.Input[int]] = None,
                  max_requests_per_connection: Optional[pulumi.Input[int]] = None,
                  max_retries: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input['BackendServiceCircuitBreakersConnectTimeoutArgs'] connect_timeout: The timeout for new network connections to hosts.
+        :param pulumi.Input['BackendServiceCircuitBreakersConnectTimeoutArrgs'] connect_timeout: The timeout for new network connections to hosts.
                Structure is documented below.
         :param pulumi.Input[int] max_connections: The maximum number of connections to the backend cluster.
                Defaults to 1024.
@@ -2432,7 +2432,7 @@ class BackendServiceCircuitBreakersArgs:
 
     @property
     @pulumi.getter(name="connectTimeout")
-    def connect_timeout(self) -> Optional[pulumi.Input['BackendServiceCircuitBreakersConnectTimeoutArgs']]:
+    def connect_timeout(self) -> Optional[pulumi.Input['BackendServiceCircuitBreakersConnectTimeoutArrgs']]:
         """
         The timeout for new network connections to hosts.
         Structure is documented below.
@@ -2440,7 +2440,7 @@ class BackendServiceCircuitBreakersArgs:
         return pulumi.get(self, "connect_timeout")
 
     @connect_timeout.setter
-    def connect_timeout(self, value: Optional[pulumi.Input['BackendServiceCircuitBreakersConnectTimeoutArgs']]):
+    def connect_timeout(self, value: Optional[pulumi.Input['BackendServiceCircuitBreakersConnectTimeoutArrgs']]):
         pulumi.set(self, "connect_timeout", value)
 
     @property
@@ -2512,7 +2512,7 @@ class BackendServiceCircuitBreakersArgs:
 
 
 @pulumi.input_type
-class BackendServiceCircuitBreakersConnectTimeoutArgs:
+calass BackendServiceCircuitBreakersConnectTimeoutArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -2558,13 +2558,13 @@ class BackendServiceCircuitBreakersConnectTimeoutArgs:
 
 
 @pulumi.input_type
-class BackendServiceConsistentHashArgs:
+calass BackendServiceConsistentHashArrgs:
     def __init__(__self__, *,
-                 http_cookie: Optional[pulumi.Input['BackendServiceConsistentHashHttpCookieArgs']] = None,
+                 http_cookie: Optional[pulumi.Input['BackendServiceConsistentHashHttpCookieArrgs']] = None,
                  http_header_name: Optional[pulumi.Input[str]] = None,
                  minimum_ring_size: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input['BackendServiceConsistentHashHttpCookieArgs'] http_cookie: Hash is based on HTTP Cookie. This field describes a HTTP cookie
+        :param pulumi.Input['BackendServiceConsistentHashHttpCookieArrgs'] http_cookie: Hash is based on HTTP Cookie. This field describes a HTTP cookie
                that will be used as the hash key for the consistent hash load
                balancer. If the cookie is not present, it will be generated.
                This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
@@ -2587,7 +2587,7 @@ class BackendServiceConsistentHashArgs:
 
     @property
     @pulumi.getter(name="httpCookie")
-    def http_cookie(self) -> Optional[pulumi.Input['BackendServiceConsistentHashHttpCookieArgs']]:
+    def http_cookie(self) -> Optional[pulumi.Input['BackendServiceConsistentHashHttpCookieArrgs']]:
         """
         Hash is based on HTTP Cookie. This field describes a HTTP cookie
         that will be used as the hash key for the consistent hash load
@@ -2598,7 +2598,7 @@ class BackendServiceConsistentHashArgs:
         return pulumi.get(self, "http_cookie")
 
     @http_cookie.setter
-    def http_cookie(self, value: Optional[pulumi.Input['BackendServiceConsistentHashHttpCookieArgs']]):
+    def http_cookie(self, value: Optional[pulumi.Input['BackendServiceConsistentHashHttpCookieArrgs']]):
         pulumi.set(self, "http_cookie", value)
 
     @property
@@ -2633,15 +2633,15 @@ class BackendServiceConsistentHashArgs:
 
 
 @pulumi.input_type
-class BackendServiceConsistentHashHttpCookieArgs:
+calass BackendServiceConsistentHashHttpCookieArrgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
-                 ttl: Optional[pulumi.Input['BackendServiceConsistentHashHttpCookieTtlArgs']] = None):
+                 ttl: Optional[pulumi.Input['BackendServiceConsistentHashHttpCookieTtlArrgs']] = None):
         """
         :param pulumi.Input[str] name: Name of the cookie.
         :param pulumi.Input[str] path: Path to set for the cookie.
-        :param pulumi.Input['BackendServiceConsistentHashHttpCookieTtlArgs'] ttl: Lifetime of the cookie.
+        :param pulumi.Input['BackendServiceConsistentHashHttpCookieTtlArrgs'] ttl: Lifetime of the cookie.
                Structure is documented below.
         """
         if name is not None:
@@ -2677,7 +2677,7 @@ class BackendServiceConsistentHashHttpCookieArgs:
 
     @property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input['BackendServiceConsistentHashHttpCookieTtlArgs']]:
+    def ttl(self) -> Optional[pulumi.Input['BackendServiceConsistentHashHttpCookieTtlArrgs']]:
         """
         Lifetime of the cookie.
         Structure is documented below.
@@ -2685,12 +2685,12 @@ class BackendServiceConsistentHashHttpCookieArgs:
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input['BackendServiceConsistentHashHttpCookieTtlArgs']]):
+    def ttl(self, value: Optional[pulumi.Input['BackendServiceConsistentHashHttpCookieTtlArrgs']]):
         pulumi.set(self, "ttl", value)
 
 
 @pulumi.input_type
-class BackendServiceConsistentHashHttpCookieTtlArgs:
+calass BackendServiceConsistentHashHttpCookieTtlArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -2736,7 +2736,7 @@ class BackendServiceConsistentHashHttpCookieTtlArgs:
 
 
 @pulumi.input_type
-class BackendServiceIamBindingConditionArgs:
+calass BackendServiceIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -2785,7 +2785,7 @@ class BackendServiceIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class BackendServiceIamMemberConditionArgs:
+calass BackendServiceIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -2834,7 +2834,7 @@ class BackendServiceIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class BackendServiceIapArgs:
+calass BackendServiceIapArrgs:
     def __init__(__self__, *,
                  oauth2_client_id: pulumi.Input[str],
                  oauth2_client_secret: pulumi.Input[str],
@@ -2893,15 +2893,15 @@ class BackendServiceIapArgs:
 
 
 @pulumi.input_type
-class BackendServiceLocalityLbPolicyArgs:
+calass BackendServiceLocalityLbPolicyArrgs:
     def __init__(__self__, *,
-                 custom_policy: Optional[pulumi.Input['BackendServiceLocalityLbPolicyCustomPolicyArgs']] = None,
-                 policy: Optional[pulumi.Input['BackendServiceLocalityLbPolicyPolicyArgs']] = None):
+                 custom_policy: Optional[pulumi.Input['BackendServiceLocalityLbPolicyCustomPolicyArrgs']] = None,
+                 policy: Optional[pulumi.Input['BackendServiceLocalityLbPolicyPolicyArrgs']] = None):
         """
-        :param pulumi.Input['BackendServiceLocalityLbPolicyCustomPolicyArgs'] custom_policy: The configuration for a custom policy implemented by the user and
+        :param pulumi.Input['BackendServiceLocalityLbPolicyCustomPolicyArrgs'] custom_policy: The configuration for a custom policy implemented by the user and
                deployed with the client.
                Structure is documented below.
-        :param pulumi.Input['BackendServiceLocalityLbPolicyPolicyArgs'] policy: The configuration for a built-in load balancing policy.
+        :param pulumi.Input['BackendServiceLocalityLbPolicyPolicyArrgs'] policy: The configuration for a built-in load balancing policy.
                Structure is documented below.
         """
         if custom_policy is not None:
@@ -2911,7 +2911,7 @@ class BackendServiceLocalityLbPolicyArgs:
 
     @property
     @pulumi.getter(name="customPolicy")
-    def custom_policy(self) -> Optional[pulumi.Input['BackendServiceLocalityLbPolicyCustomPolicyArgs']]:
+    def custom_policy(self) -> Optional[pulumi.Input['BackendServiceLocalityLbPolicyCustomPolicyArrgs']]:
         """
         The configuration for a custom policy implemented by the user and
         deployed with the client.
@@ -2920,12 +2920,12 @@ class BackendServiceLocalityLbPolicyArgs:
         return pulumi.get(self, "custom_policy")
 
     @custom_policy.setter
-    def custom_policy(self, value: Optional[pulumi.Input['BackendServiceLocalityLbPolicyCustomPolicyArgs']]):
+    def custom_policy(self, value: Optional[pulumi.Input['BackendServiceLocalityLbPolicyCustomPolicyArrgs']]):
         pulumi.set(self, "custom_policy", value)
 
     @property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input['BackendServiceLocalityLbPolicyPolicyArgs']]:
+    def policy(self) -> Optional[pulumi.Input['BackendServiceLocalityLbPolicyPolicyArrgs']]:
         """
         The configuration for a built-in load balancing policy.
         Structure is documented below.
@@ -2933,12 +2933,12 @@ class BackendServiceLocalityLbPolicyArgs:
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input['BackendServiceLocalityLbPolicyPolicyArgs']]):
+    def policy(self, value: Optional[pulumi.Input['BackendServiceLocalityLbPolicyPolicyArrgs']]):
         pulumi.set(self, "policy", value)
 
 
 @pulumi.input_type
-class BackendServiceLocalityLbPolicyCustomPolicyArgs:
+calass BackendServiceLocalityLbPolicyCustomPolicyArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  data: Optional[pulumi.Input[str]] = None):
@@ -2990,7 +2990,7 @@ class BackendServiceLocalityLbPolicyCustomPolicyArgs:
 
 
 @pulumi.input_type
-class BackendServiceLocalityLbPolicyPolicyArgs:
+calass BackendServiceLocalityLbPolicyPolicyArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
         """
@@ -3026,7 +3026,7 @@ class BackendServiceLocalityLbPolicyPolicyArgs:
 
 
 @pulumi.input_type
-class BackendServiceLogConfigArgs:
+calass BackendServiceLogConfigArrgs:
     def __init__(__self__, *,
                  enable: Optional[pulumi.Input[bool]] = None,
                  sample_rate: Optional[pulumi.Input[float]] = None):
@@ -3071,21 +3071,21 @@ class BackendServiceLogConfigArgs:
 
 
 @pulumi.input_type
-class BackendServiceOutlierDetectionArgs:
+calass BackendServiceOutlierDetectionArrgs:
     def __init__(__self__, *,
-                 base_ejection_time: Optional[pulumi.Input['BackendServiceOutlierDetectionBaseEjectionTimeArgs']] = None,
+                 base_ejection_time: Optional[pulumi.Input['BackendServiceOutlierDetectionBaseEjectionTimeArrgs']] = None,
                  consecutive_errors: Optional[pulumi.Input[int]] = None,
                  consecutive_gateway_failure: Optional[pulumi.Input[int]] = None,
                  enforcing_consecutive_errors: Optional[pulumi.Input[int]] = None,
                  enforcing_consecutive_gateway_failure: Optional[pulumi.Input[int]] = None,
                  enforcing_success_rate: Optional[pulumi.Input[int]] = None,
-                 interval: Optional[pulumi.Input['BackendServiceOutlierDetectionIntervalArgs']] = None,
+                 interval: Optional[pulumi.Input['BackendServiceOutlierDetectionIntervalArrgs']] = None,
                  max_ejection_percent: Optional[pulumi.Input[int]] = None,
                  success_rate_minimum_hosts: Optional[pulumi.Input[int]] = None,
                  success_rate_request_volume: Optional[pulumi.Input[int]] = None,
                  success_rate_stdev_factor: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input['BackendServiceOutlierDetectionBaseEjectionTimeArgs'] base_ejection_time: The base time that a host is ejected for. The real time is equal to the base
+        :param pulumi.Input['BackendServiceOutlierDetectionBaseEjectionTimeArrgs'] base_ejection_time: The base time that a host is ejected for. The real time is equal to the base
                time multiplied by the number of times the host has been ejected. Defaults to
                30000ms or 30s.
                Structure is documented below.
@@ -3104,7 +3104,7 @@ class BackendServiceOutlierDetectionArgs:
         :param pulumi.Input[int] enforcing_success_rate: The percentage chance that a host will be actually ejected when an outlier
                status is detected through success rate statistics. This setting can be used to
                disable ejection or to ramp it up slowly. Defaults to 100.
-        :param pulumi.Input['BackendServiceOutlierDetectionIntervalArgs'] interval: Time interval between ejection sweep analysis. This can result in both new
+        :param pulumi.Input['BackendServiceOutlierDetectionIntervalArrgs'] interval: Time interval between ejection sweep analysis. This can result in both new
                ejections as well as hosts being returned to service. Defaults to 10 seconds.
                Structure is documented below.
         :param pulumi.Input[int] max_ejection_percent: Maximum percentage of hosts in the load balancing pool for the backend service
@@ -3150,7 +3150,7 @@ class BackendServiceOutlierDetectionArgs:
 
     @property
     @pulumi.getter(name="baseEjectionTime")
-    def base_ejection_time(self) -> Optional[pulumi.Input['BackendServiceOutlierDetectionBaseEjectionTimeArgs']]:
+    def base_ejection_time(self) -> Optional[pulumi.Input['BackendServiceOutlierDetectionBaseEjectionTimeArrgs']]:
         """
         The base time that a host is ejected for. The real time is equal to the base
         time multiplied by the number of times the host has been ejected. Defaults to
@@ -3160,7 +3160,7 @@ class BackendServiceOutlierDetectionArgs:
         return pulumi.get(self, "base_ejection_time")
 
     @base_ejection_time.setter
-    def base_ejection_time(self, value: Optional[pulumi.Input['BackendServiceOutlierDetectionBaseEjectionTimeArgs']]):
+    def base_ejection_time(self, value: Optional[pulumi.Input['BackendServiceOutlierDetectionBaseEjectionTimeArrgs']]):
         pulumi.set(self, "base_ejection_time", value)
 
     @property
@@ -3235,7 +3235,7 @@ class BackendServiceOutlierDetectionArgs:
 
     @property
     @pulumi.getter
-    def interval(self) -> Optional[pulumi.Input['BackendServiceOutlierDetectionIntervalArgs']]:
+    def interval(self) -> Optional[pulumi.Input['BackendServiceOutlierDetectionIntervalArrgs']]:
         """
         Time interval between ejection sweep analysis. This can result in both new
         ejections as well as hosts being returned to service. Defaults to 10 seconds.
@@ -3244,7 +3244,7 @@ class BackendServiceOutlierDetectionArgs:
         return pulumi.get(self, "interval")
 
     @interval.setter
-    def interval(self, value: Optional[pulumi.Input['BackendServiceOutlierDetectionIntervalArgs']]):
+    def interval(self, value: Optional[pulumi.Input['BackendServiceOutlierDetectionIntervalArrgs']]):
         pulumi.set(self, "interval", value)
 
     @property
@@ -3310,7 +3310,7 @@ class BackendServiceOutlierDetectionArgs:
 
 
 @pulumi.input_type
-class BackendServiceOutlierDetectionBaseEjectionTimeArgs:
+calass BackendServiceOutlierDetectionBaseEjectionTimeArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -3354,7 +3354,7 @@ class BackendServiceOutlierDetectionBaseEjectionTimeArgs:
 
 
 @pulumi.input_type
-class BackendServiceOutlierDetectionIntervalArgs:
+calass BackendServiceOutlierDetectionIntervalArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -3398,7 +3398,7 @@ class BackendServiceOutlierDetectionIntervalArgs:
 
 
 @pulumi.input_type
-class BackendServiceSecuritySettingsArgs:
+calass BackendServiceSecuritySettingsArrgs:
     def __init__(__self__, *,
                  client_tls_policy: pulumi.Input[str],
                  subject_alt_names: pulumi.Input[Sequence[pulumi.Input[str]]]):
@@ -3443,7 +3443,7 @@ class BackendServiceSecuritySettingsArgs:
 
 
 @pulumi.input_type
-class DiskAsyncPrimaryDiskArgs:
+calass DiskAsyncPrimaryDiskArrgs:
     def __init__(__self__, *,
                  disk: pulumi.Input[str]):
         """
@@ -3465,7 +3465,7 @@ class DiskAsyncPrimaryDiskArgs:
 
 
 @pulumi.input_type
-class DiskAsyncReplicationSecondaryDiskArgs:
+calass DiskAsyncReplicationSecondaryDiskArrgs:
     def __init__(__self__, *,
                  disk: pulumi.Input[str],
                  state: Optional[pulumi.Input[str]] = None):
@@ -3507,7 +3507,7 @@ class DiskAsyncReplicationSecondaryDiskArgs:
 
 
 @pulumi.input_type
-class DiskDiskEncryptionKeyArgs:
+calass DiskDiskEncryptionKeyArrgs:
     def __init__(__self__, *,
                  kms_key_self_link: Optional[pulumi.Input[str]] = None,
                  kms_key_service_account: Optional[pulumi.Input[str]] = None,
@@ -3618,7 +3618,7 @@ class DiskDiskEncryptionKeyArgs:
 
 
 @pulumi.input_type
-class DiskGuestOsFeatureArgs:
+calass DiskGuestOsFeatureArrgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str]):
         """
@@ -3642,7 +3642,7 @@ class DiskGuestOsFeatureArgs:
 
 
 @pulumi.input_type
-class DiskIamBindingConditionArgs:
+calass DiskIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -3681,7 +3681,7 @@ class DiskIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class DiskIamMemberConditionArgs:
+calass DiskIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -3720,7 +3720,7 @@ class DiskIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class DiskSourceImageEncryptionKeyArgs:
+calass DiskSourceImageEncryptionKeyArrgs:
     def __init__(__self__, *,
                  kms_key_self_link: Optional[pulumi.Input[str]] = None,
                  kms_key_service_account: Optional[pulumi.Input[str]] = None,
@@ -3807,7 +3807,7 @@ class DiskSourceImageEncryptionKeyArgs:
 
 
 @pulumi.input_type
-class DiskSourceSnapshotEncryptionKeyArgs:
+calass DiskSourceSnapshotEncryptionKeyArrgs:
     def __init__(__self__, *,
                  kms_key_self_link: Optional[pulumi.Input[str]] = None,
                  kms_key_service_account: Optional[pulumi.Input[str]] = None,
@@ -3894,7 +3894,7 @@ class DiskSourceSnapshotEncryptionKeyArgs:
 
 
 @pulumi.input_type
-class ExternalVpnGatewayInterfaceArgs:
+calass ExternalVpnGatewayInterfaceArrgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[int]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None):
@@ -3947,7 +3947,7 @@ class ExternalVpnGatewayInterfaceArgs:
 
 
 @pulumi.input_type
-class FirewallAllowArgs:
+calass FirewallAllowArrgs:
     def __init__(__self__, *,
                  protocol: pulumi.Input[str],
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -4001,7 +4001,7 @@ class FirewallAllowArgs:
 
 
 @pulumi.input_type
-class FirewallDenyArgs:
+calass FirewallDenyArrgs:
     def __init__(__self__, *,
                  protocol: pulumi.Input[str],
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -4055,7 +4055,7 @@ class FirewallDenyArgs:
 
 
 @pulumi.input_type
-class FirewallLogConfigArgs:
+calass FirewallLogConfigArrgs:
     def __init__(__self__, *,
                  metadata: pulumi.Input[str]):
         """
@@ -4079,9 +4079,9 @@ class FirewallLogConfigArgs:
 
 
 @pulumi.input_type
-class FirewallPolicyRuleMatchArgs:
+calass FirewallPolicyRuleMatchArrgs:
     def __init__(__self__, *,
-                 layer4_configs: pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArgs']]],
+                 layer4_configs: pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArrgs']]],
                  dest_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -4093,7 +4093,7 @@ class FirewallPolicyRuleMatchArgs:
                  src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArrgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_fqdns: Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
@@ -4131,14 +4131,14 @@ class FirewallPolicyRuleMatchArgs:
 
     @property
     @pulumi.getter(name="layer4Configs")
-    def layer4_configs(self) -> pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArgs']]]:
+    def layer4_configs(self) -> pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArrgs']]]:
         """
         Pairs of IP protocols and ports that the rule should match.
         """
         return pulumi.get(self, "layer4_configs")
 
     @layer4_configs.setter
-    def layer4_configs(self, value: pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArgs']]]):
+    def layer4_configs(self, value: pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArrgs']]]):
         pulumi.set(self, "layer4_configs", value)
 
     @property
@@ -4265,7 +4265,7 @@ class FirewallPolicyRuleMatchArgs:
 
 
 @pulumi.input_type
-class FirewallPolicyRuleMatchLayer4ConfigArgs:
+calass FirewallPolicyRuleMatchLayer4ConfigArrgs:
     def __init__(__self__, *,
                  ip_protocol: pulumi.Input[str],
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -4307,7 +4307,7 @@ class FirewallPolicyRuleMatchLayer4ConfigArgs:
 
 
 @pulumi.input_type
-class ForwardingRuleServiceDirectoryRegistrationsArgs:
+calass ForwardingRuleServiceDirectoryRegistrationsArrgs:
     def __init__(__self__, *,
                  namespace: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None):
@@ -4346,12 +4346,12 @@ class ForwardingRuleServiceDirectoryRegistrationsArgs:
 
 
 @pulumi.input_type
-class GlobalForwardingRuleMetadataFilterArgs:
+calass GlobalForwardingRuleMetadataFilterArrgs:
     def __init__(__self__, *,
-                 filter_labels: pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterFilterLabelArgs']]],
+                 filter_labels: pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterFilterLabelArrgs']]],
                  filter_match_criteria: pulumi.Input[str]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterFilterLabelArgs']]] filter_labels: The list of label value pairs that must match labels in the
+        :param pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterFilterLabelArrgs']]] filter_labels: The list of label value pairs that must match labels in the
                provided metadata based on filterMatchCriteria
                This list must not be empty and can have at the most 64 entries.
                Structure is documented below.
@@ -4368,7 +4368,7 @@ class GlobalForwardingRuleMetadataFilterArgs:
 
     @property
     @pulumi.getter(name="filterLabels")
-    def filter_labels(self) -> pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterFilterLabelArgs']]]:
+    def filter_labels(self) -> pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterFilterLabelArrgs']]]:
         """
         The list of label value pairs that must match labels in the
         provided metadata based on filterMatchCriteria
@@ -4378,7 +4378,7 @@ class GlobalForwardingRuleMetadataFilterArgs:
         return pulumi.get(self, "filter_labels")
 
     @filter_labels.setter
-    def filter_labels(self, value: pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterFilterLabelArgs']]]):
+    def filter_labels(self, value: pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterFilterLabelArrgs']]]):
         pulumi.set(self, "filter_labels", value)
 
     @property
@@ -4401,7 +4401,7 @@ class GlobalForwardingRuleMetadataFilterArgs:
 
 
 @pulumi.input_type
-class GlobalForwardingRuleMetadataFilterFilterLabelArgs:
+calass GlobalForwardingRuleMetadataFilterFilterLabelArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  value: pulumi.Input[str]):
@@ -4442,7 +4442,7 @@ class GlobalForwardingRuleMetadataFilterFilterLabelArgs:
 
 
 @pulumi.input_type
-class HaVpnGatewayVpnInterfaceArgs:
+calass HaVpnGatewayVpnInterfaceArrgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[int]] = None,
                  interconnect_attachment: Optional[pulumi.Input[str]] = None,
@@ -4509,7 +4509,7 @@ class HaVpnGatewayVpnInterfaceArgs:
 
 
 @pulumi.input_type
-class HealthCheckGrpcHealthCheckArgs:
+calass HealthCheckGrpcHealthCheckArrgs:
     def __init__(__self__, *,
                  grpc_service_name: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
@@ -4596,7 +4596,7 @@ class HealthCheckGrpcHealthCheckArgs:
 
 
 @pulumi.input_type
-class HealthCheckHttp2HealthCheckArgs:
+calass HealthCheckHttp2HealthCheckArrgs:
     def __init__(__self__, *,
                  host: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
@@ -4739,7 +4739,7 @@ class HealthCheckHttp2HealthCheckArgs:
 
 
 @pulumi.input_type
-class HealthCheckHttpHealthCheckArgs:
+calass HealthCheckHttpHealthCheckArrgs:
     def __init__(__self__, *,
                  host: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
@@ -4880,7 +4880,7 @@ class HealthCheckHttpHealthCheckArgs:
 
 
 @pulumi.input_type
-class HealthCheckHttpsHealthCheckArgs:
+calass HealthCheckHttpsHealthCheckArrgs:
     def __init__(__self__, *,
                  host: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
@@ -5021,7 +5021,7 @@ class HealthCheckHttpsHealthCheckArgs:
 
 
 @pulumi.input_type
-class HealthCheckLogConfigArgs:
+calass HealthCheckLogConfigArrgs:
     def __init__(__self__, *,
                  enable: Optional[pulumi.Input[bool]] = None):
         """
@@ -5046,7 +5046,7 @@ class HealthCheckLogConfigArgs:
 
 
 @pulumi.input_type
-class HealthCheckSslHealthCheckArgs:
+calass HealthCheckSslHealthCheckArrgs:
     def __init__(__self__, *,
                  port: Optional[pulumi.Input[int]] = None,
                  port_name: Optional[pulumi.Input[str]] = None,
@@ -5171,7 +5171,7 @@ class HealthCheckSslHealthCheckArgs:
 
 
 @pulumi.input_type
-class HealthCheckTcpHealthCheckArgs:
+calass HealthCheckTcpHealthCheckArrgs:
     def __init__(__self__, *,
                  port: Optional[pulumi.Input[int]] = None,
                  port_name: Optional[pulumi.Input[str]] = None,
@@ -5296,7 +5296,7 @@ class HealthCheckTcpHealthCheckArgs:
 
 
 @pulumi.input_type
-class ImageGuestOsFeatureArgs:
+calass ImageGuestOsFeatureArrgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str]):
         """
@@ -5320,7 +5320,7 @@ class ImageGuestOsFeatureArgs:
 
 
 @pulumi.input_type
-class ImageIamBindingConditionArgs:
+calass ImageIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -5381,7 +5381,7 @@ class ImageIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class ImageIamMemberConditionArgs:
+calass ImageIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -5442,7 +5442,7 @@ class ImageIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class ImageImageEncryptionKeyArgs:
+calass ImageImageEncryptionKeyArrgs:
     def __init__(__self__, *,
                  kms_key_self_link: Optional[pulumi.Input[str]] = None,
                  kms_key_service_account: Optional[pulumi.Input[str]] = None):
@@ -5487,7 +5487,7 @@ class ImageImageEncryptionKeyArgs:
 
 
 @pulumi.input_type
-class ImageRawDiskArgs:
+calass ImageRawDiskArrgs:
     def __init__(__self__, *,
                  source: pulumi.Input[str],
                  container_type: Optional[pulumi.Input[str]] = None,
@@ -5557,7 +5557,7 @@ class ImageRawDiskArgs:
 
 
 @pulumi.input_type
-class InstanceAdvancedMachineFeaturesArgs:
+calass InstanceAdvancedMachineFeaturesArrgs:
     def __init__(__self__, *,
                  enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
                  threads_per_core: Optional[pulumi.Input[int]] = None,
@@ -5612,7 +5612,7 @@ class InstanceAdvancedMachineFeaturesArgs:
 
 
 @pulumi.input_type
-class InstanceAttachedDiskArgs:
+calass InstanceAttachedDiskArrgs:
     def __init__(__self__, *,
                  source: pulumi.Input[str],
                  device_name: Optional[pulumi.Input[str]] = None,
@@ -5728,13 +5728,13 @@ class InstanceAttachedDiskArgs:
 
 
 @pulumi.input_type
-class InstanceBootDiskArgs:
+calass InstanceBootDiskArrgs:
     def __init__(__self__, *,
                  auto_delete: Optional[pulumi.Input[bool]] = None,
                  device_name: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_raw: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_sha256: Optional[pulumi.Input[str]] = None,
-                 initialize_params: Optional[pulumi.Input['InstanceBootDiskInitializeParamsArgs']] = None,
+                 initialize_params: Optional[pulumi.Input['InstanceBootDiskInitializeParamsArrgs']] = None,
                  kms_key_self_link: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None):
@@ -5748,7 +5748,7 @@ class InstanceBootDiskArgs:
                encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
                to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw`
                may be set.
-        :param pulumi.Input['InstanceBootDiskInitializeParamsArgs'] initialize_params: Parameters for a new disk that will be created
+        :param pulumi.Input['InstanceBootDiskInitializeParamsArrgs'] initialize_params: Parameters for a new disk that will be created
                alongside the new instance. Either `initialize_params` or `source` must be set.
                Structure is documented below.
         :param pulumi.Input[str] kms_key_self_link: The self_link of the encryption key that is
@@ -5830,7 +5830,7 @@ class InstanceBootDiskArgs:
 
     @property
     @pulumi.getter(name="initializeParams")
-    def initialize_params(self) -> Optional[pulumi.Input['InstanceBootDiskInitializeParamsArgs']]:
+    def initialize_params(self) -> Optional[pulumi.Input['InstanceBootDiskInitializeParamsArrgs']]:
         """
         Parameters for a new disk that will be created
         alongside the new instance. Either `initialize_params` or `source` must be set.
@@ -5839,7 +5839,7 @@ class InstanceBootDiskArgs:
         return pulumi.get(self, "initialize_params")
 
     @initialize_params.setter
-    def initialize_params(self, value: Optional[pulumi.Input['InstanceBootDiskInitializeParamsArgs']]):
+    def initialize_params(self, value: Optional[pulumi.Input['InstanceBootDiskInitializeParamsArrgs']]):
         pulumi.set(self, "initialize_params", value)
 
     @property
@@ -5885,7 +5885,7 @@ class InstanceBootDiskArgs:
 
 
 @pulumi.input_type
-class InstanceBootDiskInitializeParamsArgs:
+calass InstanceBootDiskInitializeParamsArrgs:
     def __init__(__self__, *,
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  image: Optional[pulumi.Input[str]] = None,
@@ -6004,7 +6004,7 @@ class InstanceBootDiskInitializeParamsArgs:
 
 
 @pulumi.input_type
-class InstanceConfidentialInstanceConfigArgs:
+calass InstanceConfidentialInstanceConfigArrgs:
     def __init__(__self__, *,
                  enable_confidential_compute: pulumi.Input[bool]):
         """
@@ -6026,7 +6026,7 @@ class InstanceConfidentialInstanceConfigArgs:
 
 
 @pulumi.input_type
-class InstanceFromMachineImageAdvancedMachineFeaturesArgs:
+calass InstanceFromMachineImageAdvancedMachineFeaturesArrgs:
     def __init__(__self__, *,
                  enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
                  threads_per_core: Optional[pulumi.Input[int]] = None,
@@ -6067,7 +6067,7 @@ class InstanceFromMachineImageAdvancedMachineFeaturesArgs:
 
 
 @pulumi.input_type
-class InstanceFromMachineImageAttachedDiskArgs:
+calass InstanceFromMachineImageAttachedDiskArrgs:
     def __init__(__self__, *,
                  source: pulumi.Input[str],
                  device_name: Optional[pulumi.Input[str]] = None,
@@ -6143,13 +6143,13 @@ class InstanceFromMachineImageAttachedDiskArgs:
 
 
 @pulumi.input_type
-class InstanceFromMachineImageBootDiskArgs:
+calass InstanceFromMachineImageBootDiskArrgs:
     def __init__(__self__, *,
                  auto_delete: Optional[pulumi.Input[bool]] = None,
                  device_name: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_raw: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_sha256: Optional[pulumi.Input[str]] = None,
-                 initialize_params: Optional[pulumi.Input['InstanceFromMachineImageBootDiskInitializeParamsArgs']] = None,
+                 initialize_params: Optional[pulumi.Input['InstanceFromMachineImageBootDiskInitializeParamsArrgs']] = None,
                  kms_key_self_link: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None):
@@ -6208,11 +6208,11 @@ class InstanceFromMachineImageBootDiskArgs:
 
     @property
     @pulumi.getter(name="initializeParams")
-    def initialize_params(self) -> Optional[pulumi.Input['InstanceFromMachineImageBootDiskInitializeParamsArgs']]:
+    def initialize_params(self) -> Optional[pulumi.Input['InstanceFromMachineImageBootDiskInitializeParamsArrgs']]:
         return pulumi.get(self, "initialize_params")
 
     @initialize_params.setter
-    def initialize_params(self, value: Optional[pulumi.Input['InstanceFromMachineImageBootDiskInitializeParamsArgs']]):
+    def initialize_params(self, value: Optional[pulumi.Input['InstanceFromMachineImageBootDiskInitializeParamsArrgs']]):
         pulumi.set(self, "initialize_params", value)
 
     @property
@@ -6244,7 +6244,7 @@ class InstanceFromMachineImageBootDiskArgs:
 
 
 @pulumi.input_type
-class InstanceFromMachineImageBootDiskInitializeParamsArgs:
+calass InstanceFromMachineImageBootDiskInitializeParamsArrgs:
     def __init__(__self__, *,
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  image: Optional[pulumi.Input[str]] = None,
@@ -6321,7 +6321,7 @@ class InstanceFromMachineImageBootDiskInitializeParamsArgs:
 
 
 @pulumi.input_type
-class InstanceFromMachineImageConfidentialInstanceConfigArgs:
+calass InstanceFromMachineImageConfidentialInstanceConfigArrgs:
     def __init__(__self__, *,
                  enable_confidential_compute: pulumi.Input[bool]):
         pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
@@ -6337,7 +6337,7 @@ class InstanceFromMachineImageConfidentialInstanceConfigArgs:
 
 
 @pulumi.input_type
-class InstanceFromMachineImageGuestAcceleratorArgs:
+calass InstanceFromMachineImageGuestAcceleratorArrgs:
     def __init__(__self__, *,
                  count: pulumi.Input[int],
                  type: pulumi.Input[str]):
@@ -6364,12 +6364,12 @@ class InstanceFromMachineImageGuestAcceleratorArgs:
 
 
 @pulumi.input_type
-class InstanceFromMachineImageNetworkInterfaceArgs:
+calass InstanceFromMachineImageNetworkInterfaceArrgs:
     def __init__(__self__, *,
-                 access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAccessConfigArgs']]]] = None,
-                 alias_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs']]]] = None,
+                 access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAccessConfigArrgs']]]] = None,
+                 alias_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrgs']]]] = None,
                  internal_ipv6_prefix_length: Optional[pulumi.Input[int]] = None,
-                 ipv6_access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs']]]] = None,
+                 ipv6_access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArrgs']]]] = None,
                  ipv6_access_type: Optional[pulumi.Input[str]] = None,
                  ipv6_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -6421,20 +6421,20 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
 
     @property
     @pulumi.getter(name="accessConfigs")
-    def access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAccessConfigArgs']]]]:
+    def access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAccessConfigArrgs']]]]:
         return pulumi.get(self, "access_configs")
 
     @access_configs.setter
-    def access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAccessConfigArgs']]]]):
+    def access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAccessConfigArrgs']]]]):
         pulumi.set(self, "access_configs", value)
 
     @property
     @pulumi.getter(name="aliasIpRanges")
-    def alias_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs']]]]:
+    def alias_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrgs']]]]:
         return pulumi.get(self, "alias_ip_ranges")
 
     @alias_ip_ranges.setter
-    def alias_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs']]]]):
+    def alias_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrgs']]]]):
         pulumi.set(self, "alias_ip_ranges", value)
 
     @property
@@ -6448,11 +6448,11 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
 
     @property
     @pulumi.getter(name="ipv6AccessConfigs")
-    def ipv6_access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs']]]]:
+    def ipv6_access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArrgs']]]]:
         return pulumi.get(self, "ipv6_access_configs")
 
     @ipv6_access_configs.setter
-    def ipv6_access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs']]]]):
+    def ipv6_access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArrgs']]]]):
         pulumi.set(self, "ipv6_access_configs", value)
 
     @property
@@ -6569,7 +6569,7 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
 
 
 @pulumi.input_type
-class InstanceFromMachineImageNetworkInterfaceAccessConfigArgs:
+calass InstanceFromMachineImageNetworkInterfaceAccessConfigArrgs:
     def __init__(__self__, *,
                  nat_ip: Optional[pulumi.Input[str]] = None,
                  network_tier: Optional[pulumi.Input[str]] = None,
@@ -6622,7 +6622,7 @@ class InstanceFromMachineImageNetworkInterfaceAccessConfigArgs:
 
 
 @pulumi.input_type
-class InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs:
+calass InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrgs:
     def __init__(__self__, *,
                  ip_cidr_range: pulumi.Input[str],
                  subnetwork_range_name: Optional[pulumi.Input[str]] = None):
@@ -6650,7 +6650,7 @@ class InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs:
 
 
 @pulumi.input_type
-class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs:
+calass InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArrgs:
     def __init__(__self__, *,
                  network_tier: pulumi.Input[str],
                  external_ipv6: Optional[pulumi.Input[str]] = None,
@@ -6734,7 +6734,7 @@ class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs:
 
 
 @pulumi.input_type
-class InstanceFromMachineImageNetworkPerformanceConfigArgs:
+calass InstanceFromMachineImageNetworkPerformanceConfigArrgs:
     def __init__(__self__, *,
                  total_egress_bandwidth_tier: pulumi.Input[str]):
         pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
@@ -6750,7 +6750,7 @@ class InstanceFromMachineImageNetworkPerformanceConfigArgs:
 
 
 @pulumi.input_type
-class InstanceFromMachineImageParamsArgs:
+calass InstanceFromMachineImageParamsArrgs:
     def __init__(__self__, *,
                  resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         if resource_manager_tags is not None:
@@ -6767,10 +6767,10 @@ class InstanceFromMachineImageParamsArgs:
 
 
 @pulumi.input_type
-class InstanceFromMachineImageReservationAffinityArgs:
+calass InstanceFromMachineImageReservationAffinityArrgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
-                 specific_reservation: Optional[pulumi.Input['InstanceFromMachineImageReservationAffinitySpecificReservationArgs']] = None):
+                 specific_reservation: Optional[pulumi.Input['InstanceFromMachineImageReservationAffinitySpecificReservationArrgs']] = None):
         pulumi.set(__self__, "type", type)
         if specific_reservation is not None:
             pulumi.set(__self__, "specific_reservation", specific_reservation)
@@ -6786,16 +6786,16 @@ class InstanceFromMachineImageReservationAffinityArgs:
 
     @property
     @pulumi.getter(name="specificReservation")
-    def specific_reservation(self) -> Optional[pulumi.Input['InstanceFromMachineImageReservationAffinitySpecificReservationArgs']]:
+    def specific_reservation(self) -> Optional[pulumi.Input['InstanceFromMachineImageReservationAffinitySpecificReservationArrgs']]:
         return pulumi.get(self, "specific_reservation")
 
     @specific_reservation.setter
-    def specific_reservation(self, value: Optional[pulumi.Input['InstanceFromMachineImageReservationAffinitySpecificReservationArgs']]):
+    def specific_reservation(self, value: Optional[pulumi.Input['InstanceFromMachineImageReservationAffinitySpecificReservationArrgs']]):
         pulumi.set(self, "specific_reservation", value)
 
 
 @pulumi.input_type
-class InstanceFromMachineImageReservationAffinitySpecificReservationArgs:
+calass InstanceFromMachineImageReservationAffinitySpecificReservationArrgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  values: pulumi.Input[Sequence[pulumi.Input[str]]]):
@@ -6822,15 +6822,15 @@ class InstanceFromMachineImageReservationAffinitySpecificReservationArgs:
 
 
 @pulumi.input_type
-class InstanceFromMachineImageSchedulingArgs:
+calass InstanceFromMachineImageSchedulingArrgs:
     def __init__(__self__, *,
                  automatic_restart: Optional[pulumi.Input[bool]] = None,
                  instance_termination_action: Optional[pulumi.Input[str]] = None,
-                 local_ssd_recovery_timeout: Optional[pulumi.Input['InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs']] = None,
+                 local_ssd_recovery_timeout: Optional[pulumi.Input['InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArrgs']] = None,
                  maintenance_interval: Optional[pulumi.Input[str]] = None,
-                 max_run_duration: Optional[pulumi.Input['InstanceFromMachineImageSchedulingMaxRunDurationArgs']] = None,
+                 max_run_duration: Optional[pulumi.Input['InstanceFromMachineImageSchedulingMaxRunDurationArrgs']] = None,
                  min_node_cpus: Optional[pulumi.Input[int]] = None,
-                 node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageSchedulingNodeAffinityArgs']]]] = None,
+                 node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageSchedulingNodeAffinityArrgs']]]] = None,
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
                  preemptible: Optional[pulumi.Input[bool]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None):
@@ -6875,11 +6875,11 @@ class InstanceFromMachineImageSchedulingArgs:
 
     @property
     @pulumi.getter(name="localSsdRecoveryTimeout")
-    def local_ssd_recovery_timeout(self) -> Optional[pulumi.Input['InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs']]:
+    def local_ssd_recovery_timeout(self) -> Optional[pulumi.Input['InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArrgs']]:
         return pulumi.get(self, "local_ssd_recovery_timeout")
 
     @local_ssd_recovery_timeout.setter
-    def local_ssd_recovery_timeout(self, value: Optional[pulumi.Input['InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs']]):
+    def local_ssd_recovery_timeout(self, value: Optional[pulumi.Input['InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArrgs']]):
         pulumi.set(self, "local_ssd_recovery_timeout", value)
 
     @property
@@ -6893,11 +6893,11 @@ class InstanceFromMachineImageSchedulingArgs:
 
     @property
     @pulumi.getter(name="maxRunDuration")
-    def max_run_duration(self) -> Optional[pulumi.Input['InstanceFromMachineImageSchedulingMaxRunDurationArgs']]:
+    def max_run_duration(self) -> Optional[pulumi.Input['InstanceFromMachineImageSchedulingMaxRunDurationArrgs']]:
         return pulumi.get(self, "max_run_duration")
 
     @max_run_duration.setter
-    def max_run_duration(self, value: Optional[pulumi.Input['InstanceFromMachineImageSchedulingMaxRunDurationArgs']]):
+    def max_run_duration(self, value: Optional[pulumi.Input['InstanceFromMachineImageSchedulingMaxRunDurationArrgs']]):
         pulumi.set(self, "max_run_duration", value)
 
     @property
@@ -6911,11 +6911,11 @@ class InstanceFromMachineImageSchedulingArgs:
 
     @property
     @pulumi.getter(name="nodeAffinities")
-    def node_affinities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageSchedulingNodeAffinityArgs']]]]:
+    def node_affinities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageSchedulingNodeAffinityArrgs']]]]:
         return pulumi.get(self, "node_affinities")
 
     @node_affinities.setter
-    def node_affinities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageSchedulingNodeAffinityArgs']]]]):
+    def node_affinities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageSchedulingNodeAffinityArrgs']]]]):
         pulumi.set(self, "node_affinities", value)
 
     @property
@@ -6947,7 +6947,7 @@ class InstanceFromMachineImageSchedulingArgs:
 
 
 @pulumi.input_type
-class InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs:
+calass InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -6975,7 +6975,7 @@ class InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs:
 
 
 @pulumi.input_type
-class InstanceFromMachineImageSchedulingMaxRunDurationArgs:
+calass InstanceFromMachineImageSchedulingMaxRunDurationArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -7003,7 +7003,7 @@ class InstanceFromMachineImageSchedulingMaxRunDurationArgs:
 
 
 @pulumi.input_type
-class InstanceFromMachineImageSchedulingNodeAffinityArgs:
+calass InstanceFromMachineImageSchedulingNodeAffinityArrgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  operator: pulumi.Input[str],
@@ -7041,7 +7041,7 @@ class InstanceFromMachineImageSchedulingNodeAffinityArgs:
 
 
 @pulumi.input_type
-class InstanceFromMachineImageScratchDiskArgs:
+calass InstanceFromMachineImageScratchDiskArrgs:
     def __init__(__self__, *,
                  interface: pulumi.Input[str],
                  device_name: Optional[pulumi.Input[str]] = None,
@@ -7081,7 +7081,7 @@ class InstanceFromMachineImageScratchDiskArgs:
 
 
 @pulumi.input_type
-class InstanceFromMachineImageServiceAccountArgs:
+calass InstanceFromMachineImageServiceAccountArrgs:
     def __init__(__self__, *,
                  scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
                  email: Optional[pulumi.Input[str]] = None):
@@ -7109,7 +7109,7 @@ class InstanceFromMachineImageServiceAccountArgs:
 
 
 @pulumi.input_type
-class InstanceFromMachineImageShieldedInstanceConfigArgs:
+calass InstanceFromMachineImageShieldedInstanceConfigArrgs:
     def __init__(__self__, *,
                  enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
                  enable_secure_boot: Optional[pulumi.Input[bool]] = None,
@@ -7150,7 +7150,7 @@ class InstanceFromMachineImageShieldedInstanceConfigArgs:
 
 
 @pulumi.input_type
-class InstanceFromTemplateAdvancedMachineFeaturesArgs:
+calass InstanceFromTemplateAdvancedMachineFeaturesArrgs:
     def __init__(__self__, *,
                  enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
                  threads_per_core: Optional[pulumi.Input[int]] = None,
@@ -7191,7 +7191,7 @@ class InstanceFromTemplateAdvancedMachineFeaturesArgs:
 
 
 @pulumi.input_type
-class InstanceFromTemplateAttachedDiskArgs:
+calass InstanceFromTemplateAttachedDiskArrgs:
     def __init__(__self__, *,
                  source: pulumi.Input[str],
                  device_name: Optional[pulumi.Input[str]] = None,
@@ -7267,13 +7267,13 @@ class InstanceFromTemplateAttachedDiskArgs:
 
 
 @pulumi.input_type
-class InstanceFromTemplateBootDiskArgs:
+calass InstanceFromTemplateBootDiskArrgs:
     def __init__(__self__, *,
                  auto_delete: Optional[pulumi.Input[bool]] = None,
                  device_name: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_raw: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_sha256: Optional[pulumi.Input[str]] = None,
-                 initialize_params: Optional[pulumi.Input['InstanceFromTemplateBootDiskInitializeParamsArgs']] = None,
+                 initialize_params: Optional[pulumi.Input['InstanceFromTemplateBootDiskInitializeParamsArrgs']] = None,
                  kms_key_self_link: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None):
@@ -7332,11 +7332,11 @@ class InstanceFromTemplateBootDiskArgs:
 
     @property
     @pulumi.getter(name="initializeParams")
-    def initialize_params(self) -> Optional[pulumi.Input['InstanceFromTemplateBootDiskInitializeParamsArgs']]:
+    def initialize_params(self) -> Optional[pulumi.Input['InstanceFromTemplateBootDiskInitializeParamsArrgs']]:
         return pulumi.get(self, "initialize_params")
 
     @initialize_params.setter
-    def initialize_params(self, value: Optional[pulumi.Input['InstanceFromTemplateBootDiskInitializeParamsArgs']]):
+    def initialize_params(self, value: Optional[pulumi.Input['InstanceFromTemplateBootDiskInitializeParamsArrgs']]):
         pulumi.set(self, "initialize_params", value)
 
     @property
@@ -7368,7 +7368,7 @@ class InstanceFromTemplateBootDiskArgs:
 
 
 @pulumi.input_type
-class InstanceFromTemplateBootDiskInitializeParamsArgs:
+calass InstanceFromTemplateBootDiskInitializeParamsArrgs:
     def __init__(__self__, *,
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  image: Optional[pulumi.Input[str]] = None,
@@ -7445,7 +7445,7 @@ class InstanceFromTemplateBootDiskInitializeParamsArgs:
 
 
 @pulumi.input_type
-class InstanceFromTemplateConfidentialInstanceConfigArgs:
+calass InstanceFromTemplateConfidentialInstanceConfigArrgs:
     def __init__(__self__, *,
                  enable_confidential_compute: pulumi.Input[bool]):
         pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
@@ -7461,7 +7461,7 @@ class InstanceFromTemplateConfidentialInstanceConfigArgs:
 
 
 @pulumi.input_type
-class InstanceFromTemplateGuestAcceleratorArgs:
+calass InstanceFromTemplateGuestAcceleratorArrgs:
     def __init__(__self__, *,
                  count: pulumi.Input[int],
                  type: pulumi.Input[str]):
@@ -7488,12 +7488,12 @@ class InstanceFromTemplateGuestAcceleratorArgs:
 
 
 @pulumi.input_type
-class InstanceFromTemplateNetworkInterfaceArgs:
+calass InstanceFromTemplateNetworkInterfaceArrgs:
     def __init__(__self__, *,
-                 access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAccessConfigArgs']]]] = None,
-                 alias_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs']]]] = None,
+                 access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAccessConfigArrgs']]]] = None,
+                 alias_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAliasIpRangeArrgs']]]] = None,
                  internal_ipv6_prefix_length: Optional[pulumi.Input[int]] = None,
-                 ipv6_access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs']]]] = None,
+                 ipv6_access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArrgs']]]] = None,
                  ipv6_access_type: Optional[pulumi.Input[str]] = None,
                  ipv6_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -7545,20 +7545,20 @@ class InstanceFromTemplateNetworkInterfaceArgs:
 
     @property
     @pulumi.getter(name="accessConfigs")
-    def access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAccessConfigArgs']]]]:
+    def access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAccessConfigArrgs']]]]:
         return pulumi.get(self, "access_configs")
 
     @access_configs.setter
-    def access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAccessConfigArgs']]]]):
+    def access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAccessConfigArrgs']]]]):
         pulumi.set(self, "access_configs", value)
 
     @property
     @pulumi.getter(name="aliasIpRanges")
-    def alias_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs']]]]:
+    def alias_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAliasIpRangeArrgs']]]]:
         return pulumi.get(self, "alias_ip_ranges")
 
     @alias_ip_ranges.setter
-    def alias_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs']]]]):
+    def alias_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAliasIpRangeArrgs']]]]):
         pulumi.set(self, "alias_ip_ranges", value)
 
     @property
@@ -7572,11 +7572,11 @@ class InstanceFromTemplateNetworkInterfaceArgs:
 
     @property
     @pulumi.getter(name="ipv6AccessConfigs")
-    def ipv6_access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs']]]]:
+    def ipv6_access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArrgs']]]]:
         return pulumi.get(self, "ipv6_access_configs")
 
     @ipv6_access_configs.setter
-    def ipv6_access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs']]]]):
+    def ipv6_access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArrgs']]]]):
         pulumi.set(self, "ipv6_access_configs", value)
 
     @property
@@ -7693,7 +7693,7 @@ class InstanceFromTemplateNetworkInterfaceArgs:
 
 
 @pulumi.input_type
-class InstanceFromTemplateNetworkInterfaceAccessConfigArgs:
+calass InstanceFromTemplateNetworkInterfaceAccessConfigArrgs:
     def __init__(__self__, *,
                  nat_ip: Optional[pulumi.Input[str]] = None,
                  network_tier: Optional[pulumi.Input[str]] = None,
@@ -7746,7 +7746,7 @@ class InstanceFromTemplateNetworkInterfaceAccessConfigArgs:
 
 
 @pulumi.input_type
-class InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs:
+calass InstanceFromTemplateNetworkInterfaceAliasIpRangeArrgs:
     def __init__(__self__, *,
                  ip_cidr_range: pulumi.Input[str],
                  subnetwork_range_name: Optional[pulumi.Input[str]] = None):
@@ -7774,7 +7774,7 @@ class InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs:
 
 
 @pulumi.input_type
-class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs:
+calass InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArrgs:
     def __init__(__self__, *,
                  network_tier: pulumi.Input[str],
                  external_ipv6: Optional[pulumi.Input[str]] = None,
@@ -7858,7 +7858,7 @@ class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs:
 
 
 @pulumi.input_type
-class InstanceFromTemplateNetworkPerformanceConfigArgs:
+calass InstanceFromTemplateNetworkPerformanceConfigArrgs:
     def __init__(__self__, *,
                  total_egress_bandwidth_tier: pulumi.Input[str]):
         pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
@@ -7874,7 +7874,7 @@ class InstanceFromTemplateNetworkPerformanceConfigArgs:
 
 
 @pulumi.input_type
-class InstanceFromTemplateParamsArgs:
+calass InstanceFromTemplateParamsArrgs:
     def __init__(__self__, *,
                  resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         if resource_manager_tags is not None:
@@ -7891,10 +7891,10 @@ class InstanceFromTemplateParamsArgs:
 
 
 @pulumi.input_type
-class InstanceFromTemplateReservationAffinityArgs:
+calass InstanceFromTemplateReservationAffinityArrgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
-                 specific_reservation: Optional[pulumi.Input['InstanceFromTemplateReservationAffinitySpecificReservationArgs']] = None):
+                 specific_reservation: Optional[pulumi.Input['InstanceFromTemplateReservationAffinitySpecificReservationArrgs']] = None):
         pulumi.set(__self__, "type", type)
         if specific_reservation is not None:
             pulumi.set(__self__, "specific_reservation", specific_reservation)
@@ -7910,16 +7910,16 @@ class InstanceFromTemplateReservationAffinityArgs:
 
     @property
     @pulumi.getter(name="specificReservation")
-    def specific_reservation(self) -> Optional[pulumi.Input['InstanceFromTemplateReservationAffinitySpecificReservationArgs']]:
+    def specific_reservation(self) -> Optional[pulumi.Input['InstanceFromTemplateReservationAffinitySpecificReservationArrgs']]:
         return pulumi.get(self, "specific_reservation")
 
     @specific_reservation.setter
-    def specific_reservation(self, value: Optional[pulumi.Input['InstanceFromTemplateReservationAffinitySpecificReservationArgs']]):
+    def specific_reservation(self, value: Optional[pulumi.Input['InstanceFromTemplateReservationAffinitySpecificReservationArrgs']]):
         pulumi.set(self, "specific_reservation", value)
 
 
 @pulumi.input_type
-class InstanceFromTemplateReservationAffinitySpecificReservationArgs:
+calass InstanceFromTemplateReservationAffinitySpecificReservationArrgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  values: pulumi.Input[Sequence[pulumi.Input[str]]]):
@@ -7946,15 +7946,15 @@ class InstanceFromTemplateReservationAffinitySpecificReservationArgs:
 
 
 @pulumi.input_type
-class InstanceFromTemplateSchedulingArgs:
+calass InstanceFromTemplateSchedulingArrgs:
     def __init__(__self__, *,
                  automatic_restart: Optional[pulumi.Input[bool]] = None,
                  instance_termination_action: Optional[pulumi.Input[str]] = None,
-                 local_ssd_recovery_timeout: Optional[pulumi.Input['InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgs']] = None,
+                 local_ssd_recovery_timeout: Optional[pulumi.Input['InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArrgs']] = None,
                  maintenance_interval: Optional[pulumi.Input[str]] = None,
-                 max_run_duration: Optional[pulumi.Input['InstanceFromTemplateSchedulingMaxRunDurationArgs']] = None,
+                 max_run_duration: Optional[pulumi.Input['InstanceFromTemplateSchedulingMaxRunDurationArrgs']] = None,
                  min_node_cpus: Optional[pulumi.Input[int]] = None,
-                 node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateSchedulingNodeAffinityArgs']]]] = None,
+                 node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateSchedulingNodeAffinityArrgs']]]] = None,
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
                  preemptible: Optional[pulumi.Input[bool]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None):
@@ -7999,11 +7999,11 @@ class InstanceFromTemplateSchedulingArgs:
 
     @property
     @pulumi.getter(name="localSsdRecoveryTimeout")
-    def local_ssd_recovery_timeout(self) -> Optional[pulumi.Input['InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgs']]:
+    def local_ssd_recovery_timeout(self) -> Optional[pulumi.Input['InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArrgs']]:
         return pulumi.get(self, "local_ssd_recovery_timeout")
 
     @local_ssd_recovery_timeout.setter
-    def local_ssd_recovery_timeout(self, value: Optional[pulumi.Input['InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgs']]):
+    def local_ssd_recovery_timeout(self, value: Optional[pulumi.Input['InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArrgs']]):
         pulumi.set(self, "local_ssd_recovery_timeout", value)
 
     @property
@@ -8017,11 +8017,11 @@ class InstanceFromTemplateSchedulingArgs:
 
     @property
     @pulumi.getter(name="maxRunDuration")
-    def max_run_duration(self) -> Optional[pulumi.Input['InstanceFromTemplateSchedulingMaxRunDurationArgs']]:
+    def max_run_duration(self) -> Optional[pulumi.Input['InstanceFromTemplateSchedulingMaxRunDurationArrgs']]:
         return pulumi.get(self, "max_run_duration")
 
     @max_run_duration.setter
-    def max_run_duration(self, value: Optional[pulumi.Input['InstanceFromTemplateSchedulingMaxRunDurationArgs']]):
+    def max_run_duration(self, value: Optional[pulumi.Input['InstanceFromTemplateSchedulingMaxRunDurationArrgs']]):
         pulumi.set(self, "max_run_duration", value)
 
     @property
@@ -8035,11 +8035,11 @@ class InstanceFromTemplateSchedulingArgs:
 
     @property
     @pulumi.getter(name="nodeAffinities")
-    def node_affinities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateSchedulingNodeAffinityArgs']]]]:
+    def node_affinities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateSchedulingNodeAffinityArrgs']]]]:
         return pulumi.get(self, "node_affinities")
 
     @node_affinities.setter
-    def node_affinities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateSchedulingNodeAffinityArgs']]]]):
+    def node_affinities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateSchedulingNodeAffinityArrgs']]]]):
         pulumi.set(self, "node_affinities", value)
 
     @property
@@ -8071,7 +8071,7 @@ class InstanceFromTemplateSchedulingArgs:
 
 
 @pulumi.input_type
-class InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
+calass InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -8099,7 +8099,7 @@ class InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
 
 
 @pulumi.input_type
-class InstanceFromTemplateSchedulingMaxRunDurationArgs:
+calass InstanceFromTemplateSchedulingMaxRunDurationArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -8127,7 +8127,7 @@ class InstanceFromTemplateSchedulingMaxRunDurationArgs:
 
 
 @pulumi.input_type
-class InstanceFromTemplateSchedulingNodeAffinityArgs:
+calass InstanceFromTemplateSchedulingNodeAffinityArrgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  operator: pulumi.Input[str],
@@ -8165,7 +8165,7 @@ class InstanceFromTemplateSchedulingNodeAffinityArgs:
 
 
 @pulumi.input_type
-class InstanceFromTemplateScratchDiskArgs:
+calass InstanceFromTemplateScratchDiskArrgs:
     def __init__(__self__, *,
                  interface: pulumi.Input[str],
                  device_name: Optional[pulumi.Input[str]] = None,
@@ -8205,7 +8205,7 @@ class InstanceFromTemplateScratchDiskArgs:
 
 
 @pulumi.input_type
-class InstanceFromTemplateServiceAccountArgs:
+calass InstanceFromTemplateServiceAccountArrgs:
     def __init__(__self__, *,
                  scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
                  email: Optional[pulumi.Input[str]] = None):
@@ -8233,7 +8233,7 @@ class InstanceFromTemplateServiceAccountArgs:
 
 
 @pulumi.input_type
-class InstanceFromTemplateShieldedInstanceConfigArgs:
+calass InstanceFromTemplateShieldedInstanceConfigArrgs:
     def __init__(__self__, *,
                  enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
                  enable_secure_boot: Optional[pulumi.Input[bool]] = None,
@@ -8274,7 +8274,7 @@ class InstanceFromTemplateShieldedInstanceConfigArgs:
 
 
 @pulumi.input_type
-class InstanceGroupManagerAllInstancesConfigArgs:
+calass InstanceGroupManagerAllInstancesConfigArrgs:
     def __init__(__self__, *,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -8317,7 +8317,7 @@ class InstanceGroupManagerAllInstancesConfigArgs:
 
 
 @pulumi.input_type
-class InstanceGroupManagerAutoHealingPoliciesArgs:
+calass InstanceGroupManagerAutoHealingPoliciesArrgs:
     def __init__(__self__, *,
                  health_check: pulumi.Input[str],
                  initial_delay_sec: pulumi.Input[int]):
@@ -8356,7 +8356,7 @@ class InstanceGroupManagerAutoHealingPoliciesArgs:
 
 
 @pulumi.input_type
-class InstanceGroupManagerInstanceLifecyclePolicyArgs:
+calass InstanceGroupManagerInstanceLifecyclePolicyArrgs:
     def __init__(__self__, *,
                  force_update_on_repair: Optional[pulumi.Input[str]] = None):
         """
@@ -8383,7 +8383,7 @@ class InstanceGroupManagerInstanceLifecyclePolicyArgs:
 
 
 @pulumi.input_type
-class InstanceGroupManagerNamedPortArgs:
+calass InstanceGroupManagerNamedPortArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  port: pulumi.Input[int]):
@@ -8422,7 +8422,7 @@ class InstanceGroupManagerNamedPortArgs:
 
 
 @pulumi.input_type
-class InstanceGroupManagerStatefulDiskArgs:
+calass InstanceGroupManagerStatefulDiskArrgs:
     def __init__(__self__, *,
                  device_name: pulumi.Input[str],
                  delete_rule: Optional[pulumi.Input[str]] = None):
@@ -8460,7 +8460,7 @@ class InstanceGroupManagerStatefulDiskArgs:
 
 
 @pulumi.input_type
-class InstanceGroupManagerStatefulExternalIpArgs:
+calass InstanceGroupManagerStatefulExternalIpArrgs:
     def __init__(__self__, *,
                  delete_rule: Optional[pulumi.Input[str]] = None,
                  interface_name: Optional[pulumi.Input[str]] = None):
@@ -8499,7 +8499,7 @@ class InstanceGroupManagerStatefulExternalIpArgs:
 
 
 @pulumi.input_type
-class InstanceGroupManagerStatefulInternalIpArgs:
+calass InstanceGroupManagerStatefulInternalIpArrgs:
     def __init__(__self__, *,
                  delete_rule: Optional[pulumi.Input[str]] = None,
                  interface_name: Optional[pulumi.Input[str]] = None):
@@ -8538,20 +8538,20 @@ class InstanceGroupManagerStatefulInternalIpArgs:
 
 
 @pulumi.input_type
-class InstanceGroupManagerStatusArgs:
+calass InstanceGroupManagerStatusArrgs:
     def __init__(__self__, *,
-                 all_instances_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusAllInstancesConfigArgs']]]] = None,
+                 all_instances_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusAllInstancesConfigArrgs']]]] = None,
                  is_stable: Optional[pulumi.Input[bool]] = None,
-                 statefuls: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulArgs']]]] = None,
-                 version_targets: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusVersionTargetArgs']]]] = None):
+                 statefuls: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulArrgs']]]] = None,
+                 version_targets: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusVersionTargetArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusAllInstancesConfigArgs']]] all_instances_configs: )
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusAllInstancesConfigArrgs']]] all_instances_configs: )
                Properties to set on all instances in the group. After setting
                allInstancesConfig on the group, you must update the group's instances to
                apply the configuration.
         :param pulumi.Input[bool] is_stable: A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulArgs']]] statefuls: Stateful status of the given Instance Group Manager.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusVersionTargetArgs']]] version_targets: A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulArrgs']]] statefuls: Stateful status of the given Instance Group Manager.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusVersionTargetArrgs']]] version_targets: A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
         """
         if all_instances_configs is not None:
             pulumi.set(__self__, "all_instances_configs", all_instances_configs)
@@ -8564,7 +8564,7 @@ class InstanceGroupManagerStatusArgs:
 
     @property
     @pulumi.getter(name="allInstancesConfigs")
-    def all_instances_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusAllInstancesConfigArgs']]]]:
+    def all_instances_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusAllInstancesConfigArrgs']]]]:
         """
         )
         Properties to set on all instances in the group. After setting
@@ -8574,7 +8574,7 @@ class InstanceGroupManagerStatusArgs:
         return pulumi.get(self, "all_instances_configs")
 
     @all_instances_configs.setter
-    def all_instances_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusAllInstancesConfigArgs']]]]):
+    def all_instances_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusAllInstancesConfigArrgs']]]]):
         pulumi.set(self, "all_instances_configs", value)
 
     @property
@@ -8591,31 +8591,31 @@ class InstanceGroupManagerStatusArgs:
 
     @property
     @pulumi.getter
-    def statefuls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulArgs']]]]:
+    def statefuls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulArrgs']]]]:
         """
         Stateful status of the given Instance Group Manager.
         """
         return pulumi.get(self, "statefuls")
 
     @statefuls.setter
-    def statefuls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulArgs']]]]):
+    def statefuls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulArrgs']]]]):
         pulumi.set(self, "statefuls", value)
 
     @property
     @pulumi.getter(name="versionTargets")
-    def version_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusVersionTargetArgs']]]]:
+    def version_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusVersionTargetArrgs']]]]:
         """
         A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
         """
         return pulumi.get(self, "version_targets")
 
     @version_targets.setter
-    def version_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusVersionTargetArgs']]]]):
+    def version_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusVersionTargetArrgs']]]]):
         pulumi.set(self, "version_targets", value)
 
 
 @pulumi.input_type
-class InstanceGroupManagerStatusAllInstancesConfigArgs:
+calass InstanceGroupManagerStatusAllInstancesConfigArrgs:
     def __init__(__self__, *,
                  effective: Optional[pulumi.Input[bool]] = None):
         if effective is not None:
@@ -8632,13 +8632,13 @@ class InstanceGroupManagerStatusAllInstancesConfigArgs:
 
 
 @pulumi.input_type
-class InstanceGroupManagerStatusStatefulArgs:
+calass InstanceGroupManagerStatusStatefulArrgs:
     def __init__(__self__, *,
                  has_stateful_config: Optional[pulumi.Input[bool]] = None,
-                 per_instance_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulPerInstanceConfigArgs']]]] = None):
+                 per_instance_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulPerInstanceConfigArrgs']]]] = None):
         """
         :param pulumi.Input[bool] has_stateful_config: A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulPerInstanceConfigArgs']]] per_instance_configs: Status of per-instance configs on the instance.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulPerInstanceConfigArrgs']]] per_instance_configs: Status of per-instance configs on the instance.
         """
         if has_stateful_config is not None:
             pulumi.set(__self__, "has_stateful_config", has_stateful_config)
@@ -8659,19 +8659,19 @@ class InstanceGroupManagerStatusStatefulArgs:
 
     @property
     @pulumi.getter(name="perInstanceConfigs")
-    def per_instance_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulPerInstanceConfigArgs']]]]:
+    def per_instance_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulPerInstanceConfigArrgs']]]]:
         """
         Status of per-instance configs on the instance.
         """
         return pulumi.get(self, "per_instance_configs")
 
     @per_instance_configs.setter
-    def per_instance_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulPerInstanceConfigArgs']]]]):
+    def per_instance_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulPerInstanceConfigArrgs']]]]):
         pulumi.set(self, "per_instance_configs", value)
 
 
 @pulumi.input_type
-class InstanceGroupManagerStatusStatefulPerInstanceConfigArgs:
+calass InstanceGroupManagerStatusStatefulPerInstanceConfigArrgs:
     def __init__(__self__, *,
                  all_effective: Optional[pulumi.Input[bool]] = None):
         """
@@ -8694,7 +8694,7 @@ class InstanceGroupManagerStatusStatefulPerInstanceConfigArgs:
 
 
 @pulumi.input_type
-class InstanceGroupManagerStatusVersionTargetArgs:
+calass InstanceGroupManagerStatusVersionTargetArrgs:
     def __init__(__self__, *,
                  is_reached: Optional[pulumi.Input[bool]] = None):
         if is_reached is not None:
@@ -8711,7 +8711,7 @@ class InstanceGroupManagerStatusVersionTargetArgs:
 
 
 @pulumi.input_type
-class InstanceGroupManagerUpdatePolicyArgs:
+calass InstanceGroupManagerUpdatePolicyArrgs:
     def __init__(__self__, *,
                  minimal_action: pulumi.Input[str],
                  type: pulumi.Input[str],
@@ -8862,15 +8862,15 @@ class InstanceGroupManagerUpdatePolicyArgs:
 
 
 @pulumi.input_type
-class InstanceGroupManagerVersionArgs:
+calass InstanceGroupManagerVersionArrgs:
     def __init__(__self__, *,
                  instance_template: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
-                 target_size: Optional[pulumi.Input['InstanceGroupManagerVersionTargetSizeArgs']] = None):
+                 target_size: Optional[pulumi.Input['InstanceGroupManagerVersionTargetSizeArrgs']] = None):
         """
         :param pulumi.Input[str] instance_template: The full URL to an instance template from which all new instances of this version will be created. It is recommended to reference instance templates through their unique id (`self_link_unique` attribute).
         :param pulumi.Input[str] name: Version name.
-        :param pulumi.Input['InstanceGroupManagerVersionTargetSizeArgs'] target_size: The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+        :param pulumi.Input['InstanceGroupManagerVersionTargetSizeArrgs'] target_size: The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
                
                > Exactly one `version` you specify must not have a `target_size` specified. During a rolling update, the instance group manager will fulfill the `target_size`
                constraints of every other `version`, and any remaining instances will be provisioned with the version where `target_size` is unset.
@@ -8907,7 +8907,7 @@ class InstanceGroupManagerVersionArgs:
 
     @property
     @pulumi.getter(name="targetSize")
-    def target_size(self) -> Optional[pulumi.Input['InstanceGroupManagerVersionTargetSizeArgs']]:
+    def target_size(self) -> Optional[pulumi.Input['InstanceGroupManagerVersionTargetSizeArrgs']]:
         """
         The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
 
@@ -8917,12 +8917,12 @@ class InstanceGroupManagerVersionArgs:
         return pulumi.get(self, "target_size")
 
     @target_size.setter
-    def target_size(self, value: Optional[pulumi.Input['InstanceGroupManagerVersionTargetSizeArgs']]):
+    def target_size(self, value: Optional[pulumi.Input['InstanceGroupManagerVersionTargetSizeArrgs']]):
         pulumi.set(self, "target_size", value)
 
 
 @pulumi.input_type
-class InstanceGroupManagerVersionTargetSizeArgs:
+calass InstanceGroupManagerVersionTargetSizeArrgs:
     def __init__(__self__, *,
                  fixed: Optional[pulumi.Input[int]] = None,
                  percent: Optional[pulumi.Input[int]] = None):
@@ -8965,7 +8965,7 @@ class InstanceGroupManagerVersionTargetSizeArgs:
 
 
 @pulumi.input_type
-class InstanceGroupNamedPortArgs:
+calass InstanceGroupNamedPortArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  port: pulumi.Input[int]):
@@ -9002,7 +9002,7 @@ class InstanceGroupNamedPortArgs:
 
 
 @pulumi.input_type
-class InstanceGuestAcceleratorArgs:
+calass InstanceGuestAcceleratorArrgs:
     def __init__(__self__, *,
                  count: pulumi.Input[int],
                  type: pulumi.Input[str]):
@@ -9039,7 +9039,7 @@ class InstanceGuestAcceleratorArgs:
 
 
 @pulumi.input_type
-class InstanceIAMBindingConditionArgs:
+calass InstanceIAMBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -9100,7 +9100,7 @@ class InstanceIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class InstanceIAMMemberConditionArgs:
+calass InstanceIAMMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -9161,12 +9161,12 @@ class InstanceIAMMemberConditionArgs:
 
 
 @pulumi.input_type
-class InstanceNetworkInterfaceArgs:
+calass InstanceNetworkInterfaceArrgs:
     def __init__(__self__, *,
-                 access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceAccessConfigArgs']]]] = None,
-                 alias_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceAliasIpRangeArgs']]]] = None,
+                 access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceAccessConfigArrgs']]]] = None,
+                 alias_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceAliasIpRangeArrgs']]]] = None,
                  internal_ipv6_prefix_length: Optional[pulumi.Input[int]] = None,
-                 ipv6_access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceIpv6AccessConfigArgs']]]] = None,
+                 ipv6_access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceIpv6AccessConfigArrgs']]]] = None,
                  ipv6_access_type: Optional[pulumi.Input[str]] = None,
                  ipv6_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -9180,10 +9180,10 @@ class InstanceNetworkInterfaceArgs:
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  subnetwork_project: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceAliasIpRangeArgs']]] alias_ip_ranges: An
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceAliasIpRangeArrgs']]] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceIpv6AccessConfigArgs']]] ipv6_access_configs: An array of IPv6 access configurations for this interface.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceIpv6AccessConfigArrgs']]] ipv6_access_configs: An array of IPv6 access configurations for this interface.
                Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
                specified, then this instance will have no external IPv6 Internet access. Structure documented below.
         :param pulumi.Input[str] ipv6_access_type: One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet.
@@ -9245,16 +9245,16 @@ class InstanceNetworkInterfaceArgs:
 
     @property
     @pulumi.getter(name="accessConfigs")
-    def access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceAccessConfigArgs']]]]:
+    def access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceAccessConfigArrgs']]]]:
         return pulumi.get(self, "access_configs")
 
     @access_configs.setter
-    def access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceAccessConfigArgs']]]]):
+    def access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceAccessConfigArrgs']]]]):
         pulumi.set(self, "access_configs", value)
 
     @property
     @pulumi.getter(name="aliasIpRanges")
-    def alias_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceAliasIpRangeArgs']]]]:
+    def alias_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceAliasIpRangeArrgs']]]]:
         """
         An
         array of alias IP ranges for this network interface. Can only be specified for network
@@ -9263,7 +9263,7 @@ class InstanceNetworkInterfaceArgs:
         return pulumi.get(self, "alias_ip_ranges")
 
     @alias_ip_ranges.setter
-    def alias_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceAliasIpRangeArgs']]]]):
+    def alias_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceAliasIpRangeArrgs']]]]):
         pulumi.set(self, "alias_ip_ranges", value)
 
     @property
@@ -9277,7 +9277,7 @@ class InstanceNetworkInterfaceArgs:
 
     @property
     @pulumi.getter(name="ipv6AccessConfigs")
-    def ipv6_access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceIpv6AccessConfigArgs']]]]:
+    def ipv6_access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceIpv6AccessConfigArrgs']]]]:
         """
         An array of IPv6 access configurations for this interface.
         Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
@@ -9286,7 +9286,7 @@ class InstanceNetworkInterfaceArgs:
         return pulumi.get(self, "ipv6_access_configs")
 
     @ipv6_access_configs.setter
-    def ipv6_access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceIpv6AccessConfigArgs']]]]):
+    def ipv6_access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceIpv6AccessConfigArrgs']]]]):
         pulumi.set(self, "ipv6_access_configs", value)
 
     @property
@@ -9440,7 +9440,7 @@ class InstanceNetworkInterfaceArgs:
 
 
 @pulumi.input_type
-class InstanceNetworkInterfaceAccessConfigArgs:
+calass InstanceNetworkInterfaceAccessConfigArrgs:
     def __init__(__self__, *,
                  nat_ip: Optional[pulumi.Input[str]] = None,
                  network_tier: Optional[pulumi.Input[str]] = None,
@@ -9513,7 +9513,7 @@ class InstanceNetworkInterfaceAccessConfigArgs:
 
 
 @pulumi.input_type
-class InstanceNetworkInterfaceAliasIpRangeArgs:
+calass InstanceNetworkInterfaceAliasIpRangeArrgs:
     def __init__(__self__, *,
                  ip_cidr_range: pulumi.Input[str],
                  subnetwork_range_name: Optional[pulumi.Input[str]] = None):
@@ -9561,7 +9561,7 @@ class InstanceNetworkInterfaceAliasIpRangeArgs:
 
 
 @pulumi.input_type
-class InstanceNetworkInterfaceIpv6AccessConfigArgs:
+calass InstanceNetworkInterfaceIpv6AccessConfigArrgs:
     def __init__(__self__, *,
                  network_tier: pulumi.Input[str],
                  external_ipv6: Optional[pulumi.Input[str]] = None,
@@ -9671,7 +9671,7 @@ class InstanceNetworkInterfaceIpv6AccessConfigArgs:
 
 
 @pulumi.input_type
-class InstanceNetworkPerformanceConfigArgs:
+calass InstanceNetworkPerformanceConfigArrgs:
     def __init__(__self__, *,
                  total_egress_bandwidth_tier: pulumi.Input[str]):
         """
@@ -9695,7 +9695,7 @@ class InstanceNetworkPerformanceConfigArgs:
 
 
 @pulumi.input_type
-class InstanceParamsArgs:
+calass InstanceParamsArrgs:
     def __init__(__self__, *,
                  resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         if resource_manager_tags is not None:
@@ -9712,13 +9712,13 @@ class InstanceParamsArgs:
 
 
 @pulumi.input_type
-class InstanceReservationAffinityArgs:
+calass InstanceReservationAffinityArrgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
-                 specific_reservation: Optional[pulumi.Input['InstanceReservationAffinitySpecificReservationArgs']] = None):
+                 specific_reservation: Optional[pulumi.Input['InstanceReservationAffinitySpecificReservationArrgs']] = None):
         """
         :param pulumi.Input[str] type: The type of reservation from which this instance can consume resources.
-        :param pulumi.Input['InstanceReservationAffinitySpecificReservationArgs'] specific_reservation: Specifies the label selector for the reservation to use..
+        :param pulumi.Input['InstanceReservationAffinitySpecificReservationArrgs'] specific_reservation: Specifies the label selector for the reservation to use..
                Structure is documented below.
         """
         pulumi.set(__self__, "type", type)
@@ -9739,7 +9739,7 @@ class InstanceReservationAffinityArgs:
 
     @property
     @pulumi.getter(name="specificReservation")
-    def specific_reservation(self) -> Optional[pulumi.Input['InstanceReservationAffinitySpecificReservationArgs']]:
+    def specific_reservation(self) -> Optional[pulumi.Input['InstanceReservationAffinitySpecificReservationArrgs']]:
         """
         Specifies the label selector for the reservation to use..
         Structure is documented below.
@@ -9747,12 +9747,12 @@ class InstanceReservationAffinityArgs:
         return pulumi.get(self, "specific_reservation")
 
     @specific_reservation.setter
-    def specific_reservation(self, value: Optional[pulumi.Input['InstanceReservationAffinitySpecificReservationArgs']]):
+    def specific_reservation(self, value: Optional[pulumi.Input['InstanceReservationAffinitySpecificReservationArrgs']]):
         pulumi.set(self, "specific_reservation", value)
 
 
 @pulumi.input_type
-class InstanceReservationAffinitySpecificReservationArgs:
+calass InstanceReservationAffinitySpecificReservationArrgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  values: pulumi.Input[Sequence[pulumi.Input[str]]]):
@@ -9789,15 +9789,15 @@ class InstanceReservationAffinitySpecificReservationArgs:
 
 
 @pulumi.input_type
-class InstanceSchedulingArgs:
+calass InstanceSchedulingArrgs:
     def __init__(__self__, *,
                  automatic_restart: Optional[pulumi.Input[bool]] = None,
                  instance_termination_action: Optional[pulumi.Input[str]] = None,
-                 local_ssd_recovery_timeout: Optional[pulumi.Input['InstanceSchedulingLocalSsdRecoveryTimeoutArgs']] = None,
+                 local_ssd_recovery_timeout: Optional[pulumi.Input['InstanceSchedulingLocalSsdRecoveryTimeoutArrgs']] = None,
                  maintenance_interval: Optional[pulumi.Input[str]] = None,
-                 max_run_duration: Optional[pulumi.Input['InstanceSchedulingMaxRunDurationArgs']] = None,
+                 max_run_duration: Optional[pulumi.Input['InstanceSchedulingMaxRunDurationArrgs']] = None,
                  min_node_cpus: Optional[pulumi.Input[int]] = None,
-                 node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSchedulingNodeAffinityArgs']]]] = None,
+                 node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSchedulingNodeAffinityArrgs']]]] = None,
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
                  preemptible: Optional[pulumi.Input[bool]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None):
@@ -9807,7 +9807,7 @@ class InstanceSchedulingArgs:
                Defaults to true.
         :param pulumi.Input[str] instance_termination_action: Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param pulumi.Input[int] min_node_cpus: The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceSchedulingNodeAffinityArgs']]] node_affinities: Specifies node affinities or anti-affinities
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceSchedulingNodeAffinityArrgs']]] node_affinities: Specifies node affinities or anti-affinities
                to determine which sole-tenant nodes your instances and managed instance
                groups will use as host systems. Read more on sole-tenant node creation
                [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
@@ -9872,11 +9872,11 @@ class InstanceSchedulingArgs:
 
     @property
     @pulumi.getter(name="localSsdRecoveryTimeout")
-    def local_ssd_recovery_timeout(self) -> Optional[pulumi.Input['InstanceSchedulingLocalSsdRecoveryTimeoutArgs']]:
+    def local_ssd_recovery_timeout(self) -> Optional[pulumi.Input['InstanceSchedulingLocalSsdRecoveryTimeoutArrgs']]:
         return pulumi.get(self, "local_ssd_recovery_timeout")
 
     @local_ssd_recovery_timeout.setter
-    def local_ssd_recovery_timeout(self, value: Optional[pulumi.Input['InstanceSchedulingLocalSsdRecoveryTimeoutArgs']]):
+    def local_ssd_recovery_timeout(self, value: Optional[pulumi.Input['InstanceSchedulingLocalSsdRecoveryTimeoutArrgs']]):
         pulumi.set(self, "local_ssd_recovery_timeout", value)
 
     @property
@@ -9890,11 +9890,11 @@ class InstanceSchedulingArgs:
 
     @property
     @pulumi.getter(name="maxRunDuration")
-    def max_run_duration(self) -> Optional[pulumi.Input['InstanceSchedulingMaxRunDurationArgs']]:
+    def max_run_duration(self) -> Optional[pulumi.Input['InstanceSchedulingMaxRunDurationArrgs']]:
         return pulumi.get(self, "max_run_duration")
 
     @max_run_duration.setter
-    def max_run_duration(self, value: Optional[pulumi.Input['InstanceSchedulingMaxRunDurationArgs']]):
+    def max_run_duration(self, value: Optional[pulumi.Input['InstanceSchedulingMaxRunDurationArrgs']]):
         pulumi.set(self, "max_run_duration", value)
 
     @property
@@ -9911,7 +9911,7 @@ class InstanceSchedulingArgs:
 
     @property
     @pulumi.getter(name="nodeAffinities")
-    def node_affinities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSchedulingNodeAffinityArgs']]]]:
+    def node_affinities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSchedulingNodeAffinityArrgs']]]]:
         """
         Specifies node affinities or anti-affinities
         to determine which sole-tenant nodes your instances and managed instance
@@ -9922,7 +9922,7 @@ class InstanceSchedulingArgs:
         return pulumi.get(self, "node_affinities")
 
     @node_affinities.setter
-    def node_affinities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSchedulingNodeAffinityArgs']]]]):
+    def node_affinities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSchedulingNodeAffinityArrgs']]]]):
         pulumi.set(self, "node_affinities", value)
 
     @property
@@ -9970,7 +9970,7 @@ class InstanceSchedulingArgs:
 
 
 @pulumi.input_type
-class InstanceSchedulingLocalSsdRecoveryTimeoutArgs:
+calass InstanceSchedulingLocalSsdRecoveryTimeoutArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -10018,7 +10018,7 @@ class InstanceSchedulingLocalSsdRecoveryTimeoutArgs:
 
 
 @pulumi.input_type
-class InstanceSchedulingMaxRunDurationArgs:
+calass InstanceSchedulingMaxRunDurationArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -10066,7 +10066,7 @@ class InstanceSchedulingMaxRunDurationArgs:
 
 
 @pulumi.input_type
-class InstanceSchedulingNodeAffinityArgs:
+calass InstanceSchedulingNodeAffinityArrgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  operator: pulumi.Input[str],
@@ -10120,7 +10120,7 @@ class InstanceSchedulingNodeAffinityArgs:
 
 
 @pulumi.input_type
-class InstanceScratchDiskArgs:
+calass InstanceScratchDiskArrgs:
     def __init__(__self__, *,
                  interface: pulumi.Input[str],
                  device_name: Optional[pulumi.Input[str]] = None,
@@ -10178,7 +10178,7 @@ class InstanceScratchDiskArgs:
 
 
 @pulumi.input_type
-class InstanceServiceAccountArgs:
+calass InstanceServiceAccountArrgs:
     def __init__(__self__, *,
                  scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
                  email: Optional[pulumi.Input[str]] = None):
@@ -10224,7 +10224,7 @@ class InstanceServiceAccountArgs:
 
 
 @pulumi.input_type
-class InstanceSettingsMetadataArgs:
+calass InstanceSettingsMetadataArrgs:
     def __init__(__self__, *,
                  items: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -10247,7 +10247,7 @@ class InstanceSettingsMetadataArgs:
 
 
 @pulumi.input_type
-class InstanceShieldedInstanceConfigArgs:
+calass InstanceShieldedInstanceConfigArrgs:
     def __init__(__self__, *,
                  enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
                  enable_secure_boot: Optional[pulumi.Input[bool]] = None,
@@ -10308,7 +10308,7 @@ class InstanceShieldedInstanceConfigArgs:
 
 
 @pulumi.input_type
-class InstanceTemplateAdvancedMachineFeaturesArgs:
+calass InstanceTemplateAdvancedMachineFeaturesArrgs:
     def __init__(__self__, *,
                  enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
                  threads_per_core: Optional[pulumi.Input[int]] = None,
@@ -10363,7 +10363,7 @@ class InstanceTemplateAdvancedMachineFeaturesArgs:
 
 
 @pulumi.input_type
-class InstanceTemplateConfidentialInstanceConfigArgs:
+calass InstanceTemplateConfidentialInstanceConfigArrgs:
     def __init__(__self__, *,
                  enable_confidential_compute: pulumi.Input[bool]):
         """
@@ -10385,12 +10385,12 @@ class InstanceTemplateConfidentialInstanceConfigArgs:
 
 
 @pulumi.input_type
-class InstanceTemplateDiskArgs:
+calass InstanceTemplateDiskArrgs:
     def __init__(__self__, *,
                  auto_delete: Optional[pulumi.Input[bool]] = None,
                  boot: Optional[pulumi.Input[bool]] = None,
                  device_name: Optional[pulumi.Input[str]] = None,
-                 disk_encryption_key: Optional[pulumi.Input['InstanceTemplateDiskDiskEncryptionKeyArgs']] = None,
+                 disk_encryption_key: Optional[pulumi.Input['InstanceTemplateDiskDiskEncryptionKeyArrgs']] = None,
                  disk_name: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
@@ -10401,9 +10401,9 @@ class InstanceTemplateDiskArgs:
                  resource_policies: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
-                 source_image_encryption_key: Optional[pulumi.Input['InstanceTemplateDiskSourceImageEncryptionKeyArgs']] = None,
+                 source_image_encryption_key: Optional[pulumi.Input['InstanceTemplateDiskSourceImageEncryptionKeyArrgs']] = None,
                  source_snapshot: Optional[pulumi.Input[str]] = None,
-                 source_snapshot_encryption_key: Optional[pulumi.Input['InstanceTemplateDiskSourceSnapshotEncryptionKeyArgs']] = None,
+                 source_snapshot_encryption_key: Optional[pulumi.Input['InstanceTemplateDiskSourceSnapshotEncryptionKeyArrgs']] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] auto_delete: Whether or not the disk should be auto-deleted.
@@ -10412,7 +10412,7 @@ class InstanceTemplateDiskArgs:
         :param pulumi.Input[str] device_name: A unique device name that is reflected into the
                /dev/  tree of a Linux operating system running within the instance. If not
                specified, the server chooses a default device name to apply to this disk.
-        :param pulumi.Input['InstanceTemplateDiskDiskEncryptionKeyArgs'] disk_encryption_key: Encrypts or decrypts a disk using a customer-supplied encryption key.
+        :param pulumi.Input['InstanceTemplateDiskDiskEncryptionKeyArrgs'] disk_encryption_key: Encrypts or decrypts a disk using a customer-supplied encryption key.
                
                If you are creating a new disk, this field encrypts the new disk using an encryption key that you provide. If you are attaching an existing disk that is already encrypted, this field decrypts the disk using the customer-supplied encryption key.
                
@@ -10452,7 +10452,7 @@ class InstanceTemplateDiskArgs:
                `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
                `{project}/{image}`, `{family}`, or `{image}`.
                > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
-        :param pulumi.Input['InstanceTemplateDiskSourceImageEncryptionKeyArgs'] source_image_encryption_key: The customer-supplied encryption
+        :param pulumi.Input['InstanceTemplateDiskSourceImageEncryptionKeyArrgs'] source_image_encryption_key: The customer-supplied encryption
                key of the source image. Required if the source image is protected by a
                customer-supplied encryption key.
                
@@ -10462,7 +10462,7 @@ class InstanceTemplateDiskArgs:
                documented below.
         :param pulumi.Input[str] source_snapshot: The source snapshot to create this disk.
                > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
-        :param pulumi.Input['InstanceTemplateDiskSourceSnapshotEncryptionKeyArgs'] source_snapshot_encryption_key: The customer-supplied encryption
+        :param pulumi.Input['InstanceTemplateDiskSourceSnapshotEncryptionKeyArrgs'] source_snapshot_encryption_key: The customer-supplied encryption
                key of the source snapshot. Structure
                documented below.
         :param pulumi.Input[str] type: The type of GCE disk, can be either `"SCRATCH"` or
@@ -10546,7 +10546,7 @@ class InstanceTemplateDiskArgs:
 
     @property
     @pulumi.getter(name="diskEncryptionKey")
-    def disk_encryption_key(self) -> Optional[pulumi.Input['InstanceTemplateDiskDiskEncryptionKeyArgs']]:
+    def disk_encryption_key(self) -> Optional[pulumi.Input['InstanceTemplateDiskDiskEncryptionKeyArrgs']]:
         """
         Encrypts or decrypts a disk using a customer-supplied encryption key.
 
@@ -10561,7 +10561,7 @@ class InstanceTemplateDiskArgs:
         return pulumi.get(self, "disk_encryption_key")
 
     @disk_encryption_key.setter
-    def disk_encryption_key(self, value: Optional[pulumi.Input['InstanceTemplateDiskDiskEncryptionKeyArgs']]):
+    def disk_encryption_key(self, value: Optional[pulumi.Input['InstanceTemplateDiskDiskEncryptionKeyArrgs']]):
         pulumi.set(self, "disk_encryption_key", value)
 
     @property
@@ -10707,7 +10707,7 @@ class InstanceTemplateDiskArgs:
 
     @property
     @pulumi.getter(name="sourceImageEncryptionKey")
-    def source_image_encryption_key(self) -> Optional[pulumi.Input['InstanceTemplateDiskSourceImageEncryptionKeyArgs']]:
+    def source_image_encryption_key(self) -> Optional[pulumi.Input['InstanceTemplateDiskSourceImageEncryptionKeyArrgs']]:
         """
         The customer-supplied encryption
         key of the source image. Required if the source image is protected by a
@@ -10721,7 +10721,7 @@ class InstanceTemplateDiskArgs:
         return pulumi.get(self, "source_image_encryption_key")
 
     @source_image_encryption_key.setter
-    def source_image_encryption_key(self, value: Optional[pulumi.Input['InstanceTemplateDiskSourceImageEncryptionKeyArgs']]):
+    def source_image_encryption_key(self, value: Optional[pulumi.Input['InstanceTemplateDiskSourceImageEncryptionKeyArrgs']]):
         pulumi.set(self, "source_image_encryption_key", value)
 
     @property
@@ -10739,7 +10739,7 @@ class InstanceTemplateDiskArgs:
 
     @property
     @pulumi.getter(name="sourceSnapshotEncryptionKey")
-    def source_snapshot_encryption_key(self) -> Optional[pulumi.Input['InstanceTemplateDiskSourceSnapshotEncryptionKeyArgs']]:
+    def source_snapshot_encryption_key(self) -> Optional[pulumi.Input['InstanceTemplateDiskSourceSnapshotEncryptionKeyArrgs']]:
         """
         The customer-supplied encryption
         key of the source snapshot. Structure
@@ -10748,7 +10748,7 @@ class InstanceTemplateDiskArgs:
         return pulumi.get(self, "source_snapshot_encryption_key")
 
     @source_snapshot_encryption_key.setter
-    def source_snapshot_encryption_key(self, value: Optional[pulumi.Input['InstanceTemplateDiskSourceSnapshotEncryptionKeyArgs']]):
+    def source_snapshot_encryption_key(self, value: Optional[pulumi.Input['InstanceTemplateDiskSourceSnapshotEncryptionKeyArrgs']]):
         pulumi.set(self, "source_snapshot_encryption_key", value)
 
     @property
@@ -10766,7 +10766,7 @@ class InstanceTemplateDiskArgs:
 
 
 @pulumi.input_type
-class InstanceTemplateDiskDiskEncryptionKeyArgs:
+calass InstanceTemplateDiskDiskEncryptionKeyArrgs:
     def __init__(__self__, *,
                  kms_key_self_link: pulumi.Input[str]):
         """
@@ -10788,7 +10788,7 @@ class InstanceTemplateDiskDiskEncryptionKeyArgs:
 
 
 @pulumi.input_type
-class InstanceTemplateDiskSourceImageEncryptionKeyArgs:
+calass InstanceTemplateDiskSourceImageEncryptionKeyArrgs:
     def __init__(__self__, *,
                  kms_key_self_link: pulumi.Input[str],
                  kms_key_service_account: Optional[pulumi.Input[str]] = None):
@@ -10832,7 +10832,7 @@ class InstanceTemplateDiskSourceImageEncryptionKeyArgs:
 
 
 @pulumi.input_type
-class InstanceTemplateDiskSourceSnapshotEncryptionKeyArgs:
+calass InstanceTemplateDiskSourceSnapshotEncryptionKeyArrgs:
     def __init__(__self__, *,
                  kms_key_self_link: pulumi.Input[str],
                  kms_key_service_account: Optional[pulumi.Input[str]] = None):
@@ -10876,7 +10876,7 @@ class InstanceTemplateDiskSourceSnapshotEncryptionKeyArgs:
 
 
 @pulumi.input_type
-class InstanceTemplateGuestAcceleratorArgs:
+calass InstanceTemplateGuestAcceleratorArrgs:
     def __init__(__self__, *,
                  count: pulumi.Input[int],
                  type: pulumi.Input[str]):
@@ -10915,12 +10915,12 @@ class InstanceTemplateGuestAcceleratorArgs:
 
 
 @pulumi.input_type
-class InstanceTemplateNetworkInterfaceArgs:
+calass InstanceTemplateNetworkInterfaceArrgs:
     def __init__(__self__, *,
-                 access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAccessConfigArgs']]]] = None,
-                 alias_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAliasIpRangeArgs']]]] = None,
+                 access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAccessConfigArrgs']]]] = None,
+                 alias_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAliasIpRangeArrgs']]]] = None,
                  internal_ipv6_prefix_length: Optional[pulumi.Input[int]] = None,
-                 ipv6_access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs']]]] = None,
+                 ipv6_access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceIpv6AccessConfigArrgs']]]] = None,
                  ipv6_access_type: Optional[pulumi.Input[str]] = None,
                  ipv6_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -10933,16 +10933,16 @@ class InstanceTemplateNetworkInterfaceArgs:
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  subnetwork_project: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAccessConfigArgs']]] access_configs: Access configurations, i.e. IPs via which this
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAccessConfigArrgs']]] access_configs: Access configurations, i.e. IPs via which this
                instance can be accessed via the Internet. Omit to ensure that the instance
                is not accessible from the Internet (this means that ssh provisioners will
                not work unless you can send traffic to the instance's
                network (e.g. via tunnel or because it is running on another cloud instance
                on that network). This block can be repeated multiple times. Structure documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAliasIpRangeArgs']]] alias_ip_ranges: An
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAliasIpRangeArrgs']]] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs']]] ipv6_access_configs: An array of IPv6 access configurations for this interface.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceIpv6AccessConfigArrgs']]] ipv6_access_configs: An array of IPv6 access configurations for this interface.
                Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
                specified, then this instance will have no external IPv6 Internet access. Structure documented below.
         :param pulumi.Input[str] name: The name of the instance template. If you leave
@@ -10995,7 +10995,7 @@ class InstanceTemplateNetworkInterfaceArgs:
 
     @property
     @pulumi.getter(name="accessConfigs")
-    def access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAccessConfigArgs']]]]:
+    def access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAccessConfigArrgs']]]]:
         """
         Access configurations, i.e. IPs via which this
         instance can be accessed via the Internet. Omit to ensure that the instance
@@ -11007,12 +11007,12 @@ class InstanceTemplateNetworkInterfaceArgs:
         return pulumi.get(self, "access_configs")
 
     @access_configs.setter
-    def access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAccessConfigArgs']]]]):
+    def access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAccessConfigArrgs']]]]):
         pulumi.set(self, "access_configs", value)
 
     @property
     @pulumi.getter(name="aliasIpRanges")
-    def alias_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAliasIpRangeArgs']]]]:
+    def alias_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAliasIpRangeArrgs']]]]:
         """
         An
         array of alias IP ranges for this network interface. Can only be specified for network
@@ -11021,7 +11021,7 @@ class InstanceTemplateNetworkInterfaceArgs:
         return pulumi.get(self, "alias_ip_ranges")
 
     @alias_ip_ranges.setter
-    def alias_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAliasIpRangeArgs']]]]):
+    def alias_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAliasIpRangeArrgs']]]]):
         pulumi.set(self, "alias_ip_ranges", value)
 
     @property
@@ -11035,7 +11035,7 @@ class InstanceTemplateNetworkInterfaceArgs:
 
     @property
     @pulumi.getter(name="ipv6AccessConfigs")
-    def ipv6_access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs']]]]:
+    def ipv6_access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceIpv6AccessConfigArrgs']]]]:
         """
         An array of IPv6 access configurations for this interface.
         Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
@@ -11044,7 +11044,7 @@ class InstanceTemplateNetworkInterfaceArgs:
         return pulumi.get(self, "ipv6_access_configs")
 
     @ipv6_access_configs.setter
-    def ipv6_access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs']]]]):
+    def ipv6_access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceIpv6AccessConfigArrgs']]]]):
         pulumi.set(self, "ipv6_access_configs", value)
 
     @property
@@ -11182,7 +11182,7 @@ class InstanceTemplateNetworkInterfaceArgs:
 
 
 @pulumi.input_type
-class InstanceTemplateNetworkInterfaceAccessConfigArgs:
+calass InstanceTemplateNetworkInterfaceAccessConfigArrgs:
     def __init__(__self__, *,
                  nat_ip: Optional[pulumi.Input[str]] = None,
                  network_tier: Optional[pulumi.Input[str]] = None,
@@ -11237,7 +11237,7 @@ class InstanceTemplateNetworkInterfaceAccessConfigArgs:
 
 
 @pulumi.input_type
-class InstanceTemplateNetworkInterfaceAliasIpRangeArgs:
+calass InstanceTemplateNetworkInterfaceAliasIpRangeArrgs:
     def __init__(__self__, *,
                  ip_cidr_range: pulumi.Input[str],
                  subnetwork_range_name: Optional[pulumi.Input[str]] = None):
@@ -11287,7 +11287,7 @@ class InstanceTemplateNetworkInterfaceAliasIpRangeArgs:
 
 
 @pulumi.input_type
-class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
+calass InstanceTemplateNetworkInterfaceIpv6AccessConfigArrgs:
     def __init__(__self__, *,
                  network_tier: pulumi.Input[str],
                  external_ipv6: Optional[pulumi.Input[str]] = None,
@@ -11365,7 +11365,7 @@ class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
 
 
 @pulumi.input_type
-class InstanceTemplateNetworkPerformanceConfigArgs:
+calass InstanceTemplateNetworkPerformanceConfigArrgs:
     def __init__(__self__, *,
                  total_egress_bandwidth_tier: pulumi.Input[str]):
         """
@@ -11387,13 +11387,13 @@ class InstanceTemplateNetworkPerformanceConfigArgs:
 
 
 @pulumi.input_type
-class InstanceTemplateReservationAffinityArgs:
+calass InstanceTemplateReservationAffinityArrgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
-                 specific_reservation: Optional[pulumi.Input['InstanceTemplateReservationAffinitySpecificReservationArgs']] = None):
+                 specific_reservation: Optional[pulumi.Input['InstanceTemplateReservationAffinitySpecificReservationArrgs']] = None):
         """
         :param pulumi.Input[str] type: The type of reservation from which this instance can consume resources.
-        :param pulumi.Input['InstanceTemplateReservationAffinitySpecificReservationArgs'] specific_reservation: Specifies the label selector for the reservation to use..
+        :param pulumi.Input['InstanceTemplateReservationAffinitySpecificReservationArrgs'] specific_reservation: Specifies the label selector for the reservation to use..
                Structure is documented below.
         """
         pulumi.set(__self__, "type", type)
@@ -11414,7 +11414,7 @@ class InstanceTemplateReservationAffinityArgs:
 
     @property
     @pulumi.getter(name="specificReservation")
-    def specific_reservation(self) -> Optional[pulumi.Input['InstanceTemplateReservationAffinitySpecificReservationArgs']]:
+    def specific_reservation(self) -> Optional[pulumi.Input['InstanceTemplateReservationAffinitySpecificReservationArrgs']]:
         """
         Specifies the label selector for the reservation to use..
         Structure is documented below.
@@ -11422,12 +11422,12 @@ class InstanceTemplateReservationAffinityArgs:
         return pulumi.get(self, "specific_reservation")
 
     @specific_reservation.setter
-    def specific_reservation(self, value: Optional[pulumi.Input['InstanceTemplateReservationAffinitySpecificReservationArgs']]):
+    def specific_reservation(self, value: Optional[pulumi.Input['InstanceTemplateReservationAffinitySpecificReservationArrgs']]):
         pulumi.set(self, "specific_reservation", value)
 
 
 @pulumi.input_type
-class InstanceTemplateReservationAffinitySpecificReservationArgs:
+calass InstanceTemplateReservationAffinitySpecificReservationArrgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  values: pulumi.Input[Sequence[pulumi.Input[str]]]):
@@ -11464,15 +11464,15 @@ class InstanceTemplateReservationAffinitySpecificReservationArgs:
 
 
 @pulumi.input_type
-class InstanceTemplateSchedulingArgs:
+calass InstanceTemplateSchedulingArrgs:
     def __init__(__self__, *,
                  automatic_restart: Optional[pulumi.Input[bool]] = None,
                  instance_termination_action: Optional[pulumi.Input[str]] = None,
-                 local_ssd_recovery_timeouts: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs']]]] = None,
+                 local_ssd_recovery_timeouts: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrgs']]]] = None,
                  maintenance_interval: Optional[pulumi.Input[str]] = None,
-                 max_run_duration: Optional[pulumi.Input['InstanceTemplateSchedulingMaxRunDurationArgs']] = None,
+                 max_run_duration: Optional[pulumi.Input['InstanceTemplateSchedulingMaxRunDurationArrgs']] = None,
                  min_node_cpus: Optional[pulumi.Input[int]] = None,
-                 node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingNodeAffinityArgs']]]] = None,
+                 node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingNodeAffinityArrgs']]]] = None,
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
                  preemptible: Optional[pulumi.Input[bool]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None):
@@ -11481,9 +11481,9 @@ class InstanceTemplateSchedulingArgs:
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
         :param pulumi.Input[str] instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
-        :param pulumi.Input['InstanceTemplateSchedulingMaxRunDurationArgs'] max_run_duration: Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+        :param pulumi.Input['InstanceTemplateSchedulingMaxRunDurationArrgs'] max_run_duration: Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
                <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingNodeAffinityArgs']]] node_affinities: Specifies node affinities or anti-affinities
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingNodeAffinityArrgs']]] node_affinities: Specifies node affinities or anti-affinities
                to determine which sole-tenant nodes your instances and managed instance
                groups will use as host systems. Read more on sole-tenant node creation
                [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
@@ -11547,11 +11547,11 @@ class InstanceTemplateSchedulingArgs:
 
     @property
     @pulumi.getter(name="localSsdRecoveryTimeouts")
-    def local_ssd_recovery_timeouts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs']]]]:
+    def local_ssd_recovery_timeouts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrgs']]]]:
         return pulumi.get(self, "local_ssd_recovery_timeouts")
 
     @local_ssd_recovery_timeouts.setter
-    def local_ssd_recovery_timeouts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs']]]]):
+    def local_ssd_recovery_timeouts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrgs']]]]):
         pulumi.set(self, "local_ssd_recovery_timeouts", value)
 
     @property
@@ -11565,7 +11565,7 @@ class InstanceTemplateSchedulingArgs:
 
     @property
     @pulumi.getter(name="maxRunDuration")
-    def max_run_duration(self) -> Optional[pulumi.Input['InstanceTemplateSchedulingMaxRunDurationArgs']]:
+    def max_run_duration(self) -> Optional[pulumi.Input['InstanceTemplateSchedulingMaxRunDurationArrgs']]:
         """
         Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
         <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
@@ -11573,7 +11573,7 @@ class InstanceTemplateSchedulingArgs:
         return pulumi.get(self, "max_run_duration")
 
     @max_run_duration.setter
-    def max_run_duration(self, value: Optional[pulumi.Input['InstanceTemplateSchedulingMaxRunDurationArgs']]):
+    def max_run_duration(self, value: Optional[pulumi.Input['InstanceTemplateSchedulingMaxRunDurationArrgs']]):
         pulumi.set(self, "max_run_duration", value)
 
     @property
@@ -11587,7 +11587,7 @@ class InstanceTemplateSchedulingArgs:
 
     @property
     @pulumi.getter(name="nodeAffinities")
-    def node_affinities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingNodeAffinityArgs']]]]:
+    def node_affinities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingNodeAffinityArrgs']]]]:
         """
         Specifies node affinities or anti-affinities
         to determine which sole-tenant nodes your instances and managed instance
@@ -11598,7 +11598,7 @@ class InstanceTemplateSchedulingArgs:
         return pulumi.get(self, "node_affinities")
 
     @node_affinities.setter
-    def node_affinities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingNodeAffinityArgs']]]]):
+    def node_affinities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingNodeAffinityArrgs']]]]):
         pulumi.set(self, "node_affinities", value)
 
     @property
@@ -11645,7 +11645,7 @@ class InstanceTemplateSchedulingArgs:
 
 
 @pulumi.input_type
-class InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
+calass InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -11693,7 +11693,7 @@ class InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
 
 
 @pulumi.input_type
-class InstanceTemplateSchedulingMaxRunDurationArgs:
+calass InstanceTemplateSchedulingMaxRunDurationArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -11741,7 +11741,7 @@ class InstanceTemplateSchedulingMaxRunDurationArgs:
 
 
 @pulumi.input_type
-class InstanceTemplateSchedulingNodeAffinityArgs:
+calass InstanceTemplateSchedulingNodeAffinityArrgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  operator: pulumi.Input[str],
@@ -11795,7 +11795,7 @@ class InstanceTemplateSchedulingNodeAffinityArgs:
 
 
 @pulumi.input_type
-class InstanceTemplateServiceAccountArgs:
+calass InstanceTemplateServiceAccountArrgs:
     def __init__(__self__, *,
                  scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
                  email: Optional[pulumi.Input[str]] = None):
@@ -11853,7 +11853,7 @@ class InstanceTemplateServiceAccountArgs:
 
 
 @pulumi.input_type
-class InstanceTemplateShieldedInstanceConfigArgs:
+calass InstanceTemplateShieldedInstanceConfigArrgs:
     def __init__(__self__, *,
                  enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
                  enable_secure_boot: Optional[pulumi.Input[bool]] = None,
@@ -11908,7 +11908,7 @@ class InstanceTemplateShieldedInstanceConfigArgs:
 
 
 @pulumi.input_type
-class InterconnectAttachmentPrivateInterconnectInfoArgs:
+calass InterconnectAttachmentPrivateInterconnectInfoArrgs:
     def __init__(__self__, *,
                  tag8021q: Optional[pulumi.Input[int]] = None):
         """
@@ -11935,7 +11935,7 @@ class InterconnectAttachmentPrivateInterconnectInfoArgs:
 
 
 @pulumi.input_type
-class MachineImageIamBindingConditionArgs:
+calass MachineImageIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -11988,7 +11988,7 @@ class MachineImageIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class MachineImageIamMemberConditionArgs:
+calass MachineImageIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -12041,7 +12041,7 @@ class MachineImageIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class MachineImageMachineImageEncryptionKeyArgs:
+calass MachineImageMachineImageEncryptionKeyArrgs:
     def __init__(__self__, *,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  kms_key_service_account: Optional[pulumi.Input[str]] = None,
@@ -12120,7 +12120,7 @@ class MachineImageMachineImageEncryptionKeyArgs:
 
 
 @pulumi.input_type
-class ManagedSslCertificateManagedArgs:
+calass ManagedSslCertificateManagedArrgs:
     def __init__(__self__, *,
                  domains: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -12144,7 +12144,7 @@ class ManagedSslCertificateManagedArgs:
 
 
 @pulumi.input_type
-class MangedSslCertificateManagedArgs:
+calass MangedSslCertificateManagedArrgs:
     def __init__(__self__, *,
                  domains: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -12168,7 +12168,7 @@ class MangedSslCertificateManagedArgs:
 
 
 @pulumi.input_type
-class NetworkAttachmentConnectionEndpointArgs:
+calass NetworkAttachmentConnectionEndpointArrgs:
     def __init__(__self__, *,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  project_id_or_num: Optional[pulumi.Input[str]] = None,
@@ -12265,7 +12265,7 @@ class NetworkAttachmentConnectionEndpointArgs:
 
 
 @pulumi.input_type
-class NetworkEndpointListNetworkEndpointArgs:
+calass NetworkEndpointListNetworkEndpointArrgs:
     def __init__(__self__, *,
                  ip_address: pulumi.Input[str],
                  instance: Optional[pulumi.Input[str]] = None,
@@ -12331,9 +12331,9 @@ class NetworkEndpointListNetworkEndpointArgs:
 
 
 @pulumi.input_type
-class NetworkFirewallPolicyRuleMatchArgs:
+calass NetworkFirewallPolicyRuleMatchArrgs:
     def __init__(__self__, *,
-                 layer4_configs: pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchLayer4ConfigArgs']]],
+                 layer4_configs: pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchLayer4ConfigArrgs']]],
                  dest_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -12343,10 +12343,10 @@ class NetworkFirewallPolicyRuleMatchArgs:
                  src_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchSrcSecureTagArgs']]]] = None,
+                 src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchSrcSecureTagArrgs']]]] = None,
                  src_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchLayer4ConfigArrgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_fqdns: Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
@@ -12356,7 +12356,7 @@ class NetworkFirewallPolicyRuleMatchArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_fqdns: Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_region_codes: The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
-        :param pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchSrcSecureTagArgs']]] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE, and there is no <code>srcIpRange</code>, this rule will be ignored. Maximum number of source tag values allowed is 256.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchSrcSecureTagArrgs']]] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE, and there is no <code>srcIpRange</code>, this rule will be ignored. Maximum number of source tag values allowed is 256.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_threat_intelligences: Name of the Google Cloud Threat Intelligence list.
                
                The `layer4_configs` block supports:
@@ -12387,14 +12387,14 @@ class NetworkFirewallPolicyRuleMatchArgs:
 
     @property
     @pulumi.getter(name="layer4Configs")
-    def layer4_configs(self) -> pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchLayer4ConfigArgs']]]:
+    def layer4_configs(self) -> pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchLayer4ConfigArrgs']]]:
         """
         Pairs of IP protocols and ports that the rule should match.
         """
         return pulumi.get(self, "layer4_configs")
 
     @layer4_configs.setter
-    def layer4_configs(self, value: pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchLayer4ConfigArgs']]]):
+    def layer4_configs(self, value: pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchLayer4ConfigArrgs']]]):
         pulumi.set(self, "layer4_configs", value)
 
     @property
@@ -12507,14 +12507,14 @@ class NetworkFirewallPolicyRuleMatchArgs:
 
     @property
     @pulumi.getter(name="srcSecureTags")
-    def src_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchSrcSecureTagArgs']]]]:
+    def src_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchSrcSecureTagArrgs']]]]:
         """
         List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE, and there is no <code>srcIpRange</code>, this rule will be ignored. Maximum number of source tag values allowed is 256.
         """
         return pulumi.get(self, "src_secure_tags")
 
     @src_secure_tags.setter
-    def src_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchSrcSecureTagArgs']]]]):
+    def src_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchSrcSecureTagArrgs']]]]):
         pulumi.set(self, "src_secure_tags", value)
 
     @property
@@ -12533,7 +12533,7 @@ class NetworkFirewallPolicyRuleMatchArgs:
 
 
 @pulumi.input_type
-class NetworkFirewallPolicyRuleMatchLayer4ConfigArgs:
+calass NetworkFirewallPolicyRuleMatchLayer4ConfigArrgs:
     def __init__(__self__, *,
                  ip_protocol: pulumi.Input[str],
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -12575,7 +12575,7 @@ class NetworkFirewallPolicyRuleMatchLayer4ConfigArgs:
 
 
 @pulumi.input_type
-class NetworkFirewallPolicyRuleMatchSrcSecureTagArgs:
+calass NetworkFirewallPolicyRuleMatchSrcSecureTagArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  state: Optional[pulumi.Input[str]] = None):
@@ -12613,7 +12613,7 @@ class NetworkFirewallPolicyRuleMatchSrcSecureTagArgs:
 
 
 @pulumi.input_type
-class NetworkFirewallPolicyRuleTargetSecureTagArgs:
+calass NetworkFirewallPolicyRuleTargetSecureTagArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  state: Optional[pulumi.Input[str]] = None):
@@ -12651,7 +12651,7 @@ class NetworkFirewallPolicyRuleTargetSecureTagArgs:
 
 
 @pulumi.input_type
-class NodeGroupAutoscalingPolicyArgs:
+calass NodeGroupAutoscalingPolicyArrgs:
     def __init__(__self__, *,
                  max_nodes: Optional[pulumi.Input[int]] = None,
                  min_nodes: Optional[pulumi.Input[int]] = None,
@@ -12722,7 +12722,7 @@ class NodeGroupAutoscalingPolicyArgs:
 
 
 @pulumi.input_type
-class NodeGroupMaintenanceWindowArgs:
+calass NodeGroupMaintenanceWindowArrgs:
     def __init__(__self__, *,
                  start_time: pulumi.Input[str]):
         """
@@ -12744,14 +12744,14 @@ class NodeGroupMaintenanceWindowArgs:
 
 
 @pulumi.input_type
-class NodeGroupShareSettingsArgs:
+calass NodeGroupShareSettingsArrgs:
     def __init__(__self__, *,
                  share_type: pulumi.Input[str],
-                 project_maps: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupShareSettingsProjectMapArgs']]]] = None):
+                 project_maps: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupShareSettingsProjectMapArrgs']]]] = None):
         """
         :param pulumi.Input[str] share_type: Node group sharing type.
                Possible values are: `ORGANIZATION`, `SPECIFIC_PROJECTS`, `LOCAL`.
-        :param pulumi.Input[Sequence[pulumi.Input['NodeGroupShareSettingsProjectMapArgs']]] project_maps: A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+        :param pulumi.Input[Sequence[pulumi.Input['NodeGroupShareSettingsProjectMapArrgs']]] project_maps: A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
                Structure is documented below.
         """
         pulumi.set(__self__, "share_type", share_type)
@@ -12773,7 +12773,7 @@ class NodeGroupShareSettingsArgs:
 
     @property
     @pulumi.getter(name="projectMaps")
-    def project_maps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupShareSettingsProjectMapArgs']]]]:
+    def project_maps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupShareSettingsProjectMapArrgs']]]]:
         """
         A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
         Structure is documented below.
@@ -12781,12 +12781,12 @@ class NodeGroupShareSettingsArgs:
         return pulumi.get(self, "project_maps")
 
     @project_maps.setter
-    def project_maps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupShareSettingsProjectMapArgs']]]]):
+    def project_maps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupShareSettingsProjectMapArrgs']]]]):
         pulumi.set(self, "project_maps", value)
 
 
 @pulumi.input_type
-class NodeGroupShareSettingsProjectMapArgs:
+calass NodeGroupShareSettingsProjectMapArrgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str],
                  project_id: pulumi.Input[str]):
@@ -12823,7 +12823,7 @@ class NodeGroupShareSettingsProjectMapArgs:
 
 
 @pulumi.input_type
-class NodeTemplateNodeTypeFlexibilityArgs:
+calass NodeTemplateNodeTypeFlexibilityArrgs:
     def __init__(__self__, *,
                  cpus: Optional[pulumi.Input[str]] = None,
                  local_ssd: Optional[pulumi.Input[str]] = None,
@@ -12880,7 +12880,7 @@ class NodeTemplateNodeTypeFlexibilityArgs:
 
 
 @pulumi.input_type
-class NodeTemplateServerBindingArgs:
+calass NodeTemplateServerBindingArrgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str]):
         """
@@ -12924,13 +12924,13 @@ class NodeTemplateServerBindingArgs:
 
 
 @pulumi.input_type
-class OrganizationSecurityPolicyRuleMatchArgs:
+calass OrganizationSecurityPolicyRuleMatchArrgs:
     def __init__(__self__, *,
-                 config: pulumi.Input['OrganizationSecurityPolicyRuleMatchConfigArgs'],
+                 config: pulumi.Input['OrganizationSecurityPolicyRuleMatchConfigArrgs'],
                  description: Optional[pulumi.Input[str]] = None,
                  versioned_expr: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['OrganizationSecurityPolicyRuleMatchConfigArgs'] config: The configuration options for matching the rule.
+        :param pulumi.Input['OrganizationSecurityPolicyRuleMatchConfigArrgs'] config: The configuration options for matching the rule.
                Structure is documented below.
         :param pulumi.Input[str] description: A description of the rule.
         :param pulumi.Input[str] versioned_expr: Preconfigured versioned expression. For organization security policy rules,
@@ -12946,7 +12946,7 @@ class OrganizationSecurityPolicyRuleMatchArgs:
 
     @property
     @pulumi.getter
-    def config(self) -> pulumi.Input['OrganizationSecurityPolicyRuleMatchConfigArgs']:
+    def config(self) -> pulumi.Input['OrganizationSecurityPolicyRuleMatchConfigArrgs']:
         """
         The configuration options for matching the rule.
         Structure is documented below.
@@ -12954,7 +12954,7 @@ class OrganizationSecurityPolicyRuleMatchArgs:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: pulumi.Input['OrganizationSecurityPolicyRuleMatchConfigArgs']):
+    def config(self, value: pulumi.Input['OrganizationSecurityPolicyRuleMatchConfigArrgs']):
         pulumi.set(self, "config", value)
 
     @property
@@ -12986,13 +12986,13 @@ class OrganizationSecurityPolicyRuleMatchArgs:
 
 
 @pulumi.input_type
-class OrganizationSecurityPolicyRuleMatchConfigArgs:
+calass OrganizationSecurityPolicyRuleMatchConfigArrgs:
     def __init__(__self__, *,
-                 layer4_configs: pulumi.Input[Sequence[pulumi.Input['OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs']]],
+                 layer4_configs: pulumi.Input[Sequence[pulumi.Input['OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrgs']]],
                  dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+        :param pulumi.Input[Sequence[pulumi.Input['OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
                Structure is documented below.
                
                
@@ -13010,7 +13010,7 @@ class OrganizationSecurityPolicyRuleMatchConfigArgs:
 
     @property
     @pulumi.getter(name="layer4Configs")
-    def layer4_configs(self) -> pulumi.Input[Sequence[pulumi.Input['OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs']]]:
+    def layer4_configs(self) -> pulumi.Input[Sequence[pulumi.Input['OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrgs']]]:
         """
         Pairs of IP protocols and ports that the rule should match.
         Structure is documented below.
@@ -13021,7 +13021,7 @@ class OrganizationSecurityPolicyRuleMatchConfigArgs:
         return pulumi.get(self, "layer4_configs")
 
     @layer4_configs.setter
-    def layer4_configs(self, value: pulumi.Input[Sequence[pulumi.Input['OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs']]]):
+    def layer4_configs(self, value: pulumi.Input[Sequence[pulumi.Input['OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrgs']]]):
         pulumi.set(self, "layer4_configs", value)
 
     @property
@@ -13052,7 +13052,7 @@ class OrganizationSecurityPolicyRuleMatchConfigArgs:
 
 
 @pulumi.input_type
-class OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs:
+calass OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrgs:
     def __init__(__self__, *,
                  ip_protocol: pulumi.Input[str],
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -13112,7 +13112,7 @@ class OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs:
 
 
 @pulumi.input_type
-class PacketMirroringCollectorIlbArgs:
+calass PacketMirroringCollectorIlbArrgs:
     def __init__(__self__, *,
                  url: pulumi.Input[str]):
         """
@@ -13134,7 +13134,7 @@ class PacketMirroringCollectorIlbArgs:
 
 
 @pulumi.input_type
-class PacketMirroringFilterArgs:
+calass PacketMirroringFilterArrgs:
     def __init__(__self__, *,
                  cidr_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  direction: Optional[pulumi.Input[str]] = None,
@@ -13195,15 +13195,15 @@ class PacketMirroringFilterArgs:
 
 
 @pulumi.input_type
-class PacketMirroringMirroredResourcesArgs:
+calass PacketMirroringMirroredResourcesArrgs:
     def __init__(__self__, *,
-                 instances: Optional[pulumi.Input[Sequence[pulumi.Input['PacketMirroringMirroredResourcesInstanceArgs']]]] = None,
-                 subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input['PacketMirroringMirroredResourcesSubnetworkArgs']]]] = None,
+                 instances: Optional[pulumi.Input[Sequence[pulumi.Input['PacketMirroringMirroredResourcesInstanceArrgs']]]] = None,
+                 subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input['PacketMirroringMirroredResourcesSubnetworkArrgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['PacketMirroringMirroredResourcesInstanceArgs']]] instances: All the listed instances will be mirrored.  Specify at most 50.
+        :param pulumi.Input[Sequence[pulumi.Input['PacketMirroringMirroredResourcesInstanceArrgs']]] instances: All the listed instances will be mirrored.  Specify at most 50.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['PacketMirroringMirroredResourcesSubnetworkArgs']]] subnetworks: All instances in one of these subnetworks will be mirrored.
+        :param pulumi.Input[Sequence[pulumi.Input['PacketMirroringMirroredResourcesSubnetworkArrgs']]] subnetworks: All instances in one of these subnetworks will be mirrored.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: All instances with these tags will be mirrored.
         """
@@ -13216,7 +13216,7 @@ class PacketMirroringMirroredResourcesArgs:
 
     @property
     @pulumi.getter
-    def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PacketMirroringMirroredResourcesInstanceArgs']]]]:
+    def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PacketMirroringMirroredResourcesInstanceArrgs']]]]:
         """
         All the listed instances will be mirrored.  Specify at most 50.
         Structure is documented below.
@@ -13224,12 +13224,12 @@ class PacketMirroringMirroredResourcesArgs:
         return pulumi.get(self, "instances")
 
     @instances.setter
-    def instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PacketMirroringMirroredResourcesInstanceArgs']]]]):
+    def instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PacketMirroringMirroredResourcesInstanceArrgs']]]]):
         pulumi.set(self, "instances", value)
 
     @property
     @pulumi.getter
-    def subnetworks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PacketMirroringMirroredResourcesSubnetworkArgs']]]]:
+    def subnetworks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PacketMirroringMirroredResourcesSubnetworkArrgs']]]]:
         """
         All instances in one of these subnetworks will be mirrored.
         Structure is documented below.
@@ -13237,7 +13237,7 @@ class PacketMirroringMirroredResourcesArgs:
         return pulumi.get(self, "subnetworks")
 
     @subnetworks.setter
-    def subnetworks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PacketMirroringMirroredResourcesSubnetworkArgs']]]]):
+    def subnetworks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PacketMirroringMirroredResourcesSubnetworkArrgs']]]]):
         pulumi.set(self, "subnetworks", value)
 
     @property
@@ -13254,7 +13254,7 @@ class PacketMirroringMirroredResourcesArgs:
 
 
 @pulumi.input_type
-class PacketMirroringMirroredResourcesInstanceArgs:
+calass PacketMirroringMirroredResourcesInstanceArrgs:
     def __init__(__self__, *,
                  url: pulumi.Input[str]):
         """
@@ -13280,7 +13280,7 @@ class PacketMirroringMirroredResourcesInstanceArgs:
 
 
 @pulumi.input_type
-class PacketMirroringMirroredResourcesSubnetworkArgs:
+calass PacketMirroringMirroredResourcesSubnetworkArrgs:
     def __init__(__self__, *,
                  url: pulumi.Input[str]):
         """
@@ -13302,7 +13302,7 @@ class PacketMirroringMirroredResourcesSubnetworkArgs:
 
 
 @pulumi.input_type
-class PacketMirroringNetworkArgs:
+calass PacketMirroringNetworkArrgs:
     def __init__(__self__, *,
                  url: pulumi.Input[str]):
         """
@@ -13324,18 +13324,18 @@ class PacketMirroringNetworkArgs:
 
 
 @pulumi.input_type
-class PerInstanceConfigPreservedStateArgs:
+calass PerInstanceConfigPreservedStateArrgs:
     def __init__(__self__, *,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateDiskArgs']]]] = None,
-                 external_ips: Optional[pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateExternalIpArgs']]]] = None,
-                 internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateInternalIpArgs']]]] = None,
+                 disks: Optional[pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateDiskArrgs']]]] = None,
+                 external_ips: Optional[pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateExternalIpArrgs']]]] = None,
+                 internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateInternalIpArrgs']]]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateDiskArgs']]] disks: Stateful disks for the instance.
+        :param pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateDiskArrgs']]] disks: Stateful disks for the instance.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateExternalIpArgs']]] external_ips: Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
+        :param pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateExternalIpArrgs']]] external_ips: Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateInternalIpArgs']]] internal_ips: Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
+        :param pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateInternalIpArrgs']]] internal_ips: Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Preserved metadata defined for this instance. This is a list of key->value pairs.
         """
@@ -13350,7 +13350,7 @@ class PerInstanceConfigPreservedStateArgs:
 
     @property
     @pulumi.getter
-    def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateDiskArgs']]]]:
+    def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateDiskArrgs']]]]:
         """
         Stateful disks for the instance.
         Structure is documented below.
@@ -13358,12 +13358,12 @@ class PerInstanceConfigPreservedStateArgs:
         return pulumi.get(self, "disks")
 
     @disks.setter
-    def disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateDiskArgs']]]]):
+    def disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateDiskArrgs']]]]):
         pulumi.set(self, "disks", value)
 
     @property
     @pulumi.getter(name="externalIps")
-    def external_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateExternalIpArgs']]]]:
+    def external_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateExternalIpArrgs']]]]:
         """
         Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
         Structure is documented below.
@@ -13371,12 +13371,12 @@ class PerInstanceConfigPreservedStateArgs:
         return pulumi.get(self, "external_ips")
 
     @external_ips.setter
-    def external_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateExternalIpArgs']]]]):
+    def external_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateExternalIpArrgs']]]]):
         pulumi.set(self, "external_ips", value)
 
     @property
     @pulumi.getter(name="internalIps")
-    def internal_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateInternalIpArgs']]]]:
+    def internal_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateInternalIpArrgs']]]]:
         """
         Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
         Structure is documented below.
@@ -13384,7 +13384,7 @@ class PerInstanceConfigPreservedStateArgs:
         return pulumi.get(self, "internal_ips")
 
     @internal_ips.setter
-    def internal_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateInternalIpArgs']]]]):
+    def internal_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateInternalIpArrgs']]]]):
         pulumi.set(self, "internal_ips", value)
 
     @property
@@ -13401,7 +13401,7 @@ class PerInstanceConfigPreservedStateArgs:
 
 
 @pulumi.input_type
-class PerInstanceConfigPreservedStateDiskArgs:
+calass PerInstanceConfigPreservedStateDiskArrgs:
     def __init__(__self__, *,
                  device_name: pulumi.Input[str],
                  source: pulumi.Input[str],
@@ -13488,17 +13488,17 @@ class PerInstanceConfigPreservedStateDiskArgs:
 
 
 @pulumi.input_type
-class PerInstanceConfigPreservedStateExternalIpArgs:
+calass PerInstanceConfigPreservedStateExternalIpArrgs:
     def __init__(__self__, *,
                  interface_name: pulumi.Input[str],
                  auto_delete: Optional[pulumi.Input[str]] = None,
-                 ip_address: Optional[pulumi.Input['PerInstanceConfigPreservedStateExternalIpIpAddressArgs']] = None):
+                 ip_address: Optional[pulumi.Input['PerInstanceConfigPreservedStateExternalIpIpAddressArrgs']] = None):
         """
         :param pulumi.Input[str] interface_name: The identifier for this object. Format specified above.
         :param pulumi.Input[str] auto_delete: These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
                Default value is `NEVER`.
                Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
-        :param pulumi.Input['PerInstanceConfigPreservedStateExternalIpIpAddressArgs'] ip_address: Ip address representation
+        :param pulumi.Input['PerInstanceConfigPreservedStateExternalIpIpAddressArrgs'] ip_address: Ip address representation
                Structure is documented below.
         """
         pulumi.set(__self__, "interface_name", interface_name)
@@ -13535,7 +13535,7 @@ class PerInstanceConfigPreservedStateExternalIpArgs:
 
     @property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input['PerInstanceConfigPreservedStateExternalIpIpAddressArgs']]:
+    def ip_address(self) -> Optional[pulumi.Input['PerInstanceConfigPreservedStateExternalIpIpAddressArrgs']]:
         """
         Ip address representation
         Structure is documented below.
@@ -13543,12 +13543,12 @@ class PerInstanceConfigPreservedStateExternalIpArgs:
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input['PerInstanceConfigPreservedStateExternalIpIpAddressArgs']]):
+    def ip_address(self, value: Optional[pulumi.Input['PerInstanceConfigPreservedStateExternalIpIpAddressArrgs']]):
         pulumi.set(self, "ip_address", value)
 
 
 @pulumi.input_type
-class PerInstanceConfigPreservedStateExternalIpIpAddressArgs:
+calass PerInstanceConfigPreservedStateExternalIpIpAddressArrgs:
     def __init__(__self__, *,
                  address: Optional[pulumi.Input[str]] = None):
         """
@@ -13571,17 +13571,17 @@ class PerInstanceConfigPreservedStateExternalIpIpAddressArgs:
 
 
 @pulumi.input_type
-class PerInstanceConfigPreservedStateInternalIpArgs:
+calass PerInstanceConfigPreservedStateInternalIpArrgs:
     def __init__(__self__, *,
                  interface_name: pulumi.Input[str],
                  auto_delete: Optional[pulumi.Input[str]] = None,
-                 ip_address: Optional[pulumi.Input['PerInstanceConfigPreservedStateInternalIpIpAddressArgs']] = None):
+                 ip_address: Optional[pulumi.Input['PerInstanceConfigPreservedStateInternalIpIpAddressArrgs']] = None):
         """
         :param pulumi.Input[str] interface_name: The identifier for this object. Format specified above.
         :param pulumi.Input[str] auto_delete: These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
                Default value is `NEVER`.
                Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
-        :param pulumi.Input['PerInstanceConfigPreservedStateInternalIpIpAddressArgs'] ip_address: Ip address representation
+        :param pulumi.Input['PerInstanceConfigPreservedStateInternalIpIpAddressArrgs'] ip_address: Ip address representation
                Structure is documented below.
         """
         pulumi.set(__self__, "interface_name", interface_name)
@@ -13618,7 +13618,7 @@ class PerInstanceConfigPreservedStateInternalIpArgs:
 
     @property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input['PerInstanceConfigPreservedStateInternalIpIpAddressArgs']]:
+    def ip_address(self) -> Optional[pulumi.Input['PerInstanceConfigPreservedStateInternalIpIpAddressArrgs']]:
         """
         Ip address representation
         Structure is documented below.
@@ -13626,12 +13626,12 @@ class PerInstanceConfigPreservedStateInternalIpArgs:
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input['PerInstanceConfigPreservedStateInternalIpIpAddressArgs']]):
+    def ip_address(self, value: Optional[pulumi.Input['PerInstanceConfigPreservedStateInternalIpIpAddressArrgs']]):
         pulumi.set(self, "ip_address", value)
 
 
 @pulumi.input_type
-class PerInstanceConfigPreservedStateInternalIpIpAddressArgs:
+calass PerInstanceConfigPreservedStateInternalIpIpAddressArrgs:
     def __init__(__self__, *,
                  address: Optional[pulumi.Input[str]] = None):
         """
@@ -13654,18 +13654,18 @@ class PerInstanceConfigPreservedStateInternalIpIpAddressArgs:
 
 
 @pulumi.input_type
-class RegionAutoscalerAutoscalingPolicyArgs:
+calass RegionAutoscalerAutoscalingPolicyArrgs:
     def __init__(__self__, *,
                  max_replicas: pulumi.Input[int],
                  min_replicas: pulumi.Input[int],
                  cooldown_period: Optional[pulumi.Input[int]] = None,
-                 cpu_utilization: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs']] = None,
-                 load_balancing_utilization: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs']] = None,
-                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input['RegionAutoscalerAutoscalingPolicyMetricArgs']]]] = None,
+                 cpu_utilization: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyCpuUtilizationArrgs']] = None,
+                 load_balancing_utilization: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArrgs']] = None,
+                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input['RegionAutoscalerAutoscalingPolicyMetricArrgs']]]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
-                 scale_down_control: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlArgs']] = None,
-                 scale_in_control: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlArgs']] = None,
-                 scaling_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['RegionAutoscalerAutoscalingPolicyScalingScheduleArgs']]]] = None):
+                 scale_down_control: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlArrgs']] = None,
+                 scale_in_control: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlArrgs']] = None,
+                 scaling_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['RegionAutoscalerAutoscalingPolicyScalingScheduleArrgs']]]] = None):
         """
         :param pulumi.Input[int] max_replicas: The maximum number of instances that the autoscaler can scale up
                to. This is required when creating or updating an autoscaler. The
@@ -13684,22 +13684,22 @@ class RegionAutoscalerAutoscalingPolicyArgs:
                numerous factors. We recommend that you test how long an
                instance may take to initialize. To do this, create an instance
                and time the startup process.
-        :param pulumi.Input['RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs'] cpu_utilization: Defines the CPU utilization policy that allows the autoscaler to
+        :param pulumi.Input['RegionAutoscalerAutoscalingPolicyCpuUtilizationArrgs'] cpu_utilization: Defines the CPU utilization policy that allows the autoscaler to
                scale based on the average CPU utilization of a managed instance
                group.
                Structure is documented below.
-        :param pulumi.Input['RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs'] load_balancing_utilization: Configuration parameters of autoscaling based on a load balancer.
+        :param pulumi.Input['RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArrgs'] load_balancing_utilization: Configuration parameters of autoscaling based on a load balancer.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionAutoscalerAutoscalingPolicyMetricArgs']]] metrics: Configuration parameters of autoscaling based on a custom metric.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionAutoscalerAutoscalingPolicyMetricArrgs']]] metrics: Configuration parameters of autoscaling based on a custom metric.
                Structure is documented below.
         :param pulumi.Input[str] mode: Defines operating mode for this policy.
-        :param pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlArgs'] scale_down_control: Defines scale down controls to reduce the risk of response latency
+        :param pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlArrgs'] scale_down_control: Defines scale down controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
-        :param pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlArgs'] scale_in_control: Defines scale in controls to reduce the risk of response latency
+        :param pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlArrgs'] scale_in_control: Defines scale in controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionAutoscalerAutoscalingPolicyScalingScheduleArgs']]] scaling_schedules: Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionAutoscalerAutoscalingPolicyScalingScheduleArrgs']]] scaling_schedules: Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
                Structure is documented below.
         """
         pulumi.set(__self__, "max_replicas", max_replicas)
@@ -13773,7 +13773,7 @@ class RegionAutoscalerAutoscalingPolicyArgs:
 
     @property
     @pulumi.getter(name="cpuUtilization")
-    def cpu_utilization(self) -> Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs']]:
+    def cpu_utilization(self) -> Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyCpuUtilizationArrgs']]:
         """
         Defines the CPU utilization policy that allows the autoscaler to
         scale based on the average CPU utilization of a managed instance
@@ -13783,12 +13783,12 @@ class RegionAutoscalerAutoscalingPolicyArgs:
         return pulumi.get(self, "cpu_utilization")
 
     @cpu_utilization.setter
-    def cpu_utilization(self, value: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs']]):
+    def cpu_utilization(self, value: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyCpuUtilizationArrgs']]):
         pulumi.set(self, "cpu_utilization", value)
 
     @property
     @pulumi.getter(name="loadBalancingUtilization")
-    def load_balancing_utilization(self) -> Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs']]:
+    def load_balancing_utilization(self) -> Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArrgs']]:
         """
         Configuration parameters of autoscaling based on a load balancer.
         Structure is documented below.
@@ -13796,12 +13796,12 @@ class RegionAutoscalerAutoscalingPolicyArgs:
         return pulumi.get(self, "load_balancing_utilization")
 
     @load_balancing_utilization.setter
-    def load_balancing_utilization(self, value: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs']]):
+    def load_balancing_utilization(self, value: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArrgs']]):
         pulumi.set(self, "load_balancing_utilization", value)
 
     @property
     @pulumi.getter
-    def metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionAutoscalerAutoscalingPolicyMetricArgs']]]]:
+    def metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionAutoscalerAutoscalingPolicyMetricArrgs']]]]:
         """
         Configuration parameters of autoscaling based on a custom metric.
         Structure is documented below.
@@ -13809,7 +13809,7 @@ class RegionAutoscalerAutoscalingPolicyArgs:
         return pulumi.get(self, "metrics")
 
     @metrics.setter
-    def metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionAutoscalerAutoscalingPolicyMetricArgs']]]]):
+    def metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionAutoscalerAutoscalingPolicyMetricArrgs']]]]):
         pulumi.set(self, "metrics", value)
 
     @property
@@ -13826,7 +13826,7 @@ class RegionAutoscalerAutoscalingPolicyArgs:
 
     @property
     @pulumi.getter(name="scaleDownControl")
-    def scale_down_control(self) -> Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlArgs']]:
+    def scale_down_control(self) -> Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlArrgs']]:
         """
         Defines scale down controls to reduce the risk of response latency
         and outages due to abrupt scale-in events
@@ -13835,12 +13835,12 @@ class RegionAutoscalerAutoscalingPolicyArgs:
         return pulumi.get(self, "scale_down_control")
 
     @scale_down_control.setter
-    def scale_down_control(self, value: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlArgs']]):
+    def scale_down_control(self, value: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlArrgs']]):
         pulumi.set(self, "scale_down_control", value)
 
     @property
     @pulumi.getter(name="scaleInControl")
-    def scale_in_control(self) -> Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlArgs']]:
+    def scale_in_control(self) -> Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlArrgs']]:
         """
         Defines scale in controls to reduce the risk of response latency
         and outages due to abrupt scale-in events
@@ -13849,12 +13849,12 @@ class RegionAutoscalerAutoscalingPolicyArgs:
         return pulumi.get(self, "scale_in_control")
 
     @scale_in_control.setter
-    def scale_in_control(self, value: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlArgs']]):
+    def scale_in_control(self, value: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlArrgs']]):
         pulumi.set(self, "scale_in_control", value)
 
     @property
     @pulumi.getter(name="scalingSchedules")
-    def scaling_schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionAutoscalerAutoscalingPolicyScalingScheduleArgs']]]]:
+    def scaling_schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionAutoscalerAutoscalingPolicyScalingScheduleArrgs']]]]:
         """
         Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
         Structure is documented below.
@@ -13862,12 +13862,12 @@ class RegionAutoscalerAutoscalingPolicyArgs:
         return pulumi.get(self, "scaling_schedules")
 
     @scaling_schedules.setter
-    def scaling_schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionAutoscalerAutoscalingPolicyScalingScheduleArgs']]]]):
+    def scaling_schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionAutoscalerAutoscalingPolicyScalingScheduleArrgs']]]]):
         pulumi.set(self, "scaling_schedules", value)
 
 
 @pulumi.input_type
-class RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs:
+calass RegionAutoscalerAutoscalingPolicyCpuUtilizationArrgs:
     def __init__(__self__, *,
                  target: pulumi.Input[float],
                  predictive_method: Optional[pulumi.Input[str]] = None):
@@ -13929,7 +13929,7 @@ class RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs:
 
 
 @pulumi.input_type
-class RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs:
+calass RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArrgs:
     def __init__(__self__, *,
                  target: pulumi.Input[float]):
         """
@@ -13955,7 +13955,7 @@ class RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs:
 
 
 @pulumi.input_type
-class RegionAutoscalerAutoscalingPolicyMetricArgs:
+calass RegionAutoscalerAutoscalingPolicyMetricArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  filter: Optional[pulumi.Input[str]] = None,
@@ -14141,12 +14141,12 @@ class RegionAutoscalerAutoscalingPolicyMetricArgs:
 
 
 @pulumi.input_type
-class RegionAutoscalerAutoscalingPolicyScaleDownControlArgs:
+calass RegionAutoscalerAutoscalingPolicyScaleDownControlArrgs:
     def __init__(__self__, *,
-                 max_scaled_down_replicas: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs']] = None,
+                 max_scaled_down_replicas: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArrgs']] = None,
                  time_window_sec: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs'] max_scaled_down_replicas: A nested object resource
+        :param pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArrgs'] max_scaled_down_replicas: A nested object resource
                Structure is documented below.
         :param pulumi.Input[int] time_window_sec: How long back autoscaling should look when computing recommendations
                to include directives regarding slower scale down, as described above.
@@ -14158,7 +14158,7 @@ class RegionAutoscalerAutoscalingPolicyScaleDownControlArgs:
 
     @property
     @pulumi.getter(name="maxScaledDownReplicas")
-    def max_scaled_down_replicas(self) -> Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs']]:
+    def max_scaled_down_replicas(self) -> Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArrgs']]:
         """
         A nested object resource
         Structure is documented below.
@@ -14166,7 +14166,7 @@ class RegionAutoscalerAutoscalingPolicyScaleDownControlArgs:
         return pulumi.get(self, "max_scaled_down_replicas")
 
     @max_scaled_down_replicas.setter
-    def max_scaled_down_replicas(self, value: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs']]):
+    def max_scaled_down_replicas(self, value: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArrgs']]):
         pulumi.set(self, "max_scaled_down_replicas", value)
 
     @property
@@ -14184,7 +14184,7 @@ class RegionAutoscalerAutoscalingPolicyScaleDownControlArgs:
 
 
 @pulumi.input_type
-class RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs:
+calass RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArrgs:
     def __init__(__self__, *,
                  fixed: Optional[pulumi.Input[int]] = None,
                  percent: Optional[pulumi.Input[int]] = None):
@@ -14227,12 +14227,12 @@ class RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs
 
 
 @pulumi.input_type
-class RegionAutoscalerAutoscalingPolicyScaleInControlArgs:
+calass RegionAutoscalerAutoscalingPolicyScaleInControlArrgs:
     def __init__(__self__, *,
-                 max_scaled_in_replicas: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs']] = None,
+                 max_scaled_in_replicas: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArrgs']] = None,
                  time_window_sec: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs'] max_scaled_in_replicas: A nested object resource
+        :param pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArrgs'] max_scaled_in_replicas: A nested object resource
                Structure is documented below.
         :param pulumi.Input[int] time_window_sec: How long back autoscaling should look when computing recommendations
                to include directives regarding slower scale down, as described above.
@@ -14244,7 +14244,7 @@ class RegionAutoscalerAutoscalingPolicyScaleInControlArgs:
 
     @property
     @pulumi.getter(name="maxScaledInReplicas")
-    def max_scaled_in_replicas(self) -> Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs']]:
+    def max_scaled_in_replicas(self) -> Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArrgs']]:
         """
         A nested object resource
         Structure is documented below.
@@ -14252,7 +14252,7 @@ class RegionAutoscalerAutoscalingPolicyScaleInControlArgs:
         return pulumi.get(self, "max_scaled_in_replicas")
 
     @max_scaled_in_replicas.setter
-    def max_scaled_in_replicas(self, value: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs']]):
+    def max_scaled_in_replicas(self, value: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArrgs']]):
         pulumi.set(self, "max_scaled_in_replicas", value)
 
     @property
@@ -14270,7 +14270,7 @@ class RegionAutoscalerAutoscalingPolicyScaleInControlArgs:
 
 
 @pulumi.input_type
-class RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs:
+calass RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArrgs:
     def __init__(__self__, *,
                  fixed: Optional[pulumi.Input[int]] = None,
                  percent: Optional[pulumi.Input[int]] = None):
@@ -14313,7 +14313,7 @@ class RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs:
 
 
 @pulumi.input_type
-class RegionAutoscalerAutoscalingPolicyScalingScheduleArgs:
+calass RegionAutoscalerAutoscalingPolicyScalingScheduleArrgs:
     def __init__(__self__, *,
                  duration_sec: pulumi.Input[int],
                  min_required_replicas: pulumi.Input[int],
@@ -14428,7 +14428,7 @@ class RegionAutoscalerAutoscalingPolicyScalingScheduleArgs:
 
 
 @pulumi.input_type
-class RegionBackendServiceBackendArgs:
+calass RegionBackendServiceBackendArrgs:
     def __init__(__self__, *,
                  group: pulumi.Input[str],
                  balancing_mode: Optional[pulumi.Input[str]] = None,
@@ -14746,19 +14746,19 @@ class RegionBackendServiceBackendArgs:
 
 
 @pulumi.input_type
-class RegionBackendServiceCdnPolicyArgs:
+calass RegionBackendServiceCdnPolicyArrgs:
     def __init__(__self__, *,
-                 cache_key_policy: Optional[pulumi.Input['RegionBackendServiceCdnPolicyCacheKeyPolicyArgs']] = None,
+                 cache_key_policy: Optional[pulumi.Input['RegionBackendServiceCdnPolicyCacheKeyPolicyArrgs']] = None,
                  cache_mode: Optional[pulumi.Input[str]] = None,
                  client_ttl: Optional[pulumi.Input[int]] = None,
                  default_ttl: Optional[pulumi.Input[int]] = None,
                  max_ttl: Optional[pulumi.Input[int]] = None,
                  negative_caching: Optional[pulumi.Input[bool]] = None,
-                 negative_caching_policies: Optional[pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs']]]] = None,
+                 negative_caching_policies: Optional[pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCdnPolicyNegativeCachingPolicyArrgs']]]] = None,
                  serve_while_stale: Optional[pulumi.Input[int]] = None,
                  signed_url_cache_max_age_sec: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input['RegionBackendServiceCdnPolicyCacheKeyPolicyArgs'] cache_key_policy: The CacheKeyPolicy for this CdnPolicy.
+        :param pulumi.Input['RegionBackendServiceCdnPolicyCacheKeyPolicyArrgs'] cache_key_policy: The CacheKeyPolicy for this CdnPolicy.
                Structure is documented below.
         :param pulumi.Input[str] cache_mode: Specifies the cache setting for all responses from this backend.
                The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
@@ -14768,7 +14768,7 @@ class RegionBackendServiceCdnPolicyArgs:
                that do not have an existing valid TTL (max-age or s-max-age).
         :param pulumi.Input[int] max_ttl: Specifies the maximum allowed TTL for cached content served by this origin.
         :param pulumi.Input[bool] negative_caching: Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs']]] negative_caching_policies: Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCdnPolicyNegativeCachingPolicyArrgs']]] negative_caching_policies: Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
                Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
                Structure is documented below.
         :param pulumi.Input[int] serve_while_stale: Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
@@ -14803,7 +14803,7 @@ class RegionBackendServiceCdnPolicyArgs:
 
     @property
     @pulumi.getter(name="cacheKeyPolicy")
-    def cache_key_policy(self) -> Optional[pulumi.Input['RegionBackendServiceCdnPolicyCacheKeyPolicyArgs']]:
+    def cache_key_policy(self) -> Optional[pulumi.Input['RegionBackendServiceCdnPolicyCacheKeyPolicyArrgs']]:
         """
         The CacheKeyPolicy for this CdnPolicy.
         Structure is documented below.
@@ -14811,7 +14811,7 @@ class RegionBackendServiceCdnPolicyArgs:
         return pulumi.get(self, "cache_key_policy")
 
     @cache_key_policy.setter
-    def cache_key_policy(self, value: Optional[pulumi.Input['RegionBackendServiceCdnPolicyCacheKeyPolicyArgs']]):
+    def cache_key_policy(self, value: Optional[pulumi.Input['RegionBackendServiceCdnPolicyCacheKeyPolicyArrgs']]):
         pulumi.set(self, "cache_key_policy", value)
 
     @property
@@ -14879,7 +14879,7 @@ class RegionBackendServiceCdnPolicyArgs:
 
     @property
     @pulumi.getter(name="negativeCachingPolicies")
-    def negative_caching_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs']]]]:
+    def negative_caching_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCdnPolicyNegativeCachingPolicyArrgs']]]]:
         """
         Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
         Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
@@ -14888,7 +14888,7 @@ class RegionBackendServiceCdnPolicyArgs:
         return pulumi.get(self, "negative_caching_policies")
 
     @negative_caching_policies.setter
-    def negative_caching_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs']]]]):
+    def negative_caching_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCdnPolicyNegativeCachingPolicyArrgs']]]]):
         pulumi.set(self, "negative_caching_policies", value)
 
     @property
@@ -14925,7 +14925,7 @@ class RegionBackendServiceCdnPolicyArgs:
 
 
 @pulumi.input_type
-class RegionBackendServiceCdnPolicyCacheKeyPolicyArgs:
+calass RegionBackendServiceCdnPolicyCacheKeyPolicyArrgs:
     def __init__(__self__, *,
                  include_host: Optional[pulumi.Input[bool]] = None,
                  include_named_cookies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -15054,7 +15054,7 @@ class RegionBackendServiceCdnPolicyCacheKeyPolicyArgs:
 
 
 @pulumi.input_type
-class RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs:
+calass RegionBackendServiceCdnPolicyNegativeCachingPolicyArrgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[int]] = None,
                  ttl: Optional[pulumi.Input[int]] = None):
@@ -15097,16 +15097,16 @@ class RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs:
 
 
 @pulumi.input_type
-class RegionBackendServiceCircuitBreakersArgs:
+calass RegionBackendServiceCircuitBreakersArrgs:
     def __init__(__self__, *,
-                 connect_timeout: Optional[pulumi.Input['RegionBackendServiceCircuitBreakersConnectTimeoutArgs']] = None,
+                 connect_timeout: Optional[pulumi.Input['RegionBackendServiceCircuitBreakersConnectTimeoutArrgs']] = None,
                  max_connections: Optional[pulumi.Input[int]] = None,
                  max_pending_requests: Optional[pulumi.Input[int]] = None,
                  max_requests: Optional[pulumi.Input[int]] = None,
                  max_requests_per_connection: Optional[pulumi.Input[int]] = None,
                  max_retries: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input['RegionBackendServiceCircuitBreakersConnectTimeoutArgs'] connect_timeout: The timeout for new network connections to hosts.
+        :param pulumi.Input['RegionBackendServiceCircuitBreakersConnectTimeoutArrgs'] connect_timeout: The timeout for new network connections to hosts.
                Structure is documented below.
         :param pulumi.Input[int] max_connections: The maximum number of connections to the backend cluster.
                Defaults to 1024.
@@ -15136,7 +15136,7 @@ class RegionBackendServiceCircuitBreakersArgs:
 
     @property
     @pulumi.getter(name="connectTimeout")
-    def connect_timeout(self) -> Optional[pulumi.Input['RegionBackendServiceCircuitBreakersConnectTimeoutArgs']]:
+    def connect_timeout(self) -> Optional[pulumi.Input['RegionBackendServiceCircuitBreakersConnectTimeoutArrgs']]:
         """
         The timeout for new network connections to hosts.
         Structure is documented below.
@@ -15144,7 +15144,7 @@ class RegionBackendServiceCircuitBreakersArgs:
         return pulumi.get(self, "connect_timeout")
 
     @connect_timeout.setter
-    def connect_timeout(self, value: Optional[pulumi.Input['RegionBackendServiceCircuitBreakersConnectTimeoutArgs']]):
+    def connect_timeout(self, value: Optional[pulumi.Input['RegionBackendServiceCircuitBreakersConnectTimeoutArrgs']]):
         pulumi.set(self, "connect_timeout", value)
 
     @property
@@ -15216,7 +15216,7 @@ class RegionBackendServiceCircuitBreakersArgs:
 
 
 @pulumi.input_type
-class RegionBackendServiceCircuitBreakersConnectTimeoutArgs:
+calass RegionBackendServiceCircuitBreakersConnectTimeoutArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -15262,7 +15262,7 @@ class RegionBackendServiceCircuitBreakersConnectTimeoutArgs:
 
 
 @pulumi.input_type
-class RegionBackendServiceConnectionTrackingPolicyArgs:
+calass RegionBackendServiceConnectionTrackingPolicyArrgs:
     def __init__(__self__, *,
                  connection_persistence_on_unhealthy_backends: Optional[pulumi.Input[str]] = None,
                  enable_strong_affinity: Optional[pulumi.Input[bool]] = None,
@@ -15379,13 +15379,13 @@ class RegionBackendServiceConnectionTrackingPolicyArgs:
 
 
 @pulumi.input_type
-class RegionBackendServiceConsistentHashArgs:
+calass RegionBackendServiceConsistentHashArrgs:
     def __init__(__self__, *,
-                 http_cookie: Optional[pulumi.Input['RegionBackendServiceConsistentHashHttpCookieArgs']] = None,
+                 http_cookie: Optional[pulumi.Input['RegionBackendServiceConsistentHashHttpCookieArrgs']] = None,
                  http_header_name: Optional[pulumi.Input[str]] = None,
                  minimum_ring_size: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input['RegionBackendServiceConsistentHashHttpCookieArgs'] http_cookie: Hash is based on HTTP Cookie. This field describes a HTTP cookie
+        :param pulumi.Input['RegionBackendServiceConsistentHashHttpCookieArrgs'] http_cookie: Hash is based on HTTP Cookie. This field describes a HTTP cookie
                that will be used as the hash key for the consistent hash load
                balancer. If the cookie is not present, it will be generated.
                This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
@@ -15408,7 +15408,7 @@ class RegionBackendServiceConsistentHashArgs:
 
     @property
     @pulumi.getter(name="httpCookie")
-    def http_cookie(self) -> Optional[pulumi.Input['RegionBackendServiceConsistentHashHttpCookieArgs']]:
+    def http_cookie(self) -> Optional[pulumi.Input['RegionBackendServiceConsistentHashHttpCookieArrgs']]:
         """
         Hash is based on HTTP Cookie. This field describes a HTTP cookie
         that will be used as the hash key for the consistent hash load
@@ -15419,7 +15419,7 @@ class RegionBackendServiceConsistentHashArgs:
         return pulumi.get(self, "http_cookie")
 
     @http_cookie.setter
-    def http_cookie(self, value: Optional[pulumi.Input['RegionBackendServiceConsistentHashHttpCookieArgs']]):
+    def http_cookie(self, value: Optional[pulumi.Input['RegionBackendServiceConsistentHashHttpCookieArrgs']]):
         pulumi.set(self, "http_cookie", value)
 
     @property
@@ -15454,15 +15454,15 @@ class RegionBackendServiceConsistentHashArgs:
 
 
 @pulumi.input_type
-class RegionBackendServiceConsistentHashHttpCookieArgs:
+calass RegionBackendServiceConsistentHashHttpCookieArrgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
-                 ttl: Optional[pulumi.Input['RegionBackendServiceConsistentHashHttpCookieTtlArgs']] = None):
+                 ttl: Optional[pulumi.Input['RegionBackendServiceConsistentHashHttpCookieTtlArrgs']] = None):
         """
         :param pulumi.Input[str] name: Name of the cookie.
         :param pulumi.Input[str] path: Path to set for the cookie.
-        :param pulumi.Input['RegionBackendServiceConsistentHashHttpCookieTtlArgs'] ttl: Lifetime of the cookie.
+        :param pulumi.Input['RegionBackendServiceConsistentHashHttpCookieTtlArrgs'] ttl: Lifetime of the cookie.
                Structure is documented below.
         """
         if name is not None:
@@ -15498,7 +15498,7 @@ class RegionBackendServiceConsistentHashHttpCookieArgs:
 
     @property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input['RegionBackendServiceConsistentHashHttpCookieTtlArgs']]:
+    def ttl(self) -> Optional[pulumi.Input['RegionBackendServiceConsistentHashHttpCookieTtlArrgs']]:
         """
         Lifetime of the cookie.
         Structure is documented below.
@@ -15506,12 +15506,12 @@ class RegionBackendServiceConsistentHashHttpCookieArgs:
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input['RegionBackendServiceConsistentHashHttpCookieTtlArgs']]):
+    def ttl(self, value: Optional[pulumi.Input['RegionBackendServiceConsistentHashHttpCookieTtlArrgs']]):
         pulumi.set(self, "ttl", value)
 
 
 @pulumi.input_type
-class RegionBackendServiceConsistentHashHttpCookieTtlArgs:
+calass RegionBackendServiceConsistentHashHttpCookieTtlArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -15557,7 +15557,7 @@ class RegionBackendServiceConsistentHashHttpCookieTtlArgs:
 
 
 @pulumi.input_type
-class RegionBackendServiceFailoverPolicyArgs:
+calass RegionBackendServiceFailoverPolicyArrgs:
     def __init__(__self__, *,
                  disable_connection_drain_on_failover: Optional[pulumi.Input[bool]] = None,
                  drop_traffic_if_unhealthy: Optional[pulumi.Input[bool]] = None,
@@ -15646,7 +15646,7 @@ class RegionBackendServiceFailoverPolicyArgs:
 
 
 @pulumi.input_type
-class RegionBackendServiceIamBindingConditionArgs:
+calass RegionBackendServiceIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -15695,7 +15695,7 @@ class RegionBackendServiceIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class RegionBackendServiceIamMemberConditionArgs:
+calass RegionBackendServiceIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -15744,7 +15744,7 @@ class RegionBackendServiceIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class RegionBackendServiceIapArgs:
+calass RegionBackendServiceIapArrgs:
     def __init__(__self__, *,
                  oauth2_client_id: pulumi.Input[str],
                  oauth2_client_secret: pulumi.Input[str],
@@ -15803,7 +15803,7 @@ class RegionBackendServiceIapArgs:
 
 
 @pulumi.input_type
-class RegionBackendServiceLogConfigArgs:
+calass RegionBackendServiceLogConfigArrgs:
     def __init__(__self__, *,
                  enable: Optional[pulumi.Input[bool]] = None,
                  sample_rate: Optional[pulumi.Input[float]] = None):
@@ -15848,21 +15848,21 @@ class RegionBackendServiceLogConfigArgs:
 
 
 @pulumi.input_type
-class RegionBackendServiceOutlierDetectionArgs:
+calass RegionBackendServiceOutlierDetectionArrgs:
     def __init__(__self__, *,
-                 base_ejection_time: Optional[pulumi.Input['RegionBackendServiceOutlierDetectionBaseEjectionTimeArgs']] = None,
+                 base_ejection_time: Optional[pulumi.Input['RegionBackendServiceOutlierDetectionBaseEjectionTimeArrgs']] = None,
                  consecutive_errors: Optional[pulumi.Input[int]] = None,
                  consecutive_gateway_failure: Optional[pulumi.Input[int]] = None,
                  enforcing_consecutive_errors: Optional[pulumi.Input[int]] = None,
                  enforcing_consecutive_gateway_failure: Optional[pulumi.Input[int]] = None,
                  enforcing_success_rate: Optional[pulumi.Input[int]] = None,
-                 interval: Optional[pulumi.Input['RegionBackendServiceOutlierDetectionIntervalArgs']] = None,
+                 interval: Optional[pulumi.Input['RegionBackendServiceOutlierDetectionIntervalArrgs']] = None,
                  max_ejection_percent: Optional[pulumi.Input[int]] = None,
                  success_rate_minimum_hosts: Optional[pulumi.Input[int]] = None,
                  success_rate_request_volume: Optional[pulumi.Input[int]] = None,
                  success_rate_stdev_factor: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input['RegionBackendServiceOutlierDetectionBaseEjectionTimeArgs'] base_ejection_time: The base time that a host is ejected for. The real time is equal to the base
+        :param pulumi.Input['RegionBackendServiceOutlierDetectionBaseEjectionTimeArrgs'] base_ejection_time: The base time that a host is ejected for. The real time is equal to the base
                time multiplied by the number of times the host has been ejected. Defaults to
                30000ms or 30s.
                Structure is documented below.
@@ -15881,7 +15881,7 @@ class RegionBackendServiceOutlierDetectionArgs:
         :param pulumi.Input[int] enforcing_success_rate: The percentage chance that a host will be actually ejected when an outlier
                status is detected through success rate statistics. This setting can be used to
                disable ejection or to ramp it up slowly. Defaults to 100.
-        :param pulumi.Input['RegionBackendServiceOutlierDetectionIntervalArgs'] interval: Time interval between ejection sweep analysis. This can result in both new
+        :param pulumi.Input['RegionBackendServiceOutlierDetectionIntervalArrgs'] interval: Time interval between ejection sweep analysis. This can result in both new
                ejections as well as hosts being returned to service. Defaults to 10 seconds.
                Structure is documented below.
         :param pulumi.Input[int] max_ejection_percent: Maximum percentage of hosts in the load balancing pool for the backend service
@@ -15927,7 +15927,7 @@ class RegionBackendServiceOutlierDetectionArgs:
 
     @property
     @pulumi.getter(name="baseEjectionTime")
-    def base_ejection_time(self) -> Optional[pulumi.Input['RegionBackendServiceOutlierDetectionBaseEjectionTimeArgs']]:
+    def base_ejection_time(self) -> Optional[pulumi.Input['RegionBackendServiceOutlierDetectionBaseEjectionTimeArrgs']]:
         """
         The base time that a host is ejected for. The real time is equal to the base
         time multiplied by the number of times the host has been ejected. Defaults to
@@ -15937,7 +15937,7 @@ class RegionBackendServiceOutlierDetectionArgs:
         return pulumi.get(self, "base_ejection_time")
 
     @base_ejection_time.setter
-    def base_ejection_time(self, value: Optional[pulumi.Input['RegionBackendServiceOutlierDetectionBaseEjectionTimeArgs']]):
+    def base_ejection_time(self, value: Optional[pulumi.Input['RegionBackendServiceOutlierDetectionBaseEjectionTimeArrgs']]):
         pulumi.set(self, "base_ejection_time", value)
 
     @property
@@ -16012,7 +16012,7 @@ class RegionBackendServiceOutlierDetectionArgs:
 
     @property
     @pulumi.getter
-    def interval(self) -> Optional[pulumi.Input['RegionBackendServiceOutlierDetectionIntervalArgs']]:
+    def interval(self) -> Optional[pulumi.Input['RegionBackendServiceOutlierDetectionIntervalArrgs']]:
         """
         Time interval between ejection sweep analysis. This can result in both new
         ejections as well as hosts being returned to service. Defaults to 10 seconds.
@@ -16021,7 +16021,7 @@ class RegionBackendServiceOutlierDetectionArgs:
         return pulumi.get(self, "interval")
 
     @interval.setter
-    def interval(self, value: Optional[pulumi.Input['RegionBackendServiceOutlierDetectionIntervalArgs']]):
+    def interval(self, value: Optional[pulumi.Input['RegionBackendServiceOutlierDetectionIntervalArrgs']]):
         pulumi.set(self, "interval", value)
 
     @property
@@ -16087,7 +16087,7 @@ class RegionBackendServiceOutlierDetectionArgs:
 
 
 @pulumi.input_type
-class RegionBackendServiceOutlierDetectionBaseEjectionTimeArgs:
+calass RegionBackendServiceOutlierDetectionBaseEjectionTimeArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -16131,7 +16131,7 @@ class RegionBackendServiceOutlierDetectionBaseEjectionTimeArgs:
 
 
 @pulumi.input_type
-class RegionBackendServiceOutlierDetectionIntervalArgs:
+calass RegionBackendServiceOutlierDetectionIntervalArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -16175,7 +16175,7 @@ class RegionBackendServiceOutlierDetectionIntervalArgs:
 
 
 @pulumi.input_type
-class RegionBackendServiceSubsettingArgs:
+calass RegionBackendServiceSubsettingArrgs:
     def __init__(__self__, *,
                  policy: pulumi.Input[str]):
         """
@@ -16199,7 +16199,7 @@ class RegionBackendServiceSubsettingArgs:
 
 
 @pulumi.input_type
-class RegionCommitmentLicenseResourceArgs:
+calass RegionCommitmentLicenseResourceArrgs:
     def __init__(__self__, *,
                  license: pulumi.Input[str],
                  amount: Optional[pulumi.Input[str]] = None,
@@ -16253,7 +16253,7 @@ class RegionCommitmentLicenseResourceArgs:
 
 
 @pulumi.input_type
-class RegionCommitmentResourceArgs:
+calass RegionCommitmentResourceArrgs:
     def __init__(__self__, *,
                  accelerator_type: Optional[pulumi.Input[str]] = None,
                  amount: Optional[pulumi.Input[str]] = None,
@@ -16316,7 +16316,7 @@ class RegionCommitmentResourceArgs:
 
 
 @pulumi.input_type
-class RegionDiskAsyncPrimaryDiskArgs:
+calass RegionDiskAsyncPrimaryDiskArrgs:
     def __init__(__self__, *,
                  disk: pulumi.Input[str]):
         """
@@ -16338,7 +16338,7 @@ class RegionDiskAsyncPrimaryDiskArgs:
 
 
 @pulumi.input_type
-class RegionDiskDiskEncryptionKeyArgs:
+calass RegionDiskDiskEncryptionKeyArrgs:
     def __init__(__self__, *,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  raw_key: Optional[pulumi.Input[str]] = None,
@@ -16401,7 +16401,7 @@ class RegionDiskDiskEncryptionKeyArgs:
 
 
 @pulumi.input_type
-class RegionDiskGuestOsFeatureArgs:
+calass RegionDiskGuestOsFeatureArrgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str]):
         """
@@ -16425,7 +16425,7 @@ class RegionDiskGuestOsFeatureArgs:
 
 
 @pulumi.input_type
-class RegionDiskIamBindingConditionArgs:
+calass RegionDiskIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -16464,7 +16464,7 @@ class RegionDiskIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class RegionDiskIamMemberConditionArgs:
+calass RegionDiskIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -16503,7 +16503,7 @@ class RegionDiskIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class RegionDiskSourceSnapshotEncryptionKeyArgs:
+calass RegionDiskSourceSnapshotEncryptionKeyArrgs:
     def __init__(__self__, *,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  raw_key: Optional[pulumi.Input[str]] = None,
@@ -16564,7 +16564,7 @@ class RegionDiskSourceSnapshotEncryptionKeyArgs:
 
 
 @pulumi.input_type
-class RegionHealthCheckGrpcHealthCheckArgs:
+calass RegionHealthCheckGrpcHealthCheckArrgs:
     def __init__(__self__, *,
                  grpc_service_name: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
@@ -16651,7 +16651,7 @@ class RegionHealthCheckGrpcHealthCheckArgs:
 
 
 @pulumi.input_type
-class RegionHealthCheckHttp2HealthCheckArgs:
+calass RegionHealthCheckHttp2HealthCheckArrgs:
     def __init__(__self__, *,
                  host: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
@@ -16794,7 +16794,7 @@ class RegionHealthCheckHttp2HealthCheckArgs:
 
 
 @pulumi.input_type
-class RegionHealthCheckHttpHealthCheckArgs:
+calass RegionHealthCheckHttpHealthCheckArrgs:
     def __init__(__self__, *,
                  host: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
@@ -16935,7 +16935,7 @@ class RegionHealthCheckHttpHealthCheckArgs:
 
 
 @pulumi.input_type
-class RegionHealthCheckHttpsHealthCheckArgs:
+calass RegionHealthCheckHttpsHealthCheckArrgs:
     def __init__(__self__, *,
                  host: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
@@ -17076,7 +17076,7 @@ class RegionHealthCheckHttpsHealthCheckArgs:
 
 
 @pulumi.input_type
-class RegionHealthCheckLogConfigArgs:
+calass RegionHealthCheckLogConfigArrgs:
     def __init__(__self__, *,
                  enable: Optional[pulumi.Input[bool]] = None):
         """
@@ -17101,7 +17101,7 @@ class RegionHealthCheckLogConfigArgs:
 
 
 @pulumi.input_type
-class RegionHealthCheckSslHealthCheckArgs:
+calass RegionHealthCheckSslHealthCheckArrgs:
     def __init__(__self__, *,
                  port: Optional[pulumi.Input[int]] = None,
                  port_name: Optional[pulumi.Input[str]] = None,
@@ -17226,7 +17226,7 @@ class RegionHealthCheckSslHealthCheckArgs:
 
 
 @pulumi.input_type
-class RegionHealthCheckTcpHealthCheckArgs:
+calass RegionHealthCheckTcpHealthCheckArrgs:
     def __init__(__self__, *,
                  port: Optional[pulumi.Input[int]] = None,
                  port_name: Optional[pulumi.Input[str]] = None,
@@ -17351,7 +17351,7 @@ class RegionHealthCheckTcpHealthCheckArgs:
 
 
 @pulumi.input_type
-class RegionInstanceGroupManagerAllInstancesConfigArgs:
+calass RegionInstanceGroupManagerAllInstancesConfigArrgs:
     def __init__(__self__, *,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -17394,7 +17394,7 @@ class RegionInstanceGroupManagerAllInstancesConfigArgs:
 
 
 @pulumi.input_type
-class RegionInstanceGroupManagerAutoHealingPoliciesArgs:
+calass RegionInstanceGroupManagerAutoHealingPoliciesArrgs:
     def __init__(__self__, *,
                  health_check: pulumi.Input[str],
                  initial_delay_sec: pulumi.Input[int]):
@@ -17433,7 +17433,7 @@ class RegionInstanceGroupManagerAutoHealingPoliciesArgs:
 
 
 @pulumi.input_type
-class RegionInstanceGroupManagerInstanceLifecyclePolicyArgs:
+calass RegionInstanceGroupManagerInstanceLifecyclePolicyArrgs:
     def __init__(__self__, *,
                  force_update_on_repair: Optional[pulumi.Input[str]] = None):
         """
@@ -17458,7 +17458,7 @@ class RegionInstanceGroupManagerInstanceLifecyclePolicyArgs:
 
 
 @pulumi.input_type
-class RegionInstanceGroupManagerNamedPortArgs:
+calass RegionInstanceGroupManagerNamedPortArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  port: pulumi.Input[int]):
@@ -17497,7 +17497,7 @@ class RegionInstanceGroupManagerNamedPortArgs:
 
 
 @pulumi.input_type
-class RegionInstanceGroupManagerStatefulDiskArgs:
+calass RegionInstanceGroupManagerStatefulDiskArrgs:
     def __init__(__self__, *,
                  device_name: pulumi.Input[str],
                  delete_rule: Optional[pulumi.Input[str]] = None):
@@ -17535,7 +17535,7 @@ class RegionInstanceGroupManagerStatefulDiskArgs:
 
 
 @pulumi.input_type
-class RegionInstanceGroupManagerStatefulExternalIpArgs:
+calass RegionInstanceGroupManagerStatefulExternalIpArrgs:
     def __init__(__self__, *,
                  delete_rule: Optional[pulumi.Input[str]] = None,
                  interface_name: Optional[pulumi.Input[str]] = None):
@@ -17574,7 +17574,7 @@ class RegionInstanceGroupManagerStatefulExternalIpArgs:
 
 
 @pulumi.input_type
-class RegionInstanceGroupManagerStatefulInternalIpArgs:
+calass RegionInstanceGroupManagerStatefulInternalIpArrgs:
     def __init__(__self__, *,
                  delete_rule: Optional[pulumi.Input[str]] = None,
                  interface_name: Optional[pulumi.Input[str]] = None):
@@ -17613,20 +17613,20 @@ class RegionInstanceGroupManagerStatefulInternalIpArgs:
 
 
 @pulumi.input_type
-class RegionInstanceGroupManagerStatusArgs:
+calass RegionInstanceGroupManagerStatusArrgs:
     def __init__(__self__, *,
-                 all_instances_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusAllInstancesConfigArgs']]]] = None,
+                 all_instances_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusAllInstancesConfigArrgs']]]] = None,
                  is_stable: Optional[pulumi.Input[bool]] = None,
-                 statefuls: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulArgs']]]] = None,
-                 version_targets: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusVersionTargetArgs']]]] = None):
+                 statefuls: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulArrgs']]]] = None,
+                 version_targets: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusVersionTargetArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusAllInstancesConfigArgs']]] all_instances_configs: )
+        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusAllInstancesConfigArrgs']]] all_instances_configs: )
                Properties to set on all instances in the group. After setting
                allInstancesConfig on the group, you must update the group's instances to
                apply the configuration.
         :param pulumi.Input[bool] is_stable: A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulArgs']]] statefuls: Stateful status of the given Instance Group Manager.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusVersionTargetArgs']]] version_targets: A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulArrgs']]] statefuls: Stateful status of the given Instance Group Manager.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusVersionTargetArrgs']]] version_targets: A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
         """
         if all_instances_configs is not None:
             pulumi.set(__self__, "all_instances_configs", all_instances_configs)
@@ -17639,7 +17639,7 @@ class RegionInstanceGroupManagerStatusArgs:
 
     @property
     @pulumi.getter(name="allInstancesConfigs")
-    def all_instances_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusAllInstancesConfigArgs']]]]:
+    def all_instances_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusAllInstancesConfigArrgs']]]]:
         """
         )
         Properties to set on all instances in the group. After setting
@@ -17649,7 +17649,7 @@ class RegionInstanceGroupManagerStatusArgs:
         return pulumi.get(self, "all_instances_configs")
 
     @all_instances_configs.setter
-    def all_instances_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusAllInstancesConfigArgs']]]]):
+    def all_instances_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusAllInstancesConfigArrgs']]]]):
         pulumi.set(self, "all_instances_configs", value)
 
     @property
@@ -17666,31 +17666,31 @@ class RegionInstanceGroupManagerStatusArgs:
 
     @property
     @pulumi.getter
-    def statefuls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulArgs']]]]:
+    def statefuls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulArrgs']]]]:
         """
         Stateful status of the given Instance Group Manager.
         """
         return pulumi.get(self, "statefuls")
 
     @statefuls.setter
-    def statefuls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulArgs']]]]):
+    def statefuls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulArrgs']]]]):
         pulumi.set(self, "statefuls", value)
 
     @property
     @pulumi.getter(name="versionTargets")
-    def version_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusVersionTargetArgs']]]]:
+    def version_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusVersionTargetArrgs']]]]:
         """
         A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
         """
         return pulumi.get(self, "version_targets")
 
     @version_targets.setter
-    def version_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusVersionTargetArgs']]]]):
+    def version_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusVersionTargetArrgs']]]]):
         pulumi.set(self, "version_targets", value)
 
 
 @pulumi.input_type
-class RegionInstanceGroupManagerStatusAllInstancesConfigArgs:
+calass RegionInstanceGroupManagerStatusAllInstancesConfigArrgs:
     def __init__(__self__, *,
                  effective: Optional[pulumi.Input[bool]] = None):
         if effective is not None:
@@ -17707,13 +17707,13 @@ class RegionInstanceGroupManagerStatusAllInstancesConfigArgs:
 
 
 @pulumi.input_type
-class RegionInstanceGroupManagerStatusStatefulArgs:
+calass RegionInstanceGroupManagerStatusStatefulArrgs:
     def __init__(__self__, *,
                  has_stateful_config: Optional[pulumi.Input[bool]] = None,
-                 per_instance_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs']]]] = None):
+                 per_instance_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrgs']]]] = None):
         """
         :param pulumi.Input[bool] has_stateful_config: A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs']]] per_instance_configs: Status of per-instance configs on the instance.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrgs']]] per_instance_configs: Status of per-instance configs on the instance.
         """
         if has_stateful_config is not None:
             pulumi.set(__self__, "has_stateful_config", has_stateful_config)
@@ -17734,19 +17734,19 @@ class RegionInstanceGroupManagerStatusStatefulArgs:
 
     @property
     @pulumi.getter(name="perInstanceConfigs")
-    def per_instance_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs']]]]:
+    def per_instance_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrgs']]]]:
         """
         Status of per-instance configs on the instance.
         """
         return pulumi.get(self, "per_instance_configs")
 
     @per_instance_configs.setter
-    def per_instance_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs']]]]):
+    def per_instance_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrgs']]]]):
         pulumi.set(self, "per_instance_configs", value)
 
 
 @pulumi.input_type
-class RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs:
+calass RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrgs:
     def __init__(__self__, *,
                  all_effective: Optional[pulumi.Input[bool]] = None):
         """
@@ -17769,7 +17769,7 @@ class RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs:
 
 
 @pulumi.input_type
-class RegionInstanceGroupManagerStatusVersionTargetArgs:
+calass RegionInstanceGroupManagerStatusVersionTargetArrgs:
     def __init__(__self__, *,
                  is_reached: Optional[pulumi.Input[bool]] = None):
         if is_reached is not None:
@@ -17786,7 +17786,7 @@ class RegionInstanceGroupManagerStatusVersionTargetArgs:
 
 
 @pulumi.input_type
-class RegionInstanceGroupManagerUpdatePolicyArgs:
+calass RegionInstanceGroupManagerUpdatePolicyArrgs:
     def __init__(__self__, *,
                  minimal_action: pulumi.Input[str],
                  type: pulumi.Input[str],
@@ -17953,15 +17953,15 @@ class RegionInstanceGroupManagerUpdatePolicyArgs:
 
 
 @pulumi.input_type
-class RegionInstanceGroupManagerVersionArgs:
+calass RegionInstanceGroupManagerVersionArrgs:
     def __init__(__self__, *,
                  instance_template: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
-                 target_size: Optional[pulumi.Input['RegionInstanceGroupManagerVersionTargetSizeArgs']] = None):
+                 target_size: Optional[pulumi.Input['RegionInstanceGroupManagerVersionTargetSizeArrgs']] = None):
         """
         :param pulumi.Input[str] instance_template: The full URL to an instance template from which all new instances of this version will be created.
         :param pulumi.Input[str] name: Version name.
-        :param pulumi.Input['RegionInstanceGroupManagerVersionTargetSizeArgs'] target_size: The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+        :param pulumi.Input['RegionInstanceGroupManagerVersionTargetSizeArrgs'] target_size: The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
                
                > Exactly one `version` you specify must not have a `target_size` specified. During a rolling update, the instance group manager will fulfill the `target_size`
                constraints of every other `version`, and any remaining instances will be provisioned with the version where `target_size` is unset.
@@ -17998,7 +17998,7 @@ class RegionInstanceGroupManagerVersionArgs:
 
     @property
     @pulumi.getter(name="targetSize")
-    def target_size(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerVersionTargetSizeArgs']]:
+    def target_size(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerVersionTargetSizeArrgs']]:
         """
         The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
 
@@ -18008,12 +18008,12 @@ class RegionInstanceGroupManagerVersionArgs:
         return pulumi.get(self, "target_size")
 
     @target_size.setter
-    def target_size(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerVersionTargetSizeArgs']]):
+    def target_size(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerVersionTargetSizeArrgs']]):
         pulumi.set(self, "target_size", value)
 
 
 @pulumi.input_type
-class RegionInstanceGroupManagerVersionTargetSizeArgs:
+calass RegionInstanceGroupManagerVersionTargetSizeArrgs:
     def __init__(__self__, *,
                  fixed: Optional[pulumi.Input[int]] = None,
                  percent: Optional[pulumi.Input[int]] = None):
@@ -18056,7 +18056,7 @@ class RegionInstanceGroupManagerVersionTargetSizeArgs:
 
 
 @pulumi.input_type
-class RegionInstanceTemplateAdvancedMachineFeaturesArgs:
+calass RegionInstanceTemplateAdvancedMachineFeaturesArrgs:
     def __init__(__self__, *,
                  enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
                  threads_per_core: Optional[pulumi.Input[int]] = None,
@@ -18111,7 +18111,7 @@ class RegionInstanceTemplateAdvancedMachineFeaturesArgs:
 
 
 @pulumi.input_type
-class RegionInstanceTemplateConfidentialInstanceConfigArgs:
+calass RegionInstanceTemplateConfidentialInstanceConfigArrgs:
     def __init__(__self__, *,
                  enable_confidential_compute: pulumi.Input[bool]):
         """
@@ -18133,12 +18133,12 @@ class RegionInstanceTemplateConfidentialInstanceConfigArgs:
 
 
 @pulumi.input_type
-class RegionInstanceTemplateDiskArgs:
+calass RegionInstanceTemplateDiskArrgs:
     def __init__(__self__, *,
                  auto_delete: Optional[pulumi.Input[bool]] = None,
                  boot: Optional[pulumi.Input[bool]] = None,
                  device_name: Optional[pulumi.Input[str]] = None,
-                 disk_encryption_key: Optional[pulumi.Input['RegionInstanceTemplateDiskDiskEncryptionKeyArgs']] = None,
+                 disk_encryption_key: Optional[pulumi.Input['RegionInstanceTemplateDiskDiskEncryptionKeyArrgs']] = None,
                  disk_name: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
@@ -18149,9 +18149,9 @@ class RegionInstanceTemplateDiskArgs:
                  resource_policies: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
-                 source_image_encryption_key: Optional[pulumi.Input['RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs']] = None,
+                 source_image_encryption_key: Optional[pulumi.Input['RegionInstanceTemplateDiskSourceImageEncryptionKeyArrgs']] = None,
                  source_snapshot: Optional[pulumi.Input[str]] = None,
-                 source_snapshot_encryption_key: Optional[pulumi.Input['RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs']] = None,
+                 source_snapshot_encryption_key: Optional[pulumi.Input['RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrgs']] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] auto_delete: Whether or not the disk should be auto-deleted.
@@ -18160,7 +18160,7 @@ class RegionInstanceTemplateDiskArgs:
         :param pulumi.Input[str] device_name: A unique device name that is reflected into the
                /dev/  tree of a Linux operating system running within the instance. If not
                specified, the server chooses a default device name to apply to this disk.
-        :param pulumi.Input['RegionInstanceTemplateDiskDiskEncryptionKeyArgs'] disk_encryption_key: Encrypts or decrypts a disk using a customer-supplied encryption key.
+        :param pulumi.Input['RegionInstanceTemplateDiskDiskEncryptionKeyArrgs'] disk_encryption_key: Encrypts or decrypts a disk using a customer-supplied encryption key.
                
                If you are creating a new disk, this field encrypts the new disk using an encryption key that you provide. If you are attaching an existing disk that is already encrypted, this field decrypts the disk using the customer-supplied encryption key.
                
@@ -18200,7 +18200,7 @@ class RegionInstanceTemplateDiskArgs:
                `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
                `{project}/{image}`, `{family}`, or `{image}`.
                > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
-        :param pulumi.Input['RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs'] source_image_encryption_key: The customer-supplied encryption
+        :param pulumi.Input['RegionInstanceTemplateDiskSourceImageEncryptionKeyArrgs'] source_image_encryption_key: The customer-supplied encryption
                key of the source image. Required if the source image is protected by a
                customer-supplied encryption key.
                
@@ -18210,7 +18210,7 @@ class RegionInstanceTemplateDiskArgs:
                documented below.
         :param pulumi.Input[str] source_snapshot: The source snapshot to create this disk.
                > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
-        :param pulumi.Input['RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs'] source_snapshot_encryption_key: The customer-supplied encryption
+        :param pulumi.Input['RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrgs'] source_snapshot_encryption_key: The customer-supplied encryption
                key of the source snapshot. Structure
                documented below.
         :param pulumi.Input[str] type: The type of GCE disk, can be either `"SCRATCH"` or
@@ -18294,7 +18294,7 @@ class RegionInstanceTemplateDiskArgs:
 
     @property
     @pulumi.getter(name="diskEncryptionKey")
-    def disk_encryption_key(self) -> Optional[pulumi.Input['RegionInstanceTemplateDiskDiskEncryptionKeyArgs']]:
+    def disk_encryption_key(self) -> Optional[pulumi.Input['RegionInstanceTemplateDiskDiskEncryptionKeyArrgs']]:
         """
         Encrypts or decrypts a disk using a customer-supplied encryption key.
 
@@ -18309,7 +18309,7 @@ class RegionInstanceTemplateDiskArgs:
         return pulumi.get(self, "disk_encryption_key")
 
     @disk_encryption_key.setter
-    def disk_encryption_key(self, value: Optional[pulumi.Input['RegionInstanceTemplateDiskDiskEncryptionKeyArgs']]):
+    def disk_encryption_key(self, value: Optional[pulumi.Input['RegionInstanceTemplateDiskDiskEncryptionKeyArrgs']]):
         pulumi.set(self, "disk_encryption_key", value)
 
     @property
@@ -18455,7 +18455,7 @@ class RegionInstanceTemplateDiskArgs:
 
     @property
     @pulumi.getter(name="sourceImageEncryptionKey")
-    def source_image_encryption_key(self) -> Optional[pulumi.Input['RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs']]:
+    def source_image_encryption_key(self) -> Optional[pulumi.Input['RegionInstanceTemplateDiskSourceImageEncryptionKeyArrgs']]:
         """
         The customer-supplied encryption
         key of the source image. Required if the source image is protected by a
@@ -18469,7 +18469,7 @@ class RegionInstanceTemplateDiskArgs:
         return pulumi.get(self, "source_image_encryption_key")
 
     @source_image_encryption_key.setter
-    def source_image_encryption_key(self, value: Optional[pulumi.Input['RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs']]):
+    def source_image_encryption_key(self, value: Optional[pulumi.Input['RegionInstanceTemplateDiskSourceImageEncryptionKeyArrgs']]):
         pulumi.set(self, "source_image_encryption_key", value)
 
     @property
@@ -18487,7 +18487,7 @@ class RegionInstanceTemplateDiskArgs:
 
     @property
     @pulumi.getter(name="sourceSnapshotEncryptionKey")
-    def source_snapshot_encryption_key(self) -> Optional[pulumi.Input['RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs']]:
+    def source_snapshot_encryption_key(self) -> Optional[pulumi.Input['RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrgs']]:
         """
         The customer-supplied encryption
         key of the source snapshot. Structure
@@ -18496,7 +18496,7 @@ class RegionInstanceTemplateDiskArgs:
         return pulumi.get(self, "source_snapshot_encryption_key")
 
     @source_snapshot_encryption_key.setter
-    def source_snapshot_encryption_key(self, value: Optional[pulumi.Input['RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs']]):
+    def source_snapshot_encryption_key(self, value: Optional[pulumi.Input['RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrgs']]):
         pulumi.set(self, "source_snapshot_encryption_key", value)
 
     @property
@@ -18514,7 +18514,7 @@ class RegionInstanceTemplateDiskArgs:
 
 
 @pulumi.input_type
-class RegionInstanceTemplateDiskDiskEncryptionKeyArgs:
+calass RegionInstanceTemplateDiskDiskEncryptionKeyArrgs:
     def __init__(__self__, *,
                  kms_key_self_link: pulumi.Input[str]):
         """
@@ -18536,7 +18536,7 @@ class RegionInstanceTemplateDiskDiskEncryptionKeyArgs:
 
 
 @pulumi.input_type
-class RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs:
+calass RegionInstanceTemplateDiskSourceImageEncryptionKeyArrgs:
     def __init__(__self__, *,
                  kms_key_self_link: pulumi.Input[str],
                  kms_key_service_account: Optional[pulumi.Input[str]] = None):
@@ -18580,7 +18580,7 @@ class RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs:
 
 
 @pulumi.input_type
-class RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs:
+calass RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrgs:
     def __init__(__self__, *,
                  kms_key_self_link: pulumi.Input[str],
                  kms_key_service_account: Optional[pulumi.Input[str]] = None):
@@ -18624,7 +18624,7 @@ class RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs:
 
 
 @pulumi.input_type
-class RegionInstanceTemplateGuestAcceleratorArgs:
+calass RegionInstanceTemplateGuestAcceleratorArrgs:
     def __init__(__self__, *,
                  count: pulumi.Input[int],
                  type: pulumi.Input[str]):
@@ -18663,12 +18663,12 @@ class RegionInstanceTemplateGuestAcceleratorArgs:
 
 
 @pulumi.input_type
-class RegionInstanceTemplateNetworkInterfaceArgs:
+calass RegionInstanceTemplateNetworkInterfaceArrgs:
     def __init__(__self__, *,
-                 access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceAccessConfigArgs']]]] = None,
-                 alias_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs']]]] = None,
+                 access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceAccessConfigArrgs']]]] = None,
+                 alias_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrgs']]]] = None,
                  internal_ipv6_prefix_length: Optional[pulumi.Input[int]] = None,
-                 ipv6_access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs']]]] = None,
+                 ipv6_access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrgs']]]] = None,
                  ipv6_access_type: Optional[pulumi.Input[str]] = None,
                  ipv6_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -18680,10 +18680,10 @@ class RegionInstanceTemplateNetworkInterfaceArgs:
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  subnetwork_project: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs']]] alias_ip_ranges: An
+        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrgs']]] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs']]] ipv6_access_configs: An array of IPv6 access configurations for this interface.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrgs']]] ipv6_access_configs: An array of IPv6 access configurations for this interface.
                Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
                specified, then this instance will have no external IPv6 Internet access. Structure documented below.
         :param pulumi.Input[str] network: The name or self_link of the network to attach this interface to.
@@ -18731,16 +18731,16 @@ class RegionInstanceTemplateNetworkInterfaceArgs:
 
     @property
     @pulumi.getter(name="accessConfigs")
-    def access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceAccessConfigArgs']]]]:
+    def access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceAccessConfigArrgs']]]]:
         return pulumi.get(self, "access_configs")
 
     @access_configs.setter
-    def access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceAccessConfigArgs']]]]):
+    def access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceAccessConfigArrgs']]]]):
         pulumi.set(self, "access_configs", value)
 
     @property
     @pulumi.getter(name="aliasIpRanges")
-    def alias_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs']]]]:
+    def alias_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrgs']]]]:
         """
         An
         array of alias IP ranges for this network interface. Can only be specified for network
@@ -18749,7 +18749,7 @@ class RegionInstanceTemplateNetworkInterfaceArgs:
         return pulumi.get(self, "alias_ip_ranges")
 
     @alias_ip_ranges.setter
-    def alias_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs']]]]):
+    def alias_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrgs']]]]):
         pulumi.set(self, "alias_ip_ranges", value)
 
     @property
@@ -18763,7 +18763,7 @@ class RegionInstanceTemplateNetworkInterfaceArgs:
 
     @property
     @pulumi.getter(name="ipv6AccessConfigs")
-    def ipv6_access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs']]]]:
+    def ipv6_access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrgs']]]]:
         """
         An array of IPv6 access configurations for this interface.
         Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
@@ -18772,7 +18772,7 @@ class RegionInstanceTemplateNetworkInterfaceArgs:
         return pulumi.get(self, "ipv6_access_configs")
 
     @ipv6_access_configs.setter
-    def ipv6_access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs']]]]):
+    def ipv6_access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrgs']]]]):
         pulumi.set(self, "ipv6_access_configs", value)
 
     @property
@@ -18894,7 +18894,7 @@ class RegionInstanceTemplateNetworkInterfaceArgs:
 
 
 @pulumi.input_type
-class RegionInstanceTemplateNetworkInterfaceAccessConfigArgs:
+calass RegionInstanceTemplateNetworkInterfaceAccessConfigArrgs:
     def __init__(__self__, *,
                  nat_ip: Optional[pulumi.Input[str]] = None,
                  network_tier: Optional[pulumi.Input[str]] = None,
@@ -18949,7 +18949,7 @@ class RegionInstanceTemplateNetworkInterfaceAccessConfigArgs:
 
 
 @pulumi.input_type
-class RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs:
+calass RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrgs:
     def __init__(__self__, *,
                  ip_cidr_range: pulumi.Input[str],
                  subnetwork_range_name: Optional[pulumi.Input[str]] = None):
@@ -18999,7 +18999,7 @@ class RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs:
 
 
 @pulumi.input_type
-class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
+calass RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrgs:
     def __init__(__self__, *,
                  network_tier: pulumi.Input[str],
                  external_ipv6: Optional[pulumi.Input[str]] = None,
@@ -19071,7 +19071,7 @@ class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
 
 
 @pulumi.input_type
-class RegionInstanceTemplateNetworkPerformanceConfigArgs:
+calass RegionInstanceTemplateNetworkPerformanceConfigArrgs:
     def __init__(__self__, *,
                  total_egress_bandwidth_tier: pulumi.Input[str]):
         """
@@ -19093,13 +19093,13 @@ class RegionInstanceTemplateNetworkPerformanceConfigArgs:
 
 
 @pulumi.input_type
-class RegionInstanceTemplateReservationAffinityArgs:
+calass RegionInstanceTemplateReservationAffinityArrgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
-                 specific_reservation: Optional[pulumi.Input['RegionInstanceTemplateReservationAffinitySpecificReservationArgs']] = None):
+                 specific_reservation: Optional[pulumi.Input['RegionInstanceTemplateReservationAffinitySpecificReservationArrgs']] = None):
         """
         :param pulumi.Input[str] type: The type of reservation from which this instance can consume resources.
-        :param pulumi.Input['RegionInstanceTemplateReservationAffinitySpecificReservationArgs'] specific_reservation: Specifies the label selector for the reservation to use..
+        :param pulumi.Input['RegionInstanceTemplateReservationAffinitySpecificReservationArrgs'] specific_reservation: Specifies the label selector for the reservation to use..
                Structure is documented below.
         """
         pulumi.set(__self__, "type", type)
@@ -19120,7 +19120,7 @@ class RegionInstanceTemplateReservationAffinityArgs:
 
     @property
     @pulumi.getter(name="specificReservation")
-    def specific_reservation(self) -> Optional[pulumi.Input['RegionInstanceTemplateReservationAffinitySpecificReservationArgs']]:
+    def specific_reservation(self) -> Optional[pulumi.Input['RegionInstanceTemplateReservationAffinitySpecificReservationArrgs']]:
         """
         Specifies the label selector for the reservation to use..
         Structure is documented below.
@@ -19128,12 +19128,12 @@ class RegionInstanceTemplateReservationAffinityArgs:
         return pulumi.get(self, "specific_reservation")
 
     @specific_reservation.setter
-    def specific_reservation(self, value: Optional[pulumi.Input['RegionInstanceTemplateReservationAffinitySpecificReservationArgs']]):
+    def specific_reservation(self, value: Optional[pulumi.Input['RegionInstanceTemplateReservationAffinitySpecificReservationArrgs']]):
         pulumi.set(self, "specific_reservation", value)
 
 
 @pulumi.input_type
-class RegionInstanceTemplateReservationAffinitySpecificReservationArgs:
+calass RegionInstanceTemplateReservationAffinitySpecificReservationArrgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  values: pulumi.Input[Sequence[pulumi.Input[str]]]):
@@ -19170,15 +19170,15 @@ class RegionInstanceTemplateReservationAffinitySpecificReservationArgs:
 
 
 @pulumi.input_type
-class RegionInstanceTemplateSchedulingArgs:
+calass RegionInstanceTemplateSchedulingArrgs:
     def __init__(__self__, *,
                  automatic_restart: Optional[pulumi.Input[bool]] = None,
                  instance_termination_action: Optional[pulumi.Input[str]] = None,
-                 local_ssd_recovery_timeouts: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs']]]] = None,
+                 local_ssd_recovery_timeouts: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrgs']]]] = None,
                  maintenance_interval: Optional[pulumi.Input[str]] = None,
-                 max_run_duration: Optional[pulumi.Input['RegionInstanceTemplateSchedulingMaxRunDurationArgs']] = None,
+                 max_run_duration: Optional[pulumi.Input['RegionInstanceTemplateSchedulingMaxRunDurationArrgs']] = None,
                  min_node_cpus: Optional[pulumi.Input[int]] = None,
-                 node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingNodeAffinityArgs']]]] = None,
+                 node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingNodeAffinityArrgs']]]] = None,
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
                  preemptible: Optional[pulumi.Input[bool]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None):
@@ -19189,8 +19189,8 @@ class RegionInstanceTemplateSchedulingArgs:
         :param pulumi.Input[str] instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param pulumi.Input[str] maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.   
                <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
-        :param pulumi.Input['RegionInstanceTemplateSchedulingMaxRunDurationArgs'] max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingNodeAffinityArgs']]] node_affinities: Specifies node affinities or anti-affinities
+        :param pulumi.Input['RegionInstanceTemplateSchedulingMaxRunDurationArrgs'] max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingNodeAffinityArrgs']]] node_affinities: Specifies node affinities or anti-affinities
                to determine which sole-tenant nodes your instances and managed instance
                groups will use as host systems. Read more on sole-tenant node creation
                [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
@@ -19254,11 +19254,11 @@ class RegionInstanceTemplateSchedulingArgs:
 
     @property
     @pulumi.getter(name="localSsdRecoveryTimeouts")
-    def local_ssd_recovery_timeouts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs']]]]:
+    def local_ssd_recovery_timeouts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrgs']]]]:
         return pulumi.get(self, "local_ssd_recovery_timeouts")
 
     @local_ssd_recovery_timeouts.setter
-    def local_ssd_recovery_timeouts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs']]]]):
+    def local_ssd_recovery_timeouts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrgs']]]]):
         pulumi.set(self, "local_ssd_recovery_timeouts", value)
 
     @property
@@ -19276,14 +19276,14 @@ class RegionInstanceTemplateSchedulingArgs:
 
     @property
     @pulumi.getter(name="maxRunDuration")
-    def max_run_duration(self) -> Optional[pulumi.Input['RegionInstanceTemplateSchedulingMaxRunDurationArgs']]:
+    def max_run_duration(self) -> Optional[pulumi.Input['RegionInstanceTemplateSchedulingMaxRunDurationArrgs']]:
         """
         The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
         """
         return pulumi.get(self, "max_run_duration")
 
     @max_run_duration.setter
-    def max_run_duration(self, value: Optional[pulumi.Input['RegionInstanceTemplateSchedulingMaxRunDurationArgs']]):
+    def max_run_duration(self, value: Optional[pulumi.Input['RegionInstanceTemplateSchedulingMaxRunDurationArrgs']]):
         pulumi.set(self, "max_run_duration", value)
 
     @property
@@ -19297,7 +19297,7 @@ class RegionInstanceTemplateSchedulingArgs:
 
     @property
     @pulumi.getter(name="nodeAffinities")
-    def node_affinities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingNodeAffinityArgs']]]]:
+    def node_affinities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingNodeAffinityArrgs']]]]:
         """
         Specifies node affinities or anti-affinities
         to determine which sole-tenant nodes your instances and managed instance
@@ -19308,7 +19308,7 @@ class RegionInstanceTemplateSchedulingArgs:
         return pulumi.get(self, "node_affinities")
 
     @node_affinities.setter
-    def node_affinities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingNodeAffinityArgs']]]]):
+    def node_affinities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingNodeAffinityArrgs']]]]):
         pulumi.set(self, "node_affinities", value)
 
     @property
@@ -19355,7 +19355,7 @@ class RegionInstanceTemplateSchedulingArgs:
 
 
 @pulumi.input_type
-class RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
+calass RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -19403,7 +19403,7 @@ class RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
 
 
 @pulumi.input_type
-class RegionInstanceTemplateSchedulingMaxRunDurationArgs:
+calass RegionInstanceTemplateSchedulingMaxRunDurationArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -19451,7 +19451,7 @@ class RegionInstanceTemplateSchedulingMaxRunDurationArgs:
 
 
 @pulumi.input_type
-class RegionInstanceTemplateSchedulingNodeAffinityArgs:
+calass RegionInstanceTemplateSchedulingNodeAffinityArrgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  operator: pulumi.Input[str],
@@ -19505,7 +19505,7 @@ class RegionInstanceTemplateSchedulingNodeAffinityArgs:
 
 
 @pulumi.input_type
-class RegionInstanceTemplateServiceAccountArgs:
+calass RegionInstanceTemplateServiceAccountArrgs:
     def __init__(__self__, *,
                  scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
                  email: Optional[pulumi.Input[str]] = None):
@@ -19563,7 +19563,7 @@ class RegionInstanceTemplateServiceAccountArgs:
 
 
 @pulumi.input_type
-class RegionInstanceTemplateShieldedInstanceConfigArgs:
+calass RegionInstanceTemplateShieldedInstanceConfigArrgs:
     def __init__(__self__, *,
                  enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
                  enable_secure_boot: Optional[pulumi.Input[bool]] = None,
@@ -19618,7 +19618,7 @@ class RegionInstanceTemplateShieldedInstanceConfigArgs:
 
 
 @pulumi.input_type
-class RegionNetworkEndpointGroupAppEngineArgs:
+calass RegionNetworkEndpointGroupAppEngineArrgs:
     def __init__(__self__, *,
                  service: Optional[pulumi.Input[str]] = None,
                  url_mask: Optional[pulumi.Input[str]] = None,
@@ -19693,7 +19693,7 @@ class RegionNetworkEndpointGroupAppEngineArgs:
 
 
 @pulumi.input_type
-class RegionNetworkEndpointGroupCloudFunctionArgs:
+calass RegionNetworkEndpointGroupCloudFunctionArrgs:
     def __init__(__self__, *,
                  function: Optional[pulumi.Input[str]] = None,
                  url_mask: Optional[pulumi.Input[str]] = None):
@@ -19746,7 +19746,7 @@ class RegionNetworkEndpointGroupCloudFunctionArgs:
 
 
 @pulumi.input_type
-class RegionNetworkEndpointGroupCloudRunArgs:
+calass RegionNetworkEndpointGroupCloudRunArrgs:
     def __init__(__self__, *,
                  service: Optional[pulumi.Input[str]] = None,
                  tag: Optional[pulumi.Input[str]] = None,
@@ -19823,7 +19823,7 @@ class RegionNetworkEndpointGroupCloudRunArgs:
 
 
 @pulumi.input_type
-class RegionNetworkEndpointGroupServerlessDeploymentArgs:
+calass RegionNetworkEndpointGroupServerlessDeploymentArrgs:
     def __init__(__self__, *,
                  platform: pulumi.Input[str],
                  resource: Optional[pulumi.Input[str]] = None,
@@ -19907,9 +19907,9 @@ class RegionNetworkEndpointGroupServerlessDeploymentArgs:
 
 
 @pulumi.input_type
-class RegionNetworkFirewallPolicyRuleMatchArgs:
+calass RegionNetworkFirewallPolicyRuleMatchArrgs:
     def __init__(__self__, *,
-                 layer4_configs: pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs']]],
+                 layer4_configs: pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArrgs']]],
                  dest_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -19919,10 +19919,10 @@ class RegionNetworkFirewallPolicyRuleMatchArgs:
                  src_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs']]]] = None,
+                 src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArrgs']]]] = None,
                  src_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArrgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_fqdns: Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
@@ -19932,7 +19932,7 @@ class RegionNetworkFirewallPolicyRuleMatchArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_fqdns: Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_region_codes: The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs']]] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE, and there is no <code>srcIpRange</code>, this rule will be ignored. Maximum number of source tag values allowed is 256.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArrgs']]] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE, and there is no <code>srcIpRange</code>, this rule will be ignored. Maximum number of source tag values allowed is 256.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_threat_intelligences: Name of the Google Cloud Threat Intelligence list.
                
                The `layer4_configs` block supports:
@@ -19963,14 +19963,14 @@ class RegionNetworkFirewallPolicyRuleMatchArgs:
 
     @property
     @pulumi.getter(name="layer4Configs")
-    def layer4_configs(self) -> pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs']]]:
+    def layer4_configs(self) -> pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArrgs']]]:
         """
         Pairs of IP protocols and ports that the rule should match.
         """
         return pulumi.get(self, "layer4_configs")
 
     @layer4_configs.setter
-    def layer4_configs(self, value: pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs']]]):
+    def layer4_configs(self, value: pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArrgs']]]):
         pulumi.set(self, "layer4_configs", value)
 
     @property
@@ -20083,14 +20083,14 @@ class RegionNetworkFirewallPolicyRuleMatchArgs:
 
     @property
     @pulumi.getter(name="srcSecureTags")
-    def src_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs']]]]:
+    def src_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArrgs']]]]:
         """
         List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE, and there is no <code>srcIpRange</code>, this rule will be ignored. Maximum number of source tag values allowed is 256.
         """
         return pulumi.get(self, "src_secure_tags")
 
     @src_secure_tags.setter
-    def src_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs']]]]):
+    def src_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArrgs']]]]):
         pulumi.set(self, "src_secure_tags", value)
 
     @property
@@ -20109,7 +20109,7 @@ class RegionNetworkFirewallPolicyRuleMatchArgs:
 
 
 @pulumi.input_type
-class RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs:
+calass RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArrgs:
     def __init__(__self__, *,
                  ip_protocol: pulumi.Input[str],
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -20151,7 +20151,7 @@ class RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs:
 
 
 @pulumi.input_type
-class RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs:
+calass RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  state: Optional[pulumi.Input[str]] = None):
@@ -20189,7 +20189,7 @@ class RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs:
 
 
 @pulumi.input_type
-class RegionNetworkFirewallPolicyRuleTargetSecureTagArgs:
+calass RegionNetworkFirewallPolicyRuleTargetSecureTagArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  state: Optional[pulumi.Input[str]] = None):
@@ -20227,18 +20227,18 @@ class RegionNetworkFirewallPolicyRuleTargetSecureTagArgs:
 
 
 @pulumi.input_type
-class RegionPerInstanceConfigPreservedStateArgs:
+calass RegionPerInstanceConfigPreservedStateArrgs:
     def __init__(__self__, *,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateDiskArgs']]]] = None,
-                 external_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateExternalIpArgs']]]] = None,
-                 internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateInternalIpArgs']]]] = None,
+                 disks: Optional[pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateDiskArrgs']]]] = None,
+                 external_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateExternalIpArrgs']]]] = None,
+                 internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateInternalIpArrgs']]]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateDiskArgs']]] disks: Stateful disks for the instance.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateDiskArrgs']]] disks: Stateful disks for the instance.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateExternalIpArgs']]] external_ips: Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateExternalIpArrgs']]] external_ips: Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateInternalIpArgs']]] internal_ips: Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateInternalIpArrgs']]] internal_ips: Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Preserved metadata defined for this instance. This is a list of key->value pairs.
         """
@@ -20253,7 +20253,7 @@ class RegionPerInstanceConfigPreservedStateArgs:
 
     @property
     @pulumi.getter
-    def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateDiskArgs']]]]:
+    def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateDiskArrgs']]]]:
         """
         Stateful disks for the instance.
         Structure is documented below.
@@ -20261,12 +20261,12 @@ class RegionPerInstanceConfigPreservedStateArgs:
         return pulumi.get(self, "disks")
 
     @disks.setter
-    def disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateDiskArgs']]]]):
+    def disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateDiskArrgs']]]]):
         pulumi.set(self, "disks", value)
 
     @property
     @pulumi.getter(name="externalIps")
-    def external_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateExternalIpArgs']]]]:
+    def external_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateExternalIpArrgs']]]]:
         """
         Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
         Structure is documented below.
@@ -20274,12 +20274,12 @@ class RegionPerInstanceConfigPreservedStateArgs:
         return pulumi.get(self, "external_ips")
 
     @external_ips.setter
-    def external_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateExternalIpArgs']]]]):
+    def external_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateExternalIpArrgs']]]]):
         pulumi.set(self, "external_ips", value)
 
     @property
     @pulumi.getter(name="internalIps")
-    def internal_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateInternalIpArgs']]]]:
+    def internal_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateInternalIpArrgs']]]]:
         """
         Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
         Structure is documented below.
@@ -20287,7 +20287,7 @@ class RegionPerInstanceConfigPreservedStateArgs:
         return pulumi.get(self, "internal_ips")
 
     @internal_ips.setter
-    def internal_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateInternalIpArgs']]]]):
+    def internal_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateInternalIpArrgs']]]]):
         pulumi.set(self, "internal_ips", value)
 
     @property
@@ -20304,7 +20304,7 @@ class RegionPerInstanceConfigPreservedStateArgs:
 
 
 @pulumi.input_type
-class RegionPerInstanceConfigPreservedStateDiskArgs:
+calass RegionPerInstanceConfigPreservedStateDiskArrgs:
     def __init__(__self__, *,
                  device_name: pulumi.Input[str],
                  source: pulumi.Input[str],
@@ -20391,17 +20391,17 @@ class RegionPerInstanceConfigPreservedStateDiskArgs:
 
 
 @pulumi.input_type
-class RegionPerInstanceConfigPreservedStateExternalIpArgs:
+calass RegionPerInstanceConfigPreservedStateExternalIpArrgs:
     def __init__(__self__, *,
                  interface_name: pulumi.Input[str],
                  auto_delete: Optional[pulumi.Input[str]] = None,
-                 ip_address: Optional[pulumi.Input['RegionPerInstanceConfigPreservedStateExternalIpIpAddressArgs']] = None):
+                 ip_address: Optional[pulumi.Input['RegionPerInstanceConfigPreservedStateExternalIpIpAddressArrgs']] = None):
         """
         :param pulumi.Input[str] interface_name: The identifier for this object. Format specified above.
         :param pulumi.Input[str] auto_delete: These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
                Default value is `NEVER`.
                Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
-        :param pulumi.Input['RegionPerInstanceConfigPreservedStateExternalIpIpAddressArgs'] ip_address: Ip address representation
+        :param pulumi.Input['RegionPerInstanceConfigPreservedStateExternalIpIpAddressArrgs'] ip_address: Ip address representation
                Structure is documented below.
         """
         pulumi.set(__self__, "interface_name", interface_name)
@@ -20438,7 +20438,7 @@ class RegionPerInstanceConfigPreservedStateExternalIpArgs:
 
     @property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input['RegionPerInstanceConfigPreservedStateExternalIpIpAddressArgs']]:
+    def ip_address(self) -> Optional[pulumi.Input['RegionPerInstanceConfigPreservedStateExternalIpIpAddressArrgs']]:
         """
         Ip address representation
         Structure is documented below.
@@ -20446,12 +20446,12 @@ class RegionPerInstanceConfigPreservedStateExternalIpArgs:
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input['RegionPerInstanceConfigPreservedStateExternalIpIpAddressArgs']]):
+    def ip_address(self, value: Optional[pulumi.Input['RegionPerInstanceConfigPreservedStateExternalIpIpAddressArrgs']]):
         pulumi.set(self, "ip_address", value)
 
 
 @pulumi.input_type
-class RegionPerInstanceConfigPreservedStateExternalIpIpAddressArgs:
+calass RegionPerInstanceConfigPreservedStateExternalIpIpAddressArrgs:
     def __init__(__self__, *,
                  address: Optional[pulumi.Input[str]] = None):
         """
@@ -20474,17 +20474,17 @@ class RegionPerInstanceConfigPreservedStateExternalIpIpAddressArgs:
 
 
 @pulumi.input_type
-class RegionPerInstanceConfigPreservedStateInternalIpArgs:
+calass RegionPerInstanceConfigPreservedStateInternalIpArrgs:
     def __init__(__self__, *,
                  interface_name: pulumi.Input[str],
                  auto_delete: Optional[pulumi.Input[str]] = None,
-                 ip_address: Optional[pulumi.Input['RegionPerInstanceConfigPreservedStateInternalIpIpAddressArgs']] = None):
+                 ip_address: Optional[pulumi.Input['RegionPerInstanceConfigPreservedStateInternalIpIpAddressArrgs']] = None):
         """
         :param pulumi.Input[str] interface_name: The identifier for this object. Format specified above.
         :param pulumi.Input[str] auto_delete: These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
                Default value is `NEVER`.
                Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
-        :param pulumi.Input['RegionPerInstanceConfigPreservedStateInternalIpIpAddressArgs'] ip_address: Ip address representation
+        :param pulumi.Input['RegionPerInstanceConfigPreservedStateInternalIpIpAddressArrgs'] ip_address: Ip address representation
                Structure is documented below.
         """
         pulumi.set(__self__, "interface_name", interface_name)
@@ -20521,7 +20521,7 @@ class RegionPerInstanceConfigPreservedStateInternalIpArgs:
 
     @property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input['RegionPerInstanceConfigPreservedStateInternalIpIpAddressArgs']]:
+    def ip_address(self) -> Optional[pulumi.Input['RegionPerInstanceConfigPreservedStateInternalIpIpAddressArrgs']]:
         """
         Ip address representation
         Structure is documented below.
@@ -20529,12 +20529,12 @@ class RegionPerInstanceConfigPreservedStateInternalIpArgs:
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input['RegionPerInstanceConfigPreservedStateInternalIpIpAddressArgs']]):
+    def ip_address(self, value: Optional[pulumi.Input['RegionPerInstanceConfigPreservedStateInternalIpIpAddressArrgs']]):
         pulumi.set(self, "ip_address", value)
 
 
 @pulumi.input_type
-class RegionPerInstanceConfigPreservedStateInternalIpIpAddressArgs:
+calass RegionPerInstanceConfigPreservedStateInternalIpIpAddressArrgs:
     def __init__(__self__, *,
                  address: Optional[pulumi.Input[str]] = None):
         """
@@ -20557,7 +20557,7 @@ class RegionPerInstanceConfigPreservedStateInternalIpIpAddressArgs:
 
 
 @pulumi.input_type
-class RegionSecurityPolicyDdosProtectionConfigArgs:
+calass RegionSecurityPolicyDdosProtectionConfigArrgs:
     def __init__(__self__, *,
                  ddos_protection: pulumi.Input[str]):
         """
@@ -20587,12 +20587,12 @@ class RegionSecurityPolicyDdosProtectionConfigArgs:
 
 
 @pulumi.input_type
-class RegionSecurityPolicyRuleMatchArgs:
+calass RegionSecurityPolicyRuleMatchArrgs:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input['RegionSecurityPolicyRuleMatchConfigArgs']] = None,
+                 config: Optional[pulumi.Input['RegionSecurityPolicyRuleMatchConfigArrgs']] = None,
                  versioned_expr: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['RegionSecurityPolicyRuleMatchConfigArgs'] config: The configuration options available when specifying versionedExpr.
+        :param pulumi.Input['RegionSecurityPolicyRuleMatchConfigArrgs'] config: The configuration options available when specifying versionedExpr.
                This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
                Structure is documented below.
         :param pulumi.Input[str] versioned_expr: Preconfigured versioned expression. If this field is specified, config must also be specified.
@@ -20606,7 +20606,7 @@ class RegionSecurityPolicyRuleMatchArgs:
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['RegionSecurityPolicyRuleMatchConfigArgs']]:
+    def config(self) -> Optional[pulumi.Input['RegionSecurityPolicyRuleMatchConfigArrgs']]:
         """
         The configuration options available when specifying versionedExpr.
         This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
@@ -20615,7 +20615,7 @@ class RegionSecurityPolicyRuleMatchArgs:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['RegionSecurityPolicyRuleMatchConfigArgs']]):
+    def config(self, value: Optional[pulumi.Input['RegionSecurityPolicyRuleMatchConfigArrgs']]):
         pulumi.set(self, "config", value)
 
     @property
@@ -20634,7 +20634,7 @@ class RegionSecurityPolicyRuleMatchArgs:
 
 
 @pulumi.input_type
-class RegionSecurityPolicyRuleMatchConfigArgs:
+calass RegionSecurityPolicyRuleMatchConfigArrgs:
     def __init__(__self__, *,
                  src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -20657,7 +20657,7 @@ class RegionSecurityPolicyRuleMatchConfigArgs:
 
 
 @pulumi.input_type
-class RegionSecurityPolicyRuleNetworkMatchArgs:
+calass RegionSecurityPolicyRuleNetworkMatchArrgs:
     def __init__(__self__, *,
                  dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -20666,7 +20666,7 @@ class RegionSecurityPolicyRuleNetworkMatchArgs:
                  src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs']]]] = None):
+                 user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ports: Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
@@ -20675,7 +20675,7 @@ class RegionSecurityPolicyRuleNetworkMatchArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ports: Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_region_codes: Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs']]] user_defined_fields: User-defined fields. Each element names a defined field and lists the matching values for that field.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrgs']]] user_defined_fields: User-defined fields. Each element names a defined field and lists the matching values for that field.
                Structure is documented below.
         """
         if dest_ip_ranges is not None:
@@ -20781,7 +20781,7 @@ class RegionSecurityPolicyRuleNetworkMatchArgs:
 
     @property
     @pulumi.getter(name="userDefinedFields")
-    def user_defined_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs']]]]:
+    def user_defined_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrgs']]]]:
         """
         User-defined fields. Each element names a defined field and lists the matching values for that field.
         Structure is documented below.
@@ -20789,12 +20789,12 @@ class RegionSecurityPolicyRuleNetworkMatchArgs:
         return pulumi.get(self, "user_defined_fields")
 
     @user_defined_fields.setter
-    def user_defined_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs']]]]):
+    def user_defined_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrgs']]]]):
         pulumi.set(self, "user_defined_fields", value)
 
 
 @pulumi.input_type
-class RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs:
+calass RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -20833,7 +20833,7 @@ class RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs:
 
 
 @pulumi.input_type
-class RegionSecurityPolicyUserDefinedFieldArgs:
+calass RegionSecurityPolicyUserDefinedFieldArrgs:
     def __init__(__self__, *,
                  base: pulumi.Input[str],
                  mask: Optional[pulumi.Input[str]] = None,
@@ -20933,40 +20933,40 @@ class RegionSecurityPolicyUserDefinedFieldArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapDefaultRouteActionArgs:
+calass RegionUrlMapDefaultRouteActionArrgs:
     def __init__(__self__, *,
-                 cors_policy: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionCorsPolicyArgs']] = None,
-                 fault_injection_policy: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyArgs']] = None,
-                 request_mirror_policy: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs']] = None,
-                 retry_policy: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionRetryPolicyArgs']] = None,
-                 timeout: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionTimeoutArgs']] = None,
-                 url_rewrite: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionUrlRewriteArgs']] = None,
-                 weighted_backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs']]]] = None):
+                 cors_policy: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionCorsPolicyArrgs']] = None,
+                 fault_injection_policy: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyArrgs']] = None,
+                 request_mirror_policy: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionRequestMirrorPolicyArrgs']] = None,
+                 retry_policy: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionRetryPolicyArrgs']] = None,
+                 timeout: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionTimeoutArrgs']] = None,
+                 url_rewrite: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionUrlRewriteArrgs']] = None,
+                 weighted_backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceArrgs']]]] = None):
         """
-        :param pulumi.Input['RegionUrlMapDefaultRouteActionCorsPolicyArgs'] cors_policy: The specification for allowing client side cross-origin requests. Please see
+        :param pulumi.Input['RegionUrlMapDefaultRouteActionCorsPolicyArrgs'] cors_policy: The specification for allowing client side cross-origin requests. Please see
                [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
                Structure is documented below.
-        :param pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyArgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+        :param pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyArrgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
                As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service.
                Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
                timeout and retryPolicy is ignored by clients that are configured with a faultInjectionPolicy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection.
                Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: [Routing and traffic management features](https://cloud.google.com/load-balancing/docs/features#routing-traffic-management).
                Structure is documented below.
-        :param pulumi.Input['RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs'] request_mirror_policy: Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
+        :param pulumi.Input['RegionUrlMapDefaultRouteActionRequestMirrorPolicyArrgs'] request_mirror_policy: Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
                The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
                Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
                Structure is documented below.
-        :param pulumi.Input['RegionUrlMapDefaultRouteActionRetryPolicyArgs'] retry_policy: Specifies the retry policy associated with this route.
+        :param pulumi.Input['RegionUrlMapDefaultRouteActionRetryPolicyArrgs'] retry_policy: Specifies the retry policy associated with this route.
                Structure is documented below.
-        :param pulumi.Input['RegionUrlMapDefaultRouteActionTimeoutArgs'] timeout: Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as end-of-stream) up until the response has been processed. Timeout includes all retries.
+        :param pulumi.Input['RegionUrlMapDefaultRouteActionTimeoutArrgs'] timeout: Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as end-of-stream) up until the response has been processed. Timeout includes all retries.
                If not specified, this field uses the largest timeout among all backend services associated with the route.
                Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
                Structure is documented below.
-        :param pulumi.Input['RegionUrlMapDefaultRouteActionUrlRewriteArgs'] url_rewrite: The spec to modify the URL of the request, before forwarding the request to the matched service.
+        :param pulumi.Input['RegionUrlMapDefaultRouteActionUrlRewriteArrgs'] url_rewrite: The spec to modify the URL of the request, before forwarding the request to the matched service.
                urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers.
                Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs']]] weighted_backend_services: A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceArrgs']]] weighted_backend_services: A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number.
                After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
                Structure is documented below.
         """
@@ -20987,7 +20987,7 @@ class RegionUrlMapDefaultRouteActionArgs:
 
     @property
     @pulumi.getter(name="corsPolicy")
-    def cors_policy(self) -> Optional[pulumi.Input['RegionUrlMapDefaultRouteActionCorsPolicyArgs']]:
+    def cors_policy(self) -> Optional[pulumi.Input['RegionUrlMapDefaultRouteActionCorsPolicyArrgs']]:
         """
         The specification for allowing client side cross-origin requests. Please see
         [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
@@ -20996,12 +20996,12 @@ class RegionUrlMapDefaultRouteActionArgs:
         return pulumi.get(self, "cors_policy")
 
     @cors_policy.setter
-    def cors_policy(self, value: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionCorsPolicyArgs']]):
+    def cors_policy(self, value: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionCorsPolicyArrgs']]):
         pulumi.set(self, "cors_policy", value)
 
     @property
     @pulumi.getter(name="faultInjectionPolicy")
-    def fault_injection_policy(self) -> Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyArgs']]:
+    def fault_injection_policy(self) -> Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyArrgs']]:
         """
         The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
         As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service.
@@ -21013,12 +21013,12 @@ class RegionUrlMapDefaultRouteActionArgs:
         return pulumi.get(self, "fault_injection_policy")
 
     @fault_injection_policy.setter
-    def fault_injection_policy(self, value: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyArgs']]):
+    def fault_injection_policy(self, value: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyArrgs']]):
         pulumi.set(self, "fault_injection_policy", value)
 
     @property
     @pulumi.getter(name="requestMirrorPolicy")
-    def request_mirror_policy(self) -> Optional[pulumi.Input['RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs']]:
+    def request_mirror_policy(self) -> Optional[pulumi.Input['RegionUrlMapDefaultRouteActionRequestMirrorPolicyArrgs']]:
         """
         Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
         The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
@@ -21028,12 +21028,12 @@ class RegionUrlMapDefaultRouteActionArgs:
         return pulumi.get(self, "request_mirror_policy")
 
     @request_mirror_policy.setter
-    def request_mirror_policy(self, value: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs']]):
+    def request_mirror_policy(self, value: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionRequestMirrorPolicyArrgs']]):
         pulumi.set(self, "request_mirror_policy", value)
 
     @property
     @pulumi.getter(name="retryPolicy")
-    def retry_policy(self) -> Optional[pulumi.Input['RegionUrlMapDefaultRouteActionRetryPolicyArgs']]:
+    def retry_policy(self) -> Optional[pulumi.Input['RegionUrlMapDefaultRouteActionRetryPolicyArrgs']]:
         """
         Specifies the retry policy associated with this route.
         Structure is documented below.
@@ -21041,12 +21041,12 @@ class RegionUrlMapDefaultRouteActionArgs:
         return pulumi.get(self, "retry_policy")
 
     @retry_policy.setter
-    def retry_policy(self, value: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionRetryPolicyArgs']]):
+    def retry_policy(self, value: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionRetryPolicyArrgs']]):
         pulumi.set(self, "retry_policy", value)
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input['RegionUrlMapDefaultRouteActionTimeoutArgs']]:
+    def timeout(self) -> Optional[pulumi.Input['RegionUrlMapDefaultRouteActionTimeoutArrgs']]:
         """
         Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as end-of-stream) up until the response has been processed. Timeout includes all retries.
         If not specified, this field uses the largest timeout among all backend services associated with the route.
@@ -21056,12 +21056,12 @@ class RegionUrlMapDefaultRouteActionArgs:
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionTimeoutArgs']]):
+    def timeout(self, value: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionTimeoutArrgs']]):
         pulumi.set(self, "timeout", value)
 
     @property
     @pulumi.getter(name="urlRewrite")
-    def url_rewrite(self) -> Optional[pulumi.Input['RegionUrlMapDefaultRouteActionUrlRewriteArgs']]:
+    def url_rewrite(self) -> Optional[pulumi.Input['RegionUrlMapDefaultRouteActionUrlRewriteArrgs']]:
         """
         The spec to modify the URL of the request, before forwarding the request to the matched service.
         urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers.
@@ -21071,12 +21071,12 @@ class RegionUrlMapDefaultRouteActionArgs:
         return pulumi.get(self, "url_rewrite")
 
     @url_rewrite.setter
-    def url_rewrite(self, value: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionUrlRewriteArgs']]):
+    def url_rewrite(self, value: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionUrlRewriteArrgs']]):
         pulumi.set(self, "url_rewrite", value)
 
     @property
     @pulumi.getter(name="weightedBackendServices")
-    def weighted_backend_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs']]]]:
+    def weighted_backend_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceArrgs']]]]:
         """
         A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number.
         After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
@@ -21085,12 +21085,12 @@ class RegionUrlMapDefaultRouteActionArgs:
         return pulumi.get(self, "weighted_backend_services")
 
     @weighted_backend_services.setter
-    def weighted_backend_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs']]]]):
+    def weighted_backend_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceArrgs']]]]):
         pulumi.set(self, "weighted_backend_services", value)
 
 
 @pulumi.input_type
-class RegionUrlMapDefaultRouteActionCorsPolicyArgs:
+calass RegionUrlMapDefaultRouteActionCorsPolicyArrgs:
     def __init__(__self__, *,
                  allow_credentials: Optional[pulumi.Input[bool]] = None,
                  allow_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -21235,14 +21235,14 @@ class RegionUrlMapDefaultRouteActionCorsPolicyArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapDefaultRouteActionFaultInjectionPolicyArgs:
+calass RegionUrlMapDefaultRouteActionFaultInjectionPolicyArrgs:
     def __init__(__self__, *,
-                 abort: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArgs']] = None,
-                 delay: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArgs']] = None):
+                 abort: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArrgs']] = None,
+                 delay: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArrgs']] = None):
         """
-        :param pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArgs'] abort: The specification for how client requests are aborted as part of fault injection.
+        :param pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArrgs'] abort: The specification for how client requests are aborted as part of fault injection.
                Structure is documented below.
-        :param pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArgs'] delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+        :param pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArrgs'] delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
                Structure is documented below.
         """
         if abort is not None:
@@ -21252,7 +21252,7 @@ class RegionUrlMapDefaultRouteActionFaultInjectionPolicyArgs:
 
     @property
     @pulumi.getter
-    def abort(self) -> Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArgs']]:
+    def abort(self) -> Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArrgs']]:
         """
         The specification for how client requests are aborted as part of fault injection.
         Structure is documented below.
@@ -21260,12 +21260,12 @@ class RegionUrlMapDefaultRouteActionFaultInjectionPolicyArgs:
         return pulumi.get(self, "abort")
 
     @abort.setter
-    def abort(self, value: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArgs']]):
+    def abort(self, value: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArrgs']]):
         pulumi.set(self, "abort", value)
 
     @property
     @pulumi.getter
-    def delay(self) -> Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArgs']]:
+    def delay(self) -> Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArrgs']]:
         """
         The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
         Structure is documented below.
@@ -21273,12 +21273,12 @@ class RegionUrlMapDefaultRouteActionFaultInjectionPolicyArgs:
         return pulumi.get(self, "delay")
 
     @delay.setter
-    def delay(self, value: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArgs']]):
+    def delay(self, value: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArrgs']]):
         pulumi.set(self, "delay", value)
 
 
 @pulumi.input_type
-class RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArgs:
+calass RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArrgs:
     def __init__(__self__, *,
                  http_status: Optional[pulumi.Input[int]] = None,
                  percentage: Optional[pulumi.Input[float]] = None):
@@ -21321,12 +21321,12 @@ class RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArgs:
+calass RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArrgs:
     def __init__(__self__, *,
-                 fixed_delay: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs']] = None,
+                 fixed_delay: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArrgs']] = None,
                  percentage: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs'] fixed_delay: Specifies the value of the fixed delay interval.
+        :param pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArrgs'] fixed_delay: Specifies the value of the fixed delay interval.
                Structure is documented below.
         :param pulumi.Input[float] percentage: The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
                The value must be between 0.0 and 100.0 inclusive.
@@ -21338,7 +21338,7 @@ class RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArgs:
 
     @property
     @pulumi.getter(name="fixedDelay")
-    def fixed_delay(self) -> Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs']]:
+    def fixed_delay(self) -> Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArrgs']]:
         """
         Specifies the value of the fixed delay interval.
         Structure is documented below.
@@ -21346,7 +21346,7 @@ class RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArgs:
         return pulumi.get(self, "fixed_delay")
 
     @fixed_delay.setter
-    def fixed_delay(self, value: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs']]):
+    def fixed_delay(self, value: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArrgs']]):
         pulumi.set(self, "fixed_delay", value)
 
     @property
@@ -21364,7 +21364,7 @@ class RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs:
+calass RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArrgs:
     def __init__(__self__, *,
                  nanos: Optional[pulumi.Input[int]] = None,
                  seconds: Optional[pulumi.Input[str]] = None):
@@ -21407,7 +21407,7 @@ class RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs:
+calass RegionUrlMapDefaultRouteActionRequestMirrorPolicyArrgs:
     def __init__(__self__, *,
                  backend_service: Optional[pulumi.Input[str]] = None):
         """
@@ -21434,14 +21434,14 @@ class RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapDefaultRouteActionRetryPolicyArgs:
+calass RegionUrlMapDefaultRouteActionRetryPolicyArrgs:
     def __init__(__self__, *,
                  num_retries: Optional[pulumi.Input[int]] = None,
-                 per_try_timeout: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs']] = None,
+                 per_try_timeout: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArrgs']] = None,
                  retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[int] num_retries: Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
-        :param pulumi.Input['RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs'] per_try_timeout: Specifies a non-zero timeout per retry attempt.
+        :param pulumi.Input['RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArrgs'] per_try_timeout: Specifies a non-zero timeout per retry attempt.
                If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
                will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
@@ -21479,7 +21479,7 @@ class RegionUrlMapDefaultRouteActionRetryPolicyArgs:
 
     @property
     @pulumi.getter(name="perTryTimeout")
-    def per_try_timeout(self) -> Optional[pulumi.Input['RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs']]:
+    def per_try_timeout(self) -> Optional[pulumi.Input['RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArrgs']]:
         """
         Specifies a non-zero timeout per retry attempt.
         If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
@@ -21489,7 +21489,7 @@ class RegionUrlMapDefaultRouteActionRetryPolicyArgs:
         return pulumi.get(self, "per_try_timeout")
 
     @per_try_timeout.setter
-    def per_try_timeout(self, value: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs']]):
+    def per_try_timeout(self, value: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArrgs']]):
         pulumi.set(self, "per_try_timeout", value)
 
     @property
@@ -21517,7 +21517,7 @@ class RegionUrlMapDefaultRouteActionRetryPolicyArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs:
+calass RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArrgs:
     def __init__(__self__, *,
                  nanos: Optional[pulumi.Input[int]] = None,
                  seconds: Optional[pulumi.Input[str]] = None):
@@ -21560,7 +21560,7 @@ class RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapDefaultRouteActionTimeoutArgs:
+calass RegionUrlMapDefaultRouteActionTimeoutArrgs:
     def __init__(__self__, *,
                  nanos: Optional[pulumi.Input[int]] = None,
                  seconds: Optional[pulumi.Input[str]] = None):
@@ -21599,7 +21599,7 @@ class RegionUrlMapDefaultRouteActionTimeoutArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapDefaultRouteActionUrlRewriteArgs:
+calass RegionUrlMapDefaultRouteActionUrlRewriteArrgs:
     def __init__(__self__, *,
                  host_rewrite: Optional[pulumi.Input[str]] = None,
                  path_prefix_rewrite: Optional[pulumi.Input[str]] = None):
@@ -21642,14 +21642,14 @@ class RegionUrlMapDefaultRouteActionUrlRewriteArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs:
+calass RegionUrlMapDefaultRouteActionWeightedBackendServiceArrgs:
     def __init__(__self__, *,
                  backend_service: Optional[pulumi.Input[str]] = None,
-                 header_action: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs']] = None,
+                 header_action: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArrgs']] = None,
                  weight: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] backend_service: The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
-        :param pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs'] header_action: Specifies changes to request and response headers that need to take effect for the selected backendService.
+        :param pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArrgs'] header_action: Specifies changes to request and response headers that need to take effect for the selected backendService.
                headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
                headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
                Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -21679,7 +21679,7 @@ class RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs:
 
     @property
     @pulumi.getter(name="headerAction")
-    def header_action(self) -> Optional[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs']]:
+    def header_action(self) -> Optional[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArrgs']]:
         """
         Specifies changes to request and response headers that need to take effect for the selected backendService.
         headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
@@ -21690,7 +21690,7 @@ class RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs:
         return pulumi.get(self, "header_action")
 
     @header_action.setter
-    def header_action(self, value: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs']]):
+    def header_action(self, value: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArrgs']]):
         pulumi.set(self, "header_action", value)
 
     @property
@@ -21709,17 +21709,17 @@ class RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
+calass RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArrgs:
     def __init__(__self__, *,
-                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]]] = None,
+                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]]] = None,
                  request_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]] = None,
+                 response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]]] = None,
                  response_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]] request_headers_to_adds: Headers to add to a matching request before forwarding the request to the backendService.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]] request_headers_to_adds: Headers to add to a matching request before forwarding the request to the backendService.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] request_headers_to_removes: A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]] response_headers_to_adds: Headers to add the response before sending the response back to the client.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]] response_headers_to_adds: Headers to add the response before sending the response back to the client.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] response_headers_to_removes: A list of header names for headers that need to be removed from the response before sending the response back to the client.
         """
@@ -21734,7 +21734,7 @@ class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
 
     @property
     @pulumi.getter(name="requestHeadersToAdds")
-    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]]]:
+    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]]]:
         """
         Headers to add to a matching request before forwarding the request to the backendService.
         Structure is documented below.
@@ -21742,7 +21742,7 @@ class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
         return pulumi.get(self, "request_headers_to_adds")
 
     @request_headers_to_adds.setter
-    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]]]):
+    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]]]):
         pulumi.set(self, "request_headers_to_adds", value)
 
     @property
@@ -21759,7 +21759,7 @@ class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
 
     @property
     @pulumi.getter(name="responseHeadersToAdds")
-    def response_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]]:
+    def response_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]]]:
         """
         Headers to add the response before sending the response back to the client.
         Structure is documented below.
@@ -21767,7 +21767,7 @@ class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
         return pulumi.get(self, "response_headers_to_adds")
 
     @response_headers_to_adds.setter
-    def response_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]]):
+    def response_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]]]):
         pulumi.set(self, "response_headers_to_adds", value)
 
     @property
@@ -21784,7 +21784,7 @@ class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs:
+calass RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs:
     def __init__(__self__, *,
                  header_name: Optional[pulumi.Input[str]] = None,
                  header_value: Optional[pulumi.Input[str]] = None,
@@ -21841,7 +21841,7 @@ class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHea
 
 
 @pulumi.input_type
-class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs:
+calass RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs:
     def __init__(__self__, *,
                  header_name: Optional[pulumi.Input[str]] = None,
                  header_value: Optional[pulumi.Input[str]] = None,
@@ -21898,7 +21898,7 @@ class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHe
 
 
 @pulumi.input_type
-class RegionUrlMapDefaultUrlRedirectArgs:
+calass RegionUrlMapDefaultUrlRedirectArrgs:
     def __init__(__self__, *,
                  strip_query: pulumi.Input[bool],
                  host_redirect: Optional[pulumi.Input[str]] = None,
@@ -22044,7 +22044,7 @@ class RegionUrlMapDefaultUrlRedirectArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapHostRuleArgs:
+calass RegionUrlMapHostRuleArrgs:
     def __init__(__self__, *,
                  hosts: pulumi.Input[Sequence[pulumi.Input[str]]],
                  path_matcher: pulumi.Input[str],
@@ -22107,32 +22107,32 @@ class RegionUrlMapHostRuleArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherArgs:
+calass RegionUrlMapPathMatcherArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  default_service: Optional[pulumi.Input[str]] = None,
-                 default_url_redirect: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultUrlRedirectArgs']] = None,
+                 default_url_redirect: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultUrlRedirectArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 path_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleArgs']]]] = None,
-                 route_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleArgs']]]] = None):
+                 path_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleArrgs']]]] = None,
+                 route_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleArrgs']]]] = None):
         """
         :param pulumi.Input[str] name: The name to which this PathMatcher is referred by the HostRule.
         :param pulumi.Input[str] default_service: A reference to a RegionBackendService resource. This will be used if
                none of the pathRules defined by this PathMatcher is matched by
                the URL's path portion.
-        :param pulumi.Input['RegionUrlMapPathMatcherDefaultUrlRedirectArgs'] default_url_redirect: When none of the specified hostRules match, the request is redirected to a URL specified
+        :param pulumi.Input['RegionUrlMapPathMatcherDefaultUrlRedirectArrgs'] default_url_redirect: When none of the specified hostRules match, the request is redirected to a URL specified
                by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
                defaultRouteAction must not be set.
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleArgs']]] path_rules: The list of path rules. Use this list instead of routeRules when routing based
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleArrgs']]] path_rules: The list of path rules. Use this list instead of routeRules when routing based
                on simple path matching is all that's required. The order by which path rules
                are specified does not matter. Matches are always done on the longest-path-first
                basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/*
                irrespective of the order in which those paths appear in this list. Within a
                given pathMatcher, only one of pathRules or routeRules must be set.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleArgs']]] route_rules: The list of ordered HTTP route rules. Use this list instead of pathRules when
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleArrgs']]] route_rules: The list of ordered HTTP route rules. Use this list instead of pathRules when
                advanced route matching and routing actions are desired. The order of specifying
                routeRules matters: the first rule that matches will cause its specified routing
                action to take effect. Within a given pathMatcher, only one of pathRules or
@@ -22180,7 +22180,7 @@ class RegionUrlMapPathMatcherArgs:
 
     @property
     @pulumi.getter(name="defaultUrlRedirect")
-    def default_url_redirect(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultUrlRedirectArgs']]:
+    def default_url_redirect(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultUrlRedirectArrgs']]:
         """
         When none of the specified hostRules match, the request is redirected to a URL specified
         by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
@@ -22190,7 +22190,7 @@ class RegionUrlMapPathMatcherArgs:
         return pulumi.get(self, "default_url_redirect")
 
     @default_url_redirect.setter
-    def default_url_redirect(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultUrlRedirectArgs']]):
+    def default_url_redirect(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultUrlRedirectArrgs']]):
         pulumi.set(self, "default_url_redirect", value)
 
     @property
@@ -22207,7 +22207,7 @@ class RegionUrlMapPathMatcherArgs:
 
     @property
     @pulumi.getter(name="pathRules")
-    def path_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleArgs']]]]:
+    def path_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleArrgs']]]]:
         """
         The list of path rules. Use this list instead of routeRules when routing based
         on simple path matching is all that's required. The order by which path rules
@@ -22220,12 +22220,12 @@ class RegionUrlMapPathMatcherArgs:
         return pulumi.get(self, "path_rules")
 
     @path_rules.setter
-    def path_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleArgs']]]]):
+    def path_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleArrgs']]]]):
         pulumi.set(self, "path_rules", value)
 
     @property
     @pulumi.getter(name="routeRules")
-    def route_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleArgs']]]]:
+    def route_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleArrgs']]]]:
         """
         The list of ordered HTTP route rules. Use this list instead of pathRules when
         advanced route matching and routing actions are desired. The order of specifying
@@ -22238,12 +22238,12 @@ class RegionUrlMapPathMatcherArgs:
         return pulumi.get(self, "route_rules")
 
     @route_rules.setter
-    def route_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleArgs']]]]):
+    def route_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleArrgs']]]]):
         pulumi.set(self, "route_rules", value)
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherDefaultUrlRedirectArgs:
+calass RegionUrlMapPathMatcherDefaultUrlRedirectArrgs:
     def __init__(__self__, *,
                  strip_query: pulumi.Input[bool],
                  host_redirect: Optional[pulumi.Input[str]] = None,
@@ -22389,18 +22389,18 @@ class RegionUrlMapPathMatcherDefaultUrlRedirectArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherPathRuleArgs:
+calass RegionUrlMapPathMatcherPathRuleArrgs:
     def __init__(__self__, *,
                  paths: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 route_action: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionArgs']] = None,
+                 route_action: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionArrgs']] = None,
                  service: Optional[pulumi.Input[str]] = None,
-                 url_redirect: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleUrlRedirectArgs']] = None):
+                 url_redirect: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleUrlRedirectArrgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: The list of path patterns to match. Each must start with / and the only place a
                \\* is allowed is at the end following a /. The string fed to the path matcher
                does not include any text after the first ? or #, and those chars are not
                allowed here.
-        :param pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionArgs'] route_action: In response to a matching path, the load balancer performs advanced routing
+        :param pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionArrgs'] route_action: In response to a matching path, the load balancer performs advanced routing
                actions like URL rewrites, header transformations, etc. prior to forwarding the
                request to the selected backend. If routeAction specifies any
                weightedBackendServices, service must not be set. Conversely if service is set,
@@ -22414,7 +22414,7 @@ class RegionUrlMapPathMatcherPathRuleArgs:
                contain any weightedBackendService s. Conversely, if routeAction specifies any
                weightedBackendServices, service must not be specified. Only one of urlRedirect,
                service or routeAction.weightedBackendService must be set.
-        :param pulumi.Input['RegionUrlMapPathMatcherPathRuleUrlRedirectArgs'] url_redirect: When a path pattern is matched, the request is redirected to a URL specified
+        :param pulumi.Input['RegionUrlMapPathMatcherPathRuleUrlRedirectArrgs'] url_redirect: When a path pattern is matched, the request is redirected to a URL specified
                by urlRedirect. If urlRedirect is specified, service or routeAction must not
                be set.
                Structure is documented below.
@@ -22444,7 +22444,7 @@ class RegionUrlMapPathMatcherPathRuleArgs:
 
     @property
     @pulumi.getter(name="routeAction")
-    def route_action(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionArgs']]:
+    def route_action(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionArrgs']]:
         """
         In response to a matching path, the load balancer performs advanced routing
         actions like URL rewrites, header transformations, etc. prior to forwarding the
@@ -22457,7 +22457,7 @@ class RegionUrlMapPathMatcherPathRuleArgs:
         return pulumi.get(self, "route_action")
 
     @route_action.setter
-    def route_action(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionArgs']]):
+    def route_action(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionArrgs']]):
         pulumi.set(self, "route_action", value)
 
     @property
@@ -22480,7 +22480,7 @@ class RegionUrlMapPathMatcherPathRuleArgs:
 
     @property
     @pulumi.getter(name="urlRedirect")
-    def url_redirect(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleUrlRedirectArgs']]:
+    def url_redirect(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleUrlRedirectArrgs']]:
         """
         When a path pattern is matched, the request is redirected to a URL specified
         by urlRedirect. If urlRedirect is specified, service or routeAction must not
@@ -22490,25 +22490,25 @@ class RegionUrlMapPathMatcherPathRuleArgs:
         return pulumi.get(self, "url_redirect")
 
     @url_redirect.setter
-    def url_redirect(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleUrlRedirectArgs']]):
+    def url_redirect(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleUrlRedirectArrgs']]):
         pulumi.set(self, "url_redirect", value)
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherPathRuleRouteActionArgs:
+calass RegionUrlMapPathMatcherPathRuleRouteActionArrgs:
     def __init__(__self__, *,
-                 cors_policy: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs']] = None,
-                 fault_injection_policy: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs']] = None,
-                 request_mirror_policy: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs']] = None,
-                 retry_policy: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs']] = None,
-                 timeout: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs']] = None,
-                 url_rewrite: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs']] = None,
-                 weighted_backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs']]]] = None):
+                 cors_policy: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArrgs']] = None,
+                 fault_injection_policy: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArrgs']] = None,
+                 request_mirror_policy: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArrgs']] = None,
+                 retry_policy: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArrgs']] = None,
+                 timeout: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArrgs']] = None,
+                 url_rewrite: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArrgs']] = None,
+                 weighted_backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrgs']]]] = None):
         """
-        :param pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs'] cors_policy: The specification for allowing client side cross-origin requests. Please see W3C
+        :param pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArrgs'] cors_policy: The specification for allowing client side cross-origin requests. Please see W3C
                Recommendation for Cross Origin Resource Sharing
                Structure is documented below.
-        :param pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the
+        :param pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArrgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the
                resiliency of clients to backend service failure. As part of fault injection,
                when clients send requests to a backend service, delays can be introduced by
                Loadbalancer on a percentage of requests before sending those request to the
@@ -22516,22 +22516,22 @@ class RegionUrlMapPathMatcherPathRuleRouteActionArgs:
                Loadbalancer for a percentage of requests. timeout and retry_policy will be
                ignored by clients that are configured with a fault_injection_policy.
                Structure is documented below.
-        :param pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs'] request_mirror_policy: Specifies the policy on how requests intended for the route's backends are
+        :param pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArrgs'] request_mirror_policy: Specifies the policy on how requests intended for the route's backends are
                shadowed to a separate mirrored backend service. Loadbalancer does not wait for
                responses from the shadow service. Prior to sending traffic to the shadow
                service, the host / authority header is suffixed with -shadow.
                Structure is documented below.
-        :param pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs'] retry_policy: Specifies the retry policy associated with this route.
+        :param pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArrgs'] retry_policy: Specifies the retry policy associated with this route.
                Structure is documented below.
-        :param pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs'] timeout: Specifies the timeout for the selected route. Timeout is computed from the time
+        :param pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArrgs'] timeout: Specifies the timeout for the selected route. Timeout is computed from the time
                the request is has been fully processed (i.e. end-of-stream) up until the
                response has been completely processed. Timeout includes all retries. If not
                specified, the default value is 15 seconds.
                Structure is documented below.
-        :param pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs'] url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to
+        :param pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArrgs'] url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to
                the matched service
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs']]] weighted_backend_services: A list of weighted backend services to send traffic to when a route match
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrgs']]] weighted_backend_services: A list of weighted backend services to send traffic to when a route match
                occurs. The weights determine the fraction of traffic that flows to their
                corresponding backend service. If all traffic needs to go to a single backend
                service, there must be one  weightedBackendService with weight set to a non 0
@@ -22558,7 +22558,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionArgs:
 
     @property
     @pulumi.getter(name="corsPolicy")
-    def cors_policy(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs']]:
+    def cors_policy(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArrgs']]:
         """
         The specification for allowing client side cross-origin requests. Please see W3C
         Recommendation for Cross Origin Resource Sharing
@@ -22567,12 +22567,12 @@ class RegionUrlMapPathMatcherPathRuleRouteActionArgs:
         return pulumi.get(self, "cors_policy")
 
     @cors_policy.setter
-    def cors_policy(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs']]):
+    def cors_policy(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArrgs']]):
         pulumi.set(self, "cors_policy", value)
 
     @property
     @pulumi.getter(name="faultInjectionPolicy")
-    def fault_injection_policy(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs']]:
+    def fault_injection_policy(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArrgs']]:
         """
         The specification for fault injection introduced into traffic to test the
         resiliency of clients to backend service failure. As part of fault injection,
@@ -22586,12 +22586,12 @@ class RegionUrlMapPathMatcherPathRuleRouteActionArgs:
         return pulumi.get(self, "fault_injection_policy")
 
     @fault_injection_policy.setter
-    def fault_injection_policy(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs']]):
+    def fault_injection_policy(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArrgs']]):
         pulumi.set(self, "fault_injection_policy", value)
 
     @property
     @pulumi.getter(name="requestMirrorPolicy")
-    def request_mirror_policy(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs']]:
+    def request_mirror_policy(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArrgs']]:
         """
         Specifies the policy on how requests intended for the route's backends are
         shadowed to a separate mirrored backend service. Loadbalancer does not wait for
@@ -22602,12 +22602,12 @@ class RegionUrlMapPathMatcherPathRuleRouteActionArgs:
         return pulumi.get(self, "request_mirror_policy")
 
     @request_mirror_policy.setter
-    def request_mirror_policy(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs']]):
+    def request_mirror_policy(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArrgs']]):
         pulumi.set(self, "request_mirror_policy", value)
 
     @property
     @pulumi.getter(name="retryPolicy")
-    def retry_policy(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs']]:
+    def retry_policy(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArrgs']]:
         """
         Specifies the retry policy associated with this route.
         Structure is documented below.
@@ -22615,12 +22615,12 @@ class RegionUrlMapPathMatcherPathRuleRouteActionArgs:
         return pulumi.get(self, "retry_policy")
 
     @retry_policy.setter
-    def retry_policy(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs']]):
+    def retry_policy(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArrgs']]):
         pulumi.set(self, "retry_policy", value)
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs']]:
+    def timeout(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArrgs']]:
         """
         Specifies the timeout for the selected route. Timeout is computed from the time
         the request is has been fully processed (i.e. end-of-stream) up until the
@@ -22631,12 +22631,12 @@ class RegionUrlMapPathMatcherPathRuleRouteActionArgs:
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs']]):
+    def timeout(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArrgs']]):
         pulumi.set(self, "timeout", value)
 
     @property
     @pulumi.getter(name="urlRewrite")
-    def url_rewrite(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs']]:
+    def url_rewrite(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArrgs']]:
         """
         The spec to modify the URL of the request, prior to forwarding the request to
         the matched service
@@ -22645,12 +22645,12 @@ class RegionUrlMapPathMatcherPathRuleRouteActionArgs:
         return pulumi.get(self, "url_rewrite")
 
     @url_rewrite.setter
-    def url_rewrite(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs']]):
+    def url_rewrite(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArrgs']]):
         pulumi.set(self, "url_rewrite", value)
 
     @property
     @pulumi.getter(name="weightedBackendServices")
-    def weighted_backend_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs']]]]:
+    def weighted_backend_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrgs']]]]:
         """
         A list of weighted backend services to send traffic to when a route match
         occurs. The weights determine the fraction of traffic that flows to their
@@ -22665,12 +22665,12 @@ class RegionUrlMapPathMatcherPathRuleRouteActionArgs:
         return pulumi.get(self, "weighted_backend_services")
 
     @weighted_backend_services.setter
-    def weighted_backend_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs']]]]):
+    def weighted_backend_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrgs']]]]):
         pulumi.set(self, "weighted_backend_services", value)
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs:
+calass RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArrgs:
     def __init__(__self__, *,
                  disabled: pulumi.Input[bool],
                  allow_credentials: Optional[pulumi.Input[bool]] = None,
@@ -22814,14 +22814,14 @@ class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs:
+calass RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArrgs:
     def __init__(__self__, *,
-                 abort: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs']] = None,
-                 delay: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs']] = None):
+                 abort: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArrgs']] = None,
+                 delay: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArrgs']] = None):
         """
-        :param pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs'] abort: The specification for how client requests are aborted as part of fault injection.
+        :param pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArrgs'] abort: The specification for how client requests are aborted as part of fault injection.
                Structure is documented below.
-        :param pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs'] delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+        :param pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArrgs'] delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
                Structure is documented below.
         """
         if abort is not None:
@@ -22831,7 +22831,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs:
 
     @property
     @pulumi.getter
-    def abort(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs']]:
+    def abort(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArrgs']]:
         """
         The specification for how client requests are aborted as part of fault injection.
         Structure is documented below.
@@ -22839,12 +22839,12 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs:
         return pulumi.get(self, "abort")
 
     @abort.setter
-    def abort(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs']]):
+    def abort(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArrgs']]):
         pulumi.set(self, "abort", value)
 
     @property
     @pulumi.getter
-    def delay(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs']]:
+    def delay(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArrgs']]:
         """
         The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
         Structure is documented below.
@@ -22852,12 +22852,12 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs:
         return pulumi.get(self, "delay")
 
     @delay.setter
-    def delay(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs']]):
+    def delay(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArrgs']]):
         pulumi.set(self, "delay", value)
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs:
+calass RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArrgs:
     def __init__(__self__, *,
                  http_status: pulumi.Input[int],
                  percentage: pulumi.Input[float]):
@@ -22898,12 +22898,12 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs:
+calass RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArrgs:
     def __init__(__self__, *,
-                 fixed_delay: pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs'],
+                 fixed_delay: pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs'],
                  percentage: pulumi.Input[float]):
         """
-        :param pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs'] fixed_delay: Specifies the value of the fixed delay interval.
+        :param pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs'] fixed_delay: Specifies the value of the fixed delay interval.
                Structure is documented below.
         :param pulumi.Input[float] percentage: The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
                The value must be between 0.0 and 100.0 inclusive.
@@ -22913,7 +22913,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs:
 
     @property
     @pulumi.getter(name="fixedDelay")
-    def fixed_delay(self) -> pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs']:
+    def fixed_delay(self) -> pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs']:
         """
         Specifies the value of the fixed delay interval.
         Structure is documented below.
@@ -22921,7 +22921,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs:
         return pulumi.get(self, "fixed_delay")
 
     @fixed_delay.setter
-    def fixed_delay(self, value: pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs']):
+    def fixed_delay(self, value: pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs']):
         pulumi.set(self, "fixed_delay", value)
 
     @property
@@ -22939,7 +22939,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs:
+calass RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[str],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -22981,7 +22981,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDe
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs:
+calass RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArrgs:
     def __init__(__self__, *,
                  backend_service: pulumi.Input[str]):
         """
@@ -23007,14 +23007,14 @@ class RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs:
+calass RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArrgs:
     def __init__(__self__, *,
                  num_retries: Optional[pulumi.Input[int]] = None,
-                 per_try_timeout: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs']] = None,
+                 per_try_timeout: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArrgs']] = None,
                  retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[int] num_retries: Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
-        :param pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs'] per_try_timeout: Specifies a non-zero timeout per retry attempt.
+        :param pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArrgs'] per_try_timeout: Specifies a non-zero timeout per retry attempt.
                If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
                will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
@@ -23052,7 +23052,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs:
 
     @property
     @pulumi.getter(name="perTryTimeout")
-    def per_try_timeout(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs']]:
+    def per_try_timeout(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArrgs']]:
         """
         Specifies a non-zero timeout per retry attempt.
         If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
@@ -23062,7 +23062,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs:
         return pulumi.get(self, "per_try_timeout")
 
     @per_try_timeout.setter
-    def per_try_timeout(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs']]):
+    def per_try_timeout(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArrgs']]):
         pulumi.set(self, "per_try_timeout", value)
 
     @property
@@ -23090,7 +23090,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs:
+calass RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[str],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -23132,7 +23132,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs:
+calass RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[str],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -23170,7 +23170,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs:
+calass RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArrgs:
     def __init__(__self__, *,
                  host_rewrite: Optional[pulumi.Input[str]] = None,
                  path_prefix_rewrite: Optional[pulumi.Input[str]] = None):
@@ -23213,17 +23213,17 @@ class RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs:
+calass RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrgs:
     def __init__(__self__, *,
                  backend_service: pulumi.Input[str],
                  weight: pulumi.Input[int],
-                 header_action: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs']] = None):
+                 header_action: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArrgs']] = None):
         """
         :param pulumi.Input[str] backend_service: The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
         :param pulumi.Input[int] weight: Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) .
                The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service's session affinity policy.
                The value must be from 0 to 1000.
-        :param pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs'] header_action: Specifies changes to request and response headers that need to take effect for the selected backendService.
+        :param pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArrgs'] header_action: Specifies changes to request and response headers that need to take effect for the selected backendService.
                headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
                headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
                Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -23262,7 +23262,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs:
 
     @property
     @pulumi.getter(name="headerAction")
-    def header_action(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs']]:
+    def header_action(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArrgs']]:
         """
         Specifies changes to request and response headers that need to take effect for the selected backendService.
         headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
@@ -23273,22 +23273,22 @@ class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs:
         return pulumi.get(self, "header_action")
 
     @header_action.setter
-    def header_action(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs']]):
+    def header_action(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArrgs']]):
         pulumi.set(self, "header_action", value)
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs:
+calass RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArrgs:
     def __init__(__self__, *,
-                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]]] = None,
+                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]]] = None,
                  request_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]] = None,
+                 response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]]] = None,
                  response_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]] request_headers_to_adds: Headers to add to a matching request before forwarding the request to the backendService.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]] request_headers_to_adds: Headers to add to a matching request before forwarding the request to the backendService.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] request_headers_to_removes: A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]] response_headers_to_adds: Headers to add the response before sending the response back to the client.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]] response_headers_to_adds: Headers to add the response before sending the response back to the client.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] response_headers_to_removes: A list of header names for headers that need to be removed from the response before sending the response back to the client.
         """
@@ -23303,7 +23303,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActi
 
     @property
     @pulumi.getter(name="requestHeadersToAdds")
-    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]]]:
+    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]]]:
         """
         Headers to add to a matching request before forwarding the request to the backendService.
         Structure is documented below.
@@ -23311,7 +23311,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActi
         return pulumi.get(self, "request_headers_to_adds")
 
     @request_headers_to_adds.setter
-    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]]]):
+    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]]]):
         pulumi.set(self, "request_headers_to_adds", value)
 
     @property
@@ -23328,7 +23328,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActi
 
     @property
     @pulumi.getter(name="responseHeadersToAdds")
-    def response_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]]:
+    def response_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]]]:
         """
         Headers to add the response before sending the response back to the client.
         Structure is documented below.
@@ -23336,7 +23336,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActi
         return pulumi.get(self, "response_headers_to_adds")
 
     @response_headers_to_adds.setter
-    def response_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]]):
+    def response_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]]]):
         pulumi.set(self, "response_headers_to_adds", value)
 
     @property
@@ -23353,7 +23353,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActi
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs:
+calass RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str],
                  header_value: pulumi.Input[str],
@@ -23407,7 +23407,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActi
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs:
+calass RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str],
                  header_value: pulumi.Input[str],
@@ -23461,7 +23461,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActi
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherPathRuleUrlRedirectArgs:
+calass RegionUrlMapPathMatcherPathRuleUrlRedirectArrgs:
     def __init__(__self__, *,
                  strip_query: pulumi.Input[bool],
                  host_redirect: Optional[pulumi.Input[str]] = None,
@@ -23613,14 +23613,14 @@ class RegionUrlMapPathMatcherPathRuleUrlRedirectArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherRouteRuleArgs:
+calass RegionUrlMapPathMatcherRouteRuleArrgs:
     def __init__(__self__, *,
                  priority: pulumi.Input[int],
-                 header_action: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionArgs']] = None,
-                 match_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleArgs']]]] = None,
-                 route_action: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionArgs']] = None,
+                 header_action: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionArrgs']] = None,
+                 match_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleArrgs']]]] = None,
+                 route_action: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionArrgs']] = None,
                  service: Optional[pulumi.Input[str]] = None,
-                 url_redirect: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs']] = None):
+                 url_redirect: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleUrlRedirectArrgs']] = None):
         """
         :param pulumi.Input[int] priority: For routeRules within a given pathMatcher, priority determines the order
                in which load balancer will interpret routeRules. RouteRules are evaluated
@@ -23635,14 +23635,14 @@ class RegionUrlMapPathMatcherRouteRuleArgs:
                1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which
                you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the
                future without any impact on existing rules.
-        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionArgs'] header_action: Specifies changes to request and response headers that need to take effect for
+        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionArrgs'] header_action: Specifies changes to request and response headers that need to take effect for
                the selected backendService. The headerAction specified here are applied before
                the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
                outeAction.weightedBackendService.backendServiceWeightAction[].headerAction
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleArgs']]] match_rules: The rules for determining a match.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleArrgs']]] match_rules: The rules for determining a match.
                Structure is documented below.
-        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionArgs'] route_action: In response to a matching matchRule, the load balancer performs advanced routing
+        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionArrgs'] route_action: In response to a matching matchRule, the load balancer performs advanced routing
                actions like URL rewrites, header transformations, etc. prior to forwarding the
                request to the selected backend. If  routeAction specifies any
                weightedBackendServices, service must not be set. Conversely if service is set,
@@ -23656,7 +23656,7 @@ class RegionUrlMapPathMatcherRouteRuleArgs:
                contain any weightedBackendService s. Conversely, if routeAction specifies any
                weightedBackendServices, service must not be specified. Only one of urlRedirect,
                service or routeAction.weightedBackendService must be set.
-        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs'] url_redirect: When this rule is matched, the request is redirected to a URL specified by
+        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleUrlRedirectArrgs'] url_redirect: When this rule is matched, the request is redirected to a URL specified by
                urlRedirect. If urlRedirect is specified, service or routeAction must not be
                set.
                Structure is documented below.
@@ -23699,7 +23699,7 @@ class RegionUrlMapPathMatcherRouteRuleArgs:
 
     @property
     @pulumi.getter(name="headerAction")
-    def header_action(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionArgs']]:
+    def header_action(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionArrgs']]:
         """
         Specifies changes to request and response headers that need to take effect for
         the selected backendService. The headerAction specified here are applied before
@@ -23710,12 +23710,12 @@ class RegionUrlMapPathMatcherRouteRuleArgs:
         return pulumi.get(self, "header_action")
 
     @header_action.setter
-    def header_action(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionArgs']]):
+    def header_action(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionArrgs']]):
         pulumi.set(self, "header_action", value)
 
     @property
     @pulumi.getter(name="matchRules")
-    def match_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleArgs']]]]:
+    def match_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleArrgs']]]]:
         """
         The rules for determining a match.
         Structure is documented below.
@@ -23723,12 +23723,12 @@ class RegionUrlMapPathMatcherRouteRuleArgs:
         return pulumi.get(self, "match_rules")
 
     @match_rules.setter
-    def match_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleArgs']]]]):
+    def match_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleArrgs']]]]):
         pulumi.set(self, "match_rules", value)
 
     @property
     @pulumi.getter(name="routeAction")
-    def route_action(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionArgs']]:
+    def route_action(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionArrgs']]:
         """
         In response to a matching matchRule, the load balancer performs advanced routing
         actions like URL rewrites, header transformations, etc. prior to forwarding the
@@ -23741,7 +23741,7 @@ class RegionUrlMapPathMatcherRouteRuleArgs:
         return pulumi.get(self, "route_action")
 
     @route_action.setter
-    def route_action(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionArgs']]):
+    def route_action(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionArrgs']]):
         pulumi.set(self, "route_action", value)
 
     @property
@@ -23764,7 +23764,7 @@ class RegionUrlMapPathMatcherRouteRuleArgs:
 
     @property
     @pulumi.getter(name="urlRedirect")
-    def url_redirect(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs']]:
+    def url_redirect(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleUrlRedirectArrgs']]:
         """
         When this rule is matched, the request is redirected to a URL specified by
         urlRedirect. If urlRedirect is specified, service or routeAction must not be
@@ -23774,22 +23774,22 @@ class RegionUrlMapPathMatcherRouteRuleArgs:
         return pulumi.get(self, "url_redirect")
 
     @url_redirect.setter
-    def url_redirect(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs']]):
+    def url_redirect(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleUrlRedirectArrgs']]):
         pulumi.set(self, "url_redirect", value)
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherRouteRuleHeaderActionArgs:
+calass RegionUrlMapPathMatcherRouteRuleHeaderActionArrgs:
     def __init__(__self__, *,
-                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs']]]] = None,
+                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrgs']]]] = None,
                  request_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs']]]] = None,
+                 response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrgs']]]] = None,
                  response_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs']]] request_headers_to_adds: Headers to add to a matching request before forwarding the request to the backendService.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrgs']]] request_headers_to_adds: Headers to add to a matching request before forwarding the request to the backendService.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] request_headers_to_removes: A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs']]] response_headers_to_adds: Headers to add the response before sending the response back to the client.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrgs']]] response_headers_to_adds: Headers to add the response before sending the response back to the client.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] response_headers_to_removes: A list of header names for headers that need to be removed from the response before sending the response back to the client.
         """
@@ -23804,7 +23804,7 @@ class RegionUrlMapPathMatcherRouteRuleHeaderActionArgs:
 
     @property
     @pulumi.getter(name="requestHeadersToAdds")
-    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs']]]]:
+    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrgs']]]]:
         """
         Headers to add to a matching request before forwarding the request to the backendService.
         Structure is documented below.
@@ -23812,7 +23812,7 @@ class RegionUrlMapPathMatcherRouteRuleHeaderActionArgs:
         return pulumi.get(self, "request_headers_to_adds")
 
     @request_headers_to_adds.setter
-    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs']]]]):
+    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrgs']]]]):
         pulumi.set(self, "request_headers_to_adds", value)
 
     @property
@@ -23829,7 +23829,7 @@ class RegionUrlMapPathMatcherRouteRuleHeaderActionArgs:
 
     @property
     @pulumi.getter(name="responseHeadersToAdds")
-    def response_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs']]]]:
+    def response_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrgs']]]]:
         """
         Headers to add the response before sending the response back to the client.
         Structure is documented below.
@@ -23837,7 +23837,7 @@ class RegionUrlMapPathMatcherRouteRuleHeaderActionArgs:
         return pulumi.get(self, "response_headers_to_adds")
 
     @response_headers_to_adds.setter
-    def response_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs']]]]):
+    def response_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrgs']]]]):
         pulumi.set(self, "response_headers_to_adds", value)
 
     @property
@@ -23854,7 +23854,7 @@ class RegionUrlMapPathMatcherRouteRuleHeaderActionArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs:
+calass RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str],
                  header_value: pulumi.Input[str],
@@ -23908,7 +23908,7 @@ class RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs:
+calass RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str],
                  header_value: pulumi.Input[str],
@@ -23962,14 +23962,14 @@ class RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherRouteRuleMatchRuleArgs:
+calass RegionUrlMapPathMatcherRouteRuleMatchRuleArrgs:
     def __init__(__self__, *,
                  full_path_match: Optional[pulumi.Input[str]] = None,
-                 header_matches: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs']]]] = None,
+                 header_matches: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArrgs']]]] = None,
                  ignore_case: Optional[pulumi.Input[bool]] = None,
-                 metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs']]]] = None,
+                 metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArrgs']]]] = None,
                  prefix_match: Optional[pulumi.Input[str]] = None,
-                 query_parameter_matches: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs']]]] = None,
+                 query_parameter_matches: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrgs']]]] = None,
                  regex_match: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] full_path_match: For satisfying the matchRule condition, the path of the request must exactly
@@ -23977,12 +23977,12 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleArgs:
                and anchor that may be part of the original URL. FullPathMatch must be between 1
                and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
                be specified.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs']]] header_matches: Specifies a list of header match criteria, all of which must match corresponding
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArrgs']]] header_matches: Specifies a list of header match criteria, all of which must match corresponding
                headers in the request.
                Structure is documented below.
         :param pulumi.Input[bool] ignore_case: Specifies that prefixMatch and fullPathMatch matches are case sensitive.
                Defaults to false.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs']]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing configuration to
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArrgs']]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing configuration to
                a limited set xDS compliant clients. In their xDS requests to Loadbalancer, xDS
                clients present node metadata. If a match takes place, the relevant routing
                configuration is made available to those proxies. For each metadataFilter in
@@ -23998,7 +23998,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleArgs:
                specified prefixMatch. prefixMatch must begin with a /. The value must be
                between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or
                regexMatch must be specified.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs']]] query_parameter_matches: Specifies a list of query parameter match criteria, all of which must match
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrgs']]] query_parameter_matches: Specifies a list of query parameter match criteria, all of which must match
                corresponding query parameters in the request.
                Structure is documented below.
         :param pulumi.Input[str] regex_match: For satisfying the matchRule condition, the path of the request must satisfy the
@@ -24040,7 +24040,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleArgs:
 
     @property
     @pulumi.getter(name="headerMatches")
-    def header_matches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs']]]]:
+    def header_matches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArrgs']]]]:
         """
         Specifies a list of header match criteria, all of which must match corresponding
         headers in the request.
@@ -24049,7 +24049,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleArgs:
         return pulumi.get(self, "header_matches")
 
     @header_matches.setter
-    def header_matches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs']]]]):
+    def header_matches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArrgs']]]]):
         pulumi.set(self, "header_matches", value)
 
     @property
@@ -24067,7 +24067,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleArgs:
 
     @property
     @pulumi.getter(name="metadataFilters")
-    def metadata_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs']]]]:
+    def metadata_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArrgs']]]]:
         """
         Opaque filter criteria used by Loadbalancer to restrict routing configuration to
         a limited set xDS compliant clients. In their xDS requests to Loadbalancer, xDS
@@ -24085,7 +24085,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleArgs:
         return pulumi.get(self, "metadata_filters")
 
     @metadata_filters.setter
-    def metadata_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs']]]]):
+    def metadata_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArrgs']]]]):
         pulumi.set(self, "metadata_filters", value)
 
     @property
@@ -24105,7 +24105,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleArgs:
 
     @property
     @pulumi.getter(name="queryParameterMatches")
-    def query_parameter_matches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs']]]]:
+    def query_parameter_matches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrgs']]]]:
         """
         Specifies a list of query parameter match criteria, all of which must match
         corresponding query parameters in the request.
@@ -24114,7 +24114,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleArgs:
         return pulumi.get(self, "query_parameter_matches")
 
     @query_parameter_matches.setter
-    def query_parameter_matches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs']]]]):
+    def query_parameter_matches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrgs']]]]):
         pulumi.set(self, "query_parameter_matches", value)
 
     @property
@@ -24135,14 +24135,14 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
+calass RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str],
                  exact_match: Optional[pulumi.Input[str]] = None,
                  invert_match: Optional[pulumi.Input[bool]] = None,
                  prefix_match: Optional[pulumi.Input[str]] = None,
                  present_match: Optional[pulumi.Input[bool]] = None,
-                 range_match: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs']] = None,
+                 range_match: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArrgs']] = None,
                  regex_match: Optional[pulumi.Input[str]] = None,
                  suffix_match: Optional[pulumi.Input[str]] = None):
         """
@@ -24160,7 +24160,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
         :param pulumi.Input[bool] present_match: A header with the contents of headerName must exist. The match takes place
                whether or not the request's header has a value or not. Only one of exactMatch,
                prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
-        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs'] range_match: The header value must be an integer and its value must be in the range specified
+        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArrgs'] range_match: The header value must be an integer and its value must be in the range specified
                in rangeMatch. If the header does not contain an integer, number or is empty,
                the match fails. For example for a range [-5, 0]
                * -3 will match
@@ -24268,7 +24268,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
 
     @property
     @pulumi.getter(name="rangeMatch")
-    def range_match(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs']]:
+    def range_match(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArrgs']]:
         """
         The header value must be an integer and its value must be in the range specified
         in rangeMatch. If the header does not contain an integer, number or is empty,
@@ -24284,7 +24284,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
         return pulumi.get(self, "range_match")
 
     @range_match.setter
-    def range_match(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs']]):
+    def range_match(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArrgs']]):
         pulumi.set(self, "range_match", value)
 
     @property
@@ -24321,7 +24321,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs:
+calass RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArrgs:
     def __init__(__self__, *,
                  range_end: pulumi.Input[int],
                  range_start: pulumi.Input[int]):
@@ -24358,12 +24358,12 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs:
+calass RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArrgs:
     def __init__(__self__, *,
-                 filter_labels: pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs']]],
+                 filter_labels: pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrgs']]],
                  filter_match_criteria: pulumi.Input[str]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs']]] filter_labels: The list of label value pairs that must match labels in the provided metadata
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrgs']]] filter_labels: The list of label value pairs that must match labels in the provided metadata
                based on filterMatchCriteria  This list must not be empty and can have at the
                most 64 entries.
                Structure is documented below.
@@ -24380,7 +24380,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs:
 
     @property
     @pulumi.getter(name="filterLabels")
-    def filter_labels(self) -> pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs']]]:
+    def filter_labels(self) -> pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrgs']]]:
         """
         The list of label value pairs that must match labels in the provided metadata
         based on filterMatchCriteria  This list must not be empty and can have at the
@@ -24390,7 +24390,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs:
         return pulumi.get(self, "filter_labels")
 
     @filter_labels.setter
-    def filter_labels(self, value: pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs']]]):
+    def filter_labels(self, value: pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrgs']]]):
         pulumi.set(self, "filter_labels", value)
 
     @property
@@ -24413,7 +24413,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs:
+calass RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  value: pulumi.Input[str]):
@@ -24454,7 +24454,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs:
+calass RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  exact_match: Optional[pulumi.Input[str]] = None,
@@ -24540,20 +24540,20 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionArgs:
+calass RegionUrlMapPathMatcherRouteRuleRouteActionArrgs:
     def __init__(__self__, *,
-                 cors_policy: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArgs']] = None,
-                 fault_injection_policy: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs']] = None,
-                 request_mirror_policy: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs']] = None,
-                 retry_policy: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgs']] = None,
-                 timeout: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArgs']] = None,
-                 url_rewrite: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs']] = None,
-                 weighted_backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs']]]] = None):
+                 cors_policy: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArrgs']] = None,
+                 fault_injection_policy: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArrgs']] = None,
+                 request_mirror_policy: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArrgs']] = None,
+                 retry_policy: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArrgs']] = None,
+                 timeout: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArrgs']] = None,
+                 url_rewrite: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArrgs']] = None,
+                 weighted_backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrgs']]]] = None):
         """
-        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArgs'] cors_policy: The specification for allowing client side cross-origin requests. Please see W3C
+        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArrgs'] cors_policy: The specification for allowing client side cross-origin requests. Please see W3C
                Recommendation for Cross Origin Resource Sharing
                Structure is documented below.
-        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the
+        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArrgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the
                resiliency of clients to backend service failure. As part of fault injection,
                when clients send requests to a backend service, delays can be introduced by
                Loadbalancer on a percentage of requests before sending those request to the
@@ -24561,22 +24561,22 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionArgs:
                Loadbalancer for a percentage of requests. timeout and retry_policy will be
                ignored by clients that are configured with a fault_injection_policy.
                Structure is documented below.
-        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs'] request_mirror_policy: Specifies the policy on how requests intended for the route's backends are
+        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArrgs'] request_mirror_policy: Specifies the policy on how requests intended for the route's backends are
                shadowed to a separate mirrored backend service. Loadbalancer does not wait for
                responses from the shadow service. Prior to sending traffic to the shadow
                service, the host / authority header is suffixed with -shadow.
                Structure is documented below.
-        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgs'] retry_policy: Specifies the retry policy associated with this route.
+        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArrgs'] retry_policy: Specifies the retry policy associated with this route.
                Structure is documented below.
-        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArgs'] timeout: Specifies the timeout for the selected route. Timeout is computed from the time
+        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArrgs'] timeout: Specifies the timeout for the selected route. Timeout is computed from the time
                the request is has been fully processed (i.e. end-of-stream) up until the
                response has been completely processed. Timeout includes all retries. If not
                specified, the default value is 15 seconds.
                Structure is documented below.
-        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs'] url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to
+        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArrgs'] url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to
                the matched service
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs']]] weighted_backend_services: A list of weighted backend services to send traffic to when a route match
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrgs']]] weighted_backend_services: A list of weighted backend services to send traffic to when a route match
                occurs. The weights determine the fraction of traffic that flows to their
                corresponding backend service. If all traffic needs to go to a single backend
                service, there must be one  weightedBackendService with weight set to a non 0
@@ -24603,7 +24603,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionArgs:
 
     @property
     @pulumi.getter(name="corsPolicy")
-    def cors_policy(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArgs']]:
+    def cors_policy(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArrgs']]:
         """
         The specification for allowing client side cross-origin requests. Please see W3C
         Recommendation for Cross Origin Resource Sharing
@@ -24612,12 +24612,12 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionArgs:
         return pulumi.get(self, "cors_policy")
 
     @cors_policy.setter
-    def cors_policy(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArgs']]):
+    def cors_policy(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArrgs']]):
         pulumi.set(self, "cors_policy", value)
 
     @property
     @pulumi.getter(name="faultInjectionPolicy")
-    def fault_injection_policy(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs']]:
+    def fault_injection_policy(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArrgs']]:
         """
         The specification for fault injection introduced into traffic to test the
         resiliency of clients to backend service failure. As part of fault injection,
@@ -24631,12 +24631,12 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionArgs:
         return pulumi.get(self, "fault_injection_policy")
 
     @fault_injection_policy.setter
-    def fault_injection_policy(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs']]):
+    def fault_injection_policy(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArrgs']]):
         pulumi.set(self, "fault_injection_policy", value)
 
     @property
     @pulumi.getter(name="requestMirrorPolicy")
-    def request_mirror_policy(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs']]:
+    def request_mirror_policy(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArrgs']]:
         """
         Specifies the policy on how requests intended for the route's backends are
         shadowed to a separate mirrored backend service. Loadbalancer does not wait for
@@ -24647,12 +24647,12 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionArgs:
         return pulumi.get(self, "request_mirror_policy")
 
     @request_mirror_policy.setter
-    def request_mirror_policy(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs']]):
+    def request_mirror_policy(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArrgs']]):
         pulumi.set(self, "request_mirror_policy", value)
 
     @property
     @pulumi.getter(name="retryPolicy")
-    def retry_policy(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgs']]:
+    def retry_policy(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArrgs']]:
         """
         Specifies the retry policy associated with this route.
         Structure is documented below.
@@ -24660,12 +24660,12 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionArgs:
         return pulumi.get(self, "retry_policy")
 
     @retry_policy.setter
-    def retry_policy(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgs']]):
+    def retry_policy(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArrgs']]):
         pulumi.set(self, "retry_policy", value)
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArgs']]:
+    def timeout(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArrgs']]:
         """
         Specifies the timeout for the selected route. Timeout is computed from the time
         the request is has been fully processed (i.e. end-of-stream) up until the
@@ -24676,12 +24676,12 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionArgs:
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArgs']]):
+    def timeout(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArrgs']]):
         pulumi.set(self, "timeout", value)
 
     @property
     @pulumi.getter(name="urlRewrite")
-    def url_rewrite(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs']]:
+    def url_rewrite(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArrgs']]:
         """
         The spec to modify the URL of the request, prior to forwarding the request to
         the matched service
@@ -24690,12 +24690,12 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionArgs:
         return pulumi.get(self, "url_rewrite")
 
     @url_rewrite.setter
-    def url_rewrite(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs']]):
+    def url_rewrite(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArrgs']]):
         pulumi.set(self, "url_rewrite", value)
 
     @property
     @pulumi.getter(name="weightedBackendServices")
-    def weighted_backend_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs']]]]:
+    def weighted_backend_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrgs']]]]:
         """
         A list of weighted backend services to send traffic to when a route match
         occurs. The weights determine the fraction of traffic that flows to their
@@ -24710,12 +24710,12 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionArgs:
         return pulumi.get(self, "weighted_backend_services")
 
     @weighted_backend_services.setter
-    def weighted_backend_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs']]]]):
+    def weighted_backend_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrgs']]]]):
         pulumi.set(self, "weighted_backend_services", value)
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArgs:
+calass RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArrgs:
     def __init__(__self__, *,
                  allow_credentials: Optional[pulumi.Input[bool]] = None,
                  allow_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -24860,14 +24860,14 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs:
+calass RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArrgs:
     def __init__(__self__, *,
-                 abort: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs']] = None,
-                 delay: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs']] = None):
+                 abort: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArrgs']] = None,
+                 delay: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArrgs']] = None):
         """
-        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs'] abort: The specification for how client requests are aborted as part of fault injection.
+        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArrgs'] abort: The specification for how client requests are aborted as part of fault injection.
                Structure is documented below.
-        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs'] delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArrgs'] delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
                Structure is documented below.
         """
         if abort is not None:
@@ -24877,7 +24877,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs:
 
     @property
     @pulumi.getter
-    def abort(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs']]:
+    def abort(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArrgs']]:
         """
         The specification for how client requests are aborted as part of fault injection.
         Structure is documented below.
@@ -24885,12 +24885,12 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs:
         return pulumi.get(self, "abort")
 
     @abort.setter
-    def abort(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs']]):
+    def abort(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArrgs']]):
         pulumi.set(self, "abort", value)
 
     @property
     @pulumi.getter
-    def delay(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs']]:
+    def delay(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArrgs']]:
         """
         The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
         Structure is documented below.
@@ -24898,12 +24898,12 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs:
         return pulumi.get(self, "delay")
 
     @delay.setter
-    def delay(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs']]):
+    def delay(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArrgs']]):
         pulumi.set(self, "delay", value)
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs:
+calass RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArrgs:
     def __init__(__self__, *,
                  http_status: Optional[pulumi.Input[int]] = None,
                  percentage: Optional[pulumi.Input[float]] = None):
@@ -24946,12 +24946,12 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs:
+calass RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArrgs:
     def __init__(__self__, *,
-                 fixed_delay: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs']] = None,
+                 fixed_delay: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs']] = None,
                  percentage: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs'] fixed_delay: Specifies the value of the fixed delay interval.
+        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs'] fixed_delay: Specifies the value of the fixed delay interval.
                Structure is documented below.
         :param pulumi.Input[float] percentage: The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
                The value must be between 0.0 and 100.0 inclusive.
@@ -24963,7 +24963,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs:
 
     @property
     @pulumi.getter(name="fixedDelay")
-    def fixed_delay(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs']]:
+    def fixed_delay(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs']]:
         """
         Specifies the value of the fixed delay interval.
         Structure is documented below.
@@ -24971,7 +24971,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs:
         return pulumi.get(self, "fixed_delay")
 
     @fixed_delay.setter
-    def fixed_delay(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs']]):
+    def fixed_delay(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs']]):
         pulumi.set(self, "fixed_delay", value)
 
     @property
@@ -24989,7 +24989,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs:
+calass RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[str],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -25031,7 +25031,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedD
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs:
+calass RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArrgs:
     def __init__(__self__, *,
                  backend_service: pulumi.Input[str]):
         """
@@ -25057,14 +25057,14 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgs:
+calass RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArrgs:
     def __init__(__self__, *,
                  num_retries: pulumi.Input[int],
-                 per_try_timeout: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs']] = None,
+                 per_try_timeout: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArrgs']] = None,
                  retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[int] num_retries: Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
-        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs'] per_try_timeout: Specifies a non-zero timeout per retry attempt.
+        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArrgs'] per_try_timeout: Specifies a non-zero timeout per retry attempt.
                If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
                will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
@@ -25101,7 +25101,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgs:
 
     @property
     @pulumi.getter(name="perTryTimeout")
-    def per_try_timeout(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs']]:
+    def per_try_timeout(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArrgs']]:
         """
         Specifies a non-zero timeout per retry attempt.
         If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
@@ -25111,7 +25111,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgs:
         return pulumi.get(self, "per_try_timeout")
 
     @per_try_timeout.setter
-    def per_try_timeout(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs']]):
+    def per_try_timeout(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArrgs']]):
         pulumi.set(self, "per_try_timeout", value)
 
     @property
@@ -25139,7 +25139,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs:
+calass RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[str],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -25181,7 +25181,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArgs:
+calass RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[str],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -25219,7 +25219,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs:
+calass RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArrgs:
     def __init__(__self__, *,
                  host_rewrite: Optional[pulumi.Input[str]] = None,
                  path_prefix_rewrite: Optional[pulumi.Input[str]] = None):
@@ -25262,17 +25262,17 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs:
+calass RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrgs:
     def __init__(__self__, *,
                  backend_service: pulumi.Input[str],
                  weight: pulumi.Input[int],
-                 header_action: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs']] = None):
+                 header_action: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArrgs']] = None):
         """
         :param pulumi.Input[str] backend_service: The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
         :param pulumi.Input[int] weight: Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) .
                The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service's session affinity policy.
                The value must be from 0 to 1000.
-        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs'] header_action: Specifies changes to request and response headers that need to take effect for the selected backendService.
+        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArrgs'] header_action: Specifies changes to request and response headers that need to take effect for the selected backendService.
                headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
                headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
                Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -25311,7 +25311,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs:
 
     @property
     @pulumi.getter(name="headerAction")
-    def header_action(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs']]:
+    def header_action(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArrgs']]:
         """
         Specifies changes to request and response headers that need to take effect for the selected backendService.
         headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
@@ -25322,22 +25322,22 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs:
         return pulumi.get(self, "header_action")
 
     @header_action.setter
-    def header_action(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs']]):
+    def header_action(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArrgs']]):
         pulumi.set(self, "header_action", value)
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs:
+calass RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArrgs:
     def __init__(__self__, *,
-                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]]] = None,
+                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]]] = None,
                  request_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]] = None,
+                 response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]]] = None,
                  response_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]] request_headers_to_adds: Headers to add to a matching request before forwarding the request to the backendService.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]] request_headers_to_adds: Headers to add to a matching request before forwarding the request to the backendService.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] request_headers_to_removes: A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]] response_headers_to_adds: Headers to add the response before sending the response back to the client.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]] response_headers_to_adds: Headers to add the response before sending the response back to the client.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] response_headers_to_removes: A list of header names for headers that need to be removed from the response before sending the response back to the client.
         """
@@ -25352,7 +25352,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAct
 
     @property
     @pulumi.getter(name="requestHeadersToAdds")
-    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]]]:
+    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]]]:
         """
         Headers to add to a matching request before forwarding the request to the backendService.
         Structure is documented below.
@@ -25360,7 +25360,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAct
         return pulumi.get(self, "request_headers_to_adds")
 
     @request_headers_to_adds.setter
-    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]]]):
+    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]]]):
         pulumi.set(self, "request_headers_to_adds", value)
 
     @property
@@ -25377,7 +25377,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAct
 
     @property
     @pulumi.getter(name="responseHeadersToAdds")
-    def response_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]]:
+    def response_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]]]:
         """
         Headers to add the response before sending the response back to the client.
         Structure is documented below.
@@ -25385,7 +25385,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAct
         return pulumi.get(self, "response_headers_to_adds")
 
     @response_headers_to_adds.setter
-    def response_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]]):
+    def response_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]]]):
         pulumi.set(self, "response_headers_to_adds", value)
 
     @property
@@ -25402,7 +25402,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAct
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs:
+calass RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str],
                  header_value: pulumi.Input[str],
@@ -25456,7 +25456,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAct
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs:
+calass RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str],
                  header_value: pulumi.Input[str],
@@ -25510,7 +25510,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAct
 
 
 @pulumi.input_type
-class RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs:
+calass RegionUrlMapPathMatcherRouteRuleUrlRedirectArrgs:
     def __init__(__self__, *,
                  host_redirect: Optional[pulumi.Input[str]] = None,
                  https_redirect: Optional[pulumi.Input[bool]] = None,
@@ -25663,7 +25663,7 @@ class RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs:
 
 
 @pulumi.input_type
-class RegionUrlMapTestArgs:
+calass RegionUrlMapTestArrgs:
     def __init__(__self__, *,
                  host: pulumi.Input[str],
                  path: pulumi.Input[str],
@@ -25731,12 +25731,12 @@ class RegionUrlMapTestArgs:
 
 
 @pulumi.input_type
-class ReservationShareSettingsArgs:
+calass ReservationShareSettingsArrgs:
     def __init__(__self__, *,
-                 project_maps: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationShareSettingsProjectMapArgs']]]] = None,
+                 project_maps: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationShareSettingsProjectMapArrgs']]]] = None,
                  share_type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ReservationShareSettingsProjectMapArgs']]] project_maps: A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+        :param pulumi.Input[Sequence[pulumi.Input['ReservationShareSettingsProjectMapArrgs']]] project_maps: A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
                Structure is documented below.
         :param pulumi.Input[str] share_type: Type of sharing for this shared-reservation
                Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
@@ -25748,7 +25748,7 @@ class ReservationShareSettingsArgs:
 
     @property
     @pulumi.getter(name="projectMaps")
-    def project_maps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReservationShareSettingsProjectMapArgs']]]]:
+    def project_maps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReservationShareSettingsProjectMapArrgs']]]]:
         """
         A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
         Structure is documented below.
@@ -25756,7 +25756,7 @@ class ReservationShareSettingsArgs:
         return pulumi.get(self, "project_maps")
 
     @project_maps.setter
-    def project_maps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationShareSettingsProjectMapArgs']]]]):
+    def project_maps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationShareSettingsProjectMapArrgs']]]]):
         pulumi.set(self, "project_maps", value)
 
     @property
@@ -25774,7 +25774,7 @@ class ReservationShareSettingsArgs:
 
 
 @pulumi.input_type
-class ReservationShareSettingsProjectMapArgs:
+calass ReservationShareSettingsProjectMapArrgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str],
                  project_id: Optional[pulumi.Input[str]] = None):
@@ -25812,14 +25812,14 @@ class ReservationShareSettingsProjectMapArgs:
 
 
 @pulumi.input_type
-class ReservationSpecificReservationArgs:
+calass ReservationSpecificReservationArrgs:
     def __init__(__self__, *,
                  count: pulumi.Input[int],
-                 instance_properties: pulumi.Input['ReservationSpecificReservationInstancePropertiesArgs'],
+                 instance_properties: pulumi.Input['ReservationSpecificReservationInstancePropertiesArrgs'],
                  in_use_count: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] count: The number of resources that are allocated.
-        :param pulumi.Input['ReservationSpecificReservationInstancePropertiesArgs'] instance_properties: The instance properties for the reservation.
+        :param pulumi.Input['ReservationSpecificReservationInstancePropertiesArrgs'] instance_properties: The instance properties for the reservation.
                Structure is documented below.
         :param pulumi.Input[int] in_use_count: (Output)
                How many instances are in use.
@@ -25843,7 +25843,7 @@ class ReservationSpecificReservationArgs:
 
     @property
     @pulumi.getter(name="instanceProperties")
-    def instance_properties(self) -> pulumi.Input['ReservationSpecificReservationInstancePropertiesArgs']:
+    def instance_properties(self) -> pulumi.Input['ReservationSpecificReservationInstancePropertiesArrgs']:
         """
         The instance properties for the reservation.
         Structure is documented below.
@@ -25851,7 +25851,7 @@ class ReservationSpecificReservationArgs:
         return pulumi.get(self, "instance_properties")
 
     @instance_properties.setter
-    def instance_properties(self, value: pulumi.Input['ReservationSpecificReservationInstancePropertiesArgs']):
+    def instance_properties(self, value: pulumi.Input['ReservationSpecificReservationInstancePropertiesArrgs']):
         pulumi.set(self, "instance_properties", value)
 
     @property
@@ -25869,17 +25869,17 @@ class ReservationSpecificReservationArgs:
 
 
 @pulumi.input_type
-class ReservationSpecificReservationInstancePropertiesArgs:
+calass ReservationSpecificReservationInstancePropertiesArrgs:
     def __init__(__self__, *,
                  machine_type: pulumi.Input[str],
-                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs']]]] = None,
-                 local_ssds: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesLocalSsdArgs']]]] = None,
+                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesGuestAcceleratorArrgs']]]] = None,
+                 local_ssds: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesLocalSsdArrgs']]]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] machine_type: The name of the machine type to reserve.
-        :param pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs']]] guest_accelerators: Guest accelerator type and count.
+        :param pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesGuestAcceleratorArrgs']]] guest_accelerators: Guest accelerator type and count.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesLocalSsdArgs']]] local_ssds: The amount of local ssd to reserve with each instance. This
+        :param pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesLocalSsdArrgs']]] local_ssds: The amount of local ssd to reserve with each instance. This
                reserves disks of type `local-ssd`.
                Structure is documented below.
         :param pulumi.Input[str] min_cpu_platform: The minimum CPU platform for the reservation. For example,
@@ -25909,7 +25909,7 @@ class ReservationSpecificReservationInstancePropertiesArgs:
 
     @property
     @pulumi.getter(name="guestAccelerators")
-    def guest_accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs']]]]:
+    def guest_accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesGuestAcceleratorArrgs']]]]:
         """
         Guest accelerator type and count.
         Structure is documented below.
@@ -25917,12 +25917,12 @@ class ReservationSpecificReservationInstancePropertiesArgs:
         return pulumi.get(self, "guest_accelerators")
 
     @guest_accelerators.setter
-    def guest_accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs']]]]):
+    def guest_accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesGuestAcceleratorArrgs']]]]):
         pulumi.set(self, "guest_accelerators", value)
 
     @property
     @pulumi.getter(name="localSsds")
-    def local_ssds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesLocalSsdArgs']]]]:
+    def local_ssds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesLocalSsdArrgs']]]]:
         """
         The amount of local ssd to reserve with each instance. This
         reserves disks of type `local-ssd`.
@@ -25931,7 +25931,7 @@ class ReservationSpecificReservationInstancePropertiesArgs:
         return pulumi.get(self, "local_ssds")
 
     @local_ssds.setter
-    def local_ssds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesLocalSsdArgs']]]]):
+    def local_ssds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesLocalSsdArrgs']]]]):
         pulumi.set(self, "local_ssds", value)
 
     @property
@@ -25951,7 +25951,7 @@ class ReservationSpecificReservationInstancePropertiesArgs:
 
 
 @pulumi.input_type
-class ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs:
+calass ReservationSpecificReservationInstancePropertiesGuestAcceleratorArrgs:
     def __init__(__self__, *,
                  accelerator_count: pulumi.Input[int],
                  accelerator_type: pulumi.Input[str]):
@@ -25996,7 +25996,7 @@ class ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs:
 
 
 @pulumi.input_type
-class ReservationSpecificReservationInstancePropertiesLocalSsdArgs:
+calass ReservationSpecificReservationInstancePropertiesLocalSsdArrgs:
     def __init__(__self__, *,
                  disk_size_gb: pulumi.Input[int],
                  interface: Optional[pulumi.Input[str]] = None):
@@ -26042,7 +26042,7 @@ class ReservationSpecificReservationInstancePropertiesLocalSsdArgs:
 
 
 @pulumi.input_type
-class ResourcePolicyDiskConsistencyGroupPolicyArgs:
+calass ResourcePolicyDiskConsistencyGroupPolicyArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -26064,7 +26064,7 @@ class ResourcePolicyDiskConsistencyGroupPolicyArgs:
 
 
 @pulumi.input_type
-class ResourcePolicyGroupPlacementPolicyArgs:
+calass ResourcePolicyGroupPlacementPolicyArrgs:
     def __init__(__self__, *,
                  availability_domain_count: Optional[pulumi.Input[int]] = None,
                  collocation: Optional[pulumi.Input[str]] = None,
@@ -26145,21 +26145,21 @@ class ResourcePolicyGroupPlacementPolicyArgs:
 
 
 @pulumi.input_type
-class ResourcePolicyInstanceSchedulePolicyArgs:
+calass ResourcePolicyInstanceSchedulePolicyArrgs:
     def __init__(__self__, *,
                  time_zone: pulumi.Input[str],
                  expiration_time: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 vm_start_schedule: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs']] = None,
-                 vm_stop_schedule: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs']] = None):
+                 vm_start_schedule: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStartScheduleArrgs']] = None,
+                 vm_stop_schedule: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStopScheduleArrgs']] = None):
         """
         :param pulumi.Input[str] time_zone: Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
                from the tz database: http://en.wikipedia.org/wiki/Tz_database.
         :param pulumi.Input[str] expiration_time: The expiration time of the schedule. The timestamp is an RFC3339 string.
         :param pulumi.Input[str] start_time: The start time of the schedule. The timestamp is an RFC3339 string.
-        :param pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs'] vm_start_schedule: Specifies the schedule for starting instances.
+        :param pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStartScheduleArrgs'] vm_start_schedule: Specifies the schedule for starting instances.
                Structure is documented below.
-        :param pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs'] vm_stop_schedule: Specifies the schedule for stopping instances.
+        :param pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStopScheduleArrgs'] vm_stop_schedule: Specifies the schedule for stopping instances.
                Structure is documented below.
         """
         pulumi.set(__self__, "time_zone", time_zone)
@@ -26211,7 +26211,7 @@ class ResourcePolicyInstanceSchedulePolicyArgs:
 
     @property
     @pulumi.getter(name="vmStartSchedule")
-    def vm_start_schedule(self) -> Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs']]:
+    def vm_start_schedule(self) -> Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStartScheduleArrgs']]:
         """
         Specifies the schedule for starting instances.
         Structure is documented below.
@@ -26219,12 +26219,12 @@ class ResourcePolicyInstanceSchedulePolicyArgs:
         return pulumi.get(self, "vm_start_schedule")
 
     @vm_start_schedule.setter
-    def vm_start_schedule(self, value: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs']]):
+    def vm_start_schedule(self, value: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStartScheduleArrgs']]):
         pulumi.set(self, "vm_start_schedule", value)
 
     @property
     @pulumi.getter(name="vmStopSchedule")
-    def vm_stop_schedule(self) -> Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs']]:
+    def vm_stop_schedule(self) -> Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStopScheduleArrgs']]:
         """
         Specifies the schedule for stopping instances.
         Structure is documented below.
@@ -26232,12 +26232,12 @@ class ResourcePolicyInstanceSchedulePolicyArgs:
         return pulumi.get(self, "vm_stop_schedule")
 
     @vm_stop_schedule.setter
-    def vm_stop_schedule(self, value: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs']]):
+    def vm_stop_schedule(self, value: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStopScheduleArrgs']]):
         pulumi.set(self, "vm_stop_schedule", value)
 
 
 @pulumi.input_type
-class ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs:
+calass ResourcePolicyInstanceSchedulePolicyVmStartScheduleArrgs:
     def __init__(__self__, *,
                  schedule: pulumi.Input[str]):
         """
@@ -26259,7 +26259,7 @@ class ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs:
 
 
 @pulumi.input_type
-class ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs:
+calass ResourcePolicyInstanceSchedulePolicyVmStopScheduleArrgs:
     def __init__(__self__, *,
                  schedule: pulumi.Input[str]):
         """
@@ -26281,17 +26281,17 @@ class ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs:
 
 
 @pulumi.input_type
-class ResourcePolicySnapshotSchedulePolicyArgs:
+calass ResourcePolicySnapshotSchedulePolicyArrgs:
     def __init__(__self__, *,
-                 schedule: pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleArgs'],
-                 retention_policy: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs']] = None,
-                 snapshot_properties: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs']] = None):
+                 schedule: pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleArrgs'],
+                 retention_policy: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyRetentionPolicyArrgs']] = None,
+                 snapshot_properties: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArrgs']] = None):
         """
-        :param pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleArgs'] schedule: Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
+        :param pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleArrgs'] schedule: Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
                Structure is documented below.
-        :param pulumi.Input['ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs'] retention_policy: Retention policy applied to snapshots created by this resource policy.
+        :param pulumi.Input['ResourcePolicySnapshotSchedulePolicyRetentionPolicyArrgs'] retention_policy: Retention policy applied to snapshots created by this resource policy.
                Structure is documented below.
-        :param pulumi.Input['ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs'] snapshot_properties: Properties with which the snapshots are created, such as labels.
+        :param pulumi.Input['ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArrgs'] snapshot_properties: Properties with which the snapshots are created, such as labels.
                Structure is documented below.
         """
         pulumi.set(__self__, "schedule", schedule)
@@ -26302,7 +26302,7 @@ class ResourcePolicySnapshotSchedulePolicyArgs:
 
     @property
     @pulumi.getter
-    def schedule(self) -> pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleArgs']:
+    def schedule(self) -> pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleArrgs']:
         """
         Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
         Structure is documented below.
@@ -26310,12 +26310,12 @@ class ResourcePolicySnapshotSchedulePolicyArgs:
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleArgs']):
+    def schedule(self, value: pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleArrgs']):
         pulumi.set(self, "schedule", value)
 
     @property
     @pulumi.getter(name="retentionPolicy")
-    def retention_policy(self) -> Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs']]:
+    def retention_policy(self) -> Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyRetentionPolicyArrgs']]:
         """
         Retention policy applied to snapshots created by this resource policy.
         Structure is documented below.
@@ -26323,12 +26323,12 @@ class ResourcePolicySnapshotSchedulePolicyArgs:
         return pulumi.get(self, "retention_policy")
 
     @retention_policy.setter
-    def retention_policy(self, value: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs']]):
+    def retention_policy(self, value: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyRetentionPolicyArrgs']]):
         pulumi.set(self, "retention_policy", value)
 
     @property
     @pulumi.getter(name="snapshotProperties")
-    def snapshot_properties(self) -> Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs']]:
+    def snapshot_properties(self) -> Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArrgs']]:
         """
         Properties with which the snapshots are created, such as labels.
         Structure is documented below.
@@ -26336,12 +26336,12 @@ class ResourcePolicySnapshotSchedulePolicyArgs:
         return pulumi.get(self, "snapshot_properties")
 
     @snapshot_properties.setter
-    def snapshot_properties(self, value: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs']]):
+    def snapshot_properties(self, value: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArrgs']]):
         pulumi.set(self, "snapshot_properties", value)
 
 
 @pulumi.input_type
-class ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs:
+calass ResourcePolicySnapshotSchedulePolicyRetentionPolicyArrgs:
     def __init__(__self__, *,
                  max_retention_days: pulumi.Input[int],
                  on_source_disk_delete: Optional[pulumi.Input[str]] = None):
@@ -26385,17 +26385,17 @@ class ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs:
 
 
 @pulumi.input_type
-class ResourcePolicySnapshotSchedulePolicyScheduleArgs:
+calass ResourcePolicySnapshotSchedulePolicyScheduleArrgs:
     def __init__(__self__, *,
-                 daily_schedule: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs']] = None,
-                 hourly_schedule: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs']] = None,
-                 weekly_schedule: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs']] = None):
+                 daily_schedule: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrgs']] = None,
+                 hourly_schedule: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrgs']] = None,
+                 weekly_schedule: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrgs']] = None):
         """
-        :param pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs'] daily_schedule: The policy will execute every nth day at the specified time.
+        :param pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrgs'] daily_schedule: The policy will execute every nth day at the specified time.
                Structure is documented below.
-        :param pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs'] hourly_schedule: The policy will execute every nth hour starting at the specified time.
+        :param pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrgs'] hourly_schedule: The policy will execute every nth hour starting at the specified time.
                Structure is documented below.
-        :param pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs'] weekly_schedule: Allows specifying a snapshot time for each day of the week.
+        :param pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrgs'] weekly_schedule: Allows specifying a snapshot time for each day of the week.
                Structure is documented below.
         """
         if daily_schedule is not None:
@@ -26407,7 +26407,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleArgs:
 
     @property
     @pulumi.getter(name="dailySchedule")
-    def daily_schedule(self) -> Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs']]:
+    def daily_schedule(self) -> Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrgs']]:
         """
         The policy will execute every nth day at the specified time.
         Structure is documented below.
@@ -26415,12 +26415,12 @@ class ResourcePolicySnapshotSchedulePolicyScheduleArgs:
         return pulumi.get(self, "daily_schedule")
 
     @daily_schedule.setter
-    def daily_schedule(self, value: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs']]):
+    def daily_schedule(self, value: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrgs']]):
         pulumi.set(self, "daily_schedule", value)
 
     @property
     @pulumi.getter(name="hourlySchedule")
-    def hourly_schedule(self) -> Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs']]:
+    def hourly_schedule(self) -> Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrgs']]:
         """
         The policy will execute every nth hour starting at the specified time.
         Structure is documented below.
@@ -26428,12 +26428,12 @@ class ResourcePolicySnapshotSchedulePolicyScheduleArgs:
         return pulumi.get(self, "hourly_schedule")
 
     @hourly_schedule.setter
-    def hourly_schedule(self, value: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs']]):
+    def hourly_schedule(self, value: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrgs']]):
         pulumi.set(self, "hourly_schedule", value)
 
     @property
     @pulumi.getter(name="weeklySchedule")
-    def weekly_schedule(self) -> Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs']]:
+    def weekly_schedule(self) -> Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrgs']]:
         """
         Allows specifying a snapshot time for each day of the week.
         Structure is documented below.
@@ -26441,12 +26441,12 @@ class ResourcePolicySnapshotSchedulePolicyScheduleArgs:
         return pulumi.get(self, "weekly_schedule")
 
     @weekly_schedule.setter
-    def weekly_schedule(self, value: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs']]):
+    def weekly_schedule(self, value: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrgs']]):
         pulumi.set(self, "weekly_schedule", value)
 
 
 @pulumi.input_type
-class ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs:
+calass ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrgs:
     def __init__(__self__, *,
                  days_in_cycle: pulumi.Input[int],
                  start_time: pulumi.Input[str]):
@@ -26487,7 +26487,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs:
 
 
 @pulumi.input_type
-class ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs:
+calass ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrgs:
     def __init__(__self__, *,
                  hours_in_cycle: pulumi.Input[int],
                  start_time: pulumi.Input[str]):
@@ -26530,18 +26530,18 @@ class ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs:
 
 
 @pulumi.input_type
-class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs:
+calass ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrgs:
     def __init__(__self__, *,
-                 day_of_weeks: pulumi.Input[Sequence[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs']]]):
+                 day_of_weeks: pulumi.Input[Sequence[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs']]] day_of_weeks: May contain up to seven (one for each day of the week) snapshot times.
+        :param pulumi.Input[Sequence[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrgs']]] day_of_weeks: May contain up to seven (one for each day of the week) snapshot times.
                Structure is documented below.
         """
         pulumi.set(__self__, "day_of_weeks", day_of_weeks)
 
     @property
     @pulumi.getter(name="dayOfWeeks")
-    def day_of_weeks(self) -> pulumi.Input[Sequence[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs']]]:
+    def day_of_weeks(self) -> pulumi.Input[Sequence[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrgs']]]:
         """
         May contain up to seven (one for each day of the week) snapshot times.
         Structure is documented below.
@@ -26549,12 +26549,12 @@ class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs:
         return pulumi.get(self, "day_of_weeks")
 
     @day_of_weeks.setter
-    def day_of_weeks(self, value: pulumi.Input[Sequence[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs']]]):
+    def day_of_weeks(self, value: pulumi.Input[Sequence[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrgs']]]):
         pulumi.set(self, "day_of_weeks", value)
 
 
 @pulumi.input_type
-class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs:
+calass ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrgs:
     def __init__(__self__, *,
                  day: pulumi.Input[str],
                  start_time: pulumi.Input[str]):
@@ -26595,7 +26595,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs:
 
 
 @pulumi.input_type
-class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs:
+calass ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArrgs:
     def __init__(__self__, *,
                  chain_name: Optional[pulumi.Input[str]] = None,
                  guest_flush: Optional[pulumi.Input[bool]] = None,
@@ -26672,12 +26672,12 @@ class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs:
 
 
 @pulumi.input_type
-class RouterBgpArgs:
+calass RouterBgpArrgs:
     def __init__(__self__, *,
                  asn: pulumi.Input[int],
                  advertise_mode: Optional[pulumi.Input[str]] = None,
                  advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterBgpAdvertisedIpRangeArgs']]]] = None,
+                 advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterBgpAdvertisedIpRangeArrgs']]]] = None,
                  keepalive_interval: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] asn: Local BGP Autonomous System Number (ASN). Must be an RFC6996
@@ -26693,7 +26693,7 @@ class RouterBgpArgs:
                advertised in addition to any specified prefixes. Leave this field
                blank to advertise no custom groups.
                This enum field has the one valid value: ALL_SUBNETS
-        :param pulumi.Input[Sequence[pulumi.Input['RouterBgpAdvertisedIpRangeArgs']]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
+        :param pulumi.Input[Sequence[pulumi.Input['RouterBgpAdvertisedIpRangeArrgs']]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
                custom mode. This field can only be populated if advertiseMode
                is CUSTOM and is advertised to all peers of the router. These IP
                ranges will be advertised in addition to any specified groups.
@@ -26767,7 +26767,7 @@ class RouterBgpArgs:
 
     @property
     @pulumi.getter(name="advertisedIpRanges")
-    def advertised_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterBgpAdvertisedIpRangeArgs']]]]:
+    def advertised_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterBgpAdvertisedIpRangeArrgs']]]]:
         """
         User-specified list of individual IP ranges to advertise in
         custom mode. This field can only be populated if advertiseMode
@@ -26779,7 +26779,7 @@ class RouterBgpArgs:
         return pulumi.get(self, "advertised_ip_ranges")
 
     @advertised_ip_ranges.setter
-    def advertised_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterBgpAdvertisedIpRangeArgs']]]]):
+    def advertised_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterBgpAdvertisedIpRangeArrgs']]]]):
         pulumi.set(self, "advertised_ip_ranges", value)
 
     @property
@@ -26804,7 +26804,7 @@ class RouterBgpArgs:
 
 
 @pulumi.input_type
-class RouterBgpAdvertisedIpRangeArgs:
+calass RouterBgpAdvertisedIpRangeArrgs:
     def __init__(__self__, *,
                  range: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
@@ -26844,7 +26844,7 @@ class RouterBgpAdvertisedIpRangeArgs:
 
 
 @pulumi.input_type
-class RouterNatLogConfigArgs:
+calass RouterNatLogConfigArrgs:
     def __init__(__self__, *,
                  enable: pulumi.Input[bool],
                  filter: pulumi.Input[str]):
@@ -26883,11 +26883,11 @@ class RouterNatLogConfigArgs:
 
 
 @pulumi.input_type
-class RouterNatRuleArgs:
+calass RouterNatRuleArrgs:
     def __init__(__self__, *,
                  match: pulumi.Input[str],
                  rule_number: pulumi.Input[int],
-                 action: Optional[pulumi.Input['RouterNatRuleActionArgs']] = None,
+                 action: Optional[pulumi.Input['RouterNatRuleActionArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] match: CEL expression that specifies the match condition that egress traffic from a VM is evaluated against.
@@ -26899,7 +26899,7 @@ class RouterNatRuleArgs:
                "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
         :param pulumi.Input[int] rule_number: An integer uniquely identifying a rule in the list.
                The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
-        :param pulumi.Input['RouterNatRuleActionArgs'] action: The action to be enforced for traffic that matches this rule.
+        :param pulumi.Input['RouterNatRuleActionArrgs'] action: The action to be enforced for traffic that matches this rule.
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this rule.
         """
@@ -26943,7 +26943,7 @@ class RouterNatRuleArgs:
 
     @property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input['RouterNatRuleActionArgs']]:
+    def action(self) -> Optional[pulumi.Input['RouterNatRuleActionArrgs']]:
         """
         The action to be enforced for traffic that matches this rule.
         Structure is documented below.
@@ -26951,7 +26951,7 @@ class RouterNatRuleArgs:
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input['RouterNatRuleActionArgs']]):
+    def action(self, value: Optional[pulumi.Input['RouterNatRuleActionArrgs']]):
         pulumi.set(self, "action", value)
 
     @property
@@ -26968,7 +26968,7 @@ class RouterNatRuleArgs:
 
 
 @pulumi.input_type
-class RouterNatRuleActionArgs:
+calass RouterNatRuleActionArrgs:
     def __init__(__self__, *,
                  source_nat_active_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_nat_active_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -27041,7 +27041,7 @@ class RouterNatRuleActionArgs:
 
 
 @pulumi.input_type
-class RouterNatSubnetworkArgs:
+calass RouterNatSubnetworkArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  source_ip_ranges_to_nats: pulumi.Input[Sequence[pulumi.Input[str]]],
@@ -27106,7 +27106,7 @@ class RouterNatSubnetworkArgs:
 
 
 @pulumi.input_type
-class RouterPeerAdvertisedIpRangeArgs:
+calass RouterPeerAdvertisedIpRangeArrgs:
     def __init__(__self__, *,
                  range: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
@@ -27146,7 +27146,7 @@ class RouterPeerAdvertisedIpRangeArgs:
 
 
 @pulumi.input_type
-class RouterPeerBfdArgs:
+calass RouterPeerBfdArrgs:
     def __init__(__self__, *,
                  session_initialization_mode: pulumi.Input[str],
                  min_receive_interval: Optional[pulumi.Input[int]] = None,
@@ -27246,15 +27246,15 @@ class RouterPeerBfdArgs:
 
 
 @pulumi.input_type
-class SecurityPolicyAdaptiveProtectionConfigArgs:
+calass SecurityPolicyAdaptiveProtectionConfigArrgs:
     def __init__(__self__, *,
-                 auto_deploy_config: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs']] = None,
-                 layer7_ddos_defense_config: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs']] = None):
+                 auto_deploy_config: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrgs']] = None,
+                 layer7_ddos_defense_config: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrgs']] = None):
         """
-        :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs'] auto_deploy_config: ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+        :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrgs'] auto_deploy_config: ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
                
                <a name="nested_layer_7_ddos_defense_config"></a>The `layer_7_ddos_defense_config` block supports:
-        :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs'] layer7_ddos_defense_config: Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrgs'] layer7_ddos_defense_config: Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         """
         if auto_deploy_config is not None:
             pulumi.set(__self__, "auto_deploy_config", auto_deploy_config)
@@ -27263,7 +27263,7 @@ class SecurityPolicyAdaptiveProtectionConfigArgs:
 
     @property
     @pulumi.getter(name="autoDeployConfig")
-    def auto_deploy_config(self) -> Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs']]:
+    def auto_deploy_config(self) -> Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrgs']]:
         """
         ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
 
@@ -27272,24 +27272,24 @@ class SecurityPolicyAdaptiveProtectionConfigArgs:
         return pulumi.get(self, "auto_deploy_config")
 
     @auto_deploy_config.setter
-    def auto_deploy_config(self, value: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs']]):
+    def auto_deploy_config(self, value: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrgs']]):
         pulumi.set(self, "auto_deploy_config", value)
 
     @property
     @pulumi.getter(name="layer7DdosDefenseConfig")
-    def layer7_ddos_defense_config(self) -> Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs']]:
+    def layer7_ddos_defense_config(self) -> Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrgs']]:
         """
         Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         """
         return pulumi.get(self, "layer7_ddos_defense_config")
 
     @layer7_ddos_defense_config.setter
-    def layer7_ddos_defense_config(self, value: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs']]):
+    def layer7_ddos_defense_config(self, value: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrgs']]):
         pulumi.set(self, "layer7_ddos_defense_config", value)
 
 
 @pulumi.input_type
-class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs:
+calass SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrgs:
     def __init__(__self__, *,
                  confidence_threshold: Optional[pulumi.Input[float]] = None,
                  expiration_sec: Optional[pulumi.Input[int]] = None,
@@ -27360,7 +27360,7 @@ class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs:
 
 
 @pulumi.input_type
-class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs:
+calass SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrgs:
     def __init__(__self__, *,
                  enable: Optional[pulumi.Input[bool]] = None,
                  rule_visibility: Optional[pulumi.Input[str]] = None):
@@ -27399,14 +27399,14 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs:
 
 
 @pulumi.input_type
-class SecurityPolicyAdvancedOptionsConfigArgs:
+calass SecurityPolicyAdvancedOptionsConfigArrgs:
     def __init__(__self__, *,
-                 json_custom_config: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs']] = None,
+                 json_custom_config: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrgs']] = None,
                  json_parsing: Optional[pulumi.Input[str]] = None,
                  log_level: Optional[pulumi.Input[str]] = None,
                  user_ip_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs'] json_custom_config: Custom configuration to apply the JSON parsing. Only applicable when
+        :param pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrgs'] json_custom_config: Custom configuration to apply the JSON parsing. Only applicable when
                `json_parsing` is set to `STANDARD`. Structure is documented below.
         :param pulumi.Input[str] json_parsing: Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
                * DISABLED - Don't parse JSON payloads in POST bodies.
@@ -27427,7 +27427,7 @@ class SecurityPolicyAdvancedOptionsConfigArgs:
 
     @property
     @pulumi.getter(name="jsonCustomConfig")
-    def json_custom_config(self) -> Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs']]:
+    def json_custom_config(self) -> Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrgs']]:
         """
         Custom configuration to apply the JSON parsing. Only applicable when
         `json_parsing` is set to `STANDARD`. Structure is documented below.
@@ -27435,7 +27435,7 @@ class SecurityPolicyAdvancedOptionsConfigArgs:
         return pulumi.get(self, "json_custom_config")
 
     @json_custom_config.setter
-    def json_custom_config(self, value: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs']]):
+    def json_custom_config(self, value: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrgs']]):
         pulumi.set(self, "json_custom_config", value)
 
     @property
@@ -27480,7 +27480,7 @@ class SecurityPolicyAdvancedOptionsConfigArgs:
 
 
 @pulumi.input_type
-class SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs:
+calass SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrgs:
     def __init__(__self__, *,
                  content_types: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -27508,7 +27508,7 @@ class SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs:
 
 
 @pulumi.input_type
-class SecurityPolicyRecaptchaOptionsConfigArgs:
+calass SecurityPolicyRecaptchaOptionsConfigArrgs:
     def __init__(__self__, *,
                  redirect_site_key: pulumi.Input[str]):
         """
@@ -27530,17 +27530,17 @@ class SecurityPolicyRecaptchaOptionsConfigArgs:
 
 
 @pulumi.input_type
-class SecurityPolicyRuleArgs:
+calass SecurityPolicyRuleArrgs:
     def __init__(__self__, *,
                  action: pulumi.Input[str],
-                 match: pulumi.Input['SecurityPolicyRuleMatchArgs'],
+                 match: pulumi.Input['SecurityPolicyRuleMatchArrgs'],
                  priority: pulumi.Input[int],
                  description: Optional[pulumi.Input[str]] = None,
-                 header_action: Optional[pulumi.Input['SecurityPolicyRuleHeaderActionArgs']] = None,
-                 preconfigured_waf_config: Optional[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArgs']] = None,
+                 header_action: Optional[pulumi.Input['SecurityPolicyRuleHeaderActionArrgs']] = None,
+                 preconfigured_waf_config: Optional[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArrgs']] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
-                 rate_limit_options: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']] = None,
-                 redirect_options: Optional[pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs']] = None):
+                 rate_limit_options: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArrgs']] = None,
+                 redirect_options: Optional[pulumi.Input['SecurityPolicyRuleRedirectOptionsArrgs']] = None):
         """
         :param pulumi.Input[str] action: Action to take when `match` matches the request. Valid values:
                * allow: allow access to target.
@@ -27548,17 +27548,17 @@ class SecurityPolicyRuleArgs:
                * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
                * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions.
                * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
-        :param pulumi.Input['SecurityPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against.
+        :param pulumi.Input['SecurityPolicyRuleMatchArrgs'] match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding `action` is enforced. Structure is documented below.
         :param pulumi.Input[int] priority: An unique positive integer indicating the priority of evaluation for a rule.
                Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
         :param pulumi.Input[str] description: An optional description of this rule. Max size is 64.
-        :param pulumi.Input['SecurityPolicyRuleHeaderActionArgs'] header_action: Additional actions that are performed on headers. Structure is documented below.
-        :param pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArgs'] preconfigured_waf_config: ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
+        :param pulumi.Input['SecurityPolicyRuleHeaderActionArrgs'] header_action: Additional actions that are performed on headers. Structure is documented below.
+        :param pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArrgs'] preconfigured_waf_config: ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
         :param pulumi.Input[bool] preview: When set to true, the `action` specified above is not enforced.
                Stackdriver logs for requests that trigger a preview action are annotated as such.
-        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs'] rate_limit_options: Must be specified if the `action` is "rate_based_ban" or "throttle". Cannot be specified for other actions. Structure is documented below.
-        :param pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs'] redirect_options: Can be specified if the `action` is "redirect". Cannot be specified for other actions. Structure is documented below.
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsArrgs'] rate_limit_options: Must be specified if the `action` is "rate_based_ban" or "throttle". Cannot be specified for other actions. Structure is documented below.
+        :param pulumi.Input['SecurityPolicyRuleRedirectOptionsArrgs'] redirect_options: Can be specified if the `action` is "redirect". Cannot be specified for other actions. Structure is documented below.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "match", match)
@@ -27595,7 +27595,7 @@ class SecurityPolicyRuleArgs:
 
     @property
     @pulumi.getter
-    def match(self) -> pulumi.Input['SecurityPolicyRuleMatchArgs']:
+    def match(self) -> pulumi.Input['SecurityPolicyRuleMatchArrgs']:
         """
         A match condition that incoming traffic is evaluated against.
         If it evaluates to true, the corresponding `action` is enforced. Structure is documented below.
@@ -27603,7 +27603,7 @@ class SecurityPolicyRuleArgs:
         return pulumi.get(self, "match")
 
     @match.setter
-    def match(self, value: pulumi.Input['SecurityPolicyRuleMatchArgs']):
+    def match(self, value: pulumi.Input['SecurityPolicyRuleMatchArrgs']):
         pulumi.set(self, "match", value)
 
     @property
@@ -27633,26 +27633,26 @@ class SecurityPolicyRuleArgs:
 
     @property
     @pulumi.getter(name="headerAction")
-    def header_action(self) -> Optional[pulumi.Input['SecurityPolicyRuleHeaderActionArgs']]:
+    def header_action(self) -> Optional[pulumi.Input['SecurityPolicyRuleHeaderActionArrgs']]:
         """
         Additional actions that are performed on headers. Structure is documented below.
         """
         return pulumi.get(self, "header_action")
 
     @header_action.setter
-    def header_action(self, value: Optional[pulumi.Input['SecurityPolicyRuleHeaderActionArgs']]):
+    def header_action(self, value: Optional[pulumi.Input['SecurityPolicyRuleHeaderActionArrgs']]):
         pulumi.set(self, "header_action", value)
 
     @property
     @pulumi.getter(name="preconfiguredWafConfig")
-    def preconfigured_waf_config(self) -> Optional[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArgs']]:
+    def preconfigured_waf_config(self) -> Optional[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArrgs']]:
         """
         ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
         """
         return pulumi.get(self, "preconfigured_waf_config")
 
     @preconfigured_waf_config.setter
-    def preconfigured_waf_config(self, value: Optional[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArgs']]):
+    def preconfigured_waf_config(self, value: Optional[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArrgs']]):
         pulumi.set(self, "preconfigured_waf_config", value)
 
     @property
@@ -27670,53 +27670,53 @@ class SecurityPolicyRuleArgs:
 
     @property
     @pulumi.getter(name="rateLimitOptions")
-    def rate_limit_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']]:
+    def rate_limit_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArrgs']]:
         """
         Must be specified if the `action` is "rate_based_ban" or "throttle". Cannot be specified for other actions. Structure is documented below.
         """
         return pulumi.get(self, "rate_limit_options")
 
     @rate_limit_options.setter
-    def rate_limit_options(self, value: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']]):
+    def rate_limit_options(self, value: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArrgs']]):
         pulumi.set(self, "rate_limit_options", value)
 
     @property
     @pulumi.getter(name="redirectOptions")
-    def redirect_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs']]:
+    def redirect_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleRedirectOptionsArrgs']]:
         """
         Can be specified if the `action` is "redirect". Cannot be specified for other actions. Structure is documented below.
         """
         return pulumi.get(self, "redirect_options")
 
     @redirect_options.setter
-    def redirect_options(self, value: Optional[pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs']]):
+    def redirect_options(self, value: Optional[pulumi.Input['SecurityPolicyRuleRedirectOptionsArrgs']]):
         pulumi.set(self, "redirect_options", value)
 
 
 @pulumi.input_type
-class SecurityPolicyRuleHeaderActionArgs:
+calass SecurityPolicyRuleHeaderActionArrgs:
     def __init__(__self__, *,
-                 request_headers_to_adds: pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs']]]):
+                 request_headers_to_adds: pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleHeaderActionRequestHeadersToAddArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs']]] request_headers_to_adds: The list of request headers to add or overwrite if they're already present. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleHeaderActionRequestHeadersToAddArrgs']]] request_headers_to_adds: The list of request headers to add or overwrite if they're already present. Structure is documented below.
         """
         pulumi.set(__self__, "request_headers_to_adds", request_headers_to_adds)
 
     @property
     @pulumi.getter(name="requestHeadersToAdds")
-    def request_headers_to_adds(self) -> pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs']]]:
+    def request_headers_to_adds(self) -> pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleHeaderActionRequestHeadersToAddArrgs']]]:
         """
         The list of request headers to add or overwrite if they're already present. Structure is documented below.
         """
         return pulumi.get(self, "request_headers_to_adds")
 
     @request_headers_to_adds.setter
-    def request_headers_to_adds(self, value: pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs']]]):
+    def request_headers_to_adds(self, value: pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleHeaderActionRequestHeadersToAddArrgs']]]):
         pulumi.set(self, "request_headers_to_adds", value)
 
 
 @pulumi.input_type
-class SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs:
+calass SecurityPolicyRuleHeaderActionRequestHeadersToAddArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str],
                  header_value: Optional[pulumi.Input[str]] = None):
@@ -27754,16 +27754,16 @@ class SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs:
 
 
 @pulumi.input_type
-class SecurityPolicyRuleMatchArgs:
+calass SecurityPolicyRuleMatchArrgs:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input['SecurityPolicyRuleMatchConfigArgs']] = None,
-                 expr: Optional[pulumi.Input['SecurityPolicyRuleMatchExprArgs']] = None,
+                 config: Optional[pulumi.Input['SecurityPolicyRuleMatchConfigArrgs']] = None,
+                 expr: Optional[pulumi.Input['SecurityPolicyRuleMatchExprArrgs']] = None,
                  versioned_expr: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['SecurityPolicyRuleMatchConfigArgs'] config: The configuration options available when specifying `versioned_expr`.
+        :param pulumi.Input['SecurityPolicyRuleMatchConfigArrgs'] config: The configuration options available when specifying `versioned_expr`.
                This field must be specified if `versioned_expr` is specified and cannot be specified if `versioned_expr` is not specified.
                Structure is documented below.
-        :param pulumi.Input['SecurityPolicyRuleMatchExprArgs'] expr: User defined CEVAL expression. A CEVAL expression is used to specify match criteria
+        :param pulumi.Input['SecurityPolicyRuleMatchExprArrgs'] expr: User defined CEVAL expression. A CEVAL expression is used to specify match criteria
                such as origin.ip, source.region_code and contents in the request header.
                Structure is documented below.
         :param pulumi.Input[str] versioned_expr: Predefined rule expression. If this field is specified, `config` must also be specified.
@@ -27779,7 +27779,7 @@ class SecurityPolicyRuleMatchArgs:
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['SecurityPolicyRuleMatchConfigArgs']]:
+    def config(self) -> Optional[pulumi.Input['SecurityPolicyRuleMatchConfigArrgs']]:
         """
         The configuration options available when specifying `versioned_expr`.
         This field must be specified if `versioned_expr` is specified and cannot be specified if `versioned_expr` is not specified.
@@ -27788,12 +27788,12 @@ class SecurityPolicyRuleMatchArgs:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['SecurityPolicyRuleMatchConfigArgs']]):
+    def config(self, value: Optional[pulumi.Input['SecurityPolicyRuleMatchConfigArrgs']]):
         pulumi.set(self, "config", value)
 
     @property
     @pulumi.getter
-    def expr(self) -> Optional[pulumi.Input['SecurityPolicyRuleMatchExprArgs']]:
+    def expr(self) -> Optional[pulumi.Input['SecurityPolicyRuleMatchExprArrgs']]:
         """
         User defined CEVAL expression. A CEVAL expression is used to specify match criteria
         such as origin.ip, source.region_code and contents in the request header.
@@ -27802,7 +27802,7 @@ class SecurityPolicyRuleMatchArgs:
         return pulumi.get(self, "expr")
 
     @expr.setter
-    def expr(self, value: Optional[pulumi.Input['SecurityPolicyRuleMatchExprArgs']]):
+    def expr(self, value: Optional[pulumi.Input['SecurityPolicyRuleMatchExprArrgs']]):
         pulumi.set(self, "expr", value)
 
     @property
@@ -27821,7 +27821,7 @@ class SecurityPolicyRuleMatchArgs:
 
 
 @pulumi.input_type
-class SecurityPolicyRuleMatchConfigArgs:
+calass SecurityPolicyRuleMatchConfigArrgs:
     def __init__(__self__, *,
                  src_ip_ranges: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -27847,7 +27847,7 @@ class SecurityPolicyRuleMatchConfigArgs:
 
 
 @pulumi.input_type
-class SecurityPolicyRuleMatchExprArgs:
+calass SecurityPolicyRuleMatchExprArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str]):
         """
@@ -27871,43 +27871,43 @@ class SecurityPolicyRuleMatchExprArgs:
 
 
 @pulumi.input_type
-class SecurityPolicyRulePreconfiguredWafConfigArgs:
+calass SecurityPolicyRulePreconfiguredWafConfigArrgs:
     def __init__(__self__, *,
-                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionArgs']]]] = None):
+                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionArgs']]] exclusions: An exclusion to apply during preconfigured WAF evaluation. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionArrgs']]] exclusions: An exclusion to apply during preconfigured WAF evaluation. Structure is documented below.
         """
         if exclusions is not None:
             pulumi.set(__self__, "exclusions", exclusions)
 
     @property
     @pulumi.getter
-    def exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionArgs']]]]:
+    def exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionArrgs']]]]:
         """
         An exclusion to apply during preconfigured WAF evaluation. Structure is documented below.
         """
         return pulumi.get(self, "exclusions")
 
     @exclusions.setter
-    def exclusions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionArgs']]]]):
+    def exclusions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionArrgs']]]]):
         pulumi.set(self, "exclusions", value)
 
 
 @pulumi.input_type
-class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
+calass SecurityPolicyRulePreconfiguredWafConfigExclusionArrgs:
     def __init__(__self__, *,
                  target_rule_set: pulumi.Input[str],
-                 request_cookies: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs']]]] = None,
-                 request_headers: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs']]]] = None,
-                 request_query_params: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs']]]] = None,
-                 request_uris: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs']]]] = None,
+                 request_cookies: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrgs']]]] = None,
+                 request_headers: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrgs']]]] = None,
+                 request_query_params: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrgs']]]] = None,
+                 request_uris: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrgs']]]] = None,
                  target_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] target_rule_set: Target WAF rule set to apply the preconfigured WAF exclusion.
-        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs']]] request_cookies: Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs']]] request_headers: Request header whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs']]] request_query_params: Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs']]] request_uris: Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrgs']]] request_cookies: Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrgs']]] request_headers: Request header whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrgs']]] request_query_params: Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrgs']]] request_uris: Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_rule_ids: A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
                
                <a name="nested_field_params"></a>The `request_header`, `request_cookie`, `request_uri` and `request_query_param` blocks support:
@@ -27938,50 +27938,50 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
 
     @property
     @pulumi.getter(name="requestCookies")
-    def request_cookies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs']]]]:
+    def request_cookies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrgs']]]]:
         """
         Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
         """
         return pulumi.get(self, "request_cookies")
 
     @request_cookies.setter
-    def request_cookies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs']]]]):
+    def request_cookies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrgs']]]]):
         pulumi.set(self, "request_cookies", value)
 
     @property
     @pulumi.getter(name="requestHeaders")
-    def request_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs']]]]:
+    def request_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrgs']]]]:
         """
         Request header whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
         """
         return pulumi.get(self, "request_headers")
 
     @request_headers.setter
-    def request_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs']]]]):
+    def request_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrgs']]]]):
         pulumi.set(self, "request_headers", value)
 
     @property
     @pulumi.getter(name="requestQueryParams")
-    def request_query_params(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs']]]]:
+    def request_query_params(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrgs']]]]:
         """
         Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
         """
         return pulumi.get(self, "request_query_params")
 
     @request_query_params.setter
-    def request_query_params(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs']]]]):
+    def request_query_params(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrgs']]]]):
         pulumi.set(self, "request_query_params", value)
 
     @property
     @pulumi.getter(name="requestUris")
-    def request_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs']]]]:
+    def request_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrgs']]]]:
         """
         Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
         """
         return pulumi.get(self, "request_uris")
 
     @request_uris.setter
-    def request_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs']]]]):
+    def request_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrgs']]]]):
         pulumi.set(self, "request_uris", value)
 
     @property
@@ -28000,7 +28000,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
 
 
 @pulumi.input_type
-class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs:
+calass SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrgs:
     def __init__(__self__, *,
                  operator: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
@@ -28052,7 +28052,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs:
 
 
 @pulumi.input_type
-class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs:
+calass SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrgs:
     def __init__(__self__, *,
                  operator: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
@@ -28104,7 +28104,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs:
 
 
 @pulumi.input_type
-class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs:
+calass SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrgs:
     def __init__(__self__, *,
                  operator: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
@@ -28156,7 +28156,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs:
 
 
 @pulumi.input_type
-class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs:
+calass SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrgs:
     def __init__(__self__, *,
                  operator: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
@@ -28208,25 +28208,25 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs:
 
 
 @pulumi.input_type
-class SecurityPolicyRuleRateLimitOptionsArgs:
+calass SecurityPolicyRuleRateLimitOptionsArrgs:
     def __init__(__self__, *,
                  conform_action: pulumi.Input[str],
                  exceed_action: pulumi.Input[str],
-                 rate_limit_threshold: pulumi.Input['SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs'],
+                 rate_limit_threshold: pulumi.Input['SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArrgs'],
                  ban_duration_sec: Optional[pulumi.Input[int]] = None,
-                 ban_threshold: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsBanThresholdArgs']] = None,
+                 ban_threshold: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsBanThresholdArrgs']] = None,
                  enforce_on_key: Optional[pulumi.Input[str]] = None,
-                 enforce_on_key_configs: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs']]]] = None,
+                 enforce_on_key_configs: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrgs']]]] = None,
                  enforce_on_key_name: Optional[pulumi.Input[str]] = None,
-                 exceed_redirect_options: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs']] = None):
+                 exceed_redirect_options: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArrgs']] = None):
         """
         :param pulumi.Input[str] conform_action: Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
         :param pulumi.Input[str] exceed_action: When a request is denied, returns the HTTP response code specified.
                Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
-        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs'] rate_limit_threshold: Threshold at which to begin ratelimiting. Structure is documented below.
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArrgs'] rate_limit_threshold: Threshold at which to begin ratelimiting. Structure is documented below.
         :param pulumi.Input[int] ban_duration_sec: Can only be specified if the `action` for the rule is "rate_based_ban".
                If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
-        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsBanThresholdArgs'] ban_threshold: Can only be specified if the `action` for the rule is "rate_based_ban".
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsBanThresholdArrgs'] ban_threshold: Can only be specified if the `action` for the rule is "rate_based_ban".
                If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also
                exceed this 'ban_threshold'. Structure is documented below.
         :param pulumi.Input[str] enforce_on_key: Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to "ALL".
@@ -28239,11 +28239,11 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
                * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
                * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
                * REGION_CODE: The country/region from which the request originates.
-        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs']]] enforce_on_key_configs: ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrgs']]] enforce_on_key_configs: ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
                
                **Note:** To avoid the conflict between `enforce_on_key` and `enforce_on_key_configs`, the field `enforce_on_key` needs to be set to an empty string.
         :param pulumi.Input[str] enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs'] exceed_redirect_options: Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArrgs'] exceed_redirect_options: Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
                
                <a name="nested_threshold"></a>The `{ban/rate_limit}_threshold` block supports:
         """
@@ -28290,14 +28290,14 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
 
     @property
     @pulumi.getter(name="rateLimitThreshold")
-    def rate_limit_threshold(self) -> pulumi.Input['SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs']:
+    def rate_limit_threshold(self) -> pulumi.Input['SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArrgs']:
         """
         Threshold at which to begin ratelimiting. Structure is documented below.
         """
         return pulumi.get(self, "rate_limit_threshold")
 
     @rate_limit_threshold.setter
-    def rate_limit_threshold(self, value: pulumi.Input['SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs']):
+    def rate_limit_threshold(self, value: pulumi.Input['SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArrgs']):
         pulumi.set(self, "rate_limit_threshold", value)
 
     @property
@@ -28315,7 +28315,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
 
     @property
     @pulumi.getter(name="banThreshold")
-    def ban_threshold(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsBanThresholdArgs']]:
+    def ban_threshold(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsBanThresholdArrgs']]:
         """
         Can only be specified if the `action` for the rule is "rate_based_ban".
         If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also
@@ -28324,7 +28324,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
         return pulumi.get(self, "ban_threshold")
 
     @ban_threshold.setter
-    def ban_threshold(self, value: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsBanThresholdArgs']]):
+    def ban_threshold(self, value: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsBanThresholdArrgs']]):
         pulumi.set(self, "ban_threshold", value)
 
     @property
@@ -28350,7 +28350,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
 
     @property
     @pulumi.getter(name="enforceOnKeyConfigs")
-    def enforce_on_key_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs']]]]:
+    def enforce_on_key_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrgs']]]]:
         """
         ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
 
@@ -28359,7 +28359,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
         return pulumi.get(self, "enforce_on_key_configs")
 
     @enforce_on_key_configs.setter
-    def enforce_on_key_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs']]]]):
+    def enforce_on_key_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrgs']]]]):
         pulumi.set(self, "enforce_on_key_configs", value)
 
     @property
@@ -28376,7 +28376,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
 
     @property
     @pulumi.getter(name="exceedRedirectOptions")
-    def exceed_redirect_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs']]:
+    def exceed_redirect_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArrgs']]:
         """
         Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
 
@@ -28385,12 +28385,12 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
         return pulumi.get(self, "exceed_redirect_options")
 
     @exceed_redirect_options.setter
-    def exceed_redirect_options(self, value: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs']]):
+    def exceed_redirect_options(self, value: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArrgs']]):
         pulumi.set(self, "exceed_redirect_options", value)
 
 
 @pulumi.input_type
-class SecurityPolicyRuleRateLimitOptionsBanThresholdArgs:
+calass SecurityPolicyRuleRateLimitOptionsBanThresholdArrgs:
     def __init__(__self__, *,
                  count: pulumi.Input[int],
                  interval_sec: pulumi.Input[int]):
@@ -28427,7 +28427,7 @@ class SecurityPolicyRuleRateLimitOptionsBanThresholdArgs:
 
 
 @pulumi.input_type
-class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs:
+calass SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrgs:
     def __init__(__self__, *,
                  enforce_on_key_name: Optional[pulumi.Input[str]] = None,
                  enforce_on_key_type: Optional[pulumi.Input[str]] = None):
@@ -28484,7 +28484,7 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs:
 
 
 @pulumi.input_type
-class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs:
+calass SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArrgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  target: Optional[pulumi.Input[str]] = None):
@@ -28522,7 +28522,7 @@ class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs:
 
 
 @pulumi.input_type
-class SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs:
+calass SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArrgs:
     def __init__(__self__, *,
                  count: pulumi.Input[int],
                  interval_sec: pulumi.Input[int]):
@@ -28559,7 +28559,7 @@ class SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs:
 
 
 @pulumi.input_type
-class SecurityPolicyRuleRedirectOptionsArgs:
+calass SecurityPolicyRuleRedirectOptionsArrgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  target: Optional[pulumi.Input[str]] = None):
@@ -28603,14 +28603,14 @@ class SecurityPolicyRuleRedirectOptionsArgs:
 
 
 @pulumi.input_type
-class SecurityScanConfigAuthenticationArgs:
+calass SecurityScanConfigAuthenticationArrgs:
     def __init__(__self__, *,
-                 custom_account: Optional[pulumi.Input['SecurityScanConfigAuthenticationCustomAccountArgs']] = None,
-                 google_account: Optional[pulumi.Input['SecurityScanConfigAuthenticationGoogleAccountArgs']] = None):
+                 custom_account: Optional[pulumi.Input['SecurityScanConfigAuthenticationCustomAccountArrgs']] = None,
+                 google_account: Optional[pulumi.Input['SecurityScanConfigAuthenticationGoogleAccountArrgs']] = None):
         """
-        :param pulumi.Input['SecurityScanConfigAuthenticationCustomAccountArgs'] custom_account: Describes authentication configuration that uses a custom account.
+        :param pulumi.Input['SecurityScanConfigAuthenticationCustomAccountArrgs'] custom_account: Describes authentication configuration that uses a custom account.
                Structure is documented below.
-        :param pulumi.Input['SecurityScanConfigAuthenticationGoogleAccountArgs'] google_account: Describes authentication configuration that uses a Google account.
+        :param pulumi.Input['SecurityScanConfigAuthenticationGoogleAccountArrgs'] google_account: Describes authentication configuration that uses a Google account.
                Structure is documented below.
         """
         if custom_account is not None:
@@ -28620,7 +28620,7 @@ class SecurityScanConfigAuthenticationArgs:
 
     @property
     @pulumi.getter(name="customAccount")
-    def custom_account(self) -> Optional[pulumi.Input['SecurityScanConfigAuthenticationCustomAccountArgs']]:
+    def custom_account(self) -> Optional[pulumi.Input['SecurityScanConfigAuthenticationCustomAccountArrgs']]:
         """
         Describes authentication configuration that uses a custom account.
         Structure is documented below.
@@ -28628,12 +28628,12 @@ class SecurityScanConfigAuthenticationArgs:
         return pulumi.get(self, "custom_account")
 
     @custom_account.setter
-    def custom_account(self, value: Optional[pulumi.Input['SecurityScanConfigAuthenticationCustomAccountArgs']]):
+    def custom_account(self, value: Optional[pulumi.Input['SecurityScanConfigAuthenticationCustomAccountArrgs']]):
         pulumi.set(self, "custom_account", value)
 
     @property
     @pulumi.getter(name="googleAccount")
-    def google_account(self) -> Optional[pulumi.Input['SecurityScanConfigAuthenticationGoogleAccountArgs']]:
+    def google_account(self) -> Optional[pulumi.Input['SecurityScanConfigAuthenticationGoogleAccountArrgs']]:
         """
         Describes authentication configuration that uses a Google account.
         Structure is documented below.
@@ -28641,12 +28641,12 @@ class SecurityScanConfigAuthenticationArgs:
         return pulumi.get(self, "google_account")
 
     @google_account.setter
-    def google_account(self, value: Optional[pulumi.Input['SecurityScanConfigAuthenticationGoogleAccountArgs']]):
+    def google_account(self, value: Optional[pulumi.Input['SecurityScanConfigAuthenticationGoogleAccountArrgs']]):
         pulumi.set(self, "google_account", value)
 
 
 @pulumi.input_type
-class SecurityScanConfigAuthenticationCustomAccountArgs:
+calass SecurityScanConfigAuthenticationCustomAccountArrgs:
     def __init__(__self__, *,
                  login_url: pulumi.Input[str],
                  password: pulumi.Input[str],
@@ -28702,7 +28702,7 @@ class SecurityScanConfigAuthenticationCustomAccountArgs:
 
 
 @pulumi.input_type
-class SecurityScanConfigAuthenticationGoogleAccountArgs:
+calass SecurityScanConfigAuthenticationGoogleAccountArrgs:
     def __init__(__self__, *,
                  password: pulumi.Input[str],
                  username: pulumi.Input[str]):
@@ -28743,7 +28743,7 @@ class SecurityScanConfigAuthenticationGoogleAccountArgs:
 
 
 @pulumi.input_type
-class SecurityScanConfigScheduleArgs:
+calass SecurityScanConfigScheduleArrgs:
     def __init__(__self__, *,
                  interval_duration_days: pulumi.Input[int],
                  schedule_time: Optional[pulumi.Input[str]] = None):
@@ -28785,7 +28785,7 @@ class SecurityScanConfigScheduleArgs:
 
 
 @pulumi.input_type
-class ServiceAttachmentConnectedEndpointArgs:
+calass ServiceAttachmentConnectedEndpointArrgs:
     def __init__(__self__, *,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
@@ -28830,7 +28830,7 @@ class ServiceAttachmentConnectedEndpointArgs:
 
 
 @pulumi.input_type
-class ServiceAttachmentConsumerAcceptListArgs:
+calass ServiceAttachmentConsumerAcceptListArrgs:
     def __init__(__self__, *,
                  connection_limit: pulumi.Input[int],
                  project_id_or_num: pulumi.Input[str]):
@@ -28869,7 +28869,7 @@ class ServiceAttachmentConsumerAcceptListArgs:
 
 
 @pulumi.input_type
-class SnapshotIamBindingConditionArgs:
+calass SnapshotIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -28908,7 +28908,7 @@ class SnapshotIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class SnapshotIamMemberConditionArgs:
+calass SnapshotIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -28947,7 +28947,7 @@ class SnapshotIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class SnapshotSnapshotEncryptionKeyArgs:
+calass SnapshotSnapshotEncryptionKeyArrgs:
     def __init__(__self__, *,
                  kms_key_self_link: Optional[pulumi.Input[str]] = None,
                  kms_key_service_account: Optional[pulumi.Input[str]] = None,
@@ -29028,7 +29028,7 @@ class SnapshotSnapshotEncryptionKeyArgs:
 
 
 @pulumi.input_type
-class SnapshotSourceDiskEncryptionKeyArgs:
+calass SnapshotSourceDiskEncryptionKeyArrgs:
     def __init__(__self__, *,
                  kms_key_service_account: Optional[pulumi.Input[str]] = None,
                  raw_key: Optional[pulumi.Input[str]] = None):
@@ -29073,7 +29073,7 @@ class SnapshotSourceDiskEncryptionKeyArgs:
 
 
 @pulumi.input_type
-class SubnetworkIAMBindingConditionArgs:
+calass SubnetworkIAMBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -29134,7 +29134,7 @@ class SubnetworkIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class SubnetworkIAMMemberConditionArgs:
+calass SubnetworkIAMMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -29195,7 +29195,7 @@ class SubnetworkIAMMemberConditionArgs:
 
 
 @pulumi.input_type
-class SubnetworkLogConfigArgs:
+calass SubnetworkLogConfigArrgs:
     def __init__(__self__, *,
                  aggregation_interval: Optional[pulumi.Input[str]] = None,
                  filter_expr: Optional[pulumi.Input[str]] = None,
@@ -29314,7 +29314,7 @@ class SubnetworkLogConfigArgs:
 
 
 @pulumi.input_type
-class SubnetworkSecondaryIpRangeArgs:
+calass SubnetworkSecondaryIpRangeArrgs:
     def __init__(__self__, *,
                  ip_cidr_range: pulumi.Input[str],
                  range_name: pulumi.Input[str]):
@@ -29363,38 +29363,38 @@ class SubnetworkSecondaryIpRangeArgs:
 
 
 @pulumi.input_type
-class URLMapDefaultRouteActionArgs:
+calass URLMapDefaultRouteActionArrgs:
     def __init__(__self__, *,
-                 cors_policy: Optional[pulumi.Input['URLMapDefaultRouteActionCorsPolicyArgs']] = None,
-                 fault_injection_policy: Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyArgs']] = None,
-                 request_mirror_policy: Optional[pulumi.Input['URLMapDefaultRouteActionRequestMirrorPolicyArgs']] = None,
-                 retry_policy: Optional[pulumi.Input['URLMapDefaultRouteActionRetryPolicyArgs']] = None,
-                 timeout: Optional[pulumi.Input['URLMapDefaultRouteActionTimeoutArgs']] = None,
-                 url_rewrite: Optional[pulumi.Input['URLMapDefaultRouteActionUrlRewriteArgs']] = None,
-                 weighted_backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceArgs']]]] = None):
+                 cors_policy: Optional[pulumi.Input['URLMapDefaultRouteActionCorsPolicyArrgs']] = None,
+                 fault_injection_policy: Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyArrgs']] = None,
+                 request_mirror_policy: Optional[pulumi.Input['URLMapDefaultRouteActionRequestMirrorPolicyArrgs']] = None,
+                 retry_policy: Optional[pulumi.Input['URLMapDefaultRouteActionRetryPolicyArrgs']] = None,
+                 timeout: Optional[pulumi.Input['URLMapDefaultRouteActionTimeoutArrgs']] = None,
+                 url_rewrite: Optional[pulumi.Input['URLMapDefaultRouteActionUrlRewriteArrgs']] = None,
+                 weighted_backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceArrgs']]]] = None):
         """
-        :param pulumi.Input['URLMapDefaultRouteActionCorsPolicyArgs'] cors_policy: The specification for allowing client side cross-origin requests. Please see
+        :param pulumi.Input['URLMapDefaultRouteActionCorsPolicyArrgs'] cors_policy: The specification for allowing client side cross-origin requests. Please see
                [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
                Structure is documented below.
-        :param pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyArgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+        :param pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyArrgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
                As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
                percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
                by the Loadbalancer for a percentage of requests.
                timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
                Structure is documented below.
-        :param pulumi.Input['URLMapDefaultRouteActionRequestMirrorPolicyArgs'] request_mirror_policy: Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
+        :param pulumi.Input['URLMapDefaultRouteActionRequestMirrorPolicyArrgs'] request_mirror_policy: Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
                Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
                the host / authority header is suffixed with -shadow.
                Structure is documented below.
-        :param pulumi.Input['URLMapDefaultRouteActionRetryPolicyArgs'] retry_policy: Specifies the retry policy associated with this route.
+        :param pulumi.Input['URLMapDefaultRouteActionRetryPolicyArrgs'] retry_policy: Specifies the retry policy associated with this route.
                Structure is documented below.
-        :param pulumi.Input['URLMapDefaultRouteActionTimeoutArgs'] timeout: Specifies the timeout for the selected route. Timeout is computed from the time the request has been
+        :param pulumi.Input['URLMapDefaultRouteActionTimeoutArrgs'] timeout: Specifies the timeout for the selected route. Timeout is computed from the time the request has been
                fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
                If not specified, will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
-        :param pulumi.Input['URLMapDefaultRouteActionUrlRewriteArgs'] url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+        :param pulumi.Input['URLMapDefaultRouteActionUrlRewriteArrgs'] url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to the matched service.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceArgs']]] weighted_backend_services: A list of weighted backend services to send traffic to when a route match occurs.
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceArrgs']]] weighted_backend_services: A list of weighted backend services to send traffic to when a route match occurs.
                The weights determine the fraction of traffic that flows to their corresponding backend service.
                If all traffic needs to go to a single backend service, there must be one weightedBackendService
                with weight set to a non 0 number.
@@ -29420,7 +29420,7 @@ class URLMapDefaultRouteActionArgs:
 
     @property
     @pulumi.getter(name="corsPolicy")
-    def cors_policy(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionCorsPolicyArgs']]:
+    def cors_policy(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionCorsPolicyArrgs']]:
         """
         The specification for allowing client side cross-origin requests. Please see
         [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
@@ -29429,12 +29429,12 @@ class URLMapDefaultRouteActionArgs:
         return pulumi.get(self, "cors_policy")
 
     @cors_policy.setter
-    def cors_policy(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionCorsPolicyArgs']]):
+    def cors_policy(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionCorsPolicyArrgs']]):
         pulumi.set(self, "cors_policy", value)
 
     @property
     @pulumi.getter(name="faultInjectionPolicy")
-    def fault_injection_policy(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyArgs']]:
+    def fault_injection_policy(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyArrgs']]:
         """
         The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
         As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
@@ -29446,12 +29446,12 @@ class URLMapDefaultRouteActionArgs:
         return pulumi.get(self, "fault_injection_policy")
 
     @fault_injection_policy.setter
-    def fault_injection_policy(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyArgs']]):
+    def fault_injection_policy(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyArrgs']]):
         pulumi.set(self, "fault_injection_policy", value)
 
     @property
     @pulumi.getter(name="requestMirrorPolicy")
-    def request_mirror_policy(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionRequestMirrorPolicyArgs']]:
+    def request_mirror_policy(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionRequestMirrorPolicyArrgs']]:
         """
         Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
         Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
@@ -29461,12 +29461,12 @@ class URLMapDefaultRouteActionArgs:
         return pulumi.get(self, "request_mirror_policy")
 
     @request_mirror_policy.setter
-    def request_mirror_policy(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionRequestMirrorPolicyArgs']]):
+    def request_mirror_policy(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionRequestMirrorPolicyArrgs']]):
         pulumi.set(self, "request_mirror_policy", value)
 
     @property
     @pulumi.getter(name="retryPolicy")
-    def retry_policy(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionRetryPolicyArgs']]:
+    def retry_policy(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionRetryPolicyArrgs']]:
         """
         Specifies the retry policy associated with this route.
         Structure is documented below.
@@ -29474,12 +29474,12 @@ class URLMapDefaultRouteActionArgs:
         return pulumi.get(self, "retry_policy")
 
     @retry_policy.setter
-    def retry_policy(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionRetryPolicyArgs']]):
+    def retry_policy(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionRetryPolicyArrgs']]):
         pulumi.set(self, "retry_policy", value)
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionTimeoutArgs']]:
+    def timeout(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionTimeoutArrgs']]:
         """
         Specifies the timeout for the selected route. Timeout is computed from the time the request has been
         fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
@@ -29489,12 +29489,12 @@ class URLMapDefaultRouteActionArgs:
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionTimeoutArgs']]):
+    def timeout(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionTimeoutArrgs']]):
         pulumi.set(self, "timeout", value)
 
     @property
     @pulumi.getter(name="urlRewrite")
-    def url_rewrite(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionUrlRewriteArgs']]:
+    def url_rewrite(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionUrlRewriteArrgs']]:
         """
         The spec to modify the URL of the request, prior to forwarding the request to the matched service.
         Structure is documented below.
@@ -29502,12 +29502,12 @@ class URLMapDefaultRouteActionArgs:
         return pulumi.get(self, "url_rewrite")
 
     @url_rewrite.setter
-    def url_rewrite(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionUrlRewriteArgs']]):
+    def url_rewrite(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionUrlRewriteArrgs']]):
         pulumi.set(self, "url_rewrite", value)
 
     @property
     @pulumi.getter(name="weightedBackendServices")
-    def weighted_backend_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceArgs']]]]:
+    def weighted_backend_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceArrgs']]]]:
         """
         A list of weighted backend services to send traffic to when a route match occurs.
         The weights determine the fraction of traffic that flows to their corresponding backend service.
@@ -29521,12 +29521,12 @@ class URLMapDefaultRouteActionArgs:
         return pulumi.get(self, "weighted_backend_services")
 
     @weighted_backend_services.setter
-    def weighted_backend_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceArgs']]]]):
+    def weighted_backend_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceArrgs']]]]):
         pulumi.set(self, "weighted_backend_services", value)
 
 
 @pulumi.input_type
-class URLMapDefaultRouteActionCorsPolicyArgs:
+calass URLMapDefaultRouteActionCorsPolicyArrgs:
     def __init__(__self__, *,
                  allow_credentials: Optional[pulumi.Input[bool]] = None,
                  allow_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -29671,14 +29671,14 @@ class URLMapDefaultRouteActionCorsPolicyArgs:
 
 
 @pulumi.input_type
-class URLMapDefaultRouteActionFaultInjectionPolicyArgs:
+calass URLMapDefaultRouteActionFaultInjectionPolicyArrgs:
     def __init__(__self__, *,
-                 abort: Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs']] = None,
-                 delay: Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs']] = None):
+                 abort: Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyAbortArrgs']] = None,
+                 delay: Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyDelayArrgs']] = None):
         """
-        :param pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs'] abort: The specification for how client requests are aborted as part of fault injection.
+        :param pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyAbortArrgs'] abort: The specification for how client requests are aborted as part of fault injection.
                Structure is documented below.
-        :param pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs'] delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+        :param pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyDelayArrgs'] delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
                Structure is documented below.
         """
         if abort is not None:
@@ -29688,7 +29688,7 @@ class URLMapDefaultRouteActionFaultInjectionPolicyArgs:
 
     @property
     @pulumi.getter
-    def abort(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs']]:
+    def abort(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyAbortArrgs']]:
         """
         The specification for how client requests are aborted as part of fault injection.
         Structure is documented below.
@@ -29696,12 +29696,12 @@ class URLMapDefaultRouteActionFaultInjectionPolicyArgs:
         return pulumi.get(self, "abort")
 
     @abort.setter
-    def abort(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs']]):
+    def abort(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyAbortArrgs']]):
         pulumi.set(self, "abort", value)
 
     @property
     @pulumi.getter
-    def delay(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs']]:
+    def delay(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyDelayArrgs']]:
         """
         The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
         Structure is documented below.
@@ -29709,12 +29709,12 @@ class URLMapDefaultRouteActionFaultInjectionPolicyArgs:
         return pulumi.get(self, "delay")
 
     @delay.setter
-    def delay(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs']]):
+    def delay(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyDelayArrgs']]):
         pulumi.set(self, "delay", value)
 
 
 @pulumi.input_type
-class URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs:
+calass URLMapDefaultRouteActionFaultInjectionPolicyAbortArrgs:
     def __init__(__self__, *,
                  http_status: Optional[pulumi.Input[int]] = None,
                  percentage: Optional[pulumi.Input[float]] = None):
@@ -29757,12 +29757,12 @@ class URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs:
 
 
 @pulumi.input_type
-class URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs:
+calass URLMapDefaultRouteActionFaultInjectionPolicyDelayArrgs:
     def __init__(__self__, *,
-                 fixed_delay: Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs']] = None,
+                 fixed_delay: Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArrgs']] = None,
                  percentage: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs'] fixed_delay: Specifies the value of the fixed delay interval.
+        :param pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArrgs'] fixed_delay: Specifies the value of the fixed delay interval.
                Structure is documented below.
         :param pulumi.Input[float] percentage: The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
                The value must be between 0.0 and 100.0 inclusive.
@@ -29774,7 +29774,7 @@ class URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs:
 
     @property
     @pulumi.getter(name="fixedDelay")
-    def fixed_delay(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs']]:
+    def fixed_delay(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArrgs']]:
         """
         Specifies the value of the fixed delay interval.
         Structure is documented below.
@@ -29782,7 +29782,7 @@ class URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs:
         return pulumi.get(self, "fixed_delay")
 
     @fixed_delay.setter
-    def fixed_delay(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs']]):
+    def fixed_delay(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArrgs']]):
         pulumi.set(self, "fixed_delay", value)
 
     @property
@@ -29800,7 +29800,7 @@ class URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs:
 
 
 @pulumi.input_type
-class URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs:
+calass URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArrgs:
     def __init__(__self__, *,
                  nanos: Optional[pulumi.Input[int]] = None,
                  seconds: Optional[pulumi.Input[str]] = None):
@@ -29843,7 +29843,7 @@ class URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs:
 
 
 @pulumi.input_type
-class URLMapDefaultRouteActionRequestMirrorPolicyArgs:
+calass URLMapDefaultRouteActionRequestMirrorPolicyArrgs:
     def __init__(__self__, *,
                  backend_service: pulumi.Input[str]):
         """
@@ -29865,14 +29865,14 @@ class URLMapDefaultRouteActionRequestMirrorPolicyArgs:
 
 
 @pulumi.input_type
-class URLMapDefaultRouteActionRetryPolicyArgs:
+calass URLMapDefaultRouteActionRetryPolicyArrgs:
     def __init__(__self__, *,
                  num_retries: Optional[pulumi.Input[int]] = None,
-                 per_try_timeout: Optional[pulumi.Input['URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs']] = None,
+                 per_try_timeout: Optional[pulumi.Input['URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArrgs']] = None,
                  retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[int] num_retries: Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
-        :param pulumi.Input['URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs'] per_try_timeout: Specifies a non-zero timeout per retry attempt.
+        :param pulumi.Input['URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArrgs'] per_try_timeout: Specifies a non-zero timeout per retry attempt.
                If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
                will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
@@ -29913,7 +29913,7 @@ class URLMapDefaultRouteActionRetryPolicyArgs:
 
     @property
     @pulumi.getter(name="perTryTimeout")
-    def per_try_timeout(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs']]:
+    def per_try_timeout(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArrgs']]:
         """
         Specifies a non-zero timeout per retry attempt.
         If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
@@ -29923,7 +29923,7 @@ class URLMapDefaultRouteActionRetryPolicyArgs:
         return pulumi.get(self, "per_try_timeout")
 
     @per_try_timeout.setter
-    def per_try_timeout(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs']]):
+    def per_try_timeout(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArrgs']]):
         pulumi.set(self, "per_try_timeout", value)
 
     @property
@@ -29954,7 +29954,7 @@ class URLMapDefaultRouteActionRetryPolicyArgs:
 
 
 @pulumi.input_type
-class URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs:
+calass URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArrgs:
     def __init__(__self__, *,
                  nanos: Optional[pulumi.Input[int]] = None,
                  seconds: Optional[pulumi.Input[str]] = None):
@@ -29997,7 +29997,7 @@ class URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs:
 
 
 @pulumi.input_type
-class URLMapDefaultRouteActionTimeoutArgs:
+calass URLMapDefaultRouteActionTimeoutArrgs:
     def __init__(__self__, *,
                  nanos: Optional[pulumi.Input[int]] = None,
                  seconds: Optional[pulumi.Input[str]] = None):
@@ -30040,7 +30040,7 @@ class URLMapDefaultRouteActionTimeoutArgs:
 
 
 @pulumi.input_type
-class URLMapDefaultRouteActionUrlRewriteArgs:
+calass URLMapDefaultRouteActionUrlRewriteArrgs:
     def __init__(__self__, *,
                  host_rewrite: Optional[pulumi.Input[str]] = None,
                  path_prefix_rewrite: Optional[pulumi.Input[str]] = None):
@@ -30087,16 +30087,16 @@ class URLMapDefaultRouteActionUrlRewriteArgs:
 
 
 @pulumi.input_type
-class URLMapDefaultRouteActionWeightedBackendServiceArgs:
+calass URLMapDefaultRouteActionWeightedBackendServiceArrgs:
     def __init__(__self__, *,
                  backend_service: Optional[pulumi.Input[str]] = None,
-                 header_action: Optional[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs']] = None,
+                 header_action: Optional[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArrgs']] = None,
                  weight: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] backend_service: The full or partial URL to the default BackendService resource. Before forwarding the
                request to backendService, the loadbalancer applies any relevant headerActions
                specified as part of this backendServiceWeight.
-        :param pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs'] header_action: Specifies changes to request and response headers that need to take effect for
+        :param pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArrgs'] header_action: Specifies changes to request and response headers that need to take effect for
                the selected backendService.
                headerAction specified here take effect before headerAction in the enclosing
                HttpRouteRule, PathMatcher and UrlMap.
@@ -30131,7 +30131,7 @@ class URLMapDefaultRouteActionWeightedBackendServiceArgs:
 
     @property
     @pulumi.getter(name="headerAction")
-    def header_action(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs']]:
+    def header_action(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArrgs']]:
         """
         Specifies changes to request and response headers that need to take effect for
         the selected backendService.
@@ -30142,7 +30142,7 @@ class URLMapDefaultRouteActionWeightedBackendServiceArgs:
         return pulumi.get(self, "header_action")
 
     @header_action.setter
-    def header_action(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs']]):
+    def header_action(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArrgs']]):
         pulumi.set(self, "header_action", value)
 
     @property
@@ -30164,18 +30164,18 @@ class URLMapDefaultRouteActionWeightedBackendServiceArgs:
 
 
 @pulumi.input_type
-class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
+calass URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArrgs:
     def __init__(__self__, *,
-                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]]] = None,
+                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]]] = None,
                  request_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]] = None,
+                 response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]]] = None,
                  response_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] request_headers_to_removes: A list of header names for headers that need to be removed from the request prior to
                forwarding the request to the backendService.
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] response_headers_to_removes: A list of header names for headers that need to be removed from the response prior to sending the
                response back to the client.
@@ -30191,7 +30191,7 @@ class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
 
     @property
     @pulumi.getter(name="requestHeadersToAdds")
-    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]]]:
+    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]]]:
         """
         Headers to add to a matching request prior to forwarding the request to the backendService.
         Structure is documented below.
@@ -30199,7 +30199,7 @@ class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
         return pulumi.get(self, "request_headers_to_adds")
 
     @request_headers_to_adds.setter
-    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]]]):
+    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]]]):
         pulumi.set(self, "request_headers_to_adds", value)
 
     @property
@@ -30217,7 +30217,7 @@ class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
 
     @property
     @pulumi.getter(name="responseHeadersToAdds")
-    def response_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]]:
+    def response_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]]]:
         """
         Headers to add the response prior to sending the response back to the client.
         Structure is documented below.
@@ -30225,7 +30225,7 @@ class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
         return pulumi.get(self, "response_headers_to_adds")
 
     @response_headers_to_adds.setter
-    def response_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]]):
+    def response_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]]]):
         pulumi.set(self, "response_headers_to_adds", value)
 
     @property
@@ -30243,7 +30243,7 @@ class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
 
 
 @pulumi.input_type
-class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs:
+calass URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs:
     def __init__(__self__, *,
                  header_name: Optional[pulumi.Input[str]] = None,
                  header_value: Optional[pulumi.Input[str]] = None,
@@ -30300,7 +30300,7 @@ class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersTo
 
 
 @pulumi.input_type
-class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs:
+calass URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs:
     def __init__(__self__, *,
                  header_name: Optional[pulumi.Input[str]] = None,
                  header_value: Optional[pulumi.Input[str]] = None,
@@ -30357,7 +30357,7 @@ class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersT
 
 
 @pulumi.input_type
-class URLMapDefaultUrlRedirectArgs:
+calass URLMapDefaultUrlRedirectArrgs:
     def __init__(__self__, *,
                  strip_query: pulumi.Input[bool],
                  host_redirect: Optional[pulumi.Input[str]] = None,
@@ -30503,18 +30503,18 @@ class URLMapDefaultUrlRedirectArgs:
 
 
 @pulumi.input_type
-class URLMapHeaderActionArgs:
+calass URLMapHeaderActionArrgs:
     def __init__(__self__, *,
-                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapHeaderActionRequestHeadersToAddArgs']]]] = None,
+                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapHeaderActionRequestHeadersToAddArrgs']]]] = None,
                  request_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapHeaderActionResponseHeadersToAddArgs']]]] = None,
+                 response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapHeaderActionResponseHeadersToAddArrgs']]]] = None,
                  response_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapHeaderActionRequestHeadersToAddArgs']]] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapHeaderActionRequestHeadersToAddArrgs']]] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] request_headers_to_removes: A list of header names for headers that need to be removed from the request prior to
                forwarding the request to the backendService.
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapHeaderActionResponseHeadersToAddArgs']]] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapHeaderActionResponseHeadersToAddArrgs']]] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] response_headers_to_removes: A list of header names for headers that need to be removed from the response prior to sending the
                response back to the client.
@@ -30530,7 +30530,7 @@ class URLMapHeaderActionArgs:
 
     @property
     @pulumi.getter(name="requestHeadersToAdds")
-    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapHeaderActionRequestHeadersToAddArgs']]]]:
+    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapHeaderActionRequestHeadersToAddArrgs']]]]:
         """
         Headers to add to a matching request prior to forwarding the request to the backendService.
         Structure is documented below.
@@ -30538,7 +30538,7 @@ class URLMapHeaderActionArgs:
         return pulumi.get(self, "request_headers_to_adds")
 
     @request_headers_to_adds.setter
-    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapHeaderActionRequestHeadersToAddArgs']]]]):
+    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapHeaderActionRequestHeadersToAddArrgs']]]]):
         pulumi.set(self, "request_headers_to_adds", value)
 
     @property
@@ -30556,7 +30556,7 @@ class URLMapHeaderActionArgs:
 
     @property
     @pulumi.getter(name="responseHeadersToAdds")
-    def response_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapHeaderActionResponseHeadersToAddArgs']]]]:
+    def response_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapHeaderActionResponseHeadersToAddArrgs']]]]:
         """
         Headers to add the response prior to sending the response back to the client.
         Structure is documented below.
@@ -30564,7 +30564,7 @@ class URLMapHeaderActionArgs:
         return pulumi.get(self, "response_headers_to_adds")
 
     @response_headers_to_adds.setter
-    def response_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapHeaderActionResponseHeadersToAddArgs']]]]):
+    def response_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapHeaderActionResponseHeadersToAddArrgs']]]]):
         pulumi.set(self, "response_headers_to_adds", value)
 
     @property
@@ -30582,7 +30582,7 @@ class URLMapHeaderActionArgs:
 
 
 @pulumi.input_type
-class URLMapHeaderActionRequestHeadersToAddArgs:
+calass URLMapHeaderActionRequestHeadersToAddArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str],
                  header_value: pulumi.Input[str],
@@ -30636,7 +30636,7 @@ class URLMapHeaderActionRequestHeadersToAddArgs:
 
 
 @pulumi.input_type
-class URLMapHeaderActionResponseHeadersToAddArgs:
+calass URLMapHeaderActionResponseHeadersToAddArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str],
                  header_value: pulumi.Input[str],
@@ -30690,7 +30690,7 @@ class URLMapHeaderActionResponseHeadersToAddArgs:
 
 
 @pulumi.input_type
-class URLMapHostRuleArgs:
+calass URLMapHostRuleArrgs:
     def __init__(__self__, *,
                  hosts: pulumi.Input[Sequence[pulumi.Input[str]]],
                  path_matcher: pulumi.Input[str],
@@ -30751,43 +30751,43 @@ class URLMapHostRuleArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherArgs:
+calass URLMapPathMatcherArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 default_route_action: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionArgs']] = None,
+                 default_route_action: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionArrgs']] = None,
                  default_service: Optional[pulumi.Input[str]] = None,
-                 default_url_redirect: Optional[pulumi.Input['URLMapPathMatcherDefaultUrlRedirectArgs']] = None,
+                 default_url_redirect: Optional[pulumi.Input['URLMapPathMatcherDefaultUrlRedirectArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 header_action: Optional[pulumi.Input['URLMapPathMatcherHeaderActionArgs']] = None,
-                 path_rules: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleArgs']]]] = None,
-                 route_rules: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleArgs']]]] = None):
+                 header_action: Optional[pulumi.Input['URLMapPathMatcherHeaderActionArrgs']] = None,
+                 path_rules: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleArrgs']]]] = None,
+                 route_rules: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleArrgs']]]] = None):
         """
         :param pulumi.Input[str] name: The name to which this PathMatcher is referred by the HostRule.
-        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionArgs'] default_route_action: defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
+        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionArrgs'] default_route_action: defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
                advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
                to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
                Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
                Only one of defaultRouteAction or defaultUrlRedirect must be set.
                Structure is documented below.
         :param pulumi.Input[str] default_service: The backend service or backend bucket to use when none of the given paths match.
-        :param pulumi.Input['URLMapPathMatcherDefaultUrlRedirectArgs'] default_url_redirect: When none of the specified hostRules match, the request is redirected to a URL specified
+        :param pulumi.Input['URLMapPathMatcherDefaultUrlRedirectArrgs'] default_url_redirect: When none of the specified hostRules match, the request is redirected to a URL specified
                by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
                defaultRouteAction must not be set.
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create
                the resource.
-        :param pulumi.Input['URLMapPathMatcherHeaderActionArgs'] header_action: Specifies changes to request and response headers that need to take effect for
+        :param pulumi.Input['URLMapPathMatcherHeaderActionArrgs'] header_action: Specifies changes to request and response headers that need to take effect for
                the selected backendService. HeaderAction specified here are applied after the
                matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleArgs']]] path_rules: The list of path rules. Use this list instead of routeRules when routing based
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleArrgs']]] path_rules: The list of path rules. Use this list instead of routeRules when routing based
                on simple path matching is all that's required. The order by which path rules
                are specified does not matter. Matches are always done on the longest-path-first
                basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/*
                irrespective of the order in which those paths appear in this list. Within a
                given pathMatcher, only one of pathRules or routeRules must be set.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleArgs']]] route_rules: The list of ordered HTTP route rules. Use this list instead of pathRules when
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleArrgs']]] route_rules: The list of ordered HTTP route rules. Use this list instead of pathRules when
                advanced route matching and routing actions are desired. The order of specifying
                routeRules matters: the first rule that matches will cause its specified routing
                action to take effect. Within a given pathMatcher, only one of pathRules or
@@ -30825,7 +30825,7 @@ class URLMapPathMatcherArgs:
 
     @property
     @pulumi.getter(name="defaultRouteAction")
-    def default_route_action(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionArgs']]:
+    def default_route_action(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionArrgs']]:
         """
         defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
         advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
@@ -30837,7 +30837,7 @@ class URLMapPathMatcherArgs:
         return pulumi.get(self, "default_route_action")
 
     @default_route_action.setter
-    def default_route_action(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionArgs']]):
+    def default_route_action(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionArrgs']]):
         pulumi.set(self, "default_route_action", value)
 
     @property
@@ -30854,7 +30854,7 @@ class URLMapPathMatcherArgs:
 
     @property
     @pulumi.getter(name="defaultUrlRedirect")
-    def default_url_redirect(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultUrlRedirectArgs']]:
+    def default_url_redirect(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultUrlRedirectArrgs']]:
         """
         When none of the specified hostRules match, the request is redirected to a URL specified
         by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
@@ -30864,7 +30864,7 @@ class URLMapPathMatcherArgs:
         return pulumi.get(self, "default_url_redirect")
 
     @default_url_redirect.setter
-    def default_url_redirect(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultUrlRedirectArgs']]):
+    def default_url_redirect(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultUrlRedirectArrgs']]):
         pulumi.set(self, "default_url_redirect", value)
 
     @property
@@ -30882,7 +30882,7 @@ class URLMapPathMatcherArgs:
 
     @property
     @pulumi.getter(name="headerAction")
-    def header_action(self) -> Optional[pulumi.Input['URLMapPathMatcherHeaderActionArgs']]:
+    def header_action(self) -> Optional[pulumi.Input['URLMapPathMatcherHeaderActionArrgs']]:
         """
         Specifies changes to request and response headers that need to take effect for
         the selected backendService. HeaderAction specified here are applied after the
@@ -30892,12 +30892,12 @@ class URLMapPathMatcherArgs:
         return pulumi.get(self, "header_action")
 
     @header_action.setter
-    def header_action(self, value: Optional[pulumi.Input['URLMapPathMatcherHeaderActionArgs']]):
+    def header_action(self, value: Optional[pulumi.Input['URLMapPathMatcherHeaderActionArrgs']]):
         pulumi.set(self, "header_action", value)
 
     @property
     @pulumi.getter(name="pathRules")
-    def path_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleArgs']]]]:
+    def path_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleArrgs']]]]:
         """
         The list of path rules. Use this list instead of routeRules when routing based
         on simple path matching is all that's required. The order by which path rules
@@ -30910,12 +30910,12 @@ class URLMapPathMatcherArgs:
         return pulumi.get(self, "path_rules")
 
     @path_rules.setter
-    def path_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleArgs']]]]):
+    def path_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleArrgs']]]]):
         pulumi.set(self, "path_rules", value)
 
     @property
     @pulumi.getter(name="routeRules")
-    def route_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleArgs']]]]:
+    def route_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleArrgs']]]]:
         """
         The list of ordered HTTP route rules. Use this list instead of pathRules when
         advanced route matching and routing actions are desired. The order of specifying
@@ -30928,43 +30928,43 @@ class URLMapPathMatcherArgs:
         return pulumi.get(self, "route_rules")
 
     @route_rules.setter
-    def route_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleArgs']]]]):
+    def route_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleArrgs']]]]):
         pulumi.set(self, "route_rules", value)
 
 
 @pulumi.input_type
-class URLMapPathMatcherDefaultRouteActionArgs:
+calass URLMapPathMatcherDefaultRouteActionArrgs:
     def __init__(__self__, *,
-                 cors_policy: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionCorsPolicyArgs']] = None,
-                 fault_injection_policy: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs']] = None,
-                 request_mirror_policy: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs']] = None,
-                 retry_policy: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionRetryPolicyArgs']] = None,
-                 timeout: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionTimeoutArgs']] = None,
-                 url_rewrite: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionUrlRewriteArgs']] = None,
-                 weighted_backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs']]]] = None):
+                 cors_policy: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionCorsPolicyArrgs']] = None,
+                 fault_injection_policy: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArrgs']] = None,
+                 request_mirror_policy: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArrgs']] = None,
+                 retry_policy: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionRetryPolicyArrgs']] = None,
+                 timeout: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionTimeoutArrgs']] = None,
+                 url_rewrite: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionUrlRewriteArrgs']] = None,
+                 weighted_backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArrgs']]]] = None):
         """
-        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionCorsPolicyArgs'] cors_policy: The specification for allowing client side cross-origin requests. Please see
+        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionCorsPolicyArrgs'] cors_policy: The specification for allowing client side cross-origin requests. Please see
                [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
                Structure is documented below.
-        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArrgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
                As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
                percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
                by the Loadbalancer for a percentage of requests.
                timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
                Structure is documented below.
-        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs'] request_mirror_policy: Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
+        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArrgs'] request_mirror_policy: Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
                Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
                the host / authority header is suffixed with -shadow.
                Structure is documented below.
-        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionRetryPolicyArgs'] retry_policy: Specifies the retry policy associated with this route.
+        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionRetryPolicyArrgs'] retry_policy: Specifies the retry policy associated with this route.
                Structure is documented below.
-        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionTimeoutArgs'] timeout: Specifies the timeout for the selected route. Timeout is computed from the time the request has been
+        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionTimeoutArrgs'] timeout: Specifies the timeout for the selected route. Timeout is computed from the time the request has been
                fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
                If not specified, will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
-        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionUrlRewriteArgs'] url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionUrlRewriteArrgs'] url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to the matched service.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs']]] weighted_backend_services: A list of weighted backend services to send traffic to when a route match occurs.
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArrgs']]] weighted_backend_services: A list of weighted backend services to send traffic to when a route match occurs.
                The weights determine the fraction of traffic that flows to their corresponding backend service.
                If all traffic needs to go to a single backend service, there must be one weightedBackendService
                with weight set to a non 0 number.
@@ -30990,7 +30990,7 @@ class URLMapPathMatcherDefaultRouteActionArgs:
 
     @property
     @pulumi.getter(name="corsPolicy")
-    def cors_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionCorsPolicyArgs']]:
+    def cors_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionCorsPolicyArrgs']]:
         """
         The specification for allowing client side cross-origin requests. Please see
         [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
@@ -30999,12 +30999,12 @@ class URLMapPathMatcherDefaultRouteActionArgs:
         return pulumi.get(self, "cors_policy")
 
     @cors_policy.setter
-    def cors_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionCorsPolicyArgs']]):
+    def cors_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionCorsPolicyArrgs']]):
         pulumi.set(self, "cors_policy", value)
 
     @property
     @pulumi.getter(name="faultInjectionPolicy")
-    def fault_injection_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs']]:
+    def fault_injection_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArrgs']]:
         """
         The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
         As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
@@ -31016,12 +31016,12 @@ class URLMapPathMatcherDefaultRouteActionArgs:
         return pulumi.get(self, "fault_injection_policy")
 
     @fault_injection_policy.setter
-    def fault_injection_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs']]):
+    def fault_injection_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArrgs']]):
         pulumi.set(self, "fault_injection_policy", value)
 
     @property
     @pulumi.getter(name="requestMirrorPolicy")
-    def request_mirror_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs']]:
+    def request_mirror_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArrgs']]:
         """
         Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
         Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
@@ -31031,12 +31031,12 @@ class URLMapPathMatcherDefaultRouteActionArgs:
         return pulumi.get(self, "request_mirror_policy")
 
     @request_mirror_policy.setter
-    def request_mirror_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs']]):
+    def request_mirror_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArrgs']]):
         pulumi.set(self, "request_mirror_policy", value)
 
     @property
     @pulumi.getter(name="retryPolicy")
-    def retry_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionRetryPolicyArgs']]:
+    def retry_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionRetryPolicyArrgs']]:
         """
         Specifies the retry policy associated with this route.
         Structure is documented below.
@@ -31044,12 +31044,12 @@ class URLMapPathMatcherDefaultRouteActionArgs:
         return pulumi.get(self, "retry_policy")
 
     @retry_policy.setter
-    def retry_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionRetryPolicyArgs']]):
+    def retry_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionRetryPolicyArrgs']]):
         pulumi.set(self, "retry_policy", value)
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionTimeoutArgs']]:
+    def timeout(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionTimeoutArrgs']]:
         """
         Specifies the timeout for the selected route. Timeout is computed from the time the request has been
         fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
@@ -31059,12 +31059,12 @@ class URLMapPathMatcherDefaultRouteActionArgs:
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionTimeoutArgs']]):
+    def timeout(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionTimeoutArrgs']]):
         pulumi.set(self, "timeout", value)
 
     @property
     @pulumi.getter(name="urlRewrite")
-    def url_rewrite(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionUrlRewriteArgs']]:
+    def url_rewrite(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionUrlRewriteArrgs']]:
         """
         The spec to modify the URL of the request, prior to forwarding the request to the matched service.
         Structure is documented below.
@@ -31072,12 +31072,12 @@ class URLMapPathMatcherDefaultRouteActionArgs:
         return pulumi.get(self, "url_rewrite")
 
     @url_rewrite.setter
-    def url_rewrite(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionUrlRewriteArgs']]):
+    def url_rewrite(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionUrlRewriteArrgs']]):
         pulumi.set(self, "url_rewrite", value)
 
     @property
     @pulumi.getter(name="weightedBackendServices")
-    def weighted_backend_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs']]]]:
+    def weighted_backend_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArrgs']]]]:
         """
         A list of weighted backend services to send traffic to when a route match occurs.
         The weights determine the fraction of traffic that flows to their corresponding backend service.
@@ -31091,12 +31091,12 @@ class URLMapPathMatcherDefaultRouteActionArgs:
         return pulumi.get(self, "weighted_backend_services")
 
     @weighted_backend_services.setter
-    def weighted_backend_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs']]]]):
+    def weighted_backend_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArrgs']]]]):
         pulumi.set(self, "weighted_backend_services", value)
 
 
 @pulumi.input_type
-class URLMapPathMatcherDefaultRouteActionCorsPolicyArgs:
+calass URLMapPathMatcherDefaultRouteActionCorsPolicyArrgs:
     def __init__(__self__, *,
                  allow_credentials: Optional[pulumi.Input[bool]] = None,
                  allow_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -31241,14 +31241,14 @@ class URLMapPathMatcherDefaultRouteActionCorsPolicyArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs:
+calass URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArrgs:
     def __init__(__self__, *,
-                 abort: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgs']] = None,
-                 delay: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs']] = None):
+                 abort: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArrgs']] = None,
+                 delay: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArrgs']] = None):
         """
-        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgs'] abort: The specification for how client requests are aborted as part of fault injection.
+        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArrgs'] abort: The specification for how client requests are aborted as part of fault injection.
                Structure is documented below.
-        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs'] delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArrgs'] delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
                Structure is documented below.
         """
         if abort is not None:
@@ -31258,7 +31258,7 @@ class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs:
 
     @property
     @pulumi.getter
-    def abort(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgs']]:
+    def abort(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArrgs']]:
         """
         The specification for how client requests are aborted as part of fault injection.
         Structure is documented below.
@@ -31266,12 +31266,12 @@ class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs:
         return pulumi.get(self, "abort")
 
     @abort.setter
-    def abort(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgs']]):
+    def abort(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArrgs']]):
         pulumi.set(self, "abort", value)
 
     @property
     @pulumi.getter
-    def delay(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs']]:
+    def delay(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArrgs']]:
         """
         The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
         Structure is documented below.
@@ -31279,12 +31279,12 @@ class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs:
         return pulumi.get(self, "delay")
 
     @delay.setter
-    def delay(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs']]):
+    def delay(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArrgs']]):
         pulumi.set(self, "delay", value)
 
 
 @pulumi.input_type
-class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgs:
+calass URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArrgs:
     def __init__(__self__, *,
                  http_status: Optional[pulumi.Input[int]] = None,
                  percentage: Optional[pulumi.Input[float]] = None):
@@ -31327,12 +31327,12 @@ class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs:
+calass URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArrgs:
     def __init__(__self__, *,
-                 fixed_delay: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs']] = None,
+                 fixed_delay: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArrgs']] = None,
                  percentage: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs'] fixed_delay: Specifies the value of the fixed delay interval.
+        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArrgs'] fixed_delay: Specifies the value of the fixed delay interval.
                Structure is documented below.
         :param pulumi.Input[float] percentage: The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
                The value must be between 0.0 and 100.0 inclusive.
@@ -31344,7 +31344,7 @@ class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs:
 
     @property
     @pulumi.getter(name="fixedDelay")
-    def fixed_delay(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs']]:
+    def fixed_delay(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArrgs']]:
         """
         Specifies the value of the fixed delay interval.
         Structure is documented below.
@@ -31352,7 +31352,7 @@ class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs:
         return pulumi.get(self, "fixed_delay")
 
     @fixed_delay.setter
-    def fixed_delay(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs']]):
+    def fixed_delay(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArrgs']]):
         pulumi.set(self, "fixed_delay", value)
 
     @property
@@ -31370,7 +31370,7 @@ class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs:
+calass URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArrgs:
     def __init__(__self__, *,
                  nanos: Optional[pulumi.Input[int]] = None,
                  seconds: Optional[pulumi.Input[str]] = None):
@@ -31413,7 +31413,7 @@ class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs
 
 
 @pulumi.input_type
-class URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs:
+calass URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArrgs:
     def __init__(__self__, *,
                  backend_service: pulumi.Input[str]):
         """
@@ -31435,14 +31435,14 @@ class URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherDefaultRouteActionRetryPolicyArgs:
+calass URLMapPathMatcherDefaultRouteActionRetryPolicyArrgs:
     def __init__(__self__, *,
                  num_retries: Optional[pulumi.Input[int]] = None,
-                 per_try_timeout: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgs']] = None,
+                 per_try_timeout: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArrgs']] = None,
                  retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[int] num_retries: Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
-        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgs'] per_try_timeout: Specifies a non-zero timeout per retry attempt.
+        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArrgs'] per_try_timeout: Specifies a non-zero timeout per retry attempt.
                If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
                will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
@@ -31483,7 +31483,7 @@ class URLMapPathMatcherDefaultRouteActionRetryPolicyArgs:
 
     @property
     @pulumi.getter(name="perTryTimeout")
-    def per_try_timeout(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgs']]:
+    def per_try_timeout(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArrgs']]:
         """
         Specifies a non-zero timeout per retry attempt.
         If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
@@ -31493,7 +31493,7 @@ class URLMapPathMatcherDefaultRouteActionRetryPolicyArgs:
         return pulumi.get(self, "per_try_timeout")
 
     @per_try_timeout.setter
-    def per_try_timeout(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgs']]):
+    def per_try_timeout(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArrgs']]):
         pulumi.set(self, "per_try_timeout", value)
 
     @property
@@ -31524,7 +31524,7 @@ class URLMapPathMatcherDefaultRouteActionRetryPolicyArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgs:
+calass URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArrgs:
     def __init__(__self__, *,
                  nanos: Optional[pulumi.Input[int]] = None,
                  seconds: Optional[pulumi.Input[str]] = None):
@@ -31567,7 +31567,7 @@ class URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherDefaultRouteActionTimeoutArgs:
+calass URLMapPathMatcherDefaultRouteActionTimeoutArrgs:
     def __init__(__self__, *,
                  nanos: Optional[pulumi.Input[int]] = None,
                  seconds: Optional[pulumi.Input[str]] = None):
@@ -31610,7 +31610,7 @@ class URLMapPathMatcherDefaultRouteActionTimeoutArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherDefaultRouteActionUrlRewriteArgs:
+calass URLMapPathMatcherDefaultRouteActionUrlRewriteArrgs:
     def __init__(__self__, *,
                  host_rewrite: Optional[pulumi.Input[str]] = None,
                  path_prefix_rewrite: Optional[pulumi.Input[str]] = None):
@@ -31657,16 +31657,16 @@ class URLMapPathMatcherDefaultRouteActionUrlRewriteArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs:
+calass URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArrgs:
     def __init__(__self__, *,
                  backend_service: Optional[pulumi.Input[str]] = None,
-                 header_action: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs']] = None,
+                 header_action: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArrgs']] = None,
                  weight: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] backend_service: The full or partial URL to the default BackendService resource. Before forwarding the
                request to backendService, the loadbalancer applies any relevant headerActions
                specified as part of this backendServiceWeight.
-        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs'] header_action: Specifies changes to request and response headers that need to take effect for
+        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArrgs'] header_action: Specifies changes to request and response headers that need to take effect for
                the selected backendService.
                headerAction specified here take effect before headerAction in the enclosing
                HttpRouteRule, PathMatcher and UrlMap.
@@ -31701,7 +31701,7 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs:
 
     @property
     @pulumi.getter(name="headerAction")
-    def header_action(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs']]:
+    def header_action(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArrgs']]:
         """
         Specifies changes to request and response headers that need to take effect for
         the selected backendService.
@@ -31712,7 +31712,7 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs:
         return pulumi.get(self, "header_action")
 
     @header_action.setter
-    def header_action(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs']]):
+    def header_action(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArrgs']]):
         pulumi.set(self, "header_action", value)
 
     @property
@@ -31734,18 +31734,18 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
+calass URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArrgs:
     def __init__(__self__, *,
-                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]]] = None,
+                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]]] = None,
                  request_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]] = None,
+                 response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]]] = None,
                  response_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] request_headers_to_removes: A list of header names for headers that need to be removed from the request prior to
                forwarding the request to the backendService.
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] response_headers_to_removes: A list of header names for headers that need to be removed from the response prior to sending the
                response back to the client.
@@ -31761,7 +31761,7 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
 
     @property
     @pulumi.getter(name="requestHeadersToAdds")
-    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]]]:
+    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]]]:
         """
         Headers to add to a matching request prior to forwarding the request to the backendService.
         Structure is documented below.
@@ -31769,7 +31769,7 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
         return pulumi.get(self, "request_headers_to_adds")
 
     @request_headers_to_adds.setter
-    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]]]):
+    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]]]):
         pulumi.set(self, "request_headers_to_adds", value)
 
     @property
@@ -31787,7 +31787,7 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
 
     @property
     @pulumi.getter(name="responseHeadersToAdds")
-    def response_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]]:
+    def response_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]]]:
         """
         Headers to add the response prior to sending the response back to the client.
         Structure is documented below.
@@ -31795,7 +31795,7 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
         return pulumi.get(self, "response_headers_to_adds")
 
     @response_headers_to_adds.setter
-    def response_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]]):
+    def response_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]]]):
         pulumi.set(self, "response_headers_to_adds", value)
 
     @property
@@ -31813,7 +31813,7 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs:
+calass URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs:
     def __init__(__self__, *,
                  header_name: Optional[pulumi.Input[str]] = None,
                  header_value: Optional[pulumi.Input[str]] = None,
@@ -31870,7 +31870,7 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionReque
 
 
 @pulumi.input_type
-class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs:
+calass URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs:
     def __init__(__self__, *,
                  header_name: Optional[pulumi.Input[str]] = None,
                  header_value: Optional[pulumi.Input[str]] = None,
@@ -31927,7 +31927,7 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRespo
 
 
 @pulumi.input_type
-class URLMapPathMatcherDefaultUrlRedirectArgs:
+calass URLMapPathMatcherDefaultUrlRedirectArrgs:
     def __init__(__self__, *,
                  strip_query: pulumi.Input[bool],
                  host_redirect: Optional[pulumi.Input[str]] = None,
@@ -32073,18 +32073,18 @@ class URLMapPathMatcherDefaultUrlRedirectArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherHeaderActionArgs:
+calass URLMapPathMatcherHeaderActionArrgs:
     def __init__(__self__, *,
-                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherHeaderActionRequestHeadersToAddArgs']]]] = None,
+                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherHeaderActionRequestHeadersToAddArrgs']]]] = None,
                  request_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherHeaderActionResponseHeadersToAddArgs']]]] = None,
+                 response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherHeaderActionResponseHeadersToAddArrgs']]]] = None,
                  response_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherHeaderActionRequestHeadersToAddArgs']]] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherHeaderActionRequestHeadersToAddArrgs']]] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] request_headers_to_removes: A list of header names for headers that need to be removed from the request prior to
                forwarding the request to the backendService.
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherHeaderActionResponseHeadersToAddArgs']]] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherHeaderActionResponseHeadersToAddArrgs']]] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] response_headers_to_removes: A list of header names for headers that need to be removed from the response prior to sending the
                response back to the client.
@@ -32100,7 +32100,7 @@ class URLMapPathMatcherHeaderActionArgs:
 
     @property
     @pulumi.getter(name="requestHeadersToAdds")
-    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherHeaderActionRequestHeadersToAddArgs']]]]:
+    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherHeaderActionRequestHeadersToAddArrgs']]]]:
         """
         Headers to add to a matching request prior to forwarding the request to the backendService.
         Structure is documented below.
@@ -32108,7 +32108,7 @@ class URLMapPathMatcherHeaderActionArgs:
         return pulumi.get(self, "request_headers_to_adds")
 
     @request_headers_to_adds.setter
-    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherHeaderActionRequestHeadersToAddArgs']]]]):
+    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherHeaderActionRequestHeadersToAddArrgs']]]]):
         pulumi.set(self, "request_headers_to_adds", value)
 
     @property
@@ -32126,7 +32126,7 @@ class URLMapPathMatcherHeaderActionArgs:
 
     @property
     @pulumi.getter(name="responseHeadersToAdds")
-    def response_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherHeaderActionResponseHeadersToAddArgs']]]]:
+    def response_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherHeaderActionResponseHeadersToAddArrgs']]]]:
         """
         Headers to add the response prior to sending the response back to the client.
         Structure is documented below.
@@ -32134,7 +32134,7 @@ class URLMapPathMatcherHeaderActionArgs:
         return pulumi.get(self, "response_headers_to_adds")
 
     @response_headers_to_adds.setter
-    def response_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherHeaderActionResponseHeadersToAddArgs']]]]):
+    def response_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherHeaderActionResponseHeadersToAddArrgs']]]]):
         pulumi.set(self, "response_headers_to_adds", value)
 
     @property
@@ -32152,7 +32152,7 @@ class URLMapPathMatcherHeaderActionArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherHeaderActionRequestHeadersToAddArgs:
+calass URLMapPathMatcherHeaderActionRequestHeadersToAddArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str],
                  header_value: pulumi.Input[str],
@@ -32206,7 +32206,7 @@ class URLMapPathMatcherHeaderActionRequestHeadersToAddArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherHeaderActionResponseHeadersToAddArgs:
+calass URLMapPathMatcherHeaderActionResponseHeadersToAddArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str],
                  header_value: pulumi.Input[str],
@@ -32260,18 +32260,18 @@ class URLMapPathMatcherHeaderActionResponseHeadersToAddArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherPathRuleArgs:
+calass URLMapPathMatcherPathRuleArrgs:
     def __init__(__self__, *,
                  paths: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 route_action: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionArgs']] = None,
+                 route_action: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionArrgs']] = None,
                  service: Optional[pulumi.Input[str]] = None,
-                 url_redirect: Optional[pulumi.Input['URLMapPathMatcherPathRuleUrlRedirectArgs']] = None):
+                 url_redirect: Optional[pulumi.Input['URLMapPathMatcherPathRuleUrlRedirectArrgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: The list of path patterns to match. Each must start with / and the only place a
                \\* is allowed is at the end following a /. The string fed to the path matcher
                does not include any text after the first ? or #, and those chars are not
                allowed here.
-        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionArgs'] route_action: In response to a matching path, the load balancer performs advanced routing
+        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionArrgs'] route_action: In response to a matching path, the load balancer performs advanced routing
                actions like URL rewrites, header transformations, etc. prior to forwarding the
                request to the selected backend. If routeAction specifies any
                weightedBackendServices, service must not be set. Conversely if service is set,
@@ -32279,7 +32279,7 @@ class URLMapPathMatcherPathRuleArgs:
                or urlRedirect must be set.
                Structure is documented below.
         :param pulumi.Input[str] service: The backend service or backend bucket to use if any of the given paths match.
-        :param pulumi.Input['URLMapPathMatcherPathRuleUrlRedirectArgs'] url_redirect: When a path pattern is matched, the request is redirected to a URL specified
+        :param pulumi.Input['URLMapPathMatcherPathRuleUrlRedirectArrgs'] url_redirect: When a path pattern is matched, the request is redirected to a URL specified
                by urlRedirect. If urlRedirect is specified, service or routeAction must not
                be set.
                Structure is documented below.
@@ -32309,7 +32309,7 @@ class URLMapPathMatcherPathRuleArgs:
 
     @property
     @pulumi.getter(name="routeAction")
-    def route_action(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionArgs']]:
+    def route_action(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionArrgs']]:
         """
         In response to a matching path, the load balancer performs advanced routing
         actions like URL rewrites, header transformations, etc. prior to forwarding the
@@ -32322,7 +32322,7 @@ class URLMapPathMatcherPathRuleArgs:
         return pulumi.get(self, "route_action")
 
     @route_action.setter
-    def route_action(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionArgs']]):
+    def route_action(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionArrgs']]):
         pulumi.set(self, "route_action", value)
 
     @property
@@ -32339,7 +32339,7 @@ class URLMapPathMatcherPathRuleArgs:
 
     @property
     @pulumi.getter(name="urlRedirect")
-    def url_redirect(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleUrlRedirectArgs']]:
+    def url_redirect(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleUrlRedirectArrgs']]:
         """
         When a path pattern is matched, the request is redirected to a URL specified
         by urlRedirect. If urlRedirect is specified, service or routeAction must not
@@ -32349,25 +32349,25 @@ class URLMapPathMatcherPathRuleArgs:
         return pulumi.get(self, "url_redirect")
 
     @url_redirect.setter
-    def url_redirect(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleUrlRedirectArgs']]):
+    def url_redirect(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleUrlRedirectArrgs']]):
         pulumi.set(self, "url_redirect", value)
 
 
 @pulumi.input_type
-class URLMapPathMatcherPathRuleRouteActionArgs:
+calass URLMapPathMatcherPathRuleRouteActionArrgs:
     def __init__(__self__, *,
-                 cors_policy: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs']] = None,
-                 fault_injection_policy: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs']] = None,
-                 request_mirror_policy: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs']] = None,
-                 retry_policy: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs']] = None,
-                 timeout: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionTimeoutArgs']] = None,
-                 url_rewrite: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs']] = None,
-                 weighted_backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs']]]] = None):
+                 cors_policy: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionCorsPolicyArrgs']] = None,
+                 fault_injection_policy: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArrgs']] = None,
+                 request_mirror_policy: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArrgs']] = None,
+                 retry_policy: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionRetryPolicyArrgs']] = None,
+                 timeout: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionTimeoutArrgs']] = None,
+                 url_rewrite: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionUrlRewriteArrgs']] = None,
+                 weighted_backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrgs']]]] = None):
         """
-        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs'] cors_policy: The specification for allowing client side cross-origin requests. Please see W3C
+        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionCorsPolicyArrgs'] cors_policy: The specification for allowing client side cross-origin requests. Please see W3C
                Recommendation for Cross Origin Resource Sharing
                Structure is documented below.
-        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the
+        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArrgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the
                resiliency of clients to backend service failure. As part of fault injection,
                when clients send requests to a backend service, delays can be introduced by
                Loadbalancer on a percentage of requests before sending those request to the
@@ -32375,22 +32375,22 @@ class URLMapPathMatcherPathRuleRouteActionArgs:
                Loadbalancer for a percentage of requests. timeout and retry_policy will be
                ignored by clients that are configured with a fault_injection_policy.
                Structure is documented below.
-        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs'] request_mirror_policy: Specifies the policy on how requests intended for the route's backends are
+        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArrgs'] request_mirror_policy: Specifies the policy on how requests intended for the route's backends are
                shadowed to a separate mirrored backend service. Loadbalancer does not wait for
                responses from the shadow service. Prior to sending traffic to the shadow
                service, the host / authority header is suffixed with -shadow.
                Structure is documented below.
-        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs'] retry_policy: Specifies the retry policy associated with this route.
+        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionRetryPolicyArrgs'] retry_policy: Specifies the retry policy associated with this route.
                Structure is documented below.
-        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionTimeoutArgs'] timeout: Specifies the timeout for the selected route. Timeout is computed from the time
+        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionTimeoutArrgs'] timeout: Specifies the timeout for the selected route. Timeout is computed from the time
                the request is has been fully processed (i.e. end-of-stream) up until the
                response has been completely processed. Timeout includes all retries. If not
                specified, the default value is 15 seconds.
                Structure is documented below.
-        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs'] url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to
+        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionUrlRewriteArrgs'] url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to
                the matched service
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs']]] weighted_backend_services: A list of weighted backend services to send traffic to when a route match
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrgs']]] weighted_backend_services: A list of weighted backend services to send traffic to when a route match
                occurs. The weights determine the fraction of traffic that flows to their
                corresponding backend service. If all traffic needs to go to a single backend
                service, there must be one  weightedBackendService with weight set to a non 0
@@ -32417,7 +32417,7 @@ class URLMapPathMatcherPathRuleRouteActionArgs:
 
     @property
     @pulumi.getter(name="corsPolicy")
-    def cors_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs']]:
+    def cors_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionCorsPolicyArrgs']]:
         """
         The specification for allowing client side cross-origin requests. Please see W3C
         Recommendation for Cross Origin Resource Sharing
@@ -32426,12 +32426,12 @@ class URLMapPathMatcherPathRuleRouteActionArgs:
         return pulumi.get(self, "cors_policy")
 
     @cors_policy.setter
-    def cors_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs']]):
+    def cors_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionCorsPolicyArrgs']]):
         pulumi.set(self, "cors_policy", value)
 
     @property
     @pulumi.getter(name="faultInjectionPolicy")
-    def fault_injection_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs']]:
+    def fault_injection_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArrgs']]:
         """
         The specification for fault injection introduced into traffic to test the
         resiliency of clients to backend service failure. As part of fault injection,
@@ -32445,12 +32445,12 @@ class URLMapPathMatcherPathRuleRouteActionArgs:
         return pulumi.get(self, "fault_injection_policy")
 
     @fault_injection_policy.setter
-    def fault_injection_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs']]):
+    def fault_injection_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArrgs']]):
         pulumi.set(self, "fault_injection_policy", value)
 
     @property
     @pulumi.getter(name="requestMirrorPolicy")
-    def request_mirror_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs']]:
+    def request_mirror_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArrgs']]:
         """
         Specifies the policy on how requests intended for the route's backends are
         shadowed to a separate mirrored backend service. Loadbalancer does not wait for
@@ -32461,12 +32461,12 @@ class URLMapPathMatcherPathRuleRouteActionArgs:
         return pulumi.get(self, "request_mirror_policy")
 
     @request_mirror_policy.setter
-    def request_mirror_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs']]):
+    def request_mirror_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArrgs']]):
         pulumi.set(self, "request_mirror_policy", value)
 
     @property
     @pulumi.getter(name="retryPolicy")
-    def retry_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs']]:
+    def retry_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionRetryPolicyArrgs']]:
         """
         Specifies the retry policy associated with this route.
         Structure is documented below.
@@ -32474,12 +32474,12 @@ class URLMapPathMatcherPathRuleRouteActionArgs:
         return pulumi.get(self, "retry_policy")
 
     @retry_policy.setter
-    def retry_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs']]):
+    def retry_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionRetryPolicyArrgs']]):
         pulumi.set(self, "retry_policy", value)
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionTimeoutArgs']]:
+    def timeout(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionTimeoutArrgs']]:
         """
         Specifies the timeout for the selected route. Timeout is computed from the time
         the request is has been fully processed (i.e. end-of-stream) up until the
@@ -32490,12 +32490,12 @@ class URLMapPathMatcherPathRuleRouteActionArgs:
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionTimeoutArgs']]):
+    def timeout(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionTimeoutArrgs']]):
         pulumi.set(self, "timeout", value)
 
     @property
     @pulumi.getter(name="urlRewrite")
-    def url_rewrite(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs']]:
+    def url_rewrite(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionUrlRewriteArrgs']]:
         """
         The spec to modify the URL of the request, prior to forwarding the request to
         the matched service
@@ -32504,12 +32504,12 @@ class URLMapPathMatcherPathRuleRouteActionArgs:
         return pulumi.get(self, "url_rewrite")
 
     @url_rewrite.setter
-    def url_rewrite(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs']]):
+    def url_rewrite(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionUrlRewriteArrgs']]):
         pulumi.set(self, "url_rewrite", value)
 
     @property
     @pulumi.getter(name="weightedBackendServices")
-    def weighted_backend_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs']]]]:
+    def weighted_backend_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrgs']]]]:
         """
         A list of weighted backend services to send traffic to when a route match
         occurs. The weights determine the fraction of traffic that flows to their
@@ -32524,12 +32524,12 @@ class URLMapPathMatcherPathRuleRouteActionArgs:
         return pulumi.get(self, "weighted_backend_services")
 
     @weighted_backend_services.setter
-    def weighted_backend_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs']]]]):
+    def weighted_backend_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrgs']]]]):
         pulumi.set(self, "weighted_backend_services", value)
 
 
 @pulumi.input_type
-class URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs:
+calass URLMapPathMatcherPathRuleRouteActionCorsPolicyArrgs:
     def __init__(__self__, *,
                  disabled: pulumi.Input[bool],
                  allow_credentials: Optional[pulumi.Input[bool]] = None,
@@ -32673,14 +32673,14 @@ class URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs:
+calass URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArrgs:
     def __init__(__self__, *,
-                 abort: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs']] = None,
-                 delay: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs']] = None):
+                 abort: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArrgs']] = None,
+                 delay: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArrgs']] = None):
         """
-        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs'] abort: The specification for how client requests are aborted as part of fault injection.
+        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArrgs'] abort: The specification for how client requests are aborted as part of fault injection.
                Structure is documented below.
-        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs'] delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArrgs'] delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
                Structure is documented below.
         """
         if abort is not None:
@@ -32690,7 +32690,7 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs:
 
     @property
     @pulumi.getter
-    def abort(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs']]:
+    def abort(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArrgs']]:
         """
         The specification for how client requests are aborted as part of fault injection.
         Structure is documented below.
@@ -32698,12 +32698,12 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs:
         return pulumi.get(self, "abort")
 
     @abort.setter
-    def abort(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs']]):
+    def abort(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArrgs']]):
         pulumi.set(self, "abort", value)
 
     @property
     @pulumi.getter
-    def delay(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs']]:
+    def delay(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArrgs']]:
         """
         The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
         Structure is documented below.
@@ -32711,12 +32711,12 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs:
         return pulumi.get(self, "delay")
 
     @delay.setter
-    def delay(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs']]):
+    def delay(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArrgs']]):
         pulumi.set(self, "delay", value)
 
 
 @pulumi.input_type
-class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs:
+calass URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArrgs:
     def __init__(__self__, *,
                  http_status: pulumi.Input[int],
                  percentage: pulumi.Input[float]):
@@ -32757,12 +32757,12 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs:
+calass URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArrgs:
     def __init__(__self__, *,
-                 fixed_delay: pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs'],
+                 fixed_delay: pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs'],
                  percentage: pulumi.Input[float]):
         """
-        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs'] fixed_delay: Specifies the value of the fixed delay interval.
+        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs'] fixed_delay: Specifies the value of the fixed delay interval.
                Structure is documented below.
         :param pulumi.Input[float] percentage: The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
                The value must be between 0.0 and 100.0 inclusive.
@@ -32772,7 +32772,7 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs:
 
     @property
     @pulumi.getter(name="fixedDelay")
-    def fixed_delay(self) -> pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs']:
+    def fixed_delay(self) -> pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs']:
         """
         Specifies the value of the fixed delay interval.
         Structure is documented below.
@@ -32780,7 +32780,7 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs:
         return pulumi.get(self, "fixed_delay")
 
     @fixed_delay.setter
-    def fixed_delay(self, value: pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs']):
+    def fixed_delay(self, value: pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs']):
         pulumi.set(self, "fixed_delay", value)
 
     @property
@@ -32798,7 +32798,7 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs:
+calass URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[str],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -32840,7 +32840,7 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArg
 
 
 @pulumi.input_type
-class URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs:
+calass URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArrgs:
     def __init__(__self__, *,
                  backend_service: pulumi.Input[str]):
         """
@@ -32862,14 +32862,14 @@ class URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs:
+calass URLMapPathMatcherPathRuleRouteActionRetryPolicyArrgs:
     def __init__(__self__, *,
                  num_retries: Optional[pulumi.Input[int]] = None,
-                 per_try_timeout: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs']] = None,
+                 per_try_timeout: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArrgs']] = None,
                  retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[int] num_retries: Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
-        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs'] per_try_timeout: Specifies a non-zero timeout per retry attempt.
+        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArrgs'] per_try_timeout: Specifies a non-zero timeout per retry attempt.
                If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
                will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
@@ -32910,7 +32910,7 @@ class URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs:
 
     @property
     @pulumi.getter(name="perTryTimeout")
-    def per_try_timeout(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs']]:
+    def per_try_timeout(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArrgs']]:
         """
         Specifies a non-zero timeout per retry attempt.
         If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
@@ -32920,7 +32920,7 @@ class URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs:
         return pulumi.get(self, "per_try_timeout")
 
     @per_try_timeout.setter
-    def per_try_timeout(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs']]):
+    def per_try_timeout(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArrgs']]):
         pulumi.set(self, "per_try_timeout", value)
 
     @property
@@ -32951,7 +32951,7 @@ class URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs:
+calass URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[str],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -32993,7 +32993,7 @@ class URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherPathRuleRouteActionTimeoutArgs:
+calass URLMapPathMatcherPathRuleRouteActionTimeoutArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[str],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -33035,7 +33035,7 @@ class URLMapPathMatcherPathRuleRouteActionTimeoutArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs:
+calass URLMapPathMatcherPathRuleRouteActionUrlRewriteArrgs:
     def __init__(__self__, *,
                  host_rewrite: Optional[pulumi.Input[str]] = None,
                  path_prefix_rewrite: Optional[pulumi.Input[str]] = None):
@@ -33082,11 +33082,11 @@ class URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs:
+calass URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrgs:
     def __init__(__self__, *,
                  backend_service: pulumi.Input[str],
                  weight: pulumi.Input[int],
-                 header_action: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs']] = None):
+                 header_action: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArrgs']] = None):
         """
         :param pulumi.Input[str] backend_service: The full or partial URL to the default BackendService resource. Before forwarding the
                request to backendService, the loadbalancer applies any relevant headerActions
@@ -33097,7 +33097,7 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs:
                has been directed to a backendService, subsequent requests will be sent to the same backendService
                as determined by the BackendService's session affinity policy.
                The value must be between 0 and 1000
-        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs'] header_action: Specifies changes to request and response headers that need to take effect for
+        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArrgs'] header_action: Specifies changes to request and response headers that need to take effect for
                the selected backendService.
                headerAction specified here take effect before headerAction in the enclosing
                HttpRouteRule, PathMatcher and UrlMap.
@@ -33141,7 +33141,7 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs:
 
     @property
     @pulumi.getter(name="headerAction")
-    def header_action(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs']]:
+    def header_action(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArrgs']]:
         """
         Specifies changes to request and response headers that need to take effect for
         the selected backendService.
@@ -33152,23 +33152,23 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs:
         return pulumi.get(self, "header_action")
 
     @header_action.setter
-    def header_action(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs']]):
+    def header_action(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArrgs']]):
         pulumi.set(self, "header_action", value)
 
 
 @pulumi.input_type
-class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs:
+calass URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArrgs:
     def __init__(__self__, *,
-                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]]] = None,
+                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]]] = None,
                  request_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]] = None,
+                 response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]]] = None,
                  response_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] request_headers_to_removes: A list of header names for headers that need to be removed from the request prior to
                forwarding the request to the backendService.
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] response_headers_to_removes: A list of header names for headers that need to be removed from the response prior to sending the
                response back to the client.
@@ -33184,7 +33184,7 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs
 
     @property
     @pulumi.getter(name="requestHeadersToAdds")
-    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]]]:
+    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]]]:
         """
         Headers to add to a matching request prior to forwarding the request to the backendService.
         Structure is documented below.
@@ -33192,7 +33192,7 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs
         return pulumi.get(self, "request_headers_to_adds")
 
     @request_headers_to_adds.setter
-    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]]]):
+    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]]]):
         pulumi.set(self, "request_headers_to_adds", value)
 
     @property
@@ -33210,7 +33210,7 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs
 
     @property
     @pulumi.getter(name="responseHeadersToAdds")
-    def response_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]]:
+    def response_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]]]:
         """
         Headers to add the response prior to sending the response back to the client.
         Structure is documented below.
@@ -33218,7 +33218,7 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs
         return pulumi.get(self, "response_headers_to_adds")
 
     @response_headers_to_adds.setter
-    def response_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]]):
+    def response_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]]]):
         pulumi.set(self, "response_headers_to_adds", value)
 
     @property
@@ -33236,7 +33236,7 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs
 
 
 @pulumi.input_type
-class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs:
+calass URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str],
                  header_value: pulumi.Input[str],
@@ -33290,7 +33290,7 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequ
 
 
 @pulumi.input_type
-class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs:
+calass URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str],
                  header_value: pulumi.Input[str],
@@ -33344,7 +33344,7 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResp
 
 
 @pulumi.input_type
-class URLMapPathMatcherPathRuleUrlRedirectArgs:
+calass URLMapPathMatcherPathRuleUrlRedirectArrgs:
     def __init__(__self__, *,
                  strip_query: pulumi.Input[bool],
                  host_redirect: Optional[pulumi.Input[str]] = None,
@@ -33474,14 +33474,14 @@ class URLMapPathMatcherPathRuleUrlRedirectArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherRouteRuleArgs:
+calass URLMapPathMatcherRouteRuleArrgs:
     def __init__(__self__, *,
                  priority: pulumi.Input[int],
-                 header_action: Optional[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionArgs']] = None,
-                 match_rules: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleArgs']]]] = None,
-                 route_action: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionArgs']] = None,
+                 header_action: Optional[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionArrgs']] = None,
+                 match_rules: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleArrgs']]]] = None,
+                 route_action: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionArrgs']] = None,
                  service: Optional[pulumi.Input[str]] = None,
-                 url_redirect: Optional[pulumi.Input['URLMapPathMatcherRouteRuleUrlRedirectArgs']] = None):
+                 url_redirect: Optional[pulumi.Input['URLMapPathMatcherRouteRuleUrlRedirectArrgs']] = None):
         """
         :param pulumi.Input[int] priority: For routeRules within a given pathMatcher, priority determines the order
                in which load balancer will interpret routeRules. RouteRules are evaluated
@@ -33496,14 +33496,14 @@ class URLMapPathMatcherRouteRuleArgs:
                1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which
                you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the
                future without any impact on existing rules.
-        :param pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionArgs'] header_action: Specifies changes to request and response headers that need to take effect for
+        :param pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionArrgs'] header_action: Specifies changes to request and response headers that need to take effect for
                the selected backendService. The headerAction specified here are applied before
                the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
                outeAction.weightedBackendService.backendServiceWeightAction[].headerAction
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleArgs']]] match_rules: The rules for determining a match.
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleArrgs']]] match_rules: The rules for determining a match.
                Structure is documented below.
-        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionArgs'] route_action: In response to a matching matchRule, the load balancer performs advanced routing
+        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionArrgs'] route_action: In response to a matching matchRule, the load balancer performs advanced routing
                actions like URL rewrites, header transformations, etc. prior to forwarding the
                request to the selected backend. If  routeAction specifies any
                weightedBackendServices, service must not be set. Conversely if service is set,
@@ -33517,7 +33517,7 @@ class URLMapPathMatcherRouteRuleArgs:
                contain any weightedBackendService s. Conversely, if routeAction specifies any
                weightedBackendServices, service must not be specified. Only one of urlRedirect,
                service or routeAction.weightedBackendService must be set.
-        :param pulumi.Input['URLMapPathMatcherRouteRuleUrlRedirectArgs'] url_redirect: When this rule is matched, the request is redirected to a URL specified by
+        :param pulumi.Input['URLMapPathMatcherRouteRuleUrlRedirectArrgs'] url_redirect: When this rule is matched, the request is redirected to a URL specified by
                urlRedirect. If urlRedirect is specified, service or routeAction must not be
                set.
                Structure is documented below.
@@ -33560,7 +33560,7 @@ class URLMapPathMatcherRouteRuleArgs:
 
     @property
     @pulumi.getter(name="headerAction")
-    def header_action(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionArgs']]:
+    def header_action(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionArrgs']]:
         """
         Specifies changes to request and response headers that need to take effect for
         the selected backendService. The headerAction specified here are applied before
@@ -33571,12 +33571,12 @@ class URLMapPathMatcherRouteRuleArgs:
         return pulumi.get(self, "header_action")
 
     @header_action.setter
-    def header_action(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionArgs']]):
+    def header_action(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionArrgs']]):
         pulumi.set(self, "header_action", value)
 
     @property
     @pulumi.getter(name="matchRules")
-    def match_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleArgs']]]]:
+    def match_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleArrgs']]]]:
         """
         The rules for determining a match.
         Structure is documented below.
@@ -33584,12 +33584,12 @@ class URLMapPathMatcherRouteRuleArgs:
         return pulumi.get(self, "match_rules")
 
     @match_rules.setter
-    def match_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleArgs']]]]):
+    def match_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleArrgs']]]]):
         pulumi.set(self, "match_rules", value)
 
     @property
     @pulumi.getter(name="routeAction")
-    def route_action(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionArgs']]:
+    def route_action(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionArrgs']]:
         """
         In response to a matching matchRule, the load balancer performs advanced routing
         actions like URL rewrites, header transformations, etc. prior to forwarding the
@@ -33602,7 +33602,7 @@ class URLMapPathMatcherRouteRuleArgs:
         return pulumi.get(self, "route_action")
 
     @route_action.setter
-    def route_action(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionArgs']]):
+    def route_action(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionArrgs']]):
         pulumi.set(self, "route_action", value)
 
     @property
@@ -33625,7 +33625,7 @@ class URLMapPathMatcherRouteRuleArgs:
 
     @property
     @pulumi.getter(name="urlRedirect")
-    def url_redirect(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleUrlRedirectArgs']]:
+    def url_redirect(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleUrlRedirectArrgs']]:
         """
         When this rule is matched, the request is redirected to a URL specified by
         urlRedirect. If urlRedirect is specified, service or routeAction must not be
@@ -33635,23 +33635,23 @@ class URLMapPathMatcherRouteRuleArgs:
         return pulumi.get(self, "url_redirect")
 
     @url_redirect.setter
-    def url_redirect(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleUrlRedirectArgs']]):
+    def url_redirect(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleUrlRedirectArrgs']]):
         pulumi.set(self, "url_redirect", value)
 
 
 @pulumi.input_type
-class URLMapPathMatcherRouteRuleHeaderActionArgs:
+calass URLMapPathMatcherRouteRuleHeaderActionArrgs:
     def __init__(__self__, *,
-                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs']]]] = None,
+                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrgs']]]] = None,
                  request_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs']]]] = None,
+                 response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrgs']]]] = None,
                  response_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs']]] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrgs']]] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] request_headers_to_removes: A list of header names for headers that need to be removed from the request prior to
                forwarding the request to the backendService.
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs']]] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrgs']]] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] response_headers_to_removes: A list of header names for headers that need to be removed from the response prior to sending the
                response back to the client.
@@ -33667,7 +33667,7 @@ class URLMapPathMatcherRouteRuleHeaderActionArgs:
 
     @property
     @pulumi.getter(name="requestHeadersToAdds")
-    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs']]]]:
+    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrgs']]]]:
         """
         Headers to add to a matching request prior to forwarding the request to the backendService.
         Structure is documented below.
@@ -33675,7 +33675,7 @@ class URLMapPathMatcherRouteRuleHeaderActionArgs:
         return pulumi.get(self, "request_headers_to_adds")
 
     @request_headers_to_adds.setter
-    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs']]]]):
+    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrgs']]]]):
         pulumi.set(self, "request_headers_to_adds", value)
 
     @property
@@ -33693,7 +33693,7 @@ class URLMapPathMatcherRouteRuleHeaderActionArgs:
 
     @property
     @pulumi.getter(name="responseHeadersToAdds")
-    def response_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs']]]]:
+    def response_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrgs']]]]:
         """
         Headers to add the response prior to sending the response back to the client.
         Structure is documented below.
@@ -33701,7 +33701,7 @@ class URLMapPathMatcherRouteRuleHeaderActionArgs:
         return pulumi.get(self, "response_headers_to_adds")
 
     @response_headers_to_adds.setter
-    def response_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs']]]]):
+    def response_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrgs']]]]):
         pulumi.set(self, "response_headers_to_adds", value)
 
     @property
@@ -33719,7 +33719,7 @@ class URLMapPathMatcherRouteRuleHeaderActionArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs:
+calass URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str],
                  header_value: pulumi.Input[str],
@@ -33773,7 +33773,7 @@ class URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs:
+calass URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str],
                  header_value: pulumi.Input[str],
@@ -33827,15 +33827,15 @@ class URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherRouteRuleMatchRuleArgs:
+calass URLMapPathMatcherRouteRuleMatchRuleArrgs:
     def __init__(__self__, *,
                  full_path_match: Optional[pulumi.Input[str]] = None,
-                 header_matches: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs']]]] = None,
+                 header_matches: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrgs']]]] = None,
                  ignore_case: Optional[pulumi.Input[bool]] = None,
-                 metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs']]]] = None,
+                 metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrgs']]]] = None,
                  path_template_match: Optional[pulumi.Input[str]] = None,
                  prefix_match: Optional[pulumi.Input[str]] = None,
-                 query_parameter_matches: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs']]]] = None,
+                 query_parameter_matches: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrgs']]]] = None,
                  regex_match: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] full_path_match: For satisfying the matchRule condition, the path of the request must exactly
@@ -33843,12 +33843,12 @@ class URLMapPathMatcherRouteRuleMatchRuleArgs:
                and anchor that may be part of the original URL. FullPathMatch must be between 1
                and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
                be specified.
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs']]] header_matches: Specifies a list of header match criteria, all of which must match corresponding
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrgs']]] header_matches: Specifies a list of header match criteria, all of which must match corresponding
                headers in the request.
                Structure is documented below.
         :param pulumi.Input[bool] ignore_case: Specifies that prefixMatch and fullPathMatch matches are case sensitive.
                Defaults to false.
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs']]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing configuration to
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrgs']]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing configuration to
                a limited set xDS compliant clients. In their xDS requests to Loadbalancer, xDS
                clients present node metadata. If a match takes place, the relevant routing
                configuration is made available to those proxies. For each metadataFilter in
@@ -33872,7 +33872,7 @@ class URLMapPathMatcherRouteRuleMatchRuleArgs:
                specified prefixMatch. prefixMatch must begin with a /. The value must be
                between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or
                regexMatch must be specified.
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs']]] query_parameter_matches: Specifies a list of query parameter match criteria, all of which must match
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrgs']]] query_parameter_matches: Specifies a list of query parameter match criteria, all of which must match
                corresponding query parameters in the request.
                Structure is documented below.
         :param pulumi.Input[str] regex_match: For satisfying the matchRule condition, the path of the request must satisfy the
@@ -33916,7 +33916,7 @@ class URLMapPathMatcherRouteRuleMatchRuleArgs:
 
     @property
     @pulumi.getter(name="headerMatches")
-    def header_matches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs']]]]:
+    def header_matches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrgs']]]]:
         """
         Specifies a list of header match criteria, all of which must match corresponding
         headers in the request.
@@ -33925,7 +33925,7 @@ class URLMapPathMatcherRouteRuleMatchRuleArgs:
         return pulumi.get(self, "header_matches")
 
     @header_matches.setter
-    def header_matches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs']]]]):
+    def header_matches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrgs']]]]):
         pulumi.set(self, "header_matches", value)
 
     @property
@@ -33943,7 +33943,7 @@ class URLMapPathMatcherRouteRuleMatchRuleArgs:
 
     @property
     @pulumi.getter(name="metadataFilters")
-    def metadata_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs']]]]:
+    def metadata_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrgs']]]]:
         """
         Opaque filter criteria used by Loadbalancer to restrict routing configuration to
         a limited set xDS compliant clients. In their xDS requests to Loadbalancer, xDS
@@ -33961,7 +33961,7 @@ class URLMapPathMatcherRouteRuleMatchRuleArgs:
         return pulumi.get(self, "metadata_filters")
 
     @metadata_filters.setter
-    def metadata_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs']]]]):
+    def metadata_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrgs']]]]):
         pulumi.set(self, "metadata_filters", value)
 
     @property
@@ -34000,7 +34000,7 @@ class URLMapPathMatcherRouteRuleMatchRuleArgs:
 
     @property
     @pulumi.getter(name="queryParameterMatches")
-    def query_parameter_matches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs']]]]:
+    def query_parameter_matches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrgs']]]]:
         """
         Specifies a list of query parameter match criteria, all of which must match
         corresponding query parameters in the request.
@@ -34009,7 +34009,7 @@ class URLMapPathMatcherRouteRuleMatchRuleArgs:
         return pulumi.get(self, "query_parameter_matches")
 
     @query_parameter_matches.setter
-    def query_parameter_matches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs']]]]):
+    def query_parameter_matches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrgs']]]]):
         pulumi.set(self, "query_parameter_matches", value)
 
     @property
@@ -34030,14 +34030,14 @@ class URLMapPathMatcherRouteRuleMatchRuleArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
+calass URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str],
                  exact_match: Optional[pulumi.Input[str]] = None,
                  invert_match: Optional[pulumi.Input[bool]] = None,
                  prefix_match: Optional[pulumi.Input[str]] = None,
                  present_match: Optional[pulumi.Input[bool]] = None,
-                 range_match: Optional[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs']] = None,
+                 range_match: Optional[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArrgs']] = None,
                  regex_match: Optional[pulumi.Input[str]] = None,
                  suffix_match: Optional[pulumi.Input[str]] = None):
         """
@@ -34055,7 +34055,7 @@ class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
         :param pulumi.Input[bool] present_match: A header with the contents of headerName must exist. The match takes place
                whether or not the request's header has a value or not. Only one of exactMatch,
                prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
-        :param pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs'] range_match: The header value must be an integer and its value must be in the range specified
+        :param pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArrgs'] range_match: The header value must be an integer and its value must be in the range specified
                in rangeMatch. If the header does not contain an integer, number or is empty,
                the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
                not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
@@ -34160,7 +34160,7 @@ class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
 
     @property
     @pulumi.getter(name="rangeMatch")
-    def range_match(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs']]:
+    def range_match(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArrgs']]:
         """
         The header value must be an integer and its value must be in the range specified
         in rangeMatch. If the header does not contain an integer, number or is empty,
@@ -34173,7 +34173,7 @@ class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
         return pulumi.get(self, "range_match")
 
     @range_match.setter
-    def range_match(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs']]):
+    def range_match(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArrgs']]):
         pulumi.set(self, "range_match", value)
 
     @property
@@ -34210,7 +34210,7 @@ class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs:
+calass URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArrgs:
     def __init__(__self__, *,
                  range_end: pulumi.Input[int],
                  range_start: pulumi.Input[int]):
@@ -34247,12 +34247,12 @@ class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs:
+calass URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrgs:
     def __init__(__self__, *,
-                 filter_labels: pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs']]],
+                 filter_labels: pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrgs']]],
                  filter_match_criteria: pulumi.Input[str]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs']]] filter_labels: The list of label value pairs that must match labels in the provided metadata
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrgs']]] filter_labels: The list of label value pairs that must match labels in the provided metadata
                based on filterMatchCriteria  This list must not be empty and can have at the
                most 64 entries.
                Structure is documented below.
@@ -34269,7 +34269,7 @@ class URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs:
 
     @property
     @pulumi.getter(name="filterLabels")
-    def filter_labels(self) -> pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs']]]:
+    def filter_labels(self) -> pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrgs']]]:
         """
         The list of label value pairs that must match labels in the provided metadata
         based on filterMatchCriteria  This list must not be empty and can have at the
@@ -34279,7 +34279,7 @@ class URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs:
         return pulumi.get(self, "filter_labels")
 
     @filter_labels.setter
-    def filter_labels(self, value: pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs']]]):
+    def filter_labels(self, value: pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrgs']]]):
         pulumi.set(self, "filter_labels", value)
 
     @property
@@ -34302,7 +34302,7 @@ class URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs:
+calass URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  value: pulumi.Input[str]):
@@ -34343,7 +34343,7 @@ class URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs:
+calass URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  exact_match: Optional[pulumi.Input[str]] = None,
@@ -34429,20 +34429,20 @@ class URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherRouteRuleRouteActionArgs:
+calass URLMapPathMatcherRouteRuleRouteActionArrgs:
     def __init__(__self__, *,
-                 cors_policy: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs']] = None,
-                 fault_injection_policy: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs']] = None,
-                 request_mirror_policy: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs']] = None,
-                 retry_policy: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs']] = None,
-                 timeout: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionTimeoutArgs']] = None,
-                 url_rewrite: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs']] = None,
-                 weighted_backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs']]]] = None):
+                 cors_policy: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionCorsPolicyArrgs']] = None,
+                 fault_injection_policy: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArrgs']] = None,
+                 request_mirror_policy: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArrgs']] = None,
+                 retry_policy: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRetryPolicyArrgs']] = None,
+                 timeout: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionTimeoutArrgs']] = None,
+                 url_rewrite: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionUrlRewriteArrgs']] = None,
+                 weighted_backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrgs']]]] = None):
         """
-        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs'] cors_policy: The specification for allowing client side cross-origin requests. Please see W3C
+        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionCorsPolicyArrgs'] cors_policy: The specification for allowing client side cross-origin requests. Please see W3C
                Recommendation for Cross Origin Resource Sharing
                Structure is documented below.
-        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the
+        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArrgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the
                resiliency of clients to backend service failure. As part of fault injection,
                when clients send requests to a backend service, delays can be introduced by
                Loadbalancer on a percentage of requests before sending those request to the
@@ -34450,22 +34450,22 @@ class URLMapPathMatcherRouteRuleRouteActionArgs:
                Loadbalancer for a percentage of requests. timeout and retry_policy will be
                ignored by clients that are configured with a fault_injection_policy.
                Structure is documented below.
-        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs'] request_mirror_policy: Specifies the policy on how requests intended for the route's backends are
+        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArrgs'] request_mirror_policy: Specifies the policy on how requests intended for the route's backends are
                shadowed to a separate mirrored backend service. Loadbalancer does not wait for
                responses from the shadow service. Prior to sending traffic to the shadow
                service, the host / authority header is suffixed with -shadow.
                Structure is documented below.
-        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs'] retry_policy: Specifies the retry policy associated with this route.
+        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRetryPolicyArrgs'] retry_policy: Specifies the retry policy associated with this route.
                Structure is documented below.
-        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionTimeoutArgs'] timeout: Specifies the timeout for the selected route. Timeout is computed from the time
+        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionTimeoutArrgs'] timeout: Specifies the timeout for the selected route. Timeout is computed from the time
                the request is has been fully processed (i.e. end-of-stream) up until the
                response has been completely processed. Timeout includes all retries. If not
                specified, the default value is 15 seconds.
                Structure is documented below.
-        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs'] url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to
+        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionUrlRewriteArrgs'] url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to
                the matched service
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs']]] weighted_backend_services: A list of weighted backend services to send traffic to when a route match
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrgs']]] weighted_backend_services: A list of weighted backend services to send traffic to when a route match
                occurs. The weights determine the fraction of traffic that flows to their
                corresponding backend service. If all traffic needs to go to a single backend
                service, there must be one  weightedBackendService with weight set to a non 0
@@ -34492,7 +34492,7 @@ class URLMapPathMatcherRouteRuleRouteActionArgs:
 
     @property
     @pulumi.getter(name="corsPolicy")
-    def cors_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs']]:
+    def cors_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionCorsPolicyArrgs']]:
         """
         The specification for allowing client side cross-origin requests. Please see W3C
         Recommendation for Cross Origin Resource Sharing
@@ -34501,12 +34501,12 @@ class URLMapPathMatcherRouteRuleRouteActionArgs:
         return pulumi.get(self, "cors_policy")
 
     @cors_policy.setter
-    def cors_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs']]):
+    def cors_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionCorsPolicyArrgs']]):
         pulumi.set(self, "cors_policy", value)
 
     @property
     @pulumi.getter(name="faultInjectionPolicy")
-    def fault_injection_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs']]:
+    def fault_injection_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArrgs']]:
         """
         The specification for fault injection introduced into traffic to test the
         resiliency of clients to backend service failure. As part of fault injection,
@@ -34520,12 +34520,12 @@ class URLMapPathMatcherRouteRuleRouteActionArgs:
         return pulumi.get(self, "fault_injection_policy")
 
     @fault_injection_policy.setter
-    def fault_injection_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs']]):
+    def fault_injection_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArrgs']]):
         pulumi.set(self, "fault_injection_policy", value)
 
     @property
     @pulumi.getter(name="requestMirrorPolicy")
-    def request_mirror_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs']]:
+    def request_mirror_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArrgs']]:
         """
         Specifies the policy on how requests intended for the route's backends are
         shadowed to a separate mirrored backend service. Loadbalancer does not wait for
@@ -34536,12 +34536,12 @@ class URLMapPathMatcherRouteRuleRouteActionArgs:
         return pulumi.get(self, "request_mirror_policy")
 
     @request_mirror_policy.setter
-    def request_mirror_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs']]):
+    def request_mirror_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArrgs']]):
         pulumi.set(self, "request_mirror_policy", value)
 
     @property
     @pulumi.getter(name="retryPolicy")
-    def retry_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs']]:
+    def retry_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRetryPolicyArrgs']]:
         """
         Specifies the retry policy associated with this route.
         Structure is documented below.
@@ -34549,12 +34549,12 @@ class URLMapPathMatcherRouteRuleRouteActionArgs:
         return pulumi.get(self, "retry_policy")
 
     @retry_policy.setter
-    def retry_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs']]):
+    def retry_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRetryPolicyArrgs']]):
         pulumi.set(self, "retry_policy", value)
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionTimeoutArgs']]:
+    def timeout(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionTimeoutArrgs']]:
         """
         Specifies the timeout for the selected route. Timeout is computed from the time
         the request is has been fully processed (i.e. end-of-stream) up until the
@@ -34565,12 +34565,12 @@ class URLMapPathMatcherRouteRuleRouteActionArgs:
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionTimeoutArgs']]):
+    def timeout(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionTimeoutArrgs']]):
         pulumi.set(self, "timeout", value)
 
     @property
     @pulumi.getter(name="urlRewrite")
-    def url_rewrite(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs']]:
+    def url_rewrite(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionUrlRewriteArrgs']]:
         """
         The spec to modify the URL of the request, prior to forwarding the request to
         the matched service
@@ -34579,12 +34579,12 @@ class URLMapPathMatcherRouteRuleRouteActionArgs:
         return pulumi.get(self, "url_rewrite")
 
     @url_rewrite.setter
-    def url_rewrite(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs']]):
+    def url_rewrite(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionUrlRewriteArrgs']]):
         pulumi.set(self, "url_rewrite", value)
 
     @property
     @pulumi.getter(name="weightedBackendServices")
-    def weighted_backend_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs']]]]:
+    def weighted_backend_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrgs']]]]:
         """
         A list of weighted backend services to send traffic to when a route match
         occurs. The weights determine the fraction of traffic that flows to their
@@ -34599,12 +34599,12 @@ class URLMapPathMatcherRouteRuleRouteActionArgs:
         return pulumi.get(self, "weighted_backend_services")
 
     @weighted_backend_services.setter
-    def weighted_backend_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs']]]]):
+    def weighted_backend_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrgs']]]]):
         pulumi.set(self, "weighted_backend_services", value)
 
 
 @pulumi.input_type
-class URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs:
+calass URLMapPathMatcherRouteRuleRouteActionCorsPolicyArrgs:
     def __init__(__self__, *,
                  allow_credentials: Optional[pulumi.Input[bool]] = None,
                  allow_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -34749,14 +34749,14 @@ class URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs:
+calass URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArrgs:
     def __init__(__self__, *,
-                 abort: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs']] = None,
-                 delay: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs']] = None):
+                 abort: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArrgs']] = None,
+                 delay: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArrgs']] = None):
         """
-        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs'] abort: The specification for how client requests are aborted as part of fault injection.
+        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArrgs'] abort: The specification for how client requests are aborted as part of fault injection.
                Structure is documented below.
-        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs'] delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArrgs'] delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
                Structure is documented below.
         """
         if abort is not None:
@@ -34766,7 +34766,7 @@ class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs:
 
     @property
     @pulumi.getter
-    def abort(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs']]:
+    def abort(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArrgs']]:
         """
         The specification for how client requests are aborted as part of fault injection.
         Structure is documented below.
@@ -34774,12 +34774,12 @@ class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs:
         return pulumi.get(self, "abort")
 
     @abort.setter
-    def abort(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs']]):
+    def abort(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArrgs']]):
         pulumi.set(self, "abort", value)
 
     @property
     @pulumi.getter
-    def delay(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs']]:
+    def delay(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArrgs']]:
         """
         The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
         Structure is documented below.
@@ -34787,12 +34787,12 @@ class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs:
         return pulumi.get(self, "delay")
 
     @delay.setter
-    def delay(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs']]):
+    def delay(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArrgs']]):
         pulumi.set(self, "delay", value)
 
 
 @pulumi.input_type
-class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs:
+calass URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArrgs:
     def __init__(__self__, *,
                  http_status: Optional[pulumi.Input[int]] = None,
                  percentage: Optional[pulumi.Input[float]] = None):
@@ -34835,12 +34835,12 @@ class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs:
+calass URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArrgs:
     def __init__(__self__, *,
-                 fixed_delay: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs']] = None,
+                 fixed_delay: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs']] = None,
                  percentage: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs'] fixed_delay: Specifies the value of the fixed delay interval.
+        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs'] fixed_delay: Specifies the value of the fixed delay interval.
                Structure is documented below.
         :param pulumi.Input[float] percentage: The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
                The value must be between 0.0 and 100.0 inclusive.
@@ -34852,7 +34852,7 @@ class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs:
 
     @property
     @pulumi.getter(name="fixedDelay")
-    def fixed_delay(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs']]:
+    def fixed_delay(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs']]:
         """
         Specifies the value of the fixed delay interval.
         Structure is documented below.
@@ -34860,7 +34860,7 @@ class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs:
         return pulumi.get(self, "fixed_delay")
 
     @fixed_delay.setter
-    def fixed_delay(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs']]):
+    def fixed_delay(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs']]):
         pulumi.set(self, "fixed_delay", value)
 
     @property
@@ -34878,7 +34878,7 @@ class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs:
+calass URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[str],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -34920,7 +34920,7 @@ class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayAr
 
 
 @pulumi.input_type
-class URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs:
+calass URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArrgs:
     def __init__(__self__, *,
                  backend_service: pulumi.Input[str]):
         """
@@ -34942,14 +34942,14 @@ class URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs:
+calass URLMapPathMatcherRouteRuleRouteActionRetryPolicyArrgs:
     def __init__(__self__, *,
                  num_retries: pulumi.Input[int],
-                 per_try_timeout: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs']] = None,
+                 per_try_timeout: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArrgs']] = None,
                  retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[int] num_retries: Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
-        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs'] per_try_timeout: Specifies a non-zero timeout per retry attempt.
+        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArrgs'] per_try_timeout: Specifies a non-zero timeout per retry attempt.
                If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
                will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
@@ -34989,7 +34989,7 @@ class URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs:
 
     @property
     @pulumi.getter(name="perTryTimeout")
-    def per_try_timeout(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs']]:
+    def per_try_timeout(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArrgs']]:
         """
         Specifies a non-zero timeout per retry attempt.
         If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
@@ -34999,7 +34999,7 @@ class URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs:
         return pulumi.get(self, "per_try_timeout")
 
     @per_try_timeout.setter
-    def per_try_timeout(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs']]):
+    def per_try_timeout(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArrgs']]):
         pulumi.set(self, "per_try_timeout", value)
 
     @property
@@ -35030,7 +35030,7 @@ class URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs:
+calass URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[str],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -35072,7 +35072,7 @@ class URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherRouteRuleRouteActionTimeoutArgs:
+calass URLMapPathMatcherRouteRuleRouteActionTimeoutArrgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[str],
                  nanos: Optional[pulumi.Input[int]] = None):
@@ -35114,7 +35114,7 @@ class URLMapPathMatcherRouteRuleRouteActionTimeoutArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs:
+calass URLMapPathMatcherRouteRuleRouteActionUrlRewriteArrgs:
     def __init__(__self__, *,
                  host_rewrite: Optional[pulumi.Input[str]] = None,
                  path_prefix_rewrite: Optional[pulumi.Input[str]] = None,
@@ -35197,11 +35197,11 @@ class URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs:
 
 
 @pulumi.input_type
-class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs:
+calass URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrgs:
     def __init__(__self__, *,
                  backend_service: pulumi.Input[str],
                  weight: pulumi.Input[int],
-                 header_action: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs']] = None):
+                 header_action: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArrgs']] = None):
         """
         :param pulumi.Input[str] backend_service: The full or partial URL to the default BackendService resource. Before forwarding the
                request to backendService, the loadbalancer applies any relevant headerActions
@@ -35212,7 +35212,7 @@ class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs:
                has been directed to a backendService, subsequent requests will be sent to the same backendService
                as determined by the BackendService's session affinity policy.
                The value must be between 0 and 1000
-        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs'] header_action: Specifies changes to request and response headers that need to take effect for
+        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArrgs'] header_action: Specifies changes to request and response headers that need to take effect for
                the selected backendService.
                headerAction specified here take effect before headerAction in the enclosing
                HttpRouteRule, PathMatcher and UrlMap.
@@ -35256,7 +35256,7 @@ class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs:
 
     @property
     @pulumi.getter(name="headerAction")
-    def header_action(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs']]:
+    def header_action(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArrgs']]:
         """
         Specifies changes to request and response headers that need to take effect for
         the selected backendService.
@@ -35267,23 +35267,23 @@ class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs:
         return pulumi.get(self, "header_action")
 
     @header_action.setter
-    def header_action(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs']]):
+    def header_action(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArrgs']]):
         pulumi.set(self, "header_action", value)
 
 
 @pulumi.input_type
-class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs:
+calass URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArrgs:
     def __init__(__self__, *,
-                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]]] = None,
+                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]]] = None,
                  request_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]] = None,
+                 response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]]] = None,
                  response_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] request_headers_to_removes: A list of header names for headers that need to be removed from the request prior to
                forwarding the request to the backendService.
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] response_headers_to_removes: A list of header names for headers that need to be removed from the response prior to sending the
                response back to the client.
@@ -35299,7 +35299,7 @@ class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArg
 
     @property
     @pulumi.getter(name="requestHeadersToAdds")
-    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]]]:
+    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]]]:
         """
         Headers to add to a matching request prior to forwarding the request to the backendService.
         Structure is documented below.
@@ -35307,7 +35307,7 @@ class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArg
         return pulumi.get(self, "request_headers_to_adds")
 
     @request_headers_to_adds.setter
-    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]]]):
+    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs']]]]):
         pulumi.set(self, "request_headers_to_adds", value)
 
     @property
@@ -35325,7 +35325,7 @@ class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArg
 
     @property
     @pulumi.getter(name="responseHeadersToAdds")
-    def response_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]]:
+    def response_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]]]:
         """
         Headers to add the response prior to sending the response back to the client.
         Structure is documented below.
@@ -35333,7 +35333,7 @@ class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArg
         return pulumi.get(self, "response_headers_to_adds")
 
     @response_headers_to_adds.setter
-    def response_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]]):
+    def response_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs']]]]):
         pulumi.set(self, "response_headers_to_adds", value)
 
     @property
@@ -35351,7 +35351,7 @@ class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArg
 
 
 @pulumi.input_type
-class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs:
+calass URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str],
                  header_value: pulumi.Input[str],
@@ -35405,7 +35405,7 @@ class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionReq
 
 
 @pulumi.input_type
-class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs:
+calass URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str],
                  header_value: pulumi.Input[str],
@@ -35459,7 +35459,7 @@ class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRes
 
 
 @pulumi.input_type
-class URLMapPathMatcherRouteRuleUrlRedirectArgs:
+calass URLMapPathMatcherRouteRuleUrlRedirectArrgs:
     def __init__(__self__, *,
                  host_redirect: Optional[pulumi.Input[str]] = None,
                  https_redirect: Optional[pulumi.Input[bool]] = None,
@@ -35590,7 +35590,7 @@ class URLMapPathMatcherRouteRuleUrlRedirectArgs:
 
 
 @pulumi.input_type
-class URLMapTestArgs:
+calass URLMapTestArrgs:
     def __init__(__self__, *,
                  host: pulumi.Input[str],
                  path: pulumi.Input[str],

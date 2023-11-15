@@ -11,13 +11,13 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['IndexArgs', 'Index']
+__all__ = ['IndexArrgs', 'Index']
 
 @pulumi.input_type
-class IndexArgs:
+calass IndexArrgs:
     def __init__(__self__, *,
                  collection: pulumi.Input[str],
-                 fields: pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]],
+                 fields: pulumi.Input[Sequence[pulumi.Input['IndexFieldArrgs']]],
                  api_scope: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -25,7 +25,7 @@ class IndexArgs:
         """
         The set of arguments for constructing a Index resource.
         :param pulumi.Input[str] collection: The collection being indexed.
-        :param pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]] fields: The fields supported by this index. The last field entry is always for
+        :param pulumi.Input[Sequence[pulumi.Input['IndexFieldArrgs']]] fields: The fields supported by this index. The last field entry is always for
                the field path `__name__`. If, on creation, `__name__` was not
                specified as the last field, it will be added automatically with the
                same direction as that of the last field defined. If the final field
@@ -67,7 +67,7 @@ class IndexArgs:
 
     @property
     @pulumi.getter
-    def fields(self) -> pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]]:
+    def fields(self) -> pulumi.Input[Sequence[pulumi.Input['IndexFieldArrgs']]]:
         """
         The fields supported by this index. The last field entry is always for
         the field path `__name__`. If, on creation, `__name__` was not
@@ -80,7 +80,7 @@ class IndexArgs:
         return pulumi.get(self, "fields")
 
     @fields.setter
-    def fields(self, value: pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]]):
+    def fields(self, value: pulumi.Input[Sequence[pulumi.Input['IndexFieldArrgs']]]):
         pulumi.set(self, "fields", value)
 
     @property
@@ -138,12 +138,12 @@ class IndexArgs:
 
 
 @pulumi.input_type
-class _IndexState:
+calass _IndexState:
     def __init__(__self__, *,
                  api_scope: Optional[pulumi.Input[str]] = None,
                  collection: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input['IndexFieldArrgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  query_scope: Optional[pulumi.Input[str]] = None):
@@ -154,7 +154,7 @@ class _IndexState:
                Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
         :param pulumi.Input[str] collection: The collection being indexed.
         :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
-        :param pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]] fields: The fields supported by this index. The last field entry is always for
+        :param pulumi.Input[Sequence[pulumi.Input['IndexFieldArrgs']]] fields: The fields supported by this index. The last field entry is always for
                the field path `__name__`. If, on creation, `__name__` was not
                specified as the last field, it will be added automatically with the
                same direction as that of the last field defined. If the final field
@@ -224,7 +224,7 @@ class _IndexState:
 
     @property
     @pulumi.getter
-    def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]]]:
+    def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IndexFieldArrgs']]]]:
         """
         The fields supported by this index. The last field entry is always for
         the field path `__name__`. If, on creation, `__name__` was not
@@ -237,7 +237,7 @@ class _IndexState:
         return pulumi.get(self, "fields")
 
     @fields.setter
-    def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]]]):
+    def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IndexFieldArrgs']]]]):
         pulumi.set(self, "fields", value)
 
     @property
@@ -281,7 +281,7 @@ class _IndexState:
         pulumi.set(self, "query_scope", value)
 
 
-class Index(pulumi.CustomResource):
+calass Index(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -289,7 +289,7 @@ class Index(pulumi.CustomResource):
                  api_scope: Optional[pulumi.Input[str]] = None,
                  collection: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArrgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  query_scope: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -322,11 +322,11 @@ class Index(pulumi.CustomResource):
         my_index = gcp.firestore.Index("my-index",
             collection="chatrooms",
             fields=[
-                gcp.firestore.IndexFieldArgs(
+                gcp.firestore.IndexFieldArrgs(
                     field_path="name",
                     order="ASCENDING",
                 ),
-                gcp.firestore.IndexFieldArgs(
+                gcp.firestore.IndexFieldArrgs(
                     field_path="description",
                     order="DESCENDING",
                 ),
@@ -343,11 +343,11 @@ class Index(pulumi.CustomResource):
             api_scope="DATASTORE_MODE_API",
             collection="chatrooms",
             fields=[
-                gcp.firestore.IndexFieldArgs(
+                gcp.firestore.IndexFieldArrgs(
                     field_path="name",
                     order="ASCENDING",
                 ),
-                gcp.firestore.IndexFieldArgs(
+                gcp.firestore.IndexFieldArrgs(
                     field_path="description",
                     order="DESCENDING",
                 ),
@@ -379,7 +379,7 @@ class Index(pulumi.CustomResource):
                Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
         :param pulumi.Input[str] collection: The collection being indexed.
         :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]] fields: The fields supported by this index. The last field entry is always for
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArrgs']]]] fields: The fields supported by this index. The last field entry is always for
                the field path `__name__`. If, on creation, `__name__` was not
                specified as the last field, it will be added automatically with the
                same direction as that of the last field defined. If the final field
@@ -396,7 +396,7 @@ class Index(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: IndexArgs,
+                 args: IndexArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Cloud Firestore indexes enable simple and complex queries against documents in a database.
@@ -427,11 +427,11 @@ class Index(pulumi.CustomResource):
         my_index = gcp.firestore.Index("my-index",
             collection="chatrooms",
             fields=[
-                gcp.firestore.IndexFieldArgs(
+                gcp.firestore.IndexFieldArrgs(
                     field_path="name",
                     order="ASCENDING",
                 ),
-                gcp.firestore.IndexFieldArgs(
+                gcp.firestore.IndexFieldArrgs(
                     field_path="description",
                     order="DESCENDING",
                 ),
@@ -448,11 +448,11 @@ class Index(pulumi.CustomResource):
             api_scope="DATASTORE_MODE_API",
             collection="chatrooms",
             fields=[
-                gcp.firestore.IndexFieldArgs(
+                gcp.firestore.IndexFieldArrgs(
                     field_path="name",
                     order="ASCENDING",
                 ),
-                gcp.firestore.IndexFieldArgs(
+                gcp.firestore.IndexFieldArrgs(
                     field_path="description",
                     order="DESCENDING",
                 ),
@@ -478,12 +478,12 @@ class Index(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param IndexArgs args: The arguments to use to populate this resource's properties.
+        :param IndexArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(IndexArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(IndexArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -495,7 +495,7 @@ class Index(pulumi.CustomResource):
                  api_scope: Optional[pulumi.Input[str]] = None,
                  collection: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArrgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  query_scope: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -505,7 +505,7 @@ class Index(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = IndexArgs.__new__(IndexArgs)
+            __props__ = IndexArrgs.__new__(IndexArrgs)
 
             __props__.__dict__["api_scope"] = api_scope
             if collection is None and not opts.urn:
@@ -531,7 +531,7 @@ class Index(pulumi.CustomResource):
             api_scope: Optional[pulumi.Input[str]] = None,
             collection: Optional[pulumi.Input[str]] = None,
             database: Optional[pulumi.Input[str]] = None,
-            fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]]] = None,
+            fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArrgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             query_scope: Optional[pulumi.Input[str]] = None) -> 'Index':
@@ -547,7 +547,7 @@ class Index(pulumi.CustomResource):
                Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
         :param pulumi.Input[str] collection: The collection being indexed.
         :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]] fields: The fields supported by this index. The last field entry is always for
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArrgs']]]] fields: The fields supported by this index. The last field entry is always for
                the field path `__name__`. If, on creation, `__name__` was not
                specified as the last field, it will be added automatically with the
                same direction as that of the last field defined. If the final field

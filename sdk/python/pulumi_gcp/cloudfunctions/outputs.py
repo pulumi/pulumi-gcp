@@ -28,7 +28,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class FunctionEventTrigger(dict):
+calass FunctionEventTrigger(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -58,7 +58,7 @@ class FunctionEventTrigger(dict):
                full reference of accepted triggers.
         :param str resource: Required. The name or partial URI of the resource from
                which to observe events. For example, `"myBucket"` or `"projects/my-project/topics/my-topic"`
-        :param 'FunctionEventTriggerFailurePolicyArgs' failure_policy: Specifies policy for failed executions. Structure is documented below.
+        :param 'FunctionEventTriggerFailurePolicyArrgs' failure_policy: Specifies policy for failed executions. Structure is documented below.
         """
         pulumi.set(__self__, "event_type", event_type)
         pulumi.set(__self__, "resource", resource)
@@ -94,7 +94,7 @@ class FunctionEventTrigger(dict):
 
 
 @pulumi.output_type
-class FunctionEventTriggerFailurePolicy(dict):
+calass FunctionEventTriggerFailurePolicy(dict):
     def __init__(__self__, *,
                  retry: bool):
         """
@@ -112,7 +112,7 @@ class FunctionEventTriggerFailurePolicy(dict):
 
 
 @pulumi.output_type
-class FunctionIamBindingCondition(dict):
+calass FunctionIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -139,7 +139,7 @@ class FunctionIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class FunctionIamMemberCondition(dict):
+calass FunctionIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -166,7 +166,7 @@ class FunctionIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class FunctionSecretEnvironmentVariable(dict):
+calass FunctionSecretEnvironmentVariable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -235,7 +235,7 @@ class FunctionSecretEnvironmentVariable(dict):
 
 
 @pulumi.output_type
-class FunctionSecretVolume(dict):
+calass FunctionSecretVolume(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -264,7 +264,7 @@ class FunctionSecretVolume(dict):
         :param str mount_path: The path within the container to mount the secret volume. For example, setting the mount_path as "/etc/secrets" would mount the secret value files under the "/etc/secrets" directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: "/etc/secrets" Restricted mount paths: "/cloudsql", "/dev/log", "/pod", "/proc", "/var/log".
         :param str secret: ID of the secret in secret manager (not the full resource name).
         :param str project_id: Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
-        :param Sequence['FunctionSecretVolumeVersionArgs'] versions: List of secret versions to mount for this secret. If empty, the "latest" version of the secret will be made available in a file named after the secret under the mount point. Structure is documented below.
+        :param Sequence['FunctionSecretVolumeVersionArrgs'] versions: List of secret versions to mount for this secret. If empty, the "latest" version of the secret will be made available in a file named after the secret under the mount point. Structure is documented below.
         """
         pulumi.set(__self__, "mount_path", mount_path)
         pulumi.set(__self__, "secret", secret)
@@ -307,7 +307,7 @@ class FunctionSecretVolume(dict):
 
 
 @pulumi.output_type
-class FunctionSecretVolumeVersion(dict):
+calass FunctionSecretVolumeVersion(dict):
     def __init__(__self__, *,
                  path: str,
                  version: str):
@@ -336,7 +336,7 @@ class FunctionSecretVolumeVersion(dict):
 
 
 @pulumi.output_type
-class FunctionSourceRepository(dict):
+calass FunctionSourceRepository(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -387,7 +387,7 @@ class FunctionSourceRepository(dict):
 
 
 @pulumi.output_type
-class GetFunctionEventTriggerResult(dict):
+calass GetFunctionEventTriggerResult(dict):
     def __init__(__self__, *,
                  event_type: str,
                  failure_policies: Sequence['outputs.GetFunctionEventTriggerFailurePolicyResult'],
@@ -396,7 +396,7 @@ class GetFunctionEventTriggerResult(dict):
         :param str event_type: The type of event to observe. For example: `"google.storage.object.finalize"`.
                See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/)
                for a full reference of accepted triggers.
-        :param Sequence['GetFunctionEventTriggerFailurePolicyArgs'] failure_policies: Policy for failed executions. Structure is documented below.
+        :param Sequence['GetFunctionEventTriggerFailurePolicyArrgs'] failure_policies: Policy for failed executions. Structure is documented below.
         :param str resource: The name of the resource whose events are being observed, for example, `"myBucket"`
         """
         pulumi.set(__self__, "event_type", event_type)
@@ -431,7 +431,7 @@ class GetFunctionEventTriggerResult(dict):
 
 
 @pulumi.output_type
-class GetFunctionEventTriggerFailurePolicyResult(dict):
+calass GetFunctionEventTriggerFailurePolicyResult(dict):
     def __init__(__self__, *,
                  retry: bool):
         """
@@ -449,7 +449,7 @@ class GetFunctionEventTriggerFailurePolicyResult(dict):
 
 
 @pulumi.output_type
-class GetFunctionSecretEnvironmentVariableResult(dict):
+calass GetFunctionSecretEnvironmentVariableResult(dict):
     def __init__(__self__, *,
                  key: str,
                  project_id: str,
@@ -482,7 +482,7 @@ class GetFunctionSecretEnvironmentVariableResult(dict):
 
 
 @pulumi.output_type
-class GetFunctionSecretVolumeResult(dict):
+calass GetFunctionSecretVolumeResult(dict):
     def __init__(__self__, *,
                  mount_path: str,
                  project_id: str,
@@ -515,7 +515,7 @@ class GetFunctionSecretVolumeResult(dict):
 
 
 @pulumi.output_type
-class GetFunctionSecretVolumeVersionResult(dict):
+calass GetFunctionSecretVolumeVersionResult(dict):
     def __init__(__self__, *,
                  path: str,
                  version: str):
@@ -534,7 +534,7 @@ class GetFunctionSecretVolumeVersionResult(dict):
 
 
 @pulumi.output_type
-class GetFunctionSourceRepositoryResult(dict):
+calass GetFunctionSourceRepositoryResult(dict):
     def __init__(__self__, *,
                  deployed_url: str,
                  url: str):

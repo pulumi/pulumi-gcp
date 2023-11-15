@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetMetastoreFederationIamPolicyResult:
+calass GetMetastoreFederationIamPolicyResult:
     """
     A collection of values returned by getMetastoreFederationIamPolicy.
     """
@@ -82,7 +82,7 @@ class GetMetastoreFederationIamPolicyResult:
         return pulumi.get(self, "project")
 
 
-class AwaitableGetMetastoreFederationIamPolicyResult(GetMetastoreFederationIamPolicyResult):
+calass AwaitableGetMetastoreFederationIamPolicyResult(GetMetastoreFederationIamPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

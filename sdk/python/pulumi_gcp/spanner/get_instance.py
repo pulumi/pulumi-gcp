@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetInstanceResult:
+calass GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
@@ -132,7 +132,7 @@ class GetInstanceResult:
         return pulumi.get(self, "state")
 
 
-class AwaitableGetInstanceResult(GetInstanceResult):
+calass AwaitableGetInstanceResult(GetInstanceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

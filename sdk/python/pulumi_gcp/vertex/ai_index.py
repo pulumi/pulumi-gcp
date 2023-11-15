@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AiIndexArgs', 'AiIndex']
+__all__ = ['AiIndexArrgs', 'AiIndex']
 
 @pulumi.input_type
-class AiIndexArgs:
+calass AiIndexArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  index_update_method: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 metadata: Optional[pulumi.Input['AiIndexMetadataArgs']] = None,
+                 metadata: Optional[pulumi.Input['AiIndexMetadataArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
         """
@@ -36,7 +36,7 @@ class AiIndexArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Indexes.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input['AiIndexMetadataArgs'] metadata: An additional information about the Index
+        :param pulumi.Input['AiIndexMetadataArrgs'] metadata: An additional information about the Index
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -113,7 +113,7 @@ class AiIndexArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['AiIndexMetadataArgs']]:
+    def metadata(self) -> Optional[pulumi.Input['AiIndexMetadataArrgs']]:
         """
         An additional information about the Index
         Structure is documented below.
@@ -121,7 +121,7 @@ class AiIndexArgs:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['AiIndexMetadataArgs']]):
+    def metadata(self, value: Optional[pulumi.Input['AiIndexMetadataArrgs']]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -151,18 +151,18 @@ class AiIndexArgs:
 
 
 @pulumi.input_type
-class _AiIndexState:
+calass _AiIndexState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 deployed_indexes: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexDeployedIndexArgs']]]] = None,
+                 deployed_indexes: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexDeployedIndexArrgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 index_stats: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexIndexStatArgs']]]] = None,
+                 index_stats: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexIndexStatArrgs']]]] = None,
                  index_update_method: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 metadata: Optional[pulumi.Input['AiIndexMetadataArgs']] = None,
+                 metadata: Optional[pulumi.Input['AiIndexMetadataArrgs']] = None,
                  metadata_schema_uri: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -172,7 +172,7 @@ class _AiIndexState:
         """
         Input properties used for looking up and filtering AiIndex resources.
         :param pulumi.Input[str] create_time: The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        :param pulumi.Input[Sequence[pulumi.Input['AiIndexDeployedIndexArgs']]] deployed_indexes: The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
+        :param pulumi.Input[Sequence[pulumi.Input['AiIndexDeployedIndexArrgs']]] deployed_indexes: The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the Index.
         :param pulumi.Input[str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -181,7 +181,7 @@ class _AiIndexState:
                - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
-        :param pulumi.Input[Sequence[pulumi.Input['AiIndexIndexStatArgs']]] index_stats: Stats of the index resource.
+        :param pulumi.Input[Sequence[pulumi.Input['AiIndexIndexStatArrgs']]] index_stats: Stats of the index resource.
                Structure is documented below.
         :param pulumi.Input[str] index_update_method: The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
                * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
@@ -189,7 +189,7 @@ class _AiIndexState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Indexes.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input['AiIndexMetadataArgs'] metadata: An additional information about the Index
+        :param pulumi.Input['AiIndexMetadataArrgs'] metadata: An additional information about the Index
                Structure is documented below.
         :param pulumi.Input[str] metadata_schema_uri: Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
         :param pulumi.Input[str] name: The resource name of the Index.
@@ -247,7 +247,7 @@ class _AiIndexState:
 
     @property
     @pulumi.getter(name="deployedIndexes")
-    def deployed_indexes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexDeployedIndexArgs']]]]:
+    def deployed_indexes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexDeployedIndexArrgs']]]]:
         """
         The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
         Structure is documented below.
@@ -255,7 +255,7 @@ class _AiIndexState:
         return pulumi.get(self, "deployed_indexes")
 
     @deployed_indexes.setter
-    def deployed_indexes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexDeployedIndexArgs']]]]):
+    def deployed_indexes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexDeployedIndexArrgs']]]]):
         pulumi.set(self, "deployed_indexes", value)
 
     @property
@@ -311,7 +311,7 @@ class _AiIndexState:
 
     @property
     @pulumi.getter(name="indexStats")
-    def index_stats(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexIndexStatArgs']]]]:
+    def index_stats(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexIndexStatArrgs']]]]:
         """
         Stats of the index resource.
         Structure is documented below.
@@ -319,7 +319,7 @@ class _AiIndexState:
         return pulumi.get(self, "index_stats")
 
     @index_stats.setter
-    def index_stats(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexIndexStatArgs']]]]):
+    def index_stats(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexIndexStatArrgs']]]]):
         pulumi.set(self, "index_stats", value)
 
     @property
@@ -352,7 +352,7 @@ class _AiIndexState:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['AiIndexMetadataArgs']]:
+    def metadata(self) -> Optional[pulumi.Input['AiIndexMetadataArrgs']]:
         """
         An additional information about the Index
         Structure is documented below.
@@ -360,7 +360,7 @@ class _AiIndexState:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['AiIndexMetadataArgs']]):
+    def metadata(self, value: Optional[pulumi.Input['AiIndexMetadataArrgs']]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -438,7 +438,7 @@ class _AiIndexState:
         pulumi.set(self, "update_time", value)
 
 
-class AiIndex(pulumi.CustomResource):
+calass AiIndex(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -447,7 +447,7 @@ class AiIndex(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  index_update_method: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['AiIndexMetadataArgs']]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['AiIndexMetadataArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -482,15 +482,15 @@ class AiIndex(pulumi.CustomResource):
             region="us-central1",
             display_name="test-index",
             description="index for test",
-            metadata=gcp.vertex.AiIndexMetadataArgs(
+            metadata=gcp.vertex.AiIndexMetadataArrgs(
                 contents_delta_uri=bucket.name.apply(lambda name: f"gs://{name}/contents"),
-                config=gcp.vertex.AiIndexMetadataConfigArgs(
+                config=gcp.vertex.AiIndexMetadataConfigArrgs(
                     dimensions=2,
                     approximate_neighbors_count=150,
                     shard_size="SHARD_SIZE_SMALL",
                     distance_measure_type="DOT_PRODUCT_DISTANCE",
-                    algorithm_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigArgs(
-                        tree_ah_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs(
+                    algorithm_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigArrgs(
+                        tree_ah_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrgs(
                             leaf_node_embedding_count=500,
                             leaf_nodes_to_search_percent=7,
                         ),
@@ -522,15 +522,15 @@ class AiIndex(pulumi.CustomResource):
             region="us-central1",
             display_name="test-index",
             description="index for test",
-            metadata=gcp.vertex.AiIndexMetadataArgs(
+            metadata=gcp.vertex.AiIndexMetadataArrgs(
                 contents_delta_uri=bucket.name.apply(lambda name: f"gs://{name}/contents"),
-                config=gcp.vertex.AiIndexMetadataConfigArgs(
+                config=gcp.vertex.AiIndexMetadataConfigArrgs(
                     dimensions=2,
                     shard_size="SHARD_SIZE_LARGE",
                     distance_measure_type="COSINE_DISTANCE",
                     feature_norm_type="UNIT_L2_NORM",
-                    algorithm_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigArgs(
-                        brute_force_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs(),
+                    algorithm_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigArrgs(
+                        brute_force_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrgs(),
                     ),
                 ),
             ),
@@ -578,7 +578,7 @@ class AiIndex(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Indexes.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[pulumi.InputType['AiIndexMetadataArgs']] metadata: An additional information about the Index
+        :param pulumi.Input[pulumi.InputType['AiIndexMetadataArrgs']] metadata: An additional information about the Index
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -588,7 +588,7 @@ class AiIndex(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AiIndexArgs,
+                 args: AiIndexArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A representation of a collection of database items organized in a way that allows for approximate nearest neighbor (a.k.a ANN) algorithms search.
@@ -621,15 +621,15 @@ class AiIndex(pulumi.CustomResource):
             region="us-central1",
             display_name="test-index",
             description="index for test",
-            metadata=gcp.vertex.AiIndexMetadataArgs(
+            metadata=gcp.vertex.AiIndexMetadataArrgs(
                 contents_delta_uri=bucket.name.apply(lambda name: f"gs://{name}/contents"),
-                config=gcp.vertex.AiIndexMetadataConfigArgs(
+                config=gcp.vertex.AiIndexMetadataConfigArrgs(
                     dimensions=2,
                     approximate_neighbors_count=150,
                     shard_size="SHARD_SIZE_SMALL",
                     distance_measure_type="DOT_PRODUCT_DISTANCE",
-                    algorithm_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigArgs(
-                        tree_ah_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs(
+                    algorithm_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigArrgs(
+                        tree_ah_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrgs(
                             leaf_node_embedding_count=500,
                             leaf_nodes_to_search_percent=7,
                         ),
@@ -661,15 +661,15 @@ class AiIndex(pulumi.CustomResource):
             region="us-central1",
             display_name="test-index",
             description="index for test",
-            metadata=gcp.vertex.AiIndexMetadataArgs(
+            metadata=gcp.vertex.AiIndexMetadataArrgs(
                 contents_delta_uri=bucket.name.apply(lambda name: f"gs://{name}/contents"),
-                config=gcp.vertex.AiIndexMetadataConfigArgs(
+                config=gcp.vertex.AiIndexMetadataConfigArrgs(
                     dimensions=2,
                     shard_size="SHARD_SIZE_LARGE",
                     distance_measure_type="COSINE_DISTANCE",
                     feature_norm_type="UNIT_L2_NORM",
-                    algorithm_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigArgs(
-                        brute_force_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs(),
+                    algorithm_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigArrgs(
+                        brute_force_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrgs(),
                     ),
                 ),
             ),
@@ -705,12 +705,12 @@ class AiIndex(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AiIndexArgs args: The arguments to use to populate this resource's properties.
+        :param AiIndexArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AiIndexArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AiIndexArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -723,7 +723,7 @@ class AiIndex(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  index_update_method: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['AiIndexMetadataArgs']]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['AiIndexMetadataArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -733,7 +733,7 @@ class AiIndex(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AiIndexArgs.__new__(AiIndexArgs)
+            __props__ = AiIndexArrgs.__new__(AiIndexArrgs)
 
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
@@ -766,15 +766,15 @@ class AiIndex(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            deployed_indexes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AiIndexDeployedIndexArgs']]]]] = None,
+            deployed_indexes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AiIndexDeployedIndexArrgs']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
-            index_stats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AiIndexIndexStatArgs']]]]] = None,
+            index_stats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AiIndexIndexStatArrgs']]]]] = None,
             index_update_method: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            metadata: Optional[pulumi.Input[pulumi.InputType['AiIndexMetadataArgs']]] = None,
+            metadata: Optional[pulumi.Input[pulumi.InputType['AiIndexMetadataArrgs']]] = None,
             metadata_schema_uri: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -789,7 +789,7 @@ class AiIndex(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AiIndexDeployedIndexArgs']]]] deployed_indexes: The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AiIndexDeployedIndexArrgs']]]] deployed_indexes: The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the Index.
         :param pulumi.Input[str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -798,7 +798,7 @@ class AiIndex(pulumi.CustomResource):
                - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AiIndexIndexStatArgs']]]] index_stats: Stats of the index resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AiIndexIndexStatArrgs']]]] index_stats: Stats of the index resource.
                Structure is documented below.
         :param pulumi.Input[str] index_update_method: The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
                * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
@@ -806,7 +806,7 @@ class AiIndex(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Indexes.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[pulumi.InputType['AiIndexMetadataArgs']] metadata: An additional information about the Index
+        :param pulumi.Input[pulumi.InputType['AiIndexMetadataArrgs']] metadata: An additional information about the Index
                Structure is documented below.
         :param pulumi.Input[str] metadata_schema_uri: Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
         :param pulumi.Input[str] name: The resource name of the Index.

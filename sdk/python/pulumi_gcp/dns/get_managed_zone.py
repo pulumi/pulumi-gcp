@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetManagedZoneResult:
+calass GetManagedZoneResult:
     """
     A collection of values returned by getManagedZone.
     """
@@ -103,7 +103,7 @@ class GetManagedZoneResult:
         return pulumi.get(self, "visibility")
 
 
-class AwaitableGetManagedZoneResult(GetManagedZoneResult):
+calass AwaitableGetManagedZoneResult(GetManagedZoneResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

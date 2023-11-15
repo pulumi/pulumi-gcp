@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['NamespaceArgs', 'Namespace']
+__all__ = ['NamespaceArrgs', 'Namespace']
 
 @pulumi.input_type
-class NamespaceArgs:
+calass NamespaceArrgs:
     def __init__(__self__, *,
                  scope: pulumi.Input[str],
                  scope_id: pulumi.Input[str],
@@ -137,7 +137,7 @@ class NamespaceArgs:
 
 
 @pulumi.input_type
-class _NamespaceState:
+calass _NamespaceState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
@@ -150,7 +150,7 @@ class _NamespaceState:
                  scope: Optional[pulumi.Input[str]] = None,
                  scope_id: Optional[pulumi.Input[str]] = None,
                  scope_namespace_id: Optional[pulumi.Input[str]] = None,
-                 states: Optional[pulumi.Input[Sequence[pulumi.Input['NamespaceStateArgs']]]] = None,
+                 states: Optional[pulumi.Input[Sequence[pulumi.Input['NamespaceStateArrgs']]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -178,7 +178,7 @@ class _NamespaceState:
                
                - - -
         :param pulumi.Input[str] scope_namespace_id: The client-provided identifier of the namespace.
-        :param pulumi.Input[Sequence[pulumi.Input['NamespaceStateArgs']]] states: State of the namespace resource.
+        :param pulumi.Input[Sequence[pulumi.Input['NamespaceStateArrgs']]] states: State of the namespace resource.
                Structure is documented below.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[str] update_time: Time the Namespace was updated in UTC.
@@ -358,7 +358,7 @@ class _NamespaceState:
 
     @property
     @pulumi.getter
-    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NamespaceStateArgs']]]]:
+    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NamespaceStateArrgs']]]]:
         """
         State of the namespace resource.
         Structure is documented below.
@@ -366,7 +366,7 @@ class _NamespaceState:
         return pulumi.get(self, "states")
 
     @states.setter
-    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NamespaceStateArgs']]]]):
+    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NamespaceStateArrgs']]]]):
         pulumi.set(self, "states", value)
 
     @property
@@ -394,7 +394,7 @@ class _NamespaceState:
         pulumi.set(self, "update_time", value)
 
 
-class Namespace(pulumi.CustomResource):
+calass Namespace(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -465,7 +465,7 @@ class Namespace(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: NamespaceArgs,
+                 args: NamespaceArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Namespace represents a namespace across the Fleet.
@@ -503,12 +503,12 @@ class Namespace(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param NamespaceArgs args: The arguments to use to populate this resource's properties.
+        :param NamespaceArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(NamespaceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(NamespaceArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -530,7 +530,7 @@ class Namespace(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = NamespaceArgs.__new__(NamespaceArgs)
+            __props__ = NamespaceArrgs.__new__(NamespaceArrgs)
 
             __props__.__dict__["labels"] = labels
             __props__.__dict__["namespace_labels"] = namespace_labels
@@ -575,7 +575,7 @@ class Namespace(pulumi.CustomResource):
             scope: Optional[pulumi.Input[str]] = None,
             scope_id: Optional[pulumi.Input[str]] = None,
             scope_namespace_id: Optional[pulumi.Input[str]] = None,
-            states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamespaceStateArgs']]]]] = None,
+            states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamespaceStateArrgs']]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Namespace':
         """
@@ -608,7 +608,7 @@ class Namespace(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[str] scope_namespace_id: The client-provided identifier of the namespace.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamespaceStateArgs']]]] states: State of the namespace resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamespaceStateArrgs']]]] states: State of the namespace resource.
                Structure is documented below.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[str] update_time: Time the Namespace was updated in UTC.

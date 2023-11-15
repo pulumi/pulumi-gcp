@@ -11,17 +11,17 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['FolderSinkArgs', 'FolderSink']
+__all__ = ['FolderSinkArrgs', 'FolderSink']
 
 @pulumi.input_type
-class FolderSinkArgs:
+calass FolderSinkArrgs:
     def __init__(__self__, *,
                  destination: pulumi.Input[str],
                  folder: pulumi.Input[str],
-                 bigquery_options: Optional[pulumi.Input['FolderSinkBigqueryOptionsArgs']] = None,
+                 bigquery_options: Optional[pulumi.Input['FolderSinkBigqueryOptionsArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['FolderSinkExclusionArgs']]]] = None,
+                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['FolderSinkExclusionArrgs']]]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  include_children: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None):
@@ -38,10 +38,10 @@ class FolderSinkArgs:
                The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input[str] folder: The folder to be exported to the sink. Note that either `[FOLDER_ID]` or `folders/[FOLDER_ID]` is
                accepted.
-        :param pulumi.Input['FolderSinkBigqueryOptionsArgs'] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
+        :param pulumi.Input['FolderSinkBigqueryOptionsArrgs'] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] description: A description of this sink. The maximum length of the description is 8000 characters.
         :param pulumi.Input[bool] disabled: If set to True, then this sink is disabled and it does not export any log entries.
-        :param pulumi.Input[Sequence[pulumi.Input['FolderSinkExclusionArgs']]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['FolderSinkExclusionArrgs']]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
@@ -101,14 +101,14 @@ class FolderSinkArgs:
 
     @property
     @pulumi.getter(name="bigqueryOptions")
-    def bigquery_options(self) -> Optional[pulumi.Input['FolderSinkBigqueryOptionsArgs']]:
+    def bigquery_options(self) -> Optional[pulumi.Input['FolderSinkBigqueryOptionsArrgs']]:
         """
         Options that affect sinks exporting data to BigQuery. Structure documented below.
         """
         return pulumi.get(self, "bigquery_options")
 
     @bigquery_options.setter
-    def bigquery_options(self, value: Optional[pulumi.Input['FolderSinkBigqueryOptionsArgs']]):
+    def bigquery_options(self, value: Optional[pulumi.Input['FolderSinkBigqueryOptionsArrgs']]):
         pulumi.set(self, "bigquery_options", value)
 
     @property
@@ -137,14 +137,14 @@ class FolderSinkArgs:
 
     @property
     @pulumi.getter
-    def exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FolderSinkExclusionArgs']]]]:
+    def exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FolderSinkExclusionArrgs']]]]:
         """
         Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         """
         return pulumi.get(self, "exclusions")
 
     @exclusions.setter
-    def exclusions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FolderSinkExclusionArgs']]]]):
+    def exclusions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FolderSinkExclusionArrgs']]]]):
         pulumi.set(self, "exclusions", value)
 
     @property
@@ -188,13 +188,13 @@ class FolderSinkArgs:
 
 
 @pulumi.input_type
-class _FolderSinkState:
+calass _FolderSinkState:
     def __init__(__self__, *,
-                 bigquery_options: Optional[pulumi.Input['FolderSinkBigqueryOptionsArgs']] = None,
+                 bigquery_options: Optional[pulumi.Input['FolderSinkBigqueryOptionsArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['FolderSinkExclusionArgs']]]] = None,
+                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['FolderSinkExclusionArrgs']]]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  include_children: Optional[pulumi.Input[bool]] = None,
@@ -202,7 +202,7 @@ class _FolderSinkState:
                  writer_identity: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering FolderSink resources.
-        :param pulumi.Input['FolderSinkBigqueryOptionsArgs'] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
+        :param pulumi.Input['FolderSinkBigqueryOptionsArrgs'] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] description: A description of this sink. The maximum length of the description is 8000 characters.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
                Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
@@ -214,7 +214,7 @@ class _FolderSinkState:
                
                The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input[bool] disabled: If set to True, then this sink is disabled and it does not export any log entries.
-        :param pulumi.Input[Sequence[pulumi.Input['FolderSinkExclusionArgs']]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['FolderSinkExclusionArrgs']]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
@@ -249,14 +249,14 @@ class _FolderSinkState:
 
     @property
     @pulumi.getter(name="bigqueryOptions")
-    def bigquery_options(self) -> Optional[pulumi.Input['FolderSinkBigqueryOptionsArgs']]:
+    def bigquery_options(self) -> Optional[pulumi.Input['FolderSinkBigqueryOptionsArrgs']]:
         """
         Options that affect sinks exporting data to BigQuery. Structure documented below.
         """
         return pulumi.get(self, "bigquery_options")
 
     @bigquery_options.setter
-    def bigquery_options(self, value: Optional[pulumi.Input['FolderSinkBigqueryOptionsArgs']]):
+    def bigquery_options(self, value: Optional[pulumi.Input['FolderSinkBigqueryOptionsArrgs']]):
         pulumi.set(self, "bigquery_options", value)
 
     @property
@@ -305,14 +305,14 @@ class _FolderSinkState:
 
     @property
     @pulumi.getter
-    def exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FolderSinkExclusionArgs']]]]:
+    def exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FolderSinkExclusionArrgs']]]]:
         """
         Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         """
         return pulumi.get(self, "exclusions")
 
     @exclusions.setter
-    def exclusions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FolderSinkExclusionArgs']]]]):
+    def exclusions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FolderSinkExclusionArrgs']]]]):
         pulumi.set(self, "exclusions", value)
 
     @property
@@ -381,16 +381,16 @@ class _FolderSinkState:
         pulumi.set(self, "writer_identity", value)
 
 
-class FolderSink(pulumi.CustomResource):
+calass FolderSink(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_options: Optional[pulumi.Input[pulumi.InputType['FolderSinkBigqueryOptionsArgs']]] = None,
+                 bigquery_options: Optional[pulumi.Input[pulumi.InputType['FolderSinkBigqueryOptionsArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FolderSinkExclusionArgs']]]]] = None,
+                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FolderSinkExclusionArrgs']]]]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  include_children: Optional[pulumi.Input[bool]] = None,
@@ -441,7 +441,7 @@ class FolderSink(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['FolderSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
+        :param pulumi.Input[pulumi.InputType['FolderSinkBigqueryOptionsArrgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] description: A description of this sink. The maximum length of the description is 8000 characters.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
                Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
@@ -453,7 +453,7 @@ class FolderSink(pulumi.CustomResource):
                
                The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input[bool] disabled: If set to True, then this sink is disabled and it does not export any log entries.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FolderSinkExclusionArgs']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FolderSinkExclusionArrgs']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
@@ -467,7 +467,7 @@ class FolderSink(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FolderSinkArgs,
+                 args: FolderSinkArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a folder-level logging sink. For more information see:
@@ -513,12 +513,12 @@ class FolderSink(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param FolderSinkArgs args: The arguments to use to populate this resource's properties.
+        :param FolderSinkArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(FolderSinkArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(FolderSinkArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -527,11 +527,11 @@ class FolderSink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_options: Optional[pulumi.Input[pulumi.InputType['FolderSinkBigqueryOptionsArgs']]] = None,
+                 bigquery_options: Optional[pulumi.Input[pulumi.InputType['FolderSinkBigqueryOptionsArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FolderSinkExclusionArgs']]]]] = None,
+                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FolderSinkExclusionArrgs']]]]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  include_children: Optional[pulumi.Input[bool]] = None,
@@ -543,7 +543,7 @@ class FolderSink(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = FolderSinkArgs.__new__(FolderSinkArgs)
+            __props__ = FolderSinkArrgs.__new__(FolderSinkArrgs)
 
             __props__.__dict__["bigquery_options"] = bigquery_options
             __props__.__dict__["description"] = description
@@ -569,11 +569,11 @@ class FolderSink(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bigquery_options: Optional[pulumi.Input[pulumi.InputType['FolderSinkBigqueryOptionsArgs']]] = None,
+            bigquery_options: Optional[pulumi.Input[pulumi.InputType['FolderSinkBigqueryOptionsArrgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             destination: Optional[pulumi.Input[str]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
-            exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FolderSinkExclusionArgs']]]]] = None,
+            exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FolderSinkExclusionArrgs']]]]] = None,
             filter: Optional[pulumi.Input[str]] = None,
             folder: Optional[pulumi.Input[str]] = None,
             include_children: Optional[pulumi.Input[bool]] = None,
@@ -586,7 +586,7 @@ class FolderSink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['FolderSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
+        :param pulumi.Input[pulumi.InputType['FolderSinkBigqueryOptionsArrgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] description: A description of this sink. The maximum length of the description is 8000 characters.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
                Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
@@ -598,7 +598,7 @@ class FolderSink(pulumi.CustomResource):
                
                The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input[bool] disabled: If set to True, then this sink is disabled and it does not export any log entries.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FolderSinkExclusionArgs']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FolderSinkExclusionArrgs']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.

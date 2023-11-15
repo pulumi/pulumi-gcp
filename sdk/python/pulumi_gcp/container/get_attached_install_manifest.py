@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetAttachedInstallManifestResult:
+calass GetAttachedInstallManifestResult:
     """
     A collection of values returned by getAttachedInstallManifest.
     """
@@ -78,7 +78,7 @@ class GetAttachedInstallManifestResult:
         return pulumi.get(self, "project")
 
 
-class AwaitableGetAttachedInstallManifestResult(GetAttachedInstallManifestResult):
+calass AwaitableGetAttachedInstallManifestResult(GetAttachedInstallManifestResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['FhirStoreIamBindingArgs', 'FhirStoreIamBinding']
+__all__ = ['FhirStoreIamBindingArrgs', 'FhirStoreIamBinding']
 
 @pulumi.input_type
-class FhirStoreIamBindingArgs:
+calass FhirStoreIamBindingArrgs:
     def __init__(__self__, *,
                  fhir_store_id: pulumi.Input[str],
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['FhirStoreIamBindingConditionArgs']] = None):
+                 condition: Optional[pulumi.Input['FhirStoreIamBindingConditionArrgs']] = None):
         """
         The set of arguments for constructing a FhirStoreIamBinding resource.
         :param pulumi.Input[str] fhir_store_id: The FHIR store ID, in the form
@@ -94,18 +94,18 @@ class FhirStoreIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['FhirStoreIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['FhirStoreIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['FhirStoreIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['FhirStoreIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
-class _FhirStoreIamBindingState:
+calass _FhirStoreIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['FhirStoreIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['FhirStoreIamBindingConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  fhir_store_id: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -143,11 +143,11 @@ class _FhirStoreIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['FhirStoreIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['FhirStoreIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['FhirStoreIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['FhirStoreIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -210,12 +210,12 @@ class _FhirStoreIamBindingState:
         pulumi.set(self, "role", value)
 
 
-class FhirStoreIamBinding(pulumi.CustomResource):
+calass FhirStoreIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['FhirStoreIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['FhirStoreIamBindingConditionArrgs']]] = None,
                  fhir_store_id: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -237,7 +237,7 @@ class FhirStoreIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -309,7 +309,7 @@ class FhirStoreIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FhirStoreIamBindingArgs,
+                 args: FhirStoreIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Healthcare FHIR store. Each of these resources serves a different use case:
@@ -328,7 +328,7 @@ class FhirStoreIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -378,12 +378,12 @@ class FhirStoreIamBinding(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param FhirStoreIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param FhirStoreIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(FhirStoreIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(FhirStoreIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -392,7 +392,7 @@ class FhirStoreIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['FhirStoreIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['FhirStoreIamBindingConditionArrgs']]] = None,
                  fhir_store_id: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -403,7 +403,7 @@ class FhirStoreIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = FhirStoreIamBindingArgs.__new__(FhirStoreIamBindingArgs)
+            __props__ = FhirStoreIamBindingArrgs.__new__(FhirStoreIamBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if fhir_store_id is None and not opts.urn:
@@ -426,7 +426,7 @@ class FhirStoreIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['FhirStoreIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['FhirStoreIamBindingConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             fhir_store_id: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

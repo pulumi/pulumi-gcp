@@ -34,7 +34,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class ClusterDiscoveryEndpoint(dict):
+calass ClusterDiscoveryEndpoint(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -59,7 +59,7 @@ class ClusterDiscoveryEndpoint(dict):
         """
         :param str address: Output only. The IP allocated on the consumer network for the PSC forwarding rule.
         :param int port: Output only. The port number of the exposed Redis endpoint.
-        :param 'ClusterDiscoveryEndpointPscConfigArgs' psc_config: Output only. Customer configuration for where the endpoint
+        :param 'ClusterDiscoveryEndpointPscConfigArrgs' psc_config: Output only. Customer configuration for where the endpoint
                is created and accessed from.
                Structure is documented below.
         """
@@ -98,7 +98,7 @@ class ClusterDiscoveryEndpoint(dict):
 
 
 @pulumi.output_type
-class ClusterDiscoveryEndpointPscConfig(dict):
+calass ClusterDiscoveryEndpointPscConfig(dict):
     def __init__(__self__, *,
                  network: Optional[str] = None):
         """
@@ -125,7 +125,7 @@ class ClusterDiscoveryEndpointPscConfig(dict):
 
 
 @pulumi.output_type
-class ClusterPscConfig(dict):
+calass ClusterPscConfig(dict):
     def __init__(__self__, *,
                  network: str):
         """
@@ -151,7 +151,7 @@ class ClusterPscConfig(dict):
 
 
 @pulumi.output_type
-class ClusterPscConnection(dict):
+calass ClusterPscConnection(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -247,7 +247,7 @@ class ClusterPscConnection(dict):
 
 
 @pulumi.output_type
-class ClusterStateInfo(dict):
+calass ClusterStateInfo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -268,7 +268,7 @@ class ClusterStateInfo(dict):
     def __init__(__self__, *,
                  update_info: Optional['outputs.ClusterStateInfoUpdateInfo'] = None):
         """
-        :param 'ClusterStateInfoUpdateInfoArgs' update_info: A nested object resource
+        :param 'ClusterStateInfoUpdateInfoArrgs' update_info: A nested object resource
                Structure is documented below.
         """
         if update_info is not None:
@@ -285,7 +285,7 @@ class ClusterStateInfo(dict):
 
 
 @pulumi.output_type
-class ClusterStateInfoUpdateInfo(dict):
+calass ClusterStateInfoUpdateInfo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -335,7 +335,7 @@ class ClusterStateInfoUpdateInfo(dict):
 
 
 @pulumi.output_type
-class InstanceMaintenancePolicy(dict):
+calass InstanceMaintenancePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -374,7 +374,7 @@ class InstanceMaintenancePolicy(dict):
                Output only. The time when the policy was last updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits.
-        :param Sequence['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs'] weekly_maintenance_windows: Optional. Maintenance window that is applied to resources covered by this policy.
+        :param Sequence['InstanceMaintenancePolicyWeeklyMaintenanceWindowArrgs'] weekly_maintenance_windows: Optional. Maintenance window that is applied to resources covered by this policy.
                Minimum 1. For the current version, the maximum number
                of weekly_window is expected to be one.
                Structure is documented below.
@@ -433,7 +433,7 @@ class InstanceMaintenancePolicy(dict):
 
 
 @pulumi.output_type
-class InstanceMaintenancePolicyWeeklyMaintenanceWindow(dict):
+calass InstanceMaintenancePolicyWeeklyMaintenanceWindow(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -466,7 +466,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindow(dict):
                - SATURDAY: Saturday
                - SUNDAY: Sunday
                Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        :param 'InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs' start_time: Required. Start time of the window in UTC time.
+        :param 'InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrgs' start_time: Required. Start time of the window in UTC time.
                Structure is documented below.
         :param str duration: (Output)
                Output only. Duration of the maintenance window.
@@ -519,7 +519,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindow(dict):
 
 
 @pulumi.output_type
-class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime(dict):
+calass InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime(dict):
     def __init__(__self__, *,
                  hours: Optional[int] = None,
                  minutes: Optional[int] = None,
@@ -578,7 +578,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime(dict):
 
 
 @pulumi.output_type
-class InstanceMaintenanceSchedule(dict):
+calass InstanceMaintenanceSchedule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -658,7 +658,7 @@ class InstanceMaintenanceSchedule(dict):
 
 
 @pulumi.output_type
-class InstanceNode(dict):
+calass InstanceNode(dict):
     def __init__(__self__, *,
                  id: Optional[str] = None,
                  zone: Optional[str] = None):
@@ -693,7 +693,7 @@ class InstanceNode(dict):
 
 
 @pulumi.output_type
-class InstancePersistenceConfig(dict):
+calass InstancePersistenceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -805,7 +805,7 @@ class InstancePersistenceConfig(dict):
 
 
 @pulumi.output_type
-class InstanceServerCaCert(dict):
+calass InstanceServerCaCert(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -909,7 +909,7 @@ class InstanceServerCaCert(dict):
 
 
 @pulumi.output_type
-class GetInstanceMaintenancePolicyResult(dict):
+calass GetInstanceMaintenancePolicyResult(dict):
     def __init__(__self__, *,
                  create_time: str,
                  description: str,
@@ -942,7 +942,7 @@ class GetInstanceMaintenancePolicyResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowResult(dict):
+calass GetInstanceMaintenancePolicyWeeklyMaintenanceWindowResult(dict):
     def __init__(__self__, *,
                  day: str,
                  duration: str,
@@ -968,7 +968,7 @@ class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult(dict):
+calass GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult(dict):
     def __init__(__self__, *,
                  hours: int,
                  minutes: int,
@@ -1001,7 +1001,7 @@ class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceMaintenanceScheduleResult(dict):
+calass GetInstanceMaintenanceScheduleResult(dict):
     def __init__(__self__, *,
                  end_time: str,
                  schedule_deadline_time: str,
@@ -1027,7 +1027,7 @@ class GetInstanceMaintenanceScheduleResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceNodeResult(dict):
+calass GetInstanceNodeResult(dict):
     def __init__(__self__, *,
                  id: str,
                  zone: str):
@@ -1046,7 +1046,7 @@ class GetInstanceNodeResult(dict):
 
 
 @pulumi.output_type
-class GetInstancePersistenceConfigResult(dict):
+calass GetInstancePersistenceConfigResult(dict):
     def __init__(__self__, *,
                  persistence_mode: str,
                  rdb_next_snapshot_time: str,
@@ -1079,7 +1079,7 @@ class GetInstancePersistenceConfigResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceServerCaCertResult(dict):
+calass GetInstanceServerCaCertResult(dict):
     def __init__(__self__, *,
                  cert: str,
                  create_time: str,

@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['MeshArgs', 'Mesh']
+__all__ = ['MeshArrgs', 'Mesh']
 
 @pulumi.input_type
-class MeshArgs:
+calass MeshArrgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  interception_port: Optional[pulumi.Input[int]] = None,
@@ -120,7 +120,7 @@ class MeshArgs:
 
 
 @pulumi.input_type
-class _MeshState:
+calass _MeshState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -309,7 +309,7 @@ class _MeshState:
         pulumi.set(self, "update_time", value)
 
 
-class Mesh(pulumi.CustomResource):
+calass Mesh(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -396,7 +396,7 @@ class Mesh(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[MeshArgs] = None,
+                 args: Optional[MeshArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -453,12 +453,12 @@ class Mesh(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param MeshArgs args: The arguments to use to populate this resource's properties.
+        :param MeshArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(MeshArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(MeshArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -479,7 +479,7 @@ class Mesh(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = MeshArgs.__new__(MeshArgs)
+            __props__ = MeshArrgs.__new__(MeshArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["interception_port"] = interception_port

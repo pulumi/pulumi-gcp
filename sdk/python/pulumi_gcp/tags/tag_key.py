@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['TagKeyArgs', 'TagKey']
+__all__ = ['TagKeyArrgs', 'TagKey']
 
 @pulumi.input_type
-class TagKeyArgs:
+calass TagKeyArrgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[str],
                  short_name: pulumi.Input[str],
@@ -112,7 +112,7 @@ class TagKeyArgs:
 
 
 @pulumi.input_type
-class _TagKeyState:
+calass _TagKeyState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -281,7 +281,7 @@ class _TagKeyState:
         pulumi.set(self, "update_time", value)
 
 
-class TagKey(pulumi.CustomResource):
+calass TagKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -353,7 +353,7 @@ class TagKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TagKeyArgs,
+                 args: TagKeyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A TagKey, used to group a set of TagValues.
@@ -398,12 +398,12 @@ class TagKey(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param TagKeyArgs args: The arguments to use to populate this resource's properties.
+        :param TagKeyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(TagKeyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TagKeyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -424,7 +424,7 @@ class TagKey(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = TagKeyArgs.__new__(TagKeyArgs)
+            __props__ = TagKeyArrgs.__new__(TagKeyArrgs)
 
             __props__.__dict__["description"] = description
             if parent is None and not opts.urn:

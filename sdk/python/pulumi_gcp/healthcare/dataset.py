@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['DatasetArgs', 'Dataset']
+__all__ = ['DatasetArrgs', 'Dataset']
 
 @pulumi.input_type
-class DatasetArgs:
+calass DatasetArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
@@ -95,7 +95,7 @@ class DatasetArgs:
 
 
 @pulumi.input_type
-class _DatasetState:
+calass _DatasetState:
     def __init__(__self__, *,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -194,7 +194,7 @@ class _DatasetState:
         pulumi.set(self, "time_zone", value)
 
 
-class Dataset(pulumi.CustomResource):
+calass Dataset(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -266,7 +266,7 @@ class Dataset(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DatasetArgs,
+                 args: DatasetArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Healthcare `Dataset` is a toplevel logical grouping of `dicomStores`, `fhirStores` and `hl7V2Stores`.
@@ -314,12 +314,12 @@ class Dataset(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param DatasetArgs args: The arguments to use to populate this resource's properties.
+        :param DatasetArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DatasetArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DatasetArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -339,7 +339,7 @@ class Dataset(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DatasetArgs.__new__(DatasetArgs)
+            __props__ = DatasetArrgs.__new__(DatasetArrgs)
 
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")

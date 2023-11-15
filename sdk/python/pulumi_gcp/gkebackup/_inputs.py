@@ -10,52 +10,52 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'BackupPlanBackupConfigArgs',
-    'BackupPlanBackupConfigEncryptionKeyArgs',
-    'BackupPlanBackupConfigSelectedApplicationsArgs',
-    'BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs',
-    'BackupPlanBackupConfigSelectedNamespacesArgs',
-    'BackupPlanBackupScheduleArgs',
-    'BackupPlanIamBindingConditionArgs',
-    'BackupPlanIamMemberConditionArgs',
-    'BackupPlanRetentionPolicyArgs',
-    'RestorePlanIamBindingConditionArgs',
-    'RestorePlanIamMemberConditionArgs',
-    'RestorePlanRestoreConfigArgs',
-    'RestorePlanRestoreConfigClusterResourceRestoreScopeArgs',
-    'RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs',
-    'RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs',
-    'RestorePlanRestoreConfigExcludedNamespacesArgs',
-    'RestorePlanRestoreConfigSelectedApplicationsArgs',
-    'RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs',
-    'RestorePlanRestoreConfigSelectedNamespacesArgs',
-    'RestorePlanRestoreConfigTransformationRuleArgs',
-    'RestorePlanRestoreConfigTransformationRuleFieldActionArgs',
-    'RestorePlanRestoreConfigTransformationRuleResourceFilterArgs',
-    'RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs',
+    'BackupPlanBackupConfigArrgs',
+    'BackupPlanBackupConfigEncryptionKeyArrgs',
+    'BackupPlanBackupConfigSelectedApplicationsArrgs',
+    'BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrgs',
+    'BackupPlanBackupConfigSelectedNamespacesArrgs',
+    'BackupPlanBackupScheduleArrgs',
+    'BackupPlanIamBindingConditionArrgs',
+    'BackupPlanIamMemberConditionArrgs',
+    'BackupPlanRetentionPolicyArrgs',
+    'RestorePlanIamBindingConditionArrgs',
+    'RestorePlanIamMemberConditionArrgs',
+    'RestorePlanRestoreConfigArrgs',
+    'RestorePlanRestoreConfigClusterResourceRestoreScopeArrgs',
+    'RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrgs',
+    'RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrgs',
+    'RestorePlanRestoreConfigExcludedNamespacesArrgs',
+    'RestorePlanRestoreConfigSelectedApplicationsArrgs',
+    'RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrgs',
+    'RestorePlanRestoreConfigSelectedNamespacesArrgs',
+    'RestorePlanRestoreConfigTransformationRuleArrgs',
+    'RestorePlanRestoreConfigTransformationRuleFieldActionArrgs',
+    'RestorePlanRestoreConfigTransformationRuleResourceFilterArrgs',
+    'RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrgs',
 ]
 
 @pulumi.input_type
-class BackupPlanBackupConfigArgs:
+calass BackupPlanBackupConfigArrgs:
     def __init__(__self__, *,
                  all_namespaces: Optional[pulumi.Input[bool]] = None,
-                 encryption_key: Optional[pulumi.Input['BackupPlanBackupConfigEncryptionKeyArgs']] = None,
+                 encryption_key: Optional[pulumi.Input['BackupPlanBackupConfigEncryptionKeyArrgs']] = None,
                  include_secrets: Optional[pulumi.Input[bool]] = None,
                  include_volume_data: Optional[pulumi.Input[bool]] = None,
-                 selected_applications: Optional[pulumi.Input['BackupPlanBackupConfigSelectedApplicationsArgs']] = None,
-                 selected_namespaces: Optional[pulumi.Input['BackupPlanBackupConfigSelectedNamespacesArgs']] = None):
+                 selected_applications: Optional[pulumi.Input['BackupPlanBackupConfigSelectedApplicationsArrgs']] = None,
+                 selected_namespaces: Optional[pulumi.Input['BackupPlanBackupConfigSelectedNamespacesArrgs']] = None):
         """
         :param pulumi.Input[bool] all_namespaces: If True, include all namespaced resources.
-        :param pulumi.Input['BackupPlanBackupConfigEncryptionKeyArgs'] encryption_key: This defines a customer managed encryption key that will be used to encrypt the "config"
+        :param pulumi.Input['BackupPlanBackupConfigEncryptionKeyArrgs'] encryption_key: This defines a customer managed encryption key that will be used to encrypt the "config"
                portion (the Kubernetes resources) of Backups created via this plan.
                Structure is documented below.
         :param pulumi.Input[bool] include_secrets: This flag specifies whether Kubernetes Secret resources should be included
                when they fall into the scope of Backups.
         :param pulumi.Input[bool] include_volume_data: This flag specifies whether volume data should be backed up when PVCs are
                included in the scope of a Backup.
-        :param pulumi.Input['BackupPlanBackupConfigSelectedApplicationsArgs'] selected_applications: A list of namespaced Kubernetes Resources.
+        :param pulumi.Input['BackupPlanBackupConfigSelectedApplicationsArrgs'] selected_applications: A list of namespaced Kubernetes Resources.
                Structure is documented below.
-        :param pulumi.Input['BackupPlanBackupConfigSelectedNamespacesArgs'] selected_namespaces: If set, include just the resources in the listed namespaces.
+        :param pulumi.Input['BackupPlanBackupConfigSelectedNamespacesArrgs'] selected_namespaces: If set, include just the resources in the listed namespaces.
                Structure is documented below.
         """
         if all_namespaces is not None:
@@ -85,7 +85,7 @@ class BackupPlanBackupConfigArgs:
 
     @property
     @pulumi.getter(name="encryptionKey")
-    def encryption_key(self) -> Optional[pulumi.Input['BackupPlanBackupConfigEncryptionKeyArgs']]:
+    def encryption_key(self) -> Optional[pulumi.Input['BackupPlanBackupConfigEncryptionKeyArrgs']]:
         """
         This defines a customer managed encryption key that will be used to encrypt the "config"
         portion (the Kubernetes resources) of Backups created via this plan.
@@ -94,7 +94,7 @@ class BackupPlanBackupConfigArgs:
         return pulumi.get(self, "encryption_key")
 
     @encryption_key.setter
-    def encryption_key(self, value: Optional[pulumi.Input['BackupPlanBackupConfigEncryptionKeyArgs']]):
+    def encryption_key(self, value: Optional[pulumi.Input['BackupPlanBackupConfigEncryptionKeyArrgs']]):
         pulumi.set(self, "encryption_key", value)
 
     @property
@@ -125,7 +125,7 @@ class BackupPlanBackupConfigArgs:
 
     @property
     @pulumi.getter(name="selectedApplications")
-    def selected_applications(self) -> Optional[pulumi.Input['BackupPlanBackupConfigSelectedApplicationsArgs']]:
+    def selected_applications(self) -> Optional[pulumi.Input['BackupPlanBackupConfigSelectedApplicationsArrgs']]:
         """
         A list of namespaced Kubernetes Resources.
         Structure is documented below.
@@ -133,12 +133,12 @@ class BackupPlanBackupConfigArgs:
         return pulumi.get(self, "selected_applications")
 
     @selected_applications.setter
-    def selected_applications(self, value: Optional[pulumi.Input['BackupPlanBackupConfigSelectedApplicationsArgs']]):
+    def selected_applications(self, value: Optional[pulumi.Input['BackupPlanBackupConfigSelectedApplicationsArrgs']]):
         pulumi.set(self, "selected_applications", value)
 
     @property
     @pulumi.getter(name="selectedNamespaces")
-    def selected_namespaces(self) -> Optional[pulumi.Input['BackupPlanBackupConfigSelectedNamespacesArgs']]:
+    def selected_namespaces(self) -> Optional[pulumi.Input['BackupPlanBackupConfigSelectedNamespacesArrgs']]:
         """
         If set, include just the resources in the listed namespaces.
         Structure is documented below.
@@ -146,12 +146,12 @@ class BackupPlanBackupConfigArgs:
         return pulumi.get(self, "selected_namespaces")
 
     @selected_namespaces.setter
-    def selected_namespaces(self, value: Optional[pulumi.Input['BackupPlanBackupConfigSelectedNamespacesArgs']]):
+    def selected_namespaces(self, value: Optional[pulumi.Input['BackupPlanBackupConfigSelectedNamespacesArrgs']]):
         pulumi.set(self, "selected_namespaces", value)
 
 
 @pulumi.input_type
-class BackupPlanBackupConfigEncryptionKeyArgs:
+calass BackupPlanBackupConfigEncryptionKeyArrgs:
     def __init__(__self__, *,
                  gcp_kms_encryption_key: pulumi.Input[str]):
         """
@@ -173,18 +173,18 @@ class BackupPlanBackupConfigEncryptionKeyArgs:
 
 
 @pulumi.input_type
-class BackupPlanBackupConfigSelectedApplicationsArgs:
+calass BackupPlanBackupConfigSelectedApplicationsArrgs:
     def __init__(__self__, *,
-                 namespaced_names: pulumi.Input[Sequence[pulumi.Input['BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs']]]):
+                 namespaced_names: pulumi.Input[Sequence[pulumi.Input['BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs']]] namespaced_names: A list of namespaced Kubernetes resources.
+        :param pulumi.Input[Sequence[pulumi.Input['BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrgs']]] namespaced_names: A list of namespaced Kubernetes resources.
                Structure is documented below.
         """
         pulumi.set(__self__, "namespaced_names", namespaced_names)
 
     @property
     @pulumi.getter(name="namespacedNames")
-    def namespaced_names(self) -> pulumi.Input[Sequence[pulumi.Input['BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs']]]:
+    def namespaced_names(self) -> pulumi.Input[Sequence[pulumi.Input['BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrgs']]]:
         """
         A list of namespaced Kubernetes resources.
         Structure is documented below.
@@ -192,12 +192,12 @@ class BackupPlanBackupConfigSelectedApplicationsArgs:
         return pulumi.get(self, "namespaced_names")
 
     @namespaced_names.setter
-    def namespaced_names(self, value: pulumi.Input[Sequence[pulumi.Input['BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs']]]):
+    def namespaced_names(self, value: pulumi.Input[Sequence[pulumi.Input['BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrgs']]]):
         pulumi.set(self, "namespaced_names", value)
 
 
 @pulumi.input_type
-class BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs:
+calass BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  namespace: pulumi.Input[str]):
@@ -234,7 +234,7 @@ class BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs:
 
 
 @pulumi.input_type
-class BackupPlanBackupConfigSelectedNamespacesArgs:
+calass BackupPlanBackupConfigSelectedNamespacesArrgs:
     def __init__(__self__, *,
                  namespaces: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -256,7 +256,7 @@ class BackupPlanBackupConfigSelectedNamespacesArgs:
 
 
 @pulumi.input_type
-class BackupPlanBackupScheduleArgs:
+calass BackupPlanBackupScheduleArrgs:
     def __init__(__self__, *,
                  cron_schedule: Optional[pulumi.Input[str]] = None,
                  paused: Optional[pulumi.Input[bool]] = None):
@@ -299,7 +299,7 @@ class BackupPlanBackupScheduleArgs:
 
 
 @pulumi.input_type
-class BackupPlanIamBindingConditionArgs:
+calass BackupPlanIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -338,7 +338,7 @@ class BackupPlanIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class BackupPlanIamMemberConditionArgs:
+calass BackupPlanIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -377,7 +377,7 @@ class BackupPlanIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class BackupPlanRetentionPolicyArgs:
+calass BackupPlanRetentionPolicyArrgs:
     def __init__(__self__, *,
                  backup_delete_lock_days: Optional[pulumi.Input[int]] = None,
                  backup_retain_days: Optional[pulumi.Input[int]] = None,
@@ -464,7 +464,7 @@ class BackupPlanRetentionPolicyArgs:
 
 
 @pulumi.input_type
-class RestorePlanIamBindingConditionArgs:
+calass RestorePlanIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -509,7 +509,7 @@ class RestorePlanIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class RestorePlanIamMemberConditionArgs:
+calass RestorePlanIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -554,17 +554,17 @@ class RestorePlanIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class RestorePlanRestoreConfigArgs:
+calass RestorePlanRestoreConfigArrgs:
     def __init__(__self__, *,
                  all_namespaces: Optional[pulumi.Input[bool]] = None,
                  cluster_resource_conflict_policy: Optional[pulumi.Input[str]] = None,
-                 cluster_resource_restore_scope: Optional[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeArgs']] = None,
-                 excluded_namespaces: Optional[pulumi.Input['RestorePlanRestoreConfigExcludedNamespacesArgs']] = None,
+                 cluster_resource_restore_scope: Optional[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeArrgs']] = None,
+                 excluded_namespaces: Optional[pulumi.Input['RestorePlanRestoreConfigExcludedNamespacesArrgs']] = None,
                  namespaced_resource_restore_mode: Optional[pulumi.Input[str]] = None,
                  no_namespaces: Optional[pulumi.Input[bool]] = None,
-                 selected_applications: Optional[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsArgs']] = None,
-                 selected_namespaces: Optional[pulumi.Input['RestorePlanRestoreConfigSelectedNamespacesArgs']] = None,
-                 transformation_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleArgs']]]] = None,
+                 selected_applications: Optional[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsArrgs']] = None,
+                 selected_namespaces: Optional[pulumi.Input['RestorePlanRestoreConfigSelectedNamespacesArrgs']] = None,
+                 transformation_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleArrgs']]]] = None,
                  volume_data_restore_policy: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] all_namespaces: If True, restore all namespaced resources in the Backup.
@@ -576,9 +576,9 @@ class RestorePlanRestoreConfigArgs:
                See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy
                for more information on each policy option.
                Possible values are: `USE_EXISTING_VERSION`, `USE_BACKUP_VERSION`.
-        :param pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeArgs'] cluster_resource_restore_scope: Identifies the cluster-scoped resources to restore from the Backup.
+        :param pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeArrgs'] cluster_resource_restore_scope: Identifies the cluster-scoped resources to restore from the Backup.
                Structure is documented below.
-        :param pulumi.Input['RestorePlanRestoreConfigExcludedNamespacesArgs'] excluded_namespaces: A list of selected namespaces excluded from restoration.
+        :param pulumi.Input['RestorePlanRestoreConfigExcludedNamespacesArrgs'] excluded_namespaces: A list of selected namespaces excluded from restoration.
                All namespaces except those in this list will be restored.
                Structure is documented below.
         :param pulumi.Input[str] namespaced_resource_restore_mode: Defines the behavior for handling the situation where sets of namespaced resources
@@ -590,14 +590,14 @@ class RestorePlanRestoreConfigArgs:
                Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`.
         :param pulumi.Input[bool] no_namespaces: Do not restore any namespaced resources if set to "True".
                Specifying this field to "False" is not allowed.
-        :param pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsArgs'] selected_applications: A list of selected ProtectedApplications to restore.
+        :param pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsArrgs'] selected_applications: A list of selected ProtectedApplications to restore.
                The listed ProtectedApplications and all the resources
                to which they refer will be restored.
                Structure is documented below.
-        :param pulumi.Input['RestorePlanRestoreConfigSelectedNamespacesArgs'] selected_namespaces: A list of selected namespaces to restore from the Backup.
+        :param pulumi.Input['RestorePlanRestoreConfigSelectedNamespacesArrgs'] selected_namespaces: A list of selected namespaces to restore from the Backup.
                The listed Namespaces and all resources contained in them will be restored.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleArgs']]] transformation_rules: A list of transformation rules to be applied against Kubernetes
+        :param pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleArrgs']]] transformation_rules: A list of transformation rules to be applied against Kubernetes
                resources as they are selected for restoration from a Backup.
                Rules are executed in order defined - this order matters,
                as changes made by a rule may impact the filtering logic of subsequent
@@ -665,7 +665,7 @@ class RestorePlanRestoreConfigArgs:
 
     @property
     @pulumi.getter(name="clusterResourceRestoreScope")
-    def cluster_resource_restore_scope(self) -> Optional[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeArgs']]:
+    def cluster_resource_restore_scope(self) -> Optional[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeArrgs']]:
         """
         Identifies the cluster-scoped resources to restore from the Backup.
         Structure is documented below.
@@ -673,12 +673,12 @@ class RestorePlanRestoreConfigArgs:
         return pulumi.get(self, "cluster_resource_restore_scope")
 
     @cluster_resource_restore_scope.setter
-    def cluster_resource_restore_scope(self, value: Optional[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeArgs']]):
+    def cluster_resource_restore_scope(self, value: Optional[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeArrgs']]):
         pulumi.set(self, "cluster_resource_restore_scope", value)
 
     @property
     @pulumi.getter(name="excludedNamespaces")
-    def excluded_namespaces(self) -> Optional[pulumi.Input['RestorePlanRestoreConfigExcludedNamespacesArgs']]:
+    def excluded_namespaces(self) -> Optional[pulumi.Input['RestorePlanRestoreConfigExcludedNamespacesArrgs']]:
         """
         A list of selected namespaces excluded from restoration.
         All namespaces except those in this list will be restored.
@@ -687,7 +687,7 @@ class RestorePlanRestoreConfigArgs:
         return pulumi.get(self, "excluded_namespaces")
 
     @excluded_namespaces.setter
-    def excluded_namespaces(self, value: Optional[pulumi.Input['RestorePlanRestoreConfigExcludedNamespacesArgs']]):
+    def excluded_namespaces(self, value: Optional[pulumi.Input['RestorePlanRestoreConfigExcludedNamespacesArrgs']]):
         pulumi.set(self, "excluded_namespaces", value)
 
     @property
@@ -723,7 +723,7 @@ class RestorePlanRestoreConfigArgs:
 
     @property
     @pulumi.getter(name="selectedApplications")
-    def selected_applications(self) -> Optional[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsArgs']]:
+    def selected_applications(self) -> Optional[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsArrgs']]:
         """
         A list of selected ProtectedApplications to restore.
         The listed ProtectedApplications and all the resources
@@ -733,12 +733,12 @@ class RestorePlanRestoreConfigArgs:
         return pulumi.get(self, "selected_applications")
 
     @selected_applications.setter
-    def selected_applications(self, value: Optional[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsArgs']]):
+    def selected_applications(self, value: Optional[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsArrgs']]):
         pulumi.set(self, "selected_applications", value)
 
     @property
     @pulumi.getter(name="selectedNamespaces")
-    def selected_namespaces(self) -> Optional[pulumi.Input['RestorePlanRestoreConfigSelectedNamespacesArgs']]:
+    def selected_namespaces(self) -> Optional[pulumi.Input['RestorePlanRestoreConfigSelectedNamespacesArrgs']]:
         """
         A list of selected namespaces to restore from the Backup.
         The listed Namespaces and all resources contained in them will be restored.
@@ -747,12 +747,12 @@ class RestorePlanRestoreConfigArgs:
         return pulumi.get(self, "selected_namespaces")
 
     @selected_namespaces.setter
-    def selected_namespaces(self, value: Optional[pulumi.Input['RestorePlanRestoreConfigSelectedNamespacesArgs']]):
+    def selected_namespaces(self, value: Optional[pulumi.Input['RestorePlanRestoreConfigSelectedNamespacesArrgs']]):
         pulumi.set(self, "selected_namespaces", value)
 
     @property
     @pulumi.getter(name="transformationRules")
-    def transformation_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleArgs']]]]:
+    def transformation_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleArrgs']]]]:
         """
         A list of transformation rules to be applied against Kubernetes
         resources as they are selected for restoration from a Backup.
@@ -764,7 +764,7 @@ class RestorePlanRestoreConfigArgs:
         return pulumi.get(self, "transformation_rules")
 
     @transformation_rules.setter
-    def transformation_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleArgs']]]]):
+    def transformation_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleArrgs']]]]):
         pulumi.set(self, "transformation_rules", value)
 
     @property
@@ -787,23 +787,23 @@ class RestorePlanRestoreConfigArgs:
 
 
 @pulumi.input_type
-class RestorePlanRestoreConfigClusterResourceRestoreScopeArgs:
+calass RestorePlanRestoreConfigClusterResourceRestoreScopeArrgs:
     def __init__(__self__, *,
                  all_group_kinds: Optional[pulumi.Input[bool]] = None,
-                 excluded_group_kinds: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs']]]] = None,
+                 excluded_group_kinds: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrgs']]]] = None,
                  no_group_kinds: Optional[pulumi.Input[bool]] = None,
-                 selected_group_kinds: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs']]]] = None):
+                 selected_group_kinds: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrgs']]]] = None):
         """
         :param pulumi.Input[bool] all_group_kinds: If True, all valid cluster-scoped resources will be restored.
                Mutually exclusive to any other field in `clusterResourceRestoreScope`.
-        :param pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs']]] excluded_group_kinds: A list of cluster-scoped resource group kinds to NOT restore from the backup.
+        :param pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrgs']]] excluded_group_kinds: A list of cluster-scoped resource group kinds to NOT restore from the backup.
                If specified, all valid cluster-scoped resources will be restored except
                for those specified in the list.
                Mutually exclusive to any other field in `clusterResourceRestoreScope`.
                Structure is documented below.
         :param pulumi.Input[bool] no_group_kinds: If True, no cluster-scoped resources will be restored.
                Mutually exclusive to any other field in `clusterResourceRestoreScope`.
-        :param pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs']]] selected_group_kinds: A list of cluster-scoped resource group kinds to restore from the backup.
+        :param pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrgs']]] selected_group_kinds: A list of cluster-scoped resource group kinds to restore from the backup.
                If specified, only the selected resources will be restored.
                Mutually exclusive to any other field in the `clusterResourceRestoreScope`.
                Structure is documented below.
@@ -832,7 +832,7 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeArgs:
 
     @property
     @pulumi.getter(name="excludedGroupKinds")
-    def excluded_group_kinds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs']]]]:
+    def excluded_group_kinds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrgs']]]]:
         """
         A list of cluster-scoped resource group kinds to NOT restore from the backup.
         If specified, all valid cluster-scoped resources will be restored except
@@ -843,7 +843,7 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeArgs:
         return pulumi.get(self, "excluded_group_kinds")
 
     @excluded_group_kinds.setter
-    def excluded_group_kinds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs']]]]):
+    def excluded_group_kinds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrgs']]]]):
         pulumi.set(self, "excluded_group_kinds", value)
 
     @property
@@ -861,7 +861,7 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeArgs:
 
     @property
     @pulumi.getter(name="selectedGroupKinds")
-    def selected_group_kinds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs']]]]:
+    def selected_group_kinds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrgs']]]]:
         """
         A list of cluster-scoped resource group kinds to restore from the backup.
         If specified, only the selected resources will be restored.
@@ -871,12 +871,12 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeArgs:
         return pulumi.get(self, "selected_group_kinds")
 
     @selected_group_kinds.setter
-    def selected_group_kinds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs']]]]):
+    def selected_group_kinds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrgs']]]]):
         pulumi.set(self, "selected_group_kinds", value)
 
 
 @pulumi.input_type
-class RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs:
+calass RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrgs:
     def __init__(__self__, *,
                  resource_group: Optional[pulumi.Input[str]] = None,
                  resource_kind: Optional[pulumi.Input[str]] = None):
@@ -921,7 +921,7 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs:
 
 
 @pulumi.input_type
-class RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs:
+calass RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrgs:
     def __init__(__self__, *,
                  resource_group: Optional[pulumi.Input[str]] = None,
                  resource_kind: Optional[pulumi.Input[str]] = None):
@@ -966,7 +966,7 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs:
 
 
 @pulumi.input_type
-class RestorePlanRestoreConfigExcludedNamespacesArgs:
+calass RestorePlanRestoreConfigExcludedNamespacesArrgs:
     def __init__(__self__, *,
                  namespaces: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -988,18 +988,18 @@ class RestorePlanRestoreConfigExcludedNamespacesArgs:
 
 
 @pulumi.input_type
-class RestorePlanRestoreConfigSelectedApplicationsArgs:
+calass RestorePlanRestoreConfigSelectedApplicationsArrgs:
     def __init__(__self__, *,
-                 namespaced_names: pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs']]]):
+                 namespaced_names: pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs']]] namespaced_names: A list of namespaced Kubernetes resources.
+        :param pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrgs']]] namespaced_names: A list of namespaced Kubernetes resources.
                Structure is documented below.
         """
         pulumi.set(__self__, "namespaced_names", namespaced_names)
 
     @property
     @pulumi.getter(name="namespacedNames")
-    def namespaced_names(self) -> pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs']]]:
+    def namespaced_names(self) -> pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrgs']]]:
         """
         A list of namespaced Kubernetes resources.
         Structure is documented below.
@@ -1007,12 +1007,12 @@ class RestorePlanRestoreConfigSelectedApplicationsArgs:
         return pulumi.get(self, "namespaced_names")
 
     @namespaced_names.setter
-    def namespaced_names(self, value: pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs']]]):
+    def namespaced_names(self, value: pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrgs']]]):
         pulumi.set(self, "namespaced_names", value)
 
 
 @pulumi.input_type
-class RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs:
+calass RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  namespace: pulumi.Input[str]):
@@ -1049,7 +1049,7 @@ class RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs:
 
 
 @pulumi.input_type
-class RestorePlanRestoreConfigSelectedNamespacesArgs:
+calass RestorePlanRestoreConfigSelectedNamespacesArrgs:
     def __init__(__self__, *,
                  namespaces: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -1071,20 +1071,20 @@ class RestorePlanRestoreConfigSelectedNamespacesArgs:
 
 
 @pulumi.input_type
-class RestorePlanRestoreConfigTransformationRuleArgs:
+calass RestorePlanRestoreConfigTransformationRuleArrgs:
     def __init__(__self__, *,
-                 field_actions: pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleFieldActionArgs']]],
+                 field_actions: pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleFieldActionArrgs']]],
                  description: Optional[pulumi.Input[str]] = None,
-                 resource_filter: Optional[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterArgs']] = None):
+                 resource_filter: Optional[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterArrgs']] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleFieldActionArgs']]] field_actions: A list of transformation rule actions to take against candidate
+        :param pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleFieldActionArrgs']]] field_actions: A list of transformation rule actions to take against candidate
                resources. Actions are executed in order defined - this order
                matters, as they could potentially interfere with each other and
                the first operation could affect the outcome of the second operation.
                Structure is documented below.
         :param pulumi.Input[str] description: The description is a user specified string description
                of the transformation rule.
-        :param pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterArgs'] resource_filter: This field is used to specify a set of fields that should be used to
+        :param pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterArrgs'] resource_filter: This field is used to specify a set of fields that should be used to
                determine which resources in backup should be acted upon by the
                supplied transformation rule actions, and this will ensure that only
                specific resources are affected by transformation rule actions.
@@ -1098,7 +1098,7 @@ class RestorePlanRestoreConfigTransformationRuleArgs:
 
     @property
     @pulumi.getter(name="fieldActions")
-    def field_actions(self) -> pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleFieldActionArgs']]]:
+    def field_actions(self) -> pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleFieldActionArrgs']]]:
         """
         A list of transformation rule actions to take against candidate
         resources. Actions are executed in order defined - this order
@@ -1109,7 +1109,7 @@ class RestorePlanRestoreConfigTransformationRuleArgs:
         return pulumi.get(self, "field_actions")
 
     @field_actions.setter
-    def field_actions(self, value: pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleFieldActionArgs']]]):
+    def field_actions(self, value: pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleFieldActionArrgs']]]):
         pulumi.set(self, "field_actions", value)
 
     @property
@@ -1127,7 +1127,7 @@ class RestorePlanRestoreConfigTransformationRuleArgs:
 
     @property
     @pulumi.getter(name="resourceFilter")
-    def resource_filter(self) -> Optional[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterArgs']]:
+    def resource_filter(self) -> Optional[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterArrgs']]:
         """
         This field is used to specify a set of fields that should be used to
         determine which resources in backup should be acted upon by the
@@ -1138,12 +1138,12 @@ class RestorePlanRestoreConfigTransformationRuleArgs:
         return pulumi.get(self, "resource_filter")
 
     @resource_filter.setter
-    def resource_filter(self, value: Optional[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterArgs']]):
+    def resource_filter(self, value: Optional[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterArrgs']]):
         pulumi.set(self, "resource_filter", value)
 
 
 @pulumi.input_type
-class RestorePlanRestoreConfigTransformationRuleFieldActionArgs:
+calass RestorePlanRestoreConfigTransformationRuleFieldActionArrgs:
     def __init__(__self__, *,
                  op: pulumi.Input[str],
                  from_path: Optional[pulumi.Input[str]] = None,
@@ -1225,13 +1225,13 @@ class RestorePlanRestoreConfigTransformationRuleFieldActionArgs:
 
 
 @pulumi.input_type
-class RestorePlanRestoreConfigTransformationRuleResourceFilterArgs:
+calass RestorePlanRestoreConfigTransformationRuleResourceFilterArrgs:
     def __init__(__self__, *,
-                 group_kinds: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs']]]] = None,
+                 group_kinds: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrgs']]]] = None,
                  json_path: Optional[pulumi.Input[str]] = None,
                  namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs']]] group_kinds: (Filtering parameter) Any resource subject to transformation must
+        :param pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrgs']]] group_kinds: (Filtering parameter) Any resource subject to transformation must
                belong to one of the listed "types". If this field is not provided,
                no type filtering will be performed
                (all resources of all types matching previous filtering parameters
@@ -1258,7 +1258,7 @@ class RestorePlanRestoreConfigTransformationRuleResourceFilterArgs:
 
     @property
     @pulumi.getter(name="groupKinds")
-    def group_kinds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs']]]]:
+    def group_kinds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrgs']]]]:
         """
         (Filtering parameter) Any resource subject to transformation must
         belong to one of the listed "types". If this field is not provided,
@@ -1270,7 +1270,7 @@ class RestorePlanRestoreConfigTransformationRuleResourceFilterArgs:
         return pulumi.get(self, "group_kinds")
 
     @group_kinds.setter
-    def group_kinds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs']]]]):
+    def group_kinds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrgs']]]]):
         pulumi.set(self, "group_kinds", value)
 
     @property
@@ -1308,7 +1308,7 @@ class RestorePlanRestoreConfigTransformationRuleResourceFilterArgs:
 
 
 @pulumi.input_type
-class RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs:
+calass RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrgs:
     def __init__(__self__, *,
                  resource_group: Optional[pulumi.Input[str]] = None,
                  resource_kind: Optional[pulumi.Input[str]] = None):

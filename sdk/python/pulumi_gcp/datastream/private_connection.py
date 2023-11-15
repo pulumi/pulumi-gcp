@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['PrivateConnectionArgs', 'PrivateConnection']
+__all__ = ['PrivateConnectionArrgs', 'PrivateConnection']
 
 @pulumi.input_type
-class PrivateConnectionArgs:
+calass PrivateConnectionArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
                  private_connection_id: pulumi.Input[str],
-                 vpc_peering_config: pulumi.Input['PrivateConnectionVpcPeeringConfigArgs'],
+                 vpc_peering_config: pulumi.Input['PrivateConnectionVpcPeeringConfigArrgs'],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -27,7 +27,7 @@ class PrivateConnectionArgs:
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[str] location: The name of the location this private connection is located in.
         :param pulumi.Input[str] private_connection_id: The private connectivity identifier.
-        :param pulumi.Input['PrivateConnectionVpcPeeringConfigArgs'] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
+        :param pulumi.Input['PrivateConnectionVpcPeeringConfigArrgs'] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
                between Datastream and the consumer's VPC.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
@@ -83,7 +83,7 @@ class PrivateConnectionArgs:
 
     @property
     @pulumi.getter(name="vpcPeeringConfig")
-    def vpc_peering_config(self) -> pulumi.Input['PrivateConnectionVpcPeeringConfigArgs']:
+    def vpc_peering_config(self) -> pulumi.Input['PrivateConnectionVpcPeeringConfigArrgs']:
         """
         The VPC Peering configuration is used to create VPC peering
         between Datastream and the consumer's VPC.
@@ -92,7 +92,7 @@ class PrivateConnectionArgs:
         return pulumi.get(self, "vpc_peering_config")
 
     @vpc_peering_config.setter
-    def vpc_peering_config(self, value: pulumi.Input['PrivateConnectionVpcPeeringConfigArgs']):
+    def vpc_peering_config(self, value: pulumi.Input['PrivateConnectionVpcPeeringConfigArrgs']):
         pulumi.set(self, "vpc_peering_config", value)
 
     @property
@@ -124,11 +124,11 @@ class PrivateConnectionArgs:
 
 
 @pulumi.input_type
-class _PrivateConnectionState:
+calass _PrivateConnectionState:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateConnectionErrorArgs']]]] = None,
+                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateConnectionErrorArrgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -136,12 +136,12 @@ class _PrivateConnectionState:
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 vpc_peering_config: Optional[pulumi.Input['PrivateConnectionVpcPeeringConfigArgs']] = None):
+                 vpc_peering_config: Optional[pulumi.Input['PrivateConnectionVpcPeeringConfigArrgs']] = None):
         """
         Input properties used for looking up and filtering PrivateConnection resources.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input['PrivateConnectionErrorArgs']]] errors: The PrivateConnection error in case of failure.
+        :param pulumi.Input[Sequence[pulumi.Input['PrivateConnectionErrorArrgs']]] errors: The PrivateConnection error in case of failure.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -154,7 +154,7 @@ class _PrivateConnectionState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] state: State of the PrivateConnection.
-        :param pulumi.Input['PrivateConnectionVpcPeeringConfigArgs'] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
+        :param pulumi.Input['PrivateConnectionVpcPeeringConfigArrgs'] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
                between Datastream and the consumer's VPC.
                Structure is documented below.
         """
@@ -207,7 +207,7 @@ class _PrivateConnectionState:
 
     @property
     @pulumi.getter
-    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrivateConnectionErrorArgs']]]]:
+    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrivateConnectionErrorArrgs']]]]:
         """
         The PrivateConnection error in case of failure.
         Structure is documented below.
@@ -215,7 +215,7 @@ class _PrivateConnectionState:
         return pulumi.get(self, "errors")
 
     @errors.setter
-    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateConnectionErrorArgs']]]]):
+    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateConnectionErrorArrgs']]]]):
         pulumi.set(self, "errors", value)
 
     @property
@@ -308,7 +308,7 @@ class _PrivateConnectionState:
 
     @property
     @pulumi.getter(name="vpcPeeringConfig")
-    def vpc_peering_config(self) -> Optional[pulumi.Input['PrivateConnectionVpcPeeringConfigArgs']]:
+    def vpc_peering_config(self) -> Optional[pulumi.Input['PrivateConnectionVpcPeeringConfigArrgs']]:
         """
         The VPC Peering configuration is used to create VPC peering
         between Datastream and the consumer's VPC.
@@ -317,11 +317,11 @@ class _PrivateConnectionState:
         return pulumi.get(self, "vpc_peering_config")
 
     @vpc_peering_config.setter
-    def vpc_peering_config(self, value: Optional[pulumi.Input['PrivateConnectionVpcPeeringConfigArgs']]):
+    def vpc_peering_config(self, value: Optional[pulumi.Input['PrivateConnectionVpcPeeringConfigArrgs']]):
         pulumi.set(self, "vpc_peering_config", value)
 
 
-class PrivateConnection(pulumi.CustomResource):
+calass PrivateConnection(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -331,7 +331,7 @@ class PrivateConnection(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  private_connection_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 vpc_peering_config: Optional[pulumi.Input[pulumi.InputType['PrivateConnectionVpcPeeringConfigArgs']]] = None,
+                 vpc_peering_config: Optional[pulumi.Input[pulumi.InputType['PrivateConnectionVpcPeeringConfigArrgs']]] = None,
                  __props__=None):
         """
         The PrivateConnection resource is used to establish private connectivity between Datastream and a customer's network.
@@ -357,7 +357,7 @@ class PrivateConnection(pulumi.CustomResource):
             labels={
                 "key": "value",
             },
-            vpc_peering_config=gcp.datastream.PrivateConnectionVpcPeeringConfigArgs(
+            vpc_peering_config=gcp.datastream.PrivateConnectionVpcPeeringConfigArrgs(
                 vpc=default_network.id,
                 subnet="10.0.0.0/29",
             ))
@@ -397,7 +397,7 @@ class PrivateConnection(pulumi.CustomResource):
         :param pulumi.Input[str] private_connection_id: The private connectivity identifier.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['PrivateConnectionVpcPeeringConfigArgs']] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
+        :param pulumi.Input[pulumi.InputType['PrivateConnectionVpcPeeringConfigArrgs']] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
                between Datastream and the consumer's VPC.
                Structure is documented below.
         """
@@ -405,7 +405,7 @@ class PrivateConnection(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: PrivateConnectionArgs,
+                 args: PrivateConnectionArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The PrivateConnection resource is used to establish private connectivity between Datastream and a customer's network.
@@ -431,7 +431,7 @@ class PrivateConnection(pulumi.CustomResource):
             labels={
                 "key": "value",
             },
-            vpc_peering_config=gcp.datastream.PrivateConnectionVpcPeeringConfigArgs(
+            vpc_peering_config=gcp.datastream.PrivateConnectionVpcPeeringConfigArrgs(
                 vpc=default_network.id,
                 subnet="10.0.0.0/29",
             ))
@@ -462,12 +462,12 @@ class PrivateConnection(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param PrivateConnectionArgs args: The arguments to use to populate this resource's properties.
+        :param PrivateConnectionArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(PrivateConnectionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(PrivateConnectionArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -481,7 +481,7 @@ class PrivateConnection(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  private_connection_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 vpc_peering_config: Optional[pulumi.Input[pulumi.InputType['PrivateConnectionVpcPeeringConfigArgs']]] = None,
+                 vpc_peering_config: Optional[pulumi.Input[pulumi.InputType['PrivateConnectionVpcPeeringConfigArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -489,7 +489,7 @@ class PrivateConnection(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = PrivateConnectionArgs.__new__(PrivateConnectionArgs)
+            __props__ = PrivateConnectionArrgs.__new__(PrivateConnectionArrgs)
 
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -524,7 +524,7 @@ class PrivateConnection(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            errors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateConnectionErrorArgs']]]]] = None,
+            errors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateConnectionErrorArrgs']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -532,7 +532,7 @@ class PrivateConnection(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            vpc_peering_config: Optional[pulumi.Input[pulumi.InputType['PrivateConnectionVpcPeeringConfigArgs']]] = None) -> 'PrivateConnection':
+            vpc_peering_config: Optional[pulumi.Input[pulumi.InputType['PrivateConnectionVpcPeeringConfigArrgs']]] = None) -> 'PrivateConnection':
         """
         Get an existing PrivateConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -542,7 +542,7 @@ class PrivateConnection(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateConnectionErrorArgs']]]] errors: The PrivateConnection error in case of failure.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateConnectionErrorArrgs']]]] errors: The PrivateConnection error in case of failure.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -555,7 +555,7 @@ class PrivateConnection(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] state: State of the PrivateConnection.
-        :param pulumi.Input[pulumi.InputType['PrivateConnectionVpcPeeringConfigArgs']] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
+        :param pulumi.Input[pulumi.InputType['PrivateConnectionVpcPeeringConfigArrgs']] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
                between Datastream and the consumer's VPC.
                Structure is documented below.
         """

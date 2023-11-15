@@ -11,18 +11,18 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['OrganizationFeedArgs', 'OrganizationFeed']
+__all__ = ['OrganizationFeedArrgs', 'OrganizationFeed']
 
 @pulumi.input_type
-class OrganizationFeedArgs:
+calass OrganizationFeedArrgs:
     def __init__(__self__, *,
                  billing_project: pulumi.Input[str],
                  feed_id: pulumi.Input[str],
-                 feed_output_config: pulumi.Input['OrganizationFeedFeedOutputConfigArgs'],
+                 feed_output_config: pulumi.Input['OrganizationFeedFeedOutputConfigArrgs'],
                  org_id: pulumi.Input[str],
                  asset_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  asset_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 condition: Optional[pulumi.Input['OrganizationFeedConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['OrganizationFeedConditionArrgs']] = None,
                  content_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OrganizationFeed resource.
@@ -30,7 +30,7 @@ class OrganizationFeedArgs:
                destination pubsub topic. It also specifies the project for API
                enablement check, quota, and billing.
         :param pulumi.Input[str] feed_id: This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
-        :param pulumi.Input['OrganizationFeedFeedOutputConfigArgs'] feed_output_config: Output configuration for asset feed destination.
+        :param pulumi.Input['OrganizationFeedFeedOutputConfigArrgs'] feed_output_config: Output configuration for asset feed destination.
                Structure is documented below.
         :param pulumi.Input[str] org_id: The organization this feed should be created in.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] asset_names: A list of the full names of the assets to receive updates. You must specify either or both of
@@ -42,7 +42,7 @@ class OrganizationFeedArgs:
                the feed. For example: "compute.googleapis.com/Disk"
                See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
                supported asset types.
-        :param pulumi.Input['OrganizationFeedConditionArgs'] condition: A condition which determines whether an asset update should be published. If specified, an asset
+        :param pulumi.Input['OrganizationFeedConditionArrgs'] condition: A condition which determines whether an asset update should be published. If specified, an asset
                will be returned only when the expression evaluates to true. When set, expression field
                must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
                expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
@@ -92,7 +92,7 @@ class OrganizationFeedArgs:
 
     @property
     @pulumi.getter(name="feedOutputConfig")
-    def feed_output_config(self) -> pulumi.Input['OrganizationFeedFeedOutputConfigArgs']:
+    def feed_output_config(self) -> pulumi.Input['OrganizationFeedFeedOutputConfigArrgs']:
         """
         Output configuration for asset feed destination.
         Structure is documented below.
@@ -100,7 +100,7 @@ class OrganizationFeedArgs:
         return pulumi.get(self, "feed_output_config")
 
     @feed_output_config.setter
-    def feed_output_config(self, value: pulumi.Input['OrganizationFeedFeedOutputConfigArgs']):
+    def feed_output_config(self, value: pulumi.Input['OrganizationFeedFeedOutputConfigArrgs']):
         pulumi.set(self, "feed_output_config", value)
 
     @property
@@ -148,7 +148,7 @@ class OrganizationFeedArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['OrganizationFeedConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['OrganizationFeedConditionArrgs']]:
         """
         A condition which determines whether an asset update should be published. If specified, an asset
         will be returned only when the expression evaluates to true. When set, expression field
@@ -160,7 +160,7 @@ class OrganizationFeedArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['OrganizationFeedConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['OrganizationFeedConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -178,15 +178,15 @@ class OrganizationFeedArgs:
 
 
 @pulumi.input_type
-class _OrganizationFeedState:
+calass _OrganizationFeedState:
     def __init__(__self__, *,
                  asset_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  asset_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  billing_project: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input['OrganizationFeedConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['OrganizationFeedConditionArrgs']] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  feed_id: Optional[pulumi.Input[str]] = None,
-                 feed_output_config: Optional[pulumi.Input['OrganizationFeedFeedOutputConfigArgs']] = None,
+                 feed_output_config: Optional[pulumi.Input['OrganizationFeedFeedOutputConfigArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None):
         """
@@ -203,7 +203,7 @@ class _OrganizationFeedState:
         :param pulumi.Input[str] billing_project: The project whose identity will be used when sending messages to the
                destination pubsub topic. It also specifies the project for API
                enablement check, quota, and billing.
-        :param pulumi.Input['OrganizationFeedConditionArgs'] condition: A condition which determines whether an asset update should be published. If specified, an asset
+        :param pulumi.Input['OrganizationFeedConditionArrgs'] condition: A condition which determines whether an asset update should be published. If specified, an asset
                will be returned only when the expression evaluates to true. When set, expression field
                must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
                expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
@@ -212,7 +212,7 @@ class _OrganizationFeedState:
         :param pulumi.Input[str] content_type: Asset content type. If not specified, no content but the asset name and type will be returned.
                Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
         :param pulumi.Input[str] feed_id: This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
-        :param pulumi.Input['OrganizationFeedFeedOutputConfigArgs'] feed_output_config: Output configuration for asset feed destination.
+        :param pulumi.Input['OrganizationFeedFeedOutputConfigArrgs'] feed_output_config: Output configuration for asset feed destination.
                Structure is documented below.
         :param pulumi.Input[str] name: The format will be organizations/{organization_number}/feeds/{client-assigned_feed_identifier}.
         :param pulumi.Input[str] org_id: The organization this feed should be created in.
@@ -283,7 +283,7 @@ class _OrganizationFeedState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['OrganizationFeedConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['OrganizationFeedConditionArrgs']]:
         """
         A condition which determines whether an asset update should be published. If specified, an asset
         will be returned only when the expression evaluates to true. When set, expression field
@@ -295,7 +295,7 @@ class _OrganizationFeedState:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['OrganizationFeedConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['OrganizationFeedConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -325,7 +325,7 @@ class _OrganizationFeedState:
 
     @property
     @pulumi.getter(name="feedOutputConfig")
-    def feed_output_config(self) -> Optional[pulumi.Input['OrganizationFeedFeedOutputConfigArgs']]:
+    def feed_output_config(self) -> Optional[pulumi.Input['OrganizationFeedFeedOutputConfigArrgs']]:
         """
         Output configuration for asset feed destination.
         Structure is documented below.
@@ -333,7 +333,7 @@ class _OrganizationFeedState:
         return pulumi.get(self, "feed_output_config")
 
     @feed_output_config.setter
-    def feed_output_config(self, value: Optional[pulumi.Input['OrganizationFeedFeedOutputConfigArgs']]):
+    def feed_output_config(self, value: Optional[pulumi.Input['OrganizationFeedFeedOutputConfigArrgs']]):
         pulumi.set(self, "feed_output_config", value)
 
     @property
@@ -361,7 +361,7 @@ class _OrganizationFeedState:
         pulumi.set(self, "org_id", value)
 
 
-class OrganizationFeed(pulumi.CustomResource):
+calass OrganizationFeed(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -369,10 +369,10 @@ class OrganizationFeed(pulumi.CustomResource):
                  asset_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  asset_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  billing_project: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['OrganizationFeedConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['OrganizationFeedConditionArrgs']]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  feed_id: Optional[pulumi.Input[str]] = None,
-                 feed_output_config: Optional[pulumi.Input[pulumi.InputType['OrganizationFeedFeedOutputConfigArgs']]] = None,
+                 feed_output_config: Optional[pulumi.Input[pulumi.InputType['OrganizationFeedFeedOutputConfigArrgs']]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -420,7 +420,7 @@ class OrganizationFeed(pulumi.CustomResource):
         :param pulumi.Input[str] billing_project: The project whose identity will be used when sending messages to the
                destination pubsub topic. It also specifies the project for API
                enablement check, quota, and billing.
-        :param pulumi.Input[pulumi.InputType['OrganizationFeedConditionArgs']] condition: A condition which determines whether an asset update should be published. If specified, an asset
+        :param pulumi.Input[pulumi.InputType['OrganizationFeedConditionArrgs']] condition: A condition which determines whether an asset update should be published. If specified, an asset
                will be returned only when the expression evaluates to true. When set, expression field
                must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
                expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
@@ -429,7 +429,7 @@ class OrganizationFeed(pulumi.CustomResource):
         :param pulumi.Input[str] content_type: Asset content type. If not specified, no content but the asset name and type will be returned.
                Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
         :param pulumi.Input[str] feed_id: This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
-        :param pulumi.Input[pulumi.InputType['OrganizationFeedFeedOutputConfigArgs']] feed_output_config: Output configuration for asset feed destination.
+        :param pulumi.Input[pulumi.InputType['OrganizationFeedFeedOutputConfigArrgs']] feed_output_config: Output configuration for asset feed destination.
                Structure is documented below.
         :param pulumi.Input[str] org_id: The organization this feed should be created in.
         """
@@ -437,7 +437,7 @@ class OrganizationFeed(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: OrganizationFeedArgs,
+                 args: OrganizationFeedArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Describes a Cloud Asset Inventory feed used to to listen to asset updates.
@@ -471,12 +471,12 @@ class OrganizationFeed(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param OrganizationFeedArgs args: The arguments to use to populate this resource's properties.
+        :param OrganizationFeedArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(OrganizationFeedArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(OrganizationFeedArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -488,10 +488,10 @@ class OrganizationFeed(pulumi.CustomResource):
                  asset_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  asset_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  billing_project: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['OrganizationFeedConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['OrganizationFeedConditionArrgs']]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  feed_id: Optional[pulumi.Input[str]] = None,
-                 feed_output_config: Optional[pulumi.Input[pulumi.InputType['OrganizationFeedFeedOutputConfigArgs']]] = None,
+                 feed_output_config: Optional[pulumi.Input[pulumi.InputType['OrganizationFeedFeedOutputConfigArrgs']]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -500,7 +500,7 @@ class OrganizationFeed(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = OrganizationFeedArgs.__new__(OrganizationFeedArgs)
+            __props__ = OrganizationFeedArrgs.__new__(OrganizationFeedArrgs)
 
             __props__.__dict__["asset_names"] = asset_names
             __props__.__dict__["asset_types"] = asset_types
@@ -532,10 +532,10 @@ class OrganizationFeed(pulumi.CustomResource):
             asset_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             asset_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             billing_project: Optional[pulumi.Input[str]] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['OrganizationFeedConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['OrganizationFeedConditionArrgs']]] = None,
             content_type: Optional[pulumi.Input[str]] = None,
             feed_id: Optional[pulumi.Input[str]] = None,
-            feed_output_config: Optional[pulumi.Input[pulumi.InputType['OrganizationFeedFeedOutputConfigArgs']]] = None,
+            feed_output_config: Optional[pulumi.Input[pulumi.InputType['OrganizationFeedFeedOutputConfigArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None) -> 'OrganizationFeed':
         """
@@ -557,7 +557,7 @@ class OrganizationFeed(pulumi.CustomResource):
         :param pulumi.Input[str] billing_project: The project whose identity will be used when sending messages to the
                destination pubsub topic. It also specifies the project for API
                enablement check, quota, and billing.
-        :param pulumi.Input[pulumi.InputType['OrganizationFeedConditionArgs']] condition: A condition which determines whether an asset update should be published. If specified, an asset
+        :param pulumi.Input[pulumi.InputType['OrganizationFeedConditionArrgs']] condition: A condition which determines whether an asset update should be published. If specified, an asset
                will be returned only when the expression evaluates to true. When set, expression field
                must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
                expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
@@ -566,7 +566,7 @@ class OrganizationFeed(pulumi.CustomResource):
         :param pulumi.Input[str] content_type: Asset content type. If not specified, no content but the asset name and type will be returned.
                Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
         :param pulumi.Input[str] feed_id: This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
-        :param pulumi.Input[pulumi.InputType['OrganizationFeedFeedOutputConfigArgs']] feed_output_config: Output configuration for asset feed destination.
+        :param pulumi.Input[pulumi.InputType['OrganizationFeedFeedOutputConfigArrgs']] feed_output_config: Output configuration for asset feed destination.
                Structure is documented below.
         :param pulumi.Input[str] name: The format will be organizations/{organization_number}/feeds/{client-assigned_feed_identifier}.
         :param pulumi.Input[str] org_id: The organization this feed should be created in.

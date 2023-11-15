@@ -41,7 +41,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class SecretIamBindingCondition(dict):
+calass SecretIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -68,7 +68,7 @@ class SecretIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class SecretIamMemberCondition(dict):
+calass SecretIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -95,7 +95,7 @@ class SecretIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class SecretReplication(dict):
+calass SecretReplication(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -117,9 +117,9 @@ class SecretReplication(dict):
                  auto: Optional['outputs.SecretReplicationAuto'] = None,
                  user_managed: Optional['outputs.SecretReplicationUserManaged'] = None):
         """
-        :param 'SecretReplicationAutoArgs' auto: The Secret will automatically be replicated without any restrictions.
+        :param 'SecretReplicationAutoArrgs' auto: The Secret will automatically be replicated without any restrictions.
                Structure is documented below.
-        :param 'SecretReplicationUserManagedArgs' user_managed: The Secret will be replicated to the regions specified by the user.
+        :param 'SecretReplicationUserManagedArrgs' user_managed: The Secret will be replicated to the regions specified by the user.
                Structure is documented below.
         """
         if auto is not None:
@@ -147,7 +147,7 @@ class SecretReplication(dict):
 
 
 @pulumi.output_type
-class SecretReplicationAuto(dict):
+calass SecretReplicationAuto(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -168,7 +168,7 @@ class SecretReplicationAuto(dict):
     def __init__(__self__, *,
                  customer_managed_encryption: Optional['outputs.SecretReplicationAutoCustomerManagedEncryption'] = None):
         """
-        :param 'SecretReplicationAutoCustomerManagedEncryptionArgs' customer_managed_encryption: The customer-managed encryption configuration of the Secret.
+        :param 'SecretReplicationAutoCustomerManagedEncryptionArrgs' customer_managed_encryption: The customer-managed encryption configuration of the Secret.
                If no configuration is provided, Google-managed default
                encryption is used.
                Structure is documented below.
@@ -189,7 +189,7 @@ class SecretReplicationAuto(dict):
 
 
 @pulumi.output_type
-class SecretReplicationAutoCustomerManagedEncryption(dict):
+calass SecretReplicationAutoCustomerManagedEncryption(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -228,11 +228,11 @@ class SecretReplicationAutoCustomerManagedEncryption(dict):
 
 
 @pulumi.output_type
-class SecretReplicationUserManaged(dict):
+calass SecretReplicationUserManaged(dict):
     def __init__(__self__, *,
                  replicas: Sequence['outputs.SecretReplicationUserManagedReplica']):
         """
-        :param Sequence['SecretReplicationUserManagedReplicaArgs'] replicas: The list of Replicas for this Secret. Cannot be empty.
+        :param Sequence['SecretReplicationUserManagedReplicaArrgs'] replicas: The list of Replicas for this Secret. Cannot be empty.
                Structure is documented below.
         """
         pulumi.set(__self__, "replicas", replicas)
@@ -248,7 +248,7 @@ class SecretReplicationUserManaged(dict):
 
 
 @pulumi.output_type
-class SecretReplicationUserManagedReplica(dict):
+calass SecretReplicationUserManagedReplica(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -271,7 +271,7 @@ class SecretReplicationUserManagedReplica(dict):
                  customer_managed_encryption: Optional['outputs.SecretReplicationUserManagedReplicaCustomerManagedEncryption'] = None):
         """
         :param str location: The canonical IDs of the location to replicate data. For example: "us-east1".
-        :param 'SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs' customer_managed_encryption: Customer Managed Encryption for the secret.
+        :param 'SecretReplicationUserManagedReplicaCustomerManagedEncryptionArrgs' customer_managed_encryption: Customer Managed Encryption for the secret.
                Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
@@ -297,7 +297,7 @@ class SecretReplicationUserManagedReplica(dict):
 
 
 @pulumi.output_type
-class SecretReplicationUserManagedReplicaCustomerManagedEncryption(dict):
+calass SecretReplicationUserManagedReplicaCustomerManagedEncryption(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -336,7 +336,7 @@ class SecretReplicationUserManagedReplicaCustomerManagedEncryption(dict):
 
 
 @pulumi.output_type
-class SecretRotation(dict):
+calass SecretRotation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -390,7 +390,7 @@ class SecretRotation(dict):
 
 
 @pulumi.output_type
-class SecretTopic(dict):
+calass SecretTopic(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -410,7 +410,7 @@ class SecretTopic(dict):
 
 
 @pulumi.output_type
-class GetSecretReplicationResult(dict):
+calass GetSecretReplicationResult(dict):
     def __init__(__self__, *,
                  autos: Sequence['outputs.GetSecretReplicationAutoResult'],
                  user_manageds: Sequence['outputs.GetSecretReplicationUserManagedResult']):
@@ -429,7 +429,7 @@ class GetSecretReplicationResult(dict):
 
 
 @pulumi.output_type
-class GetSecretReplicationAutoResult(dict):
+calass GetSecretReplicationAutoResult(dict):
     def __init__(__self__, *,
                  customer_managed_encryptions: Sequence['outputs.GetSecretReplicationAutoCustomerManagedEncryptionResult']):
         pulumi.set(__self__, "customer_managed_encryptions", customer_managed_encryptions)
@@ -441,7 +441,7 @@ class GetSecretReplicationAutoResult(dict):
 
 
 @pulumi.output_type
-class GetSecretReplicationAutoCustomerManagedEncryptionResult(dict):
+calass GetSecretReplicationAutoCustomerManagedEncryptionResult(dict):
     def __init__(__self__, *,
                  kms_key_name: str):
         pulumi.set(__self__, "kms_key_name", kms_key_name)
@@ -453,7 +453,7 @@ class GetSecretReplicationAutoCustomerManagedEncryptionResult(dict):
 
 
 @pulumi.output_type
-class GetSecretReplicationUserManagedResult(dict):
+calass GetSecretReplicationUserManagedResult(dict):
     def __init__(__self__, *,
                  replicas: Sequence['outputs.GetSecretReplicationUserManagedReplicaResult']):
         pulumi.set(__self__, "replicas", replicas)
@@ -465,7 +465,7 @@ class GetSecretReplicationUserManagedResult(dict):
 
 
 @pulumi.output_type
-class GetSecretReplicationUserManagedReplicaResult(dict):
+calass GetSecretReplicationUserManagedReplicaResult(dict):
     def __init__(__self__, *,
                  customer_managed_encryptions: Sequence['outputs.GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionResult'],
                  location: str):
@@ -484,7 +484,7 @@ class GetSecretReplicationUserManagedReplicaResult(dict):
 
 
 @pulumi.output_type
-class GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionResult(dict):
+calass GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionResult(dict):
     def __init__(__self__, *,
                  kms_key_name: str):
         pulumi.set(__self__, "kms_key_name", kms_key_name)
@@ -496,7 +496,7 @@ class GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionResult(dict
 
 
 @pulumi.output_type
-class GetSecretRotationResult(dict):
+calass GetSecretRotationResult(dict):
     def __init__(__self__, *,
                  next_rotation_time: str,
                  rotation_period: str):
@@ -515,7 +515,7 @@ class GetSecretRotationResult(dict):
 
 
 @pulumi.output_type
-class GetSecretTopicResult(dict):
+calass GetSecretTopicResult(dict):
     def __init__(__self__, *,
                  name: str):
         pulumi.set(__self__, "name", name)
@@ -527,7 +527,7 @@ class GetSecretTopicResult(dict):
 
 
 @pulumi.output_type
-class GetSecretsSecretResult(dict):
+calass GetSecretsSecretResult(dict):
     def __init__(__self__, *,
                  annotations: Mapping[str, str],
                  create_time: str,
@@ -551,11 +551,11 @@ class GetSecretsSecretResult(dict):
         :param Mapping[str, str] labels: The labels assigned to this Secret.
         :param str name: The resource name of the Pub/Sub topic that will be published to.
         :param str project: The ID of the project.
-        :param Sequence['GetSecretsSecretReplicationArgs'] replications: The replication policy of the secret data attached to the Secret.
+        :param Sequence['GetSecretsSecretReplicationArrgs'] replications: The replication policy of the secret data attached to the Secret.
                Structure is documented below.
-        :param Sequence['GetSecretsSecretRotationArgs'] rotations: The rotation time and period for a Secret.
+        :param Sequence['GetSecretsSecretRotationArrgs'] rotations: The rotation time and period for a Secret.
                Structure is documented below.
-        :param Sequence['GetSecretsSecretTopicArgs'] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+        :param Sequence['GetSecretsSecretTopicArrgs'] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
                Structure is documented below.
         :param Mapping[str, str] version_aliases: Mapping from version alias to version name.
         """
@@ -685,14 +685,14 @@ class GetSecretsSecretResult(dict):
 
 
 @pulumi.output_type
-class GetSecretsSecretReplicationResult(dict):
+calass GetSecretsSecretReplicationResult(dict):
     def __init__(__self__, *,
                  autos: Sequence['outputs.GetSecretsSecretReplicationAutoResult'],
                  user_manageds: Sequence['outputs.GetSecretsSecretReplicationUserManagedResult']):
         """
-        :param Sequence['GetSecretsSecretReplicationAutoArgs'] autos: The Secret will automatically be replicated without any restrictions.
+        :param Sequence['GetSecretsSecretReplicationAutoArrgs'] autos: The Secret will automatically be replicated without any restrictions.
                Structure is documented below.
-        :param Sequence['GetSecretsSecretReplicationUserManagedArgs'] user_manageds: The Secret will be replicated to the regions specified by the user.
+        :param Sequence['GetSecretsSecretReplicationUserManagedArrgs'] user_manageds: The Secret will be replicated to the regions specified by the user.
                Structure is documented below.
         """
         pulumi.set(__self__, "autos", autos)
@@ -718,11 +718,11 @@ class GetSecretsSecretReplicationResult(dict):
 
 
 @pulumi.output_type
-class GetSecretsSecretReplicationAutoResult(dict):
+calass GetSecretsSecretReplicationAutoResult(dict):
     def __init__(__self__, *,
                  customer_managed_encryptions: Sequence['outputs.GetSecretsSecretReplicationAutoCustomerManagedEncryptionResult']):
         """
-        :param Sequence['GetSecretsSecretReplicationAutoCustomerManagedEncryptionArgs'] customer_managed_encryptions: Customer Managed Encryption for the secret.
+        :param Sequence['GetSecretsSecretReplicationAutoCustomerManagedEncryptionArrgs'] customer_managed_encryptions: Customer Managed Encryption for the secret.
                Structure is documented below.
         """
         pulumi.set(__self__, "customer_managed_encryptions", customer_managed_encryptions)
@@ -738,7 +738,7 @@ class GetSecretsSecretReplicationAutoResult(dict):
 
 
 @pulumi.output_type
-class GetSecretsSecretReplicationAutoCustomerManagedEncryptionResult(dict):
+calass GetSecretsSecretReplicationAutoCustomerManagedEncryptionResult(dict):
     def __init__(__self__, *,
                  kms_key_name: str):
         """
@@ -756,11 +756,11 @@ class GetSecretsSecretReplicationAutoCustomerManagedEncryptionResult(dict):
 
 
 @pulumi.output_type
-class GetSecretsSecretReplicationUserManagedResult(dict):
+calass GetSecretsSecretReplicationUserManagedResult(dict):
     def __init__(__self__, *,
                  replicas: Sequence['outputs.GetSecretsSecretReplicationUserManagedReplicaResult']):
         """
-        :param Sequence['GetSecretsSecretReplicationUserManagedReplicaArgs'] replicas: The list of Replicas for this Secret.
+        :param Sequence['GetSecretsSecretReplicationUserManagedReplicaArrgs'] replicas: The list of Replicas for this Secret.
                Structure is documented below.
         """
         pulumi.set(__self__, "replicas", replicas)
@@ -776,12 +776,12 @@ class GetSecretsSecretReplicationUserManagedResult(dict):
 
 
 @pulumi.output_type
-class GetSecretsSecretReplicationUserManagedReplicaResult(dict):
+calass GetSecretsSecretReplicationUserManagedReplicaResult(dict):
     def __init__(__self__, *,
                  customer_managed_encryptions: Sequence['outputs.GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryptionResult'],
                  location: str):
         """
-        :param Sequence['GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs'] customer_managed_encryptions: Customer Managed Encryption for the secret.
+        :param Sequence['GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrgs'] customer_managed_encryptions: Customer Managed Encryption for the secret.
                Structure is documented below.
         :param str location: The canonical IDs of the location to replicate data.
         """
@@ -807,7 +807,7 @@ class GetSecretsSecretReplicationUserManagedReplicaResult(dict):
 
 
 @pulumi.output_type
-class GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryptionResult(dict):
+calass GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryptionResult(dict):
     def __init__(__self__, *,
                  kms_key_name: str):
         """
@@ -825,7 +825,7 @@ class GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryptionResu
 
 
 @pulumi.output_type
-class GetSecretsSecretRotationResult(dict):
+calass GetSecretsSecretRotationResult(dict):
     def __init__(__self__, *,
                  next_rotation_time: str,
                  rotation_period: str):
@@ -854,7 +854,7 @@ class GetSecretsSecretRotationResult(dict):
 
 
 @pulumi.output_type
-class GetSecretsSecretTopicResult(dict):
+calass GetSecretsSecretTopicResult(dict):
     def __init__(__self__, *,
                  name: str):
         """

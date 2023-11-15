@@ -11,17 +11,17 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ProjectSinkArgs', 'ProjectSink']
+__all__ = ['ProjectSinkArrgs', 'ProjectSink']
 
 @pulumi.input_type
-class ProjectSinkArgs:
+calass ProjectSinkArrgs:
     def __init__(__self__, *,
                  destination: pulumi.Input[str],
-                 bigquery_options: Optional[pulumi.Input['ProjectSinkBigqueryOptionsArgs']] = None,
+                 bigquery_options: Optional[pulumi.Input['ProjectSinkBigqueryOptionsArrgs']] = None,
                  custom_writer_identity: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectSinkExclusionArgs']]]] = None,
+                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectSinkExclusionArrgs']]]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -38,14 +38,14 @@ class ProjectSinkArgs:
                - `logging.googleapis.com/projects/[PROJECT_ID]`
                
                The writer associated with the sink must have access to write to the above resource.
-        :param pulumi.Input['ProjectSinkBigqueryOptionsArgs'] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
+        :param pulumi.Input['ProjectSinkBigqueryOptionsArrgs'] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] custom_writer_identity: A user managed service account that will be used to write
                the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
                routing logs to a destination outside this sink's project. If not specified, a Logging service account
                will automatically be generated.
         :param pulumi.Input[str] description: A description of this sink. The maximum length of the description is 8000 characters.
         :param pulumi.Input[bool] disabled: If set to True, then this sink is disabled and it does not export any log entries.
-        :param pulumi.Input[Sequence[pulumi.Input['ProjectSinkExclusionArgs']]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ProjectSinkExclusionArrgs']]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
@@ -99,14 +99,14 @@ class ProjectSinkArgs:
 
     @property
     @pulumi.getter(name="bigqueryOptions")
-    def bigquery_options(self) -> Optional[pulumi.Input['ProjectSinkBigqueryOptionsArgs']]:
+    def bigquery_options(self) -> Optional[pulumi.Input['ProjectSinkBigqueryOptionsArrgs']]:
         """
         Options that affect sinks exporting data to BigQuery. Structure documented below.
         """
         return pulumi.get(self, "bigquery_options")
 
     @bigquery_options.setter
-    def bigquery_options(self, value: Optional[pulumi.Input['ProjectSinkBigqueryOptionsArgs']]):
+    def bigquery_options(self, value: Optional[pulumi.Input['ProjectSinkBigqueryOptionsArrgs']]):
         pulumi.set(self, "bigquery_options", value)
 
     @property
@@ -150,14 +150,14 @@ class ProjectSinkArgs:
 
     @property
     @pulumi.getter
-    def exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectSinkExclusionArgs']]]]:
+    def exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectSinkExclusionArrgs']]]]:
         """
         Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         """
         return pulumi.get(self, "exclusions")
 
     @exclusions.setter
-    def exclusions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectSinkExclusionArgs']]]]):
+    def exclusions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectSinkExclusionArrgs']]]]):
         pulumi.set(self, "exclusions", value)
 
     @property
@@ -215,14 +215,14 @@ class ProjectSinkArgs:
 
 
 @pulumi.input_type
-class _ProjectSinkState:
+calass _ProjectSinkState:
     def __init__(__self__, *,
-                 bigquery_options: Optional[pulumi.Input['ProjectSinkBigqueryOptionsArgs']] = None,
+                 bigquery_options: Optional[pulumi.Input['ProjectSinkBigqueryOptionsArrgs']] = None,
                  custom_writer_identity: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectSinkExclusionArgs']]]] = None,
+                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectSinkExclusionArrgs']]]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -230,7 +230,7 @@ class _ProjectSinkState:
                  writer_identity: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ProjectSink resources.
-        :param pulumi.Input['ProjectSinkBigqueryOptionsArgs'] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
+        :param pulumi.Input['ProjectSinkBigqueryOptionsArrgs'] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] custom_writer_identity: A user managed service account that will be used to write
                the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
                routing logs to a destination outside this sink's project. If not specified, a Logging service account
@@ -247,7 +247,7 @@ class _ProjectSinkState:
                
                The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input[bool] disabled: If set to True, then this sink is disabled and it does not export any log entries.
-        :param pulumi.Input[Sequence[pulumi.Input['ProjectSinkExclusionArgs']]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ProjectSinkExclusionArrgs']]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
@@ -285,14 +285,14 @@ class _ProjectSinkState:
 
     @property
     @pulumi.getter(name="bigqueryOptions")
-    def bigquery_options(self) -> Optional[pulumi.Input['ProjectSinkBigqueryOptionsArgs']]:
+    def bigquery_options(self) -> Optional[pulumi.Input['ProjectSinkBigqueryOptionsArrgs']]:
         """
         Options that affect sinks exporting data to BigQuery. Structure documented below.
         """
         return pulumi.get(self, "bigquery_options")
 
     @bigquery_options.setter
-    def bigquery_options(self, value: Optional[pulumi.Input['ProjectSinkBigqueryOptionsArgs']]):
+    def bigquery_options(self, value: Optional[pulumi.Input['ProjectSinkBigqueryOptionsArrgs']]):
         pulumi.set(self, "bigquery_options", value)
 
     @property
@@ -357,14 +357,14 @@ class _ProjectSinkState:
 
     @property
     @pulumi.getter
-    def exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectSinkExclusionArgs']]]]:
+    def exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectSinkExclusionArrgs']]]]:
         """
         Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         """
         return pulumi.get(self, "exclusions")
 
     @exclusions.setter
-    def exclusions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectSinkExclusionArgs']]]]):
+    def exclusions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectSinkExclusionArrgs']]]]):
         pulumi.set(self, "exclusions", value)
 
     @property
@@ -434,17 +434,17 @@ class _ProjectSinkState:
         pulumi.set(self, "writer_identity", value)
 
 
-class ProjectSink(pulumi.CustomResource):
+calass ProjectSink(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_options: Optional[pulumi.Input[pulumi.InputType['ProjectSinkBigqueryOptionsArgs']]] = None,
+                 bigquery_options: Optional[pulumi.Input[pulumi.InputType['ProjectSinkBigqueryOptionsArrgs']]] = None,
                  custom_writer_identity: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectSinkExclusionArgs']]]]] = None,
+                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectSinkExclusionArrgs']]]]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -469,7 +469,7 @@ class ProjectSink(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ProjectSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
+        :param pulumi.Input[pulumi.InputType['ProjectSinkBigqueryOptionsArrgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] custom_writer_identity: A user managed service account that will be used to write
                the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
                routing logs to a destination outside this sink's project. If not specified, a Logging service account
@@ -486,7 +486,7 @@ class ProjectSink(pulumi.CustomResource):
                
                The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input[bool] disabled: If set to True, then this sink is disabled and it does not export any log entries.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectSinkExclusionArgs']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectSinkExclusionArrgs']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
@@ -501,7 +501,7 @@ class ProjectSink(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ProjectSinkArgs,
+                 args: ProjectSinkArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Import
@@ -521,12 +521,12 @@ class ProjectSink(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ProjectSinkArgs args: The arguments to use to populate this resource's properties.
+        :param ProjectSinkArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ProjectSinkArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ProjectSinkArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -535,12 +535,12 @@ class ProjectSink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_options: Optional[pulumi.Input[pulumi.InputType['ProjectSinkBigqueryOptionsArgs']]] = None,
+                 bigquery_options: Optional[pulumi.Input[pulumi.InputType['ProjectSinkBigqueryOptionsArrgs']]] = None,
                  custom_writer_identity: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectSinkExclusionArgs']]]]] = None,
+                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectSinkExclusionArrgs']]]]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -552,7 +552,7 @@ class ProjectSink(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ProjectSinkArgs.__new__(ProjectSinkArgs)
+            __props__ = ProjectSinkArrgs.__new__(ProjectSinkArrgs)
 
             __props__.__dict__["bigquery_options"] = bigquery_options
             __props__.__dict__["custom_writer_identity"] = custom_writer_identity
@@ -577,12 +577,12 @@ class ProjectSink(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bigquery_options: Optional[pulumi.Input[pulumi.InputType['ProjectSinkBigqueryOptionsArgs']]] = None,
+            bigquery_options: Optional[pulumi.Input[pulumi.InputType['ProjectSinkBigqueryOptionsArrgs']]] = None,
             custom_writer_identity: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             destination: Optional[pulumi.Input[str]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
-            exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectSinkExclusionArgs']]]]] = None,
+            exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectSinkExclusionArrgs']]]]] = None,
             filter: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -595,7 +595,7 @@ class ProjectSink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ProjectSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
+        :param pulumi.Input[pulumi.InputType['ProjectSinkBigqueryOptionsArrgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] custom_writer_identity: A user managed service account that will be used to write
                the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
                routing logs to a destination outside this sink's project. If not specified, a Logging service account
@@ -612,7 +612,7 @@ class ProjectSink(pulumi.CustomResource):
                
                The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input[bool] disabled: If set to True, then this sink is disabled and it does not export any log entries.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectSinkExclusionArgs']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectSinkExclusionArrgs']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.

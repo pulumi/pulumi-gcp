@@ -10,27 +10,27 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'WorkstationClusterConditionArgs',
-    'WorkstationClusterDomainConfigArgs',
-    'WorkstationClusterPrivateClusterConfigArgs',
-    'WorkstationConfigConditionArgs',
-    'WorkstationConfigContainerArgs',
-    'WorkstationConfigEncryptionKeyArgs',
-    'WorkstationConfigHostArgs',
-    'WorkstationConfigHostGceInstanceArgs',
-    'WorkstationConfigHostGceInstanceAcceleratorArgs',
-    'WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs',
-    'WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs',
-    'WorkstationConfigIamBindingConditionArgs',
-    'WorkstationConfigIamMemberConditionArgs',
-    'WorkstationConfigPersistentDirectoryArgs',
-    'WorkstationConfigPersistentDirectoryGcePdArgs',
-    'WorkstationIamBindingConditionArgs',
-    'WorkstationIamMemberConditionArgs',
+    'WorkstationClusterConditionArrgs',
+    'WorkstationClusterDomainConfigArrgs',
+    'WorkstationClusterPrivateClusterConfigArrgs',
+    'WorkstationConfigConditionArrgs',
+    'WorkstationConfigContainerArrgs',
+    'WorkstationConfigEncryptionKeyArrgs',
+    'WorkstationConfigHostArrgs',
+    'WorkstationConfigHostGceInstanceArrgs',
+    'WorkstationConfigHostGceInstanceAcceleratorArrgs',
+    'WorkstationConfigHostGceInstanceConfidentialInstanceConfigArrgs',
+    'WorkstationConfigHostGceInstanceShieldedInstanceConfigArrgs',
+    'WorkstationConfigIamBindingConditionArrgs',
+    'WorkstationConfigIamMemberConditionArrgs',
+    'WorkstationConfigPersistentDirectoryArrgs',
+    'WorkstationConfigPersistentDirectoryGcePdArrgs',
+    'WorkstationIamBindingConditionArrgs',
+    'WorkstationIamMemberConditionArrgs',
 ]
 
 @pulumi.input_type
-class WorkstationClusterConditionArgs:
+calass WorkstationClusterConditionArrgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[int]] = None,
                  details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
@@ -91,7 +91,7 @@ class WorkstationClusterConditionArgs:
 
 
 @pulumi.input_type
-class WorkstationClusterDomainConfigArgs:
+calass WorkstationClusterDomainConfigArrgs:
     def __init__(__self__, *,
                  domain: pulumi.Input[str]):
         """
@@ -113,7 +113,7 @@ class WorkstationClusterDomainConfigArgs:
 
 
 @pulumi.input_type
-class WorkstationClusterPrivateClusterConfigArgs:
+calass WorkstationClusterPrivateClusterConfigArrgs:
     def __init__(__self__, *,
                  enable_private_endpoint: pulumi.Input[bool],
                  allowed_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -197,7 +197,7 @@ class WorkstationClusterPrivateClusterConfigArgs:
 
 
 @pulumi.input_type
-class WorkstationConfigConditionArgs:
+calass WorkstationConfigConditionArrgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[int]] = None,
                  details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
@@ -258,7 +258,7 @@ class WorkstationConfigConditionArgs:
 
 
 @pulumi.input_type
-class WorkstationConfigContainerArgs:
+calass WorkstationConfigContainerArrgs:
     def __init__(__self__, *,
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -363,7 +363,7 @@ class WorkstationConfigContainerArgs:
 
 
 @pulumi.input_type
-class WorkstationConfigEncryptionKeyArgs:
+calass WorkstationConfigEncryptionKeyArrgs:
     def __init__(__self__, *,
                  kms_key: pulumi.Input[str],
                  kms_key_service_account: pulumi.Input[str]):
@@ -400,11 +400,11 @@ class WorkstationConfigEncryptionKeyArgs:
 
 
 @pulumi.input_type
-class WorkstationConfigHostArgs:
+calass WorkstationConfigHostArrgs:
     def __init__(__self__, *,
-                 gce_instance: Optional[pulumi.Input['WorkstationConfigHostGceInstanceArgs']] = None):
+                 gce_instance: Optional[pulumi.Input['WorkstationConfigHostGceInstanceArrgs']] = None):
         """
-        :param pulumi.Input['WorkstationConfigHostGceInstanceArgs'] gce_instance: A runtime using a Compute Engine instance.
+        :param pulumi.Input['WorkstationConfigHostGceInstanceArrgs'] gce_instance: A runtime using a Compute Engine instance.
                Structure is documented below.
         """
         if gce_instance is not None:
@@ -412,7 +412,7 @@ class WorkstationConfigHostArgs:
 
     @property
     @pulumi.getter(name="gceInstance")
-    def gce_instance(self) -> Optional[pulumi.Input['WorkstationConfigHostGceInstanceArgs']]:
+    def gce_instance(self) -> Optional[pulumi.Input['WorkstationConfigHostGceInstanceArrgs']]:
         """
         A runtime using a Compute Engine instance.
         Structure is documented below.
@@ -420,29 +420,29 @@ class WorkstationConfigHostArgs:
         return pulumi.get(self, "gce_instance")
 
     @gce_instance.setter
-    def gce_instance(self, value: Optional[pulumi.Input['WorkstationConfigHostGceInstanceArgs']]):
+    def gce_instance(self, value: Optional[pulumi.Input['WorkstationConfigHostGceInstanceArrgs']]):
         pulumi.set(self, "gce_instance", value)
 
 
 @pulumi.input_type
-class WorkstationConfigHostGceInstanceArgs:
+calass WorkstationConfigHostGceInstanceArrgs:
     def __init__(__self__, *,
-                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceAcceleratorArgs']]]] = None,
+                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceAcceleratorArrgs']]]] = None,
                  boot_disk_size_gb: Optional[pulumi.Input[int]] = None,
-                 confidential_instance_config: Optional[pulumi.Input['WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs']] = None,
+                 confidential_instance_config: Optional[pulumi.Input['WorkstationConfigHostGceInstanceConfidentialInstanceConfigArrgs']] = None,
                  disable_public_ip_addresses: Optional[pulumi.Input[bool]] = None,
                  enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  pool_size: Optional[pulumi.Input[int]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 shielded_instance_config: Optional[pulumi.Input['WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs']] = None,
+                 shielded_instance_config: Optional[pulumi.Input['WorkstationConfigHostGceInstanceShieldedInstanceConfigArrgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceAcceleratorArgs']]] accelerators: An accelerator card attached to the instance.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceAcceleratorArrgs']]] accelerators: An accelerator card attached to the instance.
                Structure is documented below.
         :param pulumi.Input[int] boot_disk_size_gb: Size of the boot disk in GB.
-        :param pulumi.Input['WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs'] confidential_instance_config: A set of Compute Engine Confidential VM instance options.
+        :param pulumi.Input['WorkstationConfigHostGceInstanceConfidentialInstanceConfigArrgs'] confidential_instance_config: A set of Compute Engine Confidential VM instance options.
                Structure is documented below.
         :param pulumi.Input[bool] disable_public_ip_addresses: Whether instances have no public IP address.
         :param pulumi.Input[bool] enable_nested_virtualization: Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
@@ -451,7 +451,7 @@ class WorkstationConfigHostGceInstanceArgs:
         :param pulumi.Input[int] pool_size: Number of instances to pool for faster workstation startup.
         :param pulumi.Input[str] service_account: Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_account_scopes: Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
-        :param pulumi.Input['WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs'] shielded_instance_config: A set of Compute Engine Shielded instance options.
+        :param pulumi.Input['WorkstationConfigHostGceInstanceShieldedInstanceConfigArrgs'] shielded_instance_config: A set of Compute Engine Shielded instance options.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Network tags to add to the Compute Engine machines backing the Workstations.
         """
@@ -480,7 +480,7 @@ class WorkstationConfigHostGceInstanceArgs:
 
     @property
     @pulumi.getter
-    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceAcceleratorArgs']]]]:
+    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceAcceleratorArrgs']]]]:
         """
         An accelerator card attached to the instance.
         Structure is documented below.
@@ -488,7 +488,7 @@ class WorkstationConfigHostGceInstanceArgs:
         return pulumi.get(self, "accelerators")
 
     @accelerators.setter
-    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceAcceleratorArgs']]]]):
+    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceAcceleratorArrgs']]]]):
         pulumi.set(self, "accelerators", value)
 
     @property
@@ -505,7 +505,7 @@ class WorkstationConfigHostGceInstanceArgs:
 
     @property
     @pulumi.getter(name="confidentialInstanceConfig")
-    def confidential_instance_config(self) -> Optional[pulumi.Input['WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs']]:
+    def confidential_instance_config(self) -> Optional[pulumi.Input['WorkstationConfigHostGceInstanceConfidentialInstanceConfigArrgs']]:
         """
         A set of Compute Engine Confidential VM instance options.
         Structure is documented below.
@@ -513,7 +513,7 @@ class WorkstationConfigHostGceInstanceArgs:
         return pulumi.get(self, "confidential_instance_config")
 
     @confidential_instance_config.setter
-    def confidential_instance_config(self, value: Optional[pulumi.Input['WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs']]):
+    def confidential_instance_config(self, value: Optional[pulumi.Input['WorkstationConfigHostGceInstanceConfidentialInstanceConfigArrgs']]):
         pulumi.set(self, "confidential_instance_config", value)
 
     @property
@@ -591,7 +591,7 @@ class WorkstationConfigHostGceInstanceArgs:
 
     @property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> Optional[pulumi.Input['WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs']]:
+    def shielded_instance_config(self) -> Optional[pulumi.Input['WorkstationConfigHostGceInstanceShieldedInstanceConfigArrgs']]:
         """
         A set of Compute Engine Shielded instance options.
         Structure is documented below.
@@ -599,7 +599,7 @@ class WorkstationConfigHostGceInstanceArgs:
         return pulumi.get(self, "shielded_instance_config")
 
     @shielded_instance_config.setter
-    def shielded_instance_config(self, value: Optional[pulumi.Input['WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs']]):
+    def shielded_instance_config(self, value: Optional[pulumi.Input['WorkstationConfigHostGceInstanceShieldedInstanceConfigArrgs']]):
         pulumi.set(self, "shielded_instance_config", value)
 
     @property
@@ -616,7 +616,7 @@ class WorkstationConfigHostGceInstanceArgs:
 
 
 @pulumi.input_type
-class WorkstationConfigHostGceInstanceAcceleratorArgs:
+calass WorkstationConfigHostGceInstanceAcceleratorArrgs:
     def __init__(__self__, *,
                  count: pulumi.Input[int],
                  type: pulumi.Input[str]):
@@ -653,7 +653,7 @@ class WorkstationConfigHostGceInstanceAcceleratorArgs:
 
 
 @pulumi.input_type
-class WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs:
+calass WorkstationConfigHostGceInstanceConfidentialInstanceConfigArrgs:
     def __init__(__self__, *,
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None):
         """
@@ -676,7 +676,7 @@ class WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs:
 
 
 @pulumi.input_type
-class WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs:
+calass WorkstationConfigHostGceInstanceShieldedInstanceConfigArrgs:
     def __init__(__self__, *,
                  enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
                  enable_secure_boot: Optional[pulumi.Input[bool]] = None,
@@ -731,7 +731,7 @@ class WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs:
 
 
 @pulumi.input_type
-class WorkstationConfigIamBindingConditionArgs:
+calass WorkstationConfigIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -770,7 +770,7 @@ class WorkstationConfigIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class WorkstationConfigIamMemberConditionArgs:
+calass WorkstationConfigIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -809,12 +809,12 @@ class WorkstationConfigIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class WorkstationConfigPersistentDirectoryArgs:
+calass WorkstationConfigPersistentDirectoryArrgs:
     def __init__(__self__, *,
-                 gce_pd: Optional[pulumi.Input['WorkstationConfigPersistentDirectoryGcePdArgs']] = None,
+                 gce_pd: Optional[pulumi.Input['WorkstationConfigPersistentDirectoryGcePdArrgs']] = None,
                  mount_path: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['WorkstationConfigPersistentDirectoryGcePdArgs'] gce_pd: A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
+        :param pulumi.Input['WorkstationConfigPersistentDirectoryGcePdArrgs'] gce_pd: A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
                Structure is documented below.
         :param pulumi.Input[str] mount_path: Location of this directory in the running workstation.
         """
@@ -825,7 +825,7 @@ class WorkstationConfigPersistentDirectoryArgs:
 
     @property
     @pulumi.getter(name="gcePd")
-    def gce_pd(self) -> Optional[pulumi.Input['WorkstationConfigPersistentDirectoryGcePdArgs']]:
+    def gce_pd(self) -> Optional[pulumi.Input['WorkstationConfigPersistentDirectoryGcePdArrgs']]:
         """
         A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
         Structure is documented below.
@@ -833,7 +833,7 @@ class WorkstationConfigPersistentDirectoryArgs:
         return pulumi.get(self, "gce_pd")
 
     @gce_pd.setter
-    def gce_pd(self, value: Optional[pulumi.Input['WorkstationConfigPersistentDirectoryGcePdArgs']]):
+    def gce_pd(self, value: Optional[pulumi.Input['WorkstationConfigPersistentDirectoryGcePdArrgs']]):
         pulumi.set(self, "gce_pd", value)
 
     @property
@@ -850,7 +850,7 @@ class WorkstationConfigPersistentDirectoryArgs:
 
 
 @pulumi.input_type
-class WorkstationConfigPersistentDirectoryGcePdArgs:
+calass WorkstationConfigPersistentDirectoryGcePdArrgs:
     def __init__(__self__, *,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  fs_type: Optional[pulumi.Input[str]] = None,
@@ -941,7 +941,7 @@ class WorkstationConfigPersistentDirectoryGcePdArgs:
 
 
 @pulumi.input_type
-class WorkstationIamBindingConditionArgs:
+calass WorkstationIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -980,7 +980,7 @@ class WorkstationIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class WorkstationIamMemberConditionArgs:
+calass WorkstationIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],

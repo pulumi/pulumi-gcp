@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ConfigIamBindingArgs', 'ConfigIamBinding']
+__all__ = ['ConfigIamBindingArrgs', 'ConfigIamBinding']
 
 @pulumi.input_type
-class ConfigIamBindingArgs:
+calass ConfigIamBindingArrgs:
     def __init__(__self__, *,
                  config: pulumi.Input[str],
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['ConfigIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['ConfigIamBindingConditionArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ConfigIamBinding resource.
@@ -87,11 +87,11 @@ class ConfigIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ConfigIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ConfigIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ConfigIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ConfigIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -121,9 +121,9 @@ class ConfigIamBindingArgs:
 
 
 @pulumi.input_type
-class _ConfigIamBindingState:
+calass _ConfigIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['ConfigIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['ConfigIamBindingConditionArrgs']] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -166,11 +166,11 @@ class _ConfigIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ConfigIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ConfigIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ConfigIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ConfigIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -246,12 +246,12 @@ class _ConfigIamBindingState:
         pulumi.set(self, "role", value)
 
 
-class ConfigIamBinding(pulumi.CustomResource):
+calass ConfigIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ConfigIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ConfigIamBindingConditionArrgs']]] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -307,7 +307,7 @@ class ConfigIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ConfigIamBindingArgs,
+                 args: ConfigIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Import
@@ -335,12 +335,12 @@ class ConfigIamBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param ConfigIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param ConfigIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ConfigIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ConfigIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -349,7 +349,7 @@ class ConfigIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ConfigIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ConfigIamBindingConditionArrgs']]] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -361,7 +361,7 @@ class ConfigIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ConfigIamBindingArgs.__new__(ConfigIamBindingArgs)
+            __props__ = ConfigIamBindingArrgs.__new__(ConfigIamBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if config is None and not opts.urn:
@@ -385,7 +385,7 @@ class ConfigIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['ConfigIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['ConfigIamBindingConditionArrgs']]] = None,
             config: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

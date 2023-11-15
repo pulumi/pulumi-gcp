@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['FirewallRuleArgs', 'FirewallRule']
+__all__ = ['FirewallRuleArrgs', 'FirewallRule']
 
 @pulumi.input_type
-class FirewallRuleArgs:
+calass FirewallRuleArrgs:
     def __init__(__self__, *,
                  action: pulumi.Input[str],
                  source_range: pulumi.Input[str],
@@ -116,7 +116,7 @@ class FirewallRuleArgs:
 
 
 @pulumi.input_type
-class _FirewallRuleState:
+calass _FirewallRuleState:
     def __init__(__self__, *,
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -221,7 +221,7 @@ class _FirewallRuleState:
         pulumi.set(self, "source_range", value)
 
 
-class FirewallRule(pulumi.CustomResource):
+calass FirewallRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -308,7 +308,7 @@ class FirewallRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FirewallRuleArgs,
+                 args: FirewallRuleArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A single firewall rule that is evaluated against incoming traffic
@@ -366,12 +366,12 @@ class FirewallRule(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param FirewallRuleArgs args: The arguments to use to populate this resource's properties.
+        :param FirewallRuleArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(FirewallRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(FirewallRuleArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -392,7 +392,7 @@ class FirewallRule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = FirewallRuleArgs.__new__(FirewallRuleArgs)
+            __props__ = FirewallRuleArrgs.__new__(FirewallRuleArrgs)
 
             if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")

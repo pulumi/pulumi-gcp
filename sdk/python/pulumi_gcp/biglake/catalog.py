@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['CatalogArgs', 'Catalog']
+__all__ = ['CatalogArrgs', 'Catalog']
 
 @pulumi.input_type
-class CatalogArgs:
+calass CatalogArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
@@ -77,7 +77,7 @@ class CatalogArgs:
 
 
 @pulumi.input_type
-class _CatalogState:
+calass _CatalogState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
@@ -224,7 +224,7 @@ class _CatalogState:
         pulumi.set(self, "update_time", value)
 
 
-class Catalog(pulumi.CustomResource):
+calass Catalog(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -291,7 +291,7 @@ class Catalog(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CatalogArgs,
+                 args: CatalogArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Catalogs are top-level containers for Databases and Tables.
@@ -337,12 +337,12 @@ class Catalog(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param CatalogArgs args: The arguments to use to populate this resource's properties.
+        :param CatalogArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(CatalogArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(CatalogArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -361,7 +361,7 @@ class Catalog(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = CatalogArgs.__new__(CatalogArgs)
+            __props__ = CatalogArrgs.__new__(CatalogArrgs)
 
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")

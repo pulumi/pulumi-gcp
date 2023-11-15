@@ -11,24 +11,24 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['TargetArgs', 'Target']
+__all__ = ['TargetArrgs', 'Target']
 
 @pulumi.input_type
-class TargetArgs:
+calass TargetArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 anthos_cluster: Optional[pulumi.Input['TargetAnthosClusterArgs']] = None,
+                 anthos_cluster: Optional[pulumi.Input['TargetAnthosClusterArrgs']] = None,
                  deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 execution_configs: Optional[pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArgs']]]] = None,
-                 gke: Optional[pulumi.Input['TargetGkeArgs']] = None,
+                 execution_configs: Optional[pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArrgs']]]] = None,
+                 gke: Optional[pulumi.Input['TargetGkeArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 multi_target: Optional[pulumi.Input['TargetMultiTargetArgs']] = None,
+                 multi_target: Optional[pulumi.Input['TargetMultiTargetArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  require_approval: Optional[pulumi.Input[bool]] = None,
-                 run: Optional[pulumi.Input['TargetRunArgs']] = None):
+                 run: Optional[pulumi.Input['TargetRunArrgs']] = None):
         """
         The set of arguments for constructing a Target resource.
         :param pulumi.Input[str] location: The location for the resource
@@ -36,16 +36,16 @@ class TargetArgs:
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input['TargetAnthosClusterArgs'] anthos_cluster: Information specifying an Anthos Cluster.
+        :param pulumi.Input['TargetAnthosClusterArrgs'] anthos_cluster: Information specifying an Anthos Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[str] description: Optional. Description of the `Target`. Max length is 255 characters.
-        :param pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArgs']]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
-        :param pulumi.Input['TargetGkeArgs'] gke: Information specifying a GKE Cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArrgs']]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
+        :param pulumi.Input['TargetGkeArrgs'] gke: Information specifying a GKE Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input['TargetMultiTargetArgs'] multi_target: Information specifying a multiTarget.
+        :param pulumi.Input['TargetMultiTargetArrgs'] multi_target: Information specifying a multiTarget.
         :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
                
                
@@ -53,7 +53,7 @@ class TargetArgs:
                - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
-        :param pulumi.Input['TargetRunArgs'] run: Information specifying a Cloud Run deployment target.
+        :param pulumi.Input['TargetRunArrgs'] run: Information specifying a Cloud Run deployment target.
         """
         pulumi.set(__self__, "location", location)
         if annotations is not None:
@@ -110,14 +110,14 @@ class TargetArgs:
 
     @property
     @pulumi.getter(name="anthosCluster")
-    def anthos_cluster(self) -> Optional[pulumi.Input['TargetAnthosClusterArgs']]:
+    def anthos_cluster(self) -> Optional[pulumi.Input['TargetAnthosClusterArrgs']]:
         """
         Information specifying an Anthos Cluster.
         """
         return pulumi.get(self, "anthos_cluster")
 
     @anthos_cluster.setter
-    def anthos_cluster(self, value: Optional[pulumi.Input['TargetAnthosClusterArgs']]):
+    def anthos_cluster(self, value: Optional[pulumi.Input['TargetAnthosClusterArrgs']]):
         pulumi.set(self, "anthos_cluster", value)
 
     @property
@@ -146,26 +146,26 @@ class TargetArgs:
 
     @property
     @pulumi.getter(name="executionConfigs")
-    def execution_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArgs']]]]:
+    def execution_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArrgs']]]]:
         """
         Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
         """
         return pulumi.get(self, "execution_configs")
 
     @execution_configs.setter
-    def execution_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArgs']]]]):
+    def execution_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArrgs']]]]):
         pulumi.set(self, "execution_configs", value)
 
     @property
     @pulumi.getter
-    def gke(self) -> Optional[pulumi.Input['TargetGkeArgs']]:
+    def gke(self) -> Optional[pulumi.Input['TargetGkeArrgs']]:
         """
         Information specifying a GKE Cluster.
         """
         return pulumi.get(self, "gke")
 
     @gke.setter
-    def gke(self, value: Optional[pulumi.Input['TargetGkeArgs']]):
+    def gke(self, value: Optional[pulumi.Input['TargetGkeArrgs']]):
         pulumi.set(self, "gke", value)
 
     @property
@@ -185,14 +185,14 @@ class TargetArgs:
 
     @property
     @pulumi.getter(name="multiTarget")
-    def multi_target(self) -> Optional[pulumi.Input['TargetMultiTargetArgs']]:
+    def multi_target(self) -> Optional[pulumi.Input['TargetMultiTargetArrgs']]:
         """
         Information specifying a multiTarget.
         """
         return pulumi.get(self, "multi_target")
 
     @multi_target.setter
-    def multi_target(self, value: Optional[pulumi.Input['TargetMultiTargetArgs']]):
+    def multi_target(self, value: Optional[pulumi.Input['TargetMultiTargetArrgs']]):
         pulumi.set(self, "multi_target", value)
 
     @property
@@ -237,38 +237,38 @@ class TargetArgs:
 
     @property
     @pulumi.getter
-    def run(self) -> Optional[pulumi.Input['TargetRunArgs']]:
+    def run(self) -> Optional[pulumi.Input['TargetRunArrgs']]:
         """
         Information specifying a Cloud Run deployment target.
         """
         return pulumi.get(self, "run")
 
     @run.setter
-    def run(self, value: Optional[pulumi.Input['TargetRunArgs']]):
+    def run(self, value: Optional[pulumi.Input['TargetRunArrgs']]):
         pulumi.set(self, "run", value)
 
 
 @pulumi.input_type
-class _TargetState:
+calass _TargetState:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 anthos_cluster: Optional[pulumi.Input['TargetAnthosClusterArgs']] = None,
+                 anthos_cluster: Optional[pulumi.Input['TargetAnthosClusterArrgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 execution_configs: Optional[pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArgs']]]] = None,
-                 gke: Optional[pulumi.Input['TargetGkeArgs']] = None,
+                 execution_configs: Optional[pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArrgs']]]] = None,
+                 gke: Optional[pulumi.Input['TargetGkeArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 multi_target: Optional[pulumi.Input['TargetMultiTargetArgs']] = None,
+                 multi_target: Optional[pulumi.Input['TargetMultiTargetArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  require_approval: Optional[pulumi.Input[bool]] = None,
-                 run: Optional[pulumi.Input['TargetRunArgs']] = None,
+                 run: Optional[pulumi.Input['TargetRunArrgs']] = None,
                  target_id: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
@@ -278,7 +278,7 @@ class _TargetState:
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input['TargetAnthosClusterArgs'] anthos_cluster: Information specifying an Anthos Cluster.
+        :param pulumi.Input['TargetAnthosClusterArrgs'] anthos_cluster: Information specifying an Anthos Cluster.
         :param pulumi.Input[str] create_time: Output only. Time at which the `Target` was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[str] description: Optional. Description of the `Target`. Max length is 255 characters.
@@ -286,14 +286,14 @@ class _TargetState:
                Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-        :param pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArgs']]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
-        :param pulumi.Input['TargetGkeArgs'] gke: Information specifying a GKE Cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArrgs']]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
+        :param pulumi.Input['TargetGkeArrgs'] gke: Information specifying a GKE Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input['TargetMultiTargetArgs'] multi_target: Information specifying a multiTarget.
+        :param pulumi.Input['TargetMultiTargetArrgs'] multi_target: Information specifying a multiTarget.
         :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
                
                
@@ -302,7 +302,7 @@ class _TargetState:
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
-        :param pulumi.Input['TargetRunArgs'] run: Information specifying a Cloud Run deployment target.
+        :param pulumi.Input['TargetRunArrgs'] run: Information specifying a Cloud Run deployment target.
         :param pulumi.Input[str] target_id: Output only. Resource id of the `Target`.
         :param pulumi.Input[str] uid: Output only. Unique identifier of the `Target`.
         :param pulumi.Input[str] update_time: Output only. Most recent time at which the `Target` was updated.
@@ -367,14 +367,14 @@ class _TargetState:
 
     @property
     @pulumi.getter(name="anthosCluster")
-    def anthos_cluster(self) -> Optional[pulumi.Input['TargetAnthosClusterArgs']]:
+    def anthos_cluster(self) -> Optional[pulumi.Input['TargetAnthosClusterArrgs']]:
         """
         Information specifying an Anthos Cluster.
         """
         return pulumi.get(self, "anthos_cluster")
 
     @anthos_cluster.setter
-    def anthos_cluster(self, value: Optional[pulumi.Input['TargetAnthosClusterArgs']]):
+    def anthos_cluster(self, value: Optional[pulumi.Input['TargetAnthosClusterArrgs']]):
         pulumi.set(self, "anthos_cluster", value)
 
     @property
@@ -452,26 +452,26 @@ class _TargetState:
 
     @property
     @pulumi.getter(name="executionConfigs")
-    def execution_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArgs']]]]:
+    def execution_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArrgs']]]]:
         """
         Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
         """
         return pulumi.get(self, "execution_configs")
 
     @execution_configs.setter
-    def execution_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArgs']]]]):
+    def execution_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArrgs']]]]):
         pulumi.set(self, "execution_configs", value)
 
     @property
     @pulumi.getter
-    def gke(self) -> Optional[pulumi.Input['TargetGkeArgs']]:
+    def gke(self) -> Optional[pulumi.Input['TargetGkeArrgs']]:
         """
         Information specifying a GKE Cluster.
         """
         return pulumi.get(self, "gke")
 
     @gke.setter
-    def gke(self, value: Optional[pulumi.Input['TargetGkeArgs']]):
+    def gke(self, value: Optional[pulumi.Input['TargetGkeArrgs']]):
         pulumi.set(self, "gke", value)
 
     @property
@@ -503,14 +503,14 @@ class _TargetState:
 
     @property
     @pulumi.getter(name="multiTarget")
-    def multi_target(self) -> Optional[pulumi.Input['TargetMultiTargetArgs']]:
+    def multi_target(self) -> Optional[pulumi.Input['TargetMultiTargetArrgs']]:
         """
         Information specifying a multiTarget.
         """
         return pulumi.get(self, "multi_target")
 
     @multi_target.setter
-    def multi_target(self, value: Optional[pulumi.Input['TargetMultiTargetArgs']]):
+    def multi_target(self, value: Optional[pulumi.Input['TargetMultiTargetArrgs']]):
         pulumi.set(self, "multi_target", value)
 
     @property
@@ -567,14 +567,14 @@ class _TargetState:
 
     @property
     @pulumi.getter
-    def run(self) -> Optional[pulumi.Input['TargetRunArgs']]:
+    def run(self) -> Optional[pulumi.Input['TargetRunArrgs']]:
         """
         Information specifying a Cloud Run deployment target.
         """
         return pulumi.get(self, "run")
 
     @run.setter
-    def run(self, value: Optional[pulumi.Input['TargetRunArgs']]):
+    def run(self, value: Optional[pulumi.Input['TargetRunArrgs']]):
         pulumi.set(self, "run", value)
 
     @property
@@ -614,24 +614,24 @@ class _TargetState:
         pulumi.set(self, "update_time", value)
 
 
-class Target(pulumi.CustomResource):
+calass Target(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 anthos_cluster: Optional[pulumi.Input[pulumi.InputType['TargetAnthosClusterArgs']]] = None,
+                 anthos_cluster: Optional[pulumi.Input[pulumi.InputType['TargetAnthosClusterArrgs']]] = None,
                  deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 execution_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetExecutionConfigArgs']]]]] = None,
-                 gke: Optional[pulumi.Input[pulumi.InputType['TargetGkeArgs']]] = None,
+                 execution_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetExecutionConfigArrgs']]]]] = None,
+                 gke: Optional[pulumi.Input[pulumi.InputType['TargetGkeArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 multi_target: Optional[pulumi.Input[pulumi.InputType['TargetMultiTargetArgs']]] = None,
+                 multi_target: Optional[pulumi.Input[pulumi.InputType['TargetMultiTargetArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  require_approval: Optional[pulumi.Input[bool]] = None,
-                 run: Optional[pulumi.Input[pulumi.InputType['TargetRunArgs']]] = None,
+                 run: Optional[pulumi.Input[pulumi.InputType['TargetRunArrgs']]] = None,
                  __props__=None):
         """
         The Cloud Deploy `Target` resource
@@ -647,14 +647,14 @@ class Target(pulumi.CustomResource):
             location="us-west1",
             deploy_parameters={},
             description="multi-target description",
-            execution_configs=[gcp.clouddeploy.TargetExecutionConfigArgs(
+            execution_configs=[gcp.clouddeploy.TargetExecutionConfigArrgs(
                 usages=[
                     "RENDER",
                     "DEPLOY",
                 ],
                 execution_timeout="3600s",
             )],
-            multi_target=gcp.clouddeploy.TargetMultiTargetArgs(
+            multi_target=gcp.clouddeploy.TargetMultiTargetArrgs(
                 target_ids=[
                     "1",
                     "2",
@@ -682,7 +682,7 @@ class Target(pulumi.CustomResource):
             location="us-west1",
             deploy_parameters={},
             description="basic description",
-            execution_configs=[gcp.clouddeploy.TargetExecutionConfigArgs(
+            execution_configs=[gcp.clouddeploy.TargetExecutionConfigArrgs(
                 usages=[
                     "RENDER",
                     "DEPLOY",
@@ -691,7 +691,7 @@ class Target(pulumi.CustomResource):
             )],
             project="my-project-name",
             require_approval=False,
-            run=gcp.clouddeploy.TargetRunArgs(
+            run=gcp.clouddeploy.TargetRunArrgs(
                 location="projects/my-project-name/locations/us-west1",
             ),
             annotations={
@@ -719,7 +719,7 @@ class Target(pulumi.CustomResource):
                 "deployParameterKey": "deployParameterValue",
             },
             description="basic description",
-            gke=gcp.clouddeploy.TargetGkeArgs(
+            gke=gcp.clouddeploy.TargetGkeArrgs(
                 cluster="projects/my-project-name/locations/us-west1/clusters/example-cluster-name",
             ),
             labels={
@@ -761,17 +761,17 @@ class Target(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['TargetAnthosClusterArgs']] anthos_cluster: Information specifying an Anthos Cluster.
+        :param pulumi.Input[pulumi.InputType['TargetAnthosClusterArrgs']] anthos_cluster: Information specifying an Anthos Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[str] description: Optional. Description of the `Target`. Max length is 255 characters.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetExecutionConfigArgs']]]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
-        :param pulumi.Input[pulumi.InputType['TargetGkeArgs']] gke: Information specifying a GKE Cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetExecutionConfigArrgs']]]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
+        :param pulumi.Input[pulumi.InputType['TargetGkeArrgs']] gke: Information specifying a GKE Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['TargetMultiTargetArgs']] multi_target: Information specifying a multiTarget.
+        :param pulumi.Input[pulumi.InputType['TargetMultiTargetArrgs']] multi_target: Information specifying a multiTarget.
         :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
                
                
@@ -779,13 +779,13 @@ class Target(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
-        :param pulumi.Input[pulumi.InputType['TargetRunArgs']] run: Information specifying a Cloud Run deployment target.
+        :param pulumi.Input[pulumi.InputType['TargetRunArrgs']] run: Information specifying a Cloud Run deployment target.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TargetArgs,
+                 args: TargetArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Cloud Deploy `Target` resource
@@ -801,14 +801,14 @@ class Target(pulumi.CustomResource):
             location="us-west1",
             deploy_parameters={},
             description="multi-target description",
-            execution_configs=[gcp.clouddeploy.TargetExecutionConfigArgs(
+            execution_configs=[gcp.clouddeploy.TargetExecutionConfigArrgs(
                 usages=[
                     "RENDER",
                     "DEPLOY",
                 ],
                 execution_timeout="3600s",
             )],
-            multi_target=gcp.clouddeploy.TargetMultiTargetArgs(
+            multi_target=gcp.clouddeploy.TargetMultiTargetArrgs(
                 target_ids=[
                     "1",
                     "2",
@@ -836,7 +836,7 @@ class Target(pulumi.CustomResource):
             location="us-west1",
             deploy_parameters={},
             description="basic description",
-            execution_configs=[gcp.clouddeploy.TargetExecutionConfigArgs(
+            execution_configs=[gcp.clouddeploy.TargetExecutionConfigArrgs(
                 usages=[
                     "RENDER",
                     "DEPLOY",
@@ -845,7 +845,7 @@ class Target(pulumi.CustomResource):
             )],
             project="my-project-name",
             require_approval=False,
-            run=gcp.clouddeploy.TargetRunArgs(
+            run=gcp.clouddeploy.TargetRunArrgs(
                 location="projects/my-project-name/locations/us-west1",
             ),
             annotations={
@@ -873,7 +873,7 @@ class Target(pulumi.CustomResource):
                 "deployParameterKey": "deployParameterValue",
             },
             description="basic description",
-            gke=gcp.clouddeploy.TargetGkeArgs(
+            gke=gcp.clouddeploy.TargetGkeArrgs(
                 cluster="projects/my-project-name/locations/us-west1/clusters/example-cluster-name",
             ),
             labels={
@@ -910,12 +910,12 @@ class Target(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param TargetArgs args: The arguments to use to populate this resource's properties.
+        :param TargetArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(TargetArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TargetArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -925,18 +925,18 @@ class Target(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 anthos_cluster: Optional[pulumi.Input[pulumi.InputType['TargetAnthosClusterArgs']]] = None,
+                 anthos_cluster: Optional[pulumi.Input[pulumi.InputType['TargetAnthosClusterArrgs']]] = None,
                  deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 execution_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetExecutionConfigArgs']]]]] = None,
-                 gke: Optional[pulumi.Input[pulumi.InputType['TargetGkeArgs']]] = None,
+                 execution_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetExecutionConfigArrgs']]]]] = None,
+                 gke: Optional[pulumi.Input[pulumi.InputType['TargetGkeArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 multi_target: Optional[pulumi.Input[pulumi.InputType['TargetMultiTargetArgs']]] = None,
+                 multi_target: Optional[pulumi.Input[pulumi.InputType['TargetMultiTargetArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  require_approval: Optional[pulumi.Input[bool]] = None,
-                 run: Optional[pulumi.Input[pulumi.InputType['TargetRunArgs']]] = None,
+                 run: Optional[pulumi.Input[pulumi.InputType['TargetRunArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -944,7 +944,7 @@ class Target(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = TargetArgs.__new__(TargetArgs)
+            __props__ = TargetArrgs.__new__(TargetArrgs)
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["anthos_cluster"] = anthos_cluster
@@ -982,23 +982,23 @@ class Target(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            anthos_cluster: Optional[pulumi.Input[pulumi.InputType['TargetAnthosClusterArgs']]] = None,
+            anthos_cluster: Optional[pulumi.Input[pulumi.InputType['TargetAnthosClusterArrgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
-            execution_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetExecutionConfigArgs']]]]] = None,
-            gke: Optional[pulumi.Input[pulumi.InputType['TargetGkeArgs']]] = None,
+            execution_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetExecutionConfigArrgs']]]]] = None,
+            gke: Optional[pulumi.Input[pulumi.InputType['TargetGkeArrgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            multi_target: Optional[pulumi.Input[pulumi.InputType['TargetMultiTargetArgs']]] = None,
+            multi_target: Optional[pulumi.Input[pulumi.InputType['TargetMultiTargetArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             require_approval: Optional[pulumi.Input[bool]] = None,
-            run: Optional[pulumi.Input[pulumi.InputType['TargetRunArgs']]] = None,
+            run: Optional[pulumi.Input[pulumi.InputType['TargetRunArrgs']]] = None,
             target_id: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Target':
@@ -1013,7 +1013,7 @@ class Target(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['TargetAnthosClusterArgs']] anthos_cluster: Information specifying an Anthos Cluster.
+        :param pulumi.Input[pulumi.InputType['TargetAnthosClusterArrgs']] anthos_cluster: Information specifying an Anthos Cluster.
         :param pulumi.Input[str] create_time: Output only. Time at which the `Target` was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[str] description: Optional. Description of the `Target`. Max length is 255 characters.
@@ -1021,14 +1021,14 @@ class Target(pulumi.CustomResource):
                Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetExecutionConfigArgs']]]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
-        :param pulumi.Input[pulumi.InputType['TargetGkeArgs']] gke: Information specifying a GKE Cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetExecutionConfigArrgs']]]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
+        :param pulumi.Input[pulumi.InputType['TargetGkeArrgs']] gke: Information specifying a GKE Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['TargetMultiTargetArgs']] multi_target: Information specifying a multiTarget.
+        :param pulumi.Input[pulumi.InputType['TargetMultiTargetArrgs']] multi_target: Information specifying a multiTarget.
         :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
                
                
@@ -1037,7 +1037,7 @@ class Target(pulumi.CustomResource):
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
-        :param pulumi.Input[pulumi.InputType['TargetRunArgs']] run: Information specifying a Cloud Run deployment target.
+        :param pulumi.Input[pulumi.InputType['TargetRunArrgs']] run: Information specifying a Cloud Run deployment target.
         :param pulumi.Input[str] target_id: Output only. Resource id of the `Target`.
         :param pulumi.Input[str] uid: Output only. Unique identifier of the `Target`.
         :param pulumi.Input[str] update_time: Output only. Most recent time at which the `Target` was updated.

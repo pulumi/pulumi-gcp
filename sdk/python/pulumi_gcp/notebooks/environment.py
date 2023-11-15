@@ -11,26 +11,26 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['EnvironmentArgs', 'Environment']
+__all__ = ['EnvironmentArrgs', 'Environment']
 
 @pulumi.input_type
-class EnvironmentArgs:
+calass EnvironmentArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 container_image: Optional[pulumi.Input['EnvironmentContainerImageArgs']] = None,
+                 container_image: Optional[pulumi.Input['EnvironmentContainerImageArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 vm_image: Optional[pulumi.Input['EnvironmentVmImageArgs']] = None):
+                 vm_image: Optional[pulumi.Input['EnvironmentVmImageArrgs']] = None):
         """
         The set of arguments for constructing a Environment resource.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
                
                
                - - -
-        :param pulumi.Input['EnvironmentContainerImageArgs'] container_image: Use a container image to start the notebook instance.
+        :param pulumi.Input['EnvironmentContainerImageArrgs'] container_image: Use a container image to start the notebook instance.
                Structure is documented below.
         :param pulumi.Input[str] description: A brief description of this environment.
         :param pulumi.Input[str] display_name: Display name of this environment for the UI.
@@ -40,7 +40,7 @@ class EnvironmentArgs:
                The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['EnvironmentVmImageArgs'] vm_image: Use a Compute Engine VM image to start the notebook instance.
+        :param pulumi.Input['EnvironmentVmImageArrgs'] vm_image: Use a Compute Engine VM image to start the notebook instance.
                Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
@@ -76,7 +76,7 @@ class EnvironmentArgs:
 
     @property
     @pulumi.getter(name="containerImage")
-    def container_image(self) -> Optional[pulumi.Input['EnvironmentContainerImageArgs']]:
+    def container_image(self) -> Optional[pulumi.Input['EnvironmentContainerImageArrgs']]:
         """
         Use a container image to start the notebook instance.
         Structure is documented below.
@@ -84,7 +84,7 @@ class EnvironmentArgs:
         return pulumi.get(self, "container_image")
 
     @container_image.setter
-    def container_image(self, value: Optional[pulumi.Input['EnvironmentContainerImageArgs']]):
+    def container_image(self, value: Optional[pulumi.Input['EnvironmentContainerImageArrgs']]):
         pulumi.set(self, "container_image", value)
 
     @property
@@ -152,7 +152,7 @@ class EnvironmentArgs:
 
     @property
     @pulumi.getter(name="vmImage")
-    def vm_image(self) -> Optional[pulumi.Input['EnvironmentVmImageArgs']]:
+    def vm_image(self) -> Optional[pulumi.Input['EnvironmentVmImageArrgs']]:
         """
         Use a Compute Engine VM image to start the notebook instance.
         Structure is documented below.
@@ -160,14 +160,14 @@ class EnvironmentArgs:
         return pulumi.get(self, "vm_image")
 
     @vm_image.setter
-    def vm_image(self, value: Optional[pulumi.Input['EnvironmentVmImageArgs']]):
+    def vm_image(self, value: Optional[pulumi.Input['EnvironmentVmImageArrgs']]):
         pulumi.set(self, "vm_image", value)
 
 
 @pulumi.input_type
-class _EnvironmentState:
+calass _EnvironmentState:
     def __init__(__self__, *,
-                 container_image: Optional[pulumi.Input['EnvironmentContainerImageArgs']] = None,
+                 container_image: Optional[pulumi.Input['EnvironmentContainerImageArrgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -175,10 +175,10 @@ class _EnvironmentState:
                  name: Optional[pulumi.Input[str]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 vm_image: Optional[pulumi.Input['EnvironmentVmImageArgs']] = None):
+                 vm_image: Optional[pulumi.Input['EnvironmentVmImageArrgs']] = None):
         """
         Input properties used for looking up and filtering Environment resources.
-        :param pulumi.Input['EnvironmentContainerImageArgs'] container_image: Use a container image to start the notebook instance.
+        :param pulumi.Input['EnvironmentContainerImageArrgs'] container_image: Use a container image to start the notebook instance.
                Structure is documented below.
         :param pulumi.Input[str] create_time: Instance creation time
         :param pulumi.Input[str] description: A brief description of this environment.
@@ -193,7 +193,7 @@ class _EnvironmentState:
                The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['EnvironmentVmImageArgs'] vm_image: Use a Compute Engine VM image to start the notebook instance.
+        :param pulumi.Input['EnvironmentVmImageArrgs'] vm_image: Use a Compute Engine VM image to start the notebook instance.
                Structure is documented below.
         """
         if container_image is not None:
@@ -217,7 +217,7 @@ class _EnvironmentState:
 
     @property
     @pulumi.getter(name="containerImage")
-    def container_image(self) -> Optional[pulumi.Input['EnvironmentContainerImageArgs']]:
+    def container_image(self) -> Optional[pulumi.Input['EnvironmentContainerImageArrgs']]:
         """
         Use a container image to start the notebook instance.
         Structure is documented below.
@@ -225,7 +225,7 @@ class _EnvironmentState:
         return pulumi.get(self, "container_image")
 
     @container_image.setter
-    def container_image(self, value: Optional[pulumi.Input['EnvironmentContainerImageArgs']]):
+    def container_image(self, value: Optional[pulumi.Input['EnvironmentContainerImageArrgs']]):
         pulumi.set(self, "container_image", value)
 
     @property
@@ -320,7 +320,7 @@ class _EnvironmentState:
 
     @property
     @pulumi.getter(name="vmImage")
-    def vm_image(self) -> Optional[pulumi.Input['EnvironmentVmImageArgs']]:
+    def vm_image(self) -> Optional[pulumi.Input['EnvironmentVmImageArrgs']]:
         """
         Use a Compute Engine VM image to start the notebook instance.
         Structure is documented below.
@@ -328,23 +328,23 @@ class _EnvironmentState:
         return pulumi.get(self, "vm_image")
 
     @vm_image.setter
-    def vm_image(self, value: Optional[pulumi.Input['EnvironmentVmImageArgs']]):
+    def vm_image(self, value: Optional[pulumi.Input['EnvironmentVmImageArrgs']]):
         pulumi.set(self, "vm_image", value)
 
 
-class Environment(pulumi.CustomResource):
+calass Environment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 container_image: Optional[pulumi.Input[pulumi.InputType['EnvironmentContainerImageArgs']]] = None,
+                 container_image: Optional[pulumi.Input[pulumi.InputType['EnvironmentContainerImageArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 vm_image: Optional[pulumi.Input[pulumi.InputType['EnvironmentVmImageArgs']]] = None,
+                 vm_image: Optional[pulumi.Input[pulumi.InputType['EnvironmentVmImageArrgs']]] = None,
                  __props__=None):
         """
         A Cloud AI Platform Notebook environment.
@@ -363,7 +363,7 @@ class Environment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         environment = gcp.notebooks.Environment("environment",
-            container_image=gcp.notebooks.EnvironmentContainerImageArgs(
+            container_image=gcp.notebooks.EnvironmentContainerImageArrgs(
                 repository="gcr.io/deeplearning-platform-release/base-cpu",
             ),
             location="us-west1-a")
@@ -395,7 +395,7 @@ class Environment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['EnvironmentContainerImageArgs']] container_image: Use a container image to start the notebook instance.
+        :param pulumi.Input[pulumi.InputType['EnvironmentContainerImageArrgs']] container_image: Use a container image to start the notebook instance.
                Structure is documented below.
         :param pulumi.Input[str] description: A brief description of this environment.
         :param pulumi.Input[str] display_name: Display name of this environment for the UI.
@@ -409,14 +409,14 @@ class Environment(pulumi.CustomResource):
                The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['EnvironmentVmImageArgs']] vm_image: Use a Compute Engine VM image to start the notebook instance.
+        :param pulumi.Input[pulumi.InputType['EnvironmentVmImageArrgs']] vm_image: Use a Compute Engine VM image to start the notebook instance.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: EnvironmentArgs,
+                 args: EnvironmentArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Cloud AI Platform Notebook environment.
@@ -435,7 +435,7 @@ class Environment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         environment = gcp.notebooks.Environment("environment",
-            container_image=gcp.notebooks.EnvironmentContainerImageArgs(
+            container_image=gcp.notebooks.EnvironmentContainerImageArrgs(
                 repository="gcr.io/deeplearning-platform-release/base-cpu",
             ),
             location="us-west1-a")
@@ -466,12 +466,12 @@ class Environment(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param EnvironmentArgs args: The arguments to use to populate this resource's properties.
+        :param EnvironmentArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(EnvironmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(EnvironmentArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -480,14 +480,14 @@ class Environment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 container_image: Optional[pulumi.Input[pulumi.InputType['EnvironmentContainerImageArgs']]] = None,
+                 container_image: Optional[pulumi.Input[pulumi.InputType['EnvironmentContainerImageArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 vm_image: Optional[pulumi.Input[pulumi.InputType['EnvironmentVmImageArgs']]] = None,
+                 vm_image: Optional[pulumi.Input[pulumi.InputType['EnvironmentVmImageArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -495,7 +495,7 @@ class Environment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = EnvironmentArgs.__new__(EnvironmentArgs)
+            __props__ = EnvironmentArrgs.__new__(EnvironmentArrgs)
 
             __props__.__dict__["container_image"] = container_image
             __props__.__dict__["description"] = description
@@ -518,7 +518,7 @@ class Environment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            container_image: Optional[pulumi.Input[pulumi.InputType['EnvironmentContainerImageArgs']]] = None,
+            container_image: Optional[pulumi.Input[pulumi.InputType['EnvironmentContainerImageArrgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
@@ -526,7 +526,7 @@ class Environment(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             post_startup_script: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            vm_image: Optional[pulumi.Input[pulumi.InputType['EnvironmentVmImageArgs']]] = None) -> 'Environment':
+            vm_image: Optional[pulumi.Input[pulumi.InputType['EnvironmentVmImageArrgs']]] = None) -> 'Environment':
         """
         Get an existing Environment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -534,7 +534,7 @@ class Environment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['EnvironmentContainerImageArgs']] container_image: Use a container image to start the notebook instance.
+        :param pulumi.Input[pulumi.InputType['EnvironmentContainerImageArrgs']] container_image: Use a container image to start the notebook instance.
                Structure is documented below.
         :param pulumi.Input[str] create_time: Instance creation time
         :param pulumi.Input[str] description: A brief description of this environment.
@@ -549,7 +549,7 @@ class Environment(pulumi.CustomResource):
                The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['EnvironmentVmImageArgs']] vm_image: Use a Compute Engine VM image to start the notebook instance.
+        :param pulumi.Input[pulumi.InputType['EnvironmentVmImageArrgs']] vm_image: Use a Compute Engine VM image to start the notebook instance.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

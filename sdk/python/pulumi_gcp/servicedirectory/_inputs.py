@@ -10,14 +10,14 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'NamespaceIamBindingConditionArgs',
-    'NamespaceIamMemberConditionArgs',
-    'ServiceIamBindingConditionArgs',
-    'ServiceIamMemberConditionArgs',
+    'NamespaceIamBindingConditionArrgs',
+    'NamespaceIamMemberConditionArrgs',
+    'ServiceIamBindingConditionArrgs',
+    'ServiceIamMemberConditionArrgs',
 ]
 
 @pulumi.input_type
-class NamespaceIamBindingConditionArgs:
+calass NamespaceIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -56,7 +56,7 @@ class NamespaceIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class NamespaceIamMemberConditionArgs:
+calass NamespaceIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -95,7 +95,7 @@ class NamespaceIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class ServiceIamBindingConditionArgs:
+calass ServiceIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -134,7 +134,7 @@ class ServiceIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class ServiceIamMemberConditionArgs:
+calass ServiceIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],

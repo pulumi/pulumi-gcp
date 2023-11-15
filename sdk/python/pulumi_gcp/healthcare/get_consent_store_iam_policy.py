@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetConsentStoreIamPolicyResult:
+calass GetConsentStoreIamPolicyResult:
     """
     A collection of values returned by getConsentStoreIamPolicy.
     """
@@ -74,7 +74,7 @@ class GetConsentStoreIamPolicyResult:
         return pulumi.get(self, "policy_data")
 
 
-class AwaitableGetConsentStoreIamPolicyResult(GetConsentStoreIamPolicyResult):
+calass AwaitableGetConsentStoreIamPolicyResult(GetConsentStoreIamPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

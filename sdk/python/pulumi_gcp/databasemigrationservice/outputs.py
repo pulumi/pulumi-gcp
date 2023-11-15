@@ -35,7 +35,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class ConnectionProfileAlloydb(dict):
+calass ConnectionProfileAlloydb(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -58,7 +58,7 @@ class ConnectionProfileAlloydb(dict):
                  settings: Optional['outputs.ConnectionProfileAlloydbSettings'] = None):
         """
         :param str cluster_id: Required. The AlloyDB cluster ID that this connection profile is associated with.
-        :param 'ConnectionProfileAlloydbSettingsArgs' settings: Immutable. Metadata used to create the destination AlloyDB cluster.
+        :param 'ConnectionProfileAlloydbSettingsArrgs' settings: Immutable. Metadata used to create the destination AlloyDB cluster.
                Structure is documented below.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -84,7 +84,7 @@ class ConnectionProfileAlloydb(dict):
 
 
 @pulumi.output_type
-class ConnectionProfileAlloydbSettings(dict):
+calass ConnectionProfileAlloydbSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -112,12 +112,12 @@ class ConnectionProfileAlloydbSettings(dict):
                  labels: Optional[Mapping[str, str]] = None,
                  primary_instance_settings: Optional['outputs.ConnectionProfileAlloydbSettingsPrimaryInstanceSettings'] = None):
         """
-        :param 'ConnectionProfileAlloydbSettingsInitialUserArgs' initial_user: Required. Input only. Initial user to setup during cluster creation.
+        :param 'ConnectionProfileAlloydbSettingsInitialUserArrgs' initial_user: Required. Input only. Initial user to setup during cluster creation.
                Structure is documented below.
         :param str vpc_network: Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
                It is specified in the form: 'projects/{project_number}/global/networks/{network_id}'. This is required to create a cluster.
         :param Mapping[str, str] labels: Labels for the AlloyDB cluster created by DMS.
-        :param 'ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs' primary_instance_settings: Settings for the cluster's primary instance
+        :param 'ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArrgs' primary_instance_settings: Settings for the cluster's primary instance
                Structure is documented below.
         """
         pulumi.set(__self__, "initial_user", initial_user)
@@ -164,7 +164,7 @@ class ConnectionProfileAlloydbSettings(dict):
 
 
 @pulumi.output_type
-class ConnectionProfileAlloydbSettingsInitialUser(dict):
+calass ConnectionProfileAlloydbSettingsInitialUser(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -226,7 +226,7 @@ class ConnectionProfileAlloydbSettingsInitialUser(dict):
 
 
 @pulumi.output_type
-class ConnectionProfileAlloydbSettingsPrimaryInstanceSettings(dict):
+calass ConnectionProfileAlloydbSettingsPrimaryInstanceSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -256,7 +256,7 @@ class ConnectionProfileAlloydbSettingsPrimaryInstanceSettings(dict):
                  private_ip: Optional[str] = None):
         """
         :param str id: The database username.
-        :param 'ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs' machine_config: Configuration for the machines that host the underlying database engine.
+        :param 'ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArrgs' machine_config: Configuration for the machines that host the underlying database engine.
                Structure is documented below.
         :param Mapping[str, str] database_flags: Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
         :param Mapping[str, str] labels: Labels for the AlloyDB primary instance created by DMS.
@@ -316,7 +316,7 @@ class ConnectionProfileAlloydbSettingsPrimaryInstanceSettings(dict):
 
 
 @pulumi.output_type
-class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig(dict):
+calass ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -351,7 +351,7 @@ class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig(dict)
 
 
 @pulumi.output_type
-class ConnectionProfileCloudsql(dict):
+calass ConnectionProfileCloudsql(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -385,7 +385,7 @@ class ConnectionProfileCloudsql(dict):
                Output only. The Cloud SQL database instance's private IP.
         :param str public_ip: (Output)
                Output only. The Cloud SQL database instance's public IP.
-        :param 'ConnectionProfileCloudsqlSettingsArgs' settings: Immutable. Metadata used to create the destination Cloud SQL database.
+        :param 'ConnectionProfileCloudsqlSettingsArrgs' settings: Immutable. Metadata used to create the destination Cloud SQL database.
                Structure is documented below.
         """
         if cloud_sql_id is not None:
@@ -435,7 +435,7 @@ class ConnectionProfileCloudsql(dict):
 
 
 @pulumi.output_type
-class ConnectionProfileCloudsqlSettings(dict):
+calass ConnectionProfileCloudsqlSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -511,7 +511,7 @@ class ConnectionProfileCloudsqlSettings(dict):
                Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
         :param str edition: The edition of the given Cloud SQL instance.
                Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
-        :param 'ConnectionProfileCloudsqlSettingsIpConfigArgs' ip_config: The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
+        :param 'ConnectionProfileCloudsqlSettingsIpConfigArrgs' ip_config: The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
                Structure is documented below.
         :param str root_password: Input only. Initial root password.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -704,7 +704,7 @@ class ConnectionProfileCloudsqlSettings(dict):
 
 
 @pulumi.output_type
-class ConnectionProfileCloudsqlSettingsIpConfig(dict):
+calass ConnectionProfileCloudsqlSettingsIpConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -734,7 +734,7 @@ class ConnectionProfileCloudsqlSettingsIpConfig(dict):
                  private_network: Optional[str] = None,
                  require_ssl: Optional[bool] = None):
         """
-        :param Sequence['ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs'] authorized_networks: The list of external networks that are allowed to connect to the instance using the IP.
+        :param Sequence['ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrgs'] authorized_networks: The list of external networks that are allowed to connect to the instance using the IP.
                Structure is documented below.
         :param bool enable_ipv4: Whether the instance should be assigned an IPv4 address or not.
         :param str private_network: The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default.
@@ -786,7 +786,7 @@ class ConnectionProfileCloudsqlSettingsIpConfig(dict):
 
 
 @pulumi.output_type
-class ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork(dict):
+calass ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -857,7 +857,7 @@ class ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork(dict):
 
 
 @pulumi.output_type
-class ConnectionProfileError(dict):
+calass ConnectionProfileError(dict):
     def __init__(__self__, *,
                  code: Optional[int] = None,
                  details: Optional[Sequence[Mapping[str, Any]]] = None,
@@ -906,7 +906,7 @@ class ConnectionProfileError(dict):
 
 
 @pulumi.output_type
-class ConnectionProfileMysql(dict):
+calass ConnectionProfileMysql(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -944,7 +944,7 @@ class ConnectionProfileMysql(dict):
         :param str cloud_sql_id: If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
         :param bool password_set: (Output)
                Output only. Indicates If this connection profile password is stored.
-        :param 'ConnectionProfileMysqlSslArgs' ssl: SSL configuration for the destination to connect to the source database.
+        :param 'ConnectionProfileMysqlSslArrgs' ssl: SSL configuration for the destination to connect to the source database.
                Structure is documented below.
         """
         pulumi.set(__self__, "host", host)
@@ -1020,7 +1020,7 @@ class ConnectionProfileMysql(dict):
 
 
 @pulumi.output_type
-class ConnectionProfileMysqlSsl(dict):
+calass ConnectionProfileMysqlSsl(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1109,7 +1109,7 @@ class ConnectionProfileMysqlSsl(dict):
 
 
 @pulumi.output_type
-class ConnectionProfileOracle(dict):
+calass ConnectionProfileOracle(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1154,15 +1154,15 @@ class ConnectionProfileOracle(dict):
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param int port: Required. The network port of the source Oracle database.
         :param str username: Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
-        :param 'ConnectionProfileOracleForwardSshConnectivityArgs' forward_ssh_connectivity: SSL configuration for the destination to connect to the source database.
+        :param 'ConnectionProfileOracleForwardSshConnectivityArrgs' forward_ssh_connectivity: SSL configuration for the destination to connect to the source database.
                Structure is documented below.
         :param bool password_set: (Output)
                Output only. Indicates If this connection profile password is stored.
-        :param 'ConnectionProfileOraclePrivateConnectivityArgs' private_connectivity: Configuration for using a private network to communicate with the source database
+        :param 'ConnectionProfileOraclePrivateConnectivityArrgs' private_connectivity: Configuration for using a private network to communicate with the source database
                Structure is documented below.
-        :param 'ConnectionProfileOracleSslArgs' ssl: SSL configuration for the destination to connect to the source database.
+        :param 'ConnectionProfileOracleSslArrgs' ssl: SSL configuration for the destination to connect to the source database.
                Structure is documented below.
-        :param 'ConnectionProfileOracleStaticServiceIpConnectivityArgs' static_service_ip_connectivity: This object has no nested fields.
+        :param 'ConnectionProfileOracleStaticServiceIpConnectivityArrgs' static_service_ip_connectivity: This object has no nested fields.
                Static IP address connectivity configured on service project.
         """
         pulumi.set(__self__, "database_service", database_service)
@@ -1270,7 +1270,7 @@ class ConnectionProfileOracle(dict):
 
 
 @pulumi.output_type
-class ConnectionProfileOracleForwardSshConnectivity(dict):
+calass ConnectionProfileOracleForwardSshConnectivity(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1355,7 +1355,7 @@ class ConnectionProfileOracleForwardSshConnectivity(dict):
 
 
 @pulumi.output_type
-class ConnectionProfileOraclePrivateConnectivity(dict):
+calass ConnectionProfileOraclePrivateConnectivity(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1390,7 +1390,7 @@ class ConnectionProfileOraclePrivateConnectivity(dict):
 
 
 @pulumi.output_type
-class ConnectionProfileOracleSsl(dict):
+calass ConnectionProfileOracleSsl(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1479,13 +1479,13 @@ class ConnectionProfileOracleSsl(dict):
 
 
 @pulumi.output_type
-class ConnectionProfileOracleStaticServiceIpConnectivity(dict):
+calass ConnectionProfileOracleStaticServiceIpConnectivity(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class ConnectionProfilePostgresql(dict):
+calass ConnectionProfilePostgresql(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1528,7 +1528,7 @@ class ConnectionProfilePostgresql(dict):
                Output only. If the source is a Cloud SQL database, this field indicates the network architecture it's associated with.
         :param bool password_set: (Output)
                Output only. Indicates If this connection profile password is stored.
-        :param 'ConnectionProfilePostgresqlSslArgs' ssl: SSL configuration for the destination to connect to the source database.
+        :param 'ConnectionProfilePostgresqlSslArrgs' ssl: SSL configuration for the destination to connect to the source database.
                Structure is documented below.
         """
         pulumi.set(__self__, "host", host)
@@ -1615,7 +1615,7 @@ class ConnectionProfilePostgresql(dict):
 
 
 @pulumi.output_type
-class ConnectionProfilePostgresqlSsl(dict):
+calass ConnectionProfilePostgresqlSsl(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1704,7 +1704,7 @@ class ConnectionProfilePostgresqlSsl(dict):
 
 
 @pulumi.output_type
-class PrivateConnectionError(dict):
+calass PrivateConnectionError(dict):
     def __init__(__self__, *,
                  details: Optional[Mapping[str, str]] = None,
                  message: Optional[str] = None):
@@ -1735,7 +1735,7 @@ class PrivateConnectionError(dict):
 
 
 @pulumi.output_type
-class PrivateConnectionVpcPeeringConfig(dict):
+calass PrivateConnectionVpcPeeringConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

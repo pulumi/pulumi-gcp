@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetResourcePolicyResult:
+calass GetResourcePolicyResult:
     """
     A collection of values returned by getResourcePolicy.
     """
@@ -114,7 +114,7 @@ class GetResourcePolicyResult:
         return pulumi.get(self, "snapshot_schedule_policies")
 
 
-class AwaitableGetResourcePolicyResult(GetResourcePolicyResult):
+calass AwaitableGetResourcePolicyResult(GetResourcePolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

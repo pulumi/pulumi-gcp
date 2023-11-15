@@ -10,24 +10,24 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'InstanceMaintenancePolicyArgs',
-    'InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs',
-    'InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs',
-    'InstanceMaintenanceScheduleArgs',
-    'InstanceMemcacheNodeArgs',
-    'InstanceMemcacheParametersArgs',
-    'InstanceNodeConfigArgs',
+    'InstanceMaintenancePolicyArrgs',
+    'InstanceMaintenancePolicyWeeklyMaintenanceWindowArrgs',
+    'InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrgs',
+    'InstanceMaintenanceScheduleArrgs',
+    'InstanceMemcacheNodeArrgs',
+    'InstanceMemcacheParametersArrgs',
+    'InstanceNodeConfigArrgs',
 ]
 
 @pulumi.input_type
-class InstanceMaintenancePolicyArgs:
+calass InstanceMaintenancePolicyArrgs:
     def __init__(__self__, *,
-                 weekly_maintenance_windows: pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]],
+                 weekly_maintenance_windows: pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArrgs']]],
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]] weekly_maintenance_windows: Required. Maintenance window that is applied to resources covered by this policy.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArrgs']]] weekly_maintenance_windows: Required. Maintenance window that is applied to resources covered by this policy.
                Minimum 1. For the current version, the maximum number of weekly_maintenance_windows
                is expected to be one.
                Structure is documented below.
@@ -53,7 +53,7 @@ class InstanceMaintenancePolicyArgs:
 
     @property
     @pulumi.getter(name="weeklyMaintenanceWindows")
-    def weekly_maintenance_windows(self) -> pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]]:
+    def weekly_maintenance_windows(self) -> pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArrgs']]]:
         """
         Required. Maintenance window that is applied to resources covered by this policy.
         Minimum 1. For the current version, the maximum number of weekly_maintenance_windows
@@ -63,7 +63,7 @@ class InstanceMaintenancePolicyArgs:
         return pulumi.get(self, "weekly_maintenance_windows")
 
     @weekly_maintenance_windows.setter
-    def weekly_maintenance_windows(self, value: pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]]):
+    def weekly_maintenance_windows(self, value: pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArrgs']]]):
         pulumi.set(self, "weekly_maintenance_windows", value)
 
     @property
@@ -112,11 +112,11 @@ class InstanceMaintenancePolicyArgs:
 
 
 @pulumi.input_type
-class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
+calass InstanceMaintenancePolicyWeeklyMaintenanceWindowArrgs:
     def __init__(__self__, *,
                  day: pulumi.Input[str],
                  duration: pulumi.Input[str],
-                 start_time: pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs']):
+                 start_time: pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrgs']):
         """
         :param pulumi.Input[str] day: Required. The day of week that maintenance updates occur.
                - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
@@ -131,7 +131,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
         :param pulumi.Input[str] duration: Required. The length of the maintenance window, ranging from 3 hours to 8 hours.
                A duration in seconds with up to nine fractional digits,
                terminated by 's'. Example: "3.5s".
-        :param pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs'] start_time: Required. Start time of the window in UTC time.
+        :param pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrgs'] start_time: Required. Start time of the window in UTC time.
                Structure is documented below.
         """
         pulumi.set(__self__, "day", day)
@@ -175,7 +175,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
 
     @property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs']:
+    def start_time(self) -> pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrgs']:
         """
         Required. Start time of the window in UTC time.
         Structure is documented below.
@@ -183,12 +183,12 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs']):
+    def start_time(self, value: pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrgs']):
         pulumi.set(self, "start_time", value)
 
 
 @pulumi.input_type
-class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
+calass InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrgs:
     def __init__(__self__, *,
                  hours: Optional[pulumi.Input[int]] = None,
                  minutes: Optional[pulumi.Input[int]] = None,
@@ -263,7 +263,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
 
 
 @pulumi.input_type
-class InstanceMaintenanceScheduleArgs:
+calass InstanceMaintenanceScheduleArrgs:
     def __init__(__self__, *,
                  end_time: Optional[pulumi.Input[str]] = None,
                  schedule_deadline_time: Optional[pulumi.Input[str]] = None,
@@ -334,7 +334,7 @@ class InstanceMaintenanceScheduleArgs:
 
 
 @pulumi.input_type
-class InstanceMemcacheNodeArgs:
+calass InstanceMemcacheNodeArrgs:
     def __init__(__self__, *,
                  host: Optional[pulumi.Input[str]] = None,
                  node_id: Optional[pulumi.Input[str]] = None,
@@ -431,7 +431,7 @@ class InstanceMemcacheNodeArgs:
 
 
 @pulumi.input_type
-class InstanceMemcacheParametersArgs:
+calass InstanceMemcacheParametersArrgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[str]] = None,
                  params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -472,7 +472,7 @@ class InstanceMemcacheParametersArgs:
 
 
 @pulumi.input_type
-class InstanceNodeConfigArgs:
+calass InstanceNodeConfigArrgs:
     def __init__(__self__, *,
                  cpu_count: pulumi.Input[int],
                  memory_size_mb: pulumi.Input[int]):

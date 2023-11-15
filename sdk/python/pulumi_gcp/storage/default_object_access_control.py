@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DefaultObjectAccessControlArgs', 'DefaultObjectAccessControl']
+__all__ = ['DefaultObjectAccessControlArrgs', 'DefaultObjectAccessControl']
 
 @pulumi.input_type
-class DefaultObjectAccessControlArgs:
+calass DefaultObjectAccessControlArrgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
                  entity: pulumi.Input[str],
@@ -107,7 +107,7 @@ class DefaultObjectAccessControlArgs:
 
 
 @pulumi.input_type
-class _DefaultObjectAccessControlState:
+calass _DefaultObjectAccessControlState:
     def __init__(__self__, *,
                  bucket: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
@@ -116,7 +116,7 @@ class _DefaultObjectAccessControlState:
                  entity_id: Optional[pulumi.Input[str]] = None,
                  generation: Optional[pulumi.Input[int]] = None,
                  object: Optional[pulumi.Input[str]] = None,
-                 project_teams: Optional[pulumi.Input[Sequence[pulumi.Input['DefaultObjectAccessControlProjectTeamArgs']]]] = None,
+                 project_teams: Optional[pulumi.Input[Sequence[pulumi.Input['DefaultObjectAccessControlProjectTeamArrgs']]]] = None,
                  role: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DefaultObjectAccessControl resources.
@@ -135,7 +135,7 @@ class _DefaultObjectAccessControlState:
         :param pulumi.Input[str] entity_id: The ID for the entity
         :param pulumi.Input[int] generation: The content generation of the object, if applied to an object.
         :param pulumi.Input[str] object: The name of the object, if applied to an object.
-        :param pulumi.Input[Sequence[pulumi.Input['DefaultObjectAccessControlProjectTeamArgs']]] project_teams: The project team associated with the entity
+        :param pulumi.Input[Sequence[pulumi.Input['DefaultObjectAccessControlProjectTeamArrgs']]] project_teams: The project team associated with the entity
                Structure is documented below.
         :param pulumi.Input[str] role: The access permission for the entity.
                Possible values are: `OWNER`, `READER`.
@@ -256,7 +256,7 @@ class _DefaultObjectAccessControlState:
 
     @property
     @pulumi.getter(name="projectTeams")
-    def project_teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DefaultObjectAccessControlProjectTeamArgs']]]]:
+    def project_teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DefaultObjectAccessControlProjectTeamArrgs']]]]:
         """
         The project team associated with the entity
         Structure is documented below.
@@ -264,7 +264,7 @@ class _DefaultObjectAccessControlState:
         return pulumi.get(self, "project_teams")
 
     @project_teams.setter
-    def project_teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DefaultObjectAccessControlProjectTeamArgs']]]]):
+    def project_teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DefaultObjectAccessControlProjectTeamArrgs']]]]):
         pulumi.set(self, "project_teams", value)
 
     @property
@@ -284,7 +284,7 @@ class _DefaultObjectAccessControlState:
         pulumi.set(self, "role", value)
 
 
-class DefaultObjectAccessControl(pulumi.CustomResource):
+calass DefaultObjectAccessControl(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -368,7 +368,7 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DefaultObjectAccessControlArgs,
+                 args: DefaultObjectAccessControlArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The DefaultObjectAccessControls resources represent the Access Control
@@ -422,12 +422,12 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param DefaultObjectAccessControlArgs args: The arguments to use to populate this resource's properties.
+        :param DefaultObjectAccessControlArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DefaultObjectAccessControlArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DefaultObjectAccessControlArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -447,7 +447,7 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DefaultObjectAccessControlArgs.__new__(DefaultObjectAccessControlArgs)
+            __props__ = DefaultObjectAccessControlArrgs.__new__(DefaultObjectAccessControlArrgs)
 
             if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")
@@ -481,7 +481,7 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
             entity_id: Optional[pulumi.Input[str]] = None,
             generation: Optional[pulumi.Input[int]] = None,
             object: Optional[pulumi.Input[str]] = None,
-            project_teams: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DefaultObjectAccessControlProjectTeamArgs']]]]] = None,
+            project_teams: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DefaultObjectAccessControlProjectTeamArrgs']]]]] = None,
             role: Optional[pulumi.Input[str]] = None) -> 'DefaultObjectAccessControl':
         """
         Get an existing DefaultObjectAccessControl resource's state with the given name, id, and optional extra
@@ -505,7 +505,7 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
         :param pulumi.Input[str] entity_id: The ID for the entity
         :param pulumi.Input[int] generation: The content generation of the object, if applied to an object.
         :param pulumi.Input[str] object: The name of the object, if applied to an object.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DefaultObjectAccessControlProjectTeamArgs']]]] project_teams: The project team associated with the entity
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DefaultObjectAccessControlProjectTeamArrgs']]]] project_teams: The project team associated with the entity
                Structure is documented below.
         :param pulumi.Input[str] role: The access permission for the entity.
                Possible values are: `OWNER`, `READER`.

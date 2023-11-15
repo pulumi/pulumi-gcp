@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DataPolicyArgs', 'DataPolicy']
+__all__ = ['DataPolicyArrgs', 'DataPolicy']
 
 @pulumi.input_type
-class DataPolicyArgs:
+calass DataPolicyArrgs:
     def __init__(__self__, *,
                  data_policy_id: pulumi.Input[str],
                  data_policy_type: pulumi.Input[str],
                  location: pulumi.Input[str],
                  policy_tag: pulumi.Input[str],
-                 data_masking_policy: Optional[pulumi.Input['DataPolicyDataMaskingPolicyArgs']] = None,
+                 data_masking_policy: Optional[pulumi.Input['DataPolicyDataMaskingPolicyArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DataPolicy resource.
@@ -32,7 +32,7 @@ class DataPolicyArgs:
                - - -
         :param pulumi.Input[str] location: The name of the location of the data policy.
         :param pulumi.Input[str] policy_tag: Policy tag resource name, in the format of projects/{project_number}/locations/{locationId}/taxonomies/{taxonomyId}/policyTags/{policyTag_id}.
-        :param pulumi.Input['DataPolicyDataMaskingPolicyArgs'] data_masking_policy: The data masking policy that specifies the data masking rule to use.
+        :param pulumi.Input['DataPolicyDataMaskingPolicyArrgs'] data_masking_policy: The data masking policy that specifies the data masking rule to use.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -100,7 +100,7 @@ class DataPolicyArgs:
 
     @property
     @pulumi.getter(name="dataMaskingPolicy")
-    def data_masking_policy(self) -> Optional[pulumi.Input['DataPolicyDataMaskingPolicyArgs']]:
+    def data_masking_policy(self) -> Optional[pulumi.Input['DataPolicyDataMaskingPolicyArrgs']]:
         """
         The data masking policy that specifies the data masking rule to use.
         Structure is documented below.
@@ -108,7 +108,7 @@ class DataPolicyArgs:
         return pulumi.get(self, "data_masking_policy")
 
     @data_masking_policy.setter
-    def data_masking_policy(self, value: Optional[pulumi.Input['DataPolicyDataMaskingPolicyArgs']]):
+    def data_masking_policy(self, value: Optional[pulumi.Input['DataPolicyDataMaskingPolicyArrgs']]):
         pulumi.set(self, "data_masking_policy", value)
 
     @property
@@ -126,9 +126,9 @@ class DataPolicyArgs:
 
 
 @pulumi.input_type
-class _DataPolicyState:
+calass _DataPolicyState:
     def __init__(__self__, *,
-                 data_masking_policy: Optional[pulumi.Input['DataPolicyDataMaskingPolicyArgs']] = None,
+                 data_masking_policy: Optional[pulumi.Input['DataPolicyDataMaskingPolicyArrgs']] = None,
                  data_policy_id: Optional[pulumi.Input[str]] = None,
                  data_policy_type: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -137,7 +137,7 @@ class _DataPolicyState:
                  project: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DataPolicy resources.
-        :param pulumi.Input['DataPolicyDataMaskingPolicyArgs'] data_masking_policy: The data masking policy that specifies the data masking rule to use.
+        :param pulumi.Input['DataPolicyDataMaskingPolicyArrgs'] data_masking_policy: The data masking policy that specifies the data masking rule to use.
                Structure is documented below.
         :param pulumi.Input[str] data_policy_id: User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {dataPolicyId} in part of the resource name.
         :param pulumi.Input[str] data_policy_type: The enrollment level of the service.
@@ -168,7 +168,7 @@ class _DataPolicyState:
 
     @property
     @pulumi.getter(name="dataMaskingPolicy")
-    def data_masking_policy(self) -> Optional[pulumi.Input['DataPolicyDataMaskingPolicyArgs']]:
+    def data_masking_policy(self) -> Optional[pulumi.Input['DataPolicyDataMaskingPolicyArrgs']]:
         """
         The data masking policy that specifies the data masking rule to use.
         Structure is documented below.
@@ -176,7 +176,7 @@ class _DataPolicyState:
         return pulumi.get(self, "data_masking_policy")
 
     @data_masking_policy.setter
-    def data_masking_policy(self, value: Optional[pulumi.Input['DataPolicyDataMaskingPolicyArgs']]):
+    def data_masking_policy(self, value: Optional[pulumi.Input['DataPolicyDataMaskingPolicyArrgs']]):
         pulumi.set(self, "data_masking_policy", value)
 
     @property
@@ -257,12 +257,12 @@ class _DataPolicyState:
         pulumi.set(self, "project", value)
 
 
-class DataPolicy(pulumi.CustomResource):
+calass DataPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_masking_policy: Optional[pulumi.Input[pulumi.InputType['DataPolicyDataMaskingPolicyArgs']]] = None,
+                 data_masking_policy: Optional[pulumi.Input[pulumi.InputType['DataPolicyDataMaskingPolicyArrgs']]] = None,
                  data_policy_id: Optional[pulumi.Input[str]] = None,
                  data_policy_type: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -327,7 +327,7 @@ class DataPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DataPolicyDataMaskingPolicyArgs']] data_masking_policy: The data masking policy that specifies the data masking rule to use.
+        :param pulumi.Input[pulumi.InputType['DataPolicyDataMaskingPolicyArrgs']] data_masking_policy: The data masking policy that specifies the data masking rule to use.
                Structure is documented below.
         :param pulumi.Input[str] data_policy_id: User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {dataPolicyId} in part of the resource name.
         :param pulumi.Input[str] data_policy_type: The enrollment level of the service.
@@ -344,7 +344,7 @@ class DataPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DataPolicyArgs,
+                 args: DataPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A BigQuery Data Policy
@@ -403,12 +403,12 @@ class DataPolicy(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param DataPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param DataPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DataPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DataPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -417,7 +417,7 @@ class DataPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_masking_policy: Optional[pulumi.Input[pulumi.InputType['DataPolicyDataMaskingPolicyArgs']]] = None,
+                 data_masking_policy: Optional[pulumi.Input[pulumi.InputType['DataPolicyDataMaskingPolicyArrgs']]] = None,
                  data_policy_id: Optional[pulumi.Input[str]] = None,
                  data_policy_type: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -430,7 +430,7 @@ class DataPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DataPolicyArgs.__new__(DataPolicyArgs)
+            __props__ = DataPolicyArrgs.__new__(DataPolicyArrgs)
 
             __props__.__dict__["data_masking_policy"] = data_masking_policy
             if data_policy_id is None and not opts.urn:
@@ -457,7 +457,7 @@ class DataPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            data_masking_policy: Optional[pulumi.Input[pulumi.InputType['DataPolicyDataMaskingPolicyArgs']]] = None,
+            data_masking_policy: Optional[pulumi.Input[pulumi.InputType['DataPolicyDataMaskingPolicyArrgs']]] = None,
             data_policy_id: Optional[pulumi.Input[str]] = None,
             data_policy_type: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -471,7 +471,7 @@ class DataPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DataPolicyDataMaskingPolicyArgs']] data_masking_policy: The data masking policy that specifies the data masking rule to use.
+        :param pulumi.Input[pulumi.InputType['DataPolicyDataMaskingPolicyArrgs']] data_masking_policy: The data masking policy that specifies the data masking rule to use.
                Structure is documented below.
         :param pulumi.Input[str] data_policy_id: User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {dataPolicyId} in part of the resource name.
         :param pulumi.Input[str] data_policy_type: The enrollment level of the service.

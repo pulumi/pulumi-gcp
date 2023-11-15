@@ -11,22 +11,22 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['VMwareNodePoolArgs', 'VMwareNodePool']
+__all__ = ['VMwareNodePoolArrgs', 'VMwareNodePool']
 
 @pulumi.input_type
-class VMwareNodePoolArgs:
+calass VMwareNodePoolArrgs:
     def __init__(__self__, *,
-                 config: pulumi.Input['VMwareNodePoolConfigArgs'],
+                 config: pulumi.Input['VMwareNodePoolConfigArrgs'],
                  location: pulumi.Input[str],
                  vmware_cluster: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_pool_autoscaling: Optional[pulumi.Input['VMwareNodePoolNodePoolAutoscalingArgs']] = None,
+                 node_pool_autoscaling: Optional[pulumi.Input['VMwareNodePoolNodePoolAutoscalingArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a VMwareNodePool resource.
-        :param pulumi.Input['VMwareNodePoolConfigArgs'] config: The node configuration of the node pool.
+        :param pulumi.Input['VMwareNodePoolConfigArrgs'] config: The node configuration of the node pool.
                Structure is documented below.
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input[str] vmware_cluster: The cluster this node pool belongs to.
@@ -43,7 +43,7 @@ class VMwareNodePoolArgs:
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] display_name: The display name for the node pool.
         :param pulumi.Input[str] name: The vmware node pool name.
-        :param pulumi.Input['VMwareNodePoolNodePoolAutoscalingArgs'] node_pool_autoscaling: Node Pool autoscaling config for the node pool.
+        :param pulumi.Input['VMwareNodePoolNodePoolAutoscalingArrgs'] node_pool_autoscaling: Node Pool autoscaling config for the node pool.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -64,7 +64,7 @@ class VMwareNodePoolArgs:
 
     @property
     @pulumi.getter
-    def config(self) -> pulumi.Input['VMwareNodePoolConfigArgs']:
+    def config(self) -> pulumi.Input['VMwareNodePoolConfigArrgs']:
         """
         The node configuration of the node pool.
         Structure is documented below.
@@ -72,7 +72,7 @@ class VMwareNodePoolArgs:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: pulumi.Input['VMwareNodePoolConfigArgs']):
+    def config(self, value: pulumi.Input['VMwareNodePoolConfigArrgs']):
         pulumi.set(self, "config", value)
 
     @property
@@ -147,7 +147,7 @@ class VMwareNodePoolArgs:
 
     @property
     @pulumi.getter(name="nodePoolAutoscaling")
-    def node_pool_autoscaling(self) -> Optional[pulumi.Input['VMwareNodePoolNodePoolAutoscalingArgs']]:
+    def node_pool_autoscaling(self) -> Optional[pulumi.Input['VMwareNodePoolNodePoolAutoscalingArrgs']]:
         """
         Node Pool autoscaling config for the node pool.
         Structure is documented below.
@@ -155,7 +155,7 @@ class VMwareNodePoolArgs:
         return pulumi.get(self, "node_pool_autoscaling")
 
     @node_pool_autoscaling.setter
-    def node_pool_autoscaling(self, value: Optional[pulumi.Input['VMwareNodePoolNodePoolAutoscalingArgs']]):
+    def node_pool_autoscaling(self, value: Optional[pulumi.Input['VMwareNodePoolNodePoolAutoscalingArrgs']]):
         pulumi.set(self, "node_pool_autoscaling", value)
 
     @property
@@ -173,10 +173,10 @@ class VMwareNodePoolArgs:
 
 
 @pulumi.input_type
-class _VMwareNodePoolState:
+calass _VMwareNodePoolState:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 config: Optional[pulumi.Input['VMwareNodePoolConfigArgs']] = None,
+                 config: Optional[pulumi.Input['VMwareNodePoolConfigArrgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -184,12 +184,12 @@ class _VMwareNodePoolState:
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_pool_autoscaling: Optional[pulumi.Input['VMwareNodePoolNodePoolAutoscalingArgs']] = None,
+                 node_pool_autoscaling: Optional[pulumi.Input['VMwareNodePoolNodePoolAutoscalingArrgs']] = None,
                  on_prem_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reconciling: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusArgs']]]] = None,
+                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusArrgs']]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  vmware_cluster: Optional[pulumi.Input[str]] = None):
@@ -206,7 +206,7 @@ class _VMwareNodePoolState:
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input['VMwareNodePoolConfigArgs'] config: The node configuration of the node pool.
+        :param pulumi.Input['VMwareNodePoolConfigArrgs'] config: The node configuration of the node pool.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[str] delete_time: The time the cluster was deleted, in RFC3339 text format.
@@ -220,7 +220,7 @@ class _VMwareNodePoolState:
                through optimistic concurrency control.
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input[str] name: The vmware node pool name.
-        :param pulumi.Input['VMwareNodePoolNodePoolAutoscalingArgs'] node_pool_autoscaling: Node Pool autoscaling config for the node pool.
+        :param pulumi.Input['VMwareNodePoolNodePoolAutoscalingArrgs'] node_pool_autoscaling: Node Pool autoscaling config for the node pool.
                Structure is documented below.
         :param pulumi.Input[str] on_prem_version: Anthos version for the node pool. Defaults to the user cluster version.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -228,7 +228,7 @@ class _VMwareNodePoolState:
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the node pool.
         :param pulumi.Input[str] state: (Output)
                The lifecycle state of the condition.
-        :param pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusArgs']]] statuses: ResourceStatus representing detailed cluster state.
+        :param pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusArrgs']]] statuses: ResourceStatus representing detailed cluster state.
                Structure is documented below.
         :param pulumi.Input[str] uid: The unique identifier of the node pool.
         :param pulumi.Input[str] update_time: The time the cluster was last updated, in RFC3339 text format.
@@ -295,7 +295,7 @@ class _VMwareNodePoolState:
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['VMwareNodePoolConfigArgs']]:
+    def config(self) -> Optional[pulumi.Input['VMwareNodePoolConfigArrgs']]:
         """
         The node configuration of the node pool.
         Structure is documented below.
@@ -303,7 +303,7 @@ class _VMwareNodePoolState:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['VMwareNodePoolConfigArgs']]):
+    def config(self, value: Optional[pulumi.Input['VMwareNodePoolConfigArrgs']]):
         pulumi.set(self, "config", value)
 
     @property
@@ -397,7 +397,7 @@ class _VMwareNodePoolState:
 
     @property
     @pulumi.getter(name="nodePoolAutoscaling")
-    def node_pool_autoscaling(self) -> Optional[pulumi.Input['VMwareNodePoolNodePoolAutoscalingArgs']]:
+    def node_pool_autoscaling(self) -> Optional[pulumi.Input['VMwareNodePoolNodePoolAutoscalingArrgs']]:
         """
         Node Pool autoscaling config for the node pool.
         Structure is documented below.
@@ -405,7 +405,7 @@ class _VMwareNodePoolState:
         return pulumi.get(self, "node_pool_autoscaling")
 
     @node_pool_autoscaling.setter
-    def node_pool_autoscaling(self, value: Optional[pulumi.Input['VMwareNodePoolNodePoolAutoscalingArgs']]):
+    def node_pool_autoscaling(self, value: Optional[pulumi.Input['VMwareNodePoolNodePoolAutoscalingArrgs']]):
         pulumi.set(self, "node_pool_autoscaling", value)
 
     @property
@@ -460,7 +460,7 @@ class _VMwareNodePoolState:
 
     @property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusArgs']]]]:
+    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusArrgs']]]]:
         """
         ResourceStatus representing detailed cluster state.
         Structure is documented below.
@@ -468,7 +468,7 @@ class _VMwareNodePoolState:
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusArgs']]]]):
+    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusArrgs']]]]):
         pulumi.set(self, "statuses", value)
 
     @property
@@ -508,17 +508,17 @@ class _VMwareNodePoolState:
         pulumi.set(self, "vmware_cluster", value)
 
 
-class VMwareNodePool(pulumi.CustomResource):
+calass VMwareNodePool(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['VMwareNodePoolConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[pulumi.InputType['VMwareNodePoolConfigArrgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_pool_autoscaling: Optional[pulumi.Input[pulumi.InputType['VMwareNodePoolNodePoolAutoscalingArgs']]] = None,
+                 node_pool_autoscaling: Optional[pulumi.Input[pulumi.InputType['VMwareNodePoolNodePoolAutoscalingArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  vmware_cluster: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -537,31 +537,31 @@ class VMwareNodePool(pulumi.CustomResource):
             admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
             description="test cluster",
             on_prem_version="1.13.1-gke.35",
-            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
+            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArrgs(
                 service_address_cidr_blocks=["10.96.0.0/12"],
                 pod_address_cidr_blocks=["192.168.0.0/16"],
-                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs(
+                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArrgs(
                     enabled=True,
                 ),
             ),
-            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
+            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArrgs(
                 cpus=4,
                 memory=8192,
                 replicas=1,
             ),
-            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
-                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
+            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArrgs(
+                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArrgs(
                     control_plane_vip="10.251.133.5",
                     ingress_vip="10.251.135.19",
                 ),
-                metal_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigArgs(
+                metal_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigArrgs(
                     address_pools=[
-                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
+                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrgs(
                             pool="ingress-ip",
                             manual_assign=True,
                             addresses=["10.251.135.19"],
                         ),
-                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
+                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrgs(
                             pool="lb-test-ip",
                             manual_assign=True,
                             addresses=["10.251.135.19"],
@@ -572,7 +572,7 @@ class VMwareNodePool(pulumi.CustomResource):
         nodepool_basic = gcp.gkeonprem.VMwareNodePool("nodepool-basic",
             location="us-west1",
             vmware_cluster=default_basic.name,
-            config=gcp.gkeonprem.VMwareNodePoolConfigArgs(
+            config=gcp.gkeonprem.VMwareNodePoolConfigArrgs(
                 replicas=3,
                 image_type="ubuntu_containerd",
                 enable_load_balancer=True,
@@ -589,31 +589,31 @@ class VMwareNodePool(pulumi.CustomResource):
             admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
             description="test cluster",
             on_prem_version="1.13.1-gke.35",
-            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
+            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArrgs(
                 service_address_cidr_blocks=["10.96.0.0/12"],
                 pod_address_cidr_blocks=["192.168.0.0/16"],
-                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs(
+                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArrgs(
                     enabled=True,
                 ),
             ),
-            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
+            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArrgs(
                 cpus=4,
                 memory=8192,
                 replicas=1,
             ),
-            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
-                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
+            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArrgs(
+                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArrgs(
                     control_plane_vip="10.251.133.5",
                     ingress_vip="10.251.135.19",
                 ),
-                metal_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigArgs(
+                metal_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigArrgs(
                     address_pools=[
-                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
+                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrgs(
                             pool="ingress-ip",
                             manual_assign=True,
                             addresses=["10.251.135.19"],
                         ),
-                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
+                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrgs(
                             pool="lb-test-ip",
                             manual_assign=True,
                             addresses=["10.251.135.19"],
@@ -625,7 +625,7 @@ class VMwareNodePool(pulumi.CustomResource):
             location="us-west1",
             vmware_cluster=default_full.name,
             annotations={},
-            config=gcp.gkeonprem.VMwareNodePoolConfigArgs(
+            config=gcp.gkeonprem.VMwareNodePoolConfigArrgs(
                 cpus=4,
                 memory_mb=8196,
                 replicas=3,
@@ -633,11 +633,11 @@ class VMwareNodePool(pulumi.CustomResource):
                 image="image",
                 boot_disk_size_gb=10,
                 taints=[
-                    gcp.gkeonprem.VMwareNodePoolConfigTaintArgs(
+                    gcp.gkeonprem.VMwareNodePoolConfigTaintArrgs(
                         key="key",
                         value="value",
                     ),
-                    gcp.gkeonprem.VMwareNodePoolConfigTaintArgs(
+                    gcp.gkeonprem.VMwareNodePoolConfigTaintArrgs(
                         key="key",
                         value="value",
                         effect="NO_SCHEDULE",
@@ -646,7 +646,7 @@ class VMwareNodePool(pulumi.CustomResource):
                 labels={},
                 enable_load_balancer=True,
             ),
-            node_pool_autoscaling=gcp.gkeonprem.VMwareNodePoolNodePoolAutoscalingArgs(
+            node_pool_autoscaling=gcp.gkeonprem.VMwareNodePoolNodePoolAutoscalingArrgs(
                 min_replicas=1,
                 max_replicas=5,
             ))
@@ -689,12 +689,12 @@ class VMwareNodePool(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['VMwareNodePoolConfigArgs']] config: The node configuration of the node pool.
+        :param pulumi.Input[pulumi.InputType['VMwareNodePoolConfigArrgs']] config: The node configuration of the node pool.
                Structure is documented below.
         :param pulumi.Input[str] display_name: The display name for the node pool.
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input[str] name: The vmware node pool name.
-        :param pulumi.Input[pulumi.InputType['VMwareNodePoolNodePoolAutoscalingArgs']] node_pool_autoscaling: Node Pool autoscaling config for the node pool.
+        :param pulumi.Input[pulumi.InputType['VMwareNodePoolNodePoolAutoscalingArrgs']] node_pool_autoscaling: Node Pool autoscaling config for the node pool.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -704,7 +704,7 @@ class VMwareNodePool(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: VMwareNodePoolArgs,
+                 args: VMwareNodePoolArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Google Vmware Node Pool.
@@ -721,31 +721,31 @@ class VMwareNodePool(pulumi.CustomResource):
             admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
             description="test cluster",
             on_prem_version="1.13.1-gke.35",
-            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
+            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArrgs(
                 service_address_cidr_blocks=["10.96.0.0/12"],
                 pod_address_cidr_blocks=["192.168.0.0/16"],
-                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs(
+                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArrgs(
                     enabled=True,
                 ),
             ),
-            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
+            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArrgs(
                 cpus=4,
                 memory=8192,
                 replicas=1,
             ),
-            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
-                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
+            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArrgs(
+                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArrgs(
                     control_plane_vip="10.251.133.5",
                     ingress_vip="10.251.135.19",
                 ),
-                metal_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigArgs(
+                metal_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigArrgs(
                     address_pools=[
-                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
+                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrgs(
                             pool="ingress-ip",
                             manual_assign=True,
                             addresses=["10.251.135.19"],
                         ),
-                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
+                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrgs(
                             pool="lb-test-ip",
                             manual_assign=True,
                             addresses=["10.251.135.19"],
@@ -756,7 +756,7 @@ class VMwareNodePool(pulumi.CustomResource):
         nodepool_basic = gcp.gkeonprem.VMwareNodePool("nodepool-basic",
             location="us-west1",
             vmware_cluster=default_basic.name,
-            config=gcp.gkeonprem.VMwareNodePoolConfigArgs(
+            config=gcp.gkeonprem.VMwareNodePoolConfigArrgs(
                 replicas=3,
                 image_type="ubuntu_containerd",
                 enable_load_balancer=True,
@@ -773,31 +773,31 @@ class VMwareNodePool(pulumi.CustomResource):
             admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
             description="test cluster",
             on_prem_version="1.13.1-gke.35",
-            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
+            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArrgs(
                 service_address_cidr_blocks=["10.96.0.0/12"],
                 pod_address_cidr_blocks=["192.168.0.0/16"],
-                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs(
+                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArrgs(
                     enabled=True,
                 ),
             ),
-            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
+            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArrgs(
                 cpus=4,
                 memory=8192,
                 replicas=1,
             ),
-            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
-                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
+            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArrgs(
+                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArrgs(
                     control_plane_vip="10.251.133.5",
                     ingress_vip="10.251.135.19",
                 ),
-                metal_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigArgs(
+                metal_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigArrgs(
                     address_pools=[
-                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
+                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrgs(
                             pool="ingress-ip",
                             manual_assign=True,
                             addresses=["10.251.135.19"],
                         ),
-                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
+                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrgs(
                             pool="lb-test-ip",
                             manual_assign=True,
                             addresses=["10.251.135.19"],
@@ -809,7 +809,7 @@ class VMwareNodePool(pulumi.CustomResource):
             location="us-west1",
             vmware_cluster=default_full.name,
             annotations={},
-            config=gcp.gkeonprem.VMwareNodePoolConfigArgs(
+            config=gcp.gkeonprem.VMwareNodePoolConfigArrgs(
                 cpus=4,
                 memory_mb=8196,
                 replicas=3,
@@ -817,11 +817,11 @@ class VMwareNodePool(pulumi.CustomResource):
                 image="image",
                 boot_disk_size_gb=10,
                 taints=[
-                    gcp.gkeonprem.VMwareNodePoolConfigTaintArgs(
+                    gcp.gkeonprem.VMwareNodePoolConfigTaintArrgs(
                         key="key",
                         value="value",
                     ),
-                    gcp.gkeonprem.VMwareNodePoolConfigTaintArgs(
+                    gcp.gkeonprem.VMwareNodePoolConfigTaintArrgs(
                         key="key",
                         value="value",
                         effect="NO_SCHEDULE",
@@ -830,7 +830,7 @@ class VMwareNodePool(pulumi.CustomResource):
                 labels={},
                 enable_load_balancer=True,
             ),
-            node_pool_autoscaling=gcp.gkeonprem.VMwareNodePoolNodePoolAutoscalingArgs(
+            node_pool_autoscaling=gcp.gkeonprem.VMwareNodePoolNodePoolAutoscalingArrgs(
                 min_replicas=1,
                 max_replicas=5,
             ))
@@ -861,12 +861,12 @@ class VMwareNodePool(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param VMwareNodePoolArgs args: The arguments to use to populate this resource's properties.
+        :param VMwareNodePoolArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(VMwareNodePoolArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(VMwareNodePoolArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -876,11 +876,11 @@ class VMwareNodePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['VMwareNodePoolConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[pulumi.InputType['VMwareNodePoolConfigArrgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_pool_autoscaling: Optional[pulumi.Input[pulumi.InputType['VMwareNodePoolNodePoolAutoscalingArgs']]] = None,
+                 node_pool_autoscaling: Optional[pulumi.Input[pulumi.InputType['VMwareNodePoolNodePoolAutoscalingArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  vmware_cluster: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -890,7 +890,7 @@ class VMwareNodePool(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = VMwareNodePoolArgs.__new__(VMwareNodePoolArgs)
+            __props__ = VMwareNodePoolArrgs.__new__(VMwareNodePoolArrgs)
 
             __props__.__dict__["annotations"] = annotations
             if config is None and not opts.urn:
@@ -927,7 +927,7 @@ class VMwareNodePool(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            config: Optional[pulumi.Input[pulumi.InputType['VMwareNodePoolConfigArgs']]] = None,
+            config: Optional[pulumi.Input[pulumi.InputType['VMwareNodePoolConfigArrgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
@@ -935,12 +935,12 @@ class VMwareNodePool(pulumi.CustomResource):
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            node_pool_autoscaling: Optional[pulumi.Input[pulumi.InputType['VMwareNodePoolNodePoolAutoscalingArgs']]] = None,
+            node_pool_autoscaling: Optional[pulumi.Input[pulumi.InputType['VMwareNodePoolNodePoolAutoscalingArrgs']]] = None,
             on_prem_version: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareNodePoolStatusArgs']]]]] = None,
+            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareNodePoolStatusArrgs']]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
             vmware_cluster: Optional[pulumi.Input[str]] = None) -> 'VMwareNodePool':
@@ -962,7 +962,7 @@ class VMwareNodePool(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['VMwareNodePoolConfigArgs']] config: The node configuration of the node pool.
+        :param pulumi.Input[pulumi.InputType['VMwareNodePoolConfigArrgs']] config: The node configuration of the node pool.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[str] delete_time: The time the cluster was deleted, in RFC3339 text format.
@@ -976,7 +976,7 @@ class VMwareNodePool(pulumi.CustomResource):
                through optimistic concurrency control.
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input[str] name: The vmware node pool name.
-        :param pulumi.Input[pulumi.InputType['VMwareNodePoolNodePoolAutoscalingArgs']] node_pool_autoscaling: Node Pool autoscaling config for the node pool.
+        :param pulumi.Input[pulumi.InputType['VMwareNodePoolNodePoolAutoscalingArrgs']] node_pool_autoscaling: Node Pool autoscaling config for the node pool.
                Structure is documented below.
         :param pulumi.Input[str] on_prem_version: Anthos version for the node pool. Defaults to the user cluster version.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -984,7 +984,7 @@ class VMwareNodePool(pulumi.CustomResource):
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the node pool.
         :param pulumi.Input[str] state: (Output)
                The lifecycle state of the condition.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareNodePoolStatusArgs']]]] statuses: ResourceStatus representing detailed cluster state.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareNodePoolStatusArrgs']]]] statuses: ResourceStatus representing detailed cluster state.
                Structure is documented below.
         :param pulumi.Input[str] uid: The unique identifier of the node pool.
         :param pulumi.Input[str] update_time: The time the cluster was last updated, in RFC3339 text format.

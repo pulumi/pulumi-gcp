@@ -26,7 +26,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class CryptoKeyIAMBindingCondition(dict):
+calass CryptoKeyIAMBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -75,7 +75,7 @@ class CryptoKeyIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class CryptoKeyIAMMemberCondition(dict):
+calass CryptoKeyIAMMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -124,7 +124,7 @@ class CryptoKeyIAMMemberCondition(dict):
 
 
 @pulumi.output_type
-class CryptoKeyVersionAttestation(dict):
+calass CryptoKeyVersionAttestation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -150,11 +150,11 @@ class CryptoKeyVersionAttestation(dict):
                  external_protection_level_options: Optional['outputs.CryptoKeyVersionAttestationExternalProtectionLevelOptions'] = None,
                  format: Optional[str] = None):
         """
-        :param 'CryptoKeyVersionAttestationCertChainsArgs' cert_chains: The certificate chains needed to validate the attestation
+        :param 'CryptoKeyVersionAttestationCertChainsArrgs' cert_chains: The certificate chains needed to validate the attestation
                Structure is documented below.
         :param str content: (Output)
                The attestation data provided by the HSM when the key operation was performed.
-        :param 'CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs' external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+        :param 'CryptoKeyVersionAttestationExternalProtectionLevelOptionsArrgs' external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
                Structure is documented below.
         :param str format: (Output)
                The format of the attestation data.
@@ -206,7 +206,7 @@ class CryptoKeyVersionAttestation(dict):
 
 
 @pulumi.output_type
-class CryptoKeyVersionAttestationCertChains(dict):
+calass CryptoKeyVersionAttestationCertChains(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -270,7 +270,7 @@ class CryptoKeyVersionAttestationCertChains(dict):
 
 
 @pulumi.output_type
-class CryptoKeyVersionAttestationExternalProtectionLevelOptions(dict):
+calass CryptoKeyVersionAttestationExternalProtectionLevelOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -320,7 +320,7 @@ class CryptoKeyVersionAttestationExternalProtectionLevelOptions(dict):
 
 
 @pulumi.output_type
-class CryptoKeyVersionTemplate(dict):
+calass CryptoKeyVersionTemplate(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -369,7 +369,7 @@ class CryptoKeyVersionTemplate(dict):
 
 
 @pulumi.output_type
-class KeyRingIAMBindingCondition(dict):
+calass KeyRingIAMBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -418,7 +418,7 @@ class KeyRingIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class KeyRingIAMMemberCondition(dict):
+calass KeyRingIAMMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -467,7 +467,7 @@ class KeyRingIAMMemberCondition(dict):
 
 
 @pulumi.output_type
-class KeyRingImportJobAttestation(dict):
+calass KeyRingImportJobAttestation(dict):
     def __init__(__self__, *,
                  content: Optional[str] = None,
                  format: Optional[str] = None):
@@ -504,7 +504,7 @@ class KeyRingImportJobAttestation(dict):
 
 
 @pulumi.output_type
-class KeyRingImportJobPublicKey(dict):
+calass KeyRingImportJobPublicKey(dict):
     def __init__(__self__, *,
                  pem: Optional[str] = None):
         """
@@ -527,7 +527,7 @@ class KeyRingImportJobPublicKey(dict):
 
 
 @pulumi.output_type
-class GetKMSCryptoKeyVersionPublicKeyResult(dict):
+calass GetKMSCryptoKeyVersionPublicKeyResult(dict):
     def __init__(__self__, *,
                  algorithm: str,
                  pem: str):
@@ -556,7 +556,7 @@ class GetKMSCryptoKeyVersionPublicKeyResult(dict):
 
 
 @pulumi.output_type
-class GetKMSCryptoKeyVersionTemplateResult(dict):
+calass GetKMSCryptoKeyVersionTemplateResult(dict):
     def __init__(__self__, *,
                  algorithm: str,
                  protection_level: str):

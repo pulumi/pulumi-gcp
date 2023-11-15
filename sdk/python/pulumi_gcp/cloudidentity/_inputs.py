@@ -10,16 +10,16 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'GroupAdditionalGroupKeyArgs',
-    'GroupGroupKeyArgs',
-    'GroupMembershipMemberKeyArgs',
-    'GroupMembershipPreferredMemberKeyArgs',
-    'GroupMembershipRoleArgs',
-    'GetGroupLookupGroupKeyArgs',
+    'GroupAdditionalGroupKeyArrgs',
+    'GroupGroupKeyArrgs',
+    'GroupMembershipMemberKeyArrgs',
+    'GroupMembershipPreferredMemberKeyArrgs',
+    'GroupMembershipRoleArrgs',
+    'GetGroupLookupGroupKeyArrgs',
 ]
 
 @pulumi.input_type
-class GroupAdditionalGroupKeyArgs:
+calass GroupAdditionalGroupKeyArrgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None):
@@ -82,7 +82,7 @@ class GroupAdditionalGroupKeyArgs:
 
 
 @pulumi.input_type
-class GroupGroupKeyArgs:
+calass GroupGroupKeyArrgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str],
                  namespace: Optional[pulumi.Input[str]] = None):
@@ -144,7 +144,7 @@ class GroupGroupKeyArgs:
 
 
 @pulumi.input_type
-class GroupMembershipMemberKeyArgs:
+calass GroupMembershipMemberKeyArrgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str],
                  namespace: Optional[pulumi.Input[str]] = None):
@@ -202,7 +202,7 @@ class GroupMembershipMemberKeyArgs:
 
 
 @pulumi.input_type
-class GroupMembershipPreferredMemberKeyArgs:
+calass GroupMembershipPreferredMemberKeyArrgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str],
                  namespace: Optional[pulumi.Input[str]] = None):
@@ -260,7 +260,7 @@ class GroupMembershipPreferredMemberKeyArgs:
 
 
 @pulumi.input_type
-class GroupMembershipRoleArgs:
+calass GroupMembershipRoleArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
         """
@@ -288,7 +288,7 @@ class GroupMembershipRoleArgs:
 
 
 @pulumi.input_type
-class GetGroupLookupGroupKeyArgs:
+calass GetGroupLookupGroupKeyArrgs:
     def __init__(__self__, *,
                  id: str,
                  namespace: Optional[str] = None):

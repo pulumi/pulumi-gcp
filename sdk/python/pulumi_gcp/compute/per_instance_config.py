@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['PerInstanceConfigArgs', 'PerInstanceConfig']
+__all__ = ['PerInstanceConfigArrgs', 'PerInstanceConfig']
 
 @pulumi.input_type
-class PerInstanceConfigArgs:
+calass PerInstanceConfigArrgs:
     def __init__(__self__, *,
                  instance_group_manager: pulumi.Input[str],
                  minimal_action: Optional[pulumi.Input[str]] = None,
                  most_disruptive_allowed_action: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 preserved_state: Optional[pulumi.Input['PerInstanceConfigPreservedStateArgs']] = None,
+                 preserved_state: Optional[pulumi.Input['PerInstanceConfigPreservedStateArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remove_instance_state_on_destroy: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -43,7 +43,7 @@ class PerInstanceConfigArgs:
                * REFRESH
                * NONE
         :param pulumi.Input[str] name: The name for this per-instance config and its corresponding instance.
-        :param pulumi.Input['PerInstanceConfigPreservedStateArgs'] preserved_state: The preserved state for this instance.
+        :param pulumi.Input['PerInstanceConfigPreservedStateArrgs'] preserved_state: The preserved state for this instance.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -131,7 +131,7 @@ class PerInstanceConfigArgs:
 
     @property
     @pulumi.getter(name="preservedState")
-    def preserved_state(self) -> Optional[pulumi.Input['PerInstanceConfigPreservedStateArgs']]:
+    def preserved_state(self) -> Optional[pulumi.Input['PerInstanceConfigPreservedStateArrgs']]:
         """
         The preserved state for this instance.
         Structure is documented below.
@@ -139,7 +139,7 @@ class PerInstanceConfigArgs:
         return pulumi.get(self, "preserved_state")
 
     @preserved_state.setter
-    def preserved_state(self, value: Optional[pulumi.Input['PerInstanceConfigPreservedStateArgs']]):
+    def preserved_state(self, value: Optional[pulumi.Input['PerInstanceConfigPreservedStateArrgs']]):
         pulumi.set(self, "preserved_state", value)
 
     @property
@@ -183,13 +183,13 @@ class PerInstanceConfigArgs:
 
 
 @pulumi.input_type
-class _PerInstanceConfigState:
+calass _PerInstanceConfigState:
     def __init__(__self__, *,
                  instance_group_manager: Optional[pulumi.Input[str]] = None,
                  minimal_action: Optional[pulumi.Input[str]] = None,
                  most_disruptive_allowed_action: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 preserved_state: Optional[pulumi.Input['PerInstanceConfigPreservedStateArgs']] = None,
+                 preserved_state: Optional[pulumi.Input['PerInstanceConfigPreservedStateArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remove_instance_state_on_destroy: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -212,7 +212,7 @@ class _PerInstanceConfigState:
                * REFRESH
                * NONE
         :param pulumi.Input[str] name: The name for this per-instance config and its corresponding instance.
-        :param pulumi.Input['PerInstanceConfigPreservedStateArgs'] preserved_state: The preserved state for this instance.
+        :param pulumi.Input['PerInstanceConfigPreservedStateArrgs'] preserved_state: The preserved state for this instance.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -301,7 +301,7 @@ class _PerInstanceConfigState:
 
     @property
     @pulumi.getter(name="preservedState")
-    def preserved_state(self) -> Optional[pulumi.Input['PerInstanceConfigPreservedStateArgs']]:
+    def preserved_state(self) -> Optional[pulumi.Input['PerInstanceConfigPreservedStateArrgs']]:
         """
         The preserved state for this instance.
         Structure is documented below.
@@ -309,7 +309,7 @@ class _PerInstanceConfigState:
         return pulumi.get(self, "preserved_state")
 
     @preserved_state.setter
-    def preserved_state(self, value: Optional[pulumi.Input['PerInstanceConfigPreservedStateArgs']]):
+    def preserved_state(self, value: Optional[pulumi.Input['PerInstanceConfigPreservedStateArrgs']]):
         pulumi.set(self, "preserved_state", value)
 
     @property
@@ -352,7 +352,7 @@ class _PerInstanceConfigState:
         pulumi.set(self, "zone", value)
 
 
-class PerInstanceConfig(pulumi.CustomResource):
+calass PerInstanceConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -361,7 +361,7 @@ class PerInstanceConfig(pulumi.CustomResource):
                  minimal_action: Optional[pulumi.Input[str]] = None,
                  most_disruptive_allowed_action: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 preserved_state: Optional[pulumi.Input[pulumi.InputType['PerInstanceConfigPreservedStateArgs']]] = None,
+                 preserved_state: Optional[pulumi.Input[pulumi.InputType['PerInstanceConfigPreservedStateArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remove_instance_state_on_destroy: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -392,15 +392,15 @@ class PerInstanceConfig(pulumi.CustomResource):
                 "foo",
                 "bar",
             ],
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
+            disks=[gcp.compute.InstanceTemplateDiskArrgs(
                 source_image=my_image.self_link,
                 auto_delete=True,
                 boot=True,
             )],
-            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArrgs(
                 network="default",
             )],
-            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
+            service_account=gcp.compute.InstanceTemplateServiceAccountArrgs(
                 scopes=[
                     "userinfo-email",
                     "compute-ro",
@@ -409,7 +409,7 @@ class PerInstanceConfig(pulumi.CustomResource):
             ))
         igm_no_tp = gcp.compute.InstanceGroupManager("igm-no-tp",
             description="Test instance group manager",
-            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
+            versions=[gcp.compute.InstanceGroupManagerVersionArrgs(
                 name="prod",
                 instance_template=igm_basic.self_link,
             )],
@@ -424,12 +424,12 @@ class PerInstanceConfig(pulumi.CustomResource):
         with_disk = gcp.compute.PerInstanceConfig("withDisk",
             zone=google_compute_instance_group_manager["igm"]["zone"],
             instance_group_manager=google_compute_instance_group_manager["igm"]["name"],
-            preserved_state=gcp.compute.PerInstanceConfigPreservedStateArgs(
+            preserved_state=gcp.compute.PerInstanceConfigPreservedStateArrgs(
                 metadata={
                     "foo": "bar",
                     "instance_template": igm_basic.self_link,
                 },
-                disks=[gcp.compute.PerInstanceConfigPreservedStateDiskArgs(
+                disks=[gcp.compute.PerInstanceConfigPreservedStateDiskArrgs(
                     device_name="my-stateful-disk",
                     source=default.id,
                     mode="READ_ONLY",
@@ -484,7 +484,7 @@ class PerInstanceConfig(pulumi.CustomResource):
                * REFRESH
                * NONE
         :param pulumi.Input[str] name: The name for this per-instance config and its corresponding instance.
-        :param pulumi.Input[pulumi.InputType['PerInstanceConfigPreservedStateArgs']] preserved_state: The preserved state for this instance.
+        :param pulumi.Input[pulumi.InputType['PerInstanceConfigPreservedStateArrgs']] preserved_state: The preserved state for this instance.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -497,7 +497,7 @@ class PerInstanceConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: PerInstanceConfigArgs,
+                 args: PerInstanceConfigArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A config defined for a single managed instance that belongs to an instance group manager. It preserves the instance name
@@ -525,15 +525,15 @@ class PerInstanceConfig(pulumi.CustomResource):
                 "foo",
                 "bar",
             ],
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
+            disks=[gcp.compute.InstanceTemplateDiskArrgs(
                 source_image=my_image.self_link,
                 auto_delete=True,
                 boot=True,
             )],
-            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArrgs(
                 network="default",
             )],
-            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
+            service_account=gcp.compute.InstanceTemplateServiceAccountArrgs(
                 scopes=[
                     "userinfo-email",
                     "compute-ro",
@@ -542,7 +542,7 @@ class PerInstanceConfig(pulumi.CustomResource):
             ))
         igm_no_tp = gcp.compute.InstanceGroupManager("igm-no-tp",
             description="Test instance group manager",
-            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
+            versions=[gcp.compute.InstanceGroupManagerVersionArrgs(
                 name="prod",
                 instance_template=igm_basic.self_link,
             )],
@@ -557,12 +557,12 @@ class PerInstanceConfig(pulumi.CustomResource):
         with_disk = gcp.compute.PerInstanceConfig("withDisk",
             zone=google_compute_instance_group_manager["igm"]["zone"],
             instance_group_manager=google_compute_instance_group_manager["igm"]["name"],
-            preserved_state=gcp.compute.PerInstanceConfigPreservedStateArgs(
+            preserved_state=gcp.compute.PerInstanceConfigPreservedStateArrgs(
                 metadata={
                     "foo": "bar",
                     "instance_template": igm_basic.self_link,
                 },
-                disks=[gcp.compute.PerInstanceConfigPreservedStateDiskArgs(
+                disks=[gcp.compute.PerInstanceConfigPreservedStateDiskArrgs(
                     device_name="my-stateful-disk",
                     source=default.id,
                     mode="READ_ONLY",
@@ -599,12 +599,12 @@ class PerInstanceConfig(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param PerInstanceConfigArgs args: The arguments to use to populate this resource's properties.
+        :param PerInstanceConfigArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(PerInstanceConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(PerInstanceConfigArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -617,7 +617,7 @@ class PerInstanceConfig(pulumi.CustomResource):
                  minimal_action: Optional[pulumi.Input[str]] = None,
                  most_disruptive_allowed_action: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 preserved_state: Optional[pulumi.Input[pulumi.InputType['PerInstanceConfigPreservedStateArgs']]] = None,
+                 preserved_state: Optional[pulumi.Input[pulumi.InputType['PerInstanceConfigPreservedStateArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remove_instance_state_on_destroy: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -628,7 +628,7 @@ class PerInstanceConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = PerInstanceConfigArgs.__new__(PerInstanceConfigArgs)
+            __props__ = PerInstanceConfigArrgs.__new__(PerInstanceConfigArrgs)
 
             if instance_group_manager is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_group_manager'")
@@ -654,7 +654,7 @@ class PerInstanceConfig(pulumi.CustomResource):
             minimal_action: Optional[pulumi.Input[str]] = None,
             most_disruptive_allowed_action: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            preserved_state: Optional[pulumi.Input[pulumi.InputType['PerInstanceConfigPreservedStateArgs']]] = None,
+            preserved_state: Optional[pulumi.Input[pulumi.InputType['PerInstanceConfigPreservedStateArrgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             remove_instance_state_on_destroy: Optional[pulumi.Input[bool]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'PerInstanceConfig':
@@ -682,7 +682,7 @@ class PerInstanceConfig(pulumi.CustomResource):
                * REFRESH
                * NONE
         :param pulumi.Input[str] name: The name for this per-instance config and its corresponding instance.
-        :param pulumi.Input[pulumi.InputType['PerInstanceConfigPreservedStateArgs']] preserved_state: The preserved state for this instance.
+        :param pulumi.Input[pulumi.InputType['PerInstanceConfigPreservedStateArrgs']] preserved_state: The preserved state for this instance.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

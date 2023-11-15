@@ -10,27 +10,27 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'ConnectionGithubConfigArgs',
-    'ConnectionGithubConfigAuthorizerCredentialArgs',
-    'ConnectionGithubEnterpriseConfigArgs',
-    'ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs',
-    'ConnectionGitlabConfigArgs',
-    'ConnectionGitlabConfigAuthorizerCredentialArgs',
-    'ConnectionGitlabConfigReadAuthorizerCredentialArgs',
-    'ConnectionGitlabConfigServiceDirectoryConfigArgs',
-    'ConnectionIAMBindingConditionArgs',
-    'ConnectionIAMMemberConditionArgs',
-    'ConnectionInstallationStateArgs',
+    'ConnectionGithubConfigArrgs',
+    'ConnectionGithubConfigAuthorizerCredentialArrgs',
+    'ConnectionGithubEnterpriseConfigArrgs',
+    'ConnectionGithubEnterpriseConfigServiceDirectoryConfigArrgs',
+    'ConnectionGitlabConfigArrgs',
+    'ConnectionGitlabConfigAuthorizerCredentialArrgs',
+    'ConnectionGitlabConfigReadAuthorizerCredentialArrgs',
+    'ConnectionGitlabConfigServiceDirectoryConfigArrgs',
+    'ConnectionIAMBindingConditionArrgs',
+    'ConnectionIAMMemberConditionArrgs',
+    'ConnectionInstallationStateArrgs',
 ]
 
 @pulumi.input_type
-class ConnectionGithubConfigArgs:
+calass ConnectionGithubConfigArrgs:
     def __init__(__self__, *,
                  app_installation_id: Optional[pulumi.Input[int]] = None,
-                 authorizer_credential: Optional[pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgs']] = None):
+                 authorizer_credential: Optional[pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArrgs']] = None):
         """
         :param pulumi.Input[int] app_installation_id: GitHub App installation id.
-        :param pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgs'] authorizer_credential: OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
+        :param pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArrgs'] authorizer_credential: OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
         """
         if app_installation_id is not None:
             pulumi.set(__self__, "app_installation_id", app_installation_id)
@@ -51,19 +51,19 @@ class ConnectionGithubConfigArgs:
 
     @property
     @pulumi.getter(name="authorizerCredential")
-    def authorizer_credential(self) -> Optional[pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgs']]:
+    def authorizer_credential(self) -> Optional[pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArrgs']]:
         """
         OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
         """
         return pulumi.get(self, "authorizer_credential")
 
     @authorizer_credential.setter
-    def authorizer_credential(self, value: Optional[pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgs']]):
+    def authorizer_credential(self, value: Optional[pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArrgs']]):
         pulumi.set(self, "authorizer_credential", value)
 
 
 @pulumi.input_type
-class ConnectionGithubConfigAuthorizerCredentialArgs:
+calass ConnectionGithubConfigAuthorizerCredentialArrgs:
     def __init__(__self__, *,
                  oauth_token_secret_version: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -102,14 +102,14 @@ class ConnectionGithubConfigAuthorizerCredentialArgs:
 
 
 @pulumi.input_type
-class ConnectionGithubEnterpriseConfigArgs:
+calass ConnectionGithubEnterpriseConfigArrgs:
     def __init__(__self__, *,
                  host_uri: pulumi.Input[str],
                  app_id: Optional[pulumi.Input[int]] = None,
                  app_installation_id: Optional[pulumi.Input[int]] = None,
                  app_slug: Optional[pulumi.Input[str]] = None,
                  private_key_secret_version: Optional[pulumi.Input[str]] = None,
-                 service_directory_config: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs']] = None,
+                 service_directory_config: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArrgs']] = None,
                  ssl_ca: Optional[pulumi.Input[str]] = None,
                  webhook_secret_secret_version: Optional[pulumi.Input[str]] = None):
         """
@@ -118,7 +118,7 @@ class ConnectionGithubEnterpriseConfigArgs:
         :param pulumi.Input[int] app_installation_id: ID of the installation of the GitHub App.
         :param pulumi.Input[str] app_slug: The URL-friendly name of the GitHub App.
         :param pulumi.Input[str] private_key_secret_version: SecretManager resource containing the private key of the GitHub App, formatted as `projects/*/secrets/*/versions/*`.
-        :param pulumi.Input['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs'] service_directory_config: Configuration for using Service Directory to privately connect to a GitHub Enterprise server. This should only be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitHub Enterprise server will be made over the public internet.
+        :param pulumi.Input['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArrgs'] service_directory_config: Configuration for using Service Directory to privately connect to a GitHub Enterprise server. This should only be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitHub Enterprise server will be made over the public internet.
         :param pulumi.Input[str] ssl_ca: SSL certificate to use for requests to GitHub Enterprise.
         :param pulumi.Input[str] webhook_secret_secret_version: SecretManager resource containing the webhook secret of the GitHub App, formatted as `projects/*/secrets/*/versions/*`.
         """
@@ -200,14 +200,14 @@ class ConnectionGithubEnterpriseConfigArgs:
 
     @property
     @pulumi.getter(name="serviceDirectoryConfig")
-    def service_directory_config(self) -> Optional[pulumi.Input['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs']]:
+    def service_directory_config(self) -> Optional[pulumi.Input['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArrgs']]:
         """
         Configuration for using Service Directory to privately connect to a GitHub Enterprise server. This should only be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitHub Enterprise server will be made over the public internet.
         """
         return pulumi.get(self, "service_directory_config")
 
     @service_directory_config.setter
-    def service_directory_config(self, value: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs']]):
+    def service_directory_config(self, value: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArrgs']]):
         pulumi.set(self, "service_directory_config", value)
 
     @property
@@ -236,7 +236,7 @@ class ConnectionGithubEnterpriseConfigArgs:
 
 
 @pulumi.input_type
-class ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs:
+calass ConnectionGithubEnterpriseConfigServiceDirectoryConfigArrgs:
     def __init__(__self__, *,
                  service: pulumi.Input[str]):
         """
@@ -258,22 +258,22 @@ class ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs:
 
 
 @pulumi.input_type
-class ConnectionGitlabConfigArgs:
+calass ConnectionGitlabConfigArrgs:
     def __init__(__self__, *,
-                 authorizer_credential: pulumi.Input['ConnectionGitlabConfigAuthorizerCredentialArgs'],
-                 read_authorizer_credential: pulumi.Input['ConnectionGitlabConfigReadAuthorizerCredentialArgs'],
+                 authorizer_credential: pulumi.Input['ConnectionGitlabConfigAuthorizerCredentialArrgs'],
+                 read_authorizer_credential: pulumi.Input['ConnectionGitlabConfigReadAuthorizerCredentialArrgs'],
                  webhook_secret_secret_version: pulumi.Input[str],
                  host_uri: Optional[pulumi.Input[str]] = None,
                  server_version: Optional[pulumi.Input[str]] = None,
-                 service_directory_config: Optional[pulumi.Input['ConnectionGitlabConfigServiceDirectoryConfigArgs']] = None,
+                 service_directory_config: Optional[pulumi.Input['ConnectionGitlabConfigServiceDirectoryConfigArrgs']] = None,
                  ssl_ca: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['ConnectionGitlabConfigAuthorizerCredentialArgs'] authorizer_credential: Required. A GitLab personal access token with the `api` scope access.
-        :param pulumi.Input['ConnectionGitlabConfigReadAuthorizerCredentialArgs'] read_authorizer_credential: Required. A GitLab personal access token with the minimum `read_api` scope access.
+        :param pulumi.Input['ConnectionGitlabConfigAuthorizerCredentialArrgs'] authorizer_credential: Required. A GitLab personal access token with the `api` scope access.
+        :param pulumi.Input['ConnectionGitlabConfigReadAuthorizerCredentialArrgs'] read_authorizer_credential: Required. A GitLab personal access token with the minimum `read_api` scope access.
         :param pulumi.Input[str] webhook_secret_secret_version: Required. Immutable. SecretManager resource containing the webhook secret of a GitLab Enterprise project, formatted as `projects/*/secrets/*/versions/*`.
         :param pulumi.Input[str] host_uri: The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
         :param pulumi.Input[str] server_version: Output only. Version of the GitLab Enterprise server running on the `host_uri`.
-        :param pulumi.Input['ConnectionGitlabConfigServiceDirectoryConfigArgs'] service_directory_config: Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
+        :param pulumi.Input['ConnectionGitlabConfigServiceDirectoryConfigArrgs'] service_directory_config: Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
         :param pulumi.Input[str] ssl_ca: SSL certificate to use for requests to GitLab Enterprise.
         """
         pulumi.set(__self__, "authorizer_credential", authorizer_credential)
@@ -290,26 +290,26 @@ class ConnectionGitlabConfigArgs:
 
     @property
     @pulumi.getter(name="authorizerCredential")
-    def authorizer_credential(self) -> pulumi.Input['ConnectionGitlabConfigAuthorizerCredentialArgs']:
+    def authorizer_credential(self) -> pulumi.Input['ConnectionGitlabConfigAuthorizerCredentialArrgs']:
         """
         Required. A GitLab personal access token with the `api` scope access.
         """
         return pulumi.get(self, "authorizer_credential")
 
     @authorizer_credential.setter
-    def authorizer_credential(self, value: pulumi.Input['ConnectionGitlabConfigAuthorizerCredentialArgs']):
+    def authorizer_credential(self, value: pulumi.Input['ConnectionGitlabConfigAuthorizerCredentialArrgs']):
         pulumi.set(self, "authorizer_credential", value)
 
     @property
     @pulumi.getter(name="readAuthorizerCredential")
-    def read_authorizer_credential(self) -> pulumi.Input['ConnectionGitlabConfigReadAuthorizerCredentialArgs']:
+    def read_authorizer_credential(self) -> pulumi.Input['ConnectionGitlabConfigReadAuthorizerCredentialArrgs']:
         """
         Required. A GitLab personal access token with the minimum `read_api` scope access.
         """
         return pulumi.get(self, "read_authorizer_credential")
 
     @read_authorizer_credential.setter
-    def read_authorizer_credential(self, value: pulumi.Input['ConnectionGitlabConfigReadAuthorizerCredentialArgs']):
+    def read_authorizer_credential(self, value: pulumi.Input['ConnectionGitlabConfigReadAuthorizerCredentialArrgs']):
         pulumi.set(self, "read_authorizer_credential", value)
 
     @property
@@ -350,14 +350,14 @@ class ConnectionGitlabConfigArgs:
 
     @property
     @pulumi.getter(name="serviceDirectoryConfig")
-    def service_directory_config(self) -> Optional[pulumi.Input['ConnectionGitlabConfigServiceDirectoryConfigArgs']]:
+    def service_directory_config(self) -> Optional[pulumi.Input['ConnectionGitlabConfigServiceDirectoryConfigArrgs']]:
         """
         Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
         """
         return pulumi.get(self, "service_directory_config")
 
     @service_directory_config.setter
-    def service_directory_config(self, value: Optional[pulumi.Input['ConnectionGitlabConfigServiceDirectoryConfigArgs']]):
+    def service_directory_config(self, value: Optional[pulumi.Input['ConnectionGitlabConfigServiceDirectoryConfigArrgs']]):
         pulumi.set(self, "service_directory_config", value)
 
     @property
@@ -374,7 +374,7 @@ class ConnectionGitlabConfigArgs:
 
 
 @pulumi.input_type
-class ConnectionGitlabConfigAuthorizerCredentialArgs:
+calass ConnectionGitlabConfigAuthorizerCredentialArrgs:
     def __init__(__self__, *,
                  user_token_secret_version: pulumi.Input[str],
                  username: Optional[pulumi.Input[str]] = None):
@@ -412,7 +412,7 @@ class ConnectionGitlabConfigAuthorizerCredentialArgs:
 
 
 @pulumi.input_type
-class ConnectionGitlabConfigReadAuthorizerCredentialArgs:
+calass ConnectionGitlabConfigReadAuthorizerCredentialArrgs:
     def __init__(__self__, *,
                  user_token_secret_version: pulumi.Input[str],
                  username: Optional[pulumi.Input[str]] = None):
@@ -454,7 +454,7 @@ class ConnectionGitlabConfigReadAuthorizerCredentialArgs:
 
 
 @pulumi.input_type
-class ConnectionGitlabConfigServiceDirectoryConfigArgs:
+calass ConnectionGitlabConfigServiceDirectoryConfigArrgs:
     def __init__(__self__, *,
                  service: pulumi.Input[str]):
         """
@@ -476,7 +476,7 @@ class ConnectionGitlabConfigServiceDirectoryConfigArgs:
 
 
 @pulumi.input_type
-class ConnectionIAMBindingConditionArgs:
+calass ConnectionIAMBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -515,7 +515,7 @@ class ConnectionIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class ConnectionIAMMemberConditionArgs:
+calass ConnectionIAMMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -554,7 +554,7 @@ class ConnectionIAMMemberConditionArgs:
 
 
 @pulumi.input_type
-class ConnectionInstallationStateArgs:
+calass ConnectionInstallationStateArrgs:
     def __init__(__self__, *,
                  action_uri: Optional[pulumi.Input[str]] = None,
                  message: Optional[pulumi.Input[str]] = None,

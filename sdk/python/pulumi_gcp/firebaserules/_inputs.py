@@ -10,13 +10,13 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'RulesetMetadataArgs',
-    'RulesetSourceArgs',
-    'RulesetSourceFileArgs',
+    'RulesetMetadataArrgs',
+    'RulesetSourceArrgs',
+    'RulesetSourceFileArrgs',
 ]
 
 @pulumi.input_type
-class RulesetMetadataArgs:
+calass RulesetMetadataArrgs:
     def __init__(__self__, *,
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         if services is not None:
@@ -33,12 +33,12 @@ class RulesetMetadataArgs:
 
 
 @pulumi.input_type
-class RulesetSourceArgs:
+calass RulesetSourceArrgs:
     def __init__(__self__, *,
-                 files: pulumi.Input[Sequence[pulumi.Input['RulesetSourceFileArgs']]],
+                 files: pulumi.Input[Sequence[pulumi.Input['RulesetSourceFileArrgs']]],
                  language: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['RulesetSourceFileArgs']]] files: `File` set constituting the `Source` bundle.
+        :param pulumi.Input[Sequence[pulumi.Input['RulesetSourceFileArrgs']]] files: `File` set constituting the `Source` bundle.
         :param pulumi.Input[str] language: `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
         """
         pulumi.set(__self__, "files", files)
@@ -47,14 +47,14 @@ class RulesetSourceArgs:
 
     @property
     @pulumi.getter
-    def files(self) -> pulumi.Input[Sequence[pulumi.Input['RulesetSourceFileArgs']]]:
+    def files(self) -> pulumi.Input[Sequence[pulumi.Input['RulesetSourceFileArrgs']]]:
         """
         `File` set constituting the `Source` bundle.
         """
         return pulumi.get(self, "files")
 
     @files.setter
-    def files(self, value: pulumi.Input[Sequence[pulumi.Input['RulesetSourceFileArgs']]]):
+    def files(self, value: pulumi.Input[Sequence[pulumi.Input['RulesetSourceFileArrgs']]]):
         pulumi.set(self, "files", value)
 
     @property
@@ -71,7 +71,7 @@ class RulesetSourceArgs:
 
 
 @pulumi.input_type
-class RulesetSourceFileArgs:
+calass RulesetSourceFileArrgs:
     def __init__(__self__, *,
                  content: pulumi.Input[str],
                  name: pulumi.Input[str],

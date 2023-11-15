@@ -11,44 +11,44 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['InstanceArgs', 'Instance']
+__all__ = ['InstanceArrgs', 'Instance']
 
 @pulumi.input_type
-class InstanceArgs:
+calass InstanceArrgs:
     def __init__(__self__, *,
-                 boot_disk: pulumi.Input['InstanceBootDiskArgs'],
+                 boot_disk: pulumi.Input['InstanceBootDiskArrgs'],
                  machine_type: pulumi.Input[str],
-                 network_interfaces: pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]],
-                 advanced_machine_features: Optional[pulumi.Input['InstanceAdvancedMachineFeaturesArgs']] = None,
+                 network_interfaces: pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArrgs']]],
+                 advanced_machine_features: Optional[pulumi.Input['InstanceAdvancedMachineFeaturesArrgs']] = None,
                  allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
-                 attached_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArgs']]]] = None,
+                 attached_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArrgs']]]] = None,
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
-                 confidential_instance_config: Optional[pulumi.Input['InstanceConfidentialInstanceConfigArgs']] = None,
+                 confidential_instance_config: Optional[pulumi.Input['InstanceConfidentialInstanceConfigArrgs']] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  desired_status: Optional[pulumi.Input[str]] = None,
                  enable_display: Optional[pulumi.Input[bool]] = None,
-                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArgs']]]] = None,
+                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArrgs']]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metadata_startup_script: Optional[pulumi.Input[str]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_performance_config: Optional[pulumi.Input['InstanceNetworkPerformanceConfigArgs']] = None,
-                 params: Optional[pulumi.Input['InstanceParamsArgs']] = None,
+                 network_performance_config: Optional[pulumi.Input['InstanceNetworkPerformanceConfigArrgs']] = None,
+                 params: Optional[pulumi.Input['InstanceParamsArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 reservation_affinity: Optional[pulumi.Input['InstanceReservationAffinityArgs']] = None,
+                 reservation_affinity: Optional[pulumi.Input['InstanceReservationAffinityArrgs']] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
-                 scheduling: Optional[pulumi.Input['InstanceSchedulingArgs']] = None,
-                 scratch_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceScratchDiskArgs']]]] = None,
-                 service_account: Optional[pulumi.Input['InstanceServiceAccountArgs']] = None,
-                 shielded_instance_config: Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']] = None,
+                 scheduling: Optional[pulumi.Input['InstanceSchedulingArrgs']] = None,
+                 scratch_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceScratchDiskArrgs']]]] = None,
+                 service_account: Optional[pulumi.Input['InstanceServiceAccountArrgs']] = None,
+                 shielded_instance_config: Optional[pulumi.Input['InstanceShieldedInstanceConfigArrgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input['InstanceBootDiskArgs'] boot_disk: The boot disk for the instance.
+        :param pulumi.Input['InstanceBootDiskArrgs'] boot_disk: The boot disk for the instance.
                Structure is documented below.
         :param pulumi.Input[str] machine_type: The machine type to create.
                
@@ -57,18 +57,18 @@ class InstanceArgs:
                [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
                
                There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]] network_interfaces: Networks to attach to the instance. This can
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArrgs']]] network_interfaces: Networks to attach to the instance. This can
                be specified multiple times. Structure is documented below.
                
                - - -
-        :param pulumi.Input['InstanceAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
+        :param pulumi.Input['InstanceAdvancedMachineFeaturesArrgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
         :param pulumi.Input[bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
                If you try to update a property that requires stopping the instance without setting this field, the update will fail.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArgs']]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArrgs']]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs.
                This defaults to false.
-        :param pulumi.Input['InstanceConfidentialInstanceConfigArgs'] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
+        :param pulumi.Input['InstanceConfidentialInstanceConfigArrgs'] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         :param pulumi.Input[bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
                **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
         :param pulumi.Input[str] description: A brief description of this resource.
@@ -76,7 +76,7 @@ class InstanceArgs:
                `"RUNNING"` or `"TERMINATED"`.
         :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArrgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
                **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
                Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -112,26 +112,26 @@ class InstanceArgs:
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
-        :param pulumi.Input['InstanceNetworkPerformanceConfigArgs'] network_performance_config: Configures network performance settings for the instance. Structure is
+        :param pulumi.Input['InstanceNetworkPerformanceConfigArrgs'] network_performance_config: Configures network performance settings for the instance. Structure is
                documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
                in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
                in order for this setting to take effect.
-        :param pulumi.Input['InstanceParamsArgs'] params: Additional instance parameters.
+        :param pulumi.Input['InstanceParamsArrgs'] params: Additional instance parameters.
                .
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input['InstanceReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
+        :param pulumi.Input['InstanceReservationAffinityArrgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
                Structure is documented below.
         :param pulumi.Input[str] resource_policies: - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
-        :param pulumi.Input['InstanceSchedulingArgs'] scheduling: The scheduling strategy to use. More details about
+        :param pulumi.Input['InstanceSchedulingArrgs'] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceScratchDiskArgs']]] scratch_disks: Scratch disks to attach to the instance. This can be
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceScratchDiskArrgs']]] scratch_disks: Scratch disks to attach to the instance. This can be
                specified multiple times for multiple scratch disks. Structure is documented below.
-        :param pulumi.Input['InstanceServiceAccountArgs'] service_account: Service account to attach to the instance.
+        :param pulumi.Input['InstanceServiceAccountArrgs'] service_account: Service account to attach to the instance.
                Structure is documented below.
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-        :param pulumi.Input['InstanceShieldedInstanceConfigArgs'] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+        :param pulumi.Input['InstanceShieldedInstanceConfigArrgs'] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of network tags to attach to the instance.
@@ -197,7 +197,7 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="bootDisk")
-    def boot_disk(self) -> pulumi.Input['InstanceBootDiskArgs']:
+    def boot_disk(self) -> pulumi.Input['InstanceBootDiskArrgs']:
         """
         The boot disk for the instance.
         Structure is documented below.
@@ -205,7 +205,7 @@ class InstanceArgs:
         return pulumi.get(self, "boot_disk")
 
     @boot_disk.setter
-    def boot_disk(self, value: pulumi.Input['InstanceBootDiskArgs']):
+    def boot_disk(self, value: pulumi.Input['InstanceBootDiskArrgs']):
         pulumi.set(self, "boot_disk", value)
 
     @property
@@ -228,7 +228,7 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]]:
+    def network_interfaces(self) -> pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArrgs']]]:
         """
         Networks to attach to the instance. This can
         be specified multiple times. Structure is documented below.
@@ -238,19 +238,19 @@ class InstanceArgs:
         return pulumi.get(self, "network_interfaces")
 
     @network_interfaces.setter
-    def network_interfaces(self, value: pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]]):
+    def network_interfaces(self, value: pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArrgs']]]):
         pulumi.set(self, "network_interfaces", value)
 
     @property
     @pulumi.getter(name="advancedMachineFeatures")
-    def advanced_machine_features(self) -> Optional[pulumi.Input['InstanceAdvancedMachineFeaturesArgs']]:
+    def advanced_machine_features(self) -> Optional[pulumi.Input['InstanceAdvancedMachineFeaturesArrgs']]:
         """
         Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
         """
         return pulumi.get(self, "advanced_machine_features")
 
     @advanced_machine_features.setter
-    def advanced_machine_features(self, value: Optional[pulumi.Input['InstanceAdvancedMachineFeaturesArgs']]):
+    def advanced_machine_features(self, value: Optional[pulumi.Input['InstanceAdvancedMachineFeaturesArrgs']]):
         pulumi.set(self, "advanced_machine_features", value)
 
     @property
@@ -268,14 +268,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="attachedDisks")
-    def attached_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArgs']]]]:
+    def attached_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArrgs']]]]:
         """
         Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
         """
         return pulumi.get(self, "attached_disks")
 
     @attached_disks.setter
-    def attached_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArgs']]]]):
+    def attached_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArrgs']]]]):
         pulumi.set(self, "attached_disks", value)
 
     @property
@@ -294,14 +294,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="confidentialInstanceConfig")
-    def confidential_instance_config(self) -> Optional[pulumi.Input['InstanceConfidentialInstanceConfigArgs']]:
+    def confidential_instance_config(self) -> Optional[pulumi.Input['InstanceConfidentialInstanceConfigArrgs']]:
         """
         Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         """
         return pulumi.get(self, "confidential_instance_config")
 
     @confidential_instance_config.setter
-    def confidential_instance_config(self, value: Optional[pulumi.Input['InstanceConfidentialInstanceConfigArgs']]):
+    def confidential_instance_config(self, value: Optional[pulumi.Input['InstanceConfidentialInstanceConfigArrgs']]):
         pulumi.set(self, "confidential_instance_config", value)
 
     @property
@@ -357,7 +357,7 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="guestAccelerators")
-    def guest_accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArgs']]]]:
+    def guest_accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArrgs']]]]:
         """
         List of the type and count of accelerator cards attached to the instance. Structure documented below.
         **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
@@ -365,7 +365,7 @@ class InstanceArgs:
         return pulumi.get(self, "guest_accelerators")
 
     @guest_accelerators.setter
-    def guest_accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArgs']]]]):
+    def guest_accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArrgs']]]]):
         pulumi.set(self, "guest_accelerators", value)
 
     @property
@@ -470,7 +470,7 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="networkPerformanceConfig")
-    def network_performance_config(self) -> Optional[pulumi.Input['InstanceNetworkPerformanceConfigArgs']]:
+    def network_performance_config(self) -> Optional[pulumi.Input['InstanceNetworkPerformanceConfigArrgs']]:
         """
         Configures network performance settings for the instance. Structure is
         documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
@@ -481,12 +481,12 @@ class InstanceArgs:
         return pulumi.get(self, "network_performance_config")
 
     @network_performance_config.setter
-    def network_performance_config(self, value: Optional[pulumi.Input['InstanceNetworkPerformanceConfigArgs']]):
+    def network_performance_config(self, value: Optional[pulumi.Input['InstanceNetworkPerformanceConfigArrgs']]):
         pulumi.set(self, "network_performance_config", value)
 
     @property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['InstanceParamsArgs']]:
+    def params(self) -> Optional[pulumi.Input['InstanceParamsArrgs']]:
         """
         Additional instance parameters.
         .
@@ -494,7 +494,7 @@ class InstanceArgs:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['InstanceParamsArgs']]):
+    def params(self, value: Optional[pulumi.Input['InstanceParamsArrgs']]):
         pulumi.set(self, "params", value)
 
     @property
@@ -512,7 +512,7 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="reservationAffinity")
-    def reservation_affinity(self) -> Optional[pulumi.Input['InstanceReservationAffinityArgs']]:
+    def reservation_affinity(self) -> Optional[pulumi.Input['InstanceReservationAffinityArrgs']]:
         """
         Specifies the reservations that this instance can consume from.
         Structure is documented below.
@@ -520,7 +520,7 @@ class InstanceArgs:
         return pulumi.get(self, "reservation_affinity")
 
     @reservation_affinity.setter
-    def reservation_affinity(self, value: Optional[pulumi.Input['InstanceReservationAffinityArgs']]):
+    def reservation_affinity(self, value: Optional[pulumi.Input['InstanceReservationAffinityArrgs']]):
         pulumi.set(self, "reservation_affinity", value)
 
     @property
@@ -537,7 +537,7 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def scheduling(self) -> Optional[pulumi.Input['InstanceSchedulingArgs']]:
+    def scheduling(self) -> Optional[pulumi.Input['InstanceSchedulingArrgs']]:
         """
         The scheduling strategy to use. More details about
         this configuration option are detailed below.
@@ -545,12 +545,12 @@ class InstanceArgs:
         return pulumi.get(self, "scheduling")
 
     @scheduling.setter
-    def scheduling(self, value: Optional[pulumi.Input['InstanceSchedulingArgs']]):
+    def scheduling(self, value: Optional[pulumi.Input['InstanceSchedulingArrgs']]):
         pulumi.set(self, "scheduling", value)
 
     @property
     @pulumi.getter(name="scratchDisks")
-    def scratch_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceScratchDiskArgs']]]]:
+    def scratch_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceScratchDiskArrgs']]]]:
         """
         Scratch disks to attach to the instance. This can be
         specified multiple times for multiple scratch disks. Structure is documented below.
@@ -558,12 +558,12 @@ class InstanceArgs:
         return pulumi.get(self, "scratch_disks")
 
     @scratch_disks.setter
-    def scratch_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceScratchDiskArgs']]]]):
+    def scratch_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceScratchDiskArrgs']]]]):
         pulumi.set(self, "scratch_disks", value)
 
     @property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input['InstanceServiceAccountArgs']]:
+    def service_account(self) -> Optional[pulumi.Input['InstanceServiceAccountArrgs']]:
         """
         Service account to attach to the instance.
         Structure is documented below.
@@ -572,12 +572,12 @@ class InstanceArgs:
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input['InstanceServiceAccountArgs']]):
+    def service_account(self, value: Optional[pulumi.Input['InstanceServiceAccountArrgs']]):
         pulumi.set(self, "service_account", value)
 
     @property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']]:
+    def shielded_instance_config(self) -> Optional[pulumi.Input['InstanceShieldedInstanceConfigArrgs']]:
         """
         Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
         **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
@@ -586,7 +586,7 @@ class InstanceArgs:
         return pulumi.get(self, "shielded_instance_config")
 
     @shielded_instance_config.setter
-    def shielded_instance_config(self, value: Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']]):
+    def shielded_instance_config(self, value: Optional[pulumi.Input['InstanceShieldedInstanceConfigArrgs']]):
         pulumi.set(self, "shielded_instance_config", value)
 
     @property
@@ -615,14 +615,14 @@ class InstanceArgs:
 
 
 @pulumi.input_type
-class _InstanceState:
+calass _InstanceState:
     def __init__(__self__, *,
-                 advanced_machine_features: Optional[pulumi.Input['InstanceAdvancedMachineFeaturesArgs']] = None,
+                 advanced_machine_features: Optional[pulumi.Input['InstanceAdvancedMachineFeaturesArrgs']] = None,
                  allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
-                 attached_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArgs']]]] = None,
-                 boot_disk: Optional[pulumi.Input['InstanceBootDiskArgs']] = None,
+                 attached_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArrgs']]]] = None,
+                 boot_disk: Optional[pulumi.Input['InstanceBootDiskArrgs']] = None,
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
-                 confidential_instance_config: Optional[pulumi.Input['InstanceConfidentialInstanceConfigArgs']] = None,
+                 confidential_instance_config: Optional[pulumi.Input['InstanceConfidentialInstanceConfigArrgs']] = None,
                  cpu_platform: Optional[pulumi.Input[str]] = None,
                  current_status: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -630,7 +630,7 @@ class _InstanceState:
                  desired_status: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enable_display: Optional[pulumi.Input[bool]] = None,
-                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArgs']]]] = None,
+                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArrgs']]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
@@ -641,33 +641,33 @@ class _InstanceState:
                  metadata_startup_script: Optional[pulumi.Input[str]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]]] = None,
-                 network_performance_config: Optional[pulumi.Input['InstanceNetworkPerformanceConfigArgs']] = None,
-                 params: Optional[pulumi.Input['InstanceParamsArgs']] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArrgs']]]] = None,
+                 network_performance_config: Optional[pulumi.Input['InstanceNetworkPerformanceConfigArrgs']] = None,
+                 params: Optional[pulumi.Input['InstanceParamsArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 reservation_affinity: Optional[pulumi.Input['InstanceReservationAffinityArgs']] = None,
+                 reservation_affinity: Optional[pulumi.Input['InstanceReservationAffinityArrgs']] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
-                 scheduling: Optional[pulumi.Input['InstanceSchedulingArgs']] = None,
-                 scratch_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceScratchDiskArgs']]]] = None,
+                 scheduling: Optional[pulumi.Input['InstanceSchedulingArrgs']] = None,
+                 scratch_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceScratchDiskArrgs']]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 service_account: Optional[pulumi.Input['InstanceServiceAccountArgs']] = None,
-                 shielded_instance_config: Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']] = None,
+                 service_account: Optional[pulumi.Input['InstanceServiceAccountArrgs']] = None,
+                 shielded_instance_config: Optional[pulumi.Input['InstanceShieldedInstanceConfigArrgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags_fingerprint: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input['InstanceAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
+        :param pulumi.Input['InstanceAdvancedMachineFeaturesArrgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
         :param pulumi.Input[bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
                If you try to update a property that requires stopping the instance without setting this field, the update will fail.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArgs']]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
-        :param pulumi.Input['InstanceBootDiskArgs'] boot_disk: The boot disk for the instance.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArrgs']]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
+        :param pulumi.Input['InstanceBootDiskArrgs'] boot_disk: The boot disk for the instance.
                Structure is documented below.
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs.
                This defaults to false.
-        :param pulumi.Input['InstanceConfidentialInstanceConfigArgs'] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
+        :param pulumi.Input['InstanceConfidentialInstanceConfigArrgs'] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         :param pulumi.Input[str] cpu_platform: The CPU platform used by this instance.
         :param pulumi.Input[str] current_status: The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
         :param pulumi.Input[bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
@@ -678,7 +678,7 @@ class _InstanceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArrgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
                **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
                Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -724,32 +724,32 @@ class _InstanceState:
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]] network_interfaces: Networks to attach to the instance. This can
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArrgs']]] network_interfaces: Networks to attach to the instance. This can
                be specified multiple times. Structure is documented below.
                
                - - -
-        :param pulumi.Input['InstanceNetworkPerformanceConfigArgs'] network_performance_config: Configures network performance settings for the instance. Structure is
+        :param pulumi.Input['InstanceNetworkPerformanceConfigArrgs'] network_performance_config: Configures network performance settings for the instance. Structure is
                documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
                in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
                in order for this setting to take effect.
-        :param pulumi.Input['InstanceParamsArgs'] params: Additional instance parameters.
+        :param pulumi.Input['InstanceParamsArrgs'] params: Additional instance parameters.
                .
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input['InstanceReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
+        :param pulumi.Input['InstanceReservationAffinityArrgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
                Structure is documented below.
         :param pulumi.Input[str] resource_policies: - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
-        :param pulumi.Input['InstanceSchedulingArgs'] scheduling: The scheduling strategy to use. More details about
+        :param pulumi.Input['InstanceSchedulingArrgs'] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceScratchDiskArgs']]] scratch_disks: Scratch disks to attach to the instance. This can be
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceScratchDiskArrgs']]] scratch_disks: Scratch disks to attach to the instance. This can be
                specified multiple times for multiple scratch disks. Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input['InstanceServiceAccountArgs'] service_account: Service account to attach to the instance.
+        :param pulumi.Input['InstanceServiceAccountArrgs'] service_account: Service account to attach to the instance.
                Structure is documented below.
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-        :param pulumi.Input['InstanceShieldedInstanceConfigArgs'] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+        :param pulumi.Input['InstanceShieldedInstanceConfigArrgs'] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of network tags to attach to the instance.
@@ -837,14 +837,14 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="advancedMachineFeatures")
-    def advanced_machine_features(self) -> Optional[pulumi.Input['InstanceAdvancedMachineFeaturesArgs']]:
+    def advanced_machine_features(self) -> Optional[pulumi.Input['InstanceAdvancedMachineFeaturesArrgs']]:
         """
         Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
         """
         return pulumi.get(self, "advanced_machine_features")
 
     @advanced_machine_features.setter
-    def advanced_machine_features(self, value: Optional[pulumi.Input['InstanceAdvancedMachineFeaturesArgs']]):
+    def advanced_machine_features(self, value: Optional[pulumi.Input['InstanceAdvancedMachineFeaturesArrgs']]):
         pulumi.set(self, "advanced_machine_features", value)
 
     @property
@@ -862,19 +862,19 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="attachedDisks")
-    def attached_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArgs']]]]:
+    def attached_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArrgs']]]]:
         """
         Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
         """
         return pulumi.get(self, "attached_disks")
 
     @attached_disks.setter
-    def attached_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArgs']]]]):
+    def attached_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArrgs']]]]):
         pulumi.set(self, "attached_disks", value)
 
     @property
     @pulumi.getter(name="bootDisk")
-    def boot_disk(self) -> Optional[pulumi.Input['InstanceBootDiskArgs']]:
+    def boot_disk(self) -> Optional[pulumi.Input['InstanceBootDiskArrgs']]:
         """
         The boot disk for the instance.
         Structure is documented below.
@@ -882,7 +882,7 @@ class _InstanceState:
         return pulumi.get(self, "boot_disk")
 
     @boot_disk.setter
-    def boot_disk(self, value: Optional[pulumi.Input['InstanceBootDiskArgs']]):
+    def boot_disk(self, value: Optional[pulumi.Input['InstanceBootDiskArrgs']]):
         pulumi.set(self, "boot_disk", value)
 
     @property
@@ -901,14 +901,14 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="confidentialInstanceConfig")
-    def confidential_instance_config(self) -> Optional[pulumi.Input['InstanceConfidentialInstanceConfigArgs']]:
+    def confidential_instance_config(self) -> Optional[pulumi.Input['InstanceConfidentialInstanceConfigArrgs']]:
         """
         Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         """
         return pulumi.get(self, "confidential_instance_config")
 
     @confidential_instance_config.setter
-    def confidential_instance_config(self, value: Optional[pulumi.Input['InstanceConfidentialInstanceConfigArgs']]):
+    def confidential_instance_config(self, value: Optional[pulumi.Input['InstanceConfidentialInstanceConfigArrgs']]):
         pulumi.set(self, "confidential_instance_config", value)
 
     @property
@@ -1000,7 +1000,7 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="guestAccelerators")
-    def guest_accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArgs']]]]:
+    def guest_accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArrgs']]]]:
         """
         List of the type and count of accelerator cards attached to the instance. Structure documented below.
         **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
@@ -1008,7 +1008,7 @@ class _InstanceState:
         return pulumi.get(self, "guest_accelerators")
 
     @guest_accelerators.setter
-    def guest_accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArgs']]]]):
+    def guest_accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArrgs']]]]):
         pulumi.set(self, "guest_accelerators", value)
 
     @property
@@ -1167,7 +1167,7 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]]]:
+    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArrgs']]]]:
         """
         Networks to attach to the instance. This can
         be specified multiple times. Structure is documented below.
@@ -1177,12 +1177,12 @@ class _InstanceState:
         return pulumi.get(self, "network_interfaces")
 
     @network_interfaces.setter
-    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]]]):
+    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArrgs']]]]):
         pulumi.set(self, "network_interfaces", value)
 
     @property
     @pulumi.getter(name="networkPerformanceConfig")
-    def network_performance_config(self) -> Optional[pulumi.Input['InstanceNetworkPerformanceConfigArgs']]:
+    def network_performance_config(self) -> Optional[pulumi.Input['InstanceNetworkPerformanceConfigArrgs']]:
         """
         Configures network performance settings for the instance. Structure is
         documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
@@ -1193,12 +1193,12 @@ class _InstanceState:
         return pulumi.get(self, "network_performance_config")
 
     @network_performance_config.setter
-    def network_performance_config(self, value: Optional[pulumi.Input['InstanceNetworkPerformanceConfigArgs']]):
+    def network_performance_config(self, value: Optional[pulumi.Input['InstanceNetworkPerformanceConfigArrgs']]):
         pulumi.set(self, "network_performance_config", value)
 
     @property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['InstanceParamsArgs']]:
+    def params(self) -> Optional[pulumi.Input['InstanceParamsArrgs']]:
         """
         Additional instance parameters.
         .
@@ -1206,7 +1206,7 @@ class _InstanceState:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['InstanceParamsArgs']]):
+    def params(self, value: Optional[pulumi.Input['InstanceParamsArrgs']]):
         pulumi.set(self, "params", value)
 
     @property
@@ -1236,7 +1236,7 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="reservationAffinity")
-    def reservation_affinity(self) -> Optional[pulumi.Input['InstanceReservationAffinityArgs']]:
+    def reservation_affinity(self) -> Optional[pulumi.Input['InstanceReservationAffinityArrgs']]:
         """
         Specifies the reservations that this instance can consume from.
         Structure is documented below.
@@ -1244,7 +1244,7 @@ class _InstanceState:
         return pulumi.get(self, "reservation_affinity")
 
     @reservation_affinity.setter
-    def reservation_affinity(self, value: Optional[pulumi.Input['InstanceReservationAffinityArgs']]):
+    def reservation_affinity(self, value: Optional[pulumi.Input['InstanceReservationAffinityArrgs']]):
         pulumi.set(self, "reservation_affinity", value)
 
     @property
@@ -1261,7 +1261,7 @@ class _InstanceState:
 
     @property
     @pulumi.getter
-    def scheduling(self) -> Optional[pulumi.Input['InstanceSchedulingArgs']]:
+    def scheduling(self) -> Optional[pulumi.Input['InstanceSchedulingArrgs']]:
         """
         The scheduling strategy to use. More details about
         this configuration option are detailed below.
@@ -1269,12 +1269,12 @@ class _InstanceState:
         return pulumi.get(self, "scheduling")
 
     @scheduling.setter
-    def scheduling(self, value: Optional[pulumi.Input['InstanceSchedulingArgs']]):
+    def scheduling(self, value: Optional[pulumi.Input['InstanceSchedulingArrgs']]):
         pulumi.set(self, "scheduling", value)
 
     @property
     @pulumi.getter(name="scratchDisks")
-    def scratch_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceScratchDiskArgs']]]]:
+    def scratch_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceScratchDiskArrgs']]]]:
         """
         Scratch disks to attach to the instance. This can be
         specified multiple times for multiple scratch disks. Structure is documented below.
@@ -1282,7 +1282,7 @@ class _InstanceState:
         return pulumi.get(self, "scratch_disks")
 
     @scratch_disks.setter
-    def scratch_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceScratchDiskArgs']]]]):
+    def scratch_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceScratchDiskArrgs']]]]):
         pulumi.set(self, "scratch_disks", value)
 
     @property
@@ -1299,7 +1299,7 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input['InstanceServiceAccountArgs']]:
+    def service_account(self) -> Optional[pulumi.Input['InstanceServiceAccountArrgs']]:
         """
         Service account to attach to the instance.
         Structure is documented below.
@@ -1308,12 +1308,12 @@ class _InstanceState:
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input['InstanceServiceAccountArgs']]):
+    def service_account(self, value: Optional[pulumi.Input['InstanceServiceAccountArrgs']]):
         pulumi.set(self, "service_account", value)
 
     @property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']]:
+    def shielded_instance_config(self) -> Optional[pulumi.Input['InstanceShieldedInstanceConfigArrgs']]:
         """
         Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
         **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
@@ -1322,7 +1322,7 @@ class _InstanceState:
         return pulumi.get(self, "shielded_instance_config")
 
     @shielded_instance_config.setter
-    def shielded_instance_config(self, value: Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']]):
+    def shielded_instance_config(self, value: Optional[pulumi.Input['InstanceShieldedInstanceConfigArrgs']]):
         pulumi.set(self, "shielded_instance_config", value)
 
     @property
@@ -1362,22 +1362,22 @@ class _InstanceState:
         pulumi.set(self, "zone", value)
 
 
-class Instance(pulumi.CustomResource):
+calass Instance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_machine_features: Optional[pulumi.Input[pulumi.InputType['InstanceAdvancedMachineFeaturesArgs']]] = None,
+                 advanced_machine_features: Optional[pulumi.Input[pulumi.InputType['InstanceAdvancedMachineFeaturesArrgs']]] = None,
                  allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
-                 attached_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAttachedDiskArgs']]]]] = None,
-                 boot_disk: Optional[pulumi.Input[pulumi.InputType['InstanceBootDiskArgs']]] = None,
+                 attached_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAttachedDiskArrgs']]]]] = None,
+                 boot_disk: Optional[pulumi.Input[pulumi.InputType['InstanceBootDiskArrgs']]] = None,
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
-                 confidential_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceConfidentialInstanceConfigArgs']]] = None,
+                 confidential_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceConfidentialInstanceConfigArrgs']]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  desired_status: Optional[pulumi.Input[str]] = None,
                  enable_display: Optional[pulumi.Input[bool]] = None,
-                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGuestAcceleratorArgs']]]]] = None,
+                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGuestAcceleratorArrgs']]]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
@@ -1385,16 +1385,16 @@ class Instance(pulumi.CustomResource):
                  metadata_startup_script: Optional[pulumi.Input[str]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkInterfaceArgs']]]]] = None,
-                 network_performance_config: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkPerformanceConfigArgs']]] = None,
-                 params: Optional[pulumi.Input[pulumi.InputType['InstanceParamsArgs']]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkInterfaceArrgs']]]]] = None,
+                 network_performance_config: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkPerformanceConfigArrgs']]] = None,
+                 params: Optional[pulumi.Input[pulumi.InputType['InstanceParamsArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']]] = None,
+                 reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceReservationAffinityArrgs']]] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
-                 scheduling: Optional[pulumi.Input[pulumi.InputType['InstanceSchedulingArgs']]] = None,
-                 scratch_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceScratchDiskArgs']]]]] = None,
-                 service_account: Optional[pulumi.Input[pulumi.InputType['InstanceServiceAccountArgs']]] = None,
-                 shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArgs']]] = None,
+                 scheduling: Optional[pulumi.Input[pulumi.InputType['InstanceSchedulingArrgs']]] = None,
+                 scratch_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceScratchDiskArrgs']]]]] = None,
+                 service_account: Optional[pulumi.Input[pulumi.InputType['InstanceServiceAccountArrgs']]] = None,
+                 shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArrgs']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1420,26 +1420,26 @@ class Instance(pulumi.CustomResource):
                 "foo",
                 "bar",
             ],
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image="debian-cloud/debian-11",
                     labels={
                         "my_label": "value",
                     },
                 ),
             ),
-            scratch_disks=[gcp.compute.InstanceScratchDiskArgs(
+            scratch_disks=[gcp.compute.InstanceScratchDiskArrgs(
                 interface="NVME",
             )],
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 network="default",
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArrgs()],
             )],
             metadata={
                 "foo": "bar",
             },
             metadata_startup_script="echo hi > /test.txt",
-            service_account=gcp.compute.InstanceServiceAccountArgs(
+            service_account=gcp.compute.InstanceServiceAccountArrgs(
                 email=default_account.email,
                 scopes=["cloud-platform"],
             ))
@@ -1471,16 +1471,16 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['InstanceAdvancedMachineFeaturesArgs']] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
+        :param pulumi.Input[pulumi.InputType['InstanceAdvancedMachineFeaturesArrgs']] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
         :param pulumi.Input[bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
                If you try to update a property that requires stopping the instance without setting this field, the update will fail.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAttachedDiskArgs']]]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['InstanceBootDiskArgs']] boot_disk: The boot disk for the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAttachedDiskArrgs']]]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['InstanceBootDiskArrgs']] boot_disk: The boot disk for the instance.
                Structure is documented below.
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs.
                This defaults to false.
-        :param pulumi.Input[pulumi.InputType['InstanceConfidentialInstanceConfigArgs']] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
+        :param pulumi.Input[pulumi.InputType['InstanceConfidentialInstanceConfigArrgs']] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         :param pulumi.Input[bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
                **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
         :param pulumi.Input[str] description: A brief description of this resource.
@@ -1488,7 +1488,7 @@ class Instance(pulumi.CustomResource):
                `"RUNNING"` or `"TERMINATED"`.
         :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGuestAcceleratorArgs']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGuestAcceleratorArrgs']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
                **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
                Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -1531,30 +1531,30 @@ class Instance(pulumi.CustomResource):
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkInterfaceArgs']]]] network_interfaces: Networks to attach to the instance. This can
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkInterfaceArrgs']]]] network_interfaces: Networks to attach to the instance. This can
                be specified multiple times. Structure is documented below.
                
                - - -
-        :param pulumi.Input[pulumi.InputType['InstanceNetworkPerformanceConfigArgs']] network_performance_config: Configures network performance settings for the instance. Structure is
+        :param pulumi.Input[pulumi.InputType['InstanceNetworkPerformanceConfigArrgs']] network_performance_config: Configures network performance settings for the instance. Structure is
                documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
                in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
                in order for this setting to take effect.
-        :param pulumi.Input[pulumi.InputType['InstanceParamsArgs']] params: Additional instance parameters.
+        :param pulumi.Input[pulumi.InputType['InstanceParamsArrgs']] params: Additional instance parameters.
                .
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
+        :param pulumi.Input[pulumi.InputType['InstanceReservationAffinityArrgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
                Structure is documented below.
         :param pulumi.Input[str] resource_policies: - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
-        :param pulumi.Input[pulumi.InputType['InstanceSchedulingArgs']] scheduling: The scheduling strategy to use. More details about
+        :param pulumi.Input[pulumi.InputType['InstanceSchedulingArrgs']] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceScratchDiskArgs']]]] scratch_disks: Scratch disks to attach to the instance. This can be
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceScratchDiskArrgs']]]] scratch_disks: Scratch disks to attach to the instance. This can be
                specified multiple times for multiple scratch disks. Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['InstanceServiceAccountArgs']] service_account: Service account to attach to the instance.
+        :param pulumi.Input[pulumi.InputType['InstanceServiceAccountArrgs']] service_account: Service account to attach to the instance.
                Structure is documented below.
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-        :param pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArgs']] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArrgs']] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of network tags to attach to the instance.
@@ -1564,7 +1564,7 @@ class Instance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: InstanceArgs,
+                 args: InstanceArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a VM instance resource within GCE. For more information see
@@ -1588,26 +1588,26 @@ class Instance(pulumi.CustomResource):
                 "foo",
                 "bar",
             ],
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image="debian-cloud/debian-11",
                     labels={
                         "my_label": "value",
                     },
                 ),
             ),
-            scratch_disks=[gcp.compute.InstanceScratchDiskArgs(
+            scratch_disks=[gcp.compute.InstanceScratchDiskArrgs(
                 interface="NVME",
             )],
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 network="default",
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArrgs()],
             )],
             metadata={
                 "foo": "bar",
             },
             metadata_startup_script="echo hi > /test.txt",
-            service_account=gcp.compute.InstanceServiceAccountArgs(
+            service_account=gcp.compute.InstanceServiceAccountArrgs(
                 email=default_account.email,
                 scopes=["cloud-platform"],
             ))
@@ -1638,12 +1638,12 @@ class Instance(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param InstanceArgs args: The arguments to use to populate this resource's properties.
+        :param InstanceArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(InstanceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(InstanceArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1652,17 +1652,17 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_machine_features: Optional[pulumi.Input[pulumi.InputType['InstanceAdvancedMachineFeaturesArgs']]] = None,
+                 advanced_machine_features: Optional[pulumi.Input[pulumi.InputType['InstanceAdvancedMachineFeaturesArrgs']]] = None,
                  allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
-                 attached_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAttachedDiskArgs']]]]] = None,
-                 boot_disk: Optional[pulumi.Input[pulumi.InputType['InstanceBootDiskArgs']]] = None,
+                 attached_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAttachedDiskArrgs']]]]] = None,
+                 boot_disk: Optional[pulumi.Input[pulumi.InputType['InstanceBootDiskArrgs']]] = None,
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
-                 confidential_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceConfidentialInstanceConfigArgs']]] = None,
+                 confidential_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceConfidentialInstanceConfigArrgs']]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  desired_status: Optional[pulumi.Input[str]] = None,
                  enable_display: Optional[pulumi.Input[bool]] = None,
-                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGuestAcceleratorArgs']]]]] = None,
+                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGuestAcceleratorArrgs']]]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
@@ -1670,16 +1670,16 @@ class Instance(pulumi.CustomResource):
                  metadata_startup_script: Optional[pulumi.Input[str]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkInterfaceArgs']]]]] = None,
-                 network_performance_config: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkPerformanceConfigArgs']]] = None,
-                 params: Optional[pulumi.Input[pulumi.InputType['InstanceParamsArgs']]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkInterfaceArrgs']]]]] = None,
+                 network_performance_config: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkPerformanceConfigArrgs']]] = None,
+                 params: Optional[pulumi.Input[pulumi.InputType['InstanceParamsArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']]] = None,
+                 reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceReservationAffinityArrgs']]] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
-                 scheduling: Optional[pulumi.Input[pulumi.InputType['InstanceSchedulingArgs']]] = None,
-                 scratch_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceScratchDiskArgs']]]]] = None,
-                 service_account: Optional[pulumi.Input[pulumi.InputType['InstanceServiceAccountArgs']]] = None,
-                 shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArgs']]] = None,
+                 scheduling: Optional[pulumi.Input[pulumi.InputType['InstanceSchedulingArrgs']]] = None,
+                 scratch_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceScratchDiskArrgs']]]]] = None,
+                 service_account: Optional[pulumi.Input[pulumi.InputType['InstanceServiceAccountArrgs']]] = None,
+                 shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArrgs']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1689,7 +1689,7 @@ class Instance(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = InstanceArgs.__new__(InstanceArgs)
+            __props__ = InstanceArrgs.__new__(InstanceArrgs)
 
             __props__.__dict__["advanced_machine_features"] = advanced_machine_features
             __props__.__dict__["allow_stopping_for_update"] = allow_stopping_for_update
@@ -1748,12 +1748,12 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            advanced_machine_features: Optional[pulumi.Input[pulumi.InputType['InstanceAdvancedMachineFeaturesArgs']]] = None,
+            advanced_machine_features: Optional[pulumi.Input[pulumi.InputType['InstanceAdvancedMachineFeaturesArrgs']]] = None,
             allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
-            attached_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAttachedDiskArgs']]]]] = None,
-            boot_disk: Optional[pulumi.Input[pulumi.InputType['InstanceBootDiskArgs']]] = None,
+            attached_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAttachedDiskArrgs']]]]] = None,
+            boot_disk: Optional[pulumi.Input[pulumi.InputType['InstanceBootDiskArrgs']]] = None,
             can_ip_forward: Optional[pulumi.Input[bool]] = None,
-            confidential_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceConfidentialInstanceConfigArgs']]] = None,
+            confidential_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceConfidentialInstanceConfigArrgs']]] = None,
             cpu_platform: Optional[pulumi.Input[str]] = None,
             current_status: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -1761,7 +1761,7 @@ class Instance(pulumi.CustomResource):
             desired_status: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enable_display: Optional[pulumi.Input[bool]] = None,
-            guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGuestAcceleratorArgs']]]]] = None,
+            guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGuestAcceleratorArrgs']]]]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             label_fingerprint: Optional[pulumi.Input[str]] = None,
@@ -1772,18 +1772,18 @@ class Instance(pulumi.CustomResource):
             metadata_startup_script: Optional[pulumi.Input[str]] = None,
             min_cpu_platform: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkInterfaceArgs']]]]] = None,
-            network_performance_config: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkPerformanceConfigArgs']]] = None,
-            params: Optional[pulumi.Input[pulumi.InputType['InstanceParamsArgs']]] = None,
+            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkInterfaceArrgs']]]]] = None,
+            network_performance_config: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkPerformanceConfigArrgs']]] = None,
+            params: Optional[pulumi.Input[pulumi.InputType['InstanceParamsArrgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']]] = None,
+            reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceReservationAffinityArrgs']]] = None,
             resource_policies: Optional[pulumi.Input[str]] = None,
-            scheduling: Optional[pulumi.Input[pulumi.InputType['InstanceSchedulingArgs']]] = None,
-            scratch_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceScratchDiskArgs']]]]] = None,
+            scheduling: Optional[pulumi.Input[pulumi.InputType['InstanceSchedulingArrgs']]] = None,
+            scratch_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceScratchDiskArrgs']]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            service_account: Optional[pulumi.Input[pulumi.InputType['InstanceServiceAccountArgs']]] = None,
-            shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArgs']]] = None,
+            service_account: Optional[pulumi.Input[pulumi.InputType['InstanceServiceAccountArrgs']]] = None,
+            shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArrgs']]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags_fingerprint: Optional[pulumi.Input[str]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'Instance':
@@ -1794,16 +1794,16 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['InstanceAdvancedMachineFeaturesArgs']] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
+        :param pulumi.Input[pulumi.InputType['InstanceAdvancedMachineFeaturesArrgs']] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
         :param pulumi.Input[bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
                If you try to update a property that requires stopping the instance without setting this field, the update will fail.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAttachedDiskArgs']]]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['InstanceBootDiskArgs']] boot_disk: The boot disk for the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAttachedDiskArrgs']]]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['InstanceBootDiskArrgs']] boot_disk: The boot disk for the instance.
                Structure is documented below.
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs.
                This defaults to false.
-        :param pulumi.Input[pulumi.InputType['InstanceConfidentialInstanceConfigArgs']] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
+        :param pulumi.Input[pulumi.InputType['InstanceConfidentialInstanceConfigArrgs']] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         :param pulumi.Input[str] cpu_platform: The CPU platform used by this instance.
         :param pulumi.Input[str] current_status: The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
         :param pulumi.Input[bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
@@ -1814,7 +1814,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGuestAcceleratorArgs']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGuestAcceleratorArrgs']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
                **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
                Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -1860,32 +1860,32 @@ class Instance(pulumi.CustomResource):
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkInterfaceArgs']]]] network_interfaces: Networks to attach to the instance. This can
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkInterfaceArrgs']]]] network_interfaces: Networks to attach to the instance. This can
                be specified multiple times. Structure is documented below.
                
                - - -
-        :param pulumi.Input[pulumi.InputType['InstanceNetworkPerformanceConfigArgs']] network_performance_config: Configures network performance settings for the instance. Structure is
+        :param pulumi.Input[pulumi.InputType['InstanceNetworkPerformanceConfigArrgs']] network_performance_config: Configures network performance settings for the instance. Structure is
                documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
                in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
                in order for this setting to take effect.
-        :param pulumi.Input[pulumi.InputType['InstanceParamsArgs']] params: Additional instance parameters.
+        :param pulumi.Input[pulumi.InputType['InstanceParamsArrgs']] params: Additional instance parameters.
                .
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
+        :param pulumi.Input[pulumi.InputType['InstanceReservationAffinityArrgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
                Structure is documented below.
         :param pulumi.Input[str] resource_policies: - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
-        :param pulumi.Input[pulumi.InputType['InstanceSchedulingArgs']] scheduling: The scheduling strategy to use. More details about
+        :param pulumi.Input[pulumi.InputType['InstanceSchedulingArrgs']] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceScratchDiskArgs']]]] scratch_disks: Scratch disks to attach to the instance. This can be
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceScratchDiskArrgs']]]] scratch_disks: Scratch disks to attach to the instance. This can be
                specified multiple times for multiple scratch disks. Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[pulumi.InputType['InstanceServiceAccountArgs']] service_account: Service account to attach to the instance.
+        :param pulumi.Input[pulumi.InputType['InstanceServiceAccountArrgs']] service_account: Service account to attach to the instance.
                Structure is documented below.
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-        :param pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArgs']] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArrgs']] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of network tags to attach to the instance.

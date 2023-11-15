@@ -11,14 +11,14 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['SnapshotIamBindingArgs', 'SnapshotIamBinding']
+__all__ = ['SnapshotIamBindingArrgs', 'SnapshotIamBinding']
 
 @pulumi.input_type
-class SnapshotIamBindingArgs:
+calass SnapshotIamBindingArrgs:
     def __init__(__self__, *,
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['SnapshotIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['SnapshotIamBindingConditionArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -76,11 +76,11 @@ class SnapshotIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['SnapshotIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['SnapshotIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['SnapshotIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['SnapshotIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -122,9 +122,9 @@ class SnapshotIamBindingArgs:
 
 
 @pulumi.input_type
-class _SnapshotIamBindingState:
+calass _SnapshotIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['SnapshotIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['SnapshotIamBindingConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -167,11 +167,11 @@ class _SnapshotIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['SnapshotIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['SnapshotIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['SnapshotIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['SnapshotIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -247,12 +247,12 @@ class _SnapshotIamBindingState:
         pulumi.set(self, "role", value)
 
 
-class SnapshotIamBinding(pulumi.CustomResource):
+calass SnapshotIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['SnapshotIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['SnapshotIamBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -279,7 +279,7 @@ class SnapshotIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -361,7 +361,7 @@ class SnapshotIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SnapshotIamBindingArgs,
+                 args: SnapshotIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Compute Engine Snapshot. Each of these resources serves a different use case:
@@ -384,7 +384,7 @@ class SnapshotIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -442,12 +442,12 @@ class SnapshotIamBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param SnapshotIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param SnapshotIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SnapshotIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SnapshotIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -456,7 +456,7 @@ class SnapshotIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['SnapshotIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['SnapshotIamBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -468,7 +468,7 @@ class SnapshotIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SnapshotIamBindingArgs.__new__(SnapshotIamBindingArgs)
+            __props__ = SnapshotIamBindingArrgs.__new__(SnapshotIamBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
@@ -490,7 +490,7 @@ class SnapshotIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['SnapshotIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['SnapshotIamBindingConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,

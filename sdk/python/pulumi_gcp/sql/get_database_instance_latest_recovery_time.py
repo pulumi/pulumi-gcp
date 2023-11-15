@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetDatabaseInstanceLatestRecoveryTimeResult:
+calass GetDatabaseInstanceLatestRecoveryTimeResult:
     """
     A collection of values returned by getDatabaseInstanceLatestRecoveryTime.
     """
@@ -68,7 +68,7 @@ class GetDatabaseInstanceLatestRecoveryTimeResult:
         return pulumi.get(self, "project")
 
 
-class AwaitableGetDatabaseInstanceLatestRecoveryTimeResult(GetDatabaseInstanceLatestRecoveryTimeResult):
+calass AwaitableGetDatabaseInstanceLatestRecoveryTimeResult(GetDatabaseInstanceLatestRecoveryTimeResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

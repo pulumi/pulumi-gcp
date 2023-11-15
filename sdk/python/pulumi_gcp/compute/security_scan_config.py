@@ -11,19 +11,19 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['SecurityScanConfigArgs', 'SecurityScanConfig']
+__all__ = ['SecurityScanConfigArrgs', 'SecurityScanConfig']
 
 @pulumi.input_type
-class SecurityScanConfigArgs:
+calass SecurityScanConfigArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  starting_urls: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 authentication: Optional[pulumi.Input['SecurityScanConfigAuthenticationArgs']] = None,
+                 authentication: Optional[pulumi.Input['SecurityScanConfigAuthenticationArrgs']] = None,
                  blacklist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  export_to_security_command_center: Optional[pulumi.Input[str]] = None,
                  max_qps: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 schedule: Optional[pulumi.Input['SecurityScanConfigScheduleArgs']] = None,
+                 schedule: Optional[pulumi.Input['SecurityScanConfigScheduleArrgs']] = None,
                  target_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_agent: Optional[pulumi.Input[str]] = None):
         """
@@ -33,7 +33,7 @@ class SecurityScanConfigArgs:
                
                
                - - -
-        :param pulumi.Input['SecurityScanConfigAuthenticationArgs'] authentication: The authentication configuration.
+        :param pulumi.Input['SecurityScanConfigAuthenticationArrgs'] authentication: The authentication configuration.
                If specified, service will use the authentication configuration during scanning.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklist_patterns: The blacklist URL patterns as described in
@@ -45,7 +45,7 @@ class SecurityScanConfigArgs:
                Defaults to 15.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['SecurityScanConfigScheduleArgs'] schedule: The schedule of the ScanConfig
+        :param pulumi.Input['SecurityScanConfigScheduleArrgs'] schedule: The schedule of the ScanConfig
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_platforms: Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
                Each value may be one of: `APP_ENGINE`, `COMPUTE`.
@@ -101,7 +101,7 @@ class SecurityScanConfigArgs:
 
     @property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['SecurityScanConfigAuthenticationArgs']]:
+    def authentication(self) -> Optional[pulumi.Input['SecurityScanConfigAuthenticationArrgs']]:
         """
         The authentication configuration.
         If specified, service will use the authentication configuration during scanning.
@@ -110,7 +110,7 @@ class SecurityScanConfigArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['SecurityScanConfigAuthenticationArgs']]):
+    def authentication(self, value: Optional[pulumi.Input['SecurityScanConfigAuthenticationArrgs']]):
         pulumi.set(self, "authentication", value)
 
     @property
@@ -168,7 +168,7 @@ class SecurityScanConfigArgs:
 
     @property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input['SecurityScanConfigScheduleArgs']]:
+    def schedule(self) -> Optional[pulumi.Input['SecurityScanConfigScheduleArrgs']]:
         """
         The schedule of the ScanConfig
         Structure is documented below.
@@ -176,7 +176,7 @@ class SecurityScanConfigArgs:
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input['SecurityScanConfigScheduleArgs']]):
+    def schedule(self, value: Optional[pulumi.Input['SecurityScanConfigScheduleArrgs']]):
         pulumi.set(self, "schedule", value)
 
     @property
@@ -208,22 +208,22 @@ class SecurityScanConfigArgs:
 
 
 @pulumi.input_type
-class _SecurityScanConfigState:
+calass _SecurityScanConfigState:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['SecurityScanConfigAuthenticationArgs']] = None,
+                 authentication: Optional[pulumi.Input['SecurityScanConfigAuthenticationArrgs']] = None,
                  blacklist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  export_to_security_command_center: Optional[pulumi.Input[str]] = None,
                  max_qps: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 schedule: Optional[pulumi.Input['SecurityScanConfigScheduleArgs']] = None,
+                 schedule: Optional[pulumi.Input['SecurityScanConfigScheduleArrgs']] = None,
                  starting_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_agent: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SecurityScanConfig resources.
-        :param pulumi.Input['SecurityScanConfigAuthenticationArgs'] authentication: The authentication configuration.
+        :param pulumi.Input['SecurityScanConfigAuthenticationArrgs'] authentication: The authentication configuration.
                If specified, service will use the authentication configuration during scanning.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklist_patterns: The blacklist URL patterns as described in
@@ -238,7 +238,7 @@ class _SecurityScanConfigState:
                `projects/{{project}}/scanConfigs/{{server_generated_id}}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['SecurityScanConfigScheduleArgs'] schedule: The schedule of the ScanConfig
+        :param pulumi.Input['SecurityScanConfigScheduleArrgs'] schedule: The schedule of the ScanConfig
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] starting_urls: The starting URLs from which the scanner finds site pages.
                
@@ -275,7 +275,7 @@ class _SecurityScanConfigState:
 
     @property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['SecurityScanConfigAuthenticationArgs']]:
+    def authentication(self) -> Optional[pulumi.Input['SecurityScanConfigAuthenticationArrgs']]:
         """
         The authentication configuration.
         If specified, service will use the authentication configuration during scanning.
@@ -284,7 +284,7 @@ class _SecurityScanConfigState:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['SecurityScanConfigAuthenticationArgs']]):
+    def authentication(self, value: Optional[pulumi.Input['SecurityScanConfigAuthenticationArrgs']]):
         pulumi.set(self, "authentication", value)
 
     @property
@@ -367,7 +367,7 @@ class _SecurityScanConfigState:
 
     @property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input['SecurityScanConfigScheduleArgs']]:
+    def schedule(self) -> Optional[pulumi.Input['SecurityScanConfigScheduleArrgs']]:
         """
         The schedule of the ScanConfig
         Structure is documented below.
@@ -375,7 +375,7 @@ class _SecurityScanConfigState:
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input['SecurityScanConfigScheduleArgs']]):
+    def schedule(self, value: Optional[pulumi.Input['SecurityScanConfigScheduleArrgs']]):
         pulumi.set(self, "schedule", value)
 
     @property
@@ -421,18 +421,18 @@ class _SecurityScanConfigState:
         pulumi.set(self, "user_agent", value)
 
 
-class SecurityScanConfig(pulumi.CustomResource):
+calass SecurityScanConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: Optional[pulumi.Input[pulumi.InputType['SecurityScanConfigAuthenticationArgs']]] = None,
+                 authentication: Optional[pulumi.Input[pulumi.InputType['SecurityScanConfigAuthenticationArrgs']]] = None,
                  blacklist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  export_to_security_command_center: Optional[pulumi.Input[str]] = None,
                  max_qps: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['SecurityScanConfigScheduleArgs']]] = None,
+                 schedule: Optional[pulumi.Input[pulumi.InputType['SecurityScanConfigScheduleArrgs']]] = None,
                  starting_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_agent: Optional[pulumi.Input[str]] = None,
@@ -489,7 +489,7 @@ class SecurityScanConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['SecurityScanConfigAuthenticationArgs']] authentication: The authentication configuration.
+        :param pulumi.Input[pulumi.InputType['SecurityScanConfigAuthenticationArrgs']] authentication: The authentication configuration.
                If specified, service will use the authentication configuration during scanning.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklist_patterns: The blacklist URL patterns as described in
@@ -502,7 +502,7 @@ class SecurityScanConfig(pulumi.CustomResource):
                Defaults to 15.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['SecurityScanConfigScheduleArgs']] schedule: The schedule of the ScanConfig
+        :param pulumi.Input[pulumi.InputType['SecurityScanConfigScheduleArrgs']] schedule: The schedule of the ScanConfig
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] starting_urls: The starting URLs from which the scanner finds site pages.
                
@@ -518,7 +518,7 @@ class SecurityScanConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SecurityScanConfigArgs,
+                 args: SecurityScanConfigArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A ScanConfig resource contains the configurations to launch a scan.
@@ -571,12 +571,12 @@ class SecurityScanConfig(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param SecurityScanConfigArgs args: The arguments to use to populate this resource's properties.
+        :param SecurityScanConfigArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SecurityScanConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SecurityScanConfigArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -585,13 +585,13 @@ class SecurityScanConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: Optional[pulumi.Input[pulumi.InputType['SecurityScanConfigAuthenticationArgs']]] = None,
+                 authentication: Optional[pulumi.Input[pulumi.InputType['SecurityScanConfigAuthenticationArrgs']]] = None,
                  blacklist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  export_to_security_command_center: Optional[pulumi.Input[str]] = None,
                  max_qps: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['SecurityScanConfigScheduleArgs']]] = None,
+                 schedule: Optional[pulumi.Input[pulumi.InputType['SecurityScanConfigScheduleArrgs']]] = None,
                  starting_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_agent: Optional[pulumi.Input[str]] = None,
@@ -602,7 +602,7 @@ class SecurityScanConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SecurityScanConfigArgs.__new__(SecurityScanConfigArgs)
+            __props__ = SecurityScanConfigArrgs.__new__(SecurityScanConfigArrgs)
 
             __props__.__dict__["authentication"] = authentication
             __props__.__dict__["blacklist_patterns"] = blacklist_patterns
@@ -629,14 +629,14 @@ class SecurityScanConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authentication: Optional[pulumi.Input[pulumi.InputType['SecurityScanConfigAuthenticationArgs']]] = None,
+            authentication: Optional[pulumi.Input[pulumi.InputType['SecurityScanConfigAuthenticationArrgs']]] = None,
             blacklist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             export_to_security_command_center: Optional[pulumi.Input[str]] = None,
             max_qps: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            schedule: Optional[pulumi.Input[pulumi.InputType['SecurityScanConfigScheduleArgs']]] = None,
+            schedule: Optional[pulumi.Input[pulumi.InputType['SecurityScanConfigScheduleArrgs']]] = None,
             starting_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             target_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             user_agent: Optional[pulumi.Input[str]] = None) -> 'SecurityScanConfig':
@@ -647,7 +647,7 @@ class SecurityScanConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['SecurityScanConfigAuthenticationArgs']] authentication: The authentication configuration.
+        :param pulumi.Input[pulumi.InputType['SecurityScanConfigAuthenticationArrgs']] authentication: The authentication configuration.
                If specified, service will use the authentication configuration during scanning.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklist_patterns: The blacklist URL patterns as described in
@@ -662,7 +662,7 @@ class SecurityScanConfig(pulumi.CustomResource):
                `projects/{{project}}/scanConfigs/{{server_generated_id}}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['SecurityScanConfigScheduleArgs']] schedule: The schedule of the ScanConfig
+        :param pulumi.Input[pulumi.InputType['SecurityScanConfigScheduleArrgs']] schedule: The schedule of the ScanConfig
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] starting_urls: The starting URLs from which the scanner finds site pages.
                

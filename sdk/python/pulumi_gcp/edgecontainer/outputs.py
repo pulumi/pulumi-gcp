@@ -36,7 +36,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class ClusterAuthorization(dict):
+calass ClusterAuthorization(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -57,7 +57,7 @@ class ClusterAuthorization(dict):
     def __init__(__self__, *,
                  admin_users: 'outputs.ClusterAuthorizationAdminUsers'):
         """
-        :param 'ClusterAuthorizationAdminUsersArgs' admin_users: User that will be granted the cluster-admin role on the cluster, providing
+        :param 'ClusterAuthorizationAdminUsersArrgs' admin_users: User that will be granted the cluster-admin role on the cluster, providing
                full access to the cluster. Currently, this is a singular field, but will
                be expanded to allow multiple admins in the future.
                Structure is documented below.
@@ -77,7 +77,7 @@ class ClusterAuthorization(dict):
 
 
 @pulumi.output_type
-class ClusterAuthorizationAdminUsers(dict):
+calass ClusterAuthorizationAdminUsers(dict):
     def __init__(__self__, *,
                  username: str):
         """
@@ -99,14 +99,14 @@ class ClusterAuthorizationAdminUsers(dict):
 
 
 @pulumi.output_type
-class ClusterControlPlane(dict):
+calass ClusterControlPlane(dict):
     def __init__(__self__, *,
                  local: Optional['outputs.ClusterControlPlaneLocal'] = None,
                  remote: Optional['outputs.ClusterControlPlaneRemote'] = None):
         """
-        :param 'ClusterControlPlaneLocalArgs' local: Local control plane configuration.
+        :param 'ClusterControlPlaneLocalArrgs' local: Local control plane configuration.
                Structure is documented below.
-        :param 'ClusterControlPlaneRemoteArgs' remote: Remote control plane configuration.
+        :param 'ClusterControlPlaneRemoteArrgs' remote: Remote control plane configuration.
                Structure is documented below.
         """
         if local is not None:
@@ -134,7 +134,7 @@ class ClusterControlPlane(dict):
 
 
 @pulumi.output_type
-class ClusterControlPlaneEncryption(dict):
+calass ClusterControlPlaneEncryption(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -176,7 +176,7 @@ class ClusterControlPlaneEncryption(dict):
                nodes may go offline as they cannot access their local data. This can be
                caused by a lack of permissions to use the key, or if the key is disabled
                or deleted.
-        :param Sequence['ClusterControlPlaneEncryptionKmsStatusArgs'] kms_statuses: (Output)
+        :param Sequence['ClusterControlPlaneEncryptionKmsStatusArrgs'] kms_statuses: (Output)
                Error status returned by Cloud KMS when using this key. This field may be
                populated only if `kms_key_state` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
                If populated, this field contains the error status reported by Cloud KMS.
@@ -244,7 +244,7 @@ class ClusterControlPlaneEncryption(dict):
 
 
 @pulumi.output_type
-class ClusterControlPlaneEncryptionKmsStatus(dict):
+calass ClusterControlPlaneEncryptionKmsStatus(dict):
     def __init__(__self__, *,
                  code: Optional[int] = None,
                  message: Optional[str] = None):
@@ -279,7 +279,7 @@ class ClusterControlPlaneEncryptionKmsStatus(dict):
 
 
 @pulumi.output_type
-class ClusterControlPlaneLocal(dict):
+calass ClusterControlPlaneLocal(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -367,7 +367,7 @@ class ClusterControlPlaneLocal(dict):
 
 
 @pulumi.output_type
-class ClusterControlPlaneRemote(dict):
+calass ClusterControlPlaneRemote(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -405,7 +405,7 @@ class ClusterControlPlaneRemote(dict):
 
 
 @pulumi.output_type
-class ClusterFleet(dict):
+calass ClusterFleet(dict):
     def __init__(__self__, *,
                  project: str,
                  membership: Optional[str] = None):
@@ -445,7 +445,7 @@ class ClusterFleet(dict):
 
 
 @pulumi.output_type
-class ClusterMaintenanceEvent(dict):
+calass ClusterMaintenanceEvent(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -619,11 +619,11 @@ class ClusterMaintenanceEvent(dict):
 
 
 @pulumi.output_type
-class ClusterMaintenancePolicy(dict):
+calass ClusterMaintenancePolicy(dict):
     def __init__(__self__, *,
                  window: 'outputs.ClusterMaintenancePolicyWindow'):
         """
-        :param 'ClusterMaintenancePolicyWindowArgs' window: Specifies the maintenance window in which maintenance may be performed.
+        :param 'ClusterMaintenancePolicyWindowArrgs' window: Specifies the maintenance window in which maintenance may be performed.
                Structure is documented below.
         """
         pulumi.set(__self__, "window", window)
@@ -639,7 +639,7 @@ class ClusterMaintenancePolicy(dict):
 
 
 @pulumi.output_type
-class ClusterMaintenancePolicyWindow(dict):
+calass ClusterMaintenancePolicyWindow(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -660,7 +660,7 @@ class ClusterMaintenancePolicyWindow(dict):
     def __init__(__self__, *,
                  recurring_window: 'outputs.ClusterMaintenancePolicyWindowRecurringWindow'):
         """
-        :param 'ClusterMaintenancePolicyWindowRecurringWindowArgs' recurring_window: Represents an arbitrary window of time that recurs.
+        :param 'ClusterMaintenancePolicyWindowRecurringWindowArrgs' recurring_window: Represents an arbitrary window of time that recurs.
                Structure is documented below.
         """
         pulumi.set(__self__, "recurring_window", recurring_window)
@@ -676,7 +676,7 @@ class ClusterMaintenancePolicyWindow(dict):
 
 
 @pulumi.output_type
-class ClusterMaintenancePolicyWindowRecurringWindow(dict):
+calass ClusterMaintenancePolicyWindowRecurringWindow(dict):
     def __init__(__self__, *,
                  recurrence: Optional[str] = None,
                  window: Optional['outputs.ClusterMaintenancePolicyWindowRecurringWindowWindow'] = None):
@@ -684,7 +684,7 @@ class ClusterMaintenancePolicyWindowRecurringWindow(dict):
         :param str recurrence: An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
                this window recurs. They go on for the span of time between the start and
                end time.
-        :param 'ClusterMaintenancePolicyWindowRecurringWindowWindowArgs' window: Represents an arbitrary window of time.
+        :param 'ClusterMaintenancePolicyWindowRecurringWindowWindowArrgs' window: Represents an arbitrary window of time.
                Structure is documented below.
         """
         if recurrence is not None:
@@ -713,7 +713,7 @@ class ClusterMaintenancePolicyWindowRecurringWindow(dict):
 
 
 @pulumi.output_type
-class ClusterMaintenancePolicyWindowRecurringWindowWindow(dict):
+calass ClusterMaintenancePolicyWindowRecurringWindowWindow(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -765,7 +765,7 @@ class ClusterMaintenancePolicyWindowRecurringWindowWindow(dict):
 
 
 @pulumi.output_type
-class ClusterNetworking(dict):
+calass ClusterNetworking(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -877,11 +877,11 @@ class ClusterNetworking(dict):
 
 
 @pulumi.output_type
-class ClusterSystemAddonsConfig(dict):
+calass ClusterSystemAddonsConfig(dict):
     def __init__(__self__, *,
                  ingress: Optional['outputs.ClusterSystemAddonsConfigIngress'] = None):
         """
-        :param 'ClusterSystemAddonsConfigIngressArgs' ingress: Config for the Ingress add-on which allows customers to create an Ingress
+        :param 'ClusterSystemAddonsConfigIngressArrgs' ingress: Config for the Ingress add-on which allows customers to create an Ingress
                object to manage external access to the servers in a cluster. The add-on
                consists of istiod and istio-ingress.
                Structure is documented below.
@@ -902,7 +902,7 @@ class ClusterSystemAddonsConfig(dict):
 
 
 @pulumi.output_type
-class ClusterSystemAddonsConfigIngress(dict):
+calass ClusterSystemAddonsConfigIngress(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -950,7 +950,7 @@ class ClusterSystemAddonsConfigIngress(dict):
 
 
 @pulumi.output_type
-class NodePoolLocalDiskEncryption(dict):
+calass NodePoolLocalDiskEncryption(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1022,7 +1022,7 @@ class NodePoolLocalDiskEncryption(dict):
 
 
 @pulumi.output_type
-class NodePoolNodeConfig(dict):
+calass NodePoolNodeConfig(dict):
     def __init__(__self__, *,
                  labels: Optional[Mapping[str, str]] = None):
         """
@@ -1041,7 +1041,7 @@ class NodePoolNodeConfig(dict):
 
 
 @pulumi.output_type
-class VpnConnectionDetail(dict):
+calass VpnConnectionDetail(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1067,10 +1067,10 @@ class VpnConnectionDetail(dict):
                  error: Optional[str] = None,
                  state: Optional[str] = None):
         """
-        :param Sequence['VpnConnectionDetailCloudRouterArgs'] cloud_routers: (Output)
+        :param Sequence['VpnConnectionDetailCloudRouterArrgs'] cloud_routers: (Output)
                The Cloud Router info.
                Structure is documented below.
-        :param Sequence['VpnConnectionDetailCloudVpnArgs'] cloud_vpns: (Output)
+        :param Sequence['VpnConnectionDetailCloudVpnArrgs'] cloud_vpns: (Output)
                Each connection has multiple Cloud VPN gateways.
                Structure is documented below.
         :param str error: (Output)
@@ -1127,7 +1127,7 @@ class VpnConnectionDetail(dict):
 
 
 @pulumi.output_type
-class VpnConnectionDetailCloudRouter(dict):
+calass VpnConnectionDetailCloudRouter(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None):
         """
@@ -1146,7 +1146,7 @@ class VpnConnectionDetailCloudRouter(dict):
 
 
 @pulumi.output_type
-class VpnConnectionDetailCloudVpn(dict):
+calass VpnConnectionDetailCloudVpn(dict):
     def __init__(__self__, *,
                  gateway: Optional[str] = None):
         """
@@ -1167,7 +1167,7 @@ class VpnConnectionDetailCloudVpn(dict):
 
 
 @pulumi.output_type
-class VpnConnectionVpcProject(dict):
+calass VpnConnectionVpcProject(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

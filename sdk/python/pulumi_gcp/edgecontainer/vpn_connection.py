@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['VpnConnectionArgs', 'VpnConnection']
+__all__ = ['VpnConnectionArrgs', 'VpnConnection']
 
 @pulumi.input_type
-class VpnConnectionArgs:
+calass VpnConnectionArrgs:
     def __init__(__self__, *,
                  cluster: pulumi.Input[str],
                  location: pulumi.Input[str],
@@ -25,7 +25,7 @@ class VpnConnectionArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
                  vpc: Optional[pulumi.Input[str]] = None,
-                 vpc_project: Optional[pulumi.Input['VpnConnectionVpcProjectArgs']] = None):
+                 vpc_project: Optional[pulumi.Input['VpnConnectionVpcProjectArrgs']] = None):
         """
         The set of arguments for constructing a VpnConnection resource.
         :param pulumi.Input[str] cluster: The canonical Cluster name to connect to. It is in the form of projects/{project}/locations/{location}/clusters/{cluster}.
@@ -44,7 +44,7 @@ class VpnConnectionArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] router: The VPN connection Cloud Router name.
         :param pulumi.Input[str] vpc: The network ID of VPC to connect to.
-        :param pulumi.Input['VpnConnectionVpcProjectArgs'] vpc_project: Project detail of the VPC network. Required if VPC is in a different project than the cluster project.
+        :param pulumi.Input['VpnConnectionVpcProjectArrgs'] vpc_project: Project detail of the VPC network. Required if VPC is in a different project than the cluster project.
                Structure is documented below.
         """
         pulumi.set(__self__, "cluster", cluster)
@@ -183,7 +183,7 @@ class VpnConnectionArgs:
 
     @property
     @pulumi.getter(name="vpcProject")
-    def vpc_project(self) -> Optional[pulumi.Input['VpnConnectionVpcProjectArgs']]:
+    def vpc_project(self) -> Optional[pulumi.Input['VpnConnectionVpcProjectArrgs']]:
         """
         Project detail of the VPC network. Required if VPC is in a different project than the cluster project.
         Structure is documented below.
@@ -191,16 +191,16 @@ class VpnConnectionArgs:
         return pulumi.get(self, "vpc_project")
 
     @vpc_project.setter
-    def vpc_project(self, value: Optional[pulumi.Input['VpnConnectionVpcProjectArgs']]):
+    def vpc_project(self, value: Optional[pulumi.Input['VpnConnectionVpcProjectArrgs']]):
         pulumi.set(self, "vpc_project", value)
 
 
 @pulumi.input_type
-class _VpnConnectionState:
+calass _VpnConnectionState:
     def __init__(__self__, *,
                  cluster: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailArgs']]]] = None,
+                 details: Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailArrgs']]]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enable_high_availability: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -212,12 +212,12 @@ class _VpnConnectionState:
                  router: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  vpc: Optional[pulumi.Input[str]] = None,
-                 vpc_project: Optional[pulumi.Input['VpnConnectionVpcProjectArgs']] = None):
+                 vpc_project: Optional[pulumi.Input['VpnConnectionVpcProjectArrgs']] = None):
         """
         Input properties used for looking up and filtering VpnConnection resources.
         :param pulumi.Input[str] cluster: The canonical Cluster name to connect to. It is in the form of projects/{project}/locations/{location}/clusters/{cluster}.
         :param pulumi.Input[str] create_time: The time when the VPN connection was created.
-        :param pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailArgs']]] details: A nested object resource
+        :param pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailArrgs']]] details: A nested object resource
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] enable_high_availability: Whether this VPN connection has HA enabled on cluster side. If enabled, when creating VPN connection we will attempt to use 2 ANG floating IPs.
@@ -238,7 +238,7 @@ class _VpnConnectionState:
         :param pulumi.Input[str] router: The VPN connection Cloud Router name.
         :param pulumi.Input[str] update_time: The time when the VPN connection was last updated.
         :param pulumi.Input[str] vpc: The network ID of VPC to connect to.
-        :param pulumi.Input['VpnConnectionVpcProjectArgs'] vpc_project: Project detail of the VPC network. Required if VPC is in a different project than the cluster project.
+        :param pulumi.Input['VpnConnectionVpcProjectArrgs'] vpc_project: Project detail of the VPC network. Required if VPC is in a different project than the cluster project.
                Structure is documented below.
         """
         if cluster is not None:
@@ -298,7 +298,7 @@ class _VpnConnectionState:
 
     @property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailArgs']]]]:
+    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailArrgs']]]]:
         """
         A nested object resource
         Structure is documented below.
@@ -306,7 +306,7 @@ class _VpnConnectionState:
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailArgs']]]]):
+    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailArrgs']]]]):
         pulumi.set(self, "details", value)
 
     @property
@@ -451,7 +451,7 @@ class _VpnConnectionState:
 
     @property
     @pulumi.getter(name="vpcProject")
-    def vpc_project(self) -> Optional[pulumi.Input['VpnConnectionVpcProjectArgs']]:
+    def vpc_project(self) -> Optional[pulumi.Input['VpnConnectionVpcProjectArrgs']]:
         """
         Project detail of the VPC network. Required if VPC is in a different project than the cluster project.
         Structure is documented below.
@@ -459,11 +459,11 @@ class _VpnConnectionState:
         return pulumi.get(self, "vpc_project")
 
     @vpc_project.setter
-    def vpc_project(self, value: Optional[pulumi.Input['VpnConnectionVpcProjectArgs']]):
+    def vpc_project(self, value: Optional[pulumi.Input['VpnConnectionVpcProjectArrgs']]):
         pulumi.set(self, "vpc_project", value)
 
 
-class VpnConnection(pulumi.CustomResource):
+calass VpnConnection(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -477,7 +477,7 @@ class VpnConnection(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
                  vpc: Optional[pulumi.Input[str]] = None,
-                 vpc_project: Optional[pulumi.Input[pulumi.InputType['VpnConnectionVpcProjectArgs']]] = None,
+                 vpc_project: Optional[pulumi.Input[pulumi.InputType['VpnConnectionVpcProjectArrgs']]] = None,
                  __props__=None):
         """
         A VPN connection
@@ -498,16 +498,16 @@ class VpnConnection(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         cluster = gcp.edgecontainer.Cluster("cluster",
             location="us-central1",
-            authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
-                admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
+            authorization=gcp.edgecontainer.ClusterAuthorizationArrgs(
+                admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArrgs(
                     username="admin@hashicorptest.com",
                 ),
             ),
-            networking=gcp.edgecontainer.ClusterNetworkingArgs(
+            networking=gcp.edgecontainer.ClusterNetworkingArrgs(
                 cluster_ipv4_cidr_blocks=["10.0.0.0/16"],
                 services_ipv4_cidr_blocks=["10.1.0.0/16"],
             ),
-            fleet=gcp.edgecontainer.ClusterFleetArgs(
+            fleet=gcp.edgecontainer.ClusterFleetArrgs(
                 project=f"projects/{project.number}",
             ))
         node_pool = gcp.edgecontainer.NodePool("nodePool",
@@ -570,14 +570,14 @@ class VpnConnection(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] router: The VPN connection Cloud Router name.
         :param pulumi.Input[str] vpc: The network ID of VPC to connect to.
-        :param pulumi.Input[pulumi.InputType['VpnConnectionVpcProjectArgs']] vpc_project: Project detail of the VPC network. Required if VPC is in a different project than the cluster project.
+        :param pulumi.Input[pulumi.InputType['VpnConnectionVpcProjectArrgs']] vpc_project: Project detail of the VPC network. Required if VPC is in a different project than the cluster project.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: VpnConnectionArgs,
+                 args: VpnConnectionArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A VPN connection
@@ -598,16 +598,16 @@ class VpnConnection(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         cluster = gcp.edgecontainer.Cluster("cluster",
             location="us-central1",
-            authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
-                admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
+            authorization=gcp.edgecontainer.ClusterAuthorizationArrgs(
+                admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArrgs(
                     username="admin@hashicorptest.com",
                 ),
             ),
-            networking=gcp.edgecontainer.ClusterNetworkingArgs(
+            networking=gcp.edgecontainer.ClusterNetworkingArrgs(
                 cluster_ipv4_cidr_blocks=["10.0.0.0/16"],
                 services_ipv4_cidr_blocks=["10.1.0.0/16"],
             ),
-            fleet=gcp.edgecontainer.ClusterFleetArgs(
+            fleet=gcp.edgecontainer.ClusterFleetArrgs(
                 project=f"projects/{project.number}",
             ))
         node_pool = gcp.edgecontainer.NodePool("nodePool",
@@ -653,12 +653,12 @@ class VpnConnection(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param VpnConnectionArgs args: The arguments to use to populate this resource's properties.
+        :param VpnConnectionArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(VpnConnectionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(VpnConnectionArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -676,7 +676,7 @@ class VpnConnection(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
                  vpc: Optional[pulumi.Input[str]] = None,
-                 vpc_project: Optional[pulumi.Input[pulumi.InputType['VpnConnectionVpcProjectArgs']]] = None,
+                 vpc_project: Optional[pulumi.Input[pulumi.InputType['VpnConnectionVpcProjectArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -684,7 +684,7 @@ class VpnConnection(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = VpnConnectionArgs.__new__(VpnConnectionArgs)
+            __props__ = VpnConnectionArrgs.__new__(VpnConnectionArrgs)
 
             if cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster'")
@@ -719,7 +719,7 @@ class VpnConnection(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            details: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpnConnectionDetailArgs']]]]] = None,
+            details: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpnConnectionDetailArrgs']]]]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enable_high_availability: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -731,7 +731,7 @@ class VpnConnection(pulumi.CustomResource):
             router: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
             vpc: Optional[pulumi.Input[str]] = None,
-            vpc_project: Optional[pulumi.Input[pulumi.InputType['VpnConnectionVpcProjectArgs']]] = None) -> 'VpnConnection':
+            vpc_project: Optional[pulumi.Input[pulumi.InputType['VpnConnectionVpcProjectArrgs']]] = None) -> 'VpnConnection':
         """
         Get an existing VpnConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -741,7 +741,7 @@ class VpnConnection(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster: The canonical Cluster name to connect to. It is in the form of projects/{project}/locations/{location}/clusters/{cluster}.
         :param pulumi.Input[str] create_time: The time when the VPN connection was created.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpnConnectionDetailArgs']]]] details: A nested object resource
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpnConnectionDetailArrgs']]]] details: A nested object resource
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] enable_high_availability: Whether this VPN connection has HA enabled on cluster side. If enabled, when creating VPN connection we will attempt to use 2 ANG floating IPs.
@@ -762,7 +762,7 @@ class VpnConnection(pulumi.CustomResource):
         :param pulumi.Input[str] router: The VPN connection Cloud Router name.
         :param pulumi.Input[str] update_time: The time when the VPN connection was last updated.
         :param pulumi.Input[str] vpc: The network ID of VPC to connect to.
-        :param pulumi.Input[pulumi.InputType['VpnConnectionVpcProjectArgs']] vpc_project: Project detail of the VPC network. Required if VPC is in a different project than the cluster project.
+        :param pulumi.Input[pulumi.InputType['VpnConnectionVpcProjectArrgs']] vpc_project: Project detail of the VPC network. Required if VPC is in a different project than the cluster project.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

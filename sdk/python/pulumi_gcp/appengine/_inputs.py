@@ -10,54 +10,54 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'ApplicationFeatureSettingsArgs',
-    'ApplicationIapArgs',
-    'ApplicationUrlDispatchRuleArgs',
-    'ApplicationUrlDispatchRulesDispatchRuleArgs',
-    'DomainMappingResourceRecordArgs',
-    'DomainMappingSslSettingsArgs',
-    'EngineSplitTrafficSplitArgs',
-    'FlexibleAppVersionApiConfigArgs',
-    'FlexibleAppVersionAutomaticScalingArgs',
-    'FlexibleAppVersionAutomaticScalingCpuUtilizationArgs',
-    'FlexibleAppVersionAutomaticScalingDiskUtilizationArgs',
-    'FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs',
-    'FlexibleAppVersionAutomaticScalingRequestUtilizationArgs',
-    'FlexibleAppVersionDeploymentArgs',
-    'FlexibleAppVersionDeploymentCloudBuildOptionsArgs',
-    'FlexibleAppVersionDeploymentContainerArgs',
-    'FlexibleAppVersionDeploymentFileArgs',
-    'FlexibleAppVersionDeploymentZipArgs',
-    'FlexibleAppVersionEndpointsApiServiceArgs',
-    'FlexibleAppVersionEntrypointArgs',
-    'FlexibleAppVersionHandlerArgs',
-    'FlexibleAppVersionHandlerScriptArgs',
-    'FlexibleAppVersionHandlerStaticFilesArgs',
-    'FlexibleAppVersionLivenessCheckArgs',
-    'FlexibleAppVersionManualScalingArgs',
-    'FlexibleAppVersionNetworkArgs',
-    'FlexibleAppVersionReadinessCheckArgs',
-    'FlexibleAppVersionResourcesArgs',
-    'FlexibleAppVersionResourcesVolumeArgs',
-    'FlexibleAppVersionVpcAccessConnectorArgs',
-    'ServiceNetworkSettingsNetworkSettingsArgs',
-    'StandardAppVersionAutomaticScalingArgs',
-    'StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs',
-    'StandardAppVersionBasicScalingArgs',
-    'StandardAppVersionDeploymentArgs',
-    'StandardAppVersionDeploymentFileArgs',
-    'StandardAppVersionDeploymentZipArgs',
-    'StandardAppVersionEntrypointArgs',
-    'StandardAppVersionHandlerArgs',
-    'StandardAppVersionHandlerScriptArgs',
-    'StandardAppVersionHandlerStaticFilesArgs',
-    'StandardAppVersionLibraryArgs',
-    'StandardAppVersionManualScalingArgs',
-    'StandardAppVersionVpcAccessConnectorArgs',
+    'ApplicationFeatureSettingsArrgs',
+    'ApplicationIapArrgs',
+    'ApplicationUrlDispatchRuleArrgs',
+    'ApplicationUrlDispatchRulesDispatchRuleArrgs',
+    'DomainMappingResourceRecordArrgs',
+    'DomainMappingSslSettingsArrgs',
+    'EngineSplitTrafficSplitArrgs',
+    'FlexibleAppVersionApiConfigArrgs',
+    'FlexibleAppVersionAutomaticScalingArrgs',
+    'FlexibleAppVersionAutomaticScalingCpuUtilizationArrgs',
+    'FlexibleAppVersionAutomaticScalingDiskUtilizationArrgs',
+    'FlexibleAppVersionAutomaticScalingNetworkUtilizationArrgs',
+    'FlexibleAppVersionAutomaticScalingRequestUtilizationArrgs',
+    'FlexibleAppVersionDeploymentArrgs',
+    'FlexibleAppVersionDeploymentCloudBuildOptionsArrgs',
+    'FlexibleAppVersionDeploymentContainerArrgs',
+    'FlexibleAppVersionDeploymentFileArrgs',
+    'FlexibleAppVersionDeploymentZipArrgs',
+    'FlexibleAppVersionEndpointsApiServiceArrgs',
+    'FlexibleAppVersionEntrypointArrgs',
+    'FlexibleAppVersionHandlerArrgs',
+    'FlexibleAppVersionHandlerScriptArrgs',
+    'FlexibleAppVersionHandlerStaticFilesArrgs',
+    'FlexibleAppVersionLivenessCheckArrgs',
+    'FlexibleAppVersionManualScalingArrgs',
+    'FlexibleAppVersionNetworkArrgs',
+    'FlexibleAppVersionReadinessCheckArrgs',
+    'FlexibleAppVersionResourcesArrgs',
+    'FlexibleAppVersionResourcesVolumeArrgs',
+    'FlexibleAppVersionVpcAccessConnectorArrgs',
+    'ServiceNetworkSettingsNetworkSettingsArrgs',
+    'StandardAppVersionAutomaticScalingArrgs',
+    'StandardAppVersionAutomaticScalingStandardSchedulerSettingsArrgs',
+    'StandardAppVersionBasicScalingArrgs',
+    'StandardAppVersionDeploymentArrgs',
+    'StandardAppVersionDeploymentFileArrgs',
+    'StandardAppVersionDeploymentZipArrgs',
+    'StandardAppVersionEntrypointArrgs',
+    'StandardAppVersionHandlerArrgs',
+    'StandardAppVersionHandlerScriptArrgs',
+    'StandardAppVersionHandlerStaticFilesArrgs',
+    'StandardAppVersionLibraryArrgs',
+    'StandardAppVersionManualScalingArrgs',
+    'StandardAppVersionVpcAccessConnectorArrgs',
 ]
 
 @pulumi.input_type
-class ApplicationFeatureSettingsArgs:
+calass ApplicationFeatureSettingsArrgs:
     def __init__(__self__, *,
                  split_health_checks: pulumi.Input[bool]):
         """
@@ -81,7 +81,7 @@ class ApplicationFeatureSettingsArgs:
 
 
 @pulumi.input_type
-class ApplicationIapArgs:
+calass ApplicationIapArrgs:
     def __init__(__self__, *,
                  oauth2_client_id: pulumi.Input[str],
                  oauth2_client_secret: pulumi.Input[str],
@@ -154,7 +154,7 @@ class ApplicationIapArgs:
 
 
 @pulumi.input_type
-class ApplicationUrlDispatchRuleArgs:
+calass ApplicationUrlDispatchRuleArrgs:
     def __init__(__self__, *,
                  domain: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
@@ -195,7 +195,7 @@ class ApplicationUrlDispatchRuleArgs:
 
 
 @pulumi.input_type
-class ApplicationUrlDispatchRulesDispatchRuleArgs:
+calass ApplicationUrlDispatchRulesDispatchRuleArrgs:
     def __init__(__self__, *,
                  path: pulumi.Input[str],
                  service: pulumi.Input[str],
@@ -258,7 +258,7 @@ class ApplicationUrlDispatchRulesDispatchRuleArgs:
 
 
 @pulumi.input_type
-class DomainMappingResourceRecordArgs:
+calass DomainMappingResourceRecordArrgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
                  rrdata: Optional[pulumi.Input[str]] = None,
@@ -315,7 +315,7 @@ class DomainMappingResourceRecordArgs:
 
 
 @pulumi.input_type
-class DomainMappingSslSettingsArgs:
+calass DomainMappingSslSettingsArrgs:
     def __init__(__self__, *,
                  ssl_management_type: pulumi.Input[str],
                  certificate_id: Optional[pulumi.Input[str]] = None,
@@ -393,7 +393,7 @@ class DomainMappingSslSettingsArgs:
 
 
 @pulumi.input_type
-class EngineSplitTrafficSplitArgs:
+calass EngineSplitTrafficSplitArrgs:
     def __init__(__self__, *,
                  allocations: pulumi.Input[Mapping[str, pulumi.Input[str]]],
                  shard_by: Optional[pulumi.Input[str]] = None):
@@ -437,7 +437,7 @@ class EngineSplitTrafficSplitArgs:
 
 
 @pulumi.input_type
-class FlexibleAppVersionApiConfigArgs:
+calass FlexibleAppVersionApiConfigArrgs:
     def __init__(__self__, *,
                  script: pulumi.Input[str],
                  auth_fail_action: Optional[pulumi.Input[str]] = None,
@@ -533,11 +533,11 @@ class FlexibleAppVersionApiConfigArgs:
 
 
 @pulumi.input_type
-class FlexibleAppVersionAutomaticScalingArgs:
+calass FlexibleAppVersionAutomaticScalingArrgs:
     def __init__(__self__, *,
-                 cpu_utilization: pulumi.Input['FlexibleAppVersionAutomaticScalingCpuUtilizationArgs'],
+                 cpu_utilization: pulumi.Input['FlexibleAppVersionAutomaticScalingCpuUtilizationArrgs'],
                  cool_down_period: Optional[pulumi.Input[str]] = None,
-                 disk_utilization: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingDiskUtilizationArgs']] = None,
+                 disk_utilization: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingDiskUtilizationArrgs']] = None,
                  max_concurrent_requests: Optional[pulumi.Input[int]] = None,
                  max_idle_instances: Optional[pulumi.Input[int]] = None,
                  max_pending_latency: Optional[pulumi.Input[str]] = None,
@@ -545,15 +545,15 @@ class FlexibleAppVersionAutomaticScalingArgs:
                  min_idle_instances: Optional[pulumi.Input[int]] = None,
                  min_pending_latency: Optional[pulumi.Input[str]] = None,
                  min_total_instances: Optional[pulumi.Input[int]] = None,
-                 network_utilization: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs']] = None,
-                 request_utilization: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingRequestUtilizationArgs']] = None):
+                 network_utilization: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingNetworkUtilizationArrgs']] = None,
+                 request_utilization: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingRequestUtilizationArrgs']] = None):
         """
-        :param pulumi.Input['FlexibleAppVersionAutomaticScalingCpuUtilizationArgs'] cpu_utilization: Target scaling by CPU usage.
+        :param pulumi.Input['FlexibleAppVersionAutomaticScalingCpuUtilizationArrgs'] cpu_utilization: Target scaling by CPU usage.
                Structure is documented below.
         :param pulumi.Input[str] cool_down_period: The time period that the Autoscaler should wait before it starts collecting information from a new instance.
                This prevents the autoscaler from collecting information when the instance is initializing,
                during which the collected usage would not be reliable. Default: 120s
-        :param pulumi.Input['FlexibleAppVersionAutomaticScalingDiskUtilizationArgs'] disk_utilization: Target scaling by disk usage.
+        :param pulumi.Input['FlexibleAppVersionAutomaticScalingDiskUtilizationArrgs'] disk_utilization: Target scaling by disk usage.
                Structure is documented below.
         :param pulumi.Input[int] max_concurrent_requests: Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
                Defaults to a runtime-specific value.
@@ -563,9 +563,9 @@ class FlexibleAppVersionAutomaticScalingArgs:
         :param pulumi.Input[int] min_idle_instances: Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
         :param pulumi.Input[str] min_pending_latency: Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
         :param pulumi.Input[int] min_total_instances: Minimum number of running instances that should be maintained for this version. Default: 2
-        :param pulumi.Input['FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs'] network_utilization: Target scaling by network usage.
+        :param pulumi.Input['FlexibleAppVersionAutomaticScalingNetworkUtilizationArrgs'] network_utilization: Target scaling by network usage.
                Structure is documented below.
-        :param pulumi.Input['FlexibleAppVersionAutomaticScalingRequestUtilizationArgs'] request_utilization: Target scaling by request utilization.
+        :param pulumi.Input['FlexibleAppVersionAutomaticScalingRequestUtilizationArrgs'] request_utilization: Target scaling by request utilization.
                Structure is documented below.
         """
         pulumi.set(__self__, "cpu_utilization", cpu_utilization)
@@ -594,7 +594,7 @@ class FlexibleAppVersionAutomaticScalingArgs:
 
     @property
     @pulumi.getter(name="cpuUtilization")
-    def cpu_utilization(self) -> pulumi.Input['FlexibleAppVersionAutomaticScalingCpuUtilizationArgs']:
+    def cpu_utilization(self) -> pulumi.Input['FlexibleAppVersionAutomaticScalingCpuUtilizationArrgs']:
         """
         Target scaling by CPU usage.
         Structure is documented below.
@@ -602,7 +602,7 @@ class FlexibleAppVersionAutomaticScalingArgs:
         return pulumi.get(self, "cpu_utilization")
 
     @cpu_utilization.setter
-    def cpu_utilization(self, value: pulumi.Input['FlexibleAppVersionAutomaticScalingCpuUtilizationArgs']):
+    def cpu_utilization(self, value: pulumi.Input['FlexibleAppVersionAutomaticScalingCpuUtilizationArrgs']):
         pulumi.set(self, "cpu_utilization", value)
 
     @property
@@ -621,7 +621,7 @@ class FlexibleAppVersionAutomaticScalingArgs:
 
     @property
     @pulumi.getter(name="diskUtilization")
-    def disk_utilization(self) -> Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingDiskUtilizationArgs']]:
+    def disk_utilization(self) -> Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingDiskUtilizationArrgs']]:
         """
         Target scaling by disk usage.
         Structure is documented below.
@@ -629,7 +629,7 @@ class FlexibleAppVersionAutomaticScalingArgs:
         return pulumi.get(self, "disk_utilization")
 
     @disk_utilization.setter
-    def disk_utilization(self, value: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingDiskUtilizationArgs']]):
+    def disk_utilization(self, value: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingDiskUtilizationArrgs']]):
         pulumi.set(self, "disk_utilization", value)
 
     @property
@@ -719,7 +719,7 @@ class FlexibleAppVersionAutomaticScalingArgs:
 
     @property
     @pulumi.getter(name="networkUtilization")
-    def network_utilization(self) -> Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs']]:
+    def network_utilization(self) -> Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingNetworkUtilizationArrgs']]:
         """
         Target scaling by network usage.
         Structure is documented below.
@@ -727,12 +727,12 @@ class FlexibleAppVersionAutomaticScalingArgs:
         return pulumi.get(self, "network_utilization")
 
     @network_utilization.setter
-    def network_utilization(self, value: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs']]):
+    def network_utilization(self, value: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingNetworkUtilizationArrgs']]):
         pulumi.set(self, "network_utilization", value)
 
     @property
     @pulumi.getter(name="requestUtilization")
-    def request_utilization(self) -> Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingRequestUtilizationArgs']]:
+    def request_utilization(self) -> Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingRequestUtilizationArrgs']]:
         """
         Target scaling by request utilization.
         Structure is documented below.
@@ -740,12 +740,12 @@ class FlexibleAppVersionAutomaticScalingArgs:
         return pulumi.get(self, "request_utilization")
 
     @request_utilization.setter
-    def request_utilization(self, value: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingRequestUtilizationArgs']]):
+    def request_utilization(self, value: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingRequestUtilizationArrgs']]):
         pulumi.set(self, "request_utilization", value)
 
 
 @pulumi.input_type
-class FlexibleAppVersionAutomaticScalingCpuUtilizationArgs:
+calass FlexibleAppVersionAutomaticScalingCpuUtilizationArrgs:
     def __init__(__self__, *,
                  target_utilization: pulumi.Input[float],
                  aggregation_window_length: Optional[pulumi.Input[str]] = None):
@@ -783,7 +783,7 @@ class FlexibleAppVersionAutomaticScalingCpuUtilizationArgs:
 
 
 @pulumi.input_type
-class FlexibleAppVersionAutomaticScalingDiskUtilizationArgs:
+calass FlexibleAppVersionAutomaticScalingDiskUtilizationArrgs:
     def __init__(__self__, *,
                  target_read_bytes_per_second: Optional[pulumi.Input[int]] = None,
                  target_read_ops_per_second: Optional[pulumi.Input[int]] = None,
@@ -854,7 +854,7 @@ class FlexibleAppVersionAutomaticScalingDiskUtilizationArgs:
 
 
 @pulumi.input_type
-class FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs:
+calass FlexibleAppVersionAutomaticScalingNetworkUtilizationArrgs:
     def __init__(__self__, *,
                  target_received_bytes_per_second: Optional[pulumi.Input[int]] = None,
                  target_received_packets_per_second: Optional[pulumi.Input[int]] = None,
@@ -925,7 +925,7 @@ class FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs:
 
 
 @pulumi.input_type
-class FlexibleAppVersionAutomaticScalingRequestUtilizationArgs:
+calass FlexibleAppVersionAutomaticScalingRequestUtilizationArrgs:
     def __init__(__self__, *,
                  target_concurrent_requests: Optional[pulumi.Input[float]] = None,
                  target_request_count_per_second: Optional[pulumi.Input[str]] = None):
@@ -964,21 +964,21 @@ class FlexibleAppVersionAutomaticScalingRequestUtilizationArgs:
 
 
 @pulumi.input_type
-class FlexibleAppVersionDeploymentArgs:
+calass FlexibleAppVersionDeploymentArrgs:
     def __init__(__self__, *,
-                 cloud_build_options: Optional[pulumi.Input['FlexibleAppVersionDeploymentCloudBuildOptionsArgs']] = None,
-                 container: Optional[pulumi.Input['FlexibleAppVersionDeploymentContainerArgs']] = None,
-                 files: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionDeploymentFileArgs']]]] = None,
-                 zip: Optional[pulumi.Input['FlexibleAppVersionDeploymentZipArgs']] = None):
+                 cloud_build_options: Optional[pulumi.Input['FlexibleAppVersionDeploymentCloudBuildOptionsArrgs']] = None,
+                 container: Optional[pulumi.Input['FlexibleAppVersionDeploymentContainerArrgs']] = None,
+                 files: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionDeploymentFileArrgs']]]] = None,
+                 zip: Optional[pulumi.Input['FlexibleAppVersionDeploymentZipArrgs']] = None):
         """
-        :param pulumi.Input['FlexibleAppVersionDeploymentCloudBuildOptionsArgs'] cloud_build_options: Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.
+        :param pulumi.Input['FlexibleAppVersionDeploymentCloudBuildOptionsArrgs'] cloud_build_options: Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.
                Structure is documented below.
-        :param pulumi.Input['FlexibleAppVersionDeploymentContainerArgs'] container: The Docker image for the container that runs the version.
+        :param pulumi.Input['FlexibleAppVersionDeploymentContainerArrgs'] container: The Docker image for the container that runs the version.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionDeploymentFileArgs']]] files: Manifest of the files stored in Google Cloud Storage that are included as part of this version.
+        :param pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionDeploymentFileArrgs']]] files: Manifest of the files stored in Google Cloud Storage that are included as part of this version.
                All files must be readable using the credentials supplied with this call.
                Structure is documented below.
-        :param pulumi.Input['FlexibleAppVersionDeploymentZipArgs'] zip: Zip File
+        :param pulumi.Input['FlexibleAppVersionDeploymentZipArrgs'] zip: Zip File
                Structure is documented below.
         """
         if cloud_build_options is not None:
@@ -992,7 +992,7 @@ class FlexibleAppVersionDeploymentArgs:
 
     @property
     @pulumi.getter(name="cloudBuildOptions")
-    def cloud_build_options(self) -> Optional[pulumi.Input['FlexibleAppVersionDeploymentCloudBuildOptionsArgs']]:
+    def cloud_build_options(self) -> Optional[pulumi.Input['FlexibleAppVersionDeploymentCloudBuildOptionsArrgs']]:
         """
         Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.
         Structure is documented below.
@@ -1000,12 +1000,12 @@ class FlexibleAppVersionDeploymentArgs:
         return pulumi.get(self, "cloud_build_options")
 
     @cloud_build_options.setter
-    def cloud_build_options(self, value: Optional[pulumi.Input['FlexibleAppVersionDeploymentCloudBuildOptionsArgs']]):
+    def cloud_build_options(self, value: Optional[pulumi.Input['FlexibleAppVersionDeploymentCloudBuildOptionsArrgs']]):
         pulumi.set(self, "cloud_build_options", value)
 
     @property
     @pulumi.getter
-    def container(self) -> Optional[pulumi.Input['FlexibleAppVersionDeploymentContainerArgs']]:
+    def container(self) -> Optional[pulumi.Input['FlexibleAppVersionDeploymentContainerArrgs']]:
         """
         The Docker image for the container that runs the version.
         Structure is documented below.
@@ -1013,12 +1013,12 @@ class FlexibleAppVersionDeploymentArgs:
         return pulumi.get(self, "container")
 
     @container.setter
-    def container(self, value: Optional[pulumi.Input['FlexibleAppVersionDeploymentContainerArgs']]):
+    def container(self, value: Optional[pulumi.Input['FlexibleAppVersionDeploymentContainerArrgs']]):
         pulumi.set(self, "container", value)
 
     @property
     @pulumi.getter
-    def files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionDeploymentFileArgs']]]]:
+    def files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionDeploymentFileArrgs']]]]:
         """
         Manifest of the files stored in Google Cloud Storage that are included as part of this version.
         All files must be readable using the credentials supplied with this call.
@@ -1027,12 +1027,12 @@ class FlexibleAppVersionDeploymentArgs:
         return pulumi.get(self, "files")
 
     @files.setter
-    def files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionDeploymentFileArgs']]]]):
+    def files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionDeploymentFileArrgs']]]]):
         pulumi.set(self, "files", value)
 
     @property
     @pulumi.getter
-    def zip(self) -> Optional[pulumi.Input['FlexibleAppVersionDeploymentZipArgs']]:
+    def zip(self) -> Optional[pulumi.Input['FlexibleAppVersionDeploymentZipArrgs']]:
         """
         Zip File
         Structure is documented below.
@@ -1040,12 +1040,12 @@ class FlexibleAppVersionDeploymentArgs:
         return pulumi.get(self, "zip")
 
     @zip.setter
-    def zip(self, value: Optional[pulumi.Input['FlexibleAppVersionDeploymentZipArgs']]):
+    def zip(self, value: Optional[pulumi.Input['FlexibleAppVersionDeploymentZipArrgs']]):
         pulumi.set(self, "zip", value)
 
 
 @pulumi.input_type
-class FlexibleAppVersionDeploymentCloudBuildOptionsArgs:
+calass FlexibleAppVersionDeploymentCloudBuildOptionsArrgs:
     def __init__(__self__, *,
                  app_yaml_path: pulumi.Input[str],
                  cloud_build_timeout: Optional[pulumi.Input[str]] = None):
@@ -1085,7 +1085,7 @@ class FlexibleAppVersionDeploymentCloudBuildOptionsArgs:
 
 
 @pulumi.input_type
-class FlexibleAppVersionDeploymentContainerArgs:
+calass FlexibleAppVersionDeploymentContainerArrgs:
     def __init__(__self__, *,
                  image: pulumi.Input[str]):
         """
@@ -1109,7 +1109,7 @@ class FlexibleAppVersionDeploymentContainerArgs:
 
 
 @pulumi.input_type
-class FlexibleAppVersionDeploymentFileArgs:
+calass FlexibleAppVersionDeploymentFileArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  source_url: pulumi.Input[str],
@@ -1162,7 +1162,7 @@ class FlexibleAppVersionDeploymentFileArgs:
 
 
 @pulumi.input_type
-class FlexibleAppVersionDeploymentZipArgs:
+calass FlexibleAppVersionDeploymentZipArrgs:
     def __init__(__self__, *,
                  source_url: pulumi.Input[str],
                  files_count: Optional[pulumi.Input[int]] = None):
@@ -1200,7 +1200,7 @@ class FlexibleAppVersionDeploymentZipArgs:
 
 
 @pulumi.input_type
-class FlexibleAppVersionEndpointsApiServiceArgs:
+calass FlexibleAppVersionEndpointsApiServiceArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  config_id: Optional[pulumi.Input[str]] = None,
@@ -1286,7 +1286,7 @@ class FlexibleAppVersionEndpointsApiServiceArgs:
 
 
 @pulumi.input_type
-class FlexibleAppVersionEntrypointArgs:
+calass FlexibleAppVersionEntrypointArrgs:
     def __init__(__self__, *,
                  shell: pulumi.Input[str]):
         """
@@ -1308,14 +1308,14 @@ class FlexibleAppVersionEntrypointArgs:
 
 
 @pulumi.input_type
-class FlexibleAppVersionHandlerArgs:
+calass FlexibleAppVersionHandlerArrgs:
     def __init__(__self__, *,
                  auth_fail_action: Optional[pulumi.Input[str]] = None,
                  login: Optional[pulumi.Input[str]] = None,
                  redirect_http_response_code: Optional[pulumi.Input[str]] = None,
-                 script: Optional[pulumi.Input['FlexibleAppVersionHandlerScriptArgs']] = None,
+                 script: Optional[pulumi.Input['FlexibleAppVersionHandlerScriptArrgs']] = None,
                  security_level: Optional[pulumi.Input[str]] = None,
-                 static_files: Optional[pulumi.Input['FlexibleAppVersionHandlerStaticFilesArgs']] = None,
+                 static_files: Optional[pulumi.Input['FlexibleAppVersionHandlerStaticFilesArrgs']] = None,
                  url_regex: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] auth_fail_action: Actions to take when the user is not logged in.
@@ -1324,12 +1324,12 @@ class FlexibleAppVersionHandlerArgs:
                Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
         :param pulumi.Input[str] redirect_http_response_code: 30x code to use when performing redirects for the secure field.
                Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
-        :param pulumi.Input['FlexibleAppVersionHandlerScriptArgs'] script: Executes a script to handle the requests that match this URL pattern.
+        :param pulumi.Input['FlexibleAppVersionHandlerScriptArrgs'] script: Executes a script to handle the requests that match this URL pattern.
                Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
                Structure is documented below.
         :param pulumi.Input[str] security_level: Security (HTTPS) enforcement for this URL.
                Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
-        :param pulumi.Input['FlexibleAppVersionHandlerStaticFilesArgs'] static_files: Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
+        :param pulumi.Input['FlexibleAppVersionHandlerStaticFilesArrgs'] static_files: Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
                Static file handlers describe which files in the application directory are static files, and which URLs serve them.
                Structure is documented below.
         :param pulumi.Input[str] url_regex: URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
@@ -1391,7 +1391,7 @@ class FlexibleAppVersionHandlerArgs:
 
     @property
     @pulumi.getter
-    def script(self) -> Optional[pulumi.Input['FlexibleAppVersionHandlerScriptArgs']]:
+    def script(self) -> Optional[pulumi.Input['FlexibleAppVersionHandlerScriptArrgs']]:
         """
         Executes a script to handle the requests that match this URL pattern.
         Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
@@ -1400,7 +1400,7 @@ class FlexibleAppVersionHandlerArgs:
         return pulumi.get(self, "script")
 
     @script.setter
-    def script(self, value: Optional[pulumi.Input['FlexibleAppVersionHandlerScriptArgs']]):
+    def script(self, value: Optional[pulumi.Input['FlexibleAppVersionHandlerScriptArrgs']]):
         pulumi.set(self, "script", value)
 
     @property
@@ -1418,7 +1418,7 @@ class FlexibleAppVersionHandlerArgs:
 
     @property
     @pulumi.getter(name="staticFiles")
-    def static_files(self) -> Optional[pulumi.Input['FlexibleAppVersionHandlerStaticFilesArgs']]:
+    def static_files(self) -> Optional[pulumi.Input['FlexibleAppVersionHandlerStaticFilesArrgs']]:
         """
         Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
         Static file handlers describe which files in the application directory are static files, and which URLs serve them.
@@ -1427,7 +1427,7 @@ class FlexibleAppVersionHandlerArgs:
         return pulumi.get(self, "static_files")
 
     @static_files.setter
-    def static_files(self, value: Optional[pulumi.Input['FlexibleAppVersionHandlerStaticFilesArgs']]):
+    def static_files(self, value: Optional[pulumi.Input['FlexibleAppVersionHandlerStaticFilesArrgs']]):
         pulumi.set(self, "static_files", value)
 
     @property
@@ -1445,7 +1445,7 @@ class FlexibleAppVersionHandlerArgs:
 
 
 @pulumi.input_type
-class FlexibleAppVersionHandlerScriptArgs:
+calass FlexibleAppVersionHandlerScriptArrgs:
     def __init__(__self__, *,
                  script_path: pulumi.Input[str]):
         """
@@ -1467,7 +1467,7 @@ class FlexibleAppVersionHandlerScriptArgs:
 
 
 @pulumi.input_type
-class FlexibleAppVersionHandlerStaticFilesArgs:
+calass FlexibleAppVersionHandlerStaticFilesArrgs:
     def __init__(__self__, *,
                  application_readable: Optional[pulumi.Input[bool]] = None,
                  expiration: Optional[pulumi.Input[str]] = None,
@@ -1600,7 +1600,7 @@ class FlexibleAppVersionHandlerStaticFilesArgs:
 
 
 @pulumi.input_type
-class FlexibleAppVersionLivenessCheckArgs:
+calass FlexibleAppVersionLivenessCheckArrgs:
     def __init__(__self__, *,
                  path: pulumi.Input[str],
                  check_interval: Optional[pulumi.Input[str]] = None,
@@ -1722,7 +1722,7 @@ class FlexibleAppVersionLivenessCheckArgs:
 
 
 @pulumi.input_type
-class FlexibleAppVersionManualScalingArgs:
+calass FlexibleAppVersionManualScalingArrgs:
     def __init__(__self__, *,
                  instances: pulumi.Input[int]):
         """
@@ -1748,7 +1748,7 @@ class FlexibleAppVersionManualScalingArgs:
 
 
 @pulumi.input_type
-class FlexibleAppVersionNetworkArgs:
+calass FlexibleAppVersionNetworkArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  forwarded_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1842,7 +1842,7 @@ class FlexibleAppVersionNetworkArgs:
 
 
 @pulumi.input_type
-class FlexibleAppVersionReadinessCheckArgs:
+calass FlexibleAppVersionReadinessCheckArrgs:
     def __init__(__self__, *,
                  path: pulumi.Input[str],
                  app_start_timeout: Optional[pulumi.Input[str]] = None,
@@ -1962,17 +1962,17 @@ class FlexibleAppVersionReadinessCheckArgs:
 
 
 @pulumi.input_type
-class FlexibleAppVersionResourcesArgs:
+calass FlexibleAppVersionResourcesArrgs:
     def __init__(__self__, *,
                  cpu: Optional[pulumi.Input[int]] = None,
                  disk_gb: Optional[pulumi.Input[int]] = None,
                  memory_gb: Optional[pulumi.Input[float]] = None,
-                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionResourcesVolumeArgs']]]] = None):
+                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionResourcesVolumeArrgs']]]] = None):
         """
         :param pulumi.Input[int] cpu: Number of CPU cores needed.
         :param pulumi.Input[int] disk_gb: Disk size (GB) needed.
         :param pulumi.Input[float] memory_gb: Memory (GB) needed.
-        :param pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionResourcesVolumeArgs']]] volumes: List of ports, or port pairs, to forward from the virtual machine to the application container.
+        :param pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionResourcesVolumeArrgs']]] volumes: List of ports, or port pairs, to forward from the virtual machine to the application container.
                Structure is documented below.
         """
         if cpu is not None:
@@ -2022,7 +2022,7 @@ class FlexibleAppVersionResourcesArgs:
 
     @property
     @pulumi.getter
-    def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionResourcesVolumeArgs']]]]:
+    def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionResourcesVolumeArrgs']]]]:
         """
         List of ports, or port pairs, to forward from the virtual machine to the application container.
         Structure is documented below.
@@ -2030,12 +2030,12 @@ class FlexibleAppVersionResourcesArgs:
         return pulumi.get(self, "volumes")
 
     @volumes.setter
-    def volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionResourcesVolumeArgs']]]]):
+    def volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionResourcesVolumeArrgs']]]]):
         pulumi.set(self, "volumes", value)
 
 
 @pulumi.input_type
-class FlexibleAppVersionResourcesVolumeArgs:
+calass FlexibleAppVersionResourcesVolumeArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  size_gb: pulumi.Input[int],
@@ -2087,7 +2087,7 @@ class FlexibleAppVersionResourcesVolumeArgs:
 
 
 @pulumi.input_type
-class FlexibleAppVersionVpcAccessConnectorArgs:
+calass FlexibleAppVersionVpcAccessConnectorArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
         """
@@ -2109,7 +2109,7 @@ class FlexibleAppVersionVpcAccessConnectorArgs:
 
 
 @pulumi.input_type
-class ServiceNetworkSettingsNetworkSettingsArgs:
+calass ServiceNetworkSettingsNetworkSettingsArrgs:
     def __init__(__self__, *,
                  ingress_traffic_allowed: Optional[pulumi.Input[str]] = None):
         """
@@ -2140,14 +2140,14 @@ class ServiceNetworkSettingsNetworkSettingsArgs:
 
 
 @pulumi.input_type
-class StandardAppVersionAutomaticScalingArgs:
+calass StandardAppVersionAutomaticScalingArrgs:
     def __init__(__self__, *,
                  max_concurrent_requests: Optional[pulumi.Input[int]] = None,
                  max_idle_instances: Optional[pulumi.Input[int]] = None,
                  max_pending_latency: Optional[pulumi.Input[str]] = None,
                  min_idle_instances: Optional[pulumi.Input[int]] = None,
                  min_pending_latency: Optional[pulumi.Input[str]] = None,
-                 standard_scheduler_settings: Optional[pulumi.Input['StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs']] = None):
+                 standard_scheduler_settings: Optional[pulumi.Input['StandardAppVersionAutomaticScalingStandardSchedulerSettingsArrgs']] = None):
         """
         :param pulumi.Input[int] max_concurrent_requests: Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
                Defaults to a runtime-specific value.
@@ -2157,7 +2157,7 @@ class StandardAppVersionAutomaticScalingArgs:
         :param pulumi.Input[int] min_idle_instances: Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
         :param pulumi.Input[str] min_pending_latency: Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        :param pulumi.Input['StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs'] standard_scheduler_settings: Scheduler settings for standard environment.
+        :param pulumi.Input['StandardAppVersionAutomaticScalingStandardSchedulerSettingsArrgs'] standard_scheduler_settings: Scheduler settings for standard environment.
                Structure is documented below.
         """
         if max_concurrent_requests is not None:
@@ -2238,7 +2238,7 @@ class StandardAppVersionAutomaticScalingArgs:
 
     @property
     @pulumi.getter(name="standardSchedulerSettings")
-    def standard_scheduler_settings(self) -> Optional[pulumi.Input['StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs']]:
+    def standard_scheduler_settings(self) -> Optional[pulumi.Input['StandardAppVersionAutomaticScalingStandardSchedulerSettingsArrgs']]:
         """
         Scheduler settings for standard environment.
         Structure is documented below.
@@ -2246,12 +2246,12 @@ class StandardAppVersionAutomaticScalingArgs:
         return pulumi.get(self, "standard_scheduler_settings")
 
     @standard_scheduler_settings.setter
-    def standard_scheduler_settings(self, value: Optional[pulumi.Input['StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs']]):
+    def standard_scheduler_settings(self, value: Optional[pulumi.Input['StandardAppVersionAutomaticScalingStandardSchedulerSettingsArrgs']]):
         pulumi.set(self, "standard_scheduler_settings", value)
 
 
 @pulumi.input_type
-class StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs:
+calass StandardAppVersionAutomaticScalingStandardSchedulerSettingsArrgs:
     def __init__(__self__, *,
                  max_instances: Optional[pulumi.Input[int]] = None,
                  min_instances: Optional[pulumi.Input[int]] = None,
@@ -2322,7 +2322,7 @@ class StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs:
 
 
 @pulumi.input_type
-class StandardAppVersionBasicScalingArgs:
+calass StandardAppVersionBasicScalingArrgs:
     def __init__(__self__, *,
                  max_instances: pulumi.Input[int],
                  idle_timeout: Optional[pulumi.Input[str]] = None):
@@ -2362,15 +2362,15 @@ class StandardAppVersionBasicScalingArgs:
 
 
 @pulumi.input_type
-class StandardAppVersionDeploymentArgs:
+calass StandardAppVersionDeploymentArrgs:
     def __init__(__self__, *,
-                 files: Optional[pulumi.Input[Sequence[pulumi.Input['StandardAppVersionDeploymentFileArgs']]]] = None,
-                 zip: Optional[pulumi.Input['StandardAppVersionDeploymentZipArgs']] = None):
+                 files: Optional[pulumi.Input[Sequence[pulumi.Input['StandardAppVersionDeploymentFileArrgs']]]] = None,
+                 zip: Optional[pulumi.Input['StandardAppVersionDeploymentZipArrgs']] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['StandardAppVersionDeploymentFileArgs']]] files: Manifest of the files stored in Google Cloud Storage that are included as part of this version.
+        :param pulumi.Input[Sequence[pulumi.Input['StandardAppVersionDeploymentFileArrgs']]] files: Manifest of the files stored in Google Cloud Storage that are included as part of this version.
                All files must be readable using the credentials supplied with this call.
                Structure is documented below.
-        :param pulumi.Input['StandardAppVersionDeploymentZipArgs'] zip: Zip File
+        :param pulumi.Input['StandardAppVersionDeploymentZipArrgs'] zip: Zip File
                Structure is documented below.
         """
         if files is not None:
@@ -2380,7 +2380,7 @@ class StandardAppVersionDeploymentArgs:
 
     @property
     @pulumi.getter
-    def files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StandardAppVersionDeploymentFileArgs']]]]:
+    def files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StandardAppVersionDeploymentFileArrgs']]]]:
         """
         Manifest of the files stored in Google Cloud Storage that are included as part of this version.
         All files must be readable using the credentials supplied with this call.
@@ -2389,12 +2389,12 @@ class StandardAppVersionDeploymentArgs:
         return pulumi.get(self, "files")
 
     @files.setter
-    def files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StandardAppVersionDeploymentFileArgs']]]]):
+    def files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StandardAppVersionDeploymentFileArrgs']]]]):
         pulumi.set(self, "files", value)
 
     @property
     @pulumi.getter
-    def zip(self) -> Optional[pulumi.Input['StandardAppVersionDeploymentZipArgs']]:
+    def zip(self) -> Optional[pulumi.Input['StandardAppVersionDeploymentZipArrgs']]:
         """
         Zip File
         Structure is documented below.
@@ -2402,12 +2402,12 @@ class StandardAppVersionDeploymentArgs:
         return pulumi.get(self, "zip")
 
     @zip.setter
-    def zip(self, value: Optional[pulumi.Input['StandardAppVersionDeploymentZipArgs']]):
+    def zip(self, value: Optional[pulumi.Input['StandardAppVersionDeploymentZipArrgs']]):
         pulumi.set(self, "zip", value)
 
 
 @pulumi.input_type
-class StandardAppVersionDeploymentFileArgs:
+calass StandardAppVersionDeploymentFileArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  source_url: pulumi.Input[str],
@@ -2460,7 +2460,7 @@ class StandardAppVersionDeploymentFileArgs:
 
 
 @pulumi.input_type
-class StandardAppVersionDeploymentZipArgs:
+calass StandardAppVersionDeploymentZipArrgs:
     def __init__(__self__, *,
                  source_url: pulumi.Input[str],
                  files_count: Optional[pulumi.Input[int]] = None):
@@ -2498,7 +2498,7 @@ class StandardAppVersionDeploymentZipArgs:
 
 
 @pulumi.input_type
-class StandardAppVersionEntrypointArgs:
+calass StandardAppVersionEntrypointArrgs:
     def __init__(__self__, *,
                  shell: pulumi.Input[str]):
         """
@@ -2524,14 +2524,14 @@ class StandardAppVersionEntrypointArgs:
 
 
 @pulumi.input_type
-class StandardAppVersionHandlerArgs:
+calass StandardAppVersionHandlerArrgs:
     def __init__(__self__, *,
                  auth_fail_action: Optional[pulumi.Input[str]] = None,
                  login: Optional[pulumi.Input[str]] = None,
                  redirect_http_response_code: Optional[pulumi.Input[str]] = None,
-                 script: Optional[pulumi.Input['StandardAppVersionHandlerScriptArgs']] = None,
+                 script: Optional[pulumi.Input['StandardAppVersionHandlerScriptArrgs']] = None,
                  security_level: Optional[pulumi.Input[str]] = None,
-                 static_files: Optional[pulumi.Input['StandardAppVersionHandlerStaticFilesArgs']] = None,
+                 static_files: Optional[pulumi.Input['StandardAppVersionHandlerStaticFilesArrgs']] = None,
                  url_regex: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] auth_fail_action: Actions to take when the user is not logged in.
@@ -2540,12 +2540,12 @@ class StandardAppVersionHandlerArgs:
                Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
         :param pulumi.Input[str] redirect_http_response_code: 30x code to use when performing redirects for the secure field.
                Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
-        :param pulumi.Input['StandardAppVersionHandlerScriptArgs'] script: Executes a script to handle the requests that match this URL pattern.
+        :param pulumi.Input['StandardAppVersionHandlerScriptArrgs'] script: Executes a script to handle the requests that match this URL pattern.
                Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
                Structure is documented below.
         :param pulumi.Input[str] security_level: Security (HTTPS) enforcement for this URL.
                Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
-        :param pulumi.Input['StandardAppVersionHandlerStaticFilesArgs'] static_files: Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.
+        :param pulumi.Input['StandardAppVersionHandlerStaticFilesArrgs'] static_files: Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.
                Structure is documented below.
         :param pulumi.Input[str] url_regex: URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
                All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
@@ -2606,7 +2606,7 @@ class StandardAppVersionHandlerArgs:
 
     @property
     @pulumi.getter
-    def script(self) -> Optional[pulumi.Input['StandardAppVersionHandlerScriptArgs']]:
+    def script(self) -> Optional[pulumi.Input['StandardAppVersionHandlerScriptArrgs']]:
         """
         Executes a script to handle the requests that match this URL pattern.
         Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
@@ -2615,7 +2615,7 @@ class StandardAppVersionHandlerArgs:
         return pulumi.get(self, "script")
 
     @script.setter
-    def script(self, value: Optional[pulumi.Input['StandardAppVersionHandlerScriptArgs']]):
+    def script(self, value: Optional[pulumi.Input['StandardAppVersionHandlerScriptArrgs']]):
         pulumi.set(self, "script", value)
 
     @property
@@ -2633,7 +2633,7 @@ class StandardAppVersionHandlerArgs:
 
     @property
     @pulumi.getter(name="staticFiles")
-    def static_files(self) -> Optional[pulumi.Input['StandardAppVersionHandlerStaticFilesArgs']]:
+    def static_files(self) -> Optional[pulumi.Input['StandardAppVersionHandlerStaticFilesArrgs']]:
         """
         Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.
         Structure is documented below.
@@ -2641,7 +2641,7 @@ class StandardAppVersionHandlerArgs:
         return pulumi.get(self, "static_files")
 
     @static_files.setter
-    def static_files(self, value: Optional[pulumi.Input['StandardAppVersionHandlerStaticFilesArgs']]):
+    def static_files(self, value: Optional[pulumi.Input['StandardAppVersionHandlerStaticFilesArrgs']]):
         pulumi.set(self, "static_files", value)
 
     @property
@@ -2659,7 +2659,7 @@ class StandardAppVersionHandlerArgs:
 
 
 @pulumi.input_type
-class StandardAppVersionHandlerScriptArgs:
+calass StandardAppVersionHandlerScriptArrgs:
     def __init__(__self__, *,
                  script_path: pulumi.Input[str]):
         """
@@ -2681,7 +2681,7 @@ class StandardAppVersionHandlerScriptArgs:
 
 
 @pulumi.input_type
-class StandardAppVersionHandlerStaticFilesArgs:
+calass StandardAppVersionHandlerStaticFilesArrgs:
     def __init__(__self__, *,
                  application_readable: Optional[pulumi.Input[bool]] = None,
                  expiration: Optional[pulumi.Input[str]] = None,
@@ -2810,7 +2810,7 @@ class StandardAppVersionHandlerStaticFilesArgs:
 
 
 @pulumi.input_type
-class StandardAppVersionLibraryArgs:
+calass StandardAppVersionLibraryArrgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
@@ -2849,7 +2849,7 @@ class StandardAppVersionLibraryArgs:
 
 
 @pulumi.input_type
-class StandardAppVersionManualScalingArgs:
+calass StandardAppVersionManualScalingArrgs:
     def __init__(__self__, *,
                  instances: pulumi.Input[int]):
         """
@@ -2875,7 +2875,7 @@ class StandardAppVersionManualScalingArgs:
 
 
 @pulumi.input_type
-class StandardAppVersionVpcAccessConnectorArgs:
+calass StandardAppVersionVpcAccessConnectorArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  egress_setting: Optional[pulumi.Input[str]] = None):

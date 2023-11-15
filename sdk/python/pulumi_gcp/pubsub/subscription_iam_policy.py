@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['SubscriptionIAMPolicyArgs', 'SubscriptionIAMPolicy']
+__all__ = ['SubscriptionIAMPolicyArrgs', 'SubscriptionIAMPolicy']
 
 @pulumi.input_type
-class SubscriptionIAMPolicyArgs:
+calass SubscriptionIAMPolicyArrgs:
     def __init__(__self__, *,
                  policy_data: pulumi.Input[str],
                  subscription: pulumi.Input[str],
@@ -92,7 +92,7 @@ class SubscriptionIAMPolicyArgs:
 
 
 @pulumi.input_type
-class _SubscriptionIAMPolicyState:
+calass _SubscriptionIAMPolicyState:
     def __init__(__self__, *,
                  etag: Optional[pulumi.Input[str]] = None,
                  policy_data: Optional[pulumi.Input[str]] = None,
@@ -189,7 +189,7 @@ class _SubscriptionIAMPolicyState:
         pulumi.set(self, "subscription", value)
 
 
-class SubscriptionIAMPolicy(pulumi.CustomResource):
+calass SubscriptionIAMPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -215,7 +215,7 @@ class SubscriptionIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -287,7 +287,7 @@ class SubscriptionIAMPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SubscriptionIAMPolicyArgs,
+                 args: SubscriptionIAMPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for pubsub subscription. Each of these resources serves a different use case:
@@ -306,7 +306,7 @@ class SubscriptionIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -356,12 +356,12 @@ class SubscriptionIAMPolicy(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param SubscriptionIAMPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param SubscriptionIAMPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SubscriptionIAMPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SubscriptionIAMPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -380,7 +380,7 @@ class SubscriptionIAMPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SubscriptionIAMPolicyArgs.__new__(SubscriptionIAMPolicyArgs)
+            __props__ = SubscriptionIAMPolicyArrgs.__new__(SubscriptionIAMPolicyArrgs)
 
             if policy_data is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_data'")

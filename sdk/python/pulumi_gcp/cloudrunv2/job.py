@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['JobArgs', 'Job']
+__all__ = ['JobArrgs', 'Job']
 
 @pulumi.input_type
-class JobArgs:
+calass JobArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 template: pulumi.Input['JobTemplateArgs'],
+                 template: pulumi.Input['JobTemplateArrgs'],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input['JobBinaryAuthorizationArgs']] = None,
+                 binary_authorization: Optional[pulumi.Input['JobBinaryAuthorizationArrgs']] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -29,7 +29,7 @@ class JobArgs:
         """
         The set of arguments for constructing a Job resource.
         :param pulumi.Input[str] location: The location of the cloud run job
-        :param pulumi.Input['JobTemplateArgs'] template: The template used to create executions for this Job.
+        :param pulumi.Input['JobTemplateArrgs'] template: The template used to create executions for this Job.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
                Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
@@ -37,7 +37,7 @@ class JobArgs:
                This field follows Kubernetes annotations' namespacing, limits, and rules.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input['JobBinaryAuthorizationArgs'] binary_authorization: Settings for the Binary Authorization feature.
+        :param pulumi.Input['JobBinaryAuthorizationArrgs'] binary_authorization: Settings for the Binary Authorization feature.
                Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
@@ -88,7 +88,7 @@ class JobArgs:
 
     @property
     @pulumi.getter
-    def template(self) -> pulumi.Input['JobTemplateArgs']:
+    def template(self) -> pulumi.Input['JobTemplateArrgs']:
         """
         The template used to create executions for this Job.
         Structure is documented below.
@@ -96,7 +96,7 @@ class JobArgs:
         return pulumi.get(self, "template")
 
     @template.setter
-    def template(self, value: pulumi.Input['JobTemplateArgs']):
+    def template(self, value: pulumi.Input['JobTemplateArrgs']):
         pulumi.set(self, "template", value)
 
     @property
@@ -118,7 +118,7 @@ class JobArgs:
 
     @property
     @pulumi.getter(name="binaryAuthorization")
-    def binary_authorization(self) -> Optional[pulumi.Input['JobBinaryAuthorizationArgs']]:
+    def binary_authorization(self) -> Optional[pulumi.Input['JobBinaryAuthorizationArrgs']]:
         """
         Settings for the Binary Authorization feature.
         Structure is documented below.
@@ -126,7 +126,7 @@ class JobArgs:
         return pulumi.get(self, "binary_authorization")
 
     @binary_authorization.setter
-    def binary_authorization(self, value: Optional[pulumi.Input['JobBinaryAuthorizationArgs']]):
+    def binary_authorization(self, value: Optional[pulumi.Input['JobBinaryAuthorizationArrgs']]):
         pulumi.set(self, "binary_authorization", value)
 
     @property
@@ -212,13 +212,13 @@ class JobArgs:
 
 
 @pulumi.input_type
-class _JobState:
+calass _JobState:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input['JobBinaryAuthorizationArgs']] = None,
+                 binary_authorization: Optional[pulumi.Input['JobBinaryAuthorizationArrgs']] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['JobConditionArgs']]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['JobConditionArrgs']]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  creator: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
@@ -230,7 +230,7 @@ class _JobState:
                  generation: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  last_modifier: Optional[pulumi.Input[str]] = None,
-                 latest_created_executions: Optional[pulumi.Input[Sequence[pulumi.Input['JobLatestCreatedExecutionArgs']]]] = None,
+                 latest_created_executions: Optional[pulumi.Input[Sequence[pulumi.Input['JobLatestCreatedExecutionArrgs']]]] = None,
                  launch_stage: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -238,8 +238,8 @@ class _JobState:
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  reconciling: Optional[pulumi.Input[bool]] = None,
-                 template: Optional[pulumi.Input['JobTemplateArgs']] = None,
-                 terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['JobTerminalConditionArgs']]]] = None,
+                 template: Optional[pulumi.Input['JobTemplateArrgs']] = None,
+                 terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['JobTerminalConditionArrgs']]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -250,11 +250,11 @@ class _JobState:
                This field follows Kubernetes annotations' namespacing, limits, and rules.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input['JobBinaryAuthorizationArgs'] binary_authorization: Settings for the Binary Authorization feature.
+        :param pulumi.Input['JobBinaryAuthorizationArrgs'] binary_authorization: Settings for the Binary Authorization feature.
                Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
-        :param pulumi.Input[Sequence[pulumi.Input['JobConditionArgs']]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
+        :param pulumi.Input[Sequence[pulumi.Input['JobConditionArrgs']]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
                Structure is documented below.
         :param pulumi.Input[str] create_time: (Output)
                Creation timestamp of the execution.
@@ -275,7 +275,7 @@ class _JobState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] last_modifier: Email address of the last authenticated modifier.
-        :param pulumi.Input[Sequence[pulumi.Input['JobLatestCreatedExecutionArgs']]] latest_created_executions: Name of the last created execution.
+        :param pulumi.Input[Sequence[pulumi.Input['JobLatestCreatedExecutionArrgs']]] latest_created_executions: Name of the last created execution.
                Structure is documented below.
         :param pulumi.Input[str] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
                If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
@@ -292,9 +292,9 @@ class _JobState:
                When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
                If reconciliation succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and latestCreatedExecution.
                If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
-        :param pulumi.Input['JobTemplateArgs'] template: The template used to create executions for this Job.
+        :param pulumi.Input['JobTemplateArrgs'] template: The template used to create executions for this Job.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['JobTerminalConditionArgs']]] terminal_conditions: The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
+        :param pulumi.Input[Sequence[pulumi.Input['JobTerminalConditionArrgs']]] terminal_conditions: The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
                Structure is documented below.
         :param pulumi.Input[str] uid: Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         :param pulumi.Input[str] update_time: The last-modified time.
@@ -375,7 +375,7 @@ class _JobState:
 
     @property
     @pulumi.getter(name="binaryAuthorization")
-    def binary_authorization(self) -> Optional[pulumi.Input['JobBinaryAuthorizationArgs']]:
+    def binary_authorization(self) -> Optional[pulumi.Input['JobBinaryAuthorizationArrgs']]:
         """
         Settings for the Binary Authorization feature.
         Structure is documented below.
@@ -383,7 +383,7 @@ class _JobState:
         return pulumi.get(self, "binary_authorization")
 
     @binary_authorization.setter
-    def binary_authorization(self, value: Optional[pulumi.Input['JobBinaryAuthorizationArgs']]):
+    def binary_authorization(self, value: Optional[pulumi.Input['JobBinaryAuthorizationArrgs']]):
         pulumi.set(self, "binary_authorization", value)
 
     @property
@@ -412,7 +412,7 @@ class _JobState:
 
     @property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobConditionArgs']]]]:
+    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobConditionArrgs']]]]:
         """
         The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
         Structure is documented below.
@@ -420,7 +420,7 @@ class _JobState:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobConditionArgs']]]]):
+    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobConditionArrgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @property
@@ -565,7 +565,7 @@ class _JobState:
 
     @property
     @pulumi.getter(name="latestCreatedExecutions")
-    def latest_created_executions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobLatestCreatedExecutionArgs']]]]:
+    def latest_created_executions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobLatestCreatedExecutionArrgs']]]]:
         """
         Name of the last created execution.
         Structure is documented below.
@@ -573,7 +573,7 @@ class _JobState:
         return pulumi.get(self, "latest_created_executions")
 
     @latest_created_executions.setter
-    def latest_created_executions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobLatestCreatedExecutionArgs']]]]):
+    def latest_created_executions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobLatestCreatedExecutionArrgs']]]]):
         pulumi.set(self, "latest_created_executions", value)
 
     @property
@@ -670,7 +670,7 @@ class _JobState:
 
     @property
     @pulumi.getter
-    def template(self) -> Optional[pulumi.Input['JobTemplateArgs']]:
+    def template(self) -> Optional[pulumi.Input['JobTemplateArrgs']]:
         """
         The template used to create executions for this Job.
         Structure is documented below.
@@ -678,12 +678,12 @@ class _JobState:
         return pulumi.get(self, "template")
 
     @template.setter
-    def template(self, value: Optional[pulumi.Input['JobTemplateArgs']]):
+    def template(self, value: Optional[pulumi.Input['JobTemplateArrgs']]):
         pulumi.set(self, "template", value)
 
     @property
     @pulumi.getter(name="terminalConditions")
-    def terminal_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTerminalConditionArgs']]]]:
+    def terminal_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTerminalConditionArrgs']]]]:
         """
         The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
         Structure is documented below.
@@ -691,7 +691,7 @@ class _JobState:
         return pulumi.get(self, "terminal_conditions")
 
     @terminal_conditions.setter
-    def terminal_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTerminalConditionArgs']]]]):
+    def terminal_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTerminalConditionArrgs']]]]):
         pulumi.set(self, "terminal_conditions", value)
 
     @property
@@ -719,13 +719,13 @@ class _JobState:
         pulumi.set(self, "update_time", value)
 
 
-class Job(pulumi.CustomResource):
+calass Job(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['JobBinaryAuthorizationArgs']]] = None,
+                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['JobBinaryAuthorizationArrgs']]] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -733,7 +733,7 @@ class Job(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 template: Optional[pulumi.Input[pulumi.InputType['JobTemplateArgs']]] = None,
+                 template: Optional[pulumi.Input[pulumi.InputType['JobTemplateArrgs']]] = None,
                  __props__=None):
         """
         A Cloud Run Job resource that references a container image which is run to completion.
@@ -753,9 +753,9 @@ class Job(pulumi.CustomResource):
 
         default = gcp.cloudrunv2.Job("default",
             location="us-central1",
-            template=gcp.cloudrunv2.JobTemplateArgs(
-                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
-                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
+            template=gcp.cloudrunv2.JobTemplateArrgs(
+                template=gcp.cloudrunv2.JobTemplateTemplateArrgs(
+                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArrgs(
                         image="us-docker.pkg.dev/cloudrun/container/hello",
                     )],
                 ),
@@ -769,44 +769,44 @@ class Job(pulumi.CustomResource):
 
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArrgs(),
             ))
         instance = gcp.sql.DatabaseInstance("instance",
             region="us-central1",
             database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+            settings=gcp.sql.DatabaseInstanceSettingsArrgs(
                 tier="db-f1-micro",
             ),
             deletion_protection=True)
         default = gcp.cloudrunv2.Job("default",
             location="us-central1",
-            template=gcp.cloudrunv2.JobTemplateArgs(
-                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
-                    volumes=[gcp.cloudrunv2.JobTemplateTemplateVolumeArgs(
+            template=gcp.cloudrunv2.JobTemplateArrgs(
+                template=gcp.cloudrunv2.JobTemplateTemplateArrgs(
+                    volumes=[gcp.cloudrunv2.JobTemplateTemplateVolumeArrgs(
                         name="cloudsql",
-                        cloud_sql_instance=gcp.cloudrunv2.JobTemplateTemplateVolumeCloudSqlInstanceArgs(
+                        cloud_sql_instance=gcp.cloudrunv2.JobTemplateTemplateVolumeCloudSqlInstanceArrgs(
                             instances=[instance.connection_name],
                         ),
                     )],
-                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
+                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArrgs(
                         image="us-docker.pkg.dev/cloudrun/container/hello",
                         envs=[
-                            gcp.cloudrunv2.JobTemplateTemplateContainerEnvArgs(
+                            gcp.cloudrunv2.JobTemplateTemplateContainerEnvArrgs(
                                 name="FOO",
                                 value="bar",
                             ),
-                            gcp.cloudrunv2.JobTemplateTemplateContainerEnvArgs(
+                            gcp.cloudrunv2.JobTemplateTemplateContainerEnvArrgs(
                                 name="latestdclsecret",
-                                value_source=gcp.cloudrunv2.JobTemplateTemplateContainerEnvValueSourceArgs(
-                                    secret_key_ref=gcp.cloudrunv2.JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs(
+                                value_source=gcp.cloudrunv2.JobTemplateTemplateContainerEnvValueSourceArrgs(
+                                    secret_key_ref=gcp.cloudrunv2.JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrgs(
                                         secret=secret.secret_id,
                                         version="1",
                                     ),
                                 ),
                             ),
                         ],
-                        volume_mounts=[gcp.cloudrunv2.JobTemplateTemplateContainerVolumeMountArgs(
+                        volume_mounts=[gcp.cloudrunv2.JobTemplateTemplateContainerVolumeMountArrgs(
                             name="cloudsql",
                             mount_path="/cloudsql",
                         )],
@@ -835,7 +835,7 @@ class Job(pulumi.CustomResource):
             region="us-central1",
             network=custom_test_network.id)
         connector = gcp.vpcaccess.Connector("connector",
-            subnet=gcp.vpcaccess.ConnectorSubnetArgs(
+            subnet=gcp.vpcaccess.ConnectorSubnetArrgs(
                 name=custom_test_subnetwork.name,
             ),
             machine_type="e2-standard-4",
@@ -844,12 +844,12 @@ class Job(pulumi.CustomResource):
             region="us-central1")
         default = gcp.cloudrunv2.Job("default",
             location="us-central1",
-            template=gcp.cloudrunv2.JobTemplateArgs(
-                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
-                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
+            template=gcp.cloudrunv2.JobTemplateArrgs(
+                template=gcp.cloudrunv2.JobTemplateTemplateArrgs(
+                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArrgs(
                         image="us-docker.pkg.dev/cloudrun/container/hello",
                     )],
-                    vpc_access=gcp.cloudrunv2.JobTemplateTemplateVpcAccessArgs(
+                    vpc_access=gcp.cloudrunv2.JobTemplateTemplateVpcAccessArrgs(
                         connector=connector.id,
                         egress="ALL_TRAFFIC",
                     ),
@@ -865,13 +865,13 @@ class Job(pulumi.CustomResource):
         default = gcp.cloudrunv2.Job("default",
             location="us-central1",
             launch_stage="BETA",
-            template=gcp.cloudrunv2.JobTemplateArgs(
-                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
-                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
+            template=gcp.cloudrunv2.JobTemplateArrgs(
+                template=gcp.cloudrunv2.JobTemplateTemplateArrgs(
+                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArrgs(
                         image="us-docker.pkg.dev/cloudrun/container/job",
                     )],
-                    vpc_access=gcp.cloudrunv2.JobTemplateTemplateVpcAccessArgs(
-                        network_interfaces=[gcp.cloudrunv2.JobTemplateTemplateVpcAccessNetworkInterfaceArgs(
+                    vpc_access=gcp.cloudrunv2.JobTemplateTemplateVpcAccessArrgs(
+                        network_interfaces=[gcp.cloudrunv2.JobTemplateTemplateVpcAccessNetworkInterfaceArrgs(
                             network="default",
                             subnetwork="default",
                             tags=[
@@ -893,8 +893,8 @@ class Job(pulumi.CustomResource):
 
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArrgs(),
             ))
         secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
             secret=secret.name,
@@ -907,23 +907,23 @@ class Job(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(depends_on=[secret]))
         default = gcp.cloudrunv2.Job("default",
             location="us-central1",
-            template=gcp.cloudrunv2.JobTemplateArgs(
-                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
-                    volumes=[gcp.cloudrunv2.JobTemplateTemplateVolumeArgs(
+            template=gcp.cloudrunv2.JobTemplateArrgs(
+                template=gcp.cloudrunv2.JobTemplateTemplateArrgs(
+                    volumes=[gcp.cloudrunv2.JobTemplateTemplateVolumeArrgs(
                         name="a-volume",
-                        secret=gcp.cloudrunv2.JobTemplateTemplateVolumeSecretArgs(
+                        secret=gcp.cloudrunv2.JobTemplateTemplateVolumeSecretArrgs(
                             secret=secret.secret_id,
                             default_mode=292,
-                            items=[gcp.cloudrunv2.JobTemplateTemplateVolumeSecretItemArgs(
+                            items=[gcp.cloudrunv2.JobTemplateTemplateVolumeSecretItemArrgs(
                                 version="1",
                                 path="my-secret",
                                 mode=256,
                             )],
                         ),
                     )],
-                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
+                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArrgs(
                         image="us-docker.pkg.dev/cloudrun/container/hello",
-                        volume_mounts=[gcp.cloudrunv2.JobTemplateTemplateContainerVolumeMountArgs(
+                        volume_mounts=[gcp.cloudrunv2.JobTemplateTemplateContainerVolumeMountArrgs(
                             name="a-volume",
                             mount_path="/secrets",
                         )],
@@ -944,18 +944,18 @@ class Job(pulumi.CustomResource):
         default = gcp.cloudrunv2.Job("default",
             location="us-central1",
             launch_stage="BETA",
-            template=gcp.cloudrunv2.JobTemplateArgs(
-                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
-                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
+            template=gcp.cloudrunv2.JobTemplateArrgs(
+                template=gcp.cloudrunv2.JobTemplateTemplateArrgs(
+                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArrgs(
                         image="us-docker.pkg.dev/cloudrun/container/hello",
-                        volume_mounts=[gcp.cloudrunv2.JobTemplateTemplateContainerVolumeMountArgs(
+                        volume_mounts=[gcp.cloudrunv2.JobTemplateTemplateContainerVolumeMountArrgs(
                             name="empty-dir-volume",
                             mount_path="/mnt",
                         )],
                     )],
-                    volumes=[gcp.cloudrunv2.JobTemplateTemplateVolumeArgs(
+                    volumes=[gcp.cloudrunv2.JobTemplateTemplateVolumeArrgs(
                         name="empty-dir-volume",
-                        empty_dir=gcp.cloudrunv2.JobTemplateTemplateVolumeEmptyDirArgs(
+                        empty_dir=gcp.cloudrunv2.JobTemplateTemplateVolumeEmptyDirArrgs(
                             medium="MEMORY",
                             size_limit="128Mi",
                         ),
@@ -997,7 +997,7 @@ class Job(pulumi.CustomResource):
                This field follows Kubernetes annotations' namespacing, limits, and rules.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['JobBinaryAuthorizationArgs']] binary_authorization: Settings for the Binary Authorization feature.
+        :param pulumi.Input[pulumi.InputType['JobBinaryAuthorizationArrgs']] binary_authorization: Settings for the Binary Authorization feature.
                Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
@@ -1015,14 +1015,14 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the Job.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['JobTemplateArgs']] template: The template used to create executions for this Job.
+        :param pulumi.Input[pulumi.InputType['JobTemplateArrgs']] template: The template used to create executions for this Job.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: JobArgs,
+                 args: JobArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Cloud Run Job resource that references a container image which is run to completion.
@@ -1042,9 +1042,9 @@ class Job(pulumi.CustomResource):
 
         default = gcp.cloudrunv2.Job("default",
             location="us-central1",
-            template=gcp.cloudrunv2.JobTemplateArgs(
-                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
-                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
+            template=gcp.cloudrunv2.JobTemplateArrgs(
+                template=gcp.cloudrunv2.JobTemplateTemplateArrgs(
+                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArrgs(
                         image="us-docker.pkg.dev/cloudrun/container/hello",
                     )],
                 ),
@@ -1058,44 +1058,44 @@ class Job(pulumi.CustomResource):
 
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArrgs(),
             ))
         instance = gcp.sql.DatabaseInstance("instance",
             region="us-central1",
             database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+            settings=gcp.sql.DatabaseInstanceSettingsArrgs(
                 tier="db-f1-micro",
             ),
             deletion_protection=True)
         default = gcp.cloudrunv2.Job("default",
             location="us-central1",
-            template=gcp.cloudrunv2.JobTemplateArgs(
-                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
-                    volumes=[gcp.cloudrunv2.JobTemplateTemplateVolumeArgs(
+            template=gcp.cloudrunv2.JobTemplateArrgs(
+                template=gcp.cloudrunv2.JobTemplateTemplateArrgs(
+                    volumes=[gcp.cloudrunv2.JobTemplateTemplateVolumeArrgs(
                         name="cloudsql",
-                        cloud_sql_instance=gcp.cloudrunv2.JobTemplateTemplateVolumeCloudSqlInstanceArgs(
+                        cloud_sql_instance=gcp.cloudrunv2.JobTemplateTemplateVolumeCloudSqlInstanceArrgs(
                             instances=[instance.connection_name],
                         ),
                     )],
-                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
+                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArrgs(
                         image="us-docker.pkg.dev/cloudrun/container/hello",
                         envs=[
-                            gcp.cloudrunv2.JobTemplateTemplateContainerEnvArgs(
+                            gcp.cloudrunv2.JobTemplateTemplateContainerEnvArrgs(
                                 name="FOO",
                                 value="bar",
                             ),
-                            gcp.cloudrunv2.JobTemplateTemplateContainerEnvArgs(
+                            gcp.cloudrunv2.JobTemplateTemplateContainerEnvArrgs(
                                 name="latestdclsecret",
-                                value_source=gcp.cloudrunv2.JobTemplateTemplateContainerEnvValueSourceArgs(
-                                    secret_key_ref=gcp.cloudrunv2.JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs(
+                                value_source=gcp.cloudrunv2.JobTemplateTemplateContainerEnvValueSourceArrgs(
+                                    secret_key_ref=gcp.cloudrunv2.JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrgs(
                                         secret=secret.secret_id,
                                         version="1",
                                     ),
                                 ),
                             ),
                         ],
-                        volume_mounts=[gcp.cloudrunv2.JobTemplateTemplateContainerVolumeMountArgs(
+                        volume_mounts=[gcp.cloudrunv2.JobTemplateTemplateContainerVolumeMountArrgs(
                             name="cloudsql",
                             mount_path="/cloudsql",
                         )],
@@ -1124,7 +1124,7 @@ class Job(pulumi.CustomResource):
             region="us-central1",
             network=custom_test_network.id)
         connector = gcp.vpcaccess.Connector("connector",
-            subnet=gcp.vpcaccess.ConnectorSubnetArgs(
+            subnet=gcp.vpcaccess.ConnectorSubnetArrgs(
                 name=custom_test_subnetwork.name,
             ),
             machine_type="e2-standard-4",
@@ -1133,12 +1133,12 @@ class Job(pulumi.CustomResource):
             region="us-central1")
         default = gcp.cloudrunv2.Job("default",
             location="us-central1",
-            template=gcp.cloudrunv2.JobTemplateArgs(
-                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
-                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
+            template=gcp.cloudrunv2.JobTemplateArrgs(
+                template=gcp.cloudrunv2.JobTemplateTemplateArrgs(
+                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArrgs(
                         image="us-docker.pkg.dev/cloudrun/container/hello",
                     )],
-                    vpc_access=gcp.cloudrunv2.JobTemplateTemplateVpcAccessArgs(
+                    vpc_access=gcp.cloudrunv2.JobTemplateTemplateVpcAccessArrgs(
                         connector=connector.id,
                         egress="ALL_TRAFFIC",
                     ),
@@ -1154,13 +1154,13 @@ class Job(pulumi.CustomResource):
         default = gcp.cloudrunv2.Job("default",
             location="us-central1",
             launch_stage="BETA",
-            template=gcp.cloudrunv2.JobTemplateArgs(
-                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
-                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
+            template=gcp.cloudrunv2.JobTemplateArrgs(
+                template=gcp.cloudrunv2.JobTemplateTemplateArrgs(
+                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArrgs(
                         image="us-docker.pkg.dev/cloudrun/container/job",
                     )],
-                    vpc_access=gcp.cloudrunv2.JobTemplateTemplateVpcAccessArgs(
-                        network_interfaces=[gcp.cloudrunv2.JobTemplateTemplateVpcAccessNetworkInterfaceArgs(
+                    vpc_access=gcp.cloudrunv2.JobTemplateTemplateVpcAccessArrgs(
+                        network_interfaces=[gcp.cloudrunv2.JobTemplateTemplateVpcAccessNetworkInterfaceArrgs(
                             network="default",
                             subnetwork="default",
                             tags=[
@@ -1182,8 +1182,8 @@ class Job(pulumi.CustomResource):
 
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArrgs(),
             ))
         secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
             secret=secret.name,
@@ -1196,23 +1196,23 @@ class Job(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(depends_on=[secret]))
         default = gcp.cloudrunv2.Job("default",
             location="us-central1",
-            template=gcp.cloudrunv2.JobTemplateArgs(
-                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
-                    volumes=[gcp.cloudrunv2.JobTemplateTemplateVolumeArgs(
+            template=gcp.cloudrunv2.JobTemplateArrgs(
+                template=gcp.cloudrunv2.JobTemplateTemplateArrgs(
+                    volumes=[gcp.cloudrunv2.JobTemplateTemplateVolumeArrgs(
                         name="a-volume",
-                        secret=gcp.cloudrunv2.JobTemplateTemplateVolumeSecretArgs(
+                        secret=gcp.cloudrunv2.JobTemplateTemplateVolumeSecretArrgs(
                             secret=secret.secret_id,
                             default_mode=292,
-                            items=[gcp.cloudrunv2.JobTemplateTemplateVolumeSecretItemArgs(
+                            items=[gcp.cloudrunv2.JobTemplateTemplateVolumeSecretItemArrgs(
                                 version="1",
                                 path="my-secret",
                                 mode=256,
                             )],
                         ),
                     )],
-                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
+                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArrgs(
                         image="us-docker.pkg.dev/cloudrun/container/hello",
-                        volume_mounts=[gcp.cloudrunv2.JobTemplateTemplateContainerVolumeMountArgs(
+                        volume_mounts=[gcp.cloudrunv2.JobTemplateTemplateContainerVolumeMountArrgs(
                             name="a-volume",
                             mount_path="/secrets",
                         )],
@@ -1233,18 +1233,18 @@ class Job(pulumi.CustomResource):
         default = gcp.cloudrunv2.Job("default",
             location="us-central1",
             launch_stage="BETA",
-            template=gcp.cloudrunv2.JobTemplateArgs(
-                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
-                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
+            template=gcp.cloudrunv2.JobTemplateArrgs(
+                template=gcp.cloudrunv2.JobTemplateTemplateArrgs(
+                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArrgs(
                         image="us-docker.pkg.dev/cloudrun/container/hello",
-                        volume_mounts=[gcp.cloudrunv2.JobTemplateTemplateContainerVolumeMountArgs(
+                        volume_mounts=[gcp.cloudrunv2.JobTemplateTemplateContainerVolumeMountArrgs(
                             name="empty-dir-volume",
                             mount_path="/mnt",
                         )],
                     )],
-                    volumes=[gcp.cloudrunv2.JobTemplateTemplateVolumeArgs(
+                    volumes=[gcp.cloudrunv2.JobTemplateTemplateVolumeArrgs(
                         name="empty-dir-volume",
-                        empty_dir=gcp.cloudrunv2.JobTemplateTemplateVolumeEmptyDirArgs(
+                        empty_dir=gcp.cloudrunv2.JobTemplateTemplateVolumeEmptyDirArrgs(
                             medium="MEMORY",
                             size_limit="128Mi",
                         ),
@@ -1279,12 +1279,12 @@ class Job(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param JobArgs args: The arguments to use to populate this resource's properties.
+        :param JobArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(JobArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(JobArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1294,7 +1294,7 @@ class Job(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['JobBinaryAuthorizationArgs']]] = None,
+                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['JobBinaryAuthorizationArrgs']]] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1302,7 +1302,7 @@ class Job(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 template: Optional[pulumi.Input[pulumi.InputType['JobTemplateArgs']]] = None,
+                 template: Optional[pulumi.Input[pulumi.InputType['JobTemplateArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1310,7 +1310,7 @@ class Job(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = JobArgs.__new__(JobArgs)
+            __props__ = JobArrgs.__new__(JobArrgs)
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["binary_authorization"] = binary_authorization
@@ -1357,10 +1357,10 @@ class Job(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            binary_authorization: Optional[pulumi.Input[pulumi.InputType['JobBinaryAuthorizationArgs']]] = None,
+            binary_authorization: Optional[pulumi.Input[pulumi.InputType['JobBinaryAuthorizationArrgs']]] = None,
             client: Optional[pulumi.Input[str]] = None,
             client_version: Optional[pulumi.Input[str]] = None,
-            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobConditionArgs']]]]] = None,
+            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobConditionArrgs']]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             creator: Optional[pulumi.Input[str]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
@@ -1372,7 +1372,7 @@ class Job(pulumi.CustomResource):
             generation: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             last_modifier: Optional[pulumi.Input[str]] = None,
-            latest_created_executions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobLatestCreatedExecutionArgs']]]]] = None,
+            latest_created_executions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobLatestCreatedExecutionArrgs']]]]] = None,
             launch_stage: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -1380,8 +1380,8 @@ class Job(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
-            template: Optional[pulumi.Input[pulumi.InputType['JobTemplateArgs']]] = None,
-            terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTerminalConditionArgs']]]]] = None,
+            template: Optional[pulumi.Input[pulumi.InputType['JobTemplateArrgs']]] = None,
+            terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTerminalConditionArrgs']]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Job':
         """
@@ -1397,11 +1397,11 @@ class Job(pulumi.CustomResource):
                This field follows Kubernetes annotations' namespacing, limits, and rules.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['JobBinaryAuthorizationArgs']] binary_authorization: Settings for the Binary Authorization feature.
+        :param pulumi.Input[pulumi.InputType['JobBinaryAuthorizationArrgs']] binary_authorization: Settings for the Binary Authorization feature.
                Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobConditionArgs']]]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobConditionArrgs']]]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
                Structure is documented below.
         :param pulumi.Input[str] create_time: (Output)
                Creation timestamp of the execution.
@@ -1422,7 +1422,7 @@ class Job(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] last_modifier: Email address of the last authenticated modifier.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobLatestCreatedExecutionArgs']]]] latest_created_executions: Name of the last created execution.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobLatestCreatedExecutionArrgs']]]] latest_created_executions: Name of the last created execution.
                Structure is documented below.
         :param pulumi.Input[str] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
                If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
@@ -1439,9 +1439,9 @@ class Job(pulumi.CustomResource):
                When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
                If reconciliation succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and latestCreatedExecution.
                If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
-        :param pulumi.Input[pulumi.InputType['JobTemplateArgs']] template: The template used to create executions for this Job.
+        :param pulumi.Input[pulumi.InputType['JobTemplateArrgs']] template: The template used to create executions for this Job.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTerminalConditionArgs']]]] terminal_conditions: The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTerminalConditionArrgs']]]] terminal_conditions: The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
                Structure is documented below.
         :param pulumi.Input[str] uid: Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         :param pulumi.Input[str] update_time: The last-modified time.

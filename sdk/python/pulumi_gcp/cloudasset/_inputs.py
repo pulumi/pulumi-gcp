@@ -10,19 +10,19 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'FolderFeedConditionArgs',
-    'FolderFeedFeedOutputConfigArgs',
-    'FolderFeedFeedOutputConfigPubsubDestinationArgs',
-    'OrganizationFeedConditionArgs',
-    'OrganizationFeedFeedOutputConfigArgs',
-    'OrganizationFeedFeedOutputConfigPubsubDestinationArgs',
-    'ProjectFeedConditionArgs',
-    'ProjectFeedFeedOutputConfigArgs',
-    'ProjectFeedFeedOutputConfigPubsubDestinationArgs',
+    'FolderFeedConditionArrgs',
+    'FolderFeedFeedOutputConfigArrgs',
+    'FolderFeedFeedOutputConfigPubsubDestinationArrgs',
+    'OrganizationFeedConditionArrgs',
+    'OrganizationFeedFeedOutputConfigArrgs',
+    'OrganizationFeedFeedOutputConfigPubsubDestinationArrgs',
+    'ProjectFeedConditionArrgs',
+    'ProjectFeedFeedOutputConfigArrgs',
+    'ProjectFeedFeedOutputConfigPubsubDestinationArrgs',
 ]
 
 @pulumi.input_type
-class FolderFeedConditionArgs:
+calass FolderFeedConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -98,18 +98,18 @@ class FolderFeedConditionArgs:
 
 
 @pulumi.input_type
-class FolderFeedFeedOutputConfigArgs:
+calass FolderFeedFeedOutputConfigArrgs:
     def __init__(__self__, *,
-                 pubsub_destination: pulumi.Input['FolderFeedFeedOutputConfigPubsubDestinationArgs']):
+                 pubsub_destination: pulumi.Input['FolderFeedFeedOutputConfigPubsubDestinationArrgs']):
         """
-        :param pulumi.Input['FolderFeedFeedOutputConfigPubsubDestinationArgs'] pubsub_destination: Destination on Cloud Pubsub.
+        :param pulumi.Input['FolderFeedFeedOutputConfigPubsubDestinationArrgs'] pubsub_destination: Destination on Cloud Pubsub.
                Structure is documented below.
         """
         pulumi.set(__self__, "pubsub_destination", pubsub_destination)
 
     @property
     @pulumi.getter(name="pubsubDestination")
-    def pubsub_destination(self) -> pulumi.Input['FolderFeedFeedOutputConfigPubsubDestinationArgs']:
+    def pubsub_destination(self) -> pulumi.Input['FolderFeedFeedOutputConfigPubsubDestinationArrgs']:
         """
         Destination on Cloud Pubsub.
         Structure is documented below.
@@ -117,12 +117,12 @@ class FolderFeedFeedOutputConfigArgs:
         return pulumi.get(self, "pubsub_destination")
 
     @pubsub_destination.setter
-    def pubsub_destination(self, value: pulumi.Input['FolderFeedFeedOutputConfigPubsubDestinationArgs']):
+    def pubsub_destination(self, value: pulumi.Input['FolderFeedFeedOutputConfigPubsubDestinationArrgs']):
         pulumi.set(self, "pubsub_destination", value)
 
 
 @pulumi.input_type
-class FolderFeedFeedOutputConfigPubsubDestinationArgs:
+calass FolderFeedFeedOutputConfigPubsubDestinationArrgs:
     def __init__(__self__, *,
                  topic: pulumi.Input[str]):
         """
@@ -148,7 +148,7 @@ class FolderFeedFeedOutputConfigPubsubDestinationArgs:
 
 
 @pulumi.input_type
-class OrganizationFeedConditionArgs:
+calass OrganizationFeedConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -224,18 +224,18 @@ class OrganizationFeedConditionArgs:
 
 
 @pulumi.input_type
-class OrganizationFeedFeedOutputConfigArgs:
+calass OrganizationFeedFeedOutputConfigArrgs:
     def __init__(__self__, *,
-                 pubsub_destination: pulumi.Input['OrganizationFeedFeedOutputConfigPubsubDestinationArgs']):
+                 pubsub_destination: pulumi.Input['OrganizationFeedFeedOutputConfigPubsubDestinationArrgs']):
         """
-        :param pulumi.Input['OrganizationFeedFeedOutputConfigPubsubDestinationArgs'] pubsub_destination: Destination on Cloud Pubsub.
+        :param pulumi.Input['OrganizationFeedFeedOutputConfigPubsubDestinationArrgs'] pubsub_destination: Destination on Cloud Pubsub.
                Structure is documented below.
         """
         pulumi.set(__self__, "pubsub_destination", pubsub_destination)
 
     @property
     @pulumi.getter(name="pubsubDestination")
-    def pubsub_destination(self) -> pulumi.Input['OrganizationFeedFeedOutputConfigPubsubDestinationArgs']:
+    def pubsub_destination(self) -> pulumi.Input['OrganizationFeedFeedOutputConfigPubsubDestinationArrgs']:
         """
         Destination on Cloud Pubsub.
         Structure is documented below.
@@ -243,12 +243,12 @@ class OrganizationFeedFeedOutputConfigArgs:
         return pulumi.get(self, "pubsub_destination")
 
     @pubsub_destination.setter
-    def pubsub_destination(self, value: pulumi.Input['OrganizationFeedFeedOutputConfigPubsubDestinationArgs']):
+    def pubsub_destination(self, value: pulumi.Input['OrganizationFeedFeedOutputConfigPubsubDestinationArrgs']):
         pulumi.set(self, "pubsub_destination", value)
 
 
 @pulumi.input_type
-class OrganizationFeedFeedOutputConfigPubsubDestinationArgs:
+calass OrganizationFeedFeedOutputConfigPubsubDestinationArrgs:
     def __init__(__self__, *,
                  topic: pulumi.Input[str]):
         """
@@ -274,7 +274,7 @@ class OrganizationFeedFeedOutputConfigPubsubDestinationArgs:
 
 
 @pulumi.input_type
-class ProjectFeedConditionArgs:
+calass ProjectFeedConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -350,18 +350,18 @@ class ProjectFeedConditionArgs:
 
 
 @pulumi.input_type
-class ProjectFeedFeedOutputConfigArgs:
+calass ProjectFeedFeedOutputConfigArrgs:
     def __init__(__self__, *,
-                 pubsub_destination: pulumi.Input['ProjectFeedFeedOutputConfigPubsubDestinationArgs']):
+                 pubsub_destination: pulumi.Input['ProjectFeedFeedOutputConfigPubsubDestinationArrgs']):
         """
-        :param pulumi.Input['ProjectFeedFeedOutputConfigPubsubDestinationArgs'] pubsub_destination: Destination on Cloud Pubsub.
+        :param pulumi.Input['ProjectFeedFeedOutputConfigPubsubDestinationArrgs'] pubsub_destination: Destination on Cloud Pubsub.
                Structure is documented below.
         """
         pulumi.set(__self__, "pubsub_destination", pubsub_destination)
 
     @property
     @pulumi.getter(name="pubsubDestination")
-    def pubsub_destination(self) -> pulumi.Input['ProjectFeedFeedOutputConfigPubsubDestinationArgs']:
+    def pubsub_destination(self) -> pulumi.Input['ProjectFeedFeedOutputConfigPubsubDestinationArrgs']:
         """
         Destination on Cloud Pubsub.
         Structure is documented below.
@@ -369,12 +369,12 @@ class ProjectFeedFeedOutputConfigArgs:
         return pulumi.get(self, "pubsub_destination")
 
     @pubsub_destination.setter
-    def pubsub_destination(self, value: pulumi.Input['ProjectFeedFeedOutputConfigPubsubDestinationArgs']):
+    def pubsub_destination(self, value: pulumi.Input['ProjectFeedFeedOutputConfigPubsubDestinationArrgs']):
         pulumi.set(self, "pubsub_destination", value)
 
 
 @pulumi.input_type
-class ProjectFeedFeedOutputConfigPubsubDestinationArgs:
+calass ProjectFeedFeedOutputConfigPubsubDestinationArrgs:
     def __init__(__self__, *,
                  topic: pulumi.Input[str]):
         """

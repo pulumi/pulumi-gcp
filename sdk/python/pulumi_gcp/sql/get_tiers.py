@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetTiersResult:
+calass GetTiersResult:
     """
     A collection of values returned by getTiers.
     """
@@ -55,7 +55,7 @@ class GetTiersResult:
         return pulumi.get(self, "tiers")
 
 
-class AwaitableGetTiersResult(GetTiersResult):
+calass AwaitableGetTiersResult(GetTiersResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

@@ -11,17 +11,17 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['InstanceArgs', 'Instance']
+__all__ = ['InstanceArrgs', 'Instance']
 
 @pulumi.input_type
-class InstanceArgs:
+calass InstanceArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  machine_type: pulumi.Input[str],
-                 accelerator_config: Optional[pulumi.Input['InstanceAcceleratorConfigArgs']] = None,
+                 accelerator_config: Optional[pulumi.Input['InstanceAcceleratorConfigArrgs']] = None,
                  boot_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  boot_disk_type: Optional[pulumi.Input[str]] = None,
-                 container_image: Optional[pulumi.Input['InstanceContainerImageArgs']] = None,
+                 container_image: Optional[pulumi.Input['InstanceContainerImageArrgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  custom_gpu_driver_path: Optional[pulumi.Input[str]] = None,
                  data_disk_size_gb: Optional[pulumi.Input[int]] = None,
@@ -40,14 +40,14 @@ class InstanceArgs:
                  no_remove_data_disk: Optional[pulumi.Input[bool]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 reservation_affinity: Optional[pulumi.Input['InstanceReservationAffinityArgs']] = None,
+                 reservation_affinity: Optional[pulumi.Input['InstanceReservationAffinityArrgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 shielded_instance_config: Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']] = None,
+                 shielded_instance_config: Optional[pulumi.Input['InstanceShieldedInstanceConfigArrgs']] = None,
                  subnet: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
-                 vm_image: Optional[pulumi.Input['InstanceVmImageArgs']] = None):
+                 vm_image: Optional[pulumi.Input['InstanceVmImageArrgs']] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
@@ -55,7 +55,7 @@ class InstanceArgs:
                
                - - -
         :param pulumi.Input[str] machine_type: A reference to a machine type which defines VM kind.
-        :param pulumi.Input['InstanceAcceleratorConfigArgs'] accelerator_config: The hardware accelerator used on this instance. If you use accelerators,
+        :param pulumi.Input['InstanceAcceleratorConfigArrgs'] accelerator_config: The hardware accelerator used on this instance. If you use accelerators,
                make sure that your configuration has enough vCPUs and memory to support the
                machineType you have selected.
                Structure is documented below.
@@ -64,7 +64,7 @@ class InstanceArgs:
                If not specified, this defaults to 100.
         :param pulumi.Input[str] boot_disk_type: Possible disk types for notebook instances.
                Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
-        :param pulumi.Input['InstanceContainerImageArgs'] container_image: Use a container image to start the notebook instance.
+        :param pulumi.Input['InstanceContainerImageArrgs'] container_image: Use a container image to start the notebook instance.
                Structure is documented below.
         :param pulumi.Input[str] create_time: Instance creation time
         :param pulumi.Input[str] custom_gpu_driver_path: Specify a custom Cloud Storage path where the GPU driver is stored.
@@ -107,7 +107,7 @@ class InstanceArgs:
                or Cloud Storage path (gs://path-to-file/file-name).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['InstanceReservationAffinityArgs'] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
+        :param pulumi.Input['InstanceReservationAffinityArrgs'] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
                Structure is documented below.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other
                Google Cloud services. You can use any service account within
@@ -118,14 +118,14 @@ class InstanceArgs:
                If not specified, the following scopes are defined:
                - https://www.googleapis.com/auth/cloud-platform
                - https://www.googleapis.com/auth/userinfo.email
-        :param pulumi.Input['InstanceShieldedInstanceConfigArgs'] shielded_instance_config: A set of Shielded Instance options. Check [Images using supported Shielded VM features]
+        :param pulumi.Input['InstanceShieldedInstanceConfigArrgs'] shielded_instance_config: A set of Shielded Instance options. Check [Images using supported Shielded VM features]
                Not all combinations are valid
                Structure is documented below.
         :param pulumi.Input[str] subnet: The name of the subnet that this instance is in.
                Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The Compute Engine tags to add to instance.
         :param pulumi.Input[str] update_time: Instance update time.
-        :param pulumi.Input['InstanceVmImageArgs'] vm_image: Use a Compute Engine VM image to start the notebook instance.
+        :param pulumi.Input['InstanceVmImageArrgs'] vm_image: Use a Compute Engine VM image to start the notebook instance.
                Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
@@ -220,7 +220,7 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="acceleratorConfig")
-    def accelerator_config(self) -> Optional[pulumi.Input['InstanceAcceleratorConfigArgs']]:
+    def accelerator_config(self) -> Optional[pulumi.Input['InstanceAcceleratorConfigArrgs']]:
         """
         The hardware accelerator used on this instance. If you use accelerators,
         make sure that your configuration has enough vCPUs and memory to support the
@@ -230,7 +230,7 @@ class InstanceArgs:
         return pulumi.get(self, "accelerator_config")
 
     @accelerator_config.setter
-    def accelerator_config(self, value: Optional[pulumi.Input['InstanceAcceleratorConfigArgs']]):
+    def accelerator_config(self, value: Optional[pulumi.Input['InstanceAcceleratorConfigArrgs']]):
         pulumi.set(self, "accelerator_config", value)
 
     @property
@@ -262,7 +262,7 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="containerImage")
-    def container_image(self) -> Optional[pulumi.Input['InstanceContainerImageArgs']]:
+    def container_image(self) -> Optional[pulumi.Input['InstanceContainerImageArrgs']]:
         """
         Use a container image to start the notebook instance.
         Structure is documented below.
@@ -270,7 +270,7 @@ class InstanceArgs:
         return pulumi.get(self, "container_image")
 
     @container_image.setter
-    def container_image(self, value: Optional[pulumi.Input['InstanceContainerImageArgs']]):
+    def container_image(self, value: Optional[pulumi.Input['InstanceContainerImageArrgs']]):
         pulumi.set(self, "container_image", value)
 
     @property
@@ -514,7 +514,7 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="reservationAffinity")
-    def reservation_affinity(self) -> Optional[pulumi.Input['InstanceReservationAffinityArgs']]:
+    def reservation_affinity(self) -> Optional[pulumi.Input['InstanceReservationAffinityArrgs']]:
         """
         Reservation Affinity for consuming Zonal reservation.
         Structure is documented below.
@@ -522,7 +522,7 @@ class InstanceArgs:
         return pulumi.get(self, "reservation_affinity")
 
     @reservation_affinity.setter
-    def reservation_affinity(self, value: Optional[pulumi.Input['InstanceReservationAffinityArgs']]):
+    def reservation_affinity(self, value: Optional[pulumi.Input['InstanceReservationAffinityArrgs']]):
         pulumi.set(self, "reservation_affinity", value)
 
     @property
@@ -558,7 +558,7 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']]:
+    def shielded_instance_config(self) -> Optional[pulumi.Input['InstanceShieldedInstanceConfigArrgs']]:
         """
         A set of Shielded Instance options. Check [Images using supported Shielded VM features]
         Not all combinations are valid
@@ -567,7 +567,7 @@ class InstanceArgs:
         return pulumi.get(self, "shielded_instance_config")
 
     @shielded_instance_config.setter
-    def shielded_instance_config(self, value: Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']]):
+    def shielded_instance_config(self, value: Optional[pulumi.Input['InstanceShieldedInstanceConfigArrgs']]):
         pulumi.set(self, "shielded_instance_config", value)
 
     @property
@@ -609,7 +609,7 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="vmImage")
-    def vm_image(self) -> Optional[pulumi.Input['InstanceVmImageArgs']]:
+    def vm_image(self) -> Optional[pulumi.Input['InstanceVmImageArrgs']]:
         """
         Use a Compute Engine VM image to start the notebook instance.
         Structure is documented below.
@@ -617,17 +617,17 @@ class InstanceArgs:
         return pulumi.get(self, "vm_image")
 
     @vm_image.setter
-    def vm_image(self, value: Optional[pulumi.Input['InstanceVmImageArgs']]):
+    def vm_image(self, value: Optional[pulumi.Input['InstanceVmImageArrgs']]):
         pulumi.set(self, "vm_image", value)
 
 
 @pulumi.input_type
-class _InstanceState:
+calass _InstanceState:
     def __init__(__self__, *,
-                 accelerator_config: Optional[pulumi.Input['InstanceAcceleratorConfigArgs']] = None,
+                 accelerator_config: Optional[pulumi.Input['InstanceAcceleratorConfigArrgs']] = None,
                  boot_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  boot_disk_type: Optional[pulumi.Input[str]] = None,
-                 container_image: Optional[pulumi.Input['InstanceContainerImageArgs']] = None,
+                 container_image: Optional[pulumi.Input['InstanceContainerImageArrgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  custom_gpu_driver_path: Optional[pulumi.Input[str]] = None,
                  data_disk_size_gb: Optional[pulumi.Input[int]] = None,
@@ -651,18 +651,18 @@ class _InstanceState:
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_uri: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 reservation_affinity: Optional[pulumi.Input['InstanceReservationAffinityArgs']] = None,
+                 reservation_affinity: Optional[pulumi.Input['InstanceReservationAffinityArrgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 shielded_instance_config: Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']] = None,
+                 shielded_instance_config: Optional[pulumi.Input['InstanceShieldedInstanceConfigArrgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  subnet: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
-                 vm_image: Optional[pulumi.Input['InstanceVmImageArgs']] = None):
+                 vm_image: Optional[pulumi.Input['InstanceVmImageArrgs']] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input['InstanceAcceleratorConfigArgs'] accelerator_config: The hardware accelerator used on this instance. If you use accelerators,
+        :param pulumi.Input['InstanceAcceleratorConfigArrgs'] accelerator_config: The hardware accelerator used on this instance. If you use accelerators,
                make sure that your configuration has enough vCPUs and memory to support the
                machineType you have selected.
                Structure is documented below.
@@ -671,7 +671,7 @@ class _InstanceState:
                If not specified, this defaults to 100.
         :param pulumi.Input[str] boot_disk_type: Possible disk types for notebook instances.
                Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
-        :param pulumi.Input['InstanceContainerImageArgs'] container_image: Use a container image to start the notebook instance.
+        :param pulumi.Input['InstanceContainerImageArrgs'] container_image: Use a container image to start the notebook instance.
                Structure is documented below.
         :param pulumi.Input[str] create_time: Instance creation time
         :param pulumi.Input[str] custom_gpu_driver_path: Specify a custom Cloud Storage path where the GPU driver is stored.
@@ -726,7 +726,7 @@ class _InstanceState:
                the population of this value.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input['InstanceReservationAffinityArgs'] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
+        :param pulumi.Input['InstanceReservationAffinityArrgs'] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
                Structure is documented below.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other
                Google Cloud services. You can use any service account within
@@ -737,7 +737,7 @@ class _InstanceState:
                If not specified, the following scopes are defined:
                - https://www.googleapis.com/auth/cloud-platform
                - https://www.googleapis.com/auth/userinfo.email
-        :param pulumi.Input['InstanceShieldedInstanceConfigArgs'] shielded_instance_config: A set of Shielded Instance options. Check [Images using supported Shielded VM features]
+        :param pulumi.Input['InstanceShieldedInstanceConfigArrgs'] shielded_instance_config: A set of Shielded Instance options. Check [Images using supported Shielded VM features]
                Not all combinations are valid
                Structure is documented below.
         :param pulumi.Input[str] state: The state of this instance.
@@ -745,7 +745,7 @@ class _InstanceState:
                Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The Compute Engine tags to add to instance.
         :param pulumi.Input[str] update_time: Instance update time.
-        :param pulumi.Input['InstanceVmImageArgs'] vm_image: Use a Compute Engine VM image to start the notebook instance.
+        :param pulumi.Input['InstanceVmImageArrgs'] vm_image: Use a Compute Engine VM image to start the notebook instance.
                Structure is documented below.
         """
         if accelerator_config is not None:
@@ -823,7 +823,7 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="acceleratorConfig")
-    def accelerator_config(self) -> Optional[pulumi.Input['InstanceAcceleratorConfigArgs']]:
+    def accelerator_config(self) -> Optional[pulumi.Input['InstanceAcceleratorConfigArrgs']]:
         """
         The hardware accelerator used on this instance. If you use accelerators,
         make sure that your configuration has enough vCPUs and memory to support the
@@ -833,7 +833,7 @@ class _InstanceState:
         return pulumi.get(self, "accelerator_config")
 
     @accelerator_config.setter
-    def accelerator_config(self, value: Optional[pulumi.Input['InstanceAcceleratorConfigArgs']]):
+    def accelerator_config(self, value: Optional[pulumi.Input['InstanceAcceleratorConfigArrgs']]):
         pulumi.set(self, "accelerator_config", value)
 
     @property
@@ -865,7 +865,7 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="containerImage")
-    def container_image(self) -> Optional[pulumi.Input['InstanceContainerImageArgs']]:
+    def container_image(self) -> Optional[pulumi.Input['InstanceContainerImageArrgs']]:
         """
         Use a container image to start the notebook instance.
         Structure is documented below.
@@ -873,7 +873,7 @@ class _InstanceState:
         return pulumi.get(self, "container_image")
 
     @container_image.setter
-    def container_image(self, value: Optional[pulumi.Input['InstanceContainerImageArgs']]):
+    def container_image(self, value: Optional[pulumi.Input['InstanceContainerImageArrgs']]):
         pulumi.set(self, "container_image", value)
 
     @property
@@ -1184,7 +1184,7 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="reservationAffinity")
-    def reservation_affinity(self) -> Optional[pulumi.Input['InstanceReservationAffinityArgs']]:
+    def reservation_affinity(self) -> Optional[pulumi.Input['InstanceReservationAffinityArrgs']]:
         """
         Reservation Affinity for consuming Zonal reservation.
         Structure is documented below.
@@ -1192,7 +1192,7 @@ class _InstanceState:
         return pulumi.get(self, "reservation_affinity")
 
     @reservation_affinity.setter
-    def reservation_affinity(self, value: Optional[pulumi.Input['InstanceReservationAffinityArgs']]):
+    def reservation_affinity(self, value: Optional[pulumi.Input['InstanceReservationAffinityArrgs']]):
         pulumi.set(self, "reservation_affinity", value)
 
     @property
@@ -1228,7 +1228,7 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']]:
+    def shielded_instance_config(self) -> Optional[pulumi.Input['InstanceShieldedInstanceConfigArrgs']]:
         """
         A set of Shielded Instance options. Check [Images using supported Shielded VM features]
         Not all combinations are valid
@@ -1237,7 +1237,7 @@ class _InstanceState:
         return pulumi.get(self, "shielded_instance_config")
 
     @shielded_instance_config.setter
-    def shielded_instance_config(self, value: Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']]):
+    def shielded_instance_config(self, value: Optional[pulumi.Input['InstanceShieldedInstanceConfigArrgs']]):
         pulumi.set(self, "shielded_instance_config", value)
 
     @property
@@ -1291,7 +1291,7 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="vmImage")
-    def vm_image(self) -> Optional[pulumi.Input['InstanceVmImageArgs']]:
+    def vm_image(self) -> Optional[pulumi.Input['InstanceVmImageArrgs']]:
         """
         Use a Compute Engine VM image to start the notebook instance.
         Structure is documented below.
@@ -1299,19 +1299,19 @@ class _InstanceState:
         return pulumi.get(self, "vm_image")
 
     @vm_image.setter
-    def vm_image(self, value: Optional[pulumi.Input['InstanceVmImageArgs']]):
+    def vm_image(self, value: Optional[pulumi.Input['InstanceVmImageArrgs']]):
         pulumi.set(self, "vm_image", value)
 
 
-class Instance(pulumi.CustomResource):
+calass Instance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerator_config: Optional[pulumi.Input[pulumi.InputType['InstanceAcceleratorConfigArgs']]] = None,
+                 accelerator_config: Optional[pulumi.Input[pulumi.InputType['InstanceAcceleratorConfigArrgs']]] = None,
                  boot_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  boot_disk_type: Optional[pulumi.Input[str]] = None,
-                 container_image: Optional[pulumi.Input[pulumi.InputType['InstanceContainerImageArgs']]] = None,
+                 container_image: Optional[pulumi.Input[pulumi.InputType['InstanceContainerImageArrgs']]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  custom_gpu_driver_path: Optional[pulumi.Input[str]] = None,
                  data_disk_size_gb: Optional[pulumi.Input[int]] = None,
@@ -1332,14 +1332,14 @@ class Instance(pulumi.CustomResource):
                  no_remove_data_disk: Optional[pulumi.Input[bool]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']]] = None,
+                 reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceReservationAffinityArrgs']]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArgs']]] = None,
+                 shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArrgs']]] = None,
                  subnet: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
-                 vm_image: Optional[pulumi.Input[pulumi.InputType['InstanceVmImageArgs']]] = None,
+                 vm_image: Optional[pulumi.Input[pulumi.InputType['InstanceVmImageArrgs']]] = None,
                  __props__=None):
         """
         A Cloud AI Platform Notebook instance.
@@ -1364,7 +1364,7 @@ class Instance(pulumi.CustomResource):
         instance = gcp.notebooks.Instance("instance",
             location="us-west1-a",
             machine_type="e2-medium",
-            vm_image=gcp.notebooks.InstanceVmImageArgs(
+            vm_image=gcp.notebooks.InstanceVmImageArrgs(
                 image_family="tf-latest-cpu",
                 project="deeplearning-platform-release",
             ))
@@ -1376,7 +1376,7 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.notebooks.Instance("instance",
-            container_image=gcp.notebooks.InstanceContainerImageArgs(
+            container_image=gcp.notebooks.InstanceContainerImageArrgs(
                 repository="gcr.io/deeplearning-platform-release/base-cpu",
                 tag="latest",
             ),
@@ -1393,14 +1393,14 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.notebooks.Instance("instance",
-            accelerator_config=gcp.notebooks.InstanceAcceleratorConfigArgs(
+            accelerator_config=gcp.notebooks.InstanceAcceleratorConfigArrgs(
                 core_count=1,
                 type="NVIDIA_TESLA_T4",
             ),
             install_gpu_driver=True,
             location="us-west1-a",
             machine_type="n1-standard-1",
-            vm_image=gcp.notebooks.InstanceVmImageArgs(
+            vm_image=gcp.notebooks.InstanceVmImageArrgs(
                 image_family="tf-latest-gpu",
                 project="deeplearning-platform-release",
             ))
@@ -1417,7 +1417,7 @@ class Instance(pulumi.CustomResource):
         instance = gcp.notebooks.Instance("instance",
             location="us-central1-a",
             machine_type="e2-medium",
-            vm_image=gcp.notebooks.InstanceVmImageArgs(
+            vm_image=gcp.notebooks.InstanceVmImageArrgs(
                 project="deeplearning-platform-release",
                 image_family="tf-latest-cpu",
             ),
@@ -1461,7 +1461,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['InstanceAcceleratorConfigArgs']] accelerator_config: The hardware accelerator used on this instance. If you use accelerators,
+        :param pulumi.Input[pulumi.InputType['InstanceAcceleratorConfigArrgs']] accelerator_config: The hardware accelerator used on this instance. If you use accelerators,
                make sure that your configuration has enough vCPUs and memory to support the
                machineType you have selected.
                Structure is documented below.
@@ -1470,7 +1470,7 @@ class Instance(pulumi.CustomResource):
                If not specified, this defaults to 100.
         :param pulumi.Input[str] boot_disk_type: Possible disk types for notebook instances.
                Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
-        :param pulumi.Input[pulumi.InputType['InstanceContainerImageArgs']] container_image: Use a container image to start the notebook instance.
+        :param pulumi.Input[pulumi.InputType['InstanceContainerImageArrgs']] container_image: Use a container image to start the notebook instance.
                Structure is documented below.
         :param pulumi.Input[str] create_time: Instance creation time
         :param pulumi.Input[str] custom_gpu_driver_path: Specify a custom Cloud Storage path where the GPU driver is stored.
@@ -1518,7 +1518,7 @@ class Instance(pulumi.CustomResource):
                or Cloud Storage path (gs://path-to-file/file-name).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
+        :param pulumi.Input[pulumi.InputType['InstanceReservationAffinityArrgs']] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
                Structure is documented below.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other
                Google Cloud services. You can use any service account within
@@ -1529,21 +1529,21 @@ class Instance(pulumi.CustomResource):
                If not specified, the following scopes are defined:
                - https://www.googleapis.com/auth/cloud-platform
                - https://www.googleapis.com/auth/userinfo.email
-        :param pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArgs']] shielded_instance_config: A set of Shielded Instance options. Check [Images using supported Shielded VM features]
+        :param pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArrgs']] shielded_instance_config: A set of Shielded Instance options. Check [Images using supported Shielded VM features]
                Not all combinations are valid
                Structure is documented below.
         :param pulumi.Input[str] subnet: The name of the subnet that this instance is in.
                Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The Compute Engine tags to add to instance.
         :param pulumi.Input[str] update_time: Instance update time.
-        :param pulumi.Input[pulumi.InputType['InstanceVmImageArgs']] vm_image: Use a Compute Engine VM image to start the notebook instance.
+        :param pulumi.Input[pulumi.InputType['InstanceVmImageArrgs']] vm_image: Use a Compute Engine VM image to start the notebook instance.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: InstanceArgs,
+                 args: InstanceArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Cloud AI Platform Notebook instance.
@@ -1568,7 +1568,7 @@ class Instance(pulumi.CustomResource):
         instance = gcp.notebooks.Instance("instance",
             location="us-west1-a",
             machine_type="e2-medium",
-            vm_image=gcp.notebooks.InstanceVmImageArgs(
+            vm_image=gcp.notebooks.InstanceVmImageArrgs(
                 image_family="tf-latest-cpu",
                 project="deeplearning-platform-release",
             ))
@@ -1580,7 +1580,7 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.notebooks.Instance("instance",
-            container_image=gcp.notebooks.InstanceContainerImageArgs(
+            container_image=gcp.notebooks.InstanceContainerImageArrgs(
                 repository="gcr.io/deeplearning-platform-release/base-cpu",
                 tag="latest",
             ),
@@ -1597,14 +1597,14 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.notebooks.Instance("instance",
-            accelerator_config=gcp.notebooks.InstanceAcceleratorConfigArgs(
+            accelerator_config=gcp.notebooks.InstanceAcceleratorConfigArrgs(
                 core_count=1,
                 type="NVIDIA_TESLA_T4",
             ),
             install_gpu_driver=True,
             location="us-west1-a",
             machine_type="n1-standard-1",
-            vm_image=gcp.notebooks.InstanceVmImageArgs(
+            vm_image=gcp.notebooks.InstanceVmImageArrgs(
                 image_family="tf-latest-gpu",
                 project="deeplearning-platform-release",
             ))
@@ -1621,7 +1621,7 @@ class Instance(pulumi.CustomResource):
         instance = gcp.notebooks.Instance("instance",
             location="us-central1-a",
             machine_type="e2-medium",
-            vm_image=gcp.notebooks.InstanceVmImageArgs(
+            vm_image=gcp.notebooks.InstanceVmImageArrgs(
                 project="deeplearning-platform-release",
                 image_family="tf-latest-cpu",
             ),
@@ -1664,12 +1664,12 @@ class Instance(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param InstanceArgs args: The arguments to use to populate this resource's properties.
+        :param InstanceArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(InstanceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(InstanceArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1678,10 +1678,10 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerator_config: Optional[pulumi.Input[pulumi.InputType['InstanceAcceleratorConfigArgs']]] = None,
+                 accelerator_config: Optional[pulumi.Input[pulumi.InputType['InstanceAcceleratorConfigArrgs']]] = None,
                  boot_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  boot_disk_type: Optional[pulumi.Input[str]] = None,
-                 container_image: Optional[pulumi.Input[pulumi.InputType['InstanceContainerImageArgs']]] = None,
+                 container_image: Optional[pulumi.Input[pulumi.InputType['InstanceContainerImageArrgs']]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  custom_gpu_driver_path: Optional[pulumi.Input[str]] = None,
                  data_disk_size_gb: Optional[pulumi.Input[int]] = None,
@@ -1702,14 +1702,14 @@ class Instance(pulumi.CustomResource):
                  no_remove_data_disk: Optional[pulumi.Input[bool]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']]] = None,
+                 reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceReservationAffinityArrgs']]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArgs']]] = None,
+                 shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArrgs']]] = None,
                  subnet: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
-                 vm_image: Optional[pulumi.Input[pulumi.InputType['InstanceVmImageArgs']]] = None,
+                 vm_image: Optional[pulumi.Input[pulumi.InputType['InstanceVmImageArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1717,7 +1717,7 @@ class Instance(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = InstanceArgs.__new__(InstanceArgs)
+            __props__ = InstanceArrgs.__new__(InstanceArrgs)
 
             __props__.__dict__["accelerator_config"] = accelerator_config
             __props__.__dict__["boot_disk_size_gb"] = boot_disk_size_gb
@@ -1771,10 +1771,10 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accelerator_config: Optional[pulumi.Input[pulumi.InputType['InstanceAcceleratorConfigArgs']]] = None,
+            accelerator_config: Optional[pulumi.Input[pulumi.InputType['InstanceAcceleratorConfigArrgs']]] = None,
             boot_disk_size_gb: Optional[pulumi.Input[int]] = None,
             boot_disk_type: Optional[pulumi.Input[str]] = None,
-            container_image: Optional[pulumi.Input[pulumi.InputType['InstanceContainerImageArgs']]] = None,
+            container_image: Optional[pulumi.Input[pulumi.InputType['InstanceContainerImageArrgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             custom_gpu_driver_path: Optional[pulumi.Input[str]] = None,
             data_disk_size_gb: Optional[pulumi.Input[int]] = None,
@@ -1798,15 +1798,15 @@ class Instance(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             proxy_uri: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']]] = None,
+            reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceReservationAffinityArrgs']]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
             service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArgs']]] = None,
+            shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArrgs']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             subnet: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
-            vm_image: Optional[pulumi.Input[pulumi.InputType['InstanceVmImageArgs']]] = None) -> 'Instance':
+            vm_image: Optional[pulumi.Input[pulumi.InputType['InstanceVmImageArrgs']]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1814,7 +1814,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['InstanceAcceleratorConfigArgs']] accelerator_config: The hardware accelerator used on this instance. If you use accelerators,
+        :param pulumi.Input[pulumi.InputType['InstanceAcceleratorConfigArrgs']] accelerator_config: The hardware accelerator used on this instance. If you use accelerators,
                make sure that your configuration has enough vCPUs and memory to support the
                machineType you have selected.
                Structure is documented below.
@@ -1823,7 +1823,7 @@ class Instance(pulumi.CustomResource):
                If not specified, this defaults to 100.
         :param pulumi.Input[str] boot_disk_type: Possible disk types for notebook instances.
                Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
-        :param pulumi.Input[pulumi.InputType['InstanceContainerImageArgs']] container_image: Use a container image to start the notebook instance.
+        :param pulumi.Input[pulumi.InputType['InstanceContainerImageArrgs']] container_image: Use a container image to start the notebook instance.
                Structure is documented below.
         :param pulumi.Input[str] create_time: Instance creation time
         :param pulumi.Input[str] custom_gpu_driver_path: Specify a custom Cloud Storage path where the GPU driver is stored.
@@ -1878,7 +1878,7 @@ class Instance(pulumi.CustomResource):
                the population of this value.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
+        :param pulumi.Input[pulumi.InputType['InstanceReservationAffinityArrgs']] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
                Structure is documented below.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other
                Google Cloud services. You can use any service account within
@@ -1889,7 +1889,7 @@ class Instance(pulumi.CustomResource):
                If not specified, the following scopes are defined:
                - https://www.googleapis.com/auth/cloud-platform
                - https://www.googleapis.com/auth/userinfo.email
-        :param pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArgs']] shielded_instance_config: A set of Shielded Instance options. Check [Images using supported Shielded VM features]
+        :param pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArrgs']] shielded_instance_config: A set of Shielded Instance options. Check [Images using supported Shielded VM features]
                Not all combinations are valid
                Structure is documented below.
         :param pulumi.Input[str] state: The state of this instance.
@@ -1897,7 +1897,7 @@ class Instance(pulumi.CustomResource):
                Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The Compute Engine tags to add to instance.
         :param pulumi.Input[str] update_time: Instance update time.
-        :param pulumi.Input[pulumi.InputType['InstanceVmImageArgs']] vm_image: Use a Compute Engine VM image to start the notebook instance.
+        :param pulumi.Input[pulumi.InputType['InstanceVmImageArrgs']] vm_image: Use a Compute Engine VM image to start the notebook instance.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetNetworkResult:
+calass GetNetworkResult:
     """
     A collection of values returned by getNetwork.
     """
@@ -106,7 +106,7 @@ class GetNetworkResult:
         return pulumi.get(self, "subnetworks_self_links")
 
 
-class AwaitableGetNetworkResult(GetNetworkResult):
+calass AwaitableGetNetworkResult(GetNetworkResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

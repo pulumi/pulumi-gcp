@@ -47,7 +47,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class LiteSubscriptionDeliveryConfig(dict):
+calass LiteSubscriptionDeliveryConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -84,13 +84,13 @@ class LiteSubscriptionDeliveryConfig(dict):
 
 
 @pulumi.output_type
-class LiteTopicPartitionConfig(dict):
+calass LiteTopicPartitionConfig(dict):
     def __init__(__self__, *,
                  count: int,
                  capacity: Optional['outputs.LiteTopicPartitionConfigCapacity'] = None):
         """
         :param int count: The number of partitions in the topic. Must be at least 1.
-        :param 'LiteTopicPartitionConfigCapacityArgs' capacity: The capacity configuration.
+        :param 'LiteTopicPartitionConfigCapacityArrgs' capacity: The capacity configuration.
                Structure is documented below.
         """
         pulumi.set(__self__, "count", count)
@@ -116,7 +116,7 @@ class LiteTopicPartitionConfig(dict):
 
 
 @pulumi.output_type
-class LiteTopicPartitionConfigCapacity(dict):
+calass LiteTopicPartitionConfigCapacity(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -164,7 +164,7 @@ class LiteTopicPartitionConfigCapacity(dict):
 
 
 @pulumi.output_type
-class LiteTopicReservationConfig(dict):
+calass LiteTopicReservationConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -200,7 +200,7 @@ class LiteTopicReservationConfig(dict):
 
 
 @pulumi.output_type
-class LiteTopicRetentionConfig(dict):
+calass LiteTopicRetentionConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -257,7 +257,7 @@ class LiteTopicRetentionConfig(dict):
 
 
 @pulumi.output_type
-class SchemaIamBindingCondition(dict):
+calass SchemaIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -284,7 +284,7 @@ class SchemaIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class SchemaIamMemberCondition(dict):
+calass SchemaIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -311,7 +311,7 @@ class SchemaIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class SubscriptionBigqueryConfig(dict):
+calass SubscriptionBigqueryConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -390,7 +390,7 @@ class SubscriptionBigqueryConfig(dict):
 
 
 @pulumi.output_type
-class SubscriptionCloudStorageConfig(dict):
+calass SubscriptionCloudStorageConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -426,7 +426,7 @@ class SubscriptionCloudStorageConfig(dict):
                  state: Optional[str] = None):
         """
         :param str bucket: User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
-        :param 'SubscriptionCloudStorageConfigAvroConfigArgs' avro_config: If set, message data will be written to Cloud Storage in Avro format.
+        :param 'SubscriptionCloudStorageConfigAvroConfigArrgs' avro_config: If set, message data will be written to Cloud Storage in Avro format.
                Structure is documented below.
         :param str filename_prefix: User-provided prefix for Cloud Storage filename.
         :param str filename_suffix: User-provided suffix for Cloud Storage filename. Must not end in "/".
@@ -515,7 +515,7 @@ class SubscriptionCloudStorageConfig(dict):
 
 
 @pulumi.output_type
-class SubscriptionCloudStorageConfigAvroConfig(dict):
+calass SubscriptionCloudStorageConfigAvroConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -551,7 +551,7 @@ class SubscriptionCloudStorageConfigAvroConfig(dict):
 
 
 @pulumi.output_type
-class SubscriptionDeadLetterPolicy(dict):
+calass SubscriptionDeadLetterPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -631,7 +631,7 @@ class SubscriptionDeadLetterPolicy(dict):
 
 
 @pulumi.output_type
-class SubscriptionExpirationPolicy(dict):
+calass SubscriptionExpirationPolicy(dict):
     def __init__(__self__, *,
                  ttl: str):
         """
@@ -657,7 +657,7 @@ class SubscriptionExpirationPolicy(dict):
 
 
 @pulumi.output_type
-class SubscriptionIAMBindingCondition(dict):
+calass SubscriptionIAMBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -684,7 +684,7 @@ class SubscriptionIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class SubscriptionIAMMemberCondition(dict):
+calass SubscriptionIAMMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -711,7 +711,7 @@ class SubscriptionIAMMemberCondition(dict):
 
 
 @pulumi.output_type
-class SubscriptionPushConfig(dict):
+calass SubscriptionPushConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -760,10 +760,10 @@ class SubscriptionPushConfig(dict):
                The possible values for this attribute are:
                - v1beta1: uses the push format defined in the v1beta1 Pub/Sub API.
                - v1 or v1beta2: uses the push format defined in the v1 Pub/Sub API.
-        :param 'SubscriptionPushConfigNoWrapperArgs' no_wrapper: When set, the payload to the push endpoint is not wrapped.Sets the
+        :param 'SubscriptionPushConfigNoWrapperArrgs' no_wrapper: When set, the payload to the push endpoint is not wrapped.Sets the
                `data` field as the HTTP body for delivery.
                Structure is documented below.
-        :param 'SubscriptionPushConfigOidcTokenArgs' oidc_token: If specified, Pub/Sub will generate and attach an OIDC JWT token as
+        :param 'SubscriptionPushConfigOidcTokenArrgs' oidc_token: If specified, Pub/Sub will generate and attach an OIDC JWT token as
                an Authorization header in the HTTP request for every pushed message.
                Structure is documented below.
         """
@@ -832,7 +832,7 @@ class SubscriptionPushConfig(dict):
 
 
 @pulumi.output_type
-class SubscriptionPushConfigNoWrapper(dict):
+calass SubscriptionPushConfigNoWrapper(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -871,7 +871,7 @@ class SubscriptionPushConfigNoWrapper(dict):
 
 
 @pulumi.output_type
-class SubscriptionPushConfigOidcToken(dict):
+calass SubscriptionPushConfigOidcToken(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -934,7 +934,7 @@ class SubscriptionPushConfigOidcToken(dict):
 
 
 @pulumi.output_type
-class SubscriptionRetryPolicy(dict):
+calass SubscriptionRetryPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -988,7 +988,7 @@ class SubscriptionRetryPolicy(dict):
 
 
 @pulumi.output_type
-class TopicIAMBindingCondition(dict):
+calass TopicIAMBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -1015,7 +1015,7 @@ class TopicIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class TopicIAMMemberCondition(dict):
+calass TopicIAMMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -1042,7 +1042,7 @@ class TopicIAMMemberCondition(dict):
 
 
 @pulumi.output_type
-class TopicMessageStoragePolicy(dict):
+calass TopicMessageStoragePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1087,7 +1087,7 @@ class TopicMessageStoragePolicy(dict):
 
 
 @pulumi.output_type
-class TopicSchemaSettings(dict):
+calass TopicSchemaSettings(dict):
     def __init__(__self__, *,
                  schema: str,
                  encoding: Optional[str] = None):
@@ -1127,7 +1127,7 @@ class TopicSchemaSettings(dict):
 
 
 @pulumi.output_type
-class GetSubscriptionBigqueryConfigResult(dict):
+calass GetSubscriptionBigqueryConfigResult(dict):
     def __init__(__self__, *,
                  drop_unknown_fields: bool,
                  table: str,
@@ -1160,7 +1160,7 @@ class GetSubscriptionBigqueryConfigResult(dict):
 
 
 @pulumi.output_type
-class GetSubscriptionCloudStorageConfigResult(dict):
+calass GetSubscriptionCloudStorageConfigResult(dict):
     def __init__(__self__, *,
                  avro_configs: Sequence['outputs.GetSubscriptionCloudStorageConfigAvroConfigResult'],
                  bucket: str,
@@ -1214,7 +1214,7 @@ class GetSubscriptionCloudStorageConfigResult(dict):
 
 
 @pulumi.output_type
-class GetSubscriptionCloudStorageConfigAvroConfigResult(dict):
+calass GetSubscriptionCloudStorageConfigAvroConfigResult(dict):
     def __init__(__self__, *,
                  write_metadata: bool):
         pulumi.set(__self__, "write_metadata", write_metadata)
@@ -1226,7 +1226,7 @@ class GetSubscriptionCloudStorageConfigAvroConfigResult(dict):
 
 
 @pulumi.output_type
-class GetSubscriptionDeadLetterPolicyResult(dict):
+calass GetSubscriptionDeadLetterPolicyResult(dict):
     def __init__(__self__, *,
                  dead_letter_topic: str,
                  max_delivery_attempts: int):
@@ -1245,7 +1245,7 @@ class GetSubscriptionDeadLetterPolicyResult(dict):
 
 
 @pulumi.output_type
-class GetSubscriptionExpirationPolicyResult(dict):
+calass GetSubscriptionExpirationPolicyResult(dict):
     def __init__(__self__, *,
                  ttl: str):
         pulumi.set(__self__, "ttl", ttl)
@@ -1257,7 +1257,7 @@ class GetSubscriptionExpirationPolicyResult(dict):
 
 
 @pulumi.output_type
-class GetSubscriptionPushConfigResult(dict):
+calass GetSubscriptionPushConfigResult(dict):
     def __init__(__self__, *,
                  attributes: Mapping[str, str],
                  no_wrappers: Sequence['outputs.GetSubscriptionPushConfigNoWrapperResult'],
@@ -1290,7 +1290,7 @@ class GetSubscriptionPushConfigResult(dict):
 
 
 @pulumi.output_type
-class GetSubscriptionPushConfigNoWrapperResult(dict):
+calass GetSubscriptionPushConfigNoWrapperResult(dict):
     def __init__(__self__, *,
                  write_metadata: bool):
         pulumi.set(__self__, "write_metadata", write_metadata)
@@ -1302,7 +1302,7 @@ class GetSubscriptionPushConfigNoWrapperResult(dict):
 
 
 @pulumi.output_type
-class GetSubscriptionPushConfigOidcTokenResult(dict):
+calass GetSubscriptionPushConfigOidcTokenResult(dict):
     def __init__(__self__, *,
                  audience: str,
                  service_account_email: str):
@@ -1321,7 +1321,7 @@ class GetSubscriptionPushConfigOidcTokenResult(dict):
 
 
 @pulumi.output_type
-class GetSubscriptionRetryPolicyResult(dict):
+calass GetSubscriptionRetryPolicyResult(dict):
     def __init__(__self__, *,
                  maximum_backoff: str,
                  minimum_backoff: str):
@@ -1340,7 +1340,7 @@ class GetSubscriptionRetryPolicyResult(dict):
 
 
 @pulumi.output_type
-class GetTopicMessageStoragePolicyResult(dict):
+calass GetTopicMessageStoragePolicyResult(dict):
     def __init__(__self__, *,
                  allowed_persistence_regions: Sequence[str]):
         pulumi.set(__self__, "allowed_persistence_regions", allowed_persistence_regions)
@@ -1352,7 +1352,7 @@ class GetTopicMessageStoragePolicyResult(dict):
 
 
 @pulumi.output_type
-class GetTopicSchemaSettingResult(dict):
+calass GetTopicSchemaSettingResult(dict):
     def __init__(__self__, *,
                  encoding: str,
                  schema: str):

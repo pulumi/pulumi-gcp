@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['GoogleChannelConfigArgs', 'GoogleChannelConfig']
+__all__ = ['GoogleChannelConfigArrgs', 'GoogleChannelConfig']
 
 @pulumi.input_type
-class GoogleChannelConfigArgs:
+calass GoogleChannelConfigArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  crypto_key_name: Optional[pulumi.Input[str]] = None,
@@ -91,7 +91,7 @@ class GoogleChannelConfigArgs:
 
 
 @pulumi.input_type
-class _GoogleChannelConfigState:
+calass _GoogleChannelConfigState:
     def __init__(__self__, *,
                  crypto_key_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -186,7 +186,7 @@ class _GoogleChannelConfigState:
         pulumi.set(self, "update_time", value)
 
 
-class GoogleChannelConfig(pulumi.CustomResource):
+calass GoogleChannelConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -260,7 +260,7 @@ class GoogleChannelConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: GoogleChannelConfigArgs,
+                 args: GoogleChannelConfigArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Eventarc GoogleChannelConfig resource
@@ -312,12 +312,12 @@ class GoogleChannelConfig(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param GoogleChannelConfigArgs args: The arguments to use to populate this resource's properties.
+        :param GoogleChannelConfigArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(GoogleChannelConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(GoogleChannelConfigArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -337,7 +337,7 @@ class GoogleChannelConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = GoogleChannelConfigArgs.__new__(GoogleChannelConfigArgs)
+            __props__ = GoogleChannelConfigArrgs.__new__(GoogleChannelConfigArrgs)
 
             __props__.__dict__["crypto_key_name"] = crypto_key_name
             if location is None and not opts.urn:

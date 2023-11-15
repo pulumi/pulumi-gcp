@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['WorkloadIdentityPoolArgs', 'WorkloadIdentityPool']
+__all__ = ['WorkloadIdentityPoolArrgs', 'WorkloadIdentityPool']
 
 @pulumi.input_type
-class WorkloadIdentityPoolArgs:
+calass WorkloadIdentityPoolArrgs:
     def __init__(__self__, *,
                  workload_identity_pool_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -115,7 +115,7 @@ class WorkloadIdentityPoolArgs:
 
 
 @pulumi.input_type
-class _WorkloadIdentityPoolState:
+calass _WorkloadIdentityPoolState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -268,7 +268,7 @@ class _WorkloadIdentityPoolState:
         pulumi.set(self, "workload_identity_pool_id", value)
 
 
-class WorkloadIdentityPool(pulumi.CustomResource):
+calass WorkloadIdentityPool(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -355,7 +355,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: WorkloadIdentityPoolArgs,
+                 args: WorkloadIdentityPoolArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a collection of external workload identities. You can define IAM policies to
@@ -414,12 +414,12 @@ class WorkloadIdentityPool(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param WorkloadIdentityPoolArgs args: The arguments to use to populate this resource's properties.
+        :param WorkloadIdentityPoolArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(WorkloadIdentityPoolArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(WorkloadIdentityPoolArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -440,7 +440,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = WorkloadIdentityPoolArgs.__new__(WorkloadIdentityPoolArgs)
+            __props__ = WorkloadIdentityPoolArrgs.__new__(WorkloadIdentityPoolArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled

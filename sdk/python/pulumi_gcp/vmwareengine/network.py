@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['NetworkArgs', 'Network']
+__all__ = ['NetworkArrgs', 'Network']
 
 @pulumi.input_type
-class NetworkArgs:
+calass NetworkArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  type: pulumi.Input[str],
@@ -110,7 +110,7 @@ class NetworkArgs:
 
 
 @pulumi.input_type
-class _NetworkState:
+calass _NetworkState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -119,7 +119,7 @@ class _NetworkState:
                  state: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
-                 vpc_networks: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkVpcNetworkArgs']]]] = None):
+                 vpc_networks: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkVpcNetworkArrgs']]]] = None):
         """
         Input properties used for looking up and filtering Network resources.
         :param pulumi.Input[str] description: User-provided description for this VMware Engine network.
@@ -134,7 +134,7 @@ class _NetworkState:
         :param pulumi.Input[str] type: VMware Engine network type.
                Possible values are: `LEGACY`.
         :param pulumi.Input[str] uid: System-generated unique identifier for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['NetworkVpcNetworkArgs']]] vpc_networks: VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkVpcNetworkArrgs']]] vpc_networks: VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,
                the internet, and other Google Cloud services.
                Structure is documented below.
         """
@@ -246,7 +246,7 @@ class _NetworkState:
 
     @property
     @pulumi.getter(name="vpcNetworks")
-    def vpc_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkVpcNetworkArgs']]]]:
+    def vpc_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkVpcNetworkArrgs']]]]:
         """
         VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,
         the internet, and other Google Cloud services.
@@ -255,11 +255,11 @@ class _NetworkState:
         return pulumi.get(self, "vpc_networks")
 
     @vpc_networks.setter
-    def vpc_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkVpcNetworkArgs']]]]):
+    def vpc_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkVpcNetworkArrgs']]]]):
         pulumi.set(self, "vpc_networks", value)
 
 
-class Network(pulumi.CustomResource):
+calass Network(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -314,7 +314,7 @@ class Network(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: NetworkArgs,
+                 args: NetworkArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -344,12 +344,12 @@ class Network(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param NetworkArgs args: The arguments to use to populate this resource's properties.
+        :param NetworkArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(NetworkArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(NetworkArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -370,7 +370,7 @@ class Network(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = NetworkArgs.__new__(NetworkArgs)
+            __props__ = NetworkArrgs.__new__(NetworkArrgs)
 
             __props__.__dict__["description"] = description
             if location is None and not opts.urn:
@@ -401,7 +401,7 @@ class Network(pulumi.CustomResource):
             state: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
-            vpc_networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkVpcNetworkArgs']]]]] = None) -> 'Network':
+            vpc_networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkVpcNetworkArrgs']]]]] = None) -> 'Network':
         """
         Get an existing Network resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -421,7 +421,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] type: VMware Engine network type.
                Possible values are: `LEGACY`.
         :param pulumi.Input[str] uid: System-generated unique identifier for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkVpcNetworkArgs']]]] vpc_networks: VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkVpcNetworkArrgs']]]] vpc_networks: VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,
                the internet, and other Google Cloud services.
                Structure is documented below.
         """

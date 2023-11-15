@@ -11,24 +11,24 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['GroupMembershipArgs', 'GroupMembership']
+__all__ = ['GroupMembershipArrgs', 'GroupMembership']
 
 @pulumi.input_type
-class GroupMembershipArgs:
+calass GroupMembershipArrgs:
     def __init__(__self__, *,
                  group: pulumi.Input[str],
-                 roles: pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArgs']]],
-                 member_key: Optional[pulumi.Input['GroupMembershipMemberKeyArgs']] = None,
-                 preferred_member_key: Optional[pulumi.Input['GroupMembershipPreferredMemberKeyArgs']] = None):
+                 roles: pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArrgs']]],
+                 member_key: Optional[pulumi.Input['GroupMembershipMemberKeyArrgs']] = None,
+                 preferred_member_key: Optional[pulumi.Input['GroupMembershipPreferredMemberKeyArrgs']] = None):
         """
         The set of arguments for constructing a GroupMembership resource.
         :param pulumi.Input[str] group: The name of the Group to create this membership in.
-        :param pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArgs']]] roles: The MembershipRoles that apply to the Membership.
+        :param pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArrgs']]] roles: The MembershipRoles that apply to the Membership.
                Must not contain duplicate MembershipRoles with the same name.
                Structure is documented below.
-        :param pulumi.Input['GroupMembershipMemberKeyArgs'] member_key: EntityKey of the member.
+        :param pulumi.Input['GroupMembershipMemberKeyArrgs'] member_key: EntityKey of the member.
                Structure is documented below.
-        :param pulumi.Input['GroupMembershipPreferredMemberKeyArgs'] preferred_member_key: EntityKey of the member.
+        :param pulumi.Input['GroupMembershipPreferredMemberKeyArrgs'] preferred_member_key: EntityKey of the member.
                Structure is documented below.
         """
         pulumi.set(__self__, "group", group)
@@ -52,7 +52,7 @@ class GroupMembershipArgs:
 
     @property
     @pulumi.getter
-    def roles(self) -> pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArgs']]]:
+    def roles(self) -> pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArrgs']]]:
         """
         The MembershipRoles that apply to the Membership.
         Must not contain duplicate MembershipRoles with the same name.
@@ -61,12 +61,12 @@ class GroupMembershipArgs:
         return pulumi.get(self, "roles")
 
     @roles.setter
-    def roles(self, value: pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArgs']]]):
+    def roles(self, value: pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArrgs']]]):
         pulumi.set(self, "roles", value)
 
     @property
     @pulumi.getter(name="memberKey")
-    def member_key(self) -> Optional[pulumi.Input['GroupMembershipMemberKeyArgs']]:
+    def member_key(self) -> Optional[pulumi.Input['GroupMembershipMemberKeyArrgs']]:
         """
         EntityKey of the member.
         Structure is documented below.
@@ -74,12 +74,12 @@ class GroupMembershipArgs:
         return pulumi.get(self, "member_key")
 
     @member_key.setter
-    def member_key(self, value: Optional[pulumi.Input['GroupMembershipMemberKeyArgs']]):
+    def member_key(self, value: Optional[pulumi.Input['GroupMembershipMemberKeyArrgs']]):
         pulumi.set(self, "member_key", value)
 
     @property
     @pulumi.getter(name="preferredMemberKey")
-    def preferred_member_key(self) -> Optional[pulumi.Input['GroupMembershipPreferredMemberKeyArgs']]:
+    def preferred_member_key(self) -> Optional[pulumi.Input['GroupMembershipPreferredMemberKeyArrgs']]:
         """
         EntityKey of the member.
         Structure is documented below.
@@ -87,34 +87,34 @@ class GroupMembershipArgs:
         return pulumi.get(self, "preferred_member_key")
 
     @preferred_member_key.setter
-    def preferred_member_key(self, value: Optional[pulumi.Input['GroupMembershipPreferredMemberKeyArgs']]):
+    def preferred_member_key(self, value: Optional[pulumi.Input['GroupMembershipPreferredMemberKeyArrgs']]):
         pulumi.set(self, "preferred_member_key", value)
 
 
 @pulumi.input_type
-class _GroupMembershipState:
+calass _GroupMembershipState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  group: Optional[pulumi.Input[str]] = None,
-                 member_key: Optional[pulumi.Input['GroupMembershipMemberKeyArgs']] = None,
+                 member_key: Optional[pulumi.Input['GroupMembershipMemberKeyArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 preferred_member_key: Optional[pulumi.Input['GroupMembershipPreferredMemberKeyArgs']] = None,
-                 roles: Optional[pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArgs']]]] = None,
+                 preferred_member_key: Optional[pulumi.Input['GroupMembershipPreferredMemberKeyArrgs']] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArrgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GroupMembership resources.
         :param pulumi.Input[str] create_time: The time when the Membership was created.
         :param pulumi.Input[str] group: The name of the Group to create this membership in.
-        :param pulumi.Input['GroupMembershipMemberKeyArgs'] member_key: EntityKey of the member.
+        :param pulumi.Input['GroupMembershipMemberKeyArrgs'] member_key: EntityKey of the member.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
                Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
                
                - - -
-        :param pulumi.Input['GroupMembershipPreferredMemberKeyArgs'] preferred_member_key: EntityKey of the member.
+        :param pulumi.Input['GroupMembershipPreferredMemberKeyArrgs'] preferred_member_key: EntityKey of the member.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArgs']]] roles: The MembershipRoles that apply to the Membership.
+        :param pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArrgs']]] roles: The MembershipRoles that apply to the Membership.
                Must not contain duplicate MembershipRoles with the same name.
                Structure is documented below.
         :param pulumi.Input[str] type: The type of the membership.
@@ -163,7 +163,7 @@ class _GroupMembershipState:
 
     @property
     @pulumi.getter(name="memberKey")
-    def member_key(self) -> Optional[pulumi.Input['GroupMembershipMemberKeyArgs']]:
+    def member_key(self) -> Optional[pulumi.Input['GroupMembershipMemberKeyArrgs']]:
         """
         EntityKey of the member.
         Structure is documented below.
@@ -171,7 +171,7 @@ class _GroupMembershipState:
         return pulumi.get(self, "member_key")
 
     @member_key.setter
-    def member_key(self, value: Optional[pulumi.Input['GroupMembershipMemberKeyArgs']]):
+    def member_key(self, value: Optional[pulumi.Input['GroupMembershipMemberKeyArrgs']]):
         pulumi.set(self, "member_key", value)
 
     @property
@@ -191,7 +191,7 @@ class _GroupMembershipState:
 
     @property
     @pulumi.getter(name="preferredMemberKey")
-    def preferred_member_key(self) -> Optional[pulumi.Input['GroupMembershipPreferredMemberKeyArgs']]:
+    def preferred_member_key(self) -> Optional[pulumi.Input['GroupMembershipPreferredMemberKeyArrgs']]:
         """
         EntityKey of the member.
         Structure is documented below.
@@ -199,12 +199,12 @@ class _GroupMembershipState:
         return pulumi.get(self, "preferred_member_key")
 
     @preferred_member_key.setter
-    def preferred_member_key(self, value: Optional[pulumi.Input['GroupMembershipPreferredMemberKeyArgs']]):
+    def preferred_member_key(self, value: Optional[pulumi.Input['GroupMembershipPreferredMemberKeyArrgs']]):
         pulumi.set(self, "preferred_member_key", value)
 
     @property
     @pulumi.getter
-    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArgs']]]]:
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArrgs']]]]:
         """
         The MembershipRoles that apply to the Membership.
         Must not contain duplicate MembershipRoles with the same name.
@@ -213,7 +213,7 @@ class _GroupMembershipState:
         return pulumi.get(self, "roles")
 
     @roles.setter
-    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArgs']]]]):
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArrgs']]]]):
         pulumi.set(self, "roles", value)
 
     @property
@@ -241,15 +241,15 @@ class _GroupMembershipState:
         pulumi.set(self, "update_time", value)
 
 
-class GroupMembership(pulumi.CustomResource):
+calass GroupMembership(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group: Optional[pulumi.Input[str]] = None,
-                 member_key: Optional[pulumi.Input[pulumi.InputType['GroupMembershipMemberKeyArgs']]] = None,
-                 preferred_member_key: Optional[pulumi.Input[pulumi.InputType['GroupMembershipPreferredMemberKeyArgs']]] = None,
-                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupMembershipRoleArgs']]]]] = None,
+                 member_key: Optional[pulumi.Input[pulumi.InputType['GroupMembershipMemberKeyArrgs']]] = None,
+                 preferred_member_key: Optional[pulumi.Input[pulumi.InputType['GroupMembershipPreferredMemberKeyArrgs']]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupMembershipRoleArrgs']]]]] = None,
                  __props__=None):
         """
         A Membership defines a relationship between a Group and an entity belonging to that Group, referred to as a "member".
@@ -276,7 +276,7 @@ class GroupMembership(pulumi.CustomResource):
         group = gcp.cloudidentity.Group("group",
             display_name="my-identity-group",
             parent="customers/A01b123xz",
-            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
+            group_key=gcp.cloudidentity.GroupGroupKeyArrgs(
                 id="my-identity-group@example.com",
             ),
             labels={
@@ -285,7 +285,7 @@ class GroupMembership(pulumi.CustomResource):
         child_group = gcp.cloudidentity.Group("child-group",
             display_name="my-identity-group-child",
             parent="customers/A01b123xz",
-            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
+            group_key=gcp.cloudidentity.GroupGroupKeyArrgs(
                 id="my-identity-group-child@example.com",
             ),
             labels={
@@ -293,10 +293,10 @@ class GroupMembership(pulumi.CustomResource):
             })
         cloud_identity_group_membership_basic = gcp.cloudidentity.GroupMembership("cloudIdentityGroupMembershipBasic",
             group=group.id,
-            preferred_member_key=gcp.cloudidentity.GroupMembershipPreferredMemberKeyArgs(
+            preferred_member_key=gcp.cloudidentity.GroupMembershipPreferredMemberKeyArrgs(
                 id=child_group.group_key.id,
             ),
-            roles=[gcp.cloudidentity.GroupMembershipRoleArgs(
+            roles=[gcp.cloudidentity.GroupMembershipRoleArrgs(
                 name="MEMBER",
             )])
         ```
@@ -309,7 +309,7 @@ class GroupMembership(pulumi.CustomResource):
         group = gcp.cloudidentity.Group("group",
             display_name="my-identity-group",
             parent="customers/A01b123xz",
-            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
+            group_key=gcp.cloudidentity.GroupGroupKeyArrgs(
                 id="my-identity-group@example.com",
             ),
             labels={
@@ -317,14 +317,14 @@ class GroupMembership(pulumi.CustomResource):
             })
         cloud_identity_group_membership_basic = gcp.cloudidentity.GroupMembership("cloudIdentityGroupMembershipBasic",
             group=group.id,
-            preferred_member_key=gcp.cloudidentity.GroupMembershipPreferredMemberKeyArgs(
+            preferred_member_key=gcp.cloudidentity.GroupMembershipPreferredMemberKeyArrgs(
                 id="cloud_identity_user@example.com",
             ),
             roles=[
-                gcp.cloudidentity.GroupMembershipRoleArgs(
+                gcp.cloudidentity.GroupMembershipRoleArrgs(
                     name="MEMBER",
                 ),
-                gcp.cloudidentity.GroupMembershipRoleArgs(
+                gcp.cloudidentity.GroupMembershipRoleArrgs(
                     name="MANAGER",
                 ),
             ])
@@ -349,11 +349,11 @@ class GroupMembership(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group: The name of the Group to create this membership in.
-        :param pulumi.Input[pulumi.InputType['GroupMembershipMemberKeyArgs']] member_key: EntityKey of the member.
+        :param pulumi.Input[pulumi.InputType['GroupMembershipMemberKeyArrgs']] member_key: EntityKey of the member.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['GroupMembershipPreferredMemberKeyArgs']] preferred_member_key: EntityKey of the member.
+        :param pulumi.Input[pulumi.InputType['GroupMembershipPreferredMemberKeyArrgs']] preferred_member_key: EntityKey of the member.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupMembershipRoleArgs']]]] roles: The MembershipRoles that apply to the Membership.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupMembershipRoleArrgs']]]] roles: The MembershipRoles that apply to the Membership.
                Must not contain duplicate MembershipRoles with the same name.
                Structure is documented below.
         """
@@ -361,7 +361,7 @@ class GroupMembership(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: GroupMembershipArgs,
+                 args: GroupMembershipArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Membership defines a relationship between a Group and an entity belonging to that Group, referred to as a "member".
@@ -388,7 +388,7 @@ class GroupMembership(pulumi.CustomResource):
         group = gcp.cloudidentity.Group("group",
             display_name="my-identity-group",
             parent="customers/A01b123xz",
-            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
+            group_key=gcp.cloudidentity.GroupGroupKeyArrgs(
                 id="my-identity-group@example.com",
             ),
             labels={
@@ -397,7 +397,7 @@ class GroupMembership(pulumi.CustomResource):
         child_group = gcp.cloudidentity.Group("child-group",
             display_name="my-identity-group-child",
             parent="customers/A01b123xz",
-            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
+            group_key=gcp.cloudidentity.GroupGroupKeyArrgs(
                 id="my-identity-group-child@example.com",
             ),
             labels={
@@ -405,10 +405,10 @@ class GroupMembership(pulumi.CustomResource):
             })
         cloud_identity_group_membership_basic = gcp.cloudidentity.GroupMembership("cloudIdentityGroupMembershipBasic",
             group=group.id,
-            preferred_member_key=gcp.cloudidentity.GroupMembershipPreferredMemberKeyArgs(
+            preferred_member_key=gcp.cloudidentity.GroupMembershipPreferredMemberKeyArrgs(
                 id=child_group.group_key.id,
             ),
-            roles=[gcp.cloudidentity.GroupMembershipRoleArgs(
+            roles=[gcp.cloudidentity.GroupMembershipRoleArrgs(
                 name="MEMBER",
             )])
         ```
@@ -421,7 +421,7 @@ class GroupMembership(pulumi.CustomResource):
         group = gcp.cloudidentity.Group("group",
             display_name="my-identity-group",
             parent="customers/A01b123xz",
-            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
+            group_key=gcp.cloudidentity.GroupGroupKeyArrgs(
                 id="my-identity-group@example.com",
             ),
             labels={
@@ -429,14 +429,14 @@ class GroupMembership(pulumi.CustomResource):
             })
         cloud_identity_group_membership_basic = gcp.cloudidentity.GroupMembership("cloudIdentityGroupMembershipBasic",
             group=group.id,
-            preferred_member_key=gcp.cloudidentity.GroupMembershipPreferredMemberKeyArgs(
+            preferred_member_key=gcp.cloudidentity.GroupMembershipPreferredMemberKeyArrgs(
                 id="cloud_identity_user@example.com",
             ),
             roles=[
-                gcp.cloudidentity.GroupMembershipRoleArgs(
+                gcp.cloudidentity.GroupMembershipRoleArrgs(
                     name="MEMBER",
                 ),
-                gcp.cloudidentity.GroupMembershipRoleArgs(
+                gcp.cloudidentity.GroupMembershipRoleArrgs(
                     name="MANAGER",
                 ),
             ])
@@ -459,12 +459,12 @@ class GroupMembership(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param GroupMembershipArgs args: The arguments to use to populate this resource's properties.
+        :param GroupMembershipArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(GroupMembershipArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(GroupMembershipArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -474,9 +474,9 @@ class GroupMembership(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group: Optional[pulumi.Input[str]] = None,
-                 member_key: Optional[pulumi.Input[pulumi.InputType['GroupMembershipMemberKeyArgs']]] = None,
-                 preferred_member_key: Optional[pulumi.Input[pulumi.InputType['GroupMembershipPreferredMemberKeyArgs']]] = None,
-                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupMembershipRoleArgs']]]]] = None,
+                 member_key: Optional[pulumi.Input[pulumi.InputType['GroupMembershipMemberKeyArrgs']]] = None,
+                 preferred_member_key: Optional[pulumi.Input[pulumi.InputType['GroupMembershipPreferredMemberKeyArrgs']]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupMembershipRoleArrgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -484,7 +484,7 @@ class GroupMembership(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = GroupMembershipArgs.__new__(GroupMembershipArgs)
+            __props__ = GroupMembershipArrgs.__new__(GroupMembershipArrgs)
 
             if group is None and not opts.urn:
                 raise TypeError("Missing required property 'group'")
@@ -510,10 +510,10 @@ class GroupMembership(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             group: Optional[pulumi.Input[str]] = None,
-            member_key: Optional[pulumi.Input[pulumi.InputType['GroupMembershipMemberKeyArgs']]] = None,
+            member_key: Optional[pulumi.Input[pulumi.InputType['GroupMembershipMemberKeyArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            preferred_member_key: Optional[pulumi.Input[pulumi.InputType['GroupMembershipPreferredMemberKeyArgs']]] = None,
-            roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupMembershipRoleArgs']]]]] = None,
+            preferred_member_key: Optional[pulumi.Input[pulumi.InputType['GroupMembershipPreferredMemberKeyArrgs']]] = None,
+            roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupMembershipRoleArrgs']]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'GroupMembership':
         """
@@ -525,15 +525,15 @@ class GroupMembership(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The time when the Membership was created.
         :param pulumi.Input[str] group: The name of the Group to create this membership in.
-        :param pulumi.Input[pulumi.InputType['GroupMembershipMemberKeyArgs']] member_key: EntityKey of the member.
+        :param pulumi.Input[pulumi.InputType['GroupMembershipMemberKeyArrgs']] member_key: EntityKey of the member.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
                Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
                
                - - -
-        :param pulumi.Input[pulumi.InputType['GroupMembershipPreferredMemberKeyArgs']] preferred_member_key: EntityKey of the member.
+        :param pulumi.Input[pulumi.InputType['GroupMembershipPreferredMemberKeyArrgs']] preferred_member_key: EntityKey of the member.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupMembershipRoleArgs']]]] roles: The MembershipRoles that apply to the Membership.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupMembershipRoleArrgs']]]] roles: The MembershipRoles that apply to the Membership.
                Must not contain duplicate MembershipRoles with the same name.
                Structure is documented below.
         :param pulumi.Input[str] type: The type of the membership.

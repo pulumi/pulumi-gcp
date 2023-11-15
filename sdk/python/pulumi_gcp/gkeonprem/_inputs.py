@@ -10,133 +10,133 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'BareMetalAdminClusterClusterOperationsArgs',
-    'BareMetalAdminClusterControlPlaneArgs',
-    'BareMetalAdminClusterControlPlaneApiServerArgArgs',
-    'BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs',
-    'BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs',
-    'BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs',
-    'BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs',
-    'BareMetalAdminClusterFleetArgs',
-    'BareMetalAdminClusterLoadBalancerArgs',
-    'BareMetalAdminClusterLoadBalancerManualLbConfigArgs',
-    'BareMetalAdminClusterLoadBalancerPortConfigArgs',
-    'BareMetalAdminClusterLoadBalancerVipConfigArgs',
-    'BareMetalAdminClusterMaintenanceConfigArgs',
-    'BareMetalAdminClusterNetworkConfigArgs',
-    'BareMetalAdminClusterNetworkConfigIslandModeCidrArgs',
-    'BareMetalAdminClusterNodeAccessConfigArgs',
-    'BareMetalAdminClusterNodeConfigArgs',
-    'BareMetalAdminClusterProxyArgs',
-    'BareMetalAdminClusterSecurityConfigArgs',
-    'BareMetalAdminClusterSecurityConfigAuthorizationArgs',
-    'BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs',
-    'BareMetalAdminClusterStatusArgs',
-    'BareMetalAdminClusterStatusConditionArgs',
-    'BareMetalAdminClusterStorageArgs',
-    'BareMetalAdminClusterStorageLvpNodeMountsConfigArgs',
-    'BareMetalAdminClusterStorageLvpShareConfigArgs',
-    'BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs',
-    'BareMetalAdminClusterValidationCheckArgs',
-    'BareMetalAdminClusterValidationCheckStatusArgs',
-    'BareMetalAdminClusterValidationCheckStatusResultArgs',
-    'BareMetalClusterBinaryAuthorizationArgs',
-    'BareMetalClusterClusterOperationsArgs',
-    'BareMetalClusterControlPlaneArgs',
-    'BareMetalClusterControlPlaneApiServerArgArgs',
-    'BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs',
-    'BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs',
-    'BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs',
-    'BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs',
-    'BareMetalClusterFleetArgs',
-    'BareMetalClusterLoadBalancerArgs',
-    'BareMetalClusterLoadBalancerBgpLbConfigArgs',
-    'BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs',
-    'BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs',
-    'BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs',
-    'BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs',
-    'BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs',
-    'BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs',
-    'BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs',
-    'BareMetalClusterLoadBalancerManualLbConfigArgs',
-    'BareMetalClusterLoadBalancerMetalLbConfigArgs',
-    'BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs',
-    'BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs',
-    'BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs',
-    'BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs',
-    'BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs',
-    'BareMetalClusterLoadBalancerPortConfigArgs',
-    'BareMetalClusterLoadBalancerVipConfigArgs',
-    'BareMetalClusterMaintenanceConfigArgs',
-    'BareMetalClusterNetworkConfigArgs',
-    'BareMetalClusterNetworkConfigIslandModeCidrArgs',
-    'BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs',
-    'BareMetalClusterNetworkConfigSrIovConfigArgs',
-    'BareMetalClusterNodeAccessConfigArgs',
-    'BareMetalClusterNodeConfigArgs',
-    'BareMetalClusterOsEnvironmentConfigArgs',
-    'BareMetalClusterProxyArgs',
-    'BareMetalClusterSecurityConfigArgs',
-    'BareMetalClusterSecurityConfigAuthorizationArgs',
-    'BareMetalClusterSecurityConfigAuthorizationAdminUserArgs',
-    'BareMetalClusterStatusArgs',
-    'BareMetalClusterStatusConditionArgs',
-    'BareMetalClusterStorageArgs',
-    'BareMetalClusterStorageLvpNodeMountsConfigArgs',
-    'BareMetalClusterStorageLvpShareConfigArgs',
-    'BareMetalClusterStorageLvpShareConfigLvpConfigArgs',
-    'BareMetalClusterUpgradePolicyArgs',
-    'BareMetalClusterValidationCheckArgs',
-    'BareMetalClusterValidationCheckStatusArgs',
-    'BareMetalClusterValidationCheckStatusResultArgs',
-    'BareMetalNodePoolNodePoolConfigArgs',
-    'BareMetalNodePoolNodePoolConfigNodeConfigArgs',
-    'BareMetalNodePoolNodePoolConfigTaintArgs',
-    'BareMetalNodePoolStatusArgs',
-    'BareMetalNodePoolStatusConditionArgs',
-    'VMwareClusterAntiAffinityGroupsArgs',
-    'VMwareClusterAuthorizationArgs',
-    'VMwareClusterAuthorizationAdminUserArgs',
-    'VMwareClusterAutoRepairConfigArgs',
-    'VMwareClusterControlPlaneNodeArgs',
-    'VMwareClusterControlPlaneNodeAutoResizeConfigArgs',
-    'VMwareClusterControlPlaneNodeVsphereConfigArgs',
-    'VMwareClusterDataplaneV2Args',
-    'VMwareClusterFleetArgs',
-    'VMwareClusterLoadBalancerArgs',
-    'VMwareClusterLoadBalancerF5ConfigArgs',
-    'VMwareClusterLoadBalancerManualLbConfigArgs',
-    'VMwareClusterLoadBalancerMetalLbConfigArgs',
-    'VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs',
-    'VMwareClusterLoadBalancerVipConfigArgs',
-    'VMwareClusterNetworkConfigArgs',
-    'VMwareClusterNetworkConfigControlPlaneV2ConfigArgs',
-    'VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs',
-    'VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs',
-    'VMwareClusterNetworkConfigDhcpIpConfigArgs',
-    'VMwareClusterNetworkConfigHostConfigArgs',
-    'VMwareClusterNetworkConfigStaticIpConfigArgs',
-    'VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs',
-    'VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs',
-    'VMwareClusterStatusArgs',
-    'VMwareClusterStatusConditionArgs',
-    'VMwareClusterStorageArgs',
-    'VMwareClusterUpgradePolicyArgs',
-    'VMwareClusterValidationCheckArgs',
-    'VMwareClusterValidationCheckStatusArgs',
-    'VMwareClusterValidationCheckStatusResultArgs',
-    'VMwareClusterVcenterArgs',
-    'VMwareNodePoolConfigArgs',
-    'VMwareNodePoolConfigTaintArgs',
-    'VMwareNodePoolConfigVsphereConfigArgs',
-    'VMwareNodePoolConfigVsphereConfigTagArgs',
-    'VMwareNodePoolNodePoolAutoscalingArgs',
-    'VMwareNodePoolStatusArgs',
-    'VMwareNodePoolStatusConditionArgs',
+    'BareMetalAdminClusterClusterOperationsArrgs',
+    'BareMetalAdminClusterControlPlaneArrgs',
+    'BareMetalAdminClusterControlPlaneApiServerArgArrgs',
+    'BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArrgs',
+    'BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArrgs',
+    'BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrgs',
+    'BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrgs',
+    'BareMetalAdminClusterFleetArrgs',
+    'BareMetalAdminClusterLoadBalancerArrgs',
+    'BareMetalAdminClusterLoadBalancerManualLbConfigArrgs',
+    'BareMetalAdminClusterLoadBalancerPortConfigArrgs',
+    'BareMetalAdminClusterLoadBalancerVipConfigArrgs',
+    'BareMetalAdminClusterMaintenanceConfigArrgs',
+    'BareMetalAdminClusterNetworkConfigArrgs',
+    'BareMetalAdminClusterNetworkConfigIslandModeCidrArrgs',
+    'BareMetalAdminClusterNodeAccessConfigArrgs',
+    'BareMetalAdminClusterNodeConfigArrgs',
+    'BareMetalAdminClusterProxyArrgs',
+    'BareMetalAdminClusterSecurityConfigArrgs',
+    'BareMetalAdminClusterSecurityConfigAuthorizationArrgs',
+    'BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrgs',
+    'BareMetalAdminClusterStatusArrgs',
+    'BareMetalAdminClusterStatusConditionArrgs',
+    'BareMetalAdminClusterStorageArrgs',
+    'BareMetalAdminClusterStorageLvpNodeMountsConfigArrgs',
+    'BareMetalAdminClusterStorageLvpShareConfigArrgs',
+    'BareMetalAdminClusterStorageLvpShareConfigLvpConfigArrgs',
+    'BareMetalAdminClusterValidationCheckArrgs',
+    'BareMetalAdminClusterValidationCheckStatusArrgs',
+    'BareMetalAdminClusterValidationCheckStatusResultArrgs',
+    'BareMetalClusterBinaryAuthorizationArrgs',
+    'BareMetalClusterClusterOperationsArrgs',
+    'BareMetalClusterControlPlaneArrgs',
+    'BareMetalClusterControlPlaneApiServerArgArrgs',
+    'BareMetalClusterControlPlaneControlPlaneNodePoolConfigArrgs',
+    'BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArrgs',
+    'BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrgs',
+    'BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrgs',
+    'BareMetalClusterFleetArrgs',
+    'BareMetalClusterLoadBalancerArrgs',
+    'BareMetalClusterLoadBalancerBgpLbConfigArrgs',
+    'BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArrgs',
+    'BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArrgs',
+    'BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArrgs',
+    'BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArrgs',
+    'BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArrgs',
+    'BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrgs',
+    'BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrgs',
+    'BareMetalClusterLoadBalancerManualLbConfigArrgs',
+    'BareMetalClusterLoadBalancerMetalLbConfigArrgs',
+    'BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArrgs',
+    'BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArrgs',
+    'BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArrgs',
+    'BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrgs',
+    'BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrgs',
+    'BareMetalClusterLoadBalancerPortConfigArrgs',
+    'BareMetalClusterLoadBalancerVipConfigArrgs',
+    'BareMetalClusterMaintenanceConfigArrgs',
+    'BareMetalClusterNetworkConfigArrgs',
+    'BareMetalClusterNetworkConfigIslandModeCidrArrgs',
+    'BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArrgs',
+    'BareMetalClusterNetworkConfigSrIovConfigArrgs',
+    'BareMetalClusterNodeAccessConfigArrgs',
+    'BareMetalClusterNodeConfigArrgs',
+    'BareMetalClusterOsEnvironmentConfigArrgs',
+    'BareMetalClusterProxyArrgs',
+    'BareMetalClusterSecurityConfigArrgs',
+    'BareMetalClusterSecurityConfigAuthorizationArrgs',
+    'BareMetalClusterSecurityConfigAuthorizationAdminUserArrgs',
+    'BareMetalClusterStatusArrgs',
+    'BareMetalClusterStatusConditionArrgs',
+    'BareMetalClusterStorageArrgs',
+    'BareMetalClusterStorageLvpNodeMountsConfigArrgs',
+    'BareMetalClusterStorageLvpShareConfigArrgs',
+    'BareMetalClusterStorageLvpShareConfigLvpConfigArrgs',
+    'BareMetalClusterUpgradePolicyArrgs',
+    'BareMetalClusterValidationCheckArrgs',
+    'BareMetalClusterValidationCheckStatusArrgs',
+    'BareMetalClusterValidationCheckStatusResultArrgs',
+    'BareMetalNodePoolNodePoolConfigArrgs',
+    'BareMetalNodePoolNodePoolConfigNodeConfigArrgs',
+    'BareMetalNodePoolNodePoolConfigTaintArrgs',
+    'BareMetalNodePoolStatusArrgs',
+    'BareMetalNodePoolStatusConditionArrgs',
+    'VMwareClusterAntiAffinityGroupsArrgs',
+    'VMwareClusterAuthorizationArrgs',
+    'VMwareClusterAuthorizationAdminUserArrgs',
+    'VMwareClusterAutoRepairConfigArrgs',
+    'VMwareClusterControlPlaneNodeArrgs',
+    'VMwareClusterControlPlaneNodeAutoResizeConfigArrgs',
+    'VMwareClusterControlPlaneNodeVsphereConfigArrgs',
+    'VMwareClusterDataplaneV2Arrgs',
+    'VMwareClusterFleetArrgs',
+    'VMwareClusterLoadBalancerArrgs',
+    'VMwareClusterLoadBalancerF5ConfigArrgs',
+    'VMwareClusterLoadBalancerManualLbConfigArrgs',
+    'VMwareClusterLoadBalancerMetalLbConfigArrgs',
+    'VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrgs',
+    'VMwareClusterLoadBalancerVipConfigArrgs',
+    'VMwareClusterNetworkConfigArrgs',
+    'VMwareClusterNetworkConfigControlPlaneV2ConfigArrgs',
+    'VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArrgs',
+    'VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArrgs',
+    'VMwareClusterNetworkConfigDhcpIpConfigArrgs',
+    'VMwareClusterNetworkConfigHostConfigArrgs',
+    'VMwareClusterNetworkConfigStaticIpConfigArrgs',
+    'VMwareClusterNetworkConfigStaticIpConfigIpBlockArrgs',
+    'VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArrgs',
+    'VMwareClusterStatusArrgs',
+    'VMwareClusterStatusConditionArrgs',
+    'VMwareClusterStorageArrgs',
+    'VMwareClusterUpgradePolicyArrgs',
+    'VMwareClusterValidationCheckArrgs',
+    'VMwareClusterValidationCheckStatusArrgs',
+    'VMwareClusterValidationCheckStatusResultArrgs',
+    'VMwareClusterVcenterArrgs',
+    'VMwareNodePoolConfigArrgs',
+    'VMwareNodePoolConfigTaintArrgs',
+    'VMwareNodePoolConfigVsphereConfigArrgs',
+    'VMwareNodePoolConfigVsphereConfigTagArrgs',
+    'VMwareNodePoolNodePoolAutoscalingArrgs',
+    'VMwareNodePoolStatusArrgs',
+    'VMwareNodePoolStatusConditionArrgs',
 ]
 
 @pulumi.input_type
-class BareMetalAdminClusterClusterOperationsArgs:
+calass BareMetalAdminClusterClusterOperationsArrgs:
     def __init__(__self__, *,
                  enable_application_logs: Optional[pulumi.Input[bool]] = None):
         """
@@ -159,14 +159,14 @@ class BareMetalAdminClusterClusterOperationsArgs:
 
 
 @pulumi.input_type
-class BareMetalAdminClusterControlPlaneArgs:
+calass BareMetalAdminClusterControlPlaneArrgs:
     def __init__(__self__, *,
-                 control_plane_node_pool_config: pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs'],
-                 api_server_args: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneApiServerArgArgs']]]] = None):
+                 control_plane_node_pool_config: pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArrgs'],
+                 api_server_args: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneApiServerArgArrgs']]]] = None):
         """
-        :param pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs'] control_plane_node_pool_config: Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
+        :param pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArrgs'] control_plane_node_pool_config: Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneApiServerArgArgs']]] api_server_args: Customizes the default API server args. Only a subset of
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneApiServerArgArrgs']]] api_server_args: Customizes the default API server args. Only a subset of
                customized flags are supported. Please refer to the API server
                documentation below to know the exact format:
                https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
@@ -178,7 +178,7 @@ class BareMetalAdminClusterControlPlaneArgs:
 
     @property
     @pulumi.getter(name="controlPlaneNodePoolConfig")
-    def control_plane_node_pool_config(self) -> pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs']:
+    def control_plane_node_pool_config(self) -> pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArrgs']:
         """
         Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
         Structure is documented below.
@@ -186,12 +186,12 @@ class BareMetalAdminClusterControlPlaneArgs:
         return pulumi.get(self, "control_plane_node_pool_config")
 
     @control_plane_node_pool_config.setter
-    def control_plane_node_pool_config(self, value: pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs']):
+    def control_plane_node_pool_config(self, value: pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArrgs']):
         pulumi.set(self, "control_plane_node_pool_config", value)
 
     @property
     @pulumi.getter(name="apiServerArgs")
-    def api_server_args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneApiServerArgArgs']]]]:
+    def api_server_args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneApiServerArgArrgs']]]]:
         """
         Customizes the default API server args. Only a subset of
         customized flags are supported. Please refer to the API server
@@ -202,12 +202,12 @@ class BareMetalAdminClusterControlPlaneArgs:
         return pulumi.get(self, "api_server_args")
 
     @api_server_args.setter
-    def api_server_args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneApiServerArgArgs']]]]):
+    def api_server_args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneApiServerArgArrgs']]]]):
         pulumi.set(self, "api_server_args", value)
 
 
 @pulumi.input_type
-class BareMetalAdminClusterControlPlaneApiServerArgArgs:
+calass BareMetalAdminClusterControlPlaneApiServerArgArrgs:
     def __init__(__self__, *,
                  argument: pulumi.Input[str],
                  value: pulumi.Input[str]):
@@ -244,18 +244,18 @@ class BareMetalAdminClusterControlPlaneApiServerArgArgs:
 
 
 @pulumi.input_type
-class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs:
+calass BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArrgs:
     def __init__(__self__, *,
-                 node_pool_config: pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs']):
+                 node_pool_config: pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArrgs']):
         """
-        :param pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs'] node_pool_config: The generic configuration for a node pool running the control plane.
+        :param pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArrgs'] node_pool_config: The generic configuration for a node pool running the control plane.
                Structure is documented below.
         """
         pulumi.set(__self__, "node_pool_config", node_pool_config)
 
     @property
     @pulumi.getter(name="nodePoolConfig")
-    def node_pool_config(self) -> pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs']:
+    def node_pool_config(self) -> pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArrgs']:
         """
         The generic configuration for a node pool running the control plane.
         Structure is documented below.
@@ -263,17 +263,17 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs:
         return pulumi.get(self, "node_pool_config")
 
     @node_pool_config.setter
-    def node_pool_config(self, value: pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs']):
+    def node_pool_config(self, value: pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArrgs']):
         pulumi.set(self, "node_pool_config", value)
 
 
 @pulumi.input_type
-class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs:
+calass BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArrgs:
     def __init__(__self__, *,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 node_configs: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]]] = None,
+                 node_configs: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrgs']]]] = None,
                  operating_system: Optional[pulumi.Input[str]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]]] = None):
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrgs']]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The map of Kubernetes labels (key/value pairs) to be applied to
                each node. These will added in addition to any default label(s)
@@ -285,10 +285,10 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigA
                http://kubernetes.io/v1.1/docs/user-guide/labels.html
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]] node_configs: The list of machine addresses in the Bare Metal Node Pool.
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrgs']]] node_configs: The list of machine addresses in the Bare Metal Node Pool.
                Structure is documented below.
         :param pulumi.Input[str] operating_system: Specifies the nodes operating system (default: LINUX).
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]] taints: The initial taints assigned to nodes of this node pool.
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrgs']]] taints: The initial taints assigned to nodes of this node pool.
                Structure is documented below.
         """
         if labels is not None:
@@ -323,7 +323,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigA
 
     @property
     @pulumi.getter(name="nodeConfigs")
-    def node_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]]]:
+    def node_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrgs']]]]:
         """
         The list of machine addresses in the Bare Metal Node Pool.
         Structure is documented below.
@@ -331,7 +331,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigA
         return pulumi.get(self, "node_configs")
 
     @node_configs.setter
-    def node_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]]]):
+    def node_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrgs']]]]):
         pulumi.set(self, "node_configs", value)
 
     @property
@@ -348,7 +348,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigA
 
     @property
     @pulumi.getter
-    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]]]:
+    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrgs']]]]:
         """
         The initial taints assigned to nodes of this node pool.
         Structure is documented below.
@@ -356,12 +356,12 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigA
         return pulumi.get(self, "taints")
 
     @taints.setter
-    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]]]):
+    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrgs']]]]):
         pulumi.set(self, "taints", value)
 
 
 @pulumi.input_type
-class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs:
+calass BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrgs:
     def __init__(__self__, *,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  node_ip: Optional[pulumi.Input[str]] = None):
@@ -420,7 +420,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigN
 
 
 @pulumi.input_type
-class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs:
+calass BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrgs:
     def __init__(__self__, *,
                  effect: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
@@ -477,7 +477,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigT
 
 
 @pulumi.input_type
-class BareMetalAdminClusterFleetArgs:
+calass BareMetalAdminClusterFleetArrgs:
     def __init__(__self__, *,
                  membership: Optional[pulumi.Input[str]] = None):
         """
@@ -506,17 +506,17 @@ class BareMetalAdminClusterFleetArgs:
 
 
 @pulumi.input_type
-class BareMetalAdminClusterLoadBalancerArgs:
+calass BareMetalAdminClusterLoadBalancerArrgs:
     def __init__(__self__, *,
-                 port_config: pulumi.Input['BareMetalAdminClusterLoadBalancerPortConfigArgs'],
-                 vip_config: pulumi.Input['BareMetalAdminClusterLoadBalancerVipConfigArgs'],
-                 manual_lb_config: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerManualLbConfigArgs']] = None):
+                 port_config: pulumi.Input['BareMetalAdminClusterLoadBalancerPortConfigArrgs'],
+                 vip_config: pulumi.Input['BareMetalAdminClusterLoadBalancerVipConfigArrgs'],
+                 manual_lb_config: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerManualLbConfigArrgs']] = None):
         """
-        :param pulumi.Input['BareMetalAdminClusterLoadBalancerPortConfigArgs'] port_config: Specifies the load balancer ports.
+        :param pulumi.Input['BareMetalAdminClusterLoadBalancerPortConfigArrgs'] port_config: Specifies the load balancer ports.
                Structure is documented below.
-        :param pulumi.Input['BareMetalAdminClusterLoadBalancerVipConfigArgs'] vip_config: Specified the Bare Metal Load Balancer Config
+        :param pulumi.Input['BareMetalAdminClusterLoadBalancerVipConfigArrgs'] vip_config: Specified the Bare Metal Load Balancer Config
                Structure is documented below.
-        :param pulumi.Input['BareMetalAdminClusterLoadBalancerManualLbConfigArgs'] manual_lb_config: A nested object resource
+        :param pulumi.Input['BareMetalAdminClusterLoadBalancerManualLbConfigArrgs'] manual_lb_config: A nested object resource
                Structure is documented below.
         """
         pulumi.set(__self__, "port_config", port_config)
@@ -526,7 +526,7 @@ class BareMetalAdminClusterLoadBalancerArgs:
 
     @property
     @pulumi.getter(name="portConfig")
-    def port_config(self) -> pulumi.Input['BareMetalAdminClusterLoadBalancerPortConfigArgs']:
+    def port_config(self) -> pulumi.Input['BareMetalAdminClusterLoadBalancerPortConfigArrgs']:
         """
         Specifies the load balancer ports.
         Structure is documented below.
@@ -534,12 +534,12 @@ class BareMetalAdminClusterLoadBalancerArgs:
         return pulumi.get(self, "port_config")
 
     @port_config.setter
-    def port_config(self, value: pulumi.Input['BareMetalAdminClusterLoadBalancerPortConfigArgs']):
+    def port_config(self, value: pulumi.Input['BareMetalAdminClusterLoadBalancerPortConfigArrgs']):
         pulumi.set(self, "port_config", value)
 
     @property
     @pulumi.getter(name="vipConfig")
-    def vip_config(self) -> pulumi.Input['BareMetalAdminClusterLoadBalancerVipConfigArgs']:
+    def vip_config(self) -> pulumi.Input['BareMetalAdminClusterLoadBalancerVipConfigArrgs']:
         """
         Specified the Bare Metal Load Balancer Config
         Structure is documented below.
@@ -547,12 +547,12 @@ class BareMetalAdminClusterLoadBalancerArgs:
         return pulumi.get(self, "vip_config")
 
     @vip_config.setter
-    def vip_config(self, value: pulumi.Input['BareMetalAdminClusterLoadBalancerVipConfigArgs']):
+    def vip_config(self, value: pulumi.Input['BareMetalAdminClusterLoadBalancerVipConfigArrgs']):
         pulumi.set(self, "vip_config", value)
 
     @property
     @pulumi.getter(name="manualLbConfig")
-    def manual_lb_config(self) -> Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerManualLbConfigArgs']]:
+    def manual_lb_config(self) -> Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerManualLbConfigArrgs']]:
         """
         A nested object resource
         Structure is documented below.
@@ -560,12 +560,12 @@ class BareMetalAdminClusterLoadBalancerArgs:
         return pulumi.get(self, "manual_lb_config")
 
     @manual_lb_config.setter
-    def manual_lb_config(self, value: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerManualLbConfigArgs']]):
+    def manual_lb_config(self, value: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerManualLbConfigArrgs']]):
         pulumi.set(self, "manual_lb_config", value)
 
 
 @pulumi.input_type
-class BareMetalAdminClusterLoadBalancerManualLbConfigArgs:
+calass BareMetalAdminClusterLoadBalancerManualLbConfigArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -587,7 +587,7 @@ class BareMetalAdminClusterLoadBalancerManualLbConfigArgs:
 
 
 @pulumi.input_type
-class BareMetalAdminClusterLoadBalancerPortConfigArgs:
+calass BareMetalAdminClusterLoadBalancerPortConfigArrgs:
     def __init__(__self__, *,
                  control_plane_load_balancer_port: pulumi.Input[int]):
         """
@@ -609,7 +609,7 @@ class BareMetalAdminClusterLoadBalancerPortConfigArgs:
 
 
 @pulumi.input_type
-class BareMetalAdminClusterLoadBalancerVipConfigArgs:
+calass BareMetalAdminClusterLoadBalancerVipConfigArrgs:
     def __init__(__self__, *,
                  control_plane_vip: pulumi.Input[str]):
         """
@@ -631,7 +631,7 @@ class BareMetalAdminClusterLoadBalancerVipConfigArgs:
 
 
 @pulumi.input_type
-class BareMetalAdminClusterMaintenanceConfigArgs:
+calass BareMetalAdminClusterMaintenanceConfigArrgs:
     def __init__(__self__, *,
                  maintenance_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -659,11 +659,11 @@ class BareMetalAdminClusterMaintenanceConfigArgs:
 
 
 @pulumi.input_type
-class BareMetalAdminClusterNetworkConfigArgs:
+calass BareMetalAdminClusterNetworkConfigArrgs:
     def __init__(__self__, *,
-                 island_mode_cidr: Optional[pulumi.Input['BareMetalAdminClusterNetworkConfigIslandModeCidrArgs']] = None):
+                 island_mode_cidr: Optional[pulumi.Input['BareMetalAdminClusterNetworkConfigIslandModeCidrArrgs']] = None):
         """
-        :param pulumi.Input['BareMetalAdminClusterNetworkConfigIslandModeCidrArgs'] island_mode_cidr: A nested object resource
+        :param pulumi.Input['BareMetalAdminClusterNetworkConfigIslandModeCidrArrgs'] island_mode_cidr: A nested object resource
                Structure is documented below.
         """
         if island_mode_cidr is not None:
@@ -671,7 +671,7 @@ class BareMetalAdminClusterNetworkConfigArgs:
 
     @property
     @pulumi.getter(name="islandModeCidr")
-    def island_mode_cidr(self) -> Optional[pulumi.Input['BareMetalAdminClusterNetworkConfigIslandModeCidrArgs']]:
+    def island_mode_cidr(self) -> Optional[pulumi.Input['BareMetalAdminClusterNetworkConfigIslandModeCidrArrgs']]:
         """
         A nested object resource
         Structure is documented below.
@@ -679,12 +679,12 @@ class BareMetalAdminClusterNetworkConfigArgs:
         return pulumi.get(self, "island_mode_cidr")
 
     @island_mode_cidr.setter
-    def island_mode_cidr(self, value: Optional[pulumi.Input['BareMetalAdminClusterNetworkConfigIslandModeCidrArgs']]):
+    def island_mode_cidr(self, value: Optional[pulumi.Input['BareMetalAdminClusterNetworkConfigIslandModeCidrArrgs']]):
         pulumi.set(self, "island_mode_cidr", value)
 
 
 @pulumi.input_type
-class BareMetalAdminClusterNetworkConfigIslandModeCidrArgs:
+calass BareMetalAdminClusterNetworkConfigIslandModeCidrArrgs:
     def __init__(__self__, *,
                  pod_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
                  service_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]]):
@@ -721,7 +721,7 @@ class BareMetalAdminClusterNetworkConfigIslandModeCidrArgs:
 
 
 @pulumi.input_type
-class BareMetalAdminClusterNodeAccessConfigArgs:
+calass BareMetalAdminClusterNodeAccessConfigArrgs:
     def __init__(__self__, *,
                  login_user: Optional[pulumi.Input[str]] = None):
         """
@@ -746,7 +746,7 @@ class BareMetalAdminClusterNodeAccessConfigArgs:
 
 
 @pulumi.input_type
-class BareMetalAdminClusterNodeConfigArgs:
+calass BareMetalAdminClusterNodeConfigArrgs:
     def __init__(__self__, *,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None):
         """
@@ -771,7 +771,7 @@ class BareMetalAdminClusterNodeConfigArgs:
 
 
 @pulumi.input_type
-class BareMetalAdminClusterProxyArgs:
+calass BareMetalAdminClusterProxyArrgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[str],
                  no_proxies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -817,11 +817,11 @@ class BareMetalAdminClusterProxyArgs:
 
 
 @pulumi.input_type
-class BareMetalAdminClusterSecurityConfigArgs:
+calass BareMetalAdminClusterSecurityConfigArrgs:
     def __init__(__self__, *,
-                 authorization: Optional[pulumi.Input['BareMetalAdminClusterSecurityConfigAuthorizationArgs']] = None):
+                 authorization: Optional[pulumi.Input['BareMetalAdminClusterSecurityConfigAuthorizationArrgs']] = None):
         """
-        :param pulumi.Input['BareMetalAdminClusterSecurityConfigAuthorizationArgs'] authorization: Configures user access to the Bare Metal User cluster.
+        :param pulumi.Input['BareMetalAdminClusterSecurityConfigAuthorizationArrgs'] authorization: Configures user access to the Bare Metal User cluster.
                Structure is documented below.
         """
         if authorization is not None:
@@ -829,7 +829,7 @@ class BareMetalAdminClusterSecurityConfigArgs:
 
     @property
     @pulumi.getter
-    def authorization(self) -> Optional[pulumi.Input['BareMetalAdminClusterSecurityConfigAuthorizationArgs']]:
+    def authorization(self) -> Optional[pulumi.Input['BareMetalAdminClusterSecurityConfigAuthorizationArrgs']]:
         """
         Configures user access to the Bare Metal User cluster.
         Structure is documented below.
@@ -837,23 +837,23 @@ class BareMetalAdminClusterSecurityConfigArgs:
         return pulumi.get(self, "authorization")
 
     @authorization.setter
-    def authorization(self, value: Optional[pulumi.Input['BareMetalAdminClusterSecurityConfigAuthorizationArgs']]):
+    def authorization(self, value: Optional[pulumi.Input['BareMetalAdminClusterSecurityConfigAuthorizationArrgs']]):
         pulumi.set(self, "authorization", value)
 
 
 @pulumi.input_type
-class BareMetalAdminClusterSecurityConfigAuthorizationArgs:
+calass BareMetalAdminClusterSecurityConfigAuthorizationArrgs:
     def __init__(__self__, *,
-                 admin_users: pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs']]]):
+                 admin_users: pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs']]] admin_users: Users that will be granted the cluster-admin role on the cluster, providing full access to the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrgs']]] admin_users: Users that will be granted the cluster-admin role on the cluster, providing full access to the cluster.
                Structure is documented below.
         """
         pulumi.set(__self__, "admin_users", admin_users)
 
     @property
     @pulumi.getter(name="adminUsers")
-    def admin_users(self) -> pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs']]]:
+    def admin_users(self) -> pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrgs']]]:
         """
         Users that will be granted the cluster-admin role on the cluster, providing full access to the cluster.
         Structure is documented below.
@@ -861,12 +861,12 @@ class BareMetalAdminClusterSecurityConfigAuthorizationArgs:
         return pulumi.get(self, "admin_users")
 
     @admin_users.setter
-    def admin_users(self, value: pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs']]]):
+    def admin_users(self, value: pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrgs']]]):
         pulumi.set(self, "admin_users", value)
 
 
 @pulumi.input_type
-class BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs:
+calass BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrgs:
     def __init__(__self__, *,
                  username: pulumi.Input[str]):
         """
@@ -888,12 +888,12 @@ class BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs:
 
 
 @pulumi.input_type
-class BareMetalAdminClusterStatusArgs:
+calass BareMetalAdminClusterStatusArrgs:
     def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterStatusConditionArgs']]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterStatusConditionArrgs']]]] = None,
                  error_message: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterStatusConditionArgs']]] conditions: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterStatusConditionArrgs']]] conditions: (Output)
                ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
                Structure is documented below.
         :param pulumi.Input[str] error_message: (Output)
@@ -910,7 +910,7 @@ class BareMetalAdminClusterStatusArgs:
 
     @property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterStatusConditionArgs']]]]:
+    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterStatusConditionArrgs']]]]:
         """
         (Output)
         ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
@@ -919,7 +919,7 @@ class BareMetalAdminClusterStatusArgs:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterStatusConditionArgs']]]]):
+    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterStatusConditionArrgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @property
@@ -941,7 +941,7 @@ class BareMetalAdminClusterStatusArgs:
 
 
 @pulumi.input_type
-class BareMetalAdminClusterStatusConditionArgs:
+calass BareMetalAdminClusterStatusConditionArrgs:
     def __init__(__self__, *,
                  last_transition_time: Optional[pulumi.Input[str]] = None,
                  message: Optional[pulumi.Input[str]] = None,
@@ -1036,16 +1036,16 @@ class BareMetalAdminClusterStatusConditionArgs:
 
 
 @pulumi.input_type
-class BareMetalAdminClusterStorageArgs:
+calass BareMetalAdminClusterStorageArrgs:
     def __init__(__self__, *,
-                 lvp_node_mounts_config: pulumi.Input['BareMetalAdminClusterStorageLvpNodeMountsConfigArgs'],
-                 lvp_share_config: pulumi.Input['BareMetalAdminClusterStorageLvpShareConfigArgs']):
+                 lvp_node_mounts_config: pulumi.Input['BareMetalAdminClusterStorageLvpNodeMountsConfigArrgs'],
+                 lvp_share_config: pulumi.Input['BareMetalAdminClusterStorageLvpShareConfigArrgs']):
         """
-        :param pulumi.Input['BareMetalAdminClusterStorageLvpNodeMountsConfigArgs'] lvp_node_mounts_config: Specifies the config for local PersistentVolumes backed
+        :param pulumi.Input['BareMetalAdminClusterStorageLvpNodeMountsConfigArrgs'] lvp_node_mounts_config: Specifies the config for local PersistentVolumes backed
                by mounted node disks. These disks need to be formatted and mounted by the
                user, which can be done before or after cluster creation.
                Structure is documented below.
-        :param pulumi.Input['BareMetalAdminClusterStorageLvpShareConfigArgs'] lvp_share_config: Specifies the config for local PersistentVolumes backed by
+        :param pulumi.Input['BareMetalAdminClusterStorageLvpShareConfigArrgs'] lvp_share_config: Specifies the config for local PersistentVolumes backed by
                subdirectories in a shared filesystem. These subdirectores are
                automatically created during cluster creation.
                Structure is documented below.
@@ -1055,7 +1055,7 @@ class BareMetalAdminClusterStorageArgs:
 
     @property
     @pulumi.getter(name="lvpNodeMountsConfig")
-    def lvp_node_mounts_config(self) -> pulumi.Input['BareMetalAdminClusterStorageLvpNodeMountsConfigArgs']:
+    def lvp_node_mounts_config(self) -> pulumi.Input['BareMetalAdminClusterStorageLvpNodeMountsConfigArrgs']:
         """
         Specifies the config for local PersistentVolumes backed
         by mounted node disks. These disks need to be formatted and mounted by the
@@ -1065,12 +1065,12 @@ class BareMetalAdminClusterStorageArgs:
         return pulumi.get(self, "lvp_node_mounts_config")
 
     @lvp_node_mounts_config.setter
-    def lvp_node_mounts_config(self, value: pulumi.Input['BareMetalAdminClusterStorageLvpNodeMountsConfigArgs']):
+    def lvp_node_mounts_config(self, value: pulumi.Input['BareMetalAdminClusterStorageLvpNodeMountsConfigArrgs']):
         pulumi.set(self, "lvp_node_mounts_config", value)
 
     @property
     @pulumi.getter(name="lvpShareConfig")
-    def lvp_share_config(self) -> pulumi.Input['BareMetalAdminClusterStorageLvpShareConfigArgs']:
+    def lvp_share_config(self) -> pulumi.Input['BareMetalAdminClusterStorageLvpShareConfigArrgs']:
         """
         Specifies the config for local PersistentVolumes backed by
         subdirectories in a shared filesystem. These subdirectores are
@@ -1080,12 +1080,12 @@ class BareMetalAdminClusterStorageArgs:
         return pulumi.get(self, "lvp_share_config")
 
     @lvp_share_config.setter
-    def lvp_share_config(self, value: pulumi.Input['BareMetalAdminClusterStorageLvpShareConfigArgs']):
+    def lvp_share_config(self, value: pulumi.Input['BareMetalAdminClusterStorageLvpShareConfigArrgs']):
         pulumi.set(self, "lvp_share_config", value)
 
 
 @pulumi.input_type
-class BareMetalAdminClusterStorageLvpNodeMountsConfigArgs:
+calass BareMetalAdminClusterStorageLvpNodeMountsConfigArrgs:
     def __init__(__self__, *,
                  path: pulumi.Input[str],
                  storage_class: pulumi.Input[str]):
@@ -1122,12 +1122,12 @@ class BareMetalAdminClusterStorageLvpNodeMountsConfigArgs:
 
 
 @pulumi.input_type
-class BareMetalAdminClusterStorageLvpShareConfigArgs:
+calass BareMetalAdminClusterStorageLvpShareConfigArrgs:
     def __init__(__self__, *,
-                 lvp_config: pulumi.Input['BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs'],
+                 lvp_config: pulumi.Input['BareMetalAdminClusterStorageLvpShareConfigLvpConfigArrgs'],
                  shared_path_pv_count: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input['BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs'] lvp_config: Defines the machine path and storage class for the LVP Share.
+        :param pulumi.Input['BareMetalAdminClusterStorageLvpShareConfigLvpConfigArrgs'] lvp_config: Defines the machine path and storage class for the LVP Share.
                Structure is documented below.
         :param pulumi.Input[int] shared_path_pv_count: The number of subdirectories to create under path.
         """
@@ -1137,7 +1137,7 @@ class BareMetalAdminClusterStorageLvpShareConfigArgs:
 
     @property
     @pulumi.getter(name="lvpConfig")
-    def lvp_config(self) -> pulumi.Input['BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs']:
+    def lvp_config(self) -> pulumi.Input['BareMetalAdminClusterStorageLvpShareConfigLvpConfigArrgs']:
         """
         Defines the machine path and storage class for the LVP Share.
         Structure is documented below.
@@ -1145,7 +1145,7 @@ class BareMetalAdminClusterStorageLvpShareConfigArgs:
         return pulumi.get(self, "lvp_config")
 
     @lvp_config.setter
-    def lvp_config(self, value: pulumi.Input['BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs']):
+    def lvp_config(self, value: pulumi.Input['BareMetalAdminClusterStorageLvpShareConfigLvpConfigArrgs']):
         pulumi.set(self, "lvp_config", value)
 
     @property
@@ -1162,7 +1162,7 @@ class BareMetalAdminClusterStorageLvpShareConfigArgs:
 
 
 @pulumi.input_type
-class BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs:
+calass BareMetalAdminClusterStorageLvpShareConfigLvpConfigArrgs:
     def __init__(__self__, *,
                  path: pulumi.Input[str],
                  storage_class: pulumi.Input[str]):
@@ -1199,17 +1199,17 @@ class BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs:
 
 
 @pulumi.input_type
-class BareMetalAdminClusterValidationCheckArgs:
+calass BareMetalAdminClusterValidationCheckArrgs:
     def __init__(__self__, *,
                  options: Optional[pulumi.Input[str]] = None,
                  scenario: Optional[pulumi.Input[str]] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusArgs']]]] = None):
+                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusArrgs']]]] = None):
         """
         :param pulumi.Input[str] options: (Output)
                Options used for the validation check.
         :param pulumi.Input[str] scenario: (Output)
                The scenario when the preflight checks were run..
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusArgs']]] statuses: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusArrgs']]] statuses: (Output)
                Specifies the detailed validation check status
                Structure is documented below.
         """
@@ -1248,7 +1248,7 @@ class BareMetalAdminClusterValidationCheckArgs:
 
     @property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusArgs']]]]:
+    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusArrgs']]]]:
         """
         (Output)
         Specifies the detailed validation check status
@@ -1257,16 +1257,16 @@ class BareMetalAdminClusterValidationCheckArgs:
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusArgs']]]]):
+    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusArrgs']]]]):
         pulumi.set(self, "statuses", value)
 
 
 @pulumi.input_type
-class BareMetalAdminClusterValidationCheckStatusArgs:
+calass BareMetalAdminClusterValidationCheckStatusArrgs:
     def __init__(__self__, *,
-                 results: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusResultArgs']]]] = None):
+                 results: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusResultArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusResultArgs']]] results: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusResultArrgs']]] results: (Output)
                Individual checks which failed as part of the Preflight check execution.
                Structure is documented below.
         """
@@ -1275,7 +1275,7 @@ class BareMetalAdminClusterValidationCheckStatusArgs:
 
     @property
     @pulumi.getter
-    def results(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusResultArgs']]]]:
+    def results(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusResultArrgs']]]]:
         """
         (Output)
         Individual checks which failed as part of the Preflight check execution.
@@ -1284,12 +1284,12 @@ class BareMetalAdminClusterValidationCheckStatusArgs:
         return pulumi.get(self, "results")
 
     @results.setter
-    def results(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusResultArgs']]]]):
+    def results(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusResultArrgs']]]]):
         pulumi.set(self, "results", value)
 
 
 @pulumi.input_type
-class BareMetalAdminClusterValidationCheckStatusResultArgs:
+calass BareMetalAdminClusterValidationCheckStatusResultArrgs:
     def __init__(__self__, *,
                  category: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -1384,7 +1384,7 @@ class BareMetalAdminClusterValidationCheckStatusResultArgs:
 
 
 @pulumi.input_type
-class BareMetalClusterBinaryAuthorizationArgs:
+calass BareMetalClusterBinaryAuthorizationArrgs:
     def __init__(__self__, *,
                  evaluation_mode: Optional[pulumi.Input[str]] = None):
         """
@@ -1411,7 +1411,7 @@ class BareMetalClusterBinaryAuthorizationArgs:
 
 
 @pulumi.input_type
-class BareMetalClusterClusterOperationsArgs:
+calass BareMetalClusterClusterOperationsArrgs:
     def __init__(__self__, *,
                  enable_application_logs: Optional[pulumi.Input[bool]] = None):
         """
@@ -1434,14 +1434,14 @@ class BareMetalClusterClusterOperationsArgs:
 
 
 @pulumi.input_type
-class BareMetalClusterControlPlaneArgs:
+calass BareMetalClusterControlPlaneArrgs:
     def __init__(__self__, *,
-                 control_plane_node_pool_config: pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs'],
-                 api_server_args: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneApiServerArgArgs']]]] = None):
+                 control_plane_node_pool_config: pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigArrgs'],
+                 api_server_args: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneApiServerArgArrgs']]]] = None):
         """
-        :param pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs'] control_plane_node_pool_config: Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
+        :param pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigArrgs'] control_plane_node_pool_config: Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneApiServerArgArgs']]] api_server_args: Customizes the default API server args. Only a subset of
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneApiServerArgArrgs']]] api_server_args: Customizes the default API server args. Only a subset of
                customized flags are supported. Please refer to the API server
                documentation below to know the exact format:
                https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
@@ -1453,7 +1453,7 @@ class BareMetalClusterControlPlaneArgs:
 
     @property
     @pulumi.getter(name="controlPlaneNodePoolConfig")
-    def control_plane_node_pool_config(self) -> pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs']:
+    def control_plane_node_pool_config(self) -> pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigArrgs']:
         """
         Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
         Structure is documented below.
@@ -1461,12 +1461,12 @@ class BareMetalClusterControlPlaneArgs:
         return pulumi.get(self, "control_plane_node_pool_config")
 
     @control_plane_node_pool_config.setter
-    def control_plane_node_pool_config(self, value: pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs']):
+    def control_plane_node_pool_config(self, value: pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigArrgs']):
         pulumi.set(self, "control_plane_node_pool_config", value)
 
     @property
     @pulumi.getter(name="apiServerArgs")
-    def api_server_args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneApiServerArgArgs']]]]:
+    def api_server_args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneApiServerArgArrgs']]]]:
         """
         Customizes the default API server args. Only a subset of
         customized flags are supported. Please refer to the API server
@@ -1477,12 +1477,12 @@ class BareMetalClusterControlPlaneArgs:
         return pulumi.get(self, "api_server_args")
 
     @api_server_args.setter
-    def api_server_args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneApiServerArgArgs']]]]):
+    def api_server_args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneApiServerArgArrgs']]]]):
         pulumi.set(self, "api_server_args", value)
 
 
 @pulumi.input_type
-class BareMetalClusterControlPlaneApiServerArgArgs:
+calass BareMetalClusterControlPlaneApiServerArgArrgs:
     def __init__(__self__, *,
                  argument: pulumi.Input[str],
                  value: pulumi.Input[str]):
@@ -1519,18 +1519,18 @@ class BareMetalClusterControlPlaneApiServerArgArgs:
 
 
 @pulumi.input_type
-class BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs:
+calass BareMetalClusterControlPlaneControlPlaneNodePoolConfigArrgs:
     def __init__(__self__, *,
-                 node_pool_config: pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs']):
+                 node_pool_config: pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArrgs']):
         """
-        :param pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs'] node_pool_config: The generic configuration for a node pool running the control plane.
+        :param pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArrgs'] node_pool_config: The generic configuration for a node pool running the control plane.
                Structure is documented below.
         """
         pulumi.set(__self__, "node_pool_config", node_pool_config)
 
     @property
     @pulumi.getter(name="nodePoolConfig")
-    def node_pool_config(self) -> pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs']:
+    def node_pool_config(self) -> pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArrgs']:
         """
         The generic configuration for a node pool running the control plane.
         Structure is documented below.
@@ -1538,17 +1538,17 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs:
         return pulumi.get(self, "node_pool_config")
 
     @node_pool_config.setter
-    def node_pool_config(self, value: pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs']):
+    def node_pool_config(self, value: pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArrgs']):
         pulumi.set(self, "node_pool_config", value)
 
 
 @pulumi.input_type
-class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs:
+calass BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArrgs:
     def __init__(__self__, *,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 node_configs: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]]] = None,
+                 node_configs: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrgs']]]] = None,
                  operating_system: Optional[pulumi.Input[str]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]]] = None):
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrgs']]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The map of Kubernetes labels (key/value pairs) to be applied to
                each node. These will added in addition to any default label(s)
@@ -1560,10 +1560,10 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs:
                http://kubernetes.io/v1.1/docs/user-guide/labels.html
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]] node_configs: The list of machine addresses in the Bare Metal Node Pool.
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrgs']]] node_configs: The list of machine addresses in the Bare Metal Node Pool.
                Structure is documented below.
         :param pulumi.Input[str] operating_system: Specifies the nodes operating system (default: LINUX).
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]] taints: The initial taints assigned to nodes of this node pool.
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrgs']]] taints: The initial taints assigned to nodes of this node pool.
                Structure is documented below.
         """
         if labels is not None:
@@ -1598,7 +1598,7 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs:
 
     @property
     @pulumi.getter(name="nodeConfigs")
-    def node_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]]]:
+    def node_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrgs']]]]:
         """
         The list of machine addresses in the Bare Metal Node Pool.
         Structure is documented below.
@@ -1606,7 +1606,7 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs:
         return pulumi.get(self, "node_configs")
 
     @node_configs.setter
-    def node_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]]]):
+    def node_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrgs']]]]):
         pulumi.set(self, "node_configs", value)
 
     @property
@@ -1623,7 +1623,7 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs:
 
     @property
     @pulumi.getter
-    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]]]:
+    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrgs']]]]:
         """
         The initial taints assigned to nodes of this node pool.
         Structure is documented below.
@@ -1631,12 +1631,12 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs:
         return pulumi.get(self, "taints")
 
     @taints.setter
-    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]]]):
+    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrgs']]]]):
         pulumi.set(self, "taints", value)
 
 
 @pulumi.input_type
-class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs:
+calass BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrgs:
     def __init__(__self__, *,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  node_ip: Optional[pulumi.Input[str]] = None):
@@ -1695,7 +1695,7 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeCo
 
 
 @pulumi.input_type
-class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs:
+calass BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrgs:
     def __init__(__self__, *,
                  effect: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
@@ -1752,7 +1752,7 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintA
 
 
 @pulumi.input_type
-class BareMetalClusterFleetArgs:
+calass BareMetalClusterFleetArrgs:
     def __init__(__self__, *,
                  membership: Optional[pulumi.Input[str]] = None):
         """
@@ -1781,23 +1781,23 @@ class BareMetalClusterFleetArgs:
 
 
 @pulumi.input_type
-class BareMetalClusterLoadBalancerArgs:
+calass BareMetalClusterLoadBalancerArrgs:
     def __init__(__self__, *,
-                 port_config: pulumi.Input['BareMetalClusterLoadBalancerPortConfigArgs'],
-                 vip_config: pulumi.Input['BareMetalClusterLoadBalancerVipConfigArgs'],
-                 bgp_lb_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigArgs']] = None,
-                 manual_lb_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerManualLbConfigArgs']] = None,
-                 metal_lb_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigArgs']] = None):
+                 port_config: pulumi.Input['BareMetalClusterLoadBalancerPortConfigArrgs'],
+                 vip_config: pulumi.Input['BareMetalClusterLoadBalancerVipConfigArrgs'],
+                 bgp_lb_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigArrgs']] = None,
+                 manual_lb_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerManualLbConfigArrgs']] = None,
+                 metal_lb_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigArrgs']] = None):
         """
-        :param pulumi.Input['BareMetalClusterLoadBalancerPortConfigArgs'] port_config: Specifies the load balancer ports.
+        :param pulumi.Input['BareMetalClusterLoadBalancerPortConfigArrgs'] port_config: Specifies the load balancer ports.
                Structure is documented below.
-        :param pulumi.Input['BareMetalClusterLoadBalancerVipConfigArgs'] vip_config: Specified the Bare Metal Load Balancer Config
+        :param pulumi.Input['BareMetalClusterLoadBalancerVipConfigArrgs'] vip_config: Specified the Bare Metal Load Balancer Config
                Structure is documented below.
-        :param pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigArgs'] bgp_lb_config: Configuration for BGP typed load balancers.
+        :param pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigArrgs'] bgp_lb_config: Configuration for BGP typed load balancers.
                Structure is documented below.
-        :param pulumi.Input['BareMetalClusterLoadBalancerManualLbConfigArgs'] manual_lb_config: A nested object resource
+        :param pulumi.Input['BareMetalClusterLoadBalancerManualLbConfigArrgs'] manual_lb_config: A nested object resource
                Structure is documented below.
-        :param pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigArgs'] metal_lb_config: A nested object resource
+        :param pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigArrgs'] metal_lb_config: A nested object resource
                Structure is documented below.
         """
         pulumi.set(__self__, "port_config", port_config)
@@ -1811,7 +1811,7 @@ class BareMetalClusterLoadBalancerArgs:
 
     @property
     @pulumi.getter(name="portConfig")
-    def port_config(self) -> pulumi.Input['BareMetalClusterLoadBalancerPortConfigArgs']:
+    def port_config(self) -> pulumi.Input['BareMetalClusterLoadBalancerPortConfigArrgs']:
         """
         Specifies the load balancer ports.
         Structure is documented below.
@@ -1819,12 +1819,12 @@ class BareMetalClusterLoadBalancerArgs:
         return pulumi.get(self, "port_config")
 
     @port_config.setter
-    def port_config(self, value: pulumi.Input['BareMetalClusterLoadBalancerPortConfigArgs']):
+    def port_config(self, value: pulumi.Input['BareMetalClusterLoadBalancerPortConfigArrgs']):
         pulumi.set(self, "port_config", value)
 
     @property
     @pulumi.getter(name="vipConfig")
-    def vip_config(self) -> pulumi.Input['BareMetalClusterLoadBalancerVipConfigArgs']:
+    def vip_config(self) -> pulumi.Input['BareMetalClusterLoadBalancerVipConfigArrgs']:
         """
         Specified the Bare Metal Load Balancer Config
         Structure is documented below.
@@ -1832,12 +1832,12 @@ class BareMetalClusterLoadBalancerArgs:
         return pulumi.get(self, "vip_config")
 
     @vip_config.setter
-    def vip_config(self, value: pulumi.Input['BareMetalClusterLoadBalancerVipConfigArgs']):
+    def vip_config(self, value: pulumi.Input['BareMetalClusterLoadBalancerVipConfigArrgs']):
         pulumi.set(self, "vip_config", value)
 
     @property
     @pulumi.getter(name="bgpLbConfig")
-    def bgp_lb_config(self) -> Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigArgs']]:
+    def bgp_lb_config(self) -> Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigArrgs']]:
         """
         Configuration for BGP typed load balancers.
         Structure is documented below.
@@ -1845,12 +1845,12 @@ class BareMetalClusterLoadBalancerArgs:
         return pulumi.get(self, "bgp_lb_config")
 
     @bgp_lb_config.setter
-    def bgp_lb_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigArgs']]):
+    def bgp_lb_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigArrgs']]):
         pulumi.set(self, "bgp_lb_config", value)
 
     @property
     @pulumi.getter(name="manualLbConfig")
-    def manual_lb_config(self) -> Optional[pulumi.Input['BareMetalClusterLoadBalancerManualLbConfigArgs']]:
+    def manual_lb_config(self) -> Optional[pulumi.Input['BareMetalClusterLoadBalancerManualLbConfigArrgs']]:
         """
         A nested object resource
         Structure is documented below.
@@ -1858,12 +1858,12 @@ class BareMetalClusterLoadBalancerArgs:
         return pulumi.get(self, "manual_lb_config")
 
     @manual_lb_config.setter
-    def manual_lb_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerManualLbConfigArgs']]):
+    def manual_lb_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerManualLbConfigArrgs']]):
         pulumi.set(self, "manual_lb_config", value)
 
     @property
     @pulumi.getter(name="metalLbConfig")
-    def metal_lb_config(self) -> Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigArgs']]:
+    def metal_lb_config(self) -> Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigArrgs']]:
         """
         A nested object resource
         Structure is documented below.
@@ -1871,31 +1871,31 @@ class BareMetalClusterLoadBalancerArgs:
         return pulumi.get(self, "metal_lb_config")
 
     @metal_lb_config.setter
-    def metal_lb_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigArgs']]):
+    def metal_lb_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigArrgs']]):
         pulumi.set(self, "metal_lb_config", value)
 
 
 @pulumi.input_type
-class BareMetalClusterLoadBalancerBgpLbConfigArgs:
+calass BareMetalClusterLoadBalancerBgpLbConfigArrgs:
     def __init__(__self__, *,
-                 address_pools: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs']]],
+                 address_pools: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArrgs']]],
                  asn: pulumi.Input[int],
-                 bgp_peer_configs: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs']]],
-                 load_balancer_node_pool_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs']] = None):
+                 bgp_peer_configs: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArrgs']]],
+                 load_balancer_node_pool_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArrgs']] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs']]] address_pools: AddressPools is a list of non-overlapping IP pools used by load balancer
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArrgs']]] address_pools: AddressPools is a list of non-overlapping IP pools used by load balancer
                typed services. All addresses must be routable to load balancer nodes.
                IngressVIP must be included in the pools.
                Structure is documented below.
         :param pulumi.Input[int] asn: BGP autonomous system number (ASN) of the cluster.
                This field can be updated after cluster creation.
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs']]] bgp_peer_configs: The list of BGP peers that the cluster will connect to.
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArrgs']]] bgp_peer_configs: The list of BGP peers that the cluster will connect to.
                At least one peer must be configured for each control plane node.
                Control plane nodes will connect to these peers to advertise the control
                plane VIP. The Services load balancer also uses these peers by default.
                This field can be updated after cluster creation.
                Structure is documented below.
-        :param pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs'] load_balancer_node_pool_config: Specifies the node pool running data plane load balancing. L2 connectivity
+        :param pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArrgs'] load_balancer_node_pool_config: Specifies the node pool running data plane load balancing. L2 connectivity
                is required among nodes in this pool. If missing, the control plane node
                pool is used for data plane load balancing.
                Structure is documented below.
@@ -1908,7 +1908,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigArgs:
 
     @property
     @pulumi.getter(name="addressPools")
-    def address_pools(self) -> pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs']]]:
+    def address_pools(self) -> pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArrgs']]]:
         """
         AddressPools is a list of non-overlapping IP pools used by load balancer
         typed services. All addresses must be routable to load balancer nodes.
@@ -1918,7 +1918,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigArgs:
         return pulumi.get(self, "address_pools")
 
     @address_pools.setter
-    def address_pools(self, value: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs']]]):
+    def address_pools(self, value: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArrgs']]]):
         pulumi.set(self, "address_pools", value)
 
     @property
@@ -1936,7 +1936,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigArgs:
 
     @property
     @pulumi.getter(name="bgpPeerConfigs")
-    def bgp_peer_configs(self) -> pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs']]]:
+    def bgp_peer_configs(self) -> pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArrgs']]]:
         """
         The list of BGP peers that the cluster will connect to.
         At least one peer must be configured for each control plane node.
@@ -1948,12 +1948,12 @@ class BareMetalClusterLoadBalancerBgpLbConfigArgs:
         return pulumi.get(self, "bgp_peer_configs")
 
     @bgp_peer_configs.setter
-    def bgp_peer_configs(self, value: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs']]]):
+    def bgp_peer_configs(self, value: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArrgs']]]):
         pulumi.set(self, "bgp_peer_configs", value)
 
     @property
     @pulumi.getter(name="loadBalancerNodePoolConfig")
-    def load_balancer_node_pool_config(self) -> Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs']]:
+    def load_balancer_node_pool_config(self) -> Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArrgs']]:
         """
         Specifies the node pool running data plane load balancing. L2 connectivity
         is required among nodes in this pool. If missing, the control plane node
@@ -1963,12 +1963,12 @@ class BareMetalClusterLoadBalancerBgpLbConfigArgs:
         return pulumi.get(self, "load_balancer_node_pool_config")
 
     @load_balancer_node_pool_config.setter
-    def load_balancer_node_pool_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs']]):
+    def load_balancer_node_pool_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArrgs']]):
         pulumi.set(self, "load_balancer_node_pool_config", value)
 
 
 @pulumi.input_type
-class BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs:
+calass BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArrgs:
     def __init__(__self__, *,
                  addresses: pulumi.Input[Sequence[pulumi.Input[str]]],
                  pool: pulumi.Input[str],
@@ -2039,7 +2039,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs:
 
 
 @pulumi.input_type
-class BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs:
+calass BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArrgs:
     def __init__(__self__, *,
                  asn: pulumi.Input[int],
                  ip_address: pulumi.Input[str],
@@ -2102,11 +2102,11 @@ class BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs:
 
 
 @pulumi.input_type
-class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs:
+calass BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArrgs:
     def __init__(__self__, *,
-                 node_pool_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']] = None):
+                 node_pool_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArrgs']] = None):
         """
-        :param pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs'] node_pool_config: The generic configuration for a node pool running a load balancer.
+        :param pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArrgs'] node_pool_config: The generic configuration for a node pool running a load balancer.
                Structure is documented below.
         """
         if node_pool_config is not None:
@@ -2114,7 +2114,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs:
 
     @property
     @pulumi.getter(name="nodePoolConfig")
-    def node_pool_config(self) -> Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']]:
+    def node_pool_config(self) -> Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArrgs']]:
         """
         The generic configuration for a node pool running a load balancer.
         Structure is documented below.
@@ -2122,20 +2122,20 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs:
         return pulumi.get(self, "node_pool_config")
 
     @node_pool_config.setter
-    def node_pool_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']]):
+    def node_pool_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArrgs']]):
         pulumi.set(self, "node_pool_config", value)
 
 
 @pulumi.input_type
-class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs:
+calass BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArrgs:
     def __init__(__self__, *,
-                 kubelet_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs']] = None,
+                 kubelet_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 node_configs: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]] = None,
+                 node_configs: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrgs']]]] = None,
                  operating_system: Optional[pulumi.Input[str]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]] = None):
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrgs']]]] = None):
         """
-        :param pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs'] kubelet_config: The modifiable kubelet configurations for the baremetal machines.
+        :param pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArrgs'] kubelet_config: The modifiable kubelet configurations for the baremetal machines.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The map of Kubernetes labels (key/value pairs) to be applied to
                each node. These will added in addition to any default label(s)
@@ -2147,10 +2147,10 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
                http://kubernetes.io/v1.1/docs/user-guide/labels.html
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]] node_configs: The list of machine addresses in the Bare Metal Node Pool.
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrgs']]] node_configs: The list of machine addresses in the Bare Metal Node Pool.
                Structure is documented below.
         :param pulumi.Input[str] operating_system: Specifies the nodes operating system (default: LINUX).
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]] taints: The initial taints assigned to nodes of this node pool.
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrgs']]] taints: The initial taints assigned to nodes of this node pool.
                Structure is documented below.
         """
         if kubelet_config is not None:
@@ -2166,7 +2166,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
 
     @property
     @pulumi.getter(name="kubeletConfig")
-    def kubelet_config(self) -> Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs']]:
+    def kubelet_config(self) -> Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArrgs']]:
         """
         The modifiable kubelet configurations for the baremetal machines.
         Structure is documented below.
@@ -2174,7 +2174,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
         return pulumi.get(self, "kubelet_config")
 
     @kubelet_config.setter
-    def kubelet_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs']]):
+    def kubelet_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArrgs']]):
         pulumi.set(self, "kubelet_config", value)
 
     @property
@@ -2200,7 +2200,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
 
     @property
     @pulumi.getter(name="nodeConfigs")
-    def node_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]]:
+    def node_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrgs']]]]:
         """
         The list of machine addresses in the Bare Metal Node Pool.
         Structure is documented below.
@@ -2208,7 +2208,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
         return pulumi.get(self, "node_configs")
 
     @node_configs.setter
-    def node_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]]):
+    def node_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrgs']]]]):
         pulumi.set(self, "node_configs", value)
 
     @property
@@ -2225,7 +2225,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
 
     @property
     @pulumi.getter
-    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]]:
+    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrgs']]]]:
         """
         The initial taints assigned to nodes of this node pool.
         Structure is documented below.
@@ -2233,12 +2233,12 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
         return pulumi.get(self, "taints")
 
     @taints.setter
-    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]]):
+    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrgs']]]]):
         pulumi.set(self, "taints", value)
 
 
 @pulumi.input_type
-class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs:
+calass BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArrgs:
     def __init__(__self__, *,
                  registry_burst: Optional[pulumi.Input[int]] = None,
                  registry_pull_qps: Optional[pulumi.Input[int]] = None,
@@ -2319,7 +2319,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
 
 
 @pulumi.input_type
-class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs:
+calass BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrgs:
     def __init__(__self__, *,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  node_ip: Optional[pulumi.Input[str]] = None):
@@ -2378,7 +2378,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
 
 
 @pulumi.input_type
-class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs:
+calass BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrgs:
     def __init__(__self__, *,
                  effect: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
@@ -2435,7 +2435,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
 
 
 @pulumi.input_type
-class BareMetalClusterLoadBalancerManualLbConfigArgs:
+calass BareMetalClusterLoadBalancerManualLbConfigArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -2457,16 +2457,16 @@ class BareMetalClusterLoadBalancerManualLbConfigArgs:
 
 
 @pulumi.input_type
-class BareMetalClusterLoadBalancerMetalLbConfigArgs:
+calass BareMetalClusterLoadBalancerMetalLbConfigArrgs:
     def __init__(__self__, *,
-                 address_pools: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs']]],
-                 load_balancer_node_pool_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs']] = None):
+                 address_pools: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArrgs']]],
+                 load_balancer_node_pool_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArrgs']] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs']]] address_pools: AddressPools is a list of non-overlapping IP pools used by load balancer
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArrgs']]] address_pools: AddressPools is a list of non-overlapping IP pools used by load balancer
                typed services. All addresses must be routable to load balancer nodes.
                IngressVIP must be included in the pools.
                Structure is documented below.
-        :param pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs'] load_balancer_node_pool_config: Specifies the load balancer's node pool configuration.
+        :param pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArrgs'] load_balancer_node_pool_config: Specifies the load balancer's node pool configuration.
                Structure is documented below.
         """
         pulumi.set(__self__, "address_pools", address_pools)
@@ -2475,7 +2475,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigArgs:
 
     @property
     @pulumi.getter(name="addressPools")
-    def address_pools(self) -> pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs']]]:
+    def address_pools(self) -> pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArrgs']]]:
         """
         AddressPools is a list of non-overlapping IP pools used by load balancer
         typed services. All addresses must be routable to load balancer nodes.
@@ -2485,12 +2485,12 @@ class BareMetalClusterLoadBalancerMetalLbConfigArgs:
         return pulumi.get(self, "address_pools")
 
     @address_pools.setter
-    def address_pools(self, value: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs']]]):
+    def address_pools(self, value: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArrgs']]]):
         pulumi.set(self, "address_pools", value)
 
     @property
     @pulumi.getter(name="loadBalancerNodePoolConfig")
-    def load_balancer_node_pool_config(self) -> Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs']]:
+    def load_balancer_node_pool_config(self) -> Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArrgs']]:
         """
         Specifies the load balancer's node pool configuration.
         Structure is documented below.
@@ -2498,12 +2498,12 @@ class BareMetalClusterLoadBalancerMetalLbConfigArgs:
         return pulumi.get(self, "load_balancer_node_pool_config")
 
     @load_balancer_node_pool_config.setter
-    def load_balancer_node_pool_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs']]):
+    def load_balancer_node_pool_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArrgs']]):
         pulumi.set(self, "load_balancer_node_pool_config", value)
 
 
 @pulumi.input_type
-class BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs:
+calass BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArrgs:
     def __init__(__self__, *,
                  addresses: pulumi.Input[Sequence[pulumi.Input[str]]],
                  pool: pulumi.Input[str],
@@ -2574,11 +2574,11 @@ class BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs:
 
 
 @pulumi.input_type
-class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs:
+calass BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArrgs:
     def __init__(__self__, *,
-                 node_pool_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']] = None):
+                 node_pool_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArrgs']] = None):
         """
-        :param pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs'] node_pool_config: The generic configuration for a node pool running a load balancer.
+        :param pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArrgs'] node_pool_config: The generic configuration for a node pool running a load balancer.
                Structure is documented below.
         """
         if node_pool_config is not None:
@@ -2586,7 +2586,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs:
 
     @property
     @pulumi.getter(name="nodePoolConfig")
-    def node_pool_config(self) -> Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']]:
+    def node_pool_config(self) -> Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArrgs']]:
         """
         The generic configuration for a node pool running a load balancer.
         Structure is documented below.
@@ -2594,17 +2594,17 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs:
         return pulumi.get(self, "node_pool_config")
 
     @node_pool_config.setter
-    def node_pool_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']]):
+    def node_pool_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArrgs']]):
         pulumi.set(self, "node_pool_config", value)
 
 
 @pulumi.input_type
-class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs:
+calass BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArrgs:
     def __init__(__self__, *,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 node_configs: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]] = None,
+                 node_configs: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrgs']]]] = None,
                  operating_system: Optional[pulumi.Input[str]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]] = None):
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrgs']]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The map of Kubernetes labels (key/value pairs) to be applied to
                each node. These will added in addition to any default label(s)
@@ -2616,10 +2616,10 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
                http://kubernetes.io/v1.1/docs/user-guide/labels.html
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]] node_configs: The list of machine addresses in the Bare Metal Node Pool.
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrgs']]] node_configs: The list of machine addresses in the Bare Metal Node Pool.
                Structure is documented below.
         :param pulumi.Input[str] operating_system: Specifies the nodes operating system (default: LINUX).
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]] taints: The initial taints assigned to nodes of this node pool.
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrgs']]] taints: The initial taints assigned to nodes of this node pool.
                Structure is documented below.
         """
         if labels is not None:
@@ -2654,7 +2654,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
 
     @property
     @pulumi.getter(name="nodeConfigs")
-    def node_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]]:
+    def node_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrgs']]]]:
         """
         The list of machine addresses in the Bare Metal Node Pool.
         Structure is documented below.
@@ -2662,7 +2662,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
         return pulumi.get(self, "node_configs")
 
     @node_configs.setter
-    def node_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]]):
+    def node_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrgs']]]]):
         pulumi.set(self, "node_configs", value)
 
     @property
@@ -2679,7 +2679,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
 
     @property
     @pulumi.getter
-    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]]:
+    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrgs']]]]:
         """
         The initial taints assigned to nodes of this node pool.
         Structure is documented below.
@@ -2687,12 +2687,12 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
         return pulumi.get(self, "taints")
 
     @taints.setter
-    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]]):
+    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrgs']]]]):
         pulumi.set(self, "taints", value)
 
 
 @pulumi.input_type
-class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs:
+calass BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrgs:
     def __init__(__self__, *,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  node_ip: Optional[pulumi.Input[str]] = None):
@@ -2751,7 +2751,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
 
 
 @pulumi.input_type
-class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs:
+calass BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrgs:
     def __init__(__self__, *,
                  effect: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
@@ -2808,7 +2808,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
 
 
 @pulumi.input_type
-class BareMetalClusterLoadBalancerPortConfigArgs:
+calass BareMetalClusterLoadBalancerPortConfigArrgs:
     def __init__(__self__, *,
                  control_plane_load_balancer_port: pulumi.Input[int]):
         """
@@ -2830,7 +2830,7 @@ class BareMetalClusterLoadBalancerPortConfigArgs:
 
 
 @pulumi.input_type
-class BareMetalClusterLoadBalancerVipConfigArgs:
+calass BareMetalClusterLoadBalancerVipConfigArrgs:
     def __init__(__self__, *,
                  control_plane_vip: pulumi.Input[str],
                  ingress_vip: pulumi.Input[str]):
@@ -2867,7 +2867,7 @@ class BareMetalClusterLoadBalancerVipConfigArgs:
 
 
 @pulumi.input_type
-class BareMetalClusterMaintenanceConfigArgs:
+calass BareMetalClusterMaintenanceConfigArrgs:
     def __init__(__self__, *,
                  maintenance_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -2895,22 +2895,22 @@ class BareMetalClusterMaintenanceConfigArgs:
 
 
 @pulumi.input_type
-class BareMetalClusterNetworkConfigArgs:
+calass BareMetalClusterNetworkConfigArrgs:
     def __init__(__self__, *,
                  advanced_networking: Optional[pulumi.Input[bool]] = None,
-                 island_mode_cidr: Optional[pulumi.Input['BareMetalClusterNetworkConfigIslandModeCidrArgs']] = None,
-                 multiple_network_interfaces_config: Optional[pulumi.Input['BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs']] = None,
-                 sr_iov_config: Optional[pulumi.Input['BareMetalClusterNetworkConfigSrIovConfigArgs']] = None):
+                 island_mode_cidr: Optional[pulumi.Input['BareMetalClusterNetworkConfigIslandModeCidrArrgs']] = None,
+                 multiple_network_interfaces_config: Optional[pulumi.Input['BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArrgs']] = None,
+                 sr_iov_config: Optional[pulumi.Input['BareMetalClusterNetworkConfigSrIovConfigArrgs']] = None):
         """
         :param pulumi.Input[bool] advanced_networking: Enables the use of advanced Anthos networking features, such as Bundled
                Load Balancing with BGP or the egress NAT gateway.
                Setting configuration for advanced networking features will automatically
                set this flag.
-        :param pulumi.Input['BareMetalClusterNetworkConfigIslandModeCidrArgs'] island_mode_cidr: A nested object resource
+        :param pulumi.Input['BareMetalClusterNetworkConfigIslandModeCidrArrgs'] island_mode_cidr: A nested object resource
                Structure is documented below.
-        :param pulumi.Input['BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs'] multiple_network_interfaces_config: Configuration for multiple network interfaces.
+        :param pulumi.Input['BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArrgs'] multiple_network_interfaces_config: Configuration for multiple network interfaces.
                Structure is documented below.
-        :param pulumi.Input['BareMetalClusterNetworkConfigSrIovConfigArgs'] sr_iov_config: Configuration for SR-IOV.
+        :param pulumi.Input['BareMetalClusterNetworkConfigSrIovConfigArrgs'] sr_iov_config: Configuration for SR-IOV.
                Structure is documented below.
         """
         if advanced_networking is not None:
@@ -2939,7 +2939,7 @@ class BareMetalClusterNetworkConfigArgs:
 
     @property
     @pulumi.getter(name="islandModeCidr")
-    def island_mode_cidr(self) -> Optional[pulumi.Input['BareMetalClusterNetworkConfigIslandModeCidrArgs']]:
+    def island_mode_cidr(self) -> Optional[pulumi.Input['BareMetalClusterNetworkConfigIslandModeCidrArrgs']]:
         """
         A nested object resource
         Structure is documented below.
@@ -2947,12 +2947,12 @@ class BareMetalClusterNetworkConfigArgs:
         return pulumi.get(self, "island_mode_cidr")
 
     @island_mode_cidr.setter
-    def island_mode_cidr(self, value: Optional[pulumi.Input['BareMetalClusterNetworkConfigIslandModeCidrArgs']]):
+    def island_mode_cidr(self, value: Optional[pulumi.Input['BareMetalClusterNetworkConfigIslandModeCidrArrgs']]):
         pulumi.set(self, "island_mode_cidr", value)
 
     @property
     @pulumi.getter(name="multipleNetworkInterfacesConfig")
-    def multiple_network_interfaces_config(self) -> Optional[pulumi.Input['BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs']]:
+    def multiple_network_interfaces_config(self) -> Optional[pulumi.Input['BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArrgs']]:
         """
         Configuration for multiple network interfaces.
         Structure is documented below.
@@ -2960,12 +2960,12 @@ class BareMetalClusterNetworkConfigArgs:
         return pulumi.get(self, "multiple_network_interfaces_config")
 
     @multiple_network_interfaces_config.setter
-    def multiple_network_interfaces_config(self, value: Optional[pulumi.Input['BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs']]):
+    def multiple_network_interfaces_config(self, value: Optional[pulumi.Input['BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArrgs']]):
         pulumi.set(self, "multiple_network_interfaces_config", value)
 
     @property
     @pulumi.getter(name="srIovConfig")
-    def sr_iov_config(self) -> Optional[pulumi.Input['BareMetalClusterNetworkConfigSrIovConfigArgs']]:
+    def sr_iov_config(self) -> Optional[pulumi.Input['BareMetalClusterNetworkConfigSrIovConfigArrgs']]:
         """
         Configuration for SR-IOV.
         Structure is documented below.
@@ -2973,12 +2973,12 @@ class BareMetalClusterNetworkConfigArgs:
         return pulumi.get(self, "sr_iov_config")
 
     @sr_iov_config.setter
-    def sr_iov_config(self, value: Optional[pulumi.Input['BareMetalClusterNetworkConfigSrIovConfigArgs']]):
+    def sr_iov_config(self, value: Optional[pulumi.Input['BareMetalClusterNetworkConfigSrIovConfigArrgs']]):
         pulumi.set(self, "sr_iov_config", value)
 
 
 @pulumi.input_type
-class BareMetalClusterNetworkConfigIslandModeCidrArgs:
+calass BareMetalClusterNetworkConfigIslandModeCidrArrgs:
     def __init__(__self__, *,
                  pod_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
                  service_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]]):
@@ -3015,7 +3015,7 @@ class BareMetalClusterNetworkConfigIslandModeCidrArgs:
 
 
 @pulumi.input_type
-class BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs:
+calass BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArrgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
@@ -3042,7 +3042,7 @@ class BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs:
 
 
 @pulumi.input_type
-class BareMetalClusterNetworkConfigSrIovConfigArgs:
+calass BareMetalClusterNetworkConfigSrIovConfigArrgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
@@ -3065,7 +3065,7 @@ class BareMetalClusterNetworkConfigSrIovConfigArgs:
 
 
 @pulumi.input_type
-class BareMetalClusterNodeAccessConfigArgs:
+calass BareMetalClusterNodeAccessConfigArrgs:
     def __init__(__self__, *,
                  login_user: Optional[pulumi.Input[str]] = None):
         """
@@ -3090,7 +3090,7 @@ class BareMetalClusterNodeAccessConfigArgs:
 
 
 @pulumi.input_type
-class BareMetalClusterNodeConfigArgs:
+calass BareMetalClusterNodeConfigArrgs:
     def __init__(__self__, *,
                  container_runtime: Optional[pulumi.Input[str]] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None):
@@ -3133,7 +3133,7 @@ class BareMetalClusterNodeConfigArgs:
 
 
 @pulumi.input_type
-class BareMetalClusterOsEnvironmentConfigArgs:
+calass BareMetalClusterOsEnvironmentConfigArrgs:
     def __init__(__self__, *,
                  package_repo_excluded: pulumi.Input[bool]):
         """
@@ -3157,7 +3157,7 @@ class BareMetalClusterOsEnvironmentConfigArgs:
 
 
 @pulumi.input_type
-class BareMetalClusterProxyArgs:
+calass BareMetalClusterProxyArrgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[str],
                  no_proxies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -3203,11 +3203,11 @@ class BareMetalClusterProxyArgs:
 
 
 @pulumi.input_type
-class BareMetalClusterSecurityConfigArgs:
+calass BareMetalClusterSecurityConfigArrgs:
     def __init__(__self__, *,
-                 authorization: Optional[pulumi.Input['BareMetalClusterSecurityConfigAuthorizationArgs']] = None):
+                 authorization: Optional[pulumi.Input['BareMetalClusterSecurityConfigAuthorizationArrgs']] = None):
         """
-        :param pulumi.Input['BareMetalClusterSecurityConfigAuthorizationArgs'] authorization: Configures user access to the Bare Metal User cluster.
+        :param pulumi.Input['BareMetalClusterSecurityConfigAuthorizationArrgs'] authorization: Configures user access to the Bare Metal User cluster.
                Structure is documented below.
         """
         if authorization is not None:
@@ -3215,7 +3215,7 @@ class BareMetalClusterSecurityConfigArgs:
 
     @property
     @pulumi.getter
-    def authorization(self) -> Optional[pulumi.Input['BareMetalClusterSecurityConfigAuthorizationArgs']]:
+    def authorization(self) -> Optional[pulumi.Input['BareMetalClusterSecurityConfigAuthorizationArrgs']]:
         """
         Configures user access to the Bare Metal User cluster.
         Structure is documented below.
@@ -3223,23 +3223,23 @@ class BareMetalClusterSecurityConfigArgs:
         return pulumi.get(self, "authorization")
 
     @authorization.setter
-    def authorization(self, value: Optional[pulumi.Input['BareMetalClusterSecurityConfigAuthorizationArgs']]):
+    def authorization(self, value: Optional[pulumi.Input['BareMetalClusterSecurityConfigAuthorizationArrgs']]):
         pulumi.set(self, "authorization", value)
 
 
 @pulumi.input_type
-class BareMetalClusterSecurityConfigAuthorizationArgs:
+calass BareMetalClusterSecurityConfigAuthorizationArrgs:
     def __init__(__self__, *,
-                 admin_users: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterSecurityConfigAuthorizationAdminUserArgs']]]):
+                 admin_users: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterSecurityConfigAuthorizationAdminUserArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterSecurityConfigAuthorizationAdminUserArgs']]] admin_users: Users that will be granted the cluster-admin role on the cluster, providing full access to the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterSecurityConfigAuthorizationAdminUserArrgs']]] admin_users: Users that will be granted the cluster-admin role on the cluster, providing full access to the cluster.
                Structure is documented below.
         """
         pulumi.set(__self__, "admin_users", admin_users)
 
     @property
     @pulumi.getter(name="adminUsers")
-    def admin_users(self) -> pulumi.Input[Sequence[pulumi.Input['BareMetalClusterSecurityConfigAuthorizationAdminUserArgs']]]:
+    def admin_users(self) -> pulumi.Input[Sequence[pulumi.Input['BareMetalClusterSecurityConfigAuthorizationAdminUserArrgs']]]:
         """
         Users that will be granted the cluster-admin role on the cluster, providing full access to the cluster.
         Structure is documented below.
@@ -3247,12 +3247,12 @@ class BareMetalClusterSecurityConfigAuthorizationArgs:
         return pulumi.get(self, "admin_users")
 
     @admin_users.setter
-    def admin_users(self, value: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterSecurityConfigAuthorizationAdminUserArgs']]]):
+    def admin_users(self, value: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterSecurityConfigAuthorizationAdminUserArrgs']]]):
         pulumi.set(self, "admin_users", value)
 
 
 @pulumi.input_type
-class BareMetalClusterSecurityConfigAuthorizationAdminUserArgs:
+calass BareMetalClusterSecurityConfigAuthorizationAdminUserArrgs:
     def __init__(__self__, *,
                  username: pulumi.Input[str]):
         """
@@ -3274,12 +3274,12 @@ class BareMetalClusterSecurityConfigAuthorizationAdminUserArgs:
 
 
 @pulumi.input_type
-class BareMetalClusterStatusArgs:
+calass BareMetalClusterStatusArrgs:
     def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterStatusConditionArgs']]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterStatusConditionArrgs']]]] = None,
                  error_message: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterStatusConditionArgs']]] conditions: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterStatusConditionArrgs']]] conditions: (Output)
                ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
                Structure is documented below.
         :param pulumi.Input[str] error_message: (Output)
@@ -3296,7 +3296,7 @@ class BareMetalClusterStatusArgs:
 
     @property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterStatusConditionArgs']]]]:
+    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterStatusConditionArrgs']]]]:
         """
         (Output)
         ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
@@ -3305,7 +3305,7 @@ class BareMetalClusterStatusArgs:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterStatusConditionArgs']]]]):
+    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterStatusConditionArrgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @property
@@ -3327,7 +3327,7 @@ class BareMetalClusterStatusArgs:
 
 
 @pulumi.input_type
-class BareMetalClusterStatusConditionArgs:
+calass BareMetalClusterStatusConditionArrgs:
     def __init__(__self__, *,
                  last_transition_time: Optional[pulumi.Input[str]] = None,
                  message: Optional[pulumi.Input[str]] = None,
@@ -3422,16 +3422,16 @@ class BareMetalClusterStatusConditionArgs:
 
 
 @pulumi.input_type
-class BareMetalClusterStorageArgs:
+calass BareMetalClusterStorageArrgs:
     def __init__(__self__, *,
-                 lvp_node_mounts_config: pulumi.Input['BareMetalClusterStorageLvpNodeMountsConfigArgs'],
-                 lvp_share_config: pulumi.Input['BareMetalClusterStorageLvpShareConfigArgs']):
+                 lvp_node_mounts_config: pulumi.Input['BareMetalClusterStorageLvpNodeMountsConfigArrgs'],
+                 lvp_share_config: pulumi.Input['BareMetalClusterStorageLvpShareConfigArrgs']):
         """
-        :param pulumi.Input['BareMetalClusterStorageLvpNodeMountsConfigArgs'] lvp_node_mounts_config: Specifies the config for local PersistentVolumes backed
+        :param pulumi.Input['BareMetalClusterStorageLvpNodeMountsConfigArrgs'] lvp_node_mounts_config: Specifies the config for local PersistentVolumes backed
                by mounted node disks. These disks need to be formatted and mounted by the
                user, which can be done before or after cluster creation.
                Structure is documented below.
-        :param pulumi.Input['BareMetalClusterStorageLvpShareConfigArgs'] lvp_share_config: Specifies the config for local PersistentVolumes backed by
+        :param pulumi.Input['BareMetalClusterStorageLvpShareConfigArrgs'] lvp_share_config: Specifies the config for local PersistentVolumes backed by
                subdirectories in a shared filesystem. These subdirectores are
                automatically created during cluster creation.
                Structure is documented below.
@@ -3441,7 +3441,7 @@ class BareMetalClusterStorageArgs:
 
     @property
     @pulumi.getter(name="lvpNodeMountsConfig")
-    def lvp_node_mounts_config(self) -> pulumi.Input['BareMetalClusterStorageLvpNodeMountsConfigArgs']:
+    def lvp_node_mounts_config(self) -> pulumi.Input['BareMetalClusterStorageLvpNodeMountsConfigArrgs']:
         """
         Specifies the config for local PersistentVolumes backed
         by mounted node disks. These disks need to be formatted and mounted by the
@@ -3451,12 +3451,12 @@ class BareMetalClusterStorageArgs:
         return pulumi.get(self, "lvp_node_mounts_config")
 
     @lvp_node_mounts_config.setter
-    def lvp_node_mounts_config(self, value: pulumi.Input['BareMetalClusterStorageLvpNodeMountsConfigArgs']):
+    def lvp_node_mounts_config(self, value: pulumi.Input['BareMetalClusterStorageLvpNodeMountsConfigArrgs']):
         pulumi.set(self, "lvp_node_mounts_config", value)
 
     @property
     @pulumi.getter(name="lvpShareConfig")
-    def lvp_share_config(self) -> pulumi.Input['BareMetalClusterStorageLvpShareConfigArgs']:
+    def lvp_share_config(self) -> pulumi.Input['BareMetalClusterStorageLvpShareConfigArrgs']:
         """
         Specifies the config for local PersistentVolumes backed by
         subdirectories in a shared filesystem. These subdirectores are
@@ -3466,12 +3466,12 @@ class BareMetalClusterStorageArgs:
         return pulumi.get(self, "lvp_share_config")
 
     @lvp_share_config.setter
-    def lvp_share_config(self, value: pulumi.Input['BareMetalClusterStorageLvpShareConfigArgs']):
+    def lvp_share_config(self, value: pulumi.Input['BareMetalClusterStorageLvpShareConfigArrgs']):
         pulumi.set(self, "lvp_share_config", value)
 
 
 @pulumi.input_type
-class BareMetalClusterStorageLvpNodeMountsConfigArgs:
+calass BareMetalClusterStorageLvpNodeMountsConfigArrgs:
     def __init__(__self__, *,
                  path: pulumi.Input[str],
                  storage_class: pulumi.Input[str]):
@@ -3512,12 +3512,12 @@ class BareMetalClusterStorageLvpNodeMountsConfigArgs:
 
 
 @pulumi.input_type
-class BareMetalClusterStorageLvpShareConfigArgs:
+calass BareMetalClusterStorageLvpShareConfigArrgs:
     def __init__(__self__, *,
-                 lvp_config: pulumi.Input['BareMetalClusterStorageLvpShareConfigLvpConfigArgs'],
+                 lvp_config: pulumi.Input['BareMetalClusterStorageLvpShareConfigLvpConfigArrgs'],
                  shared_path_pv_count: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input['BareMetalClusterStorageLvpShareConfigLvpConfigArgs'] lvp_config: Defines the machine path and storage class for the LVP Share.
+        :param pulumi.Input['BareMetalClusterStorageLvpShareConfigLvpConfigArrgs'] lvp_config: Defines the machine path and storage class for the LVP Share.
                Structure is documented below.
         :param pulumi.Input[int] shared_path_pv_count: The number of subdirectories to create under path.
         """
@@ -3527,7 +3527,7 @@ class BareMetalClusterStorageLvpShareConfigArgs:
 
     @property
     @pulumi.getter(name="lvpConfig")
-    def lvp_config(self) -> pulumi.Input['BareMetalClusterStorageLvpShareConfigLvpConfigArgs']:
+    def lvp_config(self) -> pulumi.Input['BareMetalClusterStorageLvpShareConfigLvpConfigArrgs']:
         """
         Defines the machine path and storage class for the LVP Share.
         Structure is documented below.
@@ -3535,7 +3535,7 @@ class BareMetalClusterStorageLvpShareConfigArgs:
         return pulumi.get(self, "lvp_config")
 
     @lvp_config.setter
-    def lvp_config(self, value: pulumi.Input['BareMetalClusterStorageLvpShareConfigLvpConfigArgs']):
+    def lvp_config(self, value: pulumi.Input['BareMetalClusterStorageLvpShareConfigLvpConfigArrgs']):
         pulumi.set(self, "lvp_config", value)
 
     @property
@@ -3552,7 +3552,7 @@ class BareMetalClusterStorageLvpShareConfigArgs:
 
 
 @pulumi.input_type
-class BareMetalClusterStorageLvpShareConfigLvpConfigArgs:
+calass BareMetalClusterStorageLvpShareConfigLvpConfigArrgs:
     def __init__(__self__, *,
                  path: pulumi.Input[str],
                  storage_class: pulumi.Input[str]):
@@ -3589,7 +3589,7 @@ class BareMetalClusterStorageLvpShareConfigLvpConfigArgs:
 
 
 @pulumi.input_type
-class BareMetalClusterUpgradePolicyArgs:
+calass BareMetalClusterUpgradePolicyArrgs:
     def __init__(__self__, *,
                  policy: Optional[pulumi.Input[str]] = None):
         """
@@ -3614,17 +3614,17 @@ class BareMetalClusterUpgradePolicyArgs:
 
 
 @pulumi.input_type
-class BareMetalClusterValidationCheckArgs:
+calass BareMetalClusterValidationCheckArrgs:
     def __init__(__self__, *,
                  options: Optional[pulumi.Input[str]] = None,
                  scenario: Optional[pulumi.Input[str]] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusArgs']]]] = None):
+                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusArrgs']]]] = None):
         """
         :param pulumi.Input[str] options: (Output)
                Options used for the validation check.
         :param pulumi.Input[str] scenario: (Output)
                The scenario when the preflight checks were run..
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusArgs']]] statuses: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusArrgs']]] statuses: (Output)
                Specifies the detailed validation check status
                Structure is documented below.
         """
@@ -3663,7 +3663,7 @@ class BareMetalClusterValidationCheckArgs:
 
     @property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusArgs']]]]:
+    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusArrgs']]]]:
         """
         (Output)
         Specifies the detailed validation check status
@@ -3672,16 +3672,16 @@ class BareMetalClusterValidationCheckArgs:
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusArgs']]]]):
+    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusArrgs']]]]):
         pulumi.set(self, "statuses", value)
 
 
 @pulumi.input_type
-class BareMetalClusterValidationCheckStatusArgs:
+calass BareMetalClusterValidationCheckStatusArrgs:
     def __init__(__self__, *,
-                 results: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusResultArgs']]]] = None):
+                 results: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusResultArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusResultArgs']]] results: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusResultArrgs']]] results: (Output)
                Individual checks which failed as part of the Preflight check execution.
                Structure is documented below.
         """
@@ -3690,7 +3690,7 @@ class BareMetalClusterValidationCheckStatusArgs:
 
     @property
     @pulumi.getter
-    def results(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusResultArgs']]]]:
+    def results(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusResultArrgs']]]]:
         """
         (Output)
         Individual checks which failed as part of the Preflight check execution.
@@ -3699,12 +3699,12 @@ class BareMetalClusterValidationCheckStatusArgs:
         return pulumi.get(self, "results")
 
     @results.setter
-    def results(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusResultArgs']]]]):
+    def results(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusResultArrgs']]]]):
         pulumi.set(self, "results", value)
 
 
 @pulumi.input_type
-class BareMetalClusterValidationCheckStatusResultArgs:
+calass BareMetalClusterValidationCheckStatusResultArrgs:
     def __init__(__self__, *,
                  category: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -3799,14 +3799,14 @@ class BareMetalClusterValidationCheckStatusResultArgs:
 
 
 @pulumi.input_type
-class BareMetalNodePoolNodePoolConfigArgs:
+calass BareMetalNodePoolNodePoolConfigArrgs:
     def __init__(__self__, *,
-                 node_configs: pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigNodeConfigArgs']]],
+                 node_configs: pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigNodeConfigArrgs']]],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  operating_system: Optional[pulumi.Input[str]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigTaintArgs']]]] = None):
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigTaintArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigNodeConfigArgs']]] node_configs: The list of machine addresses in the Bare Metal Node Pool.
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigNodeConfigArrgs']]] node_configs: The list of machine addresses in the Bare Metal Node Pool.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The map of Kubernetes labels (key/value pairs) to be applied to
                each node. These will added in addition to any default label(s)
@@ -3819,7 +3819,7 @@ class BareMetalNodePoolNodePoolConfigArgs:
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] operating_system: Specifies the nodes operating system (default: LINUX).
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigTaintArgs']]] taints: The initial taints assigned to nodes of this node pool.
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigTaintArrgs']]] taints: The initial taints assigned to nodes of this node pool.
                Structure is documented below.
         """
         pulumi.set(__self__, "node_configs", node_configs)
@@ -3832,7 +3832,7 @@ class BareMetalNodePoolNodePoolConfigArgs:
 
     @property
     @pulumi.getter(name="nodeConfigs")
-    def node_configs(self) -> pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigNodeConfigArgs']]]:
+    def node_configs(self) -> pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigNodeConfigArrgs']]]:
         """
         The list of machine addresses in the Bare Metal Node Pool.
         Structure is documented below.
@@ -3840,7 +3840,7 @@ class BareMetalNodePoolNodePoolConfigArgs:
         return pulumi.get(self, "node_configs")
 
     @node_configs.setter
-    def node_configs(self, value: pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigNodeConfigArgs']]]):
+    def node_configs(self, value: pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigNodeConfigArrgs']]]):
         pulumi.set(self, "node_configs", value)
 
     @property
@@ -3878,7 +3878,7 @@ class BareMetalNodePoolNodePoolConfigArgs:
 
     @property
     @pulumi.getter
-    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigTaintArgs']]]]:
+    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigTaintArrgs']]]]:
         """
         The initial taints assigned to nodes of this node pool.
         Structure is documented below.
@@ -3886,12 +3886,12 @@ class BareMetalNodePoolNodePoolConfigArgs:
         return pulumi.get(self, "taints")
 
     @taints.setter
-    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigTaintArgs']]]]):
+    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigTaintArrgs']]]]):
         pulumi.set(self, "taints", value)
 
 
 @pulumi.input_type
-class BareMetalNodePoolNodePoolConfigNodeConfigArgs:
+calass BareMetalNodePoolNodePoolConfigNodeConfigArrgs:
     def __init__(__self__, *,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  node_ip: Optional[pulumi.Input[str]] = None):
@@ -3950,7 +3950,7 @@ class BareMetalNodePoolNodePoolConfigNodeConfigArgs:
 
 
 @pulumi.input_type
-class BareMetalNodePoolNodePoolConfigTaintArgs:
+calass BareMetalNodePoolNodePoolConfigTaintArrgs:
     def __init__(__self__, *,
                  effect: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
@@ -4011,12 +4011,12 @@ class BareMetalNodePoolNodePoolConfigTaintArgs:
 
 
 @pulumi.input_type
-class BareMetalNodePoolStatusArgs:
+calass BareMetalNodePoolStatusArrgs:
     def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolStatusConditionArgs']]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolStatusConditionArrgs']]]] = None,
                  error_message: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolStatusConditionArgs']]] conditions: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolStatusConditionArrgs']]] conditions: (Output)
                ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
                Structure is documented below.
         :param pulumi.Input[str] error_message: (Output)
@@ -4033,7 +4033,7 @@ class BareMetalNodePoolStatusArgs:
 
     @property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolStatusConditionArgs']]]]:
+    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolStatusConditionArrgs']]]]:
         """
         (Output)
         ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
@@ -4042,7 +4042,7 @@ class BareMetalNodePoolStatusArgs:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolStatusConditionArgs']]]]):
+    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolStatusConditionArrgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @property
@@ -4064,7 +4064,7 @@ class BareMetalNodePoolStatusArgs:
 
 
 @pulumi.input_type
-class BareMetalNodePoolStatusConditionArgs:
+calass BareMetalNodePoolStatusConditionArrgs:
     def __init__(__self__, *,
                  last_transition_time: Optional[pulumi.Input[str]] = None,
                  message: Optional[pulumi.Input[str]] = None,
@@ -4157,7 +4157,7 @@ class BareMetalNodePoolStatusConditionArgs:
 
 
 @pulumi.input_type
-class VMwareClusterAntiAffinityGroupsArgs:
+calass VMwareClusterAntiAffinityGroupsArrgs:
     def __init__(__self__, *,
                  aag_config_disabled: pulumi.Input[bool]):
         """
@@ -4183,11 +4183,11 @@ class VMwareClusterAntiAffinityGroupsArgs:
 
 
 @pulumi.input_type
-class VMwareClusterAuthorizationArgs:
+calass VMwareClusterAuthorizationArrgs:
     def __init__(__self__, *,
-                 admin_users: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterAuthorizationAdminUserArgs']]]] = None):
+                 admin_users: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterAuthorizationAdminUserArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterAuthorizationAdminUserArgs']]] admin_users: Users that will be granted the cluster-admin role on the cluster, providing
+        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterAuthorizationAdminUserArrgs']]] admin_users: Users that will be granted the cluster-admin role on the cluster, providing
                full access to the cluster.
                Structure is documented below.
         """
@@ -4196,7 +4196,7 @@ class VMwareClusterAuthorizationArgs:
 
     @property
     @pulumi.getter(name="adminUsers")
-    def admin_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterAuthorizationAdminUserArgs']]]]:
+    def admin_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterAuthorizationAdminUserArrgs']]]]:
         """
         Users that will be granted the cluster-admin role on the cluster, providing
         full access to the cluster.
@@ -4205,12 +4205,12 @@ class VMwareClusterAuthorizationArgs:
         return pulumi.get(self, "admin_users")
 
     @admin_users.setter
-    def admin_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterAuthorizationAdminUserArgs']]]]):
+    def admin_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterAuthorizationAdminUserArrgs']]]]):
         pulumi.set(self, "admin_users", value)
 
 
 @pulumi.input_type
-class VMwareClusterAuthorizationAdminUserArgs:
+calass VMwareClusterAuthorizationAdminUserArrgs:
     def __init__(__self__, *,
                  username: pulumi.Input[str]):
         """
@@ -4232,7 +4232,7 @@ class VMwareClusterAuthorizationAdminUserArgs:
 
 
 @pulumi.input_type
-class VMwareClusterAutoRepairConfigArgs:
+calass VMwareClusterAutoRepairConfigArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -4254,15 +4254,15 @@ class VMwareClusterAutoRepairConfigArgs:
 
 
 @pulumi.input_type
-class VMwareClusterControlPlaneNodeArgs:
+calass VMwareClusterControlPlaneNodeArrgs:
     def __init__(__self__, *,
-                 auto_resize_config: Optional[pulumi.Input['VMwareClusterControlPlaneNodeAutoResizeConfigArgs']] = None,
+                 auto_resize_config: Optional[pulumi.Input['VMwareClusterControlPlaneNodeAutoResizeConfigArrgs']] = None,
                  cpus: Optional[pulumi.Input[int]] = None,
                  memory: Optional[pulumi.Input[int]] = None,
                  replicas: Optional[pulumi.Input[int]] = None,
-                 vsphere_configs: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterControlPlaneNodeVsphereConfigArgs']]]] = None):
+                 vsphere_configs: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterControlPlaneNodeVsphereConfigArrgs']]]] = None):
         """
-        :param pulumi.Input['VMwareClusterControlPlaneNodeAutoResizeConfigArgs'] auto_resize_config: AutoResizeConfig provides auto resizing configurations.
+        :param pulumi.Input['VMwareClusterControlPlaneNodeAutoResizeConfigArrgs'] auto_resize_config: AutoResizeConfig provides auto resizing configurations.
                Structure is documented below.
         :param pulumi.Input[int] cpus: The number of CPUs for each admin cluster node that serve as control planes
                for this VMware User Cluster. (default: 4 CPUs)
@@ -4270,7 +4270,7 @@ class VMwareClusterControlPlaneNodeArgs:
                control plane for this VMware User Cluster (default: 8192 MB memory).
         :param pulumi.Input[int] replicas: The number of control plane nodes for this VMware User Cluster.
                (default: 1 replica).
-        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterControlPlaneNodeVsphereConfigArgs']]] vsphere_configs: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterControlPlaneNodeVsphereConfigArrgs']]] vsphere_configs: (Output)
                Vsphere-specific config.
                Structure is documented below.
         """
@@ -4287,7 +4287,7 @@ class VMwareClusterControlPlaneNodeArgs:
 
     @property
     @pulumi.getter(name="autoResizeConfig")
-    def auto_resize_config(self) -> Optional[pulumi.Input['VMwareClusterControlPlaneNodeAutoResizeConfigArgs']]:
+    def auto_resize_config(self) -> Optional[pulumi.Input['VMwareClusterControlPlaneNodeAutoResizeConfigArrgs']]:
         """
         AutoResizeConfig provides auto resizing configurations.
         Structure is documented below.
@@ -4295,7 +4295,7 @@ class VMwareClusterControlPlaneNodeArgs:
         return pulumi.get(self, "auto_resize_config")
 
     @auto_resize_config.setter
-    def auto_resize_config(self, value: Optional[pulumi.Input['VMwareClusterControlPlaneNodeAutoResizeConfigArgs']]):
+    def auto_resize_config(self, value: Optional[pulumi.Input['VMwareClusterControlPlaneNodeAutoResizeConfigArrgs']]):
         pulumi.set(self, "auto_resize_config", value)
 
     @property
@@ -4339,7 +4339,7 @@ class VMwareClusterControlPlaneNodeArgs:
 
     @property
     @pulumi.getter(name="vsphereConfigs")
-    def vsphere_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterControlPlaneNodeVsphereConfigArgs']]]]:
+    def vsphere_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterControlPlaneNodeVsphereConfigArrgs']]]]:
         """
         (Output)
         Vsphere-specific config.
@@ -4348,12 +4348,12 @@ class VMwareClusterControlPlaneNodeArgs:
         return pulumi.get(self, "vsphere_configs")
 
     @vsphere_configs.setter
-    def vsphere_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterControlPlaneNodeVsphereConfigArgs']]]]):
+    def vsphere_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterControlPlaneNodeVsphereConfigArrgs']]]]):
         pulumi.set(self, "vsphere_configs", value)
 
 
 @pulumi.input_type
-class VMwareClusterControlPlaneNodeAutoResizeConfigArgs:
+calass VMwareClusterControlPlaneNodeAutoResizeConfigArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -4379,7 +4379,7 @@ class VMwareClusterControlPlaneNodeAutoResizeConfigArgs:
 
 
 @pulumi.input_type
-class VMwareClusterControlPlaneNodeVsphereConfigArgs:
+calass VMwareClusterControlPlaneNodeVsphereConfigArrgs:
     def __init__(__self__, *,
                  datastore: Optional[pulumi.Input[str]] = None,
                  storage_policy_name: Optional[pulumi.Input[str]] = None):
@@ -4426,7 +4426,7 @@ class VMwareClusterControlPlaneNodeVsphereConfigArgs:
 
 
 @pulumi.input_type
-class VMwareClusterDataplaneV2Args:
+calass VMwareClusterDataplaneV2Arrgs:
     def __init__(__self__, *,
                  advanced_networking: Optional[pulumi.Input[bool]] = None,
                  dataplane_v2_enabled: Optional[pulumi.Input[bool]] = None,
@@ -4481,7 +4481,7 @@ class VMwareClusterDataplaneV2Args:
 
 
 @pulumi.input_type
-class VMwareClusterFleetArgs:
+calass VMwareClusterFleetArrgs:
     def __init__(__self__, *,
                  membership: Optional[pulumi.Input[str]] = None):
         """
@@ -4510,20 +4510,20 @@ class VMwareClusterFleetArgs:
 
 
 @pulumi.input_type
-class VMwareClusterLoadBalancerArgs:
+calass VMwareClusterLoadBalancerArrgs:
     def __init__(__self__, *,
-                 f5_config: Optional[pulumi.Input['VMwareClusterLoadBalancerF5ConfigArgs']] = None,
-                 manual_lb_config: Optional[pulumi.Input['VMwareClusterLoadBalancerManualLbConfigArgs']] = None,
-                 metal_lb_config: Optional[pulumi.Input['VMwareClusterLoadBalancerMetalLbConfigArgs']] = None,
-                 vip_config: Optional[pulumi.Input['VMwareClusterLoadBalancerVipConfigArgs']] = None):
+                 f5_config: Optional[pulumi.Input['VMwareClusterLoadBalancerF5ConfigArrgs']] = None,
+                 manual_lb_config: Optional[pulumi.Input['VMwareClusterLoadBalancerManualLbConfigArrgs']] = None,
+                 metal_lb_config: Optional[pulumi.Input['VMwareClusterLoadBalancerMetalLbConfigArrgs']] = None,
+                 vip_config: Optional[pulumi.Input['VMwareClusterLoadBalancerVipConfigArrgs']] = None):
         """
-        :param pulumi.Input['VMwareClusterLoadBalancerF5ConfigArgs'] f5_config: Configuration for F5 Big IP typed load balancers.
+        :param pulumi.Input['VMwareClusterLoadBalancerF5ConfigArrgs'] f5_config: Configuration for F5 Big IP typed load balancers.
                Structure is documented below.
-        :param pulumi.Input['VMwareClusterLoadBalancerManualLbConfigArgs'] manual_lb_config: Manually configured load balancers.
+        :param pulumi.Input['VMwareClusterLoadBalancerManualLbConfigArrgs'] manual_lb_config: Manually configured load balancers.
                Structure is documented below.
-        :param pulumi.Input['VMwareClusterLoadBalancerMetalLbConfigArgs'] metal_lb_config: Configuration for MetalLB typed load balancers.
+        :param pulumi.Input['VMwareClusterLoadBalancerMetalLbConfigArrgs'] metal_lb_config: Configuration for MetalLB typed load balancers.
                Structure is documented below.
-        :param pulumi.Input['VMwareClusterLoadBalancerVipConfigArgs'] vip_config: The VIPs used by the load balancer.
+        :param pulumi.Input['VMwareClusterLoadBalancerVipConfigArrgs'] vip_config: The VIPs used by the load balancer.
                Structure is documented below.
         """
         if f5_config is not None:
@@ -4537,7 +4537,7 @@ class VMwareClusterLoadBalancerArgs:
 
     @property
     @pulumi.getter(name="f5Config")
-    def f5_config(self) -> Optional[pulumi.Input['VMwareClusterLoadBalancerF5ConfigArgs']]:
+    def f5_config(self) -> Optional[pulumi.Input['VMwareClusterLoadBalancerF5ConfigArrgs']]:
         """
         Configuration for F5 Big IP typed load balancers.
         Structure is documented below.
@@ -4545,12 +4545,12 @@ class VMwareClusterLoadBalancerArgs:
         return pulumi.get(self, "f5_config")
 
     @f5_config.setter
-    def f5_config(self, value: Optional[pulumi.Input['VMwareClusterLoadBalancerF5ConfigArgs']]):
+    def f5_config(self, value: Optional[pulumi.Input['VMwareClusterLoadBalancerF5ConfigArrgs']]):
         pulumi.set(self, "f5_config", value)
 
     @property
     @pulumi.getter(name="manualLbConfig")
-    def manual_lb_config(self) -> Optional[pulumi.Input['VMwareClusterLoadBalancerManualLbConfigArgs']]:
+    def manual_lb_config(self) -> Optional[pulumi.Input['VMwareClusterLoadBalancerManualLbConfigArrgs']]:
         """
         Manually configured load balancers.
         Structure is documented below.
@@ -4558,12 +4558,12 @@ class VMwareClusterLoadBalancerArgs:
         return pulumi.get(self, "manual_lb_config")
 
     @manual_lb_config.setter
-    def manual_lb_config(self, value: Optional[pulumi.Input['VMwareClusterLoadBalancerManualLbConfigArgs']]):
+    def manual_lb_config(self, value: Optional[pulumi.Input['VMwareClusterLoadBalancerManualLbConfigArrgs']]):
         pulumi.set(self, "manual_lb_config", value)
 
     @property
     @pulumi.getter(name="metalLbConfig")
-    def metal_lb_config(self) -> Optional[pulumi.Input['VMwareClusterLoadBalancerMetalLbConfigArgs']]:
+    def metal_lb_config(self) -> Optional[pulumi.Input['VMwareClusterLoadBalancerMetalLbConfigArrgs']]:
         """
         Configuration for MetalLB typed load balancers.
         Structure is documented below.
@@ -4571,12 +4571,12 @@ class VMwareClusterLoadBalancerArgs:
         return pulumi.get(self, "metal_lb_config")
 
     @metal_lb_config.setter
-    def metal_lb_config(self, value: Optional[pulumi.Input['VMwareClusterLoadBalancerMetalLbConfigArgs']]):
+    def metal_lb_config(self, value: Optional[pulumi.Input['VMwareClusterLoadBalancerMetalLbConfigArrgs']]):
         pulumi.set(self, "metal_lb_config", value)
 
     @property
     @pulumi.getter(name="vipConfig")
-    def vip_config(self) -> Optional[pulumi.Input['VMwareClusterLoadBalancerVipConfigArgs']]:
+    def vip_config(self) -> Optional[pulumi.Input['VMwareClusterLoadBalancerVipConfigArrgs']]:
         """
         The VIPs used by the load balancer.
         Structure is documented below.
@@ -4584,12 +4584,12 @@ class VMwareClusterLoadBalancerArgs:
         return pulumi.get(self, "vip_config")
 
     @vip_config.setter
-    def vip_config(self, value: Optional[pulumi.Input['VMwareClusterLoadBalancerVipConfigArgs']]):
+    def vip_config(self, value: Optional[pulumi.Input['VMwareClusterLoadBalancerVipConfigArrgs']]):
         pulumi.set(self, "vip_config", value)
 
 
 @pulumi.input_type
-class VMwareClusterLoadBalancerF5ConfigArgs:
+calass VMwareClusterLoadBalancerF5ConfigArrgs:
     def __init__(__self__, *,
                  address: Optional[pulumi.Input[str]] = None,
                  partition: Optional[pulumi.Input[str]] = None,
@@ -4650,7 +4650,7 @@ class VMwareClusterLoadBalancerF5ConfigArgs:
 
 
 @pulumi.input_type
-class VMwareClusterLoadBalancerManualLbConfigArgs:
+calass VMwareClusterLoadBalancerManualLbConfigArrgs:
     def __init__(__self__, *,
                  control_plane_node_port: Optional[pulumi.Input[int]] = None,
                  ingress_http_node_port: Optional[pulumi.Input[int]] = None,
@@ -4729,11 +4729,11 @@ class VMwareClusterLoadBalancerManualLbConfigArgs:
 
 
 @pulumi.input_type
-class VMwareClusterLoadBalancerMetalLbConfigArgs:
+calass VMwareClusterLoadBalancerMetalLbConfigArrgs:
     def __init__(__self__, *,
-                 address_pools: pulumi.Input[Sequence[pulumi.Input['VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs']]]):
+                 address_pools: pulumi.Input[Sequence[pulumi.Input['VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs']]] address_pools: AddressPools is a list of non-overlapping IP pools used by load balancer
+        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrgs']]] address_pools: AddressPools is a list of non-overlapping IP pools used by load balancer
                typed services. All addresses must be routable to load balancer nodes.
                IngressVIP must be included in the pools.
                Structure is documented below.
@@ -4742,7 +4742,7 @@ class VMwareClusterLoadBalancerMetalLbConfigArgs:
 
     @property
     @pulumi.getter(name="addressPools")
-    def address_pools(self) -> pulumi.Input[Sequence[pulumi.Input['VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs']]]:
+    def address_pools(self) -> pulumi.Input[Sequence[pulumi.Input['VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrgs']]]:
         """
         AddressPools is a list of non-overlapping IP pools used by load balancer
         typed services. All addresses must be routable to load balancer nodes.
@@ -4752,12 +4752,12 @@ class VMwareClusterLoadBalancerMetalLbConfigArgs:
         return pulumi.get(self, "address_pools")
 
     @address_pools.setter
-    def address_pools(self, value: pulumi.Input[Sequence[pulumi.Input['VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs']]]):
+    def address_pools(self, value: pulumi.Input[Sequence[pulumi.Input['VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrgs']]]):
         pulumi.set(self, "address_pools", value)
 
 
 @pulumi.input_type
-class VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs:
+calass VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrgs:
     def __init__(__self__, *,
                  addresses: pulumi.Input[Sequence[pulumi.Input[str]]],
                  pool: pulumi.Input[str],
@@ -4838,7 +4838,7 @@ class VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs:
 
 
 @pulumi.input_type
-class VMwareClusterLoadBalancerVipConfigArgs:
+calass VMwareClusterLoadBalancerVipConfigArrgs:
     def __init__(__self__, *,
                  control_plane_vip: Optional[pulumi.Input[str]] = None,
                  ingress_vip: Optional[pulumi.Input[str]] = None):
@@ -4881,14 +4881,14 @@ class VMwareClusterLoadBalancerVipConfigArgs:
 
 
 @pulumi.input_type
-class VMwareClusterNetworkConfigArgs:
+calass VMwareClusterNetworkConfigArrgs:
     def __init__(__self__, *,
                  pod_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
                  service_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 control_plane_v2_config: Optional[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigArgs']] = None,
-                 dhcp_ip_config: Optional[pulumi.Input['VMwareClusterNetworkConfigDhcpIpConfigArgs']] = None,
-                 host_config: Optional[pulumi.Input['VMwareClusterNetworkConfigHostConfigArgs']] = None,
-                 static_ip_config: Optional[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigArgs']] = None,
+                 control_plane_v2_config: Optional[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigArrgs']] = None,
+                 dhcp_ip_config: Optional[pulumi.Input['VMwareClusterNetworkConfigDhcpIpConfigArrgs']] = None,
+                 host_config: Optional[pulumi.Input['VMwareClusterNetworkConfigHostConfigArrgs']] = None,
+                 static_ip_config: Optional[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigArrgs']] = None,
                  vcenter_network: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_address_cidr_blocks: All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges.
@@ -4896,13 +4896,13 @@ class VMwareClusterNetworkConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_address_cidr_blocks: All services in the cluster are assigned an RFC1918 IPv4 address
                from these ranges. Only a single range is supported.. This field
                cannot be changed after creation.
-        :param pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigArgs'] control_plane_v2_config: Configuration for control plane V2 mode.
+        :param pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigArrgs'] control_plane_v2_config: Configuration for control plane V2 mode.
                Structure is documented below.
-        :param pulumi.Input['VMwareClusterNetworkConfigDhcpIpConfigArgs'] dhcp_ip_config: Configuration settings for a DHCP IP configuration.
+        :param pulumi.Input['VMwareClusterNetworkConfigDhcpIpConfigArrgs'] dhcp_ip_config: Configuration settings for a DHCP IP configuration.
                Structure is documented below.
-        :param pulumi.Input['VMwareClusterNetworkConfigHostConfigArgs'] host_config: Represents common network settings irrespective of the host's IP address.
+        :param pulumi.Input['VMwareClusterNetworkConfigHostConfigArrgs'] host_config: Represents common network settings irrespective of the host's IP address.
                Structure is documented below.
-        :param pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigArgs'] static_ip_config: Configuration settings for a static IP configuration.
+        :param pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigArrgs'] static_ip_config: Configuration settings for a static IP configuration.
                Structure is documented below.
         :param pulumi.Input[str] vcenter_network: (Output)
                vcenter_network specifies vCenter network name. Inherited from the admin cluster.
@@ -4949,7 +4949,7 @@ class VMwareClusterNetworkConfigArgs:
 
     @property
     @pulumi.getter(name="controlPlaneV2Config")
-    def control_plane_v2_config(self) -> Optional[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigArgs']]:
+    def control_plane_v2_config(self) -> Optional[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigArrgs']]:
         """
         Configuration for control plane V2 mode.
         Structure is documented below.
@@ -4957,12 +4957,12 @@ class VMwareClusterNetworkConfigArgs:
         return pulumi.get(self, "control_plane_v2_config")
 
     @control_plane_v2_config.setter
-    def control_plane_v2_config(self, value: Optional[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigArgs']]):
+    def control_plane_v2_config(self, value: Optional[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigArrgs']]):
         pulumi.set(self, "control_plane_v2_config", value)
 
     @property
     @pulumi.getter(name="dhcpIpConfig")
-    def dhcp_ip_config(self) -> Optional[pulumi.Input['VMwareClusterNetworkConfigDhcpIpConfigArgs']]:
+    def dhcp_ip_config(self) -> Optional[pulumi.Input['VMwareClusterNetworkConfigDhcpIpConfigArrgs']]:
         """
         Configuration settings for a DHCP IP configuration.
         Structure is documented below.
@@ -4970,12 +4970,12 @@ class VMwareClusterNetworkConfigArgs:
         return pulumi.get(self, "dhcp_ip_config")
 
     @dhcp_ip_config.setter
-    def dhcp_ip_config(self, value: Optional[pulumi.Input['VMwareClusterNetworkConfigDhcpIpConfigArgs']]):
+    def dhcp_ip_config(self, value: Optional[pulumi.Input['VMwareClusterNetworkConfigDhcpIpConfigArrgs']]):
         pulumi.set(self, "dhcp_ip_config", value)
 
     @property
     @pulumi.getter(name="hostConfig")
-    def host_config(self) -> Optional[pulumi.Input['VMwareClusterNetworkConfigHostConfigArgs']]:
+    def host_config(self) -> Optional[pulumi.Input['VMwareClusterNetworkConfigHostConfigArrgs']]:
         """
         Represents common network settings irrespective of the host's IP address.
         Structure is documented below.
@@ -4983,12 +4983,12 @@ class VMwareClusterNetworkConfigArgs:
         return pulumi.get(self, "host_config")
 
     @host_config.setter
-    def host_config(self, value: Optional[pulumi.Input['VMwareClusterNetworkConfigHostConfigArgs']]):
+    def host_config(self, value: Optional[pulumi.Input['VMwareClusterNetworkConfigHostConfigArrgs']]):
         pulumi.set(self, "host_config", value)
 
     @property
     @pulumi.getter(name="staticIpConfig")
-    def static_ip_config(self) -> Optional[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigArgs']]:
+    def static_ip_config(self) -> Optional[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigArrgs']]:
         """
         Configuration settings for a static IP configuration.
         Structure is documented below.
@@ -4996,7 +4996,7 @@ class VMwareClusterNetworkConfigArgs:
         return pulumi.get(self, "static_ip_config")
 
     @static_ip_config.setter
-    def static_ip_config(self, value: Optional[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigArgs']]):
+    def static_ip_config(self, value: Optional[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigArrgs']]):
         pulumi.set(self, "static_ip_config", value)
 
     @property
@@ -5014,11 +5014,11 @@ class VMwareClusterNetworkConfigArgs:
 
 
 @pulumi.input_type
-class VMwareClusterNetworkConfigControlPlaneV2ConfigArgs:
+calass VMwareClusterNetworkConfigControlPlaneV2ConfigArrgs:
     def __init__(__self__, *,
-                 control_plane_ip_block: Optional[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs']] = None):
+                 control_plane_ip_block: Optional[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArrgs']] = None):
         """
-        :param pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs'] control_plane_ip_block: Static IP addresses for the control plane nodes.
+        :param pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArrgs'] control_plane_ip_block: Static IP addresses for the control plane nodes.
                Structure is documented below.
         """
         if control_plane_ip_block is not None:
@@ -5026,7 +5026,7 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigArgs:
 
     @property
     @pulumi.getter(name="controlPlaneIpBlock")
-    def control_plane_ip_block(self) -> Optional[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs']]:
+    def control_plane_ip_block(self) -> Optional[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArrgs']]:
         """
         Static IP addresses for the control plane nodes.
         Structure is documented below.
@@ -5034,19 +5034,19 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigArgs:
         return pulumi.get(self, "control_plane_ip_block")
 
     @control_plane_ip_block.setter
-    def control_plane_ip_block(self, value: Optional[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs']]):
+    def control_plane_ip_block(self, value: Optional[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArrgs']]):
         pulumi.set(self, "control_plane_ip_block", value)
 
 
 @pulumi.input_type
-class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs:
+calass VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArrgs:
     def __init__(__self__, *,
                  gateway: Optional[pulumi.Input[str]] = None,
-                 ips: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs']]]] = None,
+                 ips: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArrgs']]]] = None,
                  netmask: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] gateway: The network gateway used by the VMware User Cluster.
-        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs']]] ips: The node's network configurations used by the VMware User Cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArrgs']]] ips: The node's network configurations used by the VMware User Cluster.
                Structure is documented below.
         :param pulumi.Input[str] netmask: The netmask used by the VMware User Cluster.
         """
@@ -5071,7 +5071,7 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs:
 
     @property
     @pulumi.getter
-    def ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs']]]]:
+    def ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArrgs']]]]:
         """
         The node's network configurations used by the VMware User Cluster.
         Structure is documented below.
@@ -5079,7 +5079,7 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs:
         return pulumi.get(self, "ips")
 
     @ips.setter
-    def ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs']]]]):
+    def ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArrgs']]]]):
         pulumi.set(self, "ips", value)
 
     @property
@@ -5096,7 +5096,7 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs:
 
 
 @pulumi.input_type
-class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs:
+calass VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArrgs:
     def __init__(__self__, *,
                  hostname: Optional[pulumi.Input[str]] = None,
                  ip: Optional[pulumi.Input[str]] = None):
@@ -5135,7 +5135,7 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs:
 
 
 @pulumi.input_type
-class VMwareClusterNetworkConfigDhcpIpConfigArgs:
+calass VMwareClusterNetworkConfigDhcpIpConfigArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -5159,7 +5159,7 @@ class VMwareClusterNetworkConfigDhcpIpConfigArgs:
 
 
 @pulumi.input_type
-class VMwareClusterNetworkConfigHostConfigArgs:
+calass VMwareClusterNetworkConfigHostConfigArrgs:
     def __init__(__self__, *,
                  dns_search_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -5218,18 +5218,18 @@ class VMwareClusterNetworkConfigHostConfigArgs:
 
 
 @pulumi.input_type
-class VMwareClusterNetworkConfigStaticIpConfigArgs:
+calass VMwareClusterNetworkConfigStaticIpConfigArrgs:
     def __init__(__self__, *,
-                 ip_blocks: pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs']]]):
+                 ip_blocks: pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigIpBlockArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs']]] ip_blocks: Represents the configuration values for static IP allocation to nodes.
+        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigIpBlockArrgs']]] ip_blocks: Represents the configuration values for static IP allocation to nodes.
                Structure is documented below.
         """
         pulumi.set(__self__, "ip_blocks", ip_blocks)
 
     @property
     @pulumi.getter(name="ipBlocks")
-    def ip_blocks(self) -> pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs']]]:
+    def ip_blocks(self) -> pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigIpBlockArrgs']]]:
         """
         Represents the configuration values for static IP allocation to nodes.
         Structure is documented below.
@@ -5237,19 +5237,19 @@ class VMwareClusterNetworkConfigStaticIpConfigArgs:
         return pulumi.get(self, "ip_blocks")
 
     @ip_blocks.setter
-    def ip_blocks(self, value: pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs']]]):
+    def ip_blocks(self, value: pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigIpBlockArrgs']]]):
         pulumi.set(self, "ip_blocks", value)
 
 
 @pulumi.input_type
-class VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs:
+calass VMwareClusterNetworkConfigStaticIpConfigIpBlockArrgs:
     def __init__(__self__, *,
                  gateway: pulumi.Input[str],
-                 ips: pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs']]],
+                 ips: pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArrgs']]],
                  netmask: pulumi.Input[str]):
         """
         :param pulumi.Input[str] gateway: The network gateway used by the VMware User Cluster.
-        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs']]] ips: The node's network configurations used by the VMware User Cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArrgs']]] ips: The node's network configurations used by the VMware User Cluster.
                Structure is documented below.
         :param pulumi.Input[str] netmask: The netmask used by the VMware User Cluster.
         """
@@ -5271,7 +5271,7 @@ class VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs:
 
     @property
     @pulumi.getter
-    def ips(self) -> pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs']]]:
+    def ips(self) -> pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArrgs']]]:
         """
         The node's network configurations used by the VMware User Cluster.
         Structure is documented below.
@@ -5279,7 +5279,7 @@ class VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs:
         return pulumi.get(self, "ips")
 
     @ips.setter
-    def ips(self, value: pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs']]]):
+    def ips(self, value: pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArrgs']]]):
         pulumi.set(self, "ips", value)
 
     @property
@@ -5296,7 +5296,7 @@ class VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs:
 
 
 @pulumi.input_type
-class VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs:
+calass VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArrgs:
     def __init__(__self__, *,
                  ip: pulumi.Input[str],
                  hostname: Optional[pulumi.Input[str]] = None):
@@ -5334,12 +5334,12 @@ class VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs:
 
 
 @pulumi.input_type
-class VMwareClusterStatusArgs:
+calass VMwareClusterStatusArrgs:
     def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterStatusConditionArgs']]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterStatusConditionArrgs']]]] = None,
                  error_message: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterStatusConditionArgs']]] conditions: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterStatusConditionArrgs']]] conditions: (Output)
                ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
                Structure is documented below.
         :param pulumi.Input[str] error_message: (Output)
@@ -5356,7 +5356,7 @@ class VMwareClusterStatusArgs:
 
     @property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterStatusConditionArgs']]]]:
+    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterStatusConditionArrgs']]]]:
         """
         (Output)
         ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
@@ -5365,7 +5365,7 @@ class VMwareClusterStatusArgs:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterStatusConditionArgs']]]]):
+    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterStatusConditionArrgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @property
@@ -5387,7 +5387,7 @@ class VMwareClusterStatusArgs:
 
 
 @pulumi.input_type
-class VMwareClusterStatusConditionArgs:
+calass VMwareClusterStatusConditionArrgs:
     def __init__(__self__, *,
                  last_transition_time: Optional[pulumi.Input[str]] = None,
                  message: Optional[pulumi.Input[str]] = None,
@@ -5486,7 +5486,7 @@ class VMwareClusterStatusConditionArgs:
 
 
 @pulumi.input_type
-class VMwareClusterStorageArgs:
+calass VMwareClusterStorageArrgs:
     def __init__(__self__, *,
                  vsphere_csi_disabled: pulumi.Input[bool]):
         """
@@ -5510,7 +5510,7 @@ class VMwareClusterStorageArgs:
 
 
 @pulumi.input_type
-class VMwareClusterUpgradePolicyArgs:
+calass VMwareClusterUpgradePolicyArrgs:
     def __init__(__self__, *,
                  control_plane_only: Optional[pulumi.Input[bool]] = None):
         """
@@ -5533,17 +5533,17 @@ class VMwareClusterUpgradePolicyArgs:
 
 
 @pulumi.input_type
-class VMwareClusterValidationCheckArgs:
+calass VMwareClusterValidationCheckArrgs:
     def __init__(__self__, *,
                  options: Optional[pulumi.Input[str]] = None,
                  scenario: Optional[pulumi.Input[str]] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusArgs']]]] = None):
+                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusArrgs']]]] = None):
         """
         :param pulumi.Input[str] options: (Output)
                Options used for the validation check.
         :param pulumi.Input[str] scenario: (Output)
                The scenario when the preflight checks were run..
-        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusArgs']]] statuses: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusArrgs']]] statuses: (Output)
                Specifies the detailed validation check status
                Structure is documented below.
         """
@@ -5582,7 +5582,7 @@ class VMwareClusterValidationCheckArgs:
 
     @property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusArgs']]]]:
+    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusArrgs']]]]:
         """
         (Output)
         Specifies the detailed validation check status
@@ -5591,16 +5591,16 @@ class VMwareClusterValidationCheckArgs:
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusArgs']]]]):
+    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusArrgs']]]]):
         pulumi.set(self, "statuses", value)
 
 
 @pulumi.input_type
-class VMwareClusterValidationCheckStatusArgs:
+calass VMwareClusterValidationCheckStatusArrgs:
     def __init__(__self__, *,
-                 results: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusResultArgs']]]] = None):
+                 results: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusResultArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusResultArgs']]] results: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusResultArrgs']]] results: (Output)
                Individual checks which failed as part of the Preflight check execution.
                Structure is documented below.
         """
@@ -5609,7 +5609,7 @@ class VMwareClusterValidationCheckStatusArgs:
 
     @property
     @pulumi.getter
-    def results(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusResultArgs']]]]:
+    def results(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusResultArrgs']]]]:
         """
         (Output)
         Individual checks which failed as part of the Preflight check execution.
@@ -5618,12 +5618,12 @@ class VMwareClusterValidationCheckStatusArgs:
         return pulumi.get(self, "results")
 
     @results.setter
-    def results(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusResultArgs']]]]):
+    def results(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusResultArrgs']]]]):
         pulumi.set(self, "results", value)
 
 
 @pulumi.input_type
-class VMwareClusterValidationCheckStatusResultArgs:
+calass VMwareClusterValidationCheckStatusResultArrgs:
     def __init__(__self__, *,
                  category: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -5718,7 +5718,7 @@ class VMwareClusterValidationCheckStatusResultArgs:
 
 
 @pulumi.input_type
-class VMwareClusterVcenterArgs:
+calass VMwareClusterVcenterArrgs:
     def __init__(__self__, *,
                  address: Optional[pulumi.Input[str]] = None,
                  ca_cert_data: Optional[pulumi.Input[str]] = None,
@@ -5855,7 +5855,7 @@ class VMwareClusterVcenterArgs:
 
 
 @pulumi.input_type
-class VMwareNodePoolConfigArgs:
+calass VMwareNodePoolConfigArrgs:
     def __init__(__self__, *,
                  image_type: pulumi.Input[str],
                  boot_disk_size_gb: Optional[pulumi.Input[int]] = None,
@@ -5865,8 +5865,8 @@ class VMwareNodePoolConfigArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  memory_mb: Optional[pulumi.Input[int]] = None,
                  replicas: Optional[pulumi.Input[int]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigTaintArgs']]]] = None,
-                 vsphere_configs: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigArgs']]]] = None):
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigTaintArrgs']]]] = None,
+                 vsphere_configs: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigArrgs']]]] = None):
         """
         :param pulumi.Input[str] image_type: The OS image to be used for each node in a node pool.
                Currently `cos`, `ubuntu`, `ubuntu_containerd` and `windows` are supported.
@@ -5883,9 +5883,9 @@ class VMwareNodePoolConfigArgs:
                and conflicts should be avoided.
         :param pulumi.Input[int] memory_mb: The megabytes of memory for each node in the node pool.
         :param pulumi.Input[int] replicas: The number of nodes in the node pool.
-        :param pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigTaintArgs']]] taints: The initial taints assigned to nodes of this node pool.
+        :param pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigTaintArrgs']]] taints: The initial taints assigned to nodes of this node pool.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigArgs']]] vsphere_configs: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigArrgs']]] vsphere_configs: (Output)
                Specifies the vSphere config for node pool.
                Structure is documented below.
         """
@@ -6014,7 +6014,7 @@ class VMwareNodePoolConfigArgs:
 
     @property
     @pulumi.getter
-    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigTaintArgs']]]]:
+    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigTaintArrgs']]]]:
         """
         The initial taints assigned to nodes of this node pool.
         Structure is documented below.
@@ -6022,12 +6022,12 @@ class VMwareNodePoolConfigArgs:
         return pulumi.get(self, "taints")
 
     @taints.setter
-    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigTaintArgs']]]]):
+    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigTaintArrgs']]]]):
         pulumi.set(self, "taints", value)
 
     @property
     @pulumi.getter(name="vsphereConfigs")
-    def vsphere_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigArgs']]]]:
+    def vsphere_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigArrgs']]]]:
         """
         (Output)
         Specifies the vSphere config for node pool.
@@ -6036,12 +6036,12 @@ class VMwareNodePoolConfigArgs:
         return pulumi.get(self, "vsphere_configs")
 
     @vsphere_configs.setter
-    def vsphere_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigArgs']]]]):
+    def vsphere_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigArrgs']]]]):
         pulumi.set(self, "vsphere_configs", value)
 
 
 @pulumi.input_type
-class VMwareNodePoolConfigTaintArgs:
+calass VMwareNodePoolConfigTaintArrgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  value: pulumi.Input[str],
@@ -6100,14 +6100,14 @@ class VMwareNodePoolConfigTaintArgs:
 
 
 @pulumi.input_type
-class VMwareNodePoolConfigVsphereConfigArgs:
+calass VMwareNodePoolConfigVsphereConfigArrgs:
     def __init__(__self__, *,
                  datastore: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigTagArgs']]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigTagArrgs']]]] = None):
         """
         :param pulumi.Input[str] datastore: (Output)
                The name of the vCenter datastore. Inherited from the user cluster.
-        :param pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigTagArgs']]] tags: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigTagArrgs']]] tags: (Output)
                Tags to apply to VMs.
                Structure is documented below.
                
@@ -6134,7 +6134,7 @@ class VMwareNodePoolConfigVsphereConfigArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigTagArgs']]]]:
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigTagArrgs']]]]:
         """
         (Output)
         Tags to apply to VMs.
@@ -6146,12 +6146,12 @@ class VMwareNodePoolConfigVsphereConfigArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigTagArgs']]]]):
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigTagArrgs']]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
-class VMwareNodePoolConfigVsphereConfigTagArgs:
+calass VMwareNodePoolConfigVsphereConfigTagArrgs:
     def __init__(__self__, *,
                  category: Optional[pulumi.Input[str]] = None,
                  tag: Optional[pulumi.Input[str]] = None):
@@ -6198,7 +6198,7 @@ class VMwareNodePoolConfigVsphereConfigTagArgs:
 
 
 @pulumi.input_type
-class VMwareNodePoolNodePoolAutoscalingArgs:
+calass VMwareNodePoolNodePoolAutoscalingArrgs:
     def __init__(__self__, *,
                  max_replicas: pulumi.Input[int],
                  min_replicas: pulumi.Input[int]):
@@ -6235,12 +6235,12 @@ class VMwareNodePoolNodePoolAutoscalingArgs:
 
 
 @pulumi.input_type
-class VMwareNodePoolStatusArgs:
+calass VMwareNodePoolStatusArrgs:
     def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusConditionArgs']]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusConditionArrgs']]]] = None,
                  error_message: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusConditionArgs']]] conditions: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusConditionArrgs']]] conditions: (Output)
                ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
                Structure is documented below.
         :param pulumi.Input[str] error_message: (Output)
@@ -6257,7 +6257,7 @@ class VMwareNodePoolStatusArgs:
 
     @property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusConditionArgs']]]]:
+    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusConditionArrgs']]]]:
         """
         (Output)
         ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
@@ -6266,7 +6266,7 @@ class VMwareNodePoolStatusArgs:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusConditionArgs']]]]):
+    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusConditionArrgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @property
@@ -6288,7 +6288,7 @@ class VMwareNodePoolStatusArgs:
 
 
 @pulumi.input_type
-class VMwareNodePoolStatusConditionArgs:
+calass VMwareNodePoolStatusConditionArrgs:
     def __init__(__self__, *,
                  last_transition_time: Optional[pulumi.Input[str]] = None,
                  message: Optional[pulumi.Input[str]] = None,

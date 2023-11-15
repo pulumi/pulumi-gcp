@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['MembershipIamMemberArgs', 'MembershipIamMember']
+__all__ = ['MembershipIamMemberArrgs', 'MembershipIamMember']
 
 @pulumi.input_type
-class MembershipIamMemberArgs:
+calass MembershipIamMemberArrgs:
     def __init__(__self__, *,
                  member: pulumi.Input[str],
                  membership_id: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['MembershipIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['MembershipIamMemberConditionArrgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -89,11 +89,11 @@ class MembershipIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['MembershipIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['MembershipIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['MembershipIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['MembershipIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -137,9 +137,9 @@ class MembershipIamMemberArgs:
 
 
 @pulumi.input_type
-class _MembershipIamMemberState:
+calass _MembershipIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['MembershipIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['MembershipIamMemberConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
@@ -187,11 +187,11 @@ class _MembershipIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['MembershipIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['MembershipIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['MembershipIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['MembershipIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -278,12 +278,12 @@ class _MembershipIamMemberState:
         pulumi.set(self, "role", value)
 
 
-class MembershipIamMember(pulumi.CustomResource):
+calass MembershipIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['MembershipIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['MembershipIamMemberConditionArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,
@@ -311,7 +311,7 @@ class MembershipIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -401,7 +401,7 @@ class MembershipIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: MembershipIamMemberArgs,
+                 args: MembershipIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for GKEHub Membership. Each of these resources serves a different use case:
@@ -424,7 +424,7 @@ class MembershipIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -488,12 +488,12 @@ class MembershipIamMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param MembershipIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param MembershipIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(MembershipIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(MembershipIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -502,7 +502,7 @@ class MembershipIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['MembershipIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['MembershipIamMemberConditionArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,
@@ -515,7 +515,7 @@ class MembershipIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = MembershipIamMemberArgs.__new__(MembershipIamMemberArgs)
+            __props__ = MembershipIamMemberArrgs.__new__(MembershipIamMemberArrgs)
 
             __props__.__dict__["condition"] = condition
             __props__.__dict__["location"] = location
@@ -540,7 +540,7 @@ class MembershipIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['MembershipIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['MembershipIamMemberConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,

@@ -10,152 +10,152 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'CxAgentAdvancedSettingsArgs',
-    'CxAgentAdvancedSettingsAudioExportGcsDestinationArgs',
-    'CxAgentAdvancedSettingsDtmfSettingsArgs',
-    'CxAgentGitIntegrationSettingsArgs',
-    'CxAgentGitIntegrationSettingsGithubSettingsArgs',
-    'CxAgentSpeechToTextSettingsArgs',
-    'CxAgentTextToSpeechSettingsArgs',
-    'CxEntityTypeEntityArgs',
-    'CxEntityTypeExcludedPhraseArgs',
-    'CxEnvironmentVersionConfigArgs',
-    'CxFlowAdvancedSettingsArgs',
-    'CxFlowAdvancedSettingsAudioExportGcsDestinationArgs',
-    'CxFlowAdvancedSettingsDtmfSettingsArgs',
-    'CxFlowEventHandlerArgs',
-    'CxFlowEventHandlerTriggerFulfillmentArgs',
-    'CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs',
-    'CxFlowEventHandlerTriggerFulfillmentMessageArgs',
-    'CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs',
-    'CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs',
-    'CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs',
-    'CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs',
-    'CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs',
-    'CxFlowEventHandlerTriggerFulfillmentMessageTextArgs',
-    'CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs',
-    'CxFlowNluSettingsArgs',
-    'CxFlowTransitionRouteArgs',
-    'CxFlowTransitionRouteTriggerFulfillmentArgs',
-    'CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs',
-    'CxFlowTransitionRouteTriggerFulfillmentMessageArgs',
-    'CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs',
-    'CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs',
-    'CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs',
-    'CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs',
-    'CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs',
-    'CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs',
-    'CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs',
-    'CxIntentParameterArgs',
-    'CxIntentTrainingPhraseArgs',
-    'CxIntentTrainingPhrasePartArgs',
-    'CxPageAdvancedSettingsArgs',
-    'CxPageAdvancedSettingsDtmfSettingsArgs',
-    'CxPageEntryFulfillmentArgs',
-    'CxPageEntryFulfillmentConditionalCaseArgs',
-    'CxPageEntryFulfillmentMessageArgs',
-    'CxPageEntryFulfillmentMessageConversationSuccessArgs',
-    'CxPageEntryFulfillmentMessageLiveAgentHandoffArgs',
-    'CxPageEntryFulfillmentMessageOutputAudioTextArgs',
-    'CxPageEntryFulfillmentMessagePlayAudioArgs',
-    'CxPageEntryFulfillmentMessageTelephonyTransferCallArgs',
-    'CxPageEntryFulfillmentMessageTextArgs',
-    'CxPageEntryFulfillmentSetParameterActionArgs',
-    'CxPageEventHandlerArgs',
-    'CxPageEventHandlerTriggerFulfillmentArgs',
-    'CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs',
-    'CxPageEventHandlerTriggerFulfillmentMessageArgs',
-    'CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs',
-    'CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs',
-    'CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs',
-    'CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs',
-    'CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs',
-    'CxPageEventHandlerTriggerFulfillmentMessageTextArgs',
-    'CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs',
-    'CxPageFormArgs',
-    'CxPageFormParameterArgs',
-    'CxPageFormParameterAdvancedSettingsArgs',
-    'CxPageFormParameterAdvancedSettingsDtmfSettingsArgs',
-    'CxPageFormParameterFillBehaviorArgs',
-    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs',
-    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs',
-    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs',
-    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs',
-    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs',
-    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs',
-    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs',
-    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs',
-    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs',
-    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs',
-    'CxPageFormParameterFillBehaviorRepromptEventHandlerArgs',
-    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs',
-    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs',
-    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs',
-    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs',
-    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs',
-    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs',
-    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs',
-    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs',
-    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs',
-    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs',
-    'CxPageTransitionRouteArgs',
-    'CxPageTransitionRouteTriggerFulfillmentArgs',
-    'CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs',
-    'CxPageTransitionRouteTriggerFulfillmentMessageArgs',
-    'CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs',
-    'CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs',
-    'CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs',
-    'CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs',
-    'CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs',
-    'CxPageTransitionRouteTriggerFulfillmentMessageTextArgs',
-    'CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs',
-    'CxSecuritySettingsAudioExportSettingsArgs',
-    'CxSecuritySettingsInsightsExportSettingsArgs',
-    'CxTestCaseLastTestResultArgs',
-    'CxTestCaseLastTestResultConversationTurnArgs',
-    'CxTestCaseLastTestResultConversationTurnUserInputArgs',
-    'CxTestCaseLastTestResultConversationTurnUserInputInputArgs',
-    'CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs',
-    'CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs',
-    'CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs',
-    'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs',
-    'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs',
-    'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs',
-    'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs',
-    'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs',
-    'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs',
-    'CxTestCaseTestCaseConversationTurnArgs',
-    'CxTestCaseTestCaseConversationTurnUserInputArgs',
-    'CxTestCaseTestCaseConversationTurnUserInputInputArgs',
-    'CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs',
-    'CxTestCaseTestCaseConversationTurnUserInputInputEventArgs',
-    'CxTestCaseTestCaseConversationTurnUserInputInputTextArgs',
-    'CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs',
-    'CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs',
-    'CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs',
-    'CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs',
-    'CxTestCaseTestConfigArgs',
-    'CxVersionNluSettingArgs',
-    'CxWebhookGenericWebServiceArgs',
-    'CxWebhookServiceDirectoryArgs',
-    'CxWebhookServiceDirectoryGenericWebServiceArgs',
-    'EntityTypeEntityArgs',
-    'FulfillmentFeatureArgs',
-    'FulfillmentGenericWebServiceArgs',
-    'IntentFollowupIntentInfoArgs',
+    'CxAgentAdvancedSettingsArrgs',
+    'CxAgentAdvancedSettingsAudioExportGcsDestinationArrgs',
+    'CxAgentAdvancedSettingsDtmfSettingsArrgs',
+    'CxAgentGitIntegrationSettingsArrgs',
+    'CxAgentGitIntegrationSettingsGithubSettingsArrgs',
+    'CxAgentSpeechToTextSettingsArrgs',
+    'CxAgentTextToSpeechSettingsArrgs',
+    'CxEntityTypeEntityArrgs',
+    'CxEntityTypeExcludedPhraseArrgs',
+    'CxEnvironmentVersionConfigArrgs',
+    'CxFlowAdvancedSettingsArrgs',
+    'CxFlowAdvancedSettingsAudioExportGcsDestinationArrgs',
+    'CxFlowAdvancedSettingsDtmfSettingsArrgs',
+    'CxFlowEventHandlerArrgs',
+    'CxFlowEventHandlerTriggerFulfillmentArrgs',
+    'CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrgs',
+    'CxFlowEventHandlerTriggerFulfillmentMessageArrgs',
+    'CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArrgs',
+    'CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArrgs',
+    'CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs',
+    'CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArrgs',
+    'CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArrgs',
+    'CxFlowEventHandlerTriggerFulfillmentMessageTextArrgs',
+    'CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrgs',
+    'CxFlowNluSettingsArrgs',
+    'CxFlowTransitionRouteArrgs',
+    'CxFlowTransitionRouteTriggerFulfillmentArrgs',
+    'CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrgs',
+    'CxFlowTransitionRouteTriggerFulfillmentMessageArrgs',
+    'CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArrgs',
+    'CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArrgs',
+    'CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArrgs',
+    'CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArrgs',
+    'CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArrgs',
+    'CxFlowTransitionRouteTriggerFulfillmentMessageTextArrgs',
+    'CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrgs',
+    'CxIntentParameterArrgs',
+    'CxIntentTrainingPhraseArrgs',
+    'CxIntentTrainingPhrasePartArrgs',
+    'CxPageAdvancedSettingsArrgs',
+    'CxPageAdvancedSettingsDtmfSettingsArrgs',
+    'CxPageEntryFulfillmentArrgs',
+    'CxPageEntryFulfillmentConditionalCaseArrgs',
+    'CxPageEntryFulfillmentMessageArrgs',
+    'CxPageEntryFulfillmentMessageConversationSuccessArrgs',
+    'CxPageEntryFulfillmentMessageLiveAgentHandoffArrgs',
+    'CxPageEntryFulfillmentMessageOutputAudioTextArrgs',
+    'CxPageEntryFulfillmentMessagePlayAudioArrgs',
+    'CxPageEntryFulfillmentMessageTelephonyTransferCallArrgs',
+    'CxPageEntryFulfillmentMessageTextArrgs',
+    'CxPageEntryFulfillmentSetParameterActionArrgs',
+    'CxPageEventHandlerArrgs',
+    'CxPageEventHandlerTriggerFulfillmentArrgs',
+    'CxPageEventHandlerTriggerFulfillmentConditionalCaseArrgs',
+    'CxPageEventHandlerTriggerFulfillmentMessageArrgs',
+    'CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArrgs',
+    'CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArrgs',
+    'CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs',
+    'CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArrgs',
+    'CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArrgs',
+    'CxPageEventHandlerTriggerFulfillmentMessageTextArrgs',
+    'CxPageEventHandlerTriggerFulfillmentSetParameterActionArrgs',
+    'CxPageFormArrgs',
+    'CxPageFormParameterArrgs',
+    'CxPageFormParameterAdvancedSettingsArrgs',
+    'CxPageFormParameterAdvancedSettingsDtmfSettingsArrgs',
+    'CxPageFormParameterFillBehaviorArrgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentArrgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArrgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArrgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArrgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArrgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArrgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArrgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerArrgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArrgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArrgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArrgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArrgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArrgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArrgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrgs',
+    'CxPageTransitionRouteArrgs',
+    'CxPageTransitionRouteTriggerFulfillmentArrgs',
+    'CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrgs',
+    'CxPageTransitionRouteTriggerFulfillmentMessageArrgs',
+    'CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArrgs',
+    'CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArrgs',
+    'CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArrgs',
+    'CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArrgs',
+    'CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArrgs',
+    'CxPageTransitionRouteTriggerFulfillmentMessageTextArrgs',
+    'CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrgs',
+    'CxSecuritySettingsAudioExportSettingsArrgs',
+    'CxSecuritySettingsInsightsExportSettingsArrgs',
+    'CxTestCaseLastTestResultArrgs',
+    'CxTestCaseLastTestResultConversationTurnArrgs',
+    'CxTestCaseLastTestResultConversationTurnUserInputArrgs',
+    'CxTestCaseLastTestResultConversationTurnUserInputInputArrgs',
+    'CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArrgs',
+    'CxTestCaseLastTestResultConversationTurnUserInputInputEventArrgs',
+    'CxTestCaseLastTestResultConversationTurnUserInputInputTextArrgs',
+    'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArrgs',
+    'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArrgs',
+    'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrgs',
+    'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArrgs',
+    'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrgs',
+    'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArrgs',
+    'CxTestCaseTestCaseConversationTurnArrgs',
+    'CxTestCaseTestCaseConversationTurnUserInputArrgs',
+    'CxTestCaseTestCaseConversationTurnUserInputInputArrgs',
+    'CxTestCaseTestCaseConversationTurnUserInputInputDtmfArrgs',
+    'CxTestCaseTestCaseConversationTurnUserInputInputEventArrgs',
+    'CxTestCaseTestCaseConversationTurnUserInputInputTextArrgs',
+    'CxTestCaseTestCaseConversationTurnVirtualAgentOutputArrgs',
+    'CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArrgs',
+    'CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrgs',
+    'CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArrgs',
+    'CxTestCaseTestConfigArrgs',
+    'CxVersionNluSettingArrgs',
+    'CxWebhookGenericWebServiceArrgs',
+    'CxWebhookServiceDirectoryArrgs',
+    'CxWebhookServiceDirectoryGenericWebServiceArrgs',
+    'EntityTypeEntityArrgs',
+    'FulfillmentFeatureArrgs',
+    'FulfillmentGenericWebServiceArrgs',
+    'IntentFollowupIntentInfoArrgs',
 ]
 
 @pulumi.input_type
-class CxAgentAdvancedSettingsArgs:
+calass CxAgentAdvancedSettingsArrgs:
     def __init__(__self__, *,
-                 audio_export_gcs_destination: Optional[pulumi.Input['CxAgentAdvancedSettingsAudioExportGcsDestinationArgs']] = None,
-                 dtmf_settings: Optional[pulumi.Input['CxAgentAdvancedSettingsDtmfSettingsArgs']] = None):
+                 audio_export_gcs_destination: Optional[pulumi.Input['CxAgentAdvancedSettingsAudioExportGcsDestinationArrgs']] = None,
+                 dtmf_settings: Optional[pulumi.Input['CxAgentAdvancedSettingsDtmfSettingsArrgs']] = None):
         """
-        :param pulumi.Input['CxAgentAdvancedSettingsAudioExportGcsDestinationArgs'] audio_export_gcs_destination: If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
+        :param pulumi.Input['CxAgentAdvancedSettingsAudioExportGcsDestinationArrgs'] audio_export_gcs_destination: If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
                * Agent level
                * Flow level
                Structure is documented below.
-        :param pulumi.Input['CxAgentAdvancedSettingsDtmfSettingsArgs'] dtmf_settings: Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+        :param pulumi.Input['CxAgentAdvancedSettingsDtmfSettingsArrgs'] dtmf_settings: Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
                * Agent level
                * Flow level
                * Page level
@@ -169,7 +169,7 @@ class CxAgentAdvancedSettingsArgs:
 
     @property
     @pulumi.getter(name="audioExportGcsDestination")
-    def audio_export_gcs_destination(self) -> Optional[pulumi.Input['CxAgentAdvancedSettingsAudioExportGcsDestinationArgs']]:
+    def audio_export_gcs_destination(self) -> Optional[pulumi.Input['CxAgentAdvancedSettingsAudioExportGcsDestinationArrgs']]:
         """
         If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
         * Agent level
@@ -179,12 +179,12 @@ class CxAgentAdvancedSettingsArgs:
         return pulumi.get(self, "audio_export_gcs_destination")
 
     @audio_export_gcs_destination.setter
-    def audio_export_gcs_destination(self, value: Optional[pulumi.Input['CxAgentAdvancedSettingsAudioExportGcsDestinationArgs']]):
+    def audio_export_gcs_destination(self, value: Optional[pulumi.Input['CxAgentAdvancedSettingsAudioExportGcsDestinationArrgs']]):
         pulumi.set(self, "audio_export_gcs_destination", value)
 
     @property
     @pulumi.getter(name="dtmfSettings")
-    def dtmf_settings(self) -> Optional[pulumi.Input['CxAgentAdvancedSettingsDtmfSettingsArgs']]:
+    def dtmf_settings(self) -> Optional[pulumi.Input['CxAgentAdvancedSettingsDtmfSettingsArrgs']]:
         """
         Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
         * Agent level
@@ -196,12 +196,12 @@ class CxAgentAdvancedSettingsArgs:
         return pulumi.get(self, "dtmf_settings")
 
     @dtmf_settings.setter
-    def dtmf_settings(self, value: Optional[pulumi.Input['CxAgentAdvancedSettingsDtmfSettingsArgs']]):
+    def dtmf_settings(self, value: Optional[pulumi.Input['CxAgentAdvancedSettingsDtmfSettingsArrgs']]):
         pulumi.set(self, "dtmf_settings", value)
 
 
 @pulumi.input_type
-class CxAgentAdvancedSettingsAudioExportGcsDestinationArgs:
+calass CxAgentAdvancedSettingsAudioExportGcsDestinationArrgs:
     def __init__(__self__, *,
                  uri: Optional[pulumi.Input[str]] = None):
         """
@@ -226,7 +226,7 @@ class CxAgentAdvancedSettingsAudioExportGcsDestinationArgs:
 
 
 @pulumi.input_type
-class CxAgentAdvancedSettingsDtmfSettingsArgs:
+calass CxAgentAdvancedSettingsDtmfSettingsArrgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  finish_digit: Optional[pulumi.Input[str]] = None,
@@ -281,11 +281,11 @@ class CxAgentAdvancedSettingsDtmfSettingsArgs:
 
 
 @pulumi.input_type
-class CxAgentGitIntegrationSettingsArgs:
+calass CxAgentGitIntegrationSettingsArrgs:
     def __init__(__self__, *,
-                 github_settings: Optional[pulumi.Input['CxAgentGitIntegrationSettingsGithubSettingsArgs']] = None):
+                 github_settings: Optional[pulumi.Input['CxAgentGitIntegrationSettingsGithubSettingsArrgs']] = None):
         """
-        :param pulumi.Input['CxAgentGitIntegrationSettingsGithubSettingsArgs'] github_settings: Settings of integration with GitHub.
+        :param pulumi.Input['CxAgentGitIntegrationSettingsGithubSettingsArrgs'] github_settings: Settings of integration with GitHub.
                Structure is documented below.
         """
         if github_settings is not None:
@@ -293,7 +293,7 @@ class CxAgentGitIntegrationSettingsArgs:
 
     @property
     @pulumi.getter(name="githubSettings")
-    def github_settings(self) -> Optional[pulumi.Input['CxAgentGitIntegrationSettingsGithubSettingsArgs']]:
+    def github_settings(self) -> Optional[pulumi.Input['CxAgentGitIntegrationSettingsGithubSettingsArrgs']]:
         """
         Settings of integration with GitHub.
         Structure is documented below.
@@ -301,12 +301,12 @@ class CxAgentGitIntegrationSettingsArgs:
         return pulumi.get(self, "github_settings")
 
     @github_settings.setter
-    def github_settings(self, value: Optional[pulumi.Input['CxAgentGitIntegrationSettingsGithubSettingsArgs']]):
+    def github_settings(self, value: Optional[pulumi.Input['CxAgentGitIntegrationSettingsGithubSettingsArrgs']]):
         pulumi.set(self, "github_settings", value)
 
 
 @pulumi.input_type
-class CxAgentGitIntegrationSettingsGithubSettingsArgs:
+calass CxAgentGitIntegrationSettingsGithubSettingsArrgs:
     def __init__(__self__, *,
                  access_token: Optional[pulumi.Input[str]] = None,
                  branches: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -395,7 +395,7 @@ class CxAgentGitIntegrationSettingsGithubSettingsArgs:
 
 
 @pulumi.input_type
-class CxAgentSpeechToTextSettingsArgs:
+calass CxAgentSpeechToTextSettingsArrgs:
     def __init__(__self__, *,
                  enable_speech_adaptation: Optional[pulumi.Input[bool]] = None):
         """
@@ -418,7 +418,7 @@ class CxAgentSpeechToTextSettingsArgs:
 
 
 @pulumi.input_type
-class CxAgentTextToSpeechSettingsArgs:
+calass CxAgentTextToSpeechSettingsArrgs:
     def __init__(__self__, *,
                  synthesize_speech_configs: Optional[pulumi.Input[str]] = None):
         """
@@ -447,7 +447,7 @@ class CxAgentTextToSpeechSettingsArgs:
 
 
 @pulumi.input_type
-class CxEntityTypeEntityArgs:
+calass CxEntityTypeEntityArrgs:
     def __init__(__self__, *,
                  synonyms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  value: Optional[pulumi.Input[str]] = None):
@@ -496,7 +496,7 @@ class CxEntityTypeEntityArgs:
 
 
 @pulumi.input_type
-class CxEntityTypeExcludedPhraseArgs:
+calass CxEntityTypeExcludedPhraseArrgs:
     def __init__(__self__, *,
                  value: Optional[pulumi.Input[str]] = None):
         """
@@ -519,7 +519,7 @@ class CxEntityTypeExcludedPhraseArgs:
 
 
 @pulumi.input_type
-class CxEnvironmentVersionConfigArgs:
+calass CxEnvironmentVersionConfigArrgs:
     def __init__(__self__, *,
                  version: pulumi.Input[str]):
         """
@@ -545,16 +545,16 @@ class CxEnvironmentVersionConfigArgs:
 
 
 @pulumi.input_type
-class CxFlowAdvancedSettingsArgs:
+calass CxFlowAdvancedSettingsArrgs:
     def __init__(__self__, *,
-                 audio_export_gcs_destination: Optional[pulumi.Input['CxFlowAdvancedSettingsAudioExportGcsDestinationArgs']] = None,
-                 dtmf_settings: Optional[pulumi.Input['CxFlowAdvancedSettingsDtmfSettingsArgs']] = None):
+                 audio_export_gcs_destination: Optional[pulumi.Input['CxFlowAdvancedSettingsAudioExportGcsDestinationArrgs']] = None,
+                 dtmf_settings: Optional[pulumi.Input['CxFlowAdvancedSettingsDtmfSettingsArrgs']] = None):
         """
-        :param pulumi.Input['CxFlowAdvancedSettingsAudioExportGcsDestinationArgs'] audio_export_gcs_destination: If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
+        :param pulumi.Input['CxFlowAdvancedSettingsAudioExportGcsDestinationArrgs'] audio_export_gcs_destination: If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
                * Agent level
                * Flow level
                Structure is documented below.
-        :param pulumi.Input['CxFlowAdvancedSettingsDtmfSettingsArgs'] dtmf_settings: Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+        :param pulumi.Input['CxFlowAdvancedSettingsDtmfSettingsArrgs'] dtmf_settings: Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
                * Agent level
                * Flow level
                * Page level
@@ -568,7 +568,7 @@ class CxFlowAdvancedSettingsArgs:
 
     @property
     @pulumi.getter(name="audioExportGcsDestination")
-    def audio_export_gcs_destination(self) -> Optional[pulumi.Input['CxFlowAdvancedSettingsAudioExportGcsDestinationArgs']]:
+    def audio_export_gcs_destination(self) -> Optional[pulumi.Input['CxFlowAdvancedSettingsAudioExportGcsDestinationArrgs']]:
         """
         If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
         * Agent level
@@ -578,12 +578,12 @@ class CxFlowAdvancedSettingsArgs:
         return pulumi.get(self, "audio_export_gcs_destination")
 
     @audio_export_gcs_destination.setter
-    def audio_export_gcs_destination(self, value: Optional[pulumi.Input['CxFlowAdvancedSettingsAudioExportGcsDestinationArgs']]):
+    def audio_export_gcs_destination(self, value: Optional[pulumi.Input['CxFlowAdvancedSettingsAudioExportGcsDestinationArrgs']]):
         pulumi.set(self, "audio_export_gcs_destination", value)
 
     @property
     @pulumi.getter(name="dtmfSettings")
-    def dtmf_settings(self) -> Optional[pulumi.Input['CxFlowAdvancedSettingsDtmfSettingsArgs']]:
+    def dtmf_settings(self) -> Optional[pulumi.Input['CxFlowAdvancedSettingsDtmfSettingsArrgs']]:
         """
         Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
         * Agent level
@@ -595,12 +595,12 @@ class CxFlowAdvancedSettingsArgs:
         return pulumi.get(self, "dtmf_settings")
 
     @dtmf_settings.setter
-    def dtmf_settings(self, value: Optional[pulumi.Input['CxFlowAdvancedSettingsDtmfSettingsArgs']]):
+    def dtmf_settings(self, value: Optional[pulumi.Input['CxFlowAdvancedSettingsDtmfSettingsArrgs']]):
         pulumi.set(self, "dtmf_settings", value)
 
 
 @pulumi.input_type
-class CxFlowAdvancedSettingsAudioExportGcsDestinationArgs:
+calass CxFlowAdvancedSettingsAudioExportGcsDestinationArrgs:
     def __init__(__self__, *,
                  uri: Optional[pulumi.Input[str]] = None):
         """
@@ -625,7 +625,7 @@ class CxFlowAdvancedSettingsAudioExportGcsDestinationArgs:
 
 
 @pulumi.input_type
-class CxFlowAdvancedSettingsDtmfSettingsArgs:
+calass CxFlowAdvancedSettingsDtmfSettingsArrgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  finish_digit: Optional[pulumi.Input[str]] = None,
@@ -680,13 +680,13 @@ class CxFlowAdvancedSettingsDtmfSettingsArgs:
 
 
 @pulumi.input_type
-class CxFlowEventHandlerArgs:
+calass CxFlowEventHandlerArrgs:
     def __init__(__self__, *,
                  event: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  target_flow: Optional[pulumi.Input[str]] = None,
                  target_page: Optional[pulumi.Input[str]] = None,
-                 trigger_fulfillment: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentArgs']] = None):
+                 trigger_fulfillment: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentArrgs']] = None):
         """
         :param pulumi.Input[str] event: The name of the event to handle.
         :param pulumi.Input[str] name: (Output)
@@ -695,7 +695,7 @@ class CxFlowEventHandlerArgs:
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param pulumi.Input[str] target_page: The target page to transition to.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
-        :param pulumi.Input['CxFlowEventHandlerTriggerFulfillmentArgs'] trigger_fulfillment: The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+        :param pulumi.Input['CxFlowEventHandlerTriggerFulfillmentArrgs'] trigger_fulfillment: The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
                Structure is documented below.
         """
         if event is not None:
@@ -762,7 +762,7 @@ class CxFlowEventHandlerArgs:
 
     @property
     @pulumi.getter(name="triggerFulfillment")
-    def trigger_fulfillment(self) -> Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentArgs']]:
+    def trigger_fulfillment(self) -> Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentArrgs']]:
         """
         The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
         Structure is documented below.
@@ -770,26 +770,26 @@ class CxFlowEventHandlerArgs:
         return pulumi.get(self, "trigger_fulfillment")
 
     @trigger_fulfillment.setter
-    def trigger_fulfillment(self, value: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentArgs']]):
+    def trigger_fulfillment(self, value: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentArrgs']]):
         pulumi.set(self, "trigger_fulfillment", value)
 
 
 @pulumi.input_type
-class CxFlowEventHandlerTriggerFulfillmentArgs:
+calass CxFlowEventHandlerTriggerFulfillmentArrgs:
     def __init__(__self__, *,
-                 conditional_cases: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs']]]] = None,
-                 messages: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageArgs']]]] = None,
+                 conditional_cases: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrgs']]]] = None,
+                 messages: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageArrgs']]]] = None,
                  return_partial_responses: Optional[pulumi.Input[bool]] = None,
-                 set_parameter_actions: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs']]]] = None,
+                 set_parameter_actions: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrgs']]]] = None,
                  tag: Optional[pulumi.Input[str]] = None,
                  webhook: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs']]] conditional_cases: Conditional cases for this fulfillment.
+        :param pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrgs']]] conditional_cases: Conditional cases for this fulfillment.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageArgs']]] messages: The list of rich message responses to present to the user.
+        :param pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageArrgs']]] messages: The list of rich message responses to present to the user.
                Structure is documented below.
         :param pulumi.Input[bool] return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
-        :param pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs']]] set_parameter_actions: Set parameter values before executing the webhook.
+        :param pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrgs']]] set_parameter_actions: Set parameter values before executing the webhook.
                Structure is documented below.
         :param pulumi.Input[str] tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
         :param pulumi.Input[str] webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
@@ -809,7 +809,7 @@ class CxFlowEventHandlerTriggerFulfillmentArgs:
 
     @property
     @pulumi.getter(name="conditionalCases")
-    def conditional_cases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs']]]]:
+    def conditional_cases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrgs']]]]:
         """
         Conditional cases for this fulfillment.
         Structure is documented below.
@@ -817,12 +817,12 @@ class CxFlowEventHandlerTriggerFulfillmentArgs:
         return pulumi.get(self, "conditional_cases")
 
     @conditional_cases.setter
-    def conditional_cases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs']]]]):
+    def conditional_cases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrgs']]]]):
         pulumi.set(self, "conditional_cases", value)
 
     @property
     @pulumi.getter
-    def messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageArgs']]]]:
+    def messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageArrgs']]]]:
         """
         The list of rich message responses to present to the user.
         Structure is documented below.
@@ -830,7 +830,7 @@ class CxFlowEventHandlerTriggerFulfillmentArgs:
         return pulumi.get(self, "messages")
 
     @messages.setter
-    def messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageArgs']]]]):
+    def messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageArrgs']]]]):
         pulumi.set(self, "messages", value)
 
     @property
@@ -847,7 +847,7 @@ class CxFlowEventHandlerTriggerFulfillmentArgs:
 
     @property
     @pulumi.getter(name="setParameterActions")
-    def set_parameter_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs']]]]:
+    def set_parameter_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrgs']]]]:
         """
         Set parameter values before executing the webhook.
         Structure is documented below.
@@ -855,7 +855,7 @@ class CxFlowEventHandlerTriggerFulfillmentArgs:
         return pulumi.get(self, "set_parameter_actions")
 
     @set_parameter_actions.setter
-    def set_parameter_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs']]]]):
+    def set_parameter_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrgs']]]]):
         pulumi.set(self, "set_parameter_actions", value)
 
     @property
@@ -884,7 +884,7 @@ class CxFlowEventHandlerTriggerFulfillmentArgs:
 
 
 @pulumi.input_type
-class CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs:
+calass CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrgs:
     def __init__(__self__, *,
                  cases: Optional[pulumi.Input[str]] = None):
         """
@@ -909,38 +909,38 @@ class CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs:
 
 
 @pulumi.input_type
-class CxFlowEventHandlerTriggerFulfillmentMessageArgs:
+calass CxFlowEventHandlerTriggerFulfillmentMessageArrgs:
     def __init__(__self__, *,
                  channel: Optional[pulumi.Input[str]] = None,
-                 conversation_success: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs']] = None,
-                 live_agent_handoff: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs']] = None,
-                 output_audio_text: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs']] = None,
+                 conversation_success: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArrgs']] = None,
+                 live_agent_handoff: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArrgs']] = None,
+                 output_audio_text: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs']] = None,
                  payload: Optional[pulumi.Input[str]] = None,
-                 play_audio: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs']] = None,
-                 telephony_transfer_call: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs']] = None,
-                 text: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTextArgs']] = None):
+                 play_audio: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArrgs']] = None,
+                 telephony_transfer_call: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArrgs']] = None,
+                 text: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTextArrgs']] = None):
         """
         :param pulumi.Input[str] channel: The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
-        :param pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs'] conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        :param pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArrgs'] conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
                Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
                * In a webhook response when you determine that you handled the customer issue.
                Structure is documented below.
-        :param pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs'] live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
+        :param pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArrgs'] live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
                Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
                * In a webhook response when you determine that the customer issue can only be handled by a human.
                Structure is documented below.
-        :param pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        :param pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
                Structure is documented below.
         :param pulumi.Input[str] payload: A custom, platform-specific payload.
-        :param pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs'] play_audio: Specifies an audio clip to be played by the client as part of the response.
+        :param pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArrgs'] play_audio: Specifies an audio clip to be played by the client as part of the response.
                Structure is documented below.
-        :param pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs'] telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        :param pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArrgs'] telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
                Structure is documented below.
-        :param pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTextArgs'] text: The text response message.
+        :param pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTextArrgs'] text: The text response message.
                Structure is documented below.
         """
         if channel is not None:
@@ -974,7 +974,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessageArgs:
 
     @property
     @pulumi.getter(name="conversationSuccess")
-    def conversation_success(self) -> Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs']]:
+    def conversation_success(self) -> Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArrgs']]:
         """
         Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
         Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
@@ -986,12 +986,12 @@ class CxFlowEventHandlerTriggerFulfillmentMessageArgs:
         return pulumi.get(self, "conversation_success")
 
     @conversation_success.setter
-    def conversation_success(self, value: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs']]):
+    def conversation_success(self, value: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArrgs']]):
         pulumi.set(self, "conversation_success", value)
 
     @property
     @pulumi.getter(name="liveAgentHandoff")
-    def live_agent_handoff(self) -> Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs']]:
+    def live_agent_handoff(self) -> Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArrgs']]:
         """
         Indicates that the conversation should be handed off to a live agent.
         Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
@@ -1003,12 +1003,12 @@ class CxFlowEventHandlerTriggerFulfillmentMessageArgs:
         return pulumi.get(self, "live_agent_handoff")
 
     @live_agent_handoff.setter
-    def live_agent_handoff(self, value: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs']]):
+    def live_agent_handoff(self, value: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArrgs']]):
         pulumi.set(self, "live_agent_handoff", value)
 
     @property
     @pulumi.getter(name="outputAudioText")
-    def output_audio_text(self) -> Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs']]:
+    def output_audio_text(self) -> Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs']]:
         """
         A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
         Structure is documented below.
@@ -1016,7 +1016,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessageArgs:
         return pulumi.get(self, "output_audio_text")
 
     @output_audio_text.setter
-    def output_audio_text(self, value: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs']]):
+    def output_audio_text(self, value: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs']]):
         pulumi.set(self, "output_audio_text", value)
 
     @property
@@ -1033,7 +1033,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessageArgs:
 
     @property
     @pulumi.getter(name="playAudio")
-    def play_audio(self) -> Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs']]:
+    def play_audio(self) -> Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArrgs']]:
         """
         Specifies an audio clip to be played by the client as part of the response.
         Structure is documented below.
@@ -1041,12 +1041,12 @@ class CxFlowEventHandlerTriggerFulfillmentMessageArgs:
         return pulumi.get(self, "play_audio")
 
     @play_audio.setter
-    def play_audio(self, value: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs']]):
+    def play_audio(self, value: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArrgs']]):
         pulumi.set(self, "play_audio", value)
 
     @property
     @pulumi.getter(name="telephonyTransferCall")
-    def telephony_transfer_call(self) -> Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs']]:
+    def telephony_transfer_call(self) -> Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArrgs']]:
         """
         Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
         Structure is documented below.
@@ -1054,12 +1054,12 @@ class CxFlowEventHandlerTriggerFulfillmentMessageArgs:
         return pulumi.get(self, "telephony_transfer_call")
 
     @telephony_transfer_call.setter
-    def telephony_transfer_call(self, value: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs']]):
+    def telephony_transfer_call(self, value: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArrgs']]):
         pulumi.set(self, "telephony_transfer_call", value)
 
     @property
     @pulumi.getter
-    def text(self) -> Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTextArgs']]:
+    def text(self) -> Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTextArrgs']]:
         """
         The text response message.
         Structure is documented below.
@@ -1067,12 +1067,12 @@ class CxFlowEventHandlerTriggerFulfillmentMessageArgs:
         return pulumi.get(self, "text")
 
     @text.setter
-    def text(self, value: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTextArgs']]):
+    def text(self, value: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTextArrgs']]):
         pulumi.set(self, "text", value)
 
 
 @pulumi.input_type
-class CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs:
+calass CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArrgs:
     def __init__(__self__, *,
                  metadata: Optional[pulumi.Input[str]] = None):
         """
@@ -1095,7 +1095,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs:
 
 
 @pulumi.input_type
-class CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs:
+calass CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArrgs:
     def __init__(__self__, *,
                  metadata: Optional[pulumi.Input[str]] = None):
         """
@@ -1118,7 +1118,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs:
 
 
 @pulumi.input_type
-class CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs:
+calass CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs:
     def __init__(__self__, *,
                  allow_playback_interruption: Optional[pulumi.Input[bool]] = None,
                  ssml: Optional[pulumi.Input[str]] = None,
@@ -1175,7 +1175,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs:
 
 
 @pulumi.input_type
-class CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs:
+calass CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArrgs:
     def __init__(__self__, *,
                  audio_uri: pulumi.Input[str],
                  allow_playback_interruption: Optional[pulumi.Input[bool]] = None):
@@ -1215,7 +1215,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs:
 
 
 @pulumi.input_type
-class CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs:
+calass CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArrgs:
     def __init__(__self__, *,
                  phone_number: pulumi.Input[str]):
         """
@@ -1237,7 +1237,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs:
 
 
 @pulumi.input_type
-class CxFlowEventHandlerTriggerFulfillmentMessageTextArgs:
+calass CxFlowEventHandlerTriggerFulfillmentMessageTextArrgs:
     def __init__(__self__, *,
                  allow_playback_interruption: Optional[pulumi.Input[bool]] = None,
                  texts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -1278,7 +1278,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessageTextArgs:
 
 
 @pulumi.input_type
-class CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs:
+calass CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrgs:
     def __init__(__self__, *,
                  parameter: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
@@ -1317,7 +1317,7 @@ class CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs:
 
 
 @pulumi.input_type
-class CxFlowNluSettingsArgs:
+calass CxFlowNluSettingsArrgs:
     def __init__(__self__, *,
                  classification_threshold: Optional[pulumi.Input[float]] = None,
                  model_training_mode: Optional[pulumi.Input[str]] = None,
@@ -1386,14 +1386,14 @@ class CxFlowNluSettingsArgs:
 
 
 @pulumi.input_type
-class CxFlowTransitionRouteArgs:
+calass CxFlowTransitionRouteArrgs:
     def __init__(__self__, *,
                  condition: Optional[pulumi.Input[str]] = None,
                  intent: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  target_flow: Optional[pulumi.Input[str]] = None,
                  target_page: Optional[pulumi.Input[str]] = None,
-                 trigger_fulfillment: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentArgs']] = None):
+                 trigger_fulfillment: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentArrgs']] = None):
         """
         :param pulumi.Input[str] condition: The condition to evaluate against form parameters or session parameters.
                At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
@@ -1405,7 +1405,7 @@ class CxFlowTransitionRouteArgs:
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param pulumi.Input[str] target_page: The target page to transition to.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
-        :param pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentArgs'] trigger_fulfillment: The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
+        :param pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentArrgs'] trigger_fulfillment: The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
                Structure is documented below.
         """
         if condition is not None:
@@ -1488,7 +1488,7 @@ class CxFlowTransitionRouteArgs:
 
     @property
     @pulumi.getter(name="triggerFulfillment")
-    def trigger_fulfillment(self) -> Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentArgs']]:
+    def trigger_fulfillment(self) -> Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentArrgs']]:
         """
         The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
         Structure is documented below.
@@ -1496,26 +1496,26 @@ class CxFlowTransitionRouteArgs:
         return pulumi.get(self, "trigger_fulfillment")
 
     @trigger_fulfillment.setter
-    def trigger_fulfillment(self, value: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentArgs']]):
+    def trigger_fulfillment(self, value: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentArrgs']]):
         pulumi.set(self, "trigger_fulfillment", value)
 
 
 @pulumi.input_type
-class CxFlowTransitionRouteTriggerFulfillmentArgs:
+calass CxFlowTransitionRouteTriggerFulfillmentArrgs:
     def __init__(__self__, *,
-                 conditional_cases: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs']]]] = None,
-                 messages: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageArgs']]]] = None,
+                 conditional_cases: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrgs']]]] = None,
+                 messages: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageArrgs']]]] = None,
                  return_partial_responses: Optional[pulumi.Input[bool]] = None,
-                 set_parameter_actions: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs']]]] = None,
+                 set_parameter_actions: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrgs']]]] = None,
                  tag: Optional[pulumi.Input[str]] = None,
                  webhook: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs']]] conditional_cases: Conditional cases for this fulfillment.
+        :param pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrgs']]] conditional_cases: Conditional cases for this fulfillment.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageArgs']]] messages: The list of rich message responses to present to the user.
+        :param pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageArrgs']]] messages: The list of rich message responses to present to the user.
                Structure is documented below.
         :param pulumi.Input[bool] return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
-        :param pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs']]] set_parameter_actions: Set parameter values before executing the webhook.
+        :param pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrgs']]] set_parameter_actions: Set parameter values before executing the webhook.
                Structure is documented below.
         :param pulumi.Input[str] tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
         :param pulumi.Input[str] webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
@@ -1535,7 +1535,7 @@ class CxFlowTransitionRouteTriggerFulfillmentArgs:
 
     @property
     @pulumi.getter(name="conditionalCases")
-    def conditional_cases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs']]]]:
+    def conditional_cases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrgs']]]]:
         """
         Conditional cases for this fulfillment.
         Structure is documented below.
@@ -1543,12 +1543,12 @@ class CxFlowTransitionRouteTriggerFulfillmentArgs:
         return pulumi.get(self, "conditional_cases")
 
     @conditional_cases.setter
-    def conditional_cases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs']]]]):
+    def conditional_cases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrgs']]]]):
         pulumi.set(self, "conditional_cases", value)
 
     @property
     @pulumi.getter
-    def messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageArgs']]]]:
+    def messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageArrgs']]]]:
         """
         The list of rich message responses to present to the user.
         Structure is documented below.
@@ -1556,7 +1556,7 @@ class CxFlowTransitionRouteTriggerFulfillmentArgs:
         return pulumi.get(self, "messages")
 
     @messages.setter
-    def messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageArgs']]]]):
+    def messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageArrgs']]]]):
         pulumi.set(self, "messages", value)
 
     @property
@@ -1573,7 +1573,7 @@ class CxFlowTransitionRouteTriggerFulfillmentArgs:
 
     @property
     @pulumi.getter(name="setParameterActions")
-    def set_parameter_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs']]]]:
+    def set_parameter_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrgs']]]]:
         """
         Set parameter values before executing the webhook.
         Structure is documented below.
@@ -1581,7 +1581,7 @@ class CxFlowTransitionRouteTriggerFulfillmentArgs:
         return pulumi.get(self, "set_parameter_actions")
 
     @set_parameter_actions.setter
-    def set_parameter_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs']]]]):
+    def set_parameter_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrgs']]]]):
         pulumi.set(self, "set_parameter_actions", value)
 
     @property
@@ -1610,7 +1610,7 @@ class CxFlowTransitionRouteTriggerFulfillmentArgs:
 
 
 @pulumi.input_type
-class CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs:
+calass CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrgs:
     def __init__(__self__, *,
                  cases: Optional[pulumi.Input[str]] = None):
         """
@@ -1635,38 +1635,38 @@ class CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs:
 
 
 @pulumi.input_type
-class CxFlowTransitionRouteTriggerFulfillmentMessageArgs:
+calass CxFlowTransitionRouteTriggerFulfillmentMessageArrgs:
     def __init__(__self__, *,
                  channel: Optional[pulumi.Input[str]] = None,
-                 conversation_success: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs']] = None,
-                 live_agent_handoff: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs']] = None,
-                 output_audio_text: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs']] = None,
+                 conversation_success: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArrgs']] = None,
+                 live_agent_handoff: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArrgs']] = None,
+                 output_audio_text: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArrgs']] = None,
                  payload: Optional[pulumi.Input[str]] = None,
-                 play_audio: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs']] = None,
-                 telephony_transfer_call: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs']] = None,
-                 text: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs']] = None):
+                 play_audio: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArrgs']] = None,
+                 telephony_transfer_call: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArrgs']] = None,
+                 text: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTextArrgs']] = None):
         """
         :param pulumi.Input[str] channel: The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
-        :param pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs'] conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        :param pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArrgs'] conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
                Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
                * In a webhook response when you determine that you handled the customer issue.
                Structure is documented below.
-        :param pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs'] live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
+        :param pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArrgs'] live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
                Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
                * In a webhook response when you determine that the customer issue can only be handled by a human.
                Structure is documented below.
-        :param pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        :param pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArrgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
                Structure is documented below.
         :param pulumi.Input[str] payload: A custom, platform-specific payload.
-        :param pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs'] play_audio: Specifies an audio clip to be played by the client as part of the response.
+        :param pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArrgs'] play_audio: Specifies an audio clip to be played by the client as part of the response.
                Structure is documented below.
-        :param pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs'] telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        :param pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArrgs'] telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
                Structure is documented below.
-        :param pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs'] text: The text response message.
+        :param pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTextArrgs'] text: The text response message.
                Structure is documented below.
         """
         if channel is not None:
@@ -1700,7 +1700,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageArgs:
 
     @property
     @pulumi.getter(name="conversationSuccess")
-    def conversation_success(self) -> Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs']]:
+    def conversation_success(self) -> Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArrgs']]:
         """
         Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
         Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
@@ -1712,12 +1712,12 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageArgs:
         return pulumi.get(self, "conversation_success")
 
     @conversation_success.setter
-    def conversation_success(self, value: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs']]):
+    def conversation_success(self, value: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArrgs']]):
         pulumi.set(self, "conversation_success", value)
 
     @property
     @pulumi.getter(name="liveAgentHandoff")
-    def live_agent_handoff(self) -> Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs']]:
+    def live_agent_handoff(self) -> Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArrgs']]:
         """
         Indicates that the conversation should be handed off to a live agent.
         Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
@@ -1729,12 +1729,12 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageArgs:
         return pulumi.get(self, "live_agent_handoff")
 
     @live_agent_handoff.setter
-    def live_agent_handoff(self, value: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs']]):
+    def live_agent_handoff(self, value: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArrgs']]):
         pulumi.set(self, "live_agent_handoff", value)
 
     @property
     @pulumi.getter(name="outputAudioText")
-    def output_audio_text(self) -> Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs']]:
+    def output_audio_text(self) -> Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArrgs']]:
         """
         A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
         Structure is documented below.
@@ -1742,7 +1742,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageArgs:
         return pulumi.get(self, "output_audio_text")
 
     @output_audio_text.setter
-    def output_audio_text(self, value: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs']]):
+    def output_audio_text(self, value: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArrgs']]):
         pulumi.set(self, "output_audio_text", value)
 
     @property
@@ -1759,7 +1759,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageArgs:
 
     @property
     @pulumi.getter(name="playAudio")
-    def play_audio(self) -> Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs']]:
+    def play_audio(self) -> Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArrgs']]:
         """
         Specifies an audio clip to be played by the client as part of the response.
         Structure is documented below.
@@ -1767,12 +1767,12 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageArgs:
         return pulumi.get(self, "play_audio")
 
     @play_audio.setter
-    def play_audio(self, value: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs']]):
+    def play_audio(self, value: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArrgs']]):
         pulumi.set(self, "play_audio", value)
 
     @property
     @pulumi.getter(name="telephonyTransferCall")
-    def telephony_transfer_call(self) -> Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs']]:
+    def telephony_transfer_call(self) -> Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArrgs']]:
         """
         Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
         Structure is documented below.
@@ -1780,12 +1780,12 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageArgs:
         return pulumi.get(self, "telephony_transfer_call")
 
     @telephony_transfer_call.setter
-    def telephony_transfer_call(self, value: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs']]):
+    def telephony_transfer_call(self, value: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArrgs']]):
         pulumi.set(self, "telephony_transfer_call", value)
 
     @property
     @pulumi.getter
-    def text(self) -> Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs']]:
+    def text(self) -> Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTextArrgs']]:
         """
         The text response message.
         Structure is documented below.
@@ -1793,12 +1793,12 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageArgs:
         return pulumi.get(self, "text")
 
     @text.setter
-    def text(self, value: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs']]):
+    def text(self, value: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTextArrgs']]):
         pulumi.set(self, "text", value)
 
 
 @pulumi.input_type
-class CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs:
+calass CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArrgs:
     def __init__(__self__, *,
                  metadata: Optional[pulumi.Input[str]] = None):
         """
@@ -1821,7 +1821,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs:
 
 
 @pulumi.input_type
-class CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs:
+calass CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArrgs:
     def __init__(__self__, *,
                  metadata: Optional[pulumi.Input[str]] = None):
         """
@@ -1844,7 +1844,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs:
 
 
 @pulumi.input_type
-class CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs:
+calass CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArrgs:
     def __init__(__self__, *,
                  allow_playback_interruption: Optional[pulumi.Input[bool]] = None,
                  ssml: Optional[pulumi.Input[str]] = None,
@@ -1901,7 +1901,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs:
 
 
 @pulumi.input_type
-class CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs:
+calass CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArrgs:
     def __init__(__self__, *,
                  audio_uri: pulumi.Input[str],
                  allow_playback_interruption: Optional[pulumi.Input[bool]] = None):
@@ -1941,7 +1941,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs:
 
 
 @pulumi.input_type
-class CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs:
+calass CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArrgs:
     def __init__(__self__, *,
                  phone_number: pulumi.Input[str]):
         """
@@ -1963,7 +1963,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs:
 
 
 @pulumi.input_type
-class CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs:
+calass CxFlowTransitionRouteTriggerFulfillmentMessageTextArrgs:
     def __init__(__self__, *,
                  allow_playback_interruption: Optional[pulumi.Input[bool]] = None,
                  texts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -2004,7 +2004,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs:
 
 
 @pulumi.input_type
-class CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs:
+calass CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrgs:
     def __init__(__self__, *,
                  parameter: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
@@ -2043,7 +2043,7 @@ class CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs:
 
 
 @pulumi.input_type
-class CxIntentParameterArgs:
+calass CxIntentParameterArrgs:
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  id: pulumi.Input[str],
@@ -2116,13 +2116,13 @@ class CxIntentParameterArgs:
 
 
 @pulumi.input_type
-class CxIntentTrainingPhraseArgs:
+calass CxIntentTrainingPhraseArrgs:
     def __init__(__self__, *,
-                 parts: pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhrasePartArgs']]],
+                 parts: pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhrasePartArrgs']]],
                  id: Optional[pulumi.Input[str]] = None,
                  repeat_count: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhrasePartArgs']]] parts: The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase.
+        :param pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhrasePartArrgs']]] parts: The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase.
                Note: The API does not automatically annotate training phrases like the Dialogflow Console does.
                Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated.
                If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set.
@@ -2142,7 +2142,7 @@ class CxIntentTrainingPhraseArgs:
 
     @property
     @pulumi.getter
-    def parts(self) -> pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhrasePartArgs']]]:
+    def parts(self) -> pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhrasePartArrgs']]]:
         """
         The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase.
         Note: The API does not automatically annotate training phrases like the Dialogflow Console does.
@@ -2156,7 +2156,7 @@ class CxIntentTrainingPhraseArgs:
         return pulumi.get(self, "parts")
 
     @parts.setter
-    def parts(self, value: pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhrasePartArgs']]]):
+    def parts(self, value: pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhrasePartArrgs']]]):
         pulumi.set(self, "parts", value)
 
     @property
@@ -2186,7 +2186,7 @@ class CxIntentTrainingPhraseArgs:
 
 
 @pulumi.input_type
-class CxIntentTrainingPhrasePartArgs:
+calass CxIntentTrainingPhrasePartArrgs:
     def __init__(__self__, *,
                  text: pulumi.Input[str],
                  parameter_id: Optional[pulumi.Input[str]] = None):
@@ -2224,11 +2224,11 @@ class CxIntentTrainingPhrasePartArgs:
 
 
 @pulumi.input_type
-class CxPageAdvancedSettingsArgs:
+calass CxPageAdvancedSettingsArrgs:
     def __init__(__self__, *,
-                 dtmf_settings: Optional[pulumi.Input['CxPageAdvancedSettingsDtmfSettingsArgs']] = None):
+                 dtmf_settings: Optional[pulumi.Input['CxPageAdvancedSettingsDtmfSettingsArrgs']] = None):
         """
-        :param pulumi.Input['CxPageAdvancedSettingsDtmfSettingsArgs'] dtmf_settings: Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+        :param pulumi.Input['CxPageAdvancedSettingsDtmfSettingsArrgs'] dtmf_settings: Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
                * Agent level
                * Flow level
                * Page level
@@ -2240,7 +2240,7 @@ class CxPageAdvancedSettingsArgs:
 
     @property
     @pulumi.getter(name="dtmfSettings")
-    def dtmf_settings(self) -> Optional[pulumi.Input['CxPageAdvancedSettingsDtmfSettingsArgs']]:
+    def dtmf_settings(self) -> Optional[pulumi.Input['CxPageAdvancedSettingsDtmfSettingsArrgs']]:
         """
         Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
         * Agent level
@@ -2252,12 +2252,12 @@ class CxPageAdvancedSettingsArgs:
         return pulumi.get(self, "dtmf_settings")
 
     @dtmf_settings.setter
-    def dtmf_settings(self, value: Optional[pulumi.Input['CxPageAdvancedSettingsDtmfSettingsArgs']]):
+    def dtmf_settings(self, value: Optional[pulumi.Input['CxPageAdvancedSettingsDtmfSettingsArrgs']]):
         pulumi.set(self, "dtmf_settings", value)
 
 
 @pulumi.input_type
-class CxPageAdvancedSettingsDtmfSettingsArgs:
+calass CxPageAdvancedSettingsDtmfSettingsArrgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  finish_digit: Optional[pulumi.Input[str]] = None,
@@ -2312,21 +2312,21 @@ class CxPageAdvancedSettingsDtmfSettingsArgs:
 
 
 @pulumi.input_type
-class CxPageEntryFulfillmentArgs:
+calass CxPageEntryFulfillmentArrgs:
     def __init__(__self__, *,
-                 conditional_cases: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentConditionalCaseArgs']]]] = None,
-                 messages: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentMessageArgs']]]] = None,
+                 conditional_cases: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentConditionalCaseArrgs']]]] = None,
+                 messages: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentMessageArrgs']]]] = None,
                  return_partial_responses: Optional[pulumi.Input[bool]] = None,
-                 set_parameter_actions: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentSetParameterActionArgs']]]] = None,
+                 set_parameter_actions: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentSetParameterActionArrgs']]]] = None,
                  tag: Optional[pulumi.Input[str]] = None,
                  webhook: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentConditionalCaseArgs']]] conditional_cases: Conditional cases for this fulfillment.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentConditionalCaseArrgs']]] conditional_cases: Conditional cases for this fulfillment.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentMessageArgs']]] messages: The list of rich message responses to present to the user.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentMessageArrgs']]] messages: The list of rich message responses to present to the user.
                Structure is documented below.
         :param pulumi.Input[bool] return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
-        :param pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentSetParameterActionArgs']]] set_parameter_actions: Set parameter values before executing the webhook.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentSetParameterActionArrgs']]] set_parameter_actions: Set parameter values before executing the webhook.
                Structure is documented below.
         :param pulumi.Input[str] tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
         :param pulumi.Input[str] webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
@@ -2346,7 +2346,7 @@ class CxPageEntryFulfillmentArgs:
 
     @property
     @pulumi.getter(name="conditionalCases")
-    def conditional_cases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentConditionalCaseArgs']]]]:
+    def conditional_cases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentConditionalCaseArrgs']]]]:
         """
         Conditional cases for this fulfillment.
         Structure is documented below.
@@ -2354,12 +2354,12 @@ class CxPageEntryFulfillmentArgs:
         return pulumi.get(self, "conditional_cases")
 
     @conditional_cases.setter
-    def conditional_cases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentConditionalCaseArgs']]]]):
+    def conditional_cases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentConditionalCaseArrgs']]]]):
         pulumi.set(self, "conditional_cases", value)
 
     @property
     @pulumi.getter
-    def messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentMessageArgs']]]]:
+    def messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentMessageArrgs']]]]:
         """
         The list of rich message responses to present to the user.
         Structure is documented below.
@@ -2367,7 +2367,7 @@ class CxPageEntryFulfillmentArgs:
         return pulumi.get(self, "messages")
 
     @messages.setter
-    def messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentMessageArgs']]]]):
+    def messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentMessageArrgs']]]]):
         pulumi.set(self, "messages", value)
 
     @property
@@ -2384,7 +2384,7 @@ class CxPageEntryFulfillmentArgs:
 
     @property
     @pulumi.getter(name="setParameterActions")
-    def set_parameter_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentSetParameterActionArgs']]]]:
+    def set_parameter_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentSetParameterActionArrgs']]]]:
         """
         Set parameter values before executing the webhook.
         Structure is documented below.
@@ -2392,7 +2392,7 @@ class CxPageEntryFulfillmentArgs:
         return pulumi.get(self, "set_parameter_actions")
 
     @set_parameter_actions.setter
-    def set_parameter_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentSetParameterActionArgs']]]]):
+    def set_parameter_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentSetParameterActionArrgs']]]]):
         pulumi.set(self, "set_parameter_actions", value)
 
     @property
@@ -2421,7 +2421,7 @@ class CxPageEntryFulfillmentArgs:
 
 
 @pulumi.input_type
-class CxPageEntryFulfillmentConditionalCaseArgs:
+calass CxPageEntryFulfillmentConditionalCaseArrgs:
     def __init__(__self__, *,
                  cases: Optional[pulumi.Input[str]] = None):
         """
@@ -2446,38 +2446,38 @@ class CxPageEntryFulfillmentConditionalCaseArgs:
 
 
 @pulumi.input_type
-class CxPageEntryFulfillmentMessageArgs:
+calass CxPageEntryFulfillmentMessageArrgs:
     def __init__(__self__, *,
                  channel: Optional[pulumi.Input[str]] = None,
-                 conversation_success: Optional[pulumi.Input['CxPageEntryFulfillmentMessageConversationSuccessArgs']] = None,
-                 live_agent_handoff: Optional[pulumi.Input['CxPageEntryFulfillmentMessageLiveAgentHandoffArgs']] = None,
-                 output_audio_text: Optional[pulumi.Input['CxPageEntryFulfillmentMessageOutputAudioTextArgs']] = None,
+                 conversation_success: Optional[pulumi.Input['CxPageEntryFulfillmentMessageConversationSuccessArrgs']] = None,
+                 live_agent_handoff: Optional[pulumi.Input['CxPageEntryFulfillmentMessageLiveAgentHandoffArrgs']] = None,
+                 output_audio_text: Optional[pulumi.Input['CxPageEntryFulfillmentMessageOutputAudioTextArrgs']] = None,
                  payload: Optional[pulumi.Input[str]] = None,
-                 play_audio: Optional[pulumi.Input['CxPageEntryFulfillmentMessagePlayAudioArgs']] = None,
-                 telephony_transfer_call: Optional[pulumi.Input['CxPageEntryFulfillmentMessageTelephonyTransferCallArgs']] = None,
-                 text: Optional[pulumi.Input['CxPageEntryFulfillmentMessageTextArgs']] = None):
+                 play_audio: Optional[pulumi.Input['CxPageEntryFulfillmentMessagePlayAudioArrgs']] = None,
+                 telephony_transfer_call: Optional[pulumi.Input['CxPageEntryFulfillmentMessageTelephonyTransferCallArrgs']] = None,
+                 text: Optional[pulumi.Input['CxPageEntryFulfillmentMessageTextArrgs']] = None):
         """
         :param pulumi.Input[str] channel: The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
-        :param pulumi.Input['CxPageEntryFulfillmentMessageConversationSuccessArgs'] conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        :param pulumi.Input['CxPageEntryFulfillmentMessageConversationSuccessArrgs'] conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
                Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
                * In a webhook response when you determine that you handled the customer issue.
                Structure is documented below.
-        :param pulumi.Input['CxPageEntryFulfillmentMessageLiveAgentHandoffArgs'] live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
+        :param pulumi.Input['CxPageEntryFulfillmentMessageLiveAgentHandoffArrgs'] live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
                Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
                * In a webhook response when you determine that the customer issue can only be handled by a human.
                Structure is documented below.
-        :param pulumi.Input['CxPageEntryFulfillmentMessageOutputAudioTextArgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        :param pulumi.Input['CxPageEntryFulfillmentMessageOutputAudioTextArrgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
                Structure is documented below.
         :param pulumi.Input[str] payload: A custom, platform-specific payload.
-        :param pulumi.Input['CxPageEntryFulfillmentMessagePlayAudioArgs'] play_audio: Specifies an audio clip to be played by the client as part of the response.
+        :param pulumi.Input['CxPageEntryFulfillmentMessagePlayAudioArrgs'] play_audio: Specifies an audio clip to be played by the client as part of the response.
                Structure is documented below.
-        :param pulumi.Input['CxPageEntryFulfillmentMessageTelephonyTransferCallArgs'] telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        :param pulumi.Input['CxPageEntryFulfillmentMessageTelephonyTransferCallArrgs'] telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
                Structure is documented below.
-        :param pulumi.Input['CxPageEntryFulfillmentMessageTextArgs'] text: The text response message.
+        :param pulumi.Input['CxPageEntryFulfillmentMessageTextArrgs'] text: The text response message.
                Structure is documented below.
         """
         if channel is not None:
@@ -2511,7 +2511,7 @@ class CxPageEntryFulfillmentMessageArgs:
 
     @property
     @pulumi.getter(name="conversationSuccess")
-    def conversation_success(self) -> Optional[pulumi.Input['CxPageEntryFulfillmentMessageConversationSuccessArgs']]:
+    def conversation_success(self) -> Optional[pulumi.Input['CxPageEntryFulfillmentMessageConversationSuccessArrgs']]:
         """
         Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
         Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
@@ -2523,12 +2523,12 @@ class CxPageEntryFulfillmentMessageArgs:
         return pulumi.get(self, "conversation_success")
 
     @conversation_success.setter
-    def conversation_success(self, value: Optional[pulumi.Input['CxPageEntryFulfillmentMessageConversationSuccessArgs']]):
+    def conversation_success(self, value: Optional[pulumi.Input['CxPageEntryFulfillmentMessageConversationSuccessArrgs']]):
         pulumi.set(self, "conversation_success", value)
 
     @property
     @pulumi.getter(name="liveAgentHandoff")
-    def live_agent_handoff(self) -> Optional[pulumi.Input['CxPageEntryFulfillmentMessageLiveAgentHandoffArgs']]:
+    def live_agent_handoff(self) -> Optional[pulumi.Input['CxPageEntryFulfillmentMessageLiveAgentHandoffArrgs']]:
         """
         Indicates that the conversation should be handed off to a live agent.
         Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
@@ -2540,12 +2540,12 @@ class CxPageEntryFulfillmentMessageArgs:
         return pulumi.get(self, "live_agent_handoff")
 
     @live_agent_handoff.setter
-    def live_agent_handoff(self, value: Optional[pulumi.Input['CxPageEntryFulfillmentMessageLiveAgentHandoffArgs']]):
+    def live_agent_handoff(self, value: Optional[pulumi.Input['CxPageEntryFulfillmentMessageLiveAgentHandoffArrgs']]):
         pulumi.set(self, "live_agent_handoff", value)
 
     @property
     @pulumi.getter(name="outputAudioText")
-    def output_audio_text(self) -> Optional[pulumi.Input['CxPageEntryFulfillmentMessageOutputAudioTextArgs']]:
+    def output_audio_text(self) -> Optional[pulumi.Input['CxPageEntryFulfillmentMessageOutputAudioTextArrgs']]:
         """
         A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
         Structure is documented below.
@@ -2553,7 +2553,7 @@ class CxPageEntryFulfillmentMessageArgs:
         return pulumi.get(self, "output_audio_text")
 
     @output_audio_text.setter
-    def output_audio_text(self, value: Optional[pulumi.Input['CxPageEntryFulfillmentMessageOutputAudioTextArgs']]):
+    def output_audio_text(self, value: Optional[pulumi.Input['CxPageEntryFulfillmentMessageOutputAudioTextArrgs']]):
         pulumi.set(self, "output_audio_text", value)
 
     @property
@@ -2570,7 +2570,7 @@ class CxPageEntryFulfillmentMessageArgs:
 
     @property
     @pulumi.getter(name="playAudio")
-    def play_audio(self) -> Optional[pulumi.Input['CxPageEntryFulfillmentMessagePlayAudioArgs']]:
+    def play_audio(self) -> Optional[pulumi.Input['CxPageEntryFulfillmentMessagePlayAudioArrgs']]:
         """
         Specifies an audio clip to be played by the client as part of the response.
         Structure is documented below.
@@ -2578,12 +2578,12 @@ class CxPageEntryFulfillmentMessageArgs:
         return pulumi.get(self, "play_audio")
 
     @play_audio.setter
-    def play_audio(self, value: Optional[pulumi.Input['CxPageEntryFulfillmentMessagePlayAudioArgs']]):
+    def play_audio(self, value: Optional[pulumi.Input['CxPageEntryFulfillmentMessagePlayAudioArrgs']]):
         pulumi.set(self, "play_audio", value)
 
     @property
     @pulumi.getter(name="telephonyTransferCall")
-    def telephony_transfer_call(self) -> Optional[pulumi.Input['CxPageEntryFulfillmentMessageTelephonyTransferCallArgs']]:
+    def telephony_transfer_call(self) -> Optional[pulumi.Input['CxPageEntryFulfillmentMessageTelephonyTransferCallArrgs']]:
         """
         Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
         Structure is documented below.
@@ -2591,12 +2591,12 @@ class CxPageEntryFulfillmentMessageArgs:
         return pulumi.get(self, "telephony_transfer_call")
 
     @telephony_transfer_call.setter
-    def telephony_transfer_call(self, value: Optional[pulumi.Input['CxPageEntryFulfillmentMessageTelephonyTransferCallArgs']]):
+    def telephony_transfer_call(self, value: Optional[pulumi.Input['CxPageEntryFulfillmentMessageTelephonyTransferCallArrgs']]):
         pulumi.set(self, "telephony_transfer_call", value)
 
     @property
     @pulumi.getter
-    def text(self) -> Optional[pulumi.Input['CxPageEntryFulfillmentMessageTextArgs']]:
+    def text(self) -> Optional[pulumi.Input['CxPageEntryFulfillmentMessageTextArrgs']]:
         """
         The text response message.
         Structure is documented below.
@@ -2604,12 +2604,12 @@ class CxPageEntryFulfillmentMessageArgs:
         return pulumi.get(self, "text")
 
     @text.setter
-    def text(self, value: Optional[pulumi.Input['CxPageEntryFulfillmentMessageTextArgs']]):
+    def text(self, value: Optional[pulumi.Input['CxPageEntryFulfillmentMessageTextArrgs']]):
         pulumi.set(self, "text", value)
 
 
 @pulumi.input_type
-class CxPageEntryFulfillmentMessageConversationSuccessArgs:
+calass CxPageEntryFulfillmentMessageConversationSuccessArrgs:
     def __init__(__self__, *,
                  metadata: Optional[pulumi.Input[str]] = None):
         """
@@ -2632,7 +2632,7 @@ class CxPageEntryFulfillmentMessageConversationSuccessArgs:
 
 
 @pulumi.input_type
-class CxPageEntryFulfillmentMessageLiveAgentHandoffArgs:
+calass CxPageEntryFulfillmentMessageLiveAgentHandoffArrgs:
     def __init__(__self__, *,
                  metadata: Optional[pulumi.Input[str]] = None):
         """
@@ -2655,7 +2655,7 @@ class CxPageEntryFulfillmentMessageLiveAgentHandoffArgs:
 
 
 @pulumi.input_type
-class CxPageEntryFulfillmentMessageOutputAudioTextArgs:
+calass CxPageEntryFulfillmentMessageOutputAudioTextArrgs:
     def __init__(__self__, *,
                  allow_playback_interruption: Optional[pulumi.Input[bool]] = None,
                  ssml: Optional[pulumi.Input[str]] = None,
@@ -2712,7 +2712,7 @@ class CxPageEntryFulfillmentMessageOutputAudioTextArgs:
 
 
 @pulumi.input_type
-class CxPageEntryFulfillmentMessagePlayAudioArgs:
+calass CxPageEntryFulfillmentMessagePlayAudioArrgs:
     def __init__(__self__, *,
                  audio_uri: pulumi.Input[str],
                  allow_playback_interruption: Optional[pulumi.Input[bool]] = None):
@@ -2752,7 +2752,7 @@ class CxPageEntryFulfillmentMessagePlayAudioArgs:
 
 
 @pulumi.input_type
-class CxPageEntryFulfillmentMessageTelephonyTransferCallArgs:
+calass CxPageEntryFulfillmentMessageTelephonyTransferCallArrgs:
     def __init__(__self__, *,
                  phone_number: pulumi.Input[str]):
         """
@@ -2774,7 +2774,7 @@ class CxPageEntryFulfillmentMessageTelephonyTransferCallArgs:
 
 
 @pulumi.input_type
-class CxPageEntryFulfillmentMessageTextArgs:
+calass CxPageEntryFulfillmentMessageTextArrgs:
     def __init__(__self__, *,
                  allow_playback_interruption: Optional[pulumi.Input[bool]] = None,
                  texts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -2815,7 +2815,7 @@ class CxPageEntryFulfillmentMessageTextArgs:
 
 
 @pulumi.input_type
-class CxPageEntryFulfillmentSetParameterActionArgs:
+calass CxPageEntryFulfillmentSetParameterActionArrgs:
     def __init__(__self__, *,
                  parameter: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
@@ -2854,13 +2854,13 @@ class CxPageEntryFulfillmentSetParameterActionArgs:
 
 
 @pulumi.input_type
-class CxPageEventHandlerArgs:
+calass CxPageEventHandlerArrgs:
     def __init__(__self__, *,
                  event: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  target_flow: Optional[pulumi.Input[str]] = None,
                  target_page: Optional[pulumi.Input[str]] = None,
-                 trigger_fulfillment: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentArgs']] = None):
+                 trigger_fulfillment: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentArrgs']] = None):
         """
         :param pulumi.Input[str] event: The name of the event to handle.
         :param pulumi.Input[str] name: (Output)
@@ -2869,7 +2869,7 @@ class CxPageEventHandlerArgs:
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param pulumi.Input[str] target_page: The target page to transition to.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
-        :param pulumi.Input['CxPageEventHandlerTriggerFulfillmentArgs'] trigger_fulfillment: The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+        :param pulumi.Input['CxPageEventHandlerTriggerFulfillmentArrgs'] trigger_fulfillment: The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
                Structure is documented below.
         """
         if event is not None:
@@ -2936,7 +2936,7 @@ class CxPageEventHandlerArgs:
 
     @property
     @pulumi.getter(name="triggerFulfillment")
-    def trigger_fulfillment(self) -> Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentArgs']]:
+    def trigger_fulfillment(self) -> Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentArrgs']]:
         """
         The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
         Structure is documented below.
@@ -2944,26 +2944,26 @@ class CxPageEventHandlerArgs:
         return pulumi.get(self, "trigger_fulfillment")
 
     @trigger_fulfillment.setter
-    def trigger_fulfillment(self, value: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentArgs']]):
+    def trigger_fulfillment(self, value: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentArrgs']]):
         pulumi.set(self, "trigger_fulfillment", value)
 
 
 @pulumi.input_type
-class CxPageEventHandlerTriggerFulfillmentArgs:
+calass CxPageEventHandlerTriggerFulfillmentArrgs:
     def __init__(__self__, *,
-                 conditional_cases: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs']]]] = None,
-                 messages: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageArgs']]]] = None,
+                 conditional_cases: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentConditionalCaseArrgs']]]] = None,
+                 messages: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageArrgs']]]] = None,
                  return_partial_responses: Optional[pulumi.Input[bool]] = None,
-                 set_parameter_actions: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs']]]] = None,
+                 set_parameter_actions: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentSetParameterActionArrgs']]]] = None,
                  tag: Optional[pulumi.Input[str]] = None,
                  webhook: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs']]] conditional_cases: Conditional cases for this fulfillment.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentConditionalCaseArrgs']]] conditional_cases: Conditional cases for this fulfillment.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageArgs']]] messages: The list of rich message responses to present to the user.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageArrgs']]] messages: The list of rich message responses to present to the user.
                Structure is documented below.
         :param pulumi.Input[bool] return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
-        :param pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs']]] set_parameter_actions: Set parameter values before executing the webhook.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentSetParameterActionArrgs']]] set_parameter_actions: Set parameter values before executing the webhook.
                Structure is documented below.
         :param pulumi.Input[str] tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
         :param pulumi.Input[str] webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
@@ -2983,7 +2983,7 @@ class CxPageEventHandlerTriggerFulfillmentArgs:
 
     @property
     @pulumi.getter(name="conditionalCases")
-    def conditional_cases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs']]]]:
+    def conditional_cases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentConditionalCaseArrgs']]]]:
         """
         Conditional cases for this fulfillment.
         Structure is documented below.
@@ -2991,12 +2991,12 @@ class CxPageEventHandlerTriggerFulfillmentArgs:
         return pulumi.get(self, "conditional_cases")
 
     @conditional_cases.setter
-    def conditional_cases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs']]]]):
+    def conditional_cases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentConditionalCaseArrgs']]]]):
         pulumi.set(self, "conditional_cases", value)
 
     @property
     @pulumi.getter
-    def messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageArgs']]]]:
+    def messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageArrgs']]]]:
         """
         The list of rich message responses to present to the user.
         Structure is documented below.
@@ -3004,7 +3004,7 @@ class CxPageEventHandlerTriggerFulfillmentArgs:
         return pulumi.get(self, "messages")
 
     @messages.setter
-    def messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageArgs']]]]):
+    def messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageArrgs']]]]):
         pulumi.set(self, "messages", value)
 
     @property
@@ -3021,7 +3021,7 @@ class CxPageEventHandlerTriggerFulfillmentArgs:
 
     @property
     @pulumi.getter(name="setParameterActions")
-    def set_parameter_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs']]]]:
+    def set_parameter_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentSetParameterActionArrgs']]]]:
         """
         Set parameter values before executing the webhook.
         Structure is documented below.
@@ -3029,7 +3029,7 @@ class CxPageEventHandlerTriggerFulfillmentArgs:
         return pulumi.get(self, "set_parameter_actions")
 
     @set_parameter_actions.setter
-    def set_parameter_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs']]]]):
+    def set_parameter_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentSetParameterActionArrgs']]]]):
         pulumi.set(self, "set_parameter_actions", value)
 
     @property
@@ -3058,7 +3058,7 @@ class CxPageEventHandlerTriggerFulfillmentArgs:
 
 
 @pulumi.input_type
-class CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs:
+calass CxPageEventHandlerTriggerFulfillmentConditionalCaseArrgs:
     def __init__(__self__, *,
                  cases: Optional[pulumi.Input[str]] = None):
         """
@@ -3083,38 +3083,38 @@ class CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs:
 
 
 @pulumi.input_type
-class CxPageEventHandlerTriggerFulfillmentMessageArgs:
+calass CxPageEventHandlerTriggerFulfillmentMessageArrgs:
     def __init__(__self__, *,
                  channel: Optional[pulumi.Input[str]] = None,
-                 conversation_success: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs']] = None,
-                 live_agent_handoff: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs']] = None,
-                 output_audio_text: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs']] = None,
+                 conversation_success: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArrgs']] = None,
+                 live_agent_handoff: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArrgs']] = None,
+                 output_audio_text: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs']] = None,
                  payload: Optional[pulumi.Input[str]] = None,
-                 play_audio: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs']] = None,
-                 telephony_transfer_call: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs']] = None,
-                 text: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTextArgs']] = None):
+                 play_audio: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArrgs']] = None,
+                 telephony_transfer_call: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArrgs']] = None,
+                 text: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTextArrgs']] = None):
         """
         :param pulumi.Input[str] channel: The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
-        :param pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs'] conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        :param pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArrgs'] conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
                Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
                * In a webhook response when you determine that you handled the customer issue.
                Structure is documented below.
-        :param pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs'] live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
+        :param pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArrgs'] live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
                Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
                * In a webhook response when you determine that the customer issue can only be handled by a human.
                Structure is documented below.
-        :param pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        :param pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
                Structure is documented below.
         :param pulumi.Input[str] payload: A custom, platform-specific payload.
-        :param pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs'] play_audio: Specifies an audio clip to be played by the client as part of the response.
+        :param pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArrgs'] play_audio: Specifies an audio clip to be played by the client as part of the response.
                Structure is documented below.
-        :param pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs'] telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        :param pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArrgs'] telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
                Structure is documented below.
-        :param pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTextArgs'] text: The text response message.
+        :param pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTextArrgs'] text: The text response message.
                Structure is documented below.
         """
         if channel is not None:
@@ -3148,7 +3148,7 @@ class CxPageEventHandlerTriggerFulfillmentMessageArgs:
 
     @property
     @pulumi.getter(name="conversationSuccess")
-    def conversation_success(self) -> Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs']]:
+    def conversation_success(self) -> Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArrgs']]:
         """
         Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
         Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
@@ -3160,12 +3160,12 @@ class CxPageEventHandlerTriggerFulfillmentMessageArgs:
         return pulumi.get(self, "conversation_success")
 
     @conversation_success.setter
-    def conversation_success(self, value: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs']]):
+    def conversation_success(self, value: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArrgs']]):
         pulumi.set(self, "conversation_success", value)
 
     @property
     @pulumi.getter(name="liveAgentHandoff")
-    def live_agent_handoff(self) -> Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs']]:
+    def live_agent_handoff(self) -> Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArrgs']]:
         """
         Indicates that the conversation should be handed off to a live agent.
         Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
@@ -3177,12 +3177,12 @@ class CxPageEventHandlerTriggerFulfillmentMessageArgs:
         return pulumi.get(self, "live_agent_handoff")
 
     @live_agent_handoff.setter
-    def live_agent_handoff(self, value: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs']]):
+    def live_agent_handoff(self, value: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArrgs']]):
         pulumi.set(self, "live_agent_handoff", value)
 
     @property
     @pulumi.getter(name="outputAudioText")
-    def output_audio_text(self) -> Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs']]:
+    def output_audio_text(self) -> Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs']]:
         """
         A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
         Structure is documented below.
@@ -3190,7 +3190,7 @@ class CxPageEventHandlerTriggerFulfillmentMessageArgs:
         return pulumi.get(self, "output_audio_text")
 
     @output_audio_text.setter
-    def output_audio_text(self, value: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs']]):
+    def output_audio_text(self, value: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs']]):
         pulumi.set(self, "output_audio_text", value)
 
     @property
@@ -3207,7 +3207,7 @@ class CxPageEventHandlerTriggerFulfillmentMessageArgs:
 
     @property
     @pulumi.getter(name="playAudio")
-    def play_audio(self) -> Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs']]:
+    def play_audio(self) -> Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArrgs']]:
         """
         Specifies an audio clip to be played by the client as part of the response.
         Structure is documented below.
@@ -3215,12 +3215,12 @@ class CxPageEventHandlerTriggerFulfillmentMessageArgs:
         return pulumi.get(self, "play_audio")
 
     @play_audio.setter
-    def play_audio(self, value: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs']]):
+    def play_audio(self, value: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArrgs']]):
         pulumi.set(self, "play_audio", value)
 
     @property
     @pulumi.getter(name="telephonyTransferCall")
-    def telephony_transfer_call(self) -> Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs']]:
+    def telephony_transfer_call(self) -> Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArrgs']]:
         """
         Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
         Structure is documented below.
@@ -3228,12 +3228,12 @@ class CxPageEventHandlerTriggerFulfillmentMessageArgs:
         return pulumi.get(self, "telephony_transfer_call")
 
     @telephony_transfer_call.setter
-    def telephony_transfer_call(self, value: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs']]):
+    def telephony_transfer_call(self, value: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArrgs']]):
         pulumi.set(self, "telephony_transfer_call", value)
 
     @property
     @pulumi.getter
-    def text(self) -> Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTextArgs']]:
+    def text(self) -> Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTextArrgs']]:
         """
         The text response message.
         Structure is documented below.
@@ -3241,12 +3241,12 @@ class CxPageEventHandlerTriggerFulfillmentMessageArgs:
         return pulumi.get(self, "text")
 
     @text.setter
-    def text(self, value: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTextArgs']]):
+    def text(self, value: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTextArrgs']]):
         pulumi.set(self, "text", value)
 
 
 @pulumi.input_type
-class CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs:
+calass CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArrgs:
     def __init__(__self__, *,
                  metadata: Optional[pulumi.Input[str]] = None):
         """
@@ -3269,7 +3269,7 @@ class CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs:
 
 
 @pulumi.input_type
-class CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs:
+calass CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArrgs:
     def __init__(__self__, *,
                  metadata: Optional[pulumi.Input[str]] = None):
         """
@@ -3292,7 +3292,7 @@ class CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs:
 
 
 @pulumi.input_type
-class CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs:
+calass CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs:
     def __init__(__self__, *,
                  allow_playback_interruption: Optional[pulumi.Input[bool]] = None,
                  ssml: Optional[pulumi.Input[str]] = None,
@@ -3349,7 +3349,7 @@ class CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs:
 
 
 @pulumi.input_type
-class CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs:
+calass CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArrgs:
     def __init__(__self__, *,
                  audio_uri: pulumi.Input[str],
                  allow_playback_interruption: Optional[pulumi.Input[bool]] = None):
@@ -3389,7 +3389,7 @@ class CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs:
 
 
 @pulumi.input_type
-class CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs:
+calass CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArrgs:
     def __init__(__self__, *,
                  phone_number: pulumi.Input[str]):
         """
@@ -3411,7 +3411,7 @@ class CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs:
 
 
 @pulumi.input_type
-class CxPageEventHandlerTriggerFulfillmentMessageTextArgs:
+calass CxPageEventHandlerTriggerFulfillmentMessageTextArrgs:
     def __init__(__self__, *,
                  allow_playback_interruption: Optional[pulumi.Input[bool]] = None,
                  texts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -3452,7 +3452,7 @@ class CxPageEventHandlerTriggerFulfillmentMessageTextArgs:
 
 
 @pulumi.input_type
-class CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs:
+calass CxPageEventHandlerTriggerFulfillmentSetParameterActionArrgs:
     def __init__(__self__, *,
                  parameter: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
@@ -3491,11 +3491,11 @@ class CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs:
 
 
 @pulumi.input_type
-class CxPageFormArgs:
+calass CxPageFormArrgs:
     def __init__(__self__, *,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterArgs']]]] = None):
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterArgs']]] parameters: Parameters to collect from the user.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterArrgs']]] parameters: Parameters to collect from the user.
                Structure is documented below.
         """
         if parameters is not None:
@@ -3503,7 +3503,7 @@ class CxPageFormArgs:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterArgs']]]]:
+    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterArrgs']]]]:
         """
         Parameters to collect from the user.
         Structure is documented below.
@@ -3511,30 +3511,30 @@ class CxPageFormArgs:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterArgs']]]]):
+    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterArrgs']]]]):
         pulumi.set(self, "parameters", value)
 
 
 @pulumi.input_type
-class CxPageFormParameterArgs:
+calass CxPageFormParameterArrgs:
     def __init__(__self__, *,
-                 advanced_settings: Optional[pulumi.Input['CxPageFormParameterAdvancedSettingsArgs']] = None,
+                 advanced_settings: Optional[pulumi.Input['CxPageFormParameterAdvancedSettingsArrgs']] = None,
                  default_value: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  entity_type: Optional[pulumi.Input[str]] = None,
-                 fill_behavior: Optional[pulumi.Input['CxPageFormParameterFillBehaviorArgs']] = None,
+                 fill_behavior: Optional[pulumi.Input['CxPageFormParameterFillBehaviorArrgs']] = None,
                  is_list: Optional[pulumi.Input[bool]] = None,
                  redact: Optional[pulumi.Input[bool]] = None,
                  required: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input['CxPageFormParameterAdvancedSettingsArgs'] advanced_settings: Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        :param pulumi.Input['CxPageFormParameterAdvancedSettingsArrgs'] advanced_settings: Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
         :param pulumi.Input[str] default_value: The default value of an optional parameter. If the parameter is required, the default value will be ignored.
         :param pulumi.Input[str] display_name: The human-readable name of the parameter, unique within the form.
         :param pulumi.Input[str] entity_type: The entity type of the parameter.
                Format: projects/-/locations/-/agents/-/entityTypes/<System Entity Type ID> for system entity types (for example, projects/-/locations/-/agents/-/entityTypes/sys.date), or projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID> for developer entity types.
-        :param pulumi.Input['CxPageFormParameterFillBehaviorArgs'] fill_behavior: Defines fill behavior for the parameter.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorArrgs'] fill_behavior: Defines fill behavior for the parameter.
                Structure is documented below.
         :param pulumi.Input[bool] is_list: Indicates whether the parameter represents a list of values.
         :param pulumi.Input[bool] redact: Indicates whether the parameter content should be redacted in log.
@@ -3561,7 +3561,7 @@ class CxPageFormParameterArgs:
 
     @property
     @pulumi.getter(name="advancedSettings")
-    def advanced_settings(self) -> Optional[pulumi.Input['CxPageFormParameterAdvancedSettingsArgs']]:
+    def advanced_settings(self) -> Optional[pulumi.Input['CxPageFormParameterAdvancedSettingsArrgs']]:
         """
         Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.
         Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
@@ -3570,7 +3570,7 @@ class CxPageFormParameterArgs:
         return pulumi.get(self, "advanced_settings")
 
     @advanced_settings.setter
-    def advanced_settings(self, value: Optional[pulumi.Input['CxPageFormParameterAdvancedSettingsArgs']]):
+    def advanced_settings(self, value: Optional[pulumi.Input['CxPageFormParameterAdvancedSettingsArrgs']]):
         pulumi.set(self, "advanced_settings", value)
 
     @property
@@ -3612,7 +3612,7 @@ class CxPageFormParameterArgs:
 
     @property
     @pulumi.getter(name="fillBehavior")
-    def fill_behavior(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorArgs']]:
+    def fill_behavior(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorArrgs']]:
         """
         Defines fill behavior for the parameter.
         Structure is documented below.
@@ -3620,7 +3620,7 @@ class CxPageFormParameterArgs:
         return pulumi.get(self, "fill_behavior")
 
     @fill_behavior.setter
-    def fill_behavior(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorArgs']]):
+    def fill_behavior(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorArrgs']]):
         pulumi.set(self, "fill_behavior", value)
 
     @property
@@ -3663,11 +3663,11 @@ class CxPageFormParameterArgs:
 
 
 @pulumi.input_type
-class CxPageFormParameterAdvancedSettingsArgs:
+calass CxPageFormParameterAdvancedSettingsArrgs:
     def __init__(__self__, *,
-                 dtmf_settings: Optional[pulumi.Input['CxPageFormParameterAdvancedSettingsDtmfSettingsArgs']] = None):
+                 dtmf_settings: Optional[pulumi.Input['CxPageFormParameterAdvancedSettingsDtmfSettingsArrgs']] = None):
         """
-        :param pulumi.Input['CxPageFormParameterAdvancedSettingsDtmfSettingsArgs'] dtmf_settings: Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+        :param pulumi.Input['CxPageFormParameterAdvancedSettingsDtmfSettingsArrgs'] dtmf_settings: Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
                * Agent level
                * Flow level
                * Page level
@@ -3679,7 +3679,7 @@ class CxPageFormParameterAdvancedSettingsArgs:
 
     @property
     @pulumi.getter(name="dtmfSettings")
-    def dtmf_settings(self) -> Optional[pulumi.Input['CxPageFormParameterAdvancedSettingsDtmfSettingsArgs']]:
+    def dtmf_settings(self) -> Optional[pulumi.Input['CxPageFormParameterAdvancedSettingsDtmfSettingsArrgs']]:
         """
         Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
         * Agent level
@@ -3691,12 +3691,12 @@ class CxPageFormParameterAdvancedSettingsArgs:
         return pulumi.get(self, "dtmf_settings")
 
     @dtmf_settings.setter
-    def dtmf_settings(self, value: Optional[pulumi.Input['CxPageFormParameterAdvancedSettingsDtmfSettingsArgs']]):
+    def dtmf_settings(self, value: Optional[pulumi.Input['CxPageFormParameterAdvancedSettingsDtmfSettingsArrgs']]):
         pulumi.set(self, "dtmf_settings", value)
 
 
 @pulumi.input_type
-class CxPageFormParameterAdvancedSettingsDtmfSettingsArgs:
+calass CxPageFormParameterAdvancedSettingsDtmfSettingsArrgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  finish_digit: Optional[pulumi.Input[str]] = None,
@@ -3751,14 +3751,14 @@ class CxPageFormParameterAdvancedSettingsDtmfSettingsArgs:
 
 
 @pulumi.input_type
-class CxPageFormParameterFillBehaviorArgs:
+calass CxPageFormParameterFillBehaviorArrgs:
     def __init__(__self__, *,
-                 initial_prompt_fulfillment: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs']] = None,
-                 reprompt_event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerArgs']]]] = None):
+                 initial_prompt_fulfillment: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentArrgs']] = None,
+                 reprompt_event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerArrgs']]]] = None):
         """
-        :param pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs'] initial_prompt_fulfillment: The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentArrgs'] initial_prompt_fulfillment: The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerArgs']]] reprompt_event_handlers: The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are:
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerArrgs']]] reprompt_event_handlers: The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are:
                * sys.no-match-<N>, where N can be from 1 to 6
                * sys.no-match-default
                * sys.no-input-<N>, where N can be from 1 to 6
@@ -3778,7 +3778,7 @@ class CxPageFormParameterFillBehaviorArgs:
 
     @property
     @pulumi.getter(name="initialPromptFulfillment")
-    def initial_prompt_fulfillment(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs']]:
+    def initial_prompt_fulfillment(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentArrgs']]:
         """
         The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
         Structure is documented below.
@@ -3786,12 +3786,12 @@ class CxPageFormParameterFillBehaviorArgs:
         return pulumi.get(self, "initial_prompt_fulfillment")
 
     @initial_prompt_fulfillment.setter
-    def initial_prompt_fulfillment(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs']]):
+    def initial_prompt_fulfillment(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentArrgs']]):
         pulumi.set(self, "initial_prompt_fulfillment", value)
 
     @property
     @pulumi.getter(name="repromptEventHandlers")
-    def reprompt_event_handlers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerArgs']]]]:
+    def reprompt_event_handlers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerArrgs']]]]:
         """
         The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are:
         * sys.no-match-<N>, where N can be from 1 to 6
@@ -3809,26 +3809,26 @@ class CxPageFormParameterFillBehaviorArgs:
         return pulumi.get(self, "reprompt_event_handlers")
 
     @reprompt_event_handlers.setter
-    def reprompt_event_handlers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerArgs']]]]):
+    def reprompt_event_handlers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerArrgs']]]]):
         pulumi.set(self, "reprompt_event_handlers", value)
 
 
 @pulumi.input_type
-class CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs:
+calass CxPageFormParameterFillBehaviorInitialPromptFulfillmentArrgs:
     def __init__(__self__, *,
-                 conditional_cases: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs']]]] = None,
-                 messages: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs']]]] = None,
+                 conditional_cases: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrgs']]]] = None,
+                 messages: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrgs']]]] = None,
                  return_partial_responses: Optional[pulumi.Input[bool]] = None,
-                 set_parameter_actions: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs']]]] = None,
+                 set_parameter_actions: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrgs']]]] = None,
                  tag: Optional[pulumi.Input[str]] = None,
                  webhook: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs']]] conditional_cases: Conditional cases for this fulfillment.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrgs']]] conditional_cases: Conditional cases for this fulfillment.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs']]] messages: The list of rich message responses to present to the user.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrgs']]] messages: The list of rich message responses to present to the user.
                Structure is documented below.
         :param pulumi.Input[bool] return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
-        :param pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs']]] set_parameter_actions: Set parameter values before executing the webhook.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrgs']]] set_parameter_actions: Set parameter values before executing the webhook.
                Structure is documented below.
         :param pulumi.Input[str] tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
         :param pulumi.Input[str] webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
@@ -3848,7 +3848,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs:
 
     @property
     @pulumi.getter(name="conditionalCases")
-    def conditional_cases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs']]]]:
+    def conditional_cases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrgs']]]]:
         """
         Conditional cases for this fulfillment.
         Structure is documented below.
@@ -3856,12 +3856,12 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs:
         return pulumi.get(self, "conditional_cases")
 
     @conditional_cases.setter
-    def conditional_cases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs']]]]):
+    def conditional_cases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrgs']]]]):
         pulumi.set(self, "conditional_cases", value)
 
     @property
     @pulumi.getter
-    def messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs']]]]:
+    def messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrgs']]]]:
         """
         The list of rich message responses to present to the user.
         Structure is documented below.
@@ -3869,7 +3869,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs:
         return pulumi.get(self, "messages")
 
     @messages.setter
-    def messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs']]]]):
+    def messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrgs']]]]):
         pulumi.set(self, "messages", value)
 
     @property
@@ -3886,7 +3886,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs:
 
     @property
     @pulumi.getter(name="setParameterActions")
-    def set_parameter_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs']]]]:
+    def set_parameter_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrgs']]]]:
         """
         Set parameter values before executing the webhook.
         Structure is documented below.
@@ -3894,7 +3894,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs:
         return pulumi.get(self, "set_parameter_actions")
 
     @set_parameter_actions.setter
-    def set_parameter_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs']]]]):
+    def set_parameter_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrgs']]]]):
         pulumi.set(self, "set_parameter_actions", value)
 
     @property
@@ -3923,7 +3923,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs:
 
 
 @pulumi.input_type
-class CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs:
+calass CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrgs:
     def __init__(__self__, *,
                  cases: Optional[pulumi.Input[str]] = None):
         """
@@ -3948,38 +3948,38 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs
 
 
 @pulumi.input_type
-class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs:
+calass CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrgs:
     def __init__(__self__, *,
                  channel: Optional[pulumi.Input[str]] = None,
-                 conversation_success: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs']] = None,
-                 live_agent_handoff: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs']] = None,
-                 output_audio_text: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs']] = None,
+                 conversation_success: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArrgs']] = None,
+                 live_agent_handoff: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArrgs']] = None,
+                 output_audio_text: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArrgs']] = None,
                  payload: Optional[pulumi.Input[str]] = None,
-                 play_audio: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs']] = None,
-                 telephony_transfer_call: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs']] = None,
-                 text: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs']] = None):
+                 play_audio: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArrgs']] = None,
+                 telephony_transfer_call: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArrgs']] = None,
+                 text: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArrgs']] = None):
         """
         :param pulumi.Input[str] channel: The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
-        :param pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs'] conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArrgs'] conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
                Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
                * In a webhook response when you determine that you handled the customer issue.
                Structure is documented below.
-        :param pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs'] live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArrgs'] live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
                Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
                * In a webhook response when you determine that the customer issue can only be handled by a human.
                Structure is documented below.
-        :param pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArrgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
                Structure is documented below.
         :param pulumi.Input[str] payload: A custom, platform-specific payload.
-        :param pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs'] play_audio: Specifies an audio clip to be played by the client as part of the response.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArrgs'] play_audio: Specifies an audio clip to be played by the client as part of the response.
                Structure is documented below.
-        :param pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs'] telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArrgs'] telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
                Structure is documented below.
-        :param pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs'] text: The text response message.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArrgs'] text: The text response message.
                Structure is documented below.
         """
         if channel is not None:
@@ -4013,7 +4013,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs:
 
     @property
     @pulumi.getter(name="conversationSuccess")
-    def conversation_success(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs']]:
+    def conversation_success(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArrgs']]:
         """
         Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
         Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
@@ -4025,12 +4025,12 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs:
         return pulumi.get(self, "conversation_success")
 
     @conversation_success.setter
-    def conversation_success(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs']]):
+    def conversation_success(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArrgs']]):
         pulumi.set(self, "conversation_success", value)
 
     @property
     @pulumi.getter(name="liveAgentHandoff")
-    def live_agent_handoff(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs']]:
+    def live_agent_handoff(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArrgs']]:
         """
         Indicates that the conversation should be handed off to a live agent.
         Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
@@ -4042,12 +4042,12 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs:
         return pulumi.get(self, "live_agent_handoff")
 
     @live_agent_handoff.setter
-    def live_agent_handoff(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs']]):
+    def live_agent_handoff(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArrgs']]):
         pulumi.set(self, "live_agent_handoff", value)
 
     @property
     @pulumi.getter(name="outputAudioText")
-    def output_audio_text(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs']]:
+    def output_audio_text(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArrgs']]:
         """
         A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
         Structure is documented below.
@@ -4055,7 +4055,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs:
         return pulumi.get(self, "output_audio_text")
 
     @output_audio_text.setter
-    def output_audio_text(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs']]):
+    def output_audio_text(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArrgs']]):
         pulumi.set(self, "output_audio_text", value)
 
     @property
@@ -4072,7 +4072,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs:
 
     @property
     @pulumi.getter(name="playAudio")
-    def play_audio(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs']]:
+    def play_audio(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArrgs']]:
         """
         Specifies an audio clip to be played by the client as part of the response.
         Structure is documented below.
@@ -4080,12 +4080,12 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs:
         return pulumi.get(self, "play_audio")
 
     @play_audio.setter
-    def play_audio(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs']]):
+    def play_audio(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArrgs']]):
         pulumi.set(self, "play_audio", value)
 
     @property
     @pulumi.getter(name="telephonyTransferCall")
-    def telephony_transfer_call(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs']]:
+    def telephony_transfer_call(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArrgs']]:
         """
         Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
         Structure is documented below.
@@ -4093,12 +4093,12 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs:
         return pulumi.get(self, "telephony_transfer_call")
 
     @telephony_transfer_call.setter
-    def telephony_transfer_call(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs']]):
+    def telephony_transfer_call(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArrgs']]):
         pulumi.set(self, "telephony_transfer_call", value)
 
     @property
     @pulumi.getter
-    def text(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs']]:
+    def text(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArrgs']]:
         """
         The text response message.
         Structure is documented below.
@@ -4106,12 +4106,12 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs:
         return pulumi.get(self, "text")
 
     @text.setter
-    def text(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs']]):
+    def text(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArrgs']]):
         pulumi.set(self, "text", value)
 
 
 @pulumi.input_type
-class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs:
+calass CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArrgs:
     def __init__(__self__, *,
                  metadata: Optional[pulumi.Input[str]] = None):
         """
@@ -4134,7 +4134,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversation
 
 
 @pulumi.input_type
-class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs:
+calass CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArrgs:
     def __init__(__self__, *,
                  metadata: Optional[pulumi.Input[str]] = None):
         """
@@ -4157,7 +4157,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHan
 
 
 @pulumi.input_type
-class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs:
+calass CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArrgs:
     def __init__(__self__, *,
                  allow_playback_interruption: Optional[pulumi.Input[bool]] = None,
                  ssml: Optional[pulumi.Input[str]] = None,
@@ -4214,7 +4214,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioT
 
 
 @pulumi.input_type
-class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs:
+calass CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArrgs:
     def __init__(__self__, *,
                  audio_uri: pulumi.Input[str],
                  allow_playback_interruption: Optional[pulumi.Input[bool]] = None):
@@ -4254,7 +4254,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArg
 
 
 @pulumi.input_type
-class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs:
+calass CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArrgs:
     def __init__(__self__, *,
                  phone_number: pulumi.Input[str]):
         """
@@ -4276,7 +4276,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTra
 
 
 @pulumi.input_type
-class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs:
+calass CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArrgs:
     def __init__(__self__, *,
                  allow_playback_interruption: Optional[pulumi.Input[bool]] = None,
                  texts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -4317,7 +4317,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs:
 
 
 @pulumi.input_type
-class CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs:
+calass CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrgs:
     def __init__(__self__, *,
                  parameter: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
@@ -4356,13 +4356,13 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionA
 
 
 @pulumi.input_type
-class CxPageFormParameterFillBehaviorRepromptEventHandlerArgs:
+calass CxPageFormParameterFillBehaviorRepromptEventHandlerArrgs:
     def __init__(__self__, *,
                  event: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  target_flow: Optional[pulumi.Input[str]] = None,
                  target_page: Optional[pulumi.Input[str]] = None,
-                 trigger_fulfillment: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs']] = None):
+                 trigger_fulfillment: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArrgs']] = None):
         """
         :param pulumi.Input[str] event: The name of the event to handle.
         :param pulumi.Input[str] name: (Output)
@@ -4371,7 +4371,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerArgs:
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param pulumi.Input[str] target_page: The target page to transition to.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
-        :param pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs'] trigger_fulfillment: The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArrgs'] trigger_fulfillment: The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
                Structure is documented below.
         """
         if event is not None:
@@ -4438,7 +4438,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerArgs:
 
     @property
     @pulumi.getter(name="triggerFulfillment")
-    def trigger_fulfillment(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs']]:
+    def trigger_fulfillment(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArrgs']]:
         """
         The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
         Structure is documented below.
@@ -4446,26 +4446,26 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerArgs:
         return pulumi.get(self, "trigger_fulfillment")
 
     @trigger_fulfillment.setter
-    def trigger_fulfillment(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs']]):
+    def trigger_fulfillment(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArrgs']]):
         pulumi.set(self, "trigger_fulfillment", value)
 
 
 @pulumi.input_type
-class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs:
+calass CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArrgs:
     def __init__(__self__, *,
-                 conditional_cases: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs']]]] = None,
-                 messages: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs']]]] = None,
+                 conditional_cases: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrgs']]]] = None,
+                 messages: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrgs']]]] = None,
                  return_partial_responses: Optional[pulumi.Input[bool]] = None,
-                 set_parameter_actions: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs']]]] = None,
+                 set_parameter_actions: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrgs']]]] = None,
                  tag: Optional[pulumi.Input[str]] = None,
                  webhook: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs']]] conditional_cases: Conditional cases for this fulfillment.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrgs']]] conditional_cases: Conditional cases for this fulfillment.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs']]] messages: The list of rich message responses to present to the user.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrgs']]] messages: The list of rich message responses to present to the user.
                Structure is documented below.
         :param pulumi.Input[bool] return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
-        :param pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs']]] set_parameter_actions: Set parameter values before executing the webhook.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrgs']]] set_parameter_actions: Set parameter values before executing the webhook.
                Structure is documented below.
         :param pulumi.Input[str] tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
         :param pulumi.Input[str] webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
@@ -4485,7 +4485,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs:
 
     @property
     @pulumi.getter(name="conditionalCases")
-    def conditional_cases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs']]]]:
+    def conditional_cases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrgs']]]]:
         """
         Conditional cases for this fulfillment.
         Structure is documented below.
@@ -4493,12 +4493,12 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs:
         return pulumi.get(self, "conditional_cases")
 
     @conditional_cases.setter
-    def conditional_cases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs']]]]):
+    def conditional_cases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrgs']]]]):
         pulumi.set(self, "conditional_cases", value)
 
     @property
     @pulumi.getter
-    def messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs']]]]:
+    def messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrgs']]]]:
         """
         The list of rich message responses to present to the user.
         Structure is documented below.
@@ -4506,7 +4506,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs:
         return pulumi.get(self, "messages")
 
     @messages.setter
-    def messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs']]]]):
+    def messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrgs']]]]):
         pulumi.set(self, "messages", value)
 
     @property
@@ -4523,7 +4523,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs:
 
     @property
     @pulumi.getter(name="setParameterActions")
-    def set_parameter_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs']]]]:
+    def set_parameter_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrgs']]]]:
         """
         Set parameter values before executing the webhook.
         Structure is documented below.
@@ -4531,7 +4531,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs:
         return pulumi.get(self, "set_parameter_actions")
 
     @set_parameter_actions.setter
-    def set_parameter_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs']]]]):
+    def set_parameter_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrgs']]]]):
         pulumi.set(self, "set_parameter_actions", value)
 
     @property
@@ -4560,7 +4560,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs:
 
 
 @pulumi.input_type
-class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs:
+calass CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrgs:
     def __init__(__self__, *,
                  cases: Optional[pulumi.Input[str]] = None):
         """
@@ -4585,38 +4585,38 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentCondi
 
 
 @pulumi.input_type
-class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs:
+calass CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrgs:
     def __init__(__self__, *,
                  channel: Optional[pulumi.Input[str]] = None,
-                 conversation_success: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs']] = None,
-                 live_agent_handoff: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs']] = None,
-                 output_audio_text: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs']] = None,
+                 conversation_success: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArrgs']] = None,
+                 live_agent_handoff: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArrgs']] = None,
+                 output_audio_text: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs']] = None,
                  payload: Optional[pulumi.Input[str]] = None,
-                 play_audio: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs']] = None,
-                 telephony_transfer_call: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs']] = None,
-                 text: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs']] = None):
+                 play_audio: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArrgs']] = None,
+                 telephony_transfer_call: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArrgs']] = None,
+                 text: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArrgs']] = None):
         """
         :param pulumi.Input[str] channel: The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
-        :param pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs'] conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArrgs'] conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
                Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
                * In a webhook response when you determine that you handled the customer issue.
                Structure is documented below.
-        :param pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs'] live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArrgs'] live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
                Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
                * In a webhook response when you determine that the customer issue can only be handled by a human.
                Structure is documented below.
-        :param pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
                Structure is documented below.
         :param pulumi.Input[str] payload: A custom, platform-specific payload.
-        :param pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs'] play_audio: Specifies an audio clip to be played by the client as part of the response.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArrgs'] play_audio: Specifies an audio clip to be played by the client as part of the response.
                Structure is documented below.
-        :param pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs'] telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArrgs'] telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
                Structure is documented below.
-        :param pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs'] text: The text response message.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArrgs'] text: The text response message.
                Structure is documented below.
         """
         if channel is not None:
@@ -4650,7 +4650,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
 
     @property
     @pulumi.getter(name="conversationSuccess")
-    def conversation_success(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs']]:
+    def conversation_success(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArrgs']]:
         """
         Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
         Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
@@ -4662,12 +4662,12 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
         return pulumi.get(self, "conversation_success")
 
     @conversation_success.setter
-    def conversation_success(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs']]):
+    def conversation_success(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArrgs']]):
         pulumi.set(self, "conversation_success", value)
 
     @property
     @pulumi.getter(name="liveAgentHandoff")
-    def live_agent_handoff(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs']]:
+    def live_agent_handoff(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArrgs']]:
         """
         Indicates that the conversation should be handed off to a live agent.
         Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
@@ -4679,12 +4679,12 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
         return pulumi.get(self, "live_agent_handoff")
 
     @live_agent_handoff.setter
-    def live_agent_handoff(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs']]):
+    def live_agent_handoff(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArrgs']]):
         pulumi.set(self, "live_agent_handoff", value)
 
     @property
     @pulumi.getter(name="outputAudioText")
-    def output_audio_text(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs']]:
+    def output_audio_text(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs']]:
         """
         A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
         Structure is documented below.
@@ -4692,7 +4692,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
         return pulumi.get(self, "output_audio_text")
 
     @output_audio_text.setter
-    def output_audio_text(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs']]):
+    def output_audio_text(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs']]):
         pulumi.set(self, "output_audio_text", value)
 
     @property
@@ -4709,7 +4709,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
 
     @property
     @pulumi.getter(name="playAudio")
-    def play_audio(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs']]:
+    def play_audio(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArrgs']]:
         """
         Specifies an audio clip to be played by the client as part of the response.
         Structure is documented below.
@@ -4717,12 +4717,12 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
         return pulumi.get(self, "play_audio")
 
     @play_audio.setter
-    def play_audio(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs']]):
+    def play_audio(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArrgs']]):
         pulumi.set(self, "play_audio", value)
 
     @property
     @pulumi.getter(name="telephonyTransferCall")
-    def telephony_transfer_call(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs']]:
+    def telephony_transfer_call(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArrgs']]:
         """
         Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
         Structure is documented below.
@@ -4730,12 +4730,12 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
         return pulumi.get(self, "telephony_transfer_call")
 
     @telephony_transfer_call.setter
-    def telephony_transfer_call(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs']]):
+    def telephony_transfer_call(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArrgs']]):
         pulumi.set(self, "telephony_transfer_call", value)
 
     @property
     @pulumi.getter
-    def text(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs']]:
+    def text(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArrgs']]:
         """
         The text response message.
         Structure is documented below.
@@ -4743,12 +4743,12 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
         return pulumi.get(self, "text")
 
     @text.setter
-    def text(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs']]):
+    def text(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArrgs']]):
         pulumi.set(self, "text", value)
 
 
 @pulumi.input_type
-class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs:
+calass CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArrgs:
     def __init__(__self__, *,
                  metadata: Optional[pulumi.Input[str]] = None):
         """
@@ -4771,7 +4771,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
 
 
 @pulumi.input_type
-class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs:
+calass CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArrgs:
     def __init__(__self__, *,
                  metadata: Optional[pulumi.Input[str]] = None):
         """
@@ -4794,7 +4794,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
 
 
 @pulumi.input_type
-class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs:
+calass CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs:
     def __init__(__self__, *,
                  allow_playback_interruption: Optional[pulumi.Input[bool]] = None,
                  ssml: Optional[pulumi.Input[str]] = None,
@@ -4851,7 +4851,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
 
 
 @pulumi.input_type
-class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs:
+calass CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArrgs:
     def __init__(__self__, *,
                  audio_uri: pulumi.Input[str],
                  allow_playback_interruption: Optional[pulumi.Input[bool]] = None):
@@ -4891,7 +4891,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
 
 
 @pulumi.input_type
-class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs:
+calass CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArrgs:
     def __init__(__self__, *,
                  phone_number: pulumi.Input[str]):
         """
@@ -4913,7 +4913,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
 
 
 @pulumi.input_type
-class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs:
+calass CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArrgs:
     def __init__(__self__, *,
                  allow_playback_interruption: Optional[pulumi.Input[bool]] = None,
                  texts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -4954,7 +4954,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
 
 
 @pulumi.input_type
-class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs:
+calass CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrgs:
     def __init__(__self__, *,
                  parameter: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
@@ -4993,14 +4993,14 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetPa
 
 
 @pulumi.input_type
-class CxPageTransitionRouteArgs:
+calass CxPageTransitionRouteArrgs:
     def __init__(__self__, *,
                  condition: Optional[pulumi.Input[str]] = None,
                  intent: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  target_flow: Optional[pulumi.Input[str]] = None,
                  target_page: Optional[pulumi.Input[str]] = None,
-                 trigger_fulfillment: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentArgs']] = None):
+                 trigger_fulfillment: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentArrgs']] = None):
         """
         :param pulumi.Input[str] condition: The condition to evaluate against form parameters or session parameters.
                At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
@@ -5012,7 +5012,7 @@ class CxPageTransitionRouteArgs:
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param pulumi.Input[str] target_page: The target page to transition to.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
-        :param pulumi.Input['CxPageTransitionRouteTriggerFulfillmentArgs'] trigger_fulfillment: The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
+        :param pulumi.Input['CxPageTransitionRouteTriggerFulfillmentArrgs'] trigger_fulfillment: The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
                Structure is documented below.
         """
         if condition is not None:
@@ -5095,7 +5095,7 @@ class CxPageTransitionRouteArgs:
 
     @property
     @pulumi.getter(name="triggerFulfillment")
-    def trigger_fulfillment(self) -> Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentArgs']]:
+    def trigger_fulfillment(self) -> Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentArrgs']]:
         """
         The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
         Structure is documented below.
@@ -5103,26 +5103,26 @@ class CxPageTransitionRouteArgs:
         return pulumi.get(self, "trigger_fulfillment")
 
     @trigger_fulfillment.setter
-    def trigger_fulfillment(self, value: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentArgs']]):
+    def trigger_fulfillment(self, value: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentArrgs']]):
         pulumi.set(self, "trigger_fulfillment", value)
 
 
 @pulumi.input_type
-class CxPageTransitionRouteTriggerFulfillmentArgs:
+calass CxPageTransitionRouteTriggerFulfillmentArrgs:
     def __init__(__self__, *,
-                 conditional_cases: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs']]]] = None,
-                 messages: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageArgs']]]] = None,
+                 conditional_cases: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrgs']]]] = None,
+                 messages: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageArrgs']]]] = None,
                  return_partial_responses: Optional[pulumi.Input[bool]] = None,
-                 set_parameter_actions: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs']]]] = None,
+                 set_parameter_actions: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrgs']]]] = None,
                  tag: Optional[pulumi.Input[str]] = None,
                  webhook: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs']]] conditional_cases: Conditional cases for this fulfillment.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrgs']]] conditional_cases: Conditional cases for this fulfillment.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageArgs']]] messages: The list of rich message responses to present to the user.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageArrgs']]] messages: The list of rich message responses to present to the user.
                Structure is documented below.
         :param pulumi.Input[bool] return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
-        :param pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs']]] set_parameter_actions: Set parameter values before executing the webhook.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrgs']]] set_parameter_actions: Set parameter values before executing the webhook.
                Structure is documented below.
         :param pulumi.Input[str] tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
         :param pulumi.Input[str] webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
@@ -5142,7 +5142,7 @@ class CxPageTransitionRouteTriggerFulfillmentArgs:
 
     @property
     @pulumi.getter(name="conditionalCases")
-    def conditional_cases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs']]]]:
+    def conditional_cases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrgs']]]]:
         """
         Conditional cases for this fulfillment.
         Structure is documented below.
@@ -5150,12 +5150,12 @@ class CxPageTransitionRouteTriggerFulfillmentArgs:
         return pulumi.get(self, "conditional_cases")
 
     @conditional_cases.setter
-    def conditional_cases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs']]]]):
+    def conditional_cases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrgs']]]]):
         pulumi.set(self, "conditional_cases", value)
 
     @property
     @pulumi.getter
-    def messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageArgs']]]]:
+    def messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageArrgs']]]]:
         """
         The list of rich message responses to present to the user.
         Structure is documented below.
@@ -5163,7 +5163,7 @@ class CxPageTransitionRouteTriggerFulfillmentArgs:
         return pulumi.get(self, "messages")
 
     @messages.setter
-    def messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageArgs']]]]):
+    def messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageArrgs']]]]):
         pulumi.set(self, "messages", value)
 
     @property
@@ -5180,7 +5180,7 @@ class CxPageTransitionRouteTriggerFulfillmentArgs:
 
     @property
     @pulumi.getter(name="setParameterActions")
-    def set_parameter_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs']]]]:
+    def set_parameter_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrgs']]]]:
         """
         Set parameter values before executing the webhook.
         Structure is documented below.
@@ -5188,7 +5188,7 @@ class CxPageTransitionRouteTriggerFulfillmentArgs:
         return pulumi.get(self, "set_parameter_actions")
 
     @set_parameter_actions.setter
-    def set_parameter_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs']]]]):
+    def set_parameter_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrgs']]]]):
         pulumi.set(self, "set_parameter_actions", value)
 
     @property
@@ -5217,7 +5217,7 @@ class CxPageTransitionRouteTriggerFulfillmentArgs:
 
 
 @pulumi.input_type
-class CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs:
+calass CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrgs:
     def __init__(__self__, *,
                  cases: Optional[pulumi.Input[str]] = None):
         """
@@ -5242,38 +5242,38 @@ class CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs:
 
 
 @pulumi.input_type
-class CxPageTransitionRouteTriggerFulfillmentMessageArgs:
+calass CxPageTransitionRouteTriggerFulfillmentMessageArrgs:
     def __init__(__self__, *,
                  channel: Optional[pulumi.Input[str]] = None,
-                 conversation_success: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs']] = None,
-                 live_agent_handoff: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs']] = None,
-                 output_audio_text: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs']] = None,
+                 conversation_success: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArrgs']] = None,
+                 live_agent_handoff: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArrgs']] = None,
+                 output_audio_text: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArrgs']] = None,
                  payload: Optional[pulumi.Input[str]] = None,
-                 play_audio: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs']] = None,
-                 telephony_transfer_call: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs']] = None,
-                 text: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTextArgs']] = None):
+                 play_audio: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArrgs']] = None,
+                 telephony_transfer_call: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArrgs']] = None,
+                 text: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTextArrgs']] = None):
         """
         :param pulumi.Input[str] channel: The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
-        :param pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs'] conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        :param pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArrgs'] conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
                Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
                * In a webhook response when you determine that you handled the customer issue.
                Structure is documented below.
-        :param pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs'] live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
+        :param pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArrgs'] live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
                Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
                * In a webhook response when you determine that the customer issue can only be handled by a human.
                Structure is documented below.
-        :param pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        :param pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArrgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
                Structure is documented below.
         :param pulumi.Input[str] payload: A custom, platform-specific payload.
-        :param pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs'] play_audio: Specifies an audio clip to be played by the client as part of the response.
+        :param pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArrgs'] play_audio: Specifies an audio clip to be played by the client as part of the response.
                Structure is documented below.
-        :param pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs'] telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        :param pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArrgs'] telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
                Structure is documented below.
-        :param pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTextArgs'] text: The text response message.
+        :param pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTextArrgs'] text: The text response message.
                Structure is documented below.
         """
         if channel is not None:
@@ -5307,7 +5307,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessageArgs:
 
     @property
     @pulumi.getter(name="conversationSuccess")
-    def conversation_success(self) -> Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs']]:
+    def conversation_success(self) -> Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArrgs']]:
         """
         Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
         Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
@@ -5319,12 +5319,12 @@ class CxPageTransitionRouteTriggerFulfillmentMessageArgs:
         return pulumi.get(self, "conversation_success")
 
     @conversation_success.setter
-    def conversation_success(self, value: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs']]):
+    def conversation_success(self, value: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArrgs']]):
         pulumi.set(self, "conversation_success", value)
 
     @property
     @pulumi.getter(name="liveAgentHandoff")
-    def live_agent_handoff(self) -> Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs']]:
+    def live_agent_handoff(self) -> Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArrgs']]:
         """
         Indicates that the conversation should be handed off to a live agent.
         Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
@@ -5336,12 +5336,12 @@ class CxPageTransitionRouteTriggerFulfillmentMessageArgs:
         return pulumi.get(self, "live_agent_handoff")
 
     @live_agent_handoff.setter
-    def live_agent_handoff(self, value: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs']]):
+    def live_agent_handoff(self, value: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArrgs']]):
         pulumi.set(self, "live_agent_handoff", value)
 
     @property
     @pulumi.getter(name="outputAudioText")
-    def output_audio_text(self) -> Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs']]:
+    def output_audio_text(self) -> Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArrgs']]:
         """
         A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
         Structure is documented below.
@@ -5349,7 +5349,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessageArgs:
         return pulumi.get(self, "output_audio_text")
 
     @output_audio_text.setter
-    def output_audio_text(self, value: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs']]):
+    def output_audio_text(self, value: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArrgs']]):
         pulumi.set(self, "output_audio_text", value)
 
     @property
@@ -5366,7 +5366,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessageArgs:
 
     @property
     @pulumi.getter(name="playAudio")
-    def play_audio(self) -> Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs']]:
+    def play_audio(self) -> Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArrgs']]:
         """
         Specifies an audio clip to be played by the client as part of the response.
         Structure is documented below.
@@ -5374,12 +5374,12 @@ class CxPageTransitionRouteTriggerFulfillmentMessageArgs:
         return pulumi.get(self, "play_audio")
 
     @play_audio.setter
-    def play_audio(self, value: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs']]):
+    def play_audio(self, value: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArrgs']]):
         pulumi.set(self, "play_audio", value)
 
     @property
     @pulumi.getter(name="telephonyTransferCall")
-    def telephony_transfer_call(self) -> Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs']]:
+    def telephony_transfer_call(self) -> Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArrgs']]:
         """
         Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
         Structure is documented below.
@@ -5387,12 +5387,12 @@ class CxPageTransitionRouteTriggerFulfillmentMessageArgs:
         return pulumi.get(self, "telephony_transfer_call")
 
     @telephony_transfer_call.setter
-    def telephony_transfer_call(self, value: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs']]):
+    def telephony_transfer_call(self, value: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArrgs']]):
         pulumi.set(self, "telephony_transfer_call", value)
 
     @property
     @pulumi.getter
-    def text(self) -> Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTextArgs']]:
+    def text(self) -> Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTextArrgs']]:
         """
         The text response message.
         Structure is documented below.
@@ -5400,12 +5400,12 @@ class CxPageTransitionRouteTriggerFulfillmentMessageArgs:
         return pulumi.get(self, "text")
 
     @text.setter
-    def text(self, value: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTextArgs']]):
+    def text(self, value: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTextArrgs']]):
         pulumi.set(self, "text", value)
 
 
 @pulumi.input_type
-class CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs:
+calass CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArrgs:
     def __init__(__self__, *,
                  metadata: Optional[pulumi.Input[str]] = None):
         """
@@ -5428,7 +5428,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs:
 
 
 @pulumi.input_type
-class CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs:
+calass CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArrgs:
     def __init__(__self__, *,
                  metadata: Optional[pulumi.Input[str]] = None):
         """
@@ -5451,7 +5451,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs:
 
 
 @pulumi.input_type
-class CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs:
+calass CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArrgs:
     def __init__(__self__, *,
                  allow_playback_interruption: Optional[pulumi.Input[bool]] = None,
                  ssml: Optional[pulumi.Input[str]] = None,
@@ -5508,7 +5508,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs:
 
 
 @pulumi.input_type
-class CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs:
+calass CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArrgs:
     def __init__(__self__, *,
                  audio_uri: pulumi.Input[str],
                  allow_playback_interruption: Optional[pulumi.Input[bool]] = None):
@@ -5548,7 +5548,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs:
 
 
 @pulumi.input_type
-class CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs:
+calass CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArrgs:
     def __init__(__self__, *,
                  phone_number: pulumi.Input[str]):
         """
@@ -5570,7 +5570,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs:
 
 
 @pulumi.input_type
-class CxPageTransitionRouteTriggerFulfillmentMessageTextArgs:
+calass CxPageTransitionRouteTriggerFulfillmentMessageTextArrgs:
     def __init__(__self__, *,
                  allow_playback_interruption: Optional[pulumi.Input[bool]] = None,
                  texts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -5611,7 +5611,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessageTextArgs:
 
 
 @pulumi.input_type
-class CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs:
+calass CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrgs:
     def __init__(__self__, *,
                  parameter: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
@@ -5650,7 +5650,7 @@ class CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs:
 
 
 @pulumi.input_type
-class CxSecuritySettingsAudioExportSettingsArgs:
+calass CxSecuritySettingsAudioExportSettingsArrgs:
     def __init__(__self__, *,
                  audio_export_pattern: Optional[pulumi.Input[str]] = None,
                  audio_format: Optional[pulumi.Input[str]] = None,
@@ -5729,7 +5729,7 @@ class CxSecuritySettingsAudioExportSettingsArgs:
 
 
 @pulumi.input_type
-class CxSecuritySettingsInsightsExportSettingsArgs:
+calass CxSecuritySettingsInsightsExportSettingsArrgs:
     def __init__(__self__, *,
                  enable_insights_export: pulumi.Input[bool]):
         """
@@ -5751,15 +5751,15 @@ class CxSecuritySettingsInsightsExportSettingsArgs:
 
 
 @pulumi.input_type
-class CxTestCaseLastTestResultArgs:
+calass CxTestCaseLastTestResultArrgs:
     def __init__(__self__, *,
-                 conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnArgs']]]] = None,
+                 conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnArrgs']]]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  test_result: Optional[pulumi.Input[str]] = None,
                  test_time: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnArgs']]] conversation_turns: The conversation turns uttered during the test case replay in chronological order.
+        :param pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnArrgs']]] conversation_turns: The conversation turns uttered during the test case replay in chronological order.
                Structure is documented below.
         :param pulumi.Input[str] environment: Environment where the test was run. If not set, it indicates the draft environment.
         :param pulumi.Input[str] name: The unique identifier of the page.
@@ -5783,7 +5783,7 @@ class CxTestCaseLastTestResultArgs:
 
     @property
     @pulumi.getter(name="conversationTurns")
-    def conversation_turns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnArgs']]]]:
+    def conversation_turns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnArrgs']]]]:
         """
         The conversation turns uttered during the test case replay in chronological order.
         Structure is documented below.
@@ -5791,7 +5791,7 @@ class CxTestCaseLastTestResultArgs:
         return pulumi.get(self, "conversation_turns")
 
     @conversation_turns.setter
-    def conversation_turns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnArgs']]]]):
+    def conversation_turns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnArrgs']]]]):
         pulumi.set(self, "conversation_turns", value)
 
     @property
@@ -5848,14 +5848,14 @@ class CxTestCaseLastTestResultArgs:
 
 
 @pulumi.input_type
-class CxTestCaseLastTestResultConversationTurnArgs:
+calass CxTestCaseLastTestResultConversationTurnArrgs:
     def __init__(__self__, *,
-                 user_input: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputArgs']] = None,
-                 virtual_agent_output: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs']] = None):
+                 user_input: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputArrgs']] = None,
+                 virtual_agent_output: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArrgs']] = None):
         """
-        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputArgs'] user_input: The user input.
+        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputArrgs'] user_input: The user input.
                Structure is documented below.
-        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs'] virtual_agent_output: The virtual agent output.
+        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArrgs'] virtual_agent_output: The virtual agent output.
                Structure is documented below.
         """
         if user_input is not None:
@@ -5865,7 +5865,7 @@ class CxTestCaseLastTestResultConversationTurnArgs:
 
     @property
     @pulumi.getter(name="userInput")
-    def user_input(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputArgs']]:
+    def user_input(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputArrgs']]:
         """
         The user input.
         Structure is documented below.
@@ -5873,12 +5873,12 @@ class CxTestCaseLastTestResultConversationTurnArgs:
         return pulumi.get(self, "user_input")
 
     @user_input.setter
-    def user_input(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputArgs']]):
+    def user_input(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputArrgs']]):
         pulumi.set(self, "user_input", value)
 
     @property
     @pulumi.getter(name="virtualAgentOutput")
-    def virtual_agent_output(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs']]:
+    def virtual_agent_output(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArrgs']]:
         """
         The virtual agent output.
         Structure is documented below.
@@ -5886,21 +5886,21 @@ class CxTestCaseLastTestResultConversationTurnArgs:
         return pulumi.get(self, "virtual_agent_output")
 
     @virtual_agent_output.setter
-    def virtual_agent_output(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs']]):
+    def virtual_agent_output(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArrgs']]):
         pulumi.set(self, "virtual_agent_output", value)
 
 
 @pulumi.input_type
-class CxTestCaseLastTestResultConversationTurnUserInputArgs:
+calass CxTestCaseLastTestResultConversationTurnUserInputArrgs:
     def __init__(__self__, *,
                  enable_sentiment_analysis: Optional[pulumi.Input[bool]] = None,
                  injected_parameters: Optional[pulumi.Input[str]] = None,
-                 input: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputArgs']] = None,
+                 input: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputArrgs']] = None,
                  is_webhook_enabled: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] enable_sentiment_analysis: Whether sentiment analysis is enabled.
         :param pulumi.Input[str] injected_parameters: Parameters that need to be injected into the conversation during intent detection.
-        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputArgs'] input: User input. Supports text input, event input, dtmf input in the test case.
+        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputArrgs'] input: User input. Supports text input, event input, dtmf input in the test case.
                Structure is documented below.
         :param pulumi.Input[bool] is_webhook_enabled: If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
         """
@@ -5939,7 +5939,7 @@ class CxTestCaseLastTestResultConversationTurnUserInputArgs:
 
     @property
     @pulumi.getter
-    def input(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputArgs']]:
+    def input(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputArrgs']]:
         """
         User input. Supports text input, event input, dtmf input in the test case.
         Structure is documented below.
@@ -5947,7 +5947,7 @@ class CxTestCaseLastTestResultConversationTurnUserInputArgs:
         return pulumi.get(self, "input")
 
     @input.setter
-    def input(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputArgs']]):
+    def input(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputArrgs']]):
         pulumi.set(self, "input", value)
 
     @property
@@ -5964,20 +5964,20 @@ class CxTestCaseLastTestResultConversationTurnUserInputArgs:
 
 
 @pulumi.input_type
-class CxTestCaseLastTestResultConversationTurnUserInputInputArgs:
+calass CxTestCaseLastTestResultConversationTurnUserInputInputArrgs:
     def __init__(__self__, *,
-                 dtmf: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs']] = None,
-                 event: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs']] = None,
+                 dtmf: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArrgs']] = None,
+                 event: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputEventArrgs']] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
-                 text: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs']] = None):
+                 text: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputTextArrgs']] = None):
         """
-        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs'] dtmf: The DTMF event to be handled.
+        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArrgs'] dtmf: The DTMF event to be handled.
                Structure is documented below.
-        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs'] event: The event to be triggered.
+        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputEventArrgs'] event: The event to be triggered.
                Structure is documented below.
         :param pulumi.Input[str] language_code: The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes.
                Note that queries in the same session do not necessarily need to specify the same language.
-        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs'] text: The natural language text to be processed.
+        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputTextArrgs'] text: The natural language text to be processed.
                Structure is documented below.
         """
         if dtmf is not None:
@@ -5991,7 +5991,7 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputArgs:
 
     @property
     @pulumi.getter
-    def dtmf(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs']]:
+    def dtmf(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArrgs']]:
         """
         The DTMF event to be handled.
         Structure is documented below.
@@ -5999,12 +5999,12 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputArgs:
         return pulumi.get(self, "dtmf")
 
     @dtmf.setter
-    def dtmf(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs']]):
+    def dtmf(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArrgs']]):
         pulumi.set(self, "dtmf", value)
 
     @property
     @pulumi.getter
-    def event(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs']]:
+    def event(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputEventArrgs']]:
         """
         The event to be triggered.
         Structure is documented below.
@@ -6012,7 +6012,7 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputArgs:
         return pulumi.get(self, "event")
 
     @event.setter
-    def event(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs']]):
+    def event(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputEventArrgs']]):
         pulumi.set(self, "event", value)
 
     @property
@@ -6030,7 +6030,7 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputArgs:
 
     @property
     @pulumi.getter
-    def text(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs']]:
+    def text(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputTextArrgs']]:
         """
         The natural language text to be processed.
         Structure is documented below.
@@ -6038,12 +6038,12 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputArgs:
         return pulumi.get(self, "text")
 
     @text.setter
-    def text(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs']]):
+    def text(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputTextArrgs']]):
         pulumi.set(self, "text", value)
 
 
 @pulumi.input_type
-class CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs:
+calass CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArrgs:
     def __init__(__self__, *,
                  digits: Optional[pulumi.Input[str]] = None,
                  finish_digit: Optional[pulumi.Input[str]] = None):
@@ -6082,7 +6082,7 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs:
 
 
 @pulumi.input_type
-class CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs:
+calass CxTestCaseLastTestResultConversationTurnUserInputInputEventArrgs:
     def __init__(__self__, *,
                  event: pulumi.Input[str]):
         """
@@ -6104,7 +6104,7 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs:
 
 
 @pulumi.input_type
-class CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs:
+calass CxTestCaseLastTestResultConversationTurnUserInputInputTextArrgs:
     def __init__(__self__, *,
                  text: pulumi.Input[str]):
         """
@@ -6126,25 +6126,25 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs:
 
 
 @pulumi.input_type
-class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs:
+calass CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArrgs:
     def __init__(__self__, *,
-                 current_page: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs']] = None,
-                 differences: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs']]]] = None,
+                 current_page: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArrgs']] = None,
+                 differences: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrgs']]]] = None,
                  session_parameters: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs']] = None,
-                 text_responses: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs']]]] = None,
-                 triggered_intent: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs']] = None):
+                 status: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArrgs']] = None,
+                 text_responses: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrgs']]]] = None,
+                 triggered_intent: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArrgs']] = None):
         """
-        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs'] current_page: The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
+        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArrgs'] current_page: The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs']]] differences: The list of differences between the original run and the replay for this output, if any.
+        :param pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrgs']]] differences: The list of differences between the original run and the replay for this output, if any.
                Structure is documented below.
         :param pulumi.Input[str] session_parameters: The session parameters available to the bot at this point.
-        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs'] status: Response error from the agent in the test result. If set, other output is empty.
+        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArrgs'] status: Response error from the agent in the test result. If set, other output is empty.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs']]] text_responses: The text responses from the agent for the turn.
+        :param pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrgs']]] text_responses: The text responses from the agent for the turn.
                Structure is documented below.
-        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs'] triggered_intent: The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
+        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArrgs'] triggered_intent: The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
                Structure is documented below.
         """
         if current_page is not None:
@@ -6162,7 +6162,7 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs:
 
     @property
     @pulumi.getter(name="currentPage")
-    def current_page(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs']]:
+    def current_page(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArrgs']]:
         """
         The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
         Structure is documented below.
@@ -6170,12 +6170,12 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs:
         return pulumi.get(self, "current_page")
 
     @current_page.setter
-    def current_page(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs']]):
+    def current_page(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArrgs']]):
         pulumi.set(self, "current_page", value)
 
     @property
     @pulumi.getter
-    def differences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs']]]]:
+    def differences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrgs']]]]:
         """
         The list of differences between the original run and the replay for this output, if any.
         Structure is documented below.
@@ -6183,7 +6183,7 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs:
         return pulumi.get(self, "differences")
 
     @differences.setter
-    def differences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs']]]]):
+    def differences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrgs']]]]):
         pulumi.set(self, "differences", value)
 
     @property
@@ -6200,7 +6200,7 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs']]:
+    def status(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArrgs']]:
         """
         Response error from the agent in the test result. If set, other output is empty.
         Structure is documented below.
@@ -6208,12 +6208,12 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs']]):
+    def status(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArrgs']]):
         pulumi.set(self, "status", value)
 
     @property
     @pulumi.getter(name="textResponses")
-    def text_responses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs']]]]:
+    def text_responses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrgs']]]]:
         """
         The text responses from the agent for the turn.
         Structure is documented below.
@@ -6221,12 +6221,12 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs:
         return pulumi.get(self, "text_responses")
 
     @text_responses.setter
-    def text_responses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs']]]]):
+    def text_responses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrgs']]]]):
         pulumi.set(self, "text_responses", value)
 
     @property
     @pulumi.getter(name="triggeredIntent")
-    def triggered_intent(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs']]:
+    def triggered_intent(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArrgs']]:
         """
         The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
         Structure is documented below.
@@ -6234,12 +6234,12 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs:
         return pulumi.get(self, "triggered_intent")
 
     @triggered_intent.setter
-    def triggered_intent(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs']]):
+    def triggered_intent(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArrgs']]):
         pulumi.set(self, "triggered_intent", value)
 
 
 @pulumi.input_type
-class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs:
+calass CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArrgs:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
@@ -6282,7 +6282,7 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs:
 
 
 @pulumi.input_type
-class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs:
+calass CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
@@ -6333,7 +6333,7 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs:
 
 
 @pulumi.input_type
-class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs:
+calass CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArrgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[int]] = None,
                  details: Optional[pulumi.Input[str]] = None,
@@ -6388,7 +6388,7 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs:
 
 
 @pulumi.input_type
-class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs:
+calass CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrgs:
     def __init__(__self__, *,
                  texts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -6411,7 +6411,7 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs
 
 
 @pulumi.input_type
-class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs:
+calass CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArrgs:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
@@ -6454,14 +6454,14 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentA
 
 
 @pulumi.input_type
-class CxTestCaseTestCaseConversationTurnArgs:
+calass CxTestCaseTestCaseConversationTurnArrgs:
     def __init__(__self__, *,
-                 user_input: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputArgs']] = None,
-                 virtual_agent_output: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs']] = None):
+                 user_input: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputArrgs']] = None,
+                 virtual_agent_output: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputArrgs']] = None):
         """
-        :param pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputArgs'] user_input: The user input.
+        :param pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputArrgs'] user_input: The user input.
                Structure is documented below.
-        :param pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs'] virtual_agent_output: The virtual agent output.
+        :param pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputArrgs'] virtual_agent_output: The virtual agent output.
                Structure is documented below.
         """
         if user_input is not None:
@@ -6471,7 +6471,7 @@ class CxTestCaseTestCaseConversationTurnArgs:
 
     @property
     @pulumi.getter(name="userInput")
-    def user_input(self) -> Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputArgs']]:
+    def user_input(self) -> Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputArrgs']]:
         """
         The user input.
         Structure is documented below.
@@ -6479,12 +6479,12 @@ class CxTestCaseTestCaseConversationTurnArgs:
         return pulumi.get(self, "user_input")
 
     @user_input.setter
-    def user_input(self, value: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputArgs']]):
+    def user_input(self, value: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputArrgs']]):
         pulumi.set(self, "user_input", value)
 
     @property
     @pulumi.getter(name="virtualAgentOutput")
-    def virtual_agent_output(self) -> Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs']]:
+    def virtual_agent_output(self) -> Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputArrgs']]:
         """
         The virtual agent output.
         Structure is documented below.
@@ -6492,21 +6492,21 @@ class CxTestCaseTestCaseConversationTurnArgs:
         return pulumi.get(self, "virtual_agent_output")
 
     @virtual_agent_output.setter
-    def virtual_agent_output(self, value: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs']]):
+    def virtual_agent_output(self, value: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputArrgs']]):
         pulumi.set(self, "virtual_agent_output", value)
 
 
 @pulumi.input_type
-class CxTestCaseTestCaseConversationTurnUserInputArgs:
+calass CxTestCaseTestCaseConversationTurnUserInputArrgs:
     def __init__(__self__, *,
                  enable_sentiment_analysis: Optional[pulumi.Input[bool]] = None,
                  injected_parameters: Optional[pulumi.Input[str]] = None,
-                 input: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputArgs']] = None,
+                 input: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputArrgs']] = None,
                  is_webhook_enabled: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] enable_sentiment_analysis: Whether sentiment analysis is enabled.
         :param pulumi.Input[str] injected_parameters: Parameters that need to be injected into the conversation during intent detection.
-        :param pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputArgs'] input: User input. Supports text input, event input, dtmf input in the test case.
+        :param pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputArrgs'] input: User input. Supports text input, event input, dtmf input in the test case.
                Structure is documented below.
         :param pulumi.Input[bool] is_webhook_enabled: If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
         """
@@ -6545,7 +6545,7 @@ class CxTestCaseTestCaseConversationTurnUserInputArgs:
 
     @property
     @pulumi.getter
-    def input(self) -> Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputArgs']]:
+    def input(self) -> Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputArrgs']]:
         """
         User input. Supports text input, event input, dtmf input in the test case.
         Structure is documented below.
@@ -6553,7 +6553,7 @@ class CxTestCaseTestCaseConversationTurnUserInputArgs:
         return pulumi.get(self, "input")
 
     @input.setter
-    def input(self, value: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputArgs']]):
+    def input(self, value: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputArrgs']]):
         pulumi.set(self, "input", value)
 
     @property
@@ -6570,20 +6570,20 @@ class CxTestCaseTestCaseConversationTurnUserInputArgs:
 
 
 @pulumi.input_type
-class CxTestCaseTestCaseConversationTurnUserInputInputArgs:
+calass CxTestCaseTestCaseConversationTurnUserInputInputArrgs:
     def __init__(__self__, *,
-                 dtmf: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs']] = None,
-                 event: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputEventArgs']] = None,
+                 dtmf: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputDtmfArrgs']] = None,
+                 event: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputEventArrgs']] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
-                 text: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputTextArgs']] = None):
+                 text: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputTextArrgs']] = None):
         """
-        :param pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs'] dtmf: The DTMF event to be handled.
+        :param pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputDtmfArrgs'] dtmf: The DTMF event to be handled.
                Structure is documented below.
-        :param pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputEventArgs'] event: The event to be triggered.
+        :param pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputEventArrgs'] event: The event to be triggered.
                Structure is documented below.
         :param pulumi.Input[str] language_code: The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes.
                Note that queries in the same session do not necessarily need to specify the same language.
-        :param pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputTextArgs'] text: The natural language text to be processed.
+        :param pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputTextArrgs'] text: The natural language text to be processed.
                Structure is documented below.
         """
         if dtmf is not None:
@@ -6597,7 +6597,7 @@ class CxTestCaseTestCaseConversationTurnUserInputInputArgs:
 
     @property
     @pulumi.getter
-    def dtmf(self) -> Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs']]:
+    def dtmf(self) -> Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputDtmfArrgs']]:
         """
         The DTMF event to be handled.
         Structure is documented below.
@@ -6605,12 +6605,12 @@ class CxTestCaseTestCaseConversationTurnUserInputInputArgs:
         return pulumi.get(self, "dtmf")
 
     @dtmf.setter
-    def dtmf(self, value: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs']]):
+    def dtmf(self, value: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputDtmfArrgs']]):
         pulumi.set(self, "dtmf", value)
 
     @property
     @pulumi.getter
-    def event(self) -> Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputEventArgs']]:
+    def event(self) -> Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputEventArrgs']]:
         """
         The event to be triggered.
         Structure is documented below.
@@ -6618,7 +6618,7 @@ class CxTestCaseTestCaseConversationTurnUserInputInputArgs:
         return pulumi.get(self, "event")
 
     @event.setter
-    def event(self, value: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputEventArgs']]):
+    def event(self, value: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputEventArrgs']]):
         pulumi.set(self, "event", value)
 
     @property
@@ -6636,7 +6636,7 @@ class CxTestCaseTestCaseConversationTurnUserInputInputArgs:
 
     @property
     @pulumi.getter
-    def text(self) -> Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputTextArgs']]:
+    def text(self) -> Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputTextArrgs']]:
         """
         The natural language text to be processed.
         Structure is documented below.
@@ -6644,12 +6644,12 @@ class CxTestCaseTestCaseConversationTurnUserInputInputArgs:
         return pulumi.get(self, "text")
 
     @text.setter
-    def text(self, value: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputTextArgs']]):
+    def text(self, value: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputTextArrgs']]):
         pulumi.set(self, "text", value)
 
 
 @pulumi.input_type
-class CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs:
+calass CxTestCaseTestCaseConversationTurnUserInputInputDtmfArrgs:
     def __init__(__self__, *,
                  digits: Optional[pulumi.Input[str]] = None,
                  finish_digit: Optional[pulumi.Input[str]] = None):
@@ -6688,7 +6688,7 @@ class CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs:
 
 
 @pulumi.input_type
-class CxTestCaseTestCaseConversationTurnUserInputInputEventArgs:
+calass CxTestCaseTestCaseConversationTurnUserInputInputEventArrgs:
     def __init__(__self__, *,
                  event: pulumi.Input[str]):
         """
@@ -6710,7 +6710,7 @@ class CxTestCaseTestCaseConversationTurnUserInputInputEventArgs:
 
 
 @pulumi.input_type
-class CxTestCaseTestCaseConversationTurnUserInputInputTextArgs:
+calass CxTestCaseTestCaseConversationTurnUserInputInputTextArrgs:
     def __init__(__self__, *,
                  text: pulumi.Input[str]):
         """
@@ -6732,19 +6732,19 @@ class CxTestCaseTestCaseConversationTurnUserInputInputTextArgs:
 
 
 @pulumi.input_type
-class CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs:
+calass CxTestCaseTestCaseConversationTurnVirtualAgentOutputArrgs:
     def __init__(__self__, *,
-                 current_page: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs']] = None,
+                 current_page: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArrgs']] = None,
                  session_parameters: Optional[pulumi.Input[str]] = None,
-                 text_responses: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs']]]] = None,
-                 triggered_intent: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs']] = None):
+                 text_responses: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrgs']]]] = None,
+                 triggered_intent: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArrgs']] = None):
         """
-        :param pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs'] current_page: The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
+        :param pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArrgs'] current_page: The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
                Structure is documented below.
         :param pulumi.Input[str] session_parameters: The session parameters available to the bot at this point.
-        :param pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs']]] text_responses: The text responses from the agent for the turn.
+        :param pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrgs']]] text_responses: The text responses from the agent for the turn.
                Structure is documented below.
-        :param pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs'] triggered_intent: The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
+        :param pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArrgs'] triggered_intent: The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
                Structure is documented below.
         """
         if current_page is not None:
@@ -6758,7 +6758,7 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs:
 
     @property
     @pulumi.getter(name="currentPage")
-    def current_page(self) -> Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs']]:
+    def current_page(self) -> Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArrgs']]:
         """
         The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
         Structure is documented below.
@@ -6766,7 +6766,7 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs:
         return pulumi.get(self, "current_page")
 
     @current_page.setter
-    def current_page(self, value: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs']]):
+    def current_page(self, value: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArrgs']]):
         pulumi.set(self, "current_page", value)
 
     @property
@@ -6783,7 +6783,7 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs:
 
     @property
     @pulumi.getter(name="textResponses")
-    def text_responses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs']]]]:
+    def text_responses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrgs']]]]:
         """
         The text responses from the agent for the turn.
         Structure is documented below.
@@ -6791,12 +6791,12 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs:
         return pulumi.get(self, "text_responses")
 
     @text_responses.setter
-    def text_responses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs']]]]):
+    def text_responses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrgs']]]]):
         pulumi.set(self, "text_responses", value)
 
     @property
     @pulumi.getter(name="triggeredIntent")
-    def triggered_intent(self) -> Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs']]:
+    def triggered_intent(self) -> Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArrgs']]:
         """
         The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
         Structure is documented below.
@@ -6804,12 +6804,12 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs:
         return pulumi.get(self, "triggered_intent")
 
     @triggered_intent.setter
-    def triggered_intent(self, value: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs']]):
+    def triggered_intent(self, value: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArrgs']]):
         pulumi.set(self, "triggered_intent", value)
 
 
 @pulumi.input_type
-class CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs:
+calass CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArrgs:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
@@ -6852,7 +6852,7 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs:
 
 
 @pulumi.input_type
-class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs:
+calass CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrgs:
     def __init__(__self__, *,
                  texts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -6875,7 +6875,7 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs:
 
 
 @pulumi.input_type
-class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs:
+calass CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArrgs:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
@@ -6918,7 +6918,7 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs:
 
 
 @pulumi.input_type
-class CxTestCaseTestConfigArgs:
+calass CxTestCaseTestConfigArrgs:
     def __init__(__self__, *,
                  flow: Optional[pulumi.Input[str]] = None,
                  page: Optional[pulumi.Input[str]] = None,
@@ -6981,7 +6981,7 @@ class CxTestCaseTestConfigArgs:
 
 
 @pulumi.input_type
-class CxVersionNluSettingArgs:
+calass CxVersionNluSettingArrgs:
     def __init__(__self__, *,
                  classification_threshold: Optional[pulumi.Input[float]] = None,
                  model_training_mode: Optional[pulumi.Input[str]] = None,
@@ -7050,7 +7050,7 @@ class CxVersionNluSettingArgs:
 
 
 @pulumi.input_type
-class CxWebhookGenericWebServiceArgs:
+calass CxWebhookGenericWebServiceArrgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[str],
                  allowed_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -7104,12 +7104,12 @@ class CxWebhookGenericWebServiceArgs:
 
 
 @pulumi.input_type
-class CxWebhookServiceDirectoryArgs:
+calass CxWebhookServiceDirectoryArrgs:
     def __init__(__self__, *,
-                 generic_web_service: pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceArgs'],
+                 generic_web_service: pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceArrgs'],
                  service: pulumi.Input[str]):
         """
-        :param pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceArgs'] generic_web_service: The name of Service Directory service.
+        :param pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceArrgs'] generic_web_service: The name of Service Directory service.
                Structure is documented below.
         :param pulumi.Input[str] service: The name of Service Directory service.
         """
@@ -7118,7 +7118,7 @@ class CxWebhookServiceDirectoryArgs:
 
     @property
     @pulumi.getter(name="genericWebService")
-    def generic_web_service(self) -> pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceArgs']:
+    def generic_web_service(self) -> pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceArrgs']:
         """
         The name of Service Directory service.
         Structure is documented below.
@@ -7126,7 +7126,7 @@ class CxWebhookServiceDirectoryArgs:
         return pulumi.get(self, "generic_web_service")
 
     @generic_web_service.setter
-    def generic_web_service(self, value: pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceArgs']):
+    def generic_web_service(self, value: pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceArrgs']):
         pulumi.set(self, "generic_web_service", value)
 
     @property
@@ -7143,7 +7143,7 @@ class CxWebhookServiceDirectoryArgs:
 
 
 @pulumi.input_type
-class CxWebhookServiceDirectoryGenericWebServiceArgs:
+calass CxWebhookServiceDirectoryGenericWebServiceArrgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[str],
                  allowed_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -7197,7 +7197,7 @@ class CxWebhookServiceDirectoryGenericWebServiceArgs:
 
 
 @pulumi.input_type
-class EntityTypeEntityArgs:
+calass EntityTypeEntityArrgs:
     def __init__(__self__, *,
                  synonyms: pulumi.Input[Sequence[pulumi.Input[str]]],
                  value: pulumi.Input[str]):
@@ -7250,7 +7250,7 @@ class EntityTypeEntityArgs:
 
 
 @pulumi.input_type
-class FulfillmentFeatureArgs:
+calass FulfillmentFeatureArrgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str]):
         """
@@ -7276,7 +7276,7 @@ class FulfillmentFeatureArgs:
 
 
 @pulumi.input_type
-class FulfillmentGenericWebServiceArgs:
+calass FulfillmentGenericWebServiceArrgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[str],
                  password: Optional[pulumi.Input[str]] = None,
@@ -7346,7 +7346,7 @@ class FulfillmentGenericWebServiceArgs:
 
 
 @pulumi.input_type
-class IntentFollowupIntentInfoArgs:
+calass IntentFollowupIntentInfoArrgs:
     def __init__(__self__, *,
                  followup_intent_name: Optional[pulumi.Input[str]] = None,
                  parent_followup_intent_name: Optional[pulumi.Input[str]] = None):

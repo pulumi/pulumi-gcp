@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ListingIamMemberArgs', 'ListingIamMember']
+__all__ = ['ListingIamMemberArrgs', 'ListingIamMember']
 
 @pulumi.input_type
-class ListingIamMemberArgs:
+calass ListingIamMemberArrgs:
     def __init__(__self__, *,
                  data_exchange_id: pulumi.Input[str],
                  listing_id: pulumi.Input[str],
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['ListingIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['ListingIamMemberConditionArrgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -107,11 +107,11 @@ class ListingIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ListingIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ListingIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ListingIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ListingIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -154,9 +154,9 @@ class ListingIamMemberArgs:
 
 
 @pulumi.input_type
-class _ListingIamMemberState:
+calass _ListingIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['ListingIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['ListingIamMemberConditionArrgs']] = None,
                  data_exchange_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  listing_id: Optional[pulumi.Input[str]] = None,
@@ -208,11 +208,11 @@ class _ListingIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ListingIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ListingIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ListingIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ListingIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -313,12 +313,12 @@ class _ListingIamMemberState:
         pulumi.set(self, "role", value)
 
 
-class ListingIamMember(pulumi.CustomResource):
+calass ListingIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ListingIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ListingIamMemberConditionArrgs']]] = None,
                  data_exchange_id: Optional[pulumi.Input[str]] = None,
                  listing_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -347,7 +347,7 @@ class ListingIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -441,7 +441,7 @@ class ListingIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ListingIamMemberArgs,
+                 args: ListingIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Bigquery Analytics Hub Listing. Each of these resources serves a different use case:
@@ -464,7 +464,7 @@ class ListingIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -531,12 +531,12 @@ class ListingIamMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param ListingIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param ListingIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ListingIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ListingIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -545,7 +545,7 @@ class ListingIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ListingIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ListingIamMemberConditionArrgs']]] = None,
                  data_exchange_id: Optional[pulumi.Input[str]] = None,
                  listing_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -559,7 +559,7 @@ class ListingIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ListingIamMemberArgs.__new__(ListingIamMemberArgs)
+            __props__ = ListingIamMemberArrgs.__new__(ListingIamMemberArrgs)
 
             __props__.__dict__["condition"] = condition
             if data_exchange_id is None and not opts.urn:
@@ -587,7 +587,7 @@ class ListingIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['ListingIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['ListingIamMemberConditionArrgs']]] = None,
             data_exchange_id: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             listing_id: Optional[pulumi.Input[str]] = None,

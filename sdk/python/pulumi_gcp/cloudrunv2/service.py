@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ServiceArgs', 'Service']
+__all__ = ['ServiceArrgs', 'Service']
 
 @pulumi.input_type
-class ServiceArgs:
+calass ServiceArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 template: pulumi.Input['ServiceTemplateArgs'],
+                 template: pulumi.Input['ServiceTemplateArrgs'],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input['ServiceBinaryAuthorizationArgs']] = None,
+                 binary_authorization: Optional[pulumi.Input['ServiceBinaryAuthorizationArrgs']] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
                  custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -29,11 +29,11 @@ class ServiceArgs:
                  launch_stage: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]] = None):
+                 traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArrgs']]]] = None):
         """
         The set of arguments for constructing a Service resource.
         :param pulumi.Input[str] location: The location of the cloud run service
-        :param pulumi.Input['ServiceTemplateArgs'] template: The template used to create revisions for this Service.
+        :param pulumi.Input['ServiceTemplateArrgs'] template: The template used to create revisions for this Service.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
                Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
@@ -41,7 +41,7 @@ class ServiceArgs:
                This field follows Kubernetes annotations' namespacing, limits, and rules.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input['ServiceBinaryAuthorizationArgs'] binary_authorization: Settings for the Binary Authorization feature.
+        :param pulumi.Input['ServiceBinaryAuthorizationArrgs'] binary_authorization: Settings for the Binary Authorization feature.
                Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
@@ -64,7 +64,7 @@ class ServiceArgs:
         :param pulumi.Input[str] name: Name of the Service.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArrgs']]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
                Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
@@ -108,7 +108,7 @@ class ServiceArgs:
 
     @property
     @pulumi.getter
-    def template(self) -> pulumi.Input['ServiceTemplateArgs']:
+    def template(self) -> pulumi.Input['ServiceTemplateArrgs']:
         """
         The template used to create revisions for this Service.
         Structure is documented below.
@@ -116,7 +116,7 @@ class ServiceArgs:
         return pulumi.get(self, "template")
 
     @template.setter
-    def template(self, value: pulumi.Input['ServiceTemplateArgs']):
+    def template(self, value: pulumi.Input['ServiceTemplateArrgs']):
         pulumi.set(self, "template", value)
 
     @property
@@ -138,7 +138,7 @@ class ServiceArgs:
 
     @property
     @pulumi.getter(name="binaryAuthorization")
-    def binary_authorization(self) -> Optional[pulumi.Input['ServiceBinaryAuthorizationArgs']]:
+    def binary_authorization(self) -> Optional[pulumi.Input['ServiceBinaryAuthorizationArrgs']]:
         """
         Settings for the Binary Authorization feature.
         Structure is documented below.
@@ -146,7 +146,7 @@ class ServiceArgs:
         return pulumi.get(self, "binary_authorization")
 
     @binary_authorization.setter
-    def binary_authorization(self, value: Optional[pulumi.Input['ServiceBinaryAuthorizationArgs']]):
+    def binary_authorization(self, value: Optional[pulumi.Input['ServiceBinaryAuthorizationArrgs']]):
         pulumi.set(self, "binary_authorization", value)
 
     @property
@@ -271,7 +271,7 @@ class ServiceArgs:
 
     @property
     @pulumi.getter
-    def traffics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]]:
+    def traffics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArrgs']]]]:
         """
         Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
         Structure is documented below.
@@ -279,18 +279,18 @@ class ServiceArgs:
         return pulumi.get(self, "traffics")
 
     @traffics.setter
-    def traffics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]]):
+    def traffics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArrgs']]]]):
         pulumi.set(self, "traffics", value)
 
 
 @pulumi.input_type
-class _ServiceState:
+calass _ServiceState:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input['ServiceBinaryAuthorizationArgs']] = None,
+                 binary_authorization: Optional[pulumi.Input['ServiceBinaryAuthorizationArrgs']] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceConditionArgs']]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceConditionArrgs']]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  creator: Optional[pulumi.Input[str]] = None,
                  custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -313,10 +313,10 @@ class _ServiceState:
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  reconciling: Optional[pulumi.Input[bool]] = None,
-                 template: Optional[pulumi.Input['ServiceTemplateArgs']] = None,
-                 terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTerminalConditionArgs']]]] = None,
-                 traffic_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficStatusArgs']]]] = None,
-                 traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]] = None,
+                 template: Optional[pulumi.Input['ServiceTemplateArrgs']] = None,
+                 terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTerminalConditionArrgs']]]] = None,
+                 traffic_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficStatusArrgs']]]] = None,
+                 traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArrgs']]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  uri: Optional[pulumi.Input[str]] = None):
@@ -328,11 +328,11 @@ class _ServiceState:
                This field follows Kubernetes annotations' namespacing, limits, and rules.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input['ServiceBinaryAuthorizationArgs'] binary_authorization: Settings for the Binary Authorization feature.
+        :param pulumi.Input['ServiceBinaryAuthorizationArrgs'] binary_authorization: Settings for the Binary Authorization feature.
                Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceConditionArgs']]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceConditionArrgs']]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The creation time.
         :param pulumi.Input[str] creator: Email address of the authenticated creator.
@@ -373,13 +373,13 @@ class _ServiceState:
                When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
                If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
                If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
-        :param pulumi.Input['ServiceTemplateArgs'] template: The template used to create revisions for this Service.
+        :param pulumi.Input['ServiceTemplateArrgs'] template: The template used to create revisions for this Service.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceTerminalConditionArgs']]] terminal_conditions: The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTerminalConditionArrgs']]] terminal_conditions: The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficStatusArgs']]] traffic_statuses: Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficStatusArrgs']]] traffic_statuses: Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArrgs']]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
                Structure is documented below.
         :param pulumi.Input[str] uid: Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         :param pulumi.Input[str] update_time: The last-modified time.
@@ -474,7 +474,7 @@ class _ServiceState:
 
     @property
     @pulumi.getter(name="binaryAuthorization")
-    def binary_authorization(self) -> Optional[pulumi.Input['ServiceBinaryAuthorizationArgs']]:
+    def binary_authorization(self) -> Optional[pulumi.Input['ServiceBinaryAuthorizationArrgs']]:
         """
         Settings for the Binary Authorization feature.
         Structure is documented below.
@@ -482,7 +482,7 @@ class _ServiceState:
         return pulumi.get(self, "binary_authorization")
 
     @binary_authorization.setter
-    def binary_authorization(self, value: Optional[pulumi.Input['ServiceBinaryAuthorizationArgs']]):
+    def binary_authorization(self, value: Optional[pulumi.Input['ServiceBinaryAuthorizationArrgs']]):
         pulumi.set(self, "binary_authorization", value)
 
     @property
@@ -511,7 +511,7 @@ class _ServiceState:
 
     @property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceConditionArgs']]]]:
+    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceConditionArrgs']]]]:
         """
         The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
         Structure is documented below.
@@ -519,7 +519,7 @@ class _ServiceState:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceConditionArgs']]]]):
+    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceConditionArrgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @property
@@ -805,7 +805,7 @@ class _ServiceState:
 
     @property
     @pulumi.getter
-    def template(self) -> Optional[pulumi.Input['ServiceTemplateArgs']]:
+    def template(self) -> Optional[pulumi.Input['ServiceTemplateArrgs']]:
         """
         The template used to create revisions for this Service.
         Structure is documented below.
@@ -813,12 +813,12 @@ class _ServiceState:
         return pulumi.get(self, "template")
 
     @template.setter
-    def template(self, value: Optional[pulumi.Input['ServiceTemplateArgs']]):
+    def template(self, value: Optional[pulumi.Input['ServiceTemplateArrgs']]):
         pulumi.set(self, "template", value)
 
     @property
     @pulumi.getter(name="terminalConditions")
-    def terminal_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTerminalConditionArgs']]]]:
+    def terminal_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTerminalConditionArrgs']]]]:
         """
         The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
         Structure is documented below.
@@ -826,12 +826,12 @@ class _ServiceState:
         return pulumi.get(self, "terminal_conditions")
 
     @terminal_conditions.setter
-    def terminal_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTerminalConditionArgs']]]]):
+    def terminal_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTerminalConditionArrgs']]]]):
         pulumi.set(self, "terminal_conditions", value)
 
     @property
     @pulumi.getter(name="trafficStatuses")
-    def traffic_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficStatusArgs']]]]:
+    def traffic_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficStatusArrgs']]]]:
         """
         Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
         Structure is documented below.
@@ -839,12 +839,12 @@ class _ServiceState:
         return pulumi.get(self, "traffic_statuses")
 
     @traffic_statuses.setter
-    def traffic_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficStatusArgs']]]]):
+    def traffic_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficStatusArrgs']]]]):
         pulumi.set(self, "traffic_statuses", value)
 
     @property
     @pulumi.getter
-    def traffics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]]:
+    def traffics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArrgs']]]]:
         """
         Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
         Structure is documented below.
@@ -852,7 +852,7 @@ class _ServiceState:
         return pulumi.get(self, "traffics")
 
     @traffics.setter
-    def traffics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]]):
+    def traffics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArrgs']]]]):
         pulumi.set(self, "traffics", value)
 
     @property
@@ -893,13 +893,13 @@ class _ServiceState:
         pulumi.set(self, "uri", value)
 
 
-class Service(pulumi.CustomResource):
+calass Service(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['ServiceBinaryAuthorizationArgs']]] = None,
+                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['ServiceBinaryAuthorizationArrgs']]] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
                  custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -910,8 +910,8 @@ class Service(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 template: Optional[pulumi.Input[pulumi.InputType['ServiceTemplateArgs']]] = None,
-                 traffics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]]] = None,
+                 template: Optional[pulumi.Input[pulumi.InputType['ServiceTemplateArrgs']]] = None,
+                 traffics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArrgs']]]]] = None,
                  __props__=None):
         """
         Service acts as a top-level container that manages a set of configurations and revision templates which implement a network service. Service exists to provide a singular abstraction which can be access controlled, reasoned about, and which encapsulates software lifecycle decisions such as rollout policy and team resource ownership.
@@ -932,8 +932,8 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             ingress="INGRESS_TRAFFIC_ALL",
             location="us-central1",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
+            template=gcp.cloudrunv2.ServiceTemplateArrgs(
+                containers=[gcp.cloudrunv2.ServiceTemplateContainerArrgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
                 )],
             ))
@@ -946,8 +946,8 @@ class Service(pulumi.CustomResource):
 
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret-1",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArrgs(),
             ))
         secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
             secret=secret.name,
@@ -955,47 +955,47 @@ class Service(pulumi.CustomResource):
         instance = gcp.sql.DatabaseInstance("instance",
             region="us-central1",
             database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+            settings=gcp.sql.DatabaseInstanceSettingsArrgs(
                 tier="db-f1-micro",
             ),
             deletion_protection=True)
         default = gcp.cloudrunv2.Service("default",
             location="us-central1",
             ingress="INGRESS_TRAFFIC_ALL",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                scaling=gcp.cloudrunv2.ServiceTemplateScalingArgs(
+            template=gcp.cloudrunv2.ServiceTemplateArrgs(
+                scaling=gcp.cloudrunv2.ServiceTemplateScalingArrgs(
                     max_instance_count=2,
                 ),
-                volumes=[gcp.cloudrunv2.ServiceTemplateVolumeArgs(
+                volumes=[gcp.cloudrunv2.ServiceTemplateVolumeArrgs(
                     name="cloudsql",
-                    cloud_sql_instance=gcp.cloudrunv2.ServiceTemplateVolumeCloudSqlInstanceArgs(
+                    cloud_sql_instance=gcp.cloudrunv2.ServiceTemplateVolumeCloudSqlInstanceArrgs(
                         instances=[instance.connection_name],
                     ),
                 )],
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
+                containers=[gcp.cloudrunv2.ServiceTemplateContainerArrgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
                     envs=[
-                        gcp.cloudrunv2.ServiceTemplateContainerEnvArgs(
+                        gcp.cloudrunv2.ServiceTemplateContainerEnvArrgs(
                             name="FOO",
                             value="bar",
                         ),
-                        gcp.cloudrunv2.ServiceTemplateContainerEnvArgs(
+                        gcp.cloudrunv2.ServiceTemplateContainerEnvArrgs(
                             name="SECRET_ENV_VAR",
-                            value_source=gcp.cloudrunv2.ServiceTemplateContainerEnvValueSourceArgs(
-                                secret_key_ref=gcp.cloudrunv2.ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs(
+                            value_source=gcp.cloudrunv2.ServiceTemplateContainerEnvValueSourceArrgs(
+                                secret_key_ref=gcp.cloudrunv2.ServiceTemplateContainerEnvValueSourceSecretKeyRefArrgs(
                                     secret=secret.secret_id,
                                     version="1",
                                 ),
                             ),
                         ),
                     ],
-                    volume_mounts=[gcp.cloudrunv2.ServiceTemplateContainerVolumeMountArgs(
+                    volume_mounts=[gcp.cloudrunv2.ServiceTemplateContainerVolumeMountArrgs(
                         name="cloudsql",
                         mount_path="/cloudsql",
                     )],
                 )],
             ),
-            traffics=[gcp.cloudrunv2.ServiceTrafficArgs(
+            traffics=[gcp.cloudrunv2.ServiceTrafficArrgs(
                 type="TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST",
                 percent=100,
             )],
@@ -1019,7 +1019,7 @@ class Service(pulumi.CustomResource):
             region="us-central1",
             network=custom_test_network.id)
         connector = gcp.vpcaccess.Connector("connector",
-            subnet=gcp.vpcaccess.ConnectorSubnetArgs(
+            subnet=gcp.vpcaccess.ConnectorSubnetArrgs(
                 name=custom_test_subnetwork.name,
             ),
             machine_type="e2-standard-4",
@@ -1028,11 +1028,11 @@ class Service(pulumi.CustomResource):
             region="us-central1")
         default = gcp.cloudrunv2.Service("default",
             location="us-central1",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
+            template=gcp.cloudrunv2.ServiceTemplateArrgs(
+                containers=[gcp.cloudrunv2.ServiceTemplateContainerArrgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
                 )],
-                vpc_access=gcp.cloudrunv2.ServiceTemplateVpcAccessArgs(
+                vpc_access=gcp.cloudrunv2.ServiceTemplateVpcAccessArrgs(
                     connector=connector.id,
                     egress="ALL_TRAFFIC",
                 ),
@@ -1047,13 +1047,13 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             launch_stage="BETA",
             location="us-central1",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
+            template=gcp.cloudrunv2.ServiceTemplateArrgs(
+                containers=[gcp.cloudrunv2.ServiceTemplateContainerArrgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
                 )],
-                vpc_access=gcp.cloudrunv2.ServiceTemplateVpcAccessArgs(
+                vpc_access=gcp.cloudrunv2.ServiceTemplateVpcAccessArrgs(
                     egress="ALL_TRAFFIC",
-                    network_interfaces=[gcp.cloudrunv2.ServiceTemplateVpcAccessNetworkInterfaceArgs(
+                    network_interfaces=[gcp.cloudrunv2.ServiceTemplateVpcAccessNetworkInterfaceArrgs(
                         network="default",
                         subnetwork="default",
                         tags=[
@@ -1073,19 +1073,19 @@ class Service(pulumi.CustomResource):
 
         default = gcp.cloudrunv2.Service("default",
             location="us-central1",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
+            template=gcp.cloudrunv2.ServiceTemplateArrgs(
+                containers=[gcp.cloudrunv2.ServiceTemplateContainerArrgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
-                    liveness_probe=gcp.cloudrunv2.ServiceTemplateContainerLivenessProbeArgs(
-                        http_get=gcp.cloudrunv2.ServiceTemplateContainerLivenessProbeHttpGetArgs(
+                    liveness_probe=gcp.cloudrunv2.ServiceTemplateContainerLivenessProbeArrgs(
+                        http_get=gcp.cloudrunv2.ServiceTemplateContainerLivenessProbeHttpGetArrgs(
                             path="/",
                         ),
                     ),
-                    startup_probe=gcp.cloudrunv2.ServiceTemplateContainerStartupProbeArgs(
+                    startup_probe=gcp.cloudrunv2.ServiceTemplateContainerStartupProbeArrgs(
                         failure_threshold=1,
                         initial_delay_seconds=0,
                         period_seconds=3,
-                        tcp_socket=gcp.cloudrunv2.ServiceTemplateContainerStartupProbeTcpSocketArgs(
+                        tcp_socket=gcp.cloudrunv2.ServiceTemplateContainerStartupProbeTcpSocketArrgs(
                             port=8080,
                         ),
                         timeout_seconds=1,
@@ -1101,8 +1101,8 @@ class Service(pulumi.CustomResource):
 
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret-1",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArrgs(),
             ))
         secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
             secret=secret.name,
@@ -1110,21 +1110,21 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             location="us-central1",
             ingress="INGRESS_TRAFFIC_ALL",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                volumes=[gcp.cloudrunv2.ServiceTemplateVolumeArgs(
+            template=gcp.cloudrunv2.ServiceTemplateArrgs(
+                volumes=[gcp.cloudrunv2.ServiceTemplateVolumeArrgs(
                     name="a-volume",
-                    secret=gcp.cloudrunv2.ServiceTemplateVolumeSecretArgs(
+                    secret=gcp.cloudrunv2.ServiceTemplateVolumeSecretArrgs(
                         secret=secret.secret_id,
                         default_mode=292,
-                        items=[gcp.cloudrunv2.ServiceTemplateVolumeSecretItemArgs(
+                        items=[gcp.cloudrunv2.ServiceTemplateVolumeSecretItemArrgs(
                             version="1",
                             path="my-secret",
                         )],
                     ),
                 )],
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
+                containers=[gcp.cloudrunv2.ServiceTemplateContainerArrgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
-                    volume_mounts=[gcp.cloudrunv2.ServiceTemplateContainerVolumeMountArgs(
+                    volume_mounts=[gcp.cloudrunv2.ServiceTemplateContainerVolumeMountArrgs(
                         name="a-volume",
                         mount_path="/secrets",
                     )],
@@ -1148,28 +1148,28 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             launch_stage="BETA",
             ingress="INGRESS_TRAFFIC_ALL",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
+            template=gcp.cloudrunv2.ServiceTemplateArrgs(
                 containers=[
-                    gcp.cloudrunv2.ServiceTemplateContainerArgs(
+                    gcp.cloudrunv2.ServiceTemplateContainerArrgs(
                         name="hello-1",
-                        ports=[gcp.cloudrunv2.ServiceTemplateContainerPortArgs(
+                        ports=[gcp.cloudrunv2.ServiceTemplateContainerPortArrgs(
                             container_port=8080,
                         )],
                         image="us-docker.pkg.dev/cloudrun/container/hello",
                         depends_ons=["hello-2"],
-                        volume_mounts=[gcp.cloudrunv2.ServiceTemplateContainerVolumeMountArgs(
+                        volume_mounts=[gcp.cloudrunv2.ServiceTemplateContainerVolumeMountArrgs(
                             name="empty-dir-volume",
                             mount_path="/mnt",
                         )],
                     ),
-                    gcp.cloudrunv2.ServiceTemplateContainerArgs(
+                    gcp.cloudrunv2.ServiceTemplateContainerArrgs(
                         name="hello-2",
                         image="us-docker.pkg.dev/cloudrun/container/hello",
                     ),
                 ],
-                volumes=[gcp.cloudrunv2.ServiceTemplateVolumeArgs(
+                volumes=[gcp.cloudrunv2.ServiceTemplateVolumeArrgs(
                     name="empty-dir-volume",
-                    empty_dir=gcp.cloudrunv2.ServiceTemplateVolumeEmptyDirArgs(
+                    empty_dir=gcp.cloudrunv2.ServiceTemplateVolumeEmptyDirArrgs(
                         medium="MEMORY",
                         size_limit="256Mi",
                     ),
@@ -1210,7 +1210,7 @@ class Service(pulumi.CustomResource):
                This field follows Kubernetes annotations' namespacing, limits, and rules.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['ServiceBinaryAuthorizationArgs']] binary_authorization: Settings for the Binary Authorization feature.
+        :param pulumi.Input[pulumi.InputType['ServiceBinaryAuthorizationArrgs']] binary_authorization: Settings for the Binary Authorization feature.
                Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
@@ -1234,16 +1234,16 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the Service.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['ServiceTemplateArgs']] template: The template used to create revisions for this Service.
+        :param pulumi.Input[pulumi.InputType['ServiceTemplateArrgs']] template: The template used to create revisions for this Service.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArrgs']]]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ServiceArgs,
+                 args: ServiceArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Service acts as a top-level container that manages a set of configurations and revision templates which implement a network service. Service exists to provide a singular abstraction which can be access controlled, reasoned about, and which encapsulates software lifecycle decisions such as rollout policy and team resource ownership.
@@ -1264,8 +1264,8 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             ingress="INGRESS_TRAFFIC_ALL",
             location="us-central1",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
+            template=gcp.cloudrunv2.ServiceTemplateArrgs(
+                containers=[gcp.cloudrunv2.ServiceTemplateContainerArrgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
                 )],
             ))
@@ -1278,8 +1278,8 @@ class Service(pulumi.CustomResource):
 
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret-1",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArrgs(),
             ))
         secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
             secret=secret.name,
@@ -1287,47 +1287,47 @@ class Service(pulumi.CustomResource):
         instance = gcp.sql.DatabaseInstance("instance",
             region="us-central1",
             database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+            settings=gcp.sql.DatabaseInstanceSettingsArrgs(
                 tier="db-f1-micro",
             ),
             deletion_protection=True)
         default = gcp.cloudrunv2.Service("default",
             location="us-central1",
             ingress="INGRESS_TRAFFIC_ALL",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                scaling=gcp.cloudrunv2.ServiceTemplateScalingArgs(
+            template=gcp.cloudrunv2.ServiceTemplateArrgs(
+                scaling=gcp.cloudrunv2.ServiceTemplateScalingArrgs(
                     max_instance_count=2,
                 ),
-                volumes=[gcp.cloudrunv2.ServiceTemplateVolumeArgs(
+                volumes=[gcp.cloudrunv2.ServiceTemplateVolumeArrgs(
                     name="cloudsql",
-                    cloud_sql_instance=gcp.cloudrunv2.ServiceTemplateVolumeCloudSqlInstanceArgs(
+                    cloud_sql_instance=gcp.cloudrunv2.ServiceTemplateVolumeCloudSqlInstanceArrgs(
                         instances=[instance.connection_name],
                     ),
                 )],
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
+                containers=[gcp.cloudrunv2.ServiceTemplateContainerArrgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
                     envs=[
-                        gcp.cloudrunv2.ServiceTemplateContainerEnvArgs(
+                        gcp.cloudrunv2.ServiceTemplateContainerEnvArrgs(
                             name="FOO",
                             value="bar",
                         ),
-                        gcp.cloudrunv2.ServiceTemplateContainerEnvArgs(
+                        gcp.cloudrunv2.ServiceTemplateContainerEnvArrgs(
                             name="SECRET_ENV_VAR",
-                            value_source=gcp.cloudrunv2.ServiceTemplateContainerEnvValueSourceArgs(
-                                secret_key_ref=gcp.cloudrunv2.ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs(
+                            value_source=gcp.cloudrunv2.ServiceTemplateContainerEnvValueSourceArrgs(
+                                secret_key_ref=gcp.cloudrunv2.ServiceTemplateContainerEnvValueSourceSecretKeyRefArrgs(
                                     secret=secret.secret_id,
                                     version="1",
                                 ),
                             ),
                         ),
                     ],
-                    volume_mounts=[gcp.cloudrunv2.ServiceTemplateContainerVolumeMountArgs(
+                    volume_mounts=[gcp.cloudrunv2.ServiceTemplateContainerVolumeMountArrgs(
                         name="cloudsql",
                         mount_path="/cloudsql",
                     )],
                 )],
             ),
-            traffics=[gcp.cloudrunv2.ServiceTrafficArgs(
+            traffics=[gcp.cloudrunv2.ServiceTrafficArrgs(
                 type="TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST",
                 percent=100,
             )],
@@ -1351,7 +1351,7 @@ class Service(pulumi.CustomResource):
             region="us-central1",
             network=custom_test_network.id)
         connector = gcp.vpcaccess.Connector("connector",
-            subnet=gcp.vpcaccess.ConnectorSubnetArgs(
+            subnet=gcp.vpcaccess.ConnectorSubnetArrgs(
                 name=custom_test_subnetwork.name,
             ),
             machine_type="e2-standard-4",
@@ -1360,11 +1360,11 @@ class Service(pulumi.CustomResource):
             region="us-central1")
         default = gcp.cloudrunv2.Service("default",
             location="us-central1",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
+            template=gcp.cloudrunv2.ServiceTemplateArrgs(
+                containers=[gcp.cloudrunv2.ServiceTemplateContainerArrgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
                 )],
-                vpc_access=gcp.cloudrunv2.ServiceTemplateVpcAccessArgs(
+                vpc_access=gcp.cloudrunv2.ServiceTemplateVpcAccessArrgs(
                     connector=connector.id,
                     egress="ALL_TRAFFIC",
                 ),
@@ -1379,13 +1379,13 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             launch_stage="BETA",
             location="us-central1",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
+            template=gcp.cloudrunv2.ServiceTemplateArrgs(
+                containers=[gcp.cloudrunv2.ServiceTemplateContainerArrgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
                 )],
-                vpc_access=gcp.cloudrunv2.ServiceTemplateVpcAccessArgs(
+                vpc_access=gcp.cloudrunv2.ServiceTemplateVpcAccessArrgs(
                     egress="ALL_TRAFFIC",
-                    network_interfaces=[gcp.cloudrunv2.ServiceTemplateVpcAccessNetworkInterfaceArgs(
+                    network_interfaces=[gcp.cloudrunv2.ServiceTemplateVpcAccessNetworkInterfaceArrgs(
                         network="default",
                         subnetwork="default",
                         tags=[
@@ -1405,19 +1405,19 @@ class Service(pulumi.CustomResource):
 
         default = gcp.cloudrunv2.Service("default",
             location="us-central1",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
+            template=gcp.cloudrunv2.ServiceTemplateArrgs(
+                containers=[gcp.cloudrunv2.ServiceTemplateContainerArrgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
-                    liveness_probe=gcp.cloudrunv2.ServiceTemplateContainerLivenessProbeArgs(
-                        http_get=gcp.cloudrunv2.ServiceTemplateContainerLivenessProbeHttpGetArgs(
+                    liveness_probe=gcp.cloudrunv2.ServiceTemplateContainerLivenessProbeArrgs(
+                        http_get=gcp.cloudrunv2.ServiceTemplateContainerLivenessProbeHttpGetArrgs(
                             path="/",
                         ),
                     ),
-                    startup_probe=gcp.cloudrunv2.ServiceTemplateContainerStartupProbeArgs(
+                    startup_probe=gcp.cloudrunv2.ServiceTemplateContainerStartupProbeArrgs(
                         failure_threshold=1,
                         initial_delay_seconds=0,
                         period_seconds=3,
-                        tcp_socket=gcp.cloudrunv2.ServiceTemplateContainerStartupProbeTcpSocketArgs(
+                        tcp_socket=gcp.cloudrunv2.ServiceTemplateContainerStartupProbeTcpSocketArrgs(
                             port=8080,
                         ),
                         timeout_seconds=1,
@@ -1433,8 +1433,8 @@ class Service(pulumi.CustomResource):
 
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret-1",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArrgs(),
             ))
         secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
             secret=secret.name,
@@ -1442,21 +1442,21 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             location="us-central1",
             ingress="INGRESS_TRAFFIC_ALL",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                volumes=[gcp.cloudrunv2.ServiceTemplateVolumeArgs(
+            template=gcp.cloudrunv2.ServiceTemplateArrgs(
+                volumes=[gcp.cloudrunv2.ServiceTemplateVolumeArrgs(
                     name="a-volume",
-                    secret=gcp.cloudrunv2.ServiceTemplateVolumeSecretArgs(
+                    secret=gcp.cloudrunv2.ServiceTemplateVolumeSecretArrgs(
                         secret=secret.secret_id,
                         default_mode=292,
-                        items=[gcp.cloudrunv2.ServiceTemplateVolumeSecretItemArgs(
+                        items=[gcp.cloudrunv2.ServiceTemplateVolumeSecretItemArrgs(
                             version="1",
                             path="my-secret",
                         )],
                     ),
                 )],
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
+                containers=[gcp.cloudrunv2.ServiceTemplateContainerArrgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
-                    volume_mounts=[gcp.cloudrunv2.ServiceTemplateContainerVolumeMountArgs(
+                    volume_mounts=[gcp.cloudrunv2.ServiceTemplateContainerVolumeMountArrgs(
                         name="a-volume",
                         mount_path="/secrets",
                     )],
@@ -1480,28 +1480,28 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             launch_stage="BETA",
             ingress="INGRESS_TRAFFIC_ALL",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
+            template=gcp.cloudrunv2.ServiceTemplateArrgs(
                 containers=[
-                    gcp.cloudrunv2.ServiceTemplateContainerArgs(
+                    gcp.cloudrunv2.ServiceTemplateContainerArrgs(
                         name="hello-1",
-                        ports=[gcp.cloudrunv2.ServiceTemplateContainerPortArgs(
+                        ports=[gcp.cloudrunv2.ServiceTemplateContainerPortArrgs(
                             container_port=8080,
                         )],
                         image="us-docker.pkg.dev/cloudrun/container/hello",
                         depends_ons=["hello-2"],
-                        volume_mounts=[gcp.cloudrunv2.ServiceTemplateContainerVolumeMountArgs(
+                        volume_mounts=[gcp.cloudrunv2.ServiceTemplateContainerVolumeMountArrgs(
                             name="empty-dir-volume",
                             mount_path="/mnt",
                         )],
                     ),
-                    gcp.cloudrunv2.ServiceTemplateContainerArgs(
+                    gcp.cloudrunv2.ServiceTemplateContainerArrgs(
                         name="hello-2",
                         image="us-docker.pkg.dev/cloudrun/container/hello",
                     ),
                 ],
-                volumes=[gcp.cloudrunv2.ServiceTemplateVolumeArgs(
+                volumes=[gcp.cloudrunv2.ServiceTemplateVolumeArrgs(
                     name="empty-dir-volume",
-                    empty_dir=gcp.cloudrunv2.ServiceTemplateVolumeEmptyDirArgs(
+                    empty_dir=gcp.cloudrunv2.ServiceTemplateVolumeEmptyDirArrgs(
                         medium="MEMORY",
                         size_limit="256Mi",
                     ),
@@ -1535,12 +1535,12 @@ class Service(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ServiceArgs args: The arguments to use to populate this resource's properties.
+        :param ServiceArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ServiceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ServiceArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1550,7 +1550,7 @@ class Service(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['ServiceBinaryAuthorizationArgs']]] = None,
+                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['ServiceBinaryAuthorizationArrgs']]] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
                  custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1561,8 +1561,8 @@ class Service(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 template: Optional[pulumi.Input[pulumi.InputType['ServiceTemplateArgs']]] = None,
-                 traffics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]]] = None,
+                 template: Optional[pulumi.Input[pulumi.InputType['ServiceTemplateArrgs']]] = None,
+                 traffics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArrgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1570,7 +1570,7 @@ class Service(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ServiceArgs.__new__(ServiceArgs)
+            __props__ = ServiceArrgs.__new__(ServiceArrgs)
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["binary_authorization"] = binary_authorization
@@ -1623,10 +1623,10 @@ class Service(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            binary_authorization: Optional[pulumi.Input[pulumi.InputType['ServiceBinaryAuthorizationArgs']]] = None,
+            binary_authorization: Optional[pulumi.Input[pulumi.InputType['ServiceBinaryAuthorizationArrgs']]] = None,
             client: Optional[pulumi.Input[str]] = None,
             client_version: Optional[pulumi.Input[str]] = None,
-            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceConditionArgs']]]]] = None,
+            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceConditionArrgs']]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             creator: Optional[pulumi.Input[str]] = None,
             custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1649,10 +1649,10 @@ class Service(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
-            template: Optional[pulumi.Input[pulumi.InputType['ServiceTemplateArgs']]] = None,
-            terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTerminalConditionArgs']]]]] = None,
-            traffic_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficStatusArgs']]]]] = None,
-            traffics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]]] = None,
+            template: Optional[pulumi.Input[pulumi.InputType['ServiceTemplateArrgs']]] = None,
+            terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTerminalConditionArrgs']]]]] = None,
+            traffic_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficStatusArrgs']]]]] = None,
+            traffics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArrgs']]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
             uri: Optional[pulumi.Input[str]] = None) -> 'Service':
@@ -1669,11 +1669,11 @@ class Service(pulumi.CustomResource):
                This field follows Kubernetes annotations' namespacing, limits, and rules.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['ServiceBinaryAuthorizationArgs']] binary_authorization: Settings for the Binary Authorization feature.
+        :param pulumi.Input[pulumi.InputType['ServiceBinaryAuthorizationArrgs']] binary_authorization: Settings for the Binary Authorization feature.
                Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceConditionArgs']]]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceConditionArrgs']]]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The creation time.
         :param pulumi.Input[str] creator: Email address of the authenticated creator.
@@ -1714,13 +1714,13 @@ class Service(pulumi.CustomResource):
                When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
                If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
                If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
-        :param pulumi.Input[pulumi.InputType['ServiceTemplateArgs']] template: The template used to create revisions for this Service.
+        :param pulumi.Input[pulumi.InputType['ServiceTemplateArrgs']] template: The template used to create revisions for this Service.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTerminalConditionArgs']]]] terminal_conditions: The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTerminalConditionArrgs']]]] terminal_conditions: The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficStatusArgs']]]] traffic_statuses: Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficStatusArrgs']]]] traffic_statuses: Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArrgs']]]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
                Structure is documented below.
         :param pulumi.Input[str] uid: Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         :param pulumi.Input[str] update_time: The last-modified time.

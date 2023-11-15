@@ -87,7 +87,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class AppProfileSingleClusterRouting(dict):
+calass AppProfileSingleClusterRouting(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -138,7 +138,7 @@ class AppProfileSingleClusterRouting(dict):
 
 
 @pulumi.output_type
-class BiReservationPreferredTable(dict):
+calass BiReservationPreferredTable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -202,7 +202,7 @@ class BiReservationPreferredTable(dict):
 
 
 @pulumi.output_type
-class ConnectionAws(dict):
+calass ConnectionAws(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -223,7 +223,7 @@ class ConnectionAws(dict):
     def __init__(__self__, *,
                  access_role: 'outputs.ConnectionAwsAccessRole'):
         """
-        :param 'ConnectionAwsAccessRoleArgs' access_role: Authentication using Google owned service account to assume into customer's AWS IAM Role.
+        :param 'ConnectionAwsAccessRoleArrgs' access_role: Authentication using Google owned service account to assume into customer's AWS IAM Role.
                Structure is documented below.
         """
         pulumi.set(__self__, "access_role", access_role)
@@ -239,7 +239,7 @@ class ConnectionAws(dict):
 
 
 @pulumi.output_type
-class ConnectionAwsAccessRole(dict):
+calass ConnectionAwsAccessRole(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -288,7 +288,7 @@ class ConnectionAwsAccessRole(dict):
 
 
 @pulumi.output_type
-class ConnectionAzure(dict):
+calass ConnectionAzure(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -413,7 +413,7 @@ class ConnectionAzure(dict):
 
 
 @pulumi.output_type
-class ConnectionCloudResource(dict):
+calass ConnectionCloudResource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -451,7 +451,7 @@ class ConnectionCloudResource(dict):
 
 
 @pulumi.output_type
-class ConnectionCloudSpanner(dict):
+calass ConnectionCloudSpanner(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -563,7 +563,7 @@ class ConnectionCloudSpanner(dict):
 
 
 @pulumi.output_type
-class ConnectionCloudSql(dict):
+calass ConnectionCloudSql(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -590,7 +590,7 @@ class ConnectionCloudSql(dict):
                  type: str,
                  service_account_id: Optional[str] = None):
         """
-        :param 'ConnectionCloudSqlCredentialArgs' credential: Cloud SQL properties.
+        :param 'ConnectionCloudSqlCredentialArrgs' credential: Cloud SQL properties.
                Structure is documented below.
         :param str database: Database name.
         :param str instance_id: Cloud SQL instance ID in the form project:location:instance.
@@ -651,7 +651,7 @@ class ConnectionCloudSql(dict):
 
 
 @pulumi.output_type
-class ConnectionCloudSqlCredential(dict):
+calass ConnectionCloudSqlCredential(dict):
     def __init__(__self__, *,
                  password: str,
                  username: str):
@@ -682,7 +682,7 @@ class ConnectionCloudSqlCredential(dict):
 
 
 @pulumi.output_type
-class ConnectionIamBindingCondition(dict):
+calass ConnectionIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -709,7 +709,7 @@ class ConnectionIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class ConnectionIamMemberCondition(dict):
+calass ConnectionIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -736,7 +736,7 @@ class ConnectionIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class DataTransferConfigEmailPreferences(dict):
+calass DataTransferConfigEmailPreferences(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -771,7 +771,7 @@ class DataTransferConfigEmailPreferences(dict):
 
 
 @pulumi.output_type
-class DataTransferConfigScheduleOptions(dict):
+calass DataTransferConfigScheduleOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -857,7 +857,7 @@ class DataTransferConfigScheduleOptions(dict):
 
 
 @pulumi.output_type
-class DataTransferConfigSensitiveParams(dict):
+calass DataTransferConfigSensitiveParams(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -894,7 +894,7 @@ class DataTransferConfigSensitiveParams(dict):
 
 
 @pulumi.output_type
-class DatasetAccess(dict):
+calass DatasetAccess(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -929,7 +929,7 @@ class DatasetAccess(dict):
                  user_by_email: Optional[str] = None,
                  view: Optional['outputs.DatasetAccessView'] = None):
         """
-        :param 'DatasetAccessDatasetArgs' dataset: Grants all resources of particular types in a particular dataset read access to the current dataset.
+        :param 'DatasetAccessDatasetArrgs' dataset: Grants all resources of particular types in a particular dataset read access to the current dataset.
                Structure is documented below.
         :param str domain: A domain to grant access to. Any users signed in with the
                domain specified will be granted the specified access
@@ -941,7 +941,7 @@ class DatasetAccess(dict):
                are supported. Predefined roles that have equivalent basic roles
                are swapped by the API to their basic counterparts. See
                [official docs](https://cloud.google.com/bigquery/docs/access-control).
-        :param 'DatasetAccessRoutineArgs' routine: A routine from a different dataset to grant access to. Queries
+        :param 'DatasetAccessRoutineArrgs' routine: A routine from a different dataset to grant access to. Queries
                executed against that routine will have read access to tables in
                this dataset. The role field is not required when this field is
                set. If that routine is updated by any user, access to the routine
@@ -950,7 +950,7 @@ class DatasetAccess(dict):
         :param str special_group: A special group to grant access to. Possible values include:
         :param str user_by_email: An email address of a user to grant access to. For example:
                fred@example.com
-        :param 'DatasetAccessViewArgs' view: A view from a different dataset to grant access to. Queries
+        :param 'DatasetAccessViewArrgs' view: A view from a different dataset to grant access to. Queries
                executed against that view will have read access to tables in
                this dataset. The role field is not required when this field is
                set. If that view is updated by any user, access to the view
@@ -1068,7 +1068,7 @@ class DatasetAccess(dict):
 
 
 @pulumi.output_type
-class DatasetAccessAuthorizedDataset(dict):
+calass DatasetAccessAuthorizedDataset(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1090,7 +1090,7 @@ class DatasetAccessAuthorizedDataset(dict):
                  dataset: 'outputs.DatasetAccessAuthorizedDatasetDataset',
                  target_types: Sequence[str]):
         """
-        :param 'DatasetAccessAuthorizedDatasetDatasetArgs' dataset: The dataset this entry applies to
+        :param 'DatasetAccessAuthorizedDatasetDatasetArrgs' dataset: The dataset this entry applies to
                Structure is documented below.
         :param Sequence[str] target_types: Which resources in the dataset this entry applies to. Currently, only views are supported,
                but additional target types may be added in the future. Possible values: VIEWS
@@ -1118,7 +1118,7 @@ class DatasetAccessAuthorizedDataset(dict):
 
 
 @pulumi.output_type
-class DatasetAccessAuthorizedDatasetDataset(dict):
+calass DatasetAccessAuthorizedDatasetDataset(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1166,7 +1166,7 @@ class DatasetAccessAuthorizedDatasetDataset(dict):
 
 
 @pulumi.output_type
-class DatasetAccessDataset(dict):
+calass DatasetAccessDataset(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1188,7 +1188,7 @@ class DatasetAccessDataset(dict):
                  dataset: 'outputs.DatasetAccessDatasetDataset',
                  target_types: Sequence[str]):
         """
-        :param 'DatasetAccessDatasetDatasetArgs' dataset: The dataset this entry applies to
+        :param 'DatasetAccessDatasetDatasetArrgs' dataset: The dataset this entry applies to
                Structure is documented below.
         :param Sequence[str] target_types: Which resources in the dataset this entry applies to. Currently, only views are supported,
                but additional target types may be added in the future. Possible values: VIEWS
@@ -1216,7 +1216,7 @@ class DatasetAccessDataset(dict):
 
 
 @pulumi.output_type
-class DatasetAccessDatasetDataset(dict):
+calass DatasetAccessDatasetDataset(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1264,7 +1264,7 @@ class DatasetAccessDatasetDataset(dict):
 
 
 @pulumi.output_type
-class DatasetAccessRoutine(dict):
+calass DatasetAccessRoutine(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1329,7 +1329,7 @@ class DatasetAccessRoutine(dict):
 
 
 @pulumi.output_type
-class DatasetAccessView(dict):
+calass DatasetAccessView(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1394,7 +1394,7 @@ class DatasetAccessView(dict):
 
 
 @pulumi.output_type
-class DatasetDefaultEncryptionConfiguration(dict):
+calass DatasetDefaultEncryptionConfiguration(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1433,7 +1433,7 @@ class DatasetDefaultEncryptionConfiguration(dict):
 
 
 @pulumi.output_type
-class DatasetIamBindingCondition(dict):
+calass DatasetIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -1460,7 +1460,7 @@ class DatasetIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class DatasetIamMemberCondition(dict):
+calass DatasetIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -1487,56 +1487,7 @@ class DatasetIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class IamBindingCondition(dict):
-    def __init__(__self__, *,
-                 expression: str,
-                 title: str,
-                 description: Optional[str] = None):
-        """
-        :param str expression: Textual representation of an expression in Common Expression Language syntax.
-        :param str title: A title for the expression, i.e. a short string describing its purpose.
-        :param str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, this provider will
-               consider it to be an entirely different resource and will treat it as such.
-        """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-
-    @property
-    @pulumi.getter
-    def expression(self) -> str:
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        return pulumi.get(self, "expression")
-
-    @property
-    @pulumi.getter
-    def title(self) -> str:
-        """
-        A title for the expression, i.e. a short string describing its purpose.
-        """
-        return pulumi.get(self, "title")
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[str]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, this provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
-        return pulumi.get(self, "description")
-
-
-@pulumi.output_type
-class IamMemberCondition(dict):
+calass IamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -1585,7 +1536,56 @@ class IamMemberCondition(dict):
 
 
 @pulumi.output_type
-class JobCopy(dict):
+calass IamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str title: A title for the expression, i.e. a short string describing its purpose.
+        :param str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, this provider will
+               consider it to be an entirely different resource and will treat it as such.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, this provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+calass JobCopy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1618,7 +1618,7 @@ class JobCopy(dict):
                  destination_table: Optional['outputs.JobCopyDestinationTable'] = None,
                  write_disposition: Optional[str] = None):
         """
-        :param Sequence['JobCopySourceTableArgs'] source_tables: Source tables to copy.
+        :param Sequence['JobCopySourceTableArrgs'] source_tables: Source tables to copy.
                Structure is documented below.
         :param str create_disposition: Specifies whether the job is allowed to create new tables. The following values are supported:
                CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
@@ -1626,9 +1626,9 @@ class JobCopy(dict):
                Creation, truncation and append actions occur as one atomic update upon job completion
                Default value is `CREATE_IF_NEEDED`.
                Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
-        :param 'JobCopyDestinationEncryptionConfigurationArgs' destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys)
+        :param 'JobCopyDestinationEncryptionConfigurationArrgs' destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys)
                Structure is documented below.
-        :param 'JobCopyDestinationTableArgs' destination_table: The destination table.
+        :param 'JobCopyDestinationTableArrgs' destination_table: The destination table.
                Structure is documented below.
         :param str write_disposition: Specifies the action that occurs if the destination table already exists. The following values are supported:
                WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -1706,7 +1706,7 @@ class JobCopy(dict):
 
 
 @pulumi.output_type
-class JobCopyDestinationEncryptionConfiguration(dict):
+calass JobCopyDestinationEncryptionConfiguration(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1759,7 +1759,7 @@ class JobCopyDestinationEncryptionConfiguration(dict):
 
 
 @pulumi.output_type
-class JobCopyDestinationTable(dict):
+calass JobCopyDestinationTable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1824,7 +1824,7 @@ class JobCopyDestinationTable(dict):
 
 
 @pulumi.output_type
-class JobCopySourceTable(dict):
+calass JobCopySourceTable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1889,7 +1889,7 @@ class JobCopySourceTable(dict):
 
 
 @pulumi.output_type
-class JobExtract(dict):
+calass JobExtract(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1938,9 +1938,9 @@ class JobExtract(dict):
         :param str field_delimiter: When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
                Default is ','
         :param bool print_header: Whether to print out a header row in the results. Default is true.
-        :param 'JobExtractSourceModelArgs' source_model: A reference to the model being exported.
+        :param 'JobExtractSourceModelArrgs' source_model: A reference to the model being exported.
                Structure is documented below.
-        :param 'JobExtractSourceTableArgs' source_table: A reference to the table being exported.
+        :param 'JobExtractSourceTableArrgs' source_table: A reference to the table being exported.
                Structure is documented below.
         :param bool use_avro_logical_types: Whether to use logical types when extracting to AVRO format.
         """
@@ -2032,7 +2032,7 @@ class JobExtract(dict):
 
 
 @pulumi.output_type
-class JobExtractSourceModel(dict):
+calass JobExtractSourceModel(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2097,7 +2097,7 @@ class JobExtractSourceModel(dict):
 
 
 @pulumi.output_type
-class JobExtractSourceTable(dict):
+calass JobExtractSourceTable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2162,7 +2162,7 @@ class JobExtractSourceTable(dict):
 
 
 @pulumi.output_type
-class JobLoad(dict):
+calass JobLoad(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2237,7 +2237,7 @@ class JobLoad(dict):
                  time_partitioning: Optional['outputs.JobLoadTimePartitioning'] = None,
                  write_disposition: Optional[str] = None):
         """
-        :param 'JobLoadDestinationTableArgs' destination_table: The destination table to load the data into.
+        :param 'JobLoadDestinationTableArrgs' destination_table: The destination table to load the data into.
                Structure is documented below.
         :param Sequence[str] source_uris: The fully-qualified URIs that point to your data in Google Cloud.
                For Google Cloud Storage URIs: Each URI can contain one '\\*' wildcard character
@@ -2257,7 +2257,7 @@ class JobLoad(dict):
                Creation, truncation and append actions occur as one atomic update upon job completion
                Default value is `CREATE_IF_NEEDED`.
                Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
-        :param 'JobLoadDestinationEncryptionConfigurationArgs' destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys)
+        :param 'JobLoadDestinationEncryptionConfigurationArrgs' destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys)
                Structure is documented below.
         :param str encoding: The character encoding of the data. The supported values are UTF-8 or ISO-8859-1.
                The default value is UTF-8. BigQuery decodes the data after the raw, binary data
@@ -2282,7 +2282,7 @@ class JobLoad(dict):
                property to a custom value, BigQuery throws an error if an
                empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
                an empty value.
-        :param 'JobLoadParquetOptionsArgs' parquet_options: Parquet Options for load and make external tables.
+        :param 'JobLoadParquetOptionsArrgs' parquet_options: Parquet Options for load and make external tables.
                Structure is documented below.
         :param Sequence[str] projection_fields: If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
                Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties.
@@ -2309,7 +2309,7 @@ class JobLoad(dict):
                For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET".
                For orc, specify "ORC". [Beta] For Bigtable, specify "BIGTABLE".
                The default value is CSV.
-        :param 'JobLoadTimePartitioningArgs' time_partitioning: Time-based partitioning specification for the destination table.
+        :param 'JobLoadTimePartitioningArrgs' time_partitioning: Time-based partitioning specification for the destination table.
                Structure is documented below.
         :param str write_disposition: Specifies the action that occurs if the destination table already exists. The following values are supported:
                WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -2592,7 +2592,7 @@ class JobLoad(dict):
 
 
 @pulumi.output_type
-class JobLoadDestinationEncryptionConfiguration(dict):
+calass JobLoadDestinationEncryptionConfiguration(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2645,7 +2645,7 @@ class JobLoadDestinationEncryptionConfiguration(dict):
 
 
 @pulumi.output_type
-class JobLoadDestinationTable(dict):
+calass JobLoadDestinationTable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2710,7 +2710,7 @@ class JobLoadDestinationTable(dict):
 
 
 @pulumi.output_type
-class JobLoadParquetOptions(dict):
+calass JobLoadParquetOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2760,7 +2760,7 @@ class JobLoadParquetOptions(dict):
 
 
 @pulumi.output_type
-class JobLoadTimePartitioning(dict):
+calass JobLoadTimePartitioning(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2825,7 +2825,7 @@ class JobLoadTimePartitioning(dict):
 
 
 @pulumi.output_type
-class JobQuery(dict):
+calass JobQuery(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2902,11 +2902,11 @@ class JobQuery(dict):
                Creation, truncation and append actions occur as one atomic update upon job completion
                Default value is `CREATE_IF_NEEDED`.
                Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
-        :param 'JobQueryDefaultDatasetArgs' default_dataset: Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
+        :param 'JobQueryDefaultDatasetArrgs' default_dataset: Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
                Structure is documented below.
-        :param 'JobQueryDestinationEncryptionConfigurationArgs' destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys)
+        :param 'JobQueryDestinationEncryptionConfigurationArrgs' destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys)
                Structure is documented below.
-        :param 'JobQueryDestinationTableArgs' destination_table: Describes the table where the query results should be stored.
+        :param 'JobQueryDestinationTableArrgs' destination_table: Describes the table where the query results should be stored.
                This property must be set for large results that exceed the maximum response size.
                For queries that produce anonymous (cached) results, this field will be populated by BigQuery.
                Structure is documented below.
@@ -2927,14 +2927,14 @@ class JobQuery(dict):
                One or more of the following values are specified:
                ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
                ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
-        :param 'JobQueryScriptOptionsArgs' script_options: Options controlling the execution of scripts.
+        :param 'JobQueryScriptOptionsArrgs' script_options: Options controlling the execution of scripts.
                Structure is documented below.
         :param bool use_legacy_sql: Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true.
                If set to false, the query will use BigQuery's standard SQL.
         :param bool use_query_cache: Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever
                tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified.
                The default value is true.
-        :param Sequence['JobQueryUserDefinedFunctionResourceArgs'] user_defined_function_resources: Describes user-defined function resources used in the query.
+        :param Sequence['JobQueryUserDefinedFunctionResourceArrgs'] user_defined_function_resources: Describes user-defined function resources used in the query.
                Structure is documented below.
         :param str write_disposition: Specifies the action that occurs if the destination table already exists. The following values are supported:
                WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -3154,7 +3154,7 @@ class JobQuery(dict):
 
 
 @pulumi.output_type
-class JobQueryDefaultDataset(dict):
+calass JobQueryDefaultDataset(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3205,7 +3205,7 @@ class JobQueryDefaultDataset(dict):
 
 
 @pulumi.output_type
-class JobQueryDestinationEncryptionConfiguration(dict):
+calass JobQueryDestinationEncryptionConfiguration(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3258,7 +3258,7 @@ class JobQueryDestinationEncryptionConfiguration(dict):
 
 
 @pulumi.output_type
-class JobQueryDestinationTable(dict):
+calass JobQueryDestinationTable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3323,7 +3323,7 @@ class JobQueryDestinationTable(dict):
 
 
 @pulumi.output_type
-class JobQueryScriptOptions(dict):
+calass JobQueryScriptOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3391,7 +3391,7 @@ class JobQueryScriptOptions(dict):
 
 
 @pulumi.output_type
-class JobQueryUserDefinedFunctionResource(dict):
+calass JobQueryUserDefinedFunctionResource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3443,7 +3443,7 @@ class JobQueryUserDefinedFunctionResource(dict):
 
 
 @pulumi.output_type
-class JobStatus(dict):
+calass JobStatus(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3466,10 +3466,10 @@ class JobStatus(dict):
                  errors: Optional[Sequence['outputs.JobStatusError']] = None,
                  state: Optional[str] = None):
         """
-        :param Sequence['JobStatusErrorResultArgs'] error_results: (Output)
+        :param Sequence['JobStatusErrorResultArrgs'] error_results: (Output)
                Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
                Structure is documented below.
-        :param Sequence['JobStatusErrorArgs'] errors: (Output)
+        :param Sequence['JobStatusErrorArrgs'] errors: (Output)
                The first errors encountered during the running of the job. The final message
                includes the number of errors that caused the process to stop. Errors here do
                not necessarily mean that the job has not completed or was unsuccessful.
@@ -3517,7 +3517,7 @@ class JobStatus(dict):
 
 
 @pulumi.output_type
-class JobStatusError(dict):
+calass JobStatusError(dict):
     def __init__(__self__, *,
                  location: Optional[str] = None,
                  message: Optional[str] = None,
@@ -3560,7 +3560,7 @@ class JobStatusError(dict):
 
 
 @pulumi.output_type
-class JobStatusErrorResult(dict):
+calass JobStatusErrorResult(dict):
     def __init__(__self__, *,
                  location: Optional[str] = None,
                  message: Optional[str] = None,
@@ -3603,7 +3603,7 @@ class JobStatusErrorResult(dict):
 
 
 @pulumi.output_type
-class ReservationAutoscale(dict):
+calass ReservationAutoscale(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3655,7 +3655,7 @@ class ReservationAutoscale(dict):
 
 
 @pulumi.output_type
-class RoutineArgument(dict):
+calass RoutineArgument(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3747,7 +3747,7 @@ class RoutineArgument(dict):
 
 
 @pulumi.output_type
-class TableEncryptionConfiguration(dict):
+calass TableEncryptionConfiguration(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3804,7 +3804,7 @@ class TableEncryptionConfiguration(dict):
 
 
 @pulumi.output_type
-class TableExternalDataConfiguration(dict):
+calass TableExternalDataConfiguration(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3874,7 +3874,7 @@ class TableExternalDataConfiguration(dict):
                and format of the table.
         :param Sequence[str] source_uris: A list of the fully-qualified URIs that point to
                your data in Google Cloud.
-        :param 'TableExternalDataConfigurationAvroOptionsArgs' avro_options: Additional options if `source_format` is set to
+        :param 'TableExternalDataConfigurationAvroOptionsArrgs' avro_options: Additional options if `source_format` is set to
                "AVRO".  Structure is documented below.
         :param str compression: The compression type of the data source.
                Valid values are "NONE" or "GZIP".
@@ -3886,15 +3886,15 @@ class TableExternalDataConfiguration(dict):
                ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
                table schema must be specified using the top-level `schema` field
                documented above.
-        :param 'TableExternalDataConfigurationCsvOptionsArgs' csv_options: Additional properties to set if
+        :param 'TableExternalDataConfigurationCsvOptionsArrgs' csv_options: Additional properties to set if
                `source_format` is set to "CSV". Structure is documented below.
         :param str file_set_spec_type: Specifies how source URIs are interpreted for constructing the file set to load.
                By default source URIs are expanded against the underlying storage.
                Other options include specifying manifest files. Only applicable to object storage systems. Docs
-        :param 'TableExternalDataConfigurationGoogleSheetsOptionsArgs' google_sheets_options: Additional options if
+        :param 'TableExternalDataConfigurationGoogleSheetsOptionsArrgs' google_sheets_options: Additional options if
                `source_format` is set to "GOOGLE_SHEETS". Structure is
                documented below.
-        :param 'TableExternalDataConfigurationHivePartitioningOptionsArgs' hive_partitioning_options: When set, configures hive partitioning
+        :param 'TableExternalDataConfigurationHivePartitioningOptionsArrgs' hive_partitioning_options: When set, configures hive partitioning
                support. Not all storage formats support hive partitioning -- requesting hive
                partitioning on an unsupported format will lead to an error, as will providing
                an invalid specification. Structure is documented below.
@@ -3904,13 +3904,13 @@ class TableExternalDataConfiguration(dict):
                extra columns are treated as bad records, and if there are too
                many bad records, an invalid error is returned in the job result.
                The default value is false.
-        :param 'TableExternalDataConfigurationJsonOptionsArgs' json_options: Additional properties to set if
+        :param 'TableExternalDataConfigurationJsonOptionsArrgs' json_options: Additional properties to set if
                `source_format` is set to "JSON". Structure is documented below.
         :param int max_bad_records: The maximum number of bad records that
                BigQuery can ignore when reading data.
         :param str metadata_cache_mode: Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source. Valid values are `AUTOMATIC` and `MANUAL`.
         :param str object_metadata: Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
-        :param 'TableExternalDataConfigurationParquetOptionsArgs' parquet_options: Additional properties to set if
+        :param 'TableExternalDataConfigurationParquetOptionsArrgs' parquet_options: Additional properties to set if
                `source_format` is set to "PARQUET". Structure is documented below.
         :param str reference_file_schema_uri: When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
         :param str schema: A JSON schema for the external table. Schema is required
@@ -4158,7 +4158,7 @@ class TableExternalDataConfiguration(dict):
 
 
 @pulumi.output_type
-class TableExternalDataConfigurationAvroOptions(dict):
+calass TableExternalDataConfigurationAvroOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4197,7 +4197,7 @@ class TableExternalDataConfigurationAvroOptions(dict):
 
 
 @pulumi.output_type
-class TableExternalDataConfigurationCsvOptions(dict):
+calass TableExternalDataConfigurationCsvOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4320,7 +4320,7 @@ class TableExternalDataConfigurationCsvOptions(dict):
 
 
 @pulumi.output_type
-class TableExternalDataConfigurationGoogleSheetsOptions(dict):
+calass TableExternalDataConfigurationGoogleSheetsOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4378,7 +4378,7 @@ class TableExternalDataConfigurationGoogleSheetsOptions(dict):
 
 
 @pulumi.output_type
-class TableExternalDataConfigurationHivePartitioningOptions(dict):
+calass TableExternalDataConfigurationHivePartitioningOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4472,7 +4472,7 @@ class TableExternalDataConfigurationHivePartitioningOptions(dict):
 
 
 @pulumi.output_type
-class TableExternalDataConfigurationJsonOptions(dict):
+calass TableExternalDataConfigurationJsonOptions(dict):
     def __init__(__self__, *,
                  encoding: Optional[str] = None):
         """
@@ -4491,7 +4491,7 @@ class TableExternalDataConfigurationJsonOptions(dict):
 
 
 @pulumi.output_type
-class TableExternalDataConfigurationParquetOptions(dict):
+calass TableExternalDataConfigurationParquetOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4541,7 +4541,7 @@ class TableExternalDataConfigurationParquetOptions(dict):
 
 
 @pulumi.output_type
-class TableMaterializedView(dict):
+calass TableMaterializedView(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4622,14 +4622,14 @@ class TableMaterializedView(dict):
 
 
 @pulumi.output_type
-class TableRangePartitioning(dict):
+calass TableRangePartitioning(dict):
     def __init__(__self__, *,
                  field: str,
                  range: 'outputs.TableRangePartitioningRange'):
         """
         :param str field: The field used to determine how to create a range-based
                partition.
-        :param 'TableRangePartitioningRangeArgs' range: Information required to partition based on ranges.
+        :param 'TableRangePartitioningRangeArrgs' range: Information required to partition based on ranges.
                Structure is documented below.
         """
         pulumi.set(__self__, "field", field)
@@ -4655,7 +4655,7 @@ class TableRangePartitioning(dict):
 
 
 @pulumi.output_type
-class TableRangePartitioningRange(dict):
+calass TableRangePartitioningRange(dict):
     def __init__(__self__, *,
                  end: int,
                  interval: int,
@@ -4695,7 +4695,7 @@ class TableRangePartitioningRange(dict):
 
 
 @pulumi.output_type
-class TableTableConstraints(dict):
+calass TableTableConstraints(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4719,10 +4719,10 @@ class TableTableConstraints(dict):
                  foreign_keys: Optional[Sequence['outputs.TableTableConstraintsForeignKey']] = None,
                  primary_key: Optional['outputs.TableTableConstraintsPrimaryKey'] = None):
         """
-        :param Sequence['TableTableConstraintsForeignKeyArgs'] foreign_keys: Present only if the table has a foreign key.
+        :param Sequence['TableTableConstraintsForeignKeyArrgs'] foreign_keys: Present only if the table has a foreign key.
                The foreign key is not enforced.
                Structure is documented below.
-        :param 'TableTableConstraintsPrimaryKeyArgs' primary_key: Represents the primary key constraint
+        :param 'TableTableConstraintsPrimaryKeyArrgs' primary_key: Represents the primary key constraint
                on a table's columns. Present only if the table has a primary key.
                The primary key is not enforced.
                Structure is documented below.
@@ -4755,7 +4755,7 @@ class TableTableConstraints(dict):
 
 
 @pulumi.output_type
-class TableTableConstraintsForeignKey(dict):
+calass TableTableConstraintsForeignKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4780,9 +4780,9 @@ class TableTableConstraintsForeignKey(dict):
                  referenced_table: 'outputs.TableTableConstraintsForeignKeyReferencedTable',
                  name: Optional[str] = None):
         """
-        :param 'TableTableConstraintsForeignKeyColumnReferencesArgs' column_references: The pair of the foreign key column and primary key column.
+        :param 'TableTableConstraintsForeignKeyColumnReferencesArrgs' column_references: The pair of the foreign key column and primary key column.
                Structure is documented below.
-        :param 'TableTableConstraintsForeignKeyReferencedTableArgs' referenced_table: The table that holds the primary key
+        :param 'TableTableConstraintsForeignKeyReferencedTableArrgs' referenced_table: The table that holds the primary key
                and is referenced by this foreign key.
                Structure is documented below.
         :param str name: Set only if the foreign key constraint is named.
@@ -4821,7 +4821,7 @@ class TableTableConstraintsForeignKey(dict):
 
 
 @pulumi.output_type
-class TableTableConstraintsForeignKeyColumnReferences(dict):
+calass TableTableConstraintsForeignKeyColumnReferences(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4871,7 +4871,7 @@ class TableTableConstraintsForeignKeyColumnReferences(dict):
 
 
 @pulumi.output_type
-class TableTableConstraintsForeignKeyReferencedTable(dict):
+calass TableTableConstraintsForeignKeyReferencedTable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4940,7 +4940,7 @@ class TableTableConstraintsForeignKeyReferencedTable(dict):
 
 
 @pulumi.output_type
-class TableTableConstraintsPrimaryKey(dict):
+calass TableTableConstraintsPrimaryKey(dict):
     def __init__(__self__, *,
                  columns: Sequence[str]):
         """
@@ -4958,7 +4958,7 @@ class TableTableConstraintsPrimaryKey(dict):
 
 
 @pulumi.output_type
-class TableTimePartitioning(dict):
+calass TableTimePartitioning(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5048,7 +5048,7 @@ class TableTimePartitioning(dict):
 
 
 @pulumi.output_type
-class TableView(dict):
+calass TableView(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5097,7 +5097,7 @@ class TableView(dict):
 
 
 @pulumi.output_type
-class GetDatasetAccessResult(dict):
+calass GetDatasetAccessResult(dict):
     def __init__(__self__, *,
                  datasets: Sequence['outputs.GetDatasetAccessDatasetResult'],
                  domain: str,
@@ -5165,7 +5165,7 @@ class GetDatasetAccessResult(dict):
 
 
 @pulumi.output_type
-class GetDatasetAccessDatasetResult(dict):
+calass GetDatasetAccessDatasetResult(dict):
     def __init__(__self__, *,
                  datasets: Sequence['outputs.GetDatasetAccessDatasetDatasetResult'],
                  target_types: Sequence[str]):
@@ -5184,7 +5184,7 @@ class GetDatasetAccessDatasetResult(dict):
 
 
 @pulumi.output_type
-class GetDatasetAccessDatasetDatasetResult(dict):
+calass GetDatasetAccessDatasetDatasetResult(dict):
     def __init__(__self__, *,
                  dataset_id: str,
                  project_id: str):
@@ -5209,7 +5209,7 @@ class GetDatasetAccessDatasetDatasetResult(dict):
 
 
 @pulumi.output_type
-class GetDatasetAccessRoutineResult(dict):
+calass GetDatasetAccessRoutineResult(dict):
     def __init__(__self__, *,
                  dataset_id: str,
                  project_id: str,
@@ -5241,7 +5241,7 @@ class GetDatasetAccessRoutineResult(dict):
 
 
 @pulumi.output_type
-class GetDatasetAccessViewResult(dict):
+calass GetDatasetAccessViewResult(dict):
     def __init__(__self__, *,
                  dataset_id: str,
                  project_id: str,
@@ -5273,7 +5273,7 @@ class GetDatasetAccessViewResult(dict):
 
 
 @pulumi.output_type
-class GetDatasetDefaultEncryptionConfigurationResult(dict):
+calass GetDatasetDefaultEncryptionConfigurationResult(dict):
     def __init__(__self__, *,
                  kms_key_name: str):
         pulumi.set(__self__, "kms_key_name", kms_key_name)

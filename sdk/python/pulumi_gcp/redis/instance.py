@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['InstanceArgs', 'Instance']
+__all__ = ['InstanceArrgs', 'Instance']
 
 @pulumi.input_type
-class InstanceArgs:
+calass InstanceArrgs:
     def __init__(__self__, *,
                  memory_size_gb: pulumi.Input[int],
                  alternative_location_id: Optional[pulumi.Input[str]] = None,
@@ -25,9 +25,9 @@ class InstanceArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
-                 maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
+                 maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 persistence_config: Optional[pulumi.Input['InstancePersistenceConfigArgs']] = None,
+                 persistence_config: Optional[pulumi.Input['InstancePersistenceConfigArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  read_replicas_mode: Optional[pulumi.Input[str]] = None,
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -68,10 +68,10 @@ class InstanceArgs:
                instances will be created across two zones for protection against
                zonal failures. If [alternativeLocationId] is also provided, it must
                be different from [locationId].
-        :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for an instance.
+        :param pulumi.Input['InstanceMaintenancePolicyArrgs'] maintenance_policy: Maintenance policy for an instance.
                Structure is documented below.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
-        :param pulumi.Input['InstancePersistenceConfigArgs'] persistence_config: Persistence configuration for an instance.
+        :param pulumi.Input['InstancePersistenceConfigArrgs'] persistence_config: Persistence configuration for an instance.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -285,7 +285,7 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="maintenancePolicy")
-    def maintenance_policy(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]:
+    def maintenance_policy(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyArrgs']]:
         """
         Maintenance policy for an instance.
         Structure is documented below.
@@ -293,7 +293,7 @@ class InstanceArgs:
         return pulumi.get(self, "maintenance_policy")
 
     @maintenance_policy.setter
-    def maintenance_policy(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]):
+    def maintenance_policy(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyArrgs']]):
         pulumi.set(self, "maintenance_policy", value)
 
     @property
@@ -310,7 +310,7 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="persistenceConfig")
-    def persistence_config(self) -> Optional[pulumi.Input['InstancePersistenceConfigArgs']]:
+    def persistence_config(self) -> Optional[pulumi.Input['InstancePersistenceConfigArrgs']]:
         """
         Persistence configuration for an instance.
         Structure is documented below.
@@ -318,7 +318,7 @@ class InstanceArgs:
         return pulumi.get(self, "persistence_config")
 
     @persistence_config.setter
-    def persistence_config(self, value: Optional[pulumi.Input['InstancePersistenceConfigArgs']]):
+    def persistence_config(self, value: Optional[pulumi.Input['InstancePersistenceConfigArrgs']]):
         pulumi.set(self, "persistence_config", value)
 
     @property
@@ -471,7 +471,7 @@ class InstanceArgs:
 
 
 @pulumi.input_type
-class _InstanceState:
+calass _InstanceState:
     def __init__(__self__, *,
                  alternative_location_id: Optional[pulumi.Input[str]] = None,
                  auth_enabled: Optional[pulumi.Input[bool]] = None,
@@ -486,12 +486,12 @@ class _InstanceState:
                  host: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
-                 maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
-                 maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]] = None,
+                 maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArrgs']] = None,
+                 maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArrgs']]]] = None,
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]]] = None,
-                 persistence_config: Optional[pulumi.Input['InstancePersistenceConfigArgs']] = None,
+                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeArrgs']]]] = None,
+                 persistence_config: Optional[pulumi.Input['InstancePersistenceConfigArrgs']] = None,
                  persistence_iam_identity: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -505,7 +505,7 @@ class _InstanceState:
                  replica_count: Optional[pulumi.Input[int]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
                  secondary_ip_range: Optional[pulumi.Input[str]] = None,
-                 server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]]] = None,
+                 server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArrgs']]]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[str]] = None):
         """
@@ -547,18 +547,18 @@ class _InstanceState:
                instances will be created across two zones for protection against
                zonal failures. If [alternativeLocationId] is also provided, it must
                be different from [locationId].
-        :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for an instance.
+        :param pulumi.Input['InstanceMaintenancePolicyArrgs'] maintenance_policy: Maintenance policy for an instance.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]] maintenance_schedules: Upcoming maintenance schedule.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArrgs']]] maintenance_schedules: Upcoming maintenance schedule.
                Structure is documented below.
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
                
                
                - - -
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]] nodes: Output only. Info per node.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceNodeArrgs']]] nodes: Output only. Info per node.
                Structure is documented below.
-        :param pulumi.Input['InstancePersistenceConfigArgs'] persistence_config: Persistence configuration for an instance.
+        :param pulumi.Input['InstancePersistenceConfigArrgs'] persistence_config: Persistence configuration for an instance.
                Structure is documented below.
         :param pulumi.Input[str] persistence_iam_identity: Output only. Cloud IAM identity used by import / export operations
                to transfer data to/from Cloud Storage. Format is "serviceAccount:".
@@ -601,7 +601,7 @@ class _InstanceState:
                an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or
                "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
                range associated with the private service access connection, or "auto".
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]] server_ca_certs: List of server CA certificates for the instance.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArrgs']]] server_ca_certs: List of server CA certificates for the instance.
                Structure is documented below.
         :param pulumi.Input[str] tier: The service tier of the instance. Must be one of these values:
                - BASIC: standalone instance
@@ -866,7 +866,7 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="maintenancePolicy")
-    def maintenance_policy(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]:
+    def maintenance_policy(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyArrgs']]:
         """
         Maintenance policy for an instance.
         Structure is documented below.
@@ -874,12 +874,12 @@ class _InstanceState:
         return pulumi.get(self, "maintenance_policy")
 
     @maintenance_policy.setter
-    def maintenance_policy(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]):
+    def maintenance_policy(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyArrgs']]):
         pulumi.set(self, "maintenance_policy", value)
 
     @property
     @pulumi.getter(name="maintenanceSchedules")
-    def maintenance_schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]:
+    def maintenance_schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArrgs']]]]:
         """
         Upcoming maintenance schedule.
         Structure is documented below.
@@ -887,7 +887,7 @@ class _InstanceState:
         return pulumi.get(self, "maintenance_schedules")
 
     @maintenance_schedules.setter
-    def maintenance_schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]):
+    def maintenance_schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArrgs']]]]):
         pulumi.set(self, "maintenance_schedules", value)
 
     @property
@@ -919,7 +919,7 @@ class _InstanceState:
 
     @property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]]]:
+    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeArrgs']]]]:
         """
         Output only. Info per node.
         Structure is documented below.
@@ -927,12 +927,12 @@ class _InstanceState:
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]]]):
+    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeArrgs']]]]):
         pulumi.set(self, "nodes", value)
 
     @property
     @pulumi.getter(name="persistenceConfig")
-    def persistence_config(self) -> Optional[pulumi.Input['InstancePersistenceConfigArgs']]:
+    def persistence_config(self) -> Optional[pulumi.Input['InstancePersistenceConfigArrgs']]:
         """
         Persistence configuration for an instance.
         Structure is documented below.
@@ -940,7 +940,7 @@ class _InstanceState:
         return pulumi.get(self, "persistence_config")
 
     @persistence_config.setter
-    def persistence_config(self, value: Optional[pulumi.Input['InstancePersistenceConfigArgs']]):
+    def persistence_config(self, value: Optional[pulumi.Input['InstancePersistenceConfigArrgs']]):
         pulumi.set(self, "persistence_config", value)
 
     @property
@@ -1129,7 +1129,7 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="serverCaCerts")
-    def server_ca_certs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]]]:
+    def server_ca_certs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArrgs']]]]:
         """
         List of server CA certificates for the instance.
         Structure is documented below.
@@ -1137,7 +1137,7 @@ class _InstanceState:
         return pulumi.get(self, "server_ca_certs")
 
     @server_ca_certs.setter
-    def server_ca_certs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]]]):
+    def server_ca_certs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArrgs']]]]):
         pulumi.set(self, "server_ca_certs", value)
 
     @property
@@ -1172,7 +1172,7 @@ class _InstanceState:
         pulumi.set(self, "transit_encryption_mode", value)
 
 
-class Instance(pulumi.CustomResource):
+calass Instance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -1185,10 +1185,10 @@ class Instance(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
-                 maintenance_policy: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']]] = None,
+                 maintenance_policy: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArrgs']]] = None,
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 persistence_config: Optional[pulumi.Input[pulumi.InputType['InstancePersistenceConfigArgs']]] = None,
+                 persistence_config: Optional[pulumi.Input[pulumi.InputType['InstancePersistenceConfigArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  read_replicas_mode: Optional[pulumi.Input[str]] = None,
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1230,10 +1230,10 @@ class Instance(pulumi.CustomResource):
                 "my_key": "my_val",
                 "other_key": "other_val",
             },
-            maintenance_policy=gcp.redis.InstanceMaintenancePolicyArgs(
-                weekly_maintenance_windows=[gcp.redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs(
+            maintenance_policy=gcp.redis.InstanceMaintenancePolicyArrgs(
+                weekly_maintenance_windows=[gcp.redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowArrgs(
                     day="TUESDAY",
-                    start_time=gcp.redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs(
+                    start_time=gcp.redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrgs(
                         hours=0,
                         minutes=30,
                         seconds=0,
@@ -1379,14 +1379,14 @@ class Instance(pulumi.CustomResource):
                instances will be created across two zones for protection against
                zonal failures. If [alternativeLocationId] is also provided, it must
                be different from [locationId].
-        :param pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']] maintenance_policy: Maintenance policy for an instance.
+        :param pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArrgs']] maintenance_policy: Maintenance policy for an instance.
                Structure is documented below.
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
                
                
                - - -
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
-        :param pulumi.Input[pulumi.InputType['InstancePersistenceConfigArgs']] persistence_config: Persistence configuration for an instance.
+        :param pulumi.Input[pulumi.InputType['InstancePersistenceConfigArrgs']] persistence_config: Persistence configuration for an instance.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1431,7 +1431,7 @@ class Instance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: InstanceArgs,
+                 args: InstanceArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Google Cloud Redis instance.
@@ -1463,10 +1463,10 @@ class Instance(pulumi.CustomResource):
                 "my_key": "my_val",
                 "other_key": "other_val",
             },
-            maintenance_policy=gcp.redis.InstanceMaintenancePolicyArgs(
-                weekly_maintenance_windows=[gcp.redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs(
+            maintenance_policy=gcp.redis.InstanceMaintenancePolicyArrgs(
+                weekly_maintenance_windows=[gcp.redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowArrgs(
                     day="TUESDAY",
-                    start_time=gcp.redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs(
+                    start_time=gcp.redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrgs(
                         hours=0,
                         minutes=30,
                         seconds=0,
@@ -1587,12 +1587,12 @@ class Instance(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param InstanceArgs args: The arguments to use to populate this resource's properties.
+        :param InstanceArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(InstanceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(InstanceArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1609,10 +1609,10 @@ class Instance(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
-                 maintenance_policy: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']]] = None,
+                 maintenance_policy: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArrgs']]] = None,
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 persistence_config: Optional[pulumi.Input[pulumi.InputType['InstancePersistenceConfigArgs']]] = None,
+                 persistence_config: Optional[pulumi.Input[pulumi.InputType['InstancePersistenceConfigArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  read_replicas_mode: Optional[pulumi.Input[str]] = None,
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1630,7 +1630,7 @@ class Instance(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = InstanceArgs.__new__(InstanceArgs)
+            __props__ = InstanceArrgs.__new__(InstanceArrgs)
 
             __props__.__dict__["alternative_location_id"] = alternative_location_id
             __props__.__dict__["auth_enabled"] = auth_enabled
@@ -1694,12 +1694,12 @@ class Instance(pulumi.CustomResource):
             host: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location_id: Optional[pulumi.Input[str]] = None,
-            maintenance_policy: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']]] = None,
-            maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']]]]] = None,
+            maintenance_policy: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArrgs']]] = None,
+            maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArrgs']]]]] = None,
             memory_size_gb: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNodeArgs']]]]] = None,
-            persistence_config: Optional[pulumi.Input[pulumi.InputType['InstancePersistenceConfigArgs']]] = None,
+            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNodeArrgs']]]]] = None,
+            persistence_config: Optional[pulumi.Input[pulumi.InputType['InstancePersistenceConfigArrgs']]] = None,
             persistence_iam_identity: Optional[pulumi.Input[str]] = None,
             port: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -1713,7 +1713,7 @@ class Instance(pulumi.CustomResource):
             replica_count: Optional[pulumi.Input[int]] = None,
             reserved_ip_range: Optional[pulumi.Input[str]] = None,
             secondary_ip_range: Optional[pulumi.Input[str]] = None,
-            server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceServerCaCertArgs']]]]] = None,
+            server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceServerCaCertArrgs']]]]] = None,
             tier: Optional[pulumi.Input[str]] = None,
             transit_encryption_mode: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
@@ -1760,18 +1760,18 @@ class Instance(pulumi.CustomResource):
                instances will be created across two zones for protection against
                zonal failures. If [alternativeLocationId] is also provided, it must
                be different from [locationId].
-        :param pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']] maintenance_policy: Maintenance policy for an instance.
+        :param pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArrgs']] maintenance_policy: Maintenance policy for an instance.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']]]] maintenance_schedules: Upcoming maintenance schedule.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArrgs']]]] maintenance_schedules: Upcoming maintenance schedule.
                Structure is documented below.
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
                
                
                - - -
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNodeArgs']]]] nodes: Output only. Info per node.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNodeArrgs']]]] nodes: Output only. Info per node.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['InstancePersistenceConfigArgs']] persistence_config: Persistence configuration for an instance.
+        :param pulumi.Input[pulumi.InputType['InstancePersistenceConfigArrgs']] persistence_config: Persistence configuration for an instance.
                Structure is documented below.
         :param pulumi.Input[str] persistence_iam_identity: Output only. Cloud IAM identity used by import / export operations
                to transfer data to/from Cloud Storage. Format is "serviceAccount:".
@@ -1814,7 +1814,7 @@ class Instance(pulumi.CustomResource):
                an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or
                "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
                range associated with the private service access connection, or "auto".
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceServerCaCertArgs']]]] server_ca_certs: List of server CA certificates for the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceServerCaCertArrgs']]]] server_ca_certs: List of server CA certificates for the instance.
                Structure is documented below.
         :param pulumi.Input[str] tier: The service tier of the instance. Must be one of these values:
                - BASIC: standalone instance

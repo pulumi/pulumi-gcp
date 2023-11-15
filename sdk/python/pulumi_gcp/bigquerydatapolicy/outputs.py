@@ -16,7 +16,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class DataPolicyDataMaskingPolicy(dict):
+calass DataPolicyDataMaskingPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -53,7 +53,7 @@ class DataPolicyDataMaskingPolicy(dict):
 
 
 @pulumi.output_type
-class DataPolicyIamBindingCondition(dict):
+calass DataPolicyIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -80,7 +80,7 @@ class DataPolicyIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class DataPolicyIamMemberCondition(dict):
+calass DataPolicyIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,

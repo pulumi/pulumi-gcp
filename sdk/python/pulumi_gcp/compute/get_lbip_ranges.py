@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetLBIPRangesResult:
+calass GetLBIPRangesResult:
     """
     A collection of values returned by getLBIPRanges.
     """
@@ -57,7 +57,7 @@ class GetLBIPRangesResult:
         return pulumi.get(self, "networks")
 
 
-class AwaitableGetLBIPRangesResult(GetLBIPRangesResult):
+calass AwaitableGetLBIPRangesResult(GetLBIPRangesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
@@ -83,7 +83,7 @@ def get_lbip_ranges(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGet
     ranges = gcp.compute.get_lbip_ranges()
     lb = gcp.compute.Firewall("lb",
         network=google_compute_network["main"]["name"],
-        allows=[gcp.compute.FirewallAllowArgs(
+        allows=[gcp.compute.FirewallAllowArrgs(
             protocol="tcp",
             ports=["80"],
         )],
@@ -117,7 +117,7 @@ def get_lbip_ranges_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulum
     ranges = gcp.compute.get_lbip_ranges()
     lb = gcp.compute.Firewall("lb",
         network=google_compute_network["main"]["name"],
-        allows=[gcp.compute.FirewallAllowArgs(
+        allows=[gcp.compute.FirewallAllowArrgs(
             protocol="tcp",
             ports=["80"],
         )],

@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['SubnetArgs', 'Subnet']
+__all__ = ['SubnetArrgs', 'Subnet']
 
 @pulumi.input_type
-class SubnetArgs:
+calass SubnetArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  network: pulumi.Input[str],
@@ -186,7 +186,7 @@ class SubnetArgs:
 
 
 @pulumi.input_type
-class _SubnetState:
+calass _SubnetState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -437,7 +437,7 @@ class _SubnetState:
         pulumi.set(self, "zone", value)
 
 
-class Subnet(pulumi.CustomResource):
+calass Subnet(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -565,7 +565,7 @@ class Subnet(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SubnetArgs,
+                 args: SubnetArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Distributed Cloud Edge subnet, which provides L2 isolation within a network.
@@ -658,12 +658,12 @@ class Subnet(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param SubnetArgs args: The arguments to use to populate this resource's properties.
+        :param SubnetArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SubnetArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SubnetArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -689,7 +689,7 @@ class Subnet(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SubnetArgs.__new__(SubnetArgs)
+            __props__ = SubnetArrgs.__new__(SubnetArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["ipv4_cidrs"] = ipv4_cidrs

@@ -14,7 +14,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class DataStoreIndexProperty(dict):
+calass DataStoreIndexProperty(dict):
     def __init__(__self__, *,
                  direction: str,
                  name: str):

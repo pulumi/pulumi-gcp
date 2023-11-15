@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['RegionNetworkFirewallPolicyRuleArgs', 'RegionNetworkFirewallPolicyRule']
+__all__ = ['RegionNetworkFirewallPolicyRuleArrgs', 'RegionNetworkFirewallPolicyRule']
 
 @pulumi.input_type
-class RegionNetworkFirewallPolicyRuleArgs:
+calass RegionNetworkFirewallPolicyRuleArrgs:
     def __init__(__self__, *,
                  action: pulumi.Input[str],
                  direction: pulumi.Input[str],
                  firewall_policy: pulumi.Input[str],
-                 match: pulumi.Input['RegionNetworkFirewallPolicyRuleMatchArgs'],
+                 match: pulumi.Input['RegionNetworkFirewallPolicyRuleMatchArrgs'],
                  priority: pulumi.Input[int],
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -27,14 +27,14 @@ class RegionNetworkFirewallPolicyRuleArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,
-                 target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs']]]] = None,
+                 target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleTargetSecureTagArrgs']]]] = None,
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a RegionNetworkFirewallPolicyRule resource.
         :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
         :param pulumi.Input[str] direction: The direction in which this rule applies. Possible values: INGRESS, EGRESS
         :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
-        :param pulumi.Input['RegionNetworkFirewallPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input['RegionNetworkFirewallPolicyRuleMatchArrgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
         :param pulumi.Input[str] description: An optional description for this resource.
         :param pulumi.Input[bool] disabled: Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
@@ -42,7 +42,7 @@ class RegionNetworkFirewallPolicyRuleArgs:
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] region: The location of this resource.
         :param pulumi.Input[str] rule_name: An optional name for the rule. This field is not a unique identifier and can be updated.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs']]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code> may not be set at the same time as <code>targetServiceAccounts</code>. If neither <code>targetServiceAccounts</code> nor <code>targetSecureTag</code> are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleTargetSecureTagArrgs']]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code> may not be set at the same time as <code>targetServiceAccounts</code>. If neither <code>targetServiceAccounts</code> nor <code>targetSecureTag</code> are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
         """
         pulumi.set(__self__, "action", action)
@@ -105,14 +105,14 @@ class RegionNetworkFirewallPolicyRuleArgs:
 
     @property
     @pulumi.getter
-    def match(self) -> pulumi.Input['RegionNetworkFirewallPolicyRuleMatchArgs']:
+    def match(self) -> pulumi.Input['RegionNetworkFirewallPolicyRuleMatchArrgs']:
         """
         A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         """
         return pulumi.get(self, "match")
 
     @match.setter
-    def match(self, value: pulumi.Input['RegionNetworkFirewallPolicyRuleMatchArgs']):
+    def match(self, value: pulumi.Input['RegionNetworkFirewallPolicyRuleMatchArrgs']):
         pulumi.set(self, "match", value)
 
     @property
@@ -201,14 +201,14 @@ class RegionNetworkFirewallPolicyRuleArgs:
 
     @property
     @pulumi.getter(name="targetSecureTags")
-    def target_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs']]]]:
+    def target_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleTargetSecureTagArrgs']]]]:
         """
         A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code> may not be set at the same time as <code>targetServiceAccounts</code>. If neither <code>targetServiceAccounts</code> nor <code>targetSecureTag</code> are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
         """
         return pulumi.get(self, "target_secure_tags")
 
     @target_secure_tags.setter
-    def target_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs']]]]):
+    def target_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleTargetSecureTagArrgs']]]]):
         pulumi.set(self, "target_secure_tags", value)
 
     @property
@@ -225,7 +225,7 @@ class RegionNetworkFirewallPolicyRuleArgs:
 
 
 @pulumi.input_type
-class _RegionNetworkFirewallPolicyRuleState:
+calass _RegionNetworkFirewallPolicyRuleState:
     def __init__(__self__, *,
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -234,13 +234,13 @@ class _RegionNetworkFirewallPolicyRuleState:
                  enable_logging: Optional[pulumi.Input[bool]] = None,
                  firewall_policy: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 match: Optional[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchArgs']] = None,
+                 match: Optional[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchArrgs']] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,
                  rule_tuple_count: Optional[pulumi.Input[int]] = None,
-                 target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs']]]] = None,
+                 target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleTargetSecureTagArrgs']]]] = None,
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering RegionNetworkFirewallPolicyRule resources.
@@ -251,13 +251,13 @@ class _RegionNetworkFirewallPolicyRuleState:
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
         :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
         :param pulumi.Input[str] kind: Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
-        :param pulumi.Input['RegionNetworkFirewallPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input['RegionNetworkFirewallPolicyRuleMatchArrgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] region: The location of this resource.
         :param pulumi.Input[str] rule_name: An optional name for the rule. This field is not a unique identifier and can be updated.
         :param pulumi.Input[int] rule_tuple_count: Calculation of the complexity of a single firewall policy rule.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs']]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code> may not be set at the same time as <code>targetServiceAccounts</code>. If neither <code>targetServiceAccounts</code> nor <code>targetSecureTag</code> are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleTargetSecureTagArrgs']]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code> may not be set at the same time as <code>targetServiceAccounts</code>. If neither <code>targetServiceAccounts</code> nor <code>targetSecureTag</code> are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
         """
         if action is not None:
@@ -377,14 +377,14 @@ class _RegionNetworkFirewallPolicyRuleState:
 
     @property
     @pulumi.getter
-    def match(self) -> Optional[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchArgs']]:
+    def match(self) -> Optional[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchArrgs']]:
         """
         A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         """
         return pulumi.get(self, "match")
 
     @match.setter
-    def match(self, value: Optional[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchArgs']]):
+    def match(self, value: Optional[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchArrgs']]):
         pulumi.set(self, "match", value)
 
     @property
@@ -449,14 +449,14 @@ class _RegionNetworkFirewallPolicyRuleState:
 
     @property
     @pulumi.getter(name="targetSecureTags")
-    def target_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs']]]]:
+    def target_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleTargetSecureTagArrgs']]]]:
         """
         A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code> may not be set at the same time as <code>targetServiceAccounts</code>. If neither <code>targetServiceAccounts</code> nor <code>targetSecureTag</code> are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
         """
         return pulumi.get(self, "target_secure_tags")
 
     @target_secure_tags.setter
-    def target_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs']]]]):
+    def target_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleTargetSecureTagArrgs']]]]):
         pulumi.set(self, "target_secure_tags", value)
 
     @property
@@ -472,7 +472,7 @@ class _RegionNetworkFirewallPolicyRuleState:
         pulumi.set(self, "target_service_accounts", value)
 
 
-class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
+calass RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -483,12 +483,12 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                  disabled: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
                  firewall_policy: Optional[pulumi.Input[str]] = None,
-                 match: Optional[pulumi.Input[pulumi.InputType['RegionNetworkFirewallPolicyRuleMatchArgs']]] = None,
+                 match: Optional[pulumi.Input[pulumi.InputType['RegionNetworkFirewallPolicyRuleMatchArrgs']]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,
-                 target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs']]]]] = None,
+                 target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionNetworkFirewallPolicyRuleTargetSecureTagArrgs']]]]] = None,
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -535,15 +535,15 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
             region="us-west1",
             rule_name="test-rule",
             target_service_accounts=["my@service-account.com"],
-            match=gcp.compute.RegionNetworkFirewallPolicyRuleMatchArgs(
+            match=gcp.compute.RegionNetworkFirewallPolicyRuleMatchArrgs(
                 src_ip_ranges=["10.100.0.1/32"],
                 src_fqdns=["example.com"],
                 src_region_codes=["US"],
                 src_threat_intelligences=["iplist-known-malicious-ips"],
-                layer4_configs=[gcp.compute.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs(
+                layer4_configs=[gcp.compute.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArrgs(
                     ip_protocol="all",
                 )],
-                src_secure_tags=[gcp.compute.RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs(
+                src_secure_tags=[gcp.compute.RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArrgs(
                     name=basic_value.name.apply(lambda name: f"tagValues/{name}"),
                 )],
                 src_address_groups=[basic_regional_networksecurity_address_group.id],
@@ -586,19 +586,19 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
         :param pulumi.Input[bool] disabled: Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
         :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
-        :param pulumi.Input[pulumi.InputType['RegionNetworkFirewallPolicyRuleMatchArgs']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input[pulumi.InputType['RegionNetworkFirewallPolicyRuleMatchArrgs']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] region: The location of this resource.
         :param pulumi.Input[str] rule_name: An optional name for the rule. This field is not a unique identifier and can be updated.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code> may not be set at the same time as <code>targetServiceAccounts</code>. If neither <code>targetServiceAccounts</code> nor <code>targetSecureTag</code> are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionNetworkFirewallPolicyRuleTargetSecureTagArrgs']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code> may not be set at the same time as <code>targetServiceAccounts</code>. If neither <code>targetServiceAccounts</code> nor <code>targetSecureTag</code> are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RegionNetworkFirewallPolicyRuleArgs,
+                 args: RegionNetworkFirewallPolicyRuleArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Compute NetworkFirewallPolicyRule resource
@@ -644,15 +644,15 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
             region="us-west1",
             rule_name="test-rule",
             target_service_accounts=["my@service-account.com"],
-            match=gcp.compute.RegionNetworkFirewallPolicyRuleMatchArgs(
+            match=gcp.compute.RegionNetworkFirewallPolicyRuleMatchArrgs(
                 src_ip_ranges=["10.100.0.1/32"],
                 src_fqdns=["example.com"],
                 src_region_codes=["US"],
                 src_threat_intelligences=["iplist-known-malicious-ips"],
-                layer4_configs=[gcp.compute.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs(
+                layer4_configs=[gcp.compute.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArrgs(
                     ip_protocol="all",
                 )],
-                src_secure_tags=[gcp.compute.RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs(
+                src_secure_tags=[gcp.compute.RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArrgs(
                     name=basic_value.name.apply(lambda name: f"tagValues/{name}"),
                 )],
                 src_address_groups=[basic_regional_networksecurity_address_group.id],
@@ -688,12 +688,12 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param RegionNetworkFirewallPolicyRuleArgs args: The arguments to use to populate this resource's properties.
+        :param RegionNetworkFirewallPolicyRuleArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RegionNetworkFirewallPolicyRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(RegionNetworkFirewallPolicyRuleArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -708,12 +708,12 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                  disabled: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
                  firewall_policy: Optional[pulumi.Input[str]] = None,
-                 match: Optional[pulumi.Input[pulumi.InputType['RegionNetworkFirewallPolicyRuleMatchArgs']]] = None,
+                 match: Optional[pulumi.Input[pulumi.InputType['RegionNetworkFirewallPolicyRuleMatchArrgs']]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,
-                 target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs']]]]] = None,
+                 target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionNetworkFirewallPolicyRuleTargetSecureTagArrgs']]]]] = None,
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -722,7 +722,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RegionNetworkFirewallPolicyRuleArgs.__new__(RegionNetworkFirewallPolicyRuleArgs)
+            __props__ = RegionNetworkFirewallPolicyRuleArrgs.__new__(RegionNetworkFirewallPolicyRuleArrgs)
 
             if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")
@@ -766,13 +766,13 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
             enable_logging: Optional[pulumi.Input[bool]] = None,
             firewall_policy: Optional[pulumi.Input[str]] = None,
             kind: Optional[pulumi.Input[str]] = None,
-            match: Optional[pulumi.Input[pulumi.InputType['RegionNetworkFirewallPolicyRuleMatchArgs']]] = None,
+            match: Optional[pulumi.Input[pulumi.InputType['RegionNetworkFirewallPolicyRuleMatchArrgs']]] = None,
             priority: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             rule_name: Optional[pulumi.Input[str]] = None,
             rule_tuple_count: Optional[pulumi.Input[int]] = None,
-            target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs']]]]] = None,
+            target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionNetworkFirewallPolicyRuleTargetSecureTagArrgs']]]]] = None,
             target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'RegionNetworkFirewallPolicyRule':
         """
         Get an existing RegionNetworkFirewallPolicyRule resource's state with the given name, id, and optional extra
@@ -788,13 +788,13 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
         :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
         :param pulumi.Input[str] kind: Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
-        :param pulumi.Input[pulumi.InputType['RegionNetworkFirewallPolicyRuleMatchArgs']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input[pulumi.InputType['RegionNetworkFirewallPolicyRuleMatchArrgs']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] region: The location of this resource.
         :param pulumi.Input[str] rule_name: An optional name for the rule. This field is not a unique identifier and can be updated.
         :param pulumi.Input[int] rule_tuple_count: Calculation of the complexity of a single firewall policy rule.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code> may not be set at the same time as <code>targetServiceAccounts</code>. If neither <code>targetServiceAccounts</code> nor <code>targetSecureTag</code> are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionNetworkFirewallPolicyRuleTargetSecureTagArrgs']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code> may not be set at the same time as <code>targetServiceAccounts</code>. If neither <code>targetServiceAccounts</code> nor <code>targetSecureTag</code> are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

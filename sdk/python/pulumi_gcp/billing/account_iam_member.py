@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AccountIamMemberArgs', 'AccountIamMember']
+__all__ = ['AccountIamMemberArrgs', 'AccountIamMember']
 
 @pulumi.input_type
-class AccountIamMemberArgs:
+calass AccountIamMemberArrgs:
     def __init__(__self__, *,
                  billing_account_id: pulumi.Input[str],
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['AccountIamMemberConditionArgs']] = None):
+                 condition: Optional[pulumi.Input['AccountIamMemberConditionArrgs']] = None):
         """
         The set of arguments for constructing a AccountIamMember resource.
         :param pulumi.Input[str] billing_account_id: The billing account id.
@@ -92,19 +92,19 @@ class AccountIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['AccountIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['AccountIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['AccountIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['AccountIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
-class _AccountIamMemberState:
+calass _AccountIamMemberState:
     def __init__(__self__, *,
                  billing_account_id: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input['AccountIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['AccountIamMemberConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None):
@@ -161,11 +161,11 @@ class _AccountIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['AccountIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['AccountIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['AccountIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['AccountIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -206,13 +206,13 @@ class _AccountIamMemberState:
         pulumi.set(self, "role", value)
 
 
-class AccountIamMember(pulumi.CustomResource):
+calass AccountIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_account_id: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['AccountIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['AccountIamMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -233,7 +233,7 @@ class AccountIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/billing.viewer",
             members=["user:jane@example.com"],
         )])
@@ -304,7 +304,7 @@ class AccountIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AccountIamMemberArgs,
+                 args: AccountIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage IAM policies on billing accounts. Each of these resources serves a different use case:
@@ -323,7 +323,7 @@ class AccountIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/billing.viewer",
             members=["user:jane@example.com"],
         )])
@@ -373,12 +373,12 @@ class AccountIamMember(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AccountIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param AccountIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AccountIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AccountIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -388,7 +388,7 @@ class AccountIamMember(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_account_id: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['AccountIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['AccountIamMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -398,7 +398,7 @@ class AccountIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AccountIamMemberArgs.__new__(AccountIamMemberArgs)
+            __props__ = AccountIamMemberArrgs.__new__(AccountIamMemberArrgs)
 
             if billing_account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'billing_account_id'")
@@ -422,7 +422,7 @@ class AccountIamMember(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             billing_account_id: Optional[pulumi.Input[str]] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['AccountIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['AccountIamMemberConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
             role: Optional[pulumi.Input[str]] = None) -> 'AccountIamMember':

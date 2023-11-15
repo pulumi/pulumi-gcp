@@ -62,7 +62,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class ConnectionAuthConfig(dict):
+calass ConnectionAuthConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -106,18 +106,18 @@ class ConnectionAuthConfig(dict):
         """
         :param str auth_type: authType of the Connection
                Possible values are: `USER_PASSWORD`.
-        :param Sequence['ConnectionAuthConfigAdditionalVariableArgs'] additional_variables: List containing additional auth configs.
+        :param Sequence['ConnectionAuthConfigAdditionalVariableArrgs'] additional_variables: List containing additional auth configs.
                Structure is documented below.
         :param str auth_key: The type of authentication configured.
-        :param 'ConnectionAuthConfigOauth2AuthCodeFlowArgs' oauth2_auth_code_flow: Parameters to support Oauth 2.0 Auth Code Grant Authentication.
+        :param 'ConnectionAuthConfigOauth2AuthCodeFlowArrgs' oauth2_auth_code_flow: Parameters to support Oauth 2.0 Auth Code Grant Authentication.
                Structure is documented below.
-        :param 'ConnectionAuthConfigOauth2ClientCredentialsArgs' oauth2_client_credentials: OAuth3 Client Credentials for Authentication.
+        :param 'ConnectionAuthConfigOauth2ClientCredentialsArrgs' oauth2_client_credentials: OAuth3 Client Credentials for Authentication.
                Structure is documented below.
-        :param 'ConnectionAuthConfigOauth2JwtBearerArgs' oauth2_jwt_bearer: OAuth2 JWT Bearer for Authentication.
+        :param 'ConnectionAuthConfigOauth2JwtBearerArrgs' oauth2_jwt_bearer: OAuth2 JWT Bearer for Authentication.
                Structure is documented below.
-        :param 'ConnectionAuthConfigSshPublicKeyArgs' ssh_public_key: SSH Public Key for Authentication.
+        :param 'ConnectionAuthConfigSshPublicKeyArrgs' ssh_public_key: SSH Public Key for Authentication.
                Structure is documented below.
-        :param 'ConnectionAuthConfigUserPasswordArgs' user_password: User password for Authentication.
+        :param 'ConnectionAuthConfigUserPasswordArrgs' user_password: User password for Authentication.
                Structure is documented below.
         """
         pulumi.set(__self__, "auth_type", auth_type)
@@ -209,7 +209,7 @@ class ConnectionAuthConfig(dict):
 
 
 @pulumi.output_type
-class ConnectionAuthConfigAdditionalVariable(dict):
+calass ConnectionAuthConfigAdditionalVariable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -245,10 +245,10 @@ class ConnectionAuthConfigAdditionalVariable(dict):
         """
         :param str key: Key for the configVariable
         :param bool boolean_value: Boolean Value of configVariable.
-        :param 'ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs' encryption_key_value: Encription key value of configVariable.
+        :param 'ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArrgs' encryption_key_value: Encription key value of configVariable.
                Structure is documented below.
         :param int integer_value: Integer Value of configVariable.
-        :param 'ConnectionAuthConfigAdditionalVariableSecretValueArgs' secret_value: Secret value of configVariable
+        :param 'ConnectionAuthConfigAdditionalVariableSecretValueArrgs' secret_value: Secret value of configVariable
                Structure is documented below.
         :param str string_value: String Value of configVariabley.
         """
@@ -316,7 +316,7 @@ class ConnectionAuthConfigAdditionalVariable(dict):
 
 
 @pulumi.output_type
-class ConnectionAuthConfigAdditionalVariableEncryptionKeyValue(dict):
+calass ConnectionAuthConfigAdditionalVariableEncryptionKeyValue(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -369,7 +369,7 @@ class ConnectionAuthConfigAdditionalVariableEncryptionKeyValue(dict):
 
 
 @pulumi.output_type
-class ConnectionAuthConfigAdditionalVariableSecretValue(dict):
+calass ConnectionAuthConfigAdditionalVariableSecretValue(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -404,7 +404,7 @@ class ConnectionAuthConfigAdditionalVariableSecretValue(dict):
 
 
 @pulumi.output_type
-class ConnectionAuthConfigOauth2AuthCodeFlow(dict):
+calass ConnectionAuthConfigOauth2AuthCodeFlow(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -437,7 +437,7 @@ class ConnectionAuthConfigOauth2AuthCodeFlow(dict):
         """
         :param str auth_uri: Auth URL for Authorization Code Flow.
         :param str client_id: Secret version of Password for Authentication.
-        :param 'ConnectionAuthConfigOauth2AuthCodeFlowClientSecretArgs' client_secret: Secret version reference containing the client secret.
+        :param 'ConnectionAuthConfigOauth2AuthCodeFlowClientSecretArrgs' client_secret: Secret version reference containing the client secret.
                Structure is documented below.
         :param bool enable_pkce: Whether to enable PKCE when the user performs the auth code flow.
         :param Sequence[str] scopes: Scopes the connection will request when the user performs the auth code flow.
@@ -496,7 +496,7 @@ class ConnectionAuthConfigOauth2AuthCodeFlow(dict):
 
 
 @pulumi.output_type
-class ConnectionAuthConfigOauth2AuthCodeFlowClientSecret(dict):
+calass ConnectionAuthConfigOauth2AuthCodeFlowClientSecret(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -533,7 +533,7 @@ class ConnectionAuthConfigOauth2AuthCodeFlowClientSecret(dict):
 
 
 @pulumi.output_type
-class ConnectionAuthConfigOauth2ClientCredentials(dict):
+calass ConnectionAuthConfigOauth2ClientCredentials(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -558,7 +558,7 @@ class ConnectionAuthConfigOauth2ClientCredentials(dict):
                  client_secret: Optional['outputs.ConnectionAuthConfigOauth2ClientCredentialsClientSecret'] = None):
         """
         :param str client_id: Secret version of Password for Authentication.
-        :param 'ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgs' client_secret: Secret version reference containing the client secret.
+        :param 'ConnectionAuthConfigOauth2ClientCredentialsClientSecretArrgs' client_secret: Secret version reference containing the client secret.
                Structure is documented below.
         """
         pulumi.set(__self__, "client_id", client_id)
@@ -584,7 +584,7 @@ class ConnectionAuthConfigOauth2ClientCredentials(dict):
 
 
 @pulumi.output_type
-class ConnectionAuthConfigOauth2ClientCredentialsClientSecret(dict):
+calass ConnectionAuthConfigOauth2ClientCredentialsClientSecret(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -621,7 +621,7 @@ class ConnectionAuthConfigOauth2ClientCredentialsClientSecret(dict):
 
 
 @pulumi.output_type
-class ConnectionAuthConfigOauth2JwtBearer(dict):
+calass ConnectionAuthConfigOauth2JwtBearer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -645,11 +645,11 @@ class ConnectionAuthConfigOauth2JwtBearer(dict):
                  client_key: Optional['outputs.ConnectionAuthConfigOauth2JwtBearerClientKey'] = None,
                  jwt_claims: Optional['outputs.ConnectionAuthConfigOauth2JwtBearerJwtClaims'] = None):
         """
-        :param 'ConnectionAuthConfigOauth2JwtBearerClientKeyArgs' client_key: Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
+        :param 'ConnectionAuthConfigOauth2JwtBearerClientKeyArrgs' client_key: Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
                This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
                Specified in the form as: projects/*/secrets/*/versions/*.
                Structure is documented below.
-        :param 'ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgs' jwt_claims: JwtClaims providers fields to generate the token.
+        :param 'ConnectionAuthConfigOauth2JwtBearerJwtClaimsArrgs' jwt_claims: JwtClaims providers fields to generate the token.
                Structure is documented below.
         """
         if client_key is not None:
@@ -679,7 +679,7 @@ class ConnectionAuthConfigOauth2JwtBearer(dict):
 
 
 @pulumi.output_type
-class ConnectionAuthConfigOauth2JwtBearerClientKey(dict):
+calass ConnectionAuthConfigOauth2JwtBearerClientKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -716,7 +716,7 @@ class ConnectionAuthConfigOauth2JwtBearerClientKey(dict):
 
 
 @pulumi.output_type
-class ConnectionAuthConfigOauth2JwtBearerJwtClaims(dict):
+calass ConnectionAuthConfigOauth2JwtBearerJwtClaims(dict):
     def __init__(__self__, *,
                  audience: Optional[str] = None,
                  issuer: Optional[str] = None,
@@ -763,7 +763,7 @@ class ConnectionAuthConfigOauth2JwtBearerJwtClaims(dict):
 
 
 @pulumi.output_type
-class ConnectionAuthConfigSshPublicKey(dict):
+calass ConnectionAuthConfigSshPublicKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -793,9 +793,9 @@ class ConnectionAuthConfigSshPublicKey(dict):
         """
         :param str username: The user account used to authenticate.
         :param str cert_type: Format of SSH Client cert.
-        :param 'ConnectionAuthConfigSshPublicKeySshClientCertArgs' ssh_client_cert: SSH Client Cert. It should contain both public and private key.
+        :param 'ConnectionAuthConfigSshPublicKeySshClientCertArrgs' ssh_client_cert: SSH Client Cert. It should contain both public and private key.
                Structure is documented below.
-        :param 'ConnectionAuthConfigSshPublicKeySshClientCertPassArgs' ssh_client_cert_pass: Password (passphrase) for ssh client certificate if it has one.
+        :param 'ConnectionAuthConfigSshPublicKeySshClientCertPassArrgs' ssh_client_cert_pass: Password (passphrase) for ssh client certificate if it has one.
                Structure is documented below.
         """
         pulumi.set(__self__, "username", username)
@@ -842,7 +842,7 @@ class ConnectionAuthConfigSshPublicKey(dict):
 
 
 @pulumi.output_type
-class ConnectionAuthConfigSshPublicKeySshClientCert(dict):
+calass ConnectionAuthConfigSshPublicKeySshClientCert(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -879,7 +879,7 @@ class ConnectionAuthConfigSshPublicKeySshClientCert(dict):
 
 
 @pulumi.output_type
-class ConnectionAuthConfigSshPublicKeySshClientCertPass(dict):
+calass ConnectionAuthConfigSshPublicKeySshClientCertPass(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -920,13 +920,13 @@ class ConnectionAuthConfigSshPublicKeySshClientCertPass(dict):
 
 
 @pulumi.output_type
-class ConnectionAuthConfigUserPassword(dict):
+calass ConnectionAuthConfigUserPassword(dict):
     def __init__(__self__, *,
                  username: str,
                  password: Optional['outputs.ConnectionAuthConfigUserPasswordPassword'] = None):
         """
         :param str username: Username for Authentication.
-        :param 'ConnectionAuthConfigUserPasswordPasswordArgs' password: Password for Authentication.
+        :param 'ConnectionAuthConfigUserPasswordPasswordArrgs' password: Password for Authentication.
                Structure is documented below.
         """
         pulumi.set(__self__, "username", username)
@@ -952,7 +952,7 @@ class ConnectionAuthConfigUserPassword(dict):
 
 
 @pulumi.output_type
-class ConnectionAuthConfigUserPasswordPassword(dict):
+calass ConnectionAuthConfigUserPasswordPassword(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -989,7 +989,7 @@ class ConnectionAuthConfigUserPasswordPassword(dict):
 
 
 @pulumi.output_type
-class ConnectionConfigVariable(dict):
+calass ConnectionConfigVariable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1025,10 +1025,10 @@ class ConnectionConfigVariable(dict):
         """
         :param str key: Key for the configVariable
         :param bool boolean_value: Boolean Value of configVariable
-        :param 'ConnectionConfigVariableEncryptionKeyValueArgs' encryption_key_value: Encription key value of configVariable.
+        :param 'ConnectionConfigVariableEncryptionKeyValueArrgs' encryption_key_value: Encription key value of configVariable.
                Structure is documented below.
         :param int integer_value: Integer Value of configVariable
-        :param 'ConnectionConfigVariableSecretValueArgs' secret_value: Secret value of configVariable.
+        :param 'ConnectionConfigVariableSecretValueArrgs' secret_value: Secret value of configVariable.
                Structure is documented below.
         :param str string_value: String Value of configVariabley
         """
@@ -1096,7 +1096,7 @@ class ConnectionConfigVariable(dict):
 
 
 @pulumi.output_type
-class ConnectionConfigVariableEncryptionKeyValue(dict):
+calass ConnectionConfigVariableEncryptionKeyValue(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1149,7 +1149,7 @@ class ConnectionConfigVariableEncryptionKeyValue(dict):
 
 
 @pulumi.output_type
-class ConnectionConfigVariableSecretValue(dict):
+calass ConnectionConfigVariableSecretValue(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1184,7 +1184,7 @@ class ConnectionConfigVariableSecretValue(dict):
 
 
 @pulumi.output_type
-class ConnectionConnectorVersionInfraConfig(dict):
+calass ConnectionConnectorVersionInfraConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1222,13 +1222,13 @@ class ConnectionConnectorVersionInfraConfig(dict):
 
 
 @pulumi.output_type
-class ConnectionDestinationConfig(dict):
+calass ConnectionDestinationConfig(dict):
     def __init__(__self__, *,
                  key: str,
                  destinations: Optional[Sequence['outputs.ConnectionDestinationConfigDestination']] = None):
         """
         :param str key: The key is the destination identifier that is supported by the Connector.
-        :param Sequence['ConnectionDestinationConfigDestinationArgs'] destinations: The destinations for the key.
+        :param Sequence['ConnectionDestinationConfigDestinationArrgs'] destinations: The destinations for the key.
                Structure is documented below.
         """
         pulumi.set(__self__, "key", key)
@@ -1254,7 +1254,7 @@ class ConnectionDestinationConfig(dict):
 
 
 @pulumi.output_type
-class ConnectionDestinationConfigDestination(dict):
+calass ConnectionDestinationConfigDestination(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1314,7 +1314,7 @@ class ConnectionDestinationConfigDestination(dict):
 
 
 @pulumi.output_type
-class ConnectionEventingConfig(dict):
+calass ConnectionEventingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1344,11 +1344,11 @@ class ConnectionEventingConfig(dict):
                  auth_config: Optional['outputs.ConnectionEventingConfigAuthConfig'] = None,
                  enrichment_enabled: Optional[bool] = None):
         """
-        :param 'ConnectionEventingConfigRegistrationDestinationConfigArgs' registration_destination_config: registrationDestinationConfig
+        :param 'ConnectionEventingConfigRegistrationDestinationConfigArrgs' registration_destination_config: registrationDestinationConfig
                Structure is documented below.
-        :param Sequence['ConnectionEventingConfigAdditionalVariableArgs'] additional_variables: List containing additional auth configs.
+        :param Sequence['ConnectionEventingConfigAdditionalVariableArrgs'] additional_variables: List containing additional auth configs.
                Structure is documented below.
-        :param 'ConnectionEventingConfigAuthConfigArgs' auth_config: authConfig for Eventing Configuration.
+        :param 'ConnectionEventingConfigAuthConfigArrgs' auth_config: authConfig for Eventing Configuration.
                Structure is documented below.
         :param bool enrichment_enabled: Enrichment Enabled.
         """
@@ -1397,7 +1397,7 @@ class ConnectionEventingConfig(dict):
 
 
 @pulumi.output_type
-class ConnectionEventingConfigAdditionalVariable(dict):
+calass ConnectionEventingConfigAdditionalVariable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1433,10 +1433,10 @@ class ConnectionEventingConfigAdditionalVariable(dict):
         """
         :param str key: Key for the configVariable
         :param bool boolean_value: Boolean Value of configVariable.
-        :param 'ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs' encryption_key_value: Encription key value of configVariable.
+        :param 'ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArrgs' encryption_key_value: Encription key value of configVariable.
                Structure is documented below.
         :param int integer_value: Integer Value of configVariable.
-        :param 'ConnectionEventingConfigAdditionalVariableSecretValueArgs' secret_value: Secret value of configVariable
+        :param 'ConnectionEventingConfigAdditionalVariableSecretValueArrgs' secret_value: Secret value of configVariable
                Structure is documented below.
         :param str string_value: String Value of configVariabley.
         """
@@ -1504,7 +1504,7 @@ class ConnectionEventingConfigAdditionalVariable(dict):
 
 
 @pulumi.output_type
-class ConnectionEventingConfigAdditionalVariableEncryptionKeyValue(dict):
+calass ConnectionEventingConfigAdditionalVariableEncryptionKeyValue(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1558,7 +1558,7 @@ class ConnectionEventingConfigAdditionalVariableEncryptionKeyValue(dict):
 
 
 @pulumi.output_type
-class ConnectionEventingConfigAdditionalVariableSecretValue(dict):
+calass ConnectionEventingConfigAdditionalVariableSecretValue(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1593,7 +1593,7 @@ class ConnectionEventingConfigAdditionalVariableSecretValue(dict):
 
 
 @pulumi.output_type
-class ConnectionEventingConfigAuthConfig(dict):
+calass ConnectionEventingConfigAuthConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1625,9 +1625,9 @@ class ConnectionEventingConfigAuthConfig(dict):
         """
         :param str auth_type: authType of the Connection
                Possible values are: `USER_PASSWORD`.
-        :param 'ConnectionEventingConfigAuthConfigUserPasswordArgs' user_password: User password for Authentication.
+        :param 'ConnectionEventingConfigAuthConfigUserPasswordArrgs' user_password: User password for Authentication.
                Structure is documented below.
-        :param Sequence['ConnectionEventingConfigAuthConfigAdditionalVariableArgs'] additional_variables: List containing additional auth configs.
+        :param Sequence['ConnectionEventingConfigAuthConfigAdditionalVariableArrgs'] additional_variables: List containing additional auth configs.
                Structure is documented below.
         :param str auth_key: The type of authentication configured.
         """
@@ -1675,7 +1675,7 @@ class ConnectionEventingConfigAuthConfig(dict):
 
 
 @pulumi.output_type
-class ConnectionEventingConfigAuthConfigAdditionalVariable(dict):
+calass ConnectionEventingConfigAuthConfigAdditionalVariable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1711,10 +1711,10 @@ class ConnectionEventingConfigAuthConfigAdditionalVariable(dict):
         """
         :param str key: Key for the configVariable
         :param bool boolean_value: Boolean Value of configVariable.
-        :param 'ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs' encryption_key_value: Encription key value of configVariable.
+        :param 'ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArrgs' encryption_key_value: Encription key value of configVariable.
                Structure is documented below.
         :param int integer_value: Integer Value of configVariable.
-        :param 'ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgs' secret_value: Secret value of configVariable
+        :param 'ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArrgs' secret_value: Secret value of configVariable
                Structure is documented below.
         :param str string_value: String Value of configVariabley.
         """
@@ -1782,7 +1782,7 @@ class ConnectionEventingConfigAuthConfigAdditionalVariable(dict):
 
 
 @pulumi.output_type
-class ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValue(dict):
+calass ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValue(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1836,7 +1836,7 @@ class ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValue(dic
 
 
 @pulumi.output_type
-class ConnectionEventingConfigAuthConfigAdditionalVariableSecretValue(dict):
+calass ConnectionEventingConfigAuthConfigAdditionalVariableSecretValue(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1871,12 +1871,12 @@ class ConnectionEventingConfigAuthConfigAdditionalVariableSecretValue(dict):
 
 
 @pulumi.output_type
-class ConnectionEventingConfigAuthConfigUserPassword(dict):
+calass ConnectionEventingConfigAuthConfigUserPassword(dict):
     def __init__(__self__, *,
                  password: Optional['outputs.ConnectionEventingConfigAuthConfigUserPasswordPassword'] = None,
                  username: Optional[str] = None):
         """
-        :param 'ConnectionEventingConfigAuthConfigUserPasswordPasswordArgs' password: Password for Authentication.
+        :param 'ConnectionEventingConfigAuthConfigUserPasswordPasswordArrgs' password: Password for Authentication.
                Structure is documented below.
         :param str username: Username for Authentication.
         """
@@ -1904,7 +1904,7 @@ class ConnectionEventingConfigAuthConfigUserPassword(dict):
 
 
 @pulumi.output_type
-class ConnectionEventingConfigAuthConfigUserPasswordPassword(dict):
+calass ConnectionEventingConfigAuthConfigUserPasswordPassword(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1941,12 +1941,12 @@ class ConnectionEventingConfigAuthConfigUserPasswordPassword(dict):
 
 
 @pulumi.output_type
-class ConnectionEventingConfigRegistrationDestinationConfig(dict):
+calass ConnectionEventingConfigRegistrationDestinationConfig(dict):
     def __init__(__self__, *,
                  destinations: Optional[Sequence['outputs.ConnectionEventingConfigRegistrationDestinationConfigDestination']] = None,
                  key: Optional[str] = None):
         """
-        :param Sequence['ConnectionEventingConfigRegistrationDestinationConfigDestinationArgs'] destinations: destinations for the connection
+        :param Sequence['ConnectionEventingConfigRegistrationDestinationConfigDestinationArrgs'] destinations: destinations for the connection
                Structure is documented below.
         :param str key: Key for the connection
         """
@@ -1974,7 +1974,7 @@ class ConnectionEventingConfigRegistrationDestinationConfig(dict):
 
 
 @pulumi.output_type
-class ConnectionEventingConfigRegistrationDestinationConfigDestination(dict):
+calass ConnectionEventingConfigRegistrationDestinationConfigDestination(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2034,7 +2034,7 @@ class ConnectionEventingConfigRegistrationDestinationConfigDestination(dict):
 
 
 @pulumi.output_type
-class ConnectionEventingRuntimeData(dict):
+calass ConnectionEventingRuntimeData(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2057,7 +2057,7 @@ class ConnectionEventingRuntimeData(dict):
                  statuses: Optional[Sequence['outputs.ConnectionEventingRuntimeDataStatus']] = None):
         """
         :param str events_listener_endpoint: Events listener endpoint. The value will populated after provisioning the events listener.
-        :param Sequence['ConnectionEventingRuntimeDataStatusArgs'] statuses: (Output)
+        :param Sequence['ConnectionEventingRuntimeDataStatusArrgs'] statuses: (Output)
                Current status of eventing.
                Structure is documented below.
         """
@@ -2086,7 +2086,7 @@ class ConnectionEventingRuntimeData(dict):
 
 
 @pulumi.output_type
-class ConnectionEventingRuntimeDataStatus(dict):
+calass ConnectionEventingRuntimeDataStatus(dict):
     def __init__(__self__, *,
                  description: Optional[str] = None,
                  state: Optional[str] = None):
@@ -2119,7 +2119,7 @@ class ConnectionEventingRuntimeDataStatus(dict):
 
 
 @pulumi.output_type
-class ConnectionLockConfig(dict):
+calass ConnectionLockConfig(dict):
     def __init__(__self__, *,
                  locked: bool,
                  reason: Optional[str] = None):
@@ -2149,7 +2149,7 @@ class ConnectionLockConfig(dict):
 
 
 @pulumi.output_type
-class ConnectionLogConfig(dict):
+calass ConnectionLogConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -2167,7 +2167,7 @@ class ConnectionLogConfig(dict):
 
 
 @pulumi.output_type
-class ConnectionNodeConfig(dict):
+calass ConnectionNodeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2217,7 +2217,7 @@ class ConnectionNodeConfig(dict):
 
 
 @pulumi.output_type
-class ConnectionSslConfig(dict):
+calass ConnectionSslConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2265,17 +2265,17 @@ class ConnectionSslConfig(dict):
         """
         :param str type: Enum for controlling the SSL Type (TLS/MTLS)
                Possible values are: `TLS`, `MTLS`.
-        :param Sequence['ConnectionSslConfigAdditionalVariableArgs'] additional_variables: Additional SSL related field values.
+        :param Sequence['ConnectionSslConfigAdditionalVariableArrgs'] additional_variables: Additional SSL related field values.
                Structure is documented below.
         :param str client_cert_type: Type of Client Cert (PEM/JKS/.. etc.)
                Possible values are: `PEM`.
-        :param 'ConnectionSslConfigClientCertificateArgs' client_certificate: Client Certificate
+        :param 'ConnectionSslConfigClientCertificateArrgs' client_certificate: Client Certificate
                Structure is documented below.
-        :param 'ConnectionSslConfigClientPrivateKeyArgs' client_private_key: Client Private Key
+        :param 'ConnectionSslConfigClientPrivateKeyArrgs' client_private_key: Client Private Key
                Structure is documented below.
-        :param 'ConnectionSslConfigClientPrivateKeyPassArgs' client_private_key_pass: Secret containing the passphrase protecting the Client Private Key
+        :param 'ConnectionSslConfigClientPrivateKeyPassArrgs' client_private_key_pass: Secret containing the passphrase protecting the Client Private Key
                Structure is documented below.
-        :param 'ConnectionSslConfigPrivateServerCertificateArgs' private_server_certificate: Private Server Certificate. Needs to be specified if trust model is PRIVATE.
+        :param 'ConnectionSslConfigPrivateServerCertificateArrgs' private_server_certificate: Private Server Certificate. Needs to be specified if trust model is PRIVATE.
                Structure is documented below.
         :param str server_cert_type: Type of Server Cert (PEM/JKS/.. etc.)
                Possible values are: `PEM`.
@@ -2394,7 +2394,7 @@ class ConnectionSslConfig(dict):
 
 
 @pulumi.output_type
-class ConnectionSslConfigAdditionalVariable(dict):
+calass ConnectionSslConfigAdditionalVariable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2430,10 +2430,10 @@ class ConnectionSslConfigAdditionalVariable(dict):
         """
         :param str key: Key for the configVariable
         :param bool boolean_value: Boolean Value of configVariable.
-        :param 'ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs' encryption_key_value: Encription key value of configVariable.
+        :param 'ConnectionSslConfigAdditionalVariableEncryptionKeyValueArrgs' encryption_key_value: Encription key value of configVariable.
                Structure is documented below.
         :param int integer_value: Integer Value of configVariable.
-        :param 'ConnectionSslConfigAdditionalVariableSecretValueArgs' secret_value: Secret value of configVariable
+        :param 'ConnectionSslConfigAdditionalVariableSecretValueArrgs' secret_value: Secret value of configVariable
                Structure is documented below.
         :param str string_value: String Value of configVariabley.
         """
@@ -2501,7 +2501,7 @@ class ConnectionSslConfigAdditionalVariable(dict):
 
 
 @pulumi.output_type
-class ConnectionSslConfigAdditionalVariableEncryptionKeyValue(dict):
+calass ConnectionSslConfigAdditionalVariableEncryptionKeyValue(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2555,7 +2555,7 @@ class ConnectionSslConfigAdditionalVariableEncryptionKeyValue(dict):
 
 
 @pulumi.output_type
-class ConnectionSslConfigAdditionalVariableSecretValue(dict):
+calass ConnectionSslConfigAdditionalVariableSecretValue(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2590,7 +2590,7 @@ class ConnectionSslConfigAdditionalVariableSecretValue(dict):
 
 
 @pulumi.output_type
-class ConnectionSslConfigClientCertificate(dict):
+calass ConnectionSslConfigClientCertificate(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2625,7 +2625,7 @@ class ConnectionSslConfigClientCertificate(dict):
 
 
 @pulumi.output_type
-class ConnectionSslConfigClientPrivateKey(dict):
+calass ConnectionSslConfigClientPrivateKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2660,7 +2660,7 @@ class ConnectionSslConfigClientPrivateKey(dict):
 
 
 @pulumi.output_type
-class ConnectionSslConfigClientPrivateKeyPass(dict):
+calass ConnectionSslConfigClientPrivateKeyPass(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2695,7 +2695,7 @@ class ConnectionSslConfigClientPrivateKeyPass(dict):
 
 
 @pulumi.output_type
-class ConnectionSslConfigPrivateServerCertificate(dict):
+calass ConnectionSslConfigPrivateServerCertificate(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2730,7 +2730,7 @@ class ConnectionSslConfigPrivateServerCertificate(dict):
 
 
 @pulumi.output_type
-class ConnectionStatus(dict):
+calass ConnectionStatus(dict):
     def __init__(__self__, *,
                  description: Optional[str] = None,
                  state: Optional[str] = None,

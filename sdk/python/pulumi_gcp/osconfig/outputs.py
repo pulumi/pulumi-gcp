@@ -115,7 +115,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GuestPoliciesAssignment(dict):
+calass GuestPoliciesAssignment(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -144,7 +144,7 @@ class GuestPoliciesAssignment(dict):
                  os_types: Optional[Sequence['outputs.GuestPoliciesAssignmentOsType']] = None,
                  zones: Optional[Sequence[str]] = None):
         """
-        :param Sequence['GuestPoliciesAssignmentGroupLabelArgs'] group_labels: Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
+        :param Sequence['GuestPoliciesAssignmentGroupLabelArrgs'] group_labels: Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
                for example "env=prod or env=staging".
                Structure is documented below.
         :param Sequence[str] instance_name_prefixes: Targets VM instances whose name starts with one of these prefixes.
@@ -156,7 +156,7 @@ class GuestPoliciesAssignment(dict):
                Instance targeting is uncommon and is supported to facilitate the management of changes
                by the instance or to target specific VM instances for development and testing.
                Only supported for project-level policies and must reference instances within this project.
-        :param Sequence['GuestPoliciesAssignmentOsTypeArgs'] os_types: Targets VM instances matching at least one of the following OS types.
+        :param Sequence['GuestPoliciesAssignmentOsTypeArrgs'] os_types: Targets VM instances matching at least one of the following OS types.
                VM instances must match all supplied criteria for a given OsType to be included.
                Structure is documented below.
         :param Sequence[str] zones: Targets instances in any of these zones. Leave empty to target instances in any zone.
@@ -227,7 +227,7 @@ class GuestPoliciesAssignment(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesAssignmentGroupLabel(dict):
+calass GuestPoliciesAssignmentGroupLabel(dict):
     def __init__(__self__, *,
                  labels: Mapping[str, str]):
         """
@@ -245,7 +245,7 @@ class GuestPoliciesAssignmentGroupLabel(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesAssignmentOsType(dict):
+calass GuestPoliciesAssignmentOsType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -313,7 +313,7 @@ class GuestPoliciesAssignmentOsType(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesPackage(dict):
+calass GuestPoliciesPackage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -388,20 +388,20 @@ class GuestPoliciesPackage(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesPackageRepository(dict):
+calass GuestPoliciesPackageRepository(dict):
     def __init__(__self__, *,
                  apt: Optional['outputs.GuestPoliciesPackageRepositoryApt'] = None,
                  goo: Optional['outputs.GuestPoliciesPackageRepositoryGoo'] = None,
                  yum: Optional['outputs.GuestPoliciesPackageRepositoryYum'] = None,
                  zypper: Optional['outputs.GuestPoliciesPackageRepositoryZypper'] = None):
         """
-        :param 'GuestPoliciesPackageRepositoryAptArgs' apt: An Apt Repository.
+        :param 'GuestPoliciesPackageRepositoryAptArrgs' apt: An Apt Repository.
                Structure is documented below.
-        :param 'GuestPoliciesPackageRepositoryGooArgs' goo: A Goo Repository.
+        :param 'GuestPoliciesPackageRepositoryGooArrgs' goo: A Goo Repository.
                Structure is documented below.
-        :param 'GuestPoliciesPackageRepositoryYumArgs' yum: A Yum Repository.
+        :param 'GuestPoliciesPackageRepositoryYumArrgs' yum: A Yum Repository.
                Structure is documented below.
-        :param 'GuestPoliciesPackageRepositoryZypperArgs' zypper: A Zypper Repository.
+        :param 'GuestPoliciesPackageRepositoryZypperArrgs' zypper: A Zypper Repository.
                Structure is documented below.
         """
         if apt is not None:
@@ -451,7 +451,7 @@ class GuestPoliciesPackageRepository(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesPackageRepositoryApt(dict):
+calass GuestPoliciesPackageRepositoryApt(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -540,7 +540,7 @@ class GuestPoliciesPackageRepositoryApt(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesPackageRepositoryGoo(dict):
+calass GuestPoliciesPackageRepositoryGoo(dict):
     def __init__(__self__, *,
                  name: str,
                  url: str):
@@ -569,7 +569,7 @@ class GuestPoliciesPackageRepositoryGoo(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesPackageRepositoryYum(dict):
+calass GuestPoliciesPackageRepositoryYum(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -645,7 +645,7 @@ class GuestPoliciesPackageRepositoryYum(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesPackageRepositoryZypper(dict):
+calass GuestPoliciesPackageRepositoryZypper(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -721,7 +721,7 @@ class GuestPoliciesPackageRepositoryZypper(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesRecipe(dict):
+calass GuestPoliciesRecipe(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -755,7 +755,7 @@ class GuestPoliciesRecipe(dict):
                Names are also used to identify resources which helps to determine whether guest policies have conflicts.
                This means that requests to create multiple recipes with the same name and version are rejected since they
                could potentially have conflicting assignments.
-        :param Sequence['GuestPoliciesRecipeArtifactArgs'] artifacts: Resources available to be used in the steps in the recipe.
+        :param Sequence['GuestPoliciesRecipeArtifactArrgs'] artifacts: Resources available to be used in the steps in the recipe.
                Structure is documented below.
         :param str desired_state: Default is INSTALLED. The desired state the agent should maintain for this recipe.
                INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
@@ -764,10 +764,10 @@ class GuestPoliciesRecipe(dict):
                REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
                Default value is `INSTALLED`.
                Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
-        :param Sequence['GuestPoliciesRecipeInstallStepArgs'] install_steps: Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
+        :param Sequence['GuestPoliciesRecipeInstallStepArrgs'] install_steps: Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
                Any steps taken (including partially completed steps) are not rolled back.
                Structure is documented below.
-        :param Sequence['GuestPoliciesRecipeUpdateStepArgs'] update_steps: Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
+        :param Sequence['GuestPoliciesRecipeUpdateStepArrgs'] update_steps: Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
                Any steps taken (including partially completed steps) are not rolled back.
                Structure is documented below.
         :param str version: The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
@@ -848,7 +848,7 @@ class GuestPoliciesRecipe(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesRecipeArtifact(dict):
+calass GuestPoliciesRecipeArtifact(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -877,9 +877,9 @@ class GuestPoliciesRecipeArtifact(dict):
         :param bool allow_insecure: Defaults to false. When false, recipes are subject to validations based on the artifact type:
                Remote: A checksum must be specified, and only protocols with transport-layer security are permitted.
                GCS: An object generation number must be specified.
-        :param 'GuestPoliciesRecipeArtifactGcsArgs' gcs: A Google Cloud Storage artifact.
+        :param 'GuestPoliciesRecipeArtifactGcsArrgs' gcs: A Google Cloud Storage artifact.
                Structure is documented below.
-        :param 'GuestPoliciesRecipeArtifactRemoteArgs' remote: A generic remote artifact.
+        :param 'GuestPoliciesRecipeArtifactRemoteArrgs' remote: A generic remote artifact.
                Structure is documented below.
         """
         pulumi.set(__self__, "id", id)
@@ -929,7 +929,7 @@ class GuestPoliciesRecipeArtifact(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesRecipeArtifactGcs(dict):
+calass GuestPoliciesRecipeArtifactGcs(dict):
     def __init__(__self__, *,
                  bucket: Optional[str] = None,
                  generation: Optional[int] = None,
@@ -978,7 +978,7 @@ class GuestPoliciesRecipeArtifactGcs(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesRecipeArtifactRemote(dict):
+calass GuestPoliciesRecipeArtifactRemote(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1030,7 +1030,7 @@ class GuestPoliciesRecipeArtifactRemote(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesRecipeInstallStep(dict):
+calass GuestPoliciesRecipeInstallStep(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1069,19 +1069,19 @@ class GuestPoliciesRecipeInstallStep(dict):
                  rpm_installation: Optional['outputs.GuestPoliciesRecipeInstallStepRpmInstallation'] = None,
                  script_run: Optional['outputs.GuestPoliciesRecipeInstallStepScriptRun'] = None):
         """
-        :param 'GuestPoliciesRecipeInstallStepArchiveExtractionArgs' archive_extraction: Extracts an archive into the specified directory.
+        :param 'GuestPoliciesRecipeInstallStepArchiveExtractionArrgs' archive_extraction: Extracts an archive into the specified directory.
                Structure is documented below.
-        :param 'GuestPoliciesRecipeInstallStepDpkgInstallationArgs' dpkg_installation: Installs a deb file via dpkg.
+        :param 'GuestPoliciesRecipeInstallStepDpkgInstallationArrgs' dpkg_installation: Installs a deb file via dpkg.
                Structure is documented below.
-        :param 'GuestPoliciesRecipeInstallStepFileCopyArgs' file_copy: Copies a file onto the instance.
+        :param 'GuestPoliciesRecipeInstallStepFileCopyArrgs' file_copy: Copies a file onto the instance.
                Structure is documented below.
-        :param 'GuestPoliciesRecipeInstallStepFileExecArgs' file_exec: Executes an artifact or local file.
+        :param 'GuestPoliciesRecipeInstallStepFileExecArrgs' file_exec: Executes an artifact or local file.
                Structure is documented below.
-        :param 'GuestPoliciesRecipeInstallStepMsiInstallationArgs' msi_installation: Installs an MSI file.
+        :param 'GuestPoliciesRecipeInstallStepMsiInstallationArrgs' msi_installation: Installs an MSI file.
                Structure is documented below.
-        :param 'GuestPoliciesRecipeInstallStepRpmInstallationArgs' rpm_installation: Installs an rpm file via the rpm utility.
+        :param 'GuestPoliciesRecipeInstallStepRpmInstallationArrgs' rpm_installation: Installs an rpm file via the rpm utility.
                Structure is documented below.
-        :param 'GuestPoliciesRecipeInstallStepScriptRunArgs' script_run: Runs commands in a shell.
+        :param 'GuestPoliciesRecipeInstallStepScriptRunArrgs' script_run: Runs commands in a shell.
                Structure is documented below.
         """
         if archive_extraction is not None:
@@ -1164,7 +1164,7 @@ class GuestPoliciesRecipeInstallStep(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesRecipeInstallStepArchiveExtraction(dict):
+calass GuestPoliciesRecipeInstallStepArchiveExtraction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1224,7 +1224,7 @@ class GuestPoliciesRecipeInstallStepArchiveExtraction(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesRecipeInstallStepDpkgInstallation(dict):
+calass GuestPoliciesRecipeInstallStepDpkgInstallation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1259,7 +1259,7 @@ class GuestPoliciesRecipeInstallStepDpkgInstallation(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesRecipeInstallStepFileCopy(dict):
+calass GuestPoliciesRecipeInstallStepFileCopy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1341,7 +1341,7 @@ class GuestPoliciesRecipeInstallStepFileCopy(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesRecipeInstallStepFileExec(dict):
+calass GuestPoliciesRecipeInstallStepFileExec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1417,7 +1417,7 @@ class GuestPoliciesRecipeInstallStepFileExec(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesRecipeInstallStepMsiInstallation(dict):
+calass GuestPoliciesRecipeInstallStepMsiInstallation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1478,7 +1478,7 @@ class GuestPoliciesRecipeInstallStepMsiInstallation(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesRecipeInstallStepRpmInstallation(dict):
+calass GuestPoliciesRecipeInstallStepRpmInstallation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1513,7 +1513,7 @@ class GuestPoliciesRecipeInstallStepRpmInstallation(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesRecipeInstallStepScriptRun(dict):
+calass GuestPoliciesRecipeInstallStepScriptRun(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1576,7 +1576,7 @@ class GuestPoliciesRecipeInstallStepScriptRun(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesRecipeUpdateStep(dict):
+calass GuestPoliciesRecipeUpdateStep(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1615,19 +1615,19 @@ class GuestPoliciesRecipeUpdateStep(dict):
                  rpm_installation: Optional['outputs.GuestPoliciesRecipeUpdateStepRpmInstallation'] = None,
                  script_run: Optional['outputs.GuestPoliciesRecipeUpdateStepScriptRun'] = None):
         """
-        :param 'GuestPoliciesRecipeUpdateStepArchiveExtractionArgs' archive_extraction: Extracts an archive into the specified directory.
+        :param 'GuestPoliciesRecipeUpdateStepArchiveExtractionArrgs' archive_extraction: Extracts an archive into the specified directory.
                Structure is documented below.
-        :param 'GuestPoliciesRecipeUpdateStepDpkgInstallationArgs' dpkg_installation: Installs a deb file via dpkg.
+        :param 'GuestPoliciesRecipeUpdateStepDpkgInstallationArrgs' dpkg_installation: Installs a deb file via dpkg.
                Structure is documented below.
-        :param 'GuestPoliciesRecipeUpdateStepFileCopyArgs' file_copy: Copies a file onto the instance.
+        :param 'GuestPoliciesRecipeUpdateStepFileCopyArrgs' file_copy: Copies a file onto the instance.
                Structure is documented below.
-        :param 'GuestPoliciesRecipeUpdateStepFileExecArgs' file_exec: Executes an artifact or local file.
+        :param 'GuestPoliciesRecipeUpdateStepFileExecArrgs' file_exec: Executes an artifact or local file.
                Structure is documented below.
-        :param 'GuestPoliciesRecipeUpdateStepMsiInstallationArgs' msi_installation: Installs an MSI file.
+        :param 'GuestPoliciesRecipeUpdateStepMsiInstallationArrgs' msi_installation: Installs an MSI file.
                Structure is documented below.
-        :param 'GuestPoliciesRecipeUpdateStepRpmInstallationArgs' rpm_installation: Installs an rpm file via the rpm utility.
+        :param 'GuestPoliciesRecipeUpdateStepRpmInstallationArrgs' rpm_installation: Installs an rpm file via the rpm utility.
                Structure is documented below.
-        :param 'GuestPoliciesRecipeUpdateStepScriptRunArgs' script_run: Runs commands in a shell.
+        :param 'GuestPoliciesRecipeUpdateStepScriptRunArrgs' script_run: Runs commands in a shell.
                Structure is documented below.
         """
         if archive_extraction is not None:
@@ -1710,7 +1710,7 @@ class GuestPoliciesRecipeUpdateStep(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesRecipeUpdateStepArchiveExtraction(dict):
+calass GuestPoliciesRecipeUpdateStepArchiveExtraction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1770,7 +1770,7 @@ class GuestPoliciesRecipeUpdateStepArchiveExtraction(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesRecipeUpdateStepDpkgInstallation(dict):
+calass GuestPoliciesRecipeUpdateStepDpkgInstallation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1805,7 +1805,7 @@ class GuestPoliciesRecipeUpdateStepDpkgInstallation(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesRecipeUpdateStepFileCopy(dict):
+calass GuestPoliciesRecipeUpdateStepFileCopy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1887,7 +1887,7 @@ class GuestPoliciesRecipeUpdateStepFileCopy(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesRecipeUpdateStepFileExec(dict):
+calass GuestPoliciesRecipeUpdateStepFileExec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1963,7 +1963,7 @@ class GuestPoliciesRecipeUpdateStepFileExec(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesRecipeUpdateStepMsiInstallation(dict):
+calass GuestPoliciesRecipeUpdateStepMsiInstallation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2024,7 +2024,7 @@ class GuestPoliciesRecipeUpdateStepMsiInstallation(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesRecipeUpdateStepRpmInstallation(dict):
+calass GuestPoliciesRecipeUpdateStepRpmInstallation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2059,7 +2059,7 @@ class GuestPoliciesRecipeUpdateStepRpmInstallation(dict):
 
 
 @pulumi.output_type
-class GuestPoliciesRecipeUpdateStepScriptRun(dict):
+calass GuestPoliciesRecipeUpdateStepScriptRun(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2122,7 +2122,7 @@ class GuestPoliciesRecipeUpdateStepScriptRun(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentInstanceFilter(dict):
+calass OsPolicyAssignmentInstanceFilter(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2150,15 +2150,15 @@ class OsPolicyAssignmentInstanceFilter(dict):
         """
         :param bool all: Target all VMs in the project. If true, no other criteria
                is permitted.
-        :param Sequence['OsPolicyAssignmentInstanceFilterExclusionLabelArgs'] exclusion_labels: List of label sets used for VM exclusion. If
+        :param Sequence['OsPolicyAssignmentInstanceFilterExclusionLabelArrgs'] exclusion_labels: List of label sets used for VM exclusion. If
                the list has more than one label set, the VM is excluded if any of the label
                sets are applicable for the VM. Structure is
                documented below.
-        :param Sequence['OsPolicyAssignmentInstanceFilterInclusionLabelArgs'] inclusion_labels: List of label sets used for VM inclusion. If
+        :param Sequence['OsPolicyAssignmentInstanceFilterInclusionLabelArrgs'] inclusion_labels: List of label sets used for VM inclusion. If
                the list has more than one `LabelSet`, the VM is included if any of the
                label sets are applicable for the VM. Structure is
                documented below.
-        :param Sequence['OsPolicyAssignmentInstanceFilterInventoryArgs'] inventories: List of inventories to select VMs. A VM is
+        :param Sequence['OsPolicyAssignmentInstanceFilterInventoryArrgs'] inventories: List of inventories to select VMs. A VM is
                selected if its inventory data matches at least one of the following
                inventories. Structure is documented below.
         """
@@ -2214,7 +2214,7 @@ class OsPolicyAssignmentInstanceFilter(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentInstanceFilterExclusionLabel(dict):
+calass OsPolicyAssignmentInstanceFilterExclusionLabel(dict):
     def __init__(__self__, *,
                  labels: Optional[Mapping[str, str]] = None):
         """
@@ -2237,7 +2237,7 @@ class OsPolicyAssignmentInstanceFilterExclusionLabel(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentInstanceFilterInclusionLabel(dict):
+calass OsPolicyAssignmentInstanceFilterInclusionLabel(dict):
     def __init__(__self__, *,
                  labels: Optional[Mapping[str, str]] = None):
         """
@@ -2260,7 +2260,7 @@ class OsPolicyAssignmentInstanceFilterInclusionLabel(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentInstanceFilterInventory(dict):
+calass OsPolicyAssignmentInstanceFilterInventory(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2315,7 +2315,7 @@ class OsPolicyAssignmentInstanceFilterInventory(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicy(dict):
+calass OsPolicyAssignmentOsPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2351,7 +2351,7 @@ class OsPolicyAssignmentOsPolicy(dict):
                *   Must be unique within the assignment.
         :param str mode: Policy mode Possible values are: `MODE_UNSPECIFIED`,
                `VALIDATION`, `ENFORCEMENT`.
-        :param Sequence['OsPolicyAssignmentOsPolicyResourceGroupArgs'] resource_groups: List of resource groups for the policy. For a
+        :param Sequence['OsPolicyAssignmentOsPolicyResourceGroupArrgs'] resource_groups: List of resource groups for the policy. For a
                particular VM, resource groups are evaluated in the order specified and the
                first resource group that is applicable is selected and the rest are
                ignored. If none of the resource groups are applicable for a VM, the VM is
@@ -2432,7 +2432,7 @@ class OsPolicyAssignmentOsPolicy(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroup(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroup(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2454,10 +2454,10 @@ class OsPolicyAssignmentOsPolicyResourceGroup(dict):
                  resources: Sequence['outputs.OsPolicyAssignmentOsPolicyResourceGroupResource'],
                  inventory_filters: Optional[Sequence['outputs.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter']] = None):
         """
-        :param Sequence['OsPolicyAssignmentOsPolicyResourceGroupResourceArgs'] resources: List of resources configured for this resource
+        :param Sequence['OsPolicyAssignmentOsPolicyResourceGroupResourceArrgs'] resources: List of resources configured for this resource
                group. The resources are executed in the exact order specified here.
                Structure is documented below.
-        :param Sequence['OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs'] inventory_filters: List of inventory filters for the resource
+        :param Sequence['OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrgs'] inventory_filters: List of inventory filters for the resource
                group. The resources in this resource group are applied to the target VM if
                it satisfies at least one of the following inventory filters. For example,
                to apply this resource group to VMs running either `RHEL` or `CentOS`
@@ -2499,7 +2499,7 @@ class OsPolicyAssignmentOsPolicyResourceGroup(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2554,7 +2554,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResource(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2586,13 +2586,13 @@ class OsPolicyAssignmentOsPolicyResourceGroupResource(dict):
                *   Must be between 1-63 characters.
                *   Must end with a number or a letter.
                *   Must be unique within the OS policy.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs' exec_: Exec resource Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceExecArrgs' exec_: Exec resource Structure is
                documented below.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs' file: File resource Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceFileArrgs' file: File resource Structure is
                documented below.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs' pkg: Package resource Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArrgs' pkg: Package resource Structure is
                documented below.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs' repository: Package repository resource Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArrgs' repository: Package repository resource Structure is
                documented below.
         """
         pulumi.set(__self__, "id", id)
@@ -2657,17 +2657,17 @@ class OsPolicyAssignmentOsPolicyResourceGroupResource(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceExec(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceExec(dict):
     def __init__(__self__, *,
                  validate: 'outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate',
                  enforce: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce'] = None):
         """
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs' validate: What to run to validate this resource is in the
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArrgs' validate: What to run to validate this resource is in the
                desired state. An exit code of 100 indicates "in desired state", and exit
                code of 101 indicates "not in desired state". Any other exit code indicates
                a failure running validate. Structure is
                documented below.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs' enforce: What to run to bring this resource into the desired
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArrgs' enforce: What to run to bring this resource into the desired
                state. An exit code of 100 indicates "success", any other exit code
                indicates a failure running enforce. Structure is
                documented below.
@@ -2701,7 +2701,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExec(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2730,7 +2730,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce(dict):
                are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
         :param Sequence[str] args: Optional arguments to pass to the source during
                execution.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs' file: A remote or local file. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArrgs' file: A remote or local file. Structure is
                documented below.
         :param str output_file_path: Only recorded for enforce Exec. Path to an
                output file (that is created by this Exec) whose content will be recorded in
@@ -2800,7 +2800,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2829,10 +2829,10 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile(dict):
         :param bool allow_insecure: Defaults to false. When false, files are
                subject to validations based on the file type: Remote: A checksum must be
                specified. Cloud Storage: An object generation number must be specified.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs' gcs: A Cloud Storage object. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArrgs' gcs: A Cloud Storage object. Structure is
                documented below.
         :param str local_path: A local path within the VM to use.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs' remote: A generic remote file. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArrgs' remote: A generic remote file. Structure is
                documented below.
         """
         if allow_insecure is not None:
@@ -2882,7 +2882,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs(dict):
     def __init__(__self__, *,
                  bucket: str,
                  object: str,
@@ -2923,7 +2923,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2972,7 +2972,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote(dict)
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3001,7 +3001,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate(dict):
                are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
         :param Sequence[str] args: Optional arguments to pass to the source during
                execution.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs' file: A remote or local file. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArrgs' file: A remote or local file. Structure is
                documented below.
         :param str output_file_path: Only recorded for enforce Exec. Path to an
                output file (that is created by this Exec) whose content will be recorded in
@@ -3071,7 +3071,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3100,10 +3100,10 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile(dict):
         :param bool allow_insecure: Defaults to false. When false, files are
                subject to validations based on the file type: Remote: A checksum must be
                specified. Cloud Storage: An object generation number must be specified.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs' gcs: A Cloud Storage object. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArrgs' gcs: A Cloud Storage object. Structure is
                documented below.
         :param str local_path: A local path within the VM to use.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs' remote: A generic remote file. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArrgs' remote: A generic remote file. Structure is
                documented below.
         """
         if allow_insecure is not None:
@@ -3153,7 +3153,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs(dict):
     def __init__(__self__, *,
                  bucket: str,
                  object: str,
@@ -3194,7 +3194,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3243,7 +3243,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote(dict
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceFile(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceFile(dict):
     def __init__(__self__, *,
                  path: str,
                  state: str,
@@ -3256,7 +3256,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFile(dict):
                `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`, `CONTENTS_MATCH`.
         :param str content: A a file with this content. The size of the content
                is limited to 1024 characters.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs' file: A remote or local source. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArrgs' file: A remote or local source. Structure is
                documented below.
         :param str permissions: Consists of three octal digits which represent, in
                order, the permissions of the owner, group, and other users for the file
@@ -3328,7 +3328,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFile(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3357,10 +3357,10 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile(dict):
         :param bool allow_insecure: Defaults to false. When false, files are
                subject to validations based on the file type: Remote: A checksum must be
                specified. Cloud Storage: An object generation number must be specified.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs' gcs: A Cloud Storage object. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArrgs' gcs: A Cloud Storage object. Structure is
                documented below.
         :param str local_path: A local path within the VM to use.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs' remote: A generic remote file. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArrgs' remote: A generic remote file. Structure is
                documented below.
         """
         if allow_insecure is not None:
@@ -3410,7 +3410,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs(dict):
     def __init__(__self__, *,
                  bucket: str,
                  object: str,
@@ -3451,7 +3451,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3500,7 +3500,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkg(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkg(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3531,19 +3531,19 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkg(dict):
         :param str desired_state: The desired state the agent should maintain for
                this package. Possible values are: `DESIRED_STATE_UNSPECIFIED`, `INSTALLED`,
                `REMOVED`.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs' apt: A package managed by Apt. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArrgs' apt: A package managed by Apt. Structure is
                documented below.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs' deb: A deb package file. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArrgs' deb: A deb package file. Structure is
                documented below.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs' googet: A package managed by GooGet. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArrgs' googet: A package managed by GooGet. Structure is
                documented below.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs' msi: An MSI package. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArrgs' msi: An MSI package. Structure is
                documented below.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs' rpm: An rpm package file. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArrgs' rpm: An rpm package file. Structure is
                documented below.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs' yum: A package managed by YUM. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArrgs' yum: A package managed by YUM. Structure is
                documented below.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs' zypper: A package managed by Zypper. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArrgs' zypper: A package managed by Zypper. Structure is
                documented below.
         """
         pulumi.set(__self__, "desired_state", desired_state)
@@ -3637,7 +3637,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkg(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -3655,7 +3655,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3677,7 +3677,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb(dict):
                  source: 'outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource',
                  pull_deps: Optional[bool] = None):
         """
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs' source: A deb package. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArrgs' source: A deb package. Structure is
                documented below.
         :param bool pull_deps: Whether dependencies should also be installed. -
                install when false: `dpkg -i package` - install when true: `apt-get update
@@ -3708,7 +3708,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3737,10 +3737,10 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource(dict):
         :param bool allow_insecure: Defaults to false. When false, files are
                subject to validations based on the file type: Remote: A checksum must be
                specified. Cloud Storage: An object generation number must be specified.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs' gcs: A Cloud Storage object. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArrgs' gcs: A Cloud Storage object. Structure is
                documented below.
         :param str local_path: A local path within the VM to use.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs' remote: A generic remote file. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArrgs' remote: A generic remote file. Structure is
                documented below.
         """
         if allow_insecure is not None:
@@ -3790,7 +3790,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs(dict):
     def __init__(__self__, *,
                  bucket: str,
                  object: str,
@@ -3831,7 +3831,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3880,7 +3880,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -3898,12 +3898,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi(dict):
     def __init__(__self__, *,
                  source: 'outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource',
                  properties: Optional[Sequence[str]] = None):
         """
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs' source: The MSI package. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArrgs' source: The MSI package. Structure is
                documented below.
         :param Sequence[str] properties: Additional properties to use during installation.
                This should be in the format of Property=Setting. Appended to the defaults
@@ -3934,7 +3934,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3963,10 +3963,10 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource(dict):
         :param bool allow_insecure: Defaults to false. When false, files are
                subject to validations based on the file type: Remote: A checksum must be
                specified. Cloud Storage: An object generation number must be specified.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs' gcs: A Cloud Storage object. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArrgs' gcs: A Cloud Storage object. Structure is
                documented below.
         :param str local_path: A local path within the VM to use.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs' remote: A generic remote file. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArrgs' remote: A generic remote file. Structure is
                documented below.
         """
         if allow_insecure is not None:
@@ -4016,7 +4016,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs(dict):
     def __init__(__self__, *,
                  bucket: str,
                  object: str,
@@ -4057,7 +4057,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4106,7 +4106,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4128,7 +4128,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm(dict):
                  source: 'outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource',
                  pull_deps: Optional[bool] = None):
         """
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs' source: An rpm package. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArrgs' source: An rpm package. Structure is
                documented below.
         :param bool pull_deps: Whether dependencies should also be installed. -
                install when false: `rpm --upgrade --replacepkgs package.rpm` - install when
@@ -4159,7 +4159,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4188,10 +4188,10 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource(dict):
         :param bool allow_insecure: Defaults to false. When false, files are
                subject to validations based on the file type: Remote: A checksum must be
                specified. Cloud Storage: An object generation number must be specified.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs' gcs: A Cloud Storage object. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArrgs' gcs: A Cloud Storage object. Structure is
                documented below.
         :param str local_path: A local path within the VM to use.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs' remote: A generic remote file. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArrgs' remote: A generic remote file. Structure is
                documented below.
         """
         if allow_insecure is not None:
@@ -4241,7 +4241,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs(dict):
     def __init__(__self__, *,
                  bucket: str,
                  object: str,
@@ -4282,7 +4282,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4331,7 +4331,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -4349,7 +4349,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -4367,20 +4367,20 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceRepository(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceRepository(dict):
     def __init__(__self__, *,
                  apt: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt'] = None,
                  goo: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo'] = None,
                  yum: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum'] = None,
                  zypper: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper'] = None):
         """
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs' apt: An Apt Repository. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArrgs' apt: An Apt Repository. Structure is
                documented below.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs' goo: A Goo Repository. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArrgs' goo: A Goo Repository. Structure is
                documented below.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs' yum: A Yum Repository. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArrgs' yum: A Yum Repository. Structure is
                documented below.
-        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs' zypper: A Zypper Repository. Structure is
+        :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArrgs' zypper: A Zypper Repository. Structure is
                documented below.
         """
         if apt is not None:
@@ -4430,7 +4430,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepository(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4518,7 +4518,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo(dict):
     def __init__(__self__, *,
                  name: str,
                  url: str):
@@ -4547,7 +4547,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4627,7 +4627,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper(dict):
+calass OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4707,7 +4707,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentRollout(dict):
+calass OsPolicyAssignmentRollout(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4731,7 +4731,7 @@ class OsPolicyAssignmentRollout(dict):
                  disruption_budget: 'outputs.OsPolicyAssignmentRolloutDisruptionBudget',
                  min_wait_duration: str):
         """
-        :param 'OsPolicyAssignmentRolloutDisruptionBudgetArgs' disruption_budget: The maximum number (or percentage) of VMs
+        :param 'OsPolicyAssignmentRolloutDisruptionBudgetArrgs' disruption_budget: The maximum number (or percentage) of VMs
                per zone to disrupt at any given moment. Structure is
                documented below.
         :param str min_wait_duration: This determines the minimum duration of
@@ -4767,7 +4767,7 @@ class OsPolicyAssignmentRollout(dict):
 
 
 @pulumi.output_type
-class OsPolicyAssignmentRolloutDisruptionBudget(dict):
+calass OsPolicyAssignmentRolloutDisruptionBudget(dict):
     def __init__(__self__, *,
                  fixed: Optional[int] = None,
                  percent: Optional[int] = None):
@@ -4804,7 +4804,7 @@ class OsPolicyAssignmentRolloutDisruptionBudget(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentInstanceFilter(dict):
+calass PatchDeploymentInstanceFilter(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4832,7 +4832,7 @@ class PatchDeploymentInstanceFilter(dict):
                  zones: Optional[Sequence[str]] = None):
         """
         :param bool all: Target all VM instances in the project. If true, no other criteria is permitted.
-        :param Sequence['PatchDeploymentInstanceFilterGroupLabelArgs'] group_labels: Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
+        :param Sequence['PatchDeploymentInstanceFilterGroupLabelArrgs'] group_labels: Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
                Structure is documented below.
         :param Sequence[str] instance_name_prefixes: Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group
                VMs when targeting configs, for example prefix="prod-".
@@ -4898,7 +4898,7 @@ class PatchDeploymentInstanceFilter(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentInstanceFilterGroupLabel(dict):
+calass PatchDeploymentInstanceFilterGroupLabel(dict):
     def __init__(__self__, *,
                  labels: Mapping[str, str]):
         """
@@ -4920,7 +4920,7 @@ class PatchDeploymentInstanceFilterGroupLabel(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentOneTimeSchedule(dict):
+calass PatchDeploymentOneTimeSchedule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4957,7 +4957,7 @@ class PatchDeploymentOneTimeSchedule(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentPatchConfig(dict):
+calass PatchDeploymentPatchConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4994,22 +4994,22 @@ class PatchDeploymentPatchConfig(dict):
                  yum: Optional['outputs.PatchDeploymentPatchConfigYum'] = None,
                  zypper: Optional['outputs.PatchDeploymentPatchConfigZypper'] = None):
         """
-        :param 'PatchDeploymentPatchConfigAptArgs' apt: Apt update settings. Use this setting to override the default apt patch rules.
+        :param 'PatchDeploymentPatchConfigAptArrgs' apt: Apt update settings. Use this setting to override the default apt patch rules.
                Structure is documented below.
-        :param 'PatchDeploymentPatchConfigGooArgs' goo: goo update settings. Use this setting to override the default goo patch rules.
+        :param 'PatchDeploymentPatchConfigGooArrgs' goo: goo update settings. Use this setting to override the default goo patch rules.
                Structure is documented below.
         :param bool mig_instances_allowed: Allows the patch job to run on Managed instance groups (MIGs).
-        :param 'PatchDeploymentPatchConfigPostStepArgs' post_step: The ExecStep to run after the patch update.
+        :param 'PatchDeploymentPatchConfigPostStepArrgs' post_step: The ExecStep to run after the patch update.
                Structure is documented below.
-        :param 'PatchDeploymentPatchConfigPreStepArgs' pre_step: The ExecStep to run before the patch update.
+        :param 'PatchDeploymentPatchConfigPreStepArrgs' pre_step: The ExecStep to run before the patch update.
                Structure is documented below.
         :param str reboot_config: Post-patch reboot settings.
                Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
-        :param 'PatchDeploymentPatchConfigWindowsUpdateArgs' windows_update: Windows update settings. Use this setting to override the default Windows patch rules.
+        :param 'PatchDeploymentPatchConfigWindowsUpdateArrgs' windows_update: Windows update settings. Use this setting to override the default Windows patch rules.
                Structure is documented below.
-        :param 'PatchDeploymentPatchConfigYumArgs' yum: Yum update settings. Use this setting to override the default yum patch rules.
+        :param 'PatchDeploymentPatchConfigYumArrgs' yum: Yum update settings. Use this setting to override the default yum patch rules.
                Structure is documented below.
-        :param 'PatchDeploymentPatchConfigZypperArgs' zypper: zypper update settings. Use this setting to override the default zypper patch rules.
+        :param 'PatchDeploymentPatchConfigZypperArrgs' zypper: zypper update settings. Use this setting to override the default zypper patch rules.
                Structure is documented below.
         """
         if apt is not None:
@@ -5113,7 +5113,7 @@ class PatchDeploymentPatchConfig(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentPatchConfigApt(dict):
+calass PatchDeploymentPatchConfigApt(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5179,7 +5179,7 @@ class PatchDeploymentPatchConfigApt(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentPatchConfigGoo(dict):
+calass PatchDeploymentPatchConfigGoo(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -5197,7 +5197,7 @@ class PatchDeploymentPatchConfigGoo(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentPatchConfigPostStep(dict):
+calass PatchDeploymentPatchConfigPostStep(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5221,9 +5221,9 @@ class PatchDeploymentPatchConfigPostStep(dict):
                  linux_exec_step_config: Optional['outputs.PatchDeploymentPatchConfigPostStepLinuxExecStepConfig'] = None,
                  windows_exec_step_config: Optional['outputs.PatchDeploymentPatchConfigPostStepWindowsExecStepConfig'] = None):
         """
-        :param 'PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs' linux_exec_step_config: The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+        :param 'PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArrgs' linux_exec_step_config: The ExecStepConfig for all Linux VMs targeted by the PatchJob.
                Structure is documented below.
-        :param 'PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs' windows_exec_step_config: The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+        :param 'PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArrgs' windows_exec_step_config: The ExecStepConfig for all Windows VMs targeted by the PatchJob.
                Structure is documented below.
         """
         if linux_exec_step_config is not None:
@@ -5251,7 +5251,7 @@ class PatchDeploymentPatchConfigPostStep(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentPatchConfigPostStepLinuxExecStepConfig(dict):
+calass PatchDeploymentPatchConfigPostStepLinuxExecStepConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5280,7 +5280,7 @@ class PatchDeploymentPatchConfigPostStepLinuxExecStepConfig(dict):
                  local_path: Optional[str] = None):
         """
         :param Sequence[int] allowed_success_codes: Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
-        :param 'PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs' gcs_object: A Cloud Storage object containing the executable.
+        :param 'PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArrgs' gcs_object: A Cloud Storage object containing the executable.
                Structure is documented below.
         :param str interpreter: The script interpreter to use to run the script. If no interpreter is specified the script will
                be executed directly, which will likely only succeed for scripts with shebang lines.
@@ -5333,7 +5333,7 @@ class PatchDeploymentPatchConfigPostStepLinuxExecStepConfig(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject(dict):
+calass PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5390,7 +5390,7 @@ class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentPatchConfigPostStepWindowsExecStepConfig(dict):
+calass PatchDeploymentPatchConfigPostStepWindowsExecStepConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5419,7 +5419,7 @@ class PatchDeploymentPatchConfigPostStepWindowsExecStepConfig(dict):
                  local_path: Optional[str] = None):
         """
         :param Sequence[int] allowed_success_codes: Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
-        :param 'PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs' gcs_object: A Cloud Storage object containing the executable.
+        :param 'PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArrgs' gcs_object: A Cloud Storage object containing the executable.
                Structure is documented below.
         :param str interpreter: The script interpreter to use to run the script. If no interpreter is specified the script will
                be executed directly, which will likely only succeed for scripts with shebang lines.
@@ -5472,7 +5472,7 @@ class PatchDeploymentPatchConfigPostStepWindowsExecStepConfig(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject(dict):
+calass PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5529,7 +5529,7 @@ class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentPatchConfigPreStep(dict):
+calass PatchDeploymentPatchConfigPreStep(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5553,9 +5553,9 @@ class PatchDeploymentPatchConfigPreStep(dict):
                  linux_exec_step_config: Optional['outputs.PatchDeploymentPatchConfigPreStepLinuxExecStepConfig'] = None,
                  windows_exec_step_config: Optional['outputs.PatchDeploymentPatchConfigPreStepWindowsExecStepConfig'] = None):
         """
-        :param 'PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs' linux_exec_step_config: The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+        :param 'PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArrgs' linux_exec_step_config: The ExecStepConfig for all Linux VMs targeted by the PatchJob.
                Structure is documented below.
-        :param 'PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs' windows_exec_step_config: The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+        :param 'PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArrgs' windows_exec_step_config: The ExecStepConfig for all Windows VMs targeted by the PatchJob.
                Structure is documented below.
         """
         if linux_exec_step_config is not None:
@@ -5583,7 +5583,7 @@ class PatchDeploymentPatchConfigPreStep(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentPatchConfigPreStepLinuxExecStepConfig(dict):
+calass PatchDeploymentPatchConfigPreStepLinuxExecStepConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5612,7 +5612,7 @@ class PatchDeploymentPatchConfigPreStepLinuxExecStepConfig(dict):
                  local_path: Optional[str] = None):
         """
         :param Sequence[int] allowed_success_codes: Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
-        :param 'PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs' gcs_object: A Cloud Storage object containing the executable.
+        :param 'PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArrgs' gcs_object: A Cloud Storage object containing the executable.
                Structure is documented below.
         :param str interpreter: The script interpreter to use to run the script. If no interpreter is specified the script will
                be executed directly, which will likely only succeed for scripts with shebang lines.
@@ -5665,7 +5665,7 @@ class PatchDeploymentPatchConfigPreStepLinuxExecStepConfig(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject(dict):
+calass PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5722,7 +5722,7 @@ class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentPatchConfigPreStepWindowsExecStepConfig(dict):
+calass PatchDeploymentPatchConfigPreStepWindowsExecStepConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5751,7 +5751,7 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfig(dict):
                  local_path: Optional[str] = None):
         """
         :param Sequence[int] allowed_success_codes: Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
-        :param 'PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs' gcs_object: A Cloud Storage object containing the executable.
+        :param 'PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArrgs' gcs_object: A Cloud Storage object containing the executable.
                Structure is documented below.
         :param str interpreter: The script interpreter to use to run the script. If no interpreter is specified the script will
                be executed directly, which will likely only succeed for scripts with shebang lines.
@@ -5804,7 +5804,7 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfig(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject(dict):
+calass PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5861,7 +5861,7 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentPatchConfigWindowsUpdate(dict):
+calass PatchDeploymentPatchConfigWindowsUpdate(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5925,7 +5925,7 @@ class PatchDeploymentPatchConfigWindowsUpdate(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentPatchConfigYum(dict):
+calass PatchDeploymentPatchConfigYum(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6001,7 +6001,7 @@ class PatchDeploymentPatchConfigYum(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentPatchConfigZypper(dict):
+calass PatchDeploymentPatchConfigZypper(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6103,7 +6103,7 @@ class PatchDeploymentPatchConfigZypper(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentRecurringSchedule(dict):
+calass PatchDeploymentRecurringSchedule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6141,9 +6141,9 @@ class PatchDeploymentRecurringSchedule(dict):
                  start_time: Optional[str] = None,
                  weekly: Optional['outputs.PatchDeploymentRecurringScheduleWeekly'] = None):
         """
-        :param 'PatchDeploymentRecurringScheduleTimeOfDayArgs' time_of_day: Time of the day to run a recurring deployment.
+        :param 'PatchDeploymentRecurringScheduleTimeOfDayArrgs' time_of_day: Time of the day to run a recurring deployment.
                Structure is documented below.
-        :param 'PatchDeploymentRecurringScheduleTimeZoneArgs' time_zone: Defines the time zone that timeOfDay is relative to. The rules for daylight saving time are
+        :param 'PatchDeploymentRecurringScheduleTimeZoneArrgs' time_zone: Defines the time zone that timeOfDay is relative to. The rules for daylight saving time are
                determined by the chosen time zone.
                Structure is documented below.
         :param str end_time: The end time at which a recurring patch deployment schedule is no longer active.
@@ -6151,14 +6151,14 @@ class PatchDeploymentRecurringSchedule(dict):
         :param str last_execute_time: (Output)
                The time the last patch job ran successfully.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-        :param 'PatchDeploymentRecurringScheduleMonthlyArgs' monthly: Schedule with monthly executions.
+        :param 'PatchDeploymentRecurringScheduleMonthlyArrgs' monthly: Schedule with monthly executions.
                Structure is documented below.
         :param str next_execute_time: (Output)
                The time the next patch job is scheduled to run.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         :param str start_time: The time that the recurring schedule becomes effective. Defaults to createTime of the patch deployment.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-        :param 'PatchDeploymentRecurringScheduleWeeklyArgs' weekly: Schedule with weekly executions.
+        :param 'PatchDeploymentRecurringScheduleWeeklyArrgs' weekly: Schedule with weekly executions.
                Structure is documented below.
         """
         pulumi.set(__self__, "time_of_day", time_of_day)
@@ -6253,7 +6253,7 @@ class PatchDeploymentRecurringSchedule(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentRecurringScheduleMonthly(dict):
+calass PatchDeploymentRecurringScheduleMonthly(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6280,7 +6280,7 @@ class PatchDeploymentRecurringScheduleMonthly(dict):
         :param int month_day: One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month.
                Months without the target day will be skipped. For example, a schedule to run "every month on the 31st"
                will not run in February, April, June, etc.
-        :param 'PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs' week_day_of_month: Week day in a month.
+        :param 'PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArrgs' week_day_of_month: Week day in a month.
                Structure is documented below.
         """
         if month_day is not None:
@@ -6309,7 +6309,7 @@ class PatchDeploymentRecurringScheduleMonthly(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth(dict):
+calass PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6373,7 +6373,7 @@ class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentRecurringScheduleTimeOfDay(dict):
+calass PatchDeploymentRecurringScheduleTimeOfDay(dict):
     def __init__(__self__, *,
                  hours: Optional[int] = None,
                  minutes: Optional[int] = None,
@@ -6430,7 +6430,7 @@ class PatchDeploymentRecurringScheduleTimeOfDay(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentRecurringScheduleTimeZone(dict):
+calass PatchDeploymentRecurringScheduleTimeZone(dict):
     def __init__(__self__, *,
                  id: str,
                  version: Optional[str] = None):
@@ -6460,7 +6460,7 @@ class PatchDeploymentRecurringScheduleTimeZone(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentRecurringScheduleWeekly(dict):
+calass PatchDeploymentRecurringScheduleWeekly(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6497,7 +6497,7 @@ class PatchDeploymentRecurringScheduleWeekly(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentRollout(dict):
+calass PatchDeploymentRollout(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6519,7 +6519,7 @@ class PatchDeploymentRollout(dict):
                  disruption_budget: 'outputs.PatchDeploymentRolloutDisruptionBudget',
                  mode: str):
         """
-        :param 'PatchDeploymentRolloutDisruptionBudgetArgs' disruption_budget: The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up.
+        :param 'PatchDeploymentRolloutDisruptionBudgetArrgs' disruption_budget: The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up.
                During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps.
                A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget.
                For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone.
@@ -6555,7 +6555,7 @@ class PatchDeploymentRollout(dict):
 
 
 @pulumi.output_type
-class PatchDeploymentRolloutDisruptionBudget(dict):
+calass PatchDeploymentRolloutDisruptionBudget(dict):
     def __init__(__self__, *,
                  fixed: Optional[int] = None,
                  percentage: Optional[int] = None):

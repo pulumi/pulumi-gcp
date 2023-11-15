@@ -36,7 +36,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class FunctionBuildConfig(dict):
+calass FunctionBuildConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -81,7 +81,7 @@ class FunctionBuildConfig(dict):
         :param Mapping[str, str] environment_variables: User-provided build-time environment variables for the function.
         :param str runtime: The runtime in which to run the function. Required when deploying a new
                function, optional when updating an existing function.
-        :param 'FunctionBuildConfigSourceArgs' source: The location of the function source code.
+        :param 'FunctionBuildConfigSourceArrgs' source: The location of the function source code.
                Structure is documented below.
         :param str worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function.
         """
@@ -166,7 +166,7 @@ class FunctionBuildConfig(dict):
 
 
 @pulumi.output_type
-class FunctionBuildConfigSource(dict):
+calass FunctionBuildConfigSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -190,9 +190,9 @@ class FunctionBuildConfigSource(dict):
                  repo_source: Optional['outputs.FunctionBuildConfigSourceRepoSource'] = None,
                  storage_source: Optional['outputs.FunctionBuildConfigSourceStorageSource'] = None):
         """
-        :param 'FunctionBuildConfigSourceRepoSourceArgs' repo_source: If provided, get the source from this location in a Cloud Source Repository.
+        :param 'FunctionBuildConfigSourceRepoSourceArrgs' repo_source: If provided, get the source from this location in a Cloud Source Repository.
                Structure is documented below.
-        :param 'FunctionBuildConfigSourceStorageSourceArgs' storage_source: If provided, get the source from this location in Google Cloud Storage.
+        :param 'FunctionBuildConfigSourceStorageSourceArrgs' storage_source: If provided, get the source from this location in Google Cloud Storage.
                Structure is documented below.
         """
         if repo_source is not None:
@@ -220,7 +220,7 @@ class FunctionBuildConfigSource(dict):
 
 
 @pulumi.output_type
-class FunctionBuildConfigSourceRepoSource(dict):
+calass FunctionBuildConfigSourceRepoSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -342,7 +342,7 @@ class FunctionBuildConfigSourceRepoSource(dict):
 
 
 @pulumi.output_type
-class FunctionBuildConfigSourceStorageSource(dict):
+calass FunctionBuildConfigSourceStorageSource(dict):
     def __init__(__self__, *,
                  bucket: Optional[str] = None,
                  generation: Optional[int] = None,
@@ -387,7 +387,7 @@ class FunctionBuildConfigSourceStorageSource(dict):
 
 
 @pulumi.output_type
-class FunctionEventTrigger(dict):
+calass FunctionEventTrigger(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -424,7 +424,7 @@ class FunctionEventTrigger(dict):
                  trigger: Optional[str] = None,
                  trigger_region: Optional[str] = None):
         """
-        :param Sequence['FunctionEventTriggerEventFilterArgs'] event_filters: Criteria used to filter events.
+        :param Sequence['FunctionEventTriggerEventFilterArrgs'] event_filters: Criteria used to filter events.
                Structure is documented below.
         :param str event_type: Required. The type of event to observe.
         :param str pubsub_topic: The name of a Pub/Sub topic in the same project that will be used
@@ -521,7 +521,7 @@ class FunctionEventTrigger(dict):
 
 
 @pulumi.output_type
-class FunctionEventTriggerEventFilter(dict):
+calass FunctionEventTriggerEventFilter(dict):
     def __init__(__self__, *,
                  attribute: str,
                  value: str,
@@ -576,7 +576,7 @@ class FunctionEventTriggerEventFilter(dict):
 
 
 @pulumi.output_type
-class FunctionIamBindingCondition(dict):
+calass FunctionIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -603,7 +603,7 @@ class FunctionIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class FunctionIamMemberCondition(dict):
+calass FunctionIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -630,7 +630,7 @@ class FunctionIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class FunctionServiceConfig(dict):
+calass FunctionServiceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -711,9 +711,9 @@ class FunctionServiceConfig(dict):
         :param int max_instance_request_concurrency: Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
         :param int min_instance_count: The limit on the minimum number of function instances that may coexist at a
                given time.
-        :param Sequence['FunctionServiceConfigSecretEnvironmentVariableArgs'] secret_environment_variables: Secret environment variables configuration.
+        :param Sequence['FunctionServiceConfigSecretEnvironmentVariableArrgs'] secret_environment_variables: Secret environment variables configuration.
                Structure is documented below.
-        :param Sequence['FunctionServiceConfigSecretVolumeArgs'] secret_volumes: Secret volumes configuration.
+        :param Sequence['FunctionServiceConfigSecretVolumeArrgs'] secret_volumes: Secret volumes configuration.
                Structure is documented below.
         :param str service: Name of the service associated with a Function.
         :param str service_account_email: The email of the service account for this function.
@@ -912,7 +912,7 @@ class FunctionServiceConfig(dict):
 
 
 @pulumi.output_type
-class FunctionServiceConfigSecretEnvironmentVariable(dict):
+calass FunctionServiceConfigSecretEnvironmentVariable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -980,7 +980,7 @@ class FunctionServiceConfigSecretEnvironmentVariable(dict):
 
 
 @pulumi.output_type
-class FunctionServiceConfigSecretVolume(dict):
+calass FunctionServiceConfigSecretVolume(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1009,7 +1009,7 @@ class FunctionServiceConfigSecretVolume(dict):
         :param str mount_path: The path within the container to mount the secret volume. For example, setting the mountPath as /etc/secrets would mount the secret value files under the /etc/secrets directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
         :param str project_id: Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
         :param str secret: Name of the secret in secret manager (not the full resource name).
-        :param Sequence['FunctionServiceConfigSecretVolumeVersionArgs'] versions: List of secret versions to mount for this secret. If empty, the latest version of the secret will be made available in a file named after the secret under the mount point.'
+        :param Sequence['FunctionServiceConfigSecretVolumeVersionArrgs'] versions: List of secret versions to mount for this secret. If empty, the latest version of the secret will be made available in a file named after the secret under the mount point.'
                Structure is documented below.
         """
         pulumi.set(__self__, "mount_path", mount_path)
@@ -1053,7 +1053,7 @@ class FunctionServiceConfigSecretVolume(dict):
 
 
 @pulumi.output_type
-class FunctionServiceConfigSecretVolumeVersion(dict):
+calass FunctionServiceConfigSecretVolumeVersion(dict):
     def __init__(__self__, *,
                  path: str,
                  version: str):
@@ -1082,7 +1082,7 @@ class FunctionServiceConfigSecretVolumeVersion(dict):
 
 
 @pulumi.output_type
-class GetFunctionBuildConfigResult(dict):
+calass GetFunctionBuildConfigResult(dict):
     def __init__(__self__, *,
                  build: str,
                  docker_repository: str,
@@ -1136,7 +1136,7 @@ class GetFunctionBuildConfigResult(dict):
 
 
 @pulumi.output_type
-class GetFunctionBuildConfigSourceResult(dict):
+calass GetFunctionBuildConfigSourceResult(dict):
     def __init__(__self__, *,
                  repo_sources: Sequence['outputs.GetFunctionBuildConfigSourceRepoSourceResult'],
                  storage_sources: Sequence['outputs.GetFunctionBuildConfigSourceStorageSourceResult']):
@@ -1155,7 +1155,7 @@ class GetFunctionBuildConfigSourceResult(dict):
 
 
 @pulumi.output_type
-class GetFunctionBuildConfigSourceRepoSourceResult(dict):
+calass GetFunctionBuildConfigSourceRepoSourceResult(dict):
     def __init__(__self__, *,
                  branch_name: str,
                  commit_sha: str,
@@ -1209,7 +1209,7 @@ class GetFunctionBuildConfigSourceRepoSourceResult(dict):
 
 
 @pulumi.output_type
-class GetFunctionBuildConfigSourceStorageSourceResult(dict):
+calass GetFunctionBuildConfigSourceStorageSourceResult(dict):
     def __init__(__self__, *,
                  bucket: str,
                  generation: int,
@@ -1235,7 +1235,7 @@ class GetFunctionBuildConfigSourceStorageSourceResult(dict):
 
 
 @pulumi.output_type
-class GetFunctionEventTriggerResult(dict):
+calass GetFunctionEventTriggerResult(dict):
     def __init__(__self__, *,
                  event_filters: Sequence['outputs.GetFunctionEventTriggerEventFilterResult'],
                  event_type: str,
@@ -1289,7 +1289,7 @@ class GetFunctionEventTriggerResult(dict):
 
 
 @pulumi.output_type
-class GetFunctionEventTriggerEventFilterResult(dict):
+calass GetFunctionEventTriggerEventFilterResult(dict):
     def __init__(__self__, *,
                  attribute: str,
                  operator: str,
@@ -1315,7 +1315,7 @@ class GetFunctionEventTriggerEventFilterResult(dict):
 
 
 @pulumi.output_type
-class GetFunctionServiceConfigResult(dict):
+calass GetFunctionServiceConfigResult(dict):
     def __init__(__self__, *,
                  all_traffic_on_latest_revision: bool,
                  available_cpu: str,
@@ -1439,7 +1439,7 @@ class GetFunctionServiceConfigResult(dict):
 
 
 @pulumi.output_type
-class GetFunctionServiceConfigSecretEnvironmentVariableResult(dict):
+calass GetFunctionServiceConfigSecretEnvironmentVariableResult(dict):
     def __init__(__self__, *,
                  key: str,
                  project_id: str,
@@ -1472,7 +1472,7 @@ class GetFunctionServiceConfigSecretEnvironmentVariableResult(dict):
 
 
 @pulumi.output_type
-class GetFunctionServiceConfigSecretVolumeResult(dict):
+calass GetFunctionServiceConfigSecretVolumeResult(dict):
     def __init__(__self__, *,
                  mount_path: str,
                  project_id: str,
@@ -1505,7 +1505,7 @@ class GetFunctionServiceConfigSecretVolumeResult(dict):
 
 
 @pulumi.output_type
-class GetFunctionServiceConfigSecretVolumeVersionResult(dict):
+calass GetFunctionServiceConfigSecretVolumeVersionResult(dict):
     def __init__(__self__, *,
                  path: str,
                  version: str):

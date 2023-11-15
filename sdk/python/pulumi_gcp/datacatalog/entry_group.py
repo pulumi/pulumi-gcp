@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['EntryGroupArgs', 'EntryGroup']
+__all__ = ['EntryGroupArrgs', 'EntryGroup']
 
 @pulumi.input_type
-class EntryGroupArgs:
+calass EntryGroupArrgs:
     def __init__(__self__, *,
                  entry_group_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -109,7 +109,7 @@ class EntryGroupArgs:
 
 
 @pulumi.input_type
-class _EntryGroupState:
+calass _EntryGroupState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -222,7 +222,7 @@ class _EntryGroupState:
         pulumi.set(self, "region", value)
 
 
-class EntryGroup(pulumi.CustomResource):
+calass EntryGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -296,7 +296,7 @@ class EntryGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: EntryGroupArgs,
+                 args: EntryGroupArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An EntryGroup resource represents a logical grouping of zero or more Data Catalog Entry resources.
@@ -345,12 +345,12 @@ class EntryGroup(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param EntryGroupArgs args: The arguments to use to populate this resource's properties.
+        :param EntryGroupArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(EntryGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(EntryGroupArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -371,7 +371,7 @@ class EntryGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = EntryGroupArgs.__new__(EntryGroupArgs)
+            __props__ = EntryGroupArrgs.__new__(EntryGroupArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name

@@ -11,12 +11,12 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['TagTemplateArgs', 'TagTemplate']
+__all__ = ['TagTemplateArrgs', 'TagTemplate']
 
 @pulumi.input_type
-class TagTemplateArgs:
+calass TagTemplateArrgs:
     def __init__(__self__, *,
-                 fields: pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldArgs']]],
+                 fields: pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldArrgs']]],
                  tag_template_id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
@@ -24,7 +24,7 @@ class TagTemplateArgs:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TagTemplate resource.
-        :param pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldArgs']]] fields: Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
+        :param pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldArrgs']]] fields: Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
                Structure is documented below.
         :param pulumi.Input[str] tag_template_id: The id of the tag template to create.
         :param pulumi.Input[str] display_name: The display name for this template.
@@ -46,7 +46,7 @@ class TagTemplateArgs:
 
     @property
     @pulumi.getter
-    def fields(self) -> pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldArgs']]]:
+    def fields(self) -> pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldArrgs']]]:
         """
         Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
         Structure is documented below.
@@ -54,7 +54,7 @@ class TagTemplateArgs:
         return pulumi.get(self, "fields")
 
     @fields.setter
-    def fields(self, value: pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldArgs']]]):
+    def fields(self, value: pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldArrgs']]]):
         pulumi.set(self, "fields", value)
 
     @property
@@ -120,10 +120,10 @@ class TagTemplateArgs:
 
 
 @pulumi.input_type
-class _TagTemplateState:
+calass _TagTemplateState:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldArgs']]]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldArrgs']]]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -132,7 +132,7 @@ class _TagTemplateState:
         """
         Input properties used for looking up and filtering TagTemplate resources.
         :param pulumi.Input[str] display_name: The display name for this template.
-        :param pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldArgs']]] fields: Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
+        :param pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldArrgs']]] fields: Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
                Structure is documented below.
         :param pulumi.Input[bool] force_delete: This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
         :param pulumi.Input[str] name: (Output)
@@ -171,7 +171,7 @@ class _TagTemplateState:
 
     @property
     @pulumi.getter
-    def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldArgs']]]]:
+    def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldArrgs']]]]:
         """
         Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
         Structure is documented below.
@@ -179,7 +179,7 @@ class _TagTemplateState:
         return pulumi.get(self, "fields")
 
     @fields.setter
-    def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldArgs']]]]):
+    def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldArrgs']]]]):
         pulumi.set(self, "fields", value)
 
     @property
@@ -245,13 +245,13 @@ class _TagTemplateState:
         pulumi.set(self, "tag_template_id", value)
 
 
-class TagTemplate(pulumi.CustomResource):
+calass TagTemplate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagTemplateFieldArgs']]]]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagTemplateFieldArrgs']]]]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -277,34 +277,34 @@ class TagTemplate(pulumi.CustomResource):
         basic_tag_template = gcp.datacatalog.TagTemplate("basicTagTemplate",
             display_name="Demo Tag Template",
             fields=[
-                gcp.datacatalog.TagTemplateFieldArgs(
+                gcp.datacatalog.TagTemplateFieldArrgs(
                     display_name="Source of data asset",
                     field_id="source",
                     is_required=True,
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                    type=gcp.datacatalog.TagTemplateFieldTypeArrgs(
                         primitive_type="STRING",
                     ),
                 ),
-                gcp.datacatalog.TagTemplateFieldArgs(
+                gcp.datacatalog.TagTemplateFieldArrgs(
                     display_name="Number of rows in the data asset",
                     field_id="num_rows",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                    type=gcp.datacatalog.TagTemplateFieldTypeArrgs(
                         primitive_type="DOUBLE",
                     ),
                 ),
-                gcp.datacatalog.TagTemplateFieldArgs(
+                gcp.datacatalog.TagTemplateFieldArrgs(
                     display_name="PII type",
                     field_id="pii_type",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
-                        enum_type=gcp.datacatalog.TagTemplateFieldTypeEnumTypeArgs(
+                    type=gcp.datacatalog.TagTemplateFieldTypeArrgs(
+                        enum_type=gcp.datacatalog.TagTemplateFieldTypeEnumTypeArrgs(
                             allowed_values=[
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArrgs(
                                     display_name="EMAIL",
                                 ),
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArrgs(
                                     display_name="SOCIAL SECURITY NUMBER",
                                 ),
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArrgs(
                                     display_name="NONE",
                                 ),
                             ],
@@ -336,7 +336,7 @@ class TagTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The display name for this template.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagTemplateFieldArgs']]]] fields: Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagTemplateFieldArrgs']]]] fields: Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
                Structure is documented below.
         :param pulumi.Input[bool] force_delete: This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -348,7 +348,7 @@ class TagTemplate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TagTemplateArgs,
+                 args: TagTemplateArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A tag template defines a tag, which can have one or more typed fields.
@@ -370,34 +370,34 @@ class TagTemplate(pulumi.CustomResource):
         basic_tag_template = gcp.datacatalog.TagTemplate("basicTagTemplate",
             display_name="Demo Tag Template",
             fields=[
-                gcp.datacatalog.TagTemplateFieldArgs(
+                gcp.datacatalog.TagTemplateFieldArrgs(
                     display_name="Source of data asset",
                     field_id="source",
                     is_required=True,
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                    type=gcp.datacatalog.TagTemplateFieldTypeArrgs(
                         primitive_type="STRING",
                     ),
                 ),
-                gcp.datacatalog.TagTemplateFieldArgs(
+                gcp.datacatalog.TagTemplateFieldArrgs(
                     display_name="Number of rows in the data asset",
                     field_id="num_rows",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                    type=gcp.datacatalog.TagTemplateFieldTypeArrgs(
                         primitive_type="DOUBLE",
                     ),
                 ),
-                gcp.datacatalog.TagTemplateFieldArgs(
+                gcp.datacatalog.TagTemplateFieldArrgs(
                     display_name="PII type",
                     field_id="pii_type",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
-                        enum_type=gcp.datacatalog.TagTemplateFieldTypeEnumTypeArgs(
+                    type=gcp.datacatalog.TagTemplateFieldTypeArrgs(
+                        enum_type=gcp.datacatalog.TagTemplateFieldTypeEnumTypeArrgs(
                             allowed_values=[
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArrgs(
                                     display_name="EMAIL",
                                 ),
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArrgs(
                                     display_name="SOCIAL SECURITY NUMBER",
                                 ),
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArrgs(
                                     display_name="NONE",
                                 ),
                             ],
@@ -427,12 +427,12 @@ class TagTemplate(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param TagTemplateArgs args: The arguments to use to populate this resource's properties.
+        :param TagTemplateArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(TagTemplateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TagTemplateArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -442,7 +442,7 @@ class TagTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagTemplateFieldArgs']]]]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagTemplateFieldArrgs']]]]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -454,7 +454,7 @@ class TagTemplate(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = TagTemplateArgs.__new__(TagTemplateArgs)
+            __props__ = TagTemplateArrgs.__new__(TagTemplateArrgs)
 
             __props__.__dict__["display_name"] = display_name
             if fields is None and not opts.urn:
@@ -478,7 +478,7 @@ class TagTemplate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagTemplateFieldArgs']]]]] = None,
+            fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagTemplateFieldArrgs']]]]] = None,
             force_delete: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -492,7 +492,7 @@ class TagTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The display name for this template.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagTemplateFieldArgs']]]] fields: Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagTemplateFieldArrgs']]]] fields: Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
                Structure is documented below.
         :param pulumi.Input[bool] force_delete: This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
         :param pulumi.Input[str] name: (Output)

@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetRegionNetworkEndpointGroupResult:
+calass GetRegionNetworkEndpointGroupResult:
     """
     A collection of values returned by getRegionNetworkEndpointGroup.
     """
@@ -155,7 +155,7 @@ class GetRegionNetworkEndpointGroupResult:
         return pulumi.get(self, "subnetwork")
 
 
-class AwaitableGetRegionNetworkEndpointGroupResult(GetRegionNetworkEndpointGroupResult):
+calass AwaitableGetRegionNetworkEndpointGroupResult(GetRegionNetworkEndpointGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

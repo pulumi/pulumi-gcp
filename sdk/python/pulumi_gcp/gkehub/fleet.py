@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['FleetArgs', 'Fleet']
+__all__ = ['FleetArrgs', 'Fleet']
 
 @pulumi.input_type
-class FleetArgs:
+calass FleetArrgs:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -58,13 +58,13 @@ class FleetArgs:
 
 
 @pulumi.input_type
-class _FleetState:
+calass _FleetState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 states: Optional[pulumi.Input[Sequence[pulumi.Input['FleetStateArgs']]]] = None,
+                 states: Optional[pulumi.Input[Sequence[pulumi.Input['FleetStateArrgs']]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -75,7 +75,7 @@ class _FleetState:
                Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input['FleetStateArgs']]] states: The state of the fleet resource.
+        :param pulumi.Input[Sequence[pulumi.Input['FleetStateArrgs']]] states: The state of the fleet resource.
                Structure is documented below.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource. This is unique across all
                Fleet resources. If a Fleet resource is deleted and another
@@ -149,7 +149,7 @@ class _FleetState:
 
     @property
     @pulumi.getter
-    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FleetStateArgs']]]]:
+    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FleetStateArrgs']]]]:
         """
         The state of the fleet resource.
         Structure is documented below.
@@ -157,7 +157,7 @@ class _FleetState:
         return pulumi.get(self, "states")
 
     @states.setter
-    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FleetStateArgs']]]]):
+    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FleetStateArrgs']]]]):
         pulumi.set(self, "states", value)
 
     @property
@@ -187,7 +187,7 @@ class _FleetState:
         pulumi.set(self, "update_time", value)
 
 
-class Fleet(pulumi.CustomResource):
+calass Fleet(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -245,7 +245,7 @@ class Fleet(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[FleetArgs] = None,
+                 args: Optional[FleetArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Fleet contains information about a group of clusters.
@@ -287,12 +287,12 @@ class Fleet(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param FleetArgs args: The arguments to use to populate this resource's properties.
+        :param FleetArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(FleetArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(FleetArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -310,7 +310,7 @@ class Fleet(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = FleetArgs.__new__(FleetArgs)
+            __props__ = FleetArrgs.__new__(FleetArrgs)
 
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["project"] = project
@@ -333,7 +333,7 @@ class Fleet(pulumi.CustomResource):
             delete_time: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FleetStateArgs']]]]] = None,
+            states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FleetStateArrgs']]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Fleet':
         """
@@ -349,7 +349,7 @@ class Fleet(pulumi.CustomResource):
                Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FleetStateArgs']]]] states: The state of the fleet resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FleetStateArrgs']]]] states: The state of the fleet resource.
                Structure is documented below.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource. This is unique across all
                Fleet resources. If a Fleet resource is deleted and another

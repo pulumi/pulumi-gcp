@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetImageVersionsResult:
+calass GetImageVersionsResult:
     """
     A collection of values returned by getImageVersions.
     """
@@ -63,7 +63,7 @@ class GetImageVersionsResult:
         return pulumi.get(self, "region")
 
 
-class AwaitableGetImageVersionsResult(GetImageVersionsResult):
+calass AwaitableGetImageVersionsResult(GetImageVersionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
@@ -90,8 +90,8 @@ def get_image_versions(project: Optional[str] = None,
     all = gcp.composer.get_image_versions()
     test = gcp.composer.Environment("test",
         region="us-central1",
-        config=gcp.composer.EnvironmentConfigArgs(
-            software_config=gcp.composer.EnvironmentConfigSoftwareConfigArgs(
+        config=gcp.composer.EnvironmentConfigArrgs(
+            software_config=gcp.composer.EnvironmentConfigSoftwareConfigArrgs(
                 image_version=all.image_versions[0].image_version_id,
             ),
         ))
@@ -132,8 +132,8 @@ def get_image_versions_output(project: Optional[pulumi.Input[Optional[str]]] = N
     all = gcp.composer.get_image_versions()
     test = gcp.composer.Environment("test",
         region="us-central1",
-        config=gcp.composer.EnvironmentConfigArgs(
-            software_config=gcp.composer.EnvironmentConfigSoftwareConfigArgs(
+        config=gcp.composer.EnvironmentConfigArrgs(
+            software_config=gcp.composer.EnvironmentConfigSoftwareConfigArrgs(
                 image_version=all.image_versions[0].image_version_id,
             ),
         ))

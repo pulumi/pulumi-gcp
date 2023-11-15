@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['CertificateMapArgs', 'CertificateMap']
+__all__ = ['CertificateMapArrgs', 'CertificateMap']
 
 @pulumi.input_type
-class CertificateMapArgs:
+calass CertificateMapArrgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -102,12 +102,12 @@ class CertificateMapArgs:
 
 
 @pulumi.input_type
-class _CertificateMapState:
+calass _CertificateMapState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 gclb_targets: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetArgs']]]] = None,
+                 gclb_targets: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetArrgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -120,7 +120,7 @@ class _CertificateMapState:
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetArgs']]] gclb_targets: A list of target proxies that use this Certificate Map
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetArrgs']]] gclb_targets: A list of target proxies that use this Certificate Map
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a Certificate Map resource.
                
@@ -198,7 +198,7 @@ class _CertificateMapState:
 
     @property
     @pulumi.getter(name="gclbTargets")
-    def gclb_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetArgs']]]]:
+    def gclb_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetArrgs']]]]:
         """
         A list of target proxies that use this Certificate Map
         Structure is documented below.
@@ -206,7 +206,7 @@ class _CertificateMapState:
         return pulumi.get(self, "gclb_targets")
 
     @gclb_targets.setter
-    def gclb_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetArgs']]]]):
+    def gclb_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetArrgs']]]]):
         pulumi.set(self, "gclb_targets", value)
 
     @property
@@ -281,7 +281,7 @@ class _CertificateMapState:
         pulumi.set(self, "update_time", value)
 
 
-class CertificateMap(pulumi.CustomResource):
+calass CertificateMap(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -353,7 +353,7 @@ class CertificateMap(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[CertificateMapArgs] = None,
+                 args: Optional[CertificateMapArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         CertificateMap defines a collection of certificate configurations,
@@ -399,12 +399,12 @@ class CertificateMap(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param CertificateMapArgs args: The arguments to use to populate this resource's properties.
+        :param CertificateMapArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(CertificateMapArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(CertificateMapArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -424,7 +424,7 @@ class CertificateMap(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = CertificateMapArgs.__new__(CertificateMapArgs)
+            __props__ = CertificateMapArrgs.__new__(CertificateMapArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
@@ -450,7 +450,7 @@ class CertificateMap(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            gclb_targets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateMapGclbTargetArgs']]]]] = None,
+            gclb_targets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateMapGclbTargetArrgs']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -468,7 +468,7 @@ class CertificateMap(pulumi.CustomResource):
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateMapGclbTargetArgs']]]] gclb_targets: A list of target proxies that use this Certificate Map
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateMapGclbTargetArrgs']]]] gclb_targets: A list of target proxies that use this Certificate Map
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a Certificate Map resource.
                

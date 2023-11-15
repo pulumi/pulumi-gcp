@@ -11,22 +11,22 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['RegionNetworkEndpointGroupArgs', 'RegionNetworkEndpointGroup']
+__all__ = ['RegionNetworkEndpointGroupArrgs', 'RegionNetworkEndpointGroup']
 
 @pulumi.input_type
-class RegionNetworkEndpointGroupArgs:
+calass RegionNetworkEndpointGroupArrgs:
     def __init__(__self__, *,
                  region: pulumi.Input[str],
-                 app_engine: Optional[pulumi.Input['RegionNetworkEndpointGroupAppEngineArgs']] = None,
-                 cloud_function: Optional[pulumi.Input['RegionNetworkEndpointGroupCloudFunctionArgs']] = None,
-                 cloud_run: Optional[pulumi.Input['RegionNetworkEndpointGroupCloudRunArgs']] = None,
+                 app_engine: Optional[pulumi.Input['RegionNetworkEndpointGroupAppEngineArrgs']] = None,
+                 cloud_function: Optional[pulumi.Input['RegionNetworkEndpointGroupCloudFunctionArrgs']] = None,
+                 cloud_run: Optional[pulumi.Input['RegionNetworkEndpointGroupCloudRunArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  psc_target_service: Optional[pulumi.Input[str]] = None,
-                 serverless_deployment: Optional[pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs']] = None,
+                 serverless_deployment: Optional[pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArrgs']] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RegionNetworkEndpointGroup resource.
@@ -34,13 +34,13 @@ class RegionNetworkEndpointGroupArgs:
                
                
                - - -
-        :param pulumi.Input['RegionNetworkEndpointGroupAppEngineArgs'] app_engine: Only valid when networkEndpointType is "SERVERLESS".
+        :param pulumi.Input['RegionNetworkEndpointGroupAppEngineArrgs'] app_engine: Only valid when networkEndpointType is "SERVERLESS".
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
                Structure is documented below.
-        :param pulumi.Input['RegionNetworkEndpointGroupCloudFunctionArgs'] cloud_function: Only valid when networkEndpointType is "SERVERLESS".
+        :param pulumi.Input['RegionNetworkEndpointGroupCloudFunctionArrgs'] cloud_function: Only valid when networkEndpointType is "SERVERLESS".
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
                Structure is documented below.
-        :param pulumi.Input['RegionNetworkEndpointGroupCloudRunArgs'] cloud_run: Only valid when networkEndpointType is "SERVERLESS".
+        :param pulumi.Input['RegionNetworkEndpointGroupCloudRunArrgs'] cloud_run: Only valid when networkEndpointType is "SERVERLESS".
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
@@ -62,7 +62,7 @@ class RegionNetworkEndpointGroupArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] psc_target_service: The target service url used to set up private service connection to
                a Google API or a PSC Producer Service Attachment.
-        :param pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs'] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
+        :param pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArrgs'] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
                serverlessDeployment may be set.
         :param pulumi.Input[str] subnetwork: This field is only used for PSC.
                Optional URL of the subnetwork to which all network endpoints in the NEG belong.
@@ -108,7 +108,7 @@ class RegionNetworkEndpointGroupArgs:
 
     @property
     @pulumi.getter(name="appEngine")
-    def app_engine(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupAppEngineArgs']]:
+    def app_engine(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupAppEngineArrgs']]:
         """
         Only valid when networkEndpointType is "SERVERLESS".
         Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
@@ -117,12 +117,12 @@ class RegionNetworkEndpointGroupArgs:
         return pulumi.get(self, "app_engine")
 
     @app_engine.setter
-    def app_engine(self, value: Optional[pulumi.Input['RegionNetworkEndpointGroupAppEngineArgs']]):
+    def app_engine(self, value: Optional[pulumi.Input['RegionNetworkEndpointGroupAppEngineArrgs']]):
         pulumi.set(self, "app_engine", value)
 
     @property
     @pulumi.getter(name="cloudFunction")
-    def cloud_function(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupCloudFunctionArgs']]:
+    def cloud_function(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupCloudFunctionArrgs']]:
         """
         Only valid when networkEndpointType is "SERVERLESS".
         Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
@@ -131,12 +131,12 @@ class RegionNetworkEndpointGroupArgs:
         return pulumi.get(self, "cloud_function")
 
     @cloud_function.setter
-    def cloud_function(self, value: Optional[pulumi.Input['RegionNetworkEndpointGroupCloudFunctionArgs']]):
+    def cloud_function(self, value: Optional[pulumi.Input['RegionNetworkEndpointGroupCloudFunctionArrgs']]):
         pulumi.set(self, "cloud_function", value)
 
     @property
     @pulumi.getter(name="cloudRun")
-    def cloud_run(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupCloudRunArgs']]:
+    def cloud_run(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupCloudRunArrgs']]:
         """
         Only valid when networkEndpointType is "SERVERLESS".
         Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
@@ -145,7 +145,7 @@ class RegionNetworkEndpointGroupArgs:
         return pulumi.get(self, "cloud_run")
 
     @cloud_run.setter
-    def cloud_run(self, value: Optional[pulumi.Input['RegionNetworkEndpointGroupCloudRunArgs']]):
+    def cloud_run(self, value: Optional[pulumi.Input['RegionNetworkEndpointGroupCloudRunArrgs']]):
         pulumi.set(self, "cloud_run", value)
 
     @property
@@ -235,7 +235,7 @@ class RegionNetworkEndpointGroupArgs:
 
     @property
     @pulumi.getter(name="serverlessDeployment")
-    def serverless_deployment(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs']]:
+    def serverless_deployment(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArrgs']]:
         """
         Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
         serverlessDeployment may be set.
@@ -243,7 +243,7 @@ class RegionNetworkEndpointGroupArgs:
         return pulumi.get(self, "serverless_deployment")
 
     @serverless_deployment.setter
-    def serverless_deployment(self, value: Optional[pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs']]):
+    def serverless_deployment(self, value: Optional[pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArrgs']]):
         pulumi.set(self, "serverless_deployment", value)
 
     @property
@@ -261,11 +261,11 @@ class RegionNetworkEndpointGroupArgs:
 
 
 @pulumi.input_type
-class _RegionNetworkEndpointGroupState:
+calass _RegionNetworkEndpointGroupState:
     def __init__(__self__, *,
-                 app_engine: Optional[pulumi.Input['RegionNetworkEndpointGroupAppEngineArgs']] = None,
-                 cloud_function: Optional[pulumi.Input['RegionNetworkEndpointGroupCloudFunctionArgs']] = None,
-                 cloud_run: Optional[pulumi.Input['RegionNetworkEndpointGroupCloudRunArgs']] = None,
+                 app_engine: Optional[pulumi.Input['RegionNetworkEndpointGroupAppEngineArrgs']] = None,
+                 cloud_function: Optional[pulumi.Input['RegionNetworkEndpointGroupCloudFunctionArrgs']] = None,
+                 cloud_run: Optional[pulumi.Input['RegionNetworkEndpointGroupCloudRunArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -274,17 +274,17 @@ class _RegionNetworkEndpointGroupState:
                  psc_target_service: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 serverless_deployment: Optional[pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs']] = None,
+                 serverless_deployment: Optional[pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArrgs']] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RegionNetworkEndpointGroup resources.
-        :param pulumi.Input['RegionNetworkEndpointGroupAppEngineArgs'] app_engine: Only valid when networkEndpointType is "SERVERLESS".
+        :param pulumi.Input['RegionNetworkEndpointGroupAppEngineArrgs'] app_engine: Only valid when networkEndpointType is "SERVERLESS".
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
                Structure is documented below.
-        :param pulumi.Input['RegionNetworkEndpointGroupCloudFunctionArgs'] cloud_function: Only valid when networkEndpointType is "SERVERLESS".
+        :param pulumi.Input['RegionNetworkEndpointGroupCloudFunctionArrgs'] cloud_function: Only valid when networkEndpointType is "SERVERLESS".
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
                Structure is documented below.
-        :param pulumi.Input['RegionNetworkEndpointGroupCloudRunArgs'] cloud_run: Only valid when networkEndpointType is "SERVERLESS".
+        :param pulumi.Input['RegionNetworkEndpointGroupCloudRunArrgs'] cloud_run: Only valid when networkEndpointType is "SERVERLESS".
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
@@ -311,7 +311,7 @@ class _RegionNetworkEndpointGroupState:
                
                - - -
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs'] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
+        :param pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArrgs'] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
                serverlessDeployment may be set.
         :param pulumi.Input[str] subnetwork: This field is only used for PSC.
                Optional URL of the subnetwork to which all network endpoints in the NEG belong.
@@ -345,7 +345,7 @@ class _RegionNetworkEndpointGroupState:
 
     @property
     @pulumi.getter(name="appEngine")
-    def app_engine(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupAppEngineArgs']]:
+    def app_engine(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupAppEngineArrgs']]:
         """
         Only valid when networkEndpointType is "SERVERLESS".
         Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
@@ -354,12 +354,12 @@ class _RegionNetworkEndpointGroupState:
         return pulumi.get(self, "app_engine")
 
     @app_engine.setter
-    def app_engine(self, value: Optional[pulumi.Input['RegionNetworkEndpointGroupAppEngineArgs']]):
+    def app_engine(self, value: Optional[pulumi.Input['RegionNetworkEndpointGroupAppEngineArrgs']]):
         pulumi.set(self, "app_engine", value)
 
     @property
     @pulumi.getter(name="cloudFunction")
-    def cloud_function(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupCloudFunctionArgs']]:
+    def cloud_function(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupCloudFunctionArrgs']]:
         """
         Only valid when networkEndpointType is "SERVERLESS".
         Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
@@ -368,12 +368,12 @@ class _RegionNetworkEndpointGroupState:
         return pulumi.get(self, "cloud_function")
 
     @cloud_function.setter
-    def cloud_function(self, value: Optional[pulumi.Input['RegionNetworkEndpointGroupCloudFunctionArgs']]):
+    def cloud_function(self, value: Optional[pulumi.Input['RegionNetworkEndpointGroupCloudFunctionArrgs']]):
         pulumi.set(self, "cloud_function", value)
 
     @property
     @pulumi.getter(name="cloudRun")
-    def cloud_run(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupCloudRunArgs']]:
+    def cloud_run(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupCloudRunArrgs']]:
         """
         Only valid when networkEndpointType is "SERVERLESS".
         Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
@@ -382,7 +382,7 @@ class _RegionNetworkEndpointGroupState:
         return pulumi.get(self, "cloud_run")
 
     @cloud_run.setter
-    def cloud_run(self, value: Optional[pulumi.Input['RegionNetworkEndpointGroupCloudRunArgs']]):
+    def cloud_run(self, value: Optional[pulumi.Input['RegionNetworkEndpointGroupCloudRunArrgs']]):
         pulumi.set(self, "cloud_run", value)
 
     @property
@@ -499,7 +499,7 @@ class _RegionNetworkEndpointGroupState:
 
     @property
     @pulumi.getter(name="serverlessDeployment")
-    def serverless_deployment(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs']]:
+    def serverless_deployment(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArrgs']]:
         """
         Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
         serverlessDeployment may be set.
@@ -507,7 +507,7 @@ class _RegionNetworkEndpointGroupState:
         return pulumi.get(self, "serverless_deployment")
 
     @serverless_deployment.setter
-    def serverless_deployment(self, value: Optional[pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs']]):
+    def serverless_deployment(self, value: Optional[pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArrgs']]):
         pulumi.set(self, "serverless_deployment", value)
 
     @property
@@ -524,14 +524,14 @@ class _RegionNetworkEndpointGroupState:
         pulumi.set(self, "subnetwork", value)
 
 
-class RegionNetworkEndpointGroup(pulumi.CustomResource):
+calass RegionNetworkEndpointGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_engine: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupAppEngineArgs']]] = None,
-                 cloud_function: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupCloudFunctionArgs']]] = None,
-                 cloud_run: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupCloudRunArgs']]] = None,
+                 app_engine: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupAppEngineArrgs']]] = None,
+                 cloud_function: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupCloudFunctionArrgs']]] = None,
+                 cloud_run: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupCloudRunArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -539,7 +539,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  psc_target_service: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 serverless_deployment: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupServerlessDeploymentArgs']]] = None,
+                 serverless_deployment: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupServerlessDeploymentArrgs']]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -575,7 +575,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         function_neg_region_network_endpoint_group = gcp.compute.RegionNetworkEndpointGroup("functionNegRegionNetworkEndpointGroup",
             network_endpoint_type="SERVERLESS",
             region="us-central1",
-            cloud_function=gcp.compute.RegionNetworkEndpointGroupCloudFunctionArgs(
+            cloud_function=gcp.compute.RegionNetworkEndpointGroupCloudFunctionArrgs(
                 function=function_neg_function.name,
             ))
         ```
@@ -587,14 +587,14 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
 
         cloudrun_neg_service = gcp.cloudrun.Service("cloudrunNegService",
             location="us-central1",
-            template=gcp.cloudrun.ServiceTemplateArgs(
-                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
-                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+            template=gcp.cloudrun.ServiceTemplateArrgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArrgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArrgs(
                         image="us-docker.pkg.dev/cloudrun/container/hello",
                     )],
                 ),
             ),
-            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+            traffics=[gcp.cloudrun.ServiceTrafficArrgs(
                 percent=100,
                 latest_revision=True,
             )])
@@ -602,7 +602,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         cloudrun_neg_region_network_endpoint_group = gcp.compute.RegionNetworkEndpointGroup("cloudrunNegRegionNetworkEndpointGroup",
             network_endpoint_type="SERVERLESS",
             region="us-central1",
-            cloud_run=gcp.compute.RegionNetworkEndpointGroupCloudRunArgs(
+            cloud_run=gcp.compute.RegionNetworkEndpointGroupCloudRunArrgs(
                 service=cloudrun_neg_service.name,
             ))
         ```
@@ -620,36 +620,36 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             version_id="v1",
             service="appengine-network-endpoint-group",
             runtime="nodejs",
-            entrypoint=gcp.appengine.FlexibleAppVersionEntrypointArgs(
+            entrypoint=gcp.appengine.FlexibleAppVersionEntrypointArrgs(
                 shell="node ./app.js",
             ),
-            deployment=gcp.appengine.FlexibleAppVersionDeploymentArgs(
-                zip=gcp.appengine.FlexibleAppVersionDeploymentZipArgs(
+            deployment=gcp.appengine.FlexibleAppVersionDeploymentArrgs(
+                zip=gcp.appengine.FlexibleAppVersionDeploymentZipArrgs(
                     source_url=pulumi.Output.all(appengine_neg_bucket.name, appengine_neg_bucket_object.name).apply(lambda appengineNegBucketName, appengineNegBucketObjectName: f"https://storage.googleapis.com/{appengine_neg_bucket_name}/{appengine_neg_bucket_object_name}"),
                 ),
             ),
-            liveness_check=gcp.appengine.FlexibleAppVersionLivenessCheckArgs(
+            liveness_check=gcp.appengine.FlexibleAppVersionLivenessCheckArrgs(
                 path="/",
             ),
-            readiness_check=gcp.appengine.FlexibleAppVersionReadinessCheckArgs(
+            readiness_check=gcp.appengine.FlexibleAppVersionReadinessCheckArrgs(
                 path="/",
             ),
             env_variables={
                 "port": "8080",
             },
-            handlers=[gcp.appengine.FlexibleAppVersionHandlerArgs(
+            handlers=[gcp.appengine.FlexibleAppVersionHandlerArrgs(
                 url_regex=".*\\\\/my-path\\\\/*",
                 security_level="SECURE_ALWAYS",
                 login="LOGIN_REQUIRED",
                 auth_fail_action="AUTH_FAIL_ACTION_REDIRECT",
-                static_files=gcp.appengine.FlexibleAppVersionHandlerStaticFilesArgs(
+                static_files=gcp.appengine.FlexibleAppVersionHandlerStaticFilesArrgs(
                     path="my-other-path",
                     upload_path_regex=".*\\\\/my-path\\\\/*",
                 ),
             )],
-            automatic_scaling=gcp.appengine.FlexibleAppVersionAutomaticScalingArgs(
+            automatic_scaling=gcp.appengine.FlexibleAppVersionAutomaticScalingArrgs(
                 cool_down_period="120s",
-                cpu_utilization=gcp.appengine.FlexibleAppVersionAutomaticScalingCpuUtilizationArgs(
+                cpu_utilization=gcp.appengine.FlexibleAppVersionAutomaticScalingCpuUtilizationArrgs(
                     target_utilization=0.5,
                 ),
             ),
@@ -658,7 +658,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         appengine_neg_region_network_endpoint_group = gcp.compute.RegionNetworkEndpointGroup("appengineNegRegionNetworkEndpointGroup",
             network_endpoint_type="SERVERLESS",
             region="us-central1",
-            app_engine=gcp.compute.RegionNetworkEndpointGroupAppEngineArgs(
+            app_engine=gcp.compute.RegionNetworkEndpointGroupAppEngineArrgs(
                 service=appengine_neg_flexible_app_version.service,
                 version=appengine_neg_flexible_app_version.version_id,
             ))
@@ -705,13 +705,13 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupAppEngineArgs']] app_engine: Only valid when networkEndpointType is "SERVERLESS".
+        :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupAppEngineArrgs']] app_engine: Only valid when networkEndpointType is "SERVERLESS".
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupCloudFunctionArgs']] cloud_function: Only valid when networkEndpointType is "SERVERLESS".
+        :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupCloudFunctionArrgs']] cloud_function: Only valid when networkEndpointType is "SERVERLESS".
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupCloudRunArgs']] cloud_run: Only valid when networkEndpointType is "SERVERLESS".
+        :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupCloudRunArrgs']] cloud_run: Only valid when networkEndpointType is "SERVERLESS".
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
@@ -737,7 +737,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupServerlessDeploymentArgs']] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
+        :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupServerlessDeploymentArrgs']] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
                serverlessDeployment may be set.
         :param pulumi.Input[str] subnetwork: This field is only used for PSC.
                Optional URL of the subnetwork to which all network endpoints in the NEG belong.
@@ -746,7 +746,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RegionNetworkEndpointGroupArgs,
+                 args: RegionNetworkEndpointGroupArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A regional NEG that can support Serverless Products.
@@ -781,7 +781,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         function_neg_region_network_endpoint_group = gcp.compute.RegionNetworkEndpointGroup("functionNegRegionNetworkEndpointGroup",
             network_endpoint_type="SERVERLESS",
             region="us-central1",
-            cloud_function=gcp.compute.RegionNetworkEndpointGroupCloudFunctionArgs(
+            cloud_function=gcp.compute.RegionNetworkEndpointGroupCloudFunctionArrgs(
                 function=function_neg_function.name,
             ))
         ```
@@ -793,14 +793,14 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
 
         cloudrun_neg_service = gcp.cloudrun.Service("cloudrunNegService",
             location="us-central1",
-            template=gcp.cloudrun.ServiceTemplateArgs(
-                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
-                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+            template=gcp.cloudrun.ServiceTemplateArrgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArrgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArrgs(
                         image="us-docker.pkg.dev/cloudrun/container/hello",
                     )],
                 ),
             ),
-            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+            traffics=[gcp.cloudrun.ServiceTrafficArrgs(
                 percent=100,
                 latest_revision=True,
             )])
@@ -808,7 +808,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         cloudrun_neg_region_network_endpoint_group = gcp.compute.RegionNetworkEndpointGroup("cloudrunNegRegionNetworkEndpointGroup",
             network_endpoint_type="SERVERLESS",
             region="us-central1",
-            cloud_run=gcp.compute.RegionNetworkEndpointGroupCloudRunArgs(
+            cloud_run=gcp.compute.RegionNetworkEndpointGroupCloudRunArrgs(
                 service=cloudrun_neg_service.name,
             ))
         ```
@@ -826,36 +826,36 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             version_id="v1",
             service="appengine-network-endpoint-group",
             runtime="nodejs",
-            entrypoint=gcp.appengine.FlexibleAppVersionEntrypointArgs(
+            entrypoint=gcp.appengine.FlexibleAppVersionEntrypointArrgs(
                 shell="node ./app.js",
             ),
-            deployment=gcp.appengine.FlexibleAppVersionDeploymentArgs(
-                zip=gcp.appengine.FlexibleAppVersionDeploymentZipArgs(
+            deployment=gcp.appengine.FlexibleAppVersionDeploymentArrgs(
+                zip=gcp.appengine.FlexibleAppVersionDeploymentZipArrgs(
                     source_url=pulumi.Output.all(appengine_neg_bucket.name, appengine_neg_bucket_object.name).apply(lambda appengineNegBucketName, appengineNegBucketObjectName: f"https://storage.googleapis.com/{appengine_neg_bucket_name}/{appengine_neg_bucket_object_name}"),
                 ),
             ),
-            liveness_check=gcp.appengine.FlexibleAppVersionLivenessCheckArgs(
+            liveness_check=gcp.appengine.FlexibleAppVersionLivenessCheckArrgs(
                 path="/",
             ),
-            readiness_check=gcp.appengine.FlexibleAppVersionReadinessCheckArgs(
+            readiness_check=gcp.appengine.FlexibleAppVersionReadinessCheckArrgs(
                 path="/",
             ),
             env_variables={
                 "port": "8080",
             },
-            handlers=[gcp.appengine.FlexibleAppVersionHandlerArgs(
+            handlers=[gcp.appengine.FlexibleAppVersionHandlerArrgs(
                 url_regex=".*\\\\/my-path\\\\/*",
                 security_level="SECURE_ALWAYS",
                 login="LOGIN_REQUIRED",
                 auth_fail_action="AUTH_FAIL_ACTION_REDIRECT",
-                static_files=gcp.appengine.FlexibleAppVersionHandlerStaticFilesArgs(
+                static_files=gcp.appengine.FlexibleAppVersionHandlerStaticFilesArrgs(
                     path="my-other-path",
                     upload_path_regex=".*\\\\/my-path\\\\/*",
                 ),
             )],
-            automatic_scaling=gcp.appengine.FlexibleAppVersionAutomaticScalingArgs(
+            automatic_scaling=gcp.appengine.FlexibleAppVersionAutomaticScalingArrgs(
                 cool_down_period="120s",
-                cpu_utilization=gcp.appengine.FlexibleAppVersionAutomaticScalingCpuUtilizationArgs(
+                cpu_utilization=gcp.appengine.FlexibleAppVersionAutomaticScalingCpuUtilizationArrgs(
                     target_utilization=0.5,
                 ),
             ),
@@ -864,7 +864,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         appengine_neg_region_network_endpoint_group = gcp.compute.RegionNetworkEndpointGroup("appengineNegRegionNetworkEndpointGroup",
             network_endpoint_type="SERVERLESS",
             region="us-central1",
-            app_engine=gcp.compute.RegionNetworkEndpointGroupAppEngineArgs(
+            app_engine=gcp.compute.RegionNetworkEndpointGroupAppEngineArrgs(
                 service=appengine_neg_flexible_app_version.service,
                 version=appengine_neg_flexible_app_version.version_id,
             ))
@@ -910,12 +910,12 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param RegionNetworkEndpointGroupArgs args: The arguments to use to populate this resource's properties.
+        :param RegionNetworkEndpointGroupArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RegionNetworkEndpointGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(RegionNetworkEndpointGroupArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -924,9 +924,9 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_engine: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupAppEngineArgs']]] = None,
-                 cloud_function: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupCloudFunctionArgs']]] = None,
-                 cloud_run: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupCloudRunArgs']]] = None,
+                 app_engine: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupAppEngineArrgs']]] = None,
+                 cloud_function: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupCloudFunctionArrgs']]] = None,
+                 cloud_run: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupCloudRunArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -934,7 +934,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  psc_target_service: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 serverless_deployment: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupServerlessDeploymentArgs']]] = None,
+                 serverless_deployment: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupServerlessDeploymentArrgs']]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -943,7 +943,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RegionNetworkEndpointGroupArgs.__new__(RegionNetworkEndpointGroupArgs)
+            __props__ = RegionNetworkEndpointGroupArrgs.__new__(RegionNetworkEndpointGroupArrgs)
 
             __props__.__dict__["app_engine"] = app_engine
             __props__.__dict__["cloud_function"] = cloud_function
@@ -970,9 +970,9 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app_engine: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupAppEngineArgs']]] = None,
-            cloud_function: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupCloudFunctionArgs']]] = None,
-            cloud_run: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupCloudRunArgs']]] = None,
+            app_engine: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupAppEngineArrgs']]] = None,
+            cloud_function: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupCloudFunctionArrgs']]] = None,
+            cloud_run: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupCloudRunArrgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
@@ -981,7 +981,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             psc_target_service: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            serverless_deployment: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupServerlessDeploymentArgs']]] = None,
+            serverless_deployment: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupServerlessDeploymentArrgs']]] = None,
             subnetwork: Optional[pulumi.Input[str]] = None) -> 'RegionNetworkEndpointGroup':
         """
         Get an existing RegionNetworkEndpointGroup resource's state with the given name, id, and optional extra
@@ -990,13 +990,13 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupAppEngineArgs']] app_engine: Only valid when networkEndpointType is "SERVERLESS".
+        :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupAppEngineArrgs']] app_engine: Only valid when networkEndpointType is "SERVERLESS".
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupCloudFunctionArgs']] cloud_function: Only valid when networkEndpointType is "SERVERLESS".
+        :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupCloudFunctionArrgs']] cloud_function: Only valid when networkEndpointType is "SERVERLESS".
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupCloudRunArgs']] cloud_run: Only valid when networkEndpointType is "SERVERLESS".
+        :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupCloudRunArrgs']] cloud_run: Only valid when networkEndpointType is "SERVERLESS".
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
@@ -1023,7 +1023,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupServerlessDeploymentArgs']] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
+        :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupServerlessDeploymentArrgs']] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
                serverlessDeployment may be set.
         :param pulumi.Input[str] subnetwork: This field is only used for PSC.
                Optional URL of the subnetwork to which all network endpoints in the NEG belong.

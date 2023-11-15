@@ -11,17 +11,17 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ServiceNetworkSettingsArgs', 'ServiceNetworkSettings']
+__all__ = ['ServiceNetworkSettingsArrgs', 'ServiceNetworkSettings']
 
 @pulumi.input_type
-class ServiceNetworkSettingsArgs:
+calass ServiceNetworkSettingsArrgs:
     def __init__(__self__, *,
-                 network_settings: pulumi.Input['ServiceNetworkSettingsNetworkSettingsArgs'],
+                 network_settings: pulumi.Input['ServiceNetworkSettingsNetworkSettingsArrgs'],
                  service: pulumi.Input[str],
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServiceNetworkSettings resource.
-        :param pulumi.Input['ServiceNetworkSettingsNetworkSettingsArgs'] network_settings: Ingress settings for this service. Will apply to all versions.
+        :param pulumi.Input['ServiceNetworkSettingsNetworkSettingsArrgs'] network_settings: Ingress settings for this service. Will apply to all versions.
                Structure is documented below.
         :param pulumi.Input[str] service: The name of the service these settings apply to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -34,7 +34,7 @@ class ServiceNetworkSettingsArgs:
 
     @property
     @pulumi.getter(name="networkSettings")
-    def network_settings(self) -> pulumi.Input['ServiceNetworkSettingsNetworkSettingsArgs']:
+    def network_settings(self) -> pulumi.Input['ServiceNetworkSettingsNetworkSettingsArrgs']:
         """
         Ingress settings for this service. Will apply to all versions.
         Structure is documented below.
@@ -42,7 +42,7 @@ class ServiceNetworkSettingsArgs:
         return pulumi.get(self, "network_settings")
 
     @network_settings.setter
-    def network_settings(self, value: pulumi.Input['ServiceNetworkSettingsNetworkSettingsArgs']):
+    def network_settings(self, value: pulumi.Input['ServiceNetworkSettingsNetworkSettingsArrgs']):
         pulumi.set(self, "network_settings", value)
 
     @property
@@ -72,14 +72,14 @@ class ServiceNetworkSettingsArgs:
 
 
 @pulumi.input_type
-class _ServiceNetworkSettingsState:
+calass _ServiceNetworkSettingsState:
     def __init__(__self__, *,
-                 network_settings: Optional[pulumi.Input['ServiceNetworkSettingsNetworkSettingsArgs']] = None,
+                 network_settings: Optional[pulumi.Input['ServiceNetworkSettingsNetworkSettingsArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServiceNetworkSettings resources.
-        :param pulumi.Input['ServiceNetworkSettingsNetworkSettingsArgs'] network_settings: Ingress settings for this service. Will apply to all versions.
+        :param pulumi.Input['ServiceNetworkSettingsNetworkSettingsArrgs'] network_settings: Ingress settings for this service. Will apply to all versions.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -94,7 +94,7 @@ class _ServiceNetworkSettingsState:
 
     @property
     @pulumi.getter(name="networkSettings")
-    def network_settings(self) -> Optional[pulumi.Input['ServiceNetworkSettingsNetworkSettingsArgs']]:
+    def network_settings(self) -> Optional[pulumi.Input['ServiceNetworkSettingsNetworkSettingsArrgs']]:
         """
         Ingress settings for this service. Will apply to all versions.
         Structure is documented below.
@@ -102,7 +102,7 @@ class _ServiceNetworkSettingsState:
         return pulumi.get(self, "network_settings")
 
     @network_settings.setter
-    def network_settings(self, value: Optional[pulumi.Input['ServiceNetworkSettingsNetworkSettingsArgs']]):
+    def network_settings(self, value: Optional[pulumi.Input['ServiceNetworkSettingsNetworkSettingsArrgs']]):
         pulumi.set(self, "network_settings", value)
 
     @property
@@ -131,12 +131,12 @@ class _ServiceNetworkSettingsState:
         pulumi.set(self, "service", value)
 
 
-class ServiceNetworkSettings(pulumi.CustomResource):
+calass ServiceNetworkSettings(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 network_settings: Optional[pulumi.Input[pulumi.InputType['ServiceNetworkSettingsNetworkSettingsArgs']]] = None,
+                 network_settings: Optional[pulumi.Input[pulumi.InputType['ServiceNetworkSettingsNetworkSettingsArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -163,11 +163,11 @@ class ServiceNetworkSettings(pulumi.CustomResource):
             service="internalapp",
             delete_service_on_destroy=True,
             runtime="nodejs10",
-            entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
+            entrypoint=gcp.appengine.StandardAppVersionEntrypointArrgs(
                 shell="node ./app.js",
             ),
-            deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
-                zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
+            deployment=gcp.appengine.StandardAppVersionDeploymentArrgs(
+                zip=gcp.appengine.StandardAppVersionDeploymentZipArrgs(
                     source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
                 ),
             ),
@@ -176,7 +176,7 @@ class ServiceNetworkSettings(pulumi.CustomResource):
             })
         internalapp_service_network_settings = gcp.appengine.ServiceNetworkSettings("internalappServiceNetworkSettings",
             service=internalapp_standard_app_version.service,
-            network_settings=gcp.appengine.ServiceNetworkSettingsNetworkSettingsArgs(
+            network_settings=gcp.appengine.ServiceNetworkSettingsNetworkSettingsArrgs(
                 ingress_traffic_allowed="INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY",
             ))
         ```
@@ -207,7 +207,7 @@ class ServiceNetworkSettings(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ServiceNetworkSettingsNetworkSettingsArgs']] network_settings: Ingress settings for this service. Will apply to all versions.
+        :param pulumi.Input[pulumi.InputType['ServiceNetworkSettingsNetworkSettingsArrgs']] network_settings: Ingress settings for this service. Will apply to all versions.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -217,7 +217,7 @@ class ServiceNetworkSettings(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ServiceNetworkSettingsArgs,
+                 args: ServiceNetworkSettingsArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A NetworkSettings resource is a container for ingress settings for a version or service.
@@ -242,11 +242,11 @@ class ServiceNetworkSettings(pulumi.CustomResource):
             service="internalapp",
             delete_service_on_destroy=True,
             runtime="nodejs10",
-            entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
+            entrypoint=gcp.appengine.StandardAppVersionEntrypointArrgs(
                 shell="node ./app.js",
             ),
-            deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
-                zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
+            deployment=gcp.appengine.StandardAppVersionDeploymentArrgs(
+                zip=gcp.appengine.StandardAppVersionDeploymentZipArrgs(
                     source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
                 ),
             ),
@@ -255,7 +255,7 @@ class ServiceNetworkSettings(pulumi.CustomResource):
             })
         internalapp_service_network_settings = gcp.appengine.ServiceNetworkSettings("internalappServiceNetworkSettings",
             service=internalapp_standard_app_version.service,
-            network_settings=gcp.appengine.ServiceNetworkSettingsNetworkSettingsArgs(
+            network_settings=gcp.appengine.ServiceNetworkSettingsNetworkSettingsArrgs(
                 ingress_traffic_allowed="INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY",
             ))
         ```
@@ -285,12 +285,12 @@ class ServiceNetworkSettings(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ServiceNetworkSettingsArgs args: The arguments to use to populate this resource's properties.
+        :param ServiceNetworkSettingsArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ServiceNetworkSettingsArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ServiceNetworkSettingsArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -299,7 +299,7 @@ class ServiceNetworkSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 network_settings: Optional[pulumi.Input[pulumi.InputType['ServiceNetworkSettingsNetworkSettingsArgs']]] = None,
+                 network_settings: Optional[pulumi.Input[pulumi.InputType['ServiceNetworkSettingsNetworkSettingsArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -309,7 +309,7 @@ class ServiceNetworkSettings(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ServiceNetworkSettingsArgs.__new__(ServiceNetworkSettingsArgs)
+            __props__ = ServiceNetworkSettingsArrgs.__new__(ServiceNetworkSettingsArrgs)
 
             if network_settings is None and not opts.urn:
                 raise TypeError("Missing required property 'network_settings'")
@@ -328,7 +328,7 @@ class ServiceNetworkSettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            network_settings: Optional[pulumi.Input[pulumi.InputType['ServiceNetworkSettingsNetworkSettingsArgs']]] = None,
+            network_settings: Optional[pulumi.Input[pulumi.InputType['ServiceNetworkSettingsNetworkSettingsArrgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             service: Optional[pulumi.Input[str]] = None) -> 'ServiceNetworkSettings':
         """
@@ -338,7 +338,7 @@ class ServiceNetworkSettings(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ServiceNetworkSettingsNetworkSettingsArgs']] network_settings: Ingress settings for this service. Will apply to all versions.
+        :param pulumi.Input[pulumi.InputType['ServiceNetworkSettingsNetworkSettingsArrgs']] network_settings: Ingress settings for this service. Will apply to all versions.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

@@ -11,20 +11,20 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['RegionCommitmentArgs', 'RegionCommitment']
+__all__ = ['RegionCommitmentArrgs', 'RegionCommitment']
 
 @pulumi.input_type
-class RegionCommitmentArgs:
+calass RegionCommitmentArrgs:
     def __init__(__self__, *,
                  plan: pulumi.Input[str],
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 license_resource: Optional[pulumi.Input['RegionCommitmentLicenseResourceArgs']] = None,
+                 license_resource: Optional[pulumi.Input['RegionCommitmentLicenseResourceArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArgs']]]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArrgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RegionCommitment resource.
@@ -44,7 +44,7 @@ class RegionCommitmentArgs:
                Note that only MACHINE commitments should have a Type specified.
                Possible values are: `LICENSE`, `MACHINE`.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input['RegionCommitmentLicenseResourceArgs'] license_resource: The license specification required as part of a license commitment.
+        :param pulumi.Input['RegionCommitmentLicenseResourceArrgs'] license_resource: The license specification required as part of a license commitment.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
                the regular expression `a-z?` which means the
@@ -54,7 +54,7 @@ class RegionCommitmentArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: URL of the region where this commitment may be used.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArgs']]] resources: A list of commitment amounts for particular resources.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArrgs']]] resources: A list of commitment amounts for particular resources.
                Note that VCPU and MEMORY resource commitments must occur together.
                Structure is documented below.
         :param pulumi.Input[str] type: The type of commitment, which affects the discount rate and the eligible resources.
@@ -145,7 +145,7 @@ class RegionCommitmentArgs:
 
     @property
     @pulumi.getter(name="licenseResource")
-    def license_resource(self) -> Optional[pulumi.Input['RegionCommitmentLicenseResourceArgs']]:
+    def license_resource(self) -> Optional[pulumi.Input['RegionCommitmentLicenseResourceArrgs']]:
         """
         The license specification required as part of a license commitment.
         Structure is documented below.
@@ -153,7 +153,7 @@ class RegionCommitmentArgs:
         return pulumi.get(self, "license_resource")
 
     @license_resource.setter
-    def license_resource(self, value: Optional[pulumi.Input['RegionCommitmentLicenseResourceArgs']]):
+    def license_resource(self, value: Optional[pulumi.Input['RegionCommitmentLicenseResourceArrgs']]):
         pulumi.set(self, "license_resource", value)
 
     @property
@@ -199,7 +199,7 @@ class RegionCommitmentArgs:
 
     @property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArgs']]]]:
+    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArrgs']]]]:
         """
         A list of commitment amounts for particular resources.
         Note that VCPU and MEMORY resource commitments must occur together.
@@ -208,7 +208,7 @@ class RegionCommitmentArgs:
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArgs']]]]):
+    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArrgs']]]]):
         pulumi.set(self, "resources", value)
 
     @property
@@ -229,7 +229,7 @@ class RegionCommitmentArgs:
 
 
 @pulumi.input_type
-class _RegionCommitmentState:
+calass _RegionCommitmentState:
     def __init__(__self__, *,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
@@ -237,12 +237,12 @@ class _RegionCommitmentState:
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  end_timestamp: Optional[pulumi.Input[str]] = None,
-                 license_resource: Optional[pulumi.Input['RegionCommitmentLicenseResourceArgs']] = None,
+                 license_resource: Optional[pulumi.Input['RegionCommitmentLicenseResourceArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArgs']]]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArrgs']]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  start_timestamp: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -263,7 +263,7 @@ class _RegionCommitmentState:
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] end_timestamp: Commitment end time in RFC3339 text format.
-        :param pulumi.Input['RegionCommitmentLicenseResourceArgs'] license_resource: The license specification required as part of a license commitment.
+        :param pulumi.Input['RegionCommitmentLicenseResourceArrgs'] license_resource: The license specification required as part of a license commitment.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
                the regular expression `a-z?` which means the
@@ -279,7 +279,7 @@ class _RegionCommitmentState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: URL of the region where this commitment may be used.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArgs']]] resources: A list of commitment amounts for particular resources.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArrgs']]] resources: A list of commitment amounts for particular resources.
                Note that VCPU and MEMORY resource commitments must occur together.
                Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -409,7 +409,7 @@ class _RegionCommitmentState:
 
     @property
     @pulumi.getter(name="licenseResource")
-    def license_resource(self) -> Optional[pulumi.Input['RegionCommitmentLicenseResourceArgs']]:
+    def license_resource(self) -> Optional[pulumi.Input['RegionCommitmentLicenseResourceArrgs']]:
         """
         The license specification required as part of a license commitment.
         Structure is documented below.
@@ -417,7 +417,7 @@ class _RegionCommitmentState:
         return pulumi.get(self, "license_resource")
 
     @license_resource.setter
-    def license_resource(self, value: Optional[pulumi.Input['RegionCommitmentLicenseResourceArgs']]):
+    def license_resource(self, value: Optional[pulumi.Input['RegionCommitmentLicenseResourceArrgs']]):
         pulumi.set(self, "license_resource", value)
 
     @property
@@ -480,7 +480,7 @@ class _RegionCommitmentState:
 
     @property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArgs']]]]:
+    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArrgs']]]]:
         """
         A list of commitment amounts for particular resources.
         Note that VCPU and MEMORY resource commitments must occur together.
@@ -489,7 +489,7 @@ class _RegionCommitmentState:
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArgs']]]]):
+    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArrgs']]]]):
         pulumi.set(self, "resources", value)
 
     @property
@@ -558,7 +558,7 @@ class _RegionCommitmentState:
         pulumi.set(self, "type", value)
 
 
-class RegionCommitment(pulumi.CustomResource):
+calass RegionCommitment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -566,12 +566,12 @@ class RegionCommitment(pulumi.CustomResource):
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 license_resource: Optional[pulumi.Input[pulumi.InputType['RegionCommitmentLicenseResourceArgs']]] = None,
+                 license_resource: Optional[pulumi.Input[pulumi.InputType['RegionCommitmentLicenseResourceArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionCommitmentResourceArgs']]]]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionCommitmentResourceArrgs']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -597,11 +597,11 @@ class RegionCommitment(pulumi.CustomResource):
         foobar = gcp.compute.RegionCommitment("foobar",
             plan="THIRTY_SIX_MONTH",
             resources=[
-                gcp.compute.RegionCommitmentResourceArgs(
+                gcp.compute.RegionCommitmentResourceArrgs(
                     amount="4",
                     type="VCPU",
                 ),
-                gcp.compute.RegionCommitmentResourceArgs(
+                gcp.compute.RegionCommitmentResourceArrgs(
                     amount="9",
                     type="MEMORY",
                 ),
@@ -619,11 +619,11 @@ class RegionCommitment(pulumi.CustomResource):
             description="some description",
             plan="THIRTY_SIX_MONTH",
             resources=[
-                gcp.compute.RegionCommitmentResourceArgs(
+                gcp.compute.RegionCommitmentResourceArrgs(
                     amount="4",
                     type="VCPU",
                 ),
-                gcp.compute.RegionCommitmentResourceArgs(
+                gcp.compute.RegionCommitmentResourceArrgs(
                     amount="9",
                     type="MEMORY",
                 ),
@@ -671,7 +671,7 @@ class RegionCommitment(pulumi.CustomResource):
                Note that only MACHINE commitments should have a Type specified.
                Possible values are: `LICENSE`, `MACHINE`.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[pulumi.InputType['RegionCommitmentLicenseResourceArgs']] license_resource: The license specification required as part of a license commitment.
+        :param pulumi.Input[pulumi.InputType['RegionCommitmentLicenseResourceArrgs']] license_resource: The license specification required as part of a license commitment.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
                the regular expression `a-z?` which means the
@@ -687,7 +687,7 @@ class RegionCommitment(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: URL of the region where this commitment may be used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionCommitmentResourceArgs']]]] resources: A list of commitment amounts for particular resources.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionCommitmentResourceArrgs']]]] resources: A list of commitment amounts for particular resources.
                Note that VCPU and MEMORY resource commitments must occur together.
                Structure is documented below.
         :param pulumi.Input[str] type: The type of commitment, which affects the discount rate and the eligible resources.
@@ -700,7 +700,7 @@ class RegionCommitment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RegionCommitmentArgs,
+                 args: RegionCommitmentArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a regional Commitment resource.
@@ -725,11 +725,11 @@ class RegionCommitment(pulumi.CustomResource):
         foobar = gcp.compute.RegionCommitment("foobar",
             plan="THIRTY_SIX_MONTH",
             resources=[
-                gcp.compute.RegionCommitmentResourceArgs(
+                gcp.compute.RegionCommitmentResourceArrgs(
                     amount="4",
                     type="VCPU",
                 ),
-                gcp.compute.RegionCommitmentResourceArgs(
+                gcp.compute.RegionCommitmentResourceArrgs(
                     amount="9",
                     type="MEMORY",
                 ),
@@ -747,11 +747,11 @@ class RegionCommitment(pulumi.CustomResource):
             description="some description",
             plan="THIRTY_SIX_MONTH",
             resources=[
-                gcp.compute.RegionCommitmentResourceArgs(
+                gcp.compute.RegionCommitmentResourceArrgs(
                     amount="4",
                     type="VCPU",
                 ),
-                gcp.compute.RegionCommitmentResourceArgs(
+                gcp.compute.RegionCommitmentResourceArrgs(
                     amount="9",
                     type="MEMORY",
                 ),
@@ -788,12 +788,12 @@ class RegionCommitment(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param RegionCommitmentArgs args: The arguments to use to populate this resource's properties.
+        :param RegionCommitmentArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RegionCommitmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(RegionCommitmentArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -805,12 +805,12 @@ class RegionCommitment(pulumi.CustomResource):
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 license_resource: Optional[pulumi.Input[pulumi.InputType['RegionCommitmentLicenseResourceArgs']]] = None,
+                 license_resource: Optional[pulumi.Input[pulumi.InputType['RegionCommitmentLicenseResourceArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionCommitmentResourceArgs']]]]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionCommitmentResourceArrgs']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -819,7 +819,7 @@ class RegionCommitment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RegionCommitmentArgs.__new__(RegionCommitmentArgs)
+            __props__ = RegionCommitmentArrgs.__new__(RegionCommitmentArrgs)
 
             __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["category"] = category
@@ -856,12 +856,12 @@ class RegionCommitment(pulumi.CustomResource):
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             end_timestamp: Optional[pulumi.Input[str]] = None,
-            license_resource: Optional[pulumi.Input[pulumi.InputType['RegionCommitmentLicenseResourceArgs']]] = None,
+            license_resource: Optional[pulumi.Input[pulumi.InputType['RegionCommitmentLicenseResourceArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             plan: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionCommitmentResourceArgs']]]]] = None,
+            resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionCommitmentResourceArrgs']]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             start_timestamp: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
@@ -887,7 +887,7 @@ class RegionCommitment(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] end_timestamp: Commitment end time in RFC3339 text format.
-        :param pulumi.Input[pulumi.InputType['RegionCommitmentLicenseResourceArgs']] license_resource: The license specification required as part of a license commitment.
+        :param pulumi.Input[pulumi.InputType['RegionCommitmentLicenseResourceArrgs']] license_resource: The license specification required as part of a license commitment.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
                the regular expression `a-z?` which means the
@@ -903,7 +903,7 @@ class RegionCommitment(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: URL of the region where this commitment may be used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionCommitmentResourceArgs']]]] resources: A list of commitment amounts for particular resources.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionCommitmentResourceArrgs']]]] resources: A list of commitment amounts for particular resources.
                Note that VCPU and MEMORY resource commitments must occur together.
                Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.

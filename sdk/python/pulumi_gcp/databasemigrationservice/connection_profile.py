@@ -11,20 +11,20 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ConnectionProfileArgs', 'ConnectionProfile']
+__all__ = ['ConnectionProfileArrgs', 'ConnectionProfile']
 
 @pulumi.input_type
-class ConnectionProfileArgs:
+calass ConnectionProfileArrgs:
     def __init__(__self__, *,
                  connection_profile_id: pulumi.Input[str],
-                 alloydb: Optional[pulumi.Input['ConnectionProfileAlloydbArgs']] = None,
-                 cloudsql: Optional[pulumi.Input['ConnectionProfileCloudsqlArgs']] = None,
+                 alloydb: Optional[pulumi.Input['ConnectionProfileAlloydbArrgs']] = None,
+                 cloudsql: Optional[pulumi.Input['ConnectionProfileCloudsqlArrgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 mysql: Optional[pulumi.Input['ConnectionProfileMysqlArgs']] = None,
-                 oracle: Optional[pulumi.Input['ConnectionProfileOracleArgs']] = None,
-                 postgresql: Optional[pulumi.Input['ConnectionProfilePostgresqlArgs']] = None,
+                 mysql: Optional[pulumi.Input['ConnectionProfileMysqlArrgs']] = None,
+                 oracle: Optional[pulumi.Input['ConnectionProfileOracleArrgs']] = None,
+                 postgresql: Optional[pulumi.Input['ConnectionProfilePostgresqlArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ConnectionProfile resource.
@@ -32,9 +32,9 @@ class ConnectionProfileArgs:
                
                
                - - -
-        :param pulumi.Input['ConnectionProfileAlloydbArgs'] alloydb: Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
+        :param pulumi.Input['ConnectionProfileAlloydbArrgs'] alloydb: Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
                Structure is documented below.
-        :param pulumi.Input['ConnectionProfileCloudsqlArgs'] cloudsql: Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
+        :param pulumi.Input['ConnectionProfileCloudsqlArrgs'] cloudsql: Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
                Structure is documented below.
         :param pulumi.Input[str] display_name: The connection profile display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
@@ -42,11 +42,11 @@ class ConnectionProfileArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the connection profile should reside.
-        :param pulumi.Input['ConnectionProfileMysqlArgs'] mysql: Specifies connection parameters required specifically for MySQL databases.
+        :param pulumi.Input['ConnectionProfileMysqlArrgs'] mysql: Specifies connection parameters required specifically for MySQL databases.
                Structure is documented below.
-        :param pulumi.Input['ConnectionProfileOracleArgs'] oracle: Specifies connection parameters required specifically for Oracle databases.
+        :param pulumi.Input['ConnectionProfileOracleArrgs'] oracle: Specifies connection parameters required specifically for Oracle databases.
                Structure is documented below.
-        :param pulumi.Input['ConnectionProfilePostgresqlArgs'] postgresql: Specifies connection parameters required specifically for PostgreSQL databases.
+        :param pulumi.Input['ConnectionProfilePostgresqlArrgs'] postgresql: Specifies connection parameters required specifically for PostgreSQL databases.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -88,7 +88,7 @@ class ConnectionProfileArgs:
 
     @property
     @pulumi.getter
-    def alloydb(self) -> Optional[pulumi.Input['ConnectionProfileAlloydbArgs']]:
+    def alloydb(self) -> Optional[pulumi.Input['ConnectionProfileAlloydbArrgs']]:
         """
         Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
         Structure is documented below.
@@ -96,12 +96,12 @@ class ConnectionProfileArgs:
         return pulumi.get(self, "alloydb")
 
     @alloydb.setter
-    def alloydb(self, value: Optional[pulumi.Input['ConnectionProfileAlloydbArgs']]):
+    def alloydb(self, value: Optional[pulumi.Input['ConnectionProfileAlloydbArrgs']]):
         pulumi.set(self, "alloydb", value)
 
     @property
     @pulumi.getter
-    def cloudsql(self) -> Optional[pulumi.Input['ConnectionProfileCloudsqlArgs']]:
+    def cloudsql(self) -> Optional[pulumi.Input['ConnectionProfileCloudsqlArrgs']]:
         """
         Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
         Structure is documented below.
@@ -109,7 +109,7 @@ class ConnectionProfileArgs:
         return pulumi.get(self, "cloudsql")
 
     @cloudsql.setter
-    def cloudsql(self, value: Optional[pulumi.Input['ConnectionProfileCloudsqlArgs']]):
+    def cloudsql(self, value: Optional[pulumi.Input['ConnectionProfileCloudsqlArrgs']]):
         pulumi.set(self, "cloudsql", value)
 
     @property
@@ -153,7 +153,7 @@ class ConnectionProfileArgs:
 
     @property
     @pulumi.getter
-    def mysql(self) -> Optional[pulumi.Input['ConnectionProfileMysqlArgs']]:
+    def mysql(self) -> Optional[pulumi.Input['ConnectionProfileMysqlArrgs']]:
         """
         Specifies connection parameters required specifically for MySQL databases.
         Structure is documented below.
@@ -161,12 +161,12 @@ class ConnectionProfileArgs:
         return pulumi.get(self, "mysql")
 
     @mysql.setter
-    def mysql(self, value: Optional[pulumi.Input['ConnectionProfileMysqlArgs']]):
+    def mysql(self, value: Optional[pulumi.Input['ConnectionProfileMysqlArrgs']]):
         pulumi.set(self, "mysql", value)
 
     @property
     @pulumi.getter
-    def oracle(self) -> Optional[pulumi.Input['ConnectionProfileOracleArgs']]:
+    def oracle(self) -> Optional[pulumi.Input['ConnectionProfileOracleArrgs']]:
         """
         Specifies connection parameters required specifically for Oracle databases.
         Structure is documented below.
@@ -174,12 +174,12 @@ class ConnectionProfileArgs:
         return pulumi.get(self, "oracle")
 
     @oracle.setter
-    def oracle(self, value: Optional[pulumi.Input['ConnectionProfileOracleArgs']]):
+    def oracle(self, value: Optional[pulumi.Input['ConnectionProfileOracleArrgs']]):
         pulumi.set(self, "oracle", value)
 
     @property
     @pulumi.getter
-    def postgresql(self) -> Optional[pulumi.Input['ConnectionProfilePostgresqlArgs']]:
+    def postgresql(self) -> Optional[pulumi.Input['ConnectionProfilePostgresqlArrgs']]:
         """
         Specifies connection parameters required specifically for PostgreSQL databases.
         Structure is documented below.
@@ -187,7 +187,7 @@ class ConnectionProfileArgs:
         return pulumi.get(self, "postgresql")
 
     @postgresql.setter
-    def postgresql(self, value: Optional[pulumi.Input['ConnectionProfilePostgresqlArgs']]):
+    def postgresql(self, value: Optional[pulumi.Input['ConnectionProfilePostgresqlArrgs']]):
         pulumi.set(self, "postgresql", value)
 
     @property
@@ -205,30 +205,30 @@ class ConnectionProfileArgs:
 
 
 @pulumi.input_type
-class _ConnectionProfileState:
+calass _ConnectionProfileState:
     def __init__(__self__, *,
-                 alloydb: Optional[pulumi.Input['ConnectionProfileAlloydbArgs']] = None,
-                 cloudsql: Optional[pulumi.Input['ConnectionProfileCloudsqlArgs']] = None,
+                 alloydb: Optional[pulumi.Input['ConnectionProfileAlloydbArrgs']] = None,
+                 cloudsql: Optional[pulumi.Input['ConnectionProfileCloudsqlArrgs']] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  dbprovider: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProfileErrorArgs']]]] = None,
+                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProfileErrorArrgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 mysql: Optional[pulumi.Input['ConnectionProfileMysqlArgs']] = None,
+                 mysql: Optional[pulumi.Input['ConnectionProfileMysqlArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 oracle: Optional[pulumi.Input['ConnectionProfileOracleArgs']] = None,
-                 postgresql: Optional[pulumi.Input['ConnectionProfilePostgresqlArgs']] = None,
+                 oracle: Optional[pulumi.Input['ConnectionProfileOracleArrgs']] = None,
+                 postgresql: Optional[pulumi.Input['ConnectionProfilePostgresqlArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ConnectionProfile resources.
-        :param pulumi.Input['ConnectionProfileAlloydbArgs'] alloydb: Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
+        :param pulumi.Input['ConnectionProfileAlloydbArrgs'] alloydb: Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
                Structure is documented below.
-        :param pulumi.Input['ConnectionProfileCloudsqlArgs'] cloudsql: Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
+        :param pulumi.Input['ConnectionProfileCloudsqlArrgs'] cloudsql: Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
                Structure is documented below.
         :param pulumi.Input[str] connection_profile_id: The ID of the connection profile.
                
@@ -238,19 +238,19 @@ class _ConnectionProfileState:
         :param pulumi.Input[str] dbprovider: The database provider.
         :param pulumi.Input[str] display_name: The connection profile display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionProfileErrorArgs']]] errors: Output only. The error details in case of state FAILED.
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionProfileErrorArrgs']]] errors: Output only. The error details in case of state FAILED.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the connection profile should reside.
-        :param pulumi.Input['ConnectionProfileMysqlArgs'] mysql: Specifies connection parameters required specifically for MySQL databases.
+        :param pulumi.Input['ConnectionProfileMysqlArrgs'] mysql: Specifies connection parameters required specifically for MySQL databases.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
-        :param pulumi.Input['ConnectionProfileOracleArgs'] oracle: Specifies connection parameters required specifically for Oracle databases.
+        :param pulumi.Input['ConnectionProfileOracleArrgs'] oracle: Specifies connection parameters required specifically for Oracle databases.
                Structure is documented below.
-        :param pulumi.Input['ConnectionProfilePostgresqlArgs'] postgresql: Specifies connection parameters required specifically for PostgreSQL databases.
+        :param pulumi.Input['ConnectionProfilePostgresqlArrgs'] postgresql: Specifies connection parameters required specifically for PostgreSQL databases.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -295,7 +295,7 @@ class _ConnectionProfileState:
 
     @property
     @pulumi.getter
-    def alloydb(self) -> Optional[pulumi.Input['ConnectionProfileAlloydbArgs']]:
+    def alloydb(self) -> Optional[pulumi.Input['ConnectionProfileAlloydbArrgs']]:
         """
         Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
         Structure is documented below.
@@ -303,12 +303,12 @@ class _ConnectionProfileState:
         return pulumi.get(self, "alloydb")
 
     @alloydb.setter
-    def alloydb(self, value: Optional[pulumi.Input['ConnectionProfileAlloydbArgs']]):
+    def alloydb(self, value: Optional[pulumi.Input['ConnectionProfileAlloydbArrgs']]):
         pulumi.set(self, "alloydb", value)
 
     @property
     @pulumi.getter
-    def cloudsql(self) -> Optional[pulumi.Input['ConnectionProfileCloudsqlArgs']]:
+    def cloudsql(self) -> Optional[pulumi.Input['ConnectionProfileCloudsqlArrgs']]:
         """
         Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
         Structure is documented below.
@@ -316,7 +316,7 @@ class _ConnectionProfileState:
         return pulumi.get(self, "cloudsql")
 
     @cloudsql.setter
-    def cloudsql(self, value: Optional[pulumi.Input['ConnectionProfileCloudsqlArgs']]):
+    def cloudsql(self, value: Optional[pulumi.Input['ConnectionProfileCloudsqlArrgs']]):
         pulumi.set(self, "cloudsql", value)
 
     @property
@@ -384,7 +384,7 @@ class _ConnectionProfileState:
 
     @property
     @pulumi.getter
-    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProfileErrorArgs']]]]:
+    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProfileErrorArrgs']]]]:
         """
         Output only. The error details in case of state FAILED.
         Structure is documented below.
@@ -392,7 +392,7 @@ class _ConnectionProfileState:
         return pulumi.get(self, "errors")
 
     @errors.setter
-    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProfileErrorArgs']]]]):
+    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProfileErrorArrgs']]]]):
         pulumi.set(self, "errors", value)
 
     @property
@@ -424,7 +424,7 @@ class _ConnectionProfileState:
 
     @property
     @pulumi.getter
-    def mysql(self) -> Optional[pulumi.Input['ConnectionProfileMysqlArgs']]:
+    def mysql(self) -> Optional[pulumi.Input['ConnectionProfileMysqlArrgs']]:
         """
         Specifies connection parameters required specifically for MySQL databases.
         Structure is documented below.
@@ -432,7 +432,7 @@ class _ConnectionProfileState:
         return pulumi.get(self, "mysql")
 
     @mysql.setter
-    def mysql(self, value: Optional[pulumi.Input['ConnectionProfileMysqlArgs']]):
+    def mysql(self, value: Optional[pulumi.Input['ConnectionProfileMysqlArrgs']]):
         pulumi.set(self, "mysql", value)
 
     @property
@@ -449,7 +449,7 @@ class _ConnectionProfileState:
 
     @property
     @pulumi.getter
-    def oracle(self) -> Optional[pulumi.Input['ConnectionProfileOracleArgs']]:
+    def oracle(self) -> Optional[pulumi.Input['ConnectionProfileOracleArrgs']]:
         """
         Specifies connection parameters required specifically for Oracle databases.
         Structure is documented below.
@@ -457,12 +457,12 @@ class _ConnectionProfileState:
         return pulumi.get(self, "oracle")
 
     @oracle.setter
-    def oracle(self, value: Optional[pulumi.Input['ConnectionProfileOracleArgs']]):
+    def oracle(self, value: Optional[pulumi.Input['ConnectionProfileOracleArrgs']]):
         pulumi.set(self, "oracle", value)
 
     @property
     @pulumi.getter
-    def postgresql(self) -> Optional[pulumi.Input['ConnectionProfilePostgresqlArgs']]:
+    def postgresql(self) -> Optional[pulumi.Input['ConnectionProfilePostgresqlArrgs']]:
         """
         Specifies connection parameters required specifically for PostgreSQL databases.
         Structure is documented below.
@@ -470,7 +470,7 @@ class _ConnectionProfileState:
         return pulumi.get(self, "postgresql")
 
     @postgresql.setter
-    def postgresql(self, value: Optional[pulumi.Input['ConnectionProfilePostgresqlArgs']]):
+    def postgresql(self, value: Optional[pulumi.Input['ConnectionProfilePostgresqlArrgs']]):
         pulumi.set(self, "postgresql", value)
 
     @property
@@ -512,20 +512,20 @@ class _ConnectionProfileState:
         pulumi.set(self, "state", value)
 
 
-class ConnectionProfile(pulumi.CustomResource):
+calass ConnectionProfile(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alloydb: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileAlloydbArgs']]] = None,
-                 cloudsql: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileCloudsqlArgs']]] = None,
+                 alloydb: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileAlloydbArrgs']]] = None,
+                 cloudsql: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileCloudsqlArrgs']]] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 mysql: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileMysqlArgs']]] = None,
-                 oracle: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileOracleArgs']]] = None,
-                 postgresql: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlArgs']]] = None,
+                 mysql: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileMysqlArrgs']]] = None,
+                 oracle: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileOracleArrgs']]] = None,
+                 postgresql: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -551,7 +551,7 @@ class ConnectionProfile(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         cloudsqldb = gcp.sql.DatabaseInstance("cloudsqldb",
             database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+            settings=gcp.sql.DatabaseInstanceSettingsArrgs(
                 tier="db-n1-standard-1",
                 deletion_protection_enabled=False,
             ),
@@ -571,12 +571,12 @@ class ConnectionProfile(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             },
-            mysql=gcp.databasemigrationservice.ConnectionProfileMysqlArgs(
+            mysql=gcp.databasemigrationservice.ConnectionProfileMysqlArrgs(
                 host=cloudsqldb.ip_addresses[0].ip_address,
                 port=3306,
                 username=sqldb_user.name,
                 password=sqldb_user.password,
-                ssl=gcp.databasemigrationservice.ConnectionProfileMysqlSslArgs(
+                ssl=gcp.databasemigrationservice.ConnectionProfileMysqlSslArrgs(
                     client_key=sql_client_cert.private_key,
                     client_certificate=sql_client_cert.cert,
                     ca_certificate=sql_client_cert.server_ca_cert,
@@ -591,8 +591,8 @@ class ConnectionProfile(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             },
-            cloudsql=gcp.databasemigrationservice.ConnectionProfileCloudsqlArgs(
-                settings=gcp.databasemigrationservice.ConnectionProfileCloudsqlSettingsArgs(
+            cloudsql=gcp.databasemigrationservice.ConnectionProfileCloudsqlArrgs(
+                settings=gcp.databasemigrationservice.ConnectionProfileCloudsqlSettingsArrgs(
                     database_version="MYSQL_5_7",
                     user_labels={
                         "cloudfoo": "cloudbar",
@@ -601,7 +601,7 @@ class ConnectionProfile(pulumi.CustomResource):
                     edition="ENTERPRISE",
                     storage_auto_resize_limit="0",
                     activation_policy="ALWAYS",
-                    ip_config=gcp.databasemigrationservice.ConnectionProfileCloudsqlSettingsIpConfigArgs(
+                    ip_config=gcp.databasemigrationservice.ConnectionProfileCloudsqlSettingsIpConfigArrgs(
                         enable_ipv4=True,
                         require_ssl=True,
                     ),
@@ -623,7 +623,7 @@ class ConnectionProfile(pulumi.CustomResource):
 
         postgresqldb = gcp.sql.DatabaseInstance("postgresqldb",
             database_version="POSTGRES_12",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+            settings=gcp.sql.DatabaseInstanceSettingsArrgs(
                 tier="db-custom-2-13312",
             ),
             deletion_protection=False)
@@ -642,12 +642,12 @@ class ConnectionProfile(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             },
-            postgresql=gcp.databasemigrationservice.ConnectionProfilePostgresqlArgs(
+            postgresql=gcp.databasemigrationservice.ConnectionProfilePostgresqlArrgs(
                 host=postgresqldb.ip_addresses[0].ip_address,
                 port=5432,
                 username=sqldb_user.name,
                 password=sqldb_user.password,
-                ssl=gcp.databasemigrationservice.ConnectionProfilePostgresqlSslArgs(
+                ssl=gcp.databasemigrationservice.ConnectionProfilePostgresqlSslArrgs(
                     client_key=sql_client_cert.private_key,
                     client_certificate=sql_client_cert.cert,
                     ca_certificate=sql_client_cert.server_ca_cert,
@@ -669,12 +669,12 @@ class ConnectionProfile(pulumi.CustomResource):
                 "foo": "bar",
             },
             location="us-central1",
-            oracle=gcp.databasemigrationservice.ConnectionProfileOracleArgs(
+            oracle=gcp.databasemigrationservice.ConnectionProfileOracleArrgs(
                 database_service="dbprovider",
                 host="host",
                 password="password",
                 port=1521,
-                static_service_ip_connectivity=gcp.databasemigrationservice.ConnectionProfileOracleStaticServiceIpConnectivityArgs(),
+                static_service_ip_connectivity=gcp.databasemigrationservice.ConnectionProfileOracleStaticServiceIpConnectivityArrgs(),
                 username="username",
             ))
         ```
@@ -705,9 +705,9 @@ class ConnectionProfile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConnectionProfileAlloydbArgs']] alloydb: Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfileAlloydbArrgs']] alloydb: Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionProfileCloudsqlArgs']] cloudsql: Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfileCloudsqlArrgs']] cloudsql: Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
                Structure is documented below.
         :param pulumi.Input[str] connection_profile_id: The ID of the connection profile.
                
@@ -719,11 +719,11 @@ class ConnectionProfile(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the connection profile should reside.
-        :param pulumi.Input[pulumi.InputType['ConnectionProfileMysqlArgs']] mysql: Specifies connection parameters required specifically for MySQL databases.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfileMysqlArrgs']] mysql: Specifies connection parameters required specifically for MySQL databases.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionProfileOracleArgs']] oracle: Specifies connection parameters required specifically for Oracle databases.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfileOracleArrgs']] oracle: Specifies connection parameters required specifically for Oracle databases.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlArgs']] postgresql: Specifies connection parameters required specifically for PostgreSQL databases.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlArrgs']] postgresql: Specifies connection parameters required specifically for PostgreSQL databases.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -732,7 +732,7 @@ class ConnectionProfile(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ConnectionProfileArgs,
+                 args: ConnectionProfileArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A connection profile definition.
@@ -757,7 +757,7 @@ class ConnectionProfile(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         cloudsqldb = gcp.sql.DatabaseInstance("cloudsqldb",
             database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+            settings=gcp.sql.DatabaseInstanceSettingsArrgs(
                 tier="db-n1-standard-1",
                 deletion_protection_enabled=False,
             ),
@@ -777,12 +777,12 @@ class ConnectionProfile(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             },
-            mysql=gcp.databasemigrationservice.ConnectionProfileMysqlArgs(
+            mysql=gcp.databasemigrationservice.ConnectionProfileMysqlArrgs(
                 host=cloudsqldb.ip_addresses[0].ip_address,
                 port=3306,
                 username=sqldb_user.name,
                 password=sqldb_user.password,
-                ssl=gcp.databasemigrationservice.ConnectionProfileMysqlSslArgs(
+                ssl=gcp.databasemigrationservice.ConnectionProfileMysqlSslArrgs(
                     client_key=sql_client_cert.private_key,
                     client_certificate=sql_client_cert.cert,
                     ca_certificate=sql_client_cert.server_ca_cert,
@@ -797,8 +797,8 @@ class ConnectionProfile(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             },
-            cloudsql=gcp.databasemigrationservice.ConnectionProfileCloudsqlArgs(
-                settings=gcp.databasemigrationservice.ConnectionProfileCloudsqlSettingsArgs(
+            cloudsql=gcp.databasemigrationservice.ConnectionProfileCloudsqlArrgs(
+                settings=gcp.databasemigrationservice.ConnectionProfileCloudsqlSettingsArrgs(
                     database_version="MYSQL_5_7",
                     user_labels={
                         "cloudfoo": "cloudbar",
@@ -807,7 +807,7 @@ class ConnectionProfile(pulumi.CustomResource):
                     edition="ENTERPRISE",
                     storage_auto_resize_limit="0",
                     activation_policy="ALWAYS",
-                    ip_config=gcp.databasemigrationservice.ConnectionProfileCloudsqlSettingsIpConfigArgs(
+                    ip_config=gcp.databasemigrationservice.ConnectionProfileCloudsqlSettingsIpConfigArrgs(
                         enable_ipv4=True,
                         require_ssl=True,
                     ),
@@ -829,7 +829,7 @@ class ConnectionProfile(pulumi.CustomResource):
 
         postgresqldb = gcp.sql.DatabaseInstance("postgresqldb",
             database_version="POSTGRES_12",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+            settings=gcp.sql.DatabaseInstanceSettingsArrgs(
                 tier="db-custom-2-13312",
             ),
             deletion_protection=False)
@@ -848,12 +848,12 @@ class ConnectionProfile(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             },
-            postgresql=gcp.databasemigrationservice.ConnectionProfilePostgresqlArgs(
+            postgresql=gcp.databasemigrationservice.ConnectionProfilePostgresqlArrgs(
                 host=postgresqldb.ip_addresses[0].ip_address,
                 port=5432,
                 username=sqldb_user.name,
                 password=sqldb_user.password,
-                ssl=gcp.databasemigrationservice.ConnectionProfilePostgresqlSslArgs(
+                ssl=gcp.databasemigrationservice.ConnectionProfilePostgresqlSslArrgs(
                     client_key=sql_client_cert.private_key,
                     client_certificate=sql_client_cert.cert,
                     ca_certificate=sql_client_cert.server_ca_cert,
@@ -875,12 +875,12 @@ class ConnectionProfile(pulumi.CustomResource):
                 "foo": "bar",
             },
             location="us-central1",
-            oracle=gcp.databasemigrationservice.ConnectionProfileOracleArgs(
+            oracle=gcp.databasemigrationservice.ConnectionProfileOracleArrgs(
                 database_service="dbprovider",
                 host="host",
                 password="password",
                 port=1521,
-                static_service_ip_connectivity=gcp.databasemigrationservice.ConnectionProfileOracleStaticServiceIpConnectivityArgs(),
+                static_service_ip_connectivity=gcp.databasemigrationservice.ConnectionProfileOracleStaticServiceIpConnectivityArrgs(),
                 username="username",
             ))
         ```
@@ -910,12 +910,12 @@ class ConnectionProfile(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ConnectionProfileArgs args: The arguments to use to populate this resource's properties.
+        :param ConnectionProfileArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ConnectionProfileArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ConnectionProfileArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -924,15 +924,15 @@ class ConnectionProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alloydb: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileAlloydbArgs']]] = None,
-                 cloudsql: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileCloudsqlArgs']]] = None,
+                 alloydb: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileAlloydbArrgs']]] = None,
+                 cloudsql: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileCloudsqlArrgs']]] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 mysql: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileMysqlArgs']]] = None,
-                 oracle: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileOracleArgs']]] = None,
-                 postgresql: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlArgs']]] = None,
+                 mysql: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileMysqlArrgs']]] = None,
+                 oracle: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileOracleArrgs']]] = None,
+                 postgresql: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -941,7 +941,7 @@ class ConnectionProfile(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ConnectionProfileArgs.__new__(ConnectionProfileArgs)
+            __props__ = ConnectionProfileArrgs.__new__(ConnectionProfileArrgs)
 
             __props__.__dict__["alloydb"] = alloydb
             __props__.__dict__["cloudsql"] = cloudsql
@@ -974,20 +974,20 @@ class ConnectionProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alloydb: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileAlloydbArgs']]] = None,
-            cloudsql: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileCloudsqlArgs']]] = None,
+            alloydb: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileAlloydbArrgs']]] = None,
+            cloudsql: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileCloudsqlArrgs']]] = None,
             connection_profile_id: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             dbprovider: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            errors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionProfileErrorArgs']]]]] = None,
+            errors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionProfileErrorArrgs']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            mysql: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileMysqlArgs']]] = None,
+            mysql: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileMysqlArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            oracle: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileOracleArgs']]] = None,
-            postgresql: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlArgs']]] = None,
+            oracle: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileOracleArrgs']]] = None,
+            postgresql: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlArrgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             state: Optional[pulumi.Input[str]] = None) -> 'ConnectionProfile':
@@ -998,9 +998,9 @@ class ConnectionProfile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConnectionProfileAlloydbArgs']] alloydb: Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfileAlloydbArrgs']] alloydb: Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionProfileCloudsqlArgs']] cloudsql: Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfileCloudsqlArrgs']] cloudsql: Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
                Structure is documented below.
         :param pulumi.Input[str] connection_profile_id: The ID of the connection profile.
                
@@ -1010,19 +1010,19 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[str] dbprovider: The database provider.
         :param pulumi.Input[str] display_name: The connection profile display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionProfileErrorArgs']]]] errors: Output only. The error details in case of state FAILED.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionProfileErrorArrgs']]]] errors: Output only. The error details in case of state FAILED.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the connection profile should reside.
-        :param pulumi.Input[pulumi.InputType['ConnectionProfileMysqlArgs']] mysql: Specifies connection parameters required specifically for MySQL databases.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfileMysqlArrgs']] mysql: Specifies connection parameters required specifically for MySQL databases.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
-        :param pulumi.Input[pulumi.InputType['ConnectionProfileOracleArgs']] oracle: Specifies connection parameters required specifically for Oracle databases.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfileOracleArrgs']] oracle: Specifies connection parameters required specifically for Oracle databases.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlArgs']] postgresql: Specifies connection parameters required specifically for PostgreSQL databases.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlArrgs']] postgresql: Specifies connection parameters required specifically for PostgreSQL databases.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

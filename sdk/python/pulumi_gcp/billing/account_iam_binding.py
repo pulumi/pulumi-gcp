@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AccountIamBindingArgs', 'AccountIamBinding']
+__all__ = ['AccountIamBindingArrgs', 'AccountIamBinding']
 
 @pulumi.input_type
-class AccountIamBindingArgs:
+calass AccountIamBindingArrgs:
     def __init__(__self__, *,
                  billing_account_id: pulumi.Input[str],
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['AccountIamBindingConditionArgs']] = None):
+                 condition: Optional[pulumi.Input['AccountIamBindingConditionArrgs']] = None):
         """
         The set of arguments for constructing a AccountIamBinding resource.
         :param pulumi.Input[str] billing_account_id: The billing account id.
@@ -92,19 +92,19 @@ class AccountIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['AccountIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['AccountIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['AccountIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['AccountIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
-class _AccountIamBindingState:
+calass _AccountIamBindingState:
     def __init__(__self__, *,
                  billing_account_id: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input['AccountIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['AccountIamBindingConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None):
@@ -161,11 +161,11 @@ class _AccountIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['AccountIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['AccountIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['AccountIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['AccountIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -206,13 +206,13 @@ class _AccountIamBindingState:
         pulumi.set(self, "role", value)
 
 
-class AccountIamBinding(pulumi.CustomResource):
+calass AccountIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_account_id: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['AccountIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['AccountIamBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -233,7 +233,7 @@ class AccountIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/billing.viewer",
             members=["user:jane@example.com"],
         )])
@@ -304,7 +304,7 @@ class AccountIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AccountIamBindingArgs,
+                 args: AccountIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage IAM policies on billing accounts. Each of these resources serves a different use case:
@@ -323,7 +323,7 @@ class AccountIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/billing.viewer",
             members=["user:jane@example.com"],
         )])
@@ -373,12 +373,12 @@ class AccountIamBinding(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AccountIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param AccountIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AccountIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AccountIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -388,7 +388,7 @@ class AccountIamBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_account_id: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['AccountIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['AccountIamBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -398,7 +398,7 @@ class AccountIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AccountIamBindingArgs.__new__(AccountIamBindingArgs)
+            __props__ = AccountIamBindingArrgs.__new__(AccountIamBindingArrgs)
 
             if billing_account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'billing_account_id'")
@@ -422,7 +422,7 @@ class AccountIamBinding(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             billing_account_id: Optional[pulumi.Input[str]] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['AccountIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['AccountIamBindingConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             role: Optional[pulumi.Input[str]] = None) -> 'AccountIamBinding':

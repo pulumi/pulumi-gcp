@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['LiteReservationArgs', 'LiteReservation']
+__all__ = ['LiteReservationArrgs', 'LiteReservation']
 
 @pulumi.input_type
-class LiteReservationArgs:
+calass LiteReservationArrgs:
     def __init__(__self__, *,
                  throughput_capacity: pulumi.Input[int],
                  name: Optional[pulumi.Input[str]] = None,
@@ -95,7 +95,7 @@ class LiteReservationArgs:
 
 
 @pulumi.input_type
-class _LiteReservationState:
+calass _LiteReservationState:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -178,7 +178,7 @@ class _LiteReservationState:
         pulumi.set(self, "throughput_capacity", value)
 
 
-class LiteReservation(pulumi.CustomResource):
+calass LiteReservation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -255,7 +255,7 @@ class LiteReservation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: LiteReservationArgs,
+                 args: LiteReservationArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A named resource representing a shared pool of capacity.
@@ -308,12 +308,12 @@ class LiteReservation(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param LiteReservationArgs args: The arguments to use to populate this resource's properties.
+        :param LiteReservationArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(LiteReservationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(LiteReservationArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -333,7 +333,7 @@ class LiteReservation(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = LiteReservationArgs.__new__(LiteReservationArgs)
+            __props__ = LiteReservationArrgs.__new__(LiteReservationArrgs)
 
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

@@ -11,14 +11,14 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['BackendBucketIamMemberArgs', 'BackendBucketIamMember']
+__all__ = ['BackendBucketIamMemberArrgs', 'BackendBucketIamMember']
 
 @pulumi.input_type
-class BackendBucketIamMemberArgs:
+calass BackendBucketIamMemberArrgs:
     def __init__(__self__, *,
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['BackendBucketIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['BackendBucketIamMemberConditionArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -76,11 +76,11 @@ class BackendBucketIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['BackendBucketIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['BackendBucketIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['BackendBucketIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['BackendBucketIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -122,9 +122,9 @@ class BackendBucketIamMemberArgs:
 
 
 @pulumi.input_type
-class _BackendBucketIamMemberState:
+calass _BackendBucketIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['BackendBucketIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['BackendBucketIamMemberConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -167,11 +167,11 @@ class _BackendBucketIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['BackendBucketIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['BackendBucketIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['BackendBucketIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['BackendBucketIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -247,12 +247,12 @@ class _BackendBucketIamMemberState:
         pulumi.set(self, "role", value)
 
 
-class BackendBucketIamMember(pulumi.CustomResource):
+calass BackendBucketIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['BackendBucketIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['BackendBucketIamMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -308,7 +308,7 @@ class BackendBucketIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: BackendBucketIamMemberArgs,
+                 args: BackendBucketIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Import
@@ -336,12 +336,12 @@ class BackendBucketIamMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param BackendBucketIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param BackendBucketIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(BackendBucketIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(BackendBucketIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -350,7 +350,7 @@ class BackendBucketIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['BackendBucketIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['BackendBucketIamMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -362,7 +362,7 @@ class BackendBucketIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = BackendBucketIamMemberArgs.__new__(BackendBucketIamMemberArgs)
+            __props__ = BackendBucketIamMemberArrgs.__new__(BackendBucketIamMemberArrgs)
 
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
@@ -384,7 +384,7 @@ class BackendBucketIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['BackendBucketIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['BackendBucketIamMemberConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,

@@ -328,7 +328,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -355,11 +355,11 @@ class PreventionDeidentifyTemplateDeidentifyConfig(dict):
                  info_type_transformations: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations'] = None,
                  record_transformations: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs' image_transformations: Treat the dataset as an image and redact.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArrgs' image_transformations: Treat the dataset as an image and redact.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs' info_type_transformations: Treat the dataset as free-form text and apply the same free text transformation everywhere
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArrgs' info_type_transformations: Treat the dataset as free-form text and apply the same free text transformation everywhere
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs' record_transformations: Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArrgs' record_transformations: Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
                Structure is documented below.
         """
         if image_transformations is not None:
@@ -398,11 +398,11 @@ class PreventionDeidentifyTemplateDeidentifyConfig(dict):
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigImageTransformations(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigImageTransformations(dict):
     def __init__(__self__, *,
                  transforms: Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform']):
         """
-        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs'] transforms: For determination of how redaction of images should occur.
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArrgs'] transforms: For determination of how redaction of images should occur.
                Structure is documented below.
         """
         pulumi.set(__self__, "transforms", transforms)
@@ -418,7 +418,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformations(dict):
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -448,11 +448,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform(
                  redaction_color: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColor'] = None,
                  selected_info_types: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypes'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArgs' all_info_types: Apply transformation to all findings not specified in other ImageTransformation's selectedInfoTypes.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArgs' all_text: Apply transformation to all text that doesn't match an infoType.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs' redaction_color: The color to use when redacting content from an image. If not specified, the default is black.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArrgs' all_info_types: Apply transformation to all findings not specified in other ImageTransformation's selectedInfoTypes.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArrgs' all_text: Apply transformation to all text that doesn't match an infoType.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArrgs' redaction_color: The color to use when redacting content from an image. If not specified, the default is black.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs' selected_info_types: Apply transformation to the selected infoTypes.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArrgs' selected_info_types: Apply transformation to the selected infoTypes.
                Structure is documented below.
         """
         if all_info_types is not None:
@@ -500,19 +500,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform(
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypes(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypes(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllText(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllText(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColor(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColor(dict):
     def __init__(__self__, *,
                  blue: Optional[float] = None,
                  green: Optional[float] = None,
@@ -555,7 +555,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformR
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypes(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypes(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -576,7 +576,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformS
     def __init__(__self__, *,
                  info_types: Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoType']):
         """
-        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgs'] info_types: InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArrgs'] info_types: InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
                all findings that correspond to infoTypes that were requested in InspectConfig.
                Structure is documented below.
         """
@@ -594,7 +594,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformS
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoType(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -618,7 +618,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformS
                  version: Optional[str] = None):
         """
         :param str name: Name of the information type.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeSensitivityScoreArrgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param str version: Version name for this InfoType.
         """
@@ -655,7 +655,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformS
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeSensitivityScore(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeSensitivityScore(dict):
     def __init__(__self__, *,
                  score: str):
         """
@@ -675,11 +675,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformS
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations(dict):
     def __init__(__self__, *,
                  transformations: Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation']):
         """
-        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs'] transformations: Transformation for each infoType. Cannot specify more than one for a given infoType.
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrgs'] transformations: Transformation for each infoType. Cannot specify more than one for a given infoType.
                Structure is documented below.
         """
         pulumi.set(__self__, "transformations", transformations)
@@ -695,7 +695,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations(dict):
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -719,10 +719,10 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  primitive_transformation: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation',
                  info_types: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType']] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs' primitive_transformation: Apply the transformation to the entire field.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArrgs' primitive_transformation: Apply the transformation to the entire field.
                The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
                Structure is documented below.
-        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs'] info_types: InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrgs'] info_types: InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
                all findings that correspond to infoTypes that were requested in InspectConfig.
                Structure is documented below.
         """
@@ -752,7 +752,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -776,7 +776,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  version: Optional[str] = None):
         """
         :param str name: Name of the information type.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeSensitivityScoreArrgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param str version: Version name for this InfoType.
         """
@@ -813,7 +813,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeSensitivityScore(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeSensitivityScore(dict):
     def __init__(__self__, *,
                  score: str):
         """
@@ -833,7 +833,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -887,38 +887,38 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  replace_with_info_type_config: Optional[bool] = None,
                  time_part_config: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfig'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArgs' bucketing_config: Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArrgs' bucketing_config: Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
                This can be used on data of type: number, long, string, timestamp.
                If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
                See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs' character_mask_config: Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArrgs' character_mask_config: Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs' crypto_deterministic_config: Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC [https://tools.ietf.org/html/rfc5297](https://tools.ietf.org/html/rfc5297).
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArrgs' crypto_deterministic_config: Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC [https://tools.ietf.org/html/rfc5297](https://tools.ietf.org/html/rfc5297).
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArgs' crypto_hash_config: Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArrgs' crypto_hash_config: Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
                Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
                Currently, only string and integer values can be hashed.
                See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs' crypto_replace_ffx_fpe_config: Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `content.reidentify` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See [https://cloud.google.com/dlp/docs/pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization) to learn more.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArrgs' crypto_replace_ffx_fpe_config: Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `content.reidentify` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See [https://cloud.google.com/dlp/docs/pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization) to learn more.
                Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgs' date_shift_config: Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArrgs' date_shift_config: Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArgs' fixed_size_bucketing_config: Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArrgs' fixed_size_bucketing_config: Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies.
                The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20".
                This can be used on data of type: double, long.
                If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
                See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArgs' redact_config: Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs' replace_config: Replace each input value with a given value.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArrgs' redact_config: Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArrgs' replace_config: Replace each input value with a given value.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgs' replace_dictionary_config: Replace with a value randomly drawn (with replacement) from a dictionary.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArrgs' replace_dictionary_config: Replace with a value randomly drawn (with replacement) from a dictionary.
                Structure is documented below.
         :param bool replace_with_info_type_config: Replace each matching finding with the name of the info type.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfigArgs' time_part_config: For use with Date, Timestamp, and TimeOfDay, extract or preserve a portion of the value.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfigArrgs' time_part_config: For use with Date, Timestamp, and TimeOfDay, extract or preserve a portion of the value.
                Structure is documented below.
         """
         if bucketing_config is not None:
@@ -1065,11 +1065,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfig(dict):
     def __init__(__self__, *,
                  buckets: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucket']] = None):
         """
-        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketArgs'] buckets: Set of buckets. Ranges must be non-overlapping.
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketArrgs'] buckets: Set of buckets. Ranges must be non-overlapping.
                Bucket is represented as a range, along with replacement values.
                Structure is documented below.
         """
@@ -1088,7 +1088,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucket(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucket(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1111,13 +1111,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  max: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMax'] = None,
                  min: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMin'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgs' replacement_value: Replacement value for this bucket.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArrgs' replacement_value: Replacement value for this bucket.
                The `replacement_value` block must only contain one argument.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxArgs' max: Upper bound of the range, exclusive; type must match min.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxArrgs' max: Upper bound of the range, exclusive; type must match min.
                The `max` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinArgs' min: Lower bound of the range, inclusive. Type should be the same as max if used.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinArrgs' min: Lower bound of the range, inclusive. Type should be the same as max if used.
                The `min` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
                Structure is documented below.
         """
@@ -1159,7 +1159,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMax(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMax(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1198,14 +1198,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  time_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValue'] = None,
                  timestamp_value: Optional[str] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgs' date_value: Represents a whole or partial calendar date.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArrgs' date_value: Represents a whole or partial calendar date.
                Structure is documented below.
         :param str day_of_week_value: Represents a day of the week.
                Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param float float_value: A float value.
         :param str integer_value: An integer value (int64 format)
         :param str string_value: A string value.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgs' time_value: Represents a time of day.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArrgs' time_value: Represents a time of day.
                Structure is documented below.
         :param str timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -1285,7 +1285,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValue(dict):
     def __init__(__self__, *,
                  day: Optional[int] = None,
                  month: Optional[int] = None,
@@ -1332,7 +1332,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValue(dict):
     def __init__(__self__, *,
                  hours: Optional[int] = None,
                  minutes: Optional[int] = None,
@@ -1387,7 +1387,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMin(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMin(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1426,14 +1426,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  time_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValue'] = None,
                  timestamp_value: Optional[str] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgs' date_value: Represents a whole or partial calendar date.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArrgs' date_value: Represents a whole or partial calendar date.
                Structure is documented below.
         :param str day_of_week_value: Represents a day of the week.
                Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param float float_value: A float value.
         :param str integer_value: An integer value (int64 format)
         :param str string_value: A string value.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgs' time_value: Represents a time of day.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArrgs' time_value: Represents a time of day.
                Structure is documented below.
         :param str timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -1513,7 +1513,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValue(dict):
     def __init__(__self__, *,
                  day: Optional[int] = None,
                  month: Optional[int] = None,
@@ -1560,7 +1560,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValue(dict):
     def __init__(__self__, *,
                  hours: Optional[int] = None,
                  minutes: Optional[int] = None,
@@ -1615,7 +1615,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1654,14 +1654,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  time_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValue'] = None,
                  timestamp_value: Optional[str] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgs' date_value: Represents a whole or partial calendar date.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArrgs' date_value: Represents a whole or partial calendar date.
                Structure is documented below.
         :param str day_of_week_value: Represents a day of the week.
                Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param float float_value: A float value.
         :param str integer_value: An integer value (int64 format)
         :param str string_value: A string value.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgs' time_value: Represents a time of day.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArrgs' time_value: Represents a time of day.
                Structure is documented below.
         :param str timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -1741,7 +1741,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValue(dict):
     def __init__(__self__, *,
                  day: Optional[int] = None,
                  month: Optional[int] = None,
@@ -1788,7 +1788,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValue(dict):
     def __init__(__self__, *,
                  hours: Optional[int] = None,
                  minutes: Optional[int] = None,
@@ -1843,7 +1843,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1873,7 +1873,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  number_to_mask: Optional[int] = None,
                  reverse_order: Optional[bool] = None):
         """
-        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs'] characters_to_ignores: Characters to skip when doing de-identification of a value. These will be left alone and skipped.
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrgs'] characters_to_ignores: Characters to skip when doing de-identification of a value. These will be left alone and skipped.
                Structure is documented below.
         :param str masking_character: is *
         :param int number_to_mask: is -4
@@ -1925,7 +1925,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1977,7 +1977,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2002,16 +2002,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  crypto_key: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey'] = None,
                  surrogate_info_type: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs' context: A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArrgs' context: A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
                If the context is not set, plaintext would be used as is for encryption. If the context is set but:
                1. there is no record present when transforming a given value or
                2. the field is not present when transforming a given value,
                plaintext would be used as is for encryption.
                Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs' crypto_key: The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArrgs' crypto_key: The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs' surrogate_info_type: The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArrgs' surrogate_info_type: The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
                For example, if the name of custom info type is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
                This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
                Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
@@ -2069,7 +2069,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None):
         """
@@ -2088,7 +2088,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2111,14 +2111,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  transient: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient'] = None,
                  unwrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs' kms_wrapped: KMS wrapped key.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArrgs' kms_wrapped: KMS wrapped key.
                Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
                For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
                Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs' transient: Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArrgs' transient: Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs' unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArrgs' unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
                Structure is documented below.
         """
         if kms_wrapped is not None:
@@ -2160,7 +2160,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2210,7 +2210,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -2228,7 +2228,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped(dict):
     def __init__(__self__, *,
                  key: str):
         """
@@ -2250,7 +2250,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2274,7 +2274,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  version: Optional[str] = None):
         """
         :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArrgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param str version: Optional version name for this InfoType.
         """
@@ -2312,7 +2312,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScore(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScore(dict):
     def __init__(__self__, *,
                  score: str):
         """
@@ -2332,7 +2332,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2353,7 +2353,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def __init__(__self__, *,
                  crypto_key: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKey'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgs' crypto_key: The key used by the encryption function.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArrgs' crypto_key: The key used by the encryption function.
                Structure is documented below.
         """
         if crypto_key is not None:
@@ -2370,7 +2370,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKey(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2393,14 +2393,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  transient: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransient'] = None,
                  unwrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrapped'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgs' kms_wrapped: KMS wrapped key.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArrgs' kms_wrapped: KMS wrapped key.
                Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
                For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
                Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgs' transient: Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArrgs' transient: Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgs' unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArrgs' unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
                Structure is documented below.
         """
         if kms_wrapped is not None:
@@ -2442,7 +2442,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrapped(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrapped(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2492,7 +2492,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransient(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransient(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -2510,7 +2510,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrapped(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrapped(dict):
     def __init__(__self__, *,
                  key: str):
         """
@@ -2532,7 +2532,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2566,7 +2566,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         """
         :param str common_alphabet: Common alphabets. Only one of this, `custom_alphabet` or `radix` must be specified.
                Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs' context: The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArrgs' context: The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
                If the context is set but:
                1.  there is no record present when transforming a given value or
                2.  the field is not present when transforming a given value,
@@ -2576,12 +2576,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                *   a 64 bit integer is encoded followed by a single byte of value 1
                *   a string is encoded in UTF-8 format followed by a single byte of value 2
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs' crypto_key: The key used by the encryption algorithm.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArrgs' crypto_key: The key used by the encryption algorithm.
                Structure is documented below.
         :param str custom_alphabet: This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \\[2, 95\\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
                ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
         :param int radix: The native way to select the alphabet. Must be in the range \\[2, 95\\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs' surrogate_info_type: The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\\_type\\_name(surrogate\\_character\\_count):surrogate
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArrgs' surrogate_info_type: The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\\_type\\_name(surrogate\\_character\\_count):surrogate
                For example, if the name of custom infoType is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
                This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text.
                In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE
@@ -2666,7 +2666,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None):
         """
@@ -2685,7 +2685,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2708,14 +2708,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  transient: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient'] = None,
                  unwrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs' kms_wrapped: KMS wrapped key.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArrgs' kms_wrapped: KMS wrapped key.
                Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
                For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
                Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs' transient: Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArrgs' transient: Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs' unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArrgs' unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
                Structure is documented below.
         """
         if kms_wrapped is not None:
@@ -2757,7 +2757,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2807,7 +2807,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -2825,7 +2825,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped(dict):
     def __init__(__self__, *,
                  key: str):
         """
@@ -2847,7 +2847,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2871,7 +2871,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  version: Optional[str] = None):
         """
         :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArrgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param str version: Optional version name for this InfoType.
         """
@@ -2909,7 +2909,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScore(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScore(dict):
     def __init__(__self__, *,
                  score: str):
         """
@@ -2929,7 +2929,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2960,10 +2960,10 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param int lower_bound_days: For example, -5 means shift date to at most 5 days back in the past.
         :param int upper_bound_days: Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction.
                For example, 3 means shift date to at most 3 days into the future.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContextArgs' context: Points to the field that contains the context, for example, an entity id.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContextArrgs' context: Points to the field that contains the context, for example, an entity id.
                If set, must also set cryptoKey. If set, shift will be consistent for the given context.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgs' crypto_key: Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and cryptoKey. If set, must also set context. Can only be applied to table items.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArrgs' crypto_key: Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and cryptoKey. If set, must also set context. Can only be applied to table items.
                Structure is documented below.
         """
         pulumi.set(__self__, "lower_bound_days", lower_bound_days)
@@ -3011,7 +3011,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContext(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContext(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -3029,7 +3029,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKey(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3052,14 +3052,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  transient: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransient'] = None,
                  unwrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrapped'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgs' kms_wrapped: KMS wrapped key.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArrgs' kms_wrapped: KMS wrapped key.
                Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
                For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
                Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgs' transient: Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArrgs' transient: Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgs' unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArrgs' unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
                Structure is documented below.
         """
         if kms_wrapped is not None:
@@ -3101,7 +3101,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrapped(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrapped(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3151,7 +3151,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransient(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransient(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -3169,7 +3169,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrapped(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrapped(dict):
     def __init__(__self__, *,
                  key: str):
         """
@@ -3191,7 +3191,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3221,11 +3221,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param float bucket_size: Size of each bucket (except for minimum and maximum buckets).
                So if lower_bound = 10, upper_bound = 89, and bucketSize = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+.
                Precision up to 2 decimals works.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgs' lower_bound: Lower bound value of buckets.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArrgs' lower_bound: Lower bound value of buckets.
                All values less than lower_bound are grouped together into a single bucket; for example if lower_bound = 10, then all values less than 10 are replaced with the value "-10".
                The `lower_bound` block must only contain one argument. See the `fixed_size_bucketing_config` block description for more information about choosing a data type.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgs' upper_bound: Upper bound value of buckets.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArrgs' upper_bound: Upper bound value of buckets.
                All values greater than upper_bound are grouped together into a single bucket; for example if upper_bound = 89, then all values greater than 89 are replaced with the value "89+".
                The `upper_bound` block must only contain one argument. See the `fixed_size_bucketing_config` block description for more information about choosing a data type.
                Structure is documented below.
@@ -3268,7 +3268,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBound(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBound(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3318,7 +3318,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3368,13 +3368,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfig(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3395,7 +3395,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def __init__(__self__, *,
                  new_value: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue'):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs' new_value: Replace each input value with a given value.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArrgs' new_value: Replace each input value with a given value.
                The `new_value` block must only contain one argument. For example when replacing the contents of a string-type field, only `string_value` should be set.
                Structure is documented below.
         """
@@ -3413,7 +3413,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3456,14 +3456,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  timestamp_value: Optional[str] = None):
         """
         :param bool boolean_value: A boolean value.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs' date_value: Represents a whole or partial calendar date.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArrgs' date_value: Represents a whole or partial calendar date.
                Structure is documented below.
         :param str day_of_week_value: Represents a day of the week.
                Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param float float_value: A float value.
         :param int integer_value: An integer value (int64 format)
         :param str string_value: A string value.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs' time_value: Represents a time of day.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArrgs' time_value: Represents a time of day.
                Structure is documented below.
         :param str timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -3555,7 +3555,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue(dict):
     def __init__(__self__, *,
                  day: Optional[int] = None,
                  month: Optional[int] = None,
@@ -3602,7 +3602,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue(dict):
     def __init__(__self__, *,
                  hours: Optional[int] = None,
                  minutes: Optional[int] = None,
@@ -3657,7 +3657,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3678,7 +3678,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def __init__(__self__, *,
                  word_list: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordList'):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgs' word_list: A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArrgs' word_list: A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
                Structure is documented below.
         """
         pulumi.set(__self__, "word_list", word_list)
@@ -3694,7 +3694,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordList(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordList(dict):
     def __init__(__self__, *,
                  words: Sequence[str]):
         """
@@ -3712,7 +3712,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3750,7 +3750,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3774,9 +3774,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations(dict):
                  field_transformations: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation']] = None,
                  record_suppressions: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression']] = None):
         """
-        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArgs'] field_transformations: Transform the record by applying various field transformations.
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrgs'] field_transformations: Transform the record by applying various field transformations.
                Structure is documented below.
-        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArgs'] record_suppressions: Configuration defining which records get suppressed entirely. Records that match any suppression rule are omitted from the output.
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrgs'] record_suppressions: Configuration defining which records get suppressed entirely. Records that match any suppression rule are omitted from the output.
                Structure is documented below.
         """
         if field_transformations is not None:
@@ -3804,7 +3804,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations(dict):
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3830,18 +3830,18 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  info_type_transformations: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformations'] = None,
                  primitive_transformation: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation'] = None):
         """
-        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArgs'] fields: Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId.
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrgs'] fields: Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId.
                FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type".
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgs' condition: Only apply the transformation if the condition evaluates to true for the given RecordCondition. The conditions are allowed to reference fields that are not used in the actual transformation.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArrgs' condition: Only apply the transformation if the condition evaluates to true for the given RecordCondition. The conditions are allowed to reference fields that are not used in the actual transformation.
                Example Use Cases:
                - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range.
                - Redact a field if the date of birth field is greater than 85.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsArgs' info_type_transformations: Treat the contents of the field as free text, and selectively transform content that matches an InfoType.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsArrgs' info_type_transformations: Treat the contents of the field as free text, and selectively transform content that matches an InfoType.
                Only one of `primitive_transformation` or `info_type_transformations` must be specified.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgs' primitive_transformation: Apply the transformation to the entire field.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArrgs' primitive_transformation: Apply the transformation to the entire field.
                The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
                Only one of `primitive_transformation` or `info_type_transformations` must be specified.
                Structure is documented below.
@@ -3899,11 +3899,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition(dict):
     def __init__(__self__, *,
                  expressions: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgs' expressions: An expression, consisting of an operator and conditions.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArrgs' expressions: An expression, consisting of an operator and conditions.
                Structure is documented below.
         """
         if expressions is not None:
@@ -3920,7 +3920,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3942,7 +3942,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  conditions: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions'] = None,
                  logical_operator: Optional[str] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgs' conditions: Conditions to apply to the expression.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArrgs' conditions: Conditions to apply to the expression.
                Structure is documented below.
         :param str logical_operator: The operator to apply to the result of conditions. Default and currently only supported value is AND.
                Default value is `AND`.
@@ -3974,11 +3974,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions(dict):
     def __init__(__self__, *,
                  conditions: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsCondition']] = None):
         """
-        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArgs'] conditions: A collection of conditions.
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrgs'] conditions: A collection of conditions.
                Structure is documented below.
         """
         if conditions is not None:
@@ -3995,17 +3995,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsCondition(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsCondition(dict):
     def __init__(__self__, *,
                  field: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionField',
                  operator: str,
                  value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldArgs' field: Field within the record this condition is evaluated against.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldArrgs' field: Field within the record this condition is evaluated against.
                Structure is documented below.
         :param str operator: Operator used to compare the field or infoType to the value.
                Possible values are: `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, `EXISTS`.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgs' value: Value to compare against. [Mandatory, except for EXISTS tests.]
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArrgs' value: Value to compare against. [Mandatory, except for EXISTS tests.]
                Structure is documented below.
         """
         pulumi.set(__self__, "field", field)
@@ -4042,7 +4042,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionField(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionField(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None):
         """
@@ -4061,7 +4061,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4104,14 +4104,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  timestamp_value: Optional[str] = None):
         """
         :param bool boolean_value: A boolean value.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgs' date_value: Represents a whole or partial calendar date.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArrgs' date_value: Represents a whole or partial calendar date.
                Structure is documented below.
         :param str day_of_week_value: Represents a day of the week.
                Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param float float_value: A float value.
         :param str integer_value: An integer value (int64 format)
         :param str string_value: A string value.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArgs' time_value: Represents a time of day.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArrgs' time_value: Represents a time of day.
                Structure is documented below.
         :param str timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -4201,7 +4201,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue(dict):
     def __init__(__self__, *,
                  day: Optional[int] = None,
                  month: Optional[int] = None,
@@ -4248,7 +4248,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue(dict):
     def __init__(__self__, *,
                  hours: Optional[int] = None,
                  minutes: Optional[int] = None,
@@ -4303,7 +4303,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None):
         """
@@ -4322,11 +4322,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformations(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformations(dict):
     def __init__(__self__, *,
                  transformations: Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformation']):
         """
-        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationArgs'] transformations: Transformation for each infoType. Cannot specify more than one for a given infoType.
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationArrgs'] transformations: Transformation for each infoType. Cannot specify more than one for a given infoType.
                Structure is documented below.
         """
         pulumi.set(__self__, "transformations", transformations)
@@ -4342,7 +4342,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformation(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4366,10 +4366,10 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  primitive_transformation: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformation',
                  info_types: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoType']] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationArgs' primitive_transformation: Apply the transformation to the entire field.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationArrgs' primitive_transformation: Apply the transformation to the entire field.
                The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
                Structure is documented below.
-        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeArgs'] info_types: InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeArrgs'] info_types: InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
                all findings that correspond to infoTypes that were requested in InspectConfig.
                Structure is documented below.
         """
@@ -4399,7 +4399,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoType(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4423,7 +4423,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  version: Optional[str] = None):
         """
         :param str name: Name of the information type.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeSensitivityScoreArrgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param str version: Version name for this InfoType.
         """
@@ -4460,7 +4460,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeSensitivityScore(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeSensitivityScore(dict):
     def __init__(__self__, *,
                  score: str):
         """
@@ -4480,7 +4480,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformation(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4534,38 +4534,38 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  replace_with_info_type_config: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceWithInfoTypeConfig'] = None,
                  time_part_config: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfig'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArgs' bucketing_config: Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArrgs' bucketing_config: Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
                This can be used on data of type: number, long, string, timestamp.
                If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
                See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs' character_mask_config: Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArrgs' character_mask_config: Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs' crypto_deterministic_config: Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC [https://tools.ietf.org/html/rfc5297](https://tools.ietf.org/html/rfc5297).
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArrgs' crypto_deterministic_config: Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC [https://tools.ietf.org/html/rfc5297](https://tools.ietf.org/html/rfc5297).
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArgs' crypto_hash_config: Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArrgs' crypto_hash_config: Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
                Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
                Currently, only string and integer values can be hashed.
                See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs' crypto_replace_ffx_fpe_config: Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `content.reidentify` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See [https://cloud.google.com/dlp/docs/pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization) to learn more.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArrgs' crypto_replace_ffx_fpe_config: Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `content.reidentify` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See [https://cloud.google.com/dlp/docs/pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization) to learn more.
                Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgs' date_shift_config: Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArrgs' date_shift_config: Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArgs' fixed_size_bucketing_config: Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArrgs' fixed_size_bucketing_config: Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies.
                The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20".
                This can be used on data of type: double, long.
                If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
                See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArgs' redact_config: Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs' replace_config: Replace each input value with a given value.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArrgs' redact_config: Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArrgs' replace_config: Replace each input value with a given value.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgs' replace_dictionary_config: Replace with a value randomly drawn (with replacement) from a dictionary.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArrgs' replace_dictionary_config: Replace with a value randomly drawn (with replacement) from a dictionary.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceWithInfoTypeConfigArgs' replace_with_info_type_config: Replace each matching finding with the name of the info type.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfigArgs' time_part_config: For use with Date, Timestamp, and TimeOfDay, extract or preserve a portion of the value.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceWithInfoTypeConfigArrgs' replace_with_info_type_config: Replace each matching finding with the name of the info type.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfigArrgs' time_part_config: For use with Date, Timestamp, and TimeOfDay, extract or preserve a portion of the value.
                Structure is documented below.
         """
         if bucketing_config is not None:
@@ -4712,11 +4712,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfig(dict):
     def __init__(__self__, *,
                  buckets: Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucket']):
         """
-        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketArgs'] buckets: Set of buckets. Ranges must be non-overlapping.
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketArrgs'] buckets: Set of buckets. Ranges must be non-overlapping.
                Bucket is represented as a range, along with replacement values.
                Structure is documented below.
         """
@@ -4734,7 +4734,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucket(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucket(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4757,13 +4757,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  max: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMax'] = None,
                  min: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMin'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgs' replacement_value: Replacement value for this bucket.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArrgs' replacement_value: Replacement value for this bucket.
                The `replacement_value` block must only contain one argument.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxArgs' max: Upper bound of the range, exclusive; type must match min.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxArrgs' max: Upper bound of the range, exclusive; type must match min.
                The `max` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinArgs' min: Lower bound of the range, inclusive. Type should be the same as max if used.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinArrgs' min: Lower bound of the range, inclusive. Type should be the same as max if used.
                The `min` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
                Structure is documented below.
         """
@@ -4805,7 +4805,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMax(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMax(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4844,14 +4844,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  time_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValue'] = None,
                  timestamp_value: Optional[str] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgs' date_value: Represents a whole or partial calendar date.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArrgs' date_value: Represents a whole or partial calendar date.
                Structure is documented below.
         :param str day_of_week_value: Represents a day of the week.
                Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param float float_value: A float value.
         :param str integer_value: An integer value (int64 format)
         :param str string_value: A string value.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgs' time_value: Represents a time of day.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArrgs' time_value: Represents a time of day.
                Structure is documented below.
         :param str timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -4931,7 +4931,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValue(dict):
     def __init__(__self__, *,
                  day: Optional[int] = None,
                  month: Optional[int] = None,
@@ -4978,7 +4978,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValue(dict):
     def __init__(__self__, *,
                  hours: Optional[int] = None,
                  minutes: Optional[int] = None,
@@ -5033,7 +5033,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMin(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMin(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5072,14 +5072,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  time_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValue'] = None,
                  timestamp_value: Optional[str] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgs' date_value: Represents a whole or partial calendar date.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArrgs' date_value: Represents a whole or partial calendar date.
                Structure is documented below.
         :param str day_of_week_value: Represents a day of the week.
                Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param float float_value: A float value.
         :param str integer_value: An integer value (int64 format)
         :param str string_value: A string value.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgs' time_value: Represents a time of day.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArrgs' time_value: Represents a time of day.
                Structure is documented below.
         :param str timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -5159,7 +5159,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValue(dict):
     def __init__(__self__, *,
                  day: Optional[int] = None,
                  month: Optional[int] = None,
@@ -5206,7 +5206,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValue(dict):
     def __init__(__self__, *,
                  hours: Optional[int] = None,
                  minutes: Optional[int] = None,
@@ -5261,7 +5261,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5300,14 +5300,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  time_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValue'] = None,
                  timestamp_value: Optional[str] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgs' date_value: Represents a whole or partial calendar date.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArrgs' date_value: Represents a whole or partial calendar date.
                Structure is documented below.
         :param str day_of_week_value: Represents a day of the week.
                Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param float float_value: A float value.
         :param str integer_value: An integer value (int64 format)
         :param str string_value: A string value.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgs' time_value: Represents a time of day.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArrgs' time_value: Represents a time of day.
                Structure is documented below.
         :param str timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -5387,7 +5387,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValue(dict):
     def __init__(__self__, *,
                  day: Optional[int] = None,
                  month: Optional[int] = None,
@@ -5434,7 +5434,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValue(dict):
     def __init__(__self__, *,
                  hours: Optional[int] = None,
                  minutes: Optional[int] = None,
@@ -5489,7 +5489,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5519,7 +5519,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  number_to_mask: Optional[int] = None,
                  reverse_order: Optional[bool] = None):
         """
-        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs'] characters_to_ignores: Characters to skip when doing de-identification of a value. These will be left alone and skipped.
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrgs'] characters_to_ignores: Characters to skip when doing de-identification of a value. These will be left alone and skipped.
                Structure is documented below.
         :param str masking_character: is *
         :param int number_to_mask: is -4
@@ -5571,7 +5571,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5623,7 +5623,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5648,9 +5648,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  surrogate_info_type: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType',
                  context: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs' crypto_key: The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArrgs' crypto_key: The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs' surrogate_info_type: The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArrgs' surrogate_info_type: The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
                For example, if the name of custom info type is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
                This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
                Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
@@ -5659,7 +5659,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                *   be unable to parse the surrogate and result in an error
                Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs' context: A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArrgs' context: A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
                If the context is not set, plaintext would be used as is for encryption. If the context is set but:
                1. there is no record present when transforming a given value or
                2. the field is not present when transforming a given value,
@@ -5713,7 +5713,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -5731,7 +5731,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5754,14 +5754,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  transient: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient'] = None,
                  unwrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs' kms_wrapped: KMS wrapped key.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArrgs' kms_wrapped: KMS wrapped key.
                Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
                For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
                Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs' transient: Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArrgs' transient: Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs' unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArrgs' unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
                Structure is documented below.
         """
         if kms_wrapped is not None:
@@ -5803,7 +5803,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5853,7 +5853,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -5871,7 +5871,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped(dict):
     def __init__(__self__, *,
                  key: str):
         """
@@ -5893,7 +5893,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5917,7 +5917,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  version: Optional[str] = None):
         """
         :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArrgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param str version: Optional version name for this InfoType.
         """
@@ -5954,7 +5954,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScore(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScore(dict):
     def __init__(__self__, *,
                  score: str):
         """
@@ -5974,7 +5974,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5995,7 +5995,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def __init__(__self__, *,
                  crypto_key: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKey'):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgs' crypto_key: The key used by the encryption function.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArrgs' crypto_key: The key used by the encryption function.
                Structure is documented below.
         """
         pulumi.set(__self__, "crypto_key", crypto_key)
@@ -6011,7 +6011,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKey(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6034,14 +6034,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  transient: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransient'] = None,
                  unwrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrapped'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgs' kms_wrapped: KMS wrapped key.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArrgs' kms_wrapped: KMS wrapped key.
                Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
                For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
                Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgs' transient: Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArrgs' transient: Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgs' unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArrgs' unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
                Structure is documented below.
         """
         if kms_wrapped is not None:
@@ -6083,7 +6083,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrapped(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrapped(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6133,7 +6133,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransient(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransient(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -6151,7 +6151,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrapped(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrapped(dict):
     def __init__(__self__, *,
                  key: str):
         """
@@ -6173,7 +6173,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6205,11 +6205,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  radix: Optional[int] = None,
                  surrogate_info_type: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs' crypto_key: The key used by the encryption algorithm.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArrgs' crypto_key: The key used by the encryption algorithm.
                Structure is documented below.
         :param str common_alphabet: Common alphabets. Only one of this, `custom_alphabet` or `radix` must be specified.
                Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs' context: The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArrgs' context: The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
                If the context is set but:
                1.  there is no record present when transforming a given value or
                2.  the field is not present when transforming a given value,
@@ -6222,7 +6222,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param str custom_alphabet: This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \\[2, 95\\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
                ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
         :param int radix: The native way to select the alphabet. Must be in the range \\[2, 95\\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs' surrogate_info_type: The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\\_type\\_name(surrogate\\_character\\_count):surrogate
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArrgs' surrogate_info_type: The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\\_type\\_name(surrogate\\_character\\_count):surrogate
                For example, if the name of custom infoType is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
                This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text.
                In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE
@@ -6306,7 +6306,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -6324,7 +6324,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6347,14 +6347,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  transient: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient'] = None,
                  unwrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs' kms_wrapped: KMS wrapped key.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArrgs' kms_wrapped: KMS wrapped key.
                Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
                For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
                Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs' transient: Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArrgs' transient: Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs' unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArrgs' unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
                Structure is documented below.
         """
         if kms_wrapped is not None:
@@ -6396,7 +6396,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6446,7 +6446,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -6464,7 +6464,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped(dict):
     def __init__(__self__, *,
                  key: str):
         """
@@ -6486,7 +6486,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6510,7 +6510,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  version: Optional[str] = None):
         """
         :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArrgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param str version: Optional version name for this InfoType.
         """
@@ -6547,7 +6547,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScore(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScore(dict):
     def __init__(__self__, *,
                  score: str):
         """
@@ -6567,7 +6567,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6598,10 +6598,10 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param int lower_bound_days: For example, -5 means shift date to at most 5 days back in the past.
         :param int upper_bound_days: Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction.
                For example, 3 means shift date to at most 3 days into the future.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContextArgs' context: Points to the field that contains the context, for example, an entity id.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContextArrgs' context: Points to the field that contains the context, for example, an entity id.
                If set, must also set cryptoKey. If set, shift will be consistent for the given context.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgs' crypto_key: Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and cryptoKey. If set, must also set context. Can only be applied to table items.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArrgs' crypto_key: Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and cryptoKey. If set, must also set context. Can only be applied to table items.
                Structure is documented below.
         """
         pulumi.set(__self__, "lower_bound_days", lower_bound_days)
@@ -6649,7 +6649,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContext(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContext(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -6667,7 +6667,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKey(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6690,14 +6690,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  transient: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransient'] = None,
                  unwrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrapped'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgs' kms_wrapped: KMS wrapped key.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArrgs' kms_wrapped: KMS wrapped key.
                Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
                For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
                Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgs' transient: Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArrgs' transient: Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgs' unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArrgs' unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
                Structure is documented below.
         """
         if kms_wrapped is not None:
@@ -6739,7 +6739,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrapped(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrapped(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6789,7 +6789,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransient(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransient(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -6807,7 +6807,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrapped(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrapped(dict):
     def __init__(__self__, *,
                  key: str):
         """
@@ -6829,7 +6829,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6859,11 +6859,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param float bucket_size: Size of each bucket (except for minimum and maximum buckets).
                So if lower_bound = 10, upper_bound = 89, and bucketSize = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+.
                Precision up to 2 decimals works.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgs' lower_bound: Lower bound value of buckets.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArrgs' lower_bound: Lower bound value of buckets.
                All values less than lower_bound are grouped together into a single bucket; for example if lower_bound = 10, then all values less than 10 are replaced with the value "-10".
                The `lower_bound` block must only contain one argument. See the `fixed_size_bucketing_config` block description for more information about choosing a data type.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgs' upper_bound: Upper bound value of buckets.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArrgs' upper_bound: Upper bound value of buckets.
                All values greater than upper_bound are grouped together into a single bucket; for example if upper_bound = 89, then all values greater than 89 are replaced with the value "89+".
                The `upper_bound` block must only contain one argument. See the `fixed_size_bucketing_config` block description for more information about choosing a data type.
                Structure is documented below.
@@ -6906,7 +6906,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBound(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBound(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6956,7 +6956,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7006,13 +7006,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfig(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7033,7 +7033,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def __init__(__self__, *,
                  new_value: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue'):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs' new_value: Replace each input value with a given value.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArrgs' new_value: Replace each input value with a given value.
                The `new_value` block must only contain one argument. For example when replacing the contents of a string-type field, only `string_value` should be set.
                Structure is documented below.
         """
@@ -7051,7 +7051,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7094,14 +7094,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  timestamp_value: Optional[str] = None):
         """
         :param bool boolean_value: A boolean value.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs' date_value: Represents a whole or partial calendar date.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArrgs' date_value: Represents a whole or partial calendar date.
                Structure is documented below.
         :param str day_of_week_value: Represents a day of the week.
                Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param float float_value: A float value.
         :param str integer_value: An integer value (int64 format)
         :param str string_value: A string value.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs' time_value: Represents a time of day.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArrgs' time_value: Represents a time of day.
                Structure is documented below.
         :param str timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -7193,7 +7193,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue(dict):
     def __init__(__self__, *,
                  day: Optional[int] = None,
                  month: Optional[int] = None,
@@ -7240,7 +7240,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue(dict):
     def __init__(__self__, *,
                  hours: Optional[int] = None,
                  minutes: Optional[int] = None,
@@ -7295,7 +7295,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7316,7 +7316,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def __init__(__self__, *,
                  word_list: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordList'):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgs' word_list: A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArrgs' word_list: A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
                Structure is documented below.
         """
         pulumi.set(__self__, "word_list", word_list)
@@ -7332,7 +7332,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordList(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordList(dict):
     def __init__(__self__, *,
                  words: Sequence[str]):
         """
@@ -7350,13 +7350,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceWithInfoTypeConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceWithInfoTypeConfig(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7393,7 +7393,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7444,37 +7444,37 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  replace_dictionary_config: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfig'] = None,
                  time_part_config: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfig'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigArgs' bucketing_config: Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigArrgs' bucketing_config: Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
                This can be used on data of type: number, long, string, timestamp.
                If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
                See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgs' character_mask_config: Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArrgs' character_mask_config: Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigArgs' crypto_deterministic_config: Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC [https://tools.ietf.org/html/rfc5297](https://tools.ietf.org/html/rfc5297).
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigArrgs' crypto_deterministic_config: Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC [https://tools.ietf.org/html/rfc5297](https://tools.ietf.org/html/rfc5297).
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigArgs' crypto_hash_config: Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigArrgs' crypto_hash_config: Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
                Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
                Currently, only string and integer values can be hashed.
                See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs' crypto_replace_ffx_fpe_config: Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `content.reidentify` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See [https://cloud.google.com/dlp/docs/pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization) to learn more.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArrgs' crypto_replace_ffx_fpe_config: Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `content.reidentify` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See [https://cloud.google.com/dlp/docs/pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization) to learn more.
                Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigArgs' date_shift_config: Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigArrgs' date_shift_config: Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigArgs' fixed_size_bucketing_config: Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigArrgs' fixed_size_bucketing_config: Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies.
                The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20".
                This can be used on data of type: double, long.
                If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
                See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgs' redact_config: Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgs' replace_config: Replace each input value with a given value.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArrgs' redact_config: Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArrgs' replace_config: Replace each input value with a given value.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigArgs' replace_dictionary_config: Replace with a value randomly drawn (with replacement) from a dictionary.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigArrgs' replace_dictionary_config: Replace with a value randomly drawn (with replacement) from a dictionary.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfigArgs' time_part_config: For use with Date, Timestamp, and TimeOfDay, extract or preserve a portion of the value.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfigArrgs' time_part_config: For use with Date, Timestamp, and TimeOfDay, extract or preserve a portion of the value.
                Structure is documented below.
         """
         if bucketing_config is not None:
@@ -7611,11 +7611,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfig(dict):
     def __init__(__self__, *,
                  buckets: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucket']] = None):
         """
-        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketArgs'] buckets: Set of buckets. Ranges must be non-overlapping.
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketArrgs'] buckets: Set of buckets. Ranges must be non-overlapping.
                Bucket is represented as a range, along with replacement values.
                Structure is documented below.
         """
@@ -7634,7 +7634,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucket(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucket(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7657,13 +7657,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  max: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMax'] = None,
                  min: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMin'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgs' replacement_value: Replacement value for this bucket.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArrgs' replacement_value: Replacement value for this bucket.
                The `replacement_value` block must only contain one argument.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxArgs' max: Upper bound of the range, exclusive; type must match min.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxArrgs' max: Upper bound of the range, exclusive; type must match min.
                The `max` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinArgs' min: Lower bound of the range, inclusive. Type should be the same as max if used.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinArrgs' min: Lower bound of the range, inclusive. Type should be the same as max if used.
                The `min` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
                Structure is documented below.
         """
@@ -7705,7 +7705,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMax(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMax(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7748,14 +7748,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  timestamp_value: Optional[str] = None):
         """
         :param bool boolean_value: A boolean value.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgs' date_value: Represents a whole or partial calendar date.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArrgs' date_value: Represents a whole or partial calendar date.
                Structure is documented below.
         :param str day_of_week_value: Represents a day of the week.
                Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param float float_value: A float value.
         :param str integer_value: An integer value (int64 format)
         :param str string_value: A string value.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgs' time_value: Represents a time of day.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArrgs' time_value: Represents a time of day.
                Structure is documented below.
         :param str timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -7845,7 +7845,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValue(dict):
     def __init__(__self__, *,
                  day: Optional[int] = None,
                  month: Optional[int] = None,
@@ -7892,7 +7892,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValue(dict):
     def __init__(__self__, *,
                  hours: Optional[int] = None,
                  minutes: Optional[int] = None,
@@ -7947,7 +7947,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMin(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMin(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7990,14 +7990,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  timestamp_value: Optional[str] = None):
         """
         :param bool boolean_value: A boolean value.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgs' date_value: Represents a whole or partial calendar date.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArrgs' date_value: Represents a whole or partial calendar date.
                Structure is documented below.
         :param str day_of_week_value: Represents a day of the week.
                Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param float float_value: A float value.
         :param str integer_value: An integer value (int64 format)
         :param str string_value: A string value.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgs' time_value: Represents a time of day.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArrgs' time_value: Represents a time of day.
                Structure is documented below.
         :param str timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -8087,7 +8087,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValue(dict):
     def __init__(__self__, *,
                  day: Optional[int] = None,
                  month: Optional[int] = None,
@@ -8134,7 +8134,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValue(dict):
     def __init__(__self__, *,
                  hours: Optional[int] = None,
                  minutes: Optional[int] = None,
@@ -8189,7 +8189,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8232,14 +8232,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  timestamp_value: Optional[str] = None):
         """
         :param bool boolean_value: A boolean value.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgs' date_value: Represents a whole or partial calendar date.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArrgs' date_value: Represents a whole or partial calendar date.
                Structure is documented below.
         :param str day_of_week_value: Represents a day of the week.
                Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param float float_value: A float value.
         :param str integer_value: An integer value (int64 format)
         :param str string_value: A string value.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgs' time_value: Represents a time of day.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArrgs' time_value: Represents a time of day.
                Structure is documented below.
         :param str timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -8329,7 +8329,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValue(dict):
     def __init__(__self__, *,
                  day: Optional[int] = None,
                  month: Optional[int] = None,
@@ -8376,7 +8376,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValue(dict):
     def __init__(__self__, *,
                  hours: Optional[int] = None,
                  minutes: Optional[int] = None,
@@ -8431,7 +8431,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8461,7 +8461,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  number_to_mask: Optional[int] = None,
                  reverse_order: Optional[bool] = None):
         """
-        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs'] characters_to_ignores: Characters to skip when doing de-identification of a value. These will be left alone and skipped.
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrgs'] characters_to_ignores: Characters to skip when doing de-identification of a value. These will be left alone and skipped.
                Structure is documented below.
         :param str masking_character: is *
         :param int number_to_mask: is -4
@@ -8513,7 +8513,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8565,7 +8565,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8590,16 +8590,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  crypto_key: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey'] = None,
                  surrogate_info_type: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs' context: A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigContextArrgs' context: A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
                If the context is not set, plaintext would be used as is for encryption. If the context is set but:
                1. there is no record present when transforming a given value or
                2. the field is not present when transforming a given value,
                plaintext would be used as is for encryption.
                Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs' crypto_key: The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArrgs' crypto_key: The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs' surrogate_info_type: The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArrgs' surrogate_info_type: The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
                For example, if the name of custom info type is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
                This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
                Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
@@ -8657,7 +8657,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigContext(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigContext(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None):
         """
@@ -8676,7 +8676,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8699,14 +8699,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  transient: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient'] = None,
                  unwrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs' kms_wrapped: KMS wrapped key.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArrgs' kms_wrapped: KMS wrapped key.
                Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
                For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
                Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs' transient: Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArrgs' transient: Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs' unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArrgs' unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
                Structure is documented below.
         """
         if kms_wrapped is not None:
@@ -8748,7 +8748,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8798,7 +8798,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -8816,7 +8816,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped(dict):
     def __init__(__self__, *,
                  key: str):
         """
@@ -8838,7 +8838,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8862,7 +8862,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  version: Optional[str] = None):
         """
         :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArrgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param str version: Optional version name for this InfoType.
         """
@@ -8900,7 +8900,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScore(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScore(dict):
     def __init__(__self__, *,
                  score: str):
         """
@@ -8920,7 +8920,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8941,7 +8941,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def __init__(__self__, *,
                  crypto_key: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKey'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgs' crypto_key: The key used by the encryption function.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArrgs' crypto_key: The key used by the encryption function.
                Structure is documented below.
         """
         if crypto_key is not None:
@@ -8958,7 +8958,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKey(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8981,14 +8981,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  transient: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransient'] = None,
                  unwrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrapped'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgs' kms_wrapped: KMS wrapped key.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArrgs' kms_wrapped: KMS wrapped key.
                Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
                For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
                Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgs' transient: Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArrgs' transient: Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgs' unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArrgs' unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
                Structure is documented below.
         """
         if kms_wrapped is not None:
@@ -9030,7 +9030,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrapped(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrapped(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9080,7 +9080,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransient(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransient(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -9098,7 +9098,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrapped(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrapped(dict):
     def __init__(__self__, *,
                  key: str):
         """
@@ -9120,7 +9120,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9154,7 +9154,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         """
         :param str common_alphabet: Common alphabets. Only one of this, `custom_alphabet` or `radix` must be specified.
                Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs' context: The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArrgs' context: The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
                If the context is set but:
                1.  there is no record present when transforming a given value or
                2.  the field is not present when transforming a given value,
@@ -9164,12 +9164,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                *   a 64 bit integer is encoded followed by a single byte of value 1
                *   a string is encoded in UTF-8 format followed by a single byte of value 2
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs' crypto_key: The key used by the encryption algorithm.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArrgs' crypto_key: The key used by the encryption algorithm.
                Structure is documented below.
         :param str custom_alphabet: This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \\[2, 95\\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
                ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
         :param int radix: The native way to select the alphabet. Must be in the range \\[2, 95\\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs' surrogate_info_type: The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\\_type\\_name(surrogate\\_character\\_count):surrogate
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArrgs' surrogate_info_type: The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\\_type\\_name(surrogate\\_character\\_count):surrogate
                For example, if the name of custom infoType is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
                This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text.
                In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE
@@ -9254,7 +9254,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None):
         """
@@ -9273,7 +9273,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9296,14 +9296,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  transient: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient'] = None,
                  unwrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs' kms_wrapped: KMS wrapped key.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArrgs' kms_wrapped: KMS wrapped key.
                Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
                For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
                Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs' transient: Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArrgs' transient: Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs' unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArrgs' unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
                Structure is documented below.
         """
         if kms_wrapped is not None:
@@ -9345,7 +9345,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9395,7 +9395,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -9413,7 +9413,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped(dict):
     def __init__(__self__, *,
                  key: str):
         """
@@ -9435,7 +9435,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9459,7 +9459,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  version: Optional[str] = None):
         """
         :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArrgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param str version: Optional version name for this InfoType.
         """
@@ -9497,7 +9497,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScore(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScore(dict):
     def __init__(__self__, *,
                  score: str):
         """
@@ -9517,7 +9517,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9548,10 +9548,10 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param int lower_bound_days: For example, -5 means shift date to at most 5 days back in the past.
         :param int upper_bound_days: Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction.
                For example, 3 means shift date to at most 3 days into the future.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigContextArgs' context: Points to the field that contains the context, for example, an entity id.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigContextArrgs' context: Points to the field that contains the context, for example, an entity id.
                If set, must also set cryptoKey. If set, shift will be consistent for the given context.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgs' crypto_key: Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and cryptoKey. If set, must also set context. Can only be applied to table items.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArrgs' crypto_key: Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and cryptoKey. If set, must also set context. Can only be applied to table items.
                Structure is documented below.
         """
         pulumi.set(__self__, "lower_bound_days", lower_bound_days)
@@ -9599,7 +9599,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigContext(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigContext(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None):
         """
@@ -9618,7 +9618,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKey(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9641,14 +9641,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  transient: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransient'] = None,
                  unwrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrapped'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgs' kms_wrapped: KMS wrapped key.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArrgs' kms_wrapped: KMS wrapped key.
                Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
                For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
                Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgs' transient: Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArrgs' transient: Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgs' unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArrgs' unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
                Structure is documented below.
         """
         if kms_wrapped is not None:
@@ -9690,7 +9690,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrapped(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrapped(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9740,7 +9740,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransient(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransient(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -9758,7 +9758,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrapped(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrapped(dict):
     def __init__(__self__, *,
                  key: str):
         """
@@ -9780,7 +9780,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9810,11 +9810,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param float bucket_size: Size of each bucket (except for minimum and maximum buckets).
                So if lower_bound = 10, upper_bound = 89, and bucketSize = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+.
                Precision up to 2 decimals works.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgs' lower_bound: Lower bound value of buckets.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArrgs' lower_bound: Lower bound value of buckets.
                All values less than lower_bound are grouped together into a single bucket; for example if lower_bound = 10, then all values less than 10 are replaced with the value "-10".
                The `lower_bound` block must only contain one argument. See the `fixed_size_bucketing_config` block description for more information about choosing a data type.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgs' upper_bound: Upper bound value of buckets.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArrgs' upper_bound: Upper bound value of buckets.
                All values greater than upper_bound are grouped together into a single bucket; for example if upper_bound = 89, then all values greater than 89 are replaced with the value "89+".
                The `upper_bound` block must only contain one argument. See the `fixed_size_bucketing_config` block description for more information about choosing a data type.
                Structure is documented below.
@@ -9857,7 +9857,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBound(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBound(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9900,14 +9900,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  timestamp_value: Optional[str] = None):
         """
         :param bool boolean_value: A boolean value.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValueArgs' date_value: Represents a whole or partial calendar date.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValueArrgs' date_value: Represents a whole or partial calendar date.
                Structure is documented below.
         :param str day_of_week_value: Represents a day of the week.
                Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param float float_value: A float value.
         :param str integer_value: An integer value (int64 format)
         :param str string_value: A string value.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundTimeValueArgs' time_value: Represents a time of day.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundTimeValueArrgs' time_value: Represents a time of day.
                Structure is documented below.
         :param str timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -9997,7 +9997,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValue(dict):
     def __init__(__self__, *,
                  day: Optional[int] = None,
                  month: Optional[int] = None,
@@ -10044,7 +10044,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundTimeValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundTimeValue(dict):
     def __init__(__self__, *,
                  hours: Optional[int] = None,
                  minutes: Optional[int] = None,
@@ -10099,7 +10099,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10142,14 +10142,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  timestamp_value: Optional[str] = None):
         """
         :param bool boolean_value: A boolean value.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValueArgs' date_value: Represents a whole or partial calendar date.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValueArrgs' date_value: Represents a whole or partial calendar date.
                Structure is documented below.
         :param str day_of_week_value: Represents a day of the week.
                Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param float float_value: A float value.
         :param str integer_value: An integer value (int64 format)
         :param str string_value: A string value.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundTimeValueArgs' time_value: Represents a time of day.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundTimeValueArrgs' time_value: Represents a time of day.
                Structure is documented below.
         :param str timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -10239,7 +10239,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValue(dict):
     def __init__(__self__, *,
                  day: Optional[int] = None,
                  month: Optional[int] = None,
@@ -10286,7 +10286,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundTimeValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundTimeValue(dict):
     def __init__(__self__, *,
                  hours: Optional[int] = None,
                  minutes: Optional[int] = None,
@@ -10341,13 +10341,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfig(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10368,7 +10368,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def __init__(__self__, *,
                  new_value: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue'):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueArgs' new_value: Replace each input value with a given value.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueArrgs' new_value: Replace each input value with a given value.
                The `new_value` block must only contain one argument. For example when replacing the contents of a string-type field, only `string_value` should be set.
                Structure is documented below.
         """
@@ -10386,7 +10386,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10429,14 +10429,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  timestamp_value: Optional[str] = None):
         """
         :param bool boolean_value: A boolean value.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs' date_value: Represents a whole or partial calendar date.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArrgs' date_value: Represents a whole or partial calendar date.
                Structure is documented below.
         :param str day_of_week_value: Represents a day of the week.
                Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param float float_value: A float value.
         :param str integer_value: An integer value (int64 format)
         :param str string_value: A string value.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs' time_value: Represents a time of day.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArrgs' time_value: Represents a time of day.
                Structure is documented below.
         :param str timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -10528,7 +10528,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue(dict):
     def __init__(__self__, *,
                  day: Optional[int] = None,
                  month: Optional[int] = None,
@@ -10575,7 +10575,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue(dict):
     def __init__(__self__, *,
                  hours: Optional[int] = None,
                  minutes: Optional[int] = None,
@@ -10630,7 +10630,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10651,7 +10651,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def __init__(__self__, *,
                  word_list: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigWordList'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgs' word_list: A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArrgs' word_list: A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
                Structure is documented below.
         """
         if word_list is not None:
@@ -10668,7 +10668,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigWordList(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigWordList(dict):
     def __init__(__self__, *,
                  words: Sequence[str]):
         """
@@ -10686,7 +10686,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfig(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10724,11 +10724,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression(dict):
     def __init__(__self__, *,
                  condition: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgs' condition: A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArrgs' condition: A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
                Structure is documented below.
         """
         if condition is not None:
@@ -10745,11 +10745,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition(dict):
     def __init__(__self__, *,
                  expressions: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgs' expressions: An expression, consisting of an operator and conditions.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArrgs' expressions: An expression, consisting of an operator and conditions.
                Structure is documented below.
         """
         if expressions is not None:
@@ -10766,7 +10766,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10788,7 +10788,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
                  conditions: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions'] = None,
                  logical_operator: Optional[str] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgs' conditions: Conditions to apply to the expression.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArrgs' conditions: Conditions to apply to the expression.
                Structure is documented below.
         :param str logical_operator: The operator to apply to the result of conditions. Default and currently only supported value is AND.
                Default value is `AND`.
@@ -10820,11 +10820,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions(dict):
     def __init__(__self__, *,
                  conditions: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition']] = None):
         """
-        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArgs'] conditions: A collection of conditions.
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrgs'] conditions: A collection of conditions.
                Structure is documented below.
         """
         if conditions is not None:
@@ -10841,17 +10841,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition(dict):
     def __init__(__self__, *,
                  field: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionField',
                  operator: str,
                  value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldArgs' field: Field within the record this condition is evaluated against.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldArrgs' field: Field within the record this condition is evaluated against.
                Structure is documented below.
         :param str operator: Operator used to compare the field or infoType to the value.
                Possible values are: `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, `EXISTS`.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgs' value: Value to compare against. [Mandatory, except for EXISTS tests.]
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArrgs' value: Value to compare against. [Mandatory, except for EXISTS tests.]
                Structure is documented below.
         """
         pulumi.set(__self__, "field", field)
@@ -10888,7 +10888,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionField(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionField(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None):
         """
@@ -10907,7 +10907,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10950,14 +10950,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
                  timestamp_value: Optional[str] = None):
         """
         :param bool boolean_value: A boolean value.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgs' date_value: Represents a whole or partial calendar date.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArrgs' date_value: Represents a whole or partial calendar date.
                Structure is documented below.
         :param str day_of_week_value: Represents a day of the week.
                Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param float float_value: A float value.
         :param str integer_value: An integer value (int64 format)
         :param str string_value: A string value.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArgs' time_value: Represents a time of day.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArrgs' time_value: Represents a time of day.
                Structure is documented below.
         :param str timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -11047,7 +11047,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue(dict):
     def __init__(__self__, *,
                  day: Optional[int] = None,
                  month: Optional[int] = None,
@@ -11094,7 +11094,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
 
 
 @pulumi.output_type
-class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue(dict):
+calass PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue(dict):
     def __init__(__self__, *,
                  hours: Optional[int] = None,
                  minutes: Optional[int] = None,
@@ -11149,7 +11149,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfig(dict):
+calass PreventionInspectTemplateInspectConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11191,21 +11191,21 @@ class PreventionInspectTemplateInspectConfig(dict):
         """
         :param Sequence[str] content_options: List of options defining data content to scan. If empty, text, images, and other content will be included.
                Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
-        :param Sequence['PreventionInspectTemplateInspectConfigCustomInfoTypeArgs'] custom_info_types: Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+        :param Sequence['PreventionInspectTemplateInspectConfigCustomInfoTypeArrgs'] custom_info_types: Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
                Structure is documented below.
         :param bool exclude_info_types: When true, excludes type information of the findings.
         :param bool include_quote: When true, a contextual quote from the data that triggered a finding is included in the response.
-        :param Sequence['PreventionInspectTemplateInspectConfigInfoTypeArgs'] info_types: Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+        :param Sequence['PreventionInspectTemplateInspectConfigInfoTypeArrgs'] info_types: Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
                or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
                When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
                By default this may be all types, but may change over time as detectors are updated.
                Structure is documented below.
-        :param 'PreventionInspectTemplateInspectConfigLimitsArgs' limits: Configuration to control the number of findings returned.
+        :param 'PreventionInspectTemplateInspectConfigLimitsArrgs' limits: Configuration to control the number of findings returned.
                Structure is documented below.
         :param str min_likelihood: Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
                Default value is `POSSIBLE`.
                Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
-        :param Sequence['PreventionInspectTemplateInspectConfigRuleSetArgs'] rule_sets: Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
+        :param Sequence['PreventionInspectTemplateInspectConfigRuleSetArrgs'] rule_sets: Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
                other rules are executed in the order they are specified for each info type.
                Structure is documented below.
         """
@@ -11303,7 +11303,7 @@ class PreventionInspectTemplateInspectConfig(dict):
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigCustomInfoType(dict):
+calass PreventionInspectTemplateInspectConfigCustomInfoType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11339,12 +11339,12 @@ class PreventionInspectTemplateInspectConfigCustomInfoType(dict):
                  stored_type: Optional['outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType'] = None,
                  surrogate_type: Optional['outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateType'] = None):
         """
-        :param 'PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs' info_type: CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+        :param 'PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArrgs' info_type: CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
                infoTypes and that infoType is specified in `info_types` field. Specifying the latter adds findings to the
                one detected by the system. If built-in info type is not specified in `info_types` list then the name is
                treated as a custom info type.
                Structure is documented below.
-        :param 'PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs' dictionary: Dictionary which defines the rule.
+        :param 'PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArrgs' dictionary: Dictionary which defines the rule.
                Structure is documented below.
         :param str exclusion_type: If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
                Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
@@ -11352,13 +11352,13 @@ class PreventionInspectTemplateInspectConfigCustomInfoType(dict):
                specified by the rule.
                Default value is `VERY_LIKELY`.
                Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
-        :param 'PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs' regex: Regular expression which defines the rule.
+        :param 'PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArrgs' regex: Regular expression which defines the rule.
                Structure is documented below.
-        :param 'PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        :param 'PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScoreArrgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
-        :param 'PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs' stored_type: A reference to a StoredInfoType to use with scanning.
+        :param 'PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArrgs' stored_type: A reference to a StoredInfoType to use with scanning.
                Structure is documented below.
-        :param 'PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArgs' surrogate_type: Message for detecting output from deidentification transformations that support reversing.
+        :param 'PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArrgs' surrogate_type: Message for detecting output from deidentification transformations that support reversing.
         """
         pulumi.set(__self__, "info_type", info_type)
         if dictionary is not None:
@@ -11454,7 +11454,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoType(dict):
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary(dict):
+calass PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11478,9 +11478,9 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary(dict):
                  cloud_storage_path: Optional['outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath'] = None,
                  word_list: Optional['outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList'] = None):
         """
-        :param 'PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs' cloud_storage_path: Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+        :param 'PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArrgs' cloud_storage_path: Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
                Structure is documented below.
-        :param 'PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs' word_list: List of words or phrases to search for.
+        :param 'PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArrgs' word_list: List of words or phrases to search for.
                Structure is documented below.
         """
         if cloud_storage_path is not None:
@@ -11508,7 +11508,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary(dict):
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath(dict):
+calass PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath(dict):
     def __init__(__self__, *,
                  path: str):
         """
@@ -11526,7 +11526,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStorage
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList(dict):
+calass PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList(dict):
     def __init__(__self__, *,
                  words: Sequence[str]):
         """
@@ -11546,7 +11546,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList(dic
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType(dict):
+calass PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11571,7 +11571,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType(dict):
         """
         :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
                listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        :param 'PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        :param 'PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArrgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param str version: Version name for this InfoType.
         """
@@ -11609,7 +11609,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType(dict):
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeSensitivityScore(dict):
+calass PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeSensitivityScore(dict):
     def __init__(__self__, *,
                  score: str):
         """
@@ -11629,7 +11629,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeSensitivitySco
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigCustomInfoTypeRegex(dict):
+calass PreventionInspectTemplateInspectConfigCustomInfoTypeRegex(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11678,7 +11678,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeRegex(dict):
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore(dict):
+calass PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore(dict):
     def __init__(__self__, *,
                  score: str):
         """
@@ -11698,7 +11698,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore(dict)
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType(dict):
+calass PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -11718,13 +11718,13 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType(dict):
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateType(dict):
+calass PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateType(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigInfoType(dict):
+calass PreventionInspectTemplateInspectConfigInfoType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11749,7 +11749,7 @@ class PreventionInspectTemplateInspectConfigInfoType(dict):
         """
         :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
                at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        :param 'PreventionInspectTemplateInspectConfigInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        :param 'PreventionInspectTemplateInspectConfigInfoTypeSensitivityScoreArrgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param str version: Version name for this InfoType.
         """
@@ -11787,7 +11787,7 @@ class PreventionInspectTemplateInspectConfigInfoType(dict):
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigInfoTypeSensitivityScore(dict):
+calass PreventionInspectTemplateInspectConfigInfoTypeSensitivityScore(dict):
     def __init__(__self__, *,
                  score: str):
         """
@@ -11807,7 +11807,7 @@ class PreventionInspectTemplateInspectConfigInfoTypeSensitivityScore(dict):
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigLimits(dict):
+calass PreventionInspectTemplateInspectConfigLimits(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11836,7 +11836,7 @@ class PreventionInspectTemplateInspectConfigLimits(dict):
         """
         :param int max_findings_per_item: Max number of findings that will be returned for each item scanned. The maximum returned is 2000.
         :param int max_findings_per_request: Max number of findings that will be returned per request/job. The maximum returned is 2000.
-        :param Sequence['PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs'] max_findings_per_info_types: Configuration of findings limit given for specified infoTypes.
+        :param Sequence['PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArrgs'] max_findings_per_info_types: Configuration of findings limit given for specified infoTypes.
                Structure is documented below.
         """
         pulumi.set(__self__, "max_findings_per_item", max_findings_per_item)
@@ -11871,7 +11871,7 @@ class PreventionInspectTemplateInspectConfigLimits(dict):
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType(dict):
+calass PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11895,7 +11895,7 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType(dict):
                  info_type: 'outputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType',
                  max_findings: int):
         """
-        :param 'PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs' info_type: Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
+        :param 'PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArrgs' info_type: Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
                not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
                specified in another InfoTypeLimit.
                Structure is documented below.
@@ -11925,7 +11925,7 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType(dict):
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType(dict):
+calass PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11950,7 +11950,7 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType
         """
         :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
                listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        :param 'PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        :param 'PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArrgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param str version: Version name for this InfoType.
         """
@@ -11988,7 +11988,7 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore(dict):
+calass PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore(dict):
     def __init__(__self__, *,
                  score: str):
         """
@@ -12008,7 +12008,7 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigRuleSet(dict):
+calass PreventionInspectTemplateInspectConfigRuleSet(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12030,9 +12030,9 @@ class PreventionInspectTemplateInspectConfigRuleSet(dict):
                  info_types: Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSetInfoType'],
                  rules: Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSetRule']):
         """
-        :param Sequence['PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs'] info_types: List of infoTypes this rule set is applied to.
+        :param Sequence['PreventionInspectTemplateInspectConfigRuleSetInfoTypeArrgs'] info_types: List of infoTypes this rule set is applied to.
                Structure is documented below.
-        :param Sequence['PreventionInspectTemplateInspectConfigRuleSetRuleArgs'] rules: Set of rules to be applied to infoTypes. The rules are applied in order.
+        :param Sequence['PreventionInspectTemplateInspectConfigRuleSetRuleArrgs'] rules: Set of rules to be applied to infoTypes. The rules are applied in order.
                Structure is documented below.
         """
         pulumi.set(__self__, "info_types", info_types)
@@ -12058,7 +12058,7 @@ class PreventionInspectTemplateInspectConfigRuleSet(dict):
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigRuleSetInfoType(dict):
+calass PreventionInspectTemplateInspectConfigRuleSetInfoType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12083,7 +12083,7 @@ class PreventionInspectTemplateInspectConfigRuleSetInfoType(dict):
         """
         :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
                at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        :param 'PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        :param 'PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScoreArrgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param str version: Version name for this InfoType.
         """
@@ -12121,7 +12121,7 @@ class PreventionInspectTemplateInspectConfigRuleSetInfoType(dict):
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScore(dict):
+calass PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScore(dict):
     def __init__(__self__, *,
                  score: str):
         """
@@ -12141,7 +12141,7 @@ class PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScore(dict
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigRuleSetRule(dict):
+calass PreventionInspectTemplateInspectConfigRuleSetRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12165,9 +12165,9 @@ class PreventionInspectTemplateInspectConfigRuleSetRule(dict):
                  exclusion_rule: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule'] = None,
                  hotword_rule: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule'] = None):
         """
-        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs' exclusion_rule: The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
+        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArrgs' exclusion_rule: The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
                Structure is documented below.
-        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs' hotword_rule: Hotword-based detection rule.
+        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArrgs' hotword_rule: Hotword-based detection rule.
                Structure is documented below.
         """
         if exclusion_rule is not None:
@@ -12195,7 +12195,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRule(dict):
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule(dict):
+calass PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12226,14 +12226,14 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule(dict):
         """
         :param str matching_type: How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
                Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
-        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgs' dictionary: Dictionary which defines the rule.
+        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArrgs' dictionary: Dictionary which defines the rule.
                Structure is documented below.
-        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs' exclude_by_hotword: Drop if the hotword rule is contained in the proximate context.
+        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArrgs' exclude_by_hotword: Drop if the hotword rule is contained in the proximate context.
                For tabular data, the context includes the column name.
                Structure is documented below.
-        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs' exclude_info_types: Set of infoTypes for which findings would affect this rule.
+        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArrgs' exclude_info_types: Set of infoTypes for which findings would affect this rule.
                Structure is documented below.
-        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs' regex: Regular expression which defines the rule.
+        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArrgs' regex: Regular expression which defines the rule.
                Structure is documented below.
         """
         pulumi.set(__self__, "matching_type", matching_type)
@@ -12294,7 +12294,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule(dict):
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary(dict):
+calass PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12318,9 +12318,9 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary(d
                  cloud_storage_path: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath'] = None,
                  word_list: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordList'] = None):
         """
-        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs' cloud_storage_path: Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArrgs' cloud_storage_path: Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
                Structure is documented below.
-        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs' word_list: List of words or phrases to search for.
+        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArrgs' word_list: List of words or phrases to search for.
                Structure is documented below.
         """
         if cloud_storage_path is not None:
@@ -12348,7 +12348,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary(d
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath(dict):
+calass PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath(dict):
     def __init__(__self__, *,
                  path: str):
         """
@@ -12366,7 +12366,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCl
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordList(dict):
+calass PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordList(dict):
     def __init__(__self__, *,
                  words: Sequence[str]):
         """
@@ -12386,7 +12386,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWo
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword(dict):
+calass PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12408,9 +12408,9 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHot
                  hotword_regex: 'outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex',
                  proximity: 'outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity'):
         """
-        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs' hotword_regex: Regular expression pattern defining what qualifies as a hotword.
+        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArrgs' hotword_regex: Regular expression pattern defining what qualifies as a hotword.
                Structure is documented below.
-        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs' proximity: Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArrgs' proximity: Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
                exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
                used to match substrings of the finding itself. For example, the certainty of a phone number regex
                `(\\d{3}) \\d{3}-\\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
@@ -12444,7 +12444,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHot
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex(dict):
+calass PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12495,7 +12495,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHot
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity(dict):
+calass PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12545,7 +12545,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHot
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes(dict):
+calass PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12566,7 +12566,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
     def __init__(__self__, *,
                  info_types: Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType']):
         """
-        :param Sequence['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs'] info_types: If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+        :param Sequence['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrgs'] info_types: If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
                Structure is documented below.
         """
         pulumi.set(__self__, "info_types", info_types)
@@ -12582,7 +12582,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType(dict):
+calass PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12607,7 +12607,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
         """
         :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
                at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArrgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param str version: Version name for this InfoType.
         """
@@ -12645,7 +12645,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore(dict):
+calass PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore(dict):
     def __init__(__self__, *,
                  score: str):
         """
@@ -12665,7 +12665,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex(dict):
+calass PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12714,7 +12714,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex(dict):
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule(dict):
+calass PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12739,11 +12739,11 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule(dict):
                  likelihood_adjustment: 'outputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment',
                  proximity: 'outputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity'):
         """
-        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs' hotword_regex: Regular expression pattern defining what qualifies as a hotword.
+        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArrgs' hotword_regex: Regular expression pattern defining what qualifies as a hotword.
                Structure is documented below.
-        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs' likelihood_adjustment: Likelihood adjustment to apply to all matching findings.
+        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArrgs' likelihood_adjustment: Likelihood adjustment to apply to all matching findings.
                Structure is documented below.
-        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs' proximity: Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArrgs' proximity: Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
                exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
                used to match substrings of the finding itself. For example, the certainty of a phone number regex
                `(\\d{3}) \\d{3}-\\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
@@ -12787,7 +12787,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule(dict):
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex(dict):
+calass PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12838,7 +12838,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex(d
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment(dict):
+calass PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12900,7 +12900,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdju
 
 
 @pulumi.output_type
-class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity(dict):
+calass PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12950,7 +12950,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity(dict
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJob(dict):
+calass PreventionJobTriggerInspectJob(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12978,11 +12978,11 @@ class PreventionJobTriggerInspectJob(dict):
                  inspect_config: Optional['outputs.PreventionJobTriggerInspectJobInspectConfig'] = None,
                  inspect_template_name: Optional[str] = None):
         """
-        :param 'PreventionJobTriggerInspectJobStorageConfigArgs' storage_config: Information on where to inspect
+        :param 'PreventionJobTriggerInspectJobStorageConfigArrgs' storage_config: Information on where to inspect
                Structure is documented below.
-        :param Sequence['PreventionJobTriggerInspectJobActionArgs'] actions: A task to execute on the completion of a job.
+        :param Sequence['PreventionJobTriggerInspectJobActionArrgs'] actions: A task to execute on the completion of a job.
                Structure is documented below.
-        :param 'PreventionJobTriggerInspectJobInspectConfigArgs' inspect_config: The core content of the template.
+        :param 'PreventionJobTriggerInspectJobInspectConfigArrgs' inspect_config: The core content of the template.
                Structure is documented below.
         :param str inspect_template_name: The name of the template to run when this job is triggered.
         """
@@ -13031,7 +13031,7 @@ class PreventionJobTriggerInspectJob(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobAction(dict):
+calass PreventionJobTriggerInspectJobAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -13068,15 +13068,15 @@ class PreventionJobTriggerInspectJobAction(dict):
                  publish_to_stackdriver: Optional['outputs.PreventionJobTriggerInspectJobActionPublishToStackdriver'] = None,
                  save_findings: Optional['outputs.PreventionJobTriggerInspectJobActionSaveFindings'] = None):
         """
-        :param 'PreventionJobTriggerInspectJobActionDeidentifyArgs' deidentify: Create a de-identified copy of the requested table or files.
+        :param 'PreventionJobTriggerInspectJobActionDeidentifyArrgs' deidentify: Create a de-identified copy of the requested table or files.
                Structure is documented below.
-        :param 'PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs' job_notification_emails: Sends an email when the job completes. The email goes to IAM project owners and technical Essential Contacts.
-        :param 'PreventionJobTriggerInspectJobActionPubSubArgs' pub_sub: Publish a message into a given Pub/Sub topic when the job completes.
+        :param 'PreventionJobTriggerInspectJobActionJobNotificationEmailsArrgs' job_notification_emails: Sends an email when the job completes. The email goes to IAM project owners and technical Essential Contacts.
+        :param 'PreventionJobTriggerInspectJobActionPubSubArrgs' pub_sub: Publish a message into a given Pub/Sub topic when the job completes.
                Structure is documented below.
-        :param 'PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs' publish_findings_to_cloud_data_catalog: Publish findings of a DlpJob to Data Catalog.
-        :param 'PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs' publish_summary_to_cscc: Publish the result summary of a DlpJob to the Cloud Security Command Center.
-        :param 'PreventionJobTriggerInspectJobActionPublishToStackdriverArgs' publish_to_stackdriver: Enable Stackdriver metric dlp.googleapis.com/findingCount.
-        :param 'PreventionJobTriggerInspectJobActionSaveFindingsArgs' save_findings: If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
+        :param 'PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArrgs' publish_findings_to_cloud_data_catalog: Publish findings of a DlpJob to Data Catalog.
+        :param 'PreventionJobTriggerInspectJobActionPublishSummaryToCsccArrgs' publish_summary_to_cscc: Publish the result summary of a DlpJob to the Cloud Security Command Center.
+        :param 'PreventionJobTriggerInspectJobActionPublishToStackdriverArrgs' publish_to_stackdriver: Enable Stackdriver metric dlp.googleapis.com/findingCount.
+        :param 'PreventionJobTriggerInspectJobActionSaveFindingsArrgs' save_findings: If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
                Structure is documented below.
         """
         if deidentify is not None:
@@ -13155,7 +13155,7 @@ class PreventionJobTriggerInspectJobAction(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobActionDeidentify(dict):
+calass PreventionJobTriggerInspectJobActionDeidentify(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -13194,9 +13194,9 @@ class PreventionJobTriggerInspectJobActionDeidentify(dict):
                If empty, all supported files will be transformed. Supported types may be automatically added over time.
                If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started.
                Each value may be one of: `IMAGE`, `TEXT_FILE`, `CSV`, `TSV`.
-        :param 'PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs' transformation_config: User specified deidentify templates and configs for structured, unstructured, and image files.
+        :param 'PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArrgs' transformation_config: User specified deidentify templates and configs for structured, unstructured, and image files.
                Structure is documented below.
-        :param 'PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs' transformation_details_storage_config: Config for storing transformation details.
+        :param 'PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArrgs' transformation_details_storage_config: Config for storing transformation details.
                Structure is documented below.
         """
         pulumi.set(__self__, "cloud_storage_output", cloud_storage_output)
@@ -13250,7 +13250,7 @@ class PreventionJobTriggerInspectJobActionDeidentify(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig(dict):
+calass PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -13314,11 +13314,11 @@ class PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig(dict):
+calass PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig(dict):
     def __init__(__self__, *,
                  table: 'outputs.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable'):
         """
-        :param 'PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs' table: The BigQuery table in which to store the output.
+        :param 'PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArrgs' table: The BigQuery table in which to store the output.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -13334,7 +13334,7 @@ class PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorage
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable(dict):
+calass PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -13400,13 +13400,13 @@ class PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorage
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobActionJobNotificationEmails(dict):
+calass PreventionJobTriggerInspectJobActionJobNotificationEmails(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobActionPubSub(dict):
+calass PreventionJobTriggerInspectJobActionPubSub(dict):
     def __init__(__self__, *,
                  topic: str):
         """
@@ -13424,25 +13424,25 @@ class PreventionJobTriggerInspectJobActionPubSub(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog(dict):
+calass PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobActionPublishSummaryToCscc(dict):
+calass PreventionJobTriggerInspectJobActionPublishSummaryToCscc(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobActionPublishToStackdriver(dict):
+calass PreventionJobTriggerInspectJobActionPublishToStackdriver(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobActionSaveFindings(dict):
+calass PreventionJobTriggerInspectJobActionSaveFindings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -13463,7 +13463,7 @@ class PreventionJobTriggerInspectJobActionSaveFindings(dict):
     def __init__(__self__, *,
                  output_config: 'outputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig'):
         """
-        :param 'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs' output_config: Information on where to store output
+        :param 'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArrgs' output_config: Information on where to store output
                Structure is documented below.
         """
         pulumi.set(__self__, "output_config", output_config)
@@ -13479,7 +13479,7 @@ class PreventionJobTriggerInspectJobActionSaveFindings(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig(dict):
+calass PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -13501,7 +13501,7 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig(dict):
                  table: 'outputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable',
                  output_schema: Optional[str] = None):
         """
-        :param 'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs' table: Information on the location of the target BigQuery Table.
+        :param 'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArrgs' table: Information on the location of the target BigQuery Table.
                Structure is documented below.
         :param str output_schema: Schema used for writing the findings for Inspect jobs. This field is only used for
                Inspect and must be unspecified for Risk jobs. Columns are derived from the Finding
@@ -13542,7 +13542,7 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable(dict):
+calass PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -13608,7 +13608,7 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfig(dict):
+calass PreventionJobTriggerInspectJobInspectConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -13645,21 +13645,21 @@ class PreventionJobTriggerInspectJobInspectConfig(dict):
                  min_likelihood: Optional[str] = None,
                  rule_sets: Optional[Sequence['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSet']] = None):
         """
-        :param Sequence['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgs'] custom_info_types: Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+        :param Sequence['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArrgs'] custom_info_types: Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
                Structure is documented below.
         :param bool exclude_info_types: When true, excludes type information of the findings.
         :param bool include_quote: When true, a contextual quote from the data that triggered a finding is included in the response.
-        :param Sequence['PreventionJobTriggerInspectJobInspectConfigInfoTypeArgs'] info_types: Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+        :param Sequence['PreventionJobTriggerInspectJobInspectConfigInfoTypeArrgs'] info_types: Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
                or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
                When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
                By default this may be all types, but may change over time as detectors are updated.
                Structure is documented below.
-        :param 'PreventionJobTriggerInspectJobInspectConfigLimitsArgs' limits: Configuration to control the number of findings returned.
+        :param 'PreventionJobTriggerInspectJobInspectConfigLimitsArrgs' limits: Configuration to control the number of findings returned.
                Structure is documented below.
         :param str min_likelihood: Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
                Default value is `POSSIBLE`.
                Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
-        :param Sequence['PreventionJobTriggerInspectJobInspectConfigRuleSetArgs'] rule_sets: Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
+        :param Sequence['PreventionJobTriggerInspectJobInspectConfigRuleSetArrgs'] rule_sets: Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
                other rules are executed in the order they are specified for each info type.
                Structure is documented below.
         """
@@ -13746,7 +13746,7 @@ class PreventionJobTriggerInspectJobInspectConfig(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigCustomInfoType(dict):
+calass PreventionJobTriggerInspectJobInspectConfigCustomInfoType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -13782,12 +13782,12 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoType(dict):
                  stored_type: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredType'] = None,
                  surrogate_type: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateType'] = None):
         """
-        :param 'PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeArgs' info_type: CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+        :param 'PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeArrgs' info_type: CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
                infoTypes and that infoType is specified in `info_types` field. Specifying the latter adds findings to the
                one detected by the system. If built-in info type is not specified in `info_types` list then the name is
                treated as a custom info type.
                Structure is documented below.
-        :param 'PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryArgs' dictionary: Dictionary which defines the rule.
+        :param 'PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryArrgs' dictionary: Dictionary which defines the rule.
                Structure is documented below.
         :param str exclusion_type: If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
                Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
@@ -13795,13 +13795,13 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoType(dict):
                specified by the rule.
                Default value is `VERY_LIKELY`.
                Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
-        :param 'PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegexArgs' regex: Regular expression which defines the rule.
+        :param 'PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegexArrgs' regex: Regular expression which defines the rule.
                Structure is documented below.
-        :param 'PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        :param 'PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScoreArrgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
-        :param 'PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredTypeArgs' stored_type: A reference to a StoredInfoType to use with scanning.
+        :param 'PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredTypeArrgs' stored_type: A reference to a StoredInfoType to use with scanning.
                Structure is documented below.
-        :param 'PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateTypeArgs' surrogate_type: Message for detecting output from deidentification transformations that support reversing.
+        :param 'PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateTypeArrgs' surrogate_type: Message for detecting output from deidentification transformations that support reversing.
         """
         pulumi.set(__self__, "info_type", info_type)
         if dictionary is not None:
@@ -13897,7 +13897,7 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoType(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary(dict):
+calass PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -13921,9 +13921,9 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary(dict):
                  cloud_storage_path: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePath'] = None,
                  word_list: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordList'] = None):
         """
-        :param 'PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs' cloud_storage_path: Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+        :param 'PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePathArrgs' cloud_storage_path: Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
                Structure is documented below.
-        :param 'PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordListArgs' word_list: List of words or phrases to search for.
+        :param 'PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordListArrgs' word_list: List of words or phrases to search for.
                Structure is documented below.
         """
         if cloud_storage_path is not None:
@@ -13951,7 +13951,7 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePath(dict):
+calass PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePath(dict):
     def __init__(__self__, *,
                  path: str):
         """
@@ -13969,7 +13969,7 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudSt
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordList(dict):
+calass PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordList(dict):
     def __init__(__self__, *,
                  words: Sequence[str]):
         """
@@ -13989,7 +13989,7 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordLis
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoType(dict):
+calass PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -14014,7 +14014,7 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoType(dict):
         """
         :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
                listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        :param 'PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        :param 'PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArrgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param str version: Version of the information type to use. By default, the version is set to stable.
         """
@@ -14052,7 +14052,7 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoType(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScore(dict):
+calass PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScore(dict):
     def __init__(__self__, *,
                  score: str):
         """
@@ -14072,7 +14072,7 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivi
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegex(dict):
+calass PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegex(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -14121,7 +14121,7 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegex(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScore(dict):
+calass PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScore(dict):
     def __init__(__self__, *,
                  score: str):
         """
@@ -14141,7 +14141,7 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScore(
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredType(dict):
+calass PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -14192,13 +14192,13 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredType(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateType(dict):
+calass PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateType(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigInfoType(dict):
+calass PreventionJobTriggerInspectJobInspectConfigInfoType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -14223,7 +14223,7 @@ class PreventionJobTriggerInspectJobInspectConfigInfoType(dict):
         """
         :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
                at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        :param 'PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        :param 'PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScoreArrgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param str version: Version of the information type to use. By default, the version is set to stable.
         """
@@ -14261,7 +14261,7 @@ class PreventionJobTriggerInspectJobInspectConfigInfoType(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScore(dict):
+calass PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScore(dict):
     def __init__(__self__, *,
                  score: str):
         """
@@ -14281,7 +14281,7 @@ class PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScore(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigLimits(dict):
+calass PreventionJobTriggerInspectJobInspectConfigLimits(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -14308,7 +14308,7 @@ class PreventionJobTriggerInspectJobInspectConfigLimits(dict):
                  max_findings_per_item: Optional[int] = None,
                  max_findings_per_request: Optional[int] = None):
         """
-        :param Sequence['PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeArgs'] max_findings_per_info_types: Configuration of findings limit given for specified infoTypes.
+        :param Sequence['PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeArrgs'] max_findings_per_info_types: Configuration of findings limit given for specified infoTypes.
                Structure is documented below.
         :param int max_findings_per_item: Max number of findings that will be returned for each item scanned. The maximum returned is 2000.
         :param int max_findings_per_request: Max number of findings that will be returned per request/job. The maximum returned is 2000.
@@ -14347,7 +14347,7 @@ class PreventionJobTriggerInspectJobInspectConfigLimits(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType(dict):
+calass PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -14371,7 +14371,7 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType(di
                  info_type: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoType'] = None,
                  max_findings: Optional[int] = None):
         """
-        :param 'PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs' info_type: Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
+        :param 'PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArrgs' info_type: Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
                not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
                specified in another InfoTypeLimit.
                Structure is documented below.
@@ -14403,7 +14403,7 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType(di
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoType(dict):
+calass PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -14428,7 +14428,7 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInf
         """
         :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
                listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        :param 'PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        :param 'PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArrgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param str version: Version of the information type to use. By default, the version is set to stable.
         """
@@ -14466,7 +14466,7 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInf
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore(dict):
+calass PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore(dict):
     def __init__(__self__, *,
                  score: str):
         """
@@ -14486,7 +14486,7 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInf
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigRuleSet(dict):
+calass PreventionJobTriggerInspectJobInspectConfigRuleSet(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -14508,9 +14508,9 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSet(dict):
                  rules: Sequence['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRule'],
                  info_types: Optional[Sequence['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetInfoType']] = None):
         """
-        :param Sequence['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleArgs'] rules: Set of rules to be applied to infoTypes. The rules are applied in order.
+        :param Sequence['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleArrgs'] rules: Set of rules to be applied to infoTypes. The rules are applied in order.
                Structure is documented below.
-        :param Sequence['PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeArgs'] info_types: List of infoTypes this rule set is applied to.
+        :param Sequence['PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeArrgs'] info_types: List of infoTypes this rule set is applied to.
                Structure is documented below.
         """
         pulumi.set(__self__, "rules", rules)
@@ -14537,7 +14537,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSet(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigRuleSetInfoType(dict):
+calass PreventionJobTriggerInspectJobInspectConfigRuleSetInfoType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -14562,7 +14562,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetInfoType(dict):
         """
         :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
                at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeSensitivityScoreArrgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param str version: Version of the information type to use. By default, the version is set to stable.
         """
@@ -14600,7 +14600,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetInfoType(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeSensitivityScore(dict):
+calass PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeSensitivityScore(dict):
     def __init__(__self__, *,
                  score: str):
         """
@@ -14620,7 +14620,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeSensitivityScore
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigRuleSetRule(dict):
+calass PreventionJobTriggerInspectJobInspectConfigRuleSetRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -14644,9 +14644,9 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRule(dict):
                  exclusion_rule: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule'] = None,
                  hotword_rule: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRule'] = None):
         """
-        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleArgs' exclusion_rule: The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
+        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleArrgs' exclusion_rule: The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
                Structure is documented below.
-        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleArgs' hotword_rule: Hotword-based detection rule.
+        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleArrgs' hotword_rule: Hotword-based detection rule.
                Structure is documented below.
         """
         if exclusion_rule is not None:
@@ -14674,7 +14674,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRule(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule(dict):
+calass PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -14705,13 +14705,13 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule(dict):
         """
         :param str matching_type: How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
                Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
-        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryArgs' dictionary: Dictionary which defines the rule.
+        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryArrgs' dictionary: Dictionary which defines the rule.
                Structure is documented below.
-        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs' exclude_by_hotword: Drop if the hotword rule is contained in the proximate context.
+        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArrgs' exclude_by_hotword: Drop if the hotword rule is contained in the proximate context.
                Structure is documented below.
-        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs' exclude_info_types: Set of infoTypes for which findings would affect this rule.
+        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArrgs' exclude_info_types: Set of infoTypes for which findings would affect this rule.
                Structure is documented below.
-        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegexArgs' regex: Regular expression which defines the rule.
+        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegexArrgs' regex: Regular expression which defines the rule.
                Structure is documented below.
         """
         pulumi.set(__self__, "matching_type", matching_type)
@@ -14771,7 +14771,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary(dict):
+calass PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -14795,9 +14795,9 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDiction
                  cloud_storage_path: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath'] = None,
                  word_list: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordList'] = None):
         """
-        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs' cloud_storage_path: Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArrgs' cloud_storage_path: Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
                Structure is documented below.
-        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs' word_list: List of words or phrases to search for.
+        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArrgs' word_list: List of words or phrases to search for.
                Structure is documented below.
         """
         if cloud_storage_path is not None:
@@ -14825,7 +14825,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDiction
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath(dict):
+calass PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath(dict):
     def __init__(__self__, *,
                  path: str):
         """
@@ -14843,7 +14843,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDiction
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordList(dict):
+calass PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordList(dict):
     def __init__(__self__, *,
                  words: Sequence[str]):
         """
@@ -14863,7 +14863,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDiction
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotword(dict):
+calass PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotword(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -14885,9 +14885,9 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
                  hotword_regex: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex'] = None,
                  proximity: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity'] = None):
         """
-        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs' hotword_regex: Regular expression pattern defining what qualifies as a hotword.
+        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArrgs' hotword_regex: Regular expression pattern defining what qualifies as a hotword.
                Structure is documented below.
-        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs' proximity: Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArrgs' proximity: Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
                exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
                used to match substrings of the finding itself. For example, the certainty of a phone number regex
                `(\\d{3}) \\d{3}-\\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
@@ -14923,7 +14923,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex(dict):
+calass PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -14975,7 +14975,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity(dict):
+calass PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -15025,7 +15025,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes(dict):
+calass PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -15046,7 +15046,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
     def __init__(__self__, *,
                  info_types: Sequence['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType']):
         """
-        :param Sequence['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs'] info_types: If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+        :param Sequence['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrgs'] info_types: If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
                Structure is documented below.
         """
         pulumi.set(__self__, "info_types", info_types)
@@ -15062,7 +15062,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType(dict):
+calass PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -15087,7 +15087,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
         """
         :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
                at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArrgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param str version: Version of the information type to use. By default, the version is set to stable.
         """
@@ -15125,7 +15125,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore(dict):
+calass PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore(dict):
     def __init__(__self__, *,
                  score: str):
         """
@@ -15145,7 +15145,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegex(dict):
+calass PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegex(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -15194,7 +15194,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegex(d
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRule(dict):
+calass PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -15219,11 +15219,11 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRule(dict):
                  likelihood_adjustment: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment'] = None,
                  proximity: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximity'] = None):
         """
-        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs' hotword_regex: Regular expression pattern defining what qualifies as a hotword.
+        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegexArrgs' hotword_regex: Regular expression pattern defining what qualifies as a hotword.
                Structure is documented below.
-        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs' likelihood_adjustment: Likelihood adjustment to apply to all matching findings.
+        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArrgs' likelihood_adjustment: Likelihood adjustment to apply to all matching findings.
                Structure is documented below.
-        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximityArgs' proximity: Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+        :param 'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximityArrgs' proximity: Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
                exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
                used to match substrings of the finding itself. For example, the certainty of a phone number regex
                `(\\d{3}) \\d{3}-\\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
@@ -15270,7 +15270,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRule(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegex(dict):
+calass PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegex(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -15322,7 +15322,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRe
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment(dict):
+calass PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -15384,7 +15384,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoo
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximity(dict):
+calass PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximity(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -15434,7 +15434,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximity
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobStorageConfig(dict):
+calass PreventionJobTriggerInspectJobStorageConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -15467,15 +15467,15 @@ class PreventionJobTriggerInspectJobStorageConfig(dict):
                  hybrid_options: Optional['outputs.PreventionJobTriggerInspectJobStorageConfigHybridOptions'] = None,
                  timespan_config: Optional['outputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfig'] = None):
         """
-        :param 'PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs' big_query_options: Options defining BigQuery table and row identifiers.
+        :param 'PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArrgs' big_query_options: Options defining BigQuery table and row identifiers.
                Structure is documented below.
-        :param 'PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs' cloud_storage_options: Options defining a file or a set of files within a Google Cloud Storage bucket.
+        :param 'PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArrgs' cloud_storage_options: Options defining a file or a set of files within a Google Cloud Storage bucket.
                Structure is documented below.
-        :param 'PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArgs' datastore_options: Options defining a data set within Google Cloud Datastore.
+        :param 'PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArrgs' datastore_options: Options defining a data set within Google Cloud Datastore.
                Structure is documented below.
-        :param 'PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs' hybrid_options: Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
+        :param 'PreventionJobTriggerInspectJobStorageConfigHybridOptionsArrgs' hybrid_options: Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
                Structure is documented below.
-        :param 'PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs' timespan_config: Information on where to inspect
+        :param 'PreventionJobTriggerInspectJobStorageConfigTimespanConfigArrgs' timespan_config: Information on where to inspect
                Structure is documented below.
         """
         if big_query_options is not None:
@@ -15536,7 +15536,7 @@ class PreventionJobTriggerInspectJobStorageConfig(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions(dict):
+calass PreventionJobTriggerInspectJobStorageConfigBigQueryOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -15575,15 +15575,15 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions(dict):
                  rows_limit_percent: Optional[int] = None,
                  sample_method: Optional[str] = None):
         """
-        :param 'PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs' table_reference: Set of files to scan.
+        :param 'PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArrgs' table_reference: Set of files to scan.
                Structure is documented below.
-        :param Sequence['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs'] excluded_fields: References to fields excluded from scanning.
+        :param Sequence['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrgs'] excluded_fields: References to fields excluded from scanning.
                This allows you to skip inspection of entire columns which you know have no findings.
                Structure is documented below.
-        :param Sequence['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs'] identifying_fields: Specifies the BigQuery fields that will be returned with findings.
+        :param Sequence['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrgs'] identifying_fields: Specifies the BigQuery fields that will be returned with findings.
                If not specified, no identifying fields will be returned for findings.
                Structure is documented below.
-        :param Sequence['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs'] included_fields: Limit scanning only to these fields.
+        :param Sequence['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrgs'] included_fields: Limit scanning only to these fields.
                Structure is documented below.
         :param int rows_limit: Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
                If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
@@ -15681,7 +15681,7 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField(dict):
+calass PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -15699,7 +15699,7 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField(di
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField(dict):
+calass PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -15717,7 +15717,7 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField(dict):
+calass PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -15735,7 +15735,7 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField(di
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference(dict):
+calass PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -15796,7 +15796,7 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference(d
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions(dict):
+calass PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -15832,7 +15832,7 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions(dict):
                  files_limit_percent: Optional[int] = None,
                  sample_method: Optional[str] = None):
         """
-        :param 'PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs' file_set: Set of files to scan.
+        :param 'PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArrgs' file_set: Set of files to scan.
                Structure is documented below.
         :param int bytes_limit_per_file: Max number of bytes to scan from a file. If a scanned file's size is bigger than this value
                then the rest of the bytes are omitted.
@@ -15919,7 +15919,7 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet(dict):
+calass PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -15941,7 +15941,7 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet(dict
                  regex_file_set: Optional['outputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet'] = None,
                  url: Optional[str] = None):
         """
-        :param 'PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetArgs' regex_file_set: The regex-filtered set of files to scan.
+        :param 'PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetArrgs' regex_file_set: The regex-filtered set of files to scan.
                Structure is documented below.
         :param str url: The Cloud Storage url of the file(s) to scan, in the format `gs://<bucket>/<path>`. Trailing wildcard
                in the path is allowed.
@@ -15977,7 +15977,7 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet(dict
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet(dict):
+calass PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -16048,7 +16048,7 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegex
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobStorageConfigDatastoreOptions(dict):
+calass PreventionJobTriggerInspectJobStorageConfigDatastoreOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -16070,9 +16070,9 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptions(dict):
                  kind: 'outputs.PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind',
                  partition_id: 'outputs.PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId'):
         """
-        :param 'PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindArgs' kind: A representation of a Datastore kind.
+        :param 'PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindArrgs' kind: A representation of a Datastore kind.
                Structure is documented below.
-        :param 'PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdArgs' partition_id: Datastore partition ID. A partition ID identifies a grouping of entities. The grouping
+        :param 'PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdArrgs' partition_id: Datastore partition ID. A partition ID identifies a grouping of entities. The grouping
                is always by project and namespace, however the namespace ID may be empty.
                Structure is documented below.
         """
@@ -16100,7 +16100,7 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptions(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind(dict):
+calass PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -16118,7 +16118,7 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId(dict):
+calass PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -16167,7 +16167,7 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId(dic
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobStorageConfigHybridOptions(dict):
+calass PreventionJobTriggerInspectJobStorageConfigHybridOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -16205,7 +16205,7 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptions(dict):
                may contain others, but any missing one of these will be rejected.
                Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z?`.
                No more than 10 keys can be required.
-        :param 'PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs' table_options: If the container is a table, additional information to make findings meaningful such as the columns that are primary keys.
+        :param 'PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArrgs' table_options: If the container is a table, additional information to make findings meaningful such as the columns that are primary keys.
                Structure is documented below.
         """
         if description is not None:
@@ -16261,7 +16261,7 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptions(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions(dict):
+calass PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -16282,7 +16282,7 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions(dict)
     def __init__(__self__, *,
                  identifying_fields: Optional[Sequence['outputs.PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField']] = None):
         """
-        :param Sequence['PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgs'] identifying_fields: The columns that are the primary keys for table objects included in ContentItem. A copy of this
+        :param Sequence['PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrgs'] identifying_fields: The columns that are the primary keys for table objects included in ContentItem. A copy of this
                cell's value will stored alongside alongside each finding so that the finding can be traced to
                the specific row it came from. No more than 3 may be provided.
                Structure is documented below.
@@ -16303,7 +16303,7 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions(dict)
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField(dict):
+calass PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -16321,7 +16321,7 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdenti
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobStorageConfigTimespanConfig(dict):
+calass PreventionJobTriggerInspectJobStorageConfigTimespanConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -16351,7 +16351,7 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfig(dict):
                  end_time: Optional[str] = None,
                  start_time: Optional[str] = None):
         """
-        :param 'PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs' timestamp_field: Information on where to inspect
+        :param 'PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArrgs' timestamp_field: Information on where to inspect
                Structure is documented below.
         :param bool enable_auto_population_of_timespan_config: When the job is started by a JobTrigger we will automatically figure out a valid startTime to avoid
                scanning files that have not been modified since the last time the JobTrigger executed. This will
@@ -16404,7 +16404,7 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfig(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField(dict):
+calass PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -16432,13 +16432,13 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField(di
 
 
 @pulumi.output_type
-class PreventionJobTriggerTrigger(dict):
+calass PreventionJobTriggerTrigger(dict):
     def __init__(__self__, *,
                  manual: Optional['outputs.PreventionJobTriggerTriggerManual'] = None,
                  schedule: Optional['outputs.PreventionJobTriggerTriggerSchedule'] = None):
         """
-        :param 'PreventionJobTriggerTriggerManualArgs' manual: For use with hybrid jobs. Jobs must be manually created and finished.
-        :param 'PreventionJobTriggerTriggerScheduleArgs' schedule: Schedule for triggered jobs
+        :param 'PreventionJobTriggerTriggerManualArrgs' manual: For use with hybrid jobs. Jobs must be manually created and finished.
+        :param 'PreventionJobTriggerTriggerScheduleArrgs' schedule: Schedule for triggered jobs
                Structure is documented below.
         """
         if manual is not None:
@@ -16465,13 +16465,13 @@ class PreventionJobTriggerTrigger(dict):
 
 
 @pulumi.output_type
-class PreventionJobTriggerTriggerManual(dict):
+calass PreventionJobTriggerTriggerManual(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class PreventionJobTriggerTriggerSchedule(dict):
+calass PreventionJobTriggerTriggerSchedule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -16517,7 +16517,7 @@ class PreventionJobTriggerTriggerSchedule(dict):
 
 
 @pulumi.output_type
-class PreventionStoredInfoTypeDictionary(dict):
+calass PreventionStoredInfoTypeDictionary(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -16541,9 +16541,9 @@ class PreventionStoredInfoTypeDictionary(dict):
                  cloud_storage_path: Optional['outputs.PreventionStoredInfoTypeDictionaryCloudStoragePath'] = None,
                  word_list: Optional['outputs.PreventionStoredInfoTypeDictionaryWordList'] = None):
         """
-        :param 'PreventionStoredInfoTypeDictionaryCloudStoragePathArgs' cloud_storage_path: Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+        :param 'PreventionStoredInfoTypeDictionaryCloudStoragePathArrgs' cloud_storage_path: Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
                Structure is documented below.
-        :param 'PreventionStoredInfoTypeDictionaryWordListArgs' word_list: List of words or phrases to search for.
+        :param 'PreventionStoredInfoTypeDictionaryWordListArrgs' word_list: List of words or phrases to search for.
                Structure is documented below.
         """
         if cloud_storage_path is not None:
@@ -16571,7 +16571,7 @@ class PreventionStoredInfoTypeDictionary(dict):
 
 
 @pulumi.output_type
-class PreventionStoredInfoTypeDictionaryCloudStoragePath(dict):
+calass PreventionStoredInfoTypeDictionaryCloudStoragePath(dict):
     def __init__(__self__, *,
                  path: str):
         """
@@ -16589,7 +16589,7 @@ class PreventionStoredInfoTypeDictionaryCloudStoragePath(dict):
 
 
 @pulumi.output_type
-class PreventionStoredInfoTypeDictionaryWordList(dict):
+calass PreventionStoredInfoTypeDictionaryWordList(dict):
     def __init__(__self__, *,
                  words: Sequence[str]):
         """
@@ -16609,7 +16609,7 @@ class PreventionStoredInfoTypeDictionaryWordList(dict):
 
 
 @pulumi.output_type
-class PreventionStoredInfoTypeLargeCustomDictionary(dict):
+calass PreventionStoredInfoTypeLargeCustomDictionary(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -16636,12 +16636,12 @@ class PreventionStoredInfoTypeLargeCustomDictionary(dict):
                  big_query_field: Optional['outputs.PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField'] = None,
                  cloud_storage_file_set: Optional['outputs.PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet'] = None):
         """
-        :param 'PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs' output_path: Location to store dictionary artifacts in Google Cloud Storage. These files will only be accessible by project owners and the DLP API.
+        :param 'PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArrgs' output_path: Location to store dictionary artifacts in Google Cloud Storage. These files will only be accessible by project owners and the DLP API.
                If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
                Structure is documented below.
-        :param 'PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldArgs' big_query_field: Field in a BigQuery table where each cell represents a dictionary phrase.
+        :param 'PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldArrgs' big_query_field: Field in a BigQuery table where each cell represents a dictionary phrase.
                Structure is documented below.
-        :param 'PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs' cloud_storage_file_set: Set of files containing newline-delimited lists of dictionary phrases.
+        :param 'PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArrgs' cloud_storage_file_set: Set of files containing newline-delimited lists of dictionary phrases.
                Structure is documented below.
         """
         pulumi.set(__self__, "output_path", output_path)
@@ -16680,14 +16680,14 @@ class PreventionStoredInfoTypeLargeCustomDictionary(dict):
 
 
 @pulumi.output_type
-class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField(dict):
+calass PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField(dict):
     def __init__(__self__, *,
                  field: 'outputs.PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField',
                  table: 'outputs.PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable'):
         """
-        :param 'PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldArgs' field: Designated field in the BigQuery table.
+        :param 'PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldArrgs' field: Designated field in the BigQuery table.
                Structure is documented below.
-        :param 'PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableArgs' table: Field in a BigQuery table where each cell represents a dictionary phrase.
+        :param 'PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableArrgs' table: Field in a BigQuery table where each cell represents a dictionary phrase.
                Structure is documented below.
         """
         pulumi.set(__self__, "field", field)
@@ -16713,7 +16713,7 @@ class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField(dict):
 
 
 @pulumi.output_type
-class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField(dict):
+calass PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -16731,7 +16731,7 @@ class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField(dict):
 
 
 @pulumi.output_type
-class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable(dict):
+calass PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -16792,7 +16792,7 @@ class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable(dict):
 
 
 @pulumi.output_type
-class PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet(dict):
+calass PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet(dict):
     def __init__(__self__, *,
                  url: str):
         """
@@ -16810,7 +16810,7 @@ class PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet(dict):
 
 
 @pulumi.output_type
-class PreventionStoredInfoTypeLargeCustomDictionaryOutputPath(dict):
+calass PreventionStoredInfoTypeLargeCustomDictionaryOutputPath(dict):
     def __init__(__self__, *,
                  path: str):
         """
@@ -16828,7 +16828,7 @@ class PreventionStoredInfoTypeLargeCustomDictionaryOutputPath(dict):
 
 
 @pulumi.output_type
-class PreventionStoredInfoTypeRegex(dict):
+calass PreventionStoredInfoTypeRegex(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['AppEngineVersionIamPolicyArgs', 'AppEngineVersionIamPolicy']
+__all__ = ['AppEngineVersionIamPolicyArrgs', 'AppEngineVersionIamPolicy']
 
 @pulumi.input_type
-class AppEngineVersionIamPolicyArgs:
+calass AppEngineVersionIamPolicyArrgs:
     def __init__(__self__, *,
                  app_id: pulumi.Input[str],
                  policy_data: pulumi.Input[str],
@@ -124,7 +124,7 @@ class AppEngineVersionIamPolicyArgs:
 
 
 @pulumi.input_type
-class _AppEngineVersionIamPolicyState:
+calass _AppEngineVersionIamPolicyState:
     def __init__(__self__, *,
                  app_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -255,7 +255,7 @@ class _AppEngineVersionIamPolicyState:
         pulumi.set(self, "version_id", value)
 
 
-class AppEngineVersionIamPolicy(pulumi.CustomResource):
+calass AppEngineVersionIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -289,7 +289,7 @@ class AppEngineVersionIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
         )])
@@ -307,10 +307,10 @@ class AppEngineVersionIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -346,7 +346,7 @@ class AppEngineVersionIamPolicy(pulumi.CustomResource):
 
         binding = gcp.iap.AppEngineVersionIamBinding("binding",
             app_id=google_app_engine_standard_app_version["version"]["project"],
-            condition=gcp.iap.AppEngineVersionIamBindingConditionArgs(
+            condition=gcp.iap.AppEngineVersionIamBindingConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -380,7 +380,7 @@ class AppEngineVersionIamPolicy(pulumi.CustomResource):
 
         member = gcp.iap.AppEngineVersionIamMember("member",
             app_id=google_app_engine_standard_app_version["version"]["project"],
-            condition=gcp.iap.AppEngineVersionIamMemberConditionArgs(
+            condition=gcp.iap.AppEngineVersionIamMemberConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -442,7 +442,7 @@ class AppEngineVersionIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AppEngineVersionIamPolicyArgs,
+                 args: AppEngineVersionIamPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Identity-Aware Proxy AppEngineVersion. Each of these resources serves a different use case:
@@ -467,7 +467,7 @@ class AppEngineVersionIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
         )])
@@ -485,10 +485,10 @@ class AppEngineVersionIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -524,7 +524,7 @@ class AppEngineVersionIamPolicy(pulumi.CustomResource):
 
         binding = gcp.iap.AppEngineVersionIamBinding("binding",
             app_id=google_app_engine_standard_app_version["version"]["project"],
-            condition=gcp.iap.AppEngineVersionIamBindingConditionArgs(
+            condition=gcp.iap.AppEngineVersionIamBindingConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -558,7 +558,7 @@ class AppEngineVersionIamPolicy(pulumi.CustomResource):
 
         member = gcp.iap.AppEngineVersionIamMember("member",
             app_id=google_app_engine_standard_app_version["version"]["project"],
-            condition=gcp.iap.AppEngineVersionIamMemberConditionArgs(
+            condition=gcp.iap.AppEngineVersionIamMemberConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -595,12 +595,12 @@ class AppEngineVersionIamPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param AppEngineVersionIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param AppEngineVersionIamPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AppEngineVersionIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AppEngineVersionIamPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -621,7 +621,7 @@ class AppEngineVersionIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AppEngineVersionIamPolicyArgs.__new__(AppEngineVersionIamPolicyArgs)
+            __props__ = AppEngineVersionIamPolicyArrgs.__new__(AppEngineVersionIamPolicyArrgs)
 
             if app_id is None and not opts.urn:
                 raise TypeError("Missing required property 'app_id'")

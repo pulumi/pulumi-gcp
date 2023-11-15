@@ -11,13 +11,13 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['LiteSubscriptionArgs', 'LiteSubscription']
+__all__ = ['LiteSubscriptionArrgs', 'LiteSubscription']
 
 @pulumi.input_type
-class LiteSubscriptionArgs:
+calass LiteSubscriptionArrgs:
     def __init__(__self__, *,
                  topic: pulumi.Input[str],
-                 delivery_config: Optional[pulumi.Input['LiteSubscriptionDeliveryConfigArgs']] = None,
+                 delivery_config: Optional[pulumi.Input['LiteSubscriptionDeliveryConfigArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -25,7 +25,7 @@ class LiteSubscriptionArgs:
         """
         The set of arguments for constructing a LiteSubscription resource.
         :param pulumi.Input[str] topic: A reference to a Topic resource.
-        :param pulumi.Input['LiteSubscriptionDeliveryConfigArgs'] delivery_config: The settings for this subscription's message delivery.
+        :param pulumi.Input['LiteSubscriptionDeliveryConfigArrgs'] delivery_config: The settings for this subscription's message delivery.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the subscription.
                
@@ -62,7 +62,7 @@ class LiteSubscriptionArgs:
 
     @property
     @pulumi.getter(name="deliveryConfig")
-    def delivery_config(self) -> Optional[pulumi.Input['LiteSubscriptionDeliveryConfigArgs']]:
+    def delivery_config(self) -> Optional[pulumi.Input['LiteSubscriptionDeliveryConfigArrgs']]:
         """
         The settings for this subscription's message delivery.
         Structure is documented below.
@@ -70,7 +70,7 @@ class LiteSubscriptionArgs:
         return pulumi.get(self, "delivery_config")
 
     @delivery_config.setter
-    def delivery_config(self, value: Optional[pulumi.Input['LiteSubscriptionDeliveryConfigArgs']]):
+    def delivery_config(self, value: Optional[pulumi.Input['LiteSubscriptionDeliveryConfigArrgs']]):
         pulumi.set(self, "delivery_config", value)
 
     @property
@@ -127,9 +127,9 @@ class LiteSubscriptionArgs:
 
 
 @pulumi.input_type
-class _LiteSubscriptionState:
+calass _LiteSubscriptionState:
     def __init__(__self__, *,
-                 delivery_config: Optional[pulumi.Input['LiteSubscriptionDeliveryConfigArgs']] = None,
+                 delivery_config: Optional[pulumi.Input['LiteSubscriptionDeliveryConfigArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -137,7 +137,7 @@ class _LiteSubscriptionState:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LiteSubscription resources.
-        :param pulumi.Input['LiteSubscriptionDeliveryConfigArgs'] delivery_config: The settings for this subscription's message delivery.
+        :param pulumi.Input['LiteSubscriptionDeliveryConfigArrgs'] delivery_config: The settings for this subscription's message delivery.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the subscription.
                
@@ -164,7 +164,7 @@ class _LiteSubscriptionState:
 
     @property
     @pulumi.getter(name="deliveryConfig")
-    def delivery_config(self) -> Optional[pulumi.Input['LiteSubscriptionDeliveryConfigArgs']]:
+    def delivery_config(self) -> Optional[pulumi.Input['LiteSubscriptionDeliveryConfigArrgs']]:
         """
         The settings for this subscription's message delivery.
         Structure is documented below.
@@ -172,7 +172,7 @@ class _LiteSubscriptionState:
         return pulumi.get(self, "delivery_config")
 
     @delivery_config.setter
-    def delivery_config(self, value: Optional[pulumi.Input['LiteSubscriptionDeliveryConfigArgs']]):
+    def delivery_config(self, value: Optional[pulumi.Input['LiteSubscriptionDeliveryConfigArrgs']]):
         pulumi.set(self, "delivery_config", value)
 
     @property
@@ -240,12 +240,12 @@ class _LiteSubscriptionState:
         pulumi.set(self, "zone", value)
 
 
-class LiteSubscription(pulumi.CustomResource):
+calass LiteSubscription(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delivery_config: Optional[pulumi.Input[pulumi.InputType['LiteSubscriptionDeliveryConfigArgs']]] = None,
+                 delivery_config: Optional[pulumi.Input[pulumi.InputType['LiteSubscriptionDeliveryConfigArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -272,19 +272,19 @@ class LiteSubscription(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         example_lite_topic = gcp.pubsub.LiteTopic("exampleLiteTopic",
             project=project.number,
-            partition_config=gcp.pubsub.LiteTopicPartitionConfigArgs(
+            partition_config=gcp.pubsub.LiteTopicPartitionConfigArrgs(
                 count=1,
-                capacity=gcp.pubsub.LiteTopicPartitionConfigCapacityArgs(
+                capacity=gcp.pubsub.LiteTopicPartitionConfigCapacityArrgs(
                     publish_mib_per_sec=4,
                     subscribe_mib_per_sec=8,
                 ),
             ),
-            retention_config=gcp.pubsub.LiteTopicRetentionConfigArgs(
+            retention_config=gcp.pubsub.LiteTopicRetentionConfigArrgs(
                 per_partition_bytes="32212254720",
             ))
         example_lite_subscription = gcp.pubsub.LiteSubscription("exampleLiteSubscription",
             topic=example_lite_topic.name,
-            delivery_config=gcp.pubsub.LiteSubscriptionDeliveryConfigArgs(
+            delivery_config=gcp.pubsub.LiteSubscriptionDeliveryConfigArrgs(
                 delivery_requirement="DELIVER_AFTER_STORED",
             ))
         ```
@@ -319,7 +319,7 @@ class LiteSubscription(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['LiteSubscriptionDeliveryConfigArgs']] delivery_config: The settings for this subscription's message delivery.
+        :param pulumi.Input[pulumi.InputType['LiteSubscriptionDeliveryConfigArrgs']] delivery_config: The settings for this subscription's message delivery.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the subscription.
                
@@ -335,7 +335,7 @@ class LiteSubscription(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: LiteSubscriptionArgs,
+                 args: LiteSubscriptionArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A named resource representing the stream of messages from a single,
@@ -357,19 +357,19 @@ class LiteSubscription(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         example_lite_topic = gcp.pubsub.LiteTopic("exampleLiteTopic",
             project=project.number,
-            partition_config=gcp.pubsub.LiteTopicPartitionConfigArgs(
+            partition_config=gcp.pubsub.LiteTopicPartitionConfigArrgs(
                 count=1,
-                capacity=gcp.pubsub.LiteTopicPartitionConfigCapacityArgs(
+                capacity=gcp.pubsub.LiteTopicPartitionConfigCapacityArrgs(
                     publish_mib_per_sec=4,
                     subscribe_mib_per_sec=8,
                 ),
             ),
-            retention_config=gcp.pubsub.LiteTopicRetentionConfigArgs(
+            retention_config=gcp.pubsub.LiteTopicRetentionConfigArrgs(
                 per_partition_bytes="32212254720",
             ))
         example_lite_subscription = gcp.pubsub.LiteSubscription("exampleLiteSubscription",
             topic=example_lite_topic.name,
-            delivery_config=gcp.pubsub.LiteSubscriptionDeliveryConfigArgs(
+            delivery_config=gcp.pubsub.LiteSubscriptionDeliveryConfigArrgs(
                 delivery_requirement="DELIVER_AFTER_STORED",
             ))
         ```
@@ -403,12 +403,12 @@ class LiteSubscription(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param LiteSubscriptionArgs args: The arguments to use to populate this resource's properties.
+        :param LiteSubscriptionArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(LiteSubscriptionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(LiteSubscriptionArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -417,7 +417,7 @@ class LiteSubscription(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delivery_config: Optional[pulumi.Input[pulumi.InputType['LiteSubscriptionDeliveryConfigArgs']]] = None,
+                 delivery_config: Optional[pulumi.Input[pulumi.InputType['LiteSubscriptionDeliveryConfigArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -430,7 +430,7 @@ class LiteSubscription(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = LiteSubscriptionArgs.__new__(LiteSubscriptionArgs)
+            __props__ = LiteSubscriptionArrgs.__new__(LiteSubscriptionArrgs)
 
             __props__.__dict__["delivery_config"] = delivery_config
             __props__.__dict__["name"] = name
@@ -450,7 +450,7 @@ class LiteSubscription(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            delivery_config: Optional[pulumi.Input[pulumi.InputType['LiteSubscriptionDeliveryConfigArgs']]] = None,
+            delivery_config: Optional[pulumi.Input[pulumi.InputType['LiteSubscriptionDeliveryConfigArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -463,7 +463,7 @@ class LiteSubscription(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['LiteSubscriptionDeliveryConfigArgs']] delivery_config: The settings for this subscription's message delivery.
+        :param pulumi.Input[pulumi.InputType['LiteSubscriptionDeliveryConfigArrgs']] delivery_config: The settings for this subscription's message delivery.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the subscription.
                

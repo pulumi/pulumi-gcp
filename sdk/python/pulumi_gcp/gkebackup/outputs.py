@@ -37,7 +37,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class BackupPlanBackupConfig(dict):
+calass BackupPlanBackupConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -74,16 +74,16 @@ class BackupPlanBackupConfig(dict):
                  selected_namespaces: Optional['outputs.BackupPlanBackupConfigSelectedNamespaces'] = None):
         """
         :param bool all_namespaces: If True, include all namespaced resources.
-        :param 'BackupPlanBackupConfigEncryptionKeyArgs' encryption_key: This defines a customer managed encryption key that will be used to encrypt the "config"
+        :param 'BackupPlanBackupConfigEncryptionKeyArrgs' encryption_key: This defines a customer managed encryption key that will be used to encrypt the "config"
                portion (the Kubernetes resources) of Backups created via this plan.
                Structure is documented below.
         :param bool include_secrets: This flag specifies whether Kubernetes Secret resources should be included
                when they fall into the scope of Backups.
         :param bool include_volume_data: This flag specifies whether volume data should be backed up when PVCs are
                included in the scope of a Backup.
-        :param 'BackupPlanBackupConfigSelectedApplicationsArgs' selected_applications: A list of namespaced Kubernetes Resources.
+        :param 'BackupPlanBackupConfigSelectedApplicationsArrgs' selected_applications: A list of namespaced Kubernetes Resources.
                Structure is documented below.
-        :param 'BackupPlanBackupConfigSelectedNamespacesArgs' selected_namespaces: If set, include just the resources in the listed namespaces.
+        :param 'BackupPlanBackupConfigSelectedNamespacesArrgs' selected_namespaces: If set, include just the resources in the listed namespaces.
                Structure is documented below.
         """
         if all_namespaces is not None:
@@ -155,7 +155,7 @@ class BackupPlanBackupConfig(dict):
 
 
 @pulumi.output_type
-class BackupPlanBackupConfigEncryptionKey(dict):
+calass BackupPlanBackupConfigEncryptionKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -190,7 +190,7 @@ class BackupPlanBackupConfigEncryptionKey(dict):
 
 
 @pulumi.output_type
-class BackupPlanBackupConfigSelectedApplications(dict):
+calass BackupPlanBackupConfigSelectedApplications(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -211,7 +211,7 @@ class BackupPlanBackupConfigSelectedApplications(dict):
     def __init__(__self__, *,
                  namespaced_names: Sequence['outputs.BackupPlanBackupConfigSelectedApplicationsNamespacedName']):
         """
-        :param Sequence['BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs'] namespaced_names: A list of namespaced Kubernetes resources.
+        :param Sequence['BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrgs'] namespaced_names: A list of namespaced Kubernetes resources.
                Structure is documented below.
         """
         pulumi.set(__self__, "namespaced_names", namespaced_names)
@@ -227,7 +227,7 @@ class BackupPlanBackupConfigSelectedApplications(dict):
 
 
 @pulumi.output_type
-class BackupPlanBackupConfigSelectedApplicationsNamespacedName(dict):
+calass BackupPlanBackupConfigSelectedApplicationsNamespacedName(dict):
     def __init__(__self__, *,
                  name: str,
                  namespace: str):
@@ -256,7 +256,7 @@ class BackupPlanBackupConfigSelectedApplicationsNamespacedName(dict):
 
 
 @pulumi.output_type
-class BackupPlanBackupConfigSelectedNamespaces(dict):
+calass BackupPlanBackupConfigSelectedNamespaces(dict):
     def __init__(__self__, *,
                  namespaces: Sequence[str]):
         """
@@ -274,7 +274,7 @@ class BackupPlanBackupConfigSelectedNamespaces(dict):
 
 
 @pulumi.output_type
-class BackupPlanBackupSchedule(dict):
+calass BackupPlanBackupSchedule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -326,7 +326,7 @@ class BackupPlanBackupSchedule(dict):
 
 
 @pulumi.output_type
-class BackupPlanIamBindingCondition(dict):
+calass BackupPlanIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -353,7 +353,7 @@ class BackupPlanIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class BackupPlanIamMemberCondition(dict):
+calass BackupPlanIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -380,7 +380,7 @@ class BackupPlanIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class BackupPlanRetentionPolicy(dict):
+calass BackupPlanRetentionPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -474,7 +474,7 @@ class BackupPlanRetentionPolicy(dict):
 
 
 @pulumi.output_type
-class RestorePlanIamBindingCondition(dict):
+calass RestorePlanIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -507,7 +507,7 @@ class RestorePlanIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class RestorePlanIamMemberCondition(dict):
+calass RestorePlanIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -540,7 +540,7 @@ class RestorePlanIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class RestorePlanRestoreConfig(dict):
+calass RestorePlanRestoreConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -597,9 +597,9 @@ class RestorePlanRestoreConfig(dict):
                See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy
                for more information on each policy option.
                Possible values are: `USE_EXISTING_VERSION`, `USE_BACKUP_VERSION`.
-        :param 'RestorePlanRestoreConfigClusterResourceRestoreScopeArgs' cluster_resource_restore_scope: Identifies the cluster-scoped resources to restore from the Backup.
+        :param 'RestorePlanRestoreConfigClusterResourceRestoreScopeArrgs' cluster_resource_restore_scope: Identifies the cluster-scoped resources to restore from the Backup.
                Structure is documented below.
-        :param 'RestorePlanRestoreConfigExcludedNamespacesArgs' excluded_namespaces: A list of selected namespaces excluded from restoration.
+        :param 'RestorePlanRestoreConfigExcludedNamespacesArrgs' excluded_namespaces: A list of selected namespaces excluded from restoration.
                All namespaces except those in this list will be restored.
                Structure is documented below.
         :param str namespaced_resource_restore_mode: Defines the behavior for handling the situation where sets of namespaced resources
@@ -611,14 +611,14 @@ class RestorePlanRestoreConfig(dict):
                Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`.
         :param bool no_namespaces: Do not restore any namespaced resources if set to "True".
                Specifying this field to "False" is not allowed.
-        :param 'RestorePlanRestoreConfigSelectedApplicationsArgs' selected_applications: A list of selected ProtectedApplications to restore.
+        :param 'RestorePlanRestoreConfigSelectedApplicationsArrgs' selected_applications: A list of selected ProtectedApplications to restore.
                The listed ProtectedApplications and all the resources
                to which they refer will be restored.
                Structure is documented below.
-        :param 'RestorePlanRestoreConfigSelectedNamespacesArgs' selected_namespaces: A list of selected namespaces to restore from the Backup.
+        :param 'RestorePlanRestoreConfigSelectedNamespacesArrgs' selected_namespaces: A list of selected namespaces to restore from the Backup.
                The listed Namespaces and all resources contained in them will be restored.
                Structure is documented below.
-        :param Sequence['RestorePlanRestoreConfigTransformationRuleArgs'] transformation_rules: A list of transformation rules to be applied against Kubernetes
+        :param Sequence['RestorePlanRestoreConfigTransformationRuleArrgs'] transformation_rules: A list of transformation rules to be applied against Kubernetes
                resources as they are selected for restoration from a Backup.
                Rules are executed in order defined - this order matters,
                as changes made by a rule may impact the filtering logic of subsequent
@@ -768,7 +768,7 @@ class RestorePlanRestoreConfig(dict):
 
 
 @pulumi.output_type
-class RestorePlanRestoreConfigClusterResourceRestoreScope(dict):
+calass RestorePlanRestoreConfigClusterResourceRestoreScope(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -800,14 +800,14 @@ class RestorePlanRestoreConfigClusterResourceRestoreScope(dict):
         """
         :param bool all_group_kinds: If True, all valid cluster-scoped resources will be restored.
                Mutually exclusive to any other field in `clusterResourceRestoreScope`.
-        :param Sequence['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs'] excluded_group_kinds: A list of cluster-scoped resource group kinds to NOT restore from the backup.
+        :param Sequence['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrgs'] excluded_group_kinds: A list of cluster-scoped resource group kinds to NOT restore from the backup.
                If specified, all valid cluster-scoped resources will be restored except
                for those specified in the list.
                Mutually exclusive to any other field in `clusterResourceRestoreScope`.
                Structure is documented below.
         :param bool no_group_kinds: If True, no cluster-scoped resources will be restored.
                Mutually exclusive to any other field in `clusterResourceRestoreScope`.
-        :param Sequence['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs'] selected_group_kinds: A list of cluster-scoped resource group kinds to restore from the backup.
+        :param Sequence['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrgs'] selected_group_kinds: A list of cluster-scoped resource group kinds to restore from the backup.
                If specified, only the selected resources will be restored.
                Mutually exclusive to any other field in the `clusterResourceRestoreScope`.
                Structure is documented below.
@@ -864,7 +864,7 @@ class RestorePlanRestoreConfigClusterResourceRestoreScope(dict):
 
 
 @pulumi.output_type
-class RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind(dict):
+calass RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -920,7 +920,7 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind(dict)
 
 
 @pulumi.output_type
-class RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind(dict):
+calass RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -976,7 +976,7 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind(dict)
 
 
 @pulumi.output_type
-class RestorePlanRestoreConfigExcludedNamespaces(dict):
+calass RestorePlanRestoreConfigExcludedNamespaces(dict):
     def __init__(__self__, *,
                  namespaces: Sequence[str]):
         """
@@ -994,7 +994,7 @@ class RestorePlanRestoreConfigExcludedNamespaces(dict):
 
 
 @pulumi.output_type
-class RestorePlanRestoreConfigSelectedApplications(dict):
+calass RestorePlanRestoreConfigSelectedApplications(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1015,7 +1015,7 @@ class RestorePlanRestoreConfigSelectedApplications(dict):
     def __init__(__self__, *,
                  namespaced_names: Sequence['outputs.RestorePlanRestoreConfigSelectedApplicationsNamespacedName']):
         """
-        :param Sequence['RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs'] namespaced_names: A list of namespaced Kubernetes resources.
+        :param Sequence['RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrgs'] namespaced_names: A list of namespaced Kubernetes resources.
                Structure is documented below.
         """
         pulumi.set(__self__, "namespaced_names", namespaced_names)
@@ -1031,7 +1031,7 @@ class RestorePlanRestoreConfigSelectedApplications(dict):
 
 
 @pulumi.output_type
-class RestorePlanRestoreConfigSelectedApplicationsNamespacedName(dict):
+calass RestorePlanRestoreConfigSelectedApplicationsNamespacedName(dict):
     def __init__(__self__, *,
                  name: str,
                  namespace: str):
@@ -1060,7 +1060,7 @@ class RestorePlanRestoreConfigSelectedApplicationsNamespacedName(dict):
 
 
 @pulumi.output_type
-class RestorePlanRestoreConfigSelectedNamespaces(dict):
+calass RestorePlanRestoreConfigSelectedNamespaces(dict):
     def __init__(__self__, *,
                  namespaces: Sequence[str]):
         """
@@ -1078,7 +1078,7 @@ class RestorePlanRestoreConfigSelectedNamespaces(dict):
 
 
 @pulumi.output_type
-class RestorePlanRestoreConfigTransformationRule(dict):
+calass RestorePlanRestoreConfigTransformationRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1103,14 +1103,14 @@ class RestorePlanRestoreConfigTransformationRule(dict):
                  description: Optional[str] = None,
                  resource_filter: Optional['outputs.RestorePlanRestoreConfigTransformationRuleResourceFilter'] = None):
         """
-        :param Sequence['RestorePlanRestoreConfigTransformationRuleFieldActionArgs'] field_actions: A list of transformation rule actions to take against candidate
+        :param Sequence['RestorePlanRestoreConfigTransformationRuleFieldActionArrgs'] field_actions: A list of transformation rule actions to take against candidate
                resources. Actions are executed in order defined - this order
                matters, as they could potentially interfere with each other and
                the first operation could affect the outcome of the second operation.
                Structure is documented below.
         :param str description: The description is a user specified string description
                of the transformation rule.
-        :param 'RestorePlanRestoreConfigTransformationRuleResourceFilterArgs' resource_filter: This field is used to specify a set of fields that should be used to
+        :param 'RestorePlanRestoreConfigTransformationRuleResourceFilterArrgs' resource_filter: This field is used to specify a set of fields that should be used to
                determine which resources in backup should be acted upon by the
                supplied transformation rule actions, and this will ensure that only
                specific resources are affected by transformation rule actions.
@@ -1157,7 +1157,7 @@ class RestorePlanRestoreConfigTransformationRule(dict):
 
 
 @pulumi.output_type
-class RestorePlanRestoreConfigTransformationRuleFieldAction(dict):
+calass RestorePlanRestoreConfigTransformationRuleFieldAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1240,7 +1240,7 @@ class RestorePlanRestoreConfigTransformationRuleFieldAction(dict):
 
 
 @pulumi.output_type
-class RestorePlanRestoreConfigTransformationRuleResourceFilter(dict):
+calass RestorePlanRestoreConfigTransformationRuleResourceFilter(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1265,7 +1265,7 @@ class RestorePlanRestoreConfigTransformationRuleResourceFilter(dict):
                  json_path: Optional[str] = None,
                  namespaces: Optional[Sequence[str]] = None):
         """
-        :param Sequence['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs'] group_kinds: (Filtering parameter) Any resource subject to transformation must
+        :param Sequence['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrgs'] group_kinds: (Filtering parameter) Any resource subject to transformation must
                belong to one of the listed "types". If this field is not provided,
                no type filtering will be performed
                (all resources of all types matching previous filtering parameters
@@ -1330,7 +1330,7 @@ class RestorePlanRestoreConfigTransformationRuleResourceFilter(dict):
 
 
 @pulumi.output_type
-class RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind(dict):
+calass RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

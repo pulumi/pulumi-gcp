@@ -11,14 +11,14 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['MangedSslCertificateArgs', 'MangedSslCertificate']
+__all__ = ['MangedSslCertificateArrgs', 'MangedSslCertificate']
 
 @pulumi.input_type
-class MangedSslCertificateArgs:
+calass MangedSslCertificateArrgs:
     def __init__(__self__, *,
                  certificate_id: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 managed: Optional[pulumi.Input['MangedSslCertificateManagedArgs']] = None,
+                 managed: Optional[pulumi.Input['MangedSslCertificateManagedArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
@@ -26,7 +26,7 @@ class MangedSslCertificateArgs:
         The set of arguments for constructing a MangedSslCertificate resource.
         :param pulumi.Input[int] certificate_id: The unique identifier for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input['MangedSslCertificateManagedArgs'] managed: Properties relevant to a managed certificate.  These will be used if the
+        :param pulumi.Input['MangedSslCertificateManagedArrgs'] managed: Properties relevant to a managed certificate.  These will be used if the
                certificate is managed (as indicated by a value of `MANAGED` in `type`).
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -84,7 +84,7 @@ class MangedSslCertificateArgs:
 
     @property
     @pulumi.getter
-    def managed(self) -> Optional[pulumi.Input['MangedSslCertificateManagedArgs']]:
+    def managed(self) -> Optional[pulumi.Input['MangedSslCertificateManagedArrgs']]:
         """
         Properties relevant to a managed certificate.  These will be used if the
         certificate is managed (as indicated by a value of `MANAGED` in `type`).
@@ -93,7 +93,7 @@ class MangedSslCertificateArgs:
         return pulumi.get(self, "managed")
 
     @managed.setter
-    def managed(self, value: Optional[pulumi.Input['MangedSslCertificateManagedArgs']]):
+    def managed(self, value: Optional[pulumi.Input['MangedSslCertificateManagedArrgs']]):
         pulumi.set(self, "managed", value)
 
     @property
@@ -146,13 +146,13 @@ class MangedSslCertificateArgs:
 
 
 @pulumi.input_type
-class _MangedSslCertificateState:
+calass _MangedSslCertificateState:
     def __init__(__self__, *,
                  certificate_id: Optional[pulumi.Input[int]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
-                 managed: Optional[pulumi.Input['MangedSslCertificateManagedArgs']] = None,
+                 managed: Optional[pulumi.Input['MangedSslCertificateManagedArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -164,7 +164,7 @@ class _MangedSslCertificateState:
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] expire_time: Expire time of the certificate in RFC3339 text format.
-        :param pulumi.Input['MangedSslCertificateManagedArgs'] managed: Properties relevant to a managed certificate.  These will be used if the
+        :param pulumi.Input['MangedSslCertificateManagedArrgs'] managed: Properties relevant to a managed certificate.  These will be used if the
                certificate is managed (as indicated by a value of `MANAGED` in `type`).
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -256,7 +256,7 @@ class _MangedSslCertificateState:
 
     @property
     @pulumi.getter
-    def managed(self) -> Optional[pulumi.Input['MangedSslCertificateManagedArgs']]:
+    def managed(self) -> Optional[pulumi.Input['MangedSslCertificateManagedArrgs']]:
         """
         Properties relevant to a managed certificate.  These will be used if the
         certificate is managed (as indicated by a value of `MANAGED` in `type`).
@@ -265,7 +265,7 @@ class _MangedSslCertificateState:
         return pulumi.get(self, "managed")
 
     @managed.setter
-    def managed(self, value: Optional[pulumi.Input['MangedSslCertificateManagedArgs']]):
+    def managed(self, value: Optional[pulumi.Input['MangedSslCertificateManagedArrgs']]):
         pulumi.set(self, "managed", value)
 
     @property
@@ -344,7 +344,7 @@ class _MangedSslCertificateState:
 warnings.warn("""gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate""", DeprecationWarning)
 
 
-class MangedSslCertificate(pulumi.CustomResource):
+calass MangedSslCertificate(pulumi.CustomResource):
     warnings.warn("""gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate""", DeprecationWarning)
 
     @overload
@@ -353,7 +353,7 @@ class MangedSslCertificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_id: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 managed: Optional[pulumi.Input[pulumi.InputType['MangedSslCertificateManagedArgs']]] = None,
+                 managed: Optional[pulumi.Input[pulumi.InputType['MangedSslCertificateManagedArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -415,7 +415,7 @@ class MangedSslCertificate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] certificate_id: The unique identifier for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[pulumi.InputType['MangedSslCertificateManagedArgs']] managed: Properties relevant to a managed certificate.  These will be used if the
+        :param pulumi.Input[pulumi.InputType['MangedSslCertificateManagedArrgs']] managed: Properties relevant to a managed certificate.  These will be used if the
                certificate is managed (as indicated by a value of `MANAGED` in `type`).
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -438,7 +438,7 @@ class MangedSslCertificate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[MangedSslCertificateArgs] = None,
+                 args: Optional[MangedSslCertificateArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An SslCertificate resource, used for HTTPS load balancing.  This resource
@@ -494,12 +494,12 @@ class MangedSslCertificate(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param MangedSslCertificateArgs args: The arguments to use to populate this resource's properties.
+        :param MangedSslCertificateArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(MangedSslCertificateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(MangedSslCertificateArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -510,7 +510,7 @@ class MangedSslCertificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_id: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 managed: Optional[pulumi.Input[pulumi.InputType['MangedSslCertificateManagedArgs']]] = None,
+                 managed: Optional[pulumi.Input[pulumi.InputType['MangedSslCertificateManagedArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -522,7 +522,7 @@ class MangedSslCertificate(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = MangedSslCertificateArgs.__new__(MangedSslCertificateArgs)
+            __props__ = MangedSslCertificateArrgs.__new__(MangedSslCertificateArrgs)
 
             __props__.__dict__["certificate_id"] = certificate_id
             __props__.__dict__["description"] = description
@@ -548,7 +548,7 @@ class MangedSslCertificate(pulumi.CustomResource):
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             expire_time: Optional[pulumi.Input[str]] = None,
-            managed: Optional[pulumi.Input[pulumi.InputType['MangedSslCertificateManagedArgs']]] = None,
+            managed: Optional[pulumi.Input[pulumi.InputType['MangedSslCertificateManagedArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
@@ -565,7 +565,7 @@ class MangedSslCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] expire_time: Expire time of the certificate in RFC3339 text format.
-        :param pulumi.Input[pulumi.InputType['MangedSslCertificateManagedArgs']] managed: Properties relevant to a managed certificate.  These will be used if the
+        :param pulumi.Input[pulumi.InputType['MangedSslCertificateManagedArrgs']] managed: Properties relevant to a managed certificate.  These will be used if the
                certificate is managed (as indicated by a value of `MANAGED` in `type`).
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is

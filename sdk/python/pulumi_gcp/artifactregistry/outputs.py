@@ -48,7 +48,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class RepositoryCleanupPolicy(dict):
+calass RepositoryCleanupPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -107,7 +107,7 @@ class RepositoryCleanupPolicy(dict):
 
 
 @pulumi.output_type
-class RepositoryCleanupPolicyCondition(dict):
+calass RepositoryCleanupPolicyCondition(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -187,7 +187,7 @@ class RepositoryCleanupPolicyCondition(dict):
 
 
 @pulumi.output_type
-class RepositoryCleanupPolicyMostRecentVersions(dict):
+calass RepositoryCleanupPolicyMostRecentVersions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -227,7 +227,7 @@ class RepositoryCleanupPolicyMostRecentVersions(dict):
 
 
 @pulumi.output_type
-class RepositoryDockerConfig(dict):
+calass RepositoryDockerConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -263,7 +263,7 @@ class RepositoryDockerConfig(dict):
 
 
 @pulumi.output_type
-class RepositoryIamBindingCondition(dict):
+calass RepositoryIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -290,7 +290,7 @@ class RepositoryIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class RepositoryIamMemberCondition(dict):
+calass RepositoryIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -317,7 +317,7 @@ class RepositoryIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class RepositoryMavenConfig(dict):
+calass RepositoryMavenConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -373,7 +373,7 @@ class RepositoryMavenConfig(dict):
 
 
 @pulumi.output_type
-class RepositoryRemoteRepositoryConfig(dict):
+calass RepositoryRemoteRepositoryConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -410,18 +410,18 @@ class RepositoryRemoteRepositoryConfig(dict):
                  python_repository: Optional['outputs.RepositoryRemoteRepositoryConfigPythonRepository'] = None,
                  yum_repository: Optional['outputs.RepositoryRemoteRepositoryConfigYumRepository'] = None):
         """
-        :param 'RepositoryRemoteRepositoryConfigAptRepositoryArgs' apt_repository: Specific settings for an Apt remote repository.
+        :param 'RepositoryRemoteRepositoryConfigAptRepositoryArrgs' apt_repository: Specific settings for an Apt remote repository.
                Structure is documented below.
         :param str description: The description of the remote source.
-        :param 'RepositoryRemoteRepositoryConfigDockerRepositoryArgs' docker_repository: Specific settings for a Docker remote repository.
+        :param 'RepositoryRemoteRepositoryConfigDockerRepositoryArrgs' docker_repository: Specific settings for a Docker remote repository.
                Structure is documented below.
-        :param 'RepositoryRemoteRepositoryConfigMavenRepositoryArgs' maven_repository: Specific settings for a Maven remote repository.
+        :param 'RepositoryRemoteRepositoryConfigMavenRepositoryArrgs' maven_repository: Specific settings for a Maven remote repository.
                Structure is documented below.
-        :param 'RepositoryRemoteRepositoryConfigNpmRepositoryArgs' npm_repository: Specific settings for an Npm remote repository.
+        :param 'RepositoryRemoteRepositoryConfigNpmRepositoryArrgs' npm_repository: Specific settings for an Npm remote repository.
                Structure is documented below.
-        :param 'RepositoryRemoteRepositoryConfigPythonRepositoryArgs' python_repository: Specific settings for a Python remote repository.
+        :param 'RepositoryRemoteRepositoryConfigPythonRepositoryArrgs' python_repository: Specific settings for a Python remote repository.
                Structure is documented below.
-        :param 'RepositoryRemoteRepositoryConfigYumRepositoryArgs' yum_repository: Specific settings for an Yum remote repository.
+        :param 'RepositoryRemoteRepositoryConfigYumRepositoryArrgs' yum_repository: Specific settings for an Yum remote repository.
                Structure is documented below.
         """
         if apt_repository is not None:
@@ -503,7 +503,7 @@ class RepositoryRemoteRepositoryConfig(dict):
 
 
 @pulumi.output_type
-class RepositoryRemoteRepositoryConfigAptRepository(dict):
+calass RepositoryRemoteRepositoryConfigAptRepository(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -524,7 +524,7 @@ class RepositoryRemoteRepositoryConfigAptRepository(dict):
     def __init__(__self__, *,
                  public_repository: Optional['outputs.RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository'] = None):
         """
-        :param 'RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs' public_repository: One of the publicly available Apt repositories supported by Artifact Registry.
+        :param 'RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArrgs' public_repository: One of the publicly available Apt repositories supported by Artifact Registry.
                Structure is documented below.
         """
         if public_repository is not None:
@@ -541,7 +541,7 @@ class RepositoryRemoteRepositoryConfigAptRepository(dict):
 
 
 @pulumi.output_type
-class RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository(dict):
+calass RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -591,7 +591,7 @@ class RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository(dict):
 
 
 @pulumi.output_type
-class RepositoryRemoteRepositoryConfigDockerRepository(dict):
+calass RepositoryRemoteRepositoryConfigDockerRepository(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -631,7 +631,7 @@ class RepositoryRemoteRepositoryConfigDockerRepository(dict):
 
 
 @pulumi.output_type
-class RepositoryRemoteRepositoryConfigMavenRepository(dict):
+calass RepositoryRemoteRepositoryConfigMavenRepository(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -671,7 +671,7 @@ class RepositoryRemoteRepositoryConfigMavenRepository(dict):
 
 
 @pulumi.output_type
-class RepositoryRemoteRepositoryConfigNpmRepository(dict):
+calass RepositoryRemoteRepositoryConfigNpmRepository(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -711,7 +711,7 @@ class RepositoryRemoteRepositoryConfigNpmRepository(dict):
 
 
 @pulumi.output_type
-class RepositoryRemoteRepositoryConfigPythonRepository(dict):
+calass RepositoryRemoteRepositoryConfigPythonRepository(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -751,7 +751,7 @@ class RepositoryRemoteRepositoryConfigPythonRepository(dict):
 
 
 @pulumi.output_type
-class RepositoryRemoteRepositoryConfigYumRepository(dict):
+calass RepositoryRemoteRepositoryConfigYumRepository(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -772,7 +772,7 @@ class RepositoryRemoteRepositoryConfigYumRepository(dict):
     def __init__(__self__, *,
                  public_repository: Optional['outputs.RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository'] = None):
         """
-        :param 'RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs' public_repository: One of the publicly available Yum repositories supported by Artifact Registry.
+        :param 'RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArrgs' public_repository: One of the publicly available Yum repositories supported by Artifact Registry.
                Structure is documented below.
         """
         if public_repository is not None:
@@ -789,7 +789,7 @@ class RepositoryRemoteRepositoryConfigYumRepository(dict):
 
 
 @pulumi.output_type
-class RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository(dict):
+calass RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -839,7 +839,7 @@ class RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository(dict):
 
 
 @pulumi.output_type
-class RepositoryVirtualRepositoryConfig(dict):
+calass RepositoryVirtualRepositoryConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -860,7 +860,7 @@ class RepositoryVirtualRepositoryConfig(dict):
     def __init__(__self__, *,
                  upstream_policies: Optional[Sequence['outputs.RepositoryVirtualRepositoryConfigUpstreamPolicy']] = None):
         """
-        :param Sequence['RepositoryVirtualRepositoryConfigUpstreamPolicyArgs'] upstream_policies: Policies that configure the upstream artifacts distributed by the Virtual
+        :param Sequence['RepositoryVirtualRepositoryConfigUpstreamPolicyArrgs'] upstream_policies: Policies that configure the upstream artifacts distributed by the Virtual
                Repository. Upstream policies cannot be set on a standard repository.
                Structure is documented below.
         """
@@ -879,7 +879,7 @@ class RepositoryVirtualRepositoryConfig(dict):
 
 
 @pulumi.output_type
-class RepositoryVirtualRepositoryConfigUpstreamPolicy(dict):
+calass RepositoryVirtualRepositoryConfigUpstreamPolicy(dict):
     def __init__(__self__, *,
                  id: Optional[str] = None,
                  priority: Optional[int] = None,
@@ -924,7 +924,7 @@ class RepositoryVirtualRepositoryConfigUpstreamPolicy(dict):
 
 
 @pulumi.output_type
-class GetRepositoryCleanupPolicyResult(dict):
+calass GetRepositoryCleanupPolicyResult(dict):
     def __init__(__self__, *,
                  action: str,
                  conditions: Sequence['outputs.GetRepositoryCleanupPolicyConditionResult'],
@@ -957,7 +957,7 @@ class GetRepositoryCleanupPolicyResult(dict):
 
 
 @pulumi.output_type
-class GetRepositoryCleanupPolicyConditionResult(dict):
+calass GetRepositoryCleanupPolicyConditionResult(dict):
     def __init__(__self__, *,
                  newer_than: str,
                  older_than: str,
@@ -1004,7 +1004,7 @@ class GetRepositoryCleanupPolicyConditionResult(dict):
 
 
 @pulumi.output_type
-class GetRepositoryCleanupPolicyMostRecentVersionResult(dict):
+calass GetRepositoryCleanupPolicyMostRecentVersionResult(dict):
     def __init__(__self__, *,
                  keep_count: int,
                  package_name_prefixes: Sequence[str]):
@@ -1023,7 +1023,7 @@ class GetRepositoryCleanupPolicyMostRecentVersionResult(dict):
 
 
 @pulumi.output_type
-class GetRepositoryDockerConfigResult(dict):
+calass GetRepositoryDockerConfigResult(dict):
     def __init__(__self__, *,
                  immutable_tags: bool):
         pulumi.set(__self__, "immutable_tags", immutable_tags)
@@ -1035,7 +1035,7 @@ class GetRepositoryDockerConfigResult(dict):
 
 
 @pulumi.output_type
-class GetRepositoryMavenConfigResult(dict):
+calass GetRepositoryMavenConfigResult(dict):
     def __init__(__self__, *,
                  allow_snapshot_overwrites: bool,
                  version_policy: str):
@@ -1054,7 +1054,7 @@ class GetRepositoryMavenConfigResult(dict):
 
 
 @pulumi.output_type
-class GetRepositoryRemoteRepositoryConfigResult(dict):
+calass GetRepositoryRemoteRepositoryConfigResult(dict):
     def __init__(__self__, *,
                  apt_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigAptRepositoryResult'],
                  description: str,
@@ -1108,7 +1108,7 @@ class GetRepositoryRemoteRepositoryConfigResult(dict):
 
 
 @pulumi.output_type
-class GetRepositoryRemoteRepositoryConfigAptRepositoryResult(dict):
+calass GetRepositoryRemoteRepositoryConfigAptRepositoryResult(dict):
     def __init__(__self__, *,
                  public_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryResult']):
         pulumi.set(__self__, "public_repositories", public_repositories)
@@ -1120,7 +1120,7 @@ class GetRepositoryRemoteRepositoryConfigAptRepositoryResult(dict):
 
 
 @pulumi.output_type
-class GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryResult(dict):
+calass GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryResult(dict):
     def __init__(__self__, *,
                  repository_base: str,
                  repository_path: str):
@@ -1139,7 +1139,7 @@ class GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryResult(dic
 
 
 @pulumi.output_type
-class GetRepositoryRemoteRepositoryConfigDockerRepositoryResult(dict):
+calass GetRepositoryRemoteRepositoryConfigDockerRepositoryResult(dict):
     def __init__(__self__, *,
                  public_repository: str):
         pulumi.set(__self__, "public_repository", public_repository)
@@ -1151,7 +1151,7 @@ class GetRepositoryRemoteRepositoryConfigDockerRepositoryResult(dict):
 
 
 @pulumi.output_type
-class GetRepositoryRemoteRepositoryConfigMavenRepositoryResult(dict):
+calass GetRepositoryRemoteRepositoryConfigMavenRepositoryResult(dict):
     def __init__(__self__, *,
                  public_repository: str):
         pulumi.set(__self__, "public_repository", public_repository)
@@ -1163,7 +1163,7 @@ class GetRepositoryRemoteRepositoryConfigMavenRepositoryResult(dict):
 
 
 @pulumi.output_type
-class GetRepositoryRemoteRepositoryConfigNpmRepositoryResult(dict):
+calass GetRepositoryRemoteRepositoryConfigNpmRepositoryResult(dict):
     def __init__(__self__, *,
                  public_repository: str):
         pulumi.set(__self__, "public_repository", public_repository)
@@ -1175,7 +1175,7 @@ class GetRepositoryRemoteRepositoryConfigNpmRepositoryResult(dict):
 
 
 @pulumi.output_type
-class GetRepositoryRemoteRepositoryConfigPythonRepositoryResult(dict):
+calass GetRepositoryRemoteRepositoryConfigPythonRepositoryResult(dict):
     def __init__(__self__, *,
                  public_repository: str):
         pulumi.set(__self__, "public_repository", public_repository)
@@ -1187,7 +1187,7 @@ class GetRepositoryRemoteRepositoryConfigPythonRepositoryResult(dict):
 
 
 @pulumi.output_type
-class GetRepositoryRemoteRepositoryConfigYumRepositoryResult(dict):
+calass GetRepositoryRemoteRepositoryConfigYumRepositoryResult(dict):
     def __init__(__self__, *,
                  public_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryResult']):
         pulumi.set(__self__, "public_repositories", public_repositories)
@@ -1199,7 +1199,7 @@ class GetRepositoryRemoteRepositoryConfigYumRepositoryResult(dict):
 
 
 @pulumi.output_type
-class GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryResult(dict):
+calass GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryResult(dict):
     def __init__(__self__, *,
                  repository_base: str,
                  repository_path: str):
@@ -1218,7 +1218,7 @@ class GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryResult(dic
 
 
 @pulumi.output_type
-class GetRepositoryVirtualRepositoryConfigResult(dict):
+calass GetRepositoryVirtualRepositoryConfigResult(dict):
     def __init__(__self__, *,
                  upstream_policies: Sequence['outputs.GetRepositoryVirtualRepositoryConfigUpstreamPolicyResult']):
         pulumi.set(__self__, "upstream_policies", upstream_policies)
@@ -1230,7 +1230,7 @@ class GetRepositoryVirtualRepositoryConfigResult(dict):
 
 
 @pulumi.output_type
-class GetRepositoryVirtualRepositoryConfigUpstreamPolicyResult(dict):
+calass GetRepositoryVirtualRepositoryConfigUpstreamPolicyResult(dict):
     def __init__(__self__, *,
                  id: str,
                  priority: int,

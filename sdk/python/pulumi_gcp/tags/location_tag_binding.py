@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['LocationTagBindingArgs', 'LocationTagBinding']
+__all__ = ['LocationTagBindingArrgs', 'LocationTagBinding']
 
 @pulumi.input_type
-class LocationTagBindingArgs:
+calass LocationTagBindingArrgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[str],
                  tag_value: pulumi.Input[str],
@@ -70,7 +70,7 @@ class LocationTagBindingArgs:
 
 
 @pulumi.input_type
-class _LocationTagBindingState:
+calass _LocationTagBindingState:
     def __init__(__self__, *,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -145,7 +145,7 @@ class _LocationTagBindingState:
         pulumi.set(self, "tag_value", value)
 
 
-class LocationTagBinding(pulumi.CustomResource):
+calass LocationTagBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -239,7 +239,7 @@ class LocationTagBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: LocationTagBindingArgs,
+                 args: LocationTagBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A LocationTagBinding represents a connection between a TagValue and a non-global target such as a Cloud Run Service or Compute Instance. Once a LocationTagBinding is created, the TagValue is applied to all the descendants of the cloud resource.
@@ -315,12 +315,12 @@ class LocationTagBinding(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param LocationTagBindingArgs args: The arguments to use to populate this resource's properties.
+        :param LocationTagBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(LocationTagBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(LocationTagBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -339,7 +339,7 @@ class LocationTagBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = LocationTagBindingArgs.__new__(LocationTagBindingArgs)
+            __props__ = LocationTagBindingArrgs.__new__(LocationTagBindingArrgs)
 
             __props__.__dict__["location"] = location
             if parent is None and not opts.urn:

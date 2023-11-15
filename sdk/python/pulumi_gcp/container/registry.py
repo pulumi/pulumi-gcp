@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['RegistryArgs', 'Registry']
+__all__ = ['RegistryArrgs', 'Registry']
 
 @pulumi.input_type
-class RegistryArgs:
+calass RegistryArrgs:
     def __init__(__self__, *,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -52,7 +52,7 @@ class RegistryArgs:
 
 
 @pulumi.input_type
-class _RegistryState:
+calass _RegistryState:
     def __init__(__self__, *,
                  bucket_self_link: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -107,7 +107,7 @@ class _RegistryState:
         pulumi.set(self, "project", value)
 
 
-class Registry(pulumi.CustomResource):
+calass Registry(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -159,7 +159,7 @@ class Registry(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[RegistryArgs] = None,
+                 args: Optional[RegistryArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Ensures that the Google Cloud Storage bucket that backs Google Container Registry exists. Creating this resource will create the backing bucket if it does not exist, or do nothing if the bucket already exists. Destroying this resource does *NOT* destroy the backing bucket. For more information see [the official documentation](https://cloud.google.com/container-registry/docs/overview)
@@ -197,12 +197,12 @@ class Registry(pulumi.CustomResource):
         This resource does not support import.
 
         :param str resource_name: The name of the resource.
-        :param RegistryArgs args: The arguments to use to populate this resource's properties.
+        :param RegistryArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RegistryArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(RegistryArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -220,7 +220,7 @@ class Registry(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RegistryArgs.__new__(RegistryArgs)
+            __props__ = RegistryArrgs.__new__(RegistryArrgs)
 
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project

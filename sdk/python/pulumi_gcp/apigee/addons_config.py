@@ -11,20 +11,20 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AddonsConfigArgs', 'AddonsConfig']
+__all__ = ['AddonsConfigArrgs', 'AddonsConfig']
 
 @pulumi.input_type
-class AddonsConfigArgs:
+calass AddonsConfigArrgs:
     def __init__(__self__, *,
                  org: pulumi.Input[str],
-                 addons_config: Optional[pulumi.Input['AddonsConfigAddonsConfigArgs']] = None):
+                 addons_config: Optional[pulumi.Input['AddonsConfigAddonsConfigArrgs']] = None):
         """
         The set of arguments for constructing a AddonsConfig resource.
         :param pulumi.Input[str] org: Name of the Apigee organization.
                
                
                - - -
-        :param pulumi.Input['AddonsConfigAddonsConfigArgs'] addons_config: Addon configurations of the Apigee organization.
+        :param pulumi.Input['AddonsConfigAddonsConfigArrgs'] addons_config: Addon configurations of the Apigee organization.
                Structure is documented below.
         """
         pulumi.set(__self__, "org", org)
@@ -48,7 +48,7 @@ class AddonsConfigArgs:
 
     @property
     @pulumi.getter(name="addonsConfig")
-    def addons_config(self) -> Optional[pulumi.Input['AddonsConfigAddonsConfigArgs']]:
+    def addons_config(self) -> Optional[pulumi.Input['AddonsConfigAddonsConfigArrgs']]:
         """
         Addon configurations of the Apigee organization.
         Structure is documented below.
@@ -56,18 +56,18 @@ class AddonsConfigArgs:
         return pulumi.get(self, "addons_config")
 
     @addons_config.setter
-    def addons_config(self, value: Optional[pulumi.Input['AddonsConfigAddonsConfigArgs']]):
+    def addons_config(self, value: Optional[pulumi.Input['AddonsConfigAddonsConfigArrgs']]):
         pulumi.set(self, "addons_config", value)
 
 
 @pulumi.input_type
-class _AddonsConfigState:
+calass _AddonsConfigState:
     def __init__(__self__, *,
-                 addons_config: Optional[pulumi.Input['AddonsConfigAddonsConfigArgs']] = None,
+                 addons_config: Optional[pulumi.Input['AddonsConfigAddonsConfigArrgs']] = None,
                  org: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AddonsConfig resources.
-        :param pulumi.Input['AddonsConfigAddonsConfigArgs'] addons_config: Addon configurations of the Apigee organization.
+        :param pulumi.Input['AddonsConfigAddonsConfigArrgs'] addons_config: Addon configurations of the Apigee organization.
                Structure is documented below.
         :param pulumi.Input[str] org: Name of the Apigee organization.
                
@@ -81,7 +81,7 @@ class _AddonsConfigState:
 
     @property
     @pulumi.getter(name="addonsConfig")
-    def addons_config(self) -> Optional[pulumi.Input['AddonsConfigAddonsConfigArgs']]:
+    def addons_config(self) -> Optional[pulumi.Input['AddonsConfigAddonsConfigArrgs']]:
         """
         Addon configurations of the Apigee organization.
         Structure is documented below.
@@ -89,7 +89,7 @@ class _AddonsConfigState:
         return pulumi.get(self, "addons_config")
 
     @addons_config.setter
-    def addons_config(self, value: Optional[pulumi.Input['AddonsConfigAddonsConfigArgs']]):
+    def addons_config(self, value: Optional[pulumi.Input['AddonsConfigAddonsConfigArrgs']]):
         pulumi.set(self, "addons_config", value)
 
     @property
@@ -108,12 +108,12 @@ class _AddonsConfigState:
         pulumi.set(self, "org", value)
 
 
-class AddonsConfig(pulumi.CustomResource):
+calass AddonsConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons_config: Optional[pulumi.Input[pulumi.InputType['AddonsConfigAddonsConfigArgs']]] = None,
+                 addons_config: Optional[pulumi.Input[pulumi.InputType['AddonsConfigAddonsConfigArrgs']]] = None,
                  org: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -133,11 +133,11 @@ class AddonsConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         test_organization = gcp.apigee.AddonsConfig("testOrganization",
-            addons_config=gcp.apigee.AddonsConfigAddonsConfigArgs(
-                api_security_config=gcp.apigee.AddonsConfigAddonsConfigApiSecurityConfigArgs(
+            addons_config=gcp.apigee.AddonsConfigAddonsConfigArrgs(
+                api_security_config=gcp.apigee.AddonsConfigAddonsConfigApiSecurityConfigArrgs(
                     enabled=True,
                 ),
-                monetization_config=gcp.apigee.AddonsConfigAddonsConfigMonetizationConfigArgs(
+                monetization_config=gcp.apigee.AddonsConfigAddonsConfigMonetizationConfigArrgs(
                     enabled=True,
                 ),
             ),
@@ -182,20 +182,20 @@ class AddonsConfig(pulumi.CustomResource):
                 ]))
         test_organization = gcp.apigee.AddonsConfig("testOrganization",
             org=org.name,
-            addons_config=gcp.apigee.AddonsConfigAddonsConfigArgs(
-                integration_config=gcp.apigee.AddonsConfigAddonsConfigIntegrationConfigArgs(
+            addons_config=gcp.apigee.AddonsConfigAddonsConfigArrgs(
+                integration_config=gcp.apigee.AddonsConfigAddonsConfigIntegrationConfigArrgs(
                     enabled=True,
                 ),
-                api_security_config=gcp.apigee.AddonsConfigAddonsConfigApiSecurityConfigArgs(
+                api_security_config=gcp.apigee.AddonsConfigAddonsConfigApiSecurityConfigArrgs(
                     enabled=True,
                 ),
-                connectors_platform_config=gcp.apigee.AddonsConfigAddonsConfigConnectorsPlatformConfigArgs(
+                connectors_platform_config=gcp.apigee.AddonsConfigAddonsConfigConnectorsPlatformConfigArrgs(
                     enabled=True,
                 ),
-                monetization_config=gcp.apigee.AddonsConfigAddonsConfigMonetizationConfigArgs(
+                monetization_config=gcp.apigee.AddonsConfigAddonsConfigMonetizationConfigArrgs(
                     enabled=True,
                 ),
-                advanced_api_ops_config=gcp.apigee.AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs(
+                advanced_api_ops_config=gcp.apigee.AddonsConfigAddonsConfigAdvancedApiOpsConfigArrgs(
                     enabled=True,
                 ),
             ))
@@ -223,7 +223,7 @@ class AddonsConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AddonsConfigAddonsConfigArgs']] addons_config: Addon configurations of the Apigee organization.
+        :param pulumi.Input[pulumi.InputType['AddonsConfigAddonsConfigArrgs']] addons_config: Addon configurations of the Apigee organization.
                Structure is documented below.
         :param pulumi.Input[str] org: Name of the Apigee organization.
                
@@ -234,7 +234,7 @@ class AddonsConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AddonsConfigArgs,
+                 args: AddonsConfigArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Configures the add-ons for the Apigee organization. The existing add-on configuration will be fully replaced.
@@ -253,11 +253,11 @@ class AddonsConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         test_organization = gcp.apigee.AddonsConfig("testOrganization",
-            addons_config=gcp.apigee.AddonsConfigAddonsConfigArgs(
-                api_security_config=gcp.apigee.AddonsConfigAddonsConfigApiSecurityConfigArgs(
+            addons_config=gcp.apigee.AddonsConfigAddonsConfigArrgs(
+                api_security_config=gcp.apigee.AddonsConfigAddonsConfigApiSecurityConfigArrgs(
                     enabled=True,
                 ),
-                monetization_config=gcp.apigee.AddonsConfigAddonsConfigMonetizationConfigArgs(
+                monetization_config=gcp.apigee.AddonsConfigAddonsConfigMonetizationConfigArrgs(
                     enabled=True,
                 ),
             ),
@@ -302,20 +302,20 @@ class AddonsConfig(pulumi.CustomResource):
                 ]))
         test_organization = gcp.apigee.AddonsConfig("testOrganization",
             org=org.name,
-            addons_config=gcp.apigee.AddonsConfigAddonsConfigArgs(
-                integration_config=gcp.apigee.AddonsConfigAddonsConfigIntegrationConfigArgs(
+            addons_config=gcp.apigee.AddonsConfigAddonsConfigArrgs(
+                integration_config=gcp.apigee.AddonsConfigAddonsConfigIntegrationConfigArrgs(
                     enabled=True,
                 ),
-                api_security_config=gcp.apigee.AddonsConfigAddonsConfigApiSecurityConfigArgs(
+                api_security_config=gcp.apigee.AddonsConfigAddonsConfigApiSecurityConfigArrgs(
                     enabled=True,
                 ),
-                connectors_platform_config=gcp.apigee.AddonsConfigAddonsConfigConnectorsPlatformConfigArgs(
+                connectors_platform_config=gcp.apigee.AddonsConfigAddonsConfigConnectorsPlatformConfigArrgs(
                     enabled=True,
                 ),
-                monetization_config=gcp.apigee.AddonsConfigAddonsConfigMonetizationConfigArgs(
+                monetization_config=gcp.apigee.AddonsConfigAddonsConfigMonetizationConfigArrgs(
                     enabled=True,
                 ),
-                advanced_api_ops_config=gcp.apigee.AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs(
+                advanced_api_ops_config=gcp.apigee.AddonsConfigAddonsConfigAdvancedApiOpsConfigArrgs(
                     enabled=True,
                 ),
             ))
@@ -342,12 +342,12 @@ class AddonsConfig(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AddonsConfigArgs args: The arguments to use to populate this resource's properties.
+        :param AddonsConfigArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AddonsConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AddonsConfigArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -356,7 +356,7 @@ class AddonsConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons_config: Optional[pulumi.Input[pulumi.InputType['AddonsConfigAddonsConfigArgs']]] = None,
+                 addons_config: Optional[pulumi.Input[pulumi.InputType['AddonsConfigAddonsConfigArrgs']]] = None,
                  org: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -365,7 +365,7 @@ class AddonsConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AddonsConfigArgs.__new__(AddonsConfigArgs)
+            __props__ = AddonsConfigArrgs.__new__(AddonsConfigArrgs)
 
             __props__.__dict__["addons_config"] = addons_config
             if org is None and not opts.urn:
@@ -381,7 +381,7 @@ class AddonsConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            addons_config: Optional[pulumi.Input[pulumi.InputType['AddonsConfigAddonsConfigArgs']]] = None,
+            addons_config: Optional[pulumi.Input[pulumi.InputType['AddonsConfigAddonsConfigArrgs']]] = None,
             org: Optional[pulumi.Input[str]] = None) -> 'AddonsConfig':
         """
         Get an existing AddonsConfig resource's state with the given name, id, and optional extra
@@ -390,7 +390,7 @@ class AddonsConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AddonsConfigAddonsConfigArgs']] addons_config: Addon configurations of the Apigee organization.
+        :param pulumi.Input[pulumi.InputType['AddonsConfigAddonsConfigArrgs']] addons_config: Addon configurations of the Apigee organization.
                Structure is documented below.
         :param pulumi.Input[str] org: Name of the Apigee organization.
                

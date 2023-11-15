@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['AzureClientArgs', 'AzureClient']
+__all__ = ['AzureClientArrgs', 'AzureClient']
 
 @pulumi.input_type
-class AzureClientArgs:
+calass AzureClientArrgs:
     def __init__(__self__, *,
                  application_id: pulumi.Input[str],
                  location: pulumi.Input[str],
@@ -105,7 +105,7 @@ class AzureClientArgs:
 
 
 @pulumi.input_type
-class _AzureClientState:
+calass _AzureClientState:
     def __init__(__self__, *,
                  application_id: Optional[pulumi.Input[str]] = None,
                  certificate: Optional[pulumi.Input[str]] = None,
@@ -248,7 +248,7 @@ class _AzureClientState:
         pulumi.set(self, "uid", value)
 
 
-class AzureClient(pulumi.CustomResource):
+calass AzureClient(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -318,7 +318,7 @@ class AzureClient(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AzureClientArgs,
+                 args: AzureClientArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         AzureClient resources hold client authentication information needed by the Anthos Multi-Cloud API to manage Azure resources on your Azure subscription.When an AzureCluster is created, an AzureClient resource needs to be provided and all operations on Azure resources associated to that cluster will authenticate to Azure services using the given client.AzureClient resources are immutable and cannot be modified upon creation.Each AzureClient resource is bound to a single Azure Active Directory Application and tenant.
@@ -364,12 +364,12 @@ class AzureClient(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AzureClientArgs args: The arguments to use to populate this resource's properties.
+        :param AzureClientArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AzureClientArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AzureClientArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -390,7 +390,7 @@ class AzureClient(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AzureClientArgs.__new__(AzureClientArgs)
+            __props__ = AzureClientArrgs.__new__(AzureClientArrgs)
 
             if application_id is None and not opts.urn:
                 raise TypeError("Missing required property 'application_id'")

@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['WebAppArgs', 'WebApp']
+__all__ = ['WebAppArrgs', 'WebApp']
 
 @pulumi.input_type
-class WebAppArgs:
+calass WebAppArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  api_key_id: Optional[pulumi.Input[str]] = None,
@@ -97,7 +97,7 @@ class WebAppArgs:
 
 
 @pulumi.input_type
-class _WebAppState:
+calass _WebAppState:
     def __init__(__self__, *,
                  api_key_id: Optional[pulumi.Input[str]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
@@ -234,7 +234,7 @@ class _WebAppState:
         pulumi.set(self, "project", value)
 
 
-class WebApp(pulumi.CustomResource):
+calass WebApp(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -290,8 +290,8 @@ class WebApp(pulumi.CustomResource):
         web = gcp.projects.ApiKey("web",
             project="my-project-name",
             display_name="Display Name",
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                browser_key_restrictions=gcp.projects.ApiKeyRestrictionsBrowserKeyRestrictionsArgs(
+            restrictions=gcp.projects.ApiKeyRestrictionsArrgs(
+                browser_key_restrictions=gcp.projects.ApiKeyRestrictionsBrowserKeyRestrictionsArrgs(
                     allowed_referrers=["*"],
                 ),
             ),
@@ -354,7 +354,7 @@ class WebApp(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: WebAppArgs,
+                 args: WebAppArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Google Cloud Firebase web application instance
@@ -402,8 +402,8 @@ class WebApp(pulumi.CustomResource):
         web = gcp.projects.ApiKey("web",
             project="my-project-name",
             display_name="Display Name",
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                browser_key_restrictions=gcp.projects.ApiKeyRestrictionsBrowserKeyRestrictionsArgs(
+            restrictions=gcp.projects.ApiKeyRestrictionsArrgs(
+                browser_key_restrictions=gcp.projects.ApiKeyRestrictionsBrowserKeyRestrictionsArrgs(
                     allowed_referrers=["*"],
                 ),
             ),
@@ -449,12 +449,12 @@ class WebApp(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param WebAppArgs args: The arguments to use to populate this resource's properties.
+        :param WebAppArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(WebAppArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(WebAppArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -474,7 +474,7 @@ class WebApp(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = WebAppArgs.__new__(WebAppArgs)
+            __props__ = WebAppArrgs.__new__(WebAppArrgs)
 
             __props__.__dict__["api_key_id"] = api_key_id
             __props__.__dict__["deletion_policy"] = deletion_policy

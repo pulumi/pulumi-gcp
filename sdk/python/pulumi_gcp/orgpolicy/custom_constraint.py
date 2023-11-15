@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['CustomConstraintArgs', 'CustomConstraint']
+__all__ = ['CustomConstraintArrgs', 'CustomConstraint']
 
 @pulumi.input_type
-class CustomConstraintArgs:
+calass CustomConstraintArrgs:
     def __init__(__self__, *,
                  action_type: pulumi.Input[str],
                  condition: pulumi.Input[str],
@@ -151,7 +151,7 @@ class CustomConstraintArgs:
 
 
 @pulumi.input_type
-class _CustomConstraintState:
+calass _CustomConstraintState:
     def __init__(__self__, *,
                  action_type: Optional[pulumi.Input[str]] = None,
                  condition: Optional[pulumi.Input[str]] = None,
@@ -310,7 +310,7 @@ class _CustomConstraintState:
         pulumi.set(self, "update_time", value)
 
 
-class CustomConstraint(pulumi.CustomResource):
+calass CustomConstraint(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -370,8 +370,8 @@ class CustomConstraint(pulumi.CustomResource):
             resource_types=["container.googleapis.com/NodePool"])
         bool = gcp.orgpolicy.Policy("bool",
             parent="organizations/123456789",
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
+            spec=gcp.orgpolicy.PolicySpecArrgs(
+                rules=[gcp.orgpolicy.PolicySpecRuleArrgs(
                     enforce="TRUE",
                 )],
             ))
@@ -412,7 +412,7 @@ class CustomConstraint(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CustomConstraintArgs,
+                 args: CustomConstraintArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Custom constraints are created by administrators to provide more granular and customizable control over the specific fields that are restricted by your organization policies.
@@ -460,8 +460,8 @@ class CustomConstraint(pulumi.CustomResource):
             resource_types=["container.googleapis.com/NodePool"])
         bool = gcp.orgpolicy.Policy("bool",
             parent="organizations/123456789",
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
+            spec=gcp.orgpolicy.PolicySpecArrgs(
+                rules=[gcp.orgpolicy.PolicySpecRuleArrgs(
                     enforce="TRUE",
                 )],
             ))
@@ -484,12 +484,12 @@ class CustomConstraint(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param CustomConstraintArgs args: The arguments to use to populate this resource's properties.
+        :param CustomConstraintArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(CustomConstraintArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(CustomConstraintArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -513,7 +513,7 @@ class CustomConstraint(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = CustomConstraintArgs.__new__(CustomConstraintArgs)
+            __props__ = CustomConstraintArrgs.__new__(CustomConstraintArrgs)
 
             if action_type is None and not opts.urn:
                 raise TypeError("Missing required property 'action_type'")

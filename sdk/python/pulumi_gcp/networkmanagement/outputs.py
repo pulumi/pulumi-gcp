@@ -15,7 +15,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class ConnectivityTestDestination(dict):
+calass ConnectivityTestDestination(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -125,7 +125,7 @@ class ConnectivityTestDestination(dict):
 
 
 @pulumi.output_type
-class ConnectivityTestSource(dict):
+calass ConnectivityTestSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

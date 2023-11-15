@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetCertificateMapResult:
+calass GetCertificateMapResult:
     """
     A collection of values returned by getCertificateMap.
     """
@@ -108,7 +108,7 @@ class GetCertificateMapResult:
         return pulumi.get(self, "update_time")
 
 
-class AwaitableGetCertificateMapResult(GetCertificateMapResult):
+calass AwaitableGetCertificateMapResult(GetCertificateMapResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

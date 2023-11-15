@@ -11,17 +11,17 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Hl7StoreArgs', 'Hl7Store']
+__all__ = ['Hl7StoreArrgs', 'Hl7Store']
 
 @pulumi.input_type
-class Hl7StoreArgs:
+calass Hl7StoreArrgs:
     def __init__(__self__, *,
                  dataset: pulumi.Input[str],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_config: Optional[pulumi.Input['Hl7StoreNotificationConfigArgs']] = None,
-                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]] = None,
-                 parser_config: Optional[pulumi.Input['Hl7StoreParserConfigArgs']] = None):
+                 notification_config: Optional[pulumi.Input['Hl7StoreNotificationConfigArrgs']] = None,
+                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArrgs']]]] = None,
+                 parser_config: Optional[pulumi.Input['Hl7StoreParserConfigArrgs']] = None):
         """
         The set of arguments for constructing a Hl7Store resource.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
@@ -42,16 +42,16 @@ class Hl7StoreArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the Hl7V2Store.
                ** Changing this property may recreate the Hl7v2 store (removing all data) **
-        :param pulumi.Input['Hl7StoreNotificationConfigArgs'] notification_config: (Optional, Deprecated)
+        :param pulumi.Input['Hl7StoreNotificationConfigArrgs'] notification_config: (Optional, Deprecated)
                A nested object resource
                Structure is documented below.
                
                > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
-        :param pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
+        :param pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArrgs']]] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
                message (both Ingest & Create) on the corresponding notification destination. Only the message name
                is sent as part of the notification. Supplied by the client.
                Structure is documented below.
-        :param pulumi.Input['Hl7StoreParserConfigArgs'] parser_config: A nested object resource
+        :param pulumi.Input['Hl7StoreParserConfigArrgs'] parser_config: A nested object resource
                Structure is documented below.
         """
         pulumi.set(__self__, "dataset", dataset)
@@ -122,7 +122,7 @@ class Hl7StoreArgs:
 
     @property
     @pulumi.getter(name="notificationConfig")
-    def notification_config(self) -> Optional[pulumi.Input['Hl7StoreNotificationConfigArgs']]:
+    def notification_config(self) -> Optional[pulumi.Input['Hl7StoreNotificationConfigArrgs']]:
         """
         (Optional, Deprecated)
         A nested object resource
@@ -136,12 +136,12 @@ class Hl7StoreArgs:
         return pulumi.get(self, "notification_config")
 
     @notification_config.setter
-    def notification_config(self, value: Optional[pulumi.Input['Hl7StoreNotificationConfigArgs']]):
+    def notification_config(self, value: Optional[pulumi.Input['Hl7StoreNotificationConfigArrgs']]):
         pulumi.set(self, "notification_config", value)
 
     @property
     @pulumi.getter(name="notificationConfigs")
-    def notification_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]]:
+    def notification_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArrgs']]]]:
         """
         A list of notification configs. Each configuration uses a filter to determine whether to publish a
         message (both Ingest & Create) on the corresponding notification destination. Only the message name
@@ -151,12 +151,12 @@ class Hl7StoreArgs:
         return pulumi.get(self, "notification_configs")
 
     @notification_configs.setter
-    def notification_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]]):
+    def notification_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArrgs']]]]):
         pulumi.set(self, "notification_configs", value)
 
     @property
     @pulumi.getter(name="parserConfig")
-    def parser_config(self) -> Optional[pulumi.Input['Hl7StoreParserConfigArgs']]:
+    def parser_config(self) -> Optional[pulumi.Input['Hl7StoreParserConfigArrgs']]:
         """
         A nested object resource
         Structure is documented below.
@@ -164,20 +164,20 @@ class Hl7StoreArgs:
         return pulumi.get(self, "parser_config")
 
     @parser_config.setter
-    def parser_config(self, value: Optional[pulumi.Input['Hl7StoreParserConfigArgs']]):
+    def parser_config(self, value: Optional[pulumi.Input['Hl7StoreParserConfigArrgs']]):
         pulumi.set(self, "parser_config", value)
 
 
 @pulumi.input_type
-class _Hl7StoreState:
+calass _Hl7StoreState:
     def __init__(__self__, *,
                  dataset: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_config: Optional[pulumi.Input['Hl7StoreNotificationConfigArgs']] = None,
-                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]] = None,
-                 parser_config: Optional[pulumi.Input['Hl7StoreParserConfigArgs']] = None,
+                 notification_config: Optional[pulumi.Input['Hl7StoreNotificationConfigArrgs']] = None,
+                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArrgs']]]] = None,
+                 parser_config: Optional[pulumi.Input['Hl7StoreParserConfigArrgs']] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None):
         """
@@ -201,16 +201,16 @@ class _Hl7StoreState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the Hl7V2Store.
                ** Changing this property may recreate the Hl7v2 store (removing all data) **
-        :param pulumi.Input['Hl7StoreNotificationConfigArgs'] notification_config: (Optional, Deprecated)
+        :param pulumi.Input['Hl7StoreNotificationConfigArrgs'] notification_config: (Optional, Deprecated)
                A nested object resource
                Structure is documented below.
                
                > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
-        :param pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
+        :param pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArrgs']]] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
                message (both Ingest & Create) on the corresponding notification destination. Only the message name
                is sent as part of the notification. Supplied by the client.
                Structure is documented below.
-        :param pulumi.Input['Hl7StoreParserConfigArgs'] parser_config: A nested object resource
+        :param pulumi.Input['Hl7StoreParserConfigArrgs'] parser_config: A nested object resource
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
@@ -303,7 +303,7 @@ class _Hl7StoreState:
 
     @property
     @pulumi.getter(name="notificationConfig")
-    def notification_config(self) -> Optional[pulumi.Input['Hl7StoreNotificationConfigArgs']]:
+    def notification_config(self) -> Optional[pulumi.Input['Hl7StoreNotificationConfigArrgs']]:
         """
         (Optional, Deprecated)
         A nested object resource
@@ -317,12 +317,12 @@ class _Hl7StoreState:
         return pulumi.get(self, "notification_config")
 
     @notification_config.setter
-    def notification_config(self, value: Optional[pulumi.Input['Hl7StoreNotificationConfigArgs']]):
+    def notification_config(self, value: Optional[pulumi.Input['Hl7StoreNotificationConfigArrgs']]):
         pulumi.set(self, "notification_config", value)
 
     @property
     @pulumi.getter(name="notificationConfigs")
-    def notification_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]]:
+    def notification_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArrgs']]]]:
         """
         A list of notification configs. Each configuration uses a filter to determine whether to publish a
         message (both Ingest & Create) on the corresponding notification destination. Only the message name
@@ -332,12 +332,12 @@ class _Hl7StoreState:
         return pulumi.get(self, "notification_configs")
 
     @notification_configs.setter
-    def notification_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]]):
+    def notification_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArrgs']]]]):
         pulumi.set(self, "notification_configs", value)
 
     @property
     @pulumi.getter(name="parserConfig")
-    def parser_config(self) -> Optional[pulumi.Input['Hl7StoreParserConfigArgs']]:
+    def parser_config(self) -> Optional[pulumi.Input['Hl7StoreParserConfigArrgs']]:
         """
         A nested object resource
         Structure is documented below.
@@ -345,7 +345,7 @@ class _Hl7StoreState:
         return pulumi.get(self, "parser_config")
 
     @parser_config.setter
-    def parser_config(self, value: Optional[pulumi.Input['Hl7StoreParserConfigArgs']]):
+    def parser_config(self, value: Optional[pulumi.Input['Hl7StoreParserConfigArrgs']]):
         pulumi.set(self, "parser_config", value)
 
     @property
@@ -374,7 +374,7 @@ class _Hl7StoreState:
         pulumi.set(self, "self_link", value)
 
 
-class Hl7Store(pulumi.CustomResource):
+calass Hl7Store(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -382,9 +382,9 @@ class Hl7Store(pulumi.CustomResource):
                  dataset: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArgs']]] = None,
-                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]]] = None,
-                 parser_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreParserConfigArgs']]] = None,
+                 notification_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArrgs']]] = None,
+                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArrgs']]]]] = None,
+                 parser_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreParserConfigArrgs']]] = None,
                  __props__=None):
         """
         A Hl7V2Store is a datastore inside a Healthcare dataset that conforms to the FHIR (https://www.hl7.org/hl7V2/STU3/)
@@ -407,7 +407,7 @@ class Hl7Store(pulumi.CustomResource):
         dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
         store = gcp.healthcare.Hl7Store("store",
             dataset=dataset.id,
-            notification_configs=[gcp.healthcare.Hl7StoreNotificationConfigsArgs(
+            notification_configs=[gcp.healthcare.Hl7StoreNotificationConfigsArrgs(
                 pubsub_topic=topic.id,
             )],
             labels={
@@ -424,7 +424,7 @@ class Hl7Store(pulumi.CustomResource):
         opts=pulumi.ResourceOptions(provider=google_beta))
         store = gcp.healthcare.Hl7Store("store",
             dataset=dataset.id,
-            parser_config=gcp.healthcare.Hl7StoreParserConfigArgs(
+            parser_config=gcp.healthcare.Hl7StoreParserConfigArrgs(
                 allow_null_header=False,
                 segment_terminator="Jw==",
                 schema=\"\"\"{
@@ -519,7 +519,7 @@ class Hl7Store(pulumi.CustomResource):
         opts=pulumi.ResourceOptions(provider=google_beta))
         store = gcp.healthcare.Hl7Store("store",
             dataset=dataset.id,
-            parser_config=gcp.healthcare.Hl7StoreParserConfigArgs(
+            parser_config=gcp.healthcare.Hl7StoreParserConfigArrgs(
                 allow_null_header=False,
                 segment_terminator="Jw==",
                 version="V2",
@@ -567,23 +567,23 @@ class Hl7Store(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the Hl7V2Store.
                ** Changing this property may recreate the Hl7v2 store (removing all data) **
-        :param pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArgs']] notification_config: (Optional, Deprecated)
+        :param pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArrgs']] notification_config: (Optional, Deprecated)
                A nested object resource
                Structure is documented below.
                
                > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArrgs']]]] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
                message (both Ingest & Create) on the corresponding notification destination. Only the message name
                is sent as part of the notification. Supplied by the client.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['Hl7StoreParserConfigArgs']] parser_config: A nested object resource
+        :param pulumi.Input[pulumi.InputType['Hl7StoreParserConfigArrgs']] parser_config: A nested object resource
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Hl7StoreArgs,
+                 args: Hl7StoreArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Hl7V2Store is a datastore inside a Healthcare dataset that conforms to the FHIR (https://www.hl7.org/hl7V2/STU3/)
@@ -606,7 +606,7 @@ class Hl7Store(pulumi.CustomResource):
         dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
         store = gcp.healthcare.Hl7Store("store",
             dataset=dataset.id,
-            notification_configs=[gcp.healthcare.Hl7StoreNotificationConfigsArgs(
+            notification_configs=[gcp.healthcare.Hl7StoreNotificationConfigsArrgs(
                 pubsub_topic=topic.id,
             )],
             labels={
@@ -623,7 +623,7 @@ class Hl7Store(pulumi.CustomResource):
         opts=pulumi.ResourceOptions(provider=google_beta))
         store = gcp.healthcare.Hl7Store("store",
             dataset=dataset.id,
-            parser_config=gcp.healthcare.Hl7StoreParserConfigArgs(
+            parser_config=gcp.healthcare.Hl7StoreParserConfigArrgs(
                 allow_null_header=False,
                 segment_terminator="Jw==",
                 schema=\"\"\"{
@@ -718,7 +718,7 @@ class Hl7Store(pulumi.CustomResource):
         opts=pulumi.ResourceOptions(provider=google_beta))
         store = gcp.healthcare.Hl7Store("store",
             dataset=dataset.id,
-            parser_config=gcp.healthcare.Hl7StoreParserConfigArgs(
+            parser_config=gcp.healthcare.Hl7StoreParserConfigArrgs(
                 allow_null_header=False,
                 segment_terminator="Jw==",
                 version="V2",
@@ -747,12 +747,12 @@ class Hl7Store(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param Hl7StoreArgs args: The arguments to use to populate this resource's properties.
+        :param Hl7StoreArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(Hl7StoreArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(Hl7StoreArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -764,9 +764,9 @@ class Hl7Store(pulumi.CustomResource):
                  dataset: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArgs']]] = None,
-                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]]] = None,
-                 parser_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreParserConfigArgs']]] = None,
+                 notification_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArrgs']]] = None,
+                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArrgs']]]]] = None,
+                 parser_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreParserConfigArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -774,7 +774,7 @@ class Hl7Store(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = Hl7StoreArgs.__new__(Hl7StoreArgs)
+            __props__ = Hl7StoreArrgs.__new__(Hl7StoreArrgs)
 
             if dataset is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset'")
@@ -803,9 +803,9 @@ class Hl7Store(pulumi.CustomResource):
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            notification_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArgs']]] = None,
-            notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]]] = None,
-            parser_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreParserConfigArgs']]] = None,
+            notification_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArrgs']]] = None,
+            notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArrgs']]]]] = None,
+            parser_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreParserConfigArrgs']]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None) -> 'Hl7Store':
         """
@@ -834,16 +834,16 @@ class Hl7Store(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the Hl7V2Store.
                ** Changing this property may recreate the Hl7v2 store (removing all data) **
-        :param pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArgs']] notification_config: (Optional, Deprecated)
+        :param pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArrgs']] notification_config: (Optional, Deprecated)
                A nested object resource
                Structure is documented below.
                
                > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArrgs']]]] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
                message (both Ingest & Create) on the corresponding notification destination. Only the message name
                is sent as part of the notification. Supplied by the client.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['Hl7StoreParserConfigArgs']] parser_config: A nested object resource
+        :param pulumi.Input[pulumi.InputType['Hl7StoreParserConfigArrgs']] parser_config: A nested object resource
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.

@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['SharedflowArgs', 'Sharedflow']
+__all__ = ['SharedflowArrgs', 'Sharedflow']
 
 @pulumi.input_type
-class SharedflowArgs:
+calass SharedflowArrgs:
     def __init__(__self__, *,
                  config_bundle: pulumi.Input[str],
                  org_id: pulumi.Input[str],
@@ -90,13 +90,13 @@ class SharedflowArgs:
 
 
 @pulumi.input_type
-class _SharedflowState:
+calass _SharedflowState:
     def __init__(__self__, *,
                  config_bundle: Optional[pulumi.Input[str]] = None,
                  detect_md5hash: Optional[pulumi.Input[str]] = None,
                  latest_revision_id: Optional[pulumi.Input[str]] = None,
                  md5hash: Optional[pulumi.Input[str]] = None,
-                 meta_datas: Optional[pulumi.Input[Sequence[pulumi.Input['SharedflowMetaDataArgs']]]] = None,
+                 meta_datas: Optional[pulumi.Input[Sequence[pulumi.Input['SharedflowMetaDataArrgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  revisions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -109,7 +109,7 @@ class _SharedflowState:
                will trigger an update.
         :param pulumi.Input[str] latest_revision_id: The id of the most recently created revision for this shared flow.
         :param pulumi.Input[str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
-        :param pulumi.Input[Sequence[pulumi.Input['SharedflowMetaDataArgs']]] meta_datas: Metadata describing the shared flow.
+        :param pulumi.Input[Sequence[pulumi.Input['SharedflowMetaDataArrgs']]] meta_datas: Metadata describing the shared flow.
                Structure is documented below.
         :param pulumi.Input[str] name: The ID of the shared flow.
         :param pulumi.Input[str] org_id: The Apigee Organization name associated with the Apigee instance.
@@ -185,7 +185,7 @@ class _SharedflowState:
 
     @property
     @pulumi.getter(name="metaDatas")
-    def meta_datas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SharedflowMetaDataArgs']]]]:
+    def meta_datas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SharedflowMetaDataArrgs']]]]:
         """
         Metadata describing the shared flow.
         Structure is documented below.
@@ -193,7 +193,7 @@ class _SharedflowState:
         return pulumi.get(self, "meta_datas")
 
     @meta_datas.setter
-    def meta_datas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SharedflowMetaDataArgs']]]]):
+    def meta_datas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SharedflowMetaDataArrgs']]]]):
         pulumi.set(self, "meta_datas", value)
 
     @property
@@ -233,7 +233,7 @@ class _SharedflowState:
         pulumi.set(self, "revisions", value)
 
 
-class Sharedflow(pulumi.CustomResource):
+calass Sharedflow(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -286,7 +286,7 @@ class Sharedflow(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SharedflowArgs,
+                 args: SharedflowArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         You can combine policies and resources into a shared flow that you can consume from multiple API proxies, and even from other shared flows. Although it's like a proxy, a shared flow has no endpoint. It can be used only from an API proxy or shared flow that's in the same organization as the shared flow itself.
@@ -318,12 +318,12 @@ class Sharedflow(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param SharedflowArgs args: The arguments to use to populate this resource's properties.
+        :param SharedflowArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SharedflowArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SharedflowArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -343,7 +343,7 @@ class Sharedflow(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SharedflowArgs.__new__(SharedflowArgs)
+            __props__ = SharedflowArrgs.__new__(SharedflowArrgs)
 
             if config_bundle is None and not opts.urn:
                 raise TypeError("Missing required property 'config_bundle'")
@@ -371,7 +371,7 @@ class Sharedflow(pulumi.CustomResource):
             detect_md5hash: Optional[pulumi.Input[str]] = None,
             latest_revision_id: Optional[pulumi.Input[str]] = None,
             md5hash: Optional[pulumi.Input[str]] = None,
-            meta_datas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SharedflowMetaDataArgs']]]]] = None,
+            meta_datas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SharedflowMetaDataArrgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             revisions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Sharedflow':
@@ -389,7 +389,7 @@ class Sharedflow(pulumi.CustomResource):
                will trigger an update.
         :param pulumi.Input[str] latest_revision_id: The id of the most recently created revision for this shared flow.
         :param pulumi.Input[str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SharedflowMetaDataArgs']]]] meta_datas: Metadata describing the shared flow.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SharedflowMetaDataArrgs']]]] meta_datas: Metadata describing the shared flow.
                Structure is documented below.
         :param pulumi.Input[str] name: The ID of the shared flow.
         :param pulumi.Input[str] org_id: The Apigee Organization name associated with the Apigee instance.

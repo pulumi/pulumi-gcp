@@ -11,18 +11,18 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ProjectBucketConfigArgs', 'ProjectBucketConfig']
+__all__ = ['ProjectBucketConfigArrgs', 'ProjectBucketConfig']
 
 @pulumi.input_type
-class ProjectBucketConfigArgs:
+calass ProjectBucketConfigArrgs:
     def __init__(__self__, *,
                  bucket_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 cmek_settings: Optional[pulumi.Input['ProjectBucketConfigCmekSettingsArgs']] = None,
+                 cmek_settings: Optional[pulumi.Input['ProjectBucketConfigCmekSettingsArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_analytics: Optional[pulumi.Input[bool]] = None,
-                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArgs']]]] = None,
+                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArrgs']]]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None):
         """
@@ -30,10 +30,10 @@ class ProjectBucketConfigArgs:
         :param pulumi.Input[str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
         :param pulumi.Input[str] location: The location of the bucket.
         :param pulumi.Input[str] project: The parent resource that contains the logging bucket.
-        :param pulumi.Input['ProjectBucketConfigCmekSettingsArgs'] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
+        :param pulumi.Input['ProjectBucketConfigCmekSettingsArrgs'] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
         :param pulumi.Input[str] description: Describes this bucket.
         :param pulumi.Input[bool] enable_analytics: Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
-        :param pulumi.Input[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArgs']]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArrgs']]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[bool] locked: Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
         :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
         """
@@ -91,14 +91,14 @@ class ProjectBucketConfigArgs:
 
     @property
     @pulumi.getter(name="cmekSettings")
-    def cmek_settings(self) -> Optional[pulumi.Input['ProjectBucketConfigCmekSettingsArgs']]:
+    def cmek_settings(self) -> Optional[pulumi.Input['ProjectBucketConfigCmekSettingsArrgs']]:
         """
         The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
         """
         return pulumi.get(self, "cmek_settings")
 
     @cmek_settings.setter
-    def cmek_settings(self, value: Optional[pulumi.Input['ProjectBucketConfigCmekSettingsArgs']]):
+    def cmek_settings(self, value: Optional[pulumi.Input['ProjectBucketConfigCmekSettingsArrgs']]):
         pulumi.set(self, "cmek_settings", value)
 
     @property
@@ -127,14 +127,14 @@ class ProjectBucketConfigArgs:
 
     @property
     @pulumi.getter(name="indexConfigs")
-    def index_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArgs']]]]:
+    def index_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArrgs']]]]:
         """
         A list of indexed fields and related configuration data. Structure is documented below.
         """
         return pulumi.get(self, "index_configs")
 
     @index_configs.setter
-    def index_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArgs']]]]):
+    def index_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArrgs']]]]):
         pulumi.set(self, "index_configs", value)
 
     @property
@@ -163,13 +163,13 @@ class ProjectBucketConfigArgs:
 
 
 @pulumi.input_type
-class _ProjectBucketConfigState:
+calass _ProjectBucketConfigState:
     def __init__(__self__, *,
                  bucket_id: Optional[pulumi.Input[str]] = None,
-                 cmek_settings: Optional[pulumi.Input['ProjectBucketConfigCmekSettingsArgs']] = None,
+                 cmek_settings: Optional[pulumi.Input['ProjectBucketConfigCmekSettingsArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_analytics: Optional[pulumi.Input[bool]] = None,
-                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArgs']]]] = None,
+                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArrgs']]]] = None,
                  lifecycle_state: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
@@ -179,10 +179,10 @@ class _ProjectBucketConfigState:
         """
         Input properties used for looking up and filtering ProjectBucketConfig resources.
         :param pulumi.Input[str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
-        :param pulumi.Input['ProjectBucketConfigCmekSettingsArgs'] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
+        :param pulumi.Input['ProjectBucketConfigCmekSettingsArrgs'] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
         :param pulumi.Input[str] description: Describes this bucket.
         :param pulumi.Input[bool] enable_analytics: Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
-        :param pulumi.Input[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArgs']]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArrgs']]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[str] lifecycle_state: The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
         :param pulumi.Input[str] location: The location of the bucket.
         :param pulumi.Input[bool] locked: Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
@@ -227,14 +227,14 @@ class _ProjectBucketConfigState:
 
     @property
     @pulumi.getter(name="cmekSettings")
-    def cmek_settings(self) -> Optional[pulumi.Input['ProjectBucketConfigCmekSettingsArgs']]:
+    def cmek_settings(self) -> Optional[pulumi.Input['ProjectBucketConfigCmekSettingsArrgs']]:
         """
         The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
         """
         return pulumi.get(self, "cmek_settings")
 
     @cmek_settings.setter
-    def cmek_settings(self, value: Optional[pulumi.Input['ProjectBucketConfigCmekSettingsArgs']]):
+    def cmek_settings(self, value: Optional[pulumi.Input['ProjectBucketConfigCmekSettingsArrgs']]):
         pulumi.set(self, "cmek_settings", value)
 
     @property
@@ -263,14 +263,14 @@ class _ProjectBucketConfigState:
 
     @property
     @pulumi.getter(name="indexConfigs")
-    def index_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArgs']]]]:
+    def index_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArrgs']]]]:
         """
         A list of indexed fields and related configuration data. Structure is documented below.
         """
         return pulumi.get(self, "index_configs")
 
     @index_configs.setter
-    def index_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArgs']]]]):
+    def index_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArrgs']]]]):
         pulumi.set(self, "index_configs", value)
 
     @property
@@ -346,16 +346,16 @@ class _ProjectBucketConfigState:
         pulumi.set(self, "retention_days", value)
 
 
-class ProjectBucketConfig(pulumi.CustomResource):
+calass ProjectBucketConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_id: Optional[pulumi.Input[str]] = None,
-                 cmek_settings: Optional[pulumi.Input[pulumi.InputType['ProjectBucketConfigCmekSettingsArgs']]] = None,
+                 cmek_settings: Optional[pulumi.Input[pulumi.InputType['ProjectBucketConfigCmekSettingsArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_analytics: Optional[pulumi.Input[bool]] = None,
-                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectBucketConfigIndexConfigArgs']]]]] = None,
+                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectBucketConfigIndexConfigArrgs']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -387,10 +387,10 @@ class ProjectBucketConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
-        :param pulumi.Input[pulumi.InputType['ProjectBucketConfigCmekSettingsArgs']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ProjectBucketConfigCmekSettingsArrgs']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
         :param pulumi.Input[str] description: Describes this bucket.
         :param pulumi.Input[bool] enable_analytics: Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectBucketConfigIndexConfigArgs']]]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectBucketConfigIndexConfigArrgs']]]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[str] location: The location of the bucket.
         :param pulumi.Input[bool] locked: Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
         :param pulumi.Input[str] project: The parent resource that contains the logging bucket.
@@ -400,7 +400,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ProjectBucketConfigArgs,
+                 args: ProjectBucketConfigArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a project-level logging bucket config. For more information see
@@ -426,12 +426,12 @@ class ProjectBucketConfig(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ProjectBucketConfigArgs args: The arguments to use to populate this resource's properties.
+        :param ProjectBucketConfigArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ProjectBucketConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ProjectBucketConfigArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -441,10 +441,10 @@ class ProjectBucketConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_id: Optional[pulumi.Input[str]] = None,
-                 cmek_settings: Optional[pulumi.Input[pulumi.InputType['ProjectBucketConfigCmekSettingsArgs']]] = None,
+                 cmek_settings: Optional[pulumi.Input[pulumi.InputType['ProjectBucketConfigCmekSettingsArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_analytics: Optional[pulumi.Input[bool]] = None,
-                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectBucketConfigIndexConfigArgs']]]]] = None,
+                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectBucketConfigIndexConfigArrgs']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -456,7 +456,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ProjectBucketConfigArgs.__new__(ProjectBucketConfigArgs)
+            __props__ = ProjectBucketConfigArrgs.__new__(ProjectBucketConfigArrgs)
 
             if bucket_id is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket_id'")
@@ -486,10 +486,10 @@ class ProjectBucketConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket_id: Optional[pulumi.Input[str]] = None,
-            cmek_settings: Optional[pulumi.Input[pulumi.InputType['ProjectBucketConfigCmekSettingsArgs']]] = None,
+            cmek_settings: Optional[pulumi.Input[pulumi.InputType['ProjectBucketConfigCmekSettingsArrgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enable_analytics: Optional[pulumi.Input[bool]] = None,
-            index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectBucketConfigIndexConfigArgs']]]]] = None,
+            index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectBucketConfigIndexConfigArrgs']]]]] = None,
             lifecycle_state: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             locked: Optional[pulumi.Input[bool]] = None,
@@ -504,10 +504,10 @@ class ProjectBucketConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
-        :param pulumi.Input[pulumi.InputType['ProjectBucketConfigCmekSettingsArgs']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ProjectBucketConfigCmekSettingsArrgs']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
         :param pulumi.Input[str] description: Describes this bucket.
         :param pulumi.Input[bool] enable_analytics: Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectBucketConfigIndexConfigArgs']]]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectBucketConfigIndexConfigArrgs']]]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[str] lifecycle_state: The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
         :param pulumi.Input[str] location: The location of the bucket.
         :param pulumi.Input[bool] locked: Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.

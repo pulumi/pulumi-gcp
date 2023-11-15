@@ -11,27 +11,27 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['TaskArgs', 'Task']
+__all__ = ['TaskArrgs', 'Task']
 
 @pulumi.input_type
-class TaskArgs:
+calass TaskArrgs:
     def __init__(__self__, *,
-                 execution_spec: pulumi.Input['TaskExecutionSpecArgs'],
-                 trigger_spec: pulumi.Input['TaskTriggerSpecArgs'],
+                 execution_spec: pulumi.Input['TaskExecutionSpecArrgs'],
+                 trigger_spec: pulumi.Input['TaskTriggerSpecArrgs'],
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 notebook: Optional[pulumi.Input['TaskNotebookArgs']] = None,
+                 notebook: Optional[pulumi.Input['TaskNotebookArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 spark: Optional[pulumi.Input['TaskSparkArgs']] = None,
+                 spark: Optional[pulumi.Input['TaskSparkArrgs']] = None,
                  task_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Task resource.
-        :param pulumi.Input['TaskExecutionSpecArgs'] execution_spec: Configuration for the cluster
+        :param pulumi.Input['TaskExecutionSpecArrgs'] execution_spec: Configuration for the cluster
                Structure is documented below.
-        :param pulumi.Input['TaskTriggerSpecArgs'] trigger_spec: Configuration for the cluster
+        :param pulumi.Input['TaskTriggerSpecArrgs'] trigger_spec: Configuration for the cluster
                Structure is documented below.
         :param pulumi.Input[str] description: User-provided description of the task.
         :param pulumi.Input[str] display_name: User friendly display name.
@@ -41,11 +41,11 @@ class TaskArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] lake: The lake in which the task will be created in.
         :param pulumi.Input[str] location: The location in which the task will be created in.
-        :param pulumi.Input['TaskNotebookArgs'] notebook: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        :param pulumi.Input['TaskNotebookArrgs'] notebook: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['TaskSparkArgs'] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        :param pulumi.Input['TaskSparkArrgs'] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
         :param pulumi.Input[str] task_id: The task Id of the task.
         """
@@ -72,7 +72,7 @@ class TaskArgs:
 
     @property
     @pulumi.getter(name="executionSpec")
-    def execution_spec(self) -> pulumi.Input['TaskExecutionSpecArgs']:
+    def execution_spec(self) -> pulumi.Input['TaskExecutionSpecArrgs']:
         """
         Configuration for the cluster
         Structure is documented below.
@@ -80,12 +80,12 @@ class TaskArgs:
         return pulumi.get(self, "execution_spec")
 
     @execution_spec.setter
-    def execution_spec(self, value: pulumi.Input['TaskExecutionSpecArgs']):
+    def execution_spec(self, value: pulumi.Input['TaskExecutionSpecArrgs']):
         pulumi.set(self, "execution_spec", value)
 
     @property
     @pulumi.getter(name="triggerSpec")
-    def trigger_spec(self) -> pulumi.Input['TaskTriggerSpecArgs']:
+    def trigger_spec(self) -> pulumi.Input['TaskTriggerSpecArrgs']:
         """
         Configuration for the cluster
         Structure is documented below.
@@ -93,7 +93,7 @@ class TaskArgs:
         return pulumi.get(self, "trigger_spec")
 
     @trigger_spec.setter
-    def trigger_spec(self, value: pulumi.Input['TaskTriggerSpecArgs']):
+    def trigger_spec(self, value: pulumi.Input['TaskTriggerSpecArrgs']):
         pulumi.set(self, "trigger_spec", value)
 
     @property
@@ -161,7 +161,7 @@ class TaskArgs:
 
     @property
     @pulumi.getter
-    def notebook(self) -> Optional[pulumi.Input['TaskNotebookArgs']]:
+    def notebook(self) -> Optional[pulumi.Input['TaskNotebookArrgs']]:
         """
         A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
         Structure is documented below.
@@ -169,7 +169,7 @@ class TaskArgs:
         return pulumi.get(self, "notebook")
 
     @notebook.setter
-    def notebook(self, value: Optional[pulumi.Input['TaskNotebookArgs']]):
+    def notebook(self, value: Optional[pulumi.Input['TaskNotebookArrgs']]):
         pulumi.set(self, "notebook", value)
 
     @property
@@ -187,7 +187,7 @@ class TaskArgs:
 
     @property
     @pulumi.getter
-    def spark(self) -> Optional[pulumi.Input['TaskSparkArgs']]:
+    def spark(self) -> Optional[pulumi.Input['TaskSparkArrgs']]:
         """
         A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
         Structure is documented below.
@@ -195,7 +195,7 @@ class TaskArgs:
         return pulumi.get(self, "spark")
 
     @spark.setter
-    def spark(self, value: Optional[pulumi.Input['TaskSparkArgs']]):
+    def spark(self, value: Optional[pulumi.Input['TaskSparkArrgs']]):
         pulumi.set(self, "spark", value)
 
     @property
@@ -212,25 +212,25 @@ class TaskArgs:
 
 
 @pulumi.input_type
-class _TaskState:
+calass _TaskState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 execution_spec: Optional[pulumi.Input['TaskExecutionSpecArgs']] = None,
-                 execution_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['TaskExecutionStatusArgs']]]] = None,
+                 execution_spec: Optional[pulumi.Input['TaskExecutionSpecArrgs']] = None,
+                 execution_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['TaskExecutionStatusArrgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notebook: Optional[pulumi.Input['TaskNotebookArgs']] = None,
+                 notebook: Optional[pulumi.Input['TaskNotebookArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 spark: Optional[pulumi.Input['TaskSparkArgs']] = None,
+                 spark: Optional[pulumi.Input['TaskSparkArrgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  task_id: Optional[pulumi.Input[str]] = None,
-                 trigger_spec: Optional[pulumi.Input['TaskTriggerSpecArgs']] = None,
+                 trigger_spec: Optional[pulumi.Input['TaskTriggerSpecArrgs']] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -239,9 +239,9 @@ class _TaskState:
         :param pulumi.Input[str] description: User-provided description of the task.
         :param pulumi.Input[str] display_name: User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input['TaskExecutionSpecArgs'] execution_spec: Configuration for the cluster
+        :param pulumi.Input['TaskExecutionSpecArrgs'] execution_spec: Configuration for the cluster
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['TaskExecutionStatusArgs']]] execution_statuses: Configuration for the cluster
+        :param pulumi.Input[Sequence[pulumi.Input['TaskExecutionStatusArrgs']]] execution_statuses: Configuration for the cluster
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the task.
                
@@ -251,18 +251,18 @@ class _TaskState:
         :param pulumi.Input[str] location: The location in which the task will be created in.
         :param pulumi.Input[str] name: (Output)
                The relative resource name of the job, of the form: projects/{project_number}/locations/{locationId}/lakes/{lakeId}/tasks/{taskId}/jobs/{jobId}.
-        :param pulumi.Input['TaskNotebookArgs'] notebook: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        :param pulumi.Input['TaskNotebookArrgs'] notebook: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input['TaskSparkArgs'] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        :param pulumi.Input['TaskSparkArrgs'] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
         :param pulumi.Input[str] state: (Output)
                Execution state for the job.
         :param pulumi.Input[str] task_id: The task Id of the task.
-        :param pulumi.Input['TaskTriggerSpecArgs'] trigger_spec: Configuration for the cluster
+        :param pulumi.Input['TaskTriggerSpecArrgs'] trigger_spec: Configuration for the cluster
                Structure is documented below.
         :param pulumi.Input[str] uid: (Output)
                System generated globally unique ID for the job.
@@ -358,7 +358,7 @@ class _TaskState:
 
     @property
     @pulumi.getter(name="executionSpec")
-    def execution_spec(self) -> Optional[pulumi.Input['TaskExecutionSpecArgs']]:
+    def execution_spec(self) -> Optional[pulumi.Input['TaskExecutionSpecArrgs']]:
         """
         Configuration for the cluster
         Structure is documented below.
@@ -366,12 +366,12 @@ class _TaskState:
         return pulumi.get(self, "execution_spec")
 
     @execution_spec.setter
-    def execution_spec(self, value: Optional[pulumi.Input['TaskExecutionSpecArgs']]):
+    def execution_spec(self, value: Optional[pulumi.Input['TaskExecutionSpecArrgs']]):
         pulumi.set(self, "execution_spec", value)
 
     @property
     @pulumi.getter(name="executionStatuses")
-    def execution_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TaskExecutionStatusArgs']]]]:
+    def execution_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TaskExecutionStatusArrgs']]]]:
         """
         Configuration for the cluster
         Structure is documented below.
@@ -379,7 +379,7 @@ class _TaskState:
         return pulumi.get(self, "execution_statuses")
 
     @execution_statuses.setter
-    def execution_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TaskExecutionStatusArgs']]]]):
+    def execution_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TaskExecutionStatusArrgs']]]]):
         pulumi.set(self, "execution_statuses", value)
 
     @property
@@ -436,7 +436,7 @@ class _TaskState:
 
     @property
     @pulumi.getter
-    def notebook(self) -> Optional[pulumi.Input['TaskNotebookArgs']]:
+    def notebook(self) -> Optional[pulumi.Input['TaskNotebookArrgs']]:
         """
         A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
         Structure is documented below.
@@ -444,7 +444,7 @@ class _TaskState:
         return pulumi.get(self, "notebook")
 
     @notebook.setter
-    def notebook(self, value: Optional[pulumi.Input['TaskNotebookArgs']]):
+    def notebook(self, value: Optional[pulumi.Input['TaskNotebookArrgs']]):
         pulumi.set(self, "notebook", value)
 
     @property
@@ -475,7 +475,7 @@ class _TaskState:
 
     @property
     @pulumi.getter
-    def spark(self) -> Optional[pulumi.Input['TaskSparkArgs']]:
+    def spark(self) -> Optional[pulumi.Input['TaskSparkArrgs']]:
         """
         A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
         Structure is documented below.
@@ -483,7 +483,7 @@ class _TaskState:
         return pulumi.get(self, "spark")
 
     @spark.setter
-    def spark(self, value: Optional[pulumi.Input['TaskSparkArgs']]):
+    def spark(self, value: Optional[pulumi.Input['TaskSparkArrgs']]):
         pulumi.set(self, "spark", value)
 
     @property
@@ -513,7 +513,7 @@ class _TaskState:
 
     @property
     @pulumi.getter(name="triggerSpec")
-    def trigger_spec(self) -> Optional[pulumi.Input['TaskTriggerSpecArgs']]:
+    def trigger_spec(self) -> Optional[pulumi.Input['TaskTriggerSpecArrgs']]:
         """
         Configuration for the cluster
         Structure is documented below.
@@ -521,7 +521,7 @@ class _TaskState:
         return pulumi.get(self, "trigger_spec")
 
     @trigger_spec.setter
-    def trigger_spec(self, value: Optional[pulumi.Input['TaskTriggerSpecArgs']]):
+    def trigger_spec(self, value: Optional[pulumi.Input['TaskTriggerSpecArrgs']]):
         pulumi.set(self, "trigger_spec", value)
 
     @property
@@ -551,22 +551,22 @@ class _TaskState:
         pulumi.set(self, "update_time", value)
 
 
-class Task(pulumi.CustomResource):
+calass Task(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 execution_spec: Optional[pulumi.Input[pulumi.InputType['TaskExecutionSpecArgs']]] = None,
+                 execution_spec: Optional[pulumi.Input[pulumi.InputType['TaskExecutionSpecArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 notebook: Optional[pulumi.Input[pulumi.InputType['TaskNotebookArgs']]] = None,
+                 notebook: Optional[pulumi.Input[pulumi.InputType['TaskNotebookArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 spark: Optional[pulumi.Input[pulumi.InputType['TaskSparkArgs']]] = None,
+                 spark: Optional[pulumi.Input[pulumi.InputType['TaskSparkArrgs']]] = None,
                  task_id: Optional[pulumi.Input[str]] = None,
-                 trigger_spec: Optional[pulumi.Input[pulumi.InputType['TaskTriggerSpecArgs']]] = None,
+                 trigger_spec: Optional[pulumi.Input[pulumi.InputType['TaskTriggerSpecArrgs']]] = None,
                  __props__=None):
         """
         A Dataplex task represents the work that you want Dataplex to do on a schedule. It encapsulates code, parameters, and the schedule.
@@ -607,7 +607,7 @@ class Task(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: User-provided description of the task.
         :param pulumi.Input[str] display_name: User friendly display name.
-        :param pulumi.Input[pulumi.InputType['TaskExecutionSpecArgs']] execution_spec: Configuration for the cluster
+        :param pulumi.Input[pulumi.InputType['TaskExecutionSpecArrgs']] execution_spec: Configuration for the cluster
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the task.
                
@@ -615,21 +615,21 @@ class Task(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] lake: The lake in which the task will be created in.
         :param pulumi.Input[str] location: The location in which the task will be created in.
-        :param pulumi.Input[pulumi.InputType['TaskNotebookArgs']] notebook: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        :param pulumi.Input[pulumi.InputType['TaskNotebookArrgs']] notebook: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['TaskSparkArgs']] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        :param pulumi.Input[pulumi.InputType['TaskSparkArrgs']] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
         :param pulumi.Input[str] task_id: The task Id of the task.
-        :param pulumi.Input[pulumi.InputType['TaskTriggerSpecArgs']] trigger_spec: Configuration for the cluster
+        :param pulumi.Input[pulumi.InputType['TaskTriggerSpecArrgs']] trigger_spec: Configuration for the cluster
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TaskArgs,
+                 args: TaskArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Dataplex task represents the work that you want Dataplex to do on a schedule. It encapsulates code, parameters, and the schedule.
@@ -667,12 +667,12 @@ class Task(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param TaskArgs args: The arguments to use to populate this resource's properties.
+        :param TaskArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(TaskArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TaskArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -683,15 +683,15 @@ class Task(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 execution_spec: Optional[pulumi.Input[pulumi.InputType['TaskExecutionSpecArgs']]] = None,
+                 execution_spec: Optional[pulumi.Input[pulumi.InputType['TaskExecutionSpecArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 notebook: Optional[pulumi.Input[pulumi.InputType['TaskNotebookArgs']]] = None,
+                 notebook: Optional[pulumi.Input[pulumi.InputType['TaskNotebookArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 spark: Optional[pulumi.Input[pulumi.InputType['TaskSparkArgs']]] = None,
+                 spark: Optional[pulumi.Input[pulumi.InputType['TaskSparkArrgs']]] = None,
                  task_id: Optional[pulumi.Input[str]] = None,
-                 trigger_spec: Optional[pulumi.Input[pulumi.InputType['TaskTriggerSpecArgs']]] = None,
+                 trigger_spec: Optional[pulumi.Input[pulumi.InputType['TaskTriggerSpecArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -699,7 +699,7 @@ class Task(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = TaskArgs.__new__(TaskArgs)
+            __props__ = TaskArrgs.__new__(TaskArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
@@ -740,19 +740,19 @@ class Task(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            execution_spec: Optional[pulumi.Input[pulumi.InputType['TaskExecutionSpecArgs']]] = None,
-            execution_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TaskExecutionStatusArgs']]]]] = None,
+            execution_spec: Optional[pulumi.Input[pulumi.InputType['TaskExecutionSpecArrgs']]] = None,
+            execution_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TaskExecutionStatusArrgs']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             lake: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            notebook: Optional[pulumi.Input[pulumi.InputType['TaskNotebookArgs']]] = None,
+            notebook: Optional[pulumi.Input[pulumi.InputType['TaskNotebookArrgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            spark: Optional[pulumi.Input[pulumi.InputType['TaskSparkArgs']]] = None,
+            spark: Optional[pulumi.Input[pulumi.InputType['TaskSparkArrgs']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             task_id: Optional[pulumi.Input[str]] = None,
-            trigger_spec: Optional[pulumi.Input[pulumi.InputType['TaskTriggerSpecArgs']]] = None,
+            trigger_spec: Optional[pulumi.Input[pulumi.InputType['TaskTriggerSpecArrgs']]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Task':
         """
@@ -766,9 +766,9 @@ class Task(pulumi.CustomResource):
         :param pulumi.Input[str] description: User-provided description of the task.
         :param pulumi.Input[str] display_name: User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['TaskExecutionSpecArgs']] execution_spec: Configuration for the cluster
+        :param pulumi.Input[pulumi.InputType['TaskExecutionSpecArrgs']] execution_spec: Configuration for the cluster
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TaskExecutionStatusArgs']]]] execution_statuses: Configuration for the cluster
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TaskExecutionStatusArrgs']]]] execution_statuses: Configuration for the cluster
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the task.
                
@@ -778,18 +778,18 @@ class Task(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location in which the task will be created in.
         :param pulumi.Input[str] name: (Output)
                The relative resource name of the job, of the form: projects/{project_number}/locations/{locationId}/lakes/{lakeId}/tasks/{taskId}/jobs/{jobId}.
-        :param pulumi.Input[pulumi.InputType['TaskNotebookArgs']] notebook: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        :param pulumi.Input[pulumi.InputType['TaskNotebookArrgs']] notebook: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['TaskSparkArgs']] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        :param pulumi.Input[pulumi.InputType['TaskSparkArrgs']] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
         :param pulumi.Input[str] state: (Output)
                Execution state for the job.
         :param pulumi.Input[str] task_id: The task Id of the task.
-        :param pulumi.Input[pulumi.InputType['TaskTriggerSpecArgs']] trigger_spec: Configuration for the cluster
+        :param pulumi.Input[pulumi.InputType['TaskTriggerSpecArrgs']] trigger_spec: Configuration for the cluster
                Structure is documented below.
         :param pulumi.Input[str] uid: (Output)
                System generated globally unique ID for the job.

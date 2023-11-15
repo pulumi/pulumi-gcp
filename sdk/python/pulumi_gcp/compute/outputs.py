@@ -674,7 +674,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class AutoscalerAutoscalingPolicy(dict):
+calass AutoscalerAutoscalingPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -735,22 +735,22 @@ class AutoscalerAutoscalingPolicy(dict):
                numerous factors. We recommend that you test how long an
                instance may take to initialize. To do this, create an instance
                and time the startup process.
-        :param 'AutoscalerAutoscalingPolicyCpuUtilizationArgs' cpu_utilization: Defines the CPU utilization policy that allows the autoscaler to
+        :param 'AutoscalerAutoscalingPolicyCpuUtilizationArrgs' cpu_utilization: Defines the CPU utilization policy that allows the autoscaler to
                scale based on the average CPU utilization of a managed instance
                group.
                Structure is documented below.
-        :param 'AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs' load_balancing_utilization: Configuration parameters of autoscaling based on a load balancer.
+        :param 'AutoscalerAutoscalingPolicyLoadBalancingUtilizationArrgs' load_balancing_utilization: Configuration parameters of autoscaling based on a load balancer.
                Structure is documented below.
-        :param Sequence['AutoscalerAutoscalingPolicyMetricArgs'] metrics: Configuration parameters of autoscaling based on a custom metric.
+        :param Sequence['AutoscalerAutoscalingPolicyMetricArrgs'] metrics: Configuration parameters of autoscaling based on a custom metric.
                Structure is documented below.
         :param str mode: Defines operating mode for this policy.
-        :param 'AutoscalerAutoscalingPolicyScaleDownControlArgs' scale_down_control: Defines scale down controls to reduce the risk of response latency
+        :param 'AutoscalerAutoscalingPolicyScaleDownControlArrgs' scale_down_control: Defines scale down controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
-        :param 'AutoscalerAutoscalingPolicyScaleInControlArgs' scale_in_control: Defines scale in controls to reduce the risk of response latency
+        :param 'AutoscalerAutoscalingPolicyScaleInControlArrgs' scale_in_control: Defines scale in controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
-        :param Sequence['AutoscalerAutoscalingPolicyScalingScheduleArgs'] scaling_schedules: Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+        :param Sequence['AutoscalerAutoscalingPolicyScalingScheduleArrgs'] scaling_schedules: Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
                Structure is documented below.
         """
         pulumi.set(__self__, "max_replicas", max_replicas)
@@ -878,7 +878,7 @@ class AutoscalerAutoscalingPolicy(dict):
 
 
 @pulumi.output_type
-class AutoscalerAutoscalingPolicyCpuUtilization(dict):
+calass AutoscalerAutoscalingPolicyCpuUtilization(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -949,7 +949,7 @@ class AutoscalerAutoscalingPolicyCpuUtilization(dict):
 
 
 @pulumi.output_type
-class AutoscalerAutoscalingPolicyLoadBalancingUtilization(dict):
+calass AutoscalerAutoscalingPolicyLoadBalancingUtilization(dict):
     def __init__(__self__, *,
                  target: float):
         """
@@ -971,7 +971,7 @@ class AutoscalerAutoscalingPolicyLoadBalancingUtilization(dict):
 
 
 @pulumi.output_type
-class AutoscalerAutoscalingPolicyMetric(dict):
+calass AutoscalerAutoscalingPolicyMetric(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1154,7 +1154,7 @@ class AutoscalerAutoscalingPolicyMetric(dict):
 
 
 @pulumi.output_type
-class AutoscalerAutoscalingPolicyScaleDownControl(dict):
+calass AutoscalerAutoscalingPolicyScaleDownControl(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1178,7 +1178,7 @@ class AutoscalerAutoscalingPolicyScaleDownControl(dict):
                  max_scaled_down_replicas: Optional['outputs.AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas'] = None,
                  time_window_sec: Optional[int] = None):
         """
-        :param 'AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs' max_scaled_down_replicas: A nested object resource
+        :param 'AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArrgs' max_scaled_down_replicas: A nested object resource
                Structure is documented below.
         :param int time_window_sec: How long back autoscaling should look when computing recommendations
                to include directives regarding slower scale down, as described above.
@@ -1208,7 +1208,7 @@ class AutoscalerAutoscalingPolicyScaleDownControl(dict):
 
 
 @pulumi.output_type
-class AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas(dict):
+calass AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas(dict):
     def __init__(__self__, *,
                  fixed: Optional[int] = None,
                  percent: Optional[int] = None):
@@ -1243,7 +1243,7 @@ class AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas(dict):
 
 
 @pulumi.output_type
-class AutoscalerAutoscalingPolicyScaleInControl(dict):
+calass AutoscalerAutoscalingPolicyScaleInControl(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1267,7 +1267,7 @@ class AutoscalerAutoscalingPolicyScaleInControl(dict):
                  max_scaled_in_replicas: Optional['outputs.AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas'] = None,
                  time_window_sec: Optional[int] = None):
         """
-        :param 'AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs' max_scaled_in_replicas: A nested object resource
+        :param 'AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArrgs' max_scaled_in_replicas: A nested object resource
                Structure is documented below.
         :param int time_window_sec: How long back autoscaling should look when computing recommendations
                to include directives regarding slower scale down, as described above.
@@ -1297,7 +1297,7 @@ class AutoscalerAutoscalingPolicyScaleInControl(dict):
 
 
 @pulumi.output_type
-class AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas(dict):
+calass AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas(dict):
     def __init__(__self__, *,
                  fixed: Optional[int] = None,
                  percent: Optional[int] = None):
@@ -1332,7 +1332,7 @@ class AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas(dict):
 
 
 @pulumi.output_type
-class AutoscalerAutoscalingPolicyScalingSchedule(dict):
+calass AutoscalerAutoscalingPolicyScalingSchedule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1440,7 +1440,7 @@ class AutoscalerAutoscalingPolicyScalingSchedule(dict):
 
 
 @pulumi.output_type
-class BackendBucketCdnPolicy(dict):
+calass BackendBucketCdnPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1491,9 +1491,9 @@ class BackendBucketCdnPolicy(dict):
                  serve_while_stale: Optional[int] = None,
                  signed_url_cache_max_age_sec: Optional[int] = None):
         """
-        :param Sequence['BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs'] bypass_cache_on_request_headers: Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+        :param Sequence['BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrgs'] bypass_cache_on_request_headers: Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
                Structure is documented below.
-        :param 'BackendBucketCdnPolicyCacheKeyPolicyArgs' cache_key_policy: The CacheKeyPolicy for this CdnPolicy.
+        :param 'BackendBucketCdnPolicyCacheKeyPolicyArrgs' cache_key_policy: The CacheKeyPolicy for this CdnPolicy.
                Structure is documented below.
         :param str cache_mode: Specifies the cache setting for all responses from this backend.
                The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
@@ -1503,7 +1503,7 @@ class BackendBucketCdnPolicy(dict):
                that do not have an existing valid TTL (max-age or s-max-age).
         :param int max_ttl: Specifies the maximum allowed TTL for cached content served by this origin.
         :param bool negative_caching: Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
-        :param Sequence['BackendBucketCdnPolicyNegativeCachingPolicyArgs'] negative_caching_policies: Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+        :param Sequence['BackendBucketCdnPolicyNegativeCachingPolicyArrgs'] negative_caching_policies: Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
                Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
                Structure is documented below.
         :param bool request_coalescing: If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
@@ -1644,7 +1644,7 @@ class BackendBucketCdnPolicy(dict):
 
 
 @pulumi.output_type
-class BackendBucketCdnPolicyBypassCacheOnRequestHeader(dict):
+calass BackendBucketCdnPolicyBypassCacheOnRequestHeader(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1680,7 +1680,7 @@ class BackendBucketCdnPolicyBypassCacheOnRequestHeader(dict):
 
 
 @pulumi.output_type
-class BackendBucketCdnPolicyCacheKeyPolicy(dict):
+calass BackendBucketCdnPolicyCacheKeyPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1736,7 +1736,7 @@ class BackendBucketCdnPolicyCacheKeyPolicy(dict):
 
 
 @pulumi.output_type
-class BackendBucketCdnPolicyNegativeCachingPolicy(dict):
+calass BackendBucketCdnPolicyNegativeCachingPolicy(dict):
     def __init__(__self__, *,
                  code: Optional[int] = None,
                  ttl: Optional[int] = None):
@@ -1771,7 +1771,7 @@ class BackendBucketCdnPolicyNegativeCachingPolicy(dict):
 
 
 @pulumi.output_type
-class BackendBucketIamBindingCondition(dict):
+calass BackendBucketIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -1798,7 +1798,7 @@ class BackendBucketIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class BackendBucketIamMemberCondition(dict):
+calass BackendBucketIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -1825,7 +1825,7 @@ class BackendBucketIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class BackendServiceBackend(dict):
+calass BackendServiceBackend(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2098,7 +2098,7 @@ class BackendServiceBackend(dict):
 
 
 @pulumi.output_type
-class BackendServiceCdnPolicy(dict):
+calass BackendServiceCdnPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2146,10 +2146,10 @@ class BackendServiceCdnPolicy(dict):
                  serve_while_stale: Optional[int] = None,
                  signed_url_cache_max_age_sec: Optional[int] = None):
         """
-        :param Sequence['BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs'] bypass_cache_on_request_headers: Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified.
+        :param Sequence['BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrgs'] bypass_cache_on_request_headers: Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified.
                The cache is bypassed for all cdnPolicy.cacheMode settings.
                Structure is documented below.
-        :param 'BackendServiceCdnPolicyCacheKeyPolicyArgs' cache_key_policy: The CacheKeyPolicy for this CdnPolicy.
+        :param 'BackendServiceCdnPolicyCacheKeyPolicyArrgs' cache_key_policy: The CacheKeyPolicy for this CdnPolicy.
                Structure is documented below.
         :param str cache_mode: Specifies the cache setting for all responses from this backend.
                The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
@@ -2159,7 +2159,7 @@ class BackendServiceCdnPolicy(dict):
                that do not have an existing valid TTL (max-age or s-max-age).
         :param int max_ttl: Specifies the maximum allowed TTL for cached content served by this origin.
         :param bool negative_caching: Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
-        :param Sequence['BackendServiceCdnPolicyNegativeCachingPolicyArgs'] negative_caching_policies: Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+        :param Sequence['BackendServiceCdnPolicyNegativeCachingPolicyArrgs'] negative_caching_policies: Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
                Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
                Structure is documented below.
         :param int serve_while_stale: Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
@@ -2292,7 +2292,7 @@ class BackendServiceCdnPolicy(dict):
 
 
 @pulumi.output_type
-class BackendServiceCdnPolicyBypassCacheOnRequestHeader(dict):
+calass BackendServiceCdnPolicyBypassCacheOnRequestHeader(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2327,7 +2327,7 @@ class BackendServiceCdnPolicyBypassCacheOnRequestHeader(dict):
 
 
 @pulumi.output_type
-class BackendServiceCdnPolicyCacheKeyPolicy(dict):
+calass BackendServiceCdnPolicyCacheKeyPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2475,7 +2475,7 @@ class BackendServiceCdnPolicyCacheKeyPolicy(dict):
 
 
 @pulumi.output_type
-class BackendServiceCdnPolicyNegativeCachingPolicy(dict):
+calass BackendServiceCdnPolicyNegativeCachingPolicy(dict):
     def __init__(__self__, *,
                  code: Optional[int] = None,
                  ttl: Optional[int] = None):
@@ -2510,7 +2510,7 @@ class BackendServiceCdnPolicyNegativeCachingPolicy(dict):
 
 
 @pulumi.output_type
-class BackendServiceCircuitBreakers(dict):
+calass BackendServiceCircuitBreakers(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2546,7 +2546,7 @@ class BackendServiceCircuitBreakers(dict):
                  max_requests_per_connection: Optional[int] = None,
                  max_retries: Optional[int] = None):
         """
-        :param 'BackendServiceCircuitBreakersConnectTimeoutArgs' connect_timeout: The timeout for new network connections to hosts.
+        :param 'BackendServiceCircuitBreakersConnectTimeoutArrgs' connect_timeout: The timeout for new network connections to hosts.
                Structure is documented below.
         :param int max_connections: The maximum number of connections to the backend cluster.
                Defaults to 1024.
@@ -2632,7 +2632,7 @@ class BackendServiceCircuitBreakers(dict):
 
 
 @pulumi.output_type
-class BackendServiceCircuitBreakersConnectTimeout(dict):
+calass BackendServiceCircuitBreakersConnectTimeout(dict):
     def __init__(__self__, *,
                  seconds: int,
                  nanos: Optional[int] = None):
@@ -2670,7 +2670,7 @@ class BackendServiceCircuitBreakersConnectTimeout(dict):
 
 
 @pulumi.output_type
-class BackendServiceConsistentHash(dict):
+calass BackendServiceConsistentHash(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2697,7 +2697,7 @@ class BackendServiceConsistentHash(dict):
                  http_header_name: Optional[str] = None,
                  minimum_ring_size: Optional[int] = None):
         """
-        :param 'BackendServiceConsistentHashHttpCookieArgs' http_cookie: Hash is based on HTTP Cookie. This field describes a HTTP cookie
+        :param 'BackendServiceConsistentHashHttpCookieArrgs' http_cookie: Hash is based on HTTP Cookie. This field describes a HTTP cookie
                that will be used as the hash key for the consistent hash load
                balancer. If the cookie is not present, it will be generated.
                This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
@@ -2754,7 +2754,7 @@ class BackendServiceConsistentHash(dict):
 
 
 @pulumi.output_type
-class BackendServiceConsistentHashHttpCookie(dict):
+calass BackendServiceConsistentHashHttpCookie(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  path: Optional[str] = None,
@@ -2762,7 +2762,7 @@ class BackendServiceConsistentHashHttpCookie(dict):
         """
         :param str name: Name of the cookie.
         :param str path: Path to set for the cookie.
-        :param 'BackendServiceConsistentHashHttpCookieTtlArgs' ttl: Lifetime of the cookie.
+        :param 'BackendServiceConsistentHashHttpCookieTtlArrgs' ttl: Lifetime of the cookie.
                Structure is documented below.
         """
         if name is not None:
@@ -2799,7 +2799,7 @@ class BackendServiceConsistentHashHttpCookie(dict):
 
 
 @pulumi.output_type
-class BackendServiceConsistentHashHttpCookieTtl(dict):
+calass BackendServiceConsistentHashHttpCookieTtl(dict):
     def __init__(__self__, *,
                  seconds: int,
                  nanos: Optional[int] = None):
@@ -2837,7 +2837,7 @@ class BackendServiceConsistentHashHttpCookieTtl(dict):
 
 
 @pulumi.output_type
-class BackendServiceIamBindingCondition(dict):
+calass BackendServiceIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -2874,7 +2874,7 @@ class BackendServiceIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class BackendServiceIamMemberCondition(dict):
+calass BackendServiceIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -2911,7 +2911,7 @@ class BackendServiceIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class BackendServiceIap(dict):
+calass BackendServiceIap(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2979,7 +2979,7 @@ class BackendServiceIap(dict):
 
 
 @pulumi.output_type
-class BackendServiceLocalityLbPolicy(dict):
+calass BackendServiceLocalityLbPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3001,10 +3001,10 @@ class BackendServiceLocalityLbPolicy(dict):
                  custom_policy: Optional['outputs.BackendServiceLocalityLbPolicyCustomPolicy'] = None,
                  policy: Optional['outputs.BackendServiceLocalityLbPolicyPolicy'] = None):
         """
-        :param 'BackendServiceLocalityLbPolicyCustomPolicyArgs' custom_policy: The configuration for a custom policy implemented by the user and
+        :param 'BackendServiceLocalityLbPolicyCustomPolicyArrgs' custom_policy: The configuration for a custom policy implemented by the user and
                deployed with the client.
                Structure is documented below.
-        :param 'BackendServiceLocalityLbPolicyPolicyArgs' policy: The configuration for a built-in load balancing policy.
+        :param 'BackendServiceLocalityLbPolicyPolicyArrgs' policy: The configuration for a built-in load balancing policy.
                Structure is documented below.
         """
         if custom_policy is not None:
@@ -3033,7 +3033,7 @@ class BackendServiceLocalityLbPolicy(dict):
 
 
 @pulumi.output_type
-class BackendServiceLocalityLbPolicyCustomPolicy(dict):
+calass BackendServiceLocalityLbPolicyCustomPolicy(dict):
     def __init__(__self__, *,
                  name: str,
                  data: Optional[str] = None):
@@ -3077,7 +3077,7 @@ class BackendServiceLocalityLbPolicyCustomPolicy(dict):
 
 
 @pulumi.output_type
-class BackendServiceLocalityLbPolicyPolicy(dict):
+calass BackendServiceLocalityLbPolicyPolicy(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -3109,7 +3109,7 @@ class BackendServiceLocalityLbPolicyPolicy(dict):
 
 
 @pulumi.output_type
-class BackendServiceLogConfig(dict):
+calass BackendServiceLogConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3163,7 +3163,7 @@ class BackendServiceLogConfig(dict):
 
 
 @pulumi.output_type
-class BackendServiceOutlierDetection(dict):
+calass BackendServiceOutlierDetection(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3212,7 +3212,7 @@ class BackendServiceOutlierDetection(dict):
                  success_rate_request_volume: Optional[int] = None,
                  success_rate_stdev_factor: Optional[int] = None):
         """
-        :param 'BackendServiceOutlierDetectionBaseEjectionTimeArgs' base_ejection_time: The base time that a host is ejected for. The real time is equal to the base
+        :param 'BackendServiceOutlierDetectionBaseEjectionTimeArrgs' base_ejection_time: The base time that a host is ejected for. The real time is equal to the base
                time multiplied by the number of times the host has been ejected. Defaults to
                30000ms or 30s.
                Structure is documented below.
@@ -3231,7 +3231,7 @@ class BackendServiceOutlierDetection(dict):
         :param int enforcing_success_rate: The percentage chance that a host will be actually ejected when an outlier
                status is detected through success rate statistics. This setting can be used to
                disable ejection or to ramp it up slowly. Defaults to 100.
-        :param 'BackendServiceOutlierDetectionIntervalArgs' interval: Time interval between ejection sweep analysis. This can result in both new
+        :param 'BackendServiceOutlierDetectionIntervalArrgs' interval: Time interval between ejection sweep analysis. This can result in both new
                ejections as well as hosts being returned to service. Defaults to 10 seconds.
                Structure is documented below.
         :param int max_ejection_percent: Maximum percentage of hosts in the load balancing pool for the backend service
@@ -3393,7 +3393,7 @@ class BackendServiceOutlierDetection(dict):
 
 
 @pulumi.output_type
-class BackendServiceOutlierDetectionBaseEjectionTime(dict):
+calass BackendServiceOutlierDetectionBaseEjectionTime(dict):
     def __init__(__self__, *,
                  seconds: int,
                  nanos: Optional[int] = None):
@@ -3429,7 +3429,7 @@ class BackendServiceOutlierDetectionBaseEjectionTime(dict):
 
 
 @pulumi.output_type
-class BackendServiceOutlierDetectionInterval(dict):
+calass BackendServiceOutlierDetectionInterval(dict):
     def __init__(__self__, *,
                  seconds: int,
                  nanos: Optional[int] = None):
@@ -3465,7 +3465,7 @@ class BackendServiceOutlierDetectionInterval(dict):
 
 
 @pulumi.output_type
-class BackendServiceSecuritySettings(dict):
+calass BackendServiceSecuritySettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3521,7 +3521,7 @@ class BackendServiceSecuritySettings(dict):
 
 
 @pulumi.output_type
-class DiskAsyncPrimaryDisk(dict):
+calass DiskAsyncPrimaryDisk(dict):
     def __init__(__self__, *,
                  disk: str):
         """
@@ -3539,7 +3539,7 @@ class DiskAsyncPrimaryDisk(dict):
 
 
 @pulumi.output_type
-class DiskAsyncReplicationSecondaryDisk(dict):
+calass DiskAsyncReplicationSecondaryDisk(dict):
     def __init__(__self__, *,
                  disk: str,
                  state: Optional[str] = None):
@@ -3573,7 +3573,7 @@ class DiskAsyncReplicationSecondaryDisk(dict):
 
 
 @pulumi.output_type
-class DiskDiskEncryptionKey(dict):
+calass DiskDiskEncryptionKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3687,7 +3687,7 @@ class DiskDiskEncryptionKey(dict):
 
 
 @pulumi.output_type
-class DiskGuestOsFeature(dict):
+calass DiskGuestOsFeature(dict):
     def __init__(__self__, *,
                  type: str):
         """
@@ -3707,7 +3707,7 @@ class DiskGuestOsFeature(dict):
 
 
 @pulumi.output_type
-class DiskIamBindingCondition(dict):
+calass DiskIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -3734,7 +3734,7 @@ class DiskIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class DiskIamMemberCondition(dict):
+calass DiskIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -3761,7 +3761,7 @@ class DiskIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class DiskSourceImageEncryptionKey(dict):
+calass DiskSourceImageEncryptionKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3853,7 +3853,7 @@ class DiskSourceImageEncryptionKey(dict):
 
 
 @pulumi.output_type
-class DiskSourceSnapshotEncryptionKey(dict):
+calass DiskSourceSnapshotEncryptionKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3945,7 +3945,7 @@ class DiskSourceSnapshotEncryptionKey(dict):
 
 
 @pulumi.output_type
-class ExternalVpnGatewayInterface(dict):
+calass ExternalVpnGatewayInterface(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4007,7 +4007,7 @@ class ExternalVpnGatewayInterface(dict):
 
 
 @pulumi.output_type
-class FirewallAllow(dict):
+calass FirewallAllow(dict):
     def __init__(__self__, *,
                  protocol: str,
                  ports: Optional[Sequence[str]] = None):
@@ -4053,7 +4053,7 @@ class FirewallAllow(dict):
 
 
 @pulumi.output_type
-class FirewallDeny(dict):
+calass FirewallDeny(dict):
     def __init__(__self__, *,
                  protocol: str,
                  ports: Optional[Sequence[str]] = None):
@@ -4099,7 +4099,7 @@ class FirewallDeny(dict):
 
 
 @pulumi.output_type
-class FirewallLogConfig(dict):
+calass FirewallLogConfig(dict):
     def __init__(__self__, *,
                  metadata: str):
         """
@@ -4119,7 +4119,7 @@ class FirewallLogConfig(dict):
 
 
 @pulumi.output_type
-class FirewallPolicyRuleMatch(dict):
+calass FirewallPolicyRuleMatch(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4170,7 +4170,7 @@ class FirewallPolicyRuleMatch(dict):
                  src_region_codes: Optional[Sequence[str]] = None,
                  src_threat_intelligences: Optional[Sequence[str]] = None):
         """
-        :param Sequence['FirewallPolicyRuleMatchLayer4ConfigArgs'] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+        :param Sequence['FirewallPolicyRuleMatchLayer4ConfigArrgs'] layer4_configs: Pairs of IP protocols and ports that the rule should match.
         :param Sequence[str] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
         :param Sequence[str] dest_fqdns: Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
         :param Sequence[str] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
@@ -4298,7 +4298,7 @@ class FirewallPolicyRuleMatch(dict):
 
 
 @pulumi.output_type
-class FirewallPolicyRuleMatchLayer4Config(dict):
+calass FirewallPolicyRuleMatchLayer4Config(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4349,7 +4349,7 @@ class FirewallPolicyRuleMatchLayer4Config(dict):
 
 
 @pulumi.output_type
-class ForwardingRuleServiceDirectoryRegistrations(dict):
+calass ForwardingRuleServiceDirectoryRegistrations(dict):
     def __init__(__self__, *,
                  namespace: Optional[str] = None,
                  service: Optional[str] = None):
@@ -4380,7 +4380,7 @@ class ForwardingRuleServiceDirectoryRegistrations(dict):
 
 
 @pulumi.output_type
-class GlobalForwardingRuleMetadataFilter(dict):
+calass GlobalForwardingRuleMetadataFilter(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4404,7 +4404,7 @@ class GlobalForwardingRuleMetadataFilter(dict):
                  filter_labels: Sequence['outputs.GlobalForwardingRuleMetadataFilterFilterLabel'],
                  filter_match_criteria: str):
         """
-        :param Sequence['GlobalForwardingRuleMetadataFilterFilterLabelArgs'] filter_labels: The list of label value pairs that must match labels in the
+        :param Sequence['GlobalForwardingRuleMetadataFilterFilterLabelArrgs'] filter_labels: The list of label value pairs that must match labels in the
                provided metadata based on filterMatchCriteria
                This list must not be empty and can have at the most 64 entries.
                Structure is documented below.
@@ -4446,7 +4446,7 @@ class GlobalForwardingRuleMetadataFilter(dict):
 
 
 @pulumi.output_type
-class GlobalForwardingRuleMetadataFilterFilterLabel(dict):
+calass GlobalForwardingRuleMetadataFilterFilterLabel(dict):
     def __init__(__self__, *,
                  name: str,
                  value: str):
@@ -4479,7 +4479,7 @@ class GlobalForwardingRuleMetadataFilterFilterLabel(dict):
 
 
 @pulumi.output_type
-class HaVpnGatewayVpnInterface(dict):
+calass HaVpnGatewayVpnInterface(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4553,7 +4553,7 @@ class HaVpnGatewayVpnInterface(dict):
 
 
 @pulumi.output_type
-class HealthCheckGrpcHealthCheck(dict):
+calass HealthCheckGrpcHealthCheck(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4645,7 +4645,7 @@ class HealthCheckGrpcHealthCheck(dict):
 
 
 @pulumi.output_type
-class HealthCheckHttp2HealthCheck(dict):
+calass HealthCheckHttp2HealthCheck(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4783,7 +4783,7 @@ class HealthCheckHttp2HealthCheck(dict):
 
 
 @pulumi.output_type
-class HealthCheckHttpHealthCheck(dict):
+calass HealthCheckHttpHealthCheck(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4919,7 +4919,7 @@ class HealthCheckHttpHealthCheck(dict):
 
 
 @pulumi.output_type
-class HealthCheckHttpsHealthCheck(dict):
+calass HealthCheckHttpsHealthCheck(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5055,7 +5055,7 @@ class HealthCheckHttpsHealthCheck(dict):
 
 
 @pulumi.output_type
-class HealthCheckLogConfig(dict):
+calass HealthCheckLogConfig(dict):
     def __init__(__self__, *,
                  enable: Optional[bool] = None):
         """
@@ -5076,7 +5076,7 @@ class HealthCheckLogConfig(dict):
 
 
 @pulumi.output_type
-class HealthCheckSslHealthCheck(dict):
+calass HealthCheckSslHealthCheck(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5198,7 +5198,7 @@ class HealthCheckSslHealthCheck(dict):
 
 
 @pulumi.output_type
-class HealthCheckTcpHealthCheck(dict):
+calass HealthCheckTcpHealthCheck(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5320,7 +5320,7 @@ class HealthCheckTcpHealthCheck(dict):
 
 
 @pulumi.output_type
-class ImageGuestOsFeature(dict):
+calass ImageGuestOsFeature(dict):
     def __init__(__self__, *,
                  type: str):
         """
@@ -5340,7 +5340,7 @@ class ImageGuestOsFeature(dict):
 
 
 @pulumi.output_type
-class ImageIamBindingCondition(dict):
+calass ImageIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -5389,7 +5389,7 @@ class ImageIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class ImageIamMemberCondition(dict):
+calass ImageIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -5438,7 +5438,7 @@ class ImageIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class ImageImageEncryptionKey(dict):
+calass ImageImageEncryptionKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5494,7 +5494,7 @@ class ImageImageEncryptionKey(dict):
 
 
 @pulumi.output_type
-class ImageRawDisk(dict):
+calass ImageRawDisk(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5569,7 +5569,7 @@ class ImageRawDisk(dict):
 
 
 @pulumi.output_type
-class InstanceAdvancedMachineFeatures(dict):
+calass InstanceAdvancedMachineFeatures(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5633,7 +5633,7 @@ class InstanceAdvancedMachineFeatures(dict):
 
 
 @pulumi.output_type
-class InstanceAttachedDisk(dict):
+calass InstanceAttachedDisk(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5748,7 +5748,7 @@ class InstanceAttachedDisk(dict):
 
 
 @pulumi.output_type
-class InstanceBootDisk(dict):
+calass InstanceBootDisk(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5795,7 +5795,7 @@ class InstanceBootDisk(dict):
                encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
                to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw`
                may be set.
-        :param 'InstanceBootDiskInitializeParamsArgs' initialize_params: Parameters for a new disk that will be created
+        :param 'InstanceBootDiskInitializeParamsArrgs' initialize_params: Parameters for a new disk that will be created
                alongside the new instance. Either `initialize_params` or `source` must be set.
                Structure is documented below.
         :param str kms_key_self_link: The self_link of the encryption key that is
@@ -5900,7 +5900,7 @@ class InstanceBootDisk(dict):
 
 
 @pulumi.output_type
-class InstanceBootDiskInitializeParams(dict):
+calass InstanceBootDiskInitializeParams(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6014,7 +6014,7 @@ class InstanceBootDiskInitializeParams(dict):
 
 
 @pulumi.output_type
-class InstanceConfidentialInstanceConfig(dict):
+calass InstanceConfidentialInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6049,7 +6049,7 @@ class InstanceConfidentialInstanceConfig(dict):
 
 
 @pulumi.output_type
-class InstanceFromMachineImageAdvancedMachineFeatures(dict):
+calass InstanceFromMachineImageAdvancedMachineFeatures(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6099,7 +6099,7 @@ class InstanceFromMachineImageAdvancedMachineFeatures(dict):
 
 
 @pulumi.output_type
-class InstanceFromMachineImageAttachedDisk(dict):
+calass InstanceFromMachineImageAttachedDisk(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6174,7 +6174,7 @@ class InstanceFromMachineImageAttachedDisk(dict):
 
 
 @pulumi.output_type
-class InstanceFromMachineImageBootDisk(dict):
+calass InstanceFromMachineImageBootDisk(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6270,7 +6270,7 @@ class InstanceFromMachineImageBootDisk(dict):
 
 
 @pulumi.output_type
-class InstanceFromMachineImageBootDiskInitializeParams(dict):
+calass InstanceFromMachineImageBootDiskInitializeParams(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6342,7 +6342,7 @@ class InstanceFromMachineImageBootDiskInitializeParams(dict):
 
 
 @pulumi.output_type
-class InstanceFromMachineImageConfidentialInstanceConfig(dict):
+calass InstanceFromMachineImageConfidentialInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6371,7 +6371,7 @@ class InstanceFromMachineImageConfidentialInstanceConfig(dict):
 
 
 @pulumi.output_type
-class InstanceFromMachineImageGuestAccelerator(dict):
+calass InstanceFromMachineImageGuestAccelerator(dict):
     def __init__(__self__, *,
                  count: int,
                  type: str):
@@ -6390,7 +6390,7 @@ class InstanceFromMachineImageGuestAccelerator(dict):
 
 
 @pulumi.output_type
-class InstanceFromMachineImageNetworkInterface(dict):
+calass InstanceFromMachineImageNetworkInterface(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6572,7 +6572,7 @@ class InstanceFromMachineImageNetworkInterface(dict):
 
 
 @pulumi.output_type
-class InstanceFromMachineImageNetworkInterfaceAccessConfig(dict):
+calass InstanceFromMachineImageNetworkInterfaceAccessConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6632,7 +6632,7 @@ class InstanceFromMachineImageNetworkInterfaceAccessConfig(dict):
 
 
 @pulumi.output_type
-class InstanceFromMachineImageNetworkInterfaceAliasIpRange(dict):
+calass InstanceFromMachineImageNetworkInterfaceAliasIpRange(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6671,7 +6671,7 @@ class InstanceFromMachineImageNetworkInterfaceAliasIpRange(dict):
 
 
 @pulumi.output_type
-class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig(dict):
+calass InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6756,7 +6756,7 @@ class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig(dict):
 
 
 @pulumi.output_type
-class InstanceFromMachineImageNetworkPerformanceConfig(dict):
+calass InstanceFromMachineImageNetworkPerformanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6785,7 +6785,7 @@ class InstanceFromMachineImageNetworkPerformanceConfig(dict):
 
 
 @pulumi.output_type
-class InstanceFromMachineImageParams(dict):
+calass InstanceFromMachineImageParams(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6815,7 +6815,7 @@ class InstanceFromMachineImageParams(dict):
 
 
 @pulumi.output_type
-class InstanceFromMachineImageReservationAffinity(dict):
+calass InstanceFromMachineImageReservationAffinity(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6852,7 +6852,7 @@ class InstanceFromMachineImageReservationAffinity(dict):
 
 
 @pulumi.output_type
-class InstanceFromMachineImageReservationAffinitySpecificReservation(dict):
+calass InstanceFromMachineImageReservationAffinitySpecificReservation(dict):
     def __init__(__self__, *,
                  key: str,
                  values: Sequence[str]):
@@ -6871,7 +6871,7 @@ class InstanceFromMachineImageReservationAffinitySpecificReservation(dict):
 
 
 @pulumi.output_type
-class InstanceFromMachineImageScheduling(dict):
+calass InstanceFromMachineImageScheduling(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6989,7 +6989,7 @@ class InstanceFromMachineImageScheduling(dict):
 
 
 @pulumi.output_type
-class InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout(dict):
+calass InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout(dict):
     def __init__(__self__, *,
                  seconds: int,
                  nanos: Optional[int] = None):
@@ -7009,7 +7009,7 @@ class InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout(dict):
 
 
 @pulumi.output_type
-class InstanceFromMachineImageSchedulingMaxRunDuration(dict):
+calass InstanceFromMachineImageSchedulingMaxRunDuration(dict):
     def __init__(__self__, *,
                  seconds: int,
                  nanos: Optional[int] = None):
@@ -7029,7 +7029,7 @@ class InstanceFromMachineImageSchedulingMaxRunDuration(dict):
 
 
 @pulumi.output_type
-class InstanceFromMachineImageSchedulingNodeAffinity(dict):
+calass InstanceFromMachineImageSchedulingNodeAffinity(dict):
     def __init__(__self__, *,
                  key: str,
                  operator: str,
@@ -7055,7 +7055,7 @@ class InstanceFromMachineImageSchedulingNodeAffinity(dict):
 
 
 @pulumi.output_type
-class InstanceFromMachineImageScratchDisk(dict):
+calass InstanceFromMachineImageScratchDisk(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7100,7 +7100,7 @@ class InstanceFromMachineImageScratchDisk(dict):
 
 
 @pulumi.output_type
-class InstanceFromMachineImageServiceAccount(dict):
+calass InstanceFromMachineImageServiceAccount(dict):
     def __init__(__self__, *,
                  scopes: Sequence[str],
                  email: Optional[str] = None):
@@ -7120,7 +7120,7 @@ class InstanceFromMachineImageServiceAccount(dict):
 
 
 @pulumi.output_type
-class InstanceFromMachineImageShieldedInstanceConfig(dict):
+calass InstanceFromMachineImageShieldedInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7170,7 +7170,7 @@ class InstanceFromMachineImageShieldedInstanceConfig(dict):
 
 
 @pulumi.output_type
-class InstanceFromTemplateAdvancedMachineFeatures(dict):
+calass InstanceFromTemplateAdvancedMachineFeatures(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7220,7 +7220,7 @@ class InstanceFromTemplateAdvancedMachineFeatures(dict):
 
 
 @pulumi.output_type
-class InstanceFromTemplateAttachedDisk(dict):
+calass InstanceFromTemplateAttachedDisk(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7295,7 +7295,7 @@ class InstanceFromTemplateAttachedDisk(dict):
 
 
 @pulumi.output_type
-class InstanceFromTemplateBootDisk(dict):
+calass InstanceFromTemplateBootDisk(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7391,7 +7391,7 @@ class InstanceFromTemplateBootDisk(dict):
 
 
 @pulumi.output_type
-class InstanceFromTemplateBootDiskInitializeParams(dict):
+calass InstanceFromTemplateBootDiskInitializeParams(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7463,7 +7463,7 @@ class InstanceFromTemplateBootDiskInitializeParams(dict):
 
 
 @pulumi.output_type
-class InstanceFromTemplateConfidentialInstanceConfig(dict):
+calass InstanceFromTemplateConfidentialInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7492,7 +7492,7 @@ class InstanceFromTemplateConfidentialInstanceConfig(dict):
 
 
 @pulumi.output_type
-class InstanceFromTemplateGuestAccelerator(dict):
+calass InstanceFromTemplateGuestAccelerator(dict):
     def __init__(__self__, *,
                  count: int,
                  type: str):
@@ -7511,7 +7511,7 @@ class InstanceFromTemplateGuestAccelerator(dict):
 
 
 @pulumi.output_type
-class InstanceFromTemplateNetworkInterface(dict):
+calass InstanceFromTemplateNetworkInterface(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7693,7 +7693,7 @@ class InstanceFromTemplateNetworkInterface(dict):
 
 
 @pulumi.output_type
-class InstanceFromTemplateNetworkInterfaceAccessConfig(dict):
+calass InstanceFromTemplateNetworkInterfaceAccessConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7753,7 +7753,7 @@ class InstanceFromTemplateNetworkInterfaceAccessConfig(dict):
 
 
 @pulumi.output_type
-class InstanceFromTemplateNetworkInterfaceAliasIpRange(dict):
+calass InstanceFromTemplateNetworkInterfaceAliasIpRange(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7792,7 +7792,7 @@ class InstanceFromTemplateNetworkInterfaceAliasIpRange(dict):
 
 
 @pulumi.output_type
-class InstanceFromTemplateNetworkInterfaceIpv6AccessConfig(dict):
+calass InstanceFromTemplateNetworkInterfaceIpv6AccessConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7877,7 +7877,7 @@ class InstanceFromTemplateNetworkInterfaceIpv6AccessConfig(dict):
 
 
 @pulumi.output_type
-class InstanceFromTemplateNetworkPerformanceConfig(dict):
+calass InstanceFromTemplateNetworkPerformanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7906,7 +7906,7 @@ class InstanceFromTemplateNetworkPerformanceConfig(dict):
 
 
 @pulumi.output_type
-class InstanceFromTemplateParams(dict):
+calass InstanceFromTemplateParams(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7936,7 +7936,7 @@ class InstanceFromTemplateParams(dict):
 
 
 @pulumi.output_type
-class InstanceFromTemplateReservationAffinity(dict):
+calass InstanceFromTemplateReservationAffinity(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7973,7 +7973,7 @@ class InstanceFromTemplateReservationAffinity(dict):
 
 
 @pulumi.output_type
-class InstanceFromTemplateReservationAffinitySpecificReservation(dict):
+calass InstanceFromTemplateReservationAffinitySpecificReservation(dict):
     def __init__(__self__, *,
                  key: str,
                  values: Sequence[str]):
@@ -7992,7 +7992,7 @@ class InstanceFromTemplateReservationAffinitySpecificReservation(dict):
 
 
 @pulumi.output_type
-class InstanceFromTemplateScheduling(dict):
+calass InstanceFromTemplateScheduling(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8110,7 +8110,7 @@ class InstanceFromTemplateScheduling(dict):
 
 
 @pulumi.output_type
-class InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout(dict):
+calass InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout(dict):
     def __init__(__self__, *,
                  seconds: int,
                  nanos: Optional[int] = None):
@@ -8130,7 +8130,7 @@ class InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout(dict):
 
 
 @pulumi.output_type
-class InstanceFromTemplateSchedulingMaxRunDuration(dict):
+calass InstanceFromTemplateSchedulingMaxRunDuration(dict):
     def __init__(__self__, *,
                  seconds: int,
                  nanos: Optional[int] = None):
@@ -8150,7 +8150,7 @@ class InstanceFromTemplateSchedulingMaxRunDuration(dict):
 
 
 @pulumi.output_type
-class InstanceFromTemplateSchedulingNodeAffinity(dict):
+calass InstanceFromTemplateSchedulingNodeAffinity(dict):
     def __init__(__self__, *,
                  key: str,
                  operator: str,
@@ -8176,7 +8176,7 @@ class InstanceFromTemplateSchedulingNodeAffinity(dict):
 
 
 @pulumi.output_type
-class InstanceFromTemplateScratchDisk(dict):
+calass InstanceFromTemplateScratchDisk(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8221,7 +8221,7 @@ class InstanceFromTemplateScratchDisk(dict):
 
 
 @pulumi.output_type
-class InstanceFromTemplateServiceAccount(dict):
+calass InstanceFromTemplateServiceAccount(dict):
     def __init__(__self__, *,
                  scopes: Sequence[str],
                  email: Optional[str] = None):
@@ -8241,7 +8241,7 @@ class InstanceFromTemplateServiceAccount(dict):
 
 
 @pulumi.output_type
-class InstanceFromTemplateShieldedInstanceConfig(dict):
+calass InstanceFromTemplateShieldedInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8291,7 +8291,7 @@ class InstanceFromTemplateShieldedInstanceConfig(dict):
 
 
 @pulumi.output_type
-class InstanceGroupManagerAllInstancesConfig(dict):
+calass InstanceGroupManagerAllInstancesConfig(dict):
     def __init__(__self__, *,
                  labels: Optional[Mapping[str, str]] = None,
                  metadata: Optional[Mapping[str, str]] = None):
@@ -8326,7 +8326,7 @@ class InstanceGroupManagerAllInstancesConfig(dict):
 
 
 @pulumi.output_type
-class InstanceGroupManagerAutoHealingPolicies(dict):
+calass InstanceGroupManagerAutoHealingPolicies(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8376,7 +8376,7 @@ class InstanceGroupManagerAutoHealingPolicies(dict):
 
 
 @pulumi.output_type
-class InstanceGroupManagerInstanceLifecyclePolicy(dict):
+calass InstanceGroupManagerInstanceLifecyclePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8416,7 +8416,7 @@ class InstanceGroupManagerInstanceLifecyclePolicy(dict):
 
 
 @pulumi.output_type
-class InstanceGroupManagerNamedPort(dict):
+calass InstanceGroupManagerNamedPort(dict):
     def __init__(__self__, *,
                  name: str,
                  port: int):
@@ -8447,7 +8447,7 @@ class InstanceGroupManagerNamedPort(dict):
 
 
 @pulumi.output_type
-class InstanceGroupManagerStatefulDisk(dict):
+calass InstanceGroupManagerStatefulDisk(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8496,7 +8496,7 @@ class InstanceGroupManagerStatefulDisk(dict):
 
 
 @pulumi.output_type
-class InstanceGroupManagerStatefulExternalIp(dict):
+calass InstanceGroupManagerStatefulExternalIp(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8546,7 +8546,7 @@ class InstanceGroupManagerStatefulExternalIp(dict):
 
 
 @pulumi.output_type
-class InstanceGroupManagerStatefulInternalIp(dict):
+calass InstanceGroupManagerStatefulInternalIp(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8596,7 +8596,7 @@ class InstanceGroupManagerStatefulInternalIp(dict):
 
 
 @pulumi.output_type
-class InstanceGroupManagerStatus(dict):
+calass InstanceGroupManagerStatus(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8624,13 +8624,13 @@ class InstanceGroupManagerStatus(dict):
                  statefuls: Optional[Sequence['outputs.InstanceGroupManagerStatusStateful']] = None,
                  version_targets: Optional[Sequence['outputs.InstanceGroupManagerStatusVersionTarget']] = None):
         """
-        :param Sequence['InstanceGroupManagerStatusAllInstancesConfigArgs'] all_instances_configs: )
+        :param Sequence['InstanceGroupManagerStatusAllInstancesConfigArrgs'] all_instances_configs: )
                Properties to set on all instances in the group. After setting
                allInstancesConfig on the group, you must update the group's instances to
                apply the configuration.
         :param bool is_stable: A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
-        :param Sequence['InstanceGroupManagerStatusStatefulArgs'] statefuls: Stateful status of the given Instance Group Manager.
-        :param Sequence['InstanceGroupManagerStatusVersionTargetArgs'] version_targets: A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+        :param Sequence['InstanceGroupManagerStatusStatefulArrgs'] statefuls: Stateful status of the given Instance Group Manager.
+        :param Sequence['InstanceGroupManagerStatusVersionTargetArrgs'] version_targets: A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
         """
         if all_instances_configs is not None:
             pulumi.set(__self__, "all_instances_configs", all_instances_configs)
@@ -8678,7 +8678,7 @@ class InstanceGroupManagerStatus(dict):
 
 
 @pulumi.output_type
-class InstanceGroupManagerStatusAllInstancesConfig(dict):
+calass InstanceGroupManagerStatusAllInstancesConfig(dict):
     def __init__(__self__, *,
                  effective: Optional[bool] = None):
         if effective is not None:
@@ -8691,7 +8691,7 @@ class InstanceGroupManagerStatusAllInstancesConfig(dict):
 
 
 @pulumi.output_type
-class InstanceGroupManagerStatusStateful(dict):
+calass InstanceGroupManagerStatusStateful(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8716,7 +8716,7 @@ class InstanceGroupManagerStatusStateful(dict):
                  per_instance_configs: Optional[Sequence['outputs.InstanceGroupManagerStatusStatefulPerInstanceConfig']] = None):
         """
         :param bool has_stateful_config: A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
-        :param Sequence['InstanceGroupManagerStatusStatefulPerInstanceConfigArgs'] per_instance_configs: Status of per-instance configs on the instance.
+        :param Sequence['InstanceGroupManagerStatusStatefulPerInstanceConfigArrgs'] per_instance_configs: Status of per-instance configs on the instance.
         """
         if has_stateful_config is not None:
             pulumi.set(__self__, "has_stateful_config", has_stateful_config)
@@ -8741,7 +8741,7 @@ class InstanceGroupManagerStatusStateful(dict):
 
 
 @pulumi.output_type
-class InstanceGroupManagerStatusStatefulPerInstanceConfig(dict):
+calass InstanceGroupManagerStatusStatefulPerInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8777,7 +8777,7 @@ class InstanceGroupManagerStatusStatefulPerInstanceConfig(dict):
 
 
 @pulumi.output_type
-class InstanceGroupManagerStatusVersionTarget(dict):
+calass InstanceGroupManagerStatusVersionTarget(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8807,7 +8807,7 @@ class InstanceGroupManagerStatusVersionTarget(dict):
 
 
 @pulumi.output_type
-class InstanceGroupManagerUpdatePolicy(dict):
+calass InstanceGroupManagerUpdatePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8953,7 +8953,7 @@ class InstanceGroupManagerUpdatePolicy(dict):
 
 
 @pulumi.output_type
-class InstanceGroupManagerVersion(dict):
+calass InstanceGroupManagerVersion(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8980,7 +8980,7 @@ class InstanceGroupManagerVersion(dict):
         """
         :param str instance_template: The full URL to an instance template from which all new instances of this version will be created. It is recommended to reference instance templates through their unique id (`self_link_unique` attribute).
         :param str name: Version name.
-        :param 'InstanceGroupManagerVersionTargetSizeArgs' target_size: The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+        :param 'InstanceGroupManagerVersionTargetSizeArrgs' target_size: The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
                
                > Exactly one `version` you specify must not have a `target_size` specified. During a rolling update, the instance group manager will fulfill the `target_size`
                constraints of every other `version`, and any remaining instances will be provisioned with the version where `target_size` is unset.
@@ -9020,7 +9020,7 @@ class InstanceGroupManagerVersion(dict):
 
 
 @pulumi.output_type
-class InstanceGroupManagerVersionTargetSize(dict):
+calass InstanceGroupManagerVersionTargetSize(dict):
     def __init__(__self__, *,
                  fixed: Optional[int] = None,
                  percent: Optional[int] = None):
@@ -9055,7 +9055,7 @@ class InstanceGroupManagerVersionTargetSize(dict):
 
 
 @pulumi.output_type
-class InstanceGroupNamedPort(dict):
+calass InstanceGroupNamedPort(dict):
     def __init__(__self__, *,
                  name: str,
                  port: int):
@@ -9084,7 +9084,7 @@ class InstanceGroupNamedPort(dict):
 
 
 @pulumi.output_type
-class InstanceGuestAccelerator(dict):
+calass InstanceGuestAccelerator(dict):
     def __init__(__self__, *,
                  count: int,
                  type: str):
@@ -9113,7 +9113,7 @@ class InstanceGuestAccelerator(dict):
 
 
 @pulumi.output_type
-class InstanceIAMBindingCondition(dict):
+calass InstanceIAMBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -9162,7 +9162,7 @@ class InstanceIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class InstanceIAMMemberCondition(dict):
+calass InstanceIAMMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -9211,7 +9211,7 @@ class InstanceIAMMemberCondition(dict):
 
 
 @pulumi.output_type
-class InstanceNetworkInterface(dict):
+calass InstanceNetworkInterface(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9271,10 +9271,10 @@ class InstanceNetworkInterface(dict):
                  subnetwork: Optional[str] = None,
                  subnetwork_project: Optional[str] = None):
         """
-        :param Sequence['InstanceNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An
+        :param Sequence['InstanceNetworkInterfaceAliasIpRangeArrgs'] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
-        :param Sequence['InstanceNetworkInterfaceIpv6AccessConfigArgs'] ipv6_access_configs: An array of IPv6 access configurations for this interface.
+        :param Sequence['InstanceNetworkInterfaceIpv6AccessConfigArrgs'] ipv6_access_configs: An array of IPv6 access configurations for this interface.
                Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
                specified, then this instance will have no external IPv6 Internet access. Structure documented below.
         :param str ipv6_access_type: One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet.
@@ -9467,7 +9467,7 @@ class InstanceNetworkInterface(dict):
 
 
 @pulumi.output_type
-class InstanceNetworkInterfaceAccessConfig(dict):
+calass InstanceNetworkInterfaceAccessConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9547,7 +9547,7 @@ class InstanceNetworkInterfaceAccessConfig(dict):
 
 
 @pulumi.output_type
-class InstanceNetworkInterfaceAliasIpRange(dict):
+calass InstanceNetworkInterfaceAliasIpRange(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9606,7 +9606,7 @@ class InstanceNetworkInterfaceAliasIpRange(dict):
 
 
 @pulumi.output_type
-class InstanceNetworkInterfaceIpv6AccessConfig(dict):
+calass InstanceNetworkInterfaceIpv6AccessConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9717,7 +9717,7 @@ class InstanceNetworkInterfaceIpv6AccessConfig(dict):
 
 
 @pulumi.output_type
-class InstanceNetworkPerformanceConfig(dict):
+calass InstanceNetworkPerformanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9754,7 +9754,7 @@ class InstanceNetworkPerformanceConfig(dict):
 
 
 @pulumi.output_type
-class InstanceParams(dict):
+calass InstanceParams(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9784,7 +9784,7 @@ class InstanceParams(dict):
 
 
 @pulumi.output_type
-class InstanceReservationAffinity(dict):
+calass InstanceReservationAffinity(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9807,7 +9807,7 @@ class InstanceReservationAffinity(dict):
                  specific_reservation: Optional['outputs.InstanceReservationAffinitySpecificReservation'] = None):
         """
         :param str type: The type of reservation from which this instance can consume resources.
-        :param 'InstanceReservationAffinitySpecificReservationArgs' specific_reservation: Specifies the label selector for the reservation to use..
+        :param 'InstanceReservationAffinitySpecificReservationArrgs' specific_reservation: Specifies the label selector for the reservation to use..
                Structure is documented below.
         """
         pulumi.set(__self__, "type", type)
@@ -9833,7 +9833,7 @@ class InstanceReservationAffinity(dict):
 
 
 @pulumi.output_type
-class InstanceReservationAffinitySpecificReservation(dict):
+calass InstanceReservationAffinitySpecificReservation(dict):
     def __init__(__self__, *,
                  key: str,
                  values: Sequence[str]):
@@ -9862,7 +9862,7 @@ class InstanceReservationAffinitySpecificReservation(dict):
 
 
 @pulumi.output_type
-class InstanceScheduling(dict):
+calass InstanceScheduling(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9913,7 +9913,7 @@ class InstanceScheduling(dict):
                Defaults to true.
         :param str instance_termination_action: Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param int min_node_cpus: The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
-        :param Sequence['InstanceSchedulingNodeAffinityArgs'] node_affinities: Specifies node affinities or anti-affinities
+        :param Sequence['InstanceSchedulingNodeAffinityArrgs'] node_affinities: Specifies node affinities or anti-affinities
                to determine which sole-tenant nodes your instances and managed instance
                groups will use as host systems. Read more on sole-tenant node creation
                [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
@@ -10036,7 +10036,7 @@ class InstanceScheduling(dict):
 
 
 @pulumi.output_type
-class InstanceSchedulingLocalSsdRecoveryTimeout(dict):
+calass InstanceSchedulingLocalSsdRecoveryTimeout(dict):
     def __init__(__self__, *,
                  seconds: int,
                  nanos: Optional[int] = None):
@@ -10076,7 +10076,7 @@ class InstanceSchedulingLocalSsdRecoveryTimeout(dict):
 
 
 @pulumi.output_type
-class InstanceSchedulingMaxRunDuration(dict):
+calass InstanceSchedulingMaxRunDuration(dict):
     def __init__(__self__, *,
                  seconds: int,
                  nanos: Optional[int] = None):
@@ -10116,7 +10116,7 @@ class InstanceSchedulingMaxRunDuration(dict):
 
 
 @pulumi.output_type
-class InstanceSchedulingNodeAffinity(dict):
+calass InstanceSchedulingNodeAffinity(dict):
     def __init__(__self__, *,
                  key: str,
                  operator: str,
@@ -10158,7 +10158,7 @@ class InstanceSchedulingNodeAffinity(dict):
 
 
 @pulumi.output_type
-class InstanceScratchDisk(dict):
+calass InstanceScratchDisk(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10221,7 +10221,7 @@ class InstanceScratchDisk(dict):
 
 
 @pulumi.output_type
-class InstanceServiceAccount(dict):
+calass InstanceServiceAccount(dict):
     def __init__(__self__, *,
                  scopes: Sequence[str],
                  email: Optional[str] = None):
@@ -10259,7 +10259,7 @@ class InstanceServiceAccount(dict):
 
 
 @pulumi.output_type
-class InstanceSettingsMetadata(dict):
+calass InstanceSettingsMetadata(dict):
     def __init__(__self__, *,
                  items: Optional[Mapping[str, str]] = None):
         """
@@ -10278,7 +10278,7 @@ class InstanceSettingsMetadata(dict):
 
 
 @pulumi.output_type
-class InstanceShieldedInstanceConfig(dict):
+calass InstanceShieldedInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10348,7 +10348,7 @@ class InstanceShieldedInstanceConfig(dict):
 
 
 @pulumi.output_type
-class InstanceTemplateAdvancedMachineFeatures(dict):
+calass InstanceTemplateAdvancedMachineFeatures(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10412,7 +10412,7 @@ class InstanceTemplateAdvancedMachineFeatures(dict):
 
 
 @pulumi.output_type
-class InstanceTemplateConfidentialInstanceConfig(dict):
+calass InstanceTemplateConfidentialInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10447,7 +10447,7 @@ class InstanceTemplateConfidentialInstanceConfig(dict):
 
 
 @pulumi.output_type
-class InstanceTemplateDisk(dict):
+calass InstanceTemplateDisk(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10513,7 +10513,7 @@ class InstanceTemplateDisk(dict):
         :param str device_name: A unique device name that is reflected into the
                /dev/  tree of a Linux operating system running within the instance. If not
                specified, the server chooses a default device name to apply to this disk.
-        :param 'InstanceTemplateDiskDiskEncryptionKeyArgs' disk_encryption_key: Encrypts or decrypts a disk using a customer-supplied encryption key.
+        :param 'InstanceTemplateDiskDiskEncryptionKeyArrgs' disk_encryption_key: Encrypts or decrypts a disk using a customer-supplied encryption key.
                
                If you are creating a new disk, this field encrypts the new disk using an encryption key that you provide. If you are attaching an existing disk that is already encrypted, this field decrypts the disk using the customer-supplied encryption key.
                
@@ -10553,7 +10553,7 @@ class InstanceTemplateDisk(dict):
                `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
                `{project}/{image}`, `{family}`, or `{image}`.
                > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
-        :param 'InstanceTemplateDiskSourceImageEncryptionKeyArgs' source_image_encryption_key: The customer-supplied encryption
+        :param 'InstanceTemplateDiskSourceImageEncryptionKeyArrgs' source_image_encryption_key: The customer-supplied encryption
                key of the source image. Required if the source image is protected by a
                customer-supplied encryption key.
                
@@ -10563,7 +10563,7 @@ class InstanceTemplateDisk(dict):
                documented below.
         :param str source_snapshot: The source snapshot to create this disk.
                > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
-        :param 'InstanceTemplateDiskSourceSnapshotEncryptionKeyArgs' source_snapshot_encryption_key: The customer-supplied encryption
+        :param 'InstanceTemplateDiskSourceSnapshotEncryptionKeyArrgs' source_snapshot_encryption_key: The customer-supplied encryption
                key of the source snapshot. Structure
                documented below.
         :param str type: The type of GCE disk, can be either `"SCRATCH"` or
@@ -10795,7 +10795,7 @@ class InstanceTemplateDisk(dict):
 
 
 @pulumi.output_type
-class InstanceTemplateDiskDiskEncryptionKey(dict):
+calass InstanceTemplateDiskDiskEncryptionKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10830,7 +10830,7 @@ class InstanceTemplateDiskDiskEncryptionKey(dict):
 
 
 @pulumi.output_type
-class InstanceTemplateDiskSourceImageEncryptionKey(dict):
+calass InstanceTemplateDiskSourceImageEncryptionKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10885,7 +10885,7 @@ class InstanceTemplateDiskSourceImageEncryptionKey(dict):
 
 
 @pulumi.output_type
-class InstanceTemplateDiskSourceSnapshotEncryptionKey(dict):
+calass InstanceTemplateDiskSourceSnapshotEncryptionKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10940,7 +10940,7 @@ class InstanceTemplateDiskSourceSnapshotEncryptionKey(dict):
 
 
 @pulumi.output_type
-class InstanceTemplateGuestAccelerator(dict):
+calass InstanceTemplateGuestAccelerator(dict):
     def __init__(__self__, *,
                  count: int,
                  type: str):
@@ -10971,7 +10971,7 @@ class InstanceTemplateGuestAccelerator(dict):
 
 
 @pulumi.output_type
-class InstanceTemplateNetworkInterface(dict):
+calass InstanceTemplateNetworkInterface(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11028,16 +11028,16 @@ class InstanceTemplateNetworkInterface(dict):
                  subnetwork: Optional[str] = None,
                  subnetwork_project: Optional[str] = None):
         """
-        :param Sequence['InstanceTemplateNetworkInterfaceAccessConfigArgs'] access_configs: Access configurations, i.e. IPs via which this
+        :param Sequence['InstanceTemplateNetworkInterfaceAccessConfigArrgs'] access_configs: Access configurations, i.e. IPs via which this
                instance can be accessed via the Internet. Omit to ensure that the instance
                is not accessible from the Internet (this means that ssh provisioners will
                not work unless you can send traffic to the instance's
                network (e.g. via tunnel or because it is running on another cloud instance
                on that network). This block can be repeated multiple times. Structure documented below.
-        :param Sequence['InstanceTemplateNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An
+        :param Sequence['InstanceTemplateNetworkInterfaceAliasIpRangeArrgs'] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
-        :param Sequence['InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs'] ipv6_access_configs: An array of IPv6 access configurations for this interface.
+        :param Sequence['InstanceTemplateNetworkInterfaceIpv6AccessConfigArrgs'] ipv6_access_configs: An array of IPv6 access configurations for this interface.
                Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
                specified, then this instance will have no external IPv6 Internet access. Structure documented below.
         :param str name: The name of the instance template. If you leave
@@ -11217,7 +11217,7 @@ class InstanceTemplateNetworkInterface(dict):
 
 
 @pulumi.output_type
-class InstanceTemplateNetworkInterfaceAccessConfig(dict):
+calass InstanceTemplateNetworkInterfaceAccessConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11281,7 +11281,7 @@ class InstanceTemplateNetworkInterfaceAccessConfig(dict):
 
 
 @pulumi.output_type
-class InstanceTemplateNetworkInterfaceAliasIpRange(dict):
+calass InstanceTemplateNetworkInterfaceAliasIpRange(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11342,7 +11342,7 @@ class InstanceTemplateNetworkInterfaceAliasIpRange(dict):
 
 
 @pulumi.output_type
-class InstanceTemplateNetworkInterfaceIpv6AccessConfig(dict):
+calass InstanceTemplateNetworkInterfaceIpv6AccessConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11423,7 +11423,7 @@ class InstanceTemplateNetworkInterfaceIpv6AccessConfig(dict):
 
 
 @pulumi.output_type
-class InstanceTemplateNetworkPerformanceConfig(dict):
+calass InstanceTemplateNetworkPerformanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11458,7 +11458,7 @@ class InstanceTemplateNetworkPerformanceConfig(dict):
 
 
 @pulumi.output_type
-class InstanceTemplateReservationAffinity(dict):
+calass InstanceTemplateReservationAffinity(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11481,7 +11481,7 @@ class InstanceTemplateReservationAffinity(dict):
                  specific_reservation: Optional['outputs.InstanceTemplateReservationAffinitySpecificReservation'] = None):
         """
         :param str type: The type of reservation from which this instance can consume resources.
-        :param 'InstanceTemplateReservationAffinitySpecificReservationArgs' specific_reservation: Specifies the label selector for the reservation to use..
+        :param 'InstanceTemplateReservationAffinitySpecificReservationArrgs' specific_reservation: Specifies the label selector for the reservation to use..
                Structure is documented below.
         """
         pulumi.set(__self__, "type", type)
@@ -11507,7 +11507,7 @@ class InstanceTemplateReservationAffinity(dict):
 
 
 @pulumi.output_type
-class InstanceTemplateReservationAffinitySpecificReservation(dict):
+calass InstanceTemplateReservationAffinitySpecificReservation(dict):
     def __init__(__self__, *,
                  key: str,
                  values: Sequence[str]):
@@ -11536,7 +11536,7 @@ class InstanceTemplateReservationAffinitySpecificReservation(dict):
 
 
 @pulumi.output_type
-class InstanceTemplateScheduling(dict):
+calass InstanceTemplateScheduling(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11586,9 +11586,9 @@ class InstanceTemplateScheduling(dict):
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
         :param str instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
-        :param 'InstanceTemplateSchedulingMaxRunDurationArgs' max_run_duration: Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+        :param 'InstanceTemplateSchedulingMaxRunDurationArrgs' max_run_duration: Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
                <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
-        :param Sequence['InstanceTemplateSchedulingNodeAffinityArgs'] node_affinities: Specifies node affinities or anti-affinities
+        :param Sequence['InstanceTemplateSchedulingNodeAffinityArrgs'] node_affinities: Specifies node affinities or anti-affinities
                to determine which sole-tenant nodes your instances and managed instance
                groups will use as host systems. Read more on sole-tenant node creation
                [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
@@ -11710,7 +11710,7 @@ class InstanceTemplateScheduling(dict):
 
 
 @pulumi.output_type
-class InstanceTemplateSchedulingLocalSsdRecoveryTimeout(dict):
+calass InstanceTemplateSchedulingLocalSsdRecoveryTimeout(dict):
     def __init__(__self__, *,
                  seconds: int,
                  nanos: Optional[int] = None):
@@ -11750,7 +11750,7 @@ class InstanceTemplateSchedulingLocalSsdRecoveryTimeout(dict):
 
 
 @pulumi.output_type
-class InstanceTemplateSchedulingMaxRunDuration(dict):
+calass InstanceTemplateSchedulingMaxRunDuration(dict):
     def __init__(__self__, *,
                  seconds: int,
                  nanos: Optional[int] = None):
@@ -11790,7 +11790,7 @@ class InstanceTemplateSchedulingMaxRunDuration(dict):
 
 
 @pulumi.output_type
-class InstanceTemplateSchedulingNodeAffinity(dict):
+calass InstanceTemplateSchedulingNodeAffinity(dict):
     def __init__(__self__, *,
                  key: str,
                  operator: str,
@@ -11832,7 +11832,7 @@ class InstanceTemplateSchedulingNodeAffinity(dict):
 
 
 @pulumi.output_type
-class InstanceTemplateServiceAccount(dict):
+calass InstanceTemplateServiceAccount(dict):
     def __init__(__self__, *,
                  scopes: Sequence[str],
                  email: Optional[str] = None):
@@ -11882,7 +11882,7 @@ class InstanceTemplateServiceAccount(dict):
 
 
 @pulumi.output_type
-class InstanceTemplateShieldedInstanceConfig(dict):
+calass InstanceTemplateShieldedInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11946,7 +11946,7 @@ class InstanceTemplateShieldedInstanceConfig(dict):
 
 
 @pulumi.output_type
-class InterconnectAttachmentPrivateInterconnectInfo(dict):
+calass InterconnectAttachmentPrivateInterconnectInfo(dict):
     def __init__(__self__, *,
                  tag8021q: Optional[int] = None):
         """
@@ -11969,7 +11969,7 @@ class InterconnectAttachmentPrivateInterconnectInfo(dict):
 
 
 @pulumi.output_type
-class MachineImageIamBindingCondition(dict):
+calass MachineImageIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -12010,7 +12010,7 @@ class MachineImageIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class MachineImageIamMemberCondition(dict):
+calass MachineImageIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -12051,7 +12051,7 @@ class MachineImageIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class MachineImageMachineImageEncryptionKey(dict):
+calass MachineImageMachineImageEncryptionKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12135,7 +12135,7 @@ class MachineImageMachineImageEncryptionKey(dict):
 
 
 @pulumi.output_type
-class ManagedSslCertificateManaged(dict):
+calass ManagedSslCertificateManaged(dict):
     def __init__(__self__, *,
                  domains: Sequence[str]):
         """
@@ -12155,7 +12155,7 @@ class ManagedSslCertificateManaged(dict):
 
 
 @pulumi.output_type
-class MangedSslCertificateManaged(dict):
+calass MangedSslCertificateManaged(dict):
     def __init__(__self__, *,
                  domains: Sequence[str]):
         """
@@ -12175,7 +12175,7 @@ class MangedSslCertificateManaged(dict):
 
 
 @pulumi.output_type
-class NetworkAttachmentConnectionEndpoint(dict):
+calass NetworkAttachmentConnectionEndpoint(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12273,7 +12273,7 @@ class NetworkAttachmentConnectionEndpoint(dict):
 
 
 @pulumi.output_type
-class NetworkEndpointListNetworkEndpoint(dict):
+calass NetworkEndpointListNetworkEndpoint(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12344,7 +12344,7 @@ class NetworkEndpointListNetworkEndpoint(dict):
 
 
 @pulumi.output_type
-class NetworkFirewallPolicyRuleMatch(dict):
+calass NetworkFirewallPolicyRuleMatch(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12398,7 +12398,7 @@ class NetworkFirewallPolicyRuleMatch(dict):
                  src_secure_tags: Optional[Sequence['outputs.NetworkFirewallPolicyRuleMatchSrcSecureTag']] = None,
                  src_threat_intelligences: Optional[Sequence[str]] = None):
         """
-        :param Sequence['NetworkFirewallPolicyRuleMatchLayer4ConfigArgs'] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+        :param Sequence['NetworkFirewallPolicyRuleMatchLayer4ConfigArrgs'] layer4_configs: Pairs of IP protocols and ports that the rule should match.
         :param Sequence[str] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
         :param Sequence[str] dest_fqdns: Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
         :param Sequence[str] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
@@ -12408,7 +12408,7 @@ class NetworkFirewallPolicyRuleMatch(dict):
         :param Sequence[str] src_fqdns: Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
         :param Sequence[str] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         :param Sequence[str] src_region_codes: The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
-        :param Sequence['NetworkFirewallPolicyRuleMatchSrcSecureTagArgs'] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE, and there is no <code>srcIpRange</code>, this rule will be ignored. Maximum number of source tag values allowed is 256.
+        :param Sequence['NetworkFirewallPolicyRuleMatchSrcSecureTagArrgs'] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE, and there is no <code>srcIpRange</code>, this rule will be ignored. Maximum number of source tag values allowed is 256.
         :param Sequence[str] src_threat_intelligences: Name of the Google Cloud Threat Intelligence list.
                
                The `layer4_configs` block supports:
@@ -12537,7 +12537,7 @@ class NetworkFirewallPolicyRuleMatch(dict):
 
 
 @pulumi.output_type
-class NetworkFirewallPolicyRuleMatchLayer4Config(dict):
+calass NetworkFirewallPolicyRuleMatchLayer4Config(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12588,7 +12588,7 @@ class NetworkFirewallPolicyRuleMatchLayer4Config(dict):
 
 
 @pulumi.output_type
-class NetworkFirewallPolicyRuleMatchSrcSecureTag(dict):
+calass NetworkFirewallPolicyRuleMatchSrcSecureTag(dict):
     def __init__(__self__, *,
                  name: str,
                  state: Optional[str] = None):
@@ -12618,7 +12618,7 @@ class NetworkFirewallPolicyRuleMatchSrcSecureTag(dict):
 
 
 @pulumi.output_type
-class NetworkFirewallPolicyRuleTargetSecureTag(dict):
+calass NetworkFirewallPolicyRuleTargetSecureTag(dict):
     def __init__(__self__, *,
                  name: str,
                  state: Optional[str] = None):
@@ -12648,7 +12648,7 @@ class NetworkFirewallPolicyRuleTargetSecureTag(dict):
 
 
 @pulumi.output_type
-class NodeGroupAutoscalingPolicy(dict):
+calass NodeGroupAutoscalingPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12726,7 +12726,7 @@ class NodeGroupAutoscalingPolicy(dict):
 
 
 @pulumi.output_type
-class NodeGroupMaintenanceWindow(dict):
+calass NodeGroupMaintenanceWindow(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12761,7 +12761,7 @@ class NodeGroupMaintenanceWindow(dict):
 
 
 @pulumi.output_type
-class NodeGroupShareSettings(dict):
+calass NodeGroupShareSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12787,7 +12787,7 @@ class NodeGroupShareSettings(dict):
         """
         :param str share_type: Node group sharing type.
                Possible values are: `ORGANIZATION`, `SPECIFIC_PROJECTS`, `LOCAL`.
-        :param Sequence['NodeGroupShareSettingsProjectMapArgs'] project_maps: A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+        :param Sequence['NodeGroupShareSettingsProjectMapArrgs'] project_maps: A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
                Structure is documented below.
         """
         pulumi.set(__self__, "share_type", share_type)
@@ -12814,7 +12814,7 @@ class NodeGroupShareSettings(dict):
 
 
 @pulumi.output_type
-class NodeGroupShareSettingsProjectMap(dict):
+calass NodeGroupShareSettingsProjectMap(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12860,7 +12860,7 @@ class NodeGroupShareSettingsProjectMap(dict):
 
 
 @pulumi.output_type
-class NodeTemplateNodeTypeFlexibility(dict):
+calass NodeTemplateNodeTypeFlexibility(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12922,7 +12922,7 @@ class NodeTemplateNodeTypeFlexibility(dict):
 
 
 @pulumi.output_type
-class NodeTemplateServerBinding(dict):
+calass NodeTemplateServerBinding(dict):
     def __init__(__self__, *,
                  type: str):
         """
@@ -12962,7 +12962,7 @@ class NodeTemplateServerBinding(dict):
 
 
 @pulumi.output_type
-class OrganizationSecurityPolicyRuleMatch(dict):
+calass OrganizationSecurityPolicyRuleMatch(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12985,7 +12985,7 @@ class OrganizationSecurityPolicyRuleMatch(dict):
                  description: Optional[str] = None,
                  versioned_expr: Optional[str] = None):
         """
-        :param 'OrganizationSecurityPolicyRuleMatchConfigArgs' config: The configuration options for matching the rule.
+        :param 'OrganizationSecurityPolicyRuleMatchConfigArrgs' config: The configuration options for matching the rule.
                Structure is documented below.
         :param str description: A description of the rule.
         :param str versioned_expr: Preconfigured versioned expression. For organization security policy rules,
@@ -13029,7 +13029,7 @@ class OrganizationSecurityPolicyRuleMatch(dict):
 
 
 @pulumi.output_type
-class OrganizationSecurityPolicyRuleMatchConfig(dict):
+calass OrganizationSecurityPolicyRuleMatchConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -13056,7 +13056,7 @@ class OrganizationSecurityPolicyRuleMatchConfig(dict):
                  dest_ip_ranges: Optional[Sequence[str]] = None,
                  src_ip_ranges: Optional[Sequence[str]] = None):
         """
-        :param Sequence['OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs'] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+        :param Sequence['OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrgs'] layer4_configs: Pairs of IP protocols and ports that the rule should match.
                Structure is documented below.
                
                
@@ -13104,7 +13104,7 @@ class OrganizationSecurityPolicyRuleMatchConfig(dict):
 
 
 @pulumi.output_type
-class OrganizationSecurityPolicyRuleMatchConfigLayer4Config(dict):
+calass OrganizationSecurityPolicyRuleMatchConfigLayer4Config(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -13173,7 +13173,7 @@ class OrganizationSecurityPolicyRuleMatchConfigLayer4Config(dict):
 
 
 @pulumi.output_type
-class PacketMirroringCollectorIlb(dict):
+calass PacketMirroringCollectorIlb(dict):
     def __init__(__self__, *,
                  url: str):
         """
@@ -13191,7 +13191,7 @@ class PacketMirroringCollectorIlb(dict):
 
 
 @pulumi.output_type
-class PacketMirroringFilter(dict):
+calass PacketMirroringFilter(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -13259,15 +13259,15 @@ class PacketMirroringFilter(dict):
 
 
 @pulumi.output_type
-class PacketMirroringMirroredResources(dict):
+calass PacketMirroringMirroredResources(dict):
     def __init__(__self__, *,
                  instances: Optional[Sequence['outputs.PacketMirroringMirroredResourcesInstance']] = None,
                  subnetworks: Optional[Sequence['outputs.PacketMirroringMirroredResourcesSubnetwork']] = None,
                  tags: Optional[Sequence[str]] = None):
         """
-        :param Sequence['PacketMirroringMirroredResourcesInstanceArgs'] instances: All the listed instances will be mirrored.  Specify at most 50.
+        :param Sequence['PacketMirroringMirroredResourcesInstanceArrgs'] instances: All the listed instances will be mirrored.  Specify at most 50.
                Structure is documented below.
-        :param Sequence['PacketMirroringMirroredResourcesSubnetworkArgs'] subnetworks: All instances in one of these subnetworks will be mirrored.
+        :param Sequence['PacketMirroringMirroredResourcesSubnetworkArrgs'] subnetworks: All instances in one of these subnetworks will be mirrored.
                Structure is documented below.
         :param Sequence[str] tags: All instances with these tags will be mirrored.
         """
@@ -13306,7 +13306,7 @@ class PacketMirroringMirroredResources(dict):
 
 
 @pulumi.output_type
-class PacketMirroringMirroredResourcesInstance(dict):
+calass PacketMirroringMirroredResourcesInstance(dict):
     def __init__(__self__, *,
                  url: str):
         """
@@ -13328,7 +13328,7 @@ class PacketMirroringMirroredResourcesInstance(dict):
 
 
 @pulumi.output_type
-class PacketMirroringMirroredResourcesSubnetwork(dict):
+calass PacketMirroringMirroredResourcesSubnetwork(dict):
     def __init__(__self__, *,
                  url: str):
         """
@@ -13346,7 +13346,7 @@ class PacketMirroringMirroredResourcesSubnetwork(dict):
 
 
 @pulumi.output_type
-class PacketMirroringNetwork(dict):
+calass PacketMirroringNetwork(dict):
     def __init__(__self__, *,
                  url: str):
         """
@@ -13364,7 +13364,7 @@ class PacketMirroringNetwork(dict):
 
 
 @pulumi.output_type
-class PerInstanceConfigPreservedState(dict):
+calass PerInstanceConfigPreservedState(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -13390,11 +13390,11 @@ class PerInstanceConfigPreservedState(dict):
                  internal_ips: Optional[Sequence['outputs.PerInstanceConfigPreservedStateInternalIp']] = None,
                  metadata: Optional[Mapping[str, str]] = None):
         """
-        :param Sequence['PerInstanceConfigPreservedStateDiskArgs'] disks: Stateful disks for the instance.
+        :param Sequence['PerInstanceConfigPreservedStateDiskArrgs'] disks: Stateful disks for the instance.
                Structure is documented below.
-        :param Sequence['PerInstanceConfigPreservedStateExternalIpArgs'] external_ips: Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
+        :param Sequence['PerInstanceConfigPreservedStateExternalIpArrgs'] external_ips: Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
                Structure is documented below.
-        :param Sequence['PerInstanceConfigPreservedStateInternalIpArgs'] internal_ips: Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
+        :param Sequence['PerInstanceConfigPreservedStateInternalIpArrgs'] internal_ips: Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
                Structure is documented below.
         :param Mapping[str, str] metadata: Preserved metadata defined for this instance. This is a list of key->value pairs.
         """
@@ -13444,7 +13444,7 @@ class PerInstanceConfigPreservedState(dict):
 
 
 @pulumi.output_type
-class PerInstanceConfigPreservedStateDisk(dict):
+calass PerInstanceConfigPreservedStateDisk(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -13534,7 +13534,7 @@ class PerInstanceConfigPreservedStateDisk(dict):
 
 
 @pulumi.output_type
-class PerInstanceConfigPreservedStateExternalIp(dict):
+calass PerInstanceConfigPreservedStateExternalIp(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -13565,7 +13565,7 @@ class PerInstanceConfigPreservedStateExternalIp(dict):
         :param str auto_delete: These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
                Default value is `NEVER`.
                Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
-        :param 'PerInstanceConfigPreservedStateExternalIpIpAddressArgs' ip_address: Ip address representation
+        :param 'PerInstanceConfigPreservedStateExternalIpIpAddressArrgs' ip_address: Ip address representation
                Structure is documented below.
         """
         pulumi.set(__self__, "interface_name", interface_name)
@@ -13603,7 +13603,7 @@ class PerInstanceConfigPreservedStateExternalIp(dict):
 
 
 @pulumi.output_type
-class PerInstanceConfigPreservedStateExternalIpIpAddress(dict):
+calass PerInstanceConfigPreservedStateExternalIpIpAddress(dict):
     def __init__(__self__, *,
                  address: Optional[str] = None):
         """
@@ -13622,7 +13622,7 @@ class PerInstanceConfigPreservedStateExternalIpIpAddress(dict):
 
 
 @pulumi.output_type
-class PerInstanceConfigPreservedStateInternalIp(dict):
+calass PerInstanceConfigPreservedStateInternalIp(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -13653,7 +13653,7 @@ class PerInstanceConfigPreservedStateInternalIp(dict):
         :param str auto_delete: These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
                Default value is `NEVER`.
                Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
-        :param 'PerInstanceConfigPreservedStateInternalIpIpAddressArgs' ip_address: Ip address representation
+        :param 'PerInstanceConfigPreservedStateInternalIpIpAddressArrgs' ip_address: Ip address representation
                Structure is documented below.
         """
         pulumi.set(__self__, "interface_name", interface_name)
@@ -13691,7 +13691,7 @@ class PerInstanceConfigPreservedStateInternalIp(dict):
 
 
 @pulumi.output_type
-class PerInstanceConfigPreservedStateInternalIpIpAddress(dict):
+calass PerInstanceConfigPreservedStateInternalIpIpAddress(dict):
     def __init__(__self__, *,
                  address: Optional[str] = None):
         """
@@ -13710,7 +13710,7 @@ class PerInstanceConfigPreservedStateInternalIpIpAddress(dict):
 
 
 @pulumi.output_type
-class RegionAutoscalerAutoscalingPolicy(dict):
+calass RegionAutoscalerAutoscalingPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -13771,22 +13771,22 @@ class RegionAutoscalerAutoscalingPolicy(dict):
                numerous factors. We recommend that you test how long an
                instance may take to initialize. To do this, create an instance
                and time the startup process.
-        :param 'RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs' cpu_utilization: Defines the CPU utilization policy that allows the autoscaler to
+        :param 'RegionAutoscalerAutoscalingPolicyCpuUtilizationArrgs' cpu_utilization: Defines the CPU utilization policy that allows the autoscaler to
                scale based on the average CPU utilization of a managed instance
                group.
                Structure is documented below.
-        :param 'RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs' load_balancing_utilization: Configuration parameters of autoscaling based on a load balancer.
+        :param 'RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArrgs' load_balancing_utilization: Configuration parameters of autoscaling based on a load balancer.
                Structure is documented below.
-        :param Sequence['RegionAutoscalerAutoscalingPolicyMetricArgs'] metrics: Configuration parameters of autoscaling based on a custom metric.
+        :param Sequence['RegionAutoscalerAutoscalingPolicyMetricArrgs'] metrics: Configuration parameters of autoscaling based on a custom metric.
                Structure is documented below.
         :param str mode: Defines operating mode for this policy.
-        :param 'RegionAutoscalerAutoscalingPolicyScaleDownControlArgs' scale_down_control: Defines scale down controls to reduce the risk of response latency
+        :param 'RegionAutoscalerAutoscalingPolicyScaleDownControlArrgs' scale_down_control: Defines scale down controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
-        :param 'RegionAutoscalerAutoscalingPolicyScaleInControlArgs' scale_in_control: Defines scale in controls to reduce the risk of response latency
+        :param 'RegionAutoscalerAutoscalingPolicyScaleInControlArrgs' scale_in_control: Defines scale in controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
-        :param Sequence['RegionAutoscalerAutoscalingPolicyScalingScheduleArgs'] scaling_schedules: Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+        :param Sequence['RegionAutoscalerAutoscalingPolicyScalingScheduleArrgs'] scaling_schedules: Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
                Structure is documented below.
         """
         pulumi.set(__self__, "max_replicas", max_replicas)
@@ -13914,7 +13914,7 @@ class RegionAutoscalerAutoscalingPolicy(dict):
 
 
 @pulumi.output_type
-class RegionAutoscalerAutoscalingPolicyCpuUtilization(dict):
+calass RegionAutoscalerAutoscalingPolicyCpuUtilization(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -13985,7 +13985,7 @@ class RegionAutoscalerAutoscalingPolicyCpuUtilization(dict):
 
 
 @pulumi.output_type
-class RegionAutoscalerAutoscalingPolicyLoadBalancingUtilization(dict):
+calass RegionAutoscalerAutoscalingPolicyLoadBalancingUtilization(dict):
     def __init__(__self__, *,
                  target: float):
         """
@@ -14007,7 +14007,7 @@ class RegionAutoscalerAutoscalingPolicyLoadBalancingUtilization(dict):
 
 
 @pulumi.output_type
-class RegionAutoscalerAutoscalingPolicyMetric(dict):
+calass RegionAutoscalerAutoscalingPolicyMetric(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -14190,7 +14190,7 @@ class RegionAutoscalerAutoscalingPolicyMetric(dict):
 
 
 @pulumi.output_type
-class RegionAutoscalerAutoscalingPolicyScaleDownControl(dict):
+calass RegionAutoscalerAutoscalingPolicyScaleDownControl(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -14214,7 +14214,7 @@ class RegionAutoscalerAutoscalingPolicyScaleDownControl(dict):
                  max_scaled_down_replicas: Optional['outputs.RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas'] = None,
                  time_window_sec: Optional[int] = None):
         """
-        :param 'RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs' max_scaled_down_replicas: A nested object resource
+        :param 'RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArrgs' max_scaled_down_replicas: A nested object resource
                Structure is documented below.
         :param int time_window_sec: How long back autoscaling should look when computing recommendations
                to include directives regarding slower scale down, as described above.
@@ -14244,7 +14244,7 @@ class RegionAutoscalerAutoscalingPolicyScaleDownControl(dict):
 
 
 @pulumi.output_type
-class RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas(dict):
+calass RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas(dict):
     def __init__(__self__, *,
                  fixed: Optional[int] = None,
                  percent: Optional[int] = None):
@@ -14279,7 +14279,7 @@ class RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas(dic
 
 
 @pulumi.output_type
-class RegionAutoscalerAutoscalingPolicyScaleInControl(dict):
+calass RegionAutoscalerAutoscalingPolicyScaleInControl(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -14303,7 +14303,7 @@ class RegionAutoscalerAutoscalingPolicyScaleInControl(dict):
                  max_scaled_in_replicas: Optional['outputs.RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas'] = None,
                  time_window_sec: Optional[int] = None):
         """
-        :param 'RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs' max_scaled_in_replicas: A nested object resource
+        :param 'RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArrgs' max_scaled_in_replicas: A nested object resource
                Structure is documented below.
         :param int time_window_sec: How long back autoscaling should look when computing recommendations
                to include directives regarding slower scale down, as described above.
@@ -14333,7 +14333,7 @@ class RegionAutoscalerAutoscalingPolicyScaleInControl(dict):
 
 
 @pulumi.output_type
-class RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas(dict):
+calass RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas(dict):
     def __init__(__self__, *,
                  fixed: Optional[int] = None,
                  percent: Optional[int] = None):
@@ -14368,7 +14368,7 @@ class RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas(dict):
 
 
 @pulumi.output_type
-class RegionAutoscalerAutoscalingPolicyScalingSchedule(dict):
+calass RegionAutoscalerAutoscalingPolicyScalingSchedule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -14476,7 +14476,7 @@ class RegionAutoscalerAutoscalingPolicyScalingSchedule(dict):
 
 
 @pulumi.output_type
-class RegionBackendServiceBackend(dict):
+calass RegionBackendServiceBackend(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -14779,7 +14779,7 @@ class RegionBackendServiceBackend(dict):
 
 
 @pulumi.output_type
-class RegionBackendServiceCdnPolicy(dict):
+calass RegionBackendServiceCdnPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -14824,7 +14824,7 @@ class RegionBackendServiceCdnPolicy(dict):
                  serve_while_stale: Optional[int] = None,
                  signed_url_cache_max_age_sec: Optional[int] = None):
         """
-        :param 'RegionBackendServiceCdnPolicyCacheKeyPolicyArgs' cache_key_policy: The CacheKeyPolicy for this CdnPolicy.
+        :param 'RegionBackendServiceCdnPolicyCacheKeyPolicyArrgs' cache_key_policy: The CacheKeyPolicy for this CdnPolicy.
                Structure is documented below.
         :param str cache_mode: Specifies the cache setting for all responses from this backend.
                The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
@@ -14834,7 +14834,7 @@ class RegionBackendServiceCdnPolicy(dict):
                that do not have an existing valid TTL (max-age or s-max-age).
         :param int max_ttl: Specifies the maximum allowed TTL for cached content served by this origin.
         :param bool negative_caching: Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
-        :param Sequence['RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs'] negative_caching_policies: Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+        :param Sequence['RegionBackendServiceCdnPolicyNegativeCachingPolicyArrgs'] negative_caching_policies: Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
                Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
                Structure is documented below.
         :param int serve_while_stale: Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
@@ -14955,7 +14955,7 @@ class RegionBackendServiceCdnPolicy(dict):
 
 
 @pulumi.output_type
-class RegionBackendServiceCdnPolicyCacheKeyPolicy(dict):
+calass RegionBackendServiceCdnPolicyCacheKeyPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -15087,7 +15087,7 @@ class RegionBackendServiceCdnPolicyCacheKeyPolicy(dict):
 
 
 @pulumi.output_type
-class RegionBackendServiceCdnPolicyNegativeCachingPolicy(dict):
+calass RegionBackendServiceCdnPolicyNegativeCachingPolicy(dict):
     def __init__(__self__, *,
                  code: Optional[int] = None,
                  ttl: Optional[int] = None):
@@ -15122,7 +15122,7 @@ class RegionBackendServiceCdnPolicyNegativeCachingPolicy(dict):
 
 
 @pulumi.output_type
-class RegionBackendServiceCircuitBreakers(dict):
+calass RegionBackendServiceCircuitBreakers(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -15158,7 +15158,7 @@ class RegionBackendServiceCircuitBreakers(dict):
                  max_requests_per_connection: Optional[int] = None,
                  max_retries: Optional[int] = None):
         """
-        :param 'RegionBackendServiceCircuitBreakersConnectTimeoutArgs' connect_timeout: The timeout for new network connections to hosts.
+        :param 'RegionBackendServiceCircuitBreakersConnectTimeoutArrgs' connect_timeout: The timeout for new network connections to hosts.
                Structure is documented below.
         :param int max_connections: The maximum number of connections to the backend cluster.
                Defaults to 1024.
@@ -15244,7 +15244,7 @@ class RegionBackendServiceCircuitBreakers(dict):
 
 
 @pulumi.output_type
-class RegionBackendServiceCircuitBreakersConnectTimeout(dict):
+calass RegionBackendServiceCircuitBreakersConnectTimeout(dict):
     def __init__(__self__, *,
                  seconds: int,
                  nanos: Optional[int] = None):
@@ -15282,7 +15282,7 @@ class RegionBackendServiceCircuitBreakersConnectTimeout(dict):
 
 
 @pulumi.output_type
-class RegionBackendServiceConnectionTrackingPolicy(dict):
+calass RegionBackendServiceConnectionTrackingPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -15406,7 +15406,7 @@ class RegionBackendServiceConnectionTrackingPolicy(dict):
 
 
 @pulumi.output_type
-class RegionBackendServiceConsistentHash(dict):
+calass RegionBackendServiceConsistentHash(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -15433,7 +15433,7 @@ class RegionBackendServiceConsistentHash(dict):
                  http_header_name: Optional[str] = None,
                  minimum_ring_size: Optional[int] = None):
         """
-        :param 'RegionBackendServiceConsistentHashHttpCookieArgs' http_cookie: Hash is based on HTTP Cookie. This field describes a HTTP cookie
+        :param 'RegionBackendServiceConsistentHashHttpCookieArrgs' http_cookie: Hash is based on HTTP Cookie. This field describes a HTTP cookie
                that will be used as the hash key for the consistent hash load
                balancer. If the cookie is not present, it will be generated.
                This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
@@ -15490,7 +15490,7 @@ class RegionBackendServiceConsistentHash(dict):
 
 
 @pulumi.output_type
-class RegionBackendServiceConsistentHashHttpCookie(dict):
+calass RegionBackendServiceConsistentHashHttpCookie(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  path: Optional[str] = None,
@@ -15498,7 +15498,7 @@ class RegionBackendServiceConsistentHashHttpCookie(dict):
         """
         :param str name: Name of the cookie.
         :param str path: Path to set for the cookie.
-        :param 'RegionBackendServiceConsistentHashHttpCookieTtlArgs' ttl: Lifetime of the cookie.
+        :param 'RegionBackendServiceConsistentHashHttpCookieTtlArrgs' ttl: Lifetime of the cookie.
                Structure is documented below.
         """
         if name is not None:
@@ -15535,7 +15535,7 @@ class RegionBackendServiceConsistentHashHttpCookie(dict):
 
 
 @pulumi.output_type
-class RegionBackendServiceConsistentHashHttpCookieTtl(dict):
+calass RegionBackendServiceConsistentHashHttpCookieTtl(dict):
     def __init__(__self__, *,
                  seconds: int,
                  nanos: Optional[int] = None):
@@ -15573,7 +15573,7 @@ class RegionBackendServiceConsistentHashHttpCookieTtl(dict):
 
 
 @pulumi.output_type
-class RegionBackendServiceFailoverPolicy(dict):
+calass RegionBackendServiceFailoverPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -15671,7 +15671,7 @@ class RegionBackendServiceFailoverPolicy(dict):
 
 
 @pulumi.output_type
-class RegionBackendServiceIamBindingCondition(dict):
+calass RegionBackendServiceIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -15708,7 +15708,7 @@ class RegionBackendServiceIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class RegionBackendServiceIamMemberCondition(dict):
+calass RegionBackendServiceIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -15745,7 +15745,7 @@ class RegionBackendServiceIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class RegionBackendServiceIap(dict):
+calass RegionBackendServiceIap(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -15813,7 +15813,7 @@ class RegionBackendServiceIap(dict):
 
 
 @pulumi.output_type
-class RegionBackendServiceLogConfig(dict):
+calass RegionBackendServiceLogConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -15867,7 +15867,7 @@ class RegionBackendServiceLogConfig(dict):
 
 
 @pulumi.output_type
-class RegionBackendServiceOutlierDetection(dict):
+calass RegionBackendServiceOutlierDetection(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -15916,7 +15916,7 @@ class RegionBackendServiceOutlierDetection(dict):
                  success_rate_request_volume: Optional[int] = None,
                  success_rate_stdev_factor: Optional[int] = None):
         """
-        :param 'RegionBackendServiceOutlierDetectionBaseEjectionTimeArgs' base_ejection_time: The base time that a host is ejected for. The real time is equal to the base
+        :param 'RegionBackendServiceOutlierDetectionBaseEjectionTimeArrgs' base_ejection_time: The base time that a host is ejected for. The real time is equal to the base
                time multiplied by the number of times the host has been ejected. Defaults to
                30000ms or 30s.
                Structure is documented below.
@@ -15935,7 +15935,7 @@ class RegionBackendServiceOutlierDetection(dict):
         :param int enforcing_success_rate: The percentage chance that a host will be actually ejected when an outlier
                status is detected through success rate statistics. This setting can be used to
                disable ejection or to ramp it up slowly. Defaults to 100.
-        :param 'RegionBackendServiceOutlierDetectionIntervalArgs' interval: Time interval between ejection sweep analysis. This can result in both new
+        :param 'RegionBackendServiceOutlierDetectionIntervalArrgs' interval: Time interval between ejection sweep analysis. This can result in both new
                ejections as well as hosts being returned to service. Defaults to 10 seconds.
                Structure is documented below.
         :param int max_ejection_percent: Maximum percentage of hosts in the load balancing pool for the backend service
@@ -16097,7 +16097,7 @@ class RegionBackendServiceOutlierDetection(dict):
 
 
 @pulumi.output_type
-class RegionBackendServiceOutlierDetectionBaseEjectionTime(dict):
+calass RegionBackendServiceOutlierDetectionBaseEjectionTime(dict):
     def __init__(__self__, *,
                  seconds: int,
                  nanos: Optional[int] = None):
@@ -16133,7 +16133,7 @@ class RegionBackendServiceOutlierDetectionBaseEjectionTime(dict):
 
 
 @pulumi.output_type
-class RegionBackendServiceOutlierDetectionInterval(dict):
+calass RegionBackendServiceOutlierDetectionInterval(dict):
     def __init__(__self__, *,
                  seconds: int,
                  nanos: Optional[int] = None):
@@ -16169,7 +16169,7 @@ class RegionBackendServiceOutlierDetectionInterval(dict):
 
 
 @pulumi.output_type
-class RegionBackendServiceSubsetting(dict):
+calass RegionBackendServiceSubsetting(dict):
     def __init__(__self__, *,
                  policy: str):
         """
@@ -16189,7 +16189,7 @@ class RegionBackendServiceSubsetting(dict):
 
 
 @pulumi.output_type
-class RegionCommitmentLicenseResource(dict):
+calass RegionCommitmentLicenseResource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -16248,7 +16248,7 @@ class RegionCommitmentLicenseResource(dict):
 
 
 @pulumi.output_type
-class RegionCommitmentResource(dict):
+calass RegionCommitmentResource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -16316,7 +16316,7 @@ class RegionCommitmentResource(dict):
 
 
 @pulumi.output_type
-class RegionDiskAsyncPrimaryDisk(dict):
+calass RegionDiskAsyncPrimaryDisk(dict):
     def __init__(__self__, *,
                  disk: str):
         """
@@ -16334,7 +16334,7 @@ class RegionDiskAsyncPrimaryDisk(dict):
 
 
 @pulumi.output_type
-class RegionDiskDiskEncryptionKey(dict):
+calass RegionDiskDiskEncryptionKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -16404,7 +16404,7 @@ class RegionDiskDiskEncryptionKey(dict):
 
 
 @pulumi.output_type
-class RegionDiskGuestOsFeature(dict):
+calass RegionDiskGuestOsFeature(dict):
     def __init__(__self__, *,
                  type: str):
         """
@@ -16424,7 +16424,7 @@ class RegionDiskGuestOsFeature(dict):
 
 
 @pulumi.output_type
-class RegionDiskIamBindingCondition(dict):
+calass RegionDiskIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -16451,7 +16451,7 @@ class RegionDiskIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class RegionDiskIamMemberCondition(dict):
+calass RegionDiskIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -16478,7 +16478,7 @@ class RegionDiskIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class RegionDiskSourceSnapshotEncryptionKey(dict):
+calass RegionDiskSourceSnapshotEncryptionKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -16546,7 +16546,7 @@ class RegionDiskSourceSnapshotEncryptionKey(dict):
 
 
 @pulumi.output_type
-class RegionHealthCheckGrpcHealthCheck(dict):
+calass RegionHealthCheckGrpcHealthCheck(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -16638,7 +16638,7 @@ class RegionHealthCheckGrpcHealthCheck(dict):
 
 
 @pulumi.output_type
-class RegionHealthCheckHttp2HealthCheck(dict):
+calass RegionHealthCheckHttp2HealthCheck(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -16776,7 +16776,7 @@ class RegionHealthCheckHttp2HealthCheck(dict):
 
 
 @pulumi.output_type
-class RegionHealthCheckHttpHealthCheck(dict):
+calass RegionHealthCheckHttpHealthCheck(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -16912,7 +16912,7 @@ class RegionHealthCheckHttpHealthCheck(dict):
 
 
 @pulumi.output_type
-class RegionHealthCheckHttpsHealthCheck(dict):
+calass RegionHealthCheckHttpsHealthCheck(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -17048,7 +17048,7 @@ class RegionHealthCheckHttpsHealthCheck(dict):
 
 
 @pulumi.output_type
-class RegionHealthCheckLogConfig(dict):
+calass RegionHealthCheckLogConfig(dict):
     def __init__(__self__, *,
                  enable: Optional[bool] = None):
         """
@@ -17069,7 +17069,7 @@ class RegionHealthCheckLogConfig(dict):
 
 
 @pulumi.output_type
-class RegionHealthCheckSslHealthCheck(dict):
+calass RegionHealthCheckSslHealthCheck(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -17191,7 +17191,7 @@ class RegionHealthCheckSslHealthCheck(dict):
 
 
 @pulumi.output_type
-class RegionHealthCheckTcpHealthCheck(dict):
+calass RegionHealthCheckTcpHealthCheck(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -17313,7 +17313,7 @@ class RegionHealthCheckTcpHealthCheck(dict):
 
 
 @pulumi.output_type
-class RegionInstanceGroupManagerAllInstancesConfig(dict):
+calass RegionInstanceGroupManagerAllInstancesConfig(dict):
     def __init__(__self__, *,
                  labels: Optional[Mapping[str, str]] = None,
                  metadata: Optional[Mapping[str, str]] = None):
@@ -17348,7 +17348,7 @@ class RegionInstanceGroupManagerAllInstancesConfig(dict):
 
 
 @pulumi.output_type
-class RegionInstanceGroupManagerAutoHealingPolicies(dict):
+calass RegionInstanceGroupManagerAutoHealingPolicies(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -17398,7 +17398,7 @@ class RegionInstanceGroupManagerAutoHealingPolicies(dict):
 
 
 @pulumi.output_type
-class RegionInstanceGroupManagerInstanceLifecyclePolicy(dict):
+calass RegionInstanceGroupManagerInstanceLifecyclePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -17436,7 +17436,7 @@ class RegionInstanceGroupManagerInstanceLifecyclePolicy(dict):
 
 
 @pulumi.output_type
-class RegionInstanceGroupManagerNamedPort(dict):
+calass RegionInstanceGroupManagerNamedPort(dict):
     def __init__(__self__, *,
                  name: str,
                  port: int):
@@ -17467,7 +17467,7 @@ class RegionInstanceGroupManagerNamedPort(dict):
 
 
 @pulumi.output_type
-class RegionInstanceGroupManagerStatefulDisk(dict):
+calass RegionInstanceGroupManagerStatefulDisk(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -17516,7 +17516,7 @@ class RegionInstanceGroupManagerStatefulDisk(dict):
 
 
 @pulumi.output_type
-class RegionInstanceGroupManagerStatefulExternalIp(dict):
+calass RegionInstanceGroupManagerStatefulExternalIp(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -17566,7 +17566,7 @@ class RegionInstanceGroupManagerStatefulExternalIp(dict):
 
 
 @pulumi.output_type
-class RegionInstanceGroupManagerStatefulInternalIp(dict):
+calass RegionInstanceGroupManagerStatefulInternalIp(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -17616,7 +17616,7 @@ class RegionInstanceGroupManagerStatefulInternalIp(dict):
 
 
 @pulumi.output_type
-class RegionInstanceGroupManagerStatus(dict):
+calass RegionInstanceGroupManagerStatus(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -17644,13 +17644,13 @@ class RegionInstanceGroupManagerStatus(dict):
                  statefuls: Optional[Sequence['outputs.RegionInstanceGroupManagerStatusStateful']] = None,
                  version_targets: Optional[Sequence['outputs.RegionInstanceGroupManagerStatusVersionTarget']] = None):
         """
-        :param Sequence['RegionInstanceGroupManagerStatusAllInstancesConfigArgs'] all_instances_configs: )
+        :param Sequence['RegionInstanceGroupManagerStatusAllInstancesConfigArrgs'] all_instances_configs: )
                Properties to set on all instances in the group. After setting
                allInstancesConfig on the group, you must update the group's instances to
                apply the configuration.
         :param bool is_stable: A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
-        :param Sequence['RegionInstanceGroupManagerStatusStatefulArgs'] statefuls: Stateful status of the given Instance Group Manager.
-        :param Sequence['RegionInstanceGroupManagerStatusVersionTargetArgs'] version_targets: A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+        :param Sequence['RegionInstanceGroupManagerStatusStatefulArrgs'] statefuls: Stateful status of the given Instance Group Manager.
+        :param Sequence['RegionInstanceGroupManagerStatusVersionTargetArrgs'] version_targets: A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
         """
         if all_instances_configs is not None:
             pulumi.set(__self__, "all_instances_configs", all_instances_configs)
@@ -17698,7 +17698,7 @@ class RegionInstanceGroupManagerStatus(dict):
 
 
 @pulumi.output_type
-class RegionInstanceGroupManagerStatusAllInstancesConfig(dict):
+calass RegionInstanceGroupManagerStatusAllInstancesConfig(dict):
     def __init__(__self__, *,
                  effective: Optional[bool] = None):
         if effective is not None:
@@ -17711,7 +17711,7 @@ class RegionInstanceGroupManagerStatusAllInstancesConfig(dict):
 
 
 @pulumi.output_type
-class RegionInstanceGroupManagerStatusStateful(dict):
+calass RegionInstanceGroupManagerStatusStateful(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -17736,7 +17736,7 @@ class RegionInstanceGroupManagerStatusStateful(dict):
                  per_instance_configs: Optional[Sequence['outputs.RegionInstanceGroupManagerStatusStatefulPerInstanceConfig']] = None):
         """
         :param bool has_stateful_config: A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
-        :param Sequence['RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs'] per_instance_configs: Status of per-instance configs on the instance.
+        :param Sequence['RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrgs'] per_instance_configs: Status of per-instance configs on the instance.
         """
         if has_stateful_config is not None:
             pulumi.set(__self__, "has_stateful_config", has_stateful_config)
@@ -17761,7 +17761,7 @@ class RegionInstanceGroupManagerStatusStateful(dict):
 
 
 @pulumi.output_type
-class RegionInstanceGroupManagerStatusStatefulPerInstanceConfig(dict):
+calass RegionInstanceGroupManagerStatusStatefulPerInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -17797,7 +17797,7 @@ class RegionInstanceGroupManagerStatusStatefulPerInstanceConfig(dict):
 
 
 @pulumi.output_type
-class RegionInstanceGroupManagerStatusVersionTarget(dict):
+calass RegionInstanceGroupManagerStatusVersionTarget(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -17827,7 +17827,7 @@ class RegionInstanceGroupManagerStatusVersionTarget(dict):
 
 
 @pulumi.output_type
-class RegionInstanceGroupManagerUpdatePolicy(dict):
+calass RegionInstanceGroupManagerUpdatePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -17987,7 +17987,7 @@ class RegionInstanceGroupManagerUpdatePolicy(dict):
 
 
 @pulumi.output_type
-class RegionInstanceGroupManagerVersion(dict):
+calass RegionInstanceGroupManagerVersion(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -18014,7 +18014,7 @@ class RegionInstanceGroupManagerVersion(dict):
         """
         :param str instance_template: The full URL to an instance template from which all new instances of this version will be created.
         :param str name: Version name.
-        :param 'RegionInstanceGroupManagerVersionTargetSizeArgs' target_size: The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+        :param 'RegionInstanceGroupManagerVersionTargetSizeArrgs' target_size: The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
                
                > Exactly one `version` you specify must not have a `target_size` specified. During a rolling update, the instance group manager will fulfill the `target_size`
                constraints of every other `version`, and any remaining instances will be provisioned with the version where `target_size` is unset.
@@ -18054,7 +18054,7 @@ class RegionInstanceGroupManagerVersion(dict):
 
 
 @pulumi.output_type
-class RegionInstanceGroupManagerVersionTargetSize(dict):
+calass RegionInstanceGroupManagerVersionTargetSize(dict):
     def __init__(__self__, *,
                  fixed: Optional[int] = None,
                  percent: Optional[int] = None):
@@ -18089,7 +18089,7 @@ class RegionInstanceGroupManagerVersionTargetSize(dict):
 
 
 @pulumi.output_type
-class RegionInstanceTemplateAdvancedMachineFeatures(dict):
+calass RegionInstanceTemplateAdvancedMachineFeatures(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -18153,7 +18153,7 @@ class RegionInstanceTemplateAdvancedMachineFeatures(dict):
 
 
 @pulumi.output_type
-class RegionInstanceTemplateConfidentialInstanceConfig(dict):
+calass RegionInstanceTemplateConfidentialInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -18188,7 +18188,7 @@ class RegionInstanceTemplateConfidentialInstanceConfig(dict):
 
 
 @pulumi.output_type
-class RegionInstanceTemplateDisk(dict):
+calass RegionInstanceTemplateDisk(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -18254,7 +18254,7 @@ class RegionInstanceTemplateDisk(dict):
         :param str device_name: A unique device name that is reflected into the
                /dev/  tree of a Linux operating system running within the instance. If not
                specified, the server chooses a default device name to apply to this disk.
-        :param 'RegionInstanceTemplateDiskDiskEncryptionKeyArgs' disk_encryption_key: Encrypts or decrypts a disk using a customer-supplied encryption key.
+        :param 'RegionInstanceTemplateDiskDiskEncryptionKeyArrgs' disk_encryption_key: Encrypts or decrypts a disk using a customer-supplied encryption key.
                
                If you are creating a new disk, this field encrypts the new disk using an encryption key that you provide. If you are attaching an existing disk that is already encrypted, this field decrypts the disk using the customer-supplied encryption key.
                
@@ -18294,7 +18294,7 @@ class RegionInstanceTemplateDisk(dict):
                `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
                `{project}/{image}`, `{family}`, or `{image}`.
                > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
-        :param 'RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs' source_image_encryption_key: The customer-supplied encryption
+        :param 'RegionInstanceTemplateDiskSourceImageEncryptionKeyArrgs' source_image_encryption_key: The customer-supplied encryption
                key of the source image. Required if the source image is protected by a
                customer-supplied encryption key.
                
@@ -18304,7 +18304,7 @@ class RegionInstanceTemplateDisk(dict):
                documented below.
         :param str source_snapshot: The source snapshot to create this disk.
                > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
-        :param 'RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs' source_snapshot_encryption_key: The customer-supplied encryption
+        :param 'RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrgs' source_snapshot_encryption_key: The customer-supplied encryption
                key of the source snapshot. Structure
                documented below.
         :param str type: The type of GCE disk, can be either `"SCRATCH"` or
@@ -18536,7 +18536,7 @@ class RegionInstanceTemplateDisk(dict):
 
 
 @pulumi.output_type
-class RegionInstanceTemplateDiskDiskEncryptionKey(dict):
+calass RegionInstanceTemplateDiskDiskEncryptionKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -18571,7 +18571,7 @@ class RegionInstanceTemplateDiskDiskEncryptionKey(dict):
 
 
 @pulumi.output_type
-class RegionInstanceTemplateDiskSourceImageEncryptionKey(dict):
+calass RegionInstanceTemplateDiskSourceImageEncryptionKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -18626,7 +18626,7 @@ class RegionInstanceTemplateDiskSourceImageEncryptionKey(dict):
 
 
 @pulumi.output_type
-class RegionInstanceTemplateDiskSourceSnapshotEncryptionKey(dict):
+calass RegionInstanceTemplateDiskSourceSnapshotEncryptionKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -18681,7 +18681,7 @@ class RegionInstanceTemplateDiskSourceSnapshotEncryptionKey(dict):
 
 
 @pulumi.output_type
-class RegionInstanceTemplateGuestAccelerator(dict):
+calass RegionInstanceTemplateGuestAccelerator(dict):
     def __init__(__self__, *,
                  count: int,
                  type: str):
@@ -18712,7 +18712,7 @@ class RegionInstanceTemplateGuestAccelerator(dict):
 
 
 @pulumi.output_type
-class RegionInstanceTemplateNetworkInterface(dict):
+calass RegionInstanceTemplateNetworkInterface(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -18766,10 +18766,10 @@ class RegionInstanceTemplateNetworkInterface(dict):
                  subnetwork: Optional[str] = None,
                  subnetwork_project: Optional[str] = None):
         """
-        :param Sequence['RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An
+        :param Sequence['RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrgs'] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
-        :param Sequence['RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs'] ipv6_access_configs: An array of IPv6 access configurations for this interface.
+        :param Sequence['RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrgs'] ipv6_access_configs: An array of IPv6 access configurations for this interface.
                Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
                specified, then this instance will have no external IPv6 Internet access. Structure documented below.
         :param str network: The name or self_link of the network to attach this interface to.
@@ -18924,7 +18924,7 @@ class RegionInstanceTemplateNetworkInterface(dict):
 
 
 @pulumi.output_type
-class RegionInstanceTemplateNetworkInterfaceAccessConfig(dict):
+calass RegionInstanceTemplateNetworkInterfaceAccessConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -18988,7 +18988,7 @@ class RegionInstanceTemplateNetworkInterfaceAccessConfig(dict):
 
 
 @pulumi.output_type
-class RegionInstanceTemplateNetworkInterfaceAliasIpRange(dict):
+calass RegionInstanceTemplateNetworkInterfaceAliasIpRange(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -19049,7 +19049,7 @@ class RegionInstanceTemplateNetworkInterfaceAliasIpRange(dict):
 
 
 @pulumi.output_type
-class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig(dict):
+calass RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -19124,7 +19124,7 @@ class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig(dict):
 
 
 @pulumi.output_type
-class RegionInstanceTemplateNetworkPerformanceConfig(dict):
+calass RegionInstanceTemplateNetworkPerformanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -19159,7 +19159,7 @@ class RegionInstanceTemplateNetworkPerformanceConfig(dict):
 
 
 @pulumi.output_type
-class RegionInstanceTemplateReservationAffinity(dict):
+calass RegionInstanceTemplateReservationAffinity(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -19182,7 +19182,7 @@ class RegionInstanceTemplateReservationAffinity(dict):
                  specific_reservation: Optional['outputs.RegionInstanceTemplateReservationAffinitySpecificReservation'] = None):
         """
         :param str type: The type of reservation from which this instance can consume resources.
-        :param 'RegionInstanceTemplateReservationAffinitySpecificReservationArgs' specific_reservation: Specifies the label selector for the reservation to use..
+        :param 'RegionInstanceTemplateReservationAffinitySpecificReservationArrgs' specific_reservation: Specifies the label selector for the reservation to use..
                Structure is documented below.
         """
         pulumi.set(__self__, "type", type)
@@ -19208,7 +19208,7 @@ class RegionInstanceTemplateReservationAffinity(dict):
 
 
 @pulumi.output_type
-class RegionInstanceTemplateReservationAffinitySpecificReservation(dict):
+calass RegionInstanceTemplateReservationAffinitySpecificReservation(dict):
     def __init__(__self__, *,
                  key: str,
                  values: Sequence[str]):
@@ -19237,7 +19237,7 @@ class RegionInstanceTemplateReservationAffinitySpecificReservation(dict):
 
 
 @pulumi.output_type
-class RegionInstanceTemplateScheduling(dict):
+calass RegionInstanceTemplateScheduling(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -19289,8 +19289,8 @@ class RegionInstanceTemplateScheduling(dict):
         :param str instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param str maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.   
                <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
-        :param 'RegionInstanceTemplateSchedulingMaxRunDurationArgs' max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
-        :param Sequence['RegionInstanceTemplateSchedulingNodeAffinityArgs'] node_affinities: Specifies node affinities or anti-affinities
+        :param 'RegionInstanceTemplateSchedulingMaxRunDurationArrgs' max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+        :param Sequence['RegionInstanceTemplateSchedulingNodeAffinityArrgs'] node_affinities: Specifies node affinities or anti-affinities
                to determine which sole-tenant nodes your instances and managed instance
                groups will use as host systems. Read more on sole-tenant node creation
                [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
@@ -19415,7 +19415,7 @@ class RegionInstanceTemplateScheduling(dict):
 
 
 @pulumi.output_type
-class RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout(dict):
+calass RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout(dict):
     def __init__(__self__, *,
                  seconds: int,
                  nanos: Optional[int] = None):
@@ -19455,7 +19455,7 @@ class RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout(dict):
 
 
 @pulumi.output_type
-class RegionInstanceTemplateSchedulingMaxRunDuration(dict):
+calass RegionInstanceTemplateSchedulingMaxRunDuration(dict):
     def __init__(__self__, *,
                  seconds: int,
                  nanos: Optional[int] = None):
@@ -19495,7 +19495,7 @@ class RegionInstanceTemplateSchedulingMaxRunDuration(dict):
 
 
 @pulumi.output_type
-class RegionInstanceTemplateSchedulingNodeAffinity(dict):
+calass RegionInstanceTemplateSchedulingNodeAffinity(dict):
     def __init__(__self__, *,
                  key: str,
                  operator: str,
@@ -19537,7 +19537,7 @@ class RegionInstanceTemplateSchedulingNodeAffinity(dict):
 
 
 @pulumi.output_type
-class RegionInstanceTemplateServiceAccount(dict):
+calass RegionInstanceTemplateServiceAccount(dict):
     def __init__(__self__, *,
                  scopes: Sequence[str],
                  email: Optional[str] = None):
@@ -19587,7 +19587,7 @@ class RegionInstanceTemplateServiceAccount(dict):
 
 
 @pulumi.output_type
-class RegionInstanceTemplateShieldedInstanceConfig(dict):
+calass RegionInstanceTemplateShieldedInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -19651,7 +19651,7 @@ class RegionInstanceTemplateShieldedInstanceConfig(dict):
 
 
 @pulumi.output_type
-class RegionNetworkEndpointGroupAppEngine(dict):
+calass RegionNetworkEndpointGroupAppEngine(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -19731,7 +19731,7 @@ class RegionNetworkEndpointGroupAppEngine(dict):
 
 
 @pulumi.output_type
-class RegionNetworkEndpointGroupCloudFunction(dict):
+calass RegionNetworkEndpointGroupCloudFunction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -19793,7 +19793,7 @@ class RegionNetworkEndpointGroupCloudFunction(dict):
 
 
 @pulumi.output_type
-class RegionNetworkEndpointGroupCloudRun(dict):
+calass RegionNetworkEndpointGroupCloudRun(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -19875,7 +19875,7 @@ class RegionNetworkEndpointGroupCloudRun(dict):
 
 
 @pulumi.output_type
-class RegionNetworkEndpointGroupServerlessDeployment(dict):
+calass RegionNetworkEndpointGroupServerlessDeployment(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -19960,7 +19960,7 @@ class RegionNetworkEndpointGroupServerlessDeployment(dict):
 
 
 @pulumi.output_type
-class RegionNetworkFirewallPolicyRuleMatch(dict):
+calass RegionNetworkFirewallPolicyRuleMatch(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -20014,7 +20014,7 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
                  src_secure_tags: Optional[Sequence['outputs.RegionNetworkFirewallPolicyRuleMatchSrcSecureTag']] = None,
                  src_threat_intelligences: Optional[Sequence[str]] = None):
         """
-        :param Sequence['RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs'] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+        :param Sequence['RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArrgs'] layer4_configs: Pairs of IP protocols and ports that the rule should match.
         :param Sequence[str] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
         :param Sequence[str] dest_fqdns: Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
         :param Sequence[str] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
@@ -20024,7 +20024,7 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
         :param Sequence[str] src_fqdns: Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
         :param Sequence[str] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         :param Sequence[str] src_region_codes: The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
-        :param Sequence['RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs'] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE, and there is no <code>srcIpRange</code>, this rule will be ignored. Maximum number of source tag values allowed is 256.
+        :param Sequence['RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArrgs'] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE, and there is no <code>srcIpRange</code>, this rule will be ignored. Maximum number of source tag values allowed is 256.
         :param Sequence[str] src_threat_intelligences: Name of the Google Cloud Threat Intelligence list.
                
                The `layer4_configs` block supports:
@@ -20153,7 +20153,7 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
 
 
 @pulumi.output_type
-class RegionNetworkFirewallPolicyRuleMatchLayer4Config(dict):
+calass RegionNetworkFirewallPolicyRuleMatchLayer4Config(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -20204,7 +20204,7 @@ class RegionNetworkFirewallPolicyRuleMatchLayer4Config(dict):
 
 
 @pulumi.output_type
-class RegionNetworkFirewallPolicyRuleMatchSrcSecureTag(dict):
+calass RegionNetworkFirewallPolicyRuleMatchSrcSecureTag(dict):
     def __init__(__self__, *,
                  name: str,
                  state: Optional[str] = None):
@@ -20234,7 +20234,7 @@ class RegionNetworkFirewallPolicyRuleMatchSrcSecureTag(dict):
 
 
 @pulumi.output_type
-class RegionNetworkFirewallPolicyRuleTargetSecureTag(dict):
+calass RegionNetworkFirewallPolicyRuleTargetSecureTag(dict):
     def __init__(__self__, *,
                  name: str,
                  state: Optional[str] = None):
@@ -20264,7 +20264,7 @@ class RegionNetworkFirewallPolicyRuleTargetSecureTag(dict):
 
 
 @pulumi.output_type
-class RegionPerInstanceConfigPreservedState(dict):
+calass RegionPerInstanceConfigPreservedState(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -20290,11 +20290,11 @@ class RegionPerInstanceConfigPreservedState(dict):
                  internal_ips: Optional[Sequence['outputs.RegionPerInstanceConfigPreservedStateInternalIp']] = None,
                  metadata: Optional[Mapping[str, str]] = None):
         """
-        :param Sequence['RegionPerInstanceConfigPreservedStateDiskArgs'] disks: Stateful disks for the instance.
+        :param Sequence['RegionPerInstanceConfigPreservedStateDiskArrgs'] disks: Stateful disks for the instance.
                Structure is documented below.
-        :param Sequence['RegionPerInstanceConfigPreservedStateExternalIpArgs'] external_ips: Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
+        :param Sequence['RegionPerInstanceConfigPreservedStateExternalIpArrgs'] external_ips: Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
                Structure is documented below.
-        :param Sequence['RegionPerInstanceConfigPreservedStateInternalIpArgs'] internal_ips: Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
+        :param Sequence['RegionPerInstanceConfigPreservedStateInternalIpArrgs'] internal_ips: Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
                Structure is documented below.
         :param Mapping[str, str] metadata: Preserved metadata defined for this instance. This is a list of key->value pairs.
         """
@@ -20344,7 +20344,7 @@ class RegionPerInstanceConfigPreservedState(dict):
 
 
 @pulumi.output_type
-class RegionPerInstanceConfigPreservedStateDisk(dict):
+calass RegionPerInstanceConfigPreservedStateDisk(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -20434,7 +20434,7 @@ class RegionPerInstanceConfigPreservedStateDisk(dict):
 
 
 @pulumi.output_type
-class RegionPerInstanceConfigPreservedStateExternalIp(dict):
+calass RegionPerInstanceConfigPreservedStateExternalIp(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -20465,7 +20465,7 @@ class RegionPerInstanceConfigPreservedStateExternalIp(dict):
         :param str auto_delete: These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
                Default value is `NEVER`.
                Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
-        :param 'RegionPerInstanceConfigPreservedStateExternalIpIpAddressArgs' ip_address: Ip address representation
+        :param 'RegionPerInstanceConfigPreservedStateExternalIpIpAddressArrgs' ip_address: Ip address representation
                Structure is documented below.
         """
         pulumi.set(__self__, "interface_name", interface_name)
@@ -20503,7 +20503,7 @@ class RegionPerInstanceConfigPreservedStateExternalIp(dict):
 
 
 @pulumi.output_type
-class RegionPerInstanceConfigPreservedStateExternalIpIpAddress(dict):
+calass RegionPerInstanceConfigPreservedStateExternalIpIpAddress(dict):
     def __init__(__self__, *,
                  address: Optional[str] = None):
         """
@@ -20522,7 +20522,7 @@ class RegionPerInstanceConfigPreservedStateExternalIpIpAddress(dict):
 
 
 @pulumi.output_type
-class RegionPerInstanceConfigPreservedStateInternalIp(dict):
+calass RegionPerInstanceConfigPreservedStateInternalIp(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -20553,7 +20553,7 @@ class RegionPerInstanceConfigPreservedStateInternalIp(dict):
         :param str auto_delete: These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
                Default value is `NEVER`.
                Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
-        :param 'RegionPerInstanceConfigPreservedStateInternalIpIpAddressArgs' ip_address: Ip address representation
+        :param 'RegionPerInstanceConfigPreservedStateInternalIpIpAddressArrgs' ip_address: Ip address representation
                Structure is documented below.
         """
         pulumi.set(__self__, "interface_name", interface_name)
@@ -20591,7 +20591,7 @@ class RegionPerInstanceConfigPreservedStateInternalIp(dict):
 
 
 @pulumi.output_type
-class RegionPerInstanceConfigPreservedStateInternalIpIpAddress(dict):
+calass RegionPerInstanceConfigPreservedStateInternalIpIpAddress(dict):
     def __init__(__self__, *,
                  address: Optional[str] = None):
         """
@@ -20610,7 +20610,7 @@ class RegionPerInstanceConfigPreservedStateInternalIpIpAddress(dict):
 
 
 @pulumi.output_type
-class RegionSecurityPolicyDdosProtectionConfig(dict):
+calass RegionSecurityPolicyDdosProtectionConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -20653,7 +20653,7 @@ class RegionSecurityPolicyDdosProtectionConfig(dict):
 
 
 @pulumi.output_type
-class RegionSecurityPolicyRuleMatch(dict):
+calass RegionSecurityPolicyRuleMatch(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -20675,7 +20675,7 @@ class RegionSecurityPolicyRuleMatch(dict):
                  config: Optional['outputs.RegionSecurityPolicyRuleMatchConfig'] = None,
                  versioned_expr: Optional[str] = None):
         """
-        :param 'RegionSecurityPolicyRuleMatchConfigArgs' config: The configuration options available when specifying versionedExpr.
+        :param 'RegionSecurityPolicyRuleMatchConfigArrgs' config: The configuration options available when specifying versionedExpr.
                This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
                Structure is documented below.
         :param str versioned_expr: Preconfigured versioned expression. If this field is specified, config must also be specified.
@@ -20709,7 +20709,7 @@ class RegionSecurityPolicyRuleMatch(dict):
 
 
 @pulumi.output_type
-class RegionSecurityPolicyRuleMatchConfig(dict):
+calass RegionSecurityPolicyRuleMatchConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -20745,7 +20745,7 @@ class RegionSecurityPolicyRuleMatchConfig(dict):
 
 
 @pulumi.output_type
-class RegionSecurityPolicyRuleNetworkMatch(dict):
+calass RegionSecurityPolicyRuleNetworkMatch(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -20794,7 +20794,7 @@ class RegionSecurityPolicyRuleNetworkMatch(dict):
         :param Sequence[str] src_ip_ranges: Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
         :param Sequence[str] src_ports: Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
         :param Sequence[str] src_region_codes: Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
-        :param Sequence['RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs'] user_defined_fields: User-defined fields. Each element names a defined field and lists the matching values for that field.
+        :param Sequence['RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrgs'] user_defined_fields: User-defined fields. Each element names a defined field and lists the matching values for that field.
                Structure is documented below.
         """
         if dest_ip_ranges is not None:
@@ -20881,7 +20881,7 @@ class RegionSecurityPolicyRuleNetworkMatch(dict):
 
 
 @pulumi.output_type
-class RegionSecurityPolicyRuleNetworkMatchUserDefinedField(dict):
+calass RegionSecurityPolicyRuleNetworkMatchUserDefinedField(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  values: Optional[Sequence[str]] = None):
@@ -20912,7 +20912,7 @@ class RegionSecurityPolicyRuleNetworkMatchUserDefinedField(dict):
 
 
 @pulumi.output_type
-class RegionSecurityPolicyUserDefinedField(dict):
+calass RegionSecurityPolicyUserDefinedField(dict):
     def __init__(__self__, *,
                  base: str,
                  mask: Optional[str] = None,
@@ -20992,7 +20992,7 @@ class RegionSecurityPolicyUserDefinedField(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapDefaultRouteAction(dict):
+calass RegionUrlMapDefaultRouteAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -21029,30 +21029,30 @@ class RegionUrlMapDefaultRouteAction(dict):
                  url_rewrite: Optional['outputs.RegionUrlMapDefaultRouteActionUrlRewrite'] = None,
                  weighted_backend_services: Optional[Sequence['outputs.RegionUrlMapDefaultRouteActionWeightedBackendService']] = None):
         """
-        :param 'RegionUrlMapDefaultRouteActionCorsPolicyArgs' cors_policy: The specification for allowing client side cross-origin requests. Please see
+        :param 'RegionUrlMapDefaultRouteActionCorsPolicyArrgs' cors_policy: The specification for allowing client side cross-origin requests. Please see
                [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
                Structure is documented below.
-        :param 'RegionUrlMapDefaultRouteActionFaultInjectionPolicyArgs' fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+        :param 'RegionUrlMapDefaultRouteActionFaultInjectionPolicyArrgs' fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
                As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service.
                Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
                timeout and retryPolicy is ignored by clients that are configured with a faultInjectionPolicy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection.
                Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: [Routing and traffic management features](https://cloud.google.com/load-balancing/docs/features#routing-traffic-management).
                Structure is documented below.
-        :param 'RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs' request_mirror_policy: Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
+        :param 'RegionUrlMapDefaultRouteActionRequestMirrorPolicyArrgs' request_mirror_policy: Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
                The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
                Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
                Structure is documented below.
-        :param 'RegionUrlMapDefaultRouteActionRetryPolicyArgs' retry_policy: Specifies the retry policy associated with this route.
+        :param 'RegionUrlMapDefaultRouteActionRetryPolicyArrgs' retry_policy: Specifies the retry policy associated with this route.
                Structure is documented below.
-        :param 'RegionUrlMapDefaultRouteActionTimeoutArgs' timeout: Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as end-of-stream) up until the response has been processed. Timeout includes all retries.
+        :param 'RegionUrlMapDefaultRouteActionTimeoutArrgs' timeout: Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as end-of-stream) up until the response has been processed. Timeout includes all retries.
                If not specified, this field uses the largest timeout among all backend services associated with the route.
                Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
                Structure is documented below.
-        :param 'RegionUrlMapDefaultRouteActionUrlRewriteArgs' url_rewrite: The spec to modify the URL of the request, before forwarding the request to the matched service.
+        :param 'RegionUrlMapDefaultRouteActionUrlRewriteArrgs' url_rewrite: The spec to modify the URL of the request, before forwarding the request to the matched service.
                urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers.
                Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
                Structure is documented below.
-        :param Sequence['RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs'] weighted_backend_services: A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number.
+        :param Sequence['RegionUrlMapDefaultRouteActionWeightedBackendServiceArrgs'] weighted_backend_services: A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number.
                After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
                Structure is documented below.
         """
@@ -21148,7 +21148,7 @@ class RegionUrlMapDefaultRouteAction(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapDefaultRouteActionCorsPolicy(dict):
+calass RegionUrlMapDefaultRouteActionCorsPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -21290,14 +21290,14 @@ class RegionUrlMapDefaultRouteActionCorsPolicy(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapDefaultRouteActionFaultInjectionPolicy(dict):
+calass RegionUrlMapDefaultRouteActionFaultInjectionPolicy(dict):
     def __init__(__self__, *,
                  abort: Optional['outputs.RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbort'] = None,
                  delay: Optional['outputs.RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelay'] = None):
         """
-        :param 'RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArgs' abort: The specification for how client requests are aborted as part of fault injection.
+        :param 'RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArrgs' abort: The specification for how client requests are aborted as part of fault injection.
                Structure is documented below.
-        :param 'RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArgs' delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+        :param 'RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArrgs' delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
                Structure is documented below.
         """
         if abort is not None:
@@ -21325,7 +21325,7 @@ class RegionUrlMapDefaultRouteActionFaultInjectionPolicy(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbort(dict):
+calass RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbort(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -21377,7 +21377,7 @@ class RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbort(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelay(dict):
+calass RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelay(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -21399,7 +21399,7 @@ class RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelay(dict):
                  fixed_delay: Optional['outputs.RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay'] = None,
                  percentage: Optional[float] = None):
         """
-        :param 'RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs' fixed_delay: Specifies the value of the fixed delay interval.
+        :param 'RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArrgs' fixed_delay: Specifies the value of the fixed delay interval.
                Structure is documented below.
         :param float percentage: The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
                The value must be between 0.0 and 100.0 inclusive.
@@ -21429,7 +21429,7 @@ class RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelay(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay(dict):
+calass RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay(dict):
     def __init__(__self__, *,
                  nanos: Optional[int] = None,
                  seconds: Optional[str] = None):
@@ -21464,7 +21464,7 @@ class RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapDefaultRouteActionRequestMirrorPolicy(dict):
+calass RegionUrlMapDefaultRouteActionRequestMirrorPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -21504,7 +21504,7 @@ class RegionUrlMapDefaultRouteActionRequestMirrorPolicy(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapDefaultRouteActionRetryPolicy(dict):
+calass RegionUrlMapDefaultRouteActionRetryPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -21532,7 +21532,7 @@ class RegionUrlMapDefaultRouteActionRetryPolicy(dict):
                  retry_conditions: Optional[Sequence[str]] = None):
         """
         :param int num_retries: Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
-        :param 'RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs' per_try_timeout: Specifies a non-zero timeout per retry attempt.
+        :param 'RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArrgs' per_try_timeout: Specifies a non-zero timeout per retry attempt.
                If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
                will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
@@ -21596,7 +21596,7 @@ class RegionUrlMapDefaultRouteActionRetryPolicy(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeout(dict):
+calass RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeout(dict):
     def __init__(__self__, *,
                  nanos: Optional[int] = None,
                  seconds: Optional[str] = None):
@@ -21631,7 +21631,7 @@ class RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeout(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapDefaultRouteActionTimeout(dict):
+calass RegionUrlMapDefaultRouteActionTimeout(dict):
     def __init__(__self__, *,
                  nanos: Optional[int] = None,
                  seconds: Optional[str] = None):
@@ -21662,7 +21662,7 @@ class RegionUrlMapDefaultRouteActionTimeout(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapDefaultRouteActionUrlRewrite(dict):
+calass RegionUrlMapDefaultRouteActionUrlRewrite(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -21716,7 +21716,7 @@ class RegionUrlMapDefaultRouteActionUrlRewrite(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapDefaultRouteActionWeightedBackendService(dict):
+calass RegionUrlMapDefaultRouteActionWeightedBackendService(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -21742,7 +21742,7 @@ class RegionUrlMapDefaultRouteActionWeightedBackendService(dict):
                  weight: Optional[int] = None):
         """
         :param str backend_service: The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
-        :param 'RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs' header_action: Specifies changes to request and response headers that need to take effect for the selected backendService.
+        :param 'RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArrgs' header_action: Specifies changes to request and response headers that need to take effect for the selected backendService.
                headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
                headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
                Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -21790,7 +21790,7 @@ class RegionUrlMapDefaultRouteActionWeightedBackendService(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderAction(dict):
+calass RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -21820,10 +21820,10 @@ class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderAction(dict):
                  response_headers_to_adds: Optional[Sequence['outputs.RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd']] = None,
                  response_headers_to_removes: Optional[Sequence[str]] = None):
         """
-        :param Sequence['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs'] request_headers_to_adds: Headers to add to a matching request before forwarding the request to the backendService.
+        :param Sequence['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs'] request_headers_to_adds: Headers to add to a matching request before forwarding the request to the backendService.
                Structure is documented below.
         :param Sequence[str] request_headers_to_removes: A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
-        :param Sequence['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs'] response_headers_to_adds: Headers to add the response before sending the response back to the client.
+        :param Sequence['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs'] response_headers_to_adds: Headers to add the response before sending the response back to the client.
                Structure is documented below.
         :param Sequence[str] response_headers_to_removes: A list of header names for headers that need to be removed from the response before sending the response back to the client.
         """
@@ -21872,7 +21872,7 @@ class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderAction(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd(dict):
+calass RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -21936,7 +21936,7 @@ class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHea
 
 
 @pulumi.output_type
-class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd(dict):
+calass RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -22000,7 +22000,7 @@ class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHe
 
 
 @pulumi.output_type
-class RegionUrlMapDefaultUrlRedirect(dict):
+calass RegionUrlMapDefaultUrlRedirect(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -22149,7 +22149,7 @@ class RegionUrlMapDefaultUrlRedirect(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapHostRule(dict):
+calass RegionUrlMapHostRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -22217,7 +22217,7 @@ class RegionUrlMapHostRule(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcher(dict):
+calass RegionUrlMapPathMatcher(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -22253,19 +22253,19 @@ class RegionUrlMapPathMatcher(dict):
         :param str default_service: A reference to a RegionBackendService resource. This will be used if
                none of the pathRules defined by this PathMatcher is matched by
                the URL's path portion.
-        :param 'RegionUrlMapPathMatcherDefaultUrlRedirectArgs' default_url_redirect: When none of the specified hostRules match, the request is redirected to a URL specified
+        :param 'RegionUrlMapPathMatcherDefaultUrlRedirectArrgs' default_url_redirect: When none of the specified hostRules match, the request is redirected to a URL specified
                by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
                defaultRouteAction must not be set.
                Structure is documented below.
         :param str description: An optional description of this resource.
-        :param Sequence['RegionUrlMapPathMatcherPathRuleArgs'] path_rules: The list of path rules. Use this list instead of routeRules when routing based
+        :param Sequence['RegionUrlMapPathMatcherPathRuleArrgs'] path_rules: The list of path rules. Use this list instead of routeRules when routing based
                on simple path matching is all that's required. The order by which path rules
                are specified does not matter. Matches are always done on the longest-path-first
                basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/*
                irrespective of the order in which those paths appear in this list. Within a
                given pathMatcher, only one of pathRules or routeRules must be set.
                Structure is documented below.
-        :param Sequence['RegionUrlMapPathMatcherRouteRuleArgs'] route_rules: The list of ordered HTTP route rules. Use this list instead of pathRules when
+        :param Sequence['RegionUrlMapPathMatcherRouteRuleArrgs'] route_rules: The list of ordered HTTP route rules. Use this list instead of pathRules when
                advanced route matching and routing actions are desired. The order of specifying
                routeRules matters: the first rule that matches will cause its specified routing
                action to take effect. Within a given pathMatcher, only one of pathRules or
@@ -22352,7 +22352,7 @@ class RegionUrlMapPathMatcher(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherDefaultUrlRedirect(dict):
+calass RegionUrlMapPathMatcherDefaultUrlRedirect(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -22501,7 +22501,7 @@ class RegionUrlMapPathMatcherDefaultUrlRedirect(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherPathRule(dict):
+calass RegionUrlMapPathMatcherPathRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -22531,7 +22531,7 @@ class RegionUrlMapPathMatcherPathRule(dict):
                \\* is allowed is at the end following a /. The string fed to the path matcher
                does not include any text after the first ? or #, and those chars are not
                allowed here.
-        :param 'RegionUrlMapPathMatcherPathRuleRouteActionArgs' route_action: In response to a matching path, the load balancer performs advanced routing
+        :param 'RegionUrlMapPathMatcherPathRuleRouteActionArrgs' route_action: In response to a matching path, the load balancer performs advanced routing
                actions like URL rewrites, header transformations, etc. prior to forwarding the
                request to the selected backend. If routeAction specifies any
                weightedBackendServices, service must not be set. Conversely if service is set,
@@ -22545,7 +22545,7 @@ class RegionUrlMapPathMatcherPathRule(dict):
                contain any weightedBackendService s. Conversely, if routeAction specifies any
                weightedBackendServices, service must not be specified. Only one of urlRedirect,
                service or routeAction.weightedBackendService must be set.
-        :param 'RegionUrlMapPathMatcherPathRuleUrlRedirectArgs' url_redirect: When a path pattern is matched, the request is redirected to a URL specified
+        :param 'RegionUrlMapPathMatcherPathRuleUrlRedirectArrgs' url_redirect: When a path pattern is matched, the request is redirected to a URL specified
                by urlRedirect. If urlRedirect is specified, service or routeAction must not
                be set.
                Structure is documented below.
@@ -22610,7 +22610,7 @@ class RegionUrlMapPathMatcherPathRule(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherPathRuleRouteAction(dict):
+calass RegionUrlMapPathMatcherPathRuleRouteAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -22647,10 +22647,10 @@ class RegionUrlMapPathMatcherPathRuleRouteAction(dict):
                  url_rewrite: Optional['outputs.RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite'] = None,
                  weighted_backend_services: Optional[Sequence['outputs.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService']] = None):
         """
-        :param 'RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs' cors_policy: The specification for allowing client side cross-origin requests. Please see W3C
+        :param 'RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArrgs' cors_policy: The specification for allowing client side cross-origin requests. Please see W3C
                Recommendation for Cross Origin Resource Sharing
                Structure is documented below.
-        :param 'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs' fault_injection_policy: The specification for fault injection introduced into traffic to test the
+        :param 'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArrgs' fault_injection_policy: The specification for fault injection introduced into traffic to test the
                resiliency of clients to backend service failure. As part of fault injection,
                when clients send requests to a backend service, delays can be introduced by
                Loadbalancer on a percentage of requests before sending those request to the
@@ -22658,22 +22658,22 @@ class RegionUrlMapPathMatcherPathRuleRouteAction(dict):
                Loadbalancer for a percentage of requests. timeout and retry_policy will be
                ignored by clients that are configured with a fault_injection_policy.
                Structure is documented below.
-        :param 'RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs' request_mirror_policy: Specifies the policy on how requests intended for the route's backends are
+        :param 'RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArrgs' request_mirror_policy: Specifies the policy on how requests intended for the route's backends are
                shadowed to a separate mirrored backend service. Loadbalancer does not wait for
                responses from the shadow service. Prior to sending traffic to the shadow
                service, the host / authority header is suffixed with -shadow.
                Structure is documented below.
-        :param 'RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs' retry_policy: Specifies the retry policy associated with this route.
+        :param 'RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArrgs' retry_policy: Specifies the retry policy associated with this route.
                Structure is documented below.
-        :param 'RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs' timeout: Specifies the timeout for the selected route. Timeout is computed from the time
+        :param 'RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArrgs' timeout: Specifies the timeout for the selected route. Timeout is computed from the time
                the request is has been fully processed (i.e. end-of-stream) up until the
                response has been completely processed. Timeout includes all retries. If not
                specified, the default value is 15 seconds.
                Structure is documented below.
-        :param 'RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs' url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to
+        :param 'RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArrgs' url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to
                the matched service
                Structure is documented below.
-        :param Sequence['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs'] weighted_backend_services: A list of weighted backend services to send traffic to when a route match
+        :param Sequence['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrgs'] weighted_backend_services: A list of weighted backend services to send traffic to when a route match
                occurs. The weights determine the fraction of traffic that flows to their
                corresponding backend service. If all traffic needs to go to a single backend
                service, there must be one  weightedBackendService with weight set to a non 0
@@ -22784,7 +22784,7 @@ class RegionUrlMapPathMatcherPathRuleRouteAction(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy(dict):
+calass RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -22925,14 +22925,14 @@ class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy(dict):
+calass RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy(dict):
     def __init__(__self__, *,
                  abort: Optional['outputs.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort'] = None,
                  delay: Optional['outputs.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay'] = None):
         """
-        :param 'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs' abort: The specification for how client requests are aborted as part of fault injection.
+        :param 'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArrgs' abort: The specification for how client requests are aborted as part of fault injection.
                Structure is documented below.
-        :param 'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs' delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+        :param 'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArrgs' delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
                Structure is documented below.
         """
         if abort is not None:
@@ -22960,7 +22960,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort(dict):
+calass RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -23010,7 +23010,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay(dict):
+calass RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -23032,7 +23032,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay(dict):
                  fixed_delay: 'outputs.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay',
                  percentage: float):
         """
-        :param 'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs' fixed_delay: Specifies the value of the fixed delay interval.
+        :param 'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs' fixed_delay: Specifies the value of the fixed delay interval.
                Structure is documented below.
         :param float percentage: The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
                The value must be between 0.0 and 100.0 inclusive.
@@ -23060,7 +23060,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay(dict):
+calass RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay(dict):
     def __init__(__self__, *,
                  seconds: str,
                  nanos: Optional[int] = None):
@@ -23094,7 +23094,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDe
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy(dict):
+calass RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -23133,7 +23133,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy(dict):
+calass RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -23161,7 +23161,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy(dict):
                  retry_conditions: Optional[Sequence[str]] = None):
         """
         :param int num_retries: Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
-        :param 'RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs' per_try_timeout: Specifies a non-zero timeout per retry attempt.
+        :param 'RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArrgs' per_try_timeout: Specifies a non-zero timeout per retry attempt.
                If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
                will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
@@ -23225,7 +23225,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout(dict):
+calass RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout(dict):
     def __init__(__self__, *,
                  seconds: str,
                  nanos: Optional[int] = None):
@@ -23259,7 +23259,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherPathRuleRouteActionTimeout(dict):
+calass RegionUrlMapPathMatcherPathRuleRouteActionTimeout(dict):
     def __init__(__self__, *,
                  seconds: str,
                  nanos: Optional[int] = None):
@@ -23289,7 +23289,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionTimeout(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite(dict):
+calass RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -23343,7 +23343,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService(dict):
+calass RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -23372,7 +23372,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService(dict):
         :param int weight: Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) .
                The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service's session affinity policy.
                The value must be from 0 to 1000.
-        :param 'RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs' header_action: Specifies changes to request and response headers that need to take effect for the selected backendService.
+        :param 'RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArrgs' header_action: Specifies changes to request and response headers that need to take effect for the selected backendService.
                headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
                headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
                Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -23415,7 +23415,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction(dict):
+calass RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -23445,10 +23445,10 @@ class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActi
                  response_headers_to_adds: Optional[Sequence['outputs.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd']] = None,
                  response_headers_to_removes: Optional[Sequence[str]] = None):
         """
-        :param Sequence['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs'] request_headers_to_adds: Headers to add to a matching request before forwarding the request to the backendService.
+        :param Sequence['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs'] request_headers_to_adds: Headers to add to a matching request before forwarding the request to the backendService.
                Structure is documented below.
         :param Sequence[str] request_headers_to_removes: A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
-        :param Sequence['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs'] response_headers_to_adds: Headers to add the response before sending the response back to the client.
+        :param Sequence['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs'] response_headers_to_adds: Headers to add the response before sending the response back to the client.
                Structure is documented below.
         :param Sequence[str] response_headers_to_removes: A list of header names for headers that need to be removed from the response before sending the response back to the client.
         """
@@ -23497,7 +23497,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActi
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd(dict):
+calass RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -23558,7 +23558,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActi
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd(dict):
+calass RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -23619,7 +23619,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActi
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherPathRuleUrlRedirect(dict):
+calass RegionUrlMapPathMatcherPathRuleUrlRedirect(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -23774,7 +23774,7 @@ class RegionUrlMapPathMatcherPathRuleUrlRedirect(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherRouteRule(dict):
+calass RegionUrlMapPathMatcherRouteRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -23819,14 +23819,14 @@ class RegionUrlMapPathMatcherRouteRule(dict):
                1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which
                you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the
                future without any impact on existing rules.
-        :param 'RegionUrlMapPathMatcherRouteRuleHeaderActionArgs' header_action: Specifies changes to request and response headers that need to take effect for
+        :param 'RegionUrlMapPathMatcherRouteRuleHeaderActionArrgs' header_action: Specifies changes to request and response headers that need to take effect for
                the selected backendService. The headerAction specified here are applied before
                the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
                outeAction.weightedBackendService.backendServiceWeightAction[].headerAction
                Structure is documented below.
-        :param Sequence['RegionUrlMapPathMatcherRouteRuleMatchRuleArgs'] match_rules: The rules for determining a match.
+        :param Sequence['RegionUrlMapPathMatcherRouteRuleMatchRuleArrgs'] match_rules: The rules for determining a match.
                Structure is documented below.
-        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionArgs' route_action: In response to a matching matchRule, the load balancer performs advanced routing
+        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionArrgs' route_action: In response to a matching matchRule, the load balancer performs advanced routing
                actions like URL rewrites, header transformations, etc. prior to forwarding the
                request to the selected backend. If  routeAction specifies any
                weightedBackendServices, service must not be set. Conversely if service is set,
@@ -23840,7 +23840,7 @@ class RegionUrlMapPathMatcherRouteRule(dict):
                contain any weightedBackendService s. Conversely, if routeAction specifies any
                weightedBackendServices, service must not be specified. Only one of urlRedirect,
                service or routeAction.weightedBackendService must be set.
-        :param 'RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs' url_redirect: When this rule is matched, the request is redirected to a URL specified by
+        :param 'RegionUrlMapPathMatcherRouteRuleUrlRedirectArrgs' url_redirect: When this rule is matched, the request is redirected to a URL specified by
                urlRedirect. If urlRedirect is specified, service or routeAction must not be
                set.
                Structure is documented below.
@@ -23939,7 +23939,7 @@ class RegionUrlMapPathMatcherRouteRule(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherRouteRuleHeaderAction(dict):
+calass RegionUrlMapPathMatcherRouteRuleHeaderAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -23969,10 +23969,10 @@ class RegionUrlMapPathMatcherRouteRuleHeaderAction(dict):
                  response_headers_to_adds: Optional[Sequence['outputs.RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd']] = None,
                  response_headers_to_removes: Optional[Sequence[str]] = None):
         """
-        :param Sequence['RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs'] request_headers_to_adds: Headers to add to a matching request before forwarding the request to the backendService.
+        :param Sequence['RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrgs'] request_headers_to_adds: Headers to add to a matching request before forwarding the request to the backendService.
                Structure is documented below.
         :param Sequence[str] request_headers_to_removes: A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
-        :param Sequence['RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs'] response_headers_to_adds: Headers to add the response before sending the response back to the client.
+        :param Sequence['RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrgs'] response_headers_to_adds: Headers to add the response before sending the response back to the client.
                Structure is documented below.
         :param Sequence[str] response_headers_to_removes: A list of header names for headers that need to be removed from the response before sending the response back to the client.
         """
@@ -24021,7 +24021,7 @@ class RegionUrlMapPathMatcherRouteRuleHeaderAction(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd(dict):
+calass RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -24082,7 +24082,7 @@ class RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd(dict):
+calass RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -24143,7 +24143,7 @@ class RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherRouteRuleMatchRule(dict):
+calass RegionUrlMapPathMatcherRouteRuleMatchRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -24187,12 +24187,12 @@ class RegionUrlMapPathMatcherRouteRuleMatchRule(dict):
                and anchor that may be part of the original URL. FullPathMatch must be between 1
                and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
                be specified.
-        :param Sequence['RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs'] header_matches: Specifies a list of header match criteria, all of which must match corresponding
+        :param Sequence['RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArrgs'] header_matches: Specifies a list of header match criteria, all of which must match corresponding
                headers in the request.
                Structure is documented below.
         :param bool ignore_case: Specifies that prefixMatch and fullPathMatch matches are case sensitive.
                Defaults to false.
-        :param Sequence['RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs'] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing configuration to
+        :param Sequence['RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArrgs'] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing configuration to
                a limited set xDS compliant clients. In their xDS requests to Loadbalancer, xDS
                clients present node metadata. If a match takes place, the relevant routing
                configuration is made available to those proxies. For each metadataFilter in
@@ -24208,7 +24208,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRule(dict):
                specified prefixMatch. prefixMatch must begin with a /. The value must be
                between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or
                regexMatch must be specified.
-        :param Sequence['RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs'] query_parameter_matches: Specifies a list of query parameter match criteria, all of which must match
+        :param Sequence['RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrgs'] query_parameter_matches: Specifies a list of query parameter match criteria, all of which must match
                corresponding query parameters in the request.
                Structure is documented below.
         :param str regex_match: For satisfying the matchRule condition, the path of the request must satisfy the
@@ -24317,7 +24317,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRule(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch(dict):
+calass RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -24373,7 +24373,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch(dict):
         :param bool present_match: A header with the contents of headerName must exist. The match takes place
                whether or not the request's header has a value or not. Only one of exactMatch,
                prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
-        :param 'RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs' range_match: The header value must be an integer and its value must be in the range specified
+        :param 'RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArrgs' range_match: The header value must be an integer and its value must be in the range specified
                in rangeMatch. If the header does not contain an integer, number or is empty,
                the match fails. For example for a range [-5, 0]
                * -3 will match
@@ -24502,7 +24502,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch(dict):
+calass RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -24550,7 +24550,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter(dict):
+calass RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -24574,7 +24574,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter(dict):
                  filter_labels: Sequence['outputs.RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel'],
                  filter_match_criteria: str):
         """
-        :param Sequence['RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs'] filter_labels: The list of label value pairs that must match labels in the provided metadata
+        :param Sequence['RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrgs'] filter_labels: The list of label value pairs that must match labels in the provided metadata
                based on filterMatchCriteria  This list must not be empty and can have at the
                most 64 entries.
                Structure is documented below.
@@ -24616,7 +24616,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel(dict):
+calass RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel(dict):
     def __init__(__self__, *,
                  name: str,
                  value: str):
@@ -24649,7 +24649,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch(dict):
+calass RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -24740,7 +24740,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherRouteRuleRouteAction(dict):
+calass RegionUrlMapPathMatcherRouteRuleRouteAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -24777,10 +24777,10 @@ class RegionUrlMapPathMatcherRouteRuleRouteAction(dict):
                  url_rewrite: Optional['outputs.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite'] = None,
                  weighted_backend_services: Optional[Sequence['outputs.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService']] = None):
         """
-        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArgs' cors_policy: The specification for allowing client side cross-origin requests. Please see W3C
+        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArrgs' cors_policy: The specification for allowing client side cross-origin requests. Please see W3C
                Recommendation for Cross Origin Resource Sharing
                Structure is documented below.
-        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs' fault_injection_policy: The specification for fault injection introduced into traffic to test the
+        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArrgs' fault_injection_policy: The specification for fault injection introduced into traffic to test the
                resiliency of clients to backend service failure. As part of fault injection,
                when clients send requests to a backend service, delays can be introduced by
                Loadbalancer on a percentage of requests before sending those request to the
@@ -24788,22 +24788,22 @@ class RegionUrlMapPathMatcherRouteRuleRouteAction(dict):
                Loadbalancer for a percentage of requests. timeout and retry_policy will be
                ignored by clients that are configured with a fault_injection_policy.
                Structure is documented below.
-        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs' request_mirror_policy: Specifies the policy on how requests intended for the route's backends are
+        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArrgs' request_mirror_policy: Specifies the policy on how requests intended for the route's backends are
                shadowed to a separate mirrored backend service. Loadbalancer does not wait for
                responses from the shadow service. Prior to sending traffic to the shadow
                service, the host / authority header is suffixed with -shadow.
                Structure is documented below.
-        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgs' retry_policy: Specifies the retry policy associated with this route.
+        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArrgs' retry_policy: Specifies the retry policy associated with this route.
                Structure is documented below.
-        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArgs' timeout: Specifies the timeout for the selected route. Timeout is computed from the time
+        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArrgs' timeout: Specifies the timeout for the selected route. Timeout is computed from the time
                the request is has been fully processed (i.e. end-of-stream) up until the
                response has been completely processed. Timeout includes all retries. If not
                specified, the default value is 15 seconds.
                Structure is documented below.
-        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs' url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to
+        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArrgs' url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to
                the matched service
                Structure is documented below.
-        :param Sequence['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs'] weighted_backend_services: A list of weighted backend services to send traffic to when a route match
+        :param Sequence['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrgs'] weighted_backend_services: A list of weighted backend services to send traffic to when a route match
                occurs. The weights determine the fraction of traffic that flows to their
                corresponding backend service. If all traffic needs to go to a single backend
                service, there must be one  weightedBackendService with weight set to a non 0
@@ -24914,7 +24914,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteAction(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy(dict):
+calass RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -25056,14 +25056,14 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy(dict):
+calass RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy(dict):
     def __init__(__self__, *,
                  abort: Optional['outputs.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort'] = None,
                  delay: Optional['outputs.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay'] = None):
         """
-        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs' abort: The specification for how client requests are aborted as part of fault injection.
+        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArrgs' abort: The specification for how client requests are aborted as part of fault injection.
                Structure is documented below.
-        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs' delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArrgs' delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
                Structure is documented below.
         """
         if abort is not None:
@@ -25091,7 +25091,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort(dict):
+calass RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -25143,7 +25143,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort(dict)
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay(dict):
+calass RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -25165,7 +25165,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay(dict)
                  fixed_delay: Optional['outputs.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay'] = None,
                  percentage: Optional[float] = None):
         """
-        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs' fixed_delay: Specifies the value of the fixed delay interval.
+        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs' fixed_delay: Specifies the value of the fixed delay interval.
                Structure is documented below.
         :param float percentage: The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
                The value must be between 0.0 and 100.0 inclusive.
@@ -25195,7 +25195,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay(dict)
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay(dict):
+calass RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay(dict):
     def __init__(__self__, *,
                  seconds: str,
                  nanos: Optional[int] = None):
@@ -25229,7 +25229,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedD
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy(dict):
+calass RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -25268,7 +25268,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy(dict):
+calass RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -25296,7 +25296,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy(dict):
                  retry_conditions: Optional[Sequence[str]] = None):
         """
         :param int num_retries: Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
-        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs' per_try_timeout: Specifies a non-zero timeout per retry attempt.
+        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArrgs' per_try_timeout: Specifies a non-zero timeout per retry attempt.
                If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
                will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
@@ -25359,7 +25359,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout(dict):
+calass RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout(dict):
     def __init__(__self__, *,
                  seconds: str,
                  nanos: Optional[int] = None):
@@ -25393,7 +25393,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionTimeout(dict):
+calass RegionUrlMapPathMatcherRouteRuleRouteActionTimeout(dict):
     def __init__(__self__, *,
                  seconds: str,
                  nanos: Optional[int] = None):
@@ -25423,7 +25423,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionTimeout(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite(dict):
+calass RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -25477,7 +25477,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService(dict):
+calass RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -25506,7 +25506,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService(dict):
         :param int weight: Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) .
                The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service's session affinity policy.
                The value must be from 0 to 1000.
-        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs' header_action: Specifies changes to request and response headers that need to take effect for the selected backendService.
+        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArrgs' header_action: Specifies changes to request and response headers that need to take effect for the selected backendService.
                headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
                headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
                Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -25549,7 +25549,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction(dict):
+calass RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -25579,10 +25579,10 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAct
                  response_headers_to_adds: Optional[Sequence['outputs.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd']] = None,
                  response_headers_to_removes: Optional[Sequence[str]] = None):
         """
-        :param Sequence['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs'] request_headers_to_adds: Headers to add to a matching request before forwarding the request to the backendService.
+        :param Sequence['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs'] request_headers_to_adds: Headers to add to a matching request before forwarding the request to the backendService.
                Structure is documented below.
         :param Sequence[str] request_headers_to_removes: A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
-        :param Sequence['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs'] response_headers_to_adds: Headers to add the response before sending the response back to the client.
+        :param Sequence['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs'] response_headers_to_adds: Headers to add the response before sending the response back to the client.
                Structure is documented below.
         :param Sequence[str] response_headers_to_removes: A list of header names for headers that need to be removed from the response before sending the response back to the client.
         """
@@ -25631,7 +25631,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAct
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd(dict):
+calass RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -25692,7 +25692,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAct
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd(dict):
+calass RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -25753,7 +25753,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAct
 
 
 @pulumi.output_type
-class RegionUrlMapPathMatcherRouteRuleUrlRedirect(dict):
+calass RegionUrlMapPathMatcherRouteRuleUrlRedirect(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -25909,7 +25909,7 @@ class RegionUrlMapPathMatcherRouteRuleUrlRedirect(dict):
 
 
 @pulumi.output_type
-class RegionUrlMapTest(dict):
+calass RegionUrlMapTest(dict):
     def __init__(__self__, *,
                  host: str,
                  path: str,
@@ -25961,7 +25961,7 @@ class RegionUrlMapTest(dict):
 
 
 @pulumi.output_type
-class ReservationShareSettings(dict):
+calass ReservationShareSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -25985,7 +25985,7 @@ class ReservationShareSettings(dict):
                  project_maps: Optional[Sequence['outputs.ReservationShareSettingsProjectMap']] = None,
                  share_type: Optional[str] = None):
         """
-        :param Sequence['ReservationShareSettingsProjectMapArgs'] project_maps: A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+        :param Sequence['ReservationShareSettingsProjectMapArrgs'] project_maps: A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
                Structure is documented below.
         :param str share_type: Type of sharing for this shared-reservation
                Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
@@ -26015,7 +26015,7 @@ class ReservationShareSettings(dict):
 
 
 @pulumi.output_type
-class ReservationShareSettingsProjectMap(dict):
+calass ReservationShareSettingsProjectMap(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -26062,7 +26062,7 @@ class ReservationShareSettingsProjectMap(dict):
 
 
 @pulumi.output_type
-class ReservationSpecificReservation(dict):
+calass ReservationSpecificReservation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -26088,7 +26088,7 @@ class ReservationSpecificReservation(dict):
                  in_use_count: Optional[int] = None):
         """
         :param int count: The number of resources that are allocated.
-        :param 'ReservationSpecificReservationInstancePropertiesArgs' instance_properties: The instance properties for the reservation.
+        :param 'ReservationSpecificReservationInstancePropertiesArrgs' instance_properties: The instance properties for the reservation.
                Structure is documented below.
         :param int in_use_count: (Output)
                How many instances are in use.
@@ -26126,7 +26126,7 @@ class ReservationSpecificReservation(dict):
 
 
 @pulumi.output_type
-class ReservationSpecificReservationInstanceProperties(dict):
+calass ReservationSpecificReservationInstanceProperties(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -26157,9 +26157,9 @@ class ReservationSpecificReservationInstanceProperties(dict):
                  min_cpu_platform: Optional[str] = None):
         """
         :param str machine_type: The name of the machine type to reserve.
-        :param Sequence['ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs'] guest_accelerators: Guest accelerator type and count.
+        :param Sequence['ReservationSpecificReservationInstancePropertiesGuestAcceleratorArrgs'] guest_accelerators: Guest accelerator type and count.
                Structure is documented below.
-        :param Sequence['ReservationSpecificReservationInstancePropertiesLocalSsdArgs'] local_ssds: The amount of local ssd to reserve with each instance. This
+        :param Sequence['ReservationSpecificReservationInstancePropertiesLocalSsdArrgs'] local_ssds: The amount of local ssd to reserve with each instance. This
                reserves disks of type `local-ssd`.
                Structure is documented below.
         :param str min_cpu_platform: The minimum CPU platform for the reservation. For example,
@@ -26215,7 +26215,7 @@ class ReservationSpecificReservationInstanceProperties(dict):
 
 
 @pulumi.output_type
-class ReservationSpecificReservationInstancePropertiesGuestAccelerator(dict):
+calass ReservationSpecificReservationInstancePropertiesGuestAccelerator(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -26271,7 +26271,7 @@ class ReservationSpecificReservationInstancePropertiesGuestAccelerator(dict):
 
 
 @pulumi.output_type
-class ReservationSpecificReservationInstancePropertiesLocalSsd(dict):
+calass ReservationSpecificReservationInstancePropertiesLocalSsd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -26326,7 +26326,7 @@ class ReservationSpecificReservationInstancePropertiesLocalSsd(dict):
 
 
 @pulumi.output_type
-class ResourcePolicyDiskConsistencyGroupPolicy(dict):
+calass ResourcePolicyDiskConsistencyGroupPolicy(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -26344,7 +26344,7 @@ class ResourcePolicyDiskConsistencyGroupPolicy(dict):
 
 
 @pulumi.output_type
-class ResourcePolicyGroupPlacementPolicy(dict):
+calass ResourcePolicyGroupPlacementPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -26430,7 +26430,7 @@ class ResourcePolicyGroupPlacementPolicy(dict):
 
 
 @pulumi.output_type
-class ResourcePolicyInstanceSchedulePolicy(dict):
+calass ResourcePolicyInstanceSchedulePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -26467,9 +26467,9 @@ class ResourcePolicyInstanceSchedulePolicy(dict):
                from the tz database: http://en.wikipedia.org/wiki/Tz_database.
         :param str expiration_time: The expiration time of the schedule. The timestamp is an RFC3339 string.
         :param str start_time: The start time of the schedule. The timestamp is an RFC3339 string.
-        :param 'ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs' vm_start_schedule: Specifies the schedule for starting instances.
+        :param 'ResourcePolicyInstanceSchedulePolicyVmStartScheduleArrgs' vm_start_schedule: Specifies the schedule for starting instances.
                Structure is documented below.
-        :param 'ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs' vm_stop_schedule: Specifies the schedule for stopping instances.
+        :param 'ResourcePolicyInstanceSchedulePolicyVmStopScheduleArrgs' vm_stop_schedule: Specifies the schedule for stopping instances.
                Structure is documented below.
         """
         pulumi.set(__self__, "time_zone", time_zone)
@@ -26527,7 +26527,7 @@ class ResourcePolicyInstanceSchedulePolicy(dict):
 
 
 @pulumi.output_type
-class ResourcePolicyInstanceSchedulePolicyVmStartSchedule(dict):
+calass ResourcePolicyInstanceSchedulePolicyVmStartSchedule(dict):
     def __init__(__self__, *,
                  schedule: str):
         """
@@ -26545,7 +26545,7 @@ class ResourcePolicyInstanceSchedulePolicyVmStartSchedule(dict):
 
 
 @pulumi.output_type
-class ResourcePolicyInstanceSchedulePolicyVmStopSchedule(dict):
+calass ResourcePolicyInstanceSchedulePolicyVmStopSchedule(dict):
     def __init__(__self__, *,
                  schedule: str):
         """
@@ -26563,7 +26563,7 @@ class ResourcePolicyInstanceSchedulePolicyVmStopSchedule(dict):
 
 
 @pulumi.output_type
-class ResourcePolicySnapshotSchedulePolicy(dict):
+calass ResourcePolicySnapshotSchedulePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -26588,11 +26588,11 @@ class ResourcePolicySnapshotSchedulePolicy(dict):
                  retention_policy: Optional['outputs.ResourcePolicySnapshotSchedulePolicyRetentionPolicy'] = None,
                  snapshot_properties: Optional['outputs.ResourcePolicySnapshotSchedulePolicySnapshotProperties'] = None):
         """
-        :param 'ResourcePolicySnapshotSchedulePolicyScheduleArgs' schedule: Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
+        :param 'ResourcePolicySnapshotSchedulePolicyScheduleArrgs' schedule: Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
                Structure is documented below.
-        :param 'ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs' retention_policy: Retention policy applied to snapshots created by this resource policy.
+        :param 'ResourcePolicySnapshotSchedulePolicyRetentionPolicyArrgs' retention_policy: Retention policy applied to snapshots created by this resource policy.
                Structure is documented below.
-        :param 'ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs' snapshot_properties: Properties with which the snapshots are created, such as labels.
+        :param 'ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArrgs' snapshot_properties: Properties with which the snapshots are created, such as labels.
                Structure is documented below.
         """
         pulumi.set(__self__, "schedule", schedule)
@@ -26630,7 +26630,7 @@ class ResourcePolicySnapshotSchedulePolicy(dict):
 
 
 @pulumi.output_type
-class ResourcePolicySnapshotSchedulePolicyRetentionPolicy(dict):
+calass ResourcePolicySnapshotSchedulePolicyRetentionPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -26685,7 +26685,7 @@ class ResourcePolicySnapshotSchedulePolicyRetentionPolicy(dict):
 
 
 @pulumi.output_type
-class ResourcePolicySnapshotSchedulePolicySchedule(dict):
+calass ResourcePolicySnapshotSchedulePolicySchedule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -26712,11 +26712,11 @@ class ResourcePolicySnapshotSchedulePolicySchedule(dict):
                  hourly_schedule: Optional['outputs.ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule'] = None,
                  weekly_schedule: Optional['outputs.ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule'] = None):
         """
-        :param 'ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs' daily_schedule: The policy will execute every nth day at the specified time.
+        :param 'ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrgs' daily_schedule: The policy will execute every nth day at the specified time.
                Structure is documented below.
-        :param 'ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs' hourly_schedule: The policy will execute every nth hour starting at the specified time.
+        :param 'ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrgs' hourly_schedule: The policy will execute every nth hour starting at the specified time.
                Structure is documented below.
-        :param 'ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs' weekly_schedule: Allows specifying a snapshot time for each day of the week.
+        :param 'ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrgs' weekly_schedule: Allows specifying a snapshot time for each day of the week.
                Structure is documented below.
         """
         if daily_schedule is not None:
@@ -26755,7 +26755,7 @@ class ResourcePolicySnapshotSchedulePolicySchedule(dict):
 
 
 @pulumi.output_type
-class ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule(dict):
+calass ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -26807,7 +26807,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule(dict):
 
 
 @pulumi.output_type
-class ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule(dict):
+calass ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -26861,7 +26861,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule(dict):
 
 
 @pulumi.output_type
-class ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule(dict):
+calass ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -26882,7 +26882,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule(dict):
     def __init__(__self__, *,
                  day_of_weeks: Sequence['outputs.ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek']):
         """
-        :param Sequence['ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs'] day_of_weeks: May contain up to seven (one for each day of the week) snapshot times.
+        :param Sequence['ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrgs'] day_of_weeks: May contain up to seven (one for each day of the week) snapshot times.
                Structure is documented below.
         """
         pulumi.set(__self__, "day_of_weeks", day_of_weeks)
@@ -26898,7 +26898,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule(dict):
 
 
 @pulumi.output_type
-class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek(dict):
+calass ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -26948,7 +26948,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek(dict):
 
 
 @pulumi.output_type
-class ResourcePolicySnapshotSchedulePolicySnapshotProperties(dict):
+calass ResourcePolicySnapshotSchedulePolicySnapshotProperties(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -27030,7 +27030,7 @@ class ResourcePolicySnapshotSchedulePolicySnapshotProperties(dict):
 
 
 @pulumi.output_type
-class RouterBgp(dict):
+calass RouterBgp(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -27074,7 +27074,7 @@ class RouterBgp(dict):
                advertised in addition to any specified prefixes. Leave this field
                blank to advertise no custom groups.
                This enum field has the one valid value: ALL_SUBNETS
-        :param Sequence['RouterBgpAdvertisedIpRangeArgs'] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
+        :param Sequence['RouterBgpAdvertisedIpRangeArrgs'] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
                custom mode. This field can only be populated if advertiseMode
                is CUSTOM and is advertised to all peers of the router. These IP
                ranges will be advertised in addition to any specified groups.
@@ -27165,7 +27165,7 @@ class RouterBgp(dict):
 
 
 @pulumi.output_type
-class RouterBgpAdvertisedIpRange(dict):
+calass RouterBgpAdvertisedIpRange(dict):
     def __init__(__self__, *,
                  range: str,
                  description: Optional[str] = None):
@@ -27197,7 +27197,7 @@ class RouterBgpAdvertisedIpRange(dict):
 
 
 @pulumi.output_type
-class RouterNatLogConfig(dict):
+calass RouterNatLogConfig(dict):
     def __init__(__self__, *,
                  enable: bool,
                  filter: str):
@@ -27228,7 +27228,7 @@ class RouterNatLogConfig(dict):
 
 
 @pulumi.output_type
-class RouterNatRule(dict):
+calass RouterNatRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -27261,7 +27261,7 @@ class RouterNatRule(dict):
                "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
         :param int rule_number: An integer uniquely identifying a rule in the list.
                The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
-        :param 'RouterNatRuleActionArgs' action: The action to be enforced for traffic that matches this rule.
+        :param 'RouterNatRuleActionArrgs' action: The action to be enforced for traffic that matches this rule.
                Structure is documented below.
         :param str description: An optional description of this rule.
         """
@@ -27314,7 +27314,7 @@ class RouterNatRule(dict):
 
 
 @pulumi.output_type
-class RouterNatRuleAction(dict):
+calass RouterNatRuleAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -27394,7 +27394,7 @@ class RouterNatRuleAction(dict):
 
 
 @pulumi.output_type
-class RouterNatSubnetwork(dict):
+calass RouterNatSubnetwork(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -27466,7 +27466,7 @@ class RouterNatSubnetwork(dict):
 
 
 @pulumi.output_type
-class RouterPeerAdvertisedIpRange(dict):
+calass RouterPeerAdvertisedIpRange(dict):
     def __init__(__self__, *,
                  range: str,
                  description: Optional[str] = None):
@@ -27498,7 +27498,7 @@ class RouterPeerAdvertisedIpRange(dict):
 
 
 @pulumi.output_type
-class RouterPeerBfd(dict):
+calass RouterPeerBfd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -27603,7 +27603,7 @@ class RouterPeerBfd(dict):
 
 
 @pulumi.output_type
-class RouterStatusBestRouteResult(dict):
+calass RouterStatusBestRouteResult(dict):
     def __init__(__self__, *,
                  description: str,
                  dest_range: str,
@@ -27731,7 +27731,7 @@ class RouterStatusBestRouteResult(dict):
 
 
 @pulumi.output_type
-class RouterStatusBestRoutesForRouterResult(dict):
+calass RouterStatusBestRoutesForRouterResult(dict):
     def __init__(__self__, *,
                  description: str,
                  dest_range: str,
@@ -27859,7 +27859,7 @@ class RouterStatusBestRoutesForRouterResult(dict):
 
 
 @pulumi.output_type
-class SecurityPolicyAdaptiveProtectionConfig(dict):
+calass SecurityPolicyAdaptiveProtectionConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -27883,10 +27883,10 @@ class SecurityPolicyAdaptiveProtectionConfig(dict):
                  auto_deploy_config: Optional['outputs.SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig'] = None,
                  layer7_ddos_defense_config: Optional['outputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig'] = None):
         """
-        :param 'SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs' auto_deploy_config: ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+        :param 'SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrgs' auto_deploy_config: ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
                
                <a name="nested_layer_7_ddos_defense_config"></a>The `layer_7_ddos_defense_config` block supports:
-        :param 'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs' layer7_ddos_defense_config: Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        :param 'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrgs' layer7_ddos_defense_config: Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         """
         if auto_deploy_config is not None:
             pulumi.set(__self__, "auto_deploy_config", auto_deploy_config)
@@ -27913,7 +27913,7 @@ class SecurityPolicyAdaptiveProtectionConfig(dict):
 
 
 @pulumi.output_type
-class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig(dict):
+calass SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -27991,7 +27991,7 @@ class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig(dict):
 
 
 @pulumi.output_type
-class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig(dict):
+calass SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -28039,7 +28039,7 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig(dict):
 
 
 @pulumi.output_type
-class SecurityPolicyAdvancedOptionsConfig(dict):
+calass SecurityPolicyAdvancedOptionsConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -28069,7 +28069,7 @@ class SecurityPolicyAdvancedOptionsConfig(dict):
                  log_level: Optional[str] = None,
                  user_ip_request_headers: Optional[Sequence[str]] = None):
         """
-        :param 'SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs' json_custom_config: Custom configuration to apply the JSON parsing. Only applicable when
+        :param 'SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrgs' json_custom_config: Custom configuration to apply the JSON parsing. Only applicable when
                `json_parsing` is set to `STANDARD`. Structure is documented below.
         :param str json_parsing: Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
                * DISABLED - Don't parse JSON payloads in POST bodies.
@@ -28127,7 +28127,7 @@ class SecurityPolicyAdvancedOptionsConfig(dict):
 
 
 @pulumi.output_type
-class SecurityPolicyAdvancedOptionsConfigJsonCustomConfig(dict):
+calass SecurityPolicyAdvancedOptionsConfigJsonCustomConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -28168,7 +28168,7 @@ class SecurityPolicyAdvancedOptionsConfigJsonCustomConfig(dict):
 
 
 @pulumi.output_type
-class SecurityPolicyRecaptchaOptionsConfig(dict):
+calass SecurityPolicyRecaptchaOptionsConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -28203,7 +28203,7 @@ class SecurityPolicyRecaptchaOptionsConfig(dict):
 
 
 @pulumi.output_type
-class SecurityPolicyRule(dict):
+calass SecurityPolicyRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -28244,17 +28244,17 @@ class SecurityPolicyRule(dict):
                * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
                * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions.
                * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
-        :param 'SecurityPolicyRuleMatchArgs' match: A match condition that incoming traffic is evaluated against.
+        :param 'SecurityPolicyRuleMatchArrgs' match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding `action` is enforced. Structure is documented below.
         :param int priority: An unique positive integer indicating the priority of evaluation for a rule.
                Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
         :param str description: An optional description of this rule. Max size is 64.
-        :param 'SecurityPolicyRuleHeaderActionArgs' header_action: Additional actions that are performed on headers. Structure is documented below.
-        :param 'SecurityPolicyRulePreconfiguredWafConfigArgs' preconfigured_waf_config: ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
+        :param 'SecurityPolicyRuleHeaderActionArrgs' header_action: Additional actions that are performed on headers. Structure is documented below.
+        :param 'SecurityPolicyRulePreconfiguredWafConfigArrgs' preconfigured_waf_config: ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
         :param bool preview: When set to true, the `action` specified above is not enforced.
                Stackdriver logs for requests that trigger a preview action are annotated as such.
-        :param 'SecurityPolicyRuleRateLimitOptionsArgs' rate_limit_options: Must be specified if the `action` is "rate_based_ban" or "throttle". Cannot be specified for other actions. Structure is documented below.
-        :param 'SecurityPolicyRuleRedirectOptionsArgs' redirect_options: Can be specified if the `action` is "redirect". Cannot be specified for other actions. Structure is documented below.
+        :param 'SecurityPolicyRuleRateLimitOptionsArrgs' rate_limit_options: Must be specified if the `action` is "rate_based_ban" or "throttle". Cannot be specified for other actions. Structure is documented below.
+        :param 'SecurityPolicyRuleRedirectOptionsArrgs' redirect_options: Can be specified if the `action` is "redirect". Cannot be specified for other actions. Structure is documented below.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "match", match)
@@ -28354,7 +28354,7 @@ class SecurityPolicyRule(dict):
 
 
 @pulumi.output_type
-class SecurityPolicyRuleHeaderAction(dict):
+calass SecurityPolicyRuleHeaderAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -28375,7 +28375,7 @@ class SecurityPolicyRuleHeaderAction(dict):
     def __init__(__self__, *,
                  request_headers_to_adds: Sequence['outputs.SecurityPolicyRuleHeaderActionRequestHeadersToAdd']):
         """
-        :param Sequence['SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs'] request_headers_to_adds: The list of request headers to add or overwrite if they're already present. Structure is documented below.
+        :param Sequence['SecurityPolicyRuleHeaderActionRequestHeadersToAddArrgs'] request_headers_to_adds: The list of request headers to add or overwrite if they're already present. Structure is documented below.
         """
         pulumi.set(__self__, "request_headers_to_adds", request_headers_to_adds)
 
@@ -28389,7 +28389,7 @@ class SecurityPolicyRuleHeaderAction(dict):
 
 
 @pulumi.output_type
-class SecurityPolicyRuleHeaderActionRequestHeadersToAdd(dict):
+calass SecurityPolicyRuleHeaderActionRequestHeadersToAdd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -28438,7 +28438,7 @@ class SecurityPolicyRuleHeaderActionRequestHeadersToAdd(dict):
 
 
 @pulumi.output_type
-class SecurityPolicyRuleMatch(dict):
+calass SecurityPolicyRuleMatch(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -28461,10 +28461,10 @@ class SecurityPolicyRuleMatch(dict):
                  expr: Optional['outputs.SecurityPolicyRuleMatchExpr'] = None,
                  versioned_expr: Optional[str] = None):
         """
-        :param 'SecurityPolicyRuleMatchConfigArgs' config: The configuration options available when specifying `versioned_expr`.
+        :param 'SecurityPolicyRuleMatchConfigArrgs' config: The configuration options available when specifying `versioned_expr`.
                This field must be specified if `versioned_expr` is specified and cannot be specified if `versioned_expr` is not specified.
                Structure is documented below.
-        :param 'SecurityPolicyRuleMatchExprArgs' expr: User defined CEVAL expression. A CEVAL expression is used to specify match criteria
+        :param 'SecurityPolicyRuleMatchExprArrgs' expr: User defined CEVAL expression. A CEVAL expression is used to specify match criteria
                such as origin.ip, source.region_code and contents in the request header.
                Structure is documented below.
         :param str versioned_expr: Predefined rule expression. If this field is specified, `config` must also be specified.
@@ -28510,7 +28510,7 @@ class SecurityPolicyRuleMatch(dict):
 
 
 @pulumi.output_type
-class SecurityPolicyRuleMatchConfig(dict):
+calass SecurityPolicyRuleMatchConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -28549,7 +28549,7 @@ class SecurityPolicyRuleMatchConfig(dict):
 
 
 @pulumi.output_type
-class SecurityPolicyRuleMatchExpr(dict):
+calass SecurityPolicyRuleMatchExpr(dict):
     def __init__(__self__, *,
                  expression: str):
         """
@@ -28569,11 +28569,11 @@ class SecurityPolicyRuleMatchExpr(dict):
 
 
 @pulumi.output_type
-class SecurityPolicyRulePreconfiguredWafConfig(dict):
+calass SecurityPolicyRulePreconfiguredWafConfig(dict):
     def __init__(__self__, *,
                  exclusions: Optional[Sequence['outputs.SecurityPolicyRulePreconfiguredWafConfigExclusion']] = None):
         """
-        :param Sequence['SecurityPolicyRulePreconfiguredWafConfigExclusionArgs'] exclusions: An exclusion to apply during preconfigured WAF evaluation. Structure is documented below.
+        :param Sequence['SecurityPolicyRulePreconfiguredWafConfigExclusionArrgs'] exclusions: An exclusion to apply during preconfigured WAF evaluation. Structure is documented below.
         """
         if exclusions is not None:
             pulumi.set(__self__, "exclusions", exclusions)
@@ -28588,7 +28588,7 @@ class SecurityPolicyRulePreconfiguredWafConfig(dict):
 
 
 @pulumi.output_type
-class SecurityPolicyRulePreconfiguredWafConfigExclusion(dict):
+calass SecurityPolicyRulePreconfiguredWafConfigExclusion(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -28625,10 +28625,10 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusion(dict):
                  target_rule_ids: Optional[Sequence[str]] = None):
         """
         :param str target_rule_set: Target WAF rule set to apply the preconfigured WAF exclusion.
-        :param Sequence['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs'] request_cookies: Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
-        :param Sequence['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs'] request_headers: Request header whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
-        :param Sequence['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs'] request_query_params: Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
-        :param Sequence['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs'] request_uris: Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
+        :param Sequence['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrgs'] request_cookies: Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
+        :param Sequence['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrgs'] request_headers: Request header whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
+        :param Sequence['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrgs'] request_query_params: Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
+        :param Sequence['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrgs'] request_uris: Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
         :param Sequence[str] target_rule_ids: A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
                
                <a name="nested_field_params"></a>The `request_header`, `request_cookie`, `request_uri` and `request_query_param` blocks support:
@@ -28697,7 +28697,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusion(dict):
 
 
 @pulumi.output_type
-class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky(dict):
+calass SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky(dict):
     def __init__(__self__, *,
                  operator: str,
                  value: Optional[str] = None):
@@ -28741,7 +28741,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky(dict):
 
 
 @pulumi.output_type
-class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader(dict):
+calass SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader(dict):
     def __init__(__self__, *,
                  operator: str,
                  value: Optional[str] = None):
@@ -28785,7 +28785,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader(dict):
 
 
 @pulumi.output_type
-class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam(dict):
+calass SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam(dict):
     def __init__(__self__, *,
                  operator: str,
                  value: Optional[str] = None):
@@ -28829,7 +28829,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam(dict):
 
 
 @pulumi.output_type
-class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri(dict):
+calass SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri(dict):
     def __init__(__self__, *,
                  operator: str,
                  value: Optional[str] = None):
@@ -28873,7 +28873,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri(dict):
 
 
 @pulumi.output_type
-class SecurityPolicyRuleRateLimitOptions(dict):
+calass SecurityPolicyRuleRateLimitOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -28921,10 +28921,10 @@ class SecurityPolicyRuleRateLimitOptions(dict):
         :param str conform_action: Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
         :param str exceed_action: When a request is denied, returns the HTTP response code specified.
                Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
-        :param 'SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs' rate_limit_threshold: Threshold at which to begin ratelimiting. Structure is documented below.
+        :param 'SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArrgs' rate_limit_threshold: Threshold at which to begin ratelimiting. Structure is documented below.
         :param int ban_duration_sec: Can only be specified if the `action` for the rule is "rate_based_ban".
                If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
-        :param 'SecurityPolicyRuleRateLimitOptionsBanThresholdArgs' ban_threshold: Can only be specified if the `action` for the rule is "rate_based_ban".
+        :param 'SecurityPolicyRuleRateLimitOptionsBanThresholdArrgs' ban_threshold: Can only be specified if the `action` for the rule is "rate_based_ban".
                If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also
                exceed this 'ban_threshold'. Structure is documented below.
         :param str enforce_on_key: Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to "ALL".
@@ -28937,11 +28937,11 @@ class SecurityPolicyRuleRateLimitOptions(dict):
                * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
                * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
                * REGION_CODE: The country/region from which the request originates.
-        :param Sequence['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs'] enforce_on_key_configs: ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
+        :param Sequence['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrgs'] enforce_on_key_configs: ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
                
                **Note:** To avoid the conflict between `enforce_on_key` and `enforce_on_key_configs`, the field `enforce_on_key` needs to be set to an empty string.
         :param str enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-        :param 'SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs' exceed_redirect_options: Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
+        :param 'SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArrgs' exceed_redirect_options: Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
                
                <a name="nested_threshold"></a>The `{ban/rate_limit}_threshold` block supports:
         """
@@ -29052,7 +29052,7 @@ class SecurityPolicyRuleRateLimitOptions(dict):
 
 
 @pulumi.output_type
-class SecurityPolicyRuleRateLimitOptionsBanThreshold(dict):
+calass SecurityPolicyRuleRateLimitOptionsBanThreshold(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -29098,7 +29098,7 @@ class SecurityPolicyRuleRateLimitOptionsBanThreshold(dict):
 
 
 @pulumi.output_type
-class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig(dict):
+calass SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -29166,7 +29166,7 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig(dict):
 
 
 @pulumi.output_type
-class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions(dict):
+calass SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions(dict):
     def __init__(__self__, *,
                  type: str,
                  target: Optional[str] = None):
@@ -29196,7 +29196,7 @@ class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions(dict):
 
 
 @pulumi.output_type
-class SecurityPolicyRuleRateLimitOptionsRateLimitThreshold(dict):
+calass SecurityPolicyRuleRateLimitOptionsRateLimitThreshold(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -29242,7 +29242,7 @@ class SecurityPolicyRuleRateLimitOptionsRateLimitThreshold(dict):
 
 
 @pulumi.output_type
-class SecurityPolicyRuleRedirectOptions(dict):
+calass SecurityPolicyRuleRedirectOptions(dict):
     def __init__(__self__, *,
                  type: str,
                  target: Optional[str] = None):
@@ -29278,7 +29278,7 @@ class SecurityPolicyRuleRedirectOptions(dict):
 
 
 @pulumi.output_type
-class SecurityScanConfigAuthentication(dict):
+calass SecurityScanConfigAuthentication(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -29302,9 +29302,9 @@ class SecurityScanConfigAuthentication(dict):
                  custom_account: Optional['outputs.SecurityScanConfigAuthenticationCustomAccount'] = None,
                  google_account: Optional['outputs.SecurityScanConfigAuthenticationGoogleAccount'] = None):
         """
-        :param 'SecurityScanConfigAuthenticationCustomAccountArgs' custom_account: Describes authentication configuration that uses a custom account.
+        :param 'SecurityScanConfigAuthenticationCustomAccountArrgs' custom_account: Describes authentication configuration that uses a custom account.
                Structure is documented below.
-        :param 'SecurityScanConfigAuthenticationGoogleAccountArgs' google_account: Describes authentication configuration that uses a Google account.
+        :param 'SecurityScanConfigAuthenticationGoogleAccountArrgs' google_account: Describes authentication configuration that uses a Google account.
                Structure is documented below.
         """
         if custom_account is not None:
@@ -29332,7 +29332,7 @@ class SecurityScanConfigAuthentication(dict):
 
 
 @pulumi.output_type
-class SecurityScanConfigAuthenticationCustomAccount(dict):
+calass SecurityScanConfigAuthenticationCustomAccount(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -29393,7 +29393,7 @@ class SecurityScanConfigAuthenticationCustomAccount(dict):
 
 
 @pulumi.output_type
-class SecurityScanConfigAuthenticationGoogleAccount(dict):
+calass SecurityScanConfigAuthenticationGoogleAccount(dict):
     def __init__(__self__, *,
                  password: str,
                  username: str):
@@ -29426,7 +29426,7 @@ class SecurityScanConfigAuthenticationGoogleAccount(dict):
 
 
 @pulumi.output_type
-class SecurityScanConfigSchedule(dict):
+calass SecurityScanConfigSchedule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -29479,7 +29479,7 @@ class SecurityScanConfigSchedule(dict):
 
 
 @pulumi.output_type
-class ServiceAttachmentConnectedEndpoint(dict):
+calass ServiceAttachmentConnectedEndpoint(dict):
     def __init__(__self__, *,
                  endpoint: Optional[str] = None,
                  status: Optional[str] = None):
@@ -29516,7 +29516,7 @@ class ServiceAttachmentConnectedEndpoint(dict):
 
 
 @pulumi.output_type
-class ServiceAttachmentConsumerAcceptList(dict):
+calass ServiceAttachmentConsumerAcceptList(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -29566,7 +29566,7 @@ class ServiceAttachmentConsumerAcceptList(dict):
 
 
 @pulumi.output_type
-class SnapshotIamBindingCondition(dict):
+calass SnapshotIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -29593,7 +29593,7 @@ class SnapshotIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class SnapshotIamMemberCondition(dict):
+calass SnapshotIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -29620,7 +29620,7 @@ class SnapshotIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class SnapshotSnapshotEncryptionKey(dict):
+calass SnapshotSnapshotEncryptionKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -29706,7 +29706,7 @@ class SnapshotSnapshotEncryptionKey(dict):
 
 
 @pulumi.output_type
-class SnapshotSourceDiskEncryptionKey(dict):
+calass SnapshotSourceDiskEncryptionKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -29762,7 +29762,7 @@ class SnapshotSourceDiskEncryptionKey(dict):
 
 
 @pulumi.output_type
-class SubnetworkIAMBindingCondition(dict):
+calass SubnetworkIAMBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -29811,7 +29811,7 @@ class SubnetworkIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class SubnetworkIAMMemberCondition(dict):
+calass SubnetworkIAMMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -29860,7 +29860,7 @@ class SubnetworkIAMMemberCondition(dict):
 
 
 @pulumi.output_type
-class SubnetworkLogConfig(dict):
+calass SubnetworkLogConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -29982,7 +29982,7 @@ class SubnetworkLogConfig(dict):
 
 
 @pulumi.output_type
-class SubnetworkSecondaryIpRange(dict):
+calass SubnetworkSecondaryIpRange(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -30042,7 +30042,7 @@ class SubnetworkSecondaryIpRange(dict):
 
 
 @pulumi.output_type
-class URLMapDefaultRouteAction(dict):
+calass URLMapDefaultRouteAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -30079,28 +30079,28 @@ class URLMapDefaultRouteAction(dict):
                  url_rewrite: Optional['outputs.URLMapDefaultRouteActionUrlRewrite'] = None,
                  weighted_backend_services: Optional[Sequence['outputs.URLMapDefaultRouteActionWeightedBackendService']] = None):
         """
-        :param 'URLMapDefaultRouteActionCorsPolicyArgs' cors_policy: The specification for allowing client side cross-origin requests. Please see
+        :param 'URLMapDefaultRouteActionCorsPolicyArrgs' cors_policy: The specification for allowing client side cross-origin requests. Please see
                [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
                Structure is documented below.
-        :param 'URLMapDefaultRouteActionFaultInjectionPolicyArgs' fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+        :param 'URLMapDefaultRouteActionFaultInjectionPolicyArrgs' fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
                As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
                percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
                by the Loadbalancer for a percentage of requests.
                timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
                Structure is documented below.
-        :param 'URLMapDefaultRouteActionRequestMirrorPolicyArgs' request_mirror_policy: Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
+        :param 'URLMapDefaultRouteActionRequestMirrorPolicyArrgs' request_mirror_policy: Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
                Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
                the host / authority header is suffixed with -shadow.
                Structure is documented below.
-        :param 'URLMapDefaultRouteActionRetryPolicyArgs' retry_policy: Specifies the retry policy associated with this route.
+        :param 'URLMapDefaultRouteActionRetryPolicyArrgs' retry_policy: Specifies the retry policy associated with this route.
                Structure is documented below.
-        :param 'URLMapDefaultRouteActionTimeoutArgs' timeout: Specifies the timeout for the selected route. Timeout is computed from the time the request has been
+        :param 'URLMapDefaultRouteActionTimeoutArrgs' timeout: Specifies the timeout for the selected route. Timeout is computed from the time the request has been
                fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
                If not specified, will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
-        :param 'URLMapDefaultRouteActionUrlRewriteArgs' url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+        :param 'URLMapDefaultRouteActionUrlRewriteArrgs' url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to the matched service.
                Structure is documented below.
-        :param Sequence['URLMapDefaultRouteActionWeightedBackendServiceArgs'] weighted_backend_services: A list of weighted backend services to send traffic to when a route match occurs.
+        :param Sequence['URLMapDefaultRouteActionWeightedBackendServiceArrgs'] weighted_backend_services: A list of weighted backend services to send traffic to when a route match occurs.
                The weights determine the fraction of traffic that flows to their corresponding backend service.
                If all traffic needs to go to a single backend service, there must be one weightedBackendService
                with weight set to a non 0 number.
@@ -30204,7 +30204,7 @@ class URLMapDefaultRouteAction(dict):
 
 
 @pulumi.output_type
-class URLMapDefaultRouteActionCorsPolicy(dict):
+calass URLMapDefaultRouteActionCorsPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -30346,14 +30346,14 @@ class URLMapDefaultRouteActionCorsPolicy(dict):
 
 
 @pulumi.output_type
-class URLMapDefaultRouteActionFaultInjectionPolicy(dict):
+calass URLMapDefaultRouteActionFaultInjectionPolicy(dict):
     def __init__(__self__, *,
                  abort: Optional['outputs.URLMapDefaultRouteActionFaultInjectionPolicyAbort'] = None,
                  delay: Optional['outputs.URLMapDefaultRouteActionFaultInjectionPolicyDelay'] = None):
         """
-        :param 'URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs' abort: The specification for how client requests are aborted as part of fault injection.
+        :param 'URLMapDefaultRouteActionFaultInjectionPolicyAbortArrgs' abort: The specification for how client requests are aborted as part of fault injection.
                Structure is documented below.
-        :param 'URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs' delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+        :param 'URLMapDefaultRouteActionFaultInjectionPolicyDelayArrgs' delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
                Structure is documented below.
         """
         if abort is not None:
@@ -30381,7 +30381,7 @@ class URLMapDefaultRouteActionFaultInjectionPolicy(dict):
 
 
 @pulumi.output_type
-class URLMapDefaultRouteActionFaultInjectionPolicyAbort(dict):
+calass URLMapDefaultRouteActionFaultInjectionPolicyAbort(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -30433,7 +30433,7 @@ class URLMapDefaultRouteActionFaultInjectionPolicyAbort(dict):
 
 
 @pulumi.output_type
-class URLMapDefaultRouteActionFaultInjectionPolicyDelay(dict):
+calass URLMapDefaultRouteActionFaultInjectionPolicyDelay(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -30455,7 +30455,7 @@ class URLMapDefaultRouteActionFaultInjectionPolicyDelay(dict):
                  fixed_delay: Optional['outputs.URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay'] = None,
                  percentage: Optional[float] = None):
         """
-        :param 'URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs' fixed_delay: Specifies the value of the fixed delay interval.
+        :param 'URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArrgs' fixed_delay: Specifies the value of the fixed delay interval.
                Structure is documented below.
         :param float percentage: The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
                The value must be between 0.0 and 100.0 inclusive.
@@ -30485,7 +30485,7 @@ class URLMapDefaultRouteActionFaultInjectionPolicyDelay(dict):
 
 
 @pulumi.output_type
-class URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay(dict):
+calass URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay(dict):
     def __init__(__self__, *,
                  nanos: Optional[int] = None,
                  seconds: Optional[str] = None):
@@ -30520,7 +30520,7 @@ class URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay(dict):
 
 
 @pulumi.output_type
-class URLMapDefaultRouteActionRequestMirrorPolicy(dict):
+calass URLMapDefaultRouteActionRequestMirrorPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -30555,7 +30555,7 @@ class URLMapDefaultRouteActionRequestMirrorPolicy(dict):
 
 
 @pulumi.output_type
-class URLMapDefaultRouteActionRetryPolicy(dict):
+calass URLMapDefaultRouteActionRetryPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -30583,7 +30583,7 @@ class URLMapDefaultRouteActionRetryPolicy(dict):
                  retry_conditions: Optional[Sequence[str]] = None):
         """
         :param int num_retries: Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
-        :param 'URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs' per_try_timeout: Specifies a non-zero timeout per retry attempt.
+        :param 'URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArrgs' per_try_timeout: Specifies a non-zero timeout per retry attempt.
                If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
                will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
@@ -30653,7 +30653,7 @@ class URLMapDefaultRouteActionRetryPolicy(dict):
 
 
 @pulumi.output_type
-class URLMapDefaultRouteActionRetryPolicyPerTryTimeout(dict):
+calass URLMapDefaultRouteActionRetryPolicyPerTryTimeout(dict):
     def __init__(__self__, *,
                  nanos: Optional[int] = None,
                  seconds: Optional[str] = None):
@@ -30688,7 +30688,7 @@ class URLMapDefaultRouteActionRetryPolicyPerTryTimeout(dict):
 
 
 @pulumi.output_type
-class URLMapDefaultRouteActionTimeout(dict):
+calass URLMapDefaultRouteActionTimeout(dict):
     def __init__(__self__, *,
                  nanos: Optional[int] = None,
                  seconds: Optional[str] = None):
@@ -30723,7 +30723,7 @@ class URLMapDefaultRouteActionTimeout(dict):
 
 
 @pulumi.output_type
-class URLMapDefaultRouteActionUrlRewrite(dict):
+calass URLMapDefaultRouteActionUrlRewrite(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -30781,7 +30781,7 @@ class URLMapDefaultRouteActionUrlRewrite(dict):
 
 
 @pulumi.output_type
-class URLMapDefaultRouteActionWeightedBackendService(dict):
+calass URLMapDefaultRouteActionWeightedBackendService(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -30809,7 +30809,7 @@ class URLMapDefaultRouteActionWeightedBackendService(dict):
         :param str backend_service: The full or partial URL to the default BackendService resource. Before forwarding the
                request to backendService, the loadbalancer applies any relevant headerActions
                specified as part of this backendServiceWeight.
-        :param 'URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs' header_action: Specifies changes to request and response headers that need to take effect for
+        :param 'URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArrgs' header_action: Specifies changes to request and response headers that need to take effect for
                the selected backendService.
                headerAction specified here take effect before headerAction in the enclosing
                HttpRouteRule, PathMatcher and UrlMap.
@@ -30865,7 +30865,7 @@ class URLMapDefaultRouteActionWeightedBackendService(dict):
 
 
 @pulumi.output_type
-class URLMapDefaultRouteActionWeightedBackendServiceHeaderAction(dict):
+calass URLMapDefaultRouteActionWeightedBackendServiceHeaderAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -30895,11 +30895,11 @@ class URLMapDefaultRouteActionWeightedBackendServiceHeaderAction(dict):
                  response_headers_to_adds: Optional[Sequence['outputs.URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd']] = None,
                  response_headers_to_removes: Optional[Sequence[str]] = None):
         """
-        :param Sequence['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs'] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
+        :param Sequence['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs'] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
                Structure is documented below.
         :param Sequence[str] request_headers_to_removes: A list of header names for headers that need to be removed from the request prior to
                forwarding the request to the backendService.
-        :param Sequence['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs'] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
+        :param Sequence['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs'] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
                Structure is documented below.
         :param Sequence[str] response_headers_to_removes: A list of header names for headers that need to be removed from the response prior to sending the
                response back to the client.
@@ -30951,7 +30951,7 @@ class URLMapDefaultRouteActionWeightedBackendServiceHeaderAction(dict):
 
 
 @pulumi.output_type
-class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd(dict):
+calass URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -31015,7 +31015,7 @@ class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersTo
 
 
 @pulumi.output_type
-class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd(dict):
+calass URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -31079,7 +31079,7 @@ class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersT
 
 
 @pulumi.output_type
-class URLMapDefaultUrlRedirect(dict):
+calass URLMapDefaultUrlRedirect(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -31228,7 +31228,7 @@ class URLMapDefaultUrlRedirect(dict):
 
 
 @pulumi.output_type
-class URLMapHeaderAction(dict):
+calass URLMapHeaderAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -31258,11 +31258,11 @@ class URLMapHeaderAction(dict):
                  response_headers_to_adds: Optional[Sequence['outputs.URLMapHeaderActionResponseHeadersToAdd']] = None,
                  response_headers_to_removes: Optional[Sequence[str]] = None):
         """
-        :param Sequence['URLMapHeaderActionRequestHeadersToAddArgs'] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
+        :param Sequence['URLMapHeaderActionRequestHeadersToAddArrgs'] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
                Structure is documented below.
         :param Sequence[str] request_headers_to_removes: A list of header names for headers that need to be removed from the request prior to
                forwarding the request to the backendService.
-        :param Sequence['URLMapHeaderActionResponseHeadersToAddArgs'] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
+        :param Sequence['URLMapHeaderActionResponseHeadersToAddArrgs'] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
                Structure is documented below.
         :param Sequence[str] response_headers_to_removes: A list of header names for headers that need to be removed from the response prior to sending the
                response back to the client.
@@ -31314,7 +31314,7 @@ class URLMapHeaderAction(dict):
 
 
 @pulumi.output_type
-class URLMapHeaderActionRequestHeadersToAdd(dict):
+calass URLMapHeaderActionRequestHeadersToAdd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -31375,7 +31375,7 @@ class URLMapHeaderActionRequestHeadersToAdd(dict):
 
 
 @pulumi.output_type
-class URLMapHeaderActionResponseHeadersToAdd(dict):
+calass URLMapHeaderActionResponseHeadersToAdd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -31436,7 +31436,7 @@ class URLMapHeaderActionResponseHeadersToAdd(dict):
 
 
 @pulumi.output_type
-class URLMapHostRule(dict):
+calass URLMapHostRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -31502,7 +31502,7 @@ class URLMapHostRule(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcher(dict):
+calass URLMapPathMatcher(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -31541,31 +31541,31 @@ class URLMapPathMatcher(dict):
                  route_rules: Optional[Sequence['outputs.URLMapPathMatcherRouteRule']] = None):
         """
         :param str name: The name to which this PathMatcher is referred by the HostRule.
-        :param 'URLMapPathMatcherDefaultRouteActionArgs' default_route_action: defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
+        :param 'URLMapPathMatcherDefaultRouteActionArrgs' default_route_action: defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
                advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
                to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
                Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
                Only one of defaultRouteAction or defaultUrlRedirect must be set.
                Structure is documented below.
         :param str default_service: The backend service or backend bucket to use when none of the given paths match.
-        :param 'URLMapPathMatcherDefaultUrlRedirectArgs' default_url_redirect: When none of the specified hostRules match, the request is redirected to a URL specified
+        :param 'URLMapPathMatcherDefaultUrlRedirectArrgs' default_url_redirect: When none of the specified hostRules match, the request is redirected to a URL specified
                by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
                defaultRouteAction must not be set.
                Structure is documented below.
         :param str description: An optional description of this resource. Provide this property when you create
                the resource.
-        :param 'URLMapPathMatcherHeaderActionArgs' header_action: Specifies changes to request and response headers that need to take effect for
+        :param 'URLMapPathMatcherHeaderActionArrgs' header_action: Specifies changes to request and response headers that need to take effect for
                the selected backendService. HeaderAction specified here are applied after the
                matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap
                Structure is documented below.
-        :param Sequence['URLMapPathMatcherPathRuleArgs'] path_rules: The list of path rules. Use this list instead of routeRules when routing based
+        :param Sequence['URLMapPathMatcherPathRuleArrgs'] path_rules: The list of path rules. Use this list instead of routeRules when routing based
                on simple path matching is all that's required. The order by which path rules
                are specified does not matter. Matches are always done on the longest-path-first
                basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/*
                irrespective of the order in which those paths appear in this list. Within a
                given pathMatcher, only one of pathRules or routeRules must be set.
                Structure is documented below.
-        :param Sequence['URLMapPathMatcherRouteRuleArgs'] route_rules: The list of ordered HTTP route rules. Use this list instead of pathRules when
+        :param Sequence['URLMapPathMatcherRouteRuleArrgs'] route_rules: The list of ordered HTTP route rules. Use this list instead of pathRules when
                advanced route matching and routing actions are desired. The order of specifying
                routeRules matters: the first rule that matches will cause its specified routing
                action to take effect. Within a given pathMatcher, only one of pathRules or
@@ -31679,7 +31679,7 @@ class URLMapPathMatcher(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherDefaultRouteAction(dict):
+calass URLMapPathMatcherDefaultRouteAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -31716,28 +31716,28 @@ class URLMapPathMatcherDefaultRouteAction(dict):
                  url_rewrite: Optional['outputs.URLMapPathMatcherDefaultRouteActionUrlRewrite'] = None,
                  weighted_backend_services: Optional[Sequence['outputs.URLMapPathMatcherDefaultRouteActionWeightedBackendService']] = None):
         """
-        :param 'URLMapPathMatcherDefaultRouteActionCorsPolicyArgs' cors_policy: The specification for allowing client side cross-origin requests. Please see
+        :param 'URLMapPathMatcherDefaultRouteActionCorsPolicyArrgs' cors_policy: The specification for allowing client side cross-origin requests. Please see
                [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
                Structure is documented below.
-        :param 'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs' fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+        :param 'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArrgs' fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
                As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
                percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
                by the Loadbalancer for a percentage of requests.
                timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
                Structure is documented below.
-        :param 'URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs' request_mirror_policy: Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
+        :param 'URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArrgs' request_mirror_policy: Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
                Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
                the host / authority header is suffixed with -shadow.
                Structure is documented below.
-        :param 'URLMapPathMatcherDefaultRouteActionRetryPolicyArgs' retry_policy: Specifies the retry policy associated with this route.
+        :param 'URLMapPathMatcherDefaultRouteActionRetryPolicyArrgs' retry_policy: Specifies the retry policy associated with this route.
                Structure is documented below.
-        :param 'URLMapPathMatcherDefaultRouteActionTimeoutArgs' timeout: Specifies the timeout for the selected route. Timeout is computed from the time the request has been
+        :param 'URLMapPathMatcherDefaultRouteActionTimeoutArrgs' timeout: Specifies the timeout for the selected route. Timeout is computed from the time the request has been
                fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
                If not specified, will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
-        :param 'URLMapPathMatcherDefaultRouteActionUrlRewriteArgs' url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+        :param 'URLMapPathMatcherDefaultRouteActionUrlRewriteArrgs' url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to the matched service.
                Structure is documented below.
-        :param Sequence['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs'] weighted_backend_services: A list of weighted backend services to send traffic to when a route match occurs.
+        :param Sequence['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArrgs'] weighted_backend_services: A list of weighted backend services to send traffic to when a route match occurs.
                The weights determine the fraction of traffic that flows to their corresponding backend service.
                If all traffic needs to go to a single backend service, there must be one weightedBackendService
                with weight set to a non 0 number.
@@ -31841,7 +31841,7 @@ class URLMapPathMatcherDefaultRouteAction(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherDefaultRouteActionCorsPolicy(dict):
+calass URLMapPathMatcherDefaultRouteActionCorsPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -31983,14 +31983,14 @@ class URLMapPathMatcherDefaultRouteActionCorsPolicy(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy(dict):
+calass URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy(dict):
     def __init__(__self__, *,
                  abort: Optional['outputs.URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort'] = None,
                  delay: Optional['outputs.URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay'] = None):
         """
-        :param 'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgs' abort: The specification for how client requests are aborted as part of fault injection.
+        :param 'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArrgs' abort: The specification for how client requests are aborted as part of fault injection.
                Structure is documented below.
-        :param 'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs' delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+        :param 'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArrgs' delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
                Structure is documented below.
         """
         if abort is not None:
@@ -32018,7 +32018,7 @@ class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort(dict):
+calass URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -32070,7 +32070,7 @@ class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay(dict):
+calass URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -32092,7 +32092,7 @@ class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay(dict):
                  fixed_delay: Optional['outputs.URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelay'] = None,
                  percentage: Optional[float] = None):
         """
-        :param 'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs' fixed_delay: Specifies the value of the fixed delay interval.
+        :param 'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArrgs' fixed_delay: Specifies the value of the fixed delay interval.
                Structure is documented below.
         :param float percentage: The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
                The value must be between 0.0 and 100.0 inclusive.
@@ -32122,7 +32122,7 @@ class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelay(dict):
+calass URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelay(dict):
     def __init__(__self__, *,
                  nanos: Optional[int] = None,
                  seconds: Optional[str] = None):
@@ -32157,7 +32157,7 @@ class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelay(dic
 
 
 @pulumi.output_type
-class URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy(dict):
+calass URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -32192,7 +32192,7 @@ class URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherDefaultRouteActionRetryPolicy(dict):
+calass URLMapPathMatcherDefaultRouteActionRetryPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -32220,7 +32220,7 @@ class URLMapPathMatcherDefaultRouteActionRetryPolicy(dict):
                  retry_conditions: Optional[Sequence[str]] = None):
         """
         :param int num_retries: Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
-        :param 'URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgs' per_try_timeout: Specifies a non-zero timeout per retry attempt.
+        :param 'URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArrgs' per_try_timeout: Specifies a non-zero timeout per retry attempt.
                If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
                will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
@@ -32290,7 +32290,7 @@ class URLMapPathMatcherDefaultRouteActionRetryPolicy(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeout(dict):
+calass URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeout(dict):
     def __init__(__self__, *,
                  nanos: Optional[int] = None,
                  seconds: Optional[str] = None):
@@ -32325,7 +32325,7 @@ class URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeout(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherDefaultRouteActionTimeout(dict):
+calass URLMapPathMatcherDefaultRouteActionTimeout(dict):
     def __init__(__self__, *,
                  nanos: Optional[int] = None,
                  seconds: Optional[str] = None):
@@ -32360,7 +32360,7 @@ class URLMapPathMatcherDefaultRouteActionTimeout(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherDefaultRouteActionUrlRewrite(dict):
+calass URLMapPathMatcherDefaultRouteActionUrlRewrite(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -32418,7 +32418,7 @@ class URLMapPathMatcherDefaultRouteActionUrlRewrite(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherDefaultRouteActionWeightedBackendService(dict):
+calass URLMapPathMatcherDefaultRouteActionWeightedBackendService(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -32446,7 +32446,7 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendService(dict):
         :param str backend_service: The full or partial URL to the default BackendService resource. Before forwarding the
                request to backendService, the loadbalancer applies any relevant headerActions
                specified as part of this backendServiceWeight.
-        :param 'URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs' header_action: Specifies changes to request and response headers that need to take effect for
+        :param 'URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArrgs' header_action: Specifies changes to request and response headers that need to take effect for
                the selected backendService.
                headerAction specified here take effect before headerAction in the enclosing
                HttpRouteRule, PathMatcher and UrlMap.
@@ -32502,7 +32502,7 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendService(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderAction(dict):
+calass URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -32532,11 +32532,11 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderAction(dict
                  response_headers_to_adds: Optional[Sequence['outputs.URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd']] = None,
                  response_headers_to_removes: Optional[Sequence[str]] = None):
         """
-        :param Sequence['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs'] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
+        :param Sequence['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs'] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
                Structure is documented below.
         :param Sequence[str] request_headers_to_removes: A list of header names for headers that need to be removed from the request prior to
                forwarding the request to the backendService.
-        :param Sequence['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs'] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
+        :param Sequence['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs'] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
                Structure is documented below.
         :param Sequence[str] response_headers_to_removes: A list of header names for headers that need to be removed from the response prior to sending the
                response back to the client.
@@ -32588,7 +32588,7 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderAction(dict
 
 
 @pulumi.output_type
-class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd(dict):
+calass URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -32652,7 +32652,7 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionReque
 
 
 @pulumi.output_type
-class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd(dict):
+calass URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -32716,7 +32716,7 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRespo
 
 
 @pulumi.output_type
-class URLMapPathMatcherDefaultUrlRedirect(dict):
+calass URLMapPathMatcherDefaultUrlRedirect(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -32865,7 +32865,7 @@ class URLMapPathMatcherDefaultUrlRedirect(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherHeaderAction(dict):
+calass URLMapPathMatcherHeaderAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -32895,11 +32895,11 @@ class URLMapPathMatcherHeaderAction(dict):
                  response_headers_to_adds: Optional[Sequence['outputs.URLMapPathMatcherHeaderActionResponseHeadersToAdd']] = None,
                  response_headers_to_removes: Optional[Sequence[str]] = None):
         """
-        :param Sequence['URLMapPathMatcherHeaderActionRequestHeadersToAddArgs'] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
+        :param Sequence['URLMapPathMatcherHeaderActionRequestHeadersToAddArrgs'] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
                Structure is documented below.
         :param Sequence[str] request_headers_to_removes: A list of header names for headers that need to be removed from the request prior to
                forwarding the request to the backendService.
-        :param Sequence['URLMapPathMatcherHeaderActionResponseHeadersToAddArgs'] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
+        :param Sequence['URLMapPathMatcherHeaderActionResponseHeadersToAddArrgs'] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
                Structure is documented below.
         :param Sequence[str] response_headers_to_removes: A list of header names for headers that need to be removed from the response prior to sending the
                response back to the client.
@@ -32951,7 +32951,7 @@ class URLMapPathMatcherHeaderAction(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherHeaderActionRequestHeadersToAdd(dict):
+calass URLMapPathMatcherHeaderActionRequestHeadersToAdd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -33012,7 +33012,7 @@ class URLMapPathMatcherHeaderActionRequestHeadersToAdd(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherHeaderActionResponseHeadersToAdd(dict):
+calass URLMapPathMatcherHeaderActionResponseHeadersToAdd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -33073,7 +33073,7 @@ class URLMapPathMatcherHeaderActionResponseHeadersToAdd(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherPathRule(dict):
+calass URLMapPathMatcherPathRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -33103,7 +33103,7 @@ class URLMapPathMatcherPathRule(dict):
                \\* is allowed is at the end following a /. The string fed to the path matcher
                does not include any text after the first ? or #, and those chars are not
                allowed here.
-        :param 'URLMapPathMatcherPathRuleRouteActionArgs' route_action: In response to a matching path, the load balancer performs advanced routing
+        :param 'URLMapPathMatcherPathRuleRouteActionArrgs' route_action: In response to a matching path, the load balancer performs advanced routing
                actions like URL rewrites, header transformations, etc. prior to forwarding the
                request to the selected backend. If routeAction specifies any
                weightedBackendServices, service must not be set. Conversely if service is set,
@@ -33111,7 +33111,7 @@ class URLMapPathMatcherPathRule(dict):
                or urlRedirect must be set.
                Structure is documented below.
         :param str service: The backend service or backend bucket to use if any of the given paths match.
-        :param 'URLMapPathMatcherPathRuleUrlRedirectArgs' url_redirect: When a path pattern is matched, the request is redirected to a URL specified
+        :param 'URLMapPathMatcherPathRuleUrlRedirectArrgs' url_redirect: When a path pattern is matched, the request is redirected to a URL specified
                by urlRedirect. If urlRedirect is specified, service or routeAction must not
                be set.
                Structure is documented below.
@@ -33170,7 +33170,7 @@ class URLMapPathMatcherPathRule(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherPathRuleRouteAction(dict):
+calass URLMapPathMatcherPathRuleRouteAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -33207,10 +33207,10 @@ class URLMapPathMatcherPathRuleRouteAction(dict):
                  url_rewrite: Optional['outputs.URLMapPathMatcherPathRuleRouteActionUrlRewrite'] = None,
                  weighted_backend_services: Optional[Sequence['outputs.URLMapPathMatcherPathRuleRouteActionWeightedBackendService']] = None):
         """
-        :param 'URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs' cors_policy: The specification for allowing client side cross-origin requests. Please see W3C
+        :param 'URLMapPathMatcherPathRuleRouteActionCorsPolicyArrgs' cors_policy: The specification for allowing client side cross-origin requests. Please see W3C
                Recommendation for Cross Origin Resource Sharing
                Structure is documented below.
-        :param 'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs' fault_injection_policy: The specification for fault injection introduced into traffic to test the
+        :param 'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArrgs' fault_injection_policy: The specification for fault injection introduced into traffic to test the
                resiliency of clients to backend service failure. As part of fault injection,
                when clients send requests to a backend service, delays can be introduced by
                Loadbalancer on a percentage of requests before sending those request to the
@@ -33218,22 +33218,22 @@ class URLMapPathMatcherPathRuleRouteAction(dict):
                Loadbalancer for a percentage of requests. timeout and retry_policy will be
                ignored by clients that are configured with a fault_injection_policy.
                Structure is documented below.
-        :param 'URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs' request_mirror_policy: Specifies the policy on how requests intended for the route's backends are
+        :param 'URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArrgs' request_mirror_policy: Specifies the policy on how requests intended for the route's backends are
                shadowed to a separate mirrored backend service. Loadbalancer does not wait for
                responses from the shadow service. Prior to sending traffic to the shadow
                service, the host / authority header is suffixed with -shadow.
                Structure is documented below.
-        :param 'URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs' retry_policy: Specifies the retry policy associated with this route.
+        :param 'URLMapPathMatcherPathRuleRouteActionRetryPolicyArrgs' retry_policy: Specifies the retry policy associated with this route.
                Structure is documented below.
-        :param 'URLMapPathMatcherPathRuleRouteActionTimeoutArgs' timeout: Specifies the timeout for the selected route. Timeout is computed from the time
+        :param 'URLMapPathMatcherPathRuleRouteActionTimeoutArrgs' timeout: Specifies the timeout for the selected route. Timeout is computed from the time
                the request is has been fully processed (i.e. end-of-stream) up until the
                response has been completely processed. Timeout includes all retries. If not
                specified, the default value is 15 seconds.
                Structure is documented below.
-        :param 'URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs' url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to
+        :param 'URLMapPathMatcherPathRuleRouteActionUrlRewriteArrgs' url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to
                the matched service
                Structure is documented below.
-        :param Sequence['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs'] weighted_backend_services: A list of weighted backend services to send traffic to when a route match
+        :param Sequence['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrgs'] weighted_backend_services: A list of weighted backend services to send traffic to when a route match
                occurs. The weights determine the fraction of traffic that flows to their
                corresponding backend service. If all traffic needs to go to a single backend
                service, there must be one  weightedBackendService with weight set to a non 0
@@ -33344,7 +33344,7 @@ class URLMapPathMatcherPathRuleRouteAction(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherPathRuleRouteActionCorsPolicy(dict):
+calass URLMapPathMatcherPathRuleRouteActionCorsPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -33485,14 +33485,14 @@ class URLMapPathMatcherPathRuleRouteActionCorsPolicy(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy(dict):
+calass URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy(dict):
     def __init__(__self__, *,
                  abort: Optional['outputs.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort'] = None,
                  delay: Optional['outputs.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay'] = None):
         """
-        :param 'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs' abort: The specification for how client requests are aborted as part of fault injection.
+        :param 'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArrgs' abort: The specification for how client requests are aborted as part of fault injection.
                Structure is documented below.
-        :param 'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs' delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+        :param 'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArrgs' delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
                Structure is documented below.
         """
         if abort is not None:
@@ -33520,7 +33520,7 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort(dict):
+calass URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -33570,7 +33570,7 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay(dict):
+calass URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -33592,7 +33592,7 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay(dict):
                  fixed_delay: 'outputs.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay',
                  percentage: float):
         """
-        :param 'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs' fixed_delay: Specifies the value of the fixed delay interval.
+        :param 'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs' fixed_delay: Specifies the value of the fixed delay interval.
                Structure is documented below.
         :param float percentage: The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
                The value must be between 0.0 and 100.0 inclusive.
@@ -33620,7 +33620,7 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay(dict):
+calass URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay(dict):
     def __init__(__self__, *,
                  seconds: str,
                  nanos: Optional[int] = None):
@@ -33654,7 +33654,7 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay(di
 
 
 @pulumi.output_type
-class URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy(dict):
+calass URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -33689,7 +33689,7 @@ class URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherPathRuleRouteActionRetryPolicy(dict):
+calass URLMapPathMatcherPathRuleRouteActionRetryPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -33717,7 +33717,7 @@ class URLMapPathMatcherPathRuleRouteActionRetryPolicy(dict):
                  retry_conditions: Optional[Sequence[str]] = None):
         """
         :param int num_retries: Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
-        :param 'URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs' per_try_timeout: Specifies a non-zero timeout per retry attempt.
+        :param 'URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArrgs' per_try_timeout: Specifies a non-zero timeout per retry attempt.
                If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
                will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
@@ -33787,7 +33787,7 @@ class URLMapPathMatcherPathRuleRouteActionRetryPolicy(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout(dict):
+calass URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout(dict):
     def __init__(__self__, *,
                  seconds: str,
                  nanos: Optional[int] = None):
@@ -33821,7 +33821,7 @@ class URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherPathRuleRouteActionTimeout(dict):
+calass URLMapPathMatcherPathRuleRouteActionTimeout(dict):
     def __init__(__self__, *,
                  seconds: str,
                  nanos: Optional[int] = None):
@@ -33855,7 +33855,7 @@ class URLMapPathMatcherPathRuleRouteActionTimeout(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherPathRuleRouteActionUrlRewrite(dict):
+calass URLMapPathMatcherPathRuleRouteActionUrlRewrite(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -33913,7 +33913,7 @@ class URLMapPathMatcherPathRuleRouteActionUrlRewrite(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherPathRuleRouteActionWeightedBackendService(dict):
+calass URLMapPathMatcherPathRuleRouteActionWeightedBackendService(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -33947,7 +33947,7 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendService(dict):
                has been directed to a backendService, subsequent requests will be sent to the same backendService
                as determined by the BackendService's session affinity policy.
                The value must be between 0 and 1000
-        :param 'URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs' header_action: Specifies changes to request and response headers that need to take effect for
+        :param 'URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArrgs' header_action: Specifies changes to request and response headers that need to take effect for
                the selected backendService.
                headerAction specified here take effect before headerAction in the enclosing
                HttpRouteRule, PathMatcher and UrlMap.
@@ -33995,7 +33995,7 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendService(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction(dict):
+calass URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -34025,11 +34025,11 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction(dic
                  response_headers_to_adds: Optional[Sequence['outputs.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd']] = None,
                  response_headers_to_removes: Optional[Sequence[str]] = None):
         """
-        :param Sequence['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs'] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
+        :param Sequence['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs'] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
                Structure is documented below.
         :param Sequence[str] request_headers_to_removes: A list of header names for headers that need to be removed from the request prior to
                forwarding the request to the backendService.
-        :param Sequence['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs'] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
+        :param Sequence['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs'] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
                Structure is documented below.
         :param Sequence[str] response_headers_to_removes: A list of header names for headers that need to be removed from the response prior to sending the
                response back to the client.
@@ -34081,7 +34081,7 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction(dic
 
 
 @pulumi.output_type
-class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd(dict):
+calass URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -34142,7 +34142,7 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequ
 
 
 @pulumi.output_type
-class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd(dict):
+calass URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -34203,7 +34203,7 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResp
 
 
 @pulumi.output_type
-class URLMapPathMatcherPathRuleUrlRedirect(dict):
+calass URLMapPathMatcherPathRuleUrlRedirect(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -34336,7 +34336,7 @@ class URLMapPathMatcherPathRuleUrlRedirect(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherRouteRule(dict):
+calass URLMapPathMatcherRouteRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -34381,14 +34381,14 @@ class URLMapPathMatcherRouteRule(dict):
                1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which
                you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the
                future without any impact on existing rules.
-        :param 'URLMapPathMatcherRouteRuleHeaderActionArgs' header_action: Specifies changes to request and response headers that need to take effect for
+        :param 'URLMapPathMatcherRouteRuleHeaderActionArrgs' header_action: Specifies changes to request and response headers that need to take effect for
                the selected backendService. The headerAction specified here are applied before
                the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
                outeAction.weightedBackendService.backendServiceWeightAction[].headerAction
                Structure is documented below.
-        :param Sequence['URLMapPathMatcherRouteRuleMatchRuleArgs'] match_rules: The rules for determining a match.
+        :param Sequence['URLMapPathMatcherRouteRuleMatchRuleArrgs'] match_rules: The rules for determining a match.
                Structure is documented below.
-        :param 'URLMapPathMatcherRouteRuleRouteActionArgs' route_action: In response to a matching matchRule, the load balancer performs advanced routing
+        :param 'URLMapPathMatcherRouteRuleRouteActionArrgs' route_action: In response to a matching matchRule, the load balancer performs advanced routing
                actions like URL rewrites, header transformations, etc. prior to forwarding the
                request to the selected backend. If  routeAction specifies any
                weightedBackendServices, service must not be set. Conversely if service is set,
@@ -34402,7 +34402,7 @@ class URLMapPathMatcherRouteRule(dict):
                contain any weightedBackendService s. Conversely, if routeAction specifies any
                weightedBackendServices, service must not be specified. Only one of urlRedirect,
                service or routeAction.weightedBackendService must be set.
-        :param 'URLMapPathMatcherRouteRuleUrlRedirectArgs' url_redirect: When this rule is matched, the request is redirected to a URL specified by
+        :param 'URLMapPathMatcherRouteRuleUrlRedirectArrgs' url_redirect: When this rule is matched, the request is redirected to a URL specified by
                urlRedirect. If urlRedirect is specified, service or routeAction must not be
                set.
                Structure is documented below.
@@ -34501,7 +34501,7 @@ class URLMapPathMatcherRouteRule(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherRouteRuleHeaderAction(dict):
+calass URLMapPathMatcherRouteRuleHeaderAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -34531,11 +34531,11 @@ class URLMapPathMatcherRouteRuleHeaderAction(dict):
                  response_headers_to_adds: Optional[Sequence['outputs.URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd']] = None,
                  response_headers_to_removes: Optional[Sequence[str]] = None):
         """
-        :param Sequence['URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs'] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
+        :param Sequence['URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrgs'] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
                Structure is documented below.
         :param Sequence[str] request_headers_to_removes: A list of header names for headers that need to be removed from the request prior to
                forwarding the request to the backendService.
-        :param Sequence['URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs'] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
+        :param Sequence['URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrgs'] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
                Structure is documented below.
         :param Sequence[str] response_headers_to_removes: A list of header names for headers that need to be removed from the response prior to sending the
                response back to the client.
@@ -34587,7 +34587,7 @@ class URLMapPathMatcherRouteRuleHeaderAction(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd(dict):
+calass URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -34648,7 +34648,7 @@ class URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd(dict):
+calass URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -34709,7 +34709,7 @@ class URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherRouteRuleMatchRule(dict):
+calass URLMapPathMatcherRouteRuleMatchRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -34756,12 +34756,12 @@ class URLMapPathMatcherRouteRuleMatchRule(dict):
                and anchor that may be part of the original URL. FullPathMatch must be between 1
                and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
                be specified.
-        :param Sequence['URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs'] header_matches: Specifies a list of header match criteria, all of which must match corresponding
+        :param Sequence['URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrgs'] header_matches: Specifies a list of header match criteria, all of which must match corresponding
                headers in the request.
                Structure is documented below.
         :param bool ignore_case: Specifies that prefixMatch and fullPathMatch matches are case sensitive.
                Defaults to false.
-        :param Sequence['URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs'] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing configuration to
+        :param Sequence['URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrgs'] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing configuration to
                a limited set xDS compliant clients. In their xDS requests to Loadbalancer, xDS
                clients present node metadata. If a match takes place, the relevant routing
                configuration is made available to those proxies. For each metadataFilter in
@@ -34785,7 +34785,7 @@ class URLMapPathMatcherRouteRuleMatchRule(dict):
                specified prefixMatch. prefixMatch must begin with a /. The value must be
                between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or
                regexMatch must be specified.
-        :param Sequence['URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs'] query_parameter_matches: Specifies a list of query parameter match criteria, all of which must match
+        :param Sequence['URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrgs'] query_parameter_matches: Specifies a list of query parameter match criteria, all of which must match
                corresponding query parameters in the request.
                Structure is documented below.
         :param str regex_match: For satisfying the matchRule condition, the path of the request must satisfy the
@@ -34911,7 +34911,7 @@ class URLMapPathMatcherRouteRuleMatchRule(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherRouteRuleMatchRuleHeaderMatch(dict):
+calass URLMapPathMatcherRouteRuleMatchRuleHeaderMatch(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -34967,7 +34967,7 @@ class URLMapPathMatcherRouteRuleMatchRuleHeaderMatch(dict):
         :param bool present_match: A header with the contents of headerName must exist. The match takes place
                whether or not the request's header has a value or not. Only one of exactMatch,
                prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
-        :param 'URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs' range_match: The header value must be an integer and its value must be in the range specified
+        :param 'URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArrgs' range_match: The header value must be an integer and its value must be in the range specified
                in rangeMatch. If the header does not contain an integer, number or is empty,
                the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
                not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
@@ -35090,7 +35090,7 @@ class URLMapPathMatcherRouteRuleMatchRuleHeaderMatch(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch(dict):
+calass URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -35138,7 +35138,7 @@ class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherRouteRuleMatchRuleMetadataFilter(dict):
+calass URLMapPathMatcherRouteRuleMatchRuleMetadataFilter(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -35162,7 +35162,7 @@ class URLMapPathMatcherRouteRuleMatchRuleMetadataFilter(dict):
                  filter_labels: Sequence['outputs.URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel'],
                  filter_match_criteria: str):
         """
-        :param Sequence['URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs'] filter_labels: The list of label value pairs that must match labels in the provided metadata
+        :param Sequence['URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrgs'] filter_labels: The list of label value pairs that must match labels in the provided metadata
                based on filterMatchCriteria  This list must not be empty and can have at the
                most 64 entries.
                Structure is documented below.
@@ -35204,7 +35204,7 @@ class URLMapPathMatcherRouteRuleMatchRuleMetadataFilter(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel(dict):
+calass URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel(dict):
     def __init__(__self__, *,
                  name: str,
                  value: str):
@@ -35237,7 +35237,7 @@ class URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch(dict):
+calass URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -35328,7 +35328,7 @@ class URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherRouteRuleRouteAction(dict):
+calass URLMapPathMatcherRouteRuleRouteAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -35365,10 +35365,10 @@ class URLMapPathMatcherRouteRuleRouteAction(dict):
                  url_rewrite: Optional['outputs.URLMapPathMatcherRouteRuleRouteActionUrlRewrite'] = None,
                  weighted_backend_services: Optional[Sequence['outputs.URLMapPathMatcherRouteRuleRouteActionWeightedBackendService']] = None):
         """
-        :param 'URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs' cors_policy: The specification for allowing client side cross-origin requests. Please see W3C
+        :param 'URLMapPathMatcherRouteRuleRouteActionCorsPolicyArrgs' cors_policy: The specification for allowing client side cross-origin requests. Please see W3C
                Recommendation for Cross Origin Resource Sharing
                Structure is documented below.
-        :param 'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs' fault_injection_policy: The specification for fault injection introduced into traffic to test the
+        :param 'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArrgs' fault_injection_policy: The specification for fault injection introduced into traffic to test the
                resiliency of clients to backend service failure. As part of fault injection,
                when clients send requests to a backend service, delays can be introduced by
                Loadbalancer on a percentage of requests before sending those request to the
@@ -35376,22 +35376,22 @@ class URLMapPathMatcherRouteRuleRouteAction(dict):
                Loadbalancer for a percentage of requests. timeout and retry_policy will be
                ignored by clients that are configured with a fault_injection_policy.
                Structure is documented below.
-        :param 'URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs' request_mirror_policy: Specifies the policy on how requests intended for the route's backends are
+        :param 'URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArrgs' request_mirror_policy: Specifies the policy on how requests intended for the route's backends are
                shadowed to a separate mirrored backend service. Loadbalancer does not wait for
                responses from the shadow service. Prior to sending traffic to the shadow
                service, the host / authority header is suffixed with -shadow.
                Structure is documented below.
-        :param 'URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs' retry_policy: Specifies the retry policy associated with this route.
+        :param 'URLMapPathMatcherRouteRuleRouteActionRetryPolicyArrgs' retry_policy: Specifies the retry policy associated with this route.
                Structure is documented below.
-        :param 'URLMapPathMatcherRouteRuleRouteActionTimeoutArgs' timeout: Specifies the timeout for the selected route. Timeout is computed from the time
+        :param 'URLMapPathMatcherRouteRuleRouteActionTimeoutArrgs' timeout: Specifies the timeout for the selected route. Timeout is computed from the time
                the request is has been fully processed (i.e. end-of-stream) up until the
                response has been completely processed. Timeout includes all retries. If not
                specified, the default value is 15 seconds.
                Structure is documented below.
-        :param 'URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs' url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to
+        :param 'URLMapPathMatcherRouteRuleRouteActionUrlRewriteArrgs' url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to
                the matched service
                Structure is documented below.
-        :param Sequence['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs'] weighted_backend_services: A list of weighted backend services to send traffic to when a route match
+        :param Sequence['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrgs'] weighted_backend_services: A list of weighted backend services to send traffic to when a route match
                occurs. The weights determine the fraction of traffic that flows to their
                corresponding backend service. If all traffic needs to go to a single backend
                service, there must be one  weightedBackendService with weight set to a non 0
@@ -35502,7 +35502,7 @@ class URLMapPathMatcherRouteRuleRouteAction(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherRouteRuleRouteActionCorsPolicy(dict):
+calass URLMapPathMatcherRouteRuleRouteActionCorsPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -35644,14 +35644,14 @@ class URLMapPathMatcherRouteRuleRouteActionCorsPolicy(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy(dict):
+calass URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy(dict):
     def __init__(__self__, *,
                  abort: Optional['outputs.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort'] = None,
                  delay: Optional['outputs.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay'] = None):
         """
-        :param 'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs' abort: The specification for how client requests are aborted as part of fault injection.
+        :param 'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArrgs' abort: The specification for how client requests are aborted as part of fault injection.
                Structure is documented below.
-        :param 'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs' delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+        :param 'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArrgs' delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
                Structure is documented below.
         """
         if abort is not None:
@@ -35679,7 +35679,7 @@ class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort(dict):
+calass URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -35731,7 +35731,7 @@ class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay(dict):
+calass URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -35753,7 +35753,7 @@ class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay(dict):
                  fixed_delay: Optional['outputs.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay'] = None,
                  percentage: Optional[float] = None):
         """
-        :param 'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs' fixed_delay: Specifies the value of the fixed delay interval.
+        :param 'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArrgs' fixed_delay: Specifies the value of the fixed delay interval.
                Structure is documented below.
         :param float percentage: The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
                The value must be between 0.0 and 100.0 inclusive.
@@ -35783,7 +35783,7 @@ class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay(dict):
+calass URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay(dict):
     def __init__(__self__, *,
                  seconds: str,
                  nanos: Optional[int] = None):
@@ -35817,7 +35817,7 @@ class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay(d
 
 
 @pulumi.output_type
-class URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy(dict):
+calass URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -35852,7 +35852,7 @@ class URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherRouteRuleRouteActionRetryPolicy(dict):
+calass URLMapPathMatcherRouteRuleRouteActionRetryPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -35880,7 +35880,7 @@ class URLMapPathMatcherRouteRuleRouteActionRetryPolicy(dict):
                  retry_conditions: Optional[Sequence[str]] = None):
         """
         :param int num_retries: Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
-        :param 'URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs' per_try_timeout: Specifies a non-zero timeout per retry attempt.
+        :param 'URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArrgs' per_try_timeout: Specifies a non-zero timeout per retry attempt.
                If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
                will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
@@ -35949,7 +35949,7 @@ class URLMapPathMatcherRouteRuleRouteActionRetryPolicy(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout(dict):
+calass URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout(dict):
     def __init__(__self__, *,
                  seconds: str,
                  nanos: Optional[int] = None):
@@ -35983,7 +35983,7 @@ class URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherRouteRuleRouteActionTimeout(dict):
+calass URLMapPathMatcherRouteRuleRouteActionTimeout(dict):
     def __init__(__self__, *,
                  seconds: str,
                  nanos: Optional[int] = None):
@@ -36017,7 +36017,7 @@ class URLMapPathMatcherRouteRuleRouteActionTimeout(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherRouteRuleRouteActionUrlRewrite(dict):
+calass URLMapPathMatcherRouteRuleRouteActionUrlRewrite(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -36109,7 +36109,7 @@ class URLMapPathMatcherRouteRuleRouteActionUrlRewrite(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherRouteRuleRouteActionWeightedBackendService(dict):
+calass URLMapPathMatcherRouteRuleRouteActionWeightedBackendService(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -36143,7 +36143,7 @@ class URLMapPathMatcherRouteRuleRouteActionWeightedBackendService(dict):
                has been directed to a backendService, subsequent requests will be sent to the same backendService
                as determined by the BackendService's session affinity policy.
                The value must be between 0 and 1000
-        :param 'URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs' header_action: Specifies changes to request and response headers that need to take effect for
+        :param 'URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArrgs' header_action: Specifies changes to request and response headers that need to take effect for
                the selected backendService.
                headerAction specified here take effect before headerAction in the enclosing
                HttpRouteRule, PathMatcher and UrlMap.
@@ -36191,7 +36191,7 @@ class URLMapPathMatcherRouteRuleRouteActionWeightedBackendService(dict):
 
 
 @pulumi.output_type
-class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction(dict):
+calass URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -36221,11 +36221,11 @@ class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction(di
                  response_headers_to_adds: Optional[Sequence['outputs.URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd']] = None,
                  response_headers_to_removes: Optional[Sequence[str]] = None):
         """
-        :param Sequence['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs'] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
+        :param Sequence['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrgs'] request_headers_to_adds: Headers to add to a matching request prior to forwarding the request to the backendService.
                Structure is documented below.
         :param Sequence[str] request_headers_to_removes: A list of header names for headers that need to be removed from the request prior to
                forwarding the request to the backendService.
-        :param Sequence['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs'] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
+        :param Sequence['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrgs'] response_headers_to_adds: Headers to add the response prior to sending the response back to the client.
                Structure is documented below.
         :param Sequence[str] response_headers_to_removes: A list of header names for headers that need to be removed from the response prior to sending the
                response back to the client.
@@ -36277,7 +36277,7 @@ class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction(di
 
 
 @pulumi.output_type
-class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd(dict):
+calass URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -36338,7 +36338,7 @@ class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionReq
 
 
 @pulumi.output_type
-class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd(dict):
+calass URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -36399,7 +36399,7 @@ class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRes
 
 
 @pulumi.output_type
-class URLMapPathMatcherRouteRuleUrlRedirect(dict):
+calass URLMapPathMatcherRouteRuleUrlRedirect(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -36533,7 +36533,7 @@ class URLMapPathMatcherRouteRuleUrlRedirect(dict):
 
 
 @pulumi.output_type
-class URLMapTest(dict):
+calass URLMapTest(dict):
     def __init__(__self__, *,
                  host: str,
                  path: str,
@@ -36585,7 +36585,7 @@ class URLMapTest(dict):
 
 
 @pulumi.output_type
-class GetAddressesAddressResult(dict):
+calass GetAddressesAddressResult(dict):
     def __init__(__self__, *,
                  address: str,
                  address_type: str,
@@ -36682,7 +36682,7 @@ class GetAddressesAddressResult(dict):
 
 
 @pulumi.output_type
-class GetBackendBucketCdnPolicyResult(dict):
+calass GetBackendBucketCdnPolicyResult(dict):
     def __init__(__self__, *,
                  bypass_cache_on_request_headers: Sequence['outputs.GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderResult'],
                  cache_key_policies: Sequence['outputs.GetBackendBucketCdnPolicyCacheKeyPolicyResult'],
@@ -36764,7 +36764,7 @@ class GetBackendBucketCdnPolicyResult(dict):
 
 
 @pulumi.output_type
-class GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderResult(dict):
+calass GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderResult(dict):
     def __init__(__self__, *,
                  header_name: str):
         pulumi.set(__self__, "header_name", header_name)
@@ -36776,7 +36776,7 @@ class GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderResult(dict):
 
 
 @pulumi.output_type
-class GetBackendBucketCdnPolicyCacheKeyPolicyResult(dict):
+calass GetBackendBucketCdnPolicyCacheKeyPolicyResult(dict):
     def __init__(__self__, *,
                  include_http_headers: Sequence[str],
                  query_string_whitelists: Sequence[str]):
@@ -36795,7 +36795,7 @@ class GetBackendBucketCdnPolicyCacheKeyPolicyResult(dict):
 
 
 @pulumi.output_type
-class GetBackendBucketCdnPolicyNegativeCachingPolicyResult(dict):
+calass GetBackendBucketCdnPolicyNegativeCachingPolicyResult(dict):
     def __init__(__self__, *,
                  code: int,
                  ttl: int):
@@ -36814,7 +36814,7 @@ class GetBackendBucketCdnPolicyNegativeCachingPolicyResult(dict):
 
 
 @pulumi.output_type
-class GetBackendServiceBackendResult(dict):
+calass GetBackendServiceBackendResult(dict):
     def __init__(__self__, *,
                  balancing_mode: str,
                  capacity_scaler: float,
@@ -36902,7 +36902,7 @@ class GetBackendServiceBackendResult(dict):
 
 
 @pulumi.output_type
-class GetBackendServiceCdnPolicyResult(dict):
+calass GetBackendServiceCdnPolicyResult(dict):
     def __init__(__self__, *,
                  bypass_cache_on_request_headers: Sequence['outputs.GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderResult'],
                  cache_key_policies: Sequence['outputs.GetBackendServiceCdnPolicyCacheKeyPolicyResult'],
@@ -36977,7 +36977,7 @@ class GetBackendServiceCdnPolicyResult(dict):
 
 
 @pulumi.output_type
-class GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderResult(dict):
+calass GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderResult(dict):
     def __init__(__self__, *,
                  header_name: str):
         pulumi.set(__self__, "header_name", header_name)
@@ -36989,7 +36989,7 @@ class GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderResult(dict):
 
 
 @pulumi.output_type
-class GetBackendServiceCdnPolicyCacheKeyPolicyResult(dict):
+calass GetBackendServiceCdnPolicyCacheKeyPolicyResult(dict):
     def __init__(__self__, *,
                  include_host: bool,
                  include_http_headers: Sequence[str],
@@ -37043,7 +37043,7 @@ class GetBackendServiceCdnPolicyCacheKeyPolicyResult(dict):
 
 
 @pulumi.output_type
-class GetBackendServiceCdnPolicyNegativeCachingPolicyResult(dict):
+calass GetBackendServiceCdnPolicyNegativeCachingPolicyResult(dict):
     def __init__(__self__, *,
                  code: int,
                  ttl: int):
@@ -37062,7 +37062,7 @@ class GetBackendServiceCdnPolicyNegativeCachingPolicyResult(dict):
 
 
 @pulumi.output_type
-class GetBackendServiceCircuitBreakerResult(dict):
+calass GetBackendServiceCircuitBreakerResult(dict):
     def __init__(__self__, *,
                  connect_timeouts: Sequence['outputs.GetBackendServiceCircuitBreakerConnectTimeoutResult'],
                  max_connections: int,
@@ -37109,7 +37109,7 @@ class GetBackendServiceCircuitBreakerResult(dict):
 
 
 @pulumi.output_type
-class GetBackendServiceCircuitBreakerConnectTimeoutResult(dict):
+calass GetBackendServiceCircuitBreakerConnectTimeoutResult(dict):
     def __init__(__self__, *,
                  nanos: int,
                  seconds: int):
@@ -37128,7 +37128,7 @@ class GetBackendServiceCircuitBreakerConnectTimeoutResult(dict):
 
 
 @pulumi.output_type
-class GetBackendServiceConsistentHashResult(dict):
+calass GetBackendServiceConsistentHashResult(dict):
     def __init__(__self__, *,
                  http_cookies: Sequence['outputs.GetBackendServiceConsistentHashHttpCookyResult'],
                  http_header_name: str,
@@ -37154,7 +37154,7 @@ class GetBackendServiceConsistentHashResult(dict):
 
 
 @pulumi.output_type
-class GetBackendServiceConsistentHashHttpCookyResult(dict):
+calass GetBackendServiceConsistentHashHttpCookyResult(dict):
     def __init__(__self__, *,
                  name: str,
                  path: str,
@@ -37190,7 +37190,7 @@ class GetBackendServiceConsistentHashHttpCookyResult(dict):
 
 
 @pulumi.output_type
-class GetBackendServiceConsistentHashHttpCookyTtlResult(dict):
+calass GetBackendServiceConsistentHashHttpCookyTtlResult(dict):
     def __init__(__self__, *,
                  nanos: int,
                  seconds: int):
@@ -37209,7 +37209,7 @@ class GetBackendServiceConsistentHashHttpCookyTtlResult(dict):
 
 
 @pulumi.output_type
-class GetBackendServiceIapResult(dict):
+calass GetBackendServiceIapResult(dict):
     def __init__(__self__, *,
                  oauth2_client_id: str,
                  oauth2_client_secret: str,
@@ -37235,7 +37235,7 @@ class GetBackendServiceIapResult(dict):
 
 
 @pulumi.output_type
-class GetBackendServiceLocalityLbPolicyResult(dict):
+calass GetBackendServiceLocalityLbPolicyResult(dict):
     def __init__(__self__, *,
                  custom_policies: Sequence['outputs.GetBackendServiceLocalityLbPolicyCustomPolicyResult'],
                  policies: Sequence['outputs.GetBackendServiceLocalityLbPolicyPolicyResult']):
@@ -37254,7 +37254,7 @@ class GetBackendServiceLocalityLbPolicyResult(dict):
 
 
 @pulumi.output_type
-class GetBackendServiceLocalityLbPolicyCustomPolicyResult(dict):
+calass GetBackendServiceLocalityLbPolicyCustomPolicyResult(dict):
     def __init__(__self__, *,
                  data: str,
                  name: str):
@@ -37283,7 +37283,7 @@ class GetBackendServiceLocalityLbPolicyCustomPolicyResult(dict):
 
 
 @pulumi.output_type
-class GetBackendServiceLocalityLbPolicyPolicyResult(dict):
+calass GetBackendServiceLocalityLbPolicyPolicyResult(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -37305,7 +37305,7 @@ class GetBackendServiceLocalityLbPolicyPolicyResult(dict):
 
 
 @pulumi.output_type
-class GetBackendServiceLogConfigResult(dict):
+calass GetBackendServiceLogConfigResult(dict):
     def __init__(__self__, *,
                  enable: bool,
                  sample_rate: float):
@@ -37324,7 +37324,7 @@ class GetBackendServiceLogConfigResult(dict):
 
 
 @pulumi.output_type
-class GetBackendServiceOutlierDetectionResult(dict):
+calass GetBackendServiceOutlierDetectionResult(dict):
     def __init__(__self__, *,
                  base_ejection_times: Sequence['outputs.GetBackendServiceOutlierDetectionBaseEjectionTimeResult'],
                  consecutive_errors: int,
@@ -37406,7 +37406,7 @@ class GetBackendServiceOutlierDetectionResult(dict):
 
 
 @pulumi.output_type
-class GetBackendServiceOutlierDetectionBaseEjectionTimeResult(dict):
+calass GetBackendServiceOutlierDetectionBaseEjectionTimeResult(dict):
     def __init__(__self__, *,
                  nanos: int,
                  seconds: int):
@@ -37425,7 +37425,7 @@ class GetBackendServiceOutlierDetectionBaseEjectionTimeResult(dict):
 
 
 @pulumi.output_type
-class GetBackendServiceOutlierDetectionIntervalResult(dict):
+calass GetBackendServiceOutlierDetectionIntervalResult(dict):
     def __init__(__self__, *,
                  nanos: int,
                  seconds: int):
@@ -37444,7 +37444,7 @@ class GetBackendServiceOutlierDetectionIntervalResult(dict):
 
 
 @pulumi.output_type
-class GetBackendServiceSecuritySettingResult(dict):
+calass GetBackendServiceSecuritySettingResult(dict):
     def __init__(__self__, *,
                  client_tls_policy: str,
                  subject_alt_names: Sequence[str]):
@@ -37463,7 +37463,7 @@ class GetBackendServiceSecuritySettingResult(dict):
 
 
 @pulumi.output_type
-class GetDiskAsyncPrimaryDiskResult(dict):
+calass GetDiskAsyncPrimaryDiskResult(dict):
     def __init__(__self__, *,
                  disk: str):
         pulumi.set(__self__, "disk", disk)
@@ -37475,7 +37475,7 @@ class GetDiskAsyncPrimaryDiskResult(dict):
 
 
 @pulumi.output_type
-class GetDiskDiskEncryptionKeyResult(dict):
+calass GetDiskDiskEncryptionKeyResult(dict):
     def __init__(__self__, *,
                  kms_key_self_link: str,
                  kms_key_service_account: str,
@@ -37515,7 +37515,7 @@ class GetDiskDiskEncryptionKeyResult(dict):
 
 
 @pulumi.output_type
-class GetDiskGuestOsFeatureResult(dict):
+calass GetDiskGuestOsFeatureResult(dict):
     def __init__(__self__, *,
                  type: str):
         """
@@ -37535,7 +37535,7 @@ class GetDiskGuestOsFeatureResult(dict):
 
 
 @pulumi.output_type
-class GetDiskSourceImageEncryptionKeyResult(dict):
+calass GetDiskSourceImageEncryptionKeyResult(dict):
     def __init__(__self__, *,
                  kms_key_self_link: str,
                  kms_key_service_account: str,
@@ -37568,7 +37568,7 @@ class GetDiskSourceImageEncryptionKeyResult(dict):
 
 
 @pulumi.output_type
-class GetDiskSourceSnapshotEncryptionKeyResult(dict):
+calass GetDiskSourceSnapshotEncryptionKeyResult(dict):
     def __init__(__self__, *,
                  kms_key_self_link: str,
                  kms_key_service_account: str,
@@ -37601,7 +37601,7 @@ class GetDiskSourceSnapshotEncryptionKeyResult(dict):
 
 
 @pulumi.output_type
-class GetForwardingRuleServiceDirectoryRegistrationResult(dict):
+calass GetForwardingRuleServiceDirectoryRegistrationResult(dict):
     def __init__(__self__, *,
                  namespace: str,
                  service: str):
@@ -37620,7 +37620,7 @@ class GetForwardingRuleServiceDirectoryRegistrationResult(dict):
 
 
 @pulumi.output_type
-class GetGlobalForwardingRuleMetadataFilterResult(dict):
+calass GetGlobalForwardingRuleMetadataFilterResult(dict):
     def __init__(__self__, *,
                  filter_labels: Sequence['outputs.GetGlobalForwardingRuleMetadataFilterFilterLabelResult'],
                  filter_match_criteria: str):
@@ -37639,7 +37639,7 @@ class GetGlobalForwardingRuleMetadataFilterResult(dict):
 
 
 @pulumi.output_type
-class GetGlobalForwardingRuleMetadataFilterFilterLabelResult(dict):
+calass GetGlobalForwardingRuleMetadataFilterFilterLabelResult(dict):
     def __init__(__self__, *,
                  name: str,
                  value: str):
@@ -37668,7 +37668,7 @@ class GetGlobalForwardingRuleMetadataFilterFilterLabelResult(dict):
 
 
 @pulumi.output_type
-class GetHcVpnGatewayVpnInterfaceResult(dict):
+calass GetHcVpnGatewayVpnInterfaceResult(dict):
     def __init__(__self__, *,
                  id: int,
                  interconnect_attachment: str,
@@ -37694,7 +37694,7 @@ class GetHcVpnGatewayVpnInterfaceResult(dict):
 
 
 @pulumi.output_type
-class GetHealthCheckGrpcHealthCheckResult(dict):
+calass GetHealthCheckGrpcHealthCheckResult(dict):
     def __init__(__self__, *,
                  grpc_service_name: str,
                  port: int,
@@ -37727,7 +37727,7 @@ class GetHealthCheckGrpcHealthCheckResult(dict):
 
 
 @pulumi.output_type
-class GetHealthCheckHttp2HealthCheckResult(dict):
+calass GetHealthCheckHttp2HealthCheckResult(dict):
     def __init__(__self__, *,
                  host: str,
                  port: int,
@@ -37781,7 +37781,7 @@ class GetHealthCheckHttp2HealthCheckResult(dict):
 
 
 @pulumi.output_type
-class GetHealthCheckHttpHealthCheckResult(dict):
+calass GetHealthCheckHttpHealthCheckResult(dict):
     def __init__(__self__, *,
                  host: str,
                  port: int,
@@ -37835,7 +37835,7 @@ class GetHealthCheckHttpHealthCheckResult(dict):
 
 
 @pulumi.output_type
-class GetHealthCheckHttpsHealthCheckResult(dict):
+calass GetHealthCheckHttpsHealthCheckResult(dict):
     def __init__(__self__, *,
                  host: str,
                  port: int,
@@ -37889,7 +37889,7 @@ class GetHealthCheckHttpsHealthCheckResult(dict):
 
 
 @pulumi.output_type
-class GetHealthCheckLogConfigResult(dict):
+calass GetHealthCheckLogConfigResult(dict):
     def __init__(__self__, *,
                  enable: bool):
         pulumi.set(__self__, "enable", enable)
@@ -37901,7 +37901,7 @@ class GetHealthCheckLogConfigResult(dict):
 
 
 @pulumi.output_type
-class GetHealthCheckSslHealthCheckResult(dict):
+calass GetHealthCheckSslHealthCheckResult(dict):
     def __init__(__self__, *,
                  port: int,
                  port_name: str,
@@ -37948,7 +37948,7 @@ class GetHealthCheckSslHealthCheckResult(dict):
 
 
 @pulumi.output_type
-class GetHealthCheckTcpHealthCheckResult(dict):
+calass GetHealthCheckTcpHealthCheckResult(dict):
     def __init__(__self__, *,
                  port: int,
                  port_name: str,
@@ -37995,7 +37995,7 @@ class GetHealthCheckTcpHealthCheckResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceAdvancedMachineFeatureResult(dict):
+calass GetInstanceAdvancedMachineFeatureResult(dict):
     def __init__(__self__, *,
                  enable_nested_virtualization: bool,
                  threads_per_core: int,
@@ -38021,7 +38021,7 @@ class GetInstanceAdvancedMachineFeatureResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceAttachedDiskResult(dict):
+calass GetInstanceAttachedDiskResult(dict):
     def __init__(__self__, *,
                  device_name: str,
                  disk_encryption_key_raw: str,
@@ -38084,7 +38084,7 @@ class GetInstanceAttachedDiskResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceBootDiskResult(dict):
+calass GetInstanceBootDiskResult(dict):
     def __init__(__self__, *,
                  auto_delete: bool,
                  device_name: str,
@@ -38098,7 +38098,7 @@ class GetInstanceBootDiskResult(dict):
         :param bool auto_delete: Whether the disk will be auto-deleted when the instance is deleted.
         :param str device_name: Name with which the attached disk is accessible
                under `/dev/disk/by-id/`
-        :param Sequence['GetInstanceBootDiskInitializeParamArgs'] initialize_params: Parameters with which a disk was created alongside the instance.
+        :param Sequence['GetInstanceBootDiskInitializeParamArrgs'] initialize_params: Parameters with which a disk was created alongside the instance.
                Structure is documented below.
         :param str mode: Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
         :param str source: The name or self_link of the disk attached to this instance.
@@ -38171,7 +38171,7 @@ class GetInstanceBootDiskResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceBootDiskInitializeParamResult(dict):
+calass GetInstanceBootDiskInitializeParamResult(dict):
     def __init__(__self__, *,
                  enable_confidential_compute: bool,
                  image: str,
@@ -38236,7 +38236,7 @@ class GetInstanceBootDiskInitializeParamResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceConfidentialInstanceConfigResult(dict):
+calass GetInstanceConfidentialInstanceConfigResult(dict):
     def __init__(__self__, *,
                  enable_confidential_compute: bool):
         pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
@@ -38248,7 +38248,7 @@ class GetInstanceConfidentialInstanceConfigResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceGroupManagerAllInstancesConfigResult(dict):
+calass GetInstanceGroupManagerAllInstancesConfigResult(dict):
     def __init__(__self__, *,
                  labels: Mapping[str, str],
                  metadata: Mapping[str, str]):
@@ -38267,7 +38267,7 @@ class GetInstanceGroupManagerAllInstancesConfigResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceGroupManagerAutoHealingPolicyResult(dict):
+calass GetInstanceGroupManagerAutoHealingPolicyResult(dict):
     def __init__(__self__, *,
                  health_check: str,
                  initial_delay_sec: int):
@@ -38286,7 +38286,7 @@ class GetInstanceGroupManagerAutoHealingPolicyResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceGroupManagerInstanceLifecyclePolicyResult(dict):
+calass GetInstanceGroupManagerInstanceLifecyclePolicyResult(dict):
     def __init__(__self__, *,
                  force_update_on_repair: str):
         pulumi.set(__self__, "force_update_on_repair", force_update_on_repair)
@@ -38298,7 +38298,7 @@ class GetInstanceGroupManagerInstanceLifecyclePolicyResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceGroupManagerNamedPortResult(dict):
+calass GetInstanceGroupManagerNamedPortResult(dict):
     def __init__(__self__, *,
                  name: str,
                  port: int):
@@ -38323,7 +38323,7 @@ class GetInstanceGroupManagerNamedPortResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceGroupManagerStatefulDiskResult(dict):
+calass GetInstanceGroupManagerStatefulDiskResult(dict):
     def __init__(__self__, *,
                  delete_rule: str,
                  device_name: str):
@@ -38342,7 +38342,7 @@ class GetInstanceGroupManagerStatefulDiskResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceGroupManagerStatefulExternalIpResult(dict):
+calass GetInstanceGroupManagerStatefulExternalIpResult(dict):
     def __init__(__self__, *,
                  delete_rule: str,
                  interface_name: str):
@@ -38361,7 +38361,7 @@ class GetInstanceGroupManagerStatefulExternalIpResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceGroupManagerStatefulInternalIpResult(dict):
+calass GetInstanceGroupManagerStatefulInternalIpResult(dict):
     def __init__(__self__, *,
                  delete_rule: str,
                  interface_name: str):
@@ -38380,7 +38380,7 @@ class GetInstanceGroupManagerStatefulInternalIpResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceGroupManagerStatusResult(dict):
+calass GetInstanceGroupManagerStatusResult(dict):
     def __init__(__self__, *,
                  all_instances_configs: Sequence['outputs.GetInstanceGroupManagerStatusAllInstancesConfigResult'],
                  is_stable: bool,
@@ -38413,7 +38413,7 @@ class GetInstanceGroupManagerStatusResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceGroupManagerStatusAllInstancesConfigResult(dict):
+calass GetInstanceGroupManagerStatusAllInstancesConfigResult(dict):
     def __init__(__self__, *,
                  effective: bool):
         pulumi.set(__self__, "effective", effective)
@@ -38425,7 +38425,7 @@ class GetInstanceGroupManagerStatusAllInstancesConfigResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceGroupManagerStatusStatefulResult(dict):
+calass GetInstanceGroupManagerStatusStatefulResult(dict):
     def __init__(__self__, *,
                  has_stateful_config: bool,
                  per_instance_configs: Sequence['outputs.GetInstanceGroupManagerStatusStatefulPerInstanceConfigResult']):
@@ -38444,7 +38444,7 @@ class GetInstanceGroupManagerStatusStatefulResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceGroupManagerStatusStatefulPerInstanceConfigResult(dict):
+calass GetInstanceGroupManagerStatusStatefulPerInstanceConfigResult(dict):
     def __init__(__self__, *,
                  all_effective: bool):
         pulumi.set(__self__, "all_effective", all_effective)
@@ -38456,7 +38456,7 @@ class GetInstanceGroupManagerStatusStatefulPerInstanceConfigResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceGroupManagerStatusVersionTargetResult(dict):
+calass GetInstanceGroupManagerStatusVersionTargetResult(dict):
     def __init__(__self__, *,
                  is_reached: bool):
         pulumi.set(__self__, "is_reached", is_reached)
@@ -38468,7 +38468,7 @@ class GetInstanceGroupManagerStatusVersionTargetResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceGroupManagerUpdatePolicyResult(dict):
+calass GetInstanceGroupManagerUpdatePolicyResult(dict):
     def __init__(__self__, *,
                  max_surge_fixed: int,
                  max_surge_percent: int,
@@ -38536,7 +38536,7 @@ class GetInstanceGroupManagerUpdatePolicyResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceGroupManagerVersionResult(dict):
+calass GetInstanceGroupManagerVersionResult(dict):
     def __init__(__self__, *,
                  instance_template: str,
                  name: str,
@@ -38568,7 +38568,7 @@ class GetInstanceGroupManagerVersionResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceGroupManagerVersionTargetSizeResult(dict):
+calass GetInstanceGroupManagerVersionTargetSizeResult(dict):
     def __init__(__self__, *,
                  fixed: int,
                  percent: int):
@@ -38587,7 +38587,7 @@ class GetInstanceGroupManagerVersionTargetSizeResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceGroupNamedPortResult(dict):
+calass GetInstanceGroupNamedPortResult(dict):
     def __init__(__self__, *,
                  name: str,
                  port: int):
@@ -38612,7 +38612,7 @@ class GetInstanceGroupNamedPortResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceGuestAcceleratorResult(dict):
+calass GetInstanceGuestAcceleratorResult(dict):
     def __init__(__self__, *,
                  count: int,
                  type: str):
@@ -38641,7 +38641,7 @@ class GetInstanceGuestAcceleratorResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceNetworkInterfaceResult(dict):
+calass GetInstanceNetworkInterfaceResult(dict):
     def __init__(__self__, *,
                  access_configs: Sequence['outputs.GetInstanceNetworkInterfaceAccessConfigResult'],
                  alias_ip_ranges: Sequence['outputs.GetInstanceNetworkInterfaceAliasIpRangeResult'],
@@ -38660,9 +38660,9 @@ class GetInstanceNetworkInterfaceResult(dict):
                  subnetwork: str,
                  subnetwork_project: str):
         """
-        :param Sequence['GetInstanceNetworkInterfaceAccessConfigArgs'] access_configs: Access configurations, i.e. IPs via which this
+        :param Sequence['GetInstanceNetworkInterfaceAccessConfigArrgs'] access_configs: Access configurations, i.e. IPs via which this
                instance can be accessed via the Internet. Structure documented below.
-        :param Sequence['GetInstanceNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An array of alias IP ranges for this network interface. Structure documented below.
+        :param Sequence['GetInstanceNetworkInterfaceAliasIpRangeArrgs'] alias_ip_ranges: An array of alias IP ranges for this network interface. Structure documented below.
         :param str name: The name of the instance. One of `name` or `self_link` must be provided.
         :param str network: The name or self_link of the network attached to this interface.
         :param str network_ip: The private IP address assigned to the instance.
@@ -38790,7 +38790,7 @@ class GetInstanceNetworkInterfaceResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceNetworkInterfaceAccessConfigResult(dict):
+calass GetInstanceNetworkInterfaceAccessConfigResult(dict):
     def __init__(__self__, *,
                  nat_ip: str,
                  network_tier: str,
@@ -38839,7 +38839,7 @@ class GetInstanceNetworkInterfaceAccessConfigResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceNetworkInterfaceAliasIpRangeResult(dict):
+calass GetInstanceNetworkInterfaceAliasIpRangeResult(dict):
     def __init__(__self__, *,
                  ip_cidr_range: str,
                  subnetwork_range_name: str):
@@ -38872,7 +38872,7 @@ class GetInstanceNetworkInterfaceAliasIpRangeResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceNetworkInterfaceIpv6AccessConfigResult(dict):
+calass GetInstanceNetworkInterfaceIpv6AccessConfigResult(dict):
     def __init__(__self__, *,
                  external_ipv6: str,
                  external_ipv6_prefix_length: str,
@@ -38933,7 +38933,7 @@ class GetInstanceNetworkInterfaceIpv6AccessConfigResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceNetworkPerformanceConfigResult(dict):
+calass GetInstanceNetworkPerformanceConfigResult(dict):
     def __init__(__self__, *,
                  total_egress_bandwidth_tier: str):
         """
@@ -38951,7 +38951,7 @@ class GetInstanceNetworkPerformanceConfigResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceParamResult(dict):
+calass GetInstanceParamResult(dict):
     def __init__(__self__, *,
                  resource_manager_tags: Mapping[str, Any]):
         pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
@@ -38963,7 +38963,7 @@ class GetInstanceParamResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceReservationAffinityResult(dict):
+calass GetInstanceReservationAffinityResult(dict):
     def __init__(__self__, *,
                  specific_reservations: Sequence['outputs.GetInstanceReservationAffinitySpecificReservationResult'],
                  type: str):
@@ -38988,7 +38988,7 @@ class GetInstanceReservationAffinityResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceReservationAffinitySpecificReservationResult(dict):
+calass GetInstanceReservationAffinitySpecificReservationResult(dict):
     def __init__(__self__, *,
                  key: str,
                  values: Sequence[str]):
@@ -39007,7 +39007,7 @@ class GetInstanceReservationAffinitySpecificReservationResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceSchedulingResult(dict):
+calass GetInstanceSchedulingResult(dict):
     def __init__(__self__, *,
                  automatic_restart: bool,
                  instance_termination_action: str,
@@ -39110,7 +39110,7 @@ class GetInstanceSchedulingResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceSchedulingLocalSsdRecoveryTimeoutResult(dict):
+calass GetInstanceSchedulingLocalSsdRecoveryTimeoutResult(dict):
     def __init__(__self__, *,
                  nanos: int,
                  seconds: int):
@@ -39129,7 +39129,7 @@ class GetInstanceSchedulingLocalSsdRecoveryTimeoutResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceSchedulingMaxRunDurationResult(dict):
+calass GetInstanceSchedulingMaxRunDurationResult(dict):
     def __init__(__self__, *,
                  nanos: int,
                  seconds: int):
@@ -39148,7 +39148,7 @@ class GetInstanceSchedulingMaxRunDurationResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceSchedulingNodeAffinityResult(dict):
+calass GetInstanceSchedulingNodeAffinityResult(dict):
     def __init__(__self__, *,
                  key: str,
                  operator: str,
@@ -39174,7 +39174,7 @@ class GetInstanceSchedulingNodeAffinityResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceScratchDiskResult(dict):
+calass GetInstanceScratchDiskResult(dict):
     def __init__(__self__, *,
                  device_name: str,
                  interface: str,
@@ -39216,7 +39216,7 @@ class GetInstanceScratchDiskResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceServiceAccountResult(dict):
+calass GetInstanceServiceAccountResult(dict):
     def __init__(__self__, *,
                  email: str,
                  scopes: Sequence[str]):
@@ -39245,7 +39245,7 @@ class GetInstanceServiceAccountResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceShieldedInstanceConfigResult(dict):
+calass GetInstanceShieldedInstanceConfigResult(dict):
     def __init__(__self__, *,
                  enable_integrity_monitoring: bool,
                  enable_secure_boot: bool,
@@ -39285,7 +39285,7 @@ class GetInstanceShieldedInstanceConfigResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceTemplateAdvancedMachineFeatureResult(dict):
+calass GetInstanceTemplateAdvancedMachineFeatureResult(dict):
     def __init__(__self__, *,
                  enable_nested_virtualization: bool,
                  threads_per_core: int,
@@ -39311,7 +39311,7 @@ class GetInstanceTemplateAdvancedMachineFeatureResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceTemplateConfidentialInstanceConfigResult(dict):
+calass GetInstanceTemplateConfidentialInstanceConfigResult(dict):
     def __init__(__self__, *,
                  enable_confidential_compute: bool):
         """
@@ -39329,7 +39329,7 @@ class GetInstanceTemplateConfidentialInstanceConfigResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceTemplateDiskResult(dict):
+calass GetInstanceTemplateDiskResult(dict):
     def __init__(__self__, *,
                  auto_delete: bool,
                  boot: bool,
@@ -39356,7 +39356,7 @@ class GetInstanceTemplateDiskResult(dict):
         :param str device_name: A unique device name that is reflected into the
                /dev/  tree of a Linux operating system running within the instance. If not
                specified, the server chooses a default device name to apply to this disk.
-        :param Sequence['GetInstanceTemplateDiskDiskEncryptionKeyArgs'] disk_encryption_keys: Encrypts or decrypts a disk using a customer-supplied encryption key.
+        :param Sequence['GetInstanceTemplateDiskDiskEncryptionKeyArrgs'] disk_encryption_keys: Encrypts or decrypts a disk using a customer-supplied encryption key.
         :param str disk_name: Name of the disk. When not provided, this defaults
                to the name of the instance.
         :param int disk_size_gb: The size of the image in gigabytes. If not
@@ -39570,7 +39570,7 @@ class GetInstanceTemplateDiskResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceTemplateDiskDiskEncryptionKeyResult(dict):
+calass GetInstanceTemplateDiskDiskEncryptionKeyResult(dict):
     def __init__(__self__, *,
                  kms_key_self_link: str):
         """
@@ -39588,7 +39588,7 @@ class GetInstanceTemplateDiskDiskEncryptionKeyResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceTemplateDiskSourceImageEncryptionKeyResult(dict):
+calass GetInstanceTemplateDiskSourceImageEncryptionKeyResult(dict):
     def __init__(__self__, *,
                  kms_key_self_link: str,
                  kms_key_service_account: str):
@@ -39613,7 +39613,7 @@ class GetInstanceTemplateDiskSourceImageEncryptionKeyResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceTemplateDiskSourceSnapshotEncryptionKeyResult(dict):
+calass GetInstanceTemplateDiskSourceSnapshotEncryptionKeyResult(dict):
     def __init__(__self__, *,
                  kms_key_self_link: str,
                  kms_key_service_account: str):
@@ -39638,7 +39638,7 @@ class GetInstanceTemplateDiskSourceSnapshotEncryptionKeyResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceTemplateGuestAcceleratorResult(dict):
+calass GetInstanceTemplateGuestAcceleratorResult(dict):
     def __init__(__self__, *,
                  count: int,
                  type: str):
@@ -39667,7 +39667,7 @@ class GetInstanceTemplateGuestAcceleratorResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceTemplateNetworkInterfaceResult(dict):
+calass GetInstanceTemplateNetworkInterfaceResult(dict):
     def __init__(__self__, *,
                  access_configs: Sequence['outputs.GetInstanceTemplateNetworkInterfaceAccessConfigResult'],
                  alias_ip_ranges: Sequence['outputs.GetInstanceTemplateNetworkInterfaceAliasIpRangeResult'],
@@ -39685,13 +39685,13 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
                  subnetwork: str,
                  subnetwork_project: str):
         """
-        :param Sequence['GetInstanceTemplateNetworkInterfaceAccessConfigArgs'] access_configs: Access configurations, i.e. IPs via which this
+        :param Sequence['GetInstanceTemplateNetworkInterfaceAccessConfigArrgs'] access_configs: Access configurations, i.e. IPs via which this
                instance can be accessed via the Internet. Omit to ensure that the instance
                is not accessible from the Internet (this means that ssh provisioners will
                not work unless you are running the provider can send traffic to the instance's
                network (e.g. via tunnel or because it is running on another cloud instance
                on that network). This block can be repeated multiple times. Structure documented below.
-        :param Sequence['GetInstanceTemplateNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An
+        :param Sequence['GetInstanceTemplateNetworkInterfaceAliasIpRangeArrgs'] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
         :param str name: The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
@@ -39833,7 +39833,7 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceTemplateNetworkInterfaceAccessConfigResult(dict):
+calass GetInstanceTemplateNetworkInterfaceAccessConfigResult(dict):
     def __init__(__self__, *,
                  nat_ip: str,
                  network_tier: str,
@@ -39875,7 +39875,7 @@ class GetInstanceTemplateNetworkInterfaceAccessConfigResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceTemplateNetworkInterfaceAliasIpRangeResult(dict):
+calass GetInstanceTemplateNetworkInterfaceAliasIpRangeResult(dict):
     def __init__(__self__, *,
                  ip_cidr_range: str,
                  subnetwork_range_name: str):
@@ -39916,7 +39916,7 @@ class GetInstanceTemplateNetworkInterfaceAliasIpRangeResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceTemplateNetworkInterfaceIpv6AccessConfigResult(dict):
+calass GetInstanceTemplateNetworkInterfaceIpv6AccessConfigResult(dict):
     def __init__(__self__, *,
                  external_ipv6: str,
                  external_ipv6_prefix_length: str,
@@ -39970,7 +39970,7 @@ class GetInstanceTemplateNetworkInterfaceIpv6AccessConfigResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceTemplateNetworkPerformanceConfigResult(dict):
+calass GetInstanceTemplateNetworkPerformanceConfigResult(dict):
     def __init__(__self__, *,
                  total_egress_bandwidth_tier: str):
         """
@@ -39988,7 +39988,7 @@ class GetInstanceTemplateNetworkPerformanceConfigResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceTemplateReservationAffinityResult(dict):
+calass GetInstanceTemplateReservationAffinityResult(dict):
     def __init__(__self__, *,
                  specific_reservations: Sequence['outputs.GetInstanceTemplateReservationAffinitySpecificReservationResult'],
                  type: str):
@@ -40013,7 +40013,7 @@ class GetInstanceTemplateReservationAffinityResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceTemplateReservationAffinitySpecificReservationResult(dict):
+calass GetInstanceTemplateReservationAffinitySpecificReservationResult(dict):
     def __init__(__self__, *,
                  key: str,
                  values: Sequence[str]):
@@ -40038,7 +40038,7 @@ class GetInstanceTemplateReservationAffinitySpecificReservationResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceTemplateSchedulingResult(dict):
+calass GetInstanceTemplateSchedulingResult(dict):
     def __init__(__self__, *,
                  automatic_restart: bool,
                  instance_termination_action: str,
@@ -40055,7 +40055,7 @@ class GetInstanceTemplateSchedulingResult(dict):
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
         :param str instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
-        :param Sequence['GetInstanceTemplateSchedulingNodeAffinityArgs'] node_affinities: Specifies node affinities or anti-affinities
+        :param Sequence['GetInstanceTemplateSchedulingNodeAffinityArrgs'] node_affinities: Specifies node affinities or anti-affinities
                to determine which sole-tenant nodes your instances and managed instance
                groups will use as host systems. Read more on sole-tenant node creation
                [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
@@ -40157,7 +40157,7 @@ class GetInstanceTemplateSchedulingResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutResult(dict):
+calass GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutResult(dict):
     def __init__(__self__, *,
                  nanos: int,
                  seconds: int):
@@ -40176,7 +40176,7 @@ class GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceTemplateSchedulingMaxRunDurationResult(dict):
+calass GetInstanceTemplateSchedulingMaxRunDurationResult(dict):
     def __init__(__self__, *,
                  nanos: int,
                  seconds: int):
@@ -40195,7 +40195,7 @@ class GetInstanceTemplateSchedulingMaxRunDurationResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceTemplateSchedulingNodeAffinityResult(dict):
+calass GetInstanceTemplateSchedulingNodeAffinityResult(dict):
     def __init__(__self__, *,
                  key: str,
                  operator: str,
@@ -40233,7 +40233,7 @@ class GetInstanceTemplateSchedulingNodeAffinityResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceTemplateServiceAccountResult(dict):
+calass GetInstanceTemplateServiceAccountResult(dict):
     def __init__(__self__, *,
                  email: str,
                  scopes: Sequence[str]):
@@ -40268,7 +40268,7 @@ class GetInstanceTemplateServiceAccountResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceTemplateShieldedInstanceConfigResult(dict):
+calass GetInstanceTemplateShieldedInstanceConfigResult(dict):
     def __init__(__self__, *,
                  enable_integrity_monitoring: bool,
                  enable_secure_boot: bool,
@@ -40308,14 +40308,14 @@ class GetInstanceTemplateShieldedInstanceConfigResult(dict):
 
 
 @pulumi.output_type
-class GetRegionInstanceGroupInstanceResult(dict):
+calass GetRegionInstanceGroupInstanceResult(dict):
     def __init__(__self__, *,
                  instance: str,
                  named_ports: Sequence['outputs.GetRegionInstanceGroupInstanceNamedPortResult'],
                  status: str):
         """
         :param str instance: URL to the instance.
-        :param Sequence['GetRegionInstanceGroupInstanceNamedPortArgs'] named_ports: List of named ports in the group, as a list of resources, each containing:
+        :param Sequence['GetRegionInstanceGroupInstanceNamedPortArrgs'] named_ports: List of named ports in the group, as a list of resources, each containing:
         :param str status: String description of current state of the instance.
         """
         pulumi.set(__self__, "instance", instance)
@@ -40348,7 +40348,7 @@ class GetRegionInstanceGroupInstanceResult(dict):
 
 
 @pulumi.output_type
-class GetRegionInstanceGroupInstanceNamedPortResult(dict):
+calass GetRegionInstanceGroupInstanceNamedPortResult(dict):
     def __init__(__self__, *,
                  name: str,
                  port: int):
@@ -40377,7 +40377,7 @@ class GetRegionInstanceGroupInstanceNamedPortResult(dict):
 
 
 @pulumi.output_type
-class GetRegionInstanceTemplateAdvancedMachineFeatureResult(dict):
+calass GetRegionInstanceTemplateAdvancedMachineFeatureResult(dict):
     def __init__(__self__, *,
                  enable_nested_virtualization: bool,
                  threads_per_core: int,
@@ -40403,7 +40403,7 @@ class GetRegionInstanceTemplateAdvancedMachineFeatureResult(dict):
 
 
 @pulumi.output_type
-class GetRegionInstanceTemplateConfidentialInstanceConfigResult(dict):
+calass GetRegionInstanceTemplateConfidentialInstanceConfigResult(dict):
     def __init__(__self__, *,
                  enable_confidential_compute: bool):
         """
@@ -40421,7 +40421,7 @@ class GetRegionInstanceTemplateConfidentialInstanceConfigResult(dict):
 
 
 @pulumi.output_type
-class GetRegionInstanceTemplateDiskResult(dict):
+calass GetRegionInstanceTemplateDiskResult(dict):
     def __init__(__self__, *,
                  auto_delete: bool,
                  boot: bool,
@@ -40448,7 +40448,7 @@ class GetRegionInstanceTemplateDiskResult(dict):
         :param str device_name: A unique device name that is reflected into the
                /dev/  tree of a Linux operating system running within the instance. If not
                specified, the server chooses a default device name to apply to this disk.
-        :param Sequence['GetRegionInstanceTemplateDiskDiskEncryptionKeyArgs'] disk_encryption_keys: Encrypts or decrypts a disk using a customer-supplied encryption key.
+        :param Sequence['GetRegionInstanceTemplateDiskDiskEncryptionKeyArrgs'] disk_encryption_keys: Encrypts or decrypts a disk using a customer-supplied encryption key.
         :param str disk_name: Name of the disk. When not provided, this defaults
                to the name of the instance.
         :param int disk_size_gb: The size of the image in gigabytes. If not
@@ -40662,7 +40662,7 @@ class GetRegionInstanceTemplateDiskResult(dict):
 
 
 @pulumi.output_type
-class GetRegionInstanceTemplateDiskDiskEncryptionKeyResult(dict):
+calass GetRegionInstanceTemplateDiskDiskEncryptionKeyResult(dict):
     def __init__(__self__, *,
                  kms_key_self_link: str):
         """
@@ -40680,7 +40680,7 @@ class GetRegionInstanceTemplateDiskDiskEncryptionKeyResult(dict):
 
 
 @pulumi.output_type
-class GetRegionInstanceTemplateDiskSourceImageEncryptionKeyResult(dict):
+calass GetRegionInstanceTemplateDiskSourceImageEncryptionKeyResult(dict):
     def __init__(__self__, *,
                  kms_key_self_link: str,
                  kms_key_service_account: str):
@@ -40705,7 +40705,7 @@ class GetRegionInstanceTemplateDiskSourceImageEncryptionKeyResult(dict):
 
 
 @pulumi.output_type
-class GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyResult(dict):
+calass GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyResult(dict):
     def __init__(__self__, *,
                  kms_key_self_link: str,
                  kms_key_service_account: str):
@@ -40730,7 +40730,7 @@ class GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyResult(dict):
 
 
 @pulumi.output_type
-class GetRegionInstanceTemplateGuestAcceleratorResult(dict):
+calass GetRegionInstanceTemplateGuestAcceleratorResult(dict):
     def __init__(__self__, *,
                  count: int,
                  type: str):
@@ -40759,7 +40759,7 @@ class GetRegionInstanceTemplateGuestAcceleratorResult(dict):
 
 
 @pulumi.output_type
-class GetRegionInstanceTemplateNetworkInterfaceResult(dict):
+calass GetRegionInstanceTemplateNetworkInterfaceResult(dict):
     def __init__(__self__, *,
                  access_configs: Sequence['outputs.GetRegionInstanceTemplateNetworkInterfaceAccessConfigResult'],
                  alias_ip_ranges: Sequence['outputs.GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeResult'],
@@ -40776,7 +40776,7 @@ class GetRegionInstanceTemplateNetworkInterfaceResult(dict):
                  subnetwork: str,
                  subnetwork_project: str):
         """
-        :param Sequence['GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An
+        :param Sequence['GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrgs'] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
         :param str name: The name of the instance template. One of `name` or `filter` must be provided.
@@ -40904,7 +40904,7 @@ class GetRegionInstanceTemplateNetworkInterfaceResult(dict):
 
 
 @pulumi.output_type
-class GetRegionInstanceTemplateNetworkInterfaceAccessConfigResult(dict):
+calass GetRegionInstanceTemplateNetworkInterfaceAccessConfigResult(dict):
     def __init__(__self__, *,
                  nat_ip: str,
                  network_tier: str,
@@ -40946,7 +40946,7 @@ class GetRegionInstanceTemplateNetworkInterfaceAccessConfigResult(dict):
 
 
 @pulumi.output_type
-class GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeResult(dict):
+calass GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeResult(dict):
     def __init__(__self__, *,
                  ip_cidr_range: str,
                  subnetwork_range_name: str):
@@ -40987,7 +40987,7 @@ class GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeResult(dict):
 
 
 @pulumi.output_type
-class GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigResult(dict):
+calass GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigResult(dict):
     def __init__(__self__, *,
                  external_ipv6: str,
                  external_ipv6_prefix_length: str,
@@ -41041,7 +41041,7 @@ class GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigResult(dict):
 
 
 @pulumi.output_type
-class GetRegionInstanceTemplateNetworkPerformanceConfigResult(dict):
+calass GetRegionInstanceTemplateNetworkPerformanceConfigResult(dict):
     def __init__(__self__, *,
                  total_egress_bandwidth_tier: str):
         """
@@ -41059,7 +41059,7 @@ class GetRegionInstanceTemplateNetworkPerformanceConfigResult(dict):
 
 
 @pulumi.output_type
-class GetRegionInstanceTemplateReservationAffinityResult(dict):
+calass GetRegionInstanceTemplateReservationAffinityResult(dict):
     def __init__(__self__, *,
                  specific_reservations: Sequence['outputs.GetRegionInstanceTemplateReservationAffinitySpecificReservationResult'],
                  type: str):
@@ -41084,7 +41084,7 @@ class GetRegionInstanceTemplateReservationAffinityResult(dict):
 
 
 @pulumi.output_type
-class GetRegionInstanceTemplateReservationAffinitySpecificReservationResult(dict):
+calass GetRegionInstanceTemplateReservationAffinitySpecificReservationResult(dict):
     def __init__(__self__, *,
                  key: str,
                  values: Sequence[str]):
@@ -41109,7 +41109,7 @@ class GetRegionInstanceTemplateReservationAffinitySpecificReservationResult(dict
 
 
 @pulumi.output_type
-class GetRegionInstanceTemplateSchedulingResult(dict):
+calass GetRegionInstanceTemplateSchedulingResult(dict):
     def __init__(__self__, *,
                  automatic_restart: bool,
                  instance_termination_action: str,
@@ -41126,7 +41126,7 @@ class GetRegionInstanceTemplateSchedulingResult(dict):
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
         :param str instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
-        :param Sequence['GetRegionInstanceTemplateSchedulingNodeAffinityArgs'] node_affinities: Specifies node affinities or anti-affinities
+        :param Sequence['GetRegionInstanceTemplateSchedulingNodeAffinityArrgs'] node_affinities: Specifies node affinities or anti-affinities
                to determine which sole-tenant nodes your instances and managed instance
                groups will use as host systems. Read more on sole-tenant node creation
                [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
@@ -41228,7 +41228,7 @@ class GetRegionInstanceTemplateSchedulingResult(dict):
 
 
 @pulumi.output_type
-class GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutResult(dict):
+calass GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutResult(dict):
     def __init__(__self__, *,
                  nanos: int,
                  seconds: int):
@@ -41247,7 +41247,7 @@ class GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutResult(dict):
 
 
 @pulumi.output_type
-class GetRegionInstanceTemplateSchedulingMaxRunDurationResult(dict):
+calass GetRegionInstanceTemplateSchedulingMaxRunDurationResult(dict):
     def __init__(__self__, *,
                  nanos: int,
                  seconds: int):
@@ -41266,7 +41266,7 @@ class GetRegionInstanceTemplateSchedulingMaxRunDurationResult(dict):
 
 
 @pulumi.output_type
-class GetRegionInstanceTemplateSchedulingNodeAffinityResult(dict):
+calass GetRegionInstanceTemplateSchedulingNodeAffinityResult(dict):
     def __init__(__self__, *,
                  key: str,
                  operator: str,
@@ -41304,7 +41304,7 @@ class GetRegionInstanceTemplateSchedulingNodeAffinityResult(dict):
 
 
 @pulumi.output_type
-class GetRegionInstanceTemplateServiceAccountResult(dict):
+calass GetRegionInstanceTemplateServiceAccountResult(dict):
     def __init__(__self__, *,
                  email: str,
                  scopes: Sequence[str]):
@@ -41339,7 +41339,7 @@ class GetRegionInstanceTemplateServiceAccountResult(dict):
 
 
 @pulumi.output_type
-class GetRegionInstanceTemplateShieldedInstanceConfigResult(dict):
+calass GetRegionInstanceTemplateShieldedInstanceConfigResult(dict):
     def __init__(__self__, *,
                  enable_integrity_monitoring: bool,
                  enable_secure_boot: bool,
@@ -41379,7 +41379,7 @@ class GetRegionInstanceTemplateShieldedInstanceConfigResult(dict):
 
 
 @pulumi.output_type
-class GetRegionNetworkEndpointGroupAppEngineResult(dict):
+calass GetRegionNetworkEndpointGroupAppEngineResult(dict):
     def __init__(__self__, *,
                  service: str,
                  url_mask: str,
@@ -41405,7 +41405,7 @@ class GetRegionNetworkEndpointGroupAppEngineResult(dict):
 
 
 @pulumi.output_type
-class GetRegionNetworkEndpointGroupCloudFunctionResult(dict):
+calass GetRegionNetworkEndpointGroupCloudFunctionResult(dict):
     def __init__(__self__, *,
                  function: str,
                  url_mask: str):
@@ -41424,7 +41424,7 @@ class GetRegionNetworkEndpointGroupCloudFunctionResult(dict):
 
 
 @pulumi.output_type
-class GetRegionNetworkEndpointGroupCloudRunResult(dict):
+calass GetRegionNetworkEndpointGroupCloudRunResult(dict):
     def __init__(__self__, *,
                  service: str,
                  tag: str,
@@ -41450,7 +41450,7 @@ class GetRegionNetworkEndpointGroupCloudRunResult(dict):
 
 
 @pulumi.output_type
-class GetRegionNetworkEndpointGroupServerlessDeploymentResult(dict):
+calass GetRegionNetworkEndpointGroupServerlessDeploymentResult(dict):
     def __init__(__self__, *,
                  platform: str,
                  resource: str,
@@ -41483,7 +41483,7 @@ class GetRegionNetworkEndpointGroupServerlessDeploymentResult(dict):
 
 
 @pulumi.output_type
-class GetResourcePolicyDiskConsistencyGroupPolicyResult(dict):
+calass GetResourcePolicyDiskConsistencyGroupPolicyResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -41495,7 +41495,7 @@ class GetResourcePolicyDiskConsistencyGroupPolicyResult(dict):
 
 
 @pulumi.output_type
-class GetResourcePolicyGroupPlacementPolicyResult(dict):
+calass GetResourcePolicyGroupPlacementPolicyResult(dict):
     def __init__(__self__, *,
                  availability_domain_count: int,
                  collocation: str,
@@ -41528,7 +41528,7 @@ class GetResourcePolicyGroupPlacementPolicyResult(dict):
 
 
 @pulumi.output_type
-class GetResourcePolicyInstanceSchedulePolicyResult(dict):
+calass GetResourcePolicyInstanceSchedulePolicyResult(dict):
     def __init__(__self__, *,
                  expiration_time: str,
                  start_time: str,
@@ -41568,7 +41568,7 @@ class GetResourcePolicyInstanceSchedulePolicyResult(dict):
 
 
 @pulumi.output_type
-class GetResourcePolicyInstanceSchedulePolicyVmStartScheduleResult(dict):
+calass GetResourcePolicyInstanceSchedulePolicyVmStartScheduleResult(dict):
     def __init__(__self__, *,
                  schedule: str):
         pulumi.set(__self__, "schedule", schedule)
@@ -41580,7 +41580,7 @@ class GetResourcePolicyInstanceSchedulePolicyVmStartScheduleResult(dict):
 
 
 @pulumi.output_type
-class GetResourcePolicyInstanceSchedulePolicyVmStopScheduleResult(dict):
+calass GetResourcePolicyInstanceSchedulePolicyVmStopScheduleResult(dict):
     def __init__(__self__, *,
                  schedule: str):
         pulumi.set(__self__, "schedule", schedule)
@@ -41592,7 +41592,7 @@ class GetResourcePolicyInstanceSchedulePolicyVmStopScheduleResult(dict):
 
 
 @pulumi.output_type
-class GetResourcePolicySnapshotSchedulePolicyResult(dict):
+calass GetResourcePolicySnapshotSchedulePolicyResult(dict):
     def __init__(__self__, *,
                  retention_policies: Sequence['outputs.GetResourcePolicySnapshotSchedulePolicyRetentionPolicyResult'],
                  schedules: Sequence['outputs.GetResourcePolicySnapshotSchedulePolicyScheduleResult'],
@@ -41618,7 +41618,7 @@ class GetResourcePolicySnapshotSchedulePolicyResult(dict):
 
 
 @pulumi.output_type
-class GetResourcePolicySnapshotSchedulePolicyRetentionPolicyResult(dict):
+calass GetResourcePolicySnapshotSchedulePolicyRetentionPolicyResult(dict):
     def __init__(__self__, *,
                  max_retention_days: int,
                  on_source_disk_delete: str):
@@ -41637,7 +41637,7 @@ class GetResourcePolicySnapshotSchedulePolicyRetentionPolicyResult(dict):
 
 
 @pulumi.output_type
-class GetResourcePolicySnapshotSchedulePolicyScheduleResult(dict):
+calass GetResourcePolicySnapshotSchedulePolicyScheduleResult(dict):
     def __init__(__self__, *,
                  daily_schedules: Sequence['outputs.GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleResult'],
                  hourly_schedules: Sequence['outputs.GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleResult'],
@@ -41663,7 +41663,7 @@ class GetResourcePolicySnapshotSchedulePolicyScheduleResult(dict):
 
 
 @pulumi.output_type
-class GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleResult(dict):
+calass GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleResult(dict):
     def __init__(__self__, *,
                  days_in_cycle: int,
                  start_time: str):
@@ -41682,7 +41682,7 @@ class GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleResult(dict):
 
 
 @pulumi.output_type
-class GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleResult(dict):
+calass GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleResult(dict):
     def __init__(__self__, *,
                  hours_in_cycle: int,
                  start_time: str):
@@ -41701,7 +41701,7 @@ class GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleResult(dict):
 
 
 @pulumi.output_type
-class GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleResult(dict):
+calass GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleResult(dict):
     def __init__(__self__, *,
                  day_of_weeks: Sequence['outputs.GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekResult']):
         pulumi.set(__self__, "day_of_weeks", day_of_weeks)
@@ -41713,7 +41713,7 @@ class GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleResult(dict):
 
 
 @pulumi.output_type
-class GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekResult(dict):
+calass GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekResult(dict):
     def __init__(__self__, *,
                  day: str,
                  start_time: str):
@@ -41732,7 +41732,7 @@ class GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekResu
 
 
 @pulumi.output_type
-class GetResourcePolicySnapshotSchedulePolicySnapshotPropertyResult(dict):
+calass GetResourcePolicySnapshotSchedulePolicySnapshotPropertyResult(dict):
     def __init__(__self__, *,
                  chain_name: str,
                  guest_flush: bool,
@@ -41765,7 +41765,7 @@ class GetResourcePolicySnapshotSchedulePolicySnapshotPropertyResult(dict):
 
 
 @pulumi.output_type
-class GetRouterBgpResult(dict):
+calass GetRouterBgpResult(dict):
     def __init__(__self__, *,
                  advertise_mode: str,
                  advertised_groups: Sequence[str],
@@ -41805,7 +41805,7 @@ class GetRouterBgpResult(dict):
 
 
 @pulumi.output_type
-class GetRouterBgpAdvertisedIpRangeResult(dict):
+calass GetRouterBgpAdvertisedIpRangeResult(dict):
     def __init__(__self__, *,
                  description: str,
                  range: str):
@@ -41824,7 +41824,7 @@ class GetRouterBgpAdvertisedIpRangeResult(dict):
 
 
 @pulumi.output_type
-class GetRouterNatLogConfigResult(dict):
+calass GetRouterNatLogConfigResult(dict):
     def __init__(__self__, *,
                  enable: bool,
                  filter: str):
@@ -41843,7 +41843,7 @@ class GetRouterNatLogConfigResult(dict):
 
 
 @pulumi.output_type
-class GetRouterNatRuleResult(dict):
+calass GetRouterNatRuleResult(dict):
     def __init__(__self__, *,
                  actions: Sequence['outputs.GetRouterNatRuleActionResult'],
                  description: str,
@@ -41876,7 +41876,7 @@ class GetRouterNatRuleResult(dict):
 
 
 @pulumi.output_type
-class GetRouterNatRuleActionResult(dict):
+calass GetRouterNatRuleActionResult(dict):
     def __init__(__self__, *,
                  source_nat_active_ips: Sequence[str],
                  source_nat_active_ranges: Sequence[str],
@@ -41909,7 +41909,7 @@ class GetRouterNatRuleActionResult(dict):
 
 
 @pulumi.output_type
-class GetRouterNatSubnetworkResult(dict):
+calass GetRouterNatSubnetworkResult(dict):
     def __init__(__self__, *,
                  name: str,
                  secondary_ip_range_names: Sequence[str],
@@ -41943,7 +41943,7 @@ class GetRouterNatSubnetworkResult(dict):
 
 
 @pulumi.output_type
-class GetRouterStatusBestRouteResult(dict):
+calass GetRouterStatusBestRouteResult(dict):
     def __init__(__self__, *,
                  description: str,
                  dest_range: str,
@@ -42071,7 +42071,7 @@ class GetRouterStatusBestRouteResult(dict):
 
 
 @pulumi.output_type
-class GetRouterStatusBestRoutesForRouterResult(dict):
+calass GetRouterStatusBestRoutesForRouterResult(dict):
     def __init__(__self__, *,
                  description: str,
                  dest_range: str,
@@ -42199,7 +42199,7 @@ class GetRouterStatusBestRoutesForRouterResult(dict):
 
 
 @pulumi.output_type
-class GetSnapshotSnapshotEncryptionKeyResult(dict):
+calass GetSnapshotSnapshotEncryptionKeyResult(dict):
     def __init__(__self__, *,
                  kms_key_self_link: str,
                  kms_key_service_account: str,
@@ -42232,7 +42232,7 @@ class GetSnapshotSnapshotEncryptionKeyResult(dict):
 
 
 @pulumi.output_type
-class GetSnapshotSourceDiskEncryptionKeyResult(dict):
+calass GetSnapshotSourceDiskEncryptionKeyResult(dict):
     def __init__(__self__, *,
                  kms_key_service_account: str,
                  raw_key: str):
@@ -42251,7 +42251,7 @@ class GetSnapshotSourceDiskEncryptionKeyResult(dict):
 
 
 @pulumi.output_type
-class GetSubnetworkSecondaryIpRangeResult(dict):
+calass GetSubnetworkSecondaryIpRangeResult(dict):
     def __init__(__self__, *,
                  ip_cidr_range: str,
                  range_name: str):

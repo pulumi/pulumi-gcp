@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['SourceRepresentationInstanceArgs', 'SourceRepresentationInstance']
+__all__ = ['SourceRepresentationInstanceArrgs', 'SourceRepresentationInstance']
 
 @pulumi.input_type
-class SourceRepresentationInstanceArgs:
+calass SourceRepresentationInstanceArrgs:
     def __init__(__self__, *,
                  database_version: pulumi.Input[str],
                  host: pulumi.Input[str],
@@ -226,7 +226,7 @@ class SourceRepresentationInstanceArgs:
 
 
 @pulumi.input_type
-class _SourceRepresentationInstanceState:
+calass _SourceRepresentationInstanceState:
     def __init__(__self__, *,
                  ca_certificate: Optional[pulumi.Input[str]] = None,
                  client_certificate: Optional[pulumi.Input[str]] = None,
@@ -441,7 +441,7 @@ class _SourceRepresentationInstanceState:
         pulumi.set(self, "username", value)
 
 
-class SourceRepresentationInstance(pulumi.CustomResource):
+calass SourceRepresentationInstance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -553,7 +553,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SourceRepresentationInstanceArgs,
+                 args: SourceRepresentationInstanceArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A source representation instance is a Cloud SQL instance that represents
@@ -623,12 +623,12 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param SourceRepresentationInstanceArgs args: The arguments to use to populate this resource's properties.
+        :param SourceRepresentationInstanceArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SourceRepresentationInstanceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SourceRepresentationInstanceArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -656,7 +656,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SourceRepresentationInstanceArgs.__new__(SourceRepresentationInstanceArgs)
+            __props__ = SourceRepresentationInstanceArrgs.__new__(SourceRepresentationInstanceArrgs)
 
             __props__.__dict__["ca_certificate"] = ca_certificate
             __props__.__dict__["client_certificate"] = client_certificate

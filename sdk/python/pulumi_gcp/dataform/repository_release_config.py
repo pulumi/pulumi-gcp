@@ -11,13 +11,13 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['RepositoryReleaseConfigArgs', 'RepositoryReleaseConfig']
+__all__ = ['RepositoryReleaseConfigArrgs', 'RepositoryReleaseConfig']
 
 @pulumi.input_type
-class RepositoryReleaseConfigArgs:
+calass RepositoryReleaseConfigArrgs:
     def __init__(__self__, *,
                  git_commitish: pulumi.Input[str],
-                 code_compilation_config: Optional[pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArgs']] = None,
+                 code_compilation_config: Optional[pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArrgs']] = None,
                  cron_schedule: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -30,7 +30,7 @@ class RepositoryReleaseConfigArgs:
                
                
                - - -
-        :param pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArgs'] code_compilation_config: Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
+        :param pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArrgs'] code_compilation_config: Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
                Structure is documented below.
         :param pulumi.Input[str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
         :param pulumi.Input[str] name: The release's name.
@@ -73,7 +73,7 @@ class RepositoryReleaseConfigArgs:
 
     @property
     @pulumi.getter(name="codeCompilationConfig")
-    def code_compilation_config(self) -> Optional[pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArgs']]:
+    def code_compilation_config(self) -> Optional[pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArrgs']]:
         """
         Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
         Structure is documented below.
@@ -81,7 +81,7 @@ class RepositoryReleaseConfigArgs:
         return pulumi.get(self, "code_compilation_config")
 
     @code_compilation_config.setter
-    def code_compilation_config(self, value: Optional[pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArgs']]):
+    def code_compilation_config(self, value: Optional[pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArrgs']]):
         pulumi.set(self, "code_compilation_config", value)
 
     @property
@@ -159,20 +159,20 @@ class RepositoryReleaseConfigArgs:
 
 
 @pulumi.input_type
-class _RepositoryReleaseConfigState:
+calass _RepositoryReleaseConfigState:
     def __init__(__self__, *,
-                 code_compilation_config: Optional[pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArgs']] = None,
+                 code_compilation_config: Optional[pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArrgs']] = None,
                  cron_schedule: Optional[pulumi.Input[str]] = None,
                  git_commitish: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 recent_scheduled_release_records: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordArgs']]]] = None,
+                 recent_scheduled_release_records: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordArrgs']]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  repository: Optional[pulumi.Input[str]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RepositoryReleaseConfig resources.
-        :param pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArgs'] code_compilation_config: Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
+        :param pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArrgs'] code_compilation_config: Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
                Structure is documented below.
         :param pulumi.Input[str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
         :param pulumi.Input[str] git_commitish: Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
@@ -182,7 +182,7 @@ class _RepositoryReleaseConfigState:
         :param pulumi.Input[str] name: The release's name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordArgs']]] recent_scheduled_release_records: Records of the 10 most recent scheduled release attempts, ordered in in descending order of releaseTime. Updated whenever automatic creation of a compilation result is triggered by cronSchedule.
+        :param pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordArrgs']]] recent_scheduled_release_records: Records of the 10 most recent scheduled release attempts, ordered in in descending order of releaseTime. Updated whenever automatic creation of a compilation result is triggered by cronSchedule.
                Structure is documented below.
         :param pulumi.Input[str] region: A reference to the region
         :param pulumi.Input[str] repository: A reference to the Dataform repository
@@ -209,7 +209,7 @@ class _RepositoryReleaseConfigState:
 
     @property
     @pulumi.getter(name="codeCompilationConfig")
-    def code_compilation_config(self) -> Optional[pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArgs']]:
+    def code_compilation_config(self) -> Optional[pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArrgs']]:
         """
         Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
         Structure is documented below.
@@ -217,7 +217,7 @@ class _RepositoryReleaseConfigState:
         return pulumi.get(self, "code_compilation_config")
 
     @code_compilation_config.setter
-    def code_compilation_config(self, value: Optional[pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArgs']]):
+    def code_compilation_config(self, value: Optional[pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArrgs']]):
         pulumi.set(self, "code_compilation_config", value)
 
     @property
@@ -274,7 +274,7 @@ class _RepositoryReleaseConfigState:
 
     @property
     @pulumi.getter(name="recentScheduledReleaseRecords")
-    def recent_scheduled_release_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordArgs']]]]:
+    def recent_scheduled_release_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordArrgs']]]]:
         """
         Records of the 10 most recent scheduled release attempts, ordered in in descending order of releaseTime. Updated whenever automatic creation of a compilation result is triggered by cronSchedule.
         Structure is documented below.
@@ -282,7 +282,7 @@ class _RepositoryReleaseConfigState:
         return pulumi.get(self, "recent_scheduled_release_records")
 
     @recent_scheduled_release_records.setter
-    def recent_scheduled_release_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordArgs']]]]):
+    def recent_scheduled_release_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordArrgs']]]]):
         pulumi.set(self, "recent_scheduled_release_records", value)
 
     @property
@@ -322,12 +322,12 @@ class _RepositoryReleaseConfigState:
         pulumi.set(self, "time_zone", value)
 
 
-class RepositoryReleaseConfig(pulumi.CustomResource):
+calass RepositoryReleaseConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 code_compilation_config: Optional[pulumi.Input[pulumi.InputType['RepositoryReleaseConfigCodeCompilationConfigArgs']]] = None,
+                 code_compilation_config: Optional[pulumi.Input[pulumi.InputType['RepositoryReleaseConfigCodeCompilationConfigArrgs']]] = None,
                  cron_schedule: Optional[pulumi.Input[str]] = None,
                  git_commitish: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -347,8 +347,8 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
         git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
         secret = gcp.secretmanager.Secret("secret",
             secret_id="my_secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArrgs(),
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         secret_version = gcp.secretmanager.SecretVersion("secretVersion",
@@ -357,12 +357,12 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         repository = gcp.dataform.Repository("repository",
             region="us-central1",
-            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
+            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArrgs(
                 url=git_repository.url,
                 default_branch="main",
                 authentication_token_secret_version=secret_version.id,
             ),
-            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArgs(
+            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArrgs(
                 default_database="database",
                 schema_suffix="_suffix",
                 table_prefix="prefix_",
@@ -375,7 +375,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
             git_commitish="main",
             cron_schedule="0 7 * * *",
             time_zone="America/New_York",
-            code_compilation_config=gcp.dataform.RepositoryReleaseConfigCodeCompilationConfigArgs(
+            code_compilation_config=gcp.dataform.RepositoryReleaseConfigCodeCompilationConfigArrgs(
                 default_database="gcp-example-project",
                 default_schema="example-dataset",
                 default_location="us-central1",
@@ -420,7 +420,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RepositoryReleaseConfigCodeCompilationConfigArgs']] code_compilation_config: Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
+        :param pulumi.Input[pulumi.InputType['RepositoryReleaseConfigCodeCompilationConfigArrgs']] code_compilation_config: Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
                Structure is documented below.
         :param pulumi.Input[str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
         :param pulumi.Input[str] git_commitish: Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
@@ -438,7 +438,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RepositoryReleaseConfigArgs,
+                 args: RepositoryReleaseConfigArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -451,8 +451,8 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
         git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
         secret = gcp.secretmanager.Secret("secret",
             secret_id="my_secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArrgs(),
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         secret_version = gcp.secretmanager.SecretVersion("secretVersion",
@@ -461,12 +461,12 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         repository = gcp.dataform.Repository("repository",
             region="us-central1",
-            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
+            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArrgs(
                 url=git_repository.url,
                 default_branch="main",
                 authentication_token_secret_version=secret_version.id,
             ),
-            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArgs(
+            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArrgs(
                 default_database="database",
                 schema_suffix="_suffix",
                 table_prefix="prefix_",
@@ -479,7 +479,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
             git_commitish="main",
             cron_schedule="0 7 * * *",
             time_zone="America/New_York",
-            code_compilation_config=gcp.dataform.RepositoryReleaseConfigCodeCompilationConfigArgs(
+            code_compilation_config=gcp.dataform.RepositoryReleaseConfigCodeCompilationConfigArrgs(
                 default_database="gcp-example-project",
                 default_schema="example-dataset",
                 default_location="us-central1",
@@ -523,12 +523,12 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param RepositoryReleaseConfigArgs args: The arguments to use to populate this resource's properties.
+        :param RepositoryReleaseConfigArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RepositoryReleaseConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(RepositoryReleaseConfigArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -537,7 +537,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 code_compilation_config: Optional[pulumi.Input[pulumi.InputType['RepositoryReleaseConfigCodeCompilationConfigArgs']]] = None,
+                 code_compilation_config: Optional[pulumi.Input[pulumi.InputType['RepositoryReleaseConfigCodeCompilationConfigArrgs']]] = None,
                  cron_schedule: Optional[pulumi.Input[str]] = None,
                  git_commitish: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -552,7 +552,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RepositoryReleaseConfigArgs.__new__(RepositoryReleaseConfigArgs)
+            __props__ = RepositoryReleaseConfigArrgs.__new__(RepositoryReleaseConfigArrgs)
 
             __props__.__dict__["code_compilation_config"] = code_compilation_config
             __props__.__dict__["cron_schedule"] = cron_schedule
@@ -575,12 +575,12 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            code_compilation_config: Optional[pulumi.Input[pulumi.InputType['RepositoryReleaseConfigCodeCompilationConfigArgs']]] = None,
+            code_compilation_config: Optional[pulumi.Input[pulumi.InputType['RepositoryReleaseConfigCodeCompilationConfigArrgs']]] = None,
             cron_schedule: Optional[pulumi.Input[str]] = None,
             git_commitish: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            recent_scheduled_release_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryReleaseConfigRecentScheduledReleaseRecordArgs']]]]] = None,
+            recent_scheduled_release_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryReleaseConfigRecentScheduledReleaseRecordArrgs']]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             repository: Optional[pulumi.Input[str]] = None,
             time_zone: Optional[pulumi.Input[str]] = None) -> 'RepositoryReleaseConfig':
@@ -591,7 +591,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RepositoryReleaseConfigCodeCompilationConfigArgs']] code_compilation_config: Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
+        :param pulumi.Input[pulumi.InputType['RepositoryReleaseConfigCodeCompilationConfigArrgs']] code_compilation_config: Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
                Structure is documented below.
         :param pulumi.Input[str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
         :param pulumi.Input[str] git_commitish: Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
@@ -601,7 +601,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
         :param pulumi.Input[str] name: The release's name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryReleaseConfigRecentScheduledReleaseRecordArgs']]]] recent_scheduled_release_records: Records of the 10 most recent scheduled release attempts, ordered in in descending order of releaseTime. Updated whenever automatic creation of a compilation result is triggered by cronSchedule.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryReleaseConfigRecentScheduledReleaseRecordArrgs']]]] recent_scheduled_release_records: Records of the 10 most recent scheduled release attempts, ordered in in descending order of releaseTime. Updated whenever automatic creation of a compilation result is triggered by cronSchedule.
                Structure is documented below.
         :param pulumi.Input[str] region: A reference to the region
         :param pulumi.Input[str] repository: A reference to the Dataform repository

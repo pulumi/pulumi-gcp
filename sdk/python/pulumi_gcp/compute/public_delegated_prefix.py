@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['PublicDelegatedPrefixArgs', 'PublicDelegatedPrefix']
+__all__ = ['PublicDelegatedPrefixArrgs', 'PublicDelegatedPrefix']
 
 @pulumi.input_type
-class PublicDelegatedPrefixArgs:
+calass PublicDelegatedPrefixArrgs:
     def __init__(__self__, *,
                  ip_cidr_range: pulumi.Input[str],
                  parent_prefix: pulumi.Input[str],
@@ -147,7 +147,7 @@ class PublicDelegatedPrefixArgs:
 
 
 @pulumi.input_type
-class _PublicDelegatedPrefixState:
+calass _PublicDelegatedPrefixState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
@@ -300,7 +300,7 @@ class _PublicDelegatedPrefixState:
         pulumi.set(self, "self_link", value)
 
 
-class PublicDelegatedPrefix(pulumi.CustomResource):
+calass PublicDelegatedPrefix(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -391,7 +391,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: PublicDelegatedPrefixArgs,
+                 args: PublicDelegatedPrefixArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a PublicDelegatedPrefix for use with bring your own IP addresses (BYOIP).
@@ -449,12 +449,12 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param PublicDelegatedPrefixArgs args: The arguments to use to populate this resource's properties.
+        :param PublicDelegatedPrefixArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(PublicDelegatedPrefixArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(PublicDelegatedPrefixArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -477,7 +477,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = PublicDelegatedPrefixArgs.__new__(PublicDelegatedPrefixArgs)
+            __props__ = PublicDelegatedPrefixArrgs.__new__(PublicDelegatedPrefixArrgs)
 
             __props__.__dict__["description"] = description
             if ip_cidr_range is None and not opts.urn:

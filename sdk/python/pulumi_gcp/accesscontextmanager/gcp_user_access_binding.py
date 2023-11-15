@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['GcpUserAccessBindingArgs', 'GcpUserAccessBinding']
+__all__ = ['GcpUserAccessBindingArrgs', 'GcpUserAccessBinding']
 
 @pulumi.input_type
-class GcpUserAccessBindingArgs:
+calass GcpUserAccessBindingArrgs:
     def __init__(__self__, *,
                  access_levels: pulumi.Input[str],
                  group_key: pulumi.Input[str],
@@ -71,7 +71,7 @@ class GcpUserAccessBindingArgs:
 
 
 @pulumi.input_type
-class _GcpUserAccessBindingState:
+calass _GcpUserAccessBindingState:
     def __init__(__self__, *,
                  access_levels: Optional[pulumi.Input[str]] = None,
                  group_key: Optional[pulumi.Input[str]] = None,
@@ -148,7 +148,7 @@ class _GcpUserAccessBindingState:
         pulumi.set(self, "organization_id", value)
 
 
-class GcpUserAccessBinding(pulumi.CustomResource):
+calass GcpUserAccessBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -195,7 +195,7 @@ class GcpUserAccessBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: GcpUserAccessBindingArgs,
+                 args: GcpUserAccessBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Restricts access to Cloud Console and Google Cloud APIs for a set of users using Context-Aware Access.
@@ -223,12 +223,12 @@ class GcpUserAccessBinding(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param GcpUserAccessBindingArgs args: The arguments to use to populate this resource's properties.
+        :param GcpUserAccessBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(GcpUserAccessBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(GcpUserAccessBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -247,7 +247,7 @@ class GcpUserAccessBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = GcpUserAccessBindingArgs.__new__(GcpUserAccessBindingArgs)
+            __props__ = GcpUserAccessBindingArrgs.__new__(GcpUserAccessBindingArrgs)
 
             if access_levels is None and not opts.urn:
                 raise TypeError("Missing required property 'access_levels'")

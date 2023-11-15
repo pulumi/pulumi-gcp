@@ -11,22 +11,22 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DomainMappingArgs', 'DomainMapping']
+__all__ = ['DomainMappingArrgs', 'DomainMapping']
 
 @pulumi.input_type
-class DomainMappingArgs:
+calass DomainMappingArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 spec: pulumi.Input['DomainMappingSpecArgs'],
-                 metadata: Optional[pulumi.Input['DomainMappingMetadataArgs']] = None,
+                 spec: pulumi.Input['DomainMappingSpecArrgs'],
+                 metadata: Optional[pulumi.Input['DomainMappingMetadataArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DomainMapping resource.
         :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
-        :param pulumi.Input['DomainMappingSpecArgs'] spec: The spec for this DomainMapping.
+        :param pulumi.Input['DomainMappingSpecArrgs'] spec: The spec for this DomainMapping.
                Structure is documented below.
-        :param pulumi.Input['DomainMappingMetadataArgs'] metadata: Metadata associated with this DomainMapping.
+        :param pulumi.Input['DomainMappingMetadataArrgs'] metadata: Metadata associated with this DomainMapping.
                Structure is documented below.
         :param pulumi.Input[str] name: Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -55,7 +55,7 @@ class DomainMappingArgs:
 
     @property
     @pulumi.getter
-    def spec(self) -> pulumi.Input['DomainMappingSpecArgs']:
+    def spec(self) -> pulumi.Input['DomainMappingSpecArrgs']:
         """
         The spec for this DomainMapping.
         Structure is documented below.
@@ -63,12 +63,12 @@ class DomainMappingArgs:
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: pulumi.Input['DomainMappingSpecArgs']):
+    def spec(self, value: pulumi.Input['DomainMappingSpecArrgs']):
         pulumi.set(self, "spec", value)
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['DomainMappingMetadataArgs']]:
+    def metadata(self) -> Optional[pulumi.Input['DomainMappingMetadataArrgs']]:
         """
         Metadata associated with this DomainMapping.
         Structure is documented below.
@@ -76,7 +76,7 @@ class DomainMappingArgs:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['DomainMappingMetadataArgs']]):
+    def metadata(self, value: Optional[pulumi.Input['DomainMappingMetadataArrgs']]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -106,25 +106,25 @@ class DomainMappingArgs:
 
 
 @pulumi.input_type
-class _DomainMappingState:
+calass _DomainMappingState:
     def __init__(__self__, *,
                  location: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input['DomainMappingMetadataArgs']] = None,
+                 metadata: Optional[pulumi.Input['DomainMappingMetadataArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input['DomainMappingSpecArgs']] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusArgs']]]] = None):
+                 spec: Optional[pulumi.Input['DomainMappingSpecArrgs']] = None,
+                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusArrgs']]]] = None):
         """
         Input properties used for looking up and filtering DomainMapping resources.
         :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
-        :param pulumi.Input['DomainMappingMetadataArgs'] metadata: Metadata associated with this DomainMapping.
+        :param pulumi.Input['DomainMappingMetadataArrgs'] metadata: Metadata associated with this DomainMapping.
                Structure is documented below.
         :param pulumi.Input[str] name: Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['DomainMappingSpecArgs'] spec: The spec for this DomainMapping.
+        :param pulumi.Input['DomainMappingSpecArrgs'] spec: The spec for this DomainMapping.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusArgs']]] statuses: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusArrgs']]] statuses: (Output)
                Status of the condition, one of True, False, Unknown.
         """
         if location is not None:
@@ -154,7 +154,7 @@ class _DomainMappingState:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['DomainMappingMetadataArgs']]:
+    def metadata(self) -> Optional[pulumi.Input['DomainMappingMetadataArrgs']]:
         """
         Metadata associated with this DomainMapping.
         Structure is documented below.
@@ -162,7 +162,7 @@ class _DomainMappingState:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['DomainMappingMetadataArgs']]):
+    def metadata(self, value: Optional[pulumi.Input['DomainMappingMetadataArrgs']]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -192,7 +192,7 @@ class _DomainMappingState:
 
     @property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['DomainMappingSpecArgs']]:
+    def spec(self) -> Optional[pulumi.Input['DomainMappingSpecArrgs']]:
         """
         The spec for this DomainMapping.
         Structure is documented below.
@@ -200,12 +200,12 @@ class _DomainMappingState:
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['DomainMappingSpecArgs']]):
+    def spec(self, value: Optional[pulumi.Input['DomainMappingSpecArrgs']]):
         pulumi.set(self, "spec", value)
 
     @property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusArgs']]]]:
+    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusArrgs']]]]:
         """
         (Output)
         Status of the condition, one of True, False, Unknown.
@@ -213,20 +213,20 @@ class _DomainMappingState:
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusArgs']]]]):
+    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusArrgs']]]]):
         pulumi.set(self, "statuses", value)
 
 
-class DomainMapping(pulumi.CustomResource):
+calass DomainMapping(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['DomainMappingMetadataArgs']]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['DomainMappingMetadataArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['DomainMappingSpecArgs']]] = None,
+                 spec: Optional[pulumi.Input[pulumi.InputType['DomainMappingSpecArrgs']]] = None,
                  __props__=None):
         """
         Resource to hold the state and status of a user's domain mapping.
@@ -246,22 +246,22 @@ class DomainMapping(pulumi.CustomResource):
 
         default_service = gcp.cloudrun.Service("defaultService",
             location="us-central1",
-            metadata=gcp.cloudrun.ServiceMetadataArgs(
+            metadata=gcp.cloudrun.ServiceMetadataArrgs(
                 namespace="my-project-name",
             ),
-            template=gcp.cloudrun.ServiceTemplateArgs(
-                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
-                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+            template=gcp.cloudrun.ServiceTemplateArrgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArrgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArrgs(
                         image="us-docker.pkg.dev/cloudrun/container/hello",
                     )],
                 ),
             ))
         default_domain_mapping = gcp.cloudrun.DomainMapping("defaultDomainMapping",
             location="us-central1",
-            metadata=gcp.cloudrun.DomainMappingMetadataArgs(
+            metadata=gcp.cloudrun.DomainMappingMetadataArrgs(
                 namespace="my-project-name",
             ),
-            spec=gcp.cloudrun.DomainMappingSpecArgs(
+            spec=gcp.cloudrun.DomainMappingSpecArrgs(
                 route_name=default_service.name,
             ))
         ```
@@ -293,19 +293,19 @@ class DomainMapping(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
-        :param pulumi.Input[pulumi.InputType['DomainMappingMetadataArgs']] metadata: Metadata associated with this DomainMapping.
+        :param pulumi.Input[pulumi.InputType['DomainMappingMetadataArrgs']] metadata: Metadata associated with this DomainMapping.
                Structure is documented below.
         :param pulumi.Input[str] name: Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['DomainMappingSpecArgs']] spec: The spec for this DomainMapping.
+        :param pulumi.Input[pulumi.InputType['DomainMappingSpecArrgs']] spec: The spec for this DomainMapping.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DomainMappingArgs,
+                 args: DomainMappingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource to hold the state and status of a user's domain mapping.
@@ -325,22 +325,22 @@ class DomainMapping(pulumi.CustomResource):
 
         default_service = gcp.cloudrun.Service("defaultService",
             location="us-central1",
-            metadata=gcp.cloudrun.ServiceMetadataArgs(
+            metadata=gcp.cloudrun.ServiceMetadataArrgs(
                 namespace="my-project-name",
             ),
-            template=gcp.cloudrun.ServiceTemplateArgs(
-                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
-                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+            template=gcp.cloudrun.ServiceTemplateArrgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArrgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArrgs(
                         image="us-docker.pkg.dev/cloudrun/container/hello",
                     )],
                 ),
             ))
         default_domain_mapping = gcp.cloudrun.DomainMapping("defaultDomainMapping",
             location="us-central1",
-            metadata=gcp.cloudrun.DomainMappingMetadataArgs(
+            metadata=gcp.cloudrun.DomainMappingMetadataArrgs(
                 namespace="my-project-name",
             ),
-            spec=gcp.cloudrun.DomainMappingSpecArgs(
+            spec=gcp.cloudrun.DomainMappingSpecArrgs(
                 route_name=default_service.name,
             ))
         ```
@@ -370,12 +370,12 @@ class DomainMapping(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param DomainMappingArgs args: The arguments to use to populate this resource's properties.
+        :param DomainMappingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DomainMappingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DomainMappingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -385,10 +385,10 @@ class DomainMapping(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['DomainMappingMetadataArgs']]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['DomainMappingMetadataArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['DomainMappingSpecArgs']]] = None,
+                 spec: Optional[pulumi.Input[pulumi.InputType['DomainMappingSpecArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -396,7 +396,7 @@ class DomainMapping(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DomainMappingArgs.__new__(DomainMappingArgs)
+            __props__ = DomainMappingArrgs.__new__(DomainMappingArrgs)
 
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -419,11 +419,11 @@ class DomainMapping(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             location: Optional[pulumi.Input[str]] = None,
-            metadata: Optional[pulumi.Input[pulumi.InputType['DomainMappingMetadataArgs']]] = None,
+            metadata: Optional[pulumi.Input[pulumi.InputType['DomainMappingMetadataArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            spec: Optional[pulumi.Input[pulumi.InputType['DomainMappingSpecArgs']]] = None,
-            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainMappingStatusArgs']]]]] = None) -> 'DomainMapping':
+            spec: Optional[pulumi.Input[pulumi.InputType['DomainMappingSpecArrgs']]] = None,
+            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainMappingStatusArrgs']]]]] = None) -> 'DomainMapping':
         """
         Get an existing DomainMapping resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -432,14 +432,14 @@ class DomainMapping(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
-        :param pulumi.Input[pulumi.InputType['DomainMappingMetadataArgs']] metadata: Metadata associated with this DomainMapping.
+        :param pulumi.Input[pulumi.InputType['DomainMappingMetadataArrgs']] metadata: Metadata associated with this DomainMapping.
                Structure is documented below.
         :param pulumi.Input[str] name: Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['DomainMappingSpecArgs']] spec: The spec for this DomainMapping.
+        :param pulumi.Input[pulumi.InputType['DomainMappingSpecArrgs']] spec: The spec for this DomainMapping.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainMappingStatusArgs']]]] statuses: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainMappingStatusArrgs']]]] statuses: (Output)
                Status of the condition, one of True, False, Unknown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

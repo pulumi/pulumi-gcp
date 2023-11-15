@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['InstanceGroupArgs', 'InstanceGroup']
+__all__ = ['InstanceGroupArrgs', 'InstanceGroup']
 
 @pulumi.input_type
-class InstanceGroupArgs:
+calass InstanceGroupArrgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupNamedPortArgs']]]] = None,
+                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupNamedPortArrgs']]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -33,7 +33,7 @@ class InstanceGroupArgs:
                characters long and comply with
                [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
                include lowercase letters, numbers, and hyphens.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupNamedPortArgs']]] named_ports: The named port configuration. See the section below
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupNamedPortArrgs']]] named_ports: The named port configuration. See the section below
                for details on configuration. Structure is documented below.
         :param pulumi.Input[str] network: The URL of the network the instance group is in. If
                this is different from the network where the instances are in, the creation
@@ -103,7 +103,7 @@ class InstanceGroupArgs:
 
     @property
     @pulumi.getter(name="namedPorts")
-    def named_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupNamedPortArgs']]]]:
+    def named_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupNamedPortArrgs']]]]:
         """
         The named port configuration. See the section below
         for details on configuration. Structure is documented below.
@@ -111,7 +111,7 @@ class InstanceGroupArgs:
         return pulumi.get(self, "named_ports")
 
     @named_ports.setter
-    def named_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupNamedPortArgs']]]]):
+    def named_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupNamedPortArrgs']]]]):
         pulumi.set(self, "named_ports", value)
 
     @property
@@ -158,12 +158,12 @@ class InstanceGroupArgs:
 
 
 @pulumi.input_type
-class _InstanceGroupState:
+calass _InstanceGroupState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupNamedPortArgs']]]] = None,
+                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupNamedPortArrgs']]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -179,7 +179,7 @@ class _InstanceGroupState:
                characters long and comply with
                [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
                include lowercase letters, numbers, and hyphens.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupNamedPortArgs']]] named_ports: The named port configuration. See the section below
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupNamedPortArrgs']]] named_ports: The named port configuration. See the section below
                for details on configuration. Structure is documented below.
         :param pulumi.Input[str] network: The URL of the network the instance group is in. If
                this is different from the network where the instances are in, the creation
@@ -255,7 +255,7 @@ class _InstanceGroupState:
 
     @property
     @pulumi.getter(name="namedPorts")
-    def named_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupNamedPortArgs']]]]:
+    def named_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupNamedPortArrgs']]]]:
         """
         The named port configuration. See the section below
         for details on configuration. Structure is documented below.
@@ -263,7 +263,7 @@ class _InstanceGroupState:
         return pulumi.get(self, "named_ports")
 
     @named_ports.setter
-    def named_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupNamedPortArgs']]]]):
+    def named_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupNamedPortArrgs']]]]):
         pulumi.set(self, "named_ports", value)
 
     @property
@@ -333,7 +333,7 @@ class _InstanceGroupState:
         pulumi.set(self, "zone", value)
 
 
-class InstanceGroup(pulumi.CustomResource):
+calass InstanceGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -341,7 +341,7 @@ class InstanceGroup(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupNamedPortArgs']]]]] = None,
+                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupNamedPortArrgs']]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -376,11 +376,11 @@ class InstanceGroup(pulumi.CustomResource):
                 google_compute_instance["test2"]["id"],
             ],
             named_ports=[
-                gcp.compute.InstanceGroupNamedPortArgs(
+                gcp.compute.InstanceGroupNamedPortArrgs(
                     name="http",
                     port=8080,
                 ),
-                gcp.compute.InstanceGroupNamedPortArgs(
+                gcp.compute.InstanceGroupNamedPortArrgs(
                     name="https",
                     port=8443,
                 ),
@@ -422,7 +422,7 @@ class InstanceGroup(pulumi.CustomResource):
                characters long and comply with
                [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
                include lowercase letters, numbers, and hyphens.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupNamedPortArgs']]]] named_ports: The named port configuration. See the section below
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupNamedPortArrgs']]]] named_ports: The named port configuration. See the section below
                for details on configuration. Structure is documented below.
         :param pulumi.Input[str] network: The URL of the network the instance group is in. If
                this is different from the network where the instances are in, the creation
@@ -438,7 +438,7 @@ class InstanceGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[InstanceGroupArgs] = None,
+                 args: Optional[InstanceGroupArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a group of dissimilar Compute Engine virtual machine instances.
@@ -470,11 +470,11 @@ class InstanceGroup(pulumi.CustomResource):
                 google_compute_instance["test2"]["id"],
             ],
             named_ports=[
-                gcp.compute.InstanceGroupNamedPortArgs(
+                gcp.compute.InstanceGroupNamedPortArrgs(
                     name="http",
                     port=8080,
                 ),
-                gcp.compute.InstanceGroupNamedPortArgs(
+                gcp.compute.InstanceGroupNamedPortArrgs(
                     name="https",
                     port=8443,
                 ),
@@ -507,12 +507,12 @@ class InstanceGroup(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param InstanceGroupArgs args: The arguments to use to populate this resource's properties.
+        :param InstanceGroupArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(InstanceGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(InstanceGroupArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -524,7 +524,7 @@ class InstanceGroup(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupNamedPortArgs']]]]] = None,
+                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupNamedPortArrgs']]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -535,7 +535,7 @@ class InstanceGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = InstanceGroupArgs.__new__(InstanceGroupArgs)
+            __props__ = InstanceGroupArrgs.__new__(InstanceGroupArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["instances"] = instances
@@ -559,7 +559,7 @@ class InstanceGroup(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupNamedPortArgs']]]]] = None,
+            named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupNamedPortArrgs']]]]] = None,
             network: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
@@ -580,7 +580,7 @@ class InstanceGroup(pulumi.CustomResource):
                characters long and comply with
                [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
                include lowercase letters, numbers, and hyphens.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupNamedPortArgs']]]] named_ports: The named port configuration. See the section below
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupNamedPortArrgs']]]] named_ports: The named port configuration. See the section below
                for details on configuration. Structure is documented below.
         :param pulumi.Input[str] network: The URL of the network the instance group is in. If
                this is different from the network where the instances are in, the creation

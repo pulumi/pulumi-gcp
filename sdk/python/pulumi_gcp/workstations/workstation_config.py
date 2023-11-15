@@ -11,23 +11,23 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['WorkstationConfigArgs', 'WorkstationConfig']
+__all__ = ['WorkstationConfigArrgs', 'WorkstationConfig']
 
 @pulumi.input_type
-class WorkstationConfigArgs:
+calass WorkstationConfigArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  workstation_cluster_id: pulumi.Input[str],
                  workstation_config_id: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 container: Optional[pulumi.Input['WorkstationConfigContainerArgs']] = None,
+                 container: Optional[pulumi.Input['WorkstationConfigContainerArrgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_audit_agent: Optional[pulumi.Input[bool]] = None,
-                 encryption_key: Optional[pulumi.Input['WorkstationConfigEncryptionKeyArgs']] = None,
-                 host: Optional[pulumi.Input['WorkstationConfigHostArgs']] = None,
+                 encryption_key: Optional[pulumi.Input['WorkstationConfigEncryptionKeyArrgs']] = None,
+                 host: Optional[pulumi.Input['WorkstationConfigHostArrgs']] = None,
                  idle_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]]] = None,
+                 persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArrgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  running_timeout: Optional[pulumi.Input[str]] = None):
@@ -42,23 +42,23 @@ class WorkstationConfigArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input['WorkstationConfigContainerArgs'] container: Container that will be run for each workstation using this configuration when that workstation is started.
+        :param pulumi.Input['WorkstationConfigContainerArrgs'] container: Container that will be run for each workstation using this configuration when that workstation is started.
                Structure is documented below.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
         :param pulumi.Input[bool] enable_audit_agent: Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
-        :param pulumi.Input['WorkstationConfigEncryptionKeyArgs'] encryption_key: Encrypts resources of this workstation configuration using a customer-managed encryption key.
+        :param pulumi.Input['WorkstationConfigEncryptionKeyArrgs'] encryption_key: Encrypts resources of this workstation configuration using a customer-managed encryption key.
                If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata.
                If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost.
                If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
                Structure is documented below.
-        :param pulumi.Input['WorkstationConfigHostArgs'] host: Runtime host for a workstation.
+        :param pulumi.Input['WorkstationConfigHostArrgs'] host: Runtime host for a workstation.
                Structure is documented below.
         :param pulumi.Input[str] idle_timeout: How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]] persistent_directories: Directories to persist across workstation sessions.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArrgs']]] persistent_directories: Directories to persist across workstation sessions.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -150,7 +150,7 @@ class WorkstationConfigArgs:
 
     @property
     @pulumi.getter
-    def container(self) -> Optional[pulumi.Input['WorkstationConfigContainerArgs']]:
+    def container(self) -> Optional[pulumi.Input['WorkstationConfigContainerArrgs']]:
         """
         Container that will be run for each workstation using this configuration when that workstation is started.
         Structure is documented below.
@@ -158,7 +158,7 @@ class WorkstationConfigArgs:
         return pulumi.get(self, "container")
 
     @container.setter
-    def container(self, value: Optional[pulumi.Input['WorkstationConfigContainerArgs']]):
+    def container(self, value: Optional[pulumi.Input['WorkstationConfigContainerArrgs']]):
         pulumi.set(self, "container", value)
 
     @property
@@ -187,7 +187,7 @@ class WorkstationConfigArgs:
 
     @property
     @pulumi.getter(name="encryptionKey")
-    def encryption_key(self) -> Optional[pulumi.Input['WorkstationConfigEncryptionKeyArgs']]:
+    def encryption_key(self) -> Optional[pulumi.Input['WorkstationConfigEncryptionKeyArrgs']]:
         """
         Encrypts resources of this workstation configuration using a customer-managed encryption key.
         If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata.
@@ -198,12 +198,12 @@ class WorkstationConfigArgs:
         return pulumi.get(self, "encryption_key")
 
     @encryption_key.setter
-    def encryption_key(self, value: Optional[pulumi.Input['WorkstationConfigEncryptionKeyArgs']]):
+    def encryption_key(self, value: Optional[pulumi.Input['WorkstationConfigEncryptionKeyArrgs']]):
         pulumi.set(self, "encryption_key", value)
 
     @property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input['WorkstationConfigHostArgs']]:
+    def host(self) -> Optional[pulumi.Input['WorkstationConfigHostArrgs']]:
         """
         Runtime host for a workstation.
         Structure is documented below.
@@ -211,7 +211,7 @@ class WorkstationConfigArgs:
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input['WorkstationConfigHostArgs']]):
+    def host(self, value: Optional[pulumi.Input['WorkstationConfigHostArrgs']]):
         pulumi.set(self, "host", value)
 
     @property
@@ -243,7 +243,7 @@ class WorkstationConfigArgs:
 
     @property
     @pulumi.getter(name="persistentDirectories")
-    def persistent_directories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]]]:
+    def persistent_directories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArrgs']]]]:
         """
         Directories to persist across workstation sessions.
         Structure is documented below.
@@ -251,7 +251,7 @@ class WorkstationConfigArgs:
         return pulumi.get(self, "persistent_directories")
 
     @persistent_directories.setter
-    def persistent_directories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]]]):
+    def persistent_directories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArrgs']]]]):
         pulumi.set(self, "persistent_directories", value)
 
     @property
@@ -295,25 +295,25 @@ class WorkstationConfigArgs:
 
 
 @pulumi.input_type
-class _WorkstationConfigState:
+calass _WorkstationConfigState:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigConditionArgs']]]] = None,
-                 container: Optional[pulumi.Input['WorkstationConfigContainerArgs']] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigConditionArrgs']]]] = None,
+                 container: Optional[pulumi.Input['WorkstationConfigContainerArrgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  degraded: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enable_audit_agent: Optional[pulumi.Input[bool]] = None,
-                 encryption_key: Optional[pulumi.Input['WorkstationConfigEncryptionKeyArgs']] = None,
+                 encryption_key: Optional[pulumi.Input['WorkstationConfigEncryptionKeyArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 host: Optional[pulumi.Input['WorkstationConfigHostArgs']] = None,
+                 host: Optional[pulumi.Input['WorkstationConfigHostArrgs']] = None,
                  idle_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]]] = None,
+                 persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArrgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -326,9 +326,9 @@ class _WorkstationConfigState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigConditionArgs']]] conditions: Status conditions describing the current resource state.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigConditionArrgs']]] conditions: Status conditions describing the current resource state.
                Structure is documented below.
-        :param pulumi.Input['WorkstationConfigContainerArgs'] container: Container that will be run for each workstation using this configuration when that workstation is started.
+        :param pulumi.Input['WorkstationConfigContainerArrgs'] container: Container that will be run for each workstation using this configuration when that workstation is started.
                Structure is documented below.
         :param pulumi.Input[str] create_time: Time when this resource was created.
         :param pulumi.Input[bool] degraded: Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
@@ -337,14 +337,14 @@ class _WorkstationConfigState:
                Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] enable_audit_agent: Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
-        :param pulumi.Input['WorkstationConfigEncryptionKeyArgs'] encryption_key: Encrypts resources of this workstation configuration using a customer-managed encryption key.
+        :param pulumi.Input['WorkstationConfigEncryptionKeyArrgs'] encryption_key: Encrypts resources of this workstation configuration using a customer-managed encryption key.
                If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata.
                If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost.
                If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
                Structure is documented below.
         :param pulumi.Input[str] etag: Checksum computed by the server.
                May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
-        :param pulumi.Input['WorkstationConfigHostArgs'] host: Runtime host for a workstation.
+        :param pulumi.Input['WorkstationConfigHostArrgs'] host: Runtime host for a workstation.
                Structure is documented below.
         :param pulumi.Input[str] idle_timeout: How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -356,7 +356,7 @@ class _WorkstationConfigState:
                
                - - -
         :param pulumi.Input[str] name: Full name of this resource.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]] persistent_directories: Directories to persist across workstation sessions.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArrgs']]] persistent_directories: Directories to persist across workstation sessions.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -435,7 +435,7 @@ class _WorkstationConfigState:
 
     @property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigConditionArgs']]]]:
+    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigConditionArrgs']]]]:
         """
         Status conditions describing the current resource state.
         Structure is documented below.
@@ -443,12 +443,12 @@ class _WorkstationConfigState:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigConditionArgs']]]]):
+    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigConditionArrgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @property
     @pulumi.getter
-    def container(self) -> Optional[pulumi.Input['WorkstationConfigContainerArgs']]:
+    def container(self) -> Optional[pulumi.Input['WorkstationConfigContainerArrgs']]:
         """
         Container that will be run for each workstation using this configuration when that workstation is started.
         Structure is documented below.
@@ -456,7 +456,7 @@ class _WorkstationConfigState:
         return pulumi.get(self, "container")
 
     @container.setter
-    def container(self, value: Optional[pulumi.Input['WorkstationConfigContainerArgs']]):
+    def container(self, value: Optional[pulumi.Input['WorkstationConfigContainerArrgs']]):
         pulumi.set(self, "container", value)
 
     @property
@@ -534,7 +534,7 @@ class _WorkstationConfigState:
 
     @property
     @pulumi.getter(name="encryptionKey")
-    def encryption_key(self) -> Optional[pulumi.Input['WorkstationConfigEncryptionKeyArgs']]:
+    def encryption_key(self) -> Optional[pulumi.Input['WorkstationConfigEncryptionKeyArrgs']]:
         """
         Encrypts resources of this workstation configuration using a customer-managed encryption key.
         If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata.
@@ -545,7 +545,7 @@ class _WorkstationConfigState:
         return pulumi.get(self, "encryption_key")
 
     @encryption_key.setter
-    def encryption_key(self, value: Optional[pulumi.Input['WorkstationConfigEncryptionKeyArgs']]):
+    def encryption_key(self, value: Optional[pulumi.Input['WorkstationConfigEncryptionKeyArrgs']]):
         pulumi.set(self, "encryption_key", value)
 
     @property
@@ -563,7 +563,7 @@ class _WorkstationConfigState:
 
     @property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input['WorkstationConfigHostArgs']]:
+    def host(self) -> Optional[pulumi.Input['WorkstationConfigHostArrgs']]:
         """
         Runtime host for a workstation.
         Structure is documented below.
@@ -571,7 +571,7 @@ class _WorkstationConfigState:
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input['WorkstationConfigHostArgs']]):
+    def host(self, value: Optional[pulumi.Input['WorkstationConfigHostArrgs']]):
         pulumi.set(self, "host", value)
 
     @property
@@ -630,7 +630,7 @@ class _WorkstationConfigState:
 
     @property
     @pulumi.getter(name="persistentDirectories")
-    def persistent_directories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]]]:
+    def persistent_directories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArrgs']]]]:
         """
         Directories to persist across workstation sessions.
         Structure is documented below.
@@ -638,7 +638,7 @@ class _WorkstationConfigState:
         return pulumi.get(self, "persistent_directories")
 
     @persistent_directories.setter
-    def persistent_directories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]]]):
+    def persistent_directories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArrgs']]]]):
         pulumi.set(self, "persistent_directories", value)
 
     @property
@@ -730,21 +730,21 @@ class _WorkstationConfigState:
         pulumi.set(self, "workstation_config_id", value)
 
 
-class WorkstationConfig(pulumi.CustomResource):
+calass WorkstationConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 container: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigContainerArgs']]] = None,
+                 container: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigContainerArrgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_audit_agent: Optional[pulumi.Input[bool]] = None,
-                 encryption_key: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigEncryptionKeyArgs']]] = None,
-                 host: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigHostArgs']]] = None,
+                 encryption_key: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigEncryptionKeyArrgs']]] = None,
+                 host: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigHostArrgs']]] = None,
                  idle_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigPersistentDirectoryArgs']]]]] = None,
+                 persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigPersistentDirectoryArrgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  running_timeout: Optional[pulumi.Input[str]] = None,
@@ -794,8 +794,8 @@ class WorkstationConfig(pulumi.CustomResource):
             labels={
                 "label": "key",
             },
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
+            host=gcp.workstations.WorkstationConfigHostArrgs(
+                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArrgs(
                     machine_type="e2-standard-4",
                     boot_disk_size_gb=35,
                     disable_public_ip_addresses=True,
@@ -832,15 +832,15 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_config_id="workstation-config",
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
+            host=gcp.workstations.WorkstationConfigHostArrgs(
+                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArrgs(
                     machine_type="n1-standard-4",
                     boot_disk_size_gb=35,
                     disable_public_ip_addresses=True,
                     enable_nested_virtualization=True,
                 ),
             ),
-            container=gcp.workstations.WorkstationConfigContainerArgs(
+            container=gcp.workstations.WorkstationConfigContainerArrgs(
                 image="intellij",
                 env={
                     "NAME": "FOO",
@@ -878,20 +878,20 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_config_id="workstation-config",
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
+            host=gcp.workstations.WorkstationConfigHostArrgs(
+                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArrgs(
                     machine_type="e2-standard-4",
                     boot_disk_size_gb=35,
                     disable_public_ip_addresses=True,
-                    shielded_instance_config=gcp.workstations.WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs(
+                    shielded_instance_config=gcp.workstations.WorkstationConfigHostGceInstanceShieldedInstanceConfigArrgs(
                         enable_secure_boot=True,
                         enable_vtpm=True,
                     ),
                 ),
             ),
-            persistent_directories=[gcp.workstations.WorkstationConfigPersistentDirectoryArgs(
+            persistent_directories=[gcp.workstations.WorkstationConfigPersistentDirectoryArrgs(
                 mount_path="/home",
-                gce_pd=gcp.workstations.WorkstationConfigPersistentDirectoryGcePdArgs(
+                gce_pd=gcp.workstations.WorkstationConfigPersistentDirectoryGcePdArrgs(
                     size_gb=200,
                     fs_type="ext4",
                     disk_type="pd-standard",
@@ -932,9 +932,9 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_config_id="workstation-config",
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location=default_workstation_cluster.location,
-            persistent_directories=[gcp.workstations.WorkstationConfigPersistentDirectoryArgs(
+            persistent_directories=[gcp.workstations.WorkstationConfigPersistentDirectoryArrgs(
                 mount_path="/home",
-                gce_pd=gcp.workstations.WorkstationConfigPersistentDirectoryGcePdArgs(
+                gce_pd=gcp.workstations.WorkstationConfigPersistentDirectoryGcePdArrgs(
                     source_snapshot=my_source_snapshot.id,
                     reclaim_policy="DELETE",
                 ),
@@ -970,12 +970,12 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_config_id="workstation-config",
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
+            host=gcp.workstations.WorkstationConfigHostArrgs(
+                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArrgs(
                     machine_type="e2-standard-4",
                     boot_disk_size_gb=35,
                     disable_public_ip_addresses=True,
-                    shielded_instance_config=gcp.workstations.WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs(
+                    shielded_instance_config=gcp.workstations.WorkstationConfigHostGceInstanceShieldedInstanceConfigArrgs(
                         enable_secure_boot=True,
                         enable_vtpm=True,
                     ),
@@ -1012,12 +1012,12 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_config_id="workstation-config",
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
+            host=gcp.workstations.WorkstationConfigHostArrgs(
+                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArrgs(
                     machine_type="n1-standard-2",
                     boot_disk_size_gb=35,
                     disable_public_ip_addresses=True,
-                    accelerators=[gcp.workstations.WorkstationConfigHostGceInstanceAcceleratorArgs(
+                    accelerators=[gcp.workstations.WorkstationConfigHostGceInstanceAcceleratorArrgs(
                         type="nvidia-tesla-t4",
                         count=1,
                     )],
@@ -1062,18 +1062,18 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_config_id="workstation-config",
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
+            host=gcp.workstations.WorkstationConfigHostArrgs(
+                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArrgs(
                     machine_type="e2-standard-4",
                     boot_disk_size_gb=35,
                     disable_public_ip_addresses=True,
-                    shielded_instance_config=gcp.workstations.WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs(
+                    shielded_instance_config=gcp.workstations.WorkstationConfigHostGceInstanceShieldedInstanceConfigArrgs(
                         enable_secure_boot=True,
                         enable_vtpm=True,
                     ),
                 ),
             ),
-            encryption_key=gcp.workstations.WorkstationConfigEncryptionKeyArgs(
+            encryption_key=gcp.workstations.WorkstationConfigEncryptionKeyArrgs(
                 kms_key=default_crypto_key.id,
                 kms_key_service_account=default_account.email,
             ),
@@ -1109,16 +1109,16 @@ class WorkstationConfig(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['WorkstationConfigContainerArgs']] container: Container that will be run for each workstation using this configuration when that workstation is started.
+        :param pulumi.Input[pulumi.InputType['WorkstationConfigContainerArrgs']] container: Container that will be run for each workstation using this configuration when that workstation is started.
                Structure is documented below.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
         :param pulumi.Input[bool] enable_audit_agent: Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
-        :param pulumi.Input[pulumi.InputType['WorkstationConfigEncryptionKeyArgs']] encryption_key: Encrypts resources of this workstation configuration using a customer-managed encryption key.
+        :param pulumi.Input[pulumi.InputType['WorkstationConfigEncryptionKeyArrgs']] encryption_key: Encrypts resources of this workstation configuration using a customer-managed encryption key.
                If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata.
                If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost.
                If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['WorkstationConfigHostArgs']] host: Runtime host for a workstation.
+        :param pulumi.Input[pulumi.InputType['WorkstationConfigHostArrgs']] host: Runtime host for a workstation.
                Structure is documented below.
         :param pulumi.Input[str] idle_timeout: How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -1129,7 +1129,7 @@ class WorkstationConfig(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigPersistentDirectoryArgs']]]] persistent_directories: Directories to persist across workstation sessions.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigPersistentDirectoryArrgs']]]] persistent_directories: Directories to persist across workstation sessions.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1144,7 +1144,7 @@ class WorkstationConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: WorkstationConfigArgs,
+                 args: WorkstationConfigArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -1189,8 +1189,8 @@ class WorkstationConfig(pulumi.CustomResource):
             labels={
                 "label": "key",
             },
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
+            host=gcp.workstations.WorkstationConfigHostArrgs(
+                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArrgs(
                     machine_type="e2-standard-4",
                     boot_disk_size_gb=35,
                     disable_public_ip_addresses=True,
@@ -1227,15 +1227,15 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_config_id="workstation-config",
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
+            host=gcp.workstations.WorkstationConfigHostArrgs(
+                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArrgs(
                     machine_type="n1-standard-4",
                     boot_disk_size_gb=35,
                     disable_public_ip_addresses=True,
                     enable_nested_virtualization=True,
                 ),
             ),
-            container=gcp.workstations.WorkstationConfigContainerArgs(
+            container=gcp.workstations.WorkstationConfigContainerArrgs(
                 image="intellij",
                 env={
                     "NAME": "FOO",
@@ -1273,20 +1273,20 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_config_id="workstation-config",
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
+            host=gcp.workstations.WorkstationConfigHostArrgs(
+                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArrgs(
                     machine_type="e2-standard-4",
                     boot_disk_size_gb=35,
                     disable_public_ip_addresses=True,
-                    shielded_instance_config=gcp.workstations.WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs(
+                    shielded_instance_config=gcp.workstations.WorkstationConfigHostGceInstanceShieldedInstanceConfigArrgs(
                         enable_secure_boot=True,
                         enable_vtpm=True,
                     ),
                 ),
             ),
-            persistent_directories=[gcp.workstations.WorkstationConfigPersistentDirectoryArgs(
+            persistent_directories=[gcp.workstations.WorkstationConfigPersistentDirectoryArrgs(
                 mount_path="/home",
-                gce_pd=gcp.workstations.WorkstationConfigPersistentDirectoryGcePdArgs(
+                gce_pd=gcp.workstations.WorkstationConfigPersistentDirectoryGcePdArrgs(
                     size_gb=200,
                     fs_type="ext4",
                     disk_type="pd-standard",
@@ -1327,9 +1327,9 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_config_id="workstation-config",
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location=default_workstation_cluster.location,
-            persistent_directories=[gcp.workstations.WorkstationConfigPersistentDirectoryArgs(
+            persistent_directories=[gcp.workstations.WorkstationConfigPersistentDirectoryArrgs(
                 mount_path="/home",
-                gce_pd=gcp.workstations.WorkstationConfigPersistentDirectoryGcePdArgs(
+                gce_pd=gcp.workstations.WorkstationConfigPersistentDirectoryGcePdArrgs(
                     source_snapshot=my_source_snapshot.id,
                     reclaim_policy="DELETE",
                 ),
@@ -1365,12 +1365,12 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_config_id="workstation-config",
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
+            host=gcp.workstations.WorkstationConfigHostArrgs(
+                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArrgs(
                     machine_type="e2-standard-4",
                     boot_disk_size_gb=35,
                     disable_public_ip_addresses=True,
-                    shielded_instance_config=gcp.workstations.WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs(
+                    shielded_instance_config=gcp.workstations.WorkstationConfigHostGceInstanceShieldedInstanceConfigArrgs(
                         enable_secure_boot=True,
                         enable_vtpm=True,
                     ),
@@ -1407,12 +1407,12 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_config_id="workstation-config",
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
+            host=gcp.workstations.WorkstationConfigHostArrgs(
+                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArrgs(
                     machine_type="n1-standard-2",
                     boot_disk_size_gb=35,
                     disable_public_ip_addresses=True,
-                    accelerators=[gcp.workstations.WorkstationConfigHostGceInstanceAcceleratorArgs(
+                    accelerators=[gcp.workstations.WorkstationConfigHostGceInstanceAcceleratorArrgs(
                         type="nvidia-tesla-t4",
                         count=1,
                     )],
@@ -1457,18 +1457,18 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_config_id="workstation-config",
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
+            host=gcp.workstations.WorkstationConfigHostArrgs(
+                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArrgs(
                     machine_type="e2-standard-4",
                     boot_disk_size_gb=35,
                     disable_public_ip_addresses=True,
-                    shielded_instance_config=gcp.workstations.WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs(
+                    shielded_instance_config=gcp.workstations.WorkstationConfigHostGceInstanceShieldedInstanceConfigArrgs(
                         enable_secure_boot=True,
                         enable_vtpm=True,
                     ),
                 ),
             ),
-            encryption_key=gcp.workstations.WorkstationConfigEncryptionKeyArgs(
+            encryption_key=gcp.workstations.WorkstationConfigEncryptionKeyArrgs(
                 kms_key=default_crypto_key.id,
                 kms_key_service_account=default_account.email,
             ),
@@ -1500,12 +1500,12 @@ class WorkstationConfig(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param WorkstationConfigArgs args: The arguments to use to populate this resource's properties.
+        :param WorkstationConfigArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(WorkstationConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(WorkstationConfigArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1515,15 +1515,15 @@ class WorkstationConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 container: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigContainerArgs']]] = None,
+                 container: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigContainerArrgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_audit_agent: Optional[pulumi.Input[bool]] = None,
-                 encryption_key: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigEncryptionKeyArgs']]] = None,
-                 host: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigHostArgs']]] = None,
+                 encryption_key: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigEncryptionKeyArrgs']]] = None,
+                 host: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigHostArrgs']]] = None,
                  idle_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigPersistentDirectoryArgs']]]]] = None,
+                 persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigPersistentDirectoryArrgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  running_timeout: Optional[pulumi.Input[str]] = None,
@@ -1536,7 +1536,7 @@ class WorkstationConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = WorkstationConfigArgs.__new__(WorkstationConfigArgs)
+            __props__ = WorkstationConfigArrgs.__new__(WorkstationConfigArrgs)
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["container"] = container
@@ -1581,22 +1581,22 @@ class WorkstationConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigConditionArgs']]]]] = None,
-            container: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigContainerArgs']]] = None,
+            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigConditionArrgs']]]]] = None,
+            container: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigContainerArrgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             degraded: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enable_audit_agent: Optional[pulumi.Input[bool]] = None,
-            encryption_key: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigEncryptionKeyArgs']]] = None,
+            encryption_key: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigEncryptionKeyArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
-            host: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigHostArgs']]] = None,
+            host: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigHostArrgs']]] = None,
             idle_timeout: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigPersistentDirectoryArgs']]]]] = None,
+            persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigPersistentDirectoryArrgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1614,9 +1614,9 @@ class WorkstationConfig(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigConditionArgs']]]] conditions: Status conditions describing the current resource state.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigConditionArrgs']]]] conditions: Status conditions describing the current resource state.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['WorkstationConfigContainerArgs']] container: Container that will be run for each workstation using this configuration when that workstation is started.
+        :param pulumi.Input[pulumi.InputType['WorkstationConfigContainerArrgs']] container: Container that will be run for each workstation using this configuration when that workstation is started.
                Structure is documented below.
         :param pulumi.Input[str] create_time: Time when this resource was created.
         :param pulumi.Input[bool] degraded: Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
@@ -1625,14 +1625,14 @@ class WorkstationConfig(pulumi.CustomResource):
                Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] enable_audit_agent: Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
-        :param pulumi.Input[pulumi.InputType['WorkstationConfigEncryptionKeyArgs']] encryption_key: Encrypts resources of this workstation configuration using a customer-managed encryption key.
+        :param pulumi.Input[pulumi.InputType['WorkstationConfigEncryptionKeyArrgs']] encryption_key: Encrypts resources of this workstation configuration using a customer-managed encryption key.
                If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata.
                If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost.
                If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
                Structure is documented below.
         :param pulumi.Input[str] etag: Checksum computed by the server.
                May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
-        :param pulumi.Input[pulumi.InputType['WorkstationConfigHostArgs']] host: Runtime host for a workstation.
+        :param pulumi.Input[pulumi.InputType['WorkstationConfigHostArrgs']] host: Runtime host for a workstation.
                Structure is documented below.
         :param pulumi.Input[str] idle_timeout: How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -1644,7 +1644,7 @@ class WorkstationConfig(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[str] name: Full name of this resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigPersistentDirectoryArgs']]]] persistent_directories: Directories to persist across workstation sessions.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigPersistentDirectoryArrgs']]]] persistent_directories: Directories to persist across workstation sessions.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

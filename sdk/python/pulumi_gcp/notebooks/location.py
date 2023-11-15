@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['LocationArgs', 'Location']
+__all__ = ['LocationArrgs', 'Location']
 
 @pulumi.input_type
-class LocationArgs:
+calass LocationArrgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -54,7 +54,7 @@ class LocationArgs:
 
 
 @pulumi.input_type
-class _LocationState:
+calass _LocationState:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -111,7 +111,7 @@ class _LocationState:
         pulumi.set(self, "self_link", value)
 
 
-class Location(pulumi.CustomResource):
+calass Location(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -156,7 +156,7 @@ class Location(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[LocationArgs] = None,
+                 args: Optional[LocationArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a Location resource.
@@ -186,12 +186,12 @@ class Location(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param LocationArgs args: The arguments to use to populate this resource's properties.
+        :param LocationArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(LocationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(LocationArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -209,7 +209,7 @@ class Location(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = LocationArgs.__new__(LocationArgs)
+            __props__ = LocationArrgs.__new__(LocationArrgs)
 
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

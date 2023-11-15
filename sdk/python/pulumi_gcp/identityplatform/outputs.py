@@ -40,7 +40,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class ConfigBlockingFunctions(dict):
+calass ConfigBlockingFunctions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -62,9 +62,9 @@ class ConfigBlockingFunctions(dict):
                  triggers: Sequence['outputs.ConfigBlockingFunctionsTrigger'],
                  forward_inbound_credentials: Optional['outputs.ConfigBlockingFunctionsForwardInboundCredentials'] = None):
         """
-        :param Sequence['ConfigBlockingFunctionsTriggerArgs'] triggers: Map of Trigger to event type. Key should be one of the supported event types: "beforeCreate", "beforeSignIn".
+        :param Sequence['ConfigBlockingFunctionsTriggerArrgs'] triggers: Map of Trigger to event type. Key should be one of the supported event types: "beforeCreate", "beforeSignIn".
                Structure is documented below.
-        :param 'ConfigBlockingFunctionsForwardInboundCredentialsArgs' forward_inbound_credentials: The user credentials to include in the JWT payload that is sent to the registered Blocking Functions.
+        :param 'ConfigBlockingFunctionsForwardInboundCredentialsArrgs' forward_inbound_credentials: The user credentials to include in the JWT payload that is sent to the registered Blocking Functions.
                Structure is documented below.
         """
         pulumi.set(__self__, "triggers", triggers)
@@ -91,7 +91,7 @@ class ConfigBlockingFunctions(dict):
 
 
 @pulumi.output_type
-class ConfigBlockingFunctionsForwardInboundCredentials(dict):
+calass ConfigBlockingFunctionsForwardInboundCredentials(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -155,7 +155,7 @@ class ConfigBlockingFunctionsForwardInboundCredentials(dict):
 
 
 @pulumi.output_type
-class ConfigBlockingFunctionsTrigger(dict):
+calass ConfigBlockingFunctionsTrigger(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -219,7 +219,7 @@ class ConfigBlockingFunctionsTrigger(dict):
 
 
 @pulumi.output_type
-class ConfigQuota(dict):
+calass ConfigQuota(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -240,7 +240,7 @@ class ConfigQuota(dict):
     def __init__(__self__, *,
                  sign_up_quota_config: Optional['outputs.ConfigQuotaSignUpQuotaConfig'] = None):
         """
-        :param 'ConfigQuotaSignUpQuotaConfigArgs' sign_up_quota_config: Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
+        :param 'ConfigQuotaSignUpQuotaConfigArrgs' sign_up_quota_config: Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
                Structure is documented below.
         """
         if sign_up_quota_config is not None:
@@ -257,7 +257,7 @@ class ConfigQuota(dict):
 
 
 @pulumi.output_type
-class ConfigQuotaSignUpQuotaConfig(dict):
+calass ConfigQuotaSignUpQuotaConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -319,7 +319,7 @@ class ConfigQuotaSignUpQuotaConfig(dict):
 
 
 @pulumi.output_type
-class ConfigSignIn(dict):
+calass ConfigSignIn(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -349,14 +349,14 @@ class ConfigSignIn(dict):
                  phone_number: Optional['outputs.ConfigSignInPhoneNumber'] = None):
         """
         :param bool allow_duplicate_emails: Whether to allow more than one account to have the same email.
-        :param 'ConfigSignInAnonymousArgs' anonymous: Configuration options related to authenticating an anonymous user.
+        :param 'ConfigSignInAnonymousArrgs' anonymous: Configuration options related to authenticating an anonymous user.
                Structure is documented below.
-        :param 'ConfigSignInEmailArgs' email: Configuration options related to authenticating a user by their email address.
+        :param 'ConfigSignInEmailArrgs' email: Configuration options related to authenticating a user by their email address.
                Structure is documented below.
-        :param Sequence['ConfigSignInHashConfigArgs'] hash_configs: (Output)
+        :param Sequence['ConfigSignInHashConfigArrgs'] hash_configs: (Output)
                Output only. Hash config information.
                Structure is documented below.
-        :param 'ConfigSignInPhoneNumberArgs' phone_number: Configuration options related to authenticated a user by their phone number.
+        :param 'ConfigSignInPhoneNumberArrgs' phone_number: Configuration options related to authenticated a user by their phone number.
                Structure is documented below.
         """
         if allow_duplicate_emails is not None:
@@ -417,7 +417,7 @@ class ConfigSignIn(dict):
 
 
 @pulumi.output_type
-class ConfigSignInAnonymous(dict):
+calass ConfigSignInAnonymous(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -439,7 +439,7 @@ class ConfigSignInAnonymous(dict):
 
 
 @pulumi.output_type
-class ConfigSignInEmail(dict):
+calass ConfigSignInEmail(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -490,7 +490,7 @@ class ConfigSignInEmail(dict):
 
 
 @pulumi.output_type
-class ConfigSignInHashConfig(dict):
+calass ConfigSignInHashConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -588,7 +588,7 @@ class ConfigSignInHashConfig(dict):
 
 
 @pulumi.output_type
-class ConfigSignInPhoneNumber(dict):
+calass ConfigSignInPhoneNumber(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -635,7 +635,7 @@ class ConfigSignInPhoneNumber(dict):
 
 
 @pulumi.output_type
-class ConfigSmsRegionConfig(dict):
+calass ConfigSmsRegionConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -659,9 +659,9 @@ class ConfigSmsRegionConfig(dict):
                  allow_by_default: Optional['outputs.ConfigSmsRegionConfigAllowByDefault'] = None,
                  allowlist_only: Optional['outputs.ConfigSmsRegionConfigAllowlistOnly'] = None):
         """
-        :param 'ConfigSmsRegionConfigAllowByDefaultArgs' allow_by_default: A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
+        :param 'ConfigSmsRegionConfigAllowByDefaultArrgs' allow_by_default: A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
                Structure is documented below.
-        :param 'ConfigSmsRegionConfigAllowlistOnlyArgs' allowlist_only: A policy of only allowing regions by explicitly adding them to an allowlist.
+        :param 'ConfigSmsRegionConfigAllowlistOnlyArrgs' allowlist_only: A policy of only allowing regions by explicitly adding them to an allowlist.
                Structure is documented below.
         """
         if allow_by_default is not None:
@@ -689,7 +689,7 @@ class ConfigSmsRegionConfig(dict):
 
 
 @pulumi.output_type
-class ConfigSmsRegionConfigAllowByDefault(dict):
+calass ConfigSmsRegionConfigAllowByDefault(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -725,7 +725,7 @@ class ConfigSmsRegionConfigAllowByDefault(dict):
 
 
 @pulumi.output_type
-class ConfigSmsRegionConfigAllowlistOnly(dict):
+calass ConfigSmsRegionConfigAllowlistOnly(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -761,7 +761,7 @@ class ConfigSmsRegionConfigAllowlistOnly(dict):
 
 
 @pulumi.output_type
-class InboundSamlConfigIdpConfig(dict):
+calass InboundSamlConfigIdpConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -791,7 +791,7 @@ class InboundSamlConfigIdpConfig(dict):
                  sso_url: str,
                  sign_request: Optional[bool] = None):
         """
-        :param Sequence['InboundSamlConfigIdpConfigIdpCertificateArgs'] idp_certificates: The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+        :param Sequence['InboundSamlConfigIdpConfigIdpCertificateArrgs'] idp_certificates: The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
         :param str idp_entity_id: Unique identifier for all SAML entities
         :param str sso_url: URL to send Authentication request to.
@@ -838,7 +838,7 @@ class InboundSamlConfigIdpConfig(dict):
 
 
 @pulumi.output_type
-class InboundSamlConfigIdpConfigIdpCertificate(dict):
+calass InboundSamlConfigIdpConfigIdpCertificate(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -874,7 +874,7 @@ class InboundSamlConfigIdpConfigIdpCertificate(dict):
 
 
 @pulumi.output_type
-class InboundSamlConfigSpConfig(dict):
+calass InboundSamlConfigSpConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -902,7 +902,7 @@ class InboundSamlConfigSpConfig(dict):
                  sp_entity_id: Optional[str] = None):
         """
         :param str callback_uri: Callback URI where responses from IDP are handled. Must start with `https://`.
-        :param Sequence['InboundSamlConfigSpConfigSpCertificateArgs'] sp_certificates: (Output)
+        :param Sequence['InboundSamlConfigSpConfigSpCertificateArrgs'] sp_certificates: (Output)
                The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
                
@@ -948,7 +948,7 @@ class InboundSamlConfigSpConfig(dict):
 
 
 @pulumi.output_type
-class InboundSamlConfigSpConfigSpCertificate(dict):
+calass InboundSamlConfigSpConfigSpCertificate(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -984,7 +984,7 @@ class InboundSamlConfigSpConfigSpCertificate(dict):
 
 
 @pulumi.output_type
-class ProjectDefaultConfigSignIn(dict):
+calass ProjectDefaultConfigSignIn(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1014,14 +1014,14 @@ class ProjectDefaultConfigSignIn(dict):
                  phone_number: Optional['outputs.ProjectDefaultConfigSignInPhoneNumber'] = None):
         """
         :param bool allow_duplicate_emails: Whether to allow more than one account to have the same email.
-        :param 'ProjectDefaultConfigSignInAnonymousArgs' anonymous: Configuration options related to authenticating an anonymous user.
+        :param 'ProjectDefaultConfigSignInAnonymousArrgs' anonymous: Configuration options related to authenticating an anonymous user.
                Structure is documented below.
-        :param 'ProjectDefaultConfigSignInEmailArgs' email: Configuration options related to authenticating a user by their email address.
+        :param 'ProjectDefaultConfigSignInEmailArrgs' email: Configuration options related to authenticating a user by their email address.
                Structure is documented below.
-        :param Sequence['ProjectDefaultConfigSignInHashConfigArgs'] hash_configs: (Output)
+        :param Sequence['ProjectDefaultConfigSignInHashConfigArrgs'] hash_configs: (Output)
                Output only. Hash config information.
                Structure is documented below.
-        :param 'ProjectDefaultConfigSignInPhoneNumberArgs' phone_number: Configuration options related to authenticated a user by their phone number.
+        :param 'ProjectDefaultConfigSignInPhoneNumberArrgs' phone_number: Configuration options related to authenticated a user by their phone number.
                Structure is documented below.
         """
         if allow_duplicate_emails is not None:
@@ -1082,7 +1082,7 @@ class ProjectDefaultConfigSignIn(dict):
 
 
 @pulumi.output_type
-class ProjectDefaultConfigSignInAnonymous(dict):
+calass ProjectDefaultConfigSignInAnonymous(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -1104,7 +1104,7 @@ class ProjectDefaultConfigSignInAnonymous(dict):
 
 
 @pulumi.output_type
-class ProjectDefaultConfigSignInEmail(dict):
+calass ProjectDefaultConfigSignInEmail(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1156,7 +1156,7 @@ class ProjectDefaultConfigSignInEmail(dict):
 
 
 @pulumi.output_type
-class ProjectDefaultConfigSignInHashConfig(dict):
+calass ProjectDefaultConfigSignInHashConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1254,7 +1254,7 @@ class ProjectDefaultConfigSignInHashConfig(dict):
 
 
 @pulumi.output_type
-class ProjectDefaultConfigSignInPhoneNumber(dict):
+calass ProjectDefaultConfigSignInPhoneNumber(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1302,7 +1302,7 @@ class ProjectDefaultConfigSignInPhoneNumber(dict):
 
 
 @pulumi.output_type
-class TenantInboundSamlConfigIdpConfig(dict):
+calass TenantInboundSamlConfigIdpConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1332,7 +1332,7 @@ class TenantInboundSamlConfigIdpConfig(dict):
                  sso_url: str,
                  sign_request: Optional[bool] = None):
         """
-        :param Sequence['TenantInboundSamlConfigIdpConfigIdpCertificateArgs'] idp_certificates: The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+        :param Sequence['TenantInboundSamlConfigIdpConfigIdpCertificateArrgs'] idp_certificates: The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
         :param str idp_entity_id: Unique identifier for all SAML entities
         :param str sso_url: URL to send Authentication request to.
@@ -1379,7 +1379,7 @@ class TenantInboundSamlConfigIdpConfig(dict):
 
 
 @pulumi.output_type
-class TenantInboundSamlConfigIdpConfigIdpCertificate(dict):
+calass TenantInboundSamlConfigIdpConfigIdpCertificate(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1415,7 +1415,7 @@ class TenantInboundSamlConfigIdpConfigIdpCertificate(dict):
 
 
 @pulumi.output_type
-class TenantInboundSamlConfigSpConfig(dict):
+calass TenantInboundSamlConfigSpConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1444,7 +1444,7 @@ class TenantInboundSamlConfigSpConfig(dict):
         """
         :param str callback_uri: Callback URI where responses from IDP are handled. Must start with `https://`.
         :param str sp_entity_id: Unique identifier for all SAML entities.
-        :param Sequence['TenantInboundSamlConfigSpConfigSpCertificateArgs'] sp_certificates: (Output)
+        :param Sequence['TenantInboundSamlConfigSpConfigSpCertificateArrgs'] sp_certificates: (Output)
                The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
                
@@ -1487,7 +1487,7 @@ class TenantInboundSamlConfigSpConfig(dict):
 
 
 @pulumi.output_type
-class TenantInboundSamlConfigSpConfigSpCertificate(dict):
+calass TenantInboundSamlConfigSpConfigSpCertificate(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

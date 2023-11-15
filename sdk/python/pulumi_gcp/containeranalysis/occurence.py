@@ -11,19 +11,19 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['OccurenceArgs', 'Occurence']
+__all__ = ['OccurenceArrgs', 'Occurence']
 
 @pulumi.input_type
-class OccurenceArgs:
+calass OccurenceArrgs:
     def __init__(__self__, *,
-                 attestation: pulumi.Input['OccurenceAttestationArgs'],
+                 attestation: pulumi.Input['OccurenceAttestationArrgs'],
                  note_name: pulumi.Input[str],
                  resource_uri: pulumi.Input[str],
                  project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Occurence resource.
-        :param pulumi.Input['OccurenceAttestationArgs'] attestation: Occurrence that represents a single "attestation". The authenticity
+        :param pulumi.Input['OccurenceAttestationArrgs'] attestation: Occurrence that represents a single "attestation". The authenticity
                of an attestation can be verified using the attached signature.
                If the verifier trusts the public key of the signer, then verifying
                the signature is sufficient to establish trust. In this circumstance,
@@ -52,7 +52,7 @@ class OccurenceArgs:
 
     @property
     @pulumi.getter
-    def attestation(self) -> pulumi.Input['OccurenceAttestationArgs']:
+    def attestation(self) -> pulumi.Input['OccurenceAttestationArrgs']:
         """
         Occurrence that represents a single "attestation". The authenticity
         of an attestation can be verified using the attached signature.
@@ -67,7 +67,7 @@ class OccurenceArgs:
         return pulumi.get(self, "attestation")
 
     @attestation.setter
-    def attestation(self, value: pulumi.Input['OccurenceAttestationArgs']):
+    def attestation(self, value: pulumi.Input['OccurenceAttestationArrgs']):
         pulumi.set(self, "attestation", value)
 
     @property
@@ -125,9 +125,9 @@ class OccurenceArgs:
 
 
 @pulumi.input_type
-class _OccurenceState:
+calass _OccurenceState:
     def __init__(__self__, *,
-                 attestation: Optional[pulumi.Input['OccurenceAttestationArgs']] = None,
+                 attestation: Optional[pulumi.Input['OccurenceAttestationArrgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -138,7 +138,7 @@ class _OccurenceState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Occurence resources.
-        :param pulumi.Input['OccurenceAttestationArgs'] attestation: Occurrence that represents a single "attestation". The authenticity
+        :param pulumi.Input['OccurenceAttestationArrgs'] attestation: Occurrence that represents a single "attestation". The authenticity
                of an attestation can be verified using the attached signature.
                If the verifier trusts the public key of the signer, then verifying
                the signature is sufficient to establish trust. In this circumstance,
@@ -184,7 +184,7 @@ class _OccurenceState:
 
     @property
     @pulumi.getter
-    def attestation(self) -> Optional[pulumi.Input['OccurenceAttestationArgs']]:
+    def attestation(self) -> Optional[pulumi.Input['OccurenceAttestationArrgs']]:
         """
         Occurrence that represents a single "attestation". The authenticity
         of an attestation can be verified using the attached signature.
@@ -199,7 +199,7 @@ class _OccurenceState:
         return pulumi.get(self, "attestation")
 
     @attestation.setter
-    def attestation(self, value: Optional[pulumi.Input['OccurenceAttestationArgs']]):
+    def attestation(self, value: Optional[pulumi.Input['OccurenceAttestationArrgs']]):
         pulumi.set(self, "attestation", value)
 
     @property
@@ -306,12 +306,12 @@ class _OccurenceState:
         pulumi.set(self, "update_time", value)
 
 
-class Occurence(pulumi.CustomResource):
+calass Occurence(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation: Optional[pulumi.Input[pulumi.InputType['OccurenceAttestationArgs']]] = None,
+                 attestation: Optional[pulumi.Input[pulumi.InputType['OccurenceAttestationArrgs']]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
@@ -355,7 +355,7 @@ class Occurence(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['OccurenceAttestationArgs']] attestation: Occurrence that represents a single "attestation". The authenticity
+        :param pulumi.Input[pulumi.InputType['OccurenceAttestationArrgs']] attestation: Occurrence that represents a single "attestation". The authenticity
                of an attestation can be verified using the attached signature.
                If the verifier trusts the public key of the signer, then verifying
                the signature is sufficient to establish trust. In this circumstance,
@@ -378,7 +378,7 @@ class Occurence(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: OccurenceArgs,
+                 args: OccurenceArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An occurrence is an instance of a Note, or type of analysis that
@@ -417,12 +417,12 @@ class Occurence(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param OccurenceArgs args: The arguments to use to populate this resource's properties.
+        :param OccurenceArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(OccurenceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(OccurenceArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -431,7 +431,7 @@ class Occurence(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation: Optional[pulumi.Input[pulumi.InputType['OccurenceAttestationArgs']]] = None,
+                 attestation: Optional[pulumi.Input[pulumi.InputType['OccurenceAttestationArrgs']]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
@@ -443,7 +443,7 @@ class Occurence(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = OccurenceArgs.__new__(OccurenceArgs)
+            __props__ = OccurenceArrgs.__new__(OccurenceArrgs)
 
             if attestation is None and not opts.urn:
                 raise TypeError("Missing required property 'attestation'")
@@ -470,7 +470,7 @@ class Occurence(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attestation: Optional[pulumi.Input[pulumi.InputType['OccurenceAttestationArgs']]] = None,
+            attestation: Optional[pulumi.Input[pulumi.InputType['OccurenceAttestationArrgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             kind: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -486,7 +486,7 @@ class Occurence(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['OccurenceAttestationArgs']] attestation: Occurrence that represents a single "attestation". The authenticity
+        :param pulumi.Input[pulumi.InputType['OccurenceAttestationArrgs']] attestation: Occurrence that represents a single "attestation". The authenticity
                of an attestation can be verified using the attached signature.
                If the verifier trusts the public key of the signer, then verifying
                the signature is sufficient to establish trust. In this circumstance,

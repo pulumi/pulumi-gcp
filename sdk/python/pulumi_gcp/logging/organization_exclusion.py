@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['OrganizationExclusionArgs', 'OrganizationExclusion']
+__all__ = ['OrganizationExclusionArrgs', 'OrganizationExclusion']
 
 @pulumi.input_type
-class OrganizationExclusionArgs:
+calass OrganizationExclusionArrgs:
     def __init__(__self__, *,
                  filter: pulumi.Input[str],
                  org_id: pulumi.Input[str],
@@ -104,7 +104,7 @@ class OrganizationExclusionArgs:
 
 
 @pulumi.input_type
-class _OrganizationExclusionState:
+calass _OrganizationExclusionState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -197,7 +197,7 @@ class _OrganizationExclusionState:
         pulumi.set(self, "org_id", value)
 
 
-class OrganizationExclusion(pulumi.CustomResource):
+calass OrganizationExclusion(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -260,7 +260,7 @@ class OrganizationExclusion(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: OrganizationExclusionArgs,
+                 args: OrganizationExclusionArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages an organization-level logging exclusion. For more information see:
@@ -300,12 +300,12 @@ class OrganizationExclusion(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param OrganizationExclusionArgs args: The arguments to use to populate this resource's properties.
+        :param OrganizationExclusionArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(OrganizationExclusionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(OrganizationExclusionArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -326,7 +326,7 @@ class OrganizationExclusion(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = OrganizationExclusionArgs.__new__(OrganizationExclusionArgs)
+            __props__ = OrganizationExclusionArrgs.__new__(OrganizationExclusionArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled

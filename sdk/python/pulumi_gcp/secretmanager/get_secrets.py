@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetSecretsResult:
+calass GetSecretsResult:
     """
     A collection of values returned by getSecrets.
     """
@@ -66,7 +66,7 @@ class GetSecretsResult:
         return pulumi.get(self, "secrets")
 
 
-class AwaitableGetSecretsResult(GetSecretsResult):
+calass AwaitableGetSecretsResult(GetSecretsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

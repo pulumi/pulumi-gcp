@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DatasetArgs', 'Dataset']
+__all__ = ['DatasetArrgs', 'Dataset']
 
 @pulumi.input_type
-class DatasetArgs:
+calass DatasetArrgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
-                 accesses: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessArgs']]]] = None,
+                 accesses: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessArrgs']]]] = None,
                  default_collation: Optional[pulumi.Input[str]] = None,
-                 default_encryption_configuration: Optional[pulumi.Input['DatasetDefaultEncryptionConfigurationArgs']] = None,
+                 default_encryption_configuration: Optional[pulumi.Input['DatasetDefaultEncryptionConfigurationArrgs']] = None,
                  default_partition_expiration_ms: Optional[pulumi.Input[int]] = None,
                  default_table_expiration_ms: Optional[pulumi.Input[int]] = None,
                  delete_contents_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -39,7 +39,7 @@ class DatasetArgs:
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input['DatasetAccessArgs']]] accesses: An array of objects that define dataset access for one or more entities.
+        :param pulumi.Input[Sequence[pulumi.Input['DatasetAccessArrgs']]] accesses: An array of objects that define dataset access for one or more entities.
                Structure is documented below.
         :param pulumi.Input[str] default_collation: Defines the default collation specification of future tables created
                in the dataset. If a table is created in this dataset without table-level
@@ -50,7 +50,7 @@ class DatasetArgs:
                The following values are supported:
                - 'und:ci': undetermined locale, case insensitive.
                - '': empty string. Default to case-sensitive behavior.
-        :param pulumi.Input['DatasetDefaultEncryptionConfigurationArgs'] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
+        :param pulumi.Input['DatasetDefaultEncryptionConfigurationArrgs'] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
                all newly-created partitioned tables in the dataset will have encryption key set to
                this value, unless table creation request (or query) overrides the key.
                Structure is documented below.
@@ -160,7 +160,7 @@ class DatasetArgs:
 
     @property
     @pulumi.getter
-    def accesses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessArgs']]]]:
+    def accesses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessArrgs']]]]:
         """
         An array of objects that define dataset access for one or more entities.
         Structure is documented below.
@@ -168,7 +168,7 @@ class DatasetArgs:
         return pulumi.get(self, "accesses")
 
     @accesses.setter
-    def accesses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessArgs']]]]):
+    def accesses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessArrgs']]]]):
         pulumi.set(self, "accesses", value)
 
     @property
@@ -193,7 +193,7 @@ class DatasetArgs:
 
     @property
     @pulumi.getter(name="defaultEncryptionConfiguration")
-    def default_encryption_configuration(self) -> Optional[pulumi.Input['DatasetDefaultEncryptionConfigurationArgs']]:
+    def default_encryption_configuration(self) -> Optional[pulumi.Input['DatasetDefaultEncryptionConfigurationArrgs']]:
         """
         The default encryption key for all tables in the dataset. Once this property is set,
         all newly-created partitioned tables in the dataset will have encryption key set to
@@ -203,7 +203,7 @@ class DatasetArgs:
         return pulumi.get(self, "default_encryption_configuration")
 
     @default_encryption_configuration.setter
-    def default_encryption_configuration(self, value: Optional[pulumi.Input['DatasetDefaultEncryptionConfigurationArgs']]):
+    def default_encryption_configuration(self, value: Optional[pulumi.Input['DatasetDefaultEncryptionConfigurationArrgs']]):
         pulumi.set(self, "default_encryption_configuration", value)
 
     @property
@@ -385,13 +385,13 @@ class DatasetArgs:
 
 
 @pulumi.input_type
-class _DatasetState:
+calass _DatasetState:
     def __init__(__self__, *,
-                 accesses: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessArgs']]]] = None,
+                 accesses: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessArrgs']]]] = None,
                  creation_time: Optional[pulumi.Input[int]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  default_collation: Optional[pulumi.Input[str]] = None,
-                 default_encryption_configuration: Optional[pulumi.Input['DatasetDefaultEncryptionConfigurationArgs']] = None,
+                 default_encryption_configuration: Optional[pulumi.Input['DatasetDefaultEncryptionConfigurationArrgs']] = None,
                  default_partition_expiration_ms: Optional[pulumi.Input[int]] = None,
                  default_table_expiration_ms: Optional[pulumi.Input[int]] = None,
                  delete_contents_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -410,7 +410,7 @@ class _DatasetState:
                  storage_billing_model: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Dataset resources.
-        :param pulumi.Input[Sequence[pulumi.Input['DatasetAccessArgs']]] accesses: An array of objects that define dataset access for one or more entities.
+        :param pulumi.Input[Sequence[pulumi.Input['DatasetAccessArrgs']]] accesses: An array of objects that define dataset access for one or more entities.
                Structure is documented below.
         :param pulumi.Input[int] creation_time: The time when this dataset was created, in milliseconds since the
                epoch.
@@ -429,7 +429,7 @@ class _DatasetState:
                The following values are supported:
                - 'und:ci': undetermined locale, case insensitive.
                - '': empty string. Default to case-sensitive behavior.
-        :param pulumi.Input['DatasetDefaultEncryptionConfigurationArgs'] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
+        :param pulumi.Input['DatasetDefaultEncryptionConfigurationArrgs'] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
                all newly-created partitioned tables in the dataset will have encryption key set to
                this value, unless table creation request (or query) overrides the key.
                Structure is documented below.
@@ -542,7 +542,7 @@ class _DatasetState:
 
     @property
     @pulumi.getter
-    def accesses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessArgs']]]]:
+    def accesses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessArrgs']]]]:
         """
         An array of objects that define dataset access for one or more entities.
         Structure is documented below.
@@ -550,7 +550,7 @@ class _DatasetState:
         return pulumi.get(self, "accesses")
 
     @accesses.setter
-    def accesses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessArgs']]]]):
+    def accesses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessArrgs']]]]):
         pulumi.set(self, "accesses", value)
 
     @property
@@ -605,7 +605,7 @@ class _DatasetState:
 
     @property
     @pulumi.getter(name="defaultEncryptionConfiguration")
-    def default_encryption_configuration(self) -> Optional[pulumi.Input['DatasetDefaultEncryptionConfigurationArgs']]:
+    def default_encryption_configuration(self) -> Optional[pulumi.Input['DatasetDefaultEncryptionConfigurationArrgs']]:
         """
         The default encryption key for all tables in the dataset. Once this property is set,
         all newly-created partitioned tables in the dataset will have encryption key set to
@@ -615,7 +615,7 @@ class _DatasetState:
         return pulumi.get(self, "default_encryption_configuration")
 
     @default_encryption_configuration.setter
-    def default_encryption_configuration(self, value: Optional[pulumi.Input['DatasetDefaultEncryptionConfigurationArgs']]):
+    def default_encryption_configuration(self, value: Optional[pulumi.Input['DatasetDefaultEncryptionConfigurationArrgs']]):
         pulumi.set(self, "default_encryption_configuration", value)
 
     @property
@@ -858,15 +858,15 @@ class _DatasetState:
         pulumi.set(self, "storage_billing_model", value)
 
 
-class Dataset(pulumi.CustomResource):
+calass Dataset(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessArgs']]]]] = None,
+                 accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessArrgs']]]]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  default_collation: Optional[pulumi.Input[str]] = None,
-                 default_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['DatasetDefaultEncryptionConfigurationArgs']]] = None,
+                 default_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['DatasetDefaultEncryptionConfigurationArrgs']]] = None,
                  default_partition_expiration_ms: Optional[pulumi.Input[int]] = None,
                  default_table_expiration_ms: Optional[pulumi.Input[int]] = None,
                  delete_contents_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -898,11 +898,11 @@ class Dataset(pulumi.CustomResource):
                 "env": "default",
             },
             accesses=[
-                gcp.bigquery.DatasetAccessArgs(
+                gcp.bigquery.DatasetAccessArrgs(
                     role="OWNER",
                     user_by_email=bqowner.email,
                 ),
-                gcp.bigquery.DatasetAccessArgs(
+                gcp.bigquery.DatasetAccessArrgs(
                     role="READER",
                     domain="hashicorp.com",
                 ),
@@ -922,7 +922,7 @@ class Dataset(pulumi.CustomResource):
             description="This is a test description",
             location="US",
             default_table_expiration_ms=3600000,
-            default_encryption_configuration=gcp.bigquery.DatasetDefaultEncryptionConfigurationArgs(
+            default_encryption_configuration=gcp.bigquery.DatasetDefaultEncryptionConfigurationArrgs(
                 kms_key_name=crypto_key.id,
             ))
         ```
@@ -943,11 +943,11 @@ class Dataset(pulumi.CustomResource):
                 "env": "default",
             },
             accesses=[
-                gcp.bigquery.DatasetAccessArgs(
+                gcp.bigquery.DatasetAccessArrgs(
                     role="OWNER",
                     user_by_email=bqowner.email,
                 ),
-                gcp.bigquery.DatasetAccessArgs(
+                gcp.bigquery.DatasetAccessArrgs(
                     role="READER",
                     domain="hashicorp.com",
                 ),
@@ -962,17 +962,17 @@ class Dataset(pulumi.CustomResource):
                 "env": "default",
             },
             accesses=[
-                gcp.bigquery.DatasetAccessArgs(
+                gcp.bigquery.DatasetAccessArrgs(
                     role="OWNER",
                     user_by_email=bqowner.email,
                 ),
-                gcp.bigquery.DatasetAccessArgs(
+                gcp.bigquery.DatasetAccessArrgs(
                     role="READER",
                     domain="hashicorp.com",
                 ),
-                gcp.bigquery.DatasetAccessArgs(
-                    dataset=gcp.bigquery.DatasetAccessDatasetArgs(
-                        dataset=gcp.bigquery.DatasetAccessDatasetDatasetArgs(
+                gcp.bigquery.DatasetAccessArrgs(
+                    dataset=gcp.bigquery.DatasetAccessDatasetArrgs(
+                        dataset=gcp.bigquery.DatasetAccessDatasetDatasetArrgs(
                             project_id=public.project,
                             dataset_id=public.dataset_id,
                         ),
@@ -997,7 +997,7 @@ class Dataset(pulumi.CustomResource):
             routine_type="TABLE_VALUED_FUNCTION",
             language="SQL",
             definition_body="SELECT 1 + value AS value\\n",
-            arguments=[gcp.bigquery.RoutineArgumentArgs(
+            arguments=[gcp.bigquery.RoutineArgumentArrgs(
                 name="value",
                 argument_kind="FIXED_TYPE",
                 data_type=json.dumps({
@@ -1016,12 +1016,12 @@ class Dataset(pulumi.CustomResource):
             dataset_id="private_dataset",
             description="This dataset is private",
             accesses=[
-                gcp.bigquery.DatasetAccessArgs(
+                gcp.bigquery.DatasetAccessArrgs(
                     role="OWNER",
                     user_by_email="my@service-account.com",
                 ),
-                gcp.bigquery.DatasetAccessArgs(
-                    routine=gcp.bigquery.DatasetAccessRoutineArgs(
+                gcp.bigquery.DatasetAccessArrgs(
+                    routine=gcp.bigquery.DatasetAccessRoutineArrgs(
                         project_id=public_routine.project,
                         dataset_id=public_routine.dataset_id,
                         routine_id=public_routine.routine_id,
@@ -1056,7 +1056,7 @@ class Dataset(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessArgs']]]] accesses: An array of objects that define dataset access for one or more entities.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessArrgs']]]] accesses: An array of objects that define dataset access for one or more entities.
                Structure is documented below.
         :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
@@ -1073,7 +1073,7 @@ class Dataset(pulumi.CustomResource):
                The following values are supported:
                - 'und:ci': undetermined locale, case insensitive.
                - '': empty string. Default to case-sensitive behavior.
-        :param pulumi.Input[pulumi.InputType['DatasetDefaultEncryptionConfigurationArgs']] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
+        :param pulumi.Input[pulumi.InputType['DatasetDefaultEncryptionConfigurationArrgs']] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
                all newly-created partitioned tables in the dataset will have encryption key set to
                this value, unless table creation request (or query) overrides the key.
                Structure is documented below.
@@ -1138,7 +1138,7 @@ class Dataset(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DatasetArgs,
+                 args: DatasetArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -1159,11 +1159,11 @@ class Dataset(pulumi.CustomResource):
                 "env": "default",
             },
             accesses=[
-                gcp.bigquery.DatasetAccessArgs(
+                gcp.bigquery.DatasetAccessArrgs(
                     role="OWNER",
                     user_by_email=bqowner.email,
                 ),
-                gcp.bigquery.DatasetAccessArgs(
+                gcp.bigquery.DatasetAccessArrgs(
                     role="READER",
                     domain="hashicorp.com",
                 ),
@@ -1183,7 +1183,7 @@ class Dataset(pulumi.CustomResource):
             description="This is a test description",
             location="US",
             default_table_expiration_ms=3600000,
-            default_encryption_configuration=gcp.bigquery.DatasetDefaultEncryptionConfigurationArgs(
+            default_encryption_configuration=gcp.bigquery.DatasetDefaultEncryptionConfigurationArrgs(
                 kms_key_name=crypto_key.id,
             ))
         ```
@@ -1204,11 +1204,11 @@ class Dataset(pulumi.CustomResource):
                 "env": "default",
             },
             accesses=[
-                gcp.bigquery.DatasetAccessArgs(
+                gcp.bigquery.DatasetAccessArrgs(
                     role="OWNER",
                     user_by_email=bqowner.email,
                 ),
-                gcp.bigquery.DatasetAccessArgs(
+                gcp.bigquery.DatasetAccessArrgs(
                     role="READER",
                     domain="hashicorp.com",
                 ),
@@ -1223,17 +1223,17 @@ class Dataset(pulumi.CustomResource):
                 "env": "default",
             },
             accesses=[
-                gcp.bigquery.DatasetAccessArgs(
+                gcp.bigquery.DatasetAccessArrgs(
                     role="OWNER",
                     user_by_email=bqowner.email,
                 ),
-                gcp.bigquery.DatasetAccessArgs(
+                gcp.bigquery.DatasetAccessArrgs(
                     role="READER",
                     domain="hashicorp.com",
                 ),
-                gcp.bigquery.DatasetAccessArgs(
-                    dataset=gcp.bigquery.DatasetAccessDatasetArgs(
-                        dataset=gcp.bigquery.DatasetAccessDatasetDatasetArgs(
+                gcp.bigquery.DatasetAccessArrgs(
+                    dataset=gcp.bigquery.DatasetAccessDatasetArrgs(
+                        dataset=gcp.bigquery.DatasetAccessDatasetDatasetArrgs(
                             project_id=public.project,
                             dataset_id=public.dataset_id,
                         ),
@@ -1258,7 +1258,7 @@ class Dataset(pulumi.CustomResource):
             routine_type="TABLE_VALUED_FUNCTION",
             language="SQL",
             definition_body="SELECT 1 + value AS value\\n",
-            arguments=[gcp.bigquery.RoutineArgumentArgs(
+            arguments=[gcp.bigquery.RoutineArgumentArrgs(
                 name="value",
                 argument_kind="FIXED_TYPE",
                 data_type=json.dumps({
@@ -1277,12 +1277,12 @@ class Dataset(pulumi.CustomResource):
             dataset_id="private_dataset",
             description="This dataset is private",
             accesses=[
-                gcp.bigquery.DatasetAccessArgs(
+                gcp.bigquery.DatasetAccessArrgs(
                     role="OWNER",
                     user_by_email="my@service-account.com",
                 ),
-                gcp.bigquery.DatasetAccessArgs(
-                    routine=gcp.bigquery.DatasetAccessRoutineArgs(
+                gcp.bigquery.DatasetAccessArrgs(
+                    routine=gcp.bigquery.DatasetAccessRoutineArrgs(
                         project_id=public_routine.project,
                         dataset_id=public_routine.dataset_id,
                         routine_id=public_routine.routine_id,
@@ -1316,12 +1316,12 @@ class Dataset(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param DatasetArgs args: The arguments to use to populate this resource's properties.
+        :param DatasetArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DatasetArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DatasetArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1330,10 +1330,10 @@ class Dataset(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessArgs']]]]] = None,
+                 accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessArrgs']]]]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  default_collation: Optional[pulumi.Input[str]] = None,
-                 default_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['DatasetDefaultEncryptionConfigurationArgs']]] = None,
+                 default_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['DatasetDefaultEncryptionConfigurationArrgs']]] = None,
                  default_partition_expiration_ms: Optional[pulumi.Input[int]] = None,
                  default_table_expiration_ms: Optional[pulumi.Input[int]] = None,
                  delete_contents_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -1352,7 +1352,7 @@ class Dataset(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DatasetArgs.__new__(DatasetArgs)
+            __props__ = DatasetArrgs.__new__(DatasetArrgs)
 
             __props__.__dict__["accesses"] = accesses
             if dataset_id is None and not opts.urn:
@@ -1389,11 +1389,11 @@ class Dataset(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessArgs']]]]] = None,
+            accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessArrgs']]]]] = None,
             creation_time: Optional[pulumi.Input[int]] = None,
             dataset_id: Optional[pulumi.Input[str]] = None,
             default_collation: Optional[pulumi.Input[str]] = None,
-            default_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['DatasetDefaultEncryptionConfigurationArgs']]] = None,
+            default_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['DatasetDefaultEncryptionConfigurationArrgs']]] = None,
             default_partition_expiration_ms: Optional[pulumi.Input[int]] = None,
             default_table_expiration_ms: Optional[pulumi.Input[int]] = None,
             delete_contents_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -1417,7 +1417,7 @@ class Dataset(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessArgs']]]] accesses: An array of objects that define dataset access for one or more entities.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessArrgs']]]] accesses: An array of objects that define dataset access for one or more entities.
                Structure is documented below.
         :param pulumi.Input[int] creation_time: The time when this dataset was created, in milliseconds since the
                epoch.
@@ -1436,7 +1436,7 @@ class Dataset(pulumi.CustomResource):
                The following values are supported:
                - 'und:ci': undetermined locale, case insensitive.
                - '': empty string. Default to case-sensitive behavior.
-        :param pulumi.Input[pulumi.InputType['DatasetDefaultEncryptionConfigurationArgs']] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
+        :param pulumi.Input[pulumi.InputType['DatasetDefaultEncryptionConfigurationArrgs']] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
                all newly-created partitioned tables in the dataset will have encryption key set to
                this value, unless table creation request (or query) overrides the key.
                Structure is documented below.

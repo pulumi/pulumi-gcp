@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['FunctionArgs', 'Function']
+__all__ = ['FunctionArrgs', 'Function']
 
 @pulumi.input_type
-class FunctionArgs:
+calass FunctionArrgs:
     def __init__(__self__, *,
                  runtime: pulumi.Input[str],
                  available_memory_mb: Optional[pulumi.Input[int]] = None,
@@ -25,7 +25,7 @@ class FunctionArgs:
                  docker_repository: Optional[pulumi.Input[str]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 event_trigger: Optional[pulumi.Input['FunctionEventTriggerArgs']] = None,
+                 event_trigger: Optional[pulumi.Input['FunctionEventTriggerArrgs']] = None,
                  https_trigger_security_level: Optional[pulumi.Input[str]] = None,
                  https_trigger_url: Optional[pulumi.Input[str]] = None,
                  ingress_settings: Optional[pulumi.Input[str]] = None,
@@ -36,12 +36,12 @@ class FunctionArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArgs']]]] = None,
-                 secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArgs']]]] = None,
+                 secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArrgs']]]] = None,
+                 secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArrgs']]]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  source_archive_bucket: Optional[pulumi.Input[str]] = None,
                  source_archive_object: Optional[pulumi.Input[str]] = None,
-                 source_repository: Optional[pulumi.Input['FunctionSourceRepositoryArgs']] = None,
+                 source_repository: Optional[pulumi.Input['FunctionSourceRepositoryArrgs']] = None,
                  timeout: Optional[pulumi.Input[int]] = None,
                  trigger_http: Optional[pulumi.Input[bool]] = None,
                  vpc_connector: Optional[pulumi.Input[str]] = None,
@@ -60,7 +60,7 @@ class FunctionArgs:
         :param pulumi.Input[str] docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
-        :param pulumi.Input['FunctionEventTriggerArgs'] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+        :param pulumi.Input['FunctionEventTriggerArrgs'] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
         :param pulumi.Input[str] https_trigger_security_level: The security level for the function. The following options are available:
         :param pulumi.Input[str] https_trigger_url: URL which triggers function execution. Returned only if `trigger_http` is used.
         :param pulumi.Input[str] ingress_settings: String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
@@ -75,12 +75,12 @@ class FunctionArgs:
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally.
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region of function. If it is not provided, the provider region is used.
-        :param pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArgs']]] secret_environment_variables: Secret environment variables configuration. Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArgs']]] secret_volumes: Secret volumes configuration. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArrgs']]] secret_environment_variables: Secret environment variables configuration. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArrgs']]] secret_volumes: Secret volumes configuration. Structure is documented below.
         :param pulumi.Input[str] service_account_email: If provided, the self-provided service account to run the function with.
         :param pulumi.Input[str] source_archive_bucket: The GCS bucket containing the zip archive which contains the function.
         :param pulumi.Input[str] source_archive_object: The source archive object (file) in archive bucket.
-        :param pulumi.Input['FunctionSourceRepositoryArgs'] source_repository: Represents parameters related to source repository where a function is hosted.
+        :param pulumi.Input['FunctionSourceRepositoryArrgs'] source_repository: Represents parameters related to source repository where a function is hosted.
                Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
         :param pulumi.Input[int] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
         :param pulumi.Input[bool] trigger_http: Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `event_trigger`.
@@ -260,14 +260,14 @@ class FunctionArgs:
 
     @property
     @pulumi.getter(name="eventTrigger")
-    def event_trigger(self) -> Optional[pulumi.Input['FunctionEventTriggerArgs']]:
+    def event_trigger(self) -> Optional[pulumi.Input['FunctionEventTriggerArrgs']]:
         """
         A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
         """
         return pulumi.get(self, "event_trigger")
 
     @event_trigger.setter
-    def event_trigger(self, value: Optional[pulumi.Input['FunctionEventTriggerArgs']]):
+    def event_trigger(self, value: Optional[pulumi.Input['FunctionEventTriggerArrgs']]):
         pulumi.set(self, "event_trigger", value)
 
     @property
@@ -396,26 +396,26 @@ class FunctionArgs:
 
     @property
     @pulumi.getter(name="secretEnvironmentVariables")
-    def secret_environment_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArgs']]]]:
+    def secret_environment_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArrgs']]]]:
         """
         Secret environment variables configuration. Structure is documented below.
         """
         return pulumi.get(self, "secret_environment_variables")
 
     @secret_environment_variables.setter
-    def secret_environment_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArgs']]]]):
+    def secret_environment_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArrgs']]]]):
         pulumi.set(self, "secret_environment_variables", value)
 
     @property
     @pulumi.getter(name="secretVolumes")
-    def secret_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArgs']]]]:
+    def secret_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArrgs']]]]:
         """
         Secret volumes configuration. Structure is documented below.
         """
         return pulumi.get(self, "secret_volumes")
 
     @secret_volumes.setter
-    def secret_volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArgs']]]]):
+    def secret_volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArrgs']]]]):
         pulumi.set(self, "secret_volumes", value)
 
     @property
@@ -456,7 +456,7 @@ class FunctionArgs:
 
     @property
     @pulumi.getter(name="sourceRepository")
-    def source_repository(self) -> Optional[pulumi.Input['FunctionSourceRepositoryArgs']]:
+    def source_repository(self) -> Optional[pulumi.Input['FunctionSourceRepositoryArrgs']]:
         """
         Represents parameters related to source repository where a function is hosted.
         Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
@@ -464,7 +464,7 @@ class FunctionArgs:
         return pulumi.get(self, "source_repository")
 
     @source_repository.setter
-    def source_repository(self, value: Optional[pulumi.Input['FunctionSourceRepositoryArgs']]):
+    def source_repository(self, value: Optional[pulumi.Input['FunctionSourceRepositoryArrgs']]):
         pulumi.set(self, "source_repository", value)
 
     @property
@@ -517,7 +517,7 @@ class FunctionArgs:
 
 
 @pulumi.input_type
-class _FunctionState:
+calass _FunctionState:
     def __init__(__self__, *,
                  available_memory_mb: Optional[pulumi.Input[int]] = None,
                  build_environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -528,7 +528,7 @@ class _FunctionState:
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 event_trigger: Optional[pulumi.Input['FunctionEventTriggerArgs']] = None,
+                 event_trigger: Optional[pulumi.Input['FunctionEventTriggerArrgs']] = None,
                  https_trigger_security_level: Optional[pulumi.Input[str]] = None,
                  https_trigger_url: Optional[pulumi.Input[str]] = None,
                  ingress_settings: Optional[pulumi.Input[str]] = None,
@@ -541,12 +541,12 @@ class _FunctionState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
-                 secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArgs']]]] = None,
-                 secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArgs']]]] = None,
+                 secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArrgs']]]] = None,
+                 secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArrgs']]]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  source_archive_bucket: Optional[pulumi.Input[str]] = None,
                  source_archive_object: Optional[pulumi.Input[str]] = None,
-                 source_repository: Optional[pulumi.Input['FunctionSourceRepositoryArgs']] = None,
+                 source_repository: Optional[pulumi.Input['FunctionSourceRepositoryArrgs']] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  timeout: Optional[pulumi.Input[int]] = None,
                  trigger_http: Optional[pulumi.Input[bool]] = None,
@@ -563,7 +563,7 @@ class _FunctionState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
-        :param pulumi.Input['FunctionEventTriggerArgs'] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+        :param pulumi.Input['FunctionEventTriggerArrgs'] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
         :param pulumi.Input[str] https_trigger_security_level: The security level for the function. The following options are available:
         :param pulumi.Input[str] https_trigger_url: URL which triggers function execution. Returned only if `trigger_http` is used.
         :param pulumi.Input[str] ingress_settings: String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
@@ -583,12 +583,12 @@ class _FunctionState:
                Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArgs']]] secret_environment_variables: Secret environment variables configuration. Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArgs']]] secret_volumes: Secret volumes configuration. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArrgs']]] secret_environment_variables: Secret environment variables configuration. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArrgs']]] secret_volumes: Secret volumes configuration. Structure is documented below.
         :param pulumi.Input[str] service_account_email: If provided, the self-provided service account to run the function with.
         :param pulumi.Input[str] source_archive_bucket: The GCS bucket containing the zip archive which contains the function.
         :param pulumi.Input[str] source_archive_object: The source archive object (file) in archive bucket.
-        :param pulumi.Input['FunctionSourceRepositoryArgs'] source_repository: Represents parameters related to source repository where a function is hosted.
+        :param pulumi.Input['FunctionSourceRepositoryArrgs'] source_repository: Represents parameters related to source repository where a function is hosted.
                Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
         :param pulumi.Input[str] status: Describes the current stage of a deployment.
         :param pulumi.Input[int] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
@@ -773,14 +773,14 @@ class _FunctionState:
 
     @property
     @pulumi.getter(name="eventTrigger")
-    def event_trigger(self) -> Optional[pulumi.Input['FunctionEventTriggerArgs']]:
+    def event_trigger(self) -> Optional[pulumi.Input['FunctionEventTriggerArrgs']]:
         """
         A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
         """
         return pulumi.get(self, "event_trigger")
 
     @event_trigger.setter
-    def event_trigger(self, value: Optional[pulumi.Input['FunctionEventTriggerArgs']]):
+    def event_trigger(self, value: Optional[pulumi.Input['FunctionEventTriggerArrgs']]):
         pulumi.set(self, "event_trigger", value)
 
     @property
@@ -936,26 +936,26 @@ class _FunctionState:
 
     @property
     @pulumi.getter(name="secretEnvironmentVariables")
-    def secret_environment_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArgs']]]]:
+    def secret_environment_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArrgs']]]]:
         """
         Secret environment variables configuration. Structure is documented below.
         """
         return pulumi.get(self, "secret_environment_variables")
 
     @secret_environment_variables.setter
-    def secret_environment_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArgs']]]]):
+    def secret_environment_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArrgs']]]]):
         pulumi.set(self, "secret_environment_variables", value)
 
     @property
     @pulumi.getter(name="secretVolumes")
-    def secret_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArgs']]]]:
+    def secret_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArrgs']]]]:
         """
         Secret volumes configuration. Structure is documented below.
         """
         return pulumi.get(self, "secret_volumes")
 
     @secret_volumes.setter
-    def secret_volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArgs']]]]):
+    def secret_volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArrgs']]]]):
         pulumi.set(self, "secret_volumes", value)
 
     @property
@@ -996,7 +996,7 @@ class _FunctionState:
 
     @property
     @pulumi.getter(name="sourceRepository")
-    def source_repository(self) -> Optional[pulumi.Input['FunctionSourceRepositoryArgs']]:
+    def source_repository(self) -> Optional[pulumi.Input['FunctionSourceRepositoryArrgs']]:
         """
         Represents parameters related to source repository where a function is hosted.
         Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
@@ -1004,7 +1004,7 @@ class _FunctionState:
         return pulumi.get(self, "source_repository")
 
     @source_repository.setter
-    def source_repository(self, value: Optional[pulumi.Input['FunctionSourceRepositoryArgs']]):
+    def source_repository(self, value: Optional[pulumi.Input['FunctionSourceRepositoryArrgs']]):
         pulumi.set(self, "source_repository", value)
 
     @property
@@ -1068,7 +1068,7 @@ class _FunctionState:
         pulumi.set(self, "vpc_connector_egress_settings", value)
 
 
-class Function(pulumi.CustomResource):
+calass Function(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -1081,7 +1081,7 @@ class Function(pulumi.CustomResource):
                  docker_repository: Optional[pulumi.Input[str]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 event_trigger: Optional[pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']]] = None,
+                 event_trigger: Optional[pulumi.Input[pulumi.InputType['FunctionEventTriggerArrgs']]] = None,
                  https_trigger_security_level: Optional[pulumi.Input[str]] = None,
                  https_trigger_url: Optional[pulumi.Input[str]] = None,
                  ingress_settings: Optional[pulumi.Input[str]] = None,
@@ -1093,12 +1093,12 @@ class Function(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
-                 secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretEnvironmentVariableArgs']]]]] = None,
-                 secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretVolumeArgs']]]]] = None,
+                 secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretEnvironmentVariableArrgs']]]]] = None,
+                 secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretVolumeArrgs']]]]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  source_archive_bucket: Optional[pulumi.Input[str]] = None,
                  source_archive_object: Optional[pulumi.Input[str]] = None,
-                 source_repository: Optional[pulumi.Input[pulumi.InputType['FunctionSourceRepositoryArgs']]] = None,
+                 source_repository: Optional[pulumi.Input[pulumi.InputType['FunctionSourceRepositoryArrgs']]] = None,
                  timeout: Optional[pulumi.Input[int]] = None,
                  trigger_http: Optional[pulumi.Input[bool]] = None,
                  vpc_connector: Optional[pulumi.Input[str]] = None,
@@ -1209,7 +1209,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
-        :param pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+        :param pulumi.Input[pulumi.InputType['FunctionEventTriggerArrgs']] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
         :param pulumi.Input[str] https_trigger_security_level: The security level for the function. The following options are available:
         :param pulumi.Input[str] https_trigger_url: URL which triggers function execution. Returned only if `trigger_http` is used.
         :param pulumi.Input[str] ingress_settings: String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
@@ -1228,12 +1228,12 @@ class Function(pulumi.CustomResource):
                Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretEnvironmentVariableArgs']]]] secret_environment_variables: Secret environment variables configuration. Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretVolumeArgs']]]] secret_volumes: Secret volumes configuration. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretEnvironmentVariableArrgs']]]] secret_environment_variables: Secret environment variables configuration. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretVolumeArrgs']]]] secret_volumes: Secret volumes configuration. Structure is documented below.
         :param pulumi.Input[str] service_account_email: If provided, the self-provided service account to run the function with.
         :param pulumi.Input[str] source_archive_bucket: The GCS bucket containing the zip archive which contains the function.
         :param pulumi.Input[str] source_archive_object: The source archive object (file) in archive bucket.
-        :param pulumi.Input[pulumi.InputType['FunctionSourceRepositoryArgs']] source_repository: Represents parameters related to source repository where a function is hosted.
+        :param pulumi.Input[pulumi.InputType['FunctionSourceRepositoryArrgs']] source_repository: Represents parameters related to source repository where a function is hosted.
                Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
         :param pulumi.Input[int] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
         :param pulumi.Input[bool] trigger_http: Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `event_trigger`.
@@ -1244,7 +1244,7 @@ class Function(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FunctionArgs,
+                 args: FunctionArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new Cloud Function. For more information see:
@@ -1342,12 +1342,12 @@ class Function(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param FunctionArgs args: The arguments to use to populate this resource's properties.
+        :param FunctionArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(FunctionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(FunctionArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1364,7 +1364,7 @@ class Function(pulumi.CustomResource):
                  docker_repository: Optional[pulumi.Input[str]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 event_trigger: Optional[pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']]] = None,
+                 event_trigger: Optional[pulumi.Input[pulumi.InputType['FunctionEventTriggerArrgs']]] = None,
                  https_trigger_security_level: Optional[pulumi.Input[str]] = None,
                  https_trigger_url: Optional[pulumi.Input[str]] = None,
                  ingress_settings: Optional[pulumi.Input[str]] = None,
@@ -1376,12 +1376,12 @@ class Function(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
-                 secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretEnvironmentVariableArgs']]]]] = None,
-                 secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretVolumeArgs']]]]] = None,
+                 secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretEnvironmentVariableArrgs']]]]] = None,
+                 secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretVolumeArrgs']]]]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  source_archive_bucket: Optional[pulumi.Input[str]] = None,
                  source_archive_object: Optional[pulumi.Input[str]] = None,
-                 source_repository: Optional[pulumi.Input[pulumi.InputType['FunctionSourceRepositoryArgs']]] = None,
+                 source_repository: Optional[pulumi.Input[pulumi.InputType['FunctionSourceRepositoryArrgs']]] = None,
                  timeout: Optional[pulumi.Input[int]] = None,
                  trigger_http: Optional[pulumi.Input[bool]] = None,
                  vpc_connector: Optional[pulumi.Input[str]] = None,
@@ -1393,7 +1393,7 @@ class Function(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = FunctionArgs.__new__(FunctionArgs)
+            __props__ = FunctionArrgs.__new__(FunctionArrgs)
 
             __props__.__dict__["available_memory_mb"] = available_memory_mb
             __props__.__dict__["build_environment_variables"] = build_environment_variables
@@ -1451,7 +1451,7 @@ class Function(pulumi.CustomResource):
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             entry_point: Optional[pulumi.Input[str]] = None,
             environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            event_trigger: Optional[pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']]] = None,
+            event_trigger: Optional[pulumi.Input[pulumi.InputType['FunctionEventTriggerArrgs']]] = None,
             https_trigger_security_level: Optional[pulumi.Input[str]] = None,
             https_trigger_url: Optional[pulumi.Input[str]] = None,
             ingress_settings: Optional[pulumi.Input[str]] = None,
@@ -1464,12 +1464,12 @@ class Function(pulumi.CustomResource):
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             runtime: Optional[pulumi.Input[str]] = None,
-            secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretEnvironmentVariableArgs']]]]] = None,
-            secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretVolumeArgs']]]]] = None,
+            secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretEnvironmentVariableArrgs']]]]] = None,
+            secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretVolumeArrgs']]]]] = None,
             service_account_email: Optional[pulumi.Input[str]] = None,
             source_archive_bucket: Optional[pulumi.Input[str]] = None,
             source_archive_object: Optional[pulumi.Input[str]] = None,
-            source_repository: Optional[pulumi.Input[pulumi.InputType['FunctionSourceRepositoryArgs']]] = None,
+            source_repository: Optional[pulumi.Input[pulumi.InputType['FunctionSourceRepositoryArrgs']]] = None,
             status: Optional[pulumi.Input[str]] = None,
             timeout: Optional[pulumi.Input[int]] = None,
             trigger_http: Optional[pulumi.Input[bool]] = None,
@@ -1491,7 +1491,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
-        :param pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+        :param pulumi.Input[pulumi.InputType['FunctionEventTriggerArrgs']] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
         :param pulumi.Input[str] https_trigger_security_level: The security level for the function. The following options are available:
         :param pulumi.Input[str] https_trigger_url: URL which triggers function execution. Returned only if `trigger_http` is used.
         :param pulumi.Input[str] ingress_settings: String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
@@ -1511,12 +1511,12 @@ class Function(pulumi.CustomResource):
                Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretEnvironmentVariableArgs']]]] secret_environment_variables: Secret environment variables configuration. Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretVolumeArgs']]]] secret_volumes: Secret volumes configuration. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretEnvironmentVariableArrgs']]]] secret_environment_variables: Secret environment variables configuration. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretVolumeArrgs']]]] secret_volumes: Secret volumes configuration. Structure is documented below.
         :param pulumi.Input[str] service_account_email: If provided, the self-provided service account to run the function with.
         :param pulumi.Input[str] source_archive_bucket: The GCS bucket containing the zip archive which contains the function.
         :param pulumi.Input[str] source_archive_object: The source archive object (file) in archive bucket.
-        :param pulumi.Input[pulumi.InputType['FunctionSourceRepositoryArgs']] source_repository: Represents parameters related to source repository where a function is hosted.
+        :param pulumi.Input[pulumi.InputType['FunctionSourceRepositoryArrgs']] source_repository: Represents parameters related to source repository where a function is hosted.
                Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
         :param pulumi.Input[str] status: Describes the current stage of a deployment.
         :param pulumi.Input[int] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.

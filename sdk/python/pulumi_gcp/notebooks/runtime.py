@@ -11,31 +11,31 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['RuntimeArgs', 'Runtime']
+__all__ = ['RuntimeArrgs', 'Runtime']
 
 @pulumi.input_type
-class RuntimeArgs:
+calass RuntimeArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 access_config: Optional[pulumi.Input['RuntimeAccessConfigArgs']] = None,
+                 access_config: Optional[pulumi.Input['RuntimeAccessConfigArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 software_config: Optional[pulumi.Input['RuntimeSoftwareConfigArgs']] = None,
-                 virtual_machine: Optional[pulumi.Input['RuntimeVirtualMachineArgs']] = None):
+                 software_config: Optional[pulumi.Input['RuntimeSoftwareConfigArrgs']] = None,
+                 virtual_machine: Optional[pulumi.Input['RuntimeVirtualMachineArrgs']] = None):
         """
         The set of arguments for constructing a Runtime resource.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
                
                
                - - -
-        :param pulumi.Input['RuntimeAccessConfigArgs'] access_config: The config settings for accessing runtime.
+        :param pulumi.Input['RuntimeAccessConfigArrgs'] access_config: The config settings for accessing runtime.
                Structure is documented below.
         :param pulumi.Input[str] name: The name specified for the Notebook runtime.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['RuntimeSoftwareConfigArgs'] software_config: The config settings for software inside the runtime.
+        :param pulumi.Input['RuntimeSoftwareConfigArrgs'] software_config: The config settings for software inside the runtime.
                Structure is documented below.
-        :param pulumi.Input['RuntimeVirtualMachineArgs'] virtual_machine: Use a Compute Engine VM image to start the managed notebook instance.
+        :param pulumi.Input['RuntimeVirtualMachineArrgs'] virtual_machine: Use a Compute Engine VM image to start the managed notebook instance.
                Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
@@ -67,7 +67,7 @@ class RuntimeArgs:
 
     @property
     @pulumi.getter(name="accessConfig")
-    def access_config(self) -> Optional[pulumi.Input['RuntimeAccessConfigArgs']]:
+    def access_config(self) -> Optional[pulumi.Input['RuntimeAccessConfigArrgs']]:
         """
         The config settings for accessing runtime.
         Structure is documented below.
@@ -75,7 +75,7 @@ class RuntimeArgs:
         return pulumi.get(self, "access_config")
 
     @access_config.setter
-    def access_config(self, value: Optional[pulumi.Input['RuntimeAccessConfigArgs']]):
+    def access_config(self, value: Optional[pulumi.Input['RuntimeAccessConfigArrgs']]):
         pulumi.set(self, "access_config", value)
 
     @property
@@ -105,7 +105,7 @@ class RuntimeArgs:
 
     @property
     @pulumi.getter(name="softwareConfig")
-    def software_config(self) -> Optional[pulumi.Input['RuntimeSoftwareConfigArgs']]:
+    def software_config(self) -> Optional[pulumi.Input['RuntimeSoftwareConfigArrgs']]:
         """
         The config settings for software inside the runtime.
         Structure is documented below.
@@ -113,12 +113,12 @@ class RuntimeArgs:
         return pulumi.get(self, "software_config")
 
     @software_config.setter
-    def software_config(self, value: Optional[pulumi.Input['RuntimeSoftwareConfigArgs']]):
+    def software_config(self, value: Optional[pulumi.Input['RuntimeSoftwareConfigArrgs']]):
         pulumi.set(self, "software_config", value)
 
     @property
     @pulumi.getter(name="virtualMachine")
-    def virtual_machine(self) -> Optional[pulumi.Input['RuntimeVirtualMachineArgs']]:
+    def virtual_machine(self) -> Optional[pulumi.Input['RuntimeVirtualMachineArrgs']]:
         """
         Use a Compute Engine VM image to start the managed notebook instance.
         Structure is documented below.
@@ -126,25 +126,25 @@ class RuntimeArgs:
         return pulumi.get(self, "virtual_machine")
 
     @virtual_machine.setter
-    def virtual_machine(self, value: Optional[pulumi.Input['RuntimeVirtualMachineArgs']]):
+    def virtual_machine(self, value: Optional[pulumi.Input['RuntimeVirtualMachineArrgs']]):
         pulumi.set(self, "virtual_machine", value)
 
 
 @pulumi.input_type
-class _RuntimeState:
+calass _RuntimeState:
     def __init__(__self__, *,
-                 access_config: Optional[pulumi.Input['RuntimeAccessConfigArgs']] = None,
+                 access_config: Optional[pulumi.Input['RuntimeAccessConfigArrgs']] = None,
                  health_state: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeMetricArgs']]]] = None,
+                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeMetricArrgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 software_config: Optional[pulumi.Input['RuntimeSoftwareConfigArgs']] = None,
+                 software_config: Optional[pulumi.Input['RuntimeSoftwareConfigArrgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 virtual_machine: Optional[pulumi.Input['RuntimeVirtualMachineArgs']] = None):
+                 virtual_machine: Optional[pulumi.Input['RuntimeVirtualMachineArrgs']] = None):
         """
         Input properties used for looking up and filtering Runtime resources.
-        :param pulumi.Input['RuntimeAccessConfigArgs'] access_config: The config settings for accessing runtime.
+        :param pulumi.Input['RuntimeAccessConfigArrgs'] access_config: The config settings for accessing runtime.
                Structure is documented below.
         :param pulumi.Input[str] health_state: The health state of this runtime. For a list of possible output
                values, see `https://cloud.google.com/vertex-ai/docs/workbench/
@@ -153,16 +153,16 @@ class _RuntimeState:
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input['RuntimeMetricArgs']]] metrics: Contains Runtime daemon metrics such as Service status and JupyterLab
+        :param pulumi.Input[Sequence[pulumi.Input['RuntimeMetricArrgs']]] metrics: Contains Runtime daemon metrics such as Service status and JupyterLab
                status
                Structure is documented below.
         :param pulumi.Input[str] name: The name specified for the Notebook runtime.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['RuntimeSoftwareConfigArgs'] software_config: The config settings for software inside the runtime.
+        :param pulumi.Input['RuntimeSoftwareConfigArrgs'] software_config: The config settings for software inside the runtime.
                Structure is documented below.
         :param pulumi.Input[str] state: The state of this runtime.
-        :param pulumi.Input['RuntimeVirtualMachineArgs'] virtual_machine: Use a Compute Engine VM image to start the managed notebook instance.
+        :param pulumi.Input['RuntimeVirtualMachineArrgs'] virtual_machine: Use a Compute Engine VM image to start the managed notebook instance.
                Structure is documented below.
         """
         if access_config is not None:
@@ -186,7 +186,7 @@ class _RuntimeState:
 
     @property
     @pulumi.getter(name="accessConfig")
-    def access_config(self) -> Optional[pulumi.Input['RuntimeAccessConfigArgs']]:
+    def access_config(self) -> Optional[pulumi.Input['RuntimeAccessConfigArrgs']]:
         """
         The config settings for accessing runtime.
         Structure is documented below.
@@ -194,7 +194,7 @@ class _RuntimeState:
         return pulumi.get(self, "access_config")
 
     @access_config.setter
-    def access_config(self, value: Optional[pulumi.Input['RuntimeAccessConfigArgs']]):
+    def access_config(self, value: Optional[pulumi.Input['RuntimeAccessConfigArrgs']]):
         pulumi.set(self, "access_config", value)
 
     @property
@@ -228,7 +228,7 @@ class _RuntimeState:
 
     @property
     @pulumi.getter
-    def metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeMetricArgs']]]]:
+    def metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeMetricArrgs']]]]:
         """
         Contains Runtime daemon metrics such as Service status and JupyterLab
         status
@@ -237,7 +237,7 @@ class _RuntimeState:
         return pulumi.get(self, "metrics")
 
     @metrics.setter
-    def metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeMetricArgs']]]]):
+    def metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeMetricArrgs']]]]):
         pulumi.set(self, "metrics", value)
 
     @property
@@ -267,7 +267,7 @@ class _RuntimeState:
 
     @property
     @pulumi.getter(name="softwareConfig")
-    def software_config(self) -> Optional[pulumi.Input['RuntimeSoftwareConfigArgs']]:
+    def software_config(self) -> Optional[pulumi.Input['RuntimeSoftwareConfigArrgs']]:
         """
         The config settings for software inside the runtime.
         Structure is documented below.
@@ -275,7 +275,7 @@ class _RuntimeState:
         return pulumi.get(self, "software_config")
 
     @software_config.setter
-    def software_config(self, value: Optional[pulumi.Input['RuntimeSoftwareConfigArgs']]):
+    def software_config(self, value: Optional[pulumi.Input['RuntimeSoftwareConfigArrgs']]):
         pulumi.set(self, "software_config", value)
 
     @property
@@ -292,7 +292,7 @@ class _RuntimeState:
 
     @property
     @pulumi.getter(name="virtualMachine")
-    def virtual_machine(self) -> Optional[pulumi.Input['RuntimeVirtualMachineArgs']]:
+    def virtual_machine(self) -> Optional[pulumi.Input['RuntimeVirtualMachineArrgs']]:
         """
         Use a Compute Engine VM image to start the managed notebook instance.
         Structure is documented below.
@@ -300,21 +300,21 @@ class _RuntimeState:
         return pulumi.get(self, "virtual_machine")
 
     @virtual_machine.setter
-    def virtual_machine(self, value: Optional[pulumi.Input['RuntimeVirtualMachineArgs']]):
+    def virtual_machine(self, value: Optional[pulumi.Input['RuntimeVirtualMachineArrgs']]):
         pulumi.set(self, "virtual_machine", value)
 
 
-class Runtime(pulumi.CustomResource):
+calass Runtime(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_config: Optional[pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']]] = None,
+                 access_config: Optional[pulumi.Input[pulumi.InputType['RuntimeAccessConfigArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 software_config: Optional[pulumi.Input[pulumi.InputType['RuntimeSoftwareConfigArgs']]] = None,
-                 virtual_machine: Optional[pulumi.Input[pulumi.InputType['RuntimeVirtualMachineArgs']]] = None,
+                 software_config: Optional[pulumi.Input[pulumi.InputType['RuntimeSoftwareConfigArrgs']]] = None,
+                 virtual_machine: Optional[pulumi.Input[pulumi.InputType['RuntimeVirtualMachineArrgs']]] = None,
                  __props__=None):
         """
         A Cloud AI Platform Notebook runtime.
@@ -337,15 +337,15 @@ class Runtime(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         runtime = gcp.notebooks.Runtime("runtime",
-            access_config=gcp.notebooks.RuntimeAccessConfigArgs(
+            access_config=gcp.notebooks.RuntimeAccessConfigArrgs(
                 access_type="SINGLE_USER",
                 runtime_owner="admin@hashicorptest.com",
             ),
             location="us-central1",
-            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArgs(
-                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArgs(
-                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs(
-                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs(
+            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArrgs(
+                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArrgs(
+                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArrgs(
+                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArrgs(
                             disk_size_gb=100,
                             disk_type="PD_STANDARD",
                         ),
@@ -361,22 +361,22 @@ class Runtime(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         runtime_gpu = gcp.notebooks.Runtime("runtimeGpu",
-            access_config=gcp.notebooks.RuntimeAccessConfigArgs(
+            access_config=gcp.notebooks.RuntimeAccessConfigArrgs(
                 access_type="SINGLE_USER",
                 runtime_owner="admin@hashicorptest.com",
             ),
             location="us-central1",
-            software_config=gcp.notebooks.RuntimeSoftwareConfigArgs(
+            software_config=gcp.notebooks.RuntimeSoftwareConfigArrgs(
                 install_gpu_driver=True,
             ),
-            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArgs(
-                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArgs(
-                    accelerator_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs(
+            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArrgs(
+                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArrgs(
+                    accelerator_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArrgs(
                         core_count=1,
                         type="NVIDIA_TESLA_V100",
                     ),
-                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs(
-                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs(
+                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArrgs(
+                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArrgs(
                             disk_size_gb=100,
                             disk_type="PD_STANDARD",
                         ),
@@ -392,25 +392,25 @@ class Runtime(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         runtime_container = gcp.notebooks.Runtime("runtimeContainer",
-            access_config=gcp.notebooks.RuntimeAccessConfigArgs(
+            access_config=gcp.notebooks.RuntimeAccessConfigArrgs(
                 access_type="SINGLE_USER",
                 runtime_owner="admin@hashicorptest.com",
             ),
             location="us-central1",
-            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArgs(
-                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArgs(
+            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArrgs(
+                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArrgs(
                     container_images=[
-                        gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs(
+                        gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigContainerImageArrgs(
                             repository="gcr.io/deeplearning-platform-release/base-cpu",
                             tag="latest",
                         ),
-                        gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs(
+                        gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigContainerImageArrgs(
                             repository="gcr.io/deeplearning-platform-release/beam-notebooks",
                             tag="latest",
                         ),
                     ],
-                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs(
-                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs(
+                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArrgs(
+                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArrgs(
                             disk_size_gb=100,
                             disk_type="PD_STANDARD",
                         ),
@@ -426,21 +426,21 @@ class Runtime(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         runtime_container = gcp.notebooks.Runtime("runtimeContainer",
-            access_config=gcp.notebooks.RuntimeAccessConfigArgs(
+            access_config=gcp.notebooks.RuntimeAccessConfigArrgs(
                 access_type="SINGLE_USER",
                 runtime_owner="admin@hashicorptest.com",
             ),
             location="us-central1",
-            software_config=gcp.notebooks.RuntimeSoftwareConfigArgs(
-                kernels=[gcp.notebooks.RuntimeSoftwareConfigKernelArgs(
+            software_config=gcp.notebooks.RuntimeSoftwareConfigArrgs(
+                kernels=[gcp.notebooks.RuntimeSoftwareConfigKernelArrgs(
                     repository="gcr.io/deeplearning-platform-release/base-cpu",
                     tag="latest",
                 )],
             ),
-            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArgs(
-                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArgs(
-                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs(
-                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs(
+            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArrgs(
+                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArrgs(
+                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArrgs(
+                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArrgs(
                             disk_size_gb=100,
                             disk_type="PD_STANDARD",
                         ),
@@ -456,18 +456,18 @@ class Runtime(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         runtime_container = gcp.notebooks.Runtime("runtimeContainer",
-            access_config=gcp.notebooks.RuntimeAccessConfigArgs(
+            access_config=gcp.notebooks.RuntimeAccessConfigArrgs(
                 access_type="SINGLE_USER",
                 runtime_owner="admin@hashicorptest.com",
             ),
             location="us-central1",
-            software_config=gcp.notebooks.RuntimeSoftwareConfigArgs(
+            software_config=gcp.notebooks.RuntimeSoftwareConfigArrgs(
                 post_startup_script_behavior="RUN_EVERY_START",
             ),
-            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArgs(
-                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArgs(
-                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs(
-                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs(
+            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArrgs(
+                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArrgs(
+                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArrgs(
+                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArrgs(
                             disk_size_gb=100,
                             disk_type="PD_STANDARD",
                         ),
@@ -503,7 +503,7 @@ class Runtime(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']] access_config: The config settings for accessing runtime.
+        :param pulumi.Input[pulumi.InputType['RuntimeAccessConfigArrgs']] access_config: The config settings for accessing runtime.
                Structure is documented below.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
                
@@ -512,16 +512,16 @@ class Runtime(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name specified for the Notebook runtime.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['RuntimeSoftwareConfigArgs']] software_config: The config settings for software inside the runtime.
+        :param pulumi.Input[pulumi.InputType['RuntimeSoftwareConfigArrgs']] software_config: The config settings for software inside the runtime.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['RuntimeVirtualMachineArgs']] virtual_machine: Use a Compute Engine VM image to start the managed notebook instance.
+        :param pulumi.Input[pulumi.InputType['RuntimeVirtualMachineArrgs']] virtual_machine: Use a Compute Engine VM image to start the managed notebook instance.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RuntimeArgs,
+                 args: RuntimeArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Cloud AI Platform Notebook runtime.
@@ -544,15 +544,15 @@ class Runtime(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         runtime = gcp.notebooks.Runtime("runtime",
-            access_config=gcp.notebooks.RuntimeAccessConfigArgs(
+            access_config=gcp.notebooks.RuntimeAccessConfigArrgs(
                 access_type="SINGLE_USER",
                 runtime_owner="admin@hashicorptest.com",
             ),
             location="us-central1",
-            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArgs(
-                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArgs(
-                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs(
-                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs(
+            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArrgs(
+                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArrgs(
+                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArrgs(
+                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArrgs(
                             disk_size_gb=100,
                             disk_type="PD_STANDARD",
                         ),
@@ -568,22 +568,22 @@ class Runtime(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         runtime_gpu = gcp.notebooks.Runtime("runtimeGpu",
-            access_config=gcp.notebooks.RuntimeAccessConfigArgs(
+            access_config=gcp.notebooks.RuntimeAccessConfigArrgs(
                 access_type="SINGLE_USER",
                 runtime_owner="admin@hashicorptest.com",
             ),
             location="us-central1",
-            software_config=gcp.notebooks.RuntimeSoftwareConfigArgs(
+            software_config=gcp.notebooks.RuntimeSoftwareConfigArrgs(
                 install_gpu_driver=True,
             ),
-            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArgs(
-                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArgs(
-                    accelerator_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs(
+            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArrgs(
+                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArrgs(
+                    accelerator_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArrgs(
                         core_count=1,
                         type="NVIDIA_TESLA_V100",
                     ),
-                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs(
-                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs(
+                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArrgs(
+                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArrgs(
                             disk_size_gb=100,
                             disk_type="PD_STANDARD",
                         ),
@@ -599,25 +599,25 @@ class Runtime(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         runtime_container = gcp.notebooks.Runtime("runtimeContainer",
-            access_config=gcp.notebooks.RuntimeAccessConfigArgs(
+            access_config=gcp.notebooks.RuntimeAccessConfigArrgs(
                 access_type="SINGLE_USER",
                 runtime_owner="admin@hashicorptest.com",
             ),
             location="us-central1",
-            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArgs(
-                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArgs(
+            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArrgs(
+                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArrgs(
                     container_images=[
-                        gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs(
+                        gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigContainerImageArrgs(
                             repository="gcr.io/deeplearning-platform-release/base-cpu",
                             tag="latest",
                         ),
-                        gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs(
+                        gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigContainerImageArrgs(
                             repository="gcr.io/deeplearning-platform-release/beam-notebooks",
                             tag="latest",
                         ),
                     ],
-                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs(
-                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs(
+                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArrgs(
+                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArrgs(
                             disk_size_gb=100,
                             disk_type="PD_STANDARD",
                         ),
@@ -633,21 +633,21 @@ class Runtime(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         runtime_container = gcp.notebooks.Runtime("runtimeContainer",
-            access_config=gcp.notebooks.RuntimeAccessConfigArgs(
+            access_config=gcp.notebooks.RuntimeAccessConfigArrgs(
                 access_type="SINGLE_USER",
                 runtime_owner="admin@hashicorptest.com",
             ),
             location="us-central1",
-            software_config=gcp.notebooks.RuntimeSoftwareConfigArgs(
-                kernels=[gcp.notebooks.RuntimeSoftwareConfigKernelArgs(
+            software_config=gcp.notebooks.RuntimeSoftwareConfigArrgs(
+                kernels=[gcp.notebooks.RuntimeSoftwareConfigKernelArrgs(
                     repository="gcr.io/deeplearning-platform-release/base-cpu",
                     tag="latest",
                 )],
             ),
-            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArgs(
-                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArgs(
-                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs(
-                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs(
+            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArrgs(
+                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArrgs(
+                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArrgs(
+                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArrgs(
                             disk_size_gb=100,
                             disk_type="PD_STANDARD",
                         ),
@@ -663,18 +663,18 @@ class Runtime(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         runtime_container = gcp.notebooks.Runtime("runtimeContainer",
-            access_config=gcp.notebooks.RuntimeAccessConfigArgs(
+            access_config=gcp.notebooks.RuntimeAccessConfigArrgs(
                 access_type="SINGLE_USER",
                 runtime_owner="admin@hashicorptest.com",
             ),
             location="us-central1",
-            software_config=gcp.notebooks.RuntimeSoftwareConfigArgs(
+            software_config=gcp.notebooks.RuntimeSoftwareConfigArrgs(
                 post_startup_script_behavior="RUN_EVERY_START",
             ),
-            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArgs(
-                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArgs(
-                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs(
-                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs(
+            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArrgs(
+                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArrgs(
+                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArrgs(
+                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArrgs(
                             disk_size_gb=100,
                             disk_type="PD_STANDARD",
                         ),
@@ -709,12 +709,12 @@ class Runtime(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param RuntimeArgs args: The arguments to use to populate this resource's properties.
+        :param RuntimeArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RuntimeArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(RuntimeArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -723,12 +723,12 @@ class Runtime(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_config: Optional[pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']]] = None,
+                 access_config: Optional[pulumi.Input[pulumi.InputType['RuntimeAccessConfigArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 software_config: Optional[pulumi.Input[pulumi.InputType['RuntimeSoftwareConfigArgs']]] = None,
-                 virtual_machine: Optional[pulumi.Input[pulumi.InputType['RuntimeVirtualMachineArgs']]] = None,
+                 software_config: Optional[pulumi.Input[pulumi.InputType['RuntimeSoftwareConfigArrgs']]] = None,
+                 virtual_machine: Optional[pulumi.Input[pulumi.InputType['RuntimeVirtualMachineArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -736,7 +736,7 @@ class Runtime(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RuntimeArgs.__new__(RuntimeArgs)
+            __props__ = RuntimeArrgs.__new__(RuntimeArrgs)
 
             __props__.__dict__["access_config"] = access_config
             if location is None and not opts.urn:
@@ -759,15 +759,15 @@ class Runtime(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_config: Optional[pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']]] = None,
+            access_config: Optional[pulumi.Input[pulumi.InputType['RuntimeAccessConfigArrgs']]] = None,
             health_state: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            metrics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuntimeMetricArgs']]]]] = None,
+            metrics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuntimeMetricArrgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            software_config: Optional[pulumi.Input[pulumi.InputType['RuntimeSoftwareConfigArgs']]] = None,
+            software_config: Optional[pulumi.Input[pulumi.InputType['RuntimeSoftwareConfigArrgs']]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            virtual_machine: Optional[pulumi.Input[pulumi.InputType['RuntimeVirtualMachineArgs']]] = None) -> 'Runtime':
+            virtual_machine: Optional[pulumi.Input[pulumi.InputType['RuntimeVirtualMachineArrgs']]] = None) -> 'Runtime':
         """
         Get an existing Runtime resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -775,7 +775,7 @@ class Runtime(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']] access_config: The config settings for accessing runtime.
+        :param pulumi.Input[pulumi.InputType['RuntimeAccessConfigArrgs']] access_config: The config settings for accessing runtime.
                Structure is documented below.
         :param pulumi.Input[str] health_state: The health state of this runtime. For a list of possible output
                values, see `https://cloud.google.com/vertex-ai/docs/workbench/
@@ -784,16 +784,16 @@ class Runtime(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuntimeMetricArgs']]]] metrics: Contains Runtime daemon metrics such as Service status and JupyterLab
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuntimeMetricArrgs']]]] metrics: Contains Runtime daemon metrics such as Service status and JupyterLab
                status
                Structure is documented below.
         :param pulumi.Input[str] name: The name specified for the Notebook runtime.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['RuntimeSoftwareConfigArgs']] software_config: The config settings for software inside the runtime.
+        :param pulumi.Input[pulumi.InputType['RuntimeSoftwareConfigArrgs']] software_config: The config settings for software inside the runtime.
                Structure is documented below.
         :param pulumi.Input[str] state: The state of this runtime.
-        :param pulumi.Input[pulumi.InputType['RuntimeVirtualMachineArgs']] virtual_machine: Use a Compute Engine VM image to start the managed notebook instance.
+        :param pulumi.Input[pulumi.InputType['RuntimeVirtualMachineArrgs']] virtual_machine: Use a Compute Engine VM image to start the managed notebook instance.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

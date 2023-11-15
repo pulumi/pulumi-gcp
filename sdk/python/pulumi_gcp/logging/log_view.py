@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['LogViewArgs', 'LogView']
+__all__ = ['LogViewArrgs', 'LogView']
 
 @pulumi.input_type
-class LogViewArgs:
+calass LogViewArrgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -121,7 +121,7 @@ class LogViewArgs:
 
 
 @pulumi.input_type
-class _LogViewState:
+calass _LogViewState:
     def __init__(__self__, *,
                  bucket: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -262,7 +262,7 @@ class _LogViewState:
         pulumi.set(self, "update_time", value)
 
 
-class LogView(pulumi.CustomResource):
+calass LogView(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -333,7 +333,7 @@ class LogView(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: LogViewArgs,
+                 args: LogViewArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Describes a view over log entries in a bucket.
@@ -379,12 +379,12 @@ class LogView(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param LogViewArgs args: The arguments to use to populate this resource's properties.
+        :param LogViewArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(LogViewArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(LogViewArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -406,7 +406,7 @@ class LogView(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = LogViewArgs.__new__(LogViewArgs)
+            __props__ = LogViewArrgs.__new__(LogViewArrgs)
 
             if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")

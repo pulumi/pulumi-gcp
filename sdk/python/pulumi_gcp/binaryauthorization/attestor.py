@@ -11,18 +11,18 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AttestorArgs', 'Attestor']
+__all__ = ['AttestorArrgs', 'Attestor']
 
 @pulumi.input_type
-class AttestorArgs:
+calass AttestorArrgs:
     def __init__(__self__, *,
-                 attestation_authority_note: pulumi.Input['AttestorAttestationAuthorityNoteArgs'],
+                 attestation_authority_note: pulumi.Input['AttestorAttestationAuthorityNoteArrgs'],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Attestor resource.
-        :param pulumi.Input['AttestorAttestationAuthorityNoteArgs'] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+        :param pulumi.Input['AttestorAttestationAuthorityNoteArrgs'] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
                Structure is documented below.
         :param pulumi.Input[str] description: A descriptive comment. This field may be updated. The field may be
                displayed in chooser dialogs.
@@ -40,7 +40,7 @@ class AttestorArgs:
 
     @property
     @pulumi.getter(name="attestationAuthorityNote")
-    def attestation_authority_note(self) -> pulumi.Input['AttestorAttestationAuthorityNoteArgs']:
+    def attestation_authority_note(self) -> pulumi.Input['AttestorAttestationAuthorityNoteArrgs']:
         """
         A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
         Structure is documented below.
@@ -48,7 +48,7 @@ class AttestorArgs:
         return pulumi.get(self, "attestation_authority_note")
 
     @attestation_authority_note.setter
-    def attestation_authority_note(self, value: pulumi.Input['AttestorAttestationAuthorityNoteArgs']):
+    def attestation_authority_note(self, value: pulumi.Input['AttestorAttestationAuthorityNoteArrgs']):
         pulumi.set(self, "attestation_authority_note", value)
 
     @property
@@ -91,15 +91,15 @@ class AttestorArgs:
 
 
 @pulumi.input_type
-class _AttestorState:
+calass _AttestorState:
     def __init__(__self__, *,
-                 attestation_authority_note: Optional[pulumi.Input['AttestorAttestationAuthorityNoteArgs']] = None,
+                 attestation_authority_note: Optional[pulumi.Input['AttestorAttestationAuthorityNoteArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Attestor resources.
-        :param pulumi.Input['AttestorAttestationAuthorityNoteArgs'] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+        :param pulumi.Input['AttestorAttestationAuthorityNoteArrgs'] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
                Structure is documented below.
         :param pulumi.Input[str] description: A descriptive comment. This field may be updated. The field may be
                displayed in chooser dialogs.
@@ -118,7 +118,7 @@ class _AttestorState:
 
     @property
     @pulumi.getter(name="attestationAuthorityNote")
-    def attestation_authority_note(self) -> Optional[pulumi.Input['AttestorAttestationAuthorityNoteArgs']]:
+    def attestation_authority_note(self) -> Optional[pulumi.Input['AttestorAttestationAuthorityNoteArrgs']]:
         """
         A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
         Structure is documented below.
@@ -126,7 +126,7 @@ class _AttestorState:
         return pulumi.get(self, "attestation_authority_note")
 
     @attestation_authority_note.setter
-    def attestation_authority_note(self, value: Optional[pulumi.Input['AttestorAttestationAuthorityNoteArgs']]):
+    def attestation_authority_note(self, value: Optional[pulumi.Input['AttestorAttestationAuthorityNoteArrgs']]):
         pulumi.set(self, "attestation_authority_note", value)
 
     @property
@@ -168,12 +168,12 @@ class _AttestorState:
         pulumi.set(self, "project", value)
 
 
-class Attestor(pulumi.CustomResource):
+calass Attestor(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation_authority_note: Optional[pulumi.Input[pulumi.InputType['AttestorAttestationAuthorityNoteArgs']]] = None,
+                 attestation_authority_note: Optional[pulumi.Input[pulumi.InputType['AttestorAttestationAuthorityNoteArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -194,14 +194,14 @@ class Attestor(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArrgs(
+            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArrgs(
                 human_readable_name="Attestor Note",
             ),
         ))
-        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
+        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArrgs(
             note_reference=note.name,
-            public_keys=[gcp.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArgs(
+            public_keys=[gcp.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArrgs(
                 ascii_armored_pgp_public_key=\"\"\"mQENBFtP0doBCADF+joTiXWKVuP8kJt3fgpBSjT9h8ezMfKA4aXZctYLx5wslWQl
         bB7Iu2ezkECNzoEeU7WxUe8a61pMCh9cisS9H5mB2K2uM4Jnf8tgFeXn3akJDVo0
         oR1IC+Dp9mXbRSK3MAvKkOwWlG99sx3uEdvmeBRHBOO+grchLx24EThXFOyP9Fk6
@@ -231,20 +231,20 @@ class Attestor(pulumi.CustomResource):
         crypto_key = gcp.kms.CryptoKey("crypto-key",
             key_ring=keyring.id,
             purpose="ASYMMETRIC_SIGN",
-            version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
+            version_template=gcp.kms.CryptoKeyVersionTemplateArrgs(
                 algorithm="RSA_SIGN_PKCS1_4096_SHA512",
             ))
         version = gcp.kms.get_kms_crypto_key_version_output(crypto_key=crypto_key.id)
-        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArrgs(
+            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArrgs(
                 human_readable_name="Attestor Note",
             ),
         ))
-        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
+        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArrgs(
             note_reference=note.name,
-            public_keys=[gcp.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArgs(
+            public_keys=[gcp.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArrgs(
                 id=version.id,
-                pkix_public_key=gcp.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs(
+                pkix_public_key=gcp.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArrgs(
                     public_key_pem=version.public_keys[0].pem,
                     signature_algorithm=version.public_keys[0].algorithm,
                 ),
@@ -278,7 +278,7 @@ class Attestor(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AttestorAttestationAuthorityNoteArgs']] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+        :param pulumi.Input[pulumi.InputType['AttestorAttestationAuthorityNoteArrgs']] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
                Structure is documented below.
         :param pulumi.Input[str] description: A descriptive comment. This field may be updated. The field may be
                displayed in chooser dialogs.
@@ -290,7 +290,7 @@ class Attestor(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AttestorArgs,
+                 args: AttestorArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An attestor that attests to container image artifacts.
@@ -308,14 +308,14 @@ class Attestor(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArrgs(
+            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArrgs(
                 human_readable_name="Attestor Note",
             ),
         ))
-        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
+        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArrgs(
             note_reference=note.name,
-            public_keys=[gcp.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArgs(
+            public_keys=[gcp.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArrgs(
                 ascii_armored_pgp_public_key=\"\"\"mQENBFtP0doBCADF+joTiXWKVuP8kJt3fgpBSjT9h8ezMfKA4aXZctYLx5wslWQl
         bB7Iu2ezkECNzoEeU7WxUe8a61pMCh9cisS9H5mB2K2uM4Jnf8tgFeXn3akJDVo0
         oR1IC+Dp9mXbRSK3MAvKkOwWlG99sx3uEdvmeBRHBOO+grchLx24EThXFOyP9Fk6
@@ -345,20 +345,20 @@ class Attestor(pulumi.CustomResource):
         crypto_key = gcp.kms.CryptoKey("crypto-key",
             key_ring=keyring.id,
             purpose="ASYMMETRIC_SIGN",
-            version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
+            version_template=gcp.kms.CryptoKeyVersionTemplateArrgs(
                 algorithm="RSA_SIGN_PKCS1_4096_SHA512",
             ))
         version = gcp.kms.get_kms_crypto_key_version_output(crypto_key=crypto_key.id)
-        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArrgs(
+            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArrgs(
                 human_readable_name="Attestor Note",
             ),
         ))
-        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
+        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArrgs(
             note_reference=note.name,
-            public_keys=[gcp.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArgs(
+            public_keys=[gcp.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArrgs(
                 id=version.id,
-                pkix_public_key=gcp.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs(
+                pkix_public_key=gcp.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArrgs(
                     public_key_pem=version.public_keys[0].pem,
                     signature_algorithm=version.public_keys[0].algorithm,
                 ),
@@ -391,12 +391,12 @@ class Attestor(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AttestorArgs args: The arguments to use to populate this resource's properties.
+        :param AttestorArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AttestorArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AttestorArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -405,7 +405,7 @@ class Attestor(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation_authority_note: Optional[pulumi.Input[pulumi.InputType['AttestorAttestationAuthorityNoteArgs']]] = None,
+                 attestation_authority_note: Optional[pulumi.Input[pulumi.InputType['AttestorAttestationAuthorityNoteArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -416,7 +416,7 @@ class Attestor(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AttestorArgs.__new__(AttestorArgs)
+            __props__ = AttestorArrgs.__new__(AttestorArrgs)
 
             if attestation_authority_note is None and not opts.urn:
                 raise TypeError("Missing required property 'attestation_authority_note'")
@@ -434,7 +434,7 @@ class Attestor(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attestation_authority_note: Optional[pulumi.Input[pulumi.InputType['AttestorAttestationAuthorityNoteArgs']]] = None,
+            attestation_authority_note: Optional[pulumi.Input[pulumi.InputType['AttestorAttestationAuthorityNoteArrgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None) -> 'Attestor':
@@ -445,7 +445,7 @@ class Attestor(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AttestorAttestationAuthorityNoteArgs']] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+        :param pulumi.Input[pulumi.InputType['AttestorAttestationAuthorityNoteArrgs']] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
                Structure is documented below.
         :param pulumi.Input[str] description: A descriptive comment. This field may be updated. The field may be
                displayed in chooser dialogs.

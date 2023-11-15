@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['AgentArgs', 'Agent']
+__all__ = ['AgentArrgs', 'Agent']
 
 @pulumi.input_type
-class AgentArgs:
+calass AgentArrgs:
     def __init__(__self__, *,
                  default_language_code: pulumi.Input[str],
                  display_name: pulumi.Input[str],
@@ -265,7 +265,7 @@ class AgentArgs:
 
 
 @pulumi.input_type
-class _AgentState:
+calass _AgentState:
     def __init__(__self__, *,
                  api_version: Optional[pulumi.Input[str]] = None,
                  avatar_uri: Optional[pulumi.Input[str]] = None,
@@ -538,7 +538,7 @@ class _AgentState:
         pulumi.set(self, "time_zone", value)
 
 
-class Agent(pulumi.CustomResource):
+calass Agent(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -656,7 +656,7 @@ class Agent(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AgentArgs,
+                 args: AgentArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Dialogflow agent is a virtual agent that handles conversations with your end-users. It is a natural language
@@ -712,12 +712,12 @@ class Agent(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AgentArgs args: The arguments to use to populate this resource's properties.
+        :param AgentArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AgentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AgentArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -745,7 +745,7 @@ class Agent(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AgentArgs.__new__(AgentArgs)
+            __props__ = AgentArrgs.__new__(AgentArrgs)
 
             __props__.__dict__["api_version"] = api_version
             __props__.__dict__["avatar_uri"] = avatar_uri

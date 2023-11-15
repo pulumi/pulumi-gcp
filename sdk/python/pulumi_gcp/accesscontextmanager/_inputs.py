@@ -10,105 +10,105 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'AccessLevelBasicArgs',
-    'AccessLevelBasicConditionArgs',
-    'AccessLevelBasicConditionDevicePolicyArgs',
-    'AccessLevelBasicConditionDevicePolicyOsConstraintArgs',
-    'AccessLevelBasicConditionVpcNetworkSourceArgs',
-    'AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs',
-    'AccessLevelConditionDevicePolicyArgs',
-    'AccessLevelConditionDevicePolicyOsConstraintArgs',
-    'AccessLevelConditionVpcNetworkSourceArgs',
-    'AccessLevelConditionVpcNetworkSourceVpcSubnetworkArgs',
-    'AccessLevelCustomArgs',
-    'AccessLevelCustomExprArgs',
-    'AccessLevelsAccessLevelArgs',
-    'AccessLevelsAccessLevelBasicArgs',
-    'AccessLevelsAccessLevelBasicConditionArgs',
-    'AccessLevelsAccessLevelBasicConditionDevicePolicyArgs',
-    'AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs',
-    'AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs',
-    'AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs',
-    'AccessLevelsAccessLevelCustomArgs',
-    'AccessLevelsAccessLevelCustomExprArgs',
-    'AccessPolicyIamBindingConditionArgs',
-    'AccessPolicyIamMemberConditionArgs',
-    'ServicePerimeterEgressPolicyEgressFromArgs',
-    'ServicePerimeterEgressPolicyEgressFromSourceArgs',
-    'ServicePerimeterEgressPolicyEgressToArgs',
-    'ServicePerimeterEgressPolicyEgressToOperationArgs',
-    'ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArgs',
-    'ServicePerimeterIngressPolicyIngressFromArgs',
-    'ServicePerimeterIngressPolicyIngressFromSourceArgs',
-    'ServicePerimeterIngressPolicyIngressToArgs',
-    'ServicePerimeterIngressPolicyIngressToOperationArgs',
-    'ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArgs',
-    'ServicePerimeterSpecArgs',
-    'ServicePerimeterSpecEgressPolicyArgs',
-    'ServicePerimeterSpecEgressPolicyEgressFromArgs',
-    'ServicePerimeterSpecEgressPolicyEgressFromSourceArgs',
-    'ServicePerimeterSpecEgressPolicyEgressToArgs',
-    'ServicePerimeterSpecEgressPolicyEgressToOperationArgs',
-    'ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs',
-    'ServicePerimeterSpecIngressPolicyArgs',
-    'ServicePerimeterSpecIngressPolicyIngressFromArgs',
-    'ServicePerimeterSpecIngressPolicyIngressFromSourceArgs',
-    'ServicePerimeterSpecIngressPolicyIngressToArgs',
-    'ServicePerimeterSpecIngressPolicyIngressToOperationArgs',
-    'ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs',
-    'ServicePerimeterSpecVpcAccessibleServicesArgs',
-    'ServicePerimeterStatusArgs',
-    'ServicePerimeterStatusEgressPolicyArgs',
-    'ServicePerimeterStatusEgressPolicyEgressFromArgs',
-    'ServicePerimeterStatusEgressPolicyEgressFromSourceArgs',
-    'ServicePerimeterStatusEgressPolicyEgressToArgs',
-    'ServicePerimeterStatusEgressPolicyEgressToOperationArgs',
-    'ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs',
-    'ServicePerimeterStatusIngressPolicyArgs',
-    'ServicePerimeterStatusIngressPolicyIngressFromArgs',
-    'ServicePerimeterStatusIngressPolicyIngressFromSourceArgs',
-    'ServicePerimeterStatusIngressPolicyIngressToArgs',
-    'ServicePerimeterStatusIngressPolicyIngressToOperationArgs',
-    'ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs',
-    'ServicePerimeterStatusVpcAccessibleServicesArgs',
-    'ServicePerimetersServicePerimeterArgs',
-    'ServicePerimetersServicePerimeterSpecArgs',
-    'ServicePerimetersServicePerimeterSpecEgressPolicyArgs',
-    'ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs',
-    'ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs',
-    'ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs',
-    'ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs',
-    'ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs',
-    'ServicePerimetersServicePerimeterSpecIngressPolicyArgs',
-    'ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs',
-    'ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs',
-    'ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs',
-    'ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs',
-    'ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs',
-    'ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs',
-    'ServicePerimetersServicePerimeterStatusArgs',
-    'ServicePerimetersServicePerimeterStatusEgressPolicyArgs',
-    'ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs',
-    'ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs',
-    'ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs',
-    'ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs',
-    'ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs',
-    'ServicePerimetersServicePerimeterStatusIngressPolicyArgs',
-    'ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs',
-    'ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs',
-    'ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs',
-    'ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs',
-    'ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs',
-    'ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs',
+    'AccessLevelBasicArrgs',
+    'AccessLevelBasicConditionArrgs',
+    'AccessLevelBasicConditionDevicePolicyArrgs',
+    'AccessLevelBasicConditionDevicePolicyOsConstraintArrgs',
+    'AccessLevelBasicConditionVpcNetworkSourceArrgs',
+    'AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArrgs',
+    'AccessLevelConditionDevicePolicyArrgs',
+    'AccessLevelConditionDevicePolicyOsConstraintArrgs',
+    'AccessLevelConditionVpcNetworkSourceArrgs',
+    'AccessLevelConditionVpcNetworkSourceVpcSubnetworkArrgs',
+    'AccessLevelCustomArrgs',
+    'AccessLevelCustomExprArrgs',
+    'AccessLevelsAccessLevelArrgs',
+    'AccessLevelsAccessLevelBasicArrgs',
+    'AccessLevelsAccessLevelBasicConditionArrgs',
+    'AccessLevelsAccessLevelBasicConditionDevicePolicyArrgs',
+    'AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrgs',
+    'AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrgs',
+    'AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArrgs',
+    'AccessLevelsAccessLevelCustomArrgs',
+    'AccessLevelsAccessLevelCustomExprArrgs',
+    'AccessPolicyIamBindingConditionArrgs',
+    'AccessPolicyIamMemberConditionArrgs',
+    'ServicePerimeterEgressPolicyEgressFromArrgs',
+    'ServicePerimeterEgressPolicyEgressFromSourceArrgs',
+    'ServicePerimeterEgressPolicyEgressToArrgs',
+    'ServicePerimeterEgressPolicyEgressToOperationArrgs',
+    'ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArrgs',
+    'ServicePerimeterIngressPolicyIngressFromArrgs',
+    'ServicePerimeterIngressPolicyIngressFromSourceArrgs',
+    'ServicePerimeterIngressPolicyIngressToArrgs',
+    'ServicePerimeterIngressPolicyIngressToOperationArrgs',
+    'ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArrgs',
+    'ServicePerimeterSpecArrgs',
+    'ServicePerimeterSpecEgressPolicyArrgs',
+    'ServicePerimeterSpecEgressPolicyEgressFromArrgs',
+    'ServicePerimeterSpecEgressPolicyEgressFromSourceArrgs',
+    'ServicePerimeterSpecEgressPolicyEgressToArrgs',
+    'ServicePerimeterSpecEgressPolicyEgressToOperationArrgs',
+    'ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrgs',
+    'ServicePerimeterSpecIngressPolicyArrgs',
+    'ServicePerimeterSpecIngressPolicyIngressFromArrgs',
+    'ServicePerimeterSpecIngressPolicyIngressFromSourceArrgs',
+    'ServicePerimeterSpecIngressPolicyIngressToArrgs',
+    'ServicePerimeterSpecIngressPolicyIngressToOperationArrgs',
+    'ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrgs',
+    'ServicePerimeterSpecVpcAccessibleServicesArrgs',
+    'ServicePerimeterStatusArrgs',
+    'ServicePerimeterStatusEgressPolicyArrgs',
+    'ServicePerimeterStatusEgressPolicyEgressFromArrgs',
+    'ServicePerimeterStatusEgressPolicyEgressFromSourceArrgs',
+    'ServicePerimeterStatusEgressPolicyEgressToArrgs',
+    'ServicePerimeterStatusEgressPolicyEgressToOperationArrgs',
+    'ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrgs',
+    'ServicePerimeterStatusIngressPolicyArrgs',
+    'ServicePerimeterStatusIngressPolicyIngressFromArrgs',
+    'ServicePerimeterStatusIngressPolicyIngressFromSourceArrgs',
+    'ServicePerimeterStatusIngressPolicyIngressToArrgs',
+    'ServicePerimeterStatusIngressPolicyIngressToOperationArrgs',
+    'ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrgs',
+    'ServicePerimeterStatusVpcAccessibleServicesArrgs',
+    'ServicePerimetersServicePerimeterArrgs',
+    'ServicePerimetersServicePerimeterSpecArrgs',
+    'ServicePerimetersServicePerimeterSpecEgressPolicyArrgs',
+    'ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArrgs',
+    'ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrgs',
+    'ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArrgs',
+    'ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrgs',
+    'ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrgs',
+    'ServicePerimetersServicePerimeterSpecIngressPolicyArrgs',
+    'ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArrgs',
+    'ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrgs',
+    'ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArrgs',
+    'ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrgs',
+    'ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrgs',
+    'ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArrgs',
+    'ServicePerimetersServicePerimeterStatusArrgs',
+    'ServicePerimetersServicePerimeterStatusEgressPolicyArrgs',
+    'ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArrgs',
+    'ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrgs',
+    'ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArrgs',
+    'ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrgs',
+    'ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrgs',
+    'ServicePerimetersServicePerimeterStatusIngressPolicyArrgs',
+    'ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArrgs',
+    'ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrgs',
+    'ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArrgs',
+    'ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrgs',
+    'ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrgs',
+    'ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArrgs',
 ]
 
 @pulumi.input_type
-class AccessLevelBasicArgs:
+calass AccessLevelBasicArrgs:
     def __init__(__self__, *,
-                 conditions: pulumi.Input[Sequence[pulumi.Input['AccessLevelBasicConditionArgs']]],
+                 conditions: pulumi.Input[Sequence[pulumi.Input['AccessLevelBasicConditionArrgs']]],
                  combining_function: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['AccessLevelBasicConditionArgs']]] conditions: A set of requirements for the AccessLevel to be granted.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessLevelBasicConditionArrgs']]] conditions: A set of requirements for the AccessLevel to be granted.
                Structure is documented below.
         :param pulumi.Input[str] combining_function: How the conditions list should be combined to determine if a request
                is granted this AccessLevel. If AND is used, each Condition in
@@ -124,7 +124,7 @@ class AccessLevelBasicArgs:
 
     @property
     @pulumi.getter
-    def conditions(self) -> pulumi.Input[Sequence[pulumi.Input['AccessLevelBasicConditionArgs']]]:
+    def conditions(self) -> pulumi.Input[Sequence[pulumi.Input['AccessLevelBasicConditionArrgs']]]:
         """
         A set of requirements for the AccessLevel to be granted.
         Structure is documented below.
@@ -132,7 +132,7 @@ class AccessLevelBasicArgs:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: pulumi.Input[Sequence[pulumi.Input['AccessLevelBasicConditionArgs']]]):
+    def conditions(self, value: pulumi.Input[Sequence[pulumi.Input['AccessLevelBasicConditionArrgs']]]):
         pulumi.set(self, "conditions", value)
 
     @property
@@ -155,17 +155,17 @@ class AccessLevelBasicArgs:
 
 
 @pulumi.input_type
-class AccessLevelBasicConditionArgs:
+calass AccessLevelBasicConditionArrgs:
     def __init__(__self__, *,
-                 device_policy: Optional[pulumi.Input['AccessLevelBasicConditionDevicePolicyArgs']] = None,
+                 device_policy: Optional[pulumi.Input['AccessLevelBasicConditionDevicePolicyArrgs']] = None,
                  ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  negate: Optional[pulumi.Input[bool]] = None,
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelBasicConditionVpcNetworkSourceArgs']]]] = None):
+                 vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelBasicConditionVpcNetworkSourceArrgs']]]] = None):
         """
-        :param pulumi.Input['AccessLevelBasicConditionDevicePolicyArgs'] device_policy: Device specific restrictions, all restrictions must hold for
+        :param pulumi.Input['AccessLevelBasicConditionDevicePolicyArrgs'] device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
                allowed.
                Structure is documented below.
@@ -197,7 +197,7 @@ class AccessLevelBasicConditionArgs:
                does not exist is an error. All access levels listed must be
                granted for the Condition to be true.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-        :param pulumi.Input[Sequence[pulumi.Input['AccessLevelBasicConditionVpcNetworkSourceArgs']]] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessLevelBasicConditionVpcNetworkSourceArrgs']]] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
                Structure is documented below.
         """
         if device_policy is not None:
@@ -217,7 +217,7 @@ class AccessLevelBasicConditionArgs:
 
     @property
     @pulumi.getter(name="devicePolicy")
-    def device_policy(self) -> Optional[pulumi.Input['AccessLevelBasicConditionDevicePolicyArgs']]:
+    def device_policy(self) -> Optional[pulumi.Input['AccessLevelBasicConditionDevicePolicyArrgs']]:
         """
         Device specific restrictions, all restrictions must hold for
         the Condition to be true. If not specified, all devices are
@@ -227,7 +227,7 @@ class AccessLevelBasicConditionArgs:
         return pulumi.get(self, "device_policy")
 
     @device_policy.setter
-    def device_policy(self, value: Optional[pulumi.Input['AccessLevelBasicConditionDevicePolicyArgs']]):
+    def device_policy(self, value: Optional[pulumi.Input['AccessLevelBasicConditionDevicePolicyArrgs']]):
         pulumi.set(self, "device_policy", value)
 
     @property
@@ -315,7 +315,7 @@ class AccessLevelBasicConditionArgs:
 
     @property
     @pulumi.getter(name="vpcNetworkSources")
-    def vpc_network_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelBasicConditionVpcNetworkSourceArgs']]]]:
+    def vpc_network_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelBasicConditionVpcNetworkSourceArrgs']]]]:
         """
         The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
         Structure is documented below.
@@ -323,16 +323,16 @@ class AccessLevelBasicConditionArgs:
         return pulumi.get(self, "vpc_network_sources")
 
     @vpc_network_sources.setter
-    def vpc_network_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelBasicConditionVpcNetworkSourceArgs']]]]):
+    def vpc_network_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelBasicConditionVpcNetworkSourceArrgs']]]]):
         pulumi.set(self, "vpc_network_sources", value)
 
 
 @pulumi.input_type
-class AccessLevelBasicConditionDevicePolicyArgs:
+calass AccessLevelBasicConditionDevicePolicyArrgs:
     def __init__(__self__, *,
                  allowed_device_management_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allowed_encryption_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 os_constraints: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelBasicConditionDevicePolicyOsConstraintArgs']]]] = None,
+                 os_constraints: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelBasicConditionDevicePolicyOsConstraintArrgs']]]] = None,
                  require_admin_approval: Optional[pulumi.Input[bool]] = None,
                  require_corp_owned: Optional[pulumi.Input[bool]] = None,
                  require_screen_lock: Optional[pulumi.Input[bool]] = None):
@@ -343,7 +343,7 @@ class AccessLevelBasicConditionDevicePolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_encryption_statuses: A list of allowed encryptions statuses.
                An empty list allows all statuses.
                Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessLevelBasicConditionDevicePolicyOsConstraintArgs']]] os_constraints: A list of allowed OS versions.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessLevelBasicConditionDevicePolicyOsConstraintArrgs']]] os_constraints: A list of allowed OS versions.
                An empty list allows all types and all versions.
                Structure is documented below.
         :param pulumi.Input[bool] require_admin_approval: Whether the device needs to be approved by the customer admin.
@@ -394,7 +394,7 @@ class AccessLevelBasicConditionDevicePolicyArgs:
 
     @property
     @pulumi.getter(name="osConstraints")
-    def os_constraints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelBasicConditionDevicePolicyOsConstraintArgs']]]]:
+    def os_constraints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelBasicConditionDevicePolicyOsConstraintArrgs']]]]:
         """
         A list of allowed OS versions.
         An empty list allows all types and all versions.
@@ -403,7 +403,7 @@ class AccessLevelBasicConditionDevicePolicyArgs:
         return pulumi.get(self, "os_constraints")
 
     @os_constraints.setter
-    def os_constraints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelBasicConditionDevicePolicyOsConstraintArgs']]]]):
+    def os_constraints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelBasicConditionDevicePolicyOsConstraintArrgs']]]]):
         pulumi.set(self, "os_constraints", value)
 
     @property
@@ -445,7 +445,7 @@ class AccessLevelBasicConditionDevicePolicyArgs:
 
 
 @pulumi.input_type
-class AccessLevelBasicConditionDevicePolicyOsConstraintArgs:
+calass AccessLevelBasicConditionDevicePolicyOsConstraintArrgs:
     def __init__(__self__, *,
                  os_type: pulumi.Input[str],
                  minimum_version: Optional[pulumi.Input[str]] = None,
@@ -505,11 +505,11 @@ class AccessLevelBasicConditionDevicePolicyOsConstraintArgs:
 
 
 @pulumi.input_type
-class AccessLevelBasicConditionVpcNetworkSourceArgs:
+calass AccessLevelBasicConditionVpcNetworkSourceArrgs:
     def __init__(__self__, *,
-                 vpc_subnetwork: Optional[pulumi.Input['AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs']] = None):
+                 vpc_subnetwork: Optional[pulumi.Input['AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArrgs']] = None):
         """
-        :param pulumi.Input['AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs'] vpc_subnetwork: Sub networks within a VPC network.
+        :param pulumi.Input['AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArrgs'] vpc_subnetwork: Sub networks within a VPC network.
                Structure is documented below.
         """
         if vpc_subnetwork is not None:
@@ -517,7 +517,7 @@ class AccessLevelBasicConditionVpcNetworkSourceArgs:
 
     @property
     @pulumi.getter(name="vpcSubnetwork")
-    def vpc_subnetwork(self) -> Optional[pulumi.Input['AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs']]:
+    def vpc_subnetwork(self) -> Optional[pulumi.Input['AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArrgs']]:
         """
         Sub networks within a VPC network.
         Structure is documented below.
@@ -525,12 +525,12 @@ class AccessLevelBasicConditionVpcNetworkSourceArgs:
         return pulumi.get(self, "vpc_subnetwork")
 
     @vpc_subnetwork.setter
-    def vpc_subnetwork(self, value: Optional[pulumi.Input['AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs']]):
+    def vpc_subnetwork(self, value: Optional[pulumi.Input['AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArrgs']]):
         pulumi.set(self, "vpc_subnetwork", value)
 
 
 @pulumi.input_type
-class AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs:
+calass AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArrgs:
     def __init__(__self__, *,
                  network: pulumi.Input[str],
                  vpc_ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -568,11 +568,11 @@ class AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs:
 
 
 @pulumi.input_type
-class AccessLevelConditionDevicePolicyArgs:
+calass AccessLevelConditionDevicePolicyArrgs:
     def __init__(__self__, *,
                  allowed_device_management_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allowed_encryption_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 os_constraints: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionDevicePolicyOsConstraintArgs']]]] = None,
+                 os_constraints: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionDevicePolicyOsConstraintArrgs']]]] = None,
                  require_admin_approval: Optional[pulumi.Input[bool]] = None,
                  require_corp_owned: Optional[pulumi.Input[bool]] = None,
                  require_screen_lock: Optional[pulumi.Input[bool]] = None):
@@ -583,7 +583,7 @@ class AccessLevelConditionDevicePolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_encryption_statuses: A list of allowed encryptions statuses.
                An empty list allows all statuses.
                Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionDevicePolicyOsConstraintArgs']]] os_constraints: A list of allowed OS versions.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionDevicePolicyOsConstraintArrgs']]] os_constraints: A list of allowed OS versions.
                An empty list allows all types and all versions.
                Structure is documented below.
         :param pulumi.Input[bool] require_admin_approval: Whether the device needs to be approved by the customer admin.
@@ -634,7 +634,7 @@ class AccessLevelConditionDevicePolicyArgs:
 
     @property
     @pulumi.getter(name="osConstraints")
-    def os_constraints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionDevicePolicyOsConstraintArgs']]]]:
+    def os_constraints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionDevicePolicyOsConstraintArrgs']]]]:
         """
         A list of allowed OS versions.
         An empty list allows all types and all versions.
@@ -643,7 +643,7 @@ class AccessLevelConditionDevicePolicyArgs:
         return pulumi.get(self, "os_constraints")
 
     @os_constraints.setter
-    def os_constraints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionDevicePolicyOsConstraintArgs']]]]):
+    def os_constraints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionDevicePolicyOsConstraintArrgs']]]]):
         pulumi.set(self, "os_constraints", value)
 
     @property
@@ -685,7 +685,7 @@ class AccessLevelConditionDevicePolicyArgs:
 
 
 @pulumi.input_type
-class AccessLevelConditionDevicePolicyOsConstraintArgs:
+calass AccessLevelConditionDevicePolicyOsConstraintArrgs:
     def __init__(__self__, *,
                  os_type: pulumi.Input[str],
                  minimum_version: Optional[pulumi.Input[str]] = None):
@@ -729,11 +729,11 @@ class AccessLevelConditionDevicePolicyOsConstraintArgs:
 
 
 @pulumi.input_type
-class AccessLevelConditionVpcNetworkSourceArgs:
+calass AccessLevelConditionVpcNetworkSourceArrgs:
     def __init__(__self__, *,
-                 vpc_subnetwork: Optional[pulumi.Input['AccessLevelConditionVpcNetworkSourceVpcSubnetworkArgs']] = None):
+                 vpc_subnetwork: Optional[pulumi.Input['AccessLevelConditionVpcNetworkSourceVpcSubnetworkArrgs']] = None):
         """
-        :param pulumi.Input['AccessLevelConditionVpcNetworkSourceVpcSubnetworkArgs'] vpc_subnetwork: Sub networks within a VPC network.
+        :param pulumi.Input['AccessLevelConditionVpcNetworkSourceVpcSubnetworkArrgs'] vpc_subnetwork: Sub networks within a VPC network.
                Structure is documented below.
         """
         if vpc_subnetwork is not None:
@@ -741,7 +741,7 @@ class AccessLevelConditionVpcNetworkSourceArgs:
 
     @property
     @pulumi.getter(name="vpcSubnetwork")
-    def vpc_subnetwork(self) -> Optional[pulumi.Input['AccessLevelConditionVpcNetworkSourceVpcSubnetworkArgs']]:
+    def vpc_subnetwork(self) -> Optional[pulumi.Input['AccessLevelConditionVpcNetworkSourceVpcSubnetworkArrgs']]:
         """
         Sub networks within a VPC network.
         Structure is documented below.
@@ -749,12 +749,12 @@ class AccessLevelConditionVpcNetworkSourceArgs:
         return pulumi.get(self, "vpc_subnetwork")
 
     @vpc_subnetwork.setter
-    def vpc_subnetwork(self, value: Optional[pulumi.Input['AccessLevelConditionVpcNetworkSourceVpcSubnetworkArgs']]):
+    def vpc_subnetwork(self, value: Optional[pulumi.Input['AccessLevelConditionVpcNetworkSourceVpcSubnetworkArrgs']]):
         pulumi.set(self, "vpc_subnetwork", value)
 
 
 @pulumi.input_type
-class AccessLevelConditionVpcNetworkSourceVpcSubnetworkArgs:
+calass AccessLevelConditionVpcNetworkSourceVpcSubnetworkArrgs:
     def __init__(__self__, *,
                  network: pulumi.Input[str],
                  vpc_ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -792,11 +792,11 @@ class AccessLevelConditionVpcNetworkSourceVpcSubnetworkArgs:
 
 
 @pulumi.input_type
-class AccessLevelCustomArgs:
+calass AccessLevelCustomArrgs:
     def __init__(__self__, *,
-                 expr: pulumi.Input['AccessLevelCustomExprArgs']):
+                 expr: pulumi.Input['AccessLevelCustomExprArrgs']):
         """
-        :param pulumi.Input['AccessLevelCustomExprArgs'] expr: Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+        :param pulumi.Input['AccessLevelCustomExprArrgs'] expr: Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
                This page details the objects and attributes that are used to the build the CEL expressions for
                custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
                Structure is documented below.
@@ -805,7 +805,7 @@ class AccessLevelCustomArgs:
 
     @property
     @pulumi.getter
-    def expr(self) -> pulumi.Input['AccessLevelCustomExprArgs']:
+    def expr(self) -> pulumi.Input['AccessLevelCustomExprArrgs']:
         """
         Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
         This page details the objects and attributes that are used to the build the CEL expressions for
@@ -815,12 +815,12 @@ class AccessLevelCustomArgs:
         return pulumi.get(self, "expr")
 
     @expr.setter
-    def expr(self, value: pulumi.Input['AccessLevelCustomExprArgs']):
+    def expr(self, value: pulumi.Input['AccessLevelCustomExprArrgs']):
         pulumi.set(self, "expr", value)
 
 
 @pulumi.input_type
-class AccessLevelCustomExprArgs:
+calass AccessLevelCustomExprArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -890,21 +890,21 @@ class AccessLevelCustomExprArgs:
 
 
 @pulumi.input_type
-class AccessLevelsAccessLevelArgs:
+calass AccessLevelsAccessLevelArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  title: pulumi.Input[str],
-                 basic: Optional[pulumi.Input['AccessLevelsAccessLevelBasicArgs']] = None,
-                 custom: Optional[pulumi.Input['AccessLevelsAccessLevelCustomArgs']] = None,
+                 basic: Optional[pulumi.Input['AccessLevelsAccessLevelBasicArrgs']] = None,
+                 custom: Optional[pulumi.Input['AccessLevelsAccessLevelCustomArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Resource name for the Access Level. The short_name component must begin
                with a letter and only include alphanumeric and '_'.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
         :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
-        :param pulumi.Input['AccessLevelsAccessLevelBasicArgs'] basic: A set of predefined conditions for the access level and a combining function.
+        :param pulumi.Input['AccessLevelsAccessLevelBasicArrgs'] basic: A set of predefined conditions for the access level and a combining function.
                Structure is documented below.
-        :param pulumi.Input['AccessLevelsAccessLevelCustomArgs'] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+        :param pulumi.Input['AccessLevelsAccessLevelCustomArrgs'] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
                See CEL spec at: https://github.com/google/cel-spec.
                Structure is documented below.
         :param pulumi.Input[str] description: Description of the AccessLevel and its use. Does not affect behavior.
@@ -946,7 +946,7 @@ class AccessLevelsAccessLevelArgs:
 
     @property
     @pulumi.getter
-    def basic(self) -> Optional[pulumi.Input['AccessLevelsAccessLevelBasicArgs']]:
+    def basic(self) -> Optional[pulumi.Input['AccessLevelsAccessLevelBasicArrgs']]:
         """
         A set of predefined conditions for the access level and a combining function.
         Structure is documented below.
@@ -954,12 +954,12 @@ class AccessLevelsAccessLevelArgs:
         return pulumi.get(self, "basic")
 
     @basic.setter
-    def basic(self, value: Optional[pulumi.Input['AccessLevelsAccessLevelBasicArgs']]):
+    def basic(self, value: Optional[pulumi.Input['AccessLevelsAccessLevelBasicArrgs']]):
         pulumi.set(self, "basic", value)
 
     @property
     @pulumi.getter
-    def custom(self) -> Optional[pulumi.Input['AccessLevelsAccessLevelCustomArgs']]:
+    def custom(self) -> Optional[pulumi.Input['AccessLevelsAccessLevelCustomArrgs']]:
         """
         Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
         See CEL spec at: https://github.com/google/cel-spec.
@@ -968,7 +968,7 @@ class AccessLevelsAccessLevelArgs:
         return pulumi.get(self, "custom")
 
     @custom.setter
-    def custom(self, value: Optional[pulumi.Input['AccessLevelsAccessLevelCustomArgs']]):
+    def custom(self, value: Optional[pulumi.Input['AccessLevelsAccessLevelCustomArrgs']]):
         pulumi.set(self, "custom", value)
 
     @property
@@ -985,12 +985,12 @@ class AccessLevelsAccessLevelArgs:
 
 
 @pulumi.input_type
-class AccessLevelsAccessLevelBasicArgs:
+calass AccessLevelsAccessLevelBasicArrgs:
     def __init__(__self__, *,
-                 conditions: pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionArgs']]],
+                 conditions: pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionArrgs']]],
                  combining_function: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionArgs']]] conditions: A set of requirements for the AccessLevel to be granted.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionArrgs']]] conditions: A set of requirements for the AccessLevel to be granted.
                Structure is documented below.
         :param pulumi.Input[str] combining_function: How the conditions list should be combined to determine if a request
                is granted this AccessLevel. If AND is used, each Condition in
@@ -1006,7 +1006,7 @@ class AccessLevelsAccessLevelBasicArgs:
 
     @property
     @pulumi.getter
-    def conditions(self) -> pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionArgs']]]:
+    def conditions(self) -> pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionArrgs']]]:
         """
         A set of requirements for the AccessLevel to be granted.
         Structure is documented below.
@@ -1014,7 +1014,7 @@ class AccessLevelsAccessLevelBasicArgs:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionArgs']]]):
+    def conditions(self, value: pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionArrgs']]]):
         pulumi.set(self, "conditions", value)
 
     @property
@@ -1037,17 +1037,17 @@ class AccessLevelsAccessLevelBasicArgs:
 
 
 @pulumi.input_type
-class AccessLevelsAccessLevelBasicConditionArgs:
+calass AccessLevelsAccessLevelBasicConditionArrgs:
     def __init__(__self__, *,
-                 device_policy: Optional[pulumi.Input['AccessLevelsAccessLevelBasicConditionDevicePolicyArgs']] = None,
+                 device_policy: Optional[pulumi.Input['AccessLevelsAccessLevelBasicConditionDevicePolicyArrgs']] = None,
                  ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  negate: Optional[pulumi.Input[bool]] = None,
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs']]]] = None):
+                 vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrgs']]]] = None):
         """
-        :param pulumi.Input['AccessLevelsAccessLevelBasicConditionDevicePolicyArgs'] device_policy: Device specific restrictions, all restrictions must hold for
+        :param pulumi.Input['AccessLevelsAccessLevelBasicConditionDevicePolicyArrgs'] device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
                allowed.
                Structure is documented below.
@@ -1079,7 +1079,7 @@ class AccessLevelsAccessLevelBasicConditionArgs:
                does not exist is an error. All access levels listed must be
                granted for the Condition to be true.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-        :param pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs']]] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrgs']]] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
                Structure is documented below.
         """
         if device_policy is not None:
@@ -1099,7 +1099,7 @@ class AccessLevelsAccessLevelBasicConditionArgs:
 
     @property
     @pulumi.getter(name="devicePolicy")
-    def device_policy(self) -> Optional[pulumi.Input['AccessLevelsAccessLevelBasicConditionDevicePolicyArgs']]:
+    def device_policy(self) -> Optional[pulumi.Input['AccessLevelsAccessLevelBasicConditionDevicePolicyArrgs']]:
         """
         Device specific restrictions, all restrictions must hold for
         the Condition to be true. If not specified, all devices are
@@ -1109,7 +1109,7 @@ class AccessLevelsAccessLevelBasicConditionArgs:
         return pulumi.get(self, "device_policy")
 
     @device_policy.setter
-    def device_policy(self, value: Optional[pulumi.Input['AccessLevelsAccessLevelBasicConditionDevicePolicyArgs']]):
+    def device_policy(self, value: Optional[pulumi.Input['AccessLevelsAccessLevelBasicConditionDevicePolicyArrgs']]):
         pulumi.set(self, "device_policy", value)
 
     @property
@@ -1197,7 +1197,7 @@ class AccessLevelsAccessLevelBasicConditionArgs:
 
     @property
     @pulumi.getter(name="vpcNetworkSources")
-    def vpc_network_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs']]]]:
+    def vpc_network_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrgs']]]]:
         """
         The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
         Structure is documented below.
@@ -1205,16 +1205,16 @@ class AccessLevelsAccessLevelBasicConditionArgs:
         return pulumi.get(self, "vpc_network_sources")
 
     @vpc_network_sources.setter
-    def vpc_network_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs']]]]):
+    def vpc_network_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrgs']]]]):
         pulumi.set(self, "vpc_network_sources", value)
 
 
 @pulumi.input_type
-class AccessLevelsAccessLevelBasicConditionDevicePolicyArgs:
+calass AccessLevelsAccessLevelBasicConditionDevicePolicyArrgs:
     def __init__(__self__, *,
                  allowed_device_management_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allowed_encryption_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 os_constraints: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs']]]] = None,
+                 os_constraints: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrgs']]]] = None,
                  require_admin_approval: Optional[pulumi.Input[bool]] = None,
                  require_corp_owned: Optional[pulumi.Input[bool]] = None,
                  require_screen_lock: Optional[pulumi.Input[bool]] = None):
@@ -1225,7 +1225,7 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_encryption_statuses: A list of allowed encryptions statuses.
                An empty list allows all statuses.
                Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs']]] os_constraints: A list of allowed OS versions.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrgs']]] os_constraints: A list of allowed OS versions.
                An empty list allows all types and all versions.
                Structure is documented below.
         :param pulumi.Input[bool] require_admin_approval: Whether the device needs to be approved by the customer admin.
@@ -1276,7 +1276,7 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicyArgs:
 
     @property
     @pulumi.getter(name="osConstraints")
-    def os_constraints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs']]]]:
+    def os_constraints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrgs']]]]:
         """
         A list of allowed OS versions.
         An empty list allows all types and all versions.
@@ -1285,7 +1285,7 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicyArgs:
         return pulumi.get(self, "os_constraints")
 
     @os_constraints.setter
-    def os_constraints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs']]]]):
+    def os_constraints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrgs']]]]):
         pulumi.set(self, "os_constraints", value)
 
     @property
@@ -1327,7 +1327,7 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicyArgs:
 
 
 @pulumi.input_type
-class AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs:
+calass AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrgs:
     def __init__(__self__, *,
                  os_type: pulumi.Input[str],
                  minimum_version: Optional[pulumi.Input[str]] = None):
@@ -1371,11 +1371,11 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs:
 
 
 @pulumi.input_type
-class AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs:
+calass AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrgs:
     def __init__(__self__, *,
-                 vpc_subnetwork: Optional[pulumi.Input['AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs']] = None):
+                 vpc_subnetwork: Optional[pulumi.Input['AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArrgs']] = None):
         """
-        :param pulumi.Input['AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs'] vpc_subnetwork: Sub networks within a VPC network.
+        :param pulumi.Input['AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArrgs'] vpc_subnetwork: Sub networks within a VPC network.
                Structure is documented below.
         """
         if vpc_subnetwork is not None:
@@ -1383,7 +1383,7 @@ class AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs:
 
     @property
     @pulumi.getter(name="vpcSubnetwork")
-    def vpc_subnetwork(self) -> Optional[pulumi.Input['AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs']]:
+    def vpc_subnetwork(self) -> Optional[pulumi.Input['AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArrgs']]:
         """
         Sub networks within a VPC network.
         Structure is documented below.
@@ -1391,12 +1391,12 @@ class AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs:
         return pulumi.get(self, "vpc_subnetwork")
 
     @vpc_subnetwork.setter
-    def vpc_subnetwork(self, value: Optional[pulumi.Input['AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs']]):
+    def vpc_subnetwork(self, value: Optional[pulumi.Input['AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArrgs']]):
         pulumi.set(self, "vpc_subnetwork", value)
 
 
 @pulumi.input_type
-class AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs:
+calass AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArrgs:
     def __init__(__self__, *,
                  network: pulumi.Input[str],
                  vpc_ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -1434,11 +1434,11 @@ class AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs:
 
 
 @pulumi.input_type
-class AccessLevelsAccessLevelCustomArgs:
+calass AccessLevelsAccessLevelCustomArrgs:
     def __init__(__self__, *,
-                 expr: pulumi.Input['AccessLevelsAccessLevelCustomExprArgs']):
+                 expr: pulumi.Input['AccessLevelsAccessLevelCustomExprArrgs']):
         """
-        :param pulumi.Input['AccessLevelsAccessLevelCustomExprArgs'] expr: Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+        :param pulumi.Input['AccessLevelsAccessLevelCustomExprArrgs'] expr: Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
                This page details the objects and attributes that are used to the build the CEL expressions for
                custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
                Structure is documented below.
@@ -1447,7 +1447,7 @@ class AccessLevelsAccessLevelCustomArgs:
 
     @property
     @pulumi.getter
-    def expr(self) -> pulumi.Input['AccessLevelsAccessLevelCustomExprArgs']:
+    def expr(self) -> pulumi.Input['AccessLevelsAccessLevelCustomExprArrgs']:
         """
         Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
         This page details the objects and attributes that are used to the build the CEL expressions for
@@ -1457,12 +1457,12 @@ class AccessLevelsAccessLevelCustomArgs:
         return pulumi.get(self, "expr")
 
     @expr.setter
-    def expr(self, value: pulumi.Input['AccessLevelsAccessLevelCustomExprArgs']):
+    def expr(self, value: pulumi.Input['AccessLevelsAccessLevelCustomExprArrgs']):
         pulumi.set(self, "expr", value)
 
 
 @pulumi.input_type
-class AccessLevelsAccessLevelCustomExprArgs:
+calass AccessLevelsAccessLevelCustomExprArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -1532,7 +1532,7 @@ class AccessLevelsAccessLevelCustomExprArgs:
 
 
 @pulumi.input_type
-class AccessPolicyIamBindingConditionArgs:
+calass AccessPolicyIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -1571,7 +1571,7 @@ class AccessPolicyIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class AccessPolicyIamMemberConditionArgs:
+calass AccessPolicyIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -1610,12 +1610,12 @@ class AccessPolicyIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class ServicePerimeterEgressPolicyEgressFromArgs:
+calass ServicePerimeterEgressPolicyEgressFromArrgs:
     def __init__(__self__, *,
                  identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_type: Optional[pulumi.Input[str]] = None,
                  source_restriction: Optional[pulumi.Input[str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressFromSourceArgs']]]] = None):
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressFromSourceArrgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: A list of identities that are allowed access through this `EgressPolicy`.
                Should be in the format of email address. The email address should
@@ -1626,7 +1626,7 @@ class ServicePerimeterEgressPolicyEgressFromArgs:
                Possible values are: `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         :param pulumi.Input[str] source_restriction: Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
                Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressFromSourceArgs']]] sources: Sources that this EgressPolicy authorizes access from.
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressFromSourceArrgs']]] sources: Sources that this EgressPolicy authorizes access from.
                Structure is documented below.
         """
         if identities is not None:
@@ -1682,7 +1682,7 @@ class ServicePerimeterEgressPolicyEgressFromArgs:
 
     @property
     @pulumi.getter
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressFromSourceArgs']]]]:
+    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressFromSourceArrgs']]]]:
         """
         Sources that this EgressPolicy authorizes access from.
         Structure is documented below.
@@ -1690,12 +1690,12 @@ class ServicePerimeterEgressPolicyEgressFromArgs:
         return pulumi.get(self, "sources")
 
     @sources.setter
-    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressFromSourceArgs']]]]):
+    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressFromSourceArrgs']]]]):
         pulumi.set(self, "sources", value)
 
 
 @pulumi.input_type
-class ServicePerimeterEgressPolicyEgressFromSourceArgs:
+calass ServicePerimeterEgressPolicyEgressFromSourceArrgs:
     def __init__(__self__, *,
                  access_level: Optional[pulumi.Input[str]] = None):
         """
@@ -1718,16 +1718,16 @@ class ServicePerimeterEgressPolicyEgressFromSourceArgs:
 
 
 @pulumi.input_type
-class ServicePerimeterEgressPolicyEgressToArgs:
+calass ServicePerimeterEgressPolicyEgressToArrgs:
     def __init__(__self__, *,
                  external_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationArgs']]]] = None,
+                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationArrgs']]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] external_resources: A list of external resources that are allowed to be accessed. A request
                matches if it contains an external resource in this list (Example:
                s3://bucket/path). Currently '*' is not allowed.
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationArgs']]] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationArrgs']]] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: A list of resources, currently only projects in the form
@@ -1759,7 +1759,7 @@ class ServicePerimeterEgressPolicyEgressToArgs:
 
     @property
     @pulumi.getter
-    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationArgs']]]]:
+    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationArrgs']]]]:
         """
         A list of `ApiOperations` that this egress rule applies to. A request matches
         if it contains an operation/service in this list.
@@ -1768,7 +1768,7 @@ class ServicePerimeterEgressPolicyEgressToArgs:
         return pulumi.get(self, "operations")
 
     @operations.setter
-    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationArgs']]]]):
+    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationArrgs']]]]):
         pulumi.set(self, "operations", value)
 
     @property
@@ -1789,12 +1789,12 @@ class ServicePerimeterEgressPolicyEgressToArgs:
 
 
 @pulumi.input_type
-class ServicePerimeterEgressPolicyEgressToOperationArgs:
+calass ServicePerimeterEgressPolicyEgressToOperationArrgs:
     def __init__(__self__, *,
-                 method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArgs']]]] = None,
+                 method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArrgs']]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArgs']]] method_selectors: API methods or permissions to allow. Method or permission must belong
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArrgs']]] method_selectors: API methods or permissions to allow. Method or permission must belong
                to the service specified by `serviceName` field. A single MethodSelector
                entry with `*` specified for the `method` field will allow all methods
                AND permissions for the service specified in `serviceName`.
@@ -1810,7 +1810,7 @@ class ServicePerimeterEgressPolicyEgressToOperationArgs:
 
     @property
     @pulumi.getter(name="methodSelectors")
-    def method_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArgs']]]]:
+    def method_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArrgs']]]]:
         """
         API methods or permissions to allow. Method or permission must belong
         to the service specified by `serviceName` field. A single MethodSelector
@@ -1821,7 +1821,7 @@ class ServicePerimeterEgressPolicyEgressToOperationArgs:
         return pulumi.get(self, "method_selectors")
 
     @method_selectors.setter
-    def method_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArgs']]]]):
+    def method_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArrgs']]]]):
         pulumi.set(self, "method_selectors", value)
 
     @property
@@ -1840,7 +1840,7 @@ class ServicePerimeterEgressPolicyEgressToOperationArgs:
 
 
 @pulumi.input_type
-class ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArgs:
+calass ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArrgs:
     def __init__(__self__, *,
                  method: Optional[pulumi.Input[str]] = None,
                  permission: Optional[pulumi.Input[str]] = None):
@@ -1885,11 +1885,11 @@ class ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArgs:
 
 
 @pulumi.input_type
-class ServicePerimeterIngressPolicyIngressFromArgs:
+calass ServicePerimeterIngressPolicyIngressFromArrgs:
     def __init__(__self__, *,
                  identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_type: Optional[pulumi.Input[str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressFromSourceArgs']]]] = None):
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressFromSourceArrgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: A list of identities that are allowed access through this ingress policy.
                Should be in the format of email address. The email address should represent
@@ -1898,7 +1898,7 @@ class ServicePerimeterIngressPolicyIngressFromArgs:
                perimeter. If left unspecified, then members of `identities` field will be
                allowed access.
                Possible values are: `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressFromSourceArgs']]] sources: Sources that this `IngressPolicy` authorizes access from.
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressFromSourceArrgs']]] sources: Sources that this `IngressPolicy` authorizes access from.
                Structure is documented below.
         """
         if identities is not None:
@@ -1939,7 +1939,7 @@ class ServicePerimeterIngressPolicyIngressFromArgs:
 
     @property
     @pulumi.getter
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressFromSourceArgs']]]]:
+    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressFromSourceArrgs']]]]:
         """
         Sources that this `IngressPolicy` authorizes access from.
         Structure is documented below.
@@ -1947,12 +1947,12 @@ class ServicePerimeterIngressPolicyIngressFromArgs:
         return pulumi.get(self, "sources")
 
     @sources.setter
-    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressFromSourceArgs']]]]):
+    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressFromSourceArrgs']]]]):
         pulumi.set(self, "sources", value)
 
 
 @pulumi.input_type
-class ServicePerimeterIngressPolicyIngressFromSourceArgs:
+calass ServicePerimeterIngressPolicyIngressFromSourceArrgs:
     def __init__(__self__, *,
                  access_level: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[str]] = None):
@@ -2015,12 +2015,12 @@ class ServicePerimeterIngressPolicyIngressFromSourceArgs:
 
 
 @pulumi.input_type
-class ServicePerimeterIngressPolicyIngressToArgs:
+calass ServicePerimeterIngressPolicyIngressToArrgs:
     def __init__(__self__, *,
-                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationArgs']]]] = None,
+                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationArrgs']]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationArgs']]] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationArrgs']]] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: A list of resources, currently only projects in the form
@@ -2039,7 +2039,7 @@ class ServicePerimeterIngressPolicyIngressToArgs:
 
     @property
     @pulumi.getter
-    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationArgs']]]]:
+    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationArrgs']]]]:
         """
         A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
         are allowed to perform in this `ServicePerimeter`.
@@ -2048,7 +2048,7 @@ class ServicePerimeterIngressPolicyIngressToArgs:
         return pulumi.get(self, "operations")
 
     @operations.setter
-    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationArgs']]]]):
+    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationArrgs']]]]):
         pulumi.set(self, "operations", value)
 
     @property
@@ -2072,12 +2072,12 @@ class ServicePerimeterIngressPolicyIngressToArgs:
 
 
 @pulumi.input_type
-class ServicePerimeterIngressPolicyIngressToOperationArgs:
+calass ServicePerimeterIngressPolicyIngressToOperationArrgs:
     def __init__(__self__, *,
-                 method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArgs']]]] = None,
+                 method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArrgs']]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArgs']]] method_selectors: API methods or permissions to allow. Method or permission must belong to
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArrgs']]] method_selectors: API methods or permissions to allow. Method or permission must belong to
                the service specified by serviceName field. A single `MethodSelector` entry
                with `*` specified for the method field will allow all methods AND
                permissions for the service specified in `serviceName`.
@@ -2093,7 +2093,7 @@ class ServicePerimeterIngressPolicyIngressToOperationArgs:
 
     @property
     @pulumi.getter(name="methodSelectors")
-    def method_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArgs']]]]:
+    def method_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArrgs']]]]:
         """
         API methods or permissions to allow. Method or permission must belong to
         the service specified by serviceName field. A single `MethodSelector` entry
@@ -2104,7 +2104,7 @@ class ServicePerimeterIngressPolicyIngressToOperationArgs:
         return pulumi.get(self, "method_selectors")
 
     @method_selectors.setter
-    def method_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArgs']]]]):
+    def method_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArrgs']]]]):
         pulumi.set(self, "method_selectors", value)
 
     @property
@@ -2123,7 +2123,7 @@ class ServicePerimeterIngressPolicyIngressToOperationArgs:
 
 
 @pulumi.input_type
-class ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArgs:
+calass ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArrgs:
     def __init__(__self__, *,
                  method: Optional[pulumi.Input[str]] = None,
                  permission: Optional[pulumi.Input[str]] = None):
@@ -2168,14 +2168,14 @@ class ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArgs:
 
 
 @pulumi.input_type
-class ServicePerimeterSpecArgs:
+calass ServicePerimeterSpecArrgs:
     def __init__(__self__, *,
                  access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 egress_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyArgs']]]] = None,
-                 ingress_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyArgs']]]] = None,
+                 egress_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyArrgs']]]] = None,
+                 ingress_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyArrgs']]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  restricted_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 vpc_accessible_services: Optional[pulumi.Input['ServicePerimeterSpecVpcAccessibleServicesArgs']] = None):
+                 vpc_accessible_services: Optional[pulumi.Input['ServicePerimeterSpecVpcAccessibleServicesArrgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] access_levels: A list of AccessLevel resource names that allow resources within
                the ServicePerimeter to be accessed from the internet.
@@ -2186,12 +2186,12 @@ class ServicePerimeterSpecArgs:
                origins within the perimeter. For Service Perimeter Bridge, must
                be empty.
                Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyArgs']]] egress_policies: List of EgressPolicies to apply to the perimeter. A perimeter may
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyArrgs']]] egress_policies: List of EgressPolicies to apply to the perimeter. A perimeter may
                have multiple EgressPolicies, each of which is evaluated separately.
                Access is granted if any EgressPolicy grants it. Must be empty for
                a perimeter bridge.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyArgs']]] ingress_policies: List of `IngressPolicies` to apply to the perimeter. A perimeter may
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyArrgs']]] ingress_policies: List of `IngressPolicies` to apply to the perimeter. A perimeter may
                have multiple `IngressPolicies`, each of which is evaluated
                separately. Access is granted if any `Ingress Policy` grants it.
                Must be empty for a perimeter bridge.
@@ -2204,7 +2204,7 @@ class ServicePerimeterSpecArgs:
                `storage.googleapis.com` is specified, access to the storage
                buckets inside the perimeter must meet the perimeter's access
                restrictions.
-        :param pulumi.Input['ServicePerimeterSpecVpcAccessibleServicesArgs'] vpc_accessible_services: Specifies how APIs are allowed to communicate within the Service
+        :param pulumi.Input['ServicePerimeterSpecVpcAccessibleServicesArrgs'] vpc_accessible_services: Specifies how APIs are allowed to communicate within the Service
                Perimeter.
                Structure is documented below.
         """
@@ -2243,7 +2243,7 @@ class ServicePerimeterSpecArgs:
 
     @property
     @pulumi.getter(name="egressPolicies")
-    def egress_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyArgs']]]]:
+    def egress_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyArrgs']]]]:
         """
         List of EgressPolicies to apply to the perimeter. A perimeter may
         have multiple EgressPolicies, each of which is evaluated separately.
@@ -2254,12 +2254,12 @@ class ServicePerimeterSpecArgs:
         return pulumi.get(self, "egress_policies")
 
     @egress_policies.setter
-    def egress_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyArgs']]]]):
+    def egress_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyArrgs']]]]):
         pulumi.set(self, "egress_policies", value)
 
     @property
     @pulumi.getter(name="ingressPolicies")
-    def ingress_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyArgs']]]]:
+    def ingress_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyArrgs']]]]:
         """
         List of `IngressPolicies` to apply to the perimeter. A perimeter may
         have multiple `IngressPolicies`, each of which is evaluated
@@ -2270,7 +2270,7 @@ class ServicePerimeterSpecArgs:
         return pulumi.get(self, "ingress_policies")
 
     @ingress_policies.setter
-    def ingress_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyArgs']]]]):
+    def ingress_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyArrgs']]]]):
         pulumi.set(self, "ingress_policies", value)
 
     @property
@@ -2305,7 +2305,7 @@ class ServicePerimeterSpecArgs:
 
     @property
     @pulumi.getter(name="vpcAccessibleServices")
-    def vpc_accessible_services(self) -> Optional[pulumi.Input['ServicePerimeterSpecVpcAccessibleServicesArgs']]:
+    def vpc_accessible_services(self) -> Optional[pulumi.Input['ServicePerimeterSpecVpcAccessibleServicesArrgs']]:
         """
         Specifies how APIs are allowed to communicate within the Service
         Perimeter.
@@ -2314,19 +2314,19 @@ class ServicePerimeterSpecArgs:
         return pulumi.get(self, "vpc_accessible_services")
 
     @vpc_accessible_services.setter
-    def vpc_accessible_services(self, value: Optional[pulumi.Input['ServicePerimeterSpecVpcAccessibleServicesArgs']]):
+    def vpc_accessible_services(self, value: Optional[pulumi.Input['ServicePerimeterSpecVpcAccessibleServicesArrgs']]):
         pulumi.set(self, "vpc_accessible_services", value)
 
 
 @pulumi.input_type
-class ServicePerimeterSpecEgressPolicyArgs:
+calass ServicePerimeterSpecEgressPolicyArrgs:
     def __init__(__self__, *,
-                 egress_from: Optional[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressFromArgs']] = None,
-                 egress_to: Optional[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToArgs']] = None):
+                 egress_from: Optional[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressFromArrgs']] = None,
+                 egress_to: Optional[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToArrgs']] = None):
         """
-        :param pulumi.Input['ServicePerimeterSpecEgressPolicyEgressFromArgs'] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+        :param pulumi.Input['ServicePerimeterSpecEgressPolicyEgressFromArrgs'] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
-        :param pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToArgs'] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
+        :param pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToArrgs'] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
                cause this `EgressPolicy` to apply.
                Structure is documented below.
         """
@@ -2337,7 +2337,7 @@ class ServicePerimeterSpecEgressPolicyArgs:
 
     @property
     @pulumi.getter(name="egressFrom")
-    def egress_from(self) -> Optional[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressFromArgs']]:
+    def egress_from(self) -> Optional[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressFromArrgs']]:
         """
         Defines conditions on the source of a request causing this `EgressPolicy` to apply.
         Structure is documented below.
@@ -2345,12 +2345,12 @@ class ServicePerimeterSpecEgressPolicyArgs:
         return pulumi.get(self, "egress_from")
 
     @egress_from.setter
-    def egress_from(self, value: Optional[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressFromArgs']]):
+    def egress_from(self, value: Optional[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressFromArrgs']]):
         pulumi.set(self, "egress_from", value)
 
     @property
     @pulumi.getter(name="egressTo")
-    def egress_to(self) -> Optional[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToArgs']]:
+    def egress_to(self) -> Optional[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToArrgs']]:
         """
         Defines the conditions on the `ApiOperation` and destination resources that
         cause this `EgressPolicy` to apply.
@@ -2359,17 +2359,17 @@ class ServicePerimeterSpecEgressPolicyArgs:
         return pulumi.get(self, "egress_to")
 
     @egress_to.setter
-    def egress_to(self, value: Optional[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToArgs']]):
+    def egress_to(self, value: Optional[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToArrgs']]):
         pulumi.set(self, "egress_to", value)
 
 
 @pulumi.input_type
-class ServicePerimeterSpecEgressPolicyEgressFromArgs:
+calass ServicePerimeterSpecEgressPolicyEgressFromArrgs:
     def __init__(__self__, *,
                  identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_type: Optional[pulumi.Input[str]] = None,
                  source_restriction: Optional[pulumi.Input[str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressFromSourceArgs']]]] = None):
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressFromSourceArrgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: A list of identities that are allowed access through this `EgressPolicy`.
                Should be in the format of email address. The email address should
@@ -2380,7 +2380,7 @@ class ServicePerimeterSpecEgressPolicyEgressFromArgs:
                Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         :param pulumi.Input[str] source_restriction: Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
                Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressFromSourceArgs']]] sources: Sources that this EgressPolicy authorizes access from.
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressFromSourceArrgs']]] sources: Sources that this EgressPolicy authorizes access from.
                Structure is documented below.
         """
         if identities is not None:
@@ -2436,7 +2436,7 @@ class ServicePerimeterSpecEgressPolicyEgressFromArgs:
 
     @property
     @pulumi.getter
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressFromSourceArgs']]]]:
+    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressFromSourceArrgs']]]]:
         """
         Sources that this EgressPolicy authorizes access from.
         Structure is documented below.
@@ -2444,12 +2444,12 @@ class ServicePerimeterSpecEgressPolicyEgressFromArgs:
         return pulumi.get(self, "sources")
 
     @sources.setter
-    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressFromSourceArgs']]]]):
+    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressFromSourceArrgs']]]]):
         pulumi.set(self, "sources", value)
 
 
 @pulumi.input_type
-class ServicePerimeterSpecEgressPolicyEgressFromSourceArgs:
+calass ServicePerimeterSpecEgressPolicyEgressFromSourceArrgs:
     def __init__(__self__, *,
                  access_level: Optional[pulumi.Input[str]] = None):
         """
@@ -2472,16 +2472,16 @@ class ServicePerimeterSpecEgressPolicyEgressFromSourceArgs:
 
 
 @pulumi.input_type
-class ServicePerimeterSpecEgressPolicyEgressToArgs:
+calass ServicePerimeterSpecEgressPolicyEgressToArrgs:
     def __init__(__self__, *,
                  external_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToOperationArgs']]]] = None,
+                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToOperationArrgs']]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] external_resources: A list of external resources that are allowed to be accessed. A request
                matches if it contains an external resource in this list (Example:
                s3://bucket/path). Currently '*' is not allowed.
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToOperationArgs']]] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToOperationArrgs']]] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: A list of resources, currently only projects in the form
@@ -2513,7 +2513,7 @@ class ServicePerimeterSpecEgressPolicyEgressToArgs:
 
     @property
     @pulumi.getter
-    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToOperationArgs']]]]:
+    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToOperationArrgs']]]]:
         """
         A list of `ApiOperations` that this egress rule applies to. A request matches
         if it contains an operation/service in this list.
@@ -2522,7 +2522,7 @@ class ServicePerimeterSpecEgressPolicyEgressToArgs:
         return pulumi.get(self, "operations")
 
     @operations.setter
-    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToOperationArgs']]]]):
+    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToOperationArrgs']]]]):
         pulumi.set(self, "operations", value)
 
     @property
@@ -2543,12 +2543,12 @@ class ServicePerimeterSpecEgressPolicyEgressToArgs:
 
 
 @pulumi.input_type
-class ServicePerimeterSpecEgressPolicyEgressToOperationArgs:
+calass ServicePerimeterSpecEgressPolicyEgressToOperationArrgs:
     def __init__(__self__, *,
-                 method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs']]]] = None,
+                 method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrgs']]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs']]] method_selectors: API methods or permissions to allow. Method or permission must belong
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrgs']]] method_selectors: API methods or permissions to allow. Method or permission must belong
                to the service specified by `serviceName` field. A single MethodSelector
                entry with `*` specified for the `method` field will allow all methods
                AND permissions for the service specified in `serviceName`.
@@ -2564,7 +2564,7 @@ class ServicePerimeterSpecEgressPolicyEgressToOperationArgs:
 
     @property
     @pulumi.getter(name="methodSelectors")
-    def method_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs']]]]:
+    def method_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrgs']]]]:
         """
         API methods or permissions to allow. Method or permission must belong
         to the service specified by `serviceName` field. A single MethodSelector
@@ -2575,7 +2575,7 @@ class ServicePerimeterSpecEgressPolicyEgressToOperationArgs:
         return pulumi.get(self, "method_selectors")
 
     @method_selectors.setter
-    def method_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs']]]]):
+    def method_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrgs']]]]):
         pulumi.set(self, "method_selectors", value)
 
     @property
@@ -2594,7 +2594,7 @@ class ServicePerimeterSpecEgressPolicyEgressToOperationArgs:
 
 
 @pulumi.input_type
-class ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs:
+calass ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrgs:
     def __init__(__self__, *,
                  method: Optional[pulumi.Input[str]] = None,
                  permission: Optional[pulumi.Input[str]] = None):
@@ -2639,15 +2639,15 @@ class ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs:
 
 
 @pulumi.input_type
-class ServicePerimeterSpecIngressPolicyArgs:
+calass ServicePerimeterSpecIngressPolicyArrgs:
     def __init__(__self__, *,
-                 ingress_from: Optional[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressFromArgs']] = None,
-                 ingress_to: Optional[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToArgs']] = None):
+                 ingress_from: Optional[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressFromArrgs']] = None,
+                 ingress_to: Optional[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToArrgs']] = None):
         """
-        :param pulumi.Input['ServicePerimeterSpecIngressPolicyIngressFromArgs'] ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
+        :param pulumi.Input['ServicePerimeterSpecIngressPolicyIngressFromArrgs'] ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
                to apply.
                Structure is documented below.
-        :param pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToArgs'] ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
+        :param pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToArrgs'] ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
                this `IngressPolicy` to apply.
                Structure is documented below.
         """
@@ -2658,7 +2658,7 @@ class ServicePerimeterSpecIngressPolicyArgs:
 
     @property
     @pulumi.getter(name="ingressFrom")
-    def ingress_from(self) -> Optional[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressFromArgs']]:
+    def ingress_from(self) -> Optional[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressFromArrgs']]:
         """
         Defines the conditions on the source of a request causing this `IngressPolicy`
         to apply.
@@ -2667,12 +2667,12 @@ class ServicePerimeterSpecIngressPolicyArgs:
         return pulumi.get(self, "ingress_from")
 
     @ingress_from.setter
-    def ingress_from(self, value: Optional[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressFromArgs']]):
+    def ingress_from(self, value: Optional[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressFromArrgs']]):
         pulumi.set(self, "ingress_from", value)
 
     @property
     @pulumi.getter(name="ingressTo")
-    def ingress_to(self) -> Optional[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToArgs']]:
+    def ingress_to(self) -> Optional[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToArrgs']]:
         """
         Defines the conditions on the `ApiOperation` and request destination that cause
         this `IngressPolicy` to apply.
@@ -2681,16 +2681,16 @@ class ServicePerimeterSpecIngressPolicyArgs:
         return pulumi.get(self, "ingress_to")
 
     @ingress_to.setter
-    def ingress_to(self, value: Optional[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToArgs']]):
+    def ingress_to(self, value: Optional[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToArrgs']]):
         pulumi.set(self, "ingress_to", value)
 
 
 @pulumi.input_type
-class ServicePerimeterSpecIngressPolicyIngressFromArgs:
+calass ServicePerimeterSpecIngressPolicyIngressFromArrgs:
     def __init__(__self__, *,
                  identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_type: Optional[pulumi.Input[str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressFromSourceArgs']]]] = None):
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressFromSourceArrgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: A list of identities that are allowed access through this ingress policy.
                Should be in the format of email address. The email address should represent
@@ -2699,7 +2699,7 @@ class ServicePerimeterSpecIngressPolicyIngressFromArgs:
                perimeter. If left unspecified, then members of `identities` field will be
                allowed access.
                Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressFromSourceArgs']]] sources: Sources that this `IngressPolicy` authorizes access from.
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressFromSourceArrgs']]] sources: Sources that this `IngressPolicy` authorizes access from.
                Structure is documented below.
         """
         if identities is not None:
@@ -2740,7 +2740,7 @@ class ServicePerimeterSpecIngressPolicyIngressFromArgs:
 
     @property
     @pulumi.getter
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressFromSourceArgs']]]]:
+    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressFromSourceArrgs']]]]:
         """
         Sources that this `IngressPolicy` authorizes access from.
         Structure is documented below.
@@ -2748,12 +2748,12 @@ class ServicePerimeterSpecIngressPolicyIngressFromArgs:
         return pulumi.get(self, "sources")
 
     @sources.setter
-    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressFromSourceArgs']]]]):
+    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressFromSourceArrgs']]]]):
         pulumi.set(self, "sources", value)
 
 
 @pulumi.input_type
-class ServicePerimeterSpecIngressPolicyIngressFromSourceArgs:
+calass ServicePerimeterSpecIngressPolicyIngressFromSourceArrgs:
     def __init__(__self__, *,
                  access_level: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[str]] = None):
@@ -2802,12 +2802,12 @@ class ServicePerimeterSpecIngressPolicyIngressFromSourceArgs:
 
 
 @pulumi.input_type
-class ServicePerimeterSpecIngressPolicyIngressToArgs:
+calass ServicePerimeterSpecIngressPolicyIngressToArrgs:
     def __init__(__self__, *,
-                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToOperationArgs']]]] = None,
+                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToOperationArrgs']]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToOperationArgs']]] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToOperationArrgs']]] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: A list of resources, currently only projects in the form
@@ -2826,7 +2826,7 @@ class ServicePerimeterSpecIngressPolicyIngressToArgs:
 
     @property
     @pulumi.getter
-    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToOperationArgs']]]]:
+    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToOperationArrgs']]]]:
         """
         A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
         are allowed to perform in this `ServicePerimeter`.
@@ -2835,7 +2835,7 @@ class ServicePerimeterSpecIngressPolicyIngressToArgs:
         return pulumi.get(self, "operations")
 
     @operations.setter
-    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToOperationArgs']]]]):
+    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToOperationArrgs']]]]):
         pulumi.set(self, "operations", value)
 
     @property
@@ -2859,12 +2859,12 @@ class ServicePerimeterSpecIngressPolicyIngressToArgs:
 
 
 @pulumi.input_type
-class ServicePerimeterSpecIngressPolicyIngressToOperationArgs:
+calass ServicePerimeterSpecIngressPolicyIngressToOperationArrgs:
     def __init__(__self__, *,
-                 method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs']]]] = None,
+                 method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrgs']]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs']]] method_selectors: API methods or permissions to allow. Method or permission must belong
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrgs']]] method_selectors: API methods or permissions to allow. Method or permission must belong
                to the service specified by `serviceName` field. A single MethodSelector
                entry with `*` specified for the `method` field will allow all methods
                AND permissions for the service specified in `serviceName`.
@@ -2880,7 +2880,7 @@ class ServicePerimeterSpecIngressPolicyIngressToOperationArgs:
 
     @property
     @pulumi.getter(name="methodSelectors")
-    def method_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs']]]]:
+    def method_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrgs']]]]:
         """
         API methods or permissions to allow. Method or permission must belong
         to the service specified by `serviceName` field. A single MethodSelector
@@ -2891,7 +2891,7 @@ class ServicePerimeterSpecIngressPolicyIngressToOperationArgs:
         return pulumi.get(self, "method_selectors")
 
     @method_selectors.setter
-    def method_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs']]]]):
+    def method_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrgs']]]]):
         pulumi.set(self, "method_selectors", value)
 
     @property
@@ -2910,7 +2910,7 @@ class ServicePerimeterSpecIngressPolicyIngressToOperationArgs:
 
 
 @pulumi.input_type
-class ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs:
+calass ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrgs:
     def __init__(__self__, *,
                  method: Optional[pulumi.Input[str]] = None,
                  permission: Optional[pulumi.Input[str]] = None):
@@ -2955,7 +2955,7 @@ class ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs:
 
 
 @pulumi.input_type
-class ServicePerimeterSpecVpcAccessibleServicesArgs:
+calass ServicePerimeterSpecVpcAccessibleServicesArrgs:
     def __init__(__self__, *,
                  allowed_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_restriction: Optional[pulumi.Input[bool]] = None):
@@ -2998,14 +2998,14 @@ class ServicePerimeterSpecVpcAccessibleServicesArgs:
 
 
 @pulumi.input_type
-class ServicePerimeterStatusArgs:
+calass ServicePerimeterStatusArrgs:
     def __init__(__self__, *,
                  access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 egress_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyArgs']]]] = None,
-                 ingress_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyArgs']]]] = None,
+                 egress_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyArrgs']]]] = None,
+                 ingress_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyArrgs']]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  restricted_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 vpc_accessible_services: Optional[pulumi.Input['ServicePerimeterStatusVpcAccessibleServicesArgs']] = None):
+                 vpc_accessible_services: Optional[pulumi.Input['ServicePerimeterStatusVpcAccessibleServicesArrgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] access_levels: A list of AccessLevel resource names that allow resources within
                the ServicePerimeter to be accessed from the internet.
@@ -3016,12 +3016,12 @@ class ServicePerimeterStatusArgs:
                origins within the perimeter. For Service Perimeter Bridge, must
                be empty.
                Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyArgs']]] egress_policies: List of EgressPolicies to apply to the perimeter. A perimeter may
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyArrgs']]] egress_policies: List of EgressPolicies to apply to the perimeter. A perimeter may
                have multiple EgressPolicies, each of which is evaluated separately.
                Access is granted if any EgressPolicy grants it. Must be empty for
                a perimeter bridge.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyArgs']]] ingress_policies: List of `IngressPolicies` to apply to the perimeter. A perimeter may
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyArrgs']]] ingress_policies: List of `IngressPolicies` to apply to the perimeter. A perimeter may
                have multiple `IngressPolicies`, each of which is evaluated
                separately. Access is granted if any `Ingress Policy` grants it.
                Must be empty for a perimeter bridge.
@@ -3034,7 +3034,7 @@ class ServicePerimeterStatusArgs:
                `storage.googleapis.com` is specified, access to the storage
                buckets inside the perimeter must meet the perimeter's access
                restrictions.
-        :param pulumi.Input['ServicePerimeterStatusVpcAccessibleServicesArgs'] vpc_accessible_services: Specifies how APIs are allowed to communicate within the Service
+        :param pulumi.Input['ServicePerimeterStatusVpcAccessibleServicesArrgs'] vpc_accessible_services: Specifies how APIs are allowed to communicate within the Service
                Perimeter.
                Structure is documented below.
         """
@@ -3073,7 +3073,7 @@ class ServicePerimeterStatusArgs:
 
     @property
     @pulumi.getter(name="egressPolicies")
-    def egress_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyArgs']]]]:
+    def egress_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyArrgs']]]]:
         """
         List of EgressPolicies to apply to the perimeter. A perimeter may
         have multiple EgressPolicies, each of which is evaluated separately.
@@ -3084,12 +3084,12 @@ class ServicePerimeterStatusArgs:
         return pulumi.get(self, "egress_policies")
 
     @egress_policies.setter
-    def egress_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyArgs']]]]):
+    def egress_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyArrgs']]]]):
         pulumi.set(self, "egress_policies", value)
 
     @property
     @pulumi.getter(name="ingressPolicies")
-    def ingress_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyArgs']]]]:
+    def ingress_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyArrgs']]]]:
         """
         List of `IngressPolicies` to apply to the perimeter. A perimeter may
         have multiple `IngressPolicies`, each of which is evaluated
@@ -3100,7 +3100,7 @@ class ServicePerimeterStatusArgs:
         return pulumi.get(self, "ingress_policies")
 
     @ingress_policies.setter
-    def ingress_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyArgs']]]]):
+    def ingress_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyArrgs']]]]):
         pulumi.set(self, "ingress_policies", value)
 
     @property
@@ -3135,7 +3135,7 @@ class ServicePerimeterStatusArgs:
 
     @property
     @pulumi.getter(name="vpcAccessibleServices")
-    def vpc_accessible_services(self) -> Optional[pulumi.Input['ServicePerimeterStatusVpcAccessibleServicesArgs']]:
+    def vpc_accessible_services(self) -> Optional[pulumi.Input['ServicePerimeterStatusVpcAccessibleServicesArrgs']]:
         """
         Specifies how APIs are allowed to communicate within the Service
         Perimeter.
@@ -3144,19 +3144,19 @@ class ServicePerimeterStatusArgs:
         return pulumi.get(self, "vpc_accessible_services")
 
     @vpc_accessible_services.setter
-    def vpc_accessible_services(self, value: Optional[pulumi.Input['ServicePerimeterStatusVpcAccessibleServicesArgs']]):
+    def vpc_accessible_services(self, value: Optional[pulumi.Input['ServicePerimeterStatusVpcAccessibleServicesArrgs']]):
         pulumi.set(self, "vpc_accessible_services", value)
 
 
 @pulumi.input_type
-class ServicePerimeterStatusEgressPolicyArgs:
+calass ServicePerimeterStatusEgressPolicyArrgs:
     def __init__(__self__, *,
-                 egress_from: Optional[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressFromArgs']] = None,
-                 egress_to: Optional[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToArgs']] = None):
+                 egress_from: Optional[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressFromArrgs']] = None,
+                 egress_to: Optional[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToArrgs']] = None):
         """
-        :param pulumi.Input['ServicePerimeterStatusEgressPolicyEgressFromArgs'] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+        :param pulumi.Input['ServicePerimeterStatusEgressPolicyEgressFromArrgs'] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
-        :param pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToArgs'] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
+        :param pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToArrgs'] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
                cause this `EgressPolicy` to apply.
                Structure is documented below.
         """
@@ -3167,7 +3167,7 @@ class ServicePerimeterStatusEgressPolicyArgs:
 
     @property
     @pulumi.getter(name="egressFrom")
-    def egress_from(self) -> Optional[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressFromArgs']]:
+    def egress_from(self) -> Optional[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressFromArrgs']]:
         """
         Defines conditions on the source of a request causing this `EgressPolicy` to apply.
         Structure is documented below.
@@ -3175,12 +3175,12 @@ class ServicePerimeterStatusEgressPolicyArgs:
         return pulumi.get(self, "egress_from")
 
     @egress_from.setter
-    def egress_from(self, value: Optional[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressFromArgs']]):
+    def egress_from(self, value: Optional[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressFromArrgs']]):
         pulumi.set(self, "egress_from", value)
 
     @property
     @pulumi.getter(name="egressTo")
-    def egress_to(self) -> Optional[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToArgs']]:
+    def egress_to(self) -> Optional[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToArrgs']]:
         """
         Defines the conditions on the `ApiOperation` and destination resources that
         cause this `EgressPolicy` to apply.
@@ -3189,17 +3189,17 @@ class ServicePerimeterStatusEgressPolicyArgs:
         return pulumi.get(self, "egress_to")
 
     @egress_to.setter
-    def egress_to(self, value: Optional[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToArgs']]):
+    def egress_to(self, value: Optional[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToArrgs']]):
         pulumi.set(self, "egress_to", value)
 
 
 @pulumi.input_type
-class ServicePerimeterStatusEgressPolicyEgressFromArgs:
+calass ServicePerimeterStatusEgressPolicyEgressFromArrgs:
     def __init__(__self__, *,
                  identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_type: Optional[pulumi.Input[str]] = None,
                  source_restriction: Optional[pulumi.Input[str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressFromSourceArgs']]]] = None):
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressFromSourceArrgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: A list of identities that are allowed access through this `EgressPolicy`.
                Should be in the format of email address. The email address should
@@ -3210,7 +3210,7 @@ class ServicePerimeterStatusEgressPolicyEgressFromArgs:
                Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         :param pulumi.Input[str] source_restriction: Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
                Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressFromSourceArgs']]] sources: Sources that this EgressPolicy authorizes access from.
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressFromSourceArrgs']]] sources: Sources that this EgressPolicy authorizes access from.
                Structure is documented below.
         """
         if identities is not None:
@@ -3266,7 +3266,7 @@ class ServicePerimeterStatusEgressPolicyEgressFromArgs:
 
     @property
     @pulumi.getter
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressFromSourceArgs']]]]:
+    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressFromSourceArrgs']]]]:
         """
         Sources that this EgressPolicy authorizes access from.
         Structure is documented below.
@@ -3274,12 +3274,12 @@ class ServicePerimeterStatusEgressPolicyEgressFromArgs:
         return pulumi.get(self, "sources")
 
     @sources.setter
-    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressFromSourceArgs']]]]):
+    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressFromSourceArrgs']]]]):
         pulumi.set(self, "sources", value)
 
 
 @pulumi.input_type
-class ServicePerimeterStatusEgressPolicyEgressFromSourceArgs:
+calass ServicePerimeterStatusEgressPolicyEgressFromSourceArrgs:
     def __init__(__self__, *,
                  access_level: Optional[pulumi.Input[str]] = None):
         """
@@ -3302,16 +3302,16 @@ class ServicePerimeterStatusEgressPolicyEgressFromSourceArgs:
 
 
 @pulumi.input_type
-class ServicePerimeterStatusEgressPolicyEgressToArgs:
+calass ServicePerimeterStatusEgressPolicyEgressToArrgs:
     def __init__(__self__, *,
                  external_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToOperationArgs']]]] = None,
+                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToOperationArrgs']]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] external_resources: A list of external resources that are allowed to be accessed. A request
                matches if it contains an external resource in this list (Example:
                s3://bucket/path). Currently '*' is not allowed.
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToOperationArgs']]] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToOperationArrgs']]] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: A list of resources, currently only projects in the form
@@ -3343,7 +3343,7 @@ class ServicePerimeterStatusEgressPolicyEgressToArgs:
 
     @property
     @pulumi.getter
-    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToOperationArgs']]]]:
+    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToOperationArrgs']]]]:
         """
         A list of `ApiOperations` that this egress rule applies to. A request matches
         if it contains an operation/service in this list.
@@ -3352,7 +3352,7 @@ class ServicePerimeterStatusEgressPolicyEgressToArgs:
         return pulumi.get(self, "operations")
 
     @operations.setter
-    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToOperationArgs']]]]):
+    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToOperationArrgs']]]]):
         pulumi.set(self, "operations", value)
 
     @property
@@ -3373,12 +3373,12 @@ class ServicePerimeterStatusEgressPolicyEgressToArgs:
 
 
 @pulumi.input_type
-class ServicePerimeterStatusEgressPolicyEgressToOperationArgs:
+calass ServicePerimeterStatusEgressPolicyEgressToOperationArrgs:
     def __init__(__self__, *,
-                 method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs']]]] = None,
+                 method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrgs']]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs']]] method_selectors: API methods or permissions to allow. Method or permission must belong
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrgs']]] method_selectors: API methods or permissions to allow. Method or permission must belong
                to the service specified by `serviceName` field. A single MethodSelector
                entry with `*` specified for the `method` field will allow all methods
                AND permissions for the service specified in `serviceName`.
@@ -3394,7 +3394,7 @@ class ServicePerimeterStatusEgressPolicyEgressToOperationArgs:
 
     @property
     @pulumi.getter(name="methodSelectors")
-    def method_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs']]]]:
+    def method_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrgs']]]]:
         """
         API methods or permissions to allow. Method or permission must belong
         to the service specified by `serviceName` field. A single MethodSelector
@@ -3405,7 +3405,7 @@ class ServicePerimeterStatusEgressPolicyEgressToOperationArgs:
         return pulumi.get(self, "method_selectors")
 
     @method_selectors.setter
-    def method_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs']]]]):
+    def method_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrgs']]]]):
         pulumi.set(self, "method_selectors", value)
 
     @property
@@ -3424,7 +3424,7 @@ class ServicePerimeterStatusEgressPolicyEgressToOperationArgs:
 
 
 @pulumi.input_type
-class ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs:
+calass ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrgs:
     def __init__(__self__, *,
                  method: Optional[pulumi.Input[str]] = None,
                  permission: Optional[pulumi.Input[str]] = None):
@@ -3469,15 +3469,15 @@ class ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs:
 
 
 @pulumi.input_type
-class ServicePerimeterStatusIngressPolicyArgs:
+calass ServicePerimeterStatusIngressPolicyArrgs:
     def __init__(__self__, *,
-                 ingress_from: Optional[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressFromArgs']] = None,
-                 ingress_to: Optional[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToArgs']] = None):
+                 ingress_from: Optional[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressFromArrgs']] = None,
+                 ingress_to: Optional[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToArrgs']] = None):
         """
-        :param pulumi.Input['ServicePerimeterStatusIngressPolicyIngressFromArgs'] ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
+        :param pulumi.Input['ServicePerimeterStatusIngressPolicyIngressFromArrgs'] ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
                to apply.
                Structure is documented below.
-        :param pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToArgs'] ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
+        :param pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToArrgs'] ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
                this `IngressPolicy` to apply.
                Structure is documented below.
         """
@@ -3488,7 +3488,7 @@ class ServicePerimeterStatusIngressPolicyArgs:
 
     @property
     @pulumi.getter(name="ingressFrom")
-    def ingress_from(self) -> Optional[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressFromArgs']]:
+    def ingress_from(self) -> Optional[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressFromArrgs']]:
         """
         Defines the conditions on the source of a request causing this `IngressPolicy`
         to apply.
@@ -3497,12 +3497,12 @@ class ServicePerimeterStatusIngressPolicyArgs:
         return pulumi.get(self, "ingress_from")
 
     @ingress_from.setter
-    def ingress_from(self, value: Optional[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressFromArgs']]):
+    def ingress_from(self, value: Optional[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressFromArrgs']]):
         pulumi.set(self, "ingress_from", value)
 
     @property
     @pulumi.getter(name="ingressTo")
-    def ingress_to(self) -> Optional[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToArgs']]:
+    def ingress_to(self) -> Optional[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToArrgs']]:
         """
         Defines the conditions on the `ApiOperation` and request destination that cause
         this `IngressPolicy` to apply.
@@ -3511,16 +3511,16 @@ class ServicePerimeterStatusIngressPolicyArgs:
         return pulumi.get(self, "ingress_to")
 
     @ingress_to.setter
-    def ingress_to(self, value: Optional[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToArgs']]):
+    def ingress_to(self, value: Optional[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToArrgs']]):
         pulumi.set(self, "ingress_to", value)
 
 
 @pulumi.input_type
-class ServicePerimeterStatusIngressPolicyIngressFromArgs:
+calass ServicePerimeterStatusIngressPolicyIngressFromArrgs:
     def __init__(__self__, *,
                  identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_type: Optional[pulumi.Input[str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressFromSourceArgs']]]] = None):
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressFromSourceArrgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: A list of identities that are allowed access through this ingress policy.
                Should be in the format of email address. The email address should represent
@@ -3529,7 +3529,7 @@ class ServicePerimeterStatusIngressPolicyIngressFromArgs:
                perimeter. If left unspecified, then members of `identities` field will be
                allowed access.
                Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressFromSourceArgs']]] sources: Sources that this `IngressPolicy` authorizes access from.
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressFromSourceArrgs']]] sources: Sources that this `IngressPolicy` authorizes access from.
                Structure is documented below.
         """
         if identities is not None:
@@ -3570,7 +3570,7 @@ class ServicePerimeterStatusIngressPolicyIngressFromArgs:
 
     @property
     @pulumi.getter
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressFromSourceArgs']]]]:
+    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressFromSourceArrgs']]]]:
         """
         Sources that this `IngressPolicy` authorizes access from.
         Structure is documented below.
@@ -3578,12 +3578,12 @@ class ServicePerimeterStatusIngressPolicyIngressFromArgs:
         return pulumi.get(self, "sources")
 
     @sources.setter
-    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressFromSourceArgs']]]]):
+    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressFromSourceArrgs']]]]):
         pulumi.set(self, "sources", value)
 
 
 @pulumi.input_type
-class ServicePerimeterStatusIngressPolicyIngressFromSourceArgs:
+calass ServicePerimeterStatusIngressPolicyIngressFromSourceArrgs:
     def __init__(__self__, *,
                  access_level: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[str]] = None):
@@ -3632,12 +3632,12 @@ class ServicePerimeterStatusIngressPolicyIngressFromSourceArgs:
 
 
 @pulumi.input_type
-class ServicePerimeterStatusIngressPolicyIngressToArgs:
+calass ServicePerimeterStatusIngressPolicyIngressToArrgs:
     def __init__(__self__, *,
-                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToOperationArgs']]]] = None,
+                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToOperationArrgs']]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToOperationArgs']]] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToOperationArrgs']]] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: A list of resources, currently only projects in the form
@@ -3656,7 +3656,7 @@ class ServicePerimeterStatusIngressPolicyIngressToArgs:
 
     @property
     @pulumi.getter
-    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToOperationArgs']]]]:
+    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToOperationArrgs']]]]:
         """
         A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
         are allowed to perform in this `ServicePerimeter`.
@@ -3665,7 +3665,7 @@ class ServicePerimeterStatusIngressPolicyIngressToArgs:
         return pulumi.get(self, "operations")
 
     @operations.setter
-    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToOperationArgs']]]]):
+    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToOperationArrgs']]]]):
         pulumi.set(self, "operations", value)
 
     @property
@@ -3689,12 +3689,12 @@ class ServicePerimeterStatusIngressPolicyIngressToArgs:
 
 
 @pulumi.input_type
-class ServicePerimeterStatusIngressPolicyIngressToOperationArgs:
+calass ServicePerimeterStatusIngressPolicyIngressToOperationArrgs:
     def __init__(__self__, *,
-                 method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs']]]] = None,
+                 method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrgs']]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs']]] method_selectors: API methods or permissions to allow. Method or permission must belong
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrgs']]] method_selectors: API methods or permissions to allow. Method or permission must belong
                to the service specified by `serviceName` field. A single MethodSelector
                entry with `*` specified for the `method` field will allow all methods
                AND permissions for the service specified in `serviceName`.
@@ -3710,7 +3710,7 @@ class ServicePerimeterStatusIngressPolicyIngressToOperationArgs:
 
     @property
     @pulumi.getter(name="methodSelectors")
-    def method_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs']]]]:
+    def method_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrgs']]]]:
         """
         API methods or permissions to allow. Method or permission must belong
         to the service specified by `serviceName` field. A single MethodSelector
@@ -3721,7 +3721,7 @@ class ServicePerimeterStatusIngressPolicyIngressToOperationArgs:
         return pulumi.get(self, "method_selectors")
 
     @method_selectors.setter
-    def method_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs']]]]):
+    def method_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrgs']]]]):
         pulumi.set(self, "method_selectors", value)
 
     @property
@@ -3740,7 +3740,7 @@ class ServicePerimeterStatusIngressPolicyIngressToOperationArgs:
 
 
 @pulumi.input_type
-class ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs:
+calass ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrgs:
     def __init__(__self__, *,
                  method: Optional[pulumi.Input[str]] = None,
                  permission: Optional[pulumi.Input[str]] = None):
@@ -3785,7 +3785,7 @@ class ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs:
 
 
 @pulumi.input_type
-class ServicePerimeterStatusVpcAccessibleServicesArgs:
+calass ServicePerimeterStatusVpcAccessibleServicesArrgs:
     def __init__(__self__, *,
                  allowed_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_restriction: Optional[pulumi.Input[bool]] = None):
@@ -3828,15 +3828,15 @@ class ServicePerimeterStatusVpcAccessibleServicesArgs:
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterArgs:
+calass ServicePerimetersServicePerimeterArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  title: pulumi.Input[str],
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  perimeter_type: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecArgs']] = None,
-                 status: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusArgs']] = None,
+                 spec: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecArrgs']] = None,
+                 status: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusArrgs']] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  use_explicit_dry_run_spec: Optional[pulumi.Input[bool]] = None):
         """
@@ -3864,12 +3864,12 @@ class ServicePerimetersServicePerimeterArgs:
                themselves.
                Default value is `PERIMETER_TYPE_REGULAR`.
                Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
-        :param pulumi.Input['ServicePerimetersServicePerimeterSpecArgs'] spec: Proposed (or dry run) ServicePerimeter configuration.
+        :param pulumi.Input['ServicePerimetersServicePerimeterSpecArrgs'] spec: Proposed (or dry run) ServicePerimeter configuration.
                This configuration allows to specify and test ServicePerimeter configuration
                without enforcing actual access restrictions. Only allowed to be set when
                the `useExplicitDryRunSpec` flag is set.
                Structure is documented below.
-        :param pulumi.Input['ServicePerimetersServicePerimeterStatusArgs'] status: ServicePerimeter configuration. Specifies sets of resources,
+        :param pulumi.Input['ServicePerimetersServicePerimeterStatusArrgs'] status: ServicePerimeter configuration. Specifies sets of resources,
                restricted services and access levels that determine
                perimeter content and boundaries.
                Structure is documented below.
@@ -3983,7 +3983,7 @@ class ServicePerimetersServicePerimeterArgs:
 
     @property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecArgs']]:
+    def spec(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecArrgs']]:
         """
         Proposed (or dry run) ServicePerimeter configuration.
         This configuration allows to specify and test ServicePerimeter configuration
@@ -3994,12 +3994,12 @@ class ServicePerimetersServicePerimeterArgs:
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecArgs']]):
+    def spec(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecArrgs']]):
         pulumi.set(self, "spec", value)
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusArgs']]:
+    def status(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusArrgs']]:
         """
         ServicePerimeter configuration. Specifies sets of resources,
         restricted services and access levels that determine
@@ -4009,7 +4009,7 @@ class ServicePerimetersServicePerimeterArgs:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusArgs']]):
+    def status(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusArrgs']]):
         pulumi.set(self, "status", value)
 
     @property
@@ -4047,14 +4047,14 @@ class ServicePerimetersServicePerimeterArgs:
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterSpecArgs:
+calass ServicePerimetersServicePerimeterSpecArrgs:
     def __init__(__self__, *,
                  access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 egress_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyArgs']]]] = None,
-                 ingress_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyArgs']]]] = None,
+                 egress_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyArrgs']]]] = None,
+                 ingress_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyArrgs']]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  restricted_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 vpc_accessible_services: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs']] = None):
+                 vpc_accessible_services: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArrgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] access_levels: A list of AccessLevel resource names that allow resources within
                the ServicePerimeter to be accessed from the internet.
@@ -4065,12 +4065,12 @@ class ServicePerimetersServicePerimeterSpecArgs:
                origins within the perimeter. For Service Perimeter Bridge, must
                be empty.
                Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyArgs']]] egress_policies: List of EgressPolicies to apply to the perimeter. A perimeter may
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyArrgs']]] egress_policies: List of EgressPolicies to apply to the perimeter. A perimeter may
                have multiple EgressPolicies, each of which is evaluated separately.
                Access is granted if any EgressPolicy grants it. Must be empty for
                a perimeter bridge.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyArgs']]] ingress_policies: List of `IngressPolicies` to apply to the perimeter. A perimeter may
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyArrgs']]] ingress_policies: List of `IngressPolicies` to apply to the perimeter. A perimeter may
                have multiple `IngressPolicies`, each of which is evaluated
                separately. Access is granted if any `Ingress Policy` grants it.
                Must be empty for a perimeter bridge.
@@ -4083,7 +4083,7 @@ class ServicePerimetersServicePerimeterSpecArgs:
                `storage.googleapis.com` is specified, access to the storage
                buckets inside the perimeter must meet the perimeter's access
                restrictions.
-        :param pulumi.Input['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs'] vpc_accessible_services: Specifies how APIs are allowed to communicate within the Service
+        :param pulumi.Input['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArrgs'] vpc_accessible_services: Specifies how APIs are allowed to communicate within the Service
                Perimeter.
                Structure is documented below.
         """
@@ -4122,7 +4122,7 @@ class ServicePerimetersServicePerimeterSpecArgs:
 
     @property
     @pulumi.getter(name="egressPolicies")
-    def egress_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyArgs']]]]:
+    def egress_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyArrgs']]]]:
         """
         List of EgressPolicies to apply to the perimeter. A perimeter may
         have multiple EgressPolicies, each of which is evaluated separately.
@@ -4133,12 +4133,12 @@ class ServicePerimetersServicePerimeterSpecArgs:
         return pulumi.get(self, "egress_policies")
 
     @egress_policies.setter
-    def egress_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyArgs']]]]):
+    def egress_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyArrgs']]]]):
         pulumi.set(self, "egress_policies", value)
 
     @property
     @pulumi.getter(name="ingressPolicies")
-    def ingress_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyArgs']]]]:
+    def ingress_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyArrgs']]]]:
         """
         List of `IngressPolicies` to apply to the perimeter. A perimeter may
         have multiple `IngressPolicies`, each of which is evaluated
@@ -4149,7 +4149,7 @@ class ServicePerimetersServicePerimeterSpecArgs:
         return pulumi.get(self, "ingress_policies")
 
     @ingress_policies.setter
-    def ingress_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyArgs']]]]):
+    def ingress_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyArrgs']]]]):
         pulumi.set(self, "ingress_policies", value)
 
     @property
@@ -4184,7 +4184,7 @@ class ServicePerimetersServicePerimeterSpecArgs:
 
     @property
     @pulumi.getter(name="vpcAccessibleServices")
-    def vpc_accessible_services(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs']]:
+    def vpc_accessible_services(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArrgs']]:
         """
         Specifies how APIs are allowed to communicate within the Service
         Perimeter.
@@ -4193,19 +4193,19 @@ class ServicePerimetersServicePerimeterSpecArgs:
         return pulumi.get(self, "vpc_accessible_services")
 
     @vpc_accessible_services.setter
-    def vpc_accessible_services(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs']]):
+    def vpc_accessible_services(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArrgs']]):
         pulumi.set(self, "vpc_accessible_services", value)
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterSpecEgressPolicyArgs:
+calass ServicePerimetersServicePerimeterSpecEgressPolicyArrgs:
     def __init__(__self__, *,
-                 egress_from: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs']] = None,
-                 egress_to: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs']] = None):
+                 egress_from: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArrgs']] = None,
+                 egress_to: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArrgs']] = None):
         """
-        :param pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs'] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+        :param pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArrgs'] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
-        :param pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs'] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
+        :param pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArrgs'] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
                cause this `EgressPolicy` to apply.
                Structure is documented below.
         """
@@ -4216,7 +4216,7 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyArgs:
 
     @property
     @pulumi.getter(name="egressFrom")
-    def egress_from(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs']]:
+    def egress_from(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArrgs']]:
         """
         Defines conditions on the source of a request causing this `EgressPolicy` to apply.
         Structure is documented below.
@@ -4224,12 +4224,12 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyArgs:
         return pulumi.get(self, "egress_from")
 
     @egress_from.setter
-    def egress_from(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs']]):
+    def egress_from(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArrgs']]):
         pulumi.set(self, "egress_from", value)
 
     @property
     @pulumi.getter(name="egressTo")
-    def egress_to(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs']]:
+    def egress_to(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArrgs']]:
         """
         Defines the conditions on the `ApiOperation` and destination resources that
         cause this `EgressPolicy` to apply.
@@ -4238,17 +4238,17 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyArgs:
         return pulumi.get(self, "egress_to")
 
     @egress_to.setter
-    def egress_to(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs']]):
+    def egress_to(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArrgs']]):
         pulumi.set(self, "egress_to", value)
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs:
+calass ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArrgs:
     def __init__(__self__, *,
                  identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_type: Optional[pulumi.Input[str]] = None,
                  source_restriction: Optional[pulumi.Input[str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs']]]] = None):
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: A list of identities that are allowed access through this `EgressPolicy`.
                Should be in the format of email address. The email address should
@@ -4259,7 +4259,7 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs:
                Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         :param pulumi.Input[str] source_restriction: Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
                Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs']]] sources: Sources that this EgressPolicy authorizes access from.
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrgs']]] sources: Sources that this EgressPolicy authorizes access from.
                Structure is documented below.
         """
         if identities is not None:
@@ -4315,7 +4315,7 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs:
 
     @property
     @pulumi.getter
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs']]]]:
+    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrgs']]]]:
         """
         Sources that this EgressPolicy authorizes access from.
         Structure is documented below.
@@ -4323,12 +4323,12 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs:
         return pulumi.get(self, "sources")
 
     @sources.setter
-    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs']]]]):
+    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrgs']]]]):
         pulumi.set(self, "sources", value)
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs:
+calass ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrgs:
     def __init__(__self__, *,
                  access_level: Optional[pulumi.Input[str]] = None):
         """
@@ -4351,16 +4351,16 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs:
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs:
+calass ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArrgs:
     def __init__(__self__, *,
                  external_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs']]]] = None,
+                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrgs']]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] external_resources: A list of external resources that are allowed to be accessed. A request
                matches if it contains an external resource in this list (Example:
                s3://bucket/path). Currently '*' is not allowed.
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs']]] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrgs']]] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: A list of resources, currently only projects in the form
@@ -4392,7 +4392,7 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs:
 
     @property
     @pulumi.getter
-    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs']]]]:
+    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrgs']]]]:
         """
         A list of `ApiOperations` that this egress rule applies to. A request matches
         if it contains an operation/service in this list.
@@ -4401,7 +4401,7 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs:
         return pulumi.get(self, "operations")
 
     @operations.setter
-    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs']]]]):
+    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrgs']]]]):
         pulumi.set(self, "operations", value)
 
     @property
@@ -4422,12 +4422,12 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs:
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs:
+calass ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrgs:
     def __init__(__self__, *,
-                 method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs']]]] = None,
+                 method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrgs']]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs']]] method_selectors: API methods or permissions to allow. Method or permission must belong
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrgs']]] method_selectors: API methods or permissions to allow. Method or permission must belong
                to the service specified by `serviceName` field. A single MethodSelector
                entry with `*` specified for the `method` field will allow all methods
                AND permissions for the service specified in `serviceName`.
@@ -4443,7 +4443,7 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs:
 
     @property
     @pulumi.getter(name="methodSelectors")
-    def method_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs']]]]:
+    def method_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrgs']]]]:
         """
         API methods or permissions to allow. Method or permission must belong
         to the service specified by `serviceName` field. A single MethodSelector
@@ -4454,7 +4454,7 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs:
         return pulumi.get(self, "method_selectors")
 
     @method_selectors.setter
-    def method_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs']]]]):
+    def method_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrgs']]]]):
         pulumi.set(self, "method_selectors", value)
 
     @property
@@ -4473,7 +4473,7 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs:
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs:
+calass ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrgs:
     def __init__(__self__, *,
                  method: Optional[pulumi.Input[str]] = None,
                  permission: Optional[pulumi.Input[str]] = None):
@@ -4518,15 +4518,15 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSe
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterSpecIngressPolicyArgs:
+calass ServicePerimetersServicePerimeterSpecIngressPolicyArrgs:
     def __init__(__self__, *,
-                 ingress_from: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs']] = None,
-                 ingress_to: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs']] = None):
+                 ingress_from: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArrgs']] = None,
+                 ingress_to: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArrgs']] = None):
         """
-        :param pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs'] ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
+        :param pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArrgs'] ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
                to apply.
                Structure is documented below.
-        :param pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs'] ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
+        :param pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArrgs'] ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
                this `IngressPolicy` to apply.
                Structure is documented below.
         """
@@ -4537,7 +4537,7 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyArgs:
 
     @property
     @pulumi.getter(name="ingressFrom")
-    def ingress_from(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs']]:
+    def ingress_from(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArrgs']]:
         """
         Defines the conditions on the source of a request causing this `IngressPolicy`
         to apply.
@@ -4546,12 +4546,12 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyArgs:
         return pulumi.get(self, "ingress_from")
 
     @ingress_from.setter
-    def ingress_from(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs']]):
+    def ingress_from(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArrgs']]):
         pulumi.set(self, "ingress_from", value)
 
     @property
     @pulumi.getter(name="ingressTo")
-    def ingress_to(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs']]:
+    def ingress_to(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArrgs']]:
         """
         Defines the conditions on the `ApiOperation` and request destination that cause
         this `IngressPolicy` to apply.
@@ -4560,16 +4560,16 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyArgs:
         return pulumi.get(self, "ingress_to")
 
     @ingress_to.setter
-    def ingress_to(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs']]):
+    def ingress_to(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArrgs']]):
         pulumi.set(self, "ingress_to", value)
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs:
+calass ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArrgs:
     def __init__(__self__, *,
                  identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_type: Optional[pulumi.Input[str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs']]]] = None):
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: A list of identities that are allowed access through this ingress policy.
                Should be in the format of email address. The email address should represent
@@ -4578,7 +4578,7 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs:
                perimeter. If left unspecified, then members of `identities` field will be
                allowed access.
                Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs']]] sources: Sources that this `IngressPolicy` authorizes access from.
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrgs']]] sources: Sources that this `IngressPolicy` authorizes access from.
                Structure is documented below.
         """
         if identities is not None:
@@ -4619,7 +4619,7 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs:
 
     @property
     @pulumi.getter
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs']]]]:
+    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrgs']]]]:
         """
         Sources that this `IngressPolicy` authorizes access from.
         Structure is documented below.
@@ -4627,12 +4627,12 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs:
         return pulumi.get(self, "sources")
 
     @sources.setter
-    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs']]]]):
+    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrgs']]]]):
         pulumi.set(self, "sources", value)
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs:
+calass ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrgs:
     def __init__(__self__, *,
                  access_level: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[str]] = None):
@@ -4681,12 +4681,12 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs:
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs:
+calass ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArrgs:
     def __init__(__self__, *,
-                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs']]]] = None,
+                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrgs']]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs']]] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrgs']]] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: A list of resources, currently only projects in the form
@@ -4705,7 +4705,7 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs:
 
     @property
     @pulumi.getter
-    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs']]]]:
+    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrgs']]]]:
         """
         A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
         are allowed to perform in this `ServicePerimeter`.
@@ -4714,7 +4714,7 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs:
         return pulumi.get(self, "operations")
 
     @operations.setter
-    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs']]]]):
+    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrgs']]]]):
         pulumi.set(self, "operations", value)
 
     @property
@@ -4738,12 +4738,12 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs:
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs:
+calass ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrgs:
     def __init__(__self__, *,
-                 method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs']]]] = None,
+                 method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrgs']]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs']]] method_selectors: API methods or permissions to allow. Method or permission must belong
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrgs']]] method_selectors: API methods or permissions to allow. Method or permission must belong
                to the service specified by `serviceName` field. A single MethodSelector
                entry with `*` specified for the `method` field will allow all methods
                AND permissions for the service specified in `serviceName`.
@@ -4759,7 +4759,7 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs:
 
     @property
     @pulumi.getter(name="methodSelectors")
-    def method_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs']]]]:
+    def method_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrgs']]]]:
         """
         API methods or permissions to allow. Method or permission must belong
         to the service specified by `serviceName` field. A single MethodSelector
@@ -4770,7 +4770,7 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs:
         return pulumi.get(self, "method_selectors")
 
     @method_selectors.setter
-    def method_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs']]]]):
+    def method_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrgs']]]]):
         pulumi.set(self, "method_selectors", value)
 
     @property
@@ -4789,7 +4789,7 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs:
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs:
+calass ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrgs:
     def __init__(__self__, *,
                  method: Optional[pulumi.Input[str]] = None,
                  permission: Optional[pulumi.Input[str]] = None):
@@ -4834,7 +4834,7 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethod
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs:
+calass ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArrgs:
     def __init__(__self__, *,
                  allowed_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_restriction: Optional[pulumi.Input[bool]] = None):
@@ -4877,14 +4877,14 @@ class ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs:
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterStatusArgs:
+calass ServicePerimetersServicePerimeterStatusArrgs:
     def __init__(__self__, *,
                  access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 egress_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyArgs']]]] = None,
-                 ingress_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyArgs']]]] = None,
+                 egress_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyArrgs']]]] = None,
+                 ingress_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyArrgs']]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  restricted_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 vpc_accessible_services: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs']] = None):
+                 vpc_accessible_services: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArrgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] access_levels: A list of AccessLevel resource names that allow resources within
                the ServicePerimeter to be accessed from the internet.
@@ -4895,12 +4895,12 @@ class ServicePerimetersServicePerimeterStatusArgs:
                origins within the perimeter. For Service Perimeter Bridge, must
                be empty.
                Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyArgs']]] egress_policies: List of EgressPolicies to apply to the perimeter. A perimeter may
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyArrgs']]] egress_policies: List of EgressPolicies to apply to the perimeter. A perimeter may
                have multiple EgressPolicies, each of which is evaluated separately.
                Access is granted if any EgressPolicy grants it. Must be empty for
                a perimeter bridge.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyArgs']]] ingress_policies: List of `IngressPolicies` to apply to the perimeter. A perimeter may
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyArrgs']]] ingress_policies: List of `IngressPolicies` to apply to the perimeter. A perimeter may
                have multiple `IngressPolicies`, each of which is evaluated
                separately. Access is granted if any `Ingress Policy` grants it.
                Must be empty for a perimeter bridge.
@@ -4913,7 +4913,7 @@ class ServicePerimetersServicePerimeterStatusArgs:
                `storage.googleapis.com` is specified, access to the storage
                buckets inside the perimeter must meet the perimeter's access
                restrictions.
-        :param pulumi.Input['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs'] vpc_accessible_services: Specifies how APIs are allowed to communicate within the Service
+        :param pulumi.Input['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArrgs'] vpc_accessible_services: Specifies how APIs are allowed to communicate within the Service
                Perimeter.
                Structure is documented below.
         """
@@ -4952,7 +4952,7 @@ class ServicePerimetersServicePerimeterStatusArgs:
 
     @property
     @pulumi.getter(name="egressPolicies")
-    def egress_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyArgs']]]]:
+    def egress_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyArrgs']]]]:
         """
         List of EgressPolicies to apply to the perimeter. A perimeter may
         have multiple EgressPolicies, each of which is evaluated separately.
@@ -4963,12 +4963,12 @@ class ServicePerimetersServicePerimeterStatusArgs:
         return pulumi.get(self, "egress_policies")
 
     @egress_policies.setter
-    def egress_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyArgs']]]]):
+    def egress_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyArrgs']]]]):
         pulumi.set(self, "egress_policies", value)
 
     @property
     @pulumi.getter(name="ingressPolicies")
-    def ingress_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyArgs']]]]:
+    def ingress_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyArrgs']]]]:
         """
         List of `IngressPolicies` to apply to the perimeter. A perimeter may
         have multiple `IngressPolicies`, each of which is evaluated
@@ -4979,7 +4979,7 @@ class ServicePerimetersServicePerimeterStatusArgs:
         return pulumi.get(self, "ingress_policies")
 
     @ingress_policies.setter
-    def ingress_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyArgs']]]]):
+    def ingress_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyArrgs']]]]):
         pulumi.set(self, "ingress_policies", value)
 
     @property
@@ -5014,7 +5014,7 @@ class ServicePerimetersServicePerimeterStatusArgs:
 
     @property
     @pulumi.getter(name="vpcAccessibleServices")
-    def vpc_accessible_services(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs']]:
+    def vpc_accessible_services(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArrgs']]:
         """
         Specifies how APIs are allowed to communicate within the Service
         Perimeter.
@@ -5023,19 +5023,19 @@ class ServicePerimetersServicePerimeterStatusArgs:
         return pulumi.get(self, "vpc_accessible_services")
 
     @vpc_accessible_services.setter
-    def vpc_accessible_services(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs']]):
+    def vpc_accessible_services(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArrgs']]):
         pulumi.set(self, "vpc_accessible_services", value)
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterStatusEgressPolicyArgs:
+calass ServicePerimetersServicePerimeterStatusEgressPolicyArrgs:
     def __init__(__self__, *,
-                 egress_from: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs']] = None,
-                 egress_to: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs']] = None):
+                 egress_from: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArrgs']] = None,
+                 egress_to: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArrgs']] = None):
         """
-        :param pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs'] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+        :param pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArrgs'] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
-        :param pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs'] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
+        :param pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArrgs'] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
                cause this `EgressPolicy` to apply.
                Structure is documented below.
         """
@@ -5046,7 +5046,7 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyArgs:
 
     @property
     @pulumi.getter(name="egressFrom")
-    def egress_from(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs']]:
+    def egress_from(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArrgs']]:
         """
         Defines conditions on the source of a request causing this `EgressPolicy` to apply.
         Structure is documented below.
@@ -5054,12 +5054,12 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyArgs:
         return pulumi.get(self, "egress_from")
 
     @egress_from.setter
-    def egress_from(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs']]):
+    def egress_from(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArrgs']]):
         pulumi.set(self, "egress_from", value)
 
     @property
     @pulumi.getter(name="egressTo")
-    def egress_to(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs']]:
+    def egress_to(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArrgs']]:
         """
         Defines the conditions on the `ApiOperation` and destination resources that
         cause this `EgressPolicy` to apply.
@@ -5068,17 +5068,17 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyArgs:
         return pulumi.get(self, "egress_to")
 
     @egress_to.setter
-    def egress_to(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs']]):
+    def egress_to(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArrgs']]):
         pulumi.set(self, "egress_to", value)
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs:
+calass ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArrgs:
     def __init__(__self__, *,
                  identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_type: Optional[pulumi.Input[str]] = None,
                  source_restriction: Optional[pulumi.Input[str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs']]]] = None):
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: A list of identities that are allowed access through this `EgressPolicy`.
                Should be in the format of email address. The email address should
@@ -5089,7 +5089,7 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs:
                Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         :param pulumi.Input[str] source_restriction: Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
                Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs']]] sources: Sources that this EgressPolicy authorizes access from.
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrgs']]] sources: Sources that this EgressPolicy authorizes access from.
                Structure is documented below.
         """
         if identities is not None:
@@ -5145,7 +5145,7 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs:
 
     @property
     @pulumi.getter
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs']]]]:
+    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrgs']]]]:
         """
         Sources that this EgressPolicy authorizes access from.
         Structure is documented below.
@@ -5153,12 +5153,12 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs:
         return pulumi.get(self, "sources")
 
     @sources.setter
-    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs']]]]):
+    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrgs']]]]):
         pulumi.set(self, "sources", value)
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs:
+calass ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrgs:
     def __init__(__self__, *,
                  access_level: Optional[pulumi.Input[str]] = None):
         """
@@ -5181,16 +5181,16 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs:
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs:
+calass ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArrgs:
     def __init__(__self__, *,
                  external_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs']]]] = None,
+                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrgs']]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] external_resources: A list of external resources that are allowed to be accessed. A request
                matches if it contains an external resource in this list (Example:
                s3://bucket/path). Currently '*' is not allowed.
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs']]] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrgs']]] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: A list of resources, currently only projects in the form
@@ -5222,7 +5222,7 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs:
 
     @property
     @pulumi.getter
-    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs']]]]:
+    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrgs']]]]:
         """
         A list of `ApiOperations` that this egress rule applies to. A request matches
         if it contains an operation/service in this list.
@@ -5231,7 +5231,7 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs:
         return pulumi.get(self, "operations")
 
     @operations.setter
-    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs']]]]):
+    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrgs']]]]):
         pulumi.set(self, "operations", value)
 
     @property
@@ -5252,12 +5252,12 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs:
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs:
+calass ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrgs:
     def __init__(__self__, *,
-                 method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs']]]] = None,
+                 method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrgs']]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs']]] method_selectors: API methods or permissions to allow. Method or permission must belong
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrgs']]] method_selectors: API methods or permissions to allow. Method or permission must belong
                to the service specified by `serviceName` field. A single MethodSelector
                entry with `*` specified for the `method` field will allow all methods
                AND permissions for the service specified in `serviceName`.
@@ -5273,7 +5273,7 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs:
 
     @property
     @pulumi.getter(name="methodSelectors")
-    def method_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs']]]]:
+    def method_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrgs']]]]:
         """
         API methods or permissions to allow. Method or permission must belong
         to the service specified by `serviceName` field. A single MethodSelector
@@ -5284,7 +5284,7 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs:
         return pulumi.get(self, "method_selectors")
 
     @method_selectors.setter
-    def method_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs']]]]):
+    def method_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrgs']]]]):
         pulumi.set(self, "method_selectors", value)
 
     @property
@@ -5303,7 +5303,7 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs:
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs:
+calass ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrgs:
     def __init__(__self__, *,
                  method: Optional[pulumi.Input[str]] = None,
                  permission: Optional[pulumi.Input[str]] = None):
@@ -5348,15 +5348,15 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethod
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterStatusIngressPolicyArgs:
+calass ServicePerimetersServicePerimeterStatusIngressPolicyArrgs:
     def __init__(__self__, *,
-                 ingress_from: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs']] = None,
-                 ingress_to: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs']] = None):
+                 ingress_from: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArrgs']] = None,
+                 ingress_to: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArrgs']] = None):
         """
-        :param pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs'] ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
+        :param pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArrgs'] ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
                to apply.
                Structure is documented below.
-        :param pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs'] ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
+        :param pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArrgs'] ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
                this `IngressPolicy` to apply.
                Structure is documented below.
         """
@@ -5367,7 +5367,7 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyArgs:
 
     @property
     @pulumi.getter(name="ingressFrom")
-    def ingress_from(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs']]:
+    def ingress_from(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArrgs']]:
         """
         Defines the conditions on the source of a request causing this `IngressPolicy`
         to apply.
@@ -5376,12 +5376,12 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyArgs:
         return pulumi.get(self, "ingress_from")
 
     @ingress_from.setter
-    def ingress_from(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs']]):
+    def ingress_from(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArrgs']]):
         pulumi.set(self, "ingress_from", value)
 
     @property
     @pulumi.getter(name="ingressTo")
-    def ingress_to(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs']]:
+    def ingress_to(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArrgs']]:
         """
         Defines the conditions on the `ApiOperation` and request destination that cause
         this `IngressPolicy` to apply.
@@ -5390,16 +5390,16 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyArgs:
         return pulumi.get(self, "ingress_to")
 
     @ingress_to.setter
-    def ingress_to(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs']]):
+    def ingress_to(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArrgs']]):
         pulumi.set(self, "ingress_to", value)
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs:
+calass ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArrgs:
     def __init__(__self__, *,
                  identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_type: Optional[pulumi.Input[str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs']]]] = None):
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: A list of identities that are allowed access through this ingress policy.
                Should be in the format of email address. The email address should represent
@@ -5408,7 +5408,7 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs:
                perimeter. If left unspecified, then members of `identities` field will be
                allowed access.
                Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs']]] sources: Sources that this `IngressPolicy` authorizes access from.
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrgs']]] sources: Sources that this `IngressPolicy` authorizes access from.
                Structure is documented below.
         """
         if identities is not None:
@@ -5449,7 +5449,7 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs:
 
     @property
     @pulumi.getter
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs']]]]:
+    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrgs']]]]:
         """
         Sources that this `IngressPolicy` authorizes access from.
         Structure is documented below.
@@ -5457,12 +5457,12 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs:
         return pulumi.get(self, "sources")
 
     @sources.setter
-    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs']]]]):
+    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrgs']]]]):
         pulumi.set(self, "sources", value)
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs:
+calass ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrgs:
     def __init__(__self__, *,
                  access_level: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[str]] = None):
@@ -5511,12 +5511,12 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs:
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs:
+calass ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArrgs:
     def __init__(__self__, *,
-                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs']]]] = None,
+                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrgs']]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs']]] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrgs']]] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: A list of resources, currently only projects in the form
@@ -5535,7 +5535,7 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs:
 
     @property
     @pulumi.getter
-    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs']]]]:
+    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrgs']]]]:
         """
         A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
         are allowed to perform in this `ServicePerimeter`.
@@ -5544,7 +5544,7 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs:
         return pulumi.get(self, "operations")
 
     @operations.setter
-    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs']]]]):
+    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrgs']]]]):
         pulumi.set(self, "operations", value)
 
     @property
@@ -5568,12 +5568,12 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs:
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs:
+calass ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrgs:
     def __init__(__self__, *,
-                 method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs']]]] = None,
+                 method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrgs']]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs']]] method_selectors: API methods or permissions to allow. Method or permission must belong
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrgs']]] method_selectors: API methods or permissions to allow. Method or permission must belong
                to the service specified by `serviceName` field. A single MethodSelector
                entry with `*` specified for the `method` field will allow all methods
                AND permissions for the service specified in `serviceName`.
@@ -5589,7 +5589,7 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs
 
     @property
     @pulumi.getter(name="methodSelectors")
-    def method_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs']]]]:
+    def method_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrgs']]]]:
         """
         API methods or permissions to allow. Method or permission must belong
         to the service specified by `serviceName` field. A single MethodSelector
@@ -5600,7 +5600,7 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs
         return pulumi.get(self, "method_selectors")
 
     @method_selectors.setter
-    def method_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs']]]]):
+    def method_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrgs']]]]):
         pulumi.set(self, "method_selectors", value)
 
     @property
@@ -5619,7 +5619,7 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs:
+calass ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrgs:
     def __init__(__self__, *,
                  method: Optional[pulumi.Input[str]] = None,
                  permission: Optional[pulumi.Input[str]] = None):
@@ -5664,7 +5664,7 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMeth
 
 
 @pulumi.input_type
-class ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs:
+calass ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArrgs:
     def __init__(__self__, *,
                  allowed_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_restriction: Optional[pulumi.Input[bool]] = None):

@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetInstanceSerialPortResult:
+calass GetInstanceSerialPortResult:
     """
     A collection of values returned by getInstanceSerialPort.
     """
@@ -78,7 +78,7 @@ class GetInstanceSerialPortResult:
         return pulumi.get(self, "zone")
 
 
-class AwaitableGetInstanceSerialPortResult(GetInstanceSerialPortResult):
+calass AwaitableGetInstanceSerialPortResult(GetInstanceSerialPortResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
@@ -123,14 +123,14 @@ def get_instance_serial_port(instance: Optional[str] = None,
     windows = gcp.compute.Instance("windows",
         machine_type="e2-medium",
         zone="us-central1-a",
-        boot_disk=gcp.compute.InstanceBootDiskArgs(
-            initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+        boot_disk=gcp.compute.InstanceBootDiskArrgs(
+            initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                 image="windows-cloud/windows-2019",
             ),
         ),
-        network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+        network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
             network="default",
-            access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+            access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArrgs()],
         )],
         metadata={
             "serial-port-logging-enable": "TRUE",
@@ -142,7 +142,7 @@ def get_instance_serial_port(instance: Optional[str] = None,
                 "userName": "example-user",
             }),
         },
-        service_account=gcp.compute.InstanceServiceAccountArgs(
+        service_account=gcp.compute.InstanceServiceAccountArrgs(
             scopes=[
                 "userinfo-email",
                 "compute-ro",
@@ -214,14 +214,14 @@ def get_instance_serial_port_output(instance: Optional[pulumi.Input[str]] = None
     windows = gcp.compute.Instance("windows",
         machine_type="e2-medium",
         zone="us-central1-a",
-        boot_disk=gcp.compute.InstanceBootDiskArgs(
-            initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+        boot_disk=gcp.compute.InstanceBootDiskArrgs(
+            initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                 image="windows-cloud/windows-2019",
             ),
         ),
-        network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+        network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
             network="default",
-            access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+            access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArrgs()],
         )],
         metadata={
             "serial-port-logging-enable": "TRUE",
@@ -233,7 +233,7 @@ def get_instance_serial_port_output(instance: Optional[pulumi.Input[str]] = None
                 "userName": "example-user",
             }),
         },
-        service_account=gcp.compute.InstanceServiceAccountArgs(
+        service_account=gcp.compute.InstanceServiceAccountArrgs(
             scopes=[
                 "userinfo-email",
                 "compute-ro",

@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetSecretVersionAccessResult:
+calass GetSecretVersionAccessResult:
     """
     A collection of values returned by getSecretVersionAccess.
     """
@@ -82,7 +82,7 @@ class GetSecretVersionAccessResult:
         return pulumi.get(self, "version")
 
 
-class AwaitableGetSecretVersionAccessResult(GetSecretVersionAccessResult):
+calass AwaitableGetSecretVersionAccessResult(GetSecretVersionAccessResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

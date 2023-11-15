@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ClusterIAMBindingArgs', 'ClusterIAMBinding']
+__all__ = ['ClusterIAMBindingArrgs', 'ClusterIAMBinding']
 
 @pulumi.input_type
-class ClusterIAMBindingArgs:
+calass ClusterIAMBindingArrgs:
     def __init__(__self__, *,
                  cluster: pulumi.Input[str],
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['ClusterIAMBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['ClusterIAMBindingConditionArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
         """
@@ -106,11 +106,11 @@ class ClusterIAMBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ClusterIAMBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ClusterIAMBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ClusterIAMBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ClusterIAMBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -141,10 +141,10 @@ class ClusterIAMBindingArgs:
 
 
 @pulumi.input_type
-class _ClusterIAMBindingState:
+calass _ClusterIAMBindingState:
     def __init__(__self__, *,
                  cluster: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input['ClusterIAMBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['ClusterIAMBindingConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -215,11 +215,11 @@ class _ClusterIAMBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ClusterIAMBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ClusterIAMBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ClusterIAMBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ClusterIAMBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -286,13 +286,13 @@ class _ClusterIAMBindingState:
         pulumi.set(self, "role", value)
 
 
-class ClusterIAMBinding(pulumi.CustomResource):
+calass ClusterIAMBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ClusterIAMBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ClusterIAMBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -315,7 +315,7 @@ class ClusterIAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -394,7 +394,7 @@ class ClusterIAMBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ClusterIAMBindingArgs,
+                 args: ClusterIAMBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage IAM policies on dataproc clusters. Each of these resources serves a different use case:
@@ -413,7 +413,7 @@ class ClusterIAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -465,12 +465,12 @@ class ClusterIAMBinding(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ClusterIAMBindingArgs args: The arguments to use to populate this resource's properties.
+        :param ClusterIAMBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ClusterIAMBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ClusterIAMBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -480,7 +480,7 @@ class ClusterIAMBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ClusterIAMBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ClusterIAMBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -492,7 +492,7 @@ class ClusterIAMBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ClusterIAMBindingArgs.__new__(ClusterIAMBindingArgs)
+            __props__ = ClusterIAMBindingArrgs.__new__(ClusterIAMBindingArrgs)
 
             if cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster'")
@@ -518,7 +518,7 @@ class ClusterIAMBinding(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster: Optional[pulumi.Input[str]] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['ClusterIAMBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['ClusterIAMBindingConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,

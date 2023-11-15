@@ -11,13 +11,13 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['InstanceSettingsArgs', 'InstanceSettings']
+__all__ = ['InstanceSettingsArrgs', 'InstanceSettings']
 
 @pulumi.input_type
-class InstanceSettingsArgs:
+calass InstanceSettingsArrgs:
     def __init__(__self__, *,
                  zone: pulumi.Input[str],
-                 metadata: Optional[pulumi.Input['InstanceSettingsMetadataArgs']] = None,
+                 metadata: Optional[pulumi.Input['InstanceSettingsMetadataArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a InstanceSettings resource.
@@ -25,7 +25,7 @@ class InstanceSettingsArgs:
                
                
                - - -
-        :param pulumi.Input['InstanceSettingsMetadataArgs'] metadata: The metadata key/value pairs assigned to all the instances in the corresponding scope.
+        :param pulumi.Input['InstanceSettingsMetadataArrgs'] metadata: The metadata key/value pairs assigned to all the instances in the corresponding scope.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -53,7 +53,7 @@ class InstanceSettingsArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['InstanceSettingsMetadataArgs']]:
+    def metadata(self) -> Optional[pulumi.Input['InstanceSettingsMetadataArrgs']]:
         """
         The metadata key/value pairs assigned to all the instances in the corresponding scope.
         Structure is documented below.
@@ -61,7 +61,7 @@ class InstanceSettingsArgs:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['InstanceSettingsMetadataArgs']]):
+    def metadata(self, value: Optional[pulumi.Input['InstanceSettingsMetadataArrgs']]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -79,17 +79,17 @@ class InstanceSettingsArgs:
 
 
 @pulumi.input_type
-class _InstanceSettingsState:
+calass _InstanceSettingsState:
     def __init__(__self__, *,
                  fingerprint: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input['InstanceSettingsMetadataArgs']] = None,
+                 metadata: Optional[pulumi.Input['InstanceSettingsMetadataArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering InstanceSettings resources.
         :param pulumi.Input[str] fingerprint: The fingerprint used for optimistic locking of this resource.  Used
                internally during updates.
-        :param pulumi.Input['InstanceSettingsMetadataArgs'] metadata: The metadata key/value pairs assigned to all the instances in the corresponding scope.
+        :param pulumi.Input['InstanceSettingsMetadataArrgs'] metadata: The metadata key/value pairs assigned to all the instances in the corresponding scope.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -122,7 +122,7 @@ class _InstanceSettingsState:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['InstanceSettingsMetadataArgs']]:
+    def metadata(self) -> Optional[pulumi.Input['InstanceSettingsMetadataArrgs']]:
         """
         The metadata key/value pairs assigned to all the instances in the corresponding scope.
         Structure is documented below.
@@ -130,7 +130,7 @@ class _InstanceSettingsState:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['InstanceSettingsMetadataArgs']]):
+    def metadata(self, value: Optional[pulumi.Input['InstanceSettingsMetadataArrgs']]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -162,12 +162,12 @@ class _InstanceSettingsState:
         pulumi.set(self, "zone", value)
 
 
-class InstanceSettings(pulumi.CustomResource):
+calass InstanceSettings(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['InstanceSettingsMetadataArgs']]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['InstanceSettingsMetadataArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -181,7 +181,7 @@ class InstanceSettings(pulumi.CustomResource):
 
         gce_instance_settings = gcp.compute.InstanceSettings("gceInstanceSettings",
             zone="us-east7-b",
-            metadata=gcp.compute.InstanceSettingsMetadataArgs(
+            metadata=gcp.compute.InstanceSettingsMetadataArrgs(
                 items={
                     "foo": "baz",
                 },
@@ -215,7 +215,7 @@ class InstanceSettings(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['InstanceSettingsMetadataArgs']] metadata: The metadata key/value pairs assigned to all the instances in the corresponding scope.
+        :param pulumi.Input[pulumi.InputType['InstanceSettingsMetadataArrgs']] metadata: The metadata key/value pairs assigned to all the instances in the corresponding scope.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -228,7 +228,7 @@ class InstanceSettings(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: InstanceSettingsArgs,
+                 args: InstanceSettingsArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -240,7 +240,7 @@ class InstanceSettings(pulumi.CustomResource):
 
         gce_instance_settings = gcp.compute.InstanceSettings("gceInstanceSettings",
             zone="us-east7-b",
-            metadata=gcp.compute.InstanceSettingsMetadataArgs(
+            metadata=gcp.compute.InstanceSettingsMetadataArrgs(
                 items={
                     "foo": "baz",
                 },
@@ -273,12 +273,12 @@ class InstanceSettings(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param InstanceSettingsArgs args: The arguments to use to populate this resource's properties.
+        :param InstanceSettingsArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(InstanceSettingsArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(InstanceSettingsArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -287,7 +287,7 @@ class InstanceSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['InstanceSettingsMetadataArgs']]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['InstanceSettingsMetadataArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -297,7 +297,7 @@ class InstanceSettings(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = InstanceSettingsArgs.__new__(InstanceSettingsArgs)
+            __props__ = InstanceSettingsArrgs.__new__(InstanceSettingsArrgs)
 
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["project"] = project
@@ -316,7 +316,7 @@ class InstanceSettings(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             fingerprint: Optional[pulumi.Input[str]] = None,
-            metadata: Optional[pulumi.Input[pulumi.InputType['InstanceSettingsMetadataArgs']]] = None,
+            metadata: Optional[pulumi.Input[pulumi.InputType['InstanceSettingsMetadataArrgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'InstanceSettings':
         """
@@ -328,7 +328,7 @@ class InstanceSettings(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] fingerprint: The fingerprint used for optimistic locking of this resource.  Used
                internally during updates.
-        :param pulumi.Input[pulumi.InputType['InstanceSettingsMetadataArgs']] metadata: The metadata key/value pairs assigned to all the instances in the corresponding scope.
+        :param pulumi.Input[pulumi.InputType['InstanceSettingsMetadataArrgs']] metadata: The metadata key/value pairs assigned to all the instances in the corresponding scope.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

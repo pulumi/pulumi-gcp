@@ -11,29 +11,29 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['PolicyBasedRouteArgs', 'PolicyBasedRoute']
+__all__ = ['PolicyBasedRouteArrgs', 'PolicyBasedRoute']
 
 @pulumi.input_type
-class PolicyBasedRouteArgs:
+calass PolicyBasedRouteArrgs:
     def __init__(__self__, *,
-                 filter: pulumi.Input['PolicyBasedRouteFilterArgs'],
+                 filter: pulumi.Input['PolicyBasedRouteFilterArrgs'],
                  network: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 interconnect_attachment: Optional[pulumi.Input['PolicyBasedRouteInterconnectAttachmentArgs']] = None,
+                 interconnect_attachment: Optional[pulumi.Input['PolicyBasedRouteInterconnectAttachmentArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  next_hop_ilb_ip: Optional[pulumi.Input[str]] = None,
                  next_hop_other_routes: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 virtual_machine: Optional[pulumi.Input['PolicyBasedRouteVirtualMachineArgs']] = None):
+                 virtual_machine: Optional[pulumi.Input['PolicyBasedRouteVirtualMachineArrgs']] = None):
         """
         The set of arguments for constructing a PolicyBasedRoute resource.
-        :param pulumi.Input['PolicyBasedRouteFilterArgs'] filter: The filter to match L4 traffic.
+        :param pulumi.Input['PolicyBasedRouteFilterArrgs'] filter: The filter to match L4 traffic.
                Structure is documented below.
         :param pulumi.Input[str] network: Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input['PolicyBasedRouteInterconnectAttachmentArgs'] interconnect_attachment: The interconnect attachments that this policy-based route applies to.
+        :param pulumi.Input['PolicyBasedRouteInterconnectAttachmentArrgs'] interconnect_attachment: The interconnect attachments that this policy-based route applies to.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
                
@@ -46,7 +46,7 @@ class PolicyBasedRouteArgs:
         :param pulumi.Input[int] priority: The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['PolicyBasedRouteVirtualMachineArgs'] virtual_machine: VM instances to which this policy-based route applies to.
+        :param pulumi.Input['PolicyBasedRouteVirtualMachineArrgs'] virtual_machine: VM instances to which this policy-based route applies to.
                Structure is documented below.
         """
         pulumi.set(__self__, "filter", filter)
@@ -72,7 +72,7 @@ class PolicyBasedRouteArgs:
 
     @property
     @pulumi.getter
-    def filter(self) -> pulumi.Input['PolicyBasedRouteFilterArgs']:
+    def filter(self) -> pulumi.Input['PolicyBasedRouteFilterArrgs']:
         """
         The filter to match L4 traffic.
         Structure is documented below.
@@ -80,7 +80,7 @@ class PolicyBasedRouteArgs:
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: pulumi.Input['PolicyBasedRouteFilterArgs']):
+    def filter(self, value: pulumi.Input['PolicyBasedRouteFilterArrgs']):
         pulumi.set(self, "filter", value)
 
     @property
@@ -109,7 +109,7 @@ class PolicyBasedRouteArgs:
 
     @property
     @pulumi.getter(name="interconnectAttachment")
-    def interconnect_attachment(self) -> Optional[pulumi.Input['PolicyBasedRouteInterconnectAttachmentArgs']]:
+    def interconnect_attachment(self) -> Optional[pulumi.Input['PolicyBasedRouteInterconnectAttachmentArrgs']]:
         """
         The interconnect attachments that this policy-based route applies to.
         Structure is documented below.
@@ -117,7 +117,7 @@ class PolicyBasedRouteArgs:
         return pulumi.get(self, "interconnect_attachment")
 
     @interconnect_attachment.setter
-    def interconnect_attachment(self, value: Optional[pulumi.Input['PolicyBasedRouteInterconnectAttachmentArgs']]):
+    def interconnect_attachment(self, value: Optional[pulumi.Input['PolicyBasedRouteInterconnectAttachmentArrgs']]):
         pulumi.set(self, "interconnect_attachment", value)
 
     @property
@@ -199,7 +199,7 @@ class PolicyBasedRouteArgs:
 
     @property
     @pulumi.getter(name="virtualMachine")
-    def virtual_machine(self) -> Optional[pulumi.Input['PolicyBasedRouteVirtualMachineArgs']]:
+    def virtual_machine(self) -> Optional[pulumi.Input['PolicyBasedRouteVirtualMachineArrgs']]:
         """
         VM instances to which this policy-based route applies to.
         Structure is documented below.
@@ -207,18 +207,18 @@ class PolicyBasedRouteArgs:
         return pulumi.get(self, "virtual_machine")
 
     @virtual_machine.setter
-    def virtual_machine(self, value: Optional[pulumi.Input['PolicyBasedRouteVirtualMachineArgs']]):
+    def virtual_machine(self, value: Optional[pulumi.Input['PolicyBasedRouteVirtualMachineArrgs']]):
         pulumi.set(self, "virtual_machine", value)
 
 
 @pulumi.input_type
-class _PolicyBasedRouteState:
+calass _PolicyBasedRouteState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 filter: Optional[pulumi.Input['PolicyBasedRouteFilterArgs']] = None,
-                 interconnect_attachment: Optional[pulumi.Input['PolicyBasedRouteInterconnectAttachmentArgs']] = None,
+                 filter: Optional[pulumi.Input['PolicyBasedRouteFilterArrgs']] = None,
+                 interconnect_attachment: Optional[pulumi.Input['PolicyBasedRouteInterconnectAttachmentArrgs']] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -229,16 +229,16 @@ class _PolicyBasedRouteState:
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
-                 virtual_machine: Optional[pulumi.Input['PolicyBasedRouteVirtualMachineArgs']] = None,
-                 warnings: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyBasedRouteWarningArgs']]]] = None):
+                 virtual_machine: Optional[pulumi.Input['PolicyBasedRouteVirtualMachineArrgs']] = None,
+                 warnings: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyBasedRouteWarningArrgs']]]] = None):
         """
         Input properties used for looking up and filtering PolicyBasedRoute resources.
         :param pulumi.Input[str] create_time: Time when the policy-based route was created.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input['PolicyBasedRouteFilterArgs'] filter: The filter to match L4 traffic.
+        :param pulumi.Input['PolicyBasedRouteFilterArrgs'] filter: The filter to match L4 traffic.
                Structure is documented below.
-        :param pulumi.Input['PolicyBasedRouteInterconnectAttachmentArgs'] interconnect_attachment: The interconnect attachments that this policy-based route applies to.
+        :param pulumi.Input['PolicyBasedRouteInterconnectAttachmentArrgs'] interconnect_attachment: The interconnect attachments that this policy-based route applies to.
                Structure is documented below.
         :param pulumi.Input[str] kind: Type of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
@@ -256,9 +256,9 @@ class _PolicyBasedRouteState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Time when the policy-based route was created.
-        :param pulumi.Input['PolicyBasedRouteVirtualMachineArgs'] virtual_machine: VM instances to which this policy-based route applies to.
+        :param pulumi.Input['PolicyBasedRouteVirtualMachineArrgs'] virtual_machine: VM instances to which this policy-based route applies to.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['PolicyBasedRouteWarningArgs']]] warnings: If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyBasedRouteWarningArrgs']]] warnings: If potential misconfigurations are detected for this route, this field will be populated with warning messages.
                Structure is documented below.
         """
         if create_time is not None:
@@ -334,7 +334,7 @@ class _PolicyBasedRouteState:
 
     @property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input['PolicyBasedRouteFilterArgs']]:
+    def filter(self) -> Optional[pulumi.Input['PolicyBasedRouteFilterArrgs']]:
         """
         The filter to match L4 traffic.
         Structure is documented below.
@@ -342,12 +342,12 @@ class _PolicyBasedRouteState:
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input['PolicyBasedRouteFilterArgs']]):
+    def filter(self, value: Optional[pulumi.Input['PolicyBasedRouteFilterArrgs']]):
         pulumi.set(self, "filter", value)
 
     @property
     @pulumi.getter(name="interconnectAttachment")
-    def interconnect_attachment(self) -> Optional[pulumi.Input['PolicyBasedRouteInterconnectAttachmentArgs']]:
+    def interconnect_attachment(self) -> Optional[pulumi.Input['PolicyBasedRouteInterconnectAttachmentArrgs']]:
         """
         The interconnect attachments that this policy-based route applies to.
         Structure is documented below.
@@ -355,7 +355,7 @@ class _PolicyBasedRouteState:
         return pulumi.get(self, "interconnect_attachment")
 
     @interconnect_attachment.setter
-    def interconnect_attachment(self, value: Optional[pulumi.Input['PolicyBasedRouteInterconnectAttachmentArgs']]):
+    def interconnect_attachment(self, value: Optional[pulumi.Input['PolicyBasedRouteInterconnectAttachmentArrgs']]):
         pulumi.set(self, "interconnect_attachment", value)
 
     @property
@@ -486,7 +486,7 @@ class _PolicyBasedRouteState:
 
     @property
     @pulumi.getter(name="virtualMachine")
-    def virtual_machine(self) -> Optional[pulumi.Input['PolicyBasedRouteVirtualMachineArgs']]:
+    def virtual_machine(self) -> Optional[pulumi.Input['PolicyBasedRouteVirtualMachineArrgs']]:
         """
         VM instances to which this policy-based route applies to.
         Structure is documented below.
@@ -494,12 +494,12 @@ class _PolicyBasedRouteState:
         return pulumi.get(self, "virtual_machine")
 
     @virtual_machine.setter
-    def virtual_machine(self, value: Optional[pulumi.Input['PolicyBasedRouteVirtualMachineArgs']]):
+    def virtual_machine(self, value: Optional[pulumi.Input['PolicyBasedRouteVirtualMachineArrgs']]):
         pulumi.set(self, "virtual_machine", value)
 
     @property
     @pulumi.getter
-    def warnings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyBasedRouteWarningArgs']]]]:
+    def warnings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyBasedRouteWarningArrgs']]]]:
         """
         If potential misconfigurations are detected for this route, this field will be populated with warning messages.
         Structure is documented below.
@@ -507,18 +507,18 @@ class _PolicyBasedRouteState:
         return pulumi.get(self, "warnings")
 
     @warnings.setter
-    def warnings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyBasedRouteWarningArgs']]]]):
+    def warnings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyBasedRouteWarningArrgs']]]]):
         pulumi.set(self, "warnings", value)
 
 
-class PolicyBasedRoute(pulumi.CustomResource):
+calass PolicyBasedRoute(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 filter: Optional[pulumi.Input[pulumi.InputType['PolicyBasedRouteFilterArgs']]] = None,
-                 interconnect_attachment: Optional[pulumi.Input[pulumi.InputType['PolicyBasedRouteInterconnectAttachmentArgs']]] = None,
+                 filter: Optional[pulumi.Input[pulumi.InputType['PolicyBasedRouteFilterArrgs']]] = None,
+                 interconnect_attachment: Optional[pulumi.Input[pulumi.InputType['PolicyBasedRouteInterconnectAttachmentArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -526,7 +526,7 @@ class PolicyBasedRoute(pulumi.CustomResource):
                  next_hop_other_routes: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 virtual_machine: Optional[pulumi.Input[pulumi.InputType['PolicyBasedRouteVirtualMachineArgs']]] = None,
+                 virtual_machine: Optional[pulumi.Input[pulumi.InputType['PolicyBasedRouteVirtualMachineArrgs']]] = None,
                  __props__=None):
         """
         Policy-based Routes are more powerful routes that route L4 network traffic based on not just destination IP, but also source IP, protocol and more. A Policy-based Route always take precedence when it conflicts with other types of routes.
@@ -547,7 +547,7 @@ class PolicyBasedRoute(pulumi.CustomResource):
         my_network = gcp.compute.Network("myNetwork", auto_create_subnetworks=False)
         default = gcp.networkconnectivity.PolicyBasedRoute("default",
             network=my_network.id,
-            filter=gcp.networkconnectivity.PolicyBasedRouteFilterArgs(
+            filter=gcp.networkconnectivity.PolicyBasedRouteFilterArrgs(
                 protocol_version="IPV4",
             ),
             next_hop_other_routes="DEFAULT_ROUTING")
@@ -567,14 +567,14 @@ class PolicyBasedRoute(pulumi.CustomResource):
             description="My routing policy",
             network=my_network.id,
             priority=2302,
-            filter=gcp.networkconnectivity.PolicyBasedRouteFilterArgs(
+            filter=gcp.networkconnectivity.PolicyBasedRouteFilterArrgs(
                 protocol_version="IPV4",
                 ip_protocol="UDP",
                 src_range="10.0.0.0/24",
                 dest_range="0.0.0.0/0",
             ),
             next_hop_ilb_ip=ilb.address,
-            virtual_machine=gcp.networkconnectivity.PolicyBasedRouteVirtualMachineArgs(
+            virtual_machine=gcp.networkconnectivity.PolicyBasedRouteVirtualMachineArrgs(
                 tags=["restricted"],
             ),
             labels={
@@ -609,9 +609,9 @@ class PolicyBasedRoute(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[pulumi.InputType['PolicyBasedRouteFilterArgs']] filter: The filter to match L4 traffic.
+        :param pulumi.Input[pulumi.InputType['PolicyBasedRouteFilterArrgs']] filter: The filter to match L4 traffic.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['PolicyBasedRouteInterconnectAttachmentArgs']] interconnect_attachment: The interconnect attachments that this policy-based route applies to.
+        :param pulumi.Input[pulumi.InputType['PolicyBasedRouteInterconnectAttachmentArrgs']] interconnect_attachment: The interconnect attachments that this policy-based route applies to.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
                
@@ -625,14 +625,14 @@ class PolicyBasedRoute(pulumi.CustomResource):
         :param pulumi.Input[int] priority: The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['PolicyBasedRouteVirtualMachineArgs']] virtual_machine: VM instances to which this policy-based route applies to.
+        :param pulumi.Input[pulumi.InputType['PolicyBasedRouteVirtualMachineArrgs']] virtual_machine: VM instances to which this policy-based route applies to.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: PolicyBasedRouteArgs,
+                 args: PolicyBasedRouteArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Policy-based Routes are more powerful routes that route L4 network traffic based on not just destination IP, but also source IP, protocol and more. A Policy-based Route always take precedence when it conflicts with other types of routes.
@@ -653,7 +653,7 @@ class PolicyBasedRoute(pulumi.CustomResource):
         my_network = gcp.compute.Network("myNetwork", auto_create_subnetworks=False)
         default = gcp.networkconnectivity.PolicyBasedRoute("default",
             network=my_network.id,
-            filter=gcp.networkconnectivity.PolicyBasedRouteFilterArgs(
+            filter=gcp.networkconnectivity.PolicyBasedRouteFilterArrgs(
                 protocol_version="IPV4",
             ),
             next_hop_other_routes="DEFAULT_ROUTING")
@@ -673,14 +673,14 @@ class PolicyBasedRoute(pulumi.CustomResource):
             description="My routing policy",
             network=my_network.id,
             priority=2302,
-            filter=gcp.networkconnectivity.PolicyBasedRouteFilterArgs(
+            filter=gcp.networkconnectivity.PolicyBasedRouteFilterArrgs(
                 protocol_version="IPV4",
                 ip_protocol="UDP",
                 src_range="10.0.0.0/24",
                 dest_range="0.0.0.0/0",
             ),
             next_hop_ilb_ip=ilb.address,
-            virtual_machine=gcp.networkconnectivity.PolicyBasedRouteVirtualMachineArgs(
+            virtual_machine=gcp.networkconnectivity.PolicyBasedRouteVirtualMachineArrgs(
                 tags=["restricted"],
             ),
             labels={
@@ -713,12 +713,12 @@ class PolicyBasedRoute(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param PolicyBasedRouteArgs args: The arguments to use to populate this resource's properties.
+        :param PolicyBasedRouteArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(PolicyBasedRouteArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(PolicyBasedRouteArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -728,8 +728,8 @@ class PolicyBasedRoute(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 filter: Optional[pulumi.Input[pulumi.InputType['PolicyBasedRouteFilterArgs']]] = None,
-                 interconnect_attachment: Optional[pulumi.Input[pulumi.InputType['PolicyBasedRouteInterconnectAttachmentArgs']]] = None,
+                 filter: Optional[pulumi.Input[pulumi.InputType['PolicyBasedRouteFilterArrgs']]] = None,
+                 interconnect_attachment: Optional[pulumi.Input[pulumi.InputType['PolicyBasedRouteInterconnectAttachmentArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -737,7 +737,7 @@ class PolicyBasedRoute(pulumi.CustomResource):
                  next_hop_other_routes: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 virtual_machine: Optional[pulumi.Input[pulumi.InputType['PolicyBasedRouteVirtualMachineArgs']]] = None,
+                 virtual_machine: Optional[pulumi.Input[pulumi.InputType['PolicyBasedRouteVirtualMachineArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -745,7 +745,7 @@ class PolicyBasedRoute(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = PolicyBasedRouteArgs.__new__(PolicyBasedRouteArgs)
+            __props__ = PolicyBasedRouteArrgs.__new__(PolicyBasedRouteArrgs)
 
             __props__.__dict__["description"] = description
             if filter is None and not opts.urn:
@@ -783,8 +783,8 @@ class PolicyBasedRoute(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            filter: Optional[pulumi.Input[pulumi.InputType['PolicyBasedRouteFilterArgs']]] = None,
-            interconnect_attachment: Optional[pulumi.Input[pulumi.InputType['PolicyBasedRouteInterconnectAttachmentArgs']]] = None,
+            filter: Optional[pulumi.Input[pulumi.InputType['PolicyBasedRouteFilterArrgs']]] = None,
+            interconnect_attachment: Optional[pulumi.Input[pulumi.InputType['PolicyBasedRouteInterconnectAttachmentArrgs']]] = None,
             kind: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -795,8 +795,8 @@ class PolicyBasedRoute(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
-            virtual_machine: Optional[pulumi.Input[pulumi.InputType['PolicyBasedRouteVirtualMachineArgs']]] = None,
-            warnings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyBasedRouteWarningArgs']]]]] = None) -> 'PolicyBasedRoute':
+            virtual_machine: Optional[pulumi.Input[pulumi.InputType['PolicyBasedRouteVirtualMachineArrgs']]] = None,
+            warnings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyBasedRouteWarningArrgs']]]]] = None) -> 'PolicyBasedRoute':
         """
         Get an existing PolicyBasedRoute resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -807,9 +807,9 @@ class PolicyBasedRoute(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Time when the policy-based route was created.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['PolicyBasedRouteFilterArgs']] filter: The filter to match L4 traffic.
+        :param pulumi.Input[pulumi.InputType['PolicyBasedRouteFilterArrgs']] filter: The filter to match L4 traffic.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['PolicyBasedRouteInterconnectAttachmentArgs']] interconnect_attachment: The interconnect attachments that this policy-based route applies to.
+        :param pulumi.Input[pulumi.InputType['PolicyBasedRouteInterconnectAttachmentArrgs']] interconnect_attachment: The interconnect attachments that this policy-based route applies to.
                Structure is documented below.
         :param pulumi.Input[str] kind: Type of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
@@ -827,9 +827,9 @@ class PolicyBasedRoute(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Time when the policy-based route was created.
-        :param pulumi.Input[pulumi.InputType['PolicyBasedRouteVirtualMachineArgs']] virtual_machine: VM instances to which this policy-based route applies to.
+        :param pulumi.Input[pulumi.InputType['PolicyBasedRouteVirtualMachineArrgs']] virtual_machine: VM instances to which this policy-based route applies to.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyBasedRouteWarningArgs']]]] warnings: If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyBasedRouteWarningArrgs']]]] warnings: If potential misconfigurations are detected for this route, this field will be populated with warning messages.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

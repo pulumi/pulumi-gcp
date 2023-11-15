@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['KeyArgs', 'Key']
+__all__ = ['KeyArrgs', 'Key']
 
 @pulumi.input_type
-class KeyArgs:
+calass KeyArrgs:
     def __init__(__self__, *,
                  service_account_id: pulumi.Input[str],
                  keepers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -131,7 +131,7 @@ class KeyArgs:
 
 
 @pulumi.input_type
-class _KeyState:
+calass _KeyState:
     def __init__(__self__, *,
                  keepers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  key_algorithm: Optional[pulumi.Input[str]] = None,
@@ -334,7 +334,7 @@ class _KeyState:
         pulumi.set(self, "valid_before", value)
 
 
-class Key(pulumi.CustomResource):
+calass Key(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -405,7 +405,7 @@ class Key(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: KeyArgs,
+                 args: KeyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -446,12 +446,12 @@ class Key(pulumi.CustomResource):
         This resource does not support import.
 
         :param str resource_name: The name of the resource.
-        :param KeyArgs args: The arguments to use to populate this resource's properties.
+        :param KeyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(KeyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(KeyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -473,7 +473,7 @@ class Key(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = KeyArgs.__new__(KeyArgs)
+            __props__ = KeyArrgs.__new__(KeyArrgs)
 
             __props__.__dict__["keepers"] = keepers
             __props__.__dict__["key_algorithm"] = key_algorithm

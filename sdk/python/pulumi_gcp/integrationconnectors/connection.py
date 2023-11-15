@@ -11,40 +11,40 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ConnectionArgs', 'Connection']
+__all__ = ['ConnectionArrgs', 'Connection']
 
 @pulumi.input_type
-class ConnectionArgs:
+calass ConnectionArrgs:
     def __init__(__self__, *,
                  connector_version: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 auth_config: Optional[pulumi.Input['ConnectionAuthConfigArgs']] = None,
-                 config_variables: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionConfigVariableArgs']]]] = None,
+                 auth_config: Optional[pulumi.Input['ConnectionAuthConfigArrgs']] = None,
+                 config_variables: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionConfigVariableArrgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionDestinationConfigArgs']]]] = None,
-                 eventing_config: Optional[pulumi.Input['ConnectionEventingConfigArgs']] = None,
+                 destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionDestinationConfigArrgs']]]] = None,
+                 eventing_config: Optional[pulumi.Input['ConnectionEventingConfigArrgs']] = None,
                  eventing_enablement_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 lock_config: Optional[pulumi.Input['ConnectionLockConfigArgs']] = None,
-                 log_config: Optional[pulumi.Input['ConnectionLogConfigArgs']] = None,
+                 lock_config: Optional[pulumi.Input['ConnectionLockConfigArrgs']] = None,
+                 log_config: Optional[pulumi.Input['ConnectionLogConfigArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_config: Optional[pulumi.Input['ConnectionNodeConfigArgs']] = None,
+                 node_config: Optional[pulumi.Input['ConnectionNodeConfigArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 ssl_config: Optional[pulumi.Input['ConnectionSslConfigArgs']] = None,
+                 ssl_config: Optional[pulumi.Input['ConnectionSslConfigArrgs']] = None,
                  suspended: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Connection resource.
         :param pulumi.Input[str] connector_version: connectorVersion of the Connector.
         :param pulumi.Input[str] location: Location in which Connection needs to be created.
-        :param pulumi.Input['ConnectionAuthConfigArgs'] auth_config: authConfig for the connection.
+        :param pulumi.Input['ConnectionAuthConfigArrgs'] auth_config: authConfig for the connection.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionConfigVariableArgs']]] config_variables: Config Variables for the connection.
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionConfigVariableArrgs']]] config_variables: Config Variables for the connection.
                Structure is documented below.
         :param pulumi.Input[str] description: An arbitrary description for the Conection.
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionDestinationConfigArgs']]] destination_configs: Define the Connectors target endpoint.
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionDestinationConfigArrgs']]] destination_configs: Define the Connectors target endpoint.
                Structure is documented below.
-        :param pulumi.Input['ConnectionEventingConfigArgs'] eventing_config: Eventing Configuration of a connection
+        :param pulumi.Input['ConnectionEventingConfigArrgs'] eventing_config: Eventing Configuration of a connection
                Structure is documented below.
         :param pulumi.Input[str] eventing_enablement_type: Eventing enablement type. Will be nil if eventing is not enabled.
                Possible values are: `EVENTING_AND_CONNECTION`, `ONLY_EVENTING`.
@@ -52,20 +52,20 @@ class ConnectionArgs:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input['ConnectionLockConfigArgs'] lock_config: Determines whether or no a connection is locked. If locked, a reason must be specified.
+        :param pulumi.Input['ConnectionLockConfigArrgs'] lock_config: Determines whether or no a connection is locked. If locked, a reason must be specified.
                Structure is documented below.
-        :param pulumi.Input['ConnectionLogConfigArgs'] log_config: Log configuration for the connection.
+        :param pulumi.Input['ConnectionLogConfigArrgs'] log_config: Log configuration for the connection.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of Connection needs to be created.
                
                
                - - -
-        :param pulumi.Input['ConnectionNodeConfigArgs'] node_config: Node configuration for the connection.
+        :param pulumi.Input['ConnectionNodeConfigArrgs'] node_config: Node configuration for the connection.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service_account: Service account needed for runtime plane to access Google Cloud resources.
-        :param pulumi.Input['ConnectionSslConfigArgs'] ssl_config: SSL Configuration of a connection
+        :param pulumi.Input['ConnectionSslConfigArrgs'] ssl_config: SSL Configuration of a connection
                Structure is documented below.
         :param pulumi.Input[bool] suspended: Suspended indicates if a user has suspended a connection or not.
         """
@@ -128,7 +128,7 @@ class ConnectionArgs:
 
     @property
     @pulumi.getter(name="authConfig")
-    def auth_config(self) -> Optional[pulumi.Input['ConnectionAuthConfigArgs']]:
+    def auth_config(self) -> Optional[pulumi.Input['ConnectionAuthConfigArrgs']]:
         """
         authConfig for the connection.
         Structure is documented below.
@@ -136,12 +136,12 @@ class ConnectionArgs:
         return pulumi.get(self, "auth_config")
 
     @auth_config.setter
-    def auth_config(self, value: Optional[pulumi.Input['ConnectionAuthConfigArgs']]):
+    def auth_config(self, value: Optional[pulumi.Input['ConnectionAuthConfigArrgs']]):
         pulumi.set(self, "auth_config", value)
 
     @property
     @pulumi.getter(name="configVariables")
-    def config_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionConfigVariableArgs']]]]:
+    def config_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionConfigVariableArrgs']]]]:
         """
         Config Variables for the connection.
         Structure is documented below.
@@ -149,7 +149,7 @@ class ConnectionArgs:
         return pulumi.get(self, "config_variables")
 
     @config_variables.setter
-    def config_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionConfigVariableArgs']]]]):
+    def config_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionConfigVariableArrgs']]]]):
         pulumi.set(self, "config_variables", value)
 
     @property
@@ -166,7 +166,7 @@ class ConnectionArgs:
 
     @property
     @pulumi.getter(name="destinationConfigs")
-    def destination_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionDestinationConfigArgs']]]]:
+    def destination_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionDestinationConfigArrgs']]]]:
         """
         Define the Connectors target endpoint.
         Structure is documented below.
@@ -174,12 +174,12 @@ class ConnectionArgs:
         return pulumi.get(self, "destination_configs")
 
     @destination_configs.setter
-    def destination_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionDestinationConfigArgs']]]]):
+    def destination_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionDestinationConfigArrgs']]]]):
         pulumi.set(self, "destination_configs", value)
 
     @property
     @pulumi.getter(name="eventingConfig")
-    def eventing_config(self) -> Optional[pulumi.Input['ConnectionEventingConfigArgs']]:
+    def eventing_config(self) -> Optional[pulumi.Input['ConnectionEventingConfigArrgs']]:
         """
         Eventing Configuration of a connection
         Structure is documented below.
@@ -187,7 +187,7 @@ class ConnectionArgs:
         return pulumi.get(self, "eventing_config")
 
     @eventing_config.setter
-    def eventing_config(self, value: Optional[pulumi.Input['ConnectionEventingConfigArgs']]):
+    def eventing_config(self, value: Optional[pulumi.Input['ConnectionEventingConfigArrgs']]):
         pulumi.set(self, "eventing_config", value)
 
     @property
@@ -220,7 +220,7 @@ class ConnectionArgs:
 
     @property
     @pulumi.getter(name="lockConfig")
-    def lock_config(self) -> Optional[pulumi.Input['ConnectionLockConfigArgs']]:
+    def lock_config(self) -> Optional[pulumi.Input['ConnectionLockConfigArrgs']]:
         """
         Determines whether or no a connection is locked. If locked, a reason must be specified.
         Structure is documented below.
@@ -228,12 +228,12 @@ class ConnectionArgs:
         return pulumi.get(self, "lock_config")
 
     @lock_config.setter
-    def lock_config(self, value: Optional[pulumi.Input['ConnectionLockConfigArgs']]):
+    def lock_config(self, value: Optional[pulumi.Input['ConnectionLockConfigArrgs']]):
         pulumi.set(self, "lock_config", value)
 
     @property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional[pulumi.Input['ConnectionLogConfigArgs']]:
+    def log_config(self) -> Optional[pulumi.Input['ConnectionLogConfigArrgs']]:
         """
         Log configuration for the connection.
         Structure is documented below.
@@ -241,7 +241,7 @@ class ConnectionArgs:
         return pulumi.get(self, "log_config")
 
     @log_config.setter
-    def log_config(self, value: Optional[pulumi.Input['ConnectionLogConfigArgs']]):
+    def log_config(self, value: Optional[pulumi.Input['ConnectionLogConfigArrgs']]):
         pulumi.set(self, "log_config", value)
 
     @property
@@ -261,7 +261,7 @@ class ConnectionArgs:
 
     @property
     @pulumi.getter(name="nodeConfig")
-    def node_config(self) -> Optional[pulumi.Input['ConnectionNodeConfigArgs']]:
+    def node_config(self) -> Optional[pulumi.Input['ConnectionNodeConfigArrgs']]:
         """
         Node configuration for the connection.
         Structure is documented below.
@@ -269,7 +269,7 @@ class ConnectionArgs:
         return pulumi.get(self, "node_config")
 
     @node_config.setter
-    def node_config(self, value: Optional[pulumi.Input['ConnectionNodeConfigArgs']]):
+    def node_config(self, value: Optional[pulumi.Input['ConnectionNodeConfigArrgs']]):
         pulumi.set(self, "node_config", value)
 
     @property
@@ -299,7 +299,7 @@ class ConnectionArgs:
 
     @property
     @pulumi.getter(name="sslConfig")
-    def ssl_config(self) -> Optional[pulumi.Input['ConnectionSslConfigArgs']]:
+    def ssl_config(self) -> Optional[pulumi.Input['ConnectionSslConfigArrgs']]:
         """
         SSL Configuration of a connection
         Structure is documented below.
@@ -307,7 +307,7 @@ class ConnectionArgs:
         return pulumi.get(self, "ssl_config")
 
     @ssl_config.setter
-    def ssl_config(self, value: Optional[pulumi.Input['ConnectionSslConfigArgs']]):
+    def ssl_config(self, value: Optional[pulumi.Input['ConnectionSslConfigArrgs']]):
         pulumi.set(self, "ssl_config", value)
 
     @property
@@ -324,72 +324,72 @@ class ConnectionArgs:
 
 
 @pulumi.input_type
-class _ConnectionState:
+calass _ConnectionState:
     def __init__(__self__, *,
-                 auth_config: Optional[pulumi.Input['ConnectionAuthConfigArgs']] = None,
-                 config_variables: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionConfigVariableArgs']]]] = None,
+                 auth_config: Optional[pulumi.Input['ConnectionAuthConfigArrgs']] = None,
+                 config_variables: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionConfigVariableArrgs']]]] = None,
                  connection_revision: Optional[pulumi.Input[str]] = None,
                  connector_version: Optional[pulumi.Input[str]] = None,
-                 connector_version_infra_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionConnectorVersionInfraConfigArgs']]]] = None,
+                 connector_version_infra_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionConnectorVersionInfraConfigArrgs']]]] = None,
                  connector_version_launch_stage: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionDestinationConfigArgs']]]] = None,
+                 destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionDestinationConfigArrgs']]]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 eventing_config: Optional[pulumi.Input['ConnectionEventingConfigArgs']] = None,
+                 eventing_config: Optional[pulumi.Input['ConnectionEventingConfigArrgs']] = None,
                  eventing_enablement_type: Optional[pulumi.Input[str]] = None,
-                 eventing_runtime_datas: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingRuntimeDataArgs']]]] = None,
+                 eventing_runtime_datas: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingRuntimeDataArrgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 lock_config: Optional[pulumi.Input['ConnectionLockConfigArgs']] = None,
-                 log_config: Optional[pulumi.Input['ConnectionLogConfigArgs']] = None,
+                 lock_config: Optional[pulumi.Input['ConnectionLockConfigArrgs']] = None,
+                 log_config: Optional[pulumi.Input['ConnectionLogConfigArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_config: Optional[pulumi.Input['ConnectionNodeConfigArgs']] = None,
+                 node_config: Optional[pulumi.Input['ConnectionNodeConfigArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  service_directory: Optional[pulumi.Input[str]] = None,
-                 ssl_config: Optional[pulumi.Input['ConnectionSslConfigArgs']] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionStatusArgs']]]] = None,
+                 ssl_config: Optional[pulumi.Input['ConnectionSslConfigArrgs']] = None,
+                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionStatusArrgs']]]] = None,
                  subscription_type: Optional[pulumi.Input[str]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
-        :param pulumi.Input['ConnectionAuthConfigArgs'] auth_config: authConfig for the connection.
+        :param pulumi.Input['ConnectionAuthConfigArrgs'] auth_config: authConfig for the connection.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionConfigVariableArgs']]] config_variables: Config Variables for the connection.
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionConfigVariableArrgs']]] config_variables: Config Variables for the connection.
                Structure is documented below.
         :param pulumi.Input[str] connection_revision: Connection revision. This field is only updated when the connection is created or updated by User.
         :param pulumi.Input[str] connector_version: connectorVersion of the Connector.
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionConnectorVersionInfraConfigArgs']]] connector_version_infra_configs: This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version.
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionConnectorVersionInfraConfigArrgs']]] connector_version_infra_configs: This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version.
                Structure is documented below.
         :param pulumi.Input[str] connector_version_launch_stage: Flag to mark the version indicating the launch stage.
         :param pulumi.Input[str] create_time: Time the Namespace was created in UTC.
         :param pulumi.Input[str] description: An arbitrary description for the Conection.
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionDestinationConfigArgs']]] destination_configs: Define the Connectors target endpoint.
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionDestinationConfigArrgs']]] destination_configs: Define the Connectors target endpoint.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input['ConnectionEventingConfigArgs'] eventing_config: Eventing Configuration of a connection
+        :param pulumi.Input['ConnectionEventingConfigArrgs'] eventing_config: Eventing Configuration of a connection
                Structure is documented below.
         :param pulumi.Input[str] eventing_enablement_type: Eventing enablement type. Will be nil if eventing is not enabled.
                Possible values are: `EVENTING_AND_CONNECTION`, `ONLY_EVENTING`.
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionEventingRuntimeDataArgs']]] eventing_runtime_datas: Eventing Runtime Data.
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionEventingRuntimeDataArrgs']]] eventing_runtime_datas: Eventing Runtime Data.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Location in which Connection needs to be created.
-        :param pulumi.Input['ConnectionLockConfigArgs'] lock_config: Determines whether or no a connection is locked. If locked, a reason must be specified.
+        :param pulumi.Input['ConnectionLockConfigArrgs'] lock_config: Determines whether or no a connection is locked. If locked, a reason must be specified.
                Structure is documented below.
-        :param pulumi.Input['ConnectionLogConfigArgs'] log_config: Log configuration for the connection.
+        :param pulumi.Input['ConnectionLogConfigArrgs'] log_config: Log configuration for the connection.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of Connection needs to be created.
                
                
                - - -
-        :param pulumi.Input['ConnectionNodeConfigArgs'] node_config: Node configuration for the connection.
+        :param pulumi.Input['ConnectionNodeConfigArrgs'] node_config: Node configuration for the connection.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -398,9 +398,9 @@ class _ConnectionState:
         :param pulumi.Input[str] service_account: Service account needed for runtime plane to access Google Cloud resources.
         :param pulumi.Input[str] service_directory: The name of the Service Directory service name. Used for Private Harpoon to resolve the ILB address.
                e.g. "projects/cloud-connectors-e2e-testing/locations/us-central1/namespaces/istio-system/services/istio-ingressgateway-connectors"
-        :param pulumi.Input['ConnectionSslConfigArgs'] ssl_config: SSL Configuration of a connection
+        :param pulumi.Input['ConnectionSslConfigArrgs'] ssl_config: SSL Configuration of a connection
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionStatusArgs']]] statuses: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionStatusArrgs']]] statuses: (Output)
                Current status of eventing.
                Structure is documented below.
         :param pulumi.Input[str] subscription_type: This subscription type enum states the subscription type of the project.
@@ -466,7 +466,7 @@ class _ConnectionState:
 
     @property
     @pulumi.getter(name="authConfig")
-    def auth_config(self) -> Optional[pulumi.Input['ConnectionAuthConfigArgs']]:
+    def auth_config(self) -> Optional[pulumi.Input['ConnectionAuthConfigArrgs']]:
         """
         authConfig for the connection.
         Structure is documented below.
@@ -474,12 +474,12 @@ class _ConnectionState:
         return pulumi.get(self, "auth_config")
 
     @auth_config.setter
-    def auth_config(self, value: Optional[pulumi.Input['ConnectionAuthConfigArgs']]):
+    def auth_config(self, value: Optional[pulumi.Input['ConnectionAuthConfigArrgs']]):
         pulumi.set(self, "auth_config", value)
 
     @property
     @pulumi.getter(name="configVariables")
-    def config_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionConfigVariableArgs']]]]:
+    def config_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionConfigVariableArrgs']]]]:
         """
         Config Variables for the connection.
         Structure is documented below.
@@ -487,7 +487,7 @@ class _ConnectionState:
         return pulumi.get(self, "config_variables")
 
     @config_variables.setter
-    def config_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionConfigVariableArgs']]]]):
+    def config_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionConfigVariableArrgs']]]]):
         pulumi.set(self, "config_variables", value)
 
     @property
@@ -516,7 +516,7 @@ class _ConnectionState:
 
     @property
     @pulumi.getter(name="connectorVersionInfraConfigs")
-    def connector_version_infra_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionConnectorVersionInfraConfigArgs']]]]:
+    def connector_version_infra_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionConnectorVersionInfraConfigArrgs']]]]:
         """
         This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version.
         Structure is documented below.
@@ -524,7 +524,7 @@ class _ConnectionState:
         return pulumi.get(self, "connector_version_infra_configs")
 
     @connector_version_infra_configs.setter
-    def connector_version_infra_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionConnectorVersionInfraConfigArgs']]]]):
+    def connector_version_infra_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionConnectorVersionInfraConfigArrgs']]]]):
         pulumi.set(self, "connector_version_infra_configs", value)
 
     @property
@@ -565,7 +565,7 @@ class _ConnectionState:
 
     @property
     @pulumi.getter(name="destinationConfigs")
-    def destination_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionDestinationConfigArgs']]]]:
+    def destination_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionDestinationConfigArrgs']]]]:
         """
         Define the Connectors target endpoint.
         Structure is documented below.
@@ -573,7 +573,7 @@ class _ConnectionState:
         return pulumi.get(self, "destination_configs")
 
     @destination_configs.setter
-    def destination_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionDestinationConfigArgs']]]]):
+    def destination_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionDestinationConfigArrgs']]]]):
         pulumi.set(self, "destination_configs", value)
 
     @property
@@ -590,7 +590,7 @@ class _ConnectionState:
 
     @property
     @pulumi.getter(name="eventingConfig")
-    def eventing_config(self) -> Optional[pulumi.Input['ConnectionEventingConfigArgs']]:
+    def eventing_config(self) -> Optional[pulumi.Input['ConnectionEventingConfigArrgs']]:
         """
         Eventing Configuration of a connection
         Structure is documented below.
@@ -598,7 +598,7 @@ class _ConnectionState:
         return pulumi.get(self, "eventing_config")
 
     @eventing_config.setter
-    def eventing_config(self, value: Optional[pulumi.Input['ConnectionEventingConfigArgs']]):
+    def eventing_config(self, value: Optional[pulumi.Input['ConnectionEventingConfigArrgs']]):
         pulumi.set(self, "eventing_config", value)
 
     @property
@@ -616,7 +616,7 @@ class _ConnectionState:
 
     @property
     @pulumi.getter(name="eventingRuntimeDatas")
-    def eventing_runtime_datas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingRuntimeDataArgs']]]]:
+    def eventing_runtime_datas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingRuntimeDataArrgs']]]]:
         """
         Eventing Runtime Data.
         Structure is documented below.
@@ -624,7 +624,7 @@ class _ConnectionState:
         return pulumi.get(self, "eventing_runtime_datas")
 
     @eventing_runtime_datas.setter
-    def eventing_runtime_datas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingRuntimeDataArgs']]]]):
+    def eventing_runtime_datas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingRuntimeDataArrgs']]]]):
         pulumi.set(self, "eventing_runtime_datas", value)
 
     @property
@@ -656,7 +656,7 @@ class _ConnectionState:
 
     @property
     @pulumi.getter(name="lockConfig")
-    def lock_config(self) -> Optional[pulumi.Input['ConnectionLockConfigArgs']]:
+    def lock_config(self) -> Optional[pulumi.Input['ConnectionLockConfigArrgs']]:
         """
         Determines whether or no a connection is locked. If locked, a reason must be specified.
         Structure is documented below.
@@ -664,12 +664,12 @@ class _ConnectionState:
         return pulumi.get(self, "lock_config")
 
     @lock_config.setter
-    def lock_config(self, value: Optional[pulumi.Input['ConnectionLockConfigArgs']]):
+    def lock_config(self, value: Optional[pulumi.Input['ConnectionLockConfigArrgs']]):
         pulumi.set(self, "lock_config", value)
 
     @property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional[pulumi.Input['ConnectionLogConfigArgs']]:
+    def log_config(self) -> Optional[pulumi.Input['ConnectionLogConfigArrgs']]:
         """
         Log configuration for the connection.
         Structure is documented below.
@@ -677,7 +677,7 @@ class _ConnectionState:
         return pulumi.get(self, "log_config")
 
     @log_config.setter
-    def log_config(self, value: Optional[pulumi.Input['ConnectionLogConfigArgs']]):
+    def log_config(self, value: Optional[pulumi.Input['ConnectionLogConfigArrgs']]):
         pulumi.set(self, "log_config", value)
 
     @property
@@ -697,7 +697,7 @@ class _ConnectionState:
 
     @property
     @pulumi.getter(name="nodeConfig")
-    def node_config(self) -> Optional[pulumi.Input['ConnectionNodeConfigArgs']]:
+    def node_config(self) -> Optional[pulumi.Input['ConnectionNodeConfigArrgs']]:
         """
         Node configuration for the connection.
         Structure is documented below.
@@ -705,7 +705,7 @@ class _ConnectionState:
         return pulumi.get(self, "node_config")
 
     @node_config.setter
-    def node_config(self, value: Optional[pulumi.Input['ConnectionNodeConfigArgs']]):
+    def node_config(self, value: Optional[pulumi.Input['ConnectionNodeConfigArrgs']]):
         pulumi.set(self, "node_config", value)
 
     @property
@@ -761,7 +761,7 @@ class _ConnectionState:
 
     @property
     @pulumi.getter(name="sslConfig")
-    def ssl_config(self) -> Optional[pulumi.Input['ConnectionSslConfigArgs']]:
+    def ssl_config(self) -> Optional[pulumi.Input['ConnectionSslConfigArrgs']]:
         """
         SSL Configuration of a connection
         Structure is documented below.
@@ -769,12 +769,12 @@ class _ConnectionState:
         return pulumi.get(self, "ssl_config")
 
     @ssl_config.setter
-    def ssl_config(self, value: Optional[pulumi.Input['ConnectionSslConfigArgs']]):
+    def ssl_config(self, value: Optional[pulumi.Input['ConnectionSslConfigArrgs']]):
         pulumi.set(self, "ssl_config", value)
 
     @property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionStatusArgs']]]]:
+    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionStatusArrgs']]]]:
         """
         (Output)
         Current status of eventing.
@@ -783,7 +783,7 @@ class _ConnectionState:
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionStatusArgs']]]]):
+    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionStatusArrgs']]]]):
         pulumi.set(self, "statuses", value)
 
     @property
@@ -823,27 +823,27 @@ class _ConnectionState:
         pulumi.set(self, "update_time", value)
 
 
-class Connection(pulumi.CustomResource):
+calass Connection(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_config: Optional[pulumi.Input[pulumi.InputType['ConnectionAuthConfigArgs']]] = None,
-                 config_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionConfigVariableArgs']]]]] = None,
+                 auth_config: Optional[pulumi.Input[pulumi.InputType['ConnectionAuthConfigArrgs']]] = None,
+                 config_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionConfigVariableArrgs']]]]] = None,
                  connector_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionDestinationConfigArgs']]]]] = None,
-                 eventing_config: Optional[pulumi.Input[pulumi.InputType['ConnectionEventingConfigArgs']]] = None,
+                 destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionDestinationConfigArrgs']]]]] = None,
+                 eventing_config: Optional[pulumi.Input[pulumi.InputType['ConnectionEventingConfigArrgs']]] = None,
                  eventing_enablement_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 lock_config: Optional[pulumi.Input[pulumi.InputType['ConnectionLockConfigArgs']]] = None,
-                 log_config: Optional[pulumi.Input[pulumi.InputType['ConnectionLogConfigArgs']]] = None,
+                 lock_config: Optional[pulumi.Input[pulumi.InputType['ConnectionLockConfigArrgs']]] = None,
+                 log_config: Optional[pulumi.Input[pulumi.InputType['ConnectionLogConfigArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_config: Optional[pulumi.Input[pulumi.InputType['ConnectionNodeConfigArgs']]] = None,
+                 node_config: Optional[pulumi.Input[pulumi.InputType['ConnectionNodeConfigArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 ssl_config: Optional[pulumi.Input[pulumi.InputType['ConnectionSslConfigArgs']]] = None,
+                 ssl_config: Optional[pulumi.Input[pulumi.InputType['ConnectionSslConfigArrgs']]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -865,11 +865,11 @@ class Connection(pulumi.CustomResource):
         test_project = gcp.organizations.get_project()
         pubsubconnection = gcp.integrationconnectors.Connection("pubsubconnection",
             config_variables=[
-                gcp.integrationconnectors.ConnectionConfigVariableArgs(
+                gcp.integrationconnectors.ConnectionConfigVariableArrgs(
                     key="project_id",
                     string_value="connectors-example",
                 ),
-                gcp.integrationconnectors.ConnectionConfigVariableArgs(
+                gcp.integrationconnectors.ConnectionConfigVariableArrgs(
                     key="topic_id",
                     string_value="test",
                 ),
@@ -887,9 +887,9 @@ class Connection(pulumi.CustomResource):
         test_project = gcp.organizations.get_project()
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="test-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
-                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArrgs(
+                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArrgs(
                         location="us-central1",
                     )],
                 ),
@@ -908,52 +908,52 @@ class Connection(pulumi.CustomResource):
             service_account=f"{test_project.number}-compute@developer.gserviceaccount.com",
             connector_version=f"projects/{test_project.project_id}/locations/global/providers/zendesk/connectors/zendesk/versions/1",
             config_variables=[
-                gcp.integrationconnectors.ConnectionConfigVariableArgs(
+                gcp.integrationconnectors.ConnectionConfigVariableArrgs(
                     key="proxy_enabled",
                     boolean_value=False,
                 ),
-                gcp.integrationconnectors.ConnectionConfigVariableArgs(
+                gcp.integrationconnectors.ConnectionConfigVariableArrgs(
                     key="sample_integer_value",
                     integer_value=1,
                 ),
-                gcp.integrationconnectors.ConnectionConfigVariableArgs(
+                gcp.integrationconnectors.ConnectionConfigVariableArrgs(
                     key="sample_encryption_key_value",
-                    encryption_key_value=gcp.integrationconnectors.ConnectionConfigVariableEncryptionKeyValueArgs(
+                    encryption_key_value=gcp.integrationconnectors.ConnectionConfigVariableEncryptionKeyValueArrgs(
                         type="GOOGLE_MANAGED",
                         kms_key_name="sampleKMSKkey",
                     ),
                 ),
-                gcp.integrationconnectors.ConnectionConfigVariableArgs(
+                gcp.integrationconnectors.ConnectionConfigVariableArrgs(
                     key="sample_secret_value",
-                    secret_value=gcp.integrationconnectors.ConnectionConfigVariableSecretValueArgs(
+                    secret_value=gcp.integrationconnectors.ConnectionConfigVariableSecretValueArrgs(
                         secret_version=secret_version_basic.name,
                     ),
                 ),
             ],
             suspended=False,
-            auth_config=gcp.integrationconnectors.ConnectionAuthConfigArgs(
+            auth_config=gcp.integrationconnectors.ConnectionAuthConfigArrgs(
                 additional_variables=[
-                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArrgs(
                         key="sample_string",
                         string_value="sampleString",
                     ),
-                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArrgs(
                         key="sample_boolean",
                         boolean_value=False,
                     ),
-                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArrgs(
                         key="sample_integer",
                         integer_value=1,
                     ),
-                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArrgs(
                         key="sample_secret_value",
-                        secret_value=gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableSecretValueArgs(
+                        secret_value=gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableSecretValueArrgs(
                             secret_version=secret_version_basic.name,
                         ),
                     ),
-                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArrgs(
                         key="sample_encryption_key_value",
-                        encryption_key_value=gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs(
+                        encryption_key_value=gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArrgs(
                             type="GOOGLE_MANAGED",
                             kms_key_name="sampleKMSKkey",
                         ),
@@ -961,73 +961,73 @@ class Connection(pulumi.CustomResource):
                 ],
                 auth_type="USER_PASSWORD",
                 auth_key="sampleAuthKey",
-                user_password=gcp.integrationconnectors.ConnectionAuthConfigUserPasswordArgs(
+                user_password=gcp.integrationconnectors.ConnectionAuthConfigUserPasswordArrgs(
                     username="user@xyz.com",
-                    password=gcp.integrationconnectors.ConnectionAuthConfigUserPasswordPasswordArgs(
+                    password=gcp.integrationconnectors.ConnectionAuthConfigUserPasswordPasswordArrgs(
                         secret_version=secret_version_basic.name,
                     ),
                 ),
             ),
-            destination_configs=[gcp.integrationconnectors.ConnectionDestinationConfigArgs(
+            destination_configs=[gcp.integrationconnectors.ConnectionDestinationConfigArrgs(
                 key="url",
-                destinations=[gcp.integrationconnectors.ConnectionDestinationConfigDestinationArgs(
+                destinations=[gcp.integrationconnectors.ConnectionDestinationConfigDestinationArrgs(
                     host="https://test.zendesk.com",
                     port=80,
                 )],
             )],
-            lock_config=gcp.integrationconnectors.ConnectionLockConfigArgs(
+            lock_config=gcp.integrationconnectors.ConnectionLockConfigArrgs(
                 locked=False,
                 reason="Its not locked",
             ),
-            log_config=gcp.integrationconnectors.ConnectionLogConfigArgs(
+            log_config=gcp.integrationconnectors.ConnectionLogConfigArrgs(
                 enabled=True,
             ),
-            node_config=gcp.integrationconnectors.ConnectionNodeConfigArgs(
+            node_config=gcp.integrationconnectors.ConnectionNodeConfigArrgs(
                 min_node_count=2,
                 max_node_count=50,
             ),
             labels={
                 "foo": "bar",
             },
-            ssl_config=gcp.integrationconnectors.ConnectionSslConfigArgs(
+            ssl_config=gcp.integrationconnectors.ConnectionSslConfigArrgs(
                 additional_variables=[
-                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArrgs(
                         key="sample_string",
                         string_value="sampleString",
                     ),
-                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArrgs(
                         key="sample_boolean",
                         boolean_value=False,
                     ),
-                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArrgs(
                         key="sample_integer",
                         integer_value=1,
                     ),
-                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArrgs(
                         key="sample_secret_value",
-                        secret_value=gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableSecretValueArgs(
+                        secret_value=gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableSecretValueArrgs(
                             secret_version=secret_version_basic.name,
                         ),
                     ),
-                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArrgs(
                         key="sample_encryption_key_value",
-                        encryption_key_value=gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs(
+                        encryption_key_value=gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableEncryptionKeyValueArrgs(
                             type="GOOGLE_MANAGED",
                             kms_key_name="sampleKMSKkey",
                         ),
                     ),
                 ],
                 client_cert_type="PEM",
-                client_certificate=gcp.integrationconnectors.ConnectionSslConfigClientCertificateArgs(
+                client_certificate=gcp.integrationconnectors.ConnectionSslConfigClientCertificateArrgs(
                     secret_version=secret_version_basic.name,
                 ),
-                client_private_key=gcp.integrationconnectors.ConnectionSslConfigClientPrivateKeyArgs(
+                client_private_key=gcp.integrationconnectors.ConnectionSslConfigClientPrivateKeyArrgs(
                     secret_version=secret_version_basic.name,
                 ),
-                client_private_key_pass=gcp.integrationconnectors.ConnectionSslConfigClientPrivateKeyPassArgs(
+                client_private_key_pass=gcp.integrationconnectors.ConnectionSslConfigClientPrivateKeyPassArrgs(
                     secret_version=secret_version_basic.name,
                 ),
-                private_server_certificate=gcp.integrationconnectors.ConnectionSslConfigPrivateServerCertificateArgs(
+                private_server_certificate=gcp.integrationconnectors.ConnectionSslConfigPrivateServerCertificateArrgs(
                     secret_version=secret_version_basic.name,
                 ),
                 server_cert_type="PEM",
@@ -1036,72 +1036,72 @@ class Connection(pulumi.CustomResource):
                 use_ssl=True,
             ),
             eventing_enablement_type="EVENTING_AND_CONNECTION",
-            eventing_config=gcp.integrationconnectors.ConnectionEventingConfigArgs(
+            eventing_config=gcp.integrationconnectors.ConnectionEventingConfigArrgs(
                 additional_variables=[
-                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArrgs(
                         key="sample_string",
                         string_value="sampleString",
                     ),
-                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArrgs(
                         key="sample_boolean",
                         boolean_value=False,
                     ),
-                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArrgs(
                         key="sample_integer",
                         integer_value=1,
                     ),
-                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArrgs(
                         key="sample_secret_value",
-                        secret_value=gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableSecretValueArgs(
+                        secret_value=gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableSecretValueArrgs(
                             secret_version=secret_version_basic.name,
                         ),
                     ),
-                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArrgs(
                         key="sample_encryption_key_value",
-                        encryption_key_value=gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs(
+                        encryption_key_value=gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArrgs(
                             type="GOOGLE_MANAGED",
                             kms_key_name="sampleKMSKkey",
                         ),
                     ),
                 ],
-                registration_destination_config=gcp.integrationconnectors.ConnectionEventingConfigRegistrationDestinationConfigArgs(
+                registration_destination_config=gcp.integrationconnectors.ConnectionEventingConfigRegistrationDestinationConfigArrgs(
                     key="registration_destination_config",
-                    destinations=[gcp.integrationconnectors.ConnectionEventingConfigRegistrationDestinationConfigDestinationArgs(
+                    destinations=[gcp.integrationconnectors.ConnectionEventingConfigRegistrationDestinationConfigDestinationArrgs(
                         host="https://test.zendesk.com",
                         port=80,
                     )],
                 ),
-                auth_config=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigArgs(
+                auth_config=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigArrgs(
                     auth_type="USER_PASSWORD",
                     auth_key="sampleAuthKey",
-                    user_password=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigUserPasswordArgs(
+                    user_password=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigUserPasswordArrgs(
                         username="user@xyz.com",
-                        password=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigUserPasswordPasswordArgs(
+                        password=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigUserPasswordPasswordArrgs(
                             secret_version=secret_version_basic.name,
                         ),
                     ),
                     additional_variables=[
-                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArgs(
+                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArrgs(
                             key="sample_string",
                             string_value="sampleString",
                         ),
-                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArgs(
+                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArrgs(
                             key="sample_boolean",
                             boolean_value=False,
                         ),
-                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArgs(
+                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArrgs(
                             key="sample_integer",
                             integer_value=1,
                         ),
-                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArgs(
+                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArrgs(
                             key="sample_secret_value",
-                            secret_value=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgs(
+                            secret_value=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArrgs(
                                 secret_version=secret_version_basic.name,
                             ),
                         ),
-                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArgs(
+                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArrgs(
                             key="sample_encryption_key_value",
-                            encryption_key_value=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs(
+                            encryption_key_value=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArrgs(
                                 type="GOOGLE_MANAGED",
                                 kms_key_name="sampleKMSKkey",
                             ),
@@ -1138,15 +1138,15 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConnectionAuthConfigArgs']] auth_config: authConfig for the connection.
+        :param pulumi.Input[pulumi.InputType['ConnectionAuthConfigArrgs']] auth_config: authConfig for the connection.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionConfigVariableArgs']]]] config_variables: Config Variables for the connection.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionConfigVariableArrgs']]]] config_variables: Config Variables for the connection.
                Structure is documented below.
         :param pulumi.Input[str] connector_version: connectorVersion of the Connector.
         :param pulumi.Input[str] description: An arbitrary description for the Conection.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionDestinationConfigArgs']]]] destination_configs: Define the Connectors target endpoint.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionDestinationConfigArrgs']]]] destination_configs: Define the Connectors target endpoint.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionEventingConfigArgs']] eventing_config: Eventing Configuration of a connection
+        :param pulumi.Input[pulumi.InputType['ConnectionEventingConfigArrgs']] eventing_config: Eventing Configuration of a connection
                Structure is documented below.
         :param pulumi.Input[str] eventing_enablement_type: Eventing enablement type. Will be nil if eventing is not enabled.
                Possible values are: `EVENTING_AND_CONNECTION`, `ONLY_EVENTING`.
@@ -1155,20 +1155,20 @@ class Connection(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Location in which Connection needs to be created.
-        :param pulumi.Input[pulumi.InputType['ConnectionLockConfigArgs']] lock_config: Determines whether or no a connection is locked. If locked, a reason must be specified.
+        :param pulumi.Input[pulumi.InputType['ConnectionLockConfigArrgs']] lock_config: Determines whether or no a connection is locked. If locked, a reason must be specified.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionLogConfigArgs']] log_config: Log configuration for the connection.
+        :param pulumi.Input[pulumi.InputType['ConnectionLogConfigArrgs']] log_config: Log configuration for the connection.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of Connection needs to be created.
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['ConnectionNodeConfigArgs']] node_config: Node configuration for the connection.
+        :param pulumi.Input[pulumi.InputType['ConnectionNodeConfigArrgs']] node_config: Node configuration for the connection.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service_account: Service account needed for runtime plane to access Google Cloud resources.
-        :param pulumi.Input[pulumi.InputType['ConnectionSslConfigArgs']] ssl_config: SSL Configuration of a connection
+        :param pulumi.Input[pulumi.InputType['ConnectionSslConfigArrgs']] ssl_config: SSL Configuration of a connection
                Structure is documented below.
         :param pulumi.Input[bool] suspended: Suspended indicates if a user has suspended a connection or not.
         """
@@ -1176,7 +1176,7 @@ class Connection(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ConnectionArgs,
+                 args: ConnectionArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An Integration connectors Connection.
@@ -1197,11 +1197,11 @@ class Connection(pulumi.CustomResource):
         test_project = gcp.organizations.get_project()
         pubsubconnection = gcp.integrationconnectors.Connection("pubsubconnection",
             config_variables=[
-                gcp.integrationconnectors.ConnectionConfigVariableArgs(
+                gcp.integrationconnectors.ConnectionConfigVariableArrgs(
                     key="project_id",
                     string_value="connectors-example",
                 ),
-                gcp.integrationconnectors.ConnectionConfigVariableArgs(
+                gcp.integrationconnectors.ConnectionConfigVariableArrgs(
                     key="topic_id",
                     string_value="test",
                 ),
@@ -1219,9 +1219,9 @@ class Connection(pulumi.CustomResource):
         test_project = gcp.organizations.get_project()
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="test-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
-                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArrgs(
+                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArrgs(
                         location="us-central1",
                     )],
                 ),
@@ -1240,52 +1240,52 @@ class Connection(pulumi.CustomResource):
             service_account=f"{test_project.number}-compute@developer.gserviceaccount.com",
             connector_version=f"projects/{test_project.project_id}/locations/global/providers/zendesk/connectors/zendesk/versions/1",
             config_variables=[
-                gcp.integrationconnectors.ConnectionConfigVariableArgs(
+                gcp.integrationconnectors.ConnectionConfigVariableArrgs(
                     key="proxy_enabled",
                     boolean_value=False,
                 ),
-                gcp.integrationconnectors.ConnectionConfigVariableArgs(
+                gcp.integrationconnectors.ConnectionConfigVariableArrgs(
                     key="sample_integer_value",
                     integer_value=1,
                 ),
-                gcp.integrationconnectors.ConnectionConfigVariableArgs(
+                gcp.integrationconnectors.ConnectionConfigVariableArrgs(
                     key="sample_encryption_key_value",
-                    encryption_key_value=gcp.integrationconnectors.ConnectionConfigVariableEncryptionKeyValueArgs(
+                    encryption_key_value=gcp.integrationconnectors.ConnectionConfigVariableEncryptionKeyValueArrgs(
                         type="GOOGLE_MANAGED",
                         kms_key_name="sampleKMSKkey",
                     ),
                 ),
-                gcp.integrationconnectors.ConnectionConfigVariableArgs(
+                gcp.integrationconnectors.ConnectionConfigVariableArrgs(
                     key="sample_secret_value",
-                    secret_value=gcp.integrationconnectors.ConnectionConfigVariableSecretValueArgs(
+                    secret_value=gcp.integrationconnectors.ConnectionConfigVariableSecretValueArrgs(
                         secret_version=secret_version_basic.name,
                     ),
                 ),
             ],
             suspended=False,
-            auth_config=gcp.integrationconnectors.ConnectionAuthConfigArgs(
+            auth_config=gcp.integrationconnectors.ConnectionAuthConfigArrgs(
                 additional_variables=[
-                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArrgs(
                         key="sample_string",
                         string_value="sampleString",
                     ),
-                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArrgs(
                         key="sample_boolean",
                         boolean_value=False,
                     ),
-                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArrgs(
                         key="sample_integer",
                         integer_value=1,
                     ),
-                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArrgs(
                         key="sample_secret_value",
-                        secret_value=gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableSecretValueArgs(
+                        secret_value=gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableSecretValueArrgs(
                             secret_version=secret_version_basic.name,
                         ),
                     ),
-                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArrgs(
                         key="sample_encryption_key_value",
-                        encryption_key_value=gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs(
+                        encryption_key_value=gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArrgs(
                             type="GOOGLE_MANAGED",
                             kms_key_name="sampleKMSKkey",
                         ),
@@ -1293,73 +1293,73 @@ class Connection(pulumi.CustomResource):
                 ],
                 auth_type="USER_PASSWORD",
                 auth_key="sampleAuthKey",
-                user_password=gcp.integrationconnectors.ConnectionAuthConfigUserPasswordArgs(
+                user_password=gcp.integrationconnectors.ConnectionAuthConfigUserPasswordArrgs(
                     username="user@xyz.com",
-                    password=gcp.integrationconnectors.ConnectionAuthConfigUserPasswordPasswordArgs(
+                    password=gcp.integrationconnectors.ConnectionAuthConfigUserPasswordPasswordArrgs(
                         secret_version=secret_version_basic.name,
                     ),
                 ),
             ),
-            destination_configs=[gcp.integrationconnectors.ConnectionDestinationConfigArgs(
+            destination_configs=[gcp.integrationconnectors.ConnectionDestinationConfigArrgs(
                 key="url",
-                destinations=[gcp.integrationconnectors.ConnectionDestinationConfigDestinationArgs(
+                destinations=[gcp.integrationconnectors.ConnectionDestinationConfigDestinationArrgs(
                     host="https://test.zendesk.com",
                     port=80,
                 )],
             )],
-            lock_config=gcp.integrationconnectors.ConnectionLockConfigArgs(
+            lock_config=gcp.integrationconnectors.ConnectionLockConfigArrgs(
                 locked=False,
                 reason="Its not locked",
             ),
-            log_config=gcp.integrationconnectors.ConnectionLogConfigArgs(
+            log_config=gcp.integrationconnectors.ConnectionLogConfigArrgs(
                 enabled=True,
             ),
-            node_config=gcp.integrationconnectors.ConnectionNodeConfigArgs(
+            node_config=gcp.integrationconnectors.ConnectionNodeConfigArrgs(
                 min_node_count=2,
                 max_node_count=50,
             ),
             labels={
                 "foo": "bar",
             },
-            ssl_config=gcp.integrationconnectors.ConnectionSslConfigArgs(
+            ssl_config=gcp.integrationconnectors.ConnectionSslConfigArrgs(
                 additional_variables=[
-                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArrgs(
                         key="sample_string",
                         string_value="sampleString",
                     ),
-                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArrgs(
                         key="sample_boolean",
                         boolean_value=False,
                     ),
-                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArrgs(
                         key="sample_integer",
                         integer_value=1,
                     ),
-                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArrgs(
                         key="sample_secret_value",
-                        secret_value=gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableSecretValueArgs(
+                        secret_value=gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableSecretValueArrgs(
                             secret_version=secret_version_basic.name,
                         ),
                     ),
-                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArrgs(
                         key="sample_encryption_key_value",
-                        encryption_key_value=gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs(
+                        encryption_key_value=gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableEncryptionKeyValueArrgs(
                             type="GOOGLE_MANAGED",
                             kms_key_name="sampleKMSKkey",
                         ),
                     ),
                 ],
                 client_cert_type="PEM",
-                client_certificate=gcp.integrationconnectors.ConnectionSslConfigClientCertificateArgs(
+                client_certificate=gcp.integrationconnectors.ConnectionSslConfigClientCertificateArrgs(
                     secret_version=secret_version_basic.name,
                 ),
-                client_private_key=gcp.integrationconnectors.ConnectionSslConfigClientPrivateKeyArgs(
+                client_private_key=gcp.integrationconnectors.ConnectionSslConfigClientPrivateKeyArrgs(
                     secret_version=secret_version_basic.name,
                 ),
-                client_private_key_pass=gcp.integrationconnectors.ConnectionSslConfigClientPrivateKeyPassArgs(
+                client_private_key_pass=gcp.integrationconnectors.ConnectionSslConfigClientPrivateKeyPassArrgs(
                     secret_version=secret_version_basic.name,
                 ),
-                private_server_certificate=gcp.integrationconnectors.ConnectionSslConfigPrivateServerCertificateArgs(
+                private_server_certificate=gcp.integrationconnectors.ConnectionSslConfigPrivateServerCertificateArrgs(
                     secret_version=secret_version_basic.name,
                 ),
                 server_cert_type="PEM",
@@ -1368,72 +1368,72 @@ class Connection(pulumi.CustomResource):
                 use_ssl=True,
             ),
             eventing_enablement_type="EVENTING_AND_CONNECTION",
-            eventing_config=gcp.integrationconnectors.ConnectionEventingConfigArgs(
+            eventing_config=gcp.integrationconnectors.ConnectionEventingConfigArrgs(
                 additional_variables=[
-                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArrgs(
                         key="sample_string",
                         string_value="sampleString",
                     ),
-                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArrgs(
                         key="sample_boolean",
                         boolean_value=False,
                     ),
-                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArrgs(
                         key="sample_integer",
                         integer_value=1,
                     ),
-                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArrgs(
                         key="sample_secret_value",
-                        secret_value=gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableSecretValueArgs(
+                        secret_value=gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableSecretValueArrgs(
                             secret_version=secret_version_basic.name,
                         ),
                     ),
-                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArgs(
+                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArrgs(
                         key="sample_encryption_key_value",
-                        encryption_key_value=gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs(
+                        encryption_key_value=gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArrgs(
                             type="GOOGLE_MANAGED",
                             kms_key_name="sampleKMSKkey",
                         ),
                     ),
                 ],
-                registration_destination_config=gcp.integrationconnectors.ConnectionEventingConfigRegistrationDestinationConfigArgs(
+                registration_destination_config=gcp.integrationconnectors.ConnectionEventingConfigRegistrationDestinationConfigArrgs(
                     key="registration_destination_config",
-                    destinations=[gcp.integrationconnectors.ConnectionEventingConfigRegistrationDestinationConfigDestinationArgs(
+                    destinations=[gcp.integrationconnectors.ConnectionEventingConfigRegistrationDestinationConfigDestinationArrgs(
                         host="https://test.zendesk.com",
                         port=80,
                     )],
                 ),
-                auth_config=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigArgs(
+                auth_config=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigArrgs(
                     auth_type="USER_PASSWORD",
                     auth_key="sampleAuthKey",
-                    user_password=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigUserPasswordArgs(
+                    user_password=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigUserPasswordArrgs(
                         username="user@xyz.com",
-                        password=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigUserPasswordPasswordArgs(
+                        password=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigUserPasswordPasswordArrgs(
                             secret_version=secret_version_basic.name,
                         ),
                     ),
                     additional_variables=[
-                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArgs(
+                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArrgs(
                             key="sample_string",
                             string_value="sampleString",
                         ),
-                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArgs(
+                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArrgs(
                             key="sample_boolean",
                             boolean_value=False,
                         ),
-                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArgs(
+                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArrgs(
                             key="sample_integer",
                             integer_value=1,
                         ),
-                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArgs(
+                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArrgs(
                             key="sample_secret_value",
-                            secret_value=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgs(
+                            secret_value=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArrgs(
                                 secret_version=secret_version_basic.name,
                             ),
                         ),
-                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArgs(
+                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArrgs(
                             key="sample_encryption_key_value",
-                            encryption_key_value=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs(
+                            encryption_key_value=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArrgs(
                                 type="GOOGLE_MANAGED",
                                 kms_key_name="sampleKMSKkey",
                             ),
@@ -1469,12 +1469,12 @@ class Connection(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ConnectionArgs args: The arguments to use to populate this resource's properties.
+        :param ConnectionArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ConnectionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ConnectionArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1483,22 +1483,22 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_config: Optional[pulumi.Input[pulumi.InputType['ConnectionAuthConfigArgs']]] = None,
-                 config_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionConfigVariableArgs']]]]] = None,
+                 auth_config: Optional[pulumi.Input[pulumi.InputType['ConnectionAuthConfigArrgs']]] = None,
+                 config_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionConfigVariableArrgs']]]]] = None,
                  connector_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionDestinationConfigArgs']]]]] = None,
-                 eventing_config: Optional[pulumi.Input[pulumi.InputType['ConnectionEventingConfigArgs']]] = None,
+                 destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionDestinationConfigArrgs']]]]] = None,
+                 eventing_config: Optional[pulumi.Input[pulumi.InputType['ConnectionEventingConfigArrgs']]] = None,
                  eventing_enablement_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 lock_config: Optional[pulumi.Input[pulumi.InputType['ConnectionLockConfigArgs']]] = None,
-                 log_config: Optional[pulumi.Input[pulumi.InputType['ConnectionLogConfigArgs']]] = None,
+                 lock_config: Optional[pulumi.Input[pulumi.InputType['ConnectionLockConfigArrgs']]] = None,
+                 log_config: Optional[pulumi.Input[pulumi.InputType['ConnectionLogConfigArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_config: Optional[pulumi.Input[pulumi.InputType['ConnectionNodeConfigArgs']]] = None,
+                 node_config: Optional[pulumi.Input[pulumi.InputType['ConnectionNodeConfigArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 ssl_config: Optional[pulumi.Input[pulumi.InputType['ConnectionSslConfigArgs']]] = None,
+                 ssl_config: Optional[pulumi.Input[pulumi.InputType['ConnectionSslConfigArrgs']]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1507,7 +1507,7 @@ class Connection(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ConnectionArgs.__new__(ConnectionArgs)
+            __props__ = ConnectionArrgs.__new__(ConnectionArrgs)
 
             __props__.__dict__["auth_config"] = auth_config
             __props__.__dict__["config_variables"] = config_variables
@@ -1553,31 +1553,31 @@ class Connection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth_config: Optional[pulumi.Input[pulumi.InputType['ConnectionAuthConfigArgs']]] = None,
-            config_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionConfigVariableArgs']]]]] = None,
+            auth_config: Optional[pulumi.Input[pulumi.InputType['ConnectionAuthConfigArrgs']]] = None,
+            config_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionConfigVariableArrgs']]]]] = None,
             connection_revision: Optional[pulumi.Input[str]] = None,
             connector_version: Optional[pulumi.Input[str]] = None,
-            connector_version_infra_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionConnectorVersionInfraConfigArgs']]]]] = None,
+            connector_version_infra_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionConnectorVersionInfraConfigArrgs']]]]] = None,
             connector_version_launch_stage: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionDestinationConfigArgs']]]]] = None,
+            destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionDestinationConfigArrgs']]]]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            eventing_config: Optional[pulumi.Input[pulumi.InputType['ConnectionEventingConfigArgs']]] = None,
+            eventing_config: Optional[pulumi.Input[pulumi.InputType['ConnectionEventingConfigArrgs']]] = None,
             eventing_enablement_type: Optional[pulumi.Input[str]] = None,
-            eventing_runtime_datas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionEventingRuntimeDataArgs']]]]] = None,
+            eventing_runtime_datas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionEventingRuntimeDataArrgs']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            lock_config: Optional[pulumi.Input[pulumi.InputType['ConnectionLockConfigArgs']]] = None,
-            log_config: Optional[pulumi.Input[pulumi.InputType['ConnectionLogConfigArgs']]] = None,
+            lock_config: Optional[pulumi.Input[pulumi.InputType['ConnectionLockConfigArrgs']]] = None,
+            log_config: Optional[pulumi.Input[pulumi.InputType['ConnectionLogConfigArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            node_config: Optional[pulumi.Input[pulumi.InputType['ConnectionNodeConfigArgs']]] = None,
+            node_config: Optional[pulumi.Input[pulumi.InputType['ConnectionNodeConfigArrgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
             service_directory: Optional[pulumi.Input[str]] = None,
-            ssl_config: Optional[pulumi.Input[pulumi.InputType['ConnectionSslConfigArgs']]] = None,
-            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionStatusArgs']]]]] = None,
+            ssl_config: Optional[pulumi.Input[pulumi.InputType['ConnectionSslConfigArrgs']]] = None,
+            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionStatusArrgs']]]]] = None,
             subscription_type: Optional[pulumi.Input[str]] = None,
             suspended: Optional[pulumi.Input[bool]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Connection':
@@ -1588,40 +1588,40 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConnectionAuthConfigArgs']] auth_config: authConfig for the connection.
+        :param pulumi.Input[pulumi.InputType['ConnectionAuthConfigArrgs']] auth_config: authConfig for the connection.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionConfigVariableArgs']]]] config_variables: Config Variables for the connection.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionConfigVariableArrgs']]]] config_variables: Config Variables for the connection.
                Structure is documented below.
         :param pulumi.Input[str] connection_revision: Connection revision. This field is only updated when the connection is created or updated by User.
         :param pulumi.Input[str] connector_version: connectorVersion of the Connector.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionConnectorVersionInfraConfigArgs']]]] connector_version_infra_configs: This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionConnectorVersionInfraConfigArrgs']]]] connector_version_infra_configs: This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version.
                Structure is documented below.
         :param pulumi.Input[str] connector_version_launch_stage: Flag to mark the version indicating the launch stage.
         :param pulumi.Input[str] create_time: Time the Namespace was created in UTC.
         :param pulumi.Input[str] description: An arbitrary description for the Conection.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionDestinationConfigArgs']]]] destination_configs: Define the Connectors target endpoint.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionDestinationConfigArrgs']]]] destination_configs: Define the Connectors target endpoint.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['ConnectionEventingConfigArgs']] eventing_config: Eventing Configuration of a connection
+        :param pulumi.Input[pulumi.InputType['ConnectionEventingConfigArrgs']] eventing_config: Eventing Configuration of a connection
                Structure is documented below.
         :param pulumi.Input[str] eventing_enablement_type: Eventing enablement type. Will be nil if eventing is not enabled.
                Possible values are: `EVENTING_AND_CONNECTION`, `ONLY_EVENTING`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionEventingRuntimeDataArgs']]]] eventing_runtime_datas: Eventing Runtime Data.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionEventingRuntimeDataArrgs']]]] eventing_runtime_datas: Eventing Runtime Data.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Location in which Connection needs to be created.
-        :param pulumi.Input[pulumi.InputType['ConnectionLockConfigArgs']] lock_config: Determines whether or no a connection is locked. If locked, a reason must be specified.
+        :param pulumi.Input[pulumi.InputType['ConnectionLockConfigArrgs']] lock_config: Determines whether or no a connection is locked. If locked, a reason must be specified.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionLogConfigArgs']] log_config: Log configuration for the connection.
+        :param pulumi.Input[pulumi.InputType['ConnectionLogConfigArrgs']] log_config: Log configuration for the connection.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of Connection needs to be created.
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['ConnectionNodeConfigArgs']] node_config: Node configuration for the connection.
+        :param pulumi.Input[pulumi.InputType['ConnectionNodeConfigArrgs']] node_config: Node configuration for the connection.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1630,9 +1630,9 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] service_account: Service account needed for runtime plane to access Google Cloud resources.
         :param pulumi.Input[str] service_directory: The name of the Service Directory service name. Used for Private Harpoon to resolve the ILB address.
                e.g. "projects/cloud-connectors-e2e-testing/locations/us-central1/namespaces/istio-system/services/istio-ingressgateway-connectors"
-        :param pulumi.Input[pulumi.InputType['ConnectionSslConfigArgs']] ssl_config: SSL Configuration of a connection
+        :param pulumi.Input[pulumi.InputType['ConnectionSslConfigArrgs']] ssl_config: SSL Configuration of a connection
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionStatusArgs']]]] statuses: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionStatusArrgs']]]] statuses: (Output)
                Current status of eventing.
                Structure is documented below.
         :param pulumi.Input[str] subscription_type: This subscription type enum states the subscription type of the project.

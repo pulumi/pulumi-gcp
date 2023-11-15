@@ -35,7 +35,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class ConsentStoreIamBindingCondition(dict):
+calass ConsentStoreIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -62,7 +62,7 @@ class ConsentStoreIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class ConsentStoreIamMemberCondition(dict):
+calass ConsentStoreIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -89,7 +89,7 @@ class ConsentStoreIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class DatasetIamBindingCondition(dict):
+calass DatasetIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -116,7 +116,7 @@ class DatasetIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class DatasetIamMemberCondition(dict):
+calass DatasetIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -143,7 +143,7 @@ class DatasetIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class DicomStoreIamBindingCondition(dict):
+calass DicomStoreIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -170,7 +170,7 @@ class DicomStoreIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class DicomStoreIamMemberCondition(dict):
+calass DicomStoreIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -197,7 +197,7 @@ class DicomStoreIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class DicomStoreNotificationConfig(dict):
+calass DicomStoreNotificationConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -242,7 +242,7 @@ class DicomStoreNotificationConfig(dict):
 
 
 @pulumi.output_type
-class DicomStoreStreamConfig(dict):
+calass DicomStoreStreamConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -263,7 +263,7 @@ class DicomStoreStreamConfig(dict):
     def __init__(__self__, *,
                  bigquery_destination: 'outputs.DicomStoreStreamConfigBigqueryDestination'):
         """
-        :param 'DicomStoreStreamConfigBigqueryDestinationArgs' bigquery_destination: BigQueryDestination to include a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
+        :param 'DicomStoreStreamConfigBigqueryDestinationArrgs' bigquery_destination: BigQueryDestination to include a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
                Structure is documented below.
         """
         pulumi.set(__self__, "bigquery_destination", bigquery_destination)
@@ -279,7 +279,7 @@ class DicomStoreStreamConfig(dict):
 
 
 @pulumi.output_type
-class DicomStoreStreamConfigBigqueryDestination(dict):
+calass DicomStoreStreamConfigBigqueryDestination(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -314,7 +314,7 @@ class DicomStoreStreamConfigBigqueryDestination(dict):
 
 
 @pulumi.output_type
-class FhirStoreIamBindingCondition(dict):
+calass FhirStoreIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -341,7 +341,7 @@ class FhirStoreIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class FhirStoreIamMemberCondition(dict):
+calass FhirStoreIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -368,7 +368,7 @@ class FhirStoreIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class FhirStoreNotificationConfig(dict):
+calass FhirStoreNotificationConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -457,7 +457,7 @@ class FhirStoreNotificationConfig(dict):
 
 
 @pulumi.output_type
-class FhirStoreStreamConfig(dict):
+calass FhirStoreStreamConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -481,7 +481,7 @@ class FhirStoreStreamConfig(dict):
                  bigquery_destination: 'outputs.FhirStoreStreamConfigBigqueryDestination',
                  resource_types: Optional[Sequence[str]] = None):
         """
-        :param 'FhirStoreStreamConfigBigqueryDestinationArgs' bigquery_destination: The destination BigQuery structure that contains both the dataset location and corresponding schema config.
+        :param 'FhirStoreStreamConfigBigqueryDestinationArrgs' bigquery_destination: The destination BigQuery structure that contains both the dataset location and corresponding schema config.
                The output is organized in one table per resource type. The server reuses the existing tables (if any) that
                are named after the resource types, e.g. "Patient", "Observation". When there is no existing table for a given
                resource type, the server attempts to create one.
@@ -520,7 +520,7 @@ class FhirStoreStreamConfig(dict):
 
 
 @pulumi.output_type
-class FhirStoreStreamConfigBigqueryDestination(dict):
+calass FhirStoreStreamConfigBigqueryDestination(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -545,7 +545,7 @@ class FhirStoreStreamConfigBigqueryDestination(dict):
                  schema_config: 'outputs.FhirStoreStreamConfigBigqueryDestinationSchemaConfig'):
         """
         :param str dataset_uri: BigQuery URI to a dataset, up to 2000 characters long, in the format bq://projectId.bqDatasetId
-        :param 'FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs' schema_config: The configuration for the exported BigQuery schema.
+        :param 'FhirStoreStreamConfigBigqueryDestinationSchemaConfigArrgs' schema_config: The configuration for the exported BigQuery schema.
                Structure is documented below.
         """
         pulumi.set(__self__, "dataset_uri", dataset_uri)
@@ -570,7 +570,7 @@ class FhirStoreStreamConfigBigqueryDestination(dict):
 
 
 @pulumi.output_type
-class FhirStoreStreamConfigBigqueryDestinationSchemaConfig(dict):
+calass FhirStoreStreamConfigBigqueryDestinationSchemaConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -601,7 +601,7 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfig(dict):
                resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called
                concept.concept but not concept.concept.concept. If not specified or set to 0, the server will use the default
                value 2. The maximum depth allowed is 5.
-        :param 'FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs' last_updated_partition_config: The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
+        :param 'FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArrgs' last_updated_partition_config: The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
                Structure is documented below.
         :param str schema_type: Specifies the output schema type.
                * ANALYTICS: Analytics schema defined by the FHIR community.
@@ -653,7 +653,7 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfig(dict):
 
 
 @pulumi.output_type
-class FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig(dict):
+calass FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -702,7 +702,7 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionCo
 
 
 @pulumi.output_type
-class Hl7StoreIamBindingCondition(dict):
+calass Hl7StoreIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -729,7 +729,7 @@ class Hl7StoreIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class Hl7StoreIamMemberCondition(dict):
+calass Hl7StoreIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -756,7 +756,7 @@ class Hl7StoreIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class Hl7StoreNotificationConfig(dict):
+calass Hl7StoreNotificationConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -801,7 +801,7 @@ class Hl7StoreNotificationConfig(dict):
 
 
 @pulumi.output_type
-class Hl7StoreNotificationConfigs(dict):
+calass Hl7StoreNotificationConfigs(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -876,7 +876,7 @@ class Hl7StoreNotificationConfigs(dict):
 
 
 @pulumi.output_type
-class Hl7StoreParserConfig(dict):
+calass Hl7StoreParserConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

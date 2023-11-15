@@ -11,17 +11,17 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DatabaseArgs', 'Database']
+__all__ = ['DatabaseArrgs', 'Database']
 
 @pulumi.input_type
-class DatabaseArgs:
+calass DatabaseArrgs:
     def __init__(__self__, *,
                  instance: pulumi.Input[str],
                  database_dialect: Optional[pulumi.Input[str]] = None,
                  ddls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable_drop_protection: Optional[pulumi.Input[bool]] = None,
-                 encryption_config: Optional[pulumi.Input['DatabaseEncryptionConfigArgs']] = None,
+                 encryption_config: Optional[pulumi.Input['DatabaseEncryptionConfigArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  version_retention_period: Optional[pulumi.Input[str]] = None):
@@ -45,7 +45,7 @@ class DatabaseArgs:
                deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
                interfaces. (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the
                database. "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
-        :param pulumi.Input['DatabaseEncryptionConfigArgs'] encryption_config: Encryption configuration for the database
+        :param pulumi.Input['DatabaseEncryptionConfigArrgs'] encryption_config: Encryption configuration for the database
                Structure is documented below.
         :param pulumi.Input[str] name: A unique identifier for the database, which cannot be changed after
                the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
@@ -150,7 +150,7 @@ class DatabaseArgs:
 
     @property
     @pulumi.getter(name="encryptionConfig")
-    def encryption_config(self) -> Optional[pulumi.Input['DatabaseEncryptionConfigArgs']]:
+    def encryption_config(self) -> Optional[pulumi.Input['DatabaseEncryptionConfigArrgs']]:
         """
         Encryption configuration for the database
         Structure is documented below.
@@ -158,7 +158,7 @@ class DatabaseArgs:
         return pulumi.get(self, "encryption_config")
 
     @encryption_config.setter
-    def encryption_config(self, value: Optional[pulumi.Input['DatabaseEncryptionConfigArgs']]):
+    def encryption_config(self, value: Optional[pulumi.Input['DatabaseEncryptionConfigArrgs']]):
         pulumi.set(self, "encryption_config", value)
 
     @property
@@ -205,13 +205,13 @@ class DatabaseArgs:
 
 
 @pulumi.input_type
-class _DatabaseState:
+calass _DatabaseState:
     def __init__(__self__, *,
                  database_dialect: Optional[pulumi.Input[str]] = None,
                  ddls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable_drop_protection: Optional[pulumi.Input[bool]] = None,
-                 encryption_config: Optional[pulumi.Input['DatabaseEncryptionConfigArgs']] = None,
+                 encryption_config: Optional[pulumi.Input['DatabaseEncryptionConfigArrgs']] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -233,7 +233,7 @@ class _DatabaseState:
                deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
                interfaces. (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the
                database. "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
-        :param pulumi.Input['DatabaseEncryptionConfigArgs'] encryption_config: Encryption configuration for the database
+        :param pulumi.Input['DatabaseEncryptionConfigArrgs'] encryption_config: Encryption configuration for the database
                Structure is documented below.
         :param pulumi.Input[str] instance: The instance to create the database on.
                
@@ -331,7 +331,7 @@ class _DatabaseState:
 
     @property
     @pulumi.getter(name="encryptionConfig")
-    def encryption_config(self) -> Optional[pulumi.Input['DatabaseEncryptionConfigArgs']]:
+    def encryption_config(self) -> Optional[pulumi.Input['DatabaseEncryptionConfigArrgs']]:
         """
         Encryption configuration for the database
         Structure is documented below.
@@ -339,7 +339,7 @@ class _DatabaseState:
         return pulumi.get(self, "encryption_config")
 
     @encryption_config.setter
-    def encryption_config(self, value: Optional[pulumi.Input['DatabaseEncryptionConfigArgs']]):
+    def encryption_config(self, value: Optional[pulumi.Input['DatabaseEncryptionConfigArrgs']]):
         pulumi.set(self, "encryption_config", value)
 
     @property
@@ -412,7 +412,7 @@ class _DatabaseState:
         pulumi.set(self, "version_retention_period", value)
 
 
-class Database(pulumi.CustomResource):
+calass Database(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -421,7 +421,7 @@ class Database(pulumi.CustomResource):
                  ddls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable_drop_protection: Optional[pulumi.Input[bool]] = None,
-                 encryption_config: Optional[pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArgs']]] = None,
+                 encryption_config: Optional[pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArrgs']]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -503,7 +503,7 @@ class Database(pulumi.CustomResource):
                deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
                interfaces. (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the
                database. "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
-        :param pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArgs']] encryption_config: Encryption configuration for the database
+        :param pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArrgs']] encryption_config: Encryption configuration for the database
                Structure is documented below.
         :param pulumi.Input[str] instance: The instance to create the database on.
                
@@ -523,7 +523,7 @@ class Database(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DatabaseArgs,
+                 args: DatabaseArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Cloud Spanner Database which is hosted on a Spanner instance.
@@ -586,12 +586,12 @@ class Database(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param DatabaseArgs args: The arguments to use to populate this resource's properties.
+        :param DatabaseArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DatabaseArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DatabaseArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -604,7 +604,7 @@ class Database(pulumi.CustomResource):
                  ddls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable_drop_protection: Optional[pulumi.Input[bool]] = None,
-                 encryption_config: Optional[pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArgs']]] = None,
+                 encryption_config: Optional[pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArrgs']]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -616,7 +616,7 @@ class Database(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DatabaseArgs.__new__(DatabaseArgs)
+            __props__ = DatabaseArrgs.__new__(DatabaseArrgs)
 
             __props__.__dict__["database_dialect"] = database_dialect
             __props__.__dict__["ddls"] = ddls
@@ -644,7 +644,7 @@ class Database(pulumi.CustomResource):
             ddls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             enable_drop_protection: Optional[pulumi.Input[bool]] = None,
-            encryption_config: Optional[pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArgs']]] = None,
+            encryption_config: Optional[pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArrgs']]] = None,
             instance: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -671,7 +671,7 @@ class Database(pulumi.CustomResource):
                deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
                interfaces. (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the
                database. "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
-        :param pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArgs']] encryption_config: Encryption configuration for the database
+        :param pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArrgs']] encryption_config: Encryption configuration for the database
                Structure is documented below.
         :param pulumi.Input[str] instance: The instance to create the database on.
                

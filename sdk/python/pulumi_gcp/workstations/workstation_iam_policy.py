@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['WorkstationIamPolicyArgs', 'WorkstationIamPolicy']
+__all__ = ['WorkstationIamPolicyArrgs', 'WorkstationIamPolicy']
 
 @pulumi.input_type
-class WorkstationIamPolicyArgs:
+calass WorkstationIamPolicyArrgs:
     def __init__(__self__, *,
                  policy_data: pulumi.Input[str],
                  workstation_cluster_id: pulumi.Input[str],
@@ -130,7 +130,7 @@ class WorkstationIamPolicyArgs:
 
 
 @pulumi.input_type
-class _WorkstationIamPolicyState:
+calass _WorkstationIamPolicyState:
     def __init__(__self__, *,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -267,7 +267,7 @@ class _WorkstationIamPolicyState:
         pulumi.set(self, "workstation_id", value)
 
 
-class WorkstationIamPolicy(pulumi.CustomResource):
+calass WorkstationIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -329,7 +329,7 @@ class WorkstationIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: WorkstationIamPolicyArgs,
+                 args: WorkstationIamPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Import
@@ -357,12 +357,12 @@ class WorkstationIamPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param WorkstationIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param WorkstationIamPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(WorkstationIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(WorkstationIamPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -384,7 +384,7 @@ class WorkstationIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = WorkstationIamPolicyArgs.__new__(WorkstationIamPolicyArgs)
+            __props__ = WorkstationIamPolicyArrgs.__new__(WorkstationIamPolicyArrgs)
 
             __props__.__dict__["location"] = location
             if policy_data is None and not opts.urn:

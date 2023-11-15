@@ -10,28 +10,28 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'AccessBoundaryPolicyRuleArgs',
-    'AccessBoundaryPolicyRuleAccessBoundaryRuleArgs',
-    'AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs',
-    'DenyPolicyRuleArgs',
-    'DenyPolicyRuleDenyRuleArgs',
-    'DenyPolicyRuleDenyRuleDenialConditionArgs',
-    'WorkforcePoolProviderOidcArgs',
-    'WorkforcePoolProviderOidcClientSecretArgs',
-    'WorkforcePoolProviderOidcClientSecretValueArgs',
-    'WorkforcePoolProviderOidcWebSsoConfigArgs',
-    'WorkforcePoolProviderSamlArgs',
-    'WorkloadIdentityPoolProviderAwsArgs',
-    'WorkloadIdentityPoolProviderOidcArgs',
+    'AccessBoundaryPolicyRuleArrgs',
+    'AccessBoundaryPolicyRuleAccessBoundaryRuleArrgs',
+    'AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArrgs',
+    'DenyPolicyRuleArrgs',
+    'DenyPolicyRuleDenyRuleArrgs',
+    'DenyPolicyRuleDenyRuleDenialConditionArrgs',
+    'WorkforcePoolProviderOidcArrgs',
+    'WorkforcePoolProviderOidcClientSecretArrgs',
+    'WorkforcePoolProviderOidcClientSecretValueArrgs',
+    'WorkforcePoolProviderOidcWebSsoConfigArrgs',
+    'WorkforcePoolProviderSamlArrgs',
+    'WorkloadIdentityPoolProviderAwsArrgs',
+    'WorkloadIdentityPoolProviderOidcArrgs',
 ]
 
 @pulumi.input_type
-class AccessBoundaryPolicyRuleArgs:
+calass AccessBoundaryPolicyRuleArrgs:
     def __init__(__self__, *,
-                 access_boundary_rule: Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleArgs']] = None,
+                 access_boundary_rule: Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleArgs'] access_boundary_rule: An access boundary rule in an IAM policy.
+        :param pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleArrgs'] access_boundary_rule: An access boundary rule in an IAM policy.
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the rule.
         """
@@ -42,7 +42,7 @@ class AccessBoundaryPolicyRuleArgs:
 
     @property
     @pulumi.getter(name="accessBoundaryRule")
-    def access_boundary_rule(self) -> Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleArgs']]:
+    def access_boundary_rule(self) -> Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleArrgs']]:
         """
         An access boundary rule in an IAM policy.
         Structure is documented below.
@@ -50,7 +50,7 @@ class AccessBoundaryPolicyRuleArgs:
         return pulumi.get(self, "access_boundary_rule")
 
     @access_boundary_rule.setter
-    def access_boundary_rule(self, value: Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleArgs']]):
+    def access_boundary_rule(self, value: Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleArrgs']]):
         pulumi.set(self, "access_boundary_rule", value)
 
     @property
@@ -67,13 +67,13 @@ class AccessBoundaryPolicyRuleArgs:
 
 
 @pulumi.input_type
-class AccessBoundaryPolicyRuleAccessBoundaryRuleArgs:
+calass AccessBoundaryPolicyRuleAccessBoundaryRuleArrgs:
     def __init__(__self__, *,
-                 availability_condition: Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs']] = None,
+                 availability_condition: Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArrgs']] = None,
                  available_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  available_resource: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs'] availability_condition: The availability condition further constrains the access allowed by the access boundary rule.
+        :param pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArrgs'] availability_condition: The availability condition further constrains the access allowed by the access boundary rule.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] available_permissions: A list of permissions that may be allowed for use on the specified resource.
         :param pulumi.Input[str] available_resource: The full resource name of a Google Cloud resource entity.
@@ -87,7 +87,7 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleArgs:
 
     @property
     @pulumi.getter(name="availabilityCondition")
-    def availability_condition(self) -> Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs']]:
+    def availability_condition(self) -> Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArrgs']]:
         """
         The availability condition further constrains the access allowed by the access boundary rule.
         Structure is documented below.
@@ -95,7 +95,7 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleArgs:
         return pulumi.get(self, "availability_condition")
 
     @availability_condition.setter
-    def availability_condition(self, value: Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs']]):
+    def availability_condition(self, value: Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArrgs']]):
         pulumi.set(self, "availability_condition", value)
 
     @property
@@ -124,7 +124,7 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleArgs:
 
 
 @pulumi.input_type
-class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs:
+calass AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -204,12 +204,12 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs:
 
 
 @pulumi.input_type
-class DenyPolicyRuleArgs:
+calass DenyPolicyRuleArrgs:
     def __init__(__self__, *,
-                 deny_rule: Optional[pulumi.Input['DenyPolicyRuleDenyRuleArgs']] = None,
+                 deny_rule: Optional[pulumi.Input['DenyPolicyRuleDenyRuleArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['DenyPolicyRuleDenyRuleArgs'] deny_rule: A deny rule in an IAM deny policy.
+        :param pulumi.Input['DenyPolicyRuleDenyRuleArrgs'] deny_rule: A deny rule in an IAM deny policy.
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the rule.
         """
@@ -220,7 +220,7 @@ class DenyPolicyRuleArgs:
 
     @property
     @pulumi.getter(name="denyRule")
-    def deny_rule(self) -> Optional[pulumi.Input['DenyPolicyRuleDenyRuleArgs']]:
+    def deny_rule(self) -> Optional[pulumi.Input['DenyPolicyRuleDenyRuleArrgs']]:
         """
         A deny rule in an IAM deny policy.
         Structure is documented below.
@@ -228,7 +228,7 @@ class DenyPolicyRuleArgs:
         return pulumi.get(self, "deny_rule")
 
     @deny_rule.setter
-    def deny_rule(self, value: Optional[pulumi.Input['DenyPolicyRuleDenyRuleArgs']]):
+    def deny_rule(self, value: Optional[pulumi.Input['DenyPolicyRuleDenyRuleArrgs']]):
         pulumi.set(self, "deny_rule", value)
 
     @property
@@ -245,15 +245,15 @@ class DenyPolicyRuleArgs:
 
 
 @pulumi.input_type
-class DenyPolicyRuleDenyRuleArgs:
+calass DenyPolicyRuleDenyRuleArrgs:
     def __init__(__self__, *,
-                 denial_condition: Optional[pulumi.Input['DenyPolicyRuleDenyRuleDenialConditionArgs']] = None,
+                 denial_condition: Optional[pulumi.Input['DenyPolicyRuleDenyRuleDenialConditionArrgs']] = None,
                  denied_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  denied_principals: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  exception_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  exception_principals: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input['DenyPolicyRuleDenyRuleDenialConditionArgs'] denial_condition: User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+        :param pulumi.Input['DenyPolicyRuleDenyRuleDenialConditionArrgs'] denial_condition: User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] denied_permissions: The permissions that are explicitly denied by this rule. Each permission uses the format `{service-fqdn}/{resource}.{verb}`,
                where `{service-fqdn}` is the fully qualified domain name for the service. For example, `iam.googleapis.com/roles.list`.
@@ -277,7 +277,7 @@ class DenyPolicyRuleDenyRuleArgs:
 
     @property
     @pulumi.getter(name="denialCondition")
-    def denial_condition(self) -> Optional[pulumi.Input['DenyPolicyRuleDenyRuleDenialConditionArgs']]:
+    def denial_condition(self) -> Optional[pulumi.Input['DenyPolicyRuleDenyRuleDenialConditionArrgs']]:
         """
         User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
         Structure is documented below.
@@ -285,7 +285,7 @@ class DenyPolicyRuleDenyRuleArgs:
         return pulumi.get(self, "denial_condition")
 
     @denial_condition.setter
-    def denial_condition(self, value: Optional[pulumi.Input['DenyPolicyRuleDenyRuleDenialConditionArgs']]):
+    def denial_condition(self, value: Optional[pulumi.Input['DenyPolicyRuleDenyRuleDenialConditionArrgs']]):
         pulumi.set(self, "denial_condition", value)
 
     @property
@@ -342,7 +342,7 @@ class DenyPolicyRuleDenyRuleArgs:
 
 
 @pulumi.input_type
-class DenyPolicyRuleDenyRuleDenialConditionArgs:
+calass DenyPolicyRuleDenyRuleDenialConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -422,17 +422,17 @@ class DenyPolicyRuleDenyRuleDenialConditionArgs:
 
 
 @pulumi.input_type
-class WorkforcePoolProviderOidcArgs:
+calass WorkforcePoolProviderOidcArrgs:
     def __init__(__self__, *,
                  client_id: pulumi.Input[str],
                  issuer_uri: pulumi.Input[str],
-                 client_secret: Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretArgs']] = None,
+                 client_secret: Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretArrgs']] = None,
                  jwks_json: Optional[pulumi.Input[str]] = None,
-                 web_sso_config: Optional[pulumi.Input['WorkforcePoolProviderOidcWebSsoConfigArgs']] = None):
+                 web_sso_config: Optional[pulumi.Input['WorkforcePoolProviderOidcWebSsoConfigArrgs']] = None):
         """
         :param pulumi.Input[str] client_id: The client ID. Must match the audience claim of the JWT issued by the identity provider.
         :param pulumi.Input[str] issuer_uri: The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
-        :param pulumi.Input['WorkforcePoolProviderOidcClientSecretArgs'] client_secret: The optional client secret. Required to enable Authorization Code flow for web sign-in.
+        :param pulumi.Input['WorkforcePoolProviderOidcClientSecretArrgs'] client_secret: The optional client secret. Required to enable Authorization Code flow for web sign-in.
                Structure is documented below.
         :param pulumi.Input[str] jwks_json: OIDC JWKs in JSON String format. For details on definition of a
                JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
@@ -443,7 +443,7 @@ class WorkforcePoolProviderOidcArgs:
                ```python
                import pulumi
                ```
-        :param pulumi.Input['WorkforcePoolProviderOidcWebSsoConfigArgs'] web_sso_config: Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
+        :param pulumi.Input['WorkforcePoolProviderOidcWebSsoConfigArrgs'] web_sso_config: Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
                Structure is documented below.
         """
         pulumi.set(__self__, "client_id", client_id)
@@ -481,7 +481,7 @@ class WorkforcePoolProviderOidcArgs:
 
     @property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretArgs']]:
+    def client_secret(self) -> Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretArrgs']]:
         """
         The optional client secret. Required to enable Authorization Code flow for web sign-in.
         Structure is documented below.
@@ -489,7 +489,7 @@ class WorkforcePoolProviderOidcArgs:
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretArgs']]):
+    def client_secret(self, value: Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretArrgs']]):
         pulumi.set(self, "client_secret", value)
 
     @property
@@ -514,7 +514,7 @@ class WorkforcePoolProviderOidcArgs:
 
     @property
     @pulumi.getter(name="webSsoConfig")
-    def web_sso_config(self) -> Optional[pulumi.Input['WorkforcePoolProviderOidcWebSsoConfigArgs']]:
+    def web_sso_config(self) -> Optional[pulumi.Input['WorkforcePoolProviderOidcWebSsoConfigArrgs']]:
         """
         Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
         Structure is documented below.
@@ -522,16 +522,16 @@ class WorkforcePoolProviderOidcArgs:
         return pulumi.get(self, "web_sso_config")
 
     @web_sso_config.setter
-    def web_sso_config(self, value: Optional[pulumi.Input['WorkforcePoolProviderOidcWebSsoConfigArgs']]):
+    def web_sso_config(self, value: Optional[pulumi.Input['WorkforcePoolProviderOidcWebSsoConfigArrgs']]):
         pulumi.set(self, "web_sso_config", value)
 
 
 @pulumi.input_type
-class WorkforcePoolProviderOidcClientSecretArgs:
+calass WorkforcePoolProviderOidcClientSecretArrgs:
     def __init__(__self__, *,
-                 value: Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretValueArgs']] = None):
+                 value: Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretValueArrgs']] = None):
         """
-        :param pulumi.Input['WorkforcePoolProviderOidcClientSecretValueArgs'] value: The value of the client secret.
+        :param pulumi.Input['WorkforcePoolProviderOidcClientSecretValueArrgs'] value: The value of the client secret.
                Structure is documented below.
         """
         if value is not None:
@@ -539,7 +539,7 @@ class WorkforcePoolProviderOidcClientSecretArgs:
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretValueArgs']]:
+    def value(self) -> Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretValueArrgs']]:
         """
         The value of the client secret.
         Structure is documented below.
@@ -547,12 +547,12 @@ class WorkforcePoolProviderOidcClientSecretArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretValueArgs']]):
+    def value(self, value: Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretValueArrgs']]):
         pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
-class WorkforcePoolProviderOidcClientSecretValueArgs:
+calass WorkforcePoolProviderOidcClientSecretValueArrgs:
     def __init__(__self__, *,
                  plain_text: pulumi.Input[str],
                  thumbprint: Optional[pulumi.Input[str]] = None):
@@ -594,7 +594,7 @@ class WorkforcePoolProviderOidcClientSecretValueArgs:
 
 
 @pulumi.input_type
-class WorkforcePoolProviderOidcWebSsoConfigArgs:
+calass WorkforcePoolProviderOidcWebSsoConfigArrgs:
     def __init__(__self__, *,
                  assertion_claims_behavior: pulumi.Input[str],
                  response_type: pulumi.Input[str],
@@ -663,7 +663,7 @@ class WorkforcePoolProviderOidcWebSsoConfigArgs:
 
 
 @pulumi.input_type
-class WorkforcePoolProviderSamlArgs:
+calass WorkforcePoolProviderSamlArrgs:
     def __init__(__self__, *,
                  idp_metadata_xml: pulumi.Input[str]):
         """
@@ -709,7 +709,7 @@ class WorkforcePoolProviderSamlArgs:
 
 
 @pulumi.input_type
-class WorkloadIdentityPoolProviderAwsArgs:
+calass WorkloadIdentityPoolProviderAwsArrgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str]):
         """
@@ -731,7 +731,7 @@ class WorkloadIdentityPoolProviderAwsArgs:
 
 
 @pulumi.input_type
-class WorkloadIdentityPoolProviderOidcArgs:
+calass WorkloadIdentityPoolProviderOidcArrgs:
     def __init__(__self__, *,
                  issuer_uri: pulumi.Input[str],
                  allowed_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

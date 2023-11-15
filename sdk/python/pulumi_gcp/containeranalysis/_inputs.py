@@ -10,21 +10,21 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'NoteAttestationAuthorityArgs',
-    'NoteAttestationAuthorityHintArgs',
-    'NoteIamBindingConditionArgs',
-    'NoteIamMemberConditionArgs',
-    'NoteRelatedUrlArgs',
-    'OccurenceAttestationArgs',
-    'OccurenceAttestationSignatureArgs',
+    'NoteAttestationAuthorityArrgs',
+    'NoteAttestationAuthorityHintArrgs',
+    'NoteIamBindingConditionArrgs',
+    'NoteIamMemberConditionArrgs',
+    'NoteRelatedUrlArrgs',
+    'OccurenceAttestationArrgs',
+    'OccurenceAttestationSignatureArrgs',
 ]
 
 @pulumi.input_type
-class NoteAttestationAuthorityArgs:
+calass NoteAttestationAuthorityArrgs:
     def __init__(__self__, *,
-                 hint: pulumi.Input['NoteAttestationAuthorityHintArgs']):
+                 hint: pulumi.Input['NoteAttestationAuthorityHintArrgs']):
         """
-        :param pulumi.Input['NoteAttestationAuthorityHintArgs'] hint: This submessage provides human-readable hints about the purpose of
+        :param pulumi.Input['NoteAttestationAuthorityHintArrgs'] hint: This submessage provides human-readable hints about the purpose of
                the AttestationAuthority. Because the name of a Note acts as its
                resource reference, it is important to disambiguate the canonical
                name of the Note (which might be a UUID for security purposes)
@@ -38,7 +38,7 @@ class NoteAttestationAuthorityArgs:
 
     @property
     @pulumi.getter
-    def hint(self) -> pulumi.Input['NoteAttestationAuthorityHintArgs']:
+    def hint(self) -> pulumi.Input['NoteAttestationAuthorityHintArrgs']:
         """
         This submessage provides human-readable hints about the purpose of
         the AttestationAuthority. Because the name of a Note acts as its
@@ -53,12 +53,12 @@ class NoteAttestationAuthorityArgs:
         return pulumi.get(self, "hint")
 
     @hint.setter
-    def hint(self, value: pulumi.Input['NoteAttestationAuthorityHintArgs']):
+    def hint(self, value: pulumi.Input['NoteAttestationAuthorityHintArrgs']):
         pulumi.set(self, "hint", value)
 
 
 @pulumi.input_type
-class NoteAttestationAuthorityHintArgs:
+calass NoteAttestationAuthorityHintArrgs:
     def __init__(__self__, *,
                  human_readable_name: pulumi.Input[str]):
         """
@@ -86,7 +86,7 @@ class NoteAttestationAuthorityHintArgs:
 
 
 @pulumi.input_type
-class NoteIamBindingConditionArgs:
+calass NoteIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -125,7 +125,7 @@ class NoteIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class NoteIamMemberConditionArgs:
+calass NoteIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -164,7 +164,7 @@ class NoteIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class NoteRelatedUrlArgs:
+calass NoteRelatedUrlArrgs:
     def __init__(__self__, *,
                  url: pulumi.Input[str],
                  label: Optional[pulumi.Input[str]] = None):
@@ -202,14 +202,14 @@ class NoteRelatedUrlArgs:
 
 
 @pulumi.input_type
-class OccurenceAttestationArgs:
+calass OccurenceAttestationArrgs:
     def __init__(__self__, *,
                  serialized_payload: pulumi.Input[str],
-                 signatures: pulumi.Input[Sequence[pulumi.Input['OccurenceAttestationSignatureArgs']]]):
+                 signatures: pulumi.Input[Sequence[pulumi.Input['OccurenceAttestationSignatureArrgs']]]):
         """
         :param pulumi.Input[str] serialized_payload: The serialized payload that is verified by one or
                more signatures. A base64-encoded string.
-        :param pulumi.Input[Sequence[pulumi.Input['OccurenceAttestationSignatureArgs']]] signatures: One or more signatures over serializedPayload.
+        :param pulumi.Input[Sequence[pulumi.Input['OccurenceAttestationSignatureArrgs']]] signatures: One or more signatures over serializedPayload.
                Verifier implementations should consider this attestation
                message verified if at least one signature verifies
                serializedPayload. See Signature in common.proto for more
@@ -234,7 +234,7 @@ class OccurenceAttestationArgs:
 
     @property
     @pulumi.getter
-    def signatures(self) -> pulumi.Input[Sequence[pulumi.Input['OccurenceAttestationSignatureArgs']]]:
+    def signatures(self) -> pulumi.Input[Sequence[pulumi.Input['OccurenceAttestationSignatureArrgs']]]:
         """
         One or more signatures over serializedPayload.
         Verifier implementations should consider this attestation
@@ -246,12 +246,12 @@ class OccurenceAttestationArgs:
         return pulumi.get(self, "signatures")
 
     @signatures.setter
-    def signatures(self, value: pulumi.Input[Sequence[pulumi.Input['OccurenceAttestationSignatureArgs']]]):
+    def signatures(self, value: pulumi.Input[Sequence[pulumi.Input['OccurenceAttestationSignatureArrgs']]]):
         pulumi.set(self, "signatures", value)
 
 
 @pulumi.input_type
-class OccurenceAttestationSignatureArgs:
+calass OccurenceAttestationSignatureArrgs:
     def __init__(__self__, *,
                  public_key_id: pulumi.Input[str],
                  signature: Optional[pulumi.Input[str]] = None):

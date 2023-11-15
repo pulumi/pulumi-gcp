@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AiIndexEndpointArgs', 'AiIndexEndpoint']
+__all__ = ['AiIndexEndpointArrgs', 'AiIndexEndpoint']
 
 @pulumi.input_type
-class AiIndexEndpointArgs:
+calass AiIndexEndpointArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 private_service_connect_config: Optional[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigArgs']] = None,
+                 private_service_connect_config: Optional[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  public_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None):
@@ -38,7 +38,7 @@ class AiIndexEndpointArgs:
                Private services access must already be configured for the network. If left unspecified, the index endpoint is not peered with any network.
                [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`.
                Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
-        :param pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigArgs'] private_service_connect_config: Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+        :param pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigArrgs'] private_service_connect_config: Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -119,7 +119,7 @@ class AiIndexEndpointArgs:
 
     @property
     @pulumi.getter(name="privateServiceConnectConfig")
-    def private_service_connect_config(self) -> Optional[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigArgs']]:
+    def private_service_connect_config(self) -> Optional[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigArrgs']]:
         """
         Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
         Structure is documented below.
@@ -127,7 +127,7 @@ class AiIndexEndpointArgs:
         return pulumi.get(self, "private_service_connect_config")
 
     @private_service_connect_config.setter
-    def private_service_connect_config(self, value: Optional[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigArgs']]):
+    def private_service_connect_config(self, value: Optional[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigArrgs']]):
         pulumi.set(self, "private_service_connect_config", value)
 
     @property
@@ -169,7 +169,7 @@ class AiIndexEndpointArgs:
 
 
 @pulumi.input_type
-class _AiIndexEndpointState:
+calass _AiIndexEndpointState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -179,7 +179,7 @@ class _AiIndexEndpointState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 private_service_connect_config: Optional[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigArgs']] = None,
+                 private_service_connect_config: Optional[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  public_endpoint_domain_name: Optional[pulumi.Input[str]] = None,
                  public_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
@@ -204,7 +204,7 @@ class _AiIndexEndpointState:
                Private services access must already be configured for the network. If left unspecified, the index endpoint is not peered with any network.
                [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`.
                Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
-        :param pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigArgs'] private_service_connect_config: Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+        :param pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigArrgs'] private_service_connect_config: Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -352,7 +352,7 @@ class _AiIndexEndpointState:
 
     @property
     @pulumi.getter(name="privateServiceConnectConfig")
-    def private_service_connect_config(self) -> Optional[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigArgs']]:
+    def private_service_connect_config(self) -> Optional[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigArrgs']]:
         """
         Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
         Structure is documented below.
@@ -360,7 +360,7 @@ class _AiIndexEndpointState:
         return pulumi.get(self, "private_service_connect_config")
 
     @private_service_connect_config.setter
-    def private_service_connect_config(self, value: Optional[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigArgs']]):
+    def private_service_connect_config(self, value: Optional[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigArrgs']]):
         pulumi.set(self, "private_service_connect_config", value)
 
     @property
@@ -438,7 +438,7 @@ class _AiIndexEndpointState:
         pulumi.set(self, "update_time", value)
 
 
-class AiIndexEndpoint(pulumi.CustomResource):
+calass AiIndexEndpoint(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -447,7 +447,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 private_service_connect_config: Optional[pulumi.Input[pulumi.InputType['AiIndexEndpointPrivateServiceConnectConfigArgs']]] = None,
+                 private_service_connect_config: Optional[pulumi.Input[pulumi.InputType['AiIndexEndpointPrivateServiceConnectConfigArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  public_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -501,7 +501,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
             labels={
                 "label-one": "value-one",
             },
-            private_service_connect_config=gcp.vertex.AiIndexEndpointPrivateServiceConnectConfigArgs(
+            private_service_connect_config=gcp.vertex.AiIndexEndpointPrivateServiceConnectConfigArrgs(
                 enable_private_service_connect=True,
                 project_allowlists=[project.number],
             ))
@@ -564,7 +564,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
                Private services access must already be configured for the network. If left unspecified, the index endpoint is not peered with any network.
                [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`.
                Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
-        :param pulumi.Input[pulumi.InputType['AiIndexEndpointPrivateServiceConnectConfigArgs']] private_service_connect_config: Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+        :param pulumi.Input[pulumi.InputType['AiIndexEndpointPrivateServiceConnectConfigArrgs']] private_service_connect_config: Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -575,7 +575,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AiIndexEndpointArgs,
+                 args: AiIndexEndpointArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An endpoint indexes are deployed into. An index endpoint can have multiple deployed indexes.
@@ -626,7 +626,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
             labels={
                 "label-one": "value-one",
             },
-            private_service_connect_config=gcp.vertex.AiIndexEndpointPrivateServiceConnectConfigArgs(
+            private_service_connect_config=gcp.vertex.AiIndexEndpointPrivateServiceConnectConfigArrgs(
                 enable_private_service_connect=True,
                 project_allowlists=[project.number],
             ))
@@ -676,12 +676,12 @@ class AiIndexEndpoint(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AiIndexEndpointArgs args: The arguments to use to populate this resource's properties.
+        :param AiIndexEndpointArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AiIndexEndpointArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AiIndexEndpointArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -694,7 +694,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 private_service_connect_config: Optional[pulumi.Input[pulumi.InputType['AiIndexEndpointPrivateServiceConnectConfigArgs']]] = None,
+                 private_service_connect_config: Optional[pulumi.Input[pulumi.InputType['AiIndexEndpointPrivateServiceConnectConfigArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  public_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -705,7 +705,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AiIndexEndpointArgs.__new__(AiIndexEndpointArgs)
+            __props__ = AiIndexEndpointArrgs.__new__(AiIndexEndpointArrgs)
 
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
@@ -744,7 +744,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
-            private_service_connect_config: Optional[pulumi.Input[pulumi.InputType['AiIndexEndpointPrivateServiceConnectConfigArgs']]] = None,
+            private_service_connect_config: Optional[pulumi.Input[pulumi.InputType['AiIndexEndpointPrivateServiceConnectConfigArrgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             public_endpoint_domain_name: Optional[pulumi.Input[str]] = None,
             public_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
@@ -774,7 +774,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
                Private services access must already be configured for the network. If left unspecified, the index endpoint is not peered with any network.
                [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`.
                Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
-        :param pulumi.Input[pulumi.InputType['AiIndexEndpointPrivateServiceConnectConfigArgs']] private_service_connect_config: Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+        :param pulumi.Input[pulumi.InputType['AiIndexEndpointPrivateServiceConnectConfigArrgs']] private_service_connect_config: Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

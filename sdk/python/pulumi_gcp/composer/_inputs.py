@@ -10,50 +10,50 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'EnvironmentConfigArgs',
-    'EnvironmentConfigDatabaseConfigArgs',
-    'EnvironmentConfigEncryptionConfigArgs',
-    'EnvironmentConfigMaintenanceWindowArgs',
-    'EnvironmentConfigMasterAuthorizedNetworksConfigArgs',
-    'EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs',
-    'EnvironmentConfigNodeConfigArgs',
-    'EnvironmentConfigNodeConfigIpAllocationPolicyArgs',
-    'EnvironmentConfigPrivateEnvironmentConfigArgs',
-    'EnvironmentConfigRecoveryConfigArgs',
-    'EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs',
-    'EnvironmentConfigSoftwareConfigArgs',
-    'EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs',
-    'EnvironmentConfigWebServerConfigArgs',
-    'EnvironmentConfigWebServerNetworkAccessControlArgs',
-    'EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs',
-    'EnvironmentConfigWorkloadsConfigArgs',
-    'EnvironmentConfigWorkloadsConfigSchedulerArgs',
-    'EnvironmentConfigWorkloadsConfigTriggererArgs',
-    'EnvironmentConfigWorkloadsConfigWebServerArgs',
-    'EnvironmentConfigWorkloadsConfigWorkerArgs',
-    'EnvironmentStorageConfigArgs',
+    'EnvironmentConfigArrgs',
+    'EnvironmentConfigDatabaseConfigArrgs',
+    'EnvironmentConfigEncryptionConfigArrgs',
+    'EnvironmentConfigMaintenanceWindowArrgs',
+    'EnvironmentConfigMasterAuthorizedNetworksConfigArrgs',
+    'EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrgs',
+    'EnvironmentConfigNodeConfigArrgs',
+    'EnvironmentConfigNodeConfigIpAllocationPolicyArrgs',
+    'EnvironmentConfigPrivateEnvironmentConfigArrgs',
+    'EnvironmentConfigRecoveryConfigArrgs',
+    'EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrgs',
+    'EnvironmentConfigSoftwareConfigArrgs',
+    'EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrgs',
+    'EnvironmentConfigWebServerConfigArrgs',
+    'EnvironmentConfigWebServerNetworkAccessControlArrgs',
+    'EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrgs',
+    'EnvironmentConfigWorkloadsConfigArrgs',
+    'EnvironmentConfigWorkloadsConfigSchedulerArrgs',
+    'EnvironmentConfigWorkloadsConfigTriggererArrgs',
+    'EnvironmentConfigWorkloadsConfigWebServerArrgs',
+    'EnvironmentConfigWorkloadsConfigWorkerArrgs',
+    'EnvironmentStorageConfigArrgs',
 ]
 
 @pulumi.input_type
-class EnvironmentConfigArgs:
+calass EnvironmentConfigArrgs:
     def __init__(__self__, *,
                  airflow_uri: Optional[pulumi.Input[str]] = None,
                  dag_gcs_prefix: Optional[pulumi.Input[str]] = None,
-                 database_config: Optional[pulumi.Input['EnvironmentConfigDatabaseConfigArgs']] = None,
-                 encryption_config: Optional[pulumi.Input['EnvironmentConfigEncryptionConfigArgs']] = None,
+                 database_config: Optional[pulumi.Input['EnvironmentConfigDatabaseConfigArrgs']] = None,
+                 encryption_config: Optional[pulumi.Input['EnvironmentConfigEncryptionConfigArrgs']] = None,
                  environment_size: Optional[pulumi.Input[str]] = None,
                  gke_cluster: Optional[pulumi.Input[str]] = None,
-                 maintenance_window: Optional[pulumi.Input['EnvironmentConfigMaintenanceWindowArgs']] = None,
-                 master_authorized_networks_config: Optional[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigArgs']] = None,
-                 node_config: Optional[pulumi.Input['EnvironmentConfigNodeConfigArgs']] = None,
+                 maintenance_window: Optional[pulumi.Input['EnvironmentConfigMaintenanceWindowArrgs']] = None,
+                 master_authorized_networks_config: Optional[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigArrgs']] = None,
+                 node_config: Optional[pulumi.Input['EnvironmentConfigNodeConfigArrgs']] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
-                 private_environment_config: Optional[pulumi.Input['EnvironmentConfigPrivateEnvironmentConfigArgs']] = None,
-                 recovery_config: Optional[pulumi.Input['EnvironmentConfigRecoveryConfigArgs']] = None,
+                 private_environment_config: Optional[pulumi.Input['EnvironmentConfigPrivateEnvironmentConfigArrgs']] = None,
+                 recovery_config: Optional[pulumi.Input['EnvironmentConfigRecoveryConfigArrgs']] = None,
                  resilience_mode: Optional[pulumi.Input[str]] = None,
-                 software_config: Optional[pulumi.Input['EnvironmentConfigSoftwareConfigArgs']] = None,
-                 web_server_config: Optional[pulumi.Input['EnvironmentConfigWebServerConfigArgs']] = None,
-                 web_server_network_access_control: Optional[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlArgs']] = None,
-                 workloads_config: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigArgs']] = None):
+                 software_config: Optional[pulumi.Input['EnvironmentConfigSoftwareConfigArrgs']] = None,
+                 web_server_config: Optional[pulumi.Input['EnvironmentConfigWebServerConfigArrgs']] = None,
+                 web_server_network_access_control: Optional[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlArrgs']] = None,
+                 workloads_config: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigArrgs']] = None):
         if airflow_uri is not None:
             pulumi.set(__self__, "airflow_uri", airflow_uri)
         if dag_gcs_prefix is not None:
@@ -109,20 +109,20 @@ class EnvironmentConfigArgs:
 
     @property
     @pulumi.getter(name="databaseConfig")
-    def database_config(self) -> Optional[pulumi.Input['EnvironmentConfigDatabaseConfigArgs']]:
+    def database_config(self) -> Optional[pulumi.Input['EnvironmentConfigDatabaseConfigArrgs']]:
         return pulumi.get(self, "database_config")
 
     @database_config.setter
-    def database_config(self, value: Optional[pulumi.Input['EnvironmentConfigDatabaseConfigArgs']]):
+    def database_config(self, value: Optional[pulumi.Input['EnvironmentConfigDatabaseConfigArrgs']]):
         pulumi.set(self, "database_config", value)
 
     @property
     @pulumi.getter(name="encryptionConfig")
-    def encryption_config(self) -> Optional[pulumi.Input['EnvironmentConfigEncryptionConfigArgs']]:
+    def encryption_config(self) -> Optional[pulumi.Input['EnvironmentConfigEncryptionConfigArrgs']]:
         return pulumi.get(self, "encryption_config")
 
     @encryption_config.setter
-    def encryption_config(self, value: Optional[pulumi.Input['EnvironmentConfigEncryptionConfigArgs']]):
+    def encryption_config(self, value: Optional[pulumi.Input['EnvironmentConfigEncryptionConfigArrgs']]):
         pulumi.set(self, "encryption_config", value)
 
     @property
@@ -145,29 +145,29 @@ class EnvironmentConfigArgs:
 
     @property
     @pulumi.getter(name="maintenanceWindow")
-    def maintenance_window(self) -> Optional[pulumi.Input['EnvironmentConfigMaintenanceWindowArgs']]:
+    def maintenance_window(self) -> Optional[pulumi.Input['EnvironmentConfigMaintenanceWindowArrgs']]:
         return pulumi.get(self, "maintenance_window")
 
     @maintenance_window.setter
-    def maintenance_window(self, value: Optional[pulumi.Input['EnvironmentConfigMaintenanceWindowArgs']]):
+    def maintenance_window(self, value: Optional[pulumi.Input['EnvironmentConfigMaintenanceWindowArrgs']]):
         pulumi.set(self, "maintenance_window", value)
 
     @property
     @pulumi.getter(name="masterAuthorizedNetworksConfig")
-    def master_authorized_networks_config(self) -> Optional[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigArgs']]:
+    def master_authorized_networks_config(self) -> Optional[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigArrgs']]:
         return pulumi.get(self, "master_authorized_networks_config")
 
     @master_authorized_networks_config.setter
-    def master_authorized_networks_config(self, value: Optional[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigArgs']]):
+    def master_authorized_networks_config(self, value: Optional[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigArrgs']]):
         pulumi.set(self, "master_authorized_networks_config", value)
 
     @property
     @pulumi.getter(name="nodeConfig")
-    def node_config(self) -> Optional[pulumi.Input['EnvironmentConfigNodeConfigArgs']]:
+    def node_config(self) -> Optional[pulumi.Input['EnvironmentConfigNodeConfigArrgs']]:
         return pulumi.get(self, "node_config")
 
     @node_config.setter
-    def node_config(self, value: Optional[pulumi.Input['EnvironmentConfigNodeConfigArgs']]):
+    def node_config(self, value: Optional[pulumi.Input['EnvironmentConfigNodeConfigArrgs']]):
         pulumi.set(self, "node_config", value)
 
     @property
@@ -181,20 +181,20 @@ class EnvironmentConfigArgs:
 
     @property
     @pulumi.getter(name="privateEnvironmentConfig")
-    def private_environment_config(self) -> Optional[pulumi.Input['EnvironmentConfigPrivateEnvironmentConfigArgs']]:
+    def private_environment_config(self) -> Optional[pulumi.Input['EnvironmentConfigPrivateEnvironmentConfigArrgs']]:
         return pulumi.get(self, "private_environment_config")
 
     @private_environment_config.setter
-    def private_environment_config(self, value: Optional[pulumi.Input['EnvironmentConfigPrivateEnvironmentConfigArgs']]):
+    def private_environment_config(self, value: Optional[pulumi.Input['EnvironmentConfigPrivateEnvironmentConfigArrgs']]):
         pulumi.set(self, "private_environment_config", value)
 
     @property
     @pulumi.getter(name="recoveryConfig")
-    def recovery_config(self) -> Optional[pulumi.Input['EnvironmentConfigRecoveryConfigArgs']]:
+    def recovery_config(self) -> Optional[pulumi.Input['EnvironmentConfigRecoveryConfigArrgs']]:
         return pulumi.get(self, "recovery_config")
 
     @recovery_config.setter
-    def recovery_config(self, value: Optional[pulumi.Input['EnvironmentConfigRecoveryConfigArgs']]):
+    def recovery_config(self, value: Optional[pulumi.Input['EnvironmentConfigRecoveryConfigArrgs']]):
         pulumi.set(self, "recovery_config", value)
 
     @property
@@ -208,43 +208,43 @@ class EnvironmentConfigArgs:
 
     @property
     @pulumi.getter(name="softwareConfig")
-    def software_config(self) -> Optional[pulumi.Input['EnvironmentConfigSoftwareConfigArgs']]:
+    def software_config(self) -> Optional[pulumi.Input['EnvironmentConfigSoftwareConfigArrgs']]:
         return pulumi.get(self, "software_config")
 
     @software_config.setter
-    def software_config(self, value: Optional[pulumi.Input['EnvironmentConfigSoftwareConfigArgs']]):
+    def software_config(self, value: Optional[pulumi.Input['EnvironmentConfigSoftwareConfigArrgs']]):
         pulumi.set(self, "software_config", value)
 
     @property
     @pulumi.getter(name="webServerConfig")
-    def web_server_config(self) -> Optional[pulumi.Input['EnvironmentConfigWebServerConfigArgs']]:
+    def web_server_config(self) -> Optional[pulumi.Input['EnvironmentConfigWebServerConfigArrgs']]:
         return pulumi.get(self, "web_server_config")
 
     @web_server_config.setter
-    def web_server_config(self, value: Optional[pulumi.Input['EnvironmentConfigWebServerConfigArgs']]):
+    def web_server_config(self, value: Optional[pulumi.Input['EnvironmentConfigWebServerConfigArrgs']]):
         pulumi.set(self, "web_server_config", value)
 
     @property
     @pulumi.getter(name="webServerNetworkAccessControl")
-    def web_server_network_access_control(self) -> Optional[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlArgs']]:
+    def web_server_network_access_control(self) -> Optional[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlArrgs']]:
         return pulumi.get(self, "web_server_network_access_control")
 
     @web_server_network_access_control.setter
-    def web_server_network_access_control(self, value: Optional[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlArgs']]):
+    def web_server_network_access_control(self, value: Optional[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlArrgs']]):
         pulumi.set(self, "web_server_network_access_control", value)
 
     @property
     @pulumi.getter(name="workloadsConfig")
-    def workloads_config(self) -> Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigArgs']]:
+    def workloads_config(self) -> Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigArrgs']]:
         return pulumi.get(self, "workloads_config")
 
     @workloads_config.setter
-    def workloads_config(self, value: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigArgs']]):
+    def workloads_config(self, value: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigArrgs']]):
         pulumi.set(self, "workloads_config", value)
 
 
 @pulumi.input_type
-class EnvironmentConfigDatabaseConfigArgs:
+calass EnvironmentConfigDatabaseConfigArrgs:
     def __init__(__self__, *,
                  machine_type: pulumi.Input[str]):
         pulumi.set(__self__, "machine_type", machine_type)
@@ -260,7 +260,7 @@ class EnvironmentConfigDatabaseConfigArgs:
 
 
 @pulumi.input_type
-class EnvironmentConfigEncryptionConfigArgs:
+calass EnvironmentConfigEncryptionConfigArrgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[str]):
         pulumi.set(__self__, "kms_key_name", kms_key_name)
@@ -276,7 +276,7 @@ class EnvironmentConfigEncryptionConfigArgs:
 
 
 @pulumi.input_type
-class EnvironmentConfigMaintenanceWindowArgs:
+calass EnvironmentConfigMaintenanceWindowArrgs:
     def __init__(__self__, *,
                  end_time: pulumi.Input[str],
                  recurrence: pulumi.Input[str],
@@ -314,10 +314,10 @@ class EnvironmentConfigMaintenanceWindowArgs:
 
 
 @pulumi.input_type
-class EnvironmentConfigMasterAuthorizedNetworksConfigArgs:
+calass EnvironmentConfigMasterAuthorizedNetworksConfigArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
-                 cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs']]]] = None):
+                 cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrgs']]]] = None):
         pulumi.set(__self__, "enabled", enabled)
         if cidr_blocks is not None:
             pulumi.set(__self__, "cidr_blocks", cidr_blocks)
@@ -333,16 +333,16 @@ class EnvironmentConfigMasterAuthorizedNetworksConfigArgs:
 
     @property
     @pulumi.getter(name="cidrBlocks")
-    def cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs']]]]:
+    def cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrgs']]]]:
         return pulumi.get(self, "cidr_blocks")
 
     @cidr_blocks.setter
-    def cidr_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs']]]]):
+    def cidr_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrgs']]]]):
         pulumi.set(self, "cidr_blocks", value)
 
 
 @pulumi.input_type
-class EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs:
+calass EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrgs:
     def __init__(__self__, *,
                  cidr_block: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None):
@@ -370,11 +370,11 @@ class EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs:
 
 
 @pulumi.input_type
-class EnvironmentConfigNodeConfigArgs:
+calass EnvironmentConfigNodeConfigArrgs:
     def __init__(__self__, *,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  enable_ip_masq_agent: Optional[pulumi.Input[bool]] = None,
-                 ip_allocation_policy: Optional[pulumi.Input['EnvironmentConfigNodeConfigIpAllocationPolicyArgs']] = None,
+                 ip_allocation_policy: Optional[pulumi.Input['EnvironmentConfigNodeConfigIpAllocationPolicyArrgs']] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -426,11 +426,11 @@ class EnvironmentConfigNodeConfigArgs:
 
     @property
     @pulumi.getter(name="ipAllocationPolicy")
-    def ip_allocation_policy(self) -> Optional[pulumi.Input['EnvironmentConfigNodeConfigIpAllocationPolicyArgs']]:
+    def ip_allocation_policy(self) -> Optional[pulumi.Input['EnvironmentConfigNodeConfigIpAllocationPolicyArrgs']]:
         return pulumi.get(self, "ip_allocation_policy")
 
     @ip_allocation_policy.setter
-    def ip_allocation_policy(self, value: Optional[pulumi.Input['EnvironmentConfigNodeConfigIpAllocationPolicyArgs']]):
+    def ip_allocation_policy(self, value: Optional[pulumi.Input['EnvironmentConfigNodeConfigIpAllocationPolicyArrgs']]):
         pulumi.set(self, "ip_allocation_policy", value)
 
     @property
@@ -507,7 +507,7 @@ class EnvironmentConfigNodeConfigArgs:
 
 
 @pulumi.input_type
-class EnvironmentConfigNodeConfigIpAllocationPolicyArgs:
+calass EnvironmentConfigNodeConfigIpAllocationPolicyArrgs:
     def __init__(__self__, *,
                  cluster_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  cluster_secondary_range_name: Optional[pulumi.Input[str]] = None,
@@ -572,7 +572,7 @@ class EnvironmentConfigNodeConfigIpAllocationPolicyArgs:
 
 
 @pulumi.input_type
-class EnvironmentConfigPrivateEnvironmentConfigArgs:
+calass EnvironmentConfigPrivateEnvironmentConfigArrgs:
     def __init__(__self__, *,
                  cloud_composer_connection_subnetwork: Optional[pulumi.Input[str]] = None,
                  cloud_composer_network_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
@@ -673,24 +673,24 @@ class EnvironmentConfigPrivateEnvironmentConfigArgs:
 
 
 @pulumi.input_type
-class EnvironmentConfigRecoveryConfigArgs:
+calass EnvironmentConfigRecoveryConfigArrgs:
     def __init__(__self__, *,
-                 scheduled_snapshots_config: Optional[pulumi.Input['EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs']] = None):
+                 scheduled_snapshots_config: Optional[pulumi.Input['EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrgs']] = None):
         if scheduled_snapshots_config is not None:
             pulumi.set(__self__, "scheduled_snapshots_config", scheduled_snapshots_config)
 
     @property
     @pulumi.getter(name="scheduledSnapshotsConfig")
-    def scheduled_snapshots_config(self) -> Optional[pulumi.Input['EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs']]:
+    def scheduled_snapshots_config(self) -> Optional[pulumi.Input['EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrgs']]:
         return pulumi.get(self, "scheduled_snapshots_config")
 
     @scheduled_snapshots_config.setter
-    def scheduled_snapshots_config(self, value: Optional[pulumi.Input['EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs']]):
+    def scheduled_snapshots_config(self, value: Optional[pulumi.Input['EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrgs']]):
         pulumi.set(self, "scheduled_snapshots_config", value)
 
 
 @pulumi.input_type
-class EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs:
+calass EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
                  snapshot_creation_schedule: Optional[pulumi.Input[str]] = None,
@@ -742,10 +742,10 @@ class EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs:
 
 
 @pulumi.input_type
-class EnvironmentConfigSoftwareConfigArgs:
+calass EnvironmentConfigSoftwareConfigArrgs:
     def __init__(__self__, *,
                  airflow_config_overrides: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 cloud_data_lineage_integration: Optional[pulumi.Input['EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs']] = None,
+                 cloud_data_lineage_integration: Optional[pulumi.Input['EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrgs']] = None,
                  env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  image_version: Optional[pulumi.Input[str]] = None,
                  pypi_packages: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -777,11 +777,11 @@ class EnvironmentConfigSoftwareConfigArgs:
 
     @property
     @pulumi.getter(name="cloudDataLineageIntegration")
-    def cloud_data_lineage_integration(self) -> Optional[pulumi.Input['EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs']]:
+    def cloud_data_lineage_integration(self) -> Optional[pulumi.Input['EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrgs']]:
         return pulumi.get(self, "cloud_data_lineage_integration")
 
     @cloud_data_lineage_integration.setter
-    def cloud_data_lineage_integration(self, value: Optional[pulumi.Input['EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs']]):
+    def cloud_data_lineage_integration(self, value: Optional[pulumi.Input['EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrgs']]):
         pulumi.set(self, "cloud_data_lineage_integration", value)
 
     @property
@@ -831,7 +831,7 @@ class EnvironmentConfigSoftwareConfigArgs:
 
 
 @pulumi.input_type
-class EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs:
+calass EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         pulumi.set(__self__, "enabled", enabled)
@@ -847,7 +847,7 @@ class EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs:
 
 
 @pulumi.input_type
-class EnvironmentConfigWebServerConfigArgs:
+calass EnvironmentConfigWebServerConfigArrgs:
     def __init__(__self__, *,
                  machine_type: pulumi.Input[str]):
         pulumi.set(__self__, "machine_type", machine_type)
@@ -863,24 +863,24 @@ class EnvironmentConfigWebServerConfigArgs:
 
 
 @pulumi.input_type
-class EnvironmentConfigWebServerNetworkAccessControlArgs:
+calass EnvironmentConfigWebServerNetworkAccessControlArrgs:
     def __init__(__self__, *,
-                 allowed_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs']]]] = None):
+                 allowed_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrgs']]]] = None):
         if allowed_ip_ranges is not None:
             pulumi.set(__self__, "allowed_ip_ranges", allowed_ip_ranges)
 
     @property
     @pulumi.getter(name="allowedIpRanges")
-    def allowed_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs']]]]:
+    def allowed_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrgs']]]]:
         return pulumi.get(self, "allowed_ip_ranges")
 
     @allowed_ip_ranges.setter
-    def allowed_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs']]]]):
+    def allowed_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrgs']]]]):
         pulumi.set(self, "allowed_ip_ranges", value)
 
 
 @pulumi.input_type
-class EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs:
+calass EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrgs:
     def __init__(__self__, *,
                  value: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
@@ -908,12 +908,12 @@ class EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs:
 
 
 @pulumi.input_type
-class EnvironmentConfigWorkloadsConfigArgs:
+calass EnvironmentConfigWorkloadsConfigArrgs:
     def __init__(__self__, *,
-                 scheduler: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigSchedulerArgs']] = None,
-                 triggerer: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigTriggererArgs']] = None,
-                 web_server: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigWebServerArgs']] = None,
-                 worker: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigWorkerArgs']] = None):
+                 scheduler: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigSchedulerArrgs']] = None,
+                 triggerer: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigTriggererArrgs']] = None,
+                 web_server: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigWebServerArrgs']] = None,
+                 worker: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigWorkerArrgs']] = None):
         if scheduler is not None:
             pulumi.set(__self__, "scheduler", scheduler)
         if triggerer is not None:
@@ -925,43 +925,43 @@ class EnvironmentConfigWorkloadsConfigArgs:
 
     @property
     @pulumi.getter
-    def scheduler(self) -> Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigSchedulerArgs']]:
+    def scheduler(self) -> Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigSchedulerArrgs']]:
         return pulumi.get(self, "scheduler")
 
     @scheduler.setter
-    def scheduler(self, value: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigSchedulerArgs']]):
+    def scheduler(self, value: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigSchedulerArrgs']]):
         pulumi.set(self, "scheduler", value)
 
     @property
     @pulumi.getter
-    def triggerer(self) -> Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigTriggererArgs']]:
+    def triggerer(self) -> Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigTriggererArrgs']]:
         return pulumi.get(self, "triggerer")
 
     @triggerer.setter
-    def triggerer(self, value: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigTriggererArgs']]):
+    def triggerer(self, value: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigTriggererArrgs']]):
         pulumi.set(self, "triggerer", value)
 
     @property
     @pulumi.getter(name="webServer")
-    def web_server(self) -> Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigWebServerArgs']]:
+    def web_server(self) -> Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigWebServerArrgs']]:
         return pulumi.get(self, "web_server")
 
     @web_server.setter
-    def web_server(self, value: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigWebServerArgs']]):
+    def web_server(self, value: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigWebServerArrgs']]):
         pulumi.set(self, "web_server", value)
 
     @property
     @pulumi.getter
-    def worker(self) -> Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigWorkerArgs']]:
+    def worker(self) -> Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigWorkerArrgs']]:
         return pulumi.get(self, "worker")
 
     @worker.setter
-    def worker(self, value: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigWorkerArgs']]):
+    def worker(self, value: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigWorkerArrgs']]):
         pulumi.set(self, "worker", value)
 
 
 @pulumi.input_type
-class EnvironmentConfigWorkloadsConfigSchedulerArgs:
+calass EnvironmentConfigWorkloadsConfigSchedulerArrgs:
     def __init__(__self__, *,
                  count: Optional[pulumi.Input[int]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
@@ -1014,7 +1014,7 @@ class EnvironmentConfigWorkloadsConfigSchedulerArgs:
 
 
 @pulumi.input_type
-class EnvironmentConfigWorkloadsConfigTriggererArgs:
+calass EnvironmentConfigWorkloadsConfigTriggererArrgs:
     def __init__(__self__, *,
                  count: pulumi.Input[int],
                  cpu: pulumi.Input[float],
@@ -1052,7 +1052,7 @@ class EnvironmentConfigWorkloadsConfigTriggererArgs:
 
 
 @pulumi.input_type
-class EnvironmentConfigWorkloadsConfigWebServerArgs:
+calass EnvironmentConfigWorkloadsConfigWebServerArrgs:
     def __init__(__self__, *,
                  cpu: Optional[pulumi.Input[float]] = None,
                  memory_gb: Optional[pulumi.Input[float]] = None,
@@ -1093,7 +1093,7 @@ class EnvironmentConfigWorkloadsConfigWebServerArgs:
 
 
 @pulumi.input_type
-class EnvironmentConfigWorkloadsConfigWorkerArgs:
+calass EnvironmentConfigWorkloadsConfigWorkerArrgs:
     def __init__(__self__, *,
                  cpu: Optional[pulumi.Input[float]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
@@ -1158,7 +1158,7 @@ class EnvironmentConfigWorkloadsConfigWorkerArgs:
 
 
 @pulumi.input_type
-class EnvironmentStorageConfigArgs:
+calass EnvironmentStorageConfigArrgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str]):
         pulumi.set(__self__, "bucket", bucket)

@@ -11,31 +11,31 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ConfigArgs', 'Config']
+__all__ = ['ConfigArrgs', 'Config']
 
 @pulumi.input_type
-class ConfigArgs:
+calass ConfigArrgs:
     def __init__(__self__, *,
                  authorized_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  autodelete_anonymous_users: Optional[pulumi.Input[bool]] = None,
-                 blocking_functions: Optional[pulumi.Input['ConfigBlockingFunctionsArgs']] = None,
+                 blocking_functions: Optional[pulumi.Input['ConfigBlockingFunctionsArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 quota: Optional[pulumi.Input['ConfigQuotaArgs']] = None,
-                 sign_in: Optional[pulumi.Input['ConfigSignInArgs']] = None,
-                 sms_region_config: Optional[pulumi.Input['ConfigSmsRegionConfigArgs']] = None):
+                 quota: Optional[pulumi.Input['ConfigQuotaArrgs']] = None,
+                 sign_in: Optional[pulumi.Input['ConfigSignInArrgs']] = None,
+                 sms_region_config: Optional[pulumi.Input['ConfigSmsRegionConfigArrgs']] = None):
         """
         The set of arguments for constructing a Config resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_domains: List of domains authorized for OAuth redirects.
         :param pulumi.Input[bool] autodelete_anonymous_users: Whether anonymous users will be auto-deleted after a period of 30 days
-        :param pulumi.Input['ConfigBlockingFunctionsArgs'] blocking_functions: Configuration related to blocking functions.
+        :param pulumi.Input['ConfigBlockingFunctionsArrgs'] blocking_functions: Configuration related to blocking functions.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['ConfigQuotaArgs'] quota: Configuration related to quotas.
+        :param pulumi.Input['ConfigQuotaArrgs'] quota: Configuration related to quotas.
                Structure is documented below.
-        :param pulumi.Input['ConfigSignInArgs'] sign_in: Configuration related to local sign in methods.
+        :param pulumi.Input['ConfigSignInArrgs'] sign_in: Configuration related to local sign in methods.
                Structure is documented below.
-        :param pulumi.Input['ConfigSmsRegionConfigArgs'] sms_region_config: Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+        :param pulumi.Input['ConfigSmsRegionConfigArrgs'] sms_region_config: Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
                Structure is documented below.
         """
         if authorized_domains is not None:
@@ -79,7 +79,7 @@ class ConfigArgs:
 
     @property
     @pulumi.getter(name="blockingFunctions")
-    def blocking_functions(self) -> Optional[pulumi.Input['ConfigBlockingFunctionsArgs']]:
+    def blocking_functions(self) -> Optional[pulumi.Input['ConfigBlockingFunctionsArrgs']]:
         """
         Configuration related to blocking functions.
         Structure is documented below.
@@ -87,7 +87,7 @@ class ConfigArgs:
         return pulumi.get(self, "blocking_functions")
 
     @blocking_functions.setter
-    def blocking_functions(self, value: Optional[pulumi.Input['ConfigBlockingFunctionsArgs']]):
+    def blocking_functions(self, value: Optional[pulumi.Input['ConfigBlockingFunctionsArrgs']]):
         pulumi.set(self, "blocking_functions", value)
 
     @property
@@ -105,7 +105,7 @@ class ConfigArgs:
 
     @property
     @pulumi.getter
-    def quota(self) -> Optional[pulumi.Input['ConfigQuotaArgs']]:
+    def quota(self) -> Optional[pulumi.Input['ConfigQuotaArrgs']]:
         """
         Configuration related to quotas.
         Structure is documented below.
@@ -113,12 +113,12 @@ class ConfigArgs:
         return pulumi.get(self, "quota")
 
     @quota.setter
-    def quota(self, value: Optional[pulumi.Input['ConfigQuotaArgs']]):
+    def quota(self, value: Optional[pulumi.Input['ConfigQuotaArrgs']]):
         pulumi.set(self, "quota", value)
 
     @property
     @pulumi.getter(name="signIn")
-    def sign_in(self) -> Optional[pulumi.Input['ConfigSignInArgs']]:
+    def sign_in(self) -> Optional[pulumi.Input['ConfigSignInArrgs']]:
         """
         Configuration related to local sign in methods.
         Structure is documented below.
@@ -126,12 +126,12 @@ class ConfigArgs:
         return pulumi.get(self, "sign_in")
 
     @sign_in.setter
-    def sign_in(self, value: Optional[pulumi.Input['ConfigSignInArgs']]):
+    def sign_in(self, value: Optional[pulumi.Input['ConfigSignInArrgs']]):
         pulumi.set(self, "sign_in", value)
 
     @property
     @pulumi.getter(name="smsRegionConfig")
-    def sms_region_config(self) -> Optional[pulumi.Input['ConfigSmsRegionConfigArgs']]:
+    def sms_region_config(self) -> Optional[pulumi.Input['ConfigSmsRegionConfigArrgs']]:
         """
         Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
         Structure is documented below.
@@ -139,35 +139,35 @@ class ConfigArgs:
         return pulumi.get(self, "sms_region_config")
 
     @sms_region_config.setter
-    def sms_region_config(self, value: Optional[pulumi.Input['ConfigSmsRegionConfigArgs']]):
+    def sms_region_config(self, value: Optional[pulumi.Input['ConfigSmsRegionConfigArrgs']]):
         pulumi.set(self, "sms_region_config", value)
 
 
 @pulumi.input_type
-class _ConfigState:
+calass _ConfigState:
     def __init__(__self__, *,
                  authorized_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  autodelete_anonymous_users: Optional[pulumi.Input[bool]] = None,
-                 blocking_functions: Optional[pulumi.Input['ConfigBlockingFunctionsArgs']] = None,
+                 blocking_functions: Optional[pulumi.Input['ConfigBlockingFunctionsArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 quota: Optional[pulumi.Input['ConfigQuotaArgs']] = None,
-                 sign_in: Optional[pulumi.Input['ConfigSignInArgs']] = None,
-                 sms_region_config: Optional[pulumi.Input['ConfigSmsRegionConfigArgs']] = None):
+                 quota: Optional[pulumi.Input['ConfigQuotaArrgs']] = None,
+                 sign_in: Optional[pulumi.Input['ConfigSignInArrgs']] = None,
+                 sms_region_config: Optional[pulumi.Input['ConfigSmsRegionConfigArrgs']] = None):
         """
         Input properties used for looking up and filtering Config resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_domains: List of domains authorized for OAuth redirects.
         :param pulumi.Input[bool] autodelete_anonymous_users: Whether anonymous users will be auto-deleted after a period of 30 days
-        :param pulumi.Input['ConfigBlockingFunctionsArgs'] blocking_functions: Configuration related to blocking functions.
+        :param pulumi.Input['ConfigBlockingFunctionsArrgs'] blocking_functions: Configuration related to blocking functions.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the Config resource
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['ConfigQuotaArgs'] quota: Configuration related to quotas.
+        :param pulumi.Input['ConfigQuotaArrgs'] quota: Configuration related to quotas.
                Structure is documented below.
-        :param pulumi.Input['ConfigSignInArgs'] sign_in: Configuration related to local sign in methods.
+        :param pulumi.Input['ConfigSignInArrgs'] sign_in: Configuration related to local sign in methods.
                Structure is documented below.
-        :param pulumi.Input['ConfigSmsRegionConfigArgs'] sms_region_config: Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+        :param pulumi.Input['ConfigSmsRegionConfigArrgs'] sms_region_config: Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
                Structure is documented below.
         """
         if authorized_domains is not None:
@@ -213,7 +213,7 @@ class _ConfigState:
 
     @property
     @pulumi.getter(name="blockingFunctions")
-    def blocking_functions(self) -> Optional[pulumi.Input['ConfigBlockingFunctionsArgs']]:
+    def blocking_functions(self) -> Optional[pulumi.Input['ConfigBlockingFunctionsArrgs']]:
         """
         Configuration related to blocking functions.
         Structure is documented below.
@@ -221,7 +221,7 @@ class _ConfigState:
         return pulumi.get(self, "blocking_functions")
 
     @blocking_functions.setter
-    def blocking_functions(self, value: Optional[pulumi.Input['ConfigBlockingFunctionsArgs']]):
+    def blocking_functions(self, value: Optional[pulumi.Input['ConfigBlockingFunctionsArrgs']]):
         pulumi.set(self, "blocking_functions", value)
 
     @property
@@ -251,7 +251,7 @@ class _ConfigState:
 
     @property
     @pulumi.getter
-    def quota(self) -> Optional[pulumi.Input['ConfigQuotaArgs']]:
+    def quota(self) -> Optional[pulumi.Input['ConfigQuotaArrgs']]:
         """
         Configuration related to quotas.
         Structure is documented below.
@@ -259,12 +259,12 @@ class _ConfigState:
         return pulumi.get(self, "quota")
 
     @quota.setter
-    def quota(self, value: Optional[pulumi.Input['ConfigQuotaArgs']]):
+    def quota(self, value: Optional[pulumi.Input['ConfigQuotaArrgs']]):
         pulumi.set(self, "quota", value)
 
     @property
     @pulumi.getter(name="signIn")
-    def sign_in(self) -> Optional[pulumi.Input['ConfigSignInArgs']]:
+    def sign_in(self) -> Optional[pulumi.Input['ConfigSignInArrgs']]:
         """
         Configuration related to local sign in methods.
         Structure is documented below.
@@ -272,12 +272,12 @@ class _ConfigState:
         return pulumi.get(self, "sign_in")
 
     @sign_in.setter
-    def sign_in(self, value: Optional[pulumi.Input['ConfigSignInArgs']]):
+    def sign_in(self, value: Optional[pulumi.Input['ConfigSignInArrgs']]):
         pulumi.set(self, "sign_in", value)
 
     @property
     @pulumi.getter(name="smsRegionConfig")
-    def sms_region_config(self) -> Optional[pulumi.Input['ConfigSmsRegionConfigArgs']]:
+    def sms_region_config(self) -> Optional[pulumi.Input['ConfigSmsRegionConfigArrgs']]:
         """
         Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
         Structure is documented below.
@@ -285,22 +285,22 @@ class _ConfigState:
         return pulumi.get(self, "sms_region_config")
 
     @sms_region_config.setter
-    def sms_region_config(self, value: Optional[pulumi.Input['ConfigSmsRegionConfigArgs']]):
+    def sms_region_config(self, value: Optional[pulumi.Input['ConfigSmsRegionConfigArrgs']]):
         pulumi.set(self, "sms_region_config", value)
 
 
-class Config(pulumi.CustomResource):
+calass Config(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorized_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  autodelete_anonymous_users: Optional[pulumi.Input[bool]] = None,
-                 blocking_functions: Optional[pulumi.Input[pulumi.InputType['ConfigBlockingFunctionsArgs']]] = None,
+                 blocking_functions: Optional[pulumi.Input[pulumi.InputType['ConfigBlockingFunctionsArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 quota: Optional[pulumi.Input[pulumi.InputType['ConfigQuotaArgs']]] = None,
-                 sign_in: Optional[pulumi.Input[pulumi.InputType['ConfigSignInArgs']]] = None,
-                 sms_region_config: Optional[pulumi.Input[pulumi.InputType['ConfigSmsRegionConfigArgs']]] = None,
+                 quota: Optional[pulumi.Input[pulumi.InputType['ConfigQuotaArrgs']]] = None,
+                 sign_in: Optional[pulumi.Input[pulumi.InputType['ConfigSignInArrgs']]] = None,
+                 sms_region_config: Optional[pulumi.Input[pulumi.InputType['ConfigSmsRegionConfigArrgs']]] = None,
                  __props__=None):
         """
         Identity Platform configuration for a Cloud project. Identity Platform is an
@@ -337,43 +337,43 @@ class Config(pulumi.CustomResource):
         default_config = gcp.identityplatform.Config("defaultConfig",
             project=default_project.project_id,
             autodelete_anonymous_users=True,
-            sign_in=gcp.identityplatform.ConfigSignInArgs(
+            sign_in=gcp.identityplatform.ConfigSignInArrgs(
                 allow_duplicate_emails=True,
-                anonymous=gcp.identityplatform.ConfigSignInAnonymousArgs(
+                anonymous=gcp.identityplatform.ConfigSignInAnonymousArrgs(
                     enabled=True,
                 ),
-                email=gcp.identityplatform.ConfigSignInEmailArgs(
+                email=gcp.identityplatform.ConfigSignInEmailArrgs(
                     enabled=True,
                     password_required=False,
                 ),
-                phone_number=gcp.identityplatform.ConfigSignInPhoneNumberArgs(
+                phone_number=gcp.identityplatform.ConfigSignInPhoneNumberArrgs(
                     enabled=True,
                     test_phone_numbers={
                         "+11231231234": "000000",
                     },
                 ),
             ),
-            sms_region_config=gcp.identityplatform.ConfigSmsRegionConfigArgs(
-                allowlist_only=gcp.identityplatform.ConfigSmsRegionConfigAllowlistOnlyArgs(
+            sms_region_config=gcp.identityplatform.ConfigSmsRegionConfigArrgs(
+                allowlist_only=gcp.identityplatform.ConfigSmsRegionConfigAllowlistOnlyArrgs(
                     allowed_regions=[
                         "US",
                         "CA",
                     ],
                 ),
             ),
-            blocking_functions=gcp.identityplatform.ConfigBlockingFunctionsArgs(
-                triggers=[gcp.identityplatform.ConfigBlockingFunctionsTriggerArgs(
+            blocking_functions=gcp.identityplatform.ConfigBlockingFunctionsArrgs(
+                triggers=[gcp.identityplatform.ConfigBlockingFunctionsTriggerArrgs(
                     event_type="beforeSignIn",
                     function_uri="https://us-east1-my-project.cloudfunctions.net/before-sign-in",
                 )],
-                forward_inbound_credentials=gcp.identityplatform.ConfigBlockingFunctionsForwardInboundCredentialsArgs(
+                forward_inbound_credentials=gcp.identityplatform.ConfigBlockingFunctionsForwardInboundCredentialsArrgs(
                     refresh_token=True,
                     access_token=True,
                     id_token=True,
                 ),
             ),
-            quota=gcp.identityplatform.ConfigQuotaArgs(
-                sign_up_quota_config=gcp.identityplatform.ConfigQuotaSignUpQuotaConfigArgs(
+            quota=gcp.identityplatform.ConfigQuotaArrgs(
+                sign_up_quota_config=gcp.identityplatform.ConfigQuotaSignUpQuotaConfigArrgs(
                     quota=1000,
                     start_time="",
                     quota_duration="7200s",
@@ -414,22 +414,22 @@ class Config(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_domains: List of domains authorized for OAuth redirects.
         :param pulumi.Input[bool] autodelete_anonymous_users: Whether anonymous users will be auto-deleted after a period of 30 days
-        :param pulumi.Input[pulumi.InputType['ConfigBlockingFunctionsArgs']] blocking_functions: Configuration related to blocking functions.
+        :param pulumi.Input[pulumi.InputType['ConfigBlockingFunctionsArrgs']] blocking_functions: Configuration related to blocking functions.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['ConfigQuotaArgs']] quota: Configuration related to quotas.
+        :param pulumi.Input[pulumi.InputType['ConfigQuotaArrgs']] quota: Configuration related to quotas.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConfigSignInArgs']] sign_in: Configuration related to local sign in methods.
+        :param pulumi.Input[pulumi.InputType['ConfigSignInArrgs']] sign_in: Configuration related to local sign in methods.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConfigSmsRegionConfigArgs']] sms_region_config: Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+        :param pulumi.Input[pulumi.InputType['ConfigSmsRegionConfigArrgs']] sms_region_config: Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[ConfigArgs] = None,
+                 args: Optional[ConfigArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Identity Platform configuration for a Cloud project. Identity Platform is an
@@ -466,43 +466,43 @@ class Config(pulumi.CustomResource):
         default_config = gcp.identityplatform.Config("defaultConfig",
             project=default_project.project_id,
             autodelete_anonymous_users=True,
-            sign_in=gcp.identityplatform.ConfigSignInArgs(
+            sign_in=gcp.identityplatform.ConfigSignInArrgs(
                 allow_duplicate_emails=True,
-                anonymous=gcp.identityplatform.ConfigSignInAnonymousArgs(
+                anonymous=gcp.identityplatform.ConfigSignInAnonymousArrgs(
                     enabled=True,
                 ),
-                email=gcp.identityplatform.ConfigSignInEmailArgs(
+                email=gcp.identityplatform.ConfigSignInEmailArrgs(
                     enabled=True,
                     password_required=False,
                 ),
-                phone_number=gcp.identityplatform.ConfigSignInPhoneNumberArgs(
+                phone_number=gcp.identityplatform.ConfigSignInPhoneNumberArrgs(
                     enabled=True,
                     test_phone_numbers={
                         "+11231231234": "000000",
                     },
                 ),
             ),
-            sms_region_config=gcp.identityplatform.ConfigSmsRegionConfigArgs(
-                allowlist_only=gcp.identityplatform.ConfigSmsRegionConfigAllowlistOnlyArgs(
+            sms_region_config=gcp.identityplatform.ConfigSmsRegionConfigArrgs(
+                allowlist_only=gcp.identityplatform.ConfigSmsRegionConfigAllowlistOnlyArrgs(
                     allowed_regions=[
                         "US",
                         "CA",
                     ],
                 ),
             ),
-            blocking_functions=gcp.identityplatform.ConfigBlockingFunctionsArgs(
-                triggers=[gcp.identityplatform.ConfigBlockingFunctionsTriggerArgs(
+            blocking_functions=gcp.identityplatform.ConfigBlockingFunctionsArrgs(
+                triggers=[gcp.identityplatform.ConfigBlockingFunctionsTriggerArrgs(
                     event_type="beforeSignIn",
                     function_uri="https://us-east1-my-project.cloudfunctions.net/before-sign-in",
                 )],
-                forward_inbound_credentials=gcp.identityplatform.ConfigBlockingFunctionsForwardInboundCredentialsArgs(
+                forward_inbound_credentials=gcp.identityplatform.ConfigBlockingFunctionsForwardInboundCredentialsArrgs(
                     refresh_token=True,
                     access_token=True,
                     id_token=True,
                 ),
             ),
-            quota=gcp.identityplatform.ConfigQuotaArgs(
-                sign_up_quota_config=gcp.identityplatform.ConfigQuotaSignUpQuotaConfigArgs(
+            quota=gcp.identityplatform.ConfigQuotaArrgs(
+                sign_up_quota_config=gcp.identityplatform.ConfigQuotaSignUpQuotaConfigArrgs(
                     quota=1000,
                     start_time="",
                     quota_duration="7200s",
@@ -540,12 +540,12 @@ class Config(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ConfigArgs args: The arguments to use to populate this resource's properties.
+        :param ConfigArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ConfigArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -556,11 +556,11 @@ class Config(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorized_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  autodelete_anonymous_users: Optional[pulumi.Input[bool]] = None,
-                 blocking_functions: Optional[pulumi.Input[pulumi.InputType['ConfigBlockingFunctionsArgs']]] = None,
+                 blocking_functions: Optional[pulumi.Input[pulumi.InputType['ConfigBlockingFunctionsArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 quota: Optional[pulumi.Input[pulumi.InputType['ConfigQuotaArgs']]] = None,
-                 sign_in: Optional[pulumi.Input[pulumi.InputType['ConfigSignInArgs']]] = None,
-                 sms_region_config: Optional[pulumi.Input[pulumi.InputType['ConfigSmsRegionConfigArgs']]] = None,
+                 quota: Optional[pulumi.Input[pulumi.InputType['ConfigQuotaArrgs']]] = None,
+                 sign_in: Optional[pulumi.Input[pulumi.InputType['ConfigSignInArrgs']]] = None,
+                 sms_region_config: Optional[pulumi.Input[pulumi.InputType['ConfigSmsRegionConfigArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -568,7 +568,7 @@ class Config(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ConfigArgs.__new__(ConfigArgs)
+            __props__ = ConfigArrgs.__new__(ConfigArrgs)
 
             __props__.__dict__["authorized_domains"] = authorized_domains
             __props__.__dict__["autodelete_anonymous_users"] = autodelete_anonymous_users
@@ -590,12 +590,12 @@ class Config(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             authorized_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             autodelete_anonymous_users: Optional[pulumi.Input[bool]] = None,
-            blocking_functions: Optional[pulumi.Input[pulumi.InputType['ConfigBlockingFunctionsArgs']]] = None,
+            blocking_functions: Optional[pulumi.Input[pulumi.InputType['ConfigBlockingFunctionsArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            quota: Optional[pulumi.Input[pulumi.InputType['ConfigQuotaArgs']]] = None,
-            sign_in: Optional[pulumi.Input[pulumi.InputType['ConfigSignInArgs']]] = None,
-            sms_region_config: Optional[pulumi.Input[pulumi.InputType['ConfigSmsRegionConfigArgs']]] = None) -> 'Config':
+            quota: Optional[pulumi.Input[pulumi.InputType['ConfigQuotaArrgs']]] = None,
+            sign_in: Optional[pulumi.Input[pulumi.InputType['ConfigSignInArrgs']]] = None,
+            sms_region_config: Optional[pulumi.Input[pulumi.InputType['ConfigSmsRegionConfigArrgs']]] = None) -> 'Config':
         """
         Get an existing Config resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -605,16 +605,16 @@ class Config(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_domains: List of domains authorized for OAuth redirects.
         :param pulumi.Input[bool] autodelete_anonymous_users: Whether anonymous users will be auto-deleted after a period of 30 days
-        :param pulumi.Input[pulumi.InputType['ConfigBlockingFunctionsArgs']] blocking_functions: Configuration related to blocking functions.
+        :param pulumi.Input[pulumi.InputType['ConfigBlockingFunctionsArrgs']] blocking_functions: Configuration related to blocking functions.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the Config resource
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['ConfigQuotaArgs']] quota: Configuration related to quotas.
+        :param pulumi.Input[pulumi.InputType['ConfigQuotaArrgs']] quota: Configuration related to quotas.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConfigSignInArgs']] sign_in: Configuration related to local sign in methods.
+        :param pulumi.Input[pulumi.InputType['ConfigSignInArrgs']] sign_in: Configuration related to local sign in methods.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConfigSmsRegionConfigArgs']] sms_region_config: Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+        :param pulumi.Input[pulumi.InputType['ConfigSmsRegionConfigArrgs']] sms_region_config: Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

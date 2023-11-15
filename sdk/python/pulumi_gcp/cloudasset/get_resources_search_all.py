@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetResourcesSearchAllResult:
+calass GetResourcesSearchAllResult:
     """
     A collection of values returned by getResourcesSearchAll.
     """
@@ -71,7 +71,7 @@ class GetResourcesSearchAllResult:
         return pulumi.get(self, "scope")
 
 
-class AwaitableGetResourcesSearchAllResult(GetResourcesSearchAllResult):
+calass AwaitableGetResourcesSearchAllResult(GetResourcesSearchAllResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

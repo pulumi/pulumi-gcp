@@ -25,7 +25,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class ConnectionGithubConfig(dict):
+calass ConnectionGithubConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -50,7 +50,7 @@ class ConnectionGithubConfig(dict):
                  authorizer_credential: Optional['outputs.ConnectionGithubConfigAuthorizerCredential'] = None):
         """
         :param int app_installation_id: GitHub App installation id.
-        :param 'ConnectionGithubConfigAuthorizerCredentialArgs' authorizer_credential: OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
+        :param 'ConnectionGithubConfigAuthorizerCredentialArrgs' authorizer_credential: OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
         """
         if app_installation_id is not None:
             pulumi.set(__self__, "app_installation_id", app_installation_id)
@@ -75,7 +75,7 @@ class ConnectionGithubConfig(dict):
 
 
 @pulumi.output_type
-class ConnectionGithubConfigAuthorizerCredential(dict):
+calass ConnectionGithubConfigAuthorizerCredential(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -123,7 +123,7 @@ class ConnectionGithubConfigAuthorizerCredential(dict):
 
 
 @pulumi.output_type
-class ConnectionGithubEnterpriseConfig(dict):
+calass ConnectionGithubEnterpriseConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -170,7 +170,7 @@ class ConnectionGithubEnterpriseConfig(dict):
         :param int app_installation_id: ID of the installation of the GitHub App.
         :param str app_slug: The URL-friendly name of the GitHub App.
         :param str private_key_secret_version: SecretManager resource containing the private key of the GitHub App, formatted as `projects/*/secrets/*/versions/*`.
-        :param 'ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs' service_directory_config: Configuration for using Service Directory to privately connect to a GitHub Enterprise server. This should only be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitHub Enterprise server will be made over the public internet.
+        :param 'ConnectionGithubEnterpriseConfigServiceDirectoryConfigArrgs' service_directory_config: Configuration for using Service Directory to privately connect to a GitHub Enterprise server. This should only be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitHub Enterprise server will be made over the public internet.
         :param str ssl_ca: SSL certificate to use for requests to GitHub Enterprise.
         :param str webhook_secret_secret_version: SecretManager resource containing the webhook secret of the GitHub App, formatted as `projects/*/secrets/*/versions/*`.
         """
@@ -256,7 +256,7 @@ class ConnectionGithubEnterpriseConfig(dict):
 
 
 @pulumi.output_type
-class ConnectionGithubEnterpriseConfigServiceDirectoryConfig(dict):
+calass ConnectionGithubEnterpriseConfigServiceDirectoryConfig(dict):
     def __init__(__self__, *,
                  service: str):
         """
@@ -274,7 +274,7 @@ class ConnectionGithubEnterpriseConfigServiceDirectoryConfig(dict):
 
 
 @pulumi.output_type
-class ConnectionGitlabConfig(dict):
+calass ConnectionGitlabConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -313,12 +313,12 @@ class ConnectionGitlabConfig(dict):
                  service_directory_config: Optional['outputs.ConnectionGitlabConfigServiceDirectoryConfig'] = None,
                  ssl_ca: Optional[str] = None):
         """
-        :param 'ConnectionGitlabConfigAuthorizerCredentialArgs' authorizer_credential: Required. A GitLab personal access token with the `api` scope access.
-        :param 'ConnectionGitlabConfigReadAuthorizerCredentialArgs' read_authorizer_credential: Required. A GitLab personal access token with the minimum `read_api` scope access.
+        :param 'ConnectionGitlabConfigAuthorizerCredentialArrgs' authorizer_credential: Required. A GitLab personal access token with the `api` scope access.
+        :param 'ConnectionGitlabConfigReadAuthorizerCredentialArrgs' read_authorizer_credential: Required. A GitLab personal access token with the minimum `read_api` scope access.
         :param str webhook_secret_secret_version: Required. Immutable. SecretManager resource containing the webhook secret of a GitLab Enterprise project, formatted as `projects/*/secrets/*/versions/*`.
         :param str host_uri: The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
         :param str server_version: Output only. Version of the GitLab Enterprise server running on the `host_uri`.
-        :param 'ConnectionGitlabConfigServiceDirectoryConfigArgs' service_directory_config: Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
+        :param 'ConnectionGitlabConfigServiceDirectoryConfigArrgs' service_directory_config: Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
         :param str ssl_ca: SSL certificate to use for requests to GitLab Enterprise.
         """
         pulumi.set(__self__, "authorizer_credential", authorizer_credential)
@@ -391,7 +391,7 @@ class ConnectionGitlabConfig(dict):
 
 
 @pulumi.output_type
-class ConnectionGitlabConfigAuthorizerCredential(dict):
+calass ConnectionGitlabConfigAuthorizerCredential(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -438,7 +438,7 @@ class ConnectionGitlabConfigAuthorizerCredential(dict):
 
 
 @pulumi.output_type
-class ConnectionGitlabConfigReadAuthorizerCredential(dict):
+calass ConnectionGitlabConfigReadAuthorizerCredential(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -489,7 +489,7 @@ class ConnectionGitlabConfigReadAuthorizerCredential(dict):
 
 
 @pulumi.output_type
-class ConnectionGitlabConfigServiceDirectoryConfig(dict):
+calass ConnectionGitlabConfigServiceDirectoryConfig(dict):
     def __init__(__self__, *,
                  service: str):
         """
@@ -507,7 +507,7 @@ class ConnectionGitlabConfigServiceDirectoryConfig(dict):
 
 
 @pulumi.output_type
-class ConnectionIAMBindingCondition(dict):
+calass ConnectionIAMBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -534,7 +534,7 @@ class ConnectionIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class ConnectionIAMMemberCondition(dict):
+calass ConnectionIAMMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -561,7 +561,7 @@ class ConnectionIAMMemberCondition(dict):
 
 
 @pulumi.output_type
-class ConnectionInstallationState(dict):
+calass ConnectionInstallationState(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

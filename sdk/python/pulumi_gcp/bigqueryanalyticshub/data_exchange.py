@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['DataExchangeArgs', 'DataExchange']
+__all__ = ['DataExchangeArrgs', 'DataExchange']
 
 @pulumi.input_type
-class DataExchangeArgs:
+calass DataExchangeArrgs:
     def __init__(__self__, *,
                  data_exchange_id: pulumi.Input[str],
                  display_name: pulumi.Input[str],
@@ -153,7 +153,7 @@ class DataExchangeArgs:
 
 
 @pulumi.input_type
-class _DataExchangeState:
+calass _DataExchangeState:
     def __init__(__self__, *,
                  data_exchange_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -330,7 +330,7 @@ class _DataExchangeState:
         pulumi.set(self, "project", value)
 
 
-class DataExchange(pulumi.CustomResource):
+calass DataExchange(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -414,7 +414,7 @@ class DataExchange(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DataExchangeArgs,
+                 args: DataExchangeArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Bigquery Analytics Hub data exchange
@@ -468,12 +468,12 @@ class DataExchange(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param DataExchangeArgs args: The arguments to use to populate this resource's properties.
+        :param DataExchangeArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DataExchangeArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DataExchangeArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -497,7 +497,7 @@ class DataExchange(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DataExchangeArgs.__new__(DataExchangeArgs)
+            __props__ = DataExchangeArrgs.__new__(DataExchangeArrgs)
 
             if data_exchange_id is None and not opts.urn:
                 raise TypeError("Missing required property 'data_exchange_id'")

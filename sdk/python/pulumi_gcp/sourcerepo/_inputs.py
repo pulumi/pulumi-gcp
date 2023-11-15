@@ -10,13 +10,13 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'RepositoryIamBindingConditionArgs',
-    'RepositoryIamMemberConditionArgs',
-    'RepositoryPubsubConfigArgs',
+    'RepositoryIamBindingConditionArrgs',
+    'RepositoryIamMemberConditionArrgs',
+    'RepositoryPubsubConfigArrgs',
 ]
 
 @pulumi.input_type
-class RepositoryIamBindingConditionArgs:
+calass RepositoryIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -55,7 +55,7 @@ class RepositoryIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class RepositoryIamMemberConditionArgs:
+calass RepositoryIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -94,7 +94,7 @@ class RepositoryIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class RepositoryPubsubConfigArgs:
+calass RepositoryPubsubConfigArrgs:
     def __init__(__self__, *,
                  message_format: pulumi.Input[str],
                  topic: pulumi.Input[str],

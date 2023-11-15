@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['NetworkAttachmentArgs', 'NetworkAttachment']
+__all__ = ['NetworkAttachmentArrgs', 'NetworkAttachment']
 
 @pulumi.input_type
-class NetworkAttachmentArgs:
+calass NetworkAttachmentArrgs:
     def __init__(__self__, *,
                  connection_preference: pulumi.Input[str],
                  subnetworks: pulumi.Input[Sequence[pulumi.Input[str]]],
@@ -158,9 +158,9 @@ class NetworkAttachmentArgs:
 
 
 @pulumi.input_type
-class _NetworkAttachmentState:
+calass _NetworkAttachmentState:
     def __init__(__self__, *,
-                 connection_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAttachmentConnectionEndpointArgs']]]] = None,
+                 connection_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAttachmentConnectionEndpointArrgs']]]] = None,
                  connection_preference: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -177,7 +177,7 @@ class _NetworkAttachmentState:
                  subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering NetworkAttachment resources.
-        :param pulumi.Input[Sequence[pulumi.Input['NetworkAttachmentConnectionEndpointArgs']]] connection_endpoints: An array of connections for all the producers connected to this network attachment.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkAttachmentConnectionEndpointArrgs']]] connection_endpoints: An array of connections for all the producers connected to this network attachment.
                Structure is documented below.
         :param pulumi.Input[str] connection_preference: The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
                Possible values are: `ACCEPT_AUTOMATIC`, `ACCEPT_MANUAL`, `INVALID`.
@@ -234,7 +234,7 @@ class _NetworkAttachmentState:
 
     @property
     @pulumi.getter(name="connectionEndpoints")
-    def connection_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAttachmentConnectionEndpointArgs']]]]:
+    def connection_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAttachmentConnectionEndpointArrgs']]]]:
         """
         An array of connections for all the producers connected to this network attachment.
         Structure is documented below.
@@ -242,7 +242,7 @@ class _NetworkAttachmentState:
         return pulumi.get(self, "connection_endpoints")
 
     @connection_endpoints.setter
-    def connection_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAttachmentConnectionEndpointArgs']]]]):
+    def connection_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAttachmentConnectionEndpointArrgs']]]]):
         pulumi.set(self, "connection_endpoints", value)
 
     @property
@@ -421,7 +421,7 @@ class _NetworkAttachmentState:
         pulumi.set(self, "subnetworks", value)
 
 
-class NetworkAttachment(pulumi.CustomResource):
+calass NetworkAttachment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -491,16 +491,16 @@ class NetworkAttachment(pulumi.CustomResource):
         default_instance = gcp.compute.Instance("defaultInstance",
             zone="us-central1-a",
             machine_type="e2-micro",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image="debian-cloud/debian-11",
                 ),
             ),
             network_interfaces=[
-                gcp.compute.InstanceNetworkInterfaceArgs(
+                gcp.compute.InstanceNetworkInterfaceArrgs(
                     network="default",
                 ),
-                gcp.compute.InstanceNetworkInterfaceArgs(
+                gcp.compute.InstanceNetworkInterfaceArrgs(
                     network_attachment=default_network_attachment.self_link,
                 ),
             ],
@@ -555,7 +555,7 @@ class NetworkAttachment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: NetworkAttachmentArgs,
+                 args: NetworkAttachmentArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -613,16 +613,16 @@ class NetworkAttachment(pulumi.CustomResource):
         default_instance = gcp.compute.Instance("defaultInstance",
             zone="us-central1-a",
             machine_type="e2-micro",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image="debian-cloud/debian-11",
                 ),
             ),
             network_interfaces=[
-                gcp.compute.InstanceNetworkInterfaceArgs(
+                gcp.compute.InstanceNetworkInterfaceArrgs(
                     network="default",
                 ),
-                gcp.compute.InstanceNetworkInterfaceArgs(
+                gcp.compute.InstanceNetworkInterfaceArrgs(
                     network_attachment=default_network_attachment.self_link,
                 ),
             ],
@@ -658,12 +658,12 @@ class NetworkAttachment(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param NetworkAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param NetworkAttachmentArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(NetworkAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(NetworkAttachmentArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -687,7 +687,7 @@ class NetworkAttachment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = NetworkAttachmentArgs.__new__(NetworkAttachmentArgs)
+            __props__ = NetworkAttachmentArrgs.__new__(NetworkAttachmentArrgs)
 
             if connection_preference is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_preference'")
@@ -718,7 +718,7 @@ class NetworkAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connection_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAttachmentConnectionEndpointArgs']]]]] = None,
+            connection_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAttachmentConnectionEndpointArrgs']]]]] = None,
             connection_preference: Optional[pulumi.Input[str]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -740,7 +740,7 @@ class NetworkAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAttachmentConnectionEndpointArgs']]]] connection_endpoints: An array of connections for all the producers connected to this network attachment.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAttachmentConnectionEndpointArrgs']]]] connection_endpoints: An array of connections for all the producers connected to this network attachment.
                Structure is documented below.
         :param pulumi.Input[str] connection_preference: The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
                Possible values are: `ACCEPT_AUTOMATIC`, `ACCEPT_MANUAL`, `INVALID`.

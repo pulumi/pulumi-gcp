@@ -11,14 +11,14 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AuthorityArgs', 'Authority']
+__all__ = ['AuthorityArrgs', 'Authority']
 
 @pulumi.input_type
-class AuthorityArgs:
+calass AuthorityArrgs:
     def __init__(__self__, *,
                  certificate_authority_id: pulumi.Input[str],
-                 config: pulumi.Input['AuthorityConfigArgs'],
-                 key_spec: pulumi.Input['AuthorityKeySpecArgs'],
+                 config: pulumi.Input['AuthorityConfigArrgs'],
+                 key_spec: pulumi.Input['AuthorityKeySpecArrgs'],
                  location: pulumi.Input[str],
                  pool: pulumi.Input[str],
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -30,14 +30,14 @@ class AuthorityArgs:
                  pem_ca_certificate: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  skip_grace_period: Optional[pulumi.Input[bool]] = None,
-                 subordinate_config: Optional[pulumi.Input['AuthoritySubordinateConfigArgs']] = None,
+                 subordinate_config: Optional[pulumi.Input['AuthoritySubordinateConfigArrgs']] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Authority resource.
         :param pulumi.Input[str] certificate_authority_id: The user provided Resource ID for this Certificate Authority.
-        :param pulumi.Input['AuthorityConfigArgs'] config: The config used to create a self-signed X.509 certificate or CSR.
+        :param pulumi.Input['AuthorityConfigArrgs'] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
-        :param pulumi.Input['AuthorityKeySpecArgs'] key_spec: Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
+        :param pulumi.Input['AuthorityKeySpecArrgs'] key_spec: Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
                is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA
                certificate. Otherwise, it is used to sign a CSR.
                Structure is documented below.
@@ -70,7 +70,7 @@ class AuthorityArgs:
                possible without a 30-day grace period where undeletion would have been
                allowed. If you proceed, there will be no way to recover this CA.
                Use with care. Defaults to `false`.
-        :param pulumi.Input['AuthoritySubordinateConfigArgs'] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
+        :param pulumi.Input['AuthoritySubordinateConfigArrgs'] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
                with the subordinate configuration, which describes its issuers.
                Structure is documented below.
         :param pulumi.Input[str] type: The Type of this CertificateAuthority.
@@ -121,7 +121,7 @@ class AuthorityArgs:
 
     @property
     @pulumi.getter
-    def config(self) -> pulumi.Input['AuthorityConfigArgs']:
+    def config(self) -> pulumi.Input['AuthorityConfigArrgs']:
         """
         The config used to create a self-signed X.509 certificate or CSR.
         Structure is documented below.
@@ -129,12 +129,12 @@ class AuthorityArgs:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: pulumi.Input['AuthorityConfigArgs']):
+    def config(self, value: pulumi.Input['AuthorityConfigArrgs']):
         pulumi.set(self, "config", value)
 
     @property
     @pulumi.getter(name="keySpec")
-    def key_spec(self) -> pulumi.Input['AuthorityKeySpecArgs']:
+    def key_spec(self) -> pulumi.Input['AuthorityKeySpecArrgs']:
         """
         Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
         is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA
@@ -144,7 +144,7 @@ class AuthorityArgs:
         return pulumi.get(self, "key_spec")
 
     @key_spec.setter
-    def key_spec(self, value: pulumi.Input['AuthorityKeySpecArgs']):
+    def key_spec(self, value: pulumi.Input['AuthorityKeySpecArrgs']):
         pulumi.set(self, "key_spec", value)
 
     @property
@@ -299,7 +299,7 @@ class AuthorityArgs:
 
     @property
     @pulumi.getter(name="subordinateConfig")
-    def subordinate_config(self) -> Optional[pulumi.Input['AuthoritySubordinateConfigArgs']]:
+    def subordinate_config(self) -> Optional[pulumi.Input['AuthoritySubordinateConfigArrgs']]:
         """
         If this is a subordinate CertificateAuthority, this field will be set
         with the subordinate configuration, which describes its issuers.
@@ -308,7 +308,7 @@ class AuthorityArgs:
         return pulumi.get(self, "subordinate_config")
 
     @subordinate_config.setter
-    def subordinate_config(self, value: Optional[pulumi.Input['AuthoritySubordinateConfigArgs']]):
+    def subordinate_config(self, value: Optional[pulumi.Input['AuthoritySubordinateConfigArrgs']]):
         pulumi.set(self, "subordinate_config", value)
 
     @property
@@ -329,18 +329,18 @@ class AuthorityArgs:
 
 
 @pulumi.input_type
-class _AuthorityState:
+calass _AuthorityState:
     def __init__(__self__, *,
-                 access_urls: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityAccessUrlArgs']]]] = None,
+                 access_urls: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityAccessUrlArrgs']]]] = None,
                  certificate_authority_id: Optional[pulumi.Input[str]] = None,
-                 config: Optional[pulumi.Input['AuthorityConfigArgs']] = None,
+                 config: Optional[pulumi.Input['AuthorityConfigArrgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  desired_state: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  gcs_bucket: Optional[pulumi.Input[str]] = None,
                  ignore_active_certificates_on_deletion: Optional[pulumi.Input[bool]] = None,
-                 key_spec: Optional[pulumi.Input['AuthorityKeySpecArgs']] = None,
+                 key_spec: Optional[pulumi.Input['AuthorityKeySpecArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifetime: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -352,15 +352,15 @@ class _AuthorityState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  skip_grace_period: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 subordinate_config: Optional[pulumi.Input['AuthoritySubordinateConfigArgs']] = None,
+                 subordinate_config: Optional[pulumi.Input['AuthoritySubordinateConfigArrgs']] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Authority resources.
-        :param pulumi.Input[Sequence[pulumi.Input['AuthorityAccessUrlArgs']]] access_urls: URLs for accessing content published by this CA, such as the CA certificate and CRLs.
+        :param pulumi.Input[Sequence[pulumi.Input['AuthorityAccessUrlArrgs']]] access_urls: URLs for accessing content published by this CA, such as the CA certificate and CRLs.
                Structure is documented below.
         :param pulumi.Input[str] certificate_authority_id: The user provided Resource ID for this Certificate Authority.
-        :param pulumi.Input['AuthorityConfigArgs'] config: The config used to create a self-signed X.509 certificate or CSR.
+        :param pulumi.Input['AuthorityConfigArrgs'] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time at which this CertificateAuthority was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -376,7 +376,7 @@ class _AuthorityState:
                created.
         :param pulumi.Input[bool] ignore_active_certificates_on_deletion: This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
                Use with care. Defaults to `false`.
-        :param pulumi.Input['AuthorityKeySpecArgs'] key_spec: Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
+        :param pulumi.Input['AuthorityKeySpecArrgs'] key_spec: Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
                is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA
                certificate. Otherwise, it is used to sign a CSR.
                Structure is documented below.
@@ -408,7 +408,7 @@ class _AuthorityState:
                allowed. If you proceed, there will be no way to recover this CA.
                Use with care. Defaults to `false`.
         :param pulumi.Input[str] state: The State for this CertificateAuthority.
-        :param pulumi.Input['AuthoritySubordinateConfigArgs'] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
+        :param pulumi.Input['AuthoritySubordinateConfigArrgs'] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
                with the subordinate configuration, which describes its issuers.
                Structure is documented below.
         :param pulumi.Input[str] type: The Type of this CertificateAuthority.
@@ -471,7 +471,7 @@ class _AuthorityState:
 
     @property
     @pulumi.getter(name="accessUrls")
-    def access_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityAccessUrlArgs']]]]:
+    def access_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityAccessUrlArrgs']]]]:
         """
         URLs for accessing content published by this CA, such as the CA certificate and CRLs.
         Structure is documented below.
@@ -479,7 +479,7 @@ class _AuthorityState:
         return pulumi.get(self, "access_urls")
 
     @access_urls.setter
-    def access_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityAccessUrlArgs']]]]):
+    def access_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityAccessUrlArrgs']]]]):
         pulumi.set(self, "access_urls", value)
 
     @property
@@ -496,7 +496,7 @@ class _AuthorityState:
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['AuthorityConfigArgs']]:
+    def config(self) -> Optional[pulumi.Input['AuthorityConfigArrgs']]:
         """
         The config used to create a self-signed X.509 certificate or CSR.
         Structure is documented below.
@@ -504,7 +504,7 @@ class _AuthorityState:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['AuthorityConfigArgs']]):
+    def config(self, value: Optional[pulumi.Input['AuthorityConfigArrgs']]):
         pulumi.set(self, "config", value)
 
     @property
@@ -589,7 +589,7 @@ class _AuthorityState:
 
     @property
     @pulumi.getter(name="keySpec")
-    def key_spec(self) -> Optional[pulumi.Input['AuthorityKeySpecArgs']]:
+    def key_spec(self) -> Optional[pulumi.Input['AuthorityKeySpecArrgs']]:
         """
         Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
         is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA
@@ -599,7 +599,7 @@ class _AuthorityState:
         return pulumi.get(self, "key_spec")
 
     @key_spec.setter
-    def key_spec(self, value: Optional[pulumi.Input['AuthorityKeySpecArgs']]):
+    def key_spec(self, value: Optional[pulumi.Input['AuthorityKeySpecArrgs']]):
         pulumi.set(self, "key_spec", value)
 
     @property
@@ -753,7 +753,7 @@ class _AuthorityState:
 
     @property
     @pulumi.getter(name="subordinateConfig")
-    def subordinate_config(self) -> Optional[pulumi.Input['AuthoritySubordinateConfigArgs']]:
+    def subordinate_config(self) -> Optional[pulumi.Input['AuthoritySubordinateConfigArrgs']]:
         """
         If this is a subordinate CertificateAuthority, this field will be set
         with the subordinate configuration, which describes its issuers.
@@ -762,7 +762,7 @@ class _AuthorityState:
         return pulumi.get(self, "subordinate_config")
 
     @subordinate_config.setter
-    def subordinate_config(self, value: Optional[pulumi.Input['AuthoritySubordinateConfigArgs']]):
+    def subordinate_config(self, value: Optional[pulumi.Input['AuthoritySubordinateConfigArrgs']]):
         pulumi.set(self, "subordinate_config", value)
 
     @property
@@ -796,18 +796,18 @@ class _AuthorityState:
         pulumi.set(self, "update_time", value)
 
 
-class Authority(pulumi.CustomResource):
+calass Authority(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_authority_id: Optional[pulumi.Input[str]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['AuthorityConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[pulumi.InputType['AuthorityConfigArrgs']]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  desired_state: Optional[pulumi.Input[str]] = None,
                  gcs_bucket: Optional[pulumi.Input[str]] = None,
                  ignore_active_certificates_on_deletion: Optional[pulumi.Input[bool]] = None,
-                 key_spec: Optional[pulumi.Input[pulumi.InputType['AuthorityKeySpecArgs']]] = None,
+                 key_spec: Optional[pulumi.Input[pulumi.InputType['AuthorityKeySpecArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifetime: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -815,7 +815,7 @@ class Authority(pulumi.CustomResource):
                  pool: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  skip_grace_period: Optional[pulumi.Input[bool]] = None,
-                 subordinate_config: Optional[pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArgs']]] = None,
+                 subordinate_config: Optional[pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArrgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -841,23 +841,23 @@ class Authority(pulumi.CustomResource):
 
         default = gcp.certificateauthority.Authority("default",
             certificate_authority_id="my-certificate-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+            config=gcp.certificateauthority.AuthorityConfigArrgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArrgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArrgs(
                         common_name="my-certificate-authority",
                         organization="HashiCorp",
                     ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArrgs(
                         dns_names=["hashicorp.com"],
                     ),
                 ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArrgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArrgs(
                         is_ca=True,
                         max_issuer_path_length=10,
                     ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArrgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrgs(
                             cert_sign=True,
                             content_commitment=True,
                             crl_sign=True,
@@ -867,7 +867,7 @@ class Authority(pulumi.CustomResource):
                             key_agreement=True,
                             key_encipherment=False,
                         ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrgs(
                             client_auth=False,
                             code_signing=True,
                             email_protection=True,
@@ -878,7 +878,7 @@ class Authority(pulumi.CustomResource):
                 ),
             ),
             deletion_protection=True,
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArrgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
             ),
             lifetime="86400s",
@@ -895,32 +895,32 @@ class Authority(pulumi.CustomResource):
             pool="ca-pool",
             certificate_authority_id="my-certificate-authority-root",
             location="us-central1",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+            config=gcp.certificateauthority.AuthorityConfigArrgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArrgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArrgs(
                         organization="HashiCorp",
                         common_name="my-certificate-authority",
                     ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArrgs(
                         dns_names=["hashicorp.com"],
                     ),
                 ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArrgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArrgs(
                         is_ca=True,
                     ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArrgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrgs(
                             cert_sign=True,
                             crl_sign=True,
                         ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrgs(
                             server_auth=False,
                         ),
                     ),
                 ),
             ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArrgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
             ),
             deletion_protection=False,
@@ -931,26 +931,26 @@ class Authority(pulumi.CustomResource):
             certificate_authority_id="my-certificate-authority-sub",
             location="us-central1",
             deletion_protection=True,
-            subordinate_config=gcp.certificateauthority.AuthoritySubordinateConfigArgs(
+            subordinate_config=gcp.certificateauthority.AuthoritySubordinateConfigArrgs(
                 certificate_authority=root_ca.name,
             ),
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+            config=gcp.certificateauthority.AuthorityConfigArrgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArrgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArrgs(
                         organization="HashiCorp",
                         common_name="my-subordinate-authority",
                     ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArrgs(
                         dns_names=["hashicorp.com"],
                     ),
                 ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArrgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArrgs(
                         is_ca=True,
                         max_issuer_path_length=0,
                     ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArrgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrgs(
                             digital_signature=True,
                             content_commitment=True,
                             key_encipherment=False,
@@ -960,7 +960,7 @@ class Authority(pulumi.CustomResource):
                             crl_sign=True,
                             decipher_only=True,
                         ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrgs(
                             server_auth=True,
                             client_auth=False,
                             email_protection=True,
@@ -971,7 +971,7 @@ class Authority(pulumi.CustomResource):
                 ),
             ),
             lifetime="86400s",
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArrgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
             ),
             type="SUBORDINATE")
@@ -996,31 +996,31 @@ class Authority(pulumi.CustomResource):
             certificate_authority_id="my-certificate-authority",
             location="us-central1",
             deletion_protection=True,
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArrgs(
                 cloud_kms_key_version="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",
             ),
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+            config=gcp.certificateauthority.AuthorityConfigArrgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArrgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArrgs(
                         organization="Example, Org.",
                         common_name="Example Authority",
                     ),
                 ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArrgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArrgs(
                         is_ca=True,
                         max_issuer_path_length=10,
                     ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArrgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrgs(
                             cert_sign=True,
                             crl_sign=True,
                         ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrgs(
                             server_auth=False,
                         ),
                     ),
-                    name_constraints=gcp.certificateauthority.AuthorityConfigX509ConfigNameConstraintsArgs(
+                    name_constraints=gcp.certificateauthority.AuthorityConfigX509ConfigNameConstraintsArrgs(
                         critical=True,
                         permitted_dns_names=["*.example.com"],
                         excluded_dns_names=["*.deny.example.com"],
@@ -1066,7 +1066,7 @@ class Authority(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate_authority_id: The user provided Resource ID for this Certificate Authority.
-        :param pulumi.Input[pulumi.InputType['AuthorityConfigArgs']] config: The config used to create a self-signed X.509 certificate or CSR.
+        :param pulumi.Input[pulumi.InputType['AuthorityConfigArrgs']] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
                state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
@@ -1078,7 +1078,7 @@ class Authority(pulumi.CustomResource):
                created.
         :param pulumi.Input[bool] ignore_active_certificates_on_deletion: This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
                Use with care. Defaults to `false`.
-        :param pulumi.Input[pulumi.InputType['AuthorityKeySpecArgs']] key_spec: Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
+        :param pulumi.Input[pulumi.InputType['AuthorityKeySpecArrgs']] key_spec: Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
                is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA
                certificate. Otherwise, it is used to sign a CSR.
                Structure is documented below.
@@ -1101,7 +1101,7 @@ class Authority(pulumi.CustomResource):
                possible without a 30-day grace period where undeletion would have been
                allowed. If you proceed, there will be no way to recover this CA.
                Use with care. Defaults to `false`.
-        :param pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArgs']] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
+        :param pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArrgs']] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
                with the subordinate configuration, which describes its issuers.
                Structure is documented below.
         :param pulumi.Input[str] type: The Type of this CertificateAuthority.
@@ -1114,7 +1114,7 @@ class Authority(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AuthorityArgs,
+                 args: AuthorityArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A CertificateAuthority represents an individual Certificate Authority. A
@@ -1139,23 +1139,23 @@ class Authority(pulumi.CustomResource):
 
         default = gcp.certificateauthority.Authority("default",
             certificate_authority_id="my-certificate-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+            config=gcp.certificateauthority.AuthorityConfigArrgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArrgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArrgs(
                         common_name="my-certificate-authority",
                         organization="HashiCorp",
                     ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArrgs(
                         dns_names=["hashicorp.com"],
                     ),
                 ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArrgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArrgs(
                         is_ca=True,
                         max_issuer_path_length=10,
                     ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArrgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrgs(
                             cert_sign=True,
                             content_commitment=True,
                             crl_sign=True,
@@ -1165,7 +1165,7 @@ class Authority(pulumi.CustomResource):
                             key_agreement=True,
                             key_encipherment=False,
                         ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrgs(
                             client_auth=False,
                             code_signing=True,
                             email_protection=True,
@@ -1176,7 +1176,7 @@ class Authority(pulumi.CustomResource):
                 ),
             ),
             deletion_protection=True,
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArrgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
             ),
             lifetime="86400s",
@@ -1193,32 +1193,32 @@ class Authority(pulumi.CustomResource):
             pool="ca-pool",
             certificate_authority_id="my-certificate-authority-root",
             location="us-central1",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+            config=gcp.certificateauthority.AuthorityConfigArrgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArrgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArrgs(
                         organization="HashiCorp",
                         common_name="my-certificate-authority",
                     ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArrgs(
                         dns_names=["hashicorp.com"],
                     ),
                 ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArrgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArrgs(
                         is_ca=True,
                     ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArrgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrgs(
                             cert_sign=True,
                             crl_sign=True,
                         ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrgs(
                             server_auth=False,
                         ),
                     ),
                 ),
             ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArrgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
             ),
             deletion_protection=False,
@@ -1229,26 +1229,26 @@ class Authority(pulumi.CustomResource):
             certificate_authority_id="my-certificate-authority-sub",
             location="us-central1",
             deletion_protection=True,
-            subordinate_config=gcp.certificateauthority.AuthoritySubordinateConfigArgs(
+            subordinate_config=gcp.certificateauthority.AuthoritySubordinateConfigArrgs(
                 certificate_authority=root_ca.name,
             ),
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+            config=gcp.certificateauthority.AuthorityConfigArrgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArrgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArrgs(
                         organization="HashiCorp",
                         common_name="my-subordinate-authority",
                     ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArrgs(
                         dns_names=["hashicorp.com"],
                     ),
                 ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArrgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArrgs(
                         is_ca=True,
                         max_issuer_path_length=0,
                     ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArrgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrgs(
                             digital_signature=True,
                             content_commitment=True,
                             key_encipherment=False,
@@ -1258,7 +1258,7 @@ class Authority(pulumi.CustomResource):
                             crl_sign=True,
                             decipher_only=True,
                         ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrgs(
                             server_auth=True,
                             client_auth=False,
                             email_protection=True,
@@ -1269,7 +1269,7 @@ class Authority(pulumi.CustomResource):
                 ),
             ),
             lifetime="86400s",
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArrgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
             ),
             type="SUBORDINATE")
@@ -1294,31 +1294,31 @@ class Authority(pulumi.CustomResource):
             certificate_authority_id="my-certificate-authority",
             location="us-central1",
             deletion_protection=True,
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArrgs(
                 cloud_kms_key_version="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",
             ),
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+            config=gcp.certificateauthority.AuthorityConfigArrgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArrgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArrgs(
                         organization="Example, Org.",
                         common_name="Example Authority",
                     ),
                 ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArrgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArrgs(
                         is_ca=True,
                         max_issuer_path_length=10,
                     ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArrgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrgs(
                             cert_sign=True,
                             crl_sign=True,
                         ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrgs(
                             server_auth=False,
                         ),
                     ),
-                    name_constraints=gcp.certificateauthority.AuthorityConfigX509ConfigNameConstraintsArgs(
+                    name_constraints=gcp.certificateauthority.AuthorityConfigX509ConfigNameConstraintsArrgs(
                         critical=True,
                         permitted_dns_names=["*.example.com"],
                         excluded_dns_names=["*.deny.example.com"],
@@ -1362,12 +1362,12 @@ class Authority(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AuthorityArgs args: The arguments to use to populate this resource's properties.
+        :param AuthorityArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AuthorityArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AuthorityArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1377,12 +1377,12 @@ class Authority(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_authority_id: Optional[pulumi.Input[str]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['AuthorityConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[pulumi.InputType['AuthorityConfigArrgs']]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  desired_state: Optional[pulumi.Input[str]] = None,
                  gcs_bucket: Optional[pulumi.Input[str]] = None,
                  ignore_active_certificates_on_deletion: Optional[pulumi.Input[bool]] = None,
-                 key_spec: Optional[pulumi.Input[pulumi.InputType['AuthorityKeySpecArgs']]] = None,
+                 key_spec: Optional[pulumi.Input[pulumi.InputType['AuthorityKeySpecArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifetime: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -1390,7 +1390,7 @@ class Authority(pulumi.CustomResource):
                  pool: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  skip_grace_period: Optional[pulumi.Input[bool]] = None,
-                 subordinate_config: Optional[pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArgs']]] = None,
+                 subordinate_config: Optional[pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArrgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1399,7 +1399,7 @@ class Authority(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AuthorityArgs.__new__(AuthorityArgs)
+            __props__ = AuthorityArrgs.__new__(AuthorityArrgs)
 
             if certificate_authority_id is None and not opts.urn:
                 raise TypeError("Missing required property 'certificate_authority_id'")
@@ -1447,16 +1447,16 @@ class Authority(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_urls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorityAccessUrlArgs']]]]] = None,
+            access_urls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorityAccessUrlArrgs']]]]] = None,
             certificate_authority_id: Optional[pulumi.Input[str]] = None,
-            config: Optional[pulumi.Input[pulumi.InputType['AuthorityConfigArgs']]] = None,
+            config: Optional[pulumi.Input[pulumi.InputType['AuthorityConfigArrgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             desired_state: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             gcs_bucket: Optional[pulumi.Input[str]] = None,
             ignore_active_certificates_on_deletion: Optional[pulumi.Input[bool]] = None,
-            key_spec: Optional[pulumi.Input[pulumi.InputType['AuthorityKeySpecArgs']]] = None,
+            key_spec: Optional[pulumi.Input[pulumi.InputType['AuthorityKeySpecArrgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             lifetime: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -1468,7 +1468,7 @@ class Authority(pulumi.CustomResource):
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             skip_grace_period: Optional[pulumi.Input[bool]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            subordinate_config: Optional[pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArgs']]] = None,
+            subordinate_config: Optional[pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArrgs']]] = None,
             type: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Authority':
         """
@@ -1478,10 +1478,10 @@ class Authority(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorityAccessUrlArgs']]]] access_urls: URLs for accessing content published by this CA, such as the CA certificate and CRLs.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorityAccessUrlArrgs']]]] access_urls: URLs for accessing content published by this CA, such as the CA certificate and CRLs.
                Structure is documented below.
         :param pulumi.Input[str] certificate_authority_id: The user provided Resource ID for this Certificate Authority.
-        :param pulumi.Input[pulumi.InputType['AuthorityConfigArgs']] config: The config used to create a self-signed X.509 certificate or CSR.
+        :param pulumi.Input[pulumi.InputType['AuthorityConfigArrgs']] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time at which this CertificateAuthority was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -1497,7 +1497,7 @@ class Authority(pulumi.CustomResource):
                created.
         :param pulumi.Input[bool] ignore_active_certificates_on_deletion: This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
                Use with care. Defaults to `false`.
-        :param pulumi.Input[pulumi.InputType['AuthorityKeySpecArgs']] key_spec: Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
+        :param pulumi.Input[pulumi.InputType['AuthorityKeySpecArrgs']] key_spec: Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
                is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA
                certificate. Otherwise, it is used to sign a CSR.
                Structure is documented below.
@@ -1529,7 +1529,7 @@ class Authority(pulumi.CustomResource):
                allowed. If you proceed, there will be no way to recover this CA.
                Use with care. Defaults to `false`.
         :param pulumi.Input[str] state: The State for this CertificateAuthority.
-        :param pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArgs']] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
+        :param pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArrgs']] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
                with the subordinate configuration, which describes its issuers.
                Structure is documented below.
         :param pulumi.Input[str] type: The Type of this CertificateAuthority.

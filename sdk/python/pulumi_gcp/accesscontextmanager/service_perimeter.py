@@ -11,18 +11,18 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ServicePerimeterArgs', 'ServicePerimeter']
+__all__ = ['ServicePerimeterArrgs', 'ServicePerimeter']
 
 @pulumi.input_type
-class ServicePerimeterArgs:
+calass ServicePerimeterArrgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  perimeter_type: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input['ServicePerimeterSpecArgs']] = None,
-                 status: Optional[pulumi.Input['ServicePerimeterStatusArgs']] = None,
+                 spec: Optional[pulumi.Input['ServicePerimeterSpecArrgs']] = None,
+                 status: Optional[pulumi.Input['ServicePerimeterStatusArrgs']] = None,
                  use_explicit_dry_run_spec: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a ServicePerimeter resource.
@@ -53,12 +53,12 @@ class ServicePerimeterArgs:
                themselves.
                Default value is `PERIMETER_TYPE_REGULAR`.
                Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
-        :param pulumi.Input['ServicePerimeterSpecArgs'] spec: Proposed (or dry run) ServicePerimeter configuration.
+        :param pulumi.Input['ServicePerimeterSpecArrgs'] spec: Proposed (or dry run) ServicePerimeter configuration.
                This configuration allows to specify and test ServicePerimeter configuration
                without enforcing actual access restrictions. Only allowed to be set when
                the `useExplicitDryRunSpec` flag is set.
                Structure is documented below.
-        :param pulumi.Input['ServicePerimeterStatusArgs'] status: ServicePerimeter configuration. Specifies sets of resources,
+        :param pulumi.Input['ServicePerimeterStatusArrgs'] status: ServicePerimeter configuration. Specifies sets of resources,
                restricted services and access levels that determine
                perimeter content and boundaries.
                Structure is documented below.
@@ -171,7 +171,7 @@ class ServicePerimeterArgs:
 
     @property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['ServicePerimeterSpecArgs']]:
+    def spec(self) -> Optional[pulumi.Input['ServicePerimeterSpecArrgs']]:
         """
         Proposed (or dry run) ServicePerimeter configuration.
         This configuration allows to specify and test ServicePerimeter configuration
@@ -182,12 +182,12 @@ class ServicePerimeterArgs:
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['ServicePerimeterSpecArgs']]):
+    def spec(self, value: Optional[pulumi.Input['ServicePerimeterSpecArrgs']]):
         pulumi.set(self, "spec", value)
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['ServicePerimeterStatusArgs']]:
+    def status(self) -> Optional[pulumi.Input['ServicePerimeterStatusArrgs']]:
         """
         ServicePerimeter configuration. Specifies sets of resources,
         restricted services and access levels that determine
@@ -197,7 +197,7 @@ class ServicePerimeterArgs:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input['ServicePerimeterStatusArgs']]):
+    def status(self, value: Optional[pulumi.Input['ServicePerimeterStatusArrgs']]):
         pulumi.set(self, "status", value)
 
     @property
@@ -222,15 +222,15 @@ class ServicePerimeterArgs:
 
 
 @pulumi.input_type
-class _ServicePerimeterState:
+calass _ServicePerimeterState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  perimeter_type: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input['ServicePerimeterSpecArgs']] = None,
-                 status: Optional[pulumi.Input['ServicePerimeterStatusArgs']] = None,
+                 spec: Optional[pulumi.Input['ServicePerimeterSpecArrgs']] = None,
+                 status: Optional[pulumi.Input['ServicePerimeterStatusArrgs']] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  use_explicit_dry_run_spec: Optional[pulumi.Input[bool]] = None):
@@ -263,12 +263,12 @@ class _ServicePerimeterState:
                themselves.
                Default value is `PERIMETER_TYPE_REGULAR`.
                Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
-        :param pulumi.Input['ServicePerimeterSpecArgs'] spec: Proposed (or dry run) ServicePerimeter configuration.
+        :param pulumi.Input['ServicePerimeterSpecArrgs'] spec: Proposed (or dry run) ServicePerimeter configuration.
                This configuration allows to specify and test ServicePerimeter configuration
                without enforcing actual access restrictions. Only allowed to be set when
                the `useExplicitDryRunSpec` flag is set.
                Structure is documented below.
-        :param pulumi.Input['ServicePerimeterStatusArgs'] status: ServicePerimeter configuration. Specifies sets of resources,
+        :param pulumi.Input['ServicePerimeterStatusArrgs'] status: ServicePerimeter configuration. Specifies sets of resources,
                restricted services and access levels that determine
                perimeter content and boundaries.
                Structure is documented below.
@@ -389,7 +389,7 @@ class _ServicePerimeterState:
 
     @property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['ServicePerimeterSpecArgs']]:
+    def spec(self) -> Optional[pulumi.Input['ServicePerimeterSpecArrgs']]:
         """
         Proposed (or dry run) ServicePerimeter configuration.
         This configuration allows to specify and test ServicePerimeter configuration
@@ -400,12 +400,12 @@ class _ServicePerimeterState:
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['ServicePerimeterSpecArgs']]):
+    def spec(self, value: Optional[pulumi.Input['ServicePerimeterSpecArrgs']]):
         pulumi.set(self, "spec", value)
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['ServicePerimeterStatusArgs']]:
+    def status(self) -> Optional[pulumi.Input['ServicePerimeterStatusArrgs']]:
         """
         ServicePerimeter configuration. Specifies sets of resources,
         restricted services and access levels that determine
@@ -415,7 +415,7 @@ class _ServicePerimeterState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input['ServicePerimeterStatusArgs']]):
+    def status(self, value: Optional[pulumi.Input['ServicePerimeterStatusArrgs']]):
         pulumi.set(self, "status", value)
 
     @property
@@ -463,7 +463,7 @@ class _ServicePerimeterState:
         pulumi.set(self, "use_explicit_dry_run_spec", value)
 
 
-class ServicePerimeter(pulumi.CustomResource):
+calass ServicePerimeter(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -472,8 +472,8 @@ class ServicePerimeter(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  perimeter_type: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterSpecArgs']]] = None,
-                 status: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterStatusArgs']]] = None,
+                 spec: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterSpecArrgs']]] = None,
+                 status: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterStatusArrgs']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  use_explicit_dry_run_spec: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -512,15 +512,15 @@ class ServicePerimeter(pulumi.CustomResource):
             title="my policy")
         service_perimeter = gcp.accesscontextmanager.ServicePerimeter("service-perimeter",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
-            status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
+            status=gcp.accesscontextmanager.ServicePerimeterStatusArrgs(
                 restricted_services=["storage.googleapis.com"],
             ),
             title="restrict_storage")
         access_level = gcp.accesscontextmanager.AccessLevel("access-level",
-            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
-                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
-                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
+            basic=gcp.accesscontextmanager.AccessLevelBasicArrgs(
+                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArrgs(
+                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArrgs(
+                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArrgs(
                             os_type="DESKTOP_CHROME_OS",
                         )],
                         require_screen_lock=False,
@@ -547,19 +547,19 @@ class ServicePerimeter(pulumi.CustomResource):
         secure_data_exchange = gcp.accesscontextmanager.ServicePerimeters("secure-data-exchange",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             service_perimeters=[
-                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArgs(
+                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArrgs(
                     name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
                     title="",
-                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs(
+                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArrgs(
                         restricted_services=["storage.googleapis.com"],
                     ),
                 ),
-                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArgs(
+                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArrgs(
                     name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
                     title="",
-                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs(
+                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArrgs(
                         restricted_services=["bigtable.googleapis.com"],
-                        vpc_accessible_services=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs(
+                        vpc_accessible_services=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArrgs(
                             enable_restriction=True,
                             allowed_services=["bigquery.googleapis.com"],
                         ),
@@ -569,11 +569,11 @@ class ServicePerimeter(pulumi.CustomResource):
         access_level = gcp.accesscontextmanager.AccessLevel("access-level",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             title="secure_data_exchange",
-            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
-                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
+            basic=gcp.accesscontextmanager.AccessLevelBasicArrgs(
+                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArrgs(
+                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArrgs(
                         require_screen_lock=False,
-                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
+                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArrgs(
                             os_type="DESKTOP_CHROME_OS",
                         )],
                     ),
@@ -588,54 +588,54 @@ class ServicePerimeter(pulumi.CustomResource):
             parent=f"accessPolicies/{google_access_context_manager_access_policy['test-access']['name']}",
             title="%s",
             perimeter_type="PERIMETER_TYPE_REGULAR",
-            status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
+            status=gcp.accesscontextmanager.ServicePerimeterStatusArrgs(
                 restricted_services=[
                     "bigquery.googleapis.com",
                     "storage.googleapis.com",
                 ],
                 access_levels=[access_level.name],
-                vpc_accessible_services=gcp.accesscontextmanager.ServicePerimeterStatusVpcAccessibleServicesArgs(
+                vpc_accessible_services=gcp.accesscontextmanager.ServicePerimeterStatusVpcAccessibleServicesArrgs(
                     enable_restriction=True,
                     allowed_services=[
                         "bigquery.googleapis.com",
                         "storage.googleapis.com",
                     ],
                 ),
-                ingress_policies=[gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyArgs(
-                    ingress_from=gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFromArgs(
-                        sources=[gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFromSourceArgs(
+                ingress_policies=[gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyArrgs(
+                    ingress_from=gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFromArrgs(
+                        sources=[gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFromSourceArrgs(
                             access_level=google_access_context_manager_access_level["test-access"]["name"],
                         )],
                         identity_type="ANY_IDENTITY",
                     ),
-                    ingress_to=gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToArgs(
+                    ingress_to=gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToArrgs(
                         resources=["*"],
                         operations=[
-                            gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationArgs(
+                            gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationArrgs(
                                 service_name="bigquery.googleapis.com",
                                 method_selectors=[
-                                    gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs(
+                                    gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrgs(
                                         method="BigQueryStorage.ReadRows",
                                     ),
-                                    gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs(
+                                    gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrgs(
                                         method="TableService.ListTables",
                                     ),
-                                    gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs(
+                                    gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrgs(
                                         permission="bigquery.jobs.get",
                                     ),
                                 ],
                             ),
-                            gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationArgs(
+                            gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationArrgs(
                                 service_name="storage.googleapis.com",
-                                method_selectors=[gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs(
+                                method_selectors=[gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrgs(
                                     method="google.storage.objects.create",
                                 )],
                             ),
                         ],
                     ),
                 )],
-                egress_policies=[gcp.accesscontextmanager.ServicePerimeterStatusEgressPolicyArgs(
-                    egress_from=gcp.accesscontextmanager.ServicePerimeterStatusEgressPolicyEgressFromArgs(
+                egress_policies=[gcp.accesscontextmanager.ServicePerimeterStatusEgressPolicyArrgs(
+                    egress_from=gcp.accesscontextmanager.ServicePerimeterStatusEgressPolicyEgressFromArrgs(
                         identity_type="ANY_USER_ACCOUNT",
                     ),
                 )],
@@ -652,10 +652,10 @@ class ServicePerimeter(pulumi.CustomResource):
             title="my policy")
         service_perimeter = gcp.accesscontextmanager.ServicePerimeter("service-perimeter",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
-            spec=gcp.accesscontextmanager.ServicePerimeterSpecArgs(
+            spec=gcp.accesscontextmanager.ServicePerimeterSpecArrgs(
                 restricted_services=["storage.googleapis.com"],
             ),
-            status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
+            status=gcp.accesscontextmanager.ServicePerimeterStatusArrgs(
                 restricted_services=["bigquery.googleapis.com"],
             ),
             title="restrict_bigquery_dryrun_storage",
@@ -706,12 +706,12 @@ class ServicePerimeter(pulumi.CustomResource):
                themselves.
                Default value is `PERIMETER_TYPE_REGULAR`.
                Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
-        :param pulumi.Input[pulumi.InputType['ServicePerimeterSpecArgs']] spec: Proposed (or dry run) ServicePerimeter configuration.
+        :param pulumi.Input[pulumi.InputType['ServicePerimeterSpecArrgs']] spec: Proposed (or dry run) ServicePerimeter configuration.
                This configuration allows to specify and test ServicePerimeter configuration
                without enforcing actual access restrictions. Only allowed to be set when
                the `useExplicitDryRunSpec` flag is set.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ServicePerimeterStatusArgs']] status: ServicePerimeter configuration. Specifies sets of resources,
+        :param pulumi.Input[pulumi.InputType['ServicePerimeterStatusArrgs']] status: ServicePerimeter configuration. Specifies sets of resources,
                restricted services and access levels that determine
                perimeter content and boundaries.
                Structure is documented below.
@@ -730,7 +730,7 @@ class ServicePerimeter(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ServicePerimeterArgs,
+                 args: ServicePerimeterArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ServicePerimeter describes a set of GCP resources which can freely import
@@ -767,15 +767,15 @@ class ServicePerimeter(pulumi.CustomResource):
             title="my policy")
         service_perimeter = gcp.accesscontextmanager.ServicePerimeter("service-perimeter",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
-            status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
+            status=gcp.accesscontextmanager.ServicePerimeterStatusArrgs(
                 restricted_services=["storage.googleapis.com"],
             ),
             title="restrict_storage")
         access_level = gcp.accesscontextmanager.AccessLevel("access-level",
-            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
-                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
-                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
+            basic=gcp.accesscontextmanager.AccessLevelBasicArrgs(
+                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArrgs(
+                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArrgs(
+                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArrgs(
                             os_type="DESKTOP_CHROME_OS",
                         )],
                         require_screen_lock=False,
@@ -802,19 +802,19 @@ class ServicePerimeter(pulumi.CustomResource):
         secure_data_exchange = gcp.accesscontextmanager.ServicePerimeters("secure-data-exchange",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             service_perimeters=[
-                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArgs(
+                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArrgs(
                     name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
                     title="",
-                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs(
+                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArrgs(
                         restricted_services=["storage.googleapis.com"],
                     ),
                 ),
-                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArgs(
+                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArrgs(
                     name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
                     title="",
-                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs(
+                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArrgs(
                         restricted_services=["bigtable.googleapis.com"],
-                        vpc_accessible_services=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs(
+                        vpc_accessible_services=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArrgs(
                             enable_restriction=True,
                             allowed_services=["bigquery.googleapis.com"],
                         ),
@@ -824,11 +824,11 @@ class ServicePerimeter(pulumi.CustomResource):
         access_level = gcp.accesscontextmanager.AccessLevel("access-level",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             title="secure_data_exchange",
-            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
-                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
+            basic=gcp.accesscontextmanager.AccessLevelBasicArrgs(
+                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArrgs(
+                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArrgs(
                         require_screen_lock=False,
-                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
+                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArrgs(
                             os_type="DESKTOP_CHROME_OS",
                         )],
                     ),
@@ -843,54 +843,54 @@ class ServicePerimeter(pulumi.CustomResource):
             parent=f"accessPolicies/{google_access_context_manager_access_policy['test-access']['name']}",
             title="%s",
             perimeter_type="PERIMETER_TYPE_REGULAR",
-            status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
+            status=gcp.accesscontextmanager.ServicePerimeterStatusArrgs(
                 restricted_services=[
                     "bigquery.googleapis.com",
                     "storage.googleapis.com",
                 ],
                 access_levels=[access_level.name],
-                vpc_accessible_services=gcp.accesscontextmanager.ServicePerimeterStatusVpcAccessibleServicesArgs(
+                vpc_accessible_services=gcp.accesscontextmanager.ServicePerimeterStatusVpcAccessibleServicesArrgs(
                     enable_restriction=True,
                     allowed_services=[
                         "bigquery.googleapis.com",
                         "storage.googleapis.com",
                     ],
                 ),
-                ingress_policies=[gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyArgs(
-                    ingress_from=gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFromArgs(
-                        sources=[gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFromSourceArgs(
+                ingress_policies=[gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyArrgs(
+                    ingress_from=gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFromArrgs(
+                        sources=[gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFromSourceArrgs(
                             access_level=google_access_context_manager_access_level["test-access"]["name"],
                         )],
                         identity_type="ANY_IDENTITY",
                     ),
-                    ingress_to=gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToArgs(
+                    ingress_to=gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToArrgs(
                         resources=["*"],
                         operations=[
-                            gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationArgs(
+                            gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationArrgs(
                                 service_name="bigquery.googleapis.com",
                                 method_selectors=[
-                                    gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs(
+                                    gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrgs(
                                         method="BigQueryStorage.ReadRows",
                                     ),
-                                    gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs(
+                                    gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrgs(
                                         method="TableService.ListTables",
                                     ),
-                                    gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs(
+                                    gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrgs(
                                         permission="bigquery.jobs.get",
                                     ),
                                 ],
                             ),
-                            gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationArgs(
+                            gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationArrgs(
                                 service_name="storage.googleapis.com",
-                                method_selectors=[gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs(
+                                method_selectors=[gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrgs(
                                     method="google.storage.objects.create",
                                 )],
                             ),
                         ],
                     ),
                 )],
-                egress_policies=[gcp.accesscontextmanager.ServicePerimeterStatusEgressPolicyArgs(
-                    egress_from=gcp.accesscontextmanager.ServicePerimeterStatusEgressPolicyEgressFromArgs(
+                egress_policies=[gcp.accesscontextmanager.ServicePerimeterStatusEgressPolicyArrgs(
+                    egress_from=gcp.accesscontextmanager.ServicePerimeterStatusEgressPolicyEgressFromArrgs(
                         identity_type="ANY_USER_ACCOUNT",
                     ),
                 )],
@@ -907,10 +907,10 @@ class ServicePerimeter(pulumi.CustomResource):
             title="my policy")
         service_perimeter = gcp.accesscontextmanager.ServicePerimeter("service-perimeter",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
-            spec=gcp.accesscontextmanager.ServicePerimeterSpecArgs(
+            spec=gcp.accesscontextmanager.ServicePerimeterSpecArrgs(
                 restricted_services=["storage.googleapis.com"],
             ),
-            status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
+            status=gcp.accesscontextmanager.ServicePerimeterStatusArrgs(
                 restricted_services=["bigquery.googleapis.com"],
             ),
             title="restrict_bigquery_dryrun_storage",
@@ -934,12 +934,12 @@ class ServicePerimeter(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ServicePerimeterArgs args: The arguments to use to populate this resource's properties.
+        :param ServicePerimeterArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ServicePerimeterArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ServicePerimeterArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -952,8 +952,8 @@ class ServicePerimeter(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  perimeter_type: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterSpecArgs']]] = None,
-                 status: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterStatusArgs']]] = None,
+                 spec: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterSpecArrgs']]] = None,
+                 status: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterStatusArrgs']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  use_explicit_dry_run_spec: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -963,7 +963,7 @@ class ServicePerimeter(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ServicePerimeterArgs.__new__(ServicePerimeterArgs)
+            __props__ = ServicePerimeterArrgs.__new__(ServicePerimeterArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
@@ -994,8 +994,8 @@ class ServicePerimeter(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
             perimeter_type: Optional[pulumi.Input[str]] = None,
-            spec: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterSpecArgs']]] = None,
-            status: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterStatusArgs']]] = None,
+            spec: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterSpecArrgs']]] = None,
+            status: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterStatusArrgs']]] = None,
             title: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
             use_explicit_dry_run_spec: Optional[pulumi.Input[bool]] = None) -> 'ServicePerimeter':
@@ -1033,12 +1033,12 @@ class ServicePerimeter(pulumi.CustomResource):
                themselves.
                Default value is `PERIMETER_TYPE_REGULAR`.
                Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
-        :param pulumi.Input[pulumi.InputType['ServicePerimeterSpecArgs']] spec: Proposed (or dry run) ServicePerimeter configuration.
+        :param pulumi.Input[pulumi.InputType['ServicePerimeterSpecArrgs']] spec: Proposed (or dry run) ServicePerimeter configuration.
                This configuration allows to specify and test ServicePerimeter configuration
                without enforcing actual access restrictions. Only allowed to be set when
                the `useExplicitDryRunSpec` flag is set.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ServicePerimeterStatusArgs']] status: ServicePerimeter configuration. Specifies sets of resources,
+        :param pulumi.Input[pulumi.InputType['ServicePerimeterStatusArrgs']] status: ServicePerimeter configuration. Specifies sets of resources,
                restricted services and access levels that determine
                perimeter content and boundaries.
                Structure is documented below.

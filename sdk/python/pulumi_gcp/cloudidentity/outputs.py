@@ -27,7 +27,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GroupAdditionalGroupKey(dict):
+calass GroupAdditionalGroupKey(dict):
     def __init__(__self__, *,
                  id: Optional[str] = None,
                  namespace: Optional[str] = None):
@@ -82,7 +82,7 @@ class GroupAdditionalGroupKey(dict):
 
 
 @pulumi.output_type
-class GroupGroupKey(dict):
+calass GroupGroupKey(dict):
     def __init__(__self__, *,
                  id: str,
                  namespace: Optional[str] = None):
@@ -136,7 +136,7 @@ class GroupGroupKey(dict):
 
 
 @pulumi.output_type
-class GroupMembershipMemberKey(dict):
+calass GroupMembershipMemberKey(dict):
     def __init__(__self__, *,
                  id: str,
                  namespace: Optional[str] = None):
@@ -186,7 +186,7 @@ class GroupMembershipMemberKey(dict):
 
 
 @pulumi.output_type
-class GroupMembershipPreferredMemberKey(dict):
+calass GroupMembershipPreferredMemberKey(dict):
     def __init__(__self__, *,
                  id: str,
                  namespace: Optional[str] = None):
@@ -236,7 +236,7 @@ class GroupMembershipPreferredMemberKey(dict):
 
 
 @pulumi.output_type
-class GroupMembershipRole(dict):
+calass GroupMembershipRole(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -260,7 +260,7 @@ class GroupMembershipRole(dict):
 
 
 @pulumi.output_type
-class GetGroupLookupGroupKeyResult(dict):
+calass GetGroupLookupGroupKeyResult(dict):
     def __init__(__self__, *,
                  id: str,
                  namespace: Optional[str] = None):
@@ -306,7 +306,7 @@ class GetGroupLookupGroupKeyResult(dict):
 
 
 @pulumi.output_type
-class GetGroupMembershipsMembershipResult(dict):
+calass GetGroupMembershipsMembershipResult(dict):
     def __init__(__self__, *,
                  create_time: str,
                  group: str,
@@ -318,10 +318,10 @@ class GetGroupMembershipsMembershipResult(dict):
                  update_time: str):
         """
         :param str group: The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
-        :param Sequence['GetGroupMembershipsMembershipMemberKeyArgs'] member_keys: EntityKey of the member.  Structure is documented below.
+        :param Sequence['GetGroupMembershipsMembershipMemberKeyArrgs'] member_keys: EntityKey of the member.  Structure is documented below.
         :param str name: The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
-        :param Sequence['GetGroupMembershipsMembershipPreferredMemberKeyArgs'] preferred_member_keys: EntityKey of the member.  Structure is documented below.
-        :param Sequence['GetGroupMembershipsMembershipRoleArgs'] roles: The MembershipRoles that apply to the Membership. Structure is documented below.
+        :param Sequence['GetGroupMembershipsMembershipPreferredMemberKeyArrgs'] preferred_member_keys: EntityKey of the member.  Structure is documented below.
+        :param Sequence['GetGroupMembershipsMembershipRoleArrgs'] roles: The MembershipRoles that apply to the Membership. Structure is documented below.
         :param str type: The type of the membership.
         """
         pulumi.set(__self__, "create_time", create_time)
@@ -393,7 +393,7 @@ class GetGroupMembershipsMembershipResult(dict):
 
 
 @pulumi.output_type
-class GetGroupMembershipsMembershipMemberKeyResult(dict):
+calass GetGroupMembershipsMembershipMemberKeyResult(dict):
     def __init__(__self__, *,
                  id: str,
                  namespace: str):
@@ -432,7 +432,7 @@ class GetGroupMembershipsMembershipMemberKeyResult(dict):
 
 
 @pulumi.output_type
-class GetGroupMembershipsMembershipPreferredMemberKeyResult(dict):
+calass GetGroupMembershipsMembershipPreferredMemberKeyResult(dict):
     def __init__(__self__, *,
                  id: str,
                  namespace: str):
@@ -471,7 +471,7 @@ class GetGroupMembershipsMembershipPreferredMemberKeyResult(dict):
 
 
 @pulumi.output_type
-class GetGroupMembershipsMembershipRoleResult(dict):
+calass GetGroupMembershipsMembershipRoleResult(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -489,7 +489,7 @@ class GetGroupMembershipsMembershipRoleResult(dict):
 
 
 @pulumi.output_type
-class GetGroupsGroupResult(dict):
+calass GetGroupsGroupResult(dict):
     def __init__(__self__, *,
                  additional_group_keys: Sequence['outputs.GetGroupsGroupAdditionalGroupKeyResult'],
                  create_time: str,
@@ -504,7 +504,7 @@ class GetGroupsGroupResult(dict):
         """
         :param str description: An extended description to help users determine the purpose of a Group.
         :param str display_name: The display name of the Group.
-        :param Sequence['GetGroupsGroupGroupKeyArgs'] group_keys: EntityKey of the Group.  Structure is documented below.
+        :param Sequence['GetGroupsGroupGroupKeyArrgs'] group_keys: EntityKey of the Group.  Structure is documented below.
         :param Mapping[str, str] labels: The labels that apply to the Group.
                Contains 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
                'system/groups/external': '' if the Group is an external-identity-mapped group.
@@ -594,7 +594,7 @@ class GetGroupsGroupResult(dict):
 
 
 @pulumi.output_type
-class GetGroupsGroupAdditionalGroupKeyResult(dict):
+calass GetGroupsGroupAdditionalGroupKeyResult(dict):
     def __init__(__self__, *,
                  id: str,
                  namespace: str):
@@ -639,7 +639,7 @@ class GetGroupsGroupAdditionalGroupKeyResult(dict):
 
 
 @pulumi.output_type
-class GetGroupsGroupGroupKeyResult(dict):
+calass GetGroupsGroupGroupKeyResult(dict):
     def __init__(__self__, *,
                  id: str,
                  namespace: str):

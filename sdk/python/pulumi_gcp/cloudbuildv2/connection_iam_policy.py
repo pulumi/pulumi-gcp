@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['ConnectionIAMPolicyArgs', 'ConnectionIAMPolicy']
+__all__ = ['ConnectionIAMPolicyArrgs', 'ConnectionIAMPolicy']
 
 @pulumi.input_type
-class ConnectionIAMPolicyArgs:
+calass ConnectionIAMPolicyArrgs:
     def __init__(__self__, *,
                  policy_data: pulumi.Input[str],
                  location: Optional[pulumi.Input[str]] = None,
@@ -107,7 +107,7 @@ class ConnectionIAMPolicyArgs:
 
 
 @pulumi.input_type
-class _ConnectionIAMPolicyState:
+calass _ConnectionIAMPolicyState:
     def __init__(__self__, *,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -218,7 +218,7 @@ class _ConnectionIAMPolicyState:
         pulumi.set(self, "project", value)
 
 
-class ConnectionIAMPolicy(pulumi.CustomResource):
+calass ConnectionIAMPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -249,7 +249,7 @@ class ConnectionIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/cloudbuild.connectionViewer",
             members=["user:jane@example.com"],
         )])
@@ -333,7 +333,7 @@ class ConnectionIAMPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ConnectionIAMPolicyArgs,
+                 args: ConnectionIAMPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Cloud Build v2 Connection. Each of these resources serves a different use case:
@@ -356,7 +356,7 @@ class ConnectionIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/cloudbuild.connectionViewer",
             members=["user:jane@example.com"],
         )])
@@ -417,12 +417,12 @@ class ConnectionIAMPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param ConnectionIAMPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param ConnectionIAMPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ConnectionIAMPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ConnectionIAMPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -442,7 +442,7 @@ class ConnectionIAMPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ConnectionIAMPolicyArgs.__new__(ConnectionIAMPolicyArgs)
+            __props__ = ConnectionIAMPolicyArrgs.__new__(ConnectionIAMPolicyArrgs)
 
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name

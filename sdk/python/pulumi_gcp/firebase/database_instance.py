@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['DatabaseInstanceArgs', 'DatabaseInstance']
+__all__ = ['DatabaseInstanceArrgs', 'DatabaseInstance']
 
 @pulumi.input_type
-class DatabaseInstanceArgs:
+calass DatabaseInstanceArrgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[str],
                  region: pulumi.Input[str],
@@ -120,7 +120,7 @@ class DatabaseInstanceArgs:
 
 
 @pulumi.input_type
-class _DatabaseInstanceState:
+calass _DatabaseInstanceState:
     def __init__(__self__, *,
                  database_url: Optional[pulumi.Input[str]] = None,
                  desired_state: Optional[pulumi.Input[str]] = None,
@@ -285,7 +285,7 @@ class _DatabaseInstanceState:
         pulumi.set(self, "type", value)
 
 
-class DatabaseInstance(pulumi.CustomResource):
+calass DatabaseInstance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -403,7 +403,7 @@ class DatabaseInstance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DatabaseInstanceArgs,
+                 args: DatabaseInstanceArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -490,12 +490,12 @@ class DatabaseInstance(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param DatabaseInstanceArgs args: The arguments to use to populate this resource's properties.
+        :param DatabaseInstanceArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DatabaseInstanceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DatabaseInstanceArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -516,7 +516,7 @@ class DatabaseInstance(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DatabaseInstanceArgs.__new__(DatabaseInstanceArgs)
+            __props__ = DatabaseInstanceArrgs.__new__(DatabaseInstanceArrgs)
 
             __props__.__dict__["desired_state"] = desired_state
             if instance_id is None and not opts.urn:

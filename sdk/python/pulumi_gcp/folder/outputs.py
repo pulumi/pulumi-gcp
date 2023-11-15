@@ -28,7 +28,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class AccessApprovalSettingsEnrolledService(dict):
+calass AccessApprovalSettingsEnrolledService(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -129,7 +129,7 @@ class AccessApprovalSettingsEnrolledService(dict):
 
 
 @pulumi.output_type
-class IAMBindingCondition(dict):
+calass IAMBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -156,7 +156,7 @@ class IAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class IAMMemberCondition(dict):
+calass IAMMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -205,7 +205,7 @@ class IAMMemberCondition(dict):
 
 
 @pulumi.output_type
-class IamAuditConfigAuditLogConfig(dict):
+calass IamAuditConfigAuditLogConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -254,7 +254,7 @@ class IamAuditConfigAuditLogConfig(dict):
 
 
 @pulumi.output_type
-class OrganizationPolicyBooleanPolicy(dict):
+calass OrganizationPolicyBooleanPolicy(dict):
     def __init__(__self__, *,
                  enforced: bool):
         """
@@ -272,7 +272,7 @@ class OrganizationPolicyBooleanPolicy(dict):
 
 
 @pulumi.output_type
-class OrganizationPolicyListPolicy(dict):
+calass OrganizationPolicyListPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -298,7 +298,7 @@ class OrganizationPolicyListPolicy(dict):
                  inherit_from_parent: Optional[bool] = None,
                  suggested_value: Optional[str] = None):
         """
-        :param 'OrganizationPolicyListPolicyAllowArgs' allow: or `deny` - (Optional) One or the other must be set.
+        :param 'OrganizationPolicyListPolicyAllowArrgs' allow: or `deny` - (Optional) One or the other must be set.
         :param bool inherit_from_parent: If set to true, the values from the effective Policy of the parent resource
                are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
                
@@ -348,7 +348,7 @@ class OrganizationPolicyListPolicy(dict):
 
 
 @pulumi.output_type
-class OrganizationPolicyListPolicyAllow(dict):
+calass OrganizationPolicyListPolicyAllow(dict):
     def __init__(__self__, *,
                  all: Optional[bool] = None,
                  values: Optional[Sequence[str]] = None):
@@ -379,7 +379,7 @@ class OrganizationPolicyListPolicyAllow(dict):
 
 
 @pulumi.output_type
-class OrganizationPolicyListPolicyDeny(dict):
+calass OrganizationPolicyListPolicyDeny(dict):
     def __init__(__self__, *,
                  all: Optional[bool] = None,
                  values: Optional[Sequence[str]] = None):
@@ -410,7 +410,7 @@ class OrganizationPolicyListPolicyDeny(dict):
 
 
 @pulumi.output_type
-class OrganizationPolicyRestorePolicy(dict):
+calass OrganizationPolicyRestorePolicy(dict):
     def __init__(__self__, *,
                  default: bool):
         """
@@ -428,7 +428,7 @@ class OrganizationPolicyRestorePolicy(dict):
 
 
 @pulumi.output_type
-class GetOrganizationPolicyBooleanPolicyResult(dict):
+calass GetOrganizationPolicyBooleanPolicyResult(dict):
     def __init__(__self__, *,
                  enforced: bool):
         pulumi.set(__self__, "enforced", enforced)
@@ -440,7 +440,7 @@ class GetOrganizationPolicyBooleanPolicyResult(dict):
 
 
 @pulumi.output_type
-class GetOrganizationPolicyListPolicyResult(dict):
+calass GetOrganizationPolicyListPolicyResult(dict):
     def __init__(__self__, *,
                  allows: Sequence['outputs.GetOrganizationPolicyListPolicyAllowResult'],
                  denies: Sequence['outputs.GetOrganizationPolicyListPolicyDenyResult'],
@@ -473,7 +473,7 @@ class GetOrganizationPolicyListPolicyResult(dict):
 
 
 @pulumi.output_type
-class GetOrganizationPolicyListPolicyAllowResult(dict):
+calass GetOrganizationPolicyListPolicyAllowResult(dict):
     def __init__(__self__, *,
                  all: bool,
                  values: Sequence[str]):
@@ -492,7 +492,7 @@ class GetOrganizationPolicyListPolicyAllowResult(dict):
 
 
 @pulumi.output_type
-class GetOrganizationPolicyListPolicyDenyResult(dict):
+calass GetOrganizationPolicyListPolicyDenyResult(dict):
     def __init__(__self__, *,
                  all: bool,
                  values: Sequence[str]):
@@ -511,7 +511,7 @@ class GetOrganizationPolicyListPolicyDenyResult(dict):
 
 
 @pulumi.output_type
-class GetOrganizationPolicyRestorePolicyResult(dict):
+calass GetOrganizationPolicyRestorePolicyResult(dict):
     def __init__(__self__, *,
                  default: bool):
         pulumi.set(__self__, "default", default)

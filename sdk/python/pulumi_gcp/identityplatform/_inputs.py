@@ -10,43 +10,43 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'ConfigBlockingFunctionsArgs',
-    'ConfigBlockingFunctionsForwardInboundCredentialsArgs',
-    'ConfigBlockingFunctionsTriggerArgs',
-    'ConfigQuotaArgs',
-    'ConfigQuotaSignUpQuotaConfigArgs',
-    'ConfigSignInArgs',
-    'ConfigSignInAnonymousArgs',
-    'ConfigSignInEmailArgs',
-    'ConfigSignInHashConfigArgs',
-    'ConfigSignInPhoneNumberArgs',
-    'ConfigSmsRegionConfigArgs',
-    'ConfigSmsRegionConfigAllowByDefaultArgs',
-    'ConfigSmsRegionConfigAllowlistOnlyArgs',
-    'InboundSamlConfigIdpConfigArgs',
-    'InboundSamlConfigIdpConfigIdpCertificateArgs',
-    'InboundSamlConfigSpConfigArgs',
-    'InboundSamlConfigSpConfigSpCertificateArgs',
-    'ProjectDefaultConfigSignInArgs',
-    'ProjectDefaultConfigSignInAnonymousArgs',
-    'ProjectDefaultConfigSignInEmailArgs',
-    'ProjectDefaultConfigSignInHashConfigArgs',
-    'ProjectDefaultConfigSignInPhoneNumberArgs',
-    'TenantInboundSamlConfigIdpConfigArgs',
-    'TenantInboundSamlConfigIdpConfigIdpCertificateArgs',
-    'TenantInboundSamlConfigSpConfigArgs',
-    'TenantInboundSamlConfigSpConfigSpCertificateArgs',
+    'ConfigBlockingFunctionsArrgs',
+    'ConfigBlockingFunctionsForwardInboundCredentialsArrgs',
+    'ConfigBlockingFunctionsTriggerArrgs',
+    'ConfigQuotaArrgs',
+    'ConfigQuotaSignUpQuotaConfigArrgs',
+    'ConfigSignInArrgs',
+    'ConfigSignInAnonymousArrgs',
+    'ConfigSignInEmailArrgs',
+    'ConfigSignInHashConfigArrgs',
+    'ConfigSignInPhoneNumberArrgs',
+    'ConfigSmsRegionConfigArrgs',
+    'ConfigSmsRegionConfigAllowByDefaultArrgs',
+    'ConfigSmsRegionConfigAllowlistOnlyArrgs',
+    'InboundSamlConfigIdpConfigArrgs',
+    'InboundSamlConfigIdpConfigIdpCertificateArrgs',
+    'InboundSamlConfigSpConfigArrgs',
+    'InboundSamlConfigSpConfigSpCertificateArrgs',
+    'ProjectDefaultConfigSignInArrgs',
+    'ProjectDefaultConfigSignInAnonymousArrgs',
+    'ProjectDefaultConfigSignInEmailArrgs',
+    'ProjectDefaultConfigSignInHashConfigArrgs',
+    'ProjectDefaultConfigSignInPhoneNumberArrgs',
+    'TenantInboundSamlConfigIdpConfigArrgs',
+    'TenantInboundSamlConfigIdpConfigIdpCertificateArrgs',
+    'TenantInboundSamlConfigSpConfigArrgs',
+    'TenantInboundSamlConfigSpConfigSpCertificateArrgs',
 ]
 
 @pulumi.input_type
-class ConfigBlockingFunctionsArgs:
+calass ConfigBlockingFunctionsArrgs:
     def __init__(__self__, *,
-                 triggers: pulumi.Input[Sequence[pulumi.Input['ConfigBlockingFunctionsTriggerArgs']]],
-                 forward_inbound_credentials: Optional[pulumi.Input['ConfigBlockingFunctionsForwardInboundCredentialsArgs']] = None):
+                 triggers: pulumi.Input[Sequence[pulumi.Input['ConfigBlockingFunctionsTriggerArrgs']]],
+                 forward_inbound_credentials: Optional[pulumi.Input['ConfigBlockingFunctionsForwardInboundCredentialsArrgs']] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ConfigBlockingFunctionsTriggerArgs']]] triggers: Map of Trigger to event type. Key should be one of the supported event types: "beforeCreate", "beforeSignIn".
+        :param pulumi.Input[Sequence[pulumi.Input['ConfigBlockingFunctionsTriggerArrgs']]] triggers: Map of Trigger to event type. Key should be one of the supported event types: "beforeCreate", "beforeSignIn".
                Structure is documented below.
-        :param pulumi.Input['ConfigBlockingFunctionsForwardInboundCredentialsArgs'] forward_inbound_credentials: The user credentials to include in the JWT payload that is sent to the registered Blocking Functions.
+        :param pulumi.Input['ConfigBlockingFunctionsForwardInboundCredentialsArrgs'] forward_inbound_credentials: The user credentials to include in the JWT payload that is sent to the registered Blocking Functions.
                Structure is documented below.
         """
         pulumi.set(__self__, "triggers", triggers)
@@ -55,7 +55,7 @@ class ConfigBlockingFunctionsArgs:
 
     @property
     @pulumi.getter
-    def triggers(self) -> pulumi.Input[Sequence[pulumi.Input['ConfigBlockingFunctionsTriggerArgs']]]:
+    def triggers(self) -> pulumi.Input[Sequence[pulumi.Input['ConfigBlockingFunctionsTriggerArrgs']]]:
         """
         Map of Trigger to event type. Key should be one of the supported event types: "beforeCreate", "beforeSignIn".
         Structure is documented below.
@@ -63,12 +63,12 @@ class ConfigBlockingFunctionsArgs:
         return pulumi.get(self, "triggers")
 
     @triggers.setter
-    def triggers(self, value: pulumi.Input[Sequence[pulumi.Input['ConfigBlockingFunctionsTriggerArgs']]]):
+    def triggers(self, value: pulumi.Input[Sequence[pulumi.Input['ConfigBlockingFunctionsTriggerArrgs']]]):
         pulumi.set(self, "triggers", value)
 
     @property
     @pulumi.getter(name="forwardInboundCredentials")
-    def forward_inbound_credentials(self) -> Optional[pulumi.Input['ConfigBlockingFunctionsForwardInboundCredentialsArgs']]:
+    def forward_inbound_credentials(self) -> Optional[pulumi.Input['ConfigBlockingFunctionsForwardInboundCredentialsArrgs']]:
         """
         The user credentials to include in the JWT payload that is sent to the registered Blocking Functions.
         Structure is documented below.
@@ -76,12 +76,12 @@ class ConfigBlockingFunctionsArgs:
         return pulumi.get(self, "forward_inbound_credentials")
 
     @forward_inbound_credentials.setter
-    def forward_inbound_credentials(self, value: Optional[pulumi.Input['ConfigBlockingFunctionsForwardInboundCredentialsArgs']]):
+    def forward_inbound_credentials(self, value: Optional[pulumi.Input['ConfigBlockingFunctionsForwardInboundCredentialsArrgs']]):
         pulumi.set(self, "forward_inbound_credentials", value)
 
 
 @pulumi.input_type
-class ConfigBlockingFunctionsForwardInboundCredentialsArgs:
+calass ConfigBlockingFunctionsForwardInboundCredentialsArrgs:
     def __init__(__self__, *,
                  access_token: Optional[pulumi.Input[bool]] = None,
                  id_token: Optional[pulumi.Input[bool]] = None,
@@ -136,7 +136,7 @@ class ConfigBlockingFunctionsForwardInboundCredentialsArgs:
 
 
 @pulumi.input_type
-class ConfigBlockingFunctionsTriggerArgs:
+calass ConfigBlockingFunctionsTriggerArrgs:
     def __init__(__self__, *,
                  event_type: pulumi.Input[str],
                  function_uri: pulumi.Input[str],
@@ -191,11 +191,11 @@ class ConfigBlockingFunctionsTriggerArgs:
 
 
 @pulumi.input_type
-class ConfigQuotaArgs:
+calass ConfigQuotaArrgs:
     def __init__(__self__, *,
-                 sign_up_quota_config: Optional[pulumi.Input['ConfigQuotaSignUpQuotaConfigArgs']] = None):
+                 sign_up_quota_config: Optional[pulumi.Input['ConfigQuotaSignUpQuotaConfigArrgs']] = None):
         """
-        :param pulumi.Input['ConfigQuotaSignUpQuotaConfigArgs'] sign_up_quota_config: Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
+        :param pulumi.Input['ConfigQuotaSignUpQuotaConfigArrgs'] sign_up_quota_config: Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
                Structure is documented below.
         """
         if sign_up_quota_config is not None:
@@ -203,7 +203,7 @@ class ConfigQuotaArgs:
 
     @property
     @pulumi.getter(name="signUpQuotaConfig")
-    def sign_up_quota_config(self) -> Optional[pulumi.Input['ConfigQuotaSignUpQuotaConfigArgs']]:
+    def sign_up_quota_config(self) -> Optional[pulumi.Input['ConfigQuotaSignUpQuotaConfigArrgs']]:
         """
         Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
         Structure is documented below.
@@ -211,12 +211,12 @@ class ConfigQuotaArgs:
         return pulumi.get(self, "sign_up_quota_config")
 
     @sign_up_quota_config.setter
-    def sign_up_quota_config(self, value: Optional[pulumi.Input['ConfigQuotaSignUpQuotaConfigArgs']]):
+    def sign_up_quota_config(self, value: Optional[pulumi.Input['ConfigQuotaSignUpQuotaConfigArrgs']]):
         pulumi.set(self, "sign_up_quota_config", value)
 
 
 @pulumi.input_type
-class ConfigQuotaSignUpQuotaConfigArgs:
+calass ConfigQuotaSignUpQuotaConfigArrgs:
     def __init__(__self__, *,
                  quota: Optional[pulumi.Input[int]] = None,
                  quota_duration: Optional[pulumi.Input[str]] = None,
@@ -271,23 +271,23 @@ class ConfigQuotaSignUpQuotaConfigArgs:
 
 
 @pulumi.input_type
-class ConfigSignInArgs:
+calass ConfigSignInArrgs:
     def __init__(__self__, *,
                  allow_duplicate_emails: Optional[pulumi.Input[bool]] = None,
-                 anonymous: Optional[pulumi.Input['ConfigSignInAnonymousArgs']] = None,
-                 email: Optional[pulumi.Input['ConfigSignInEmailArgs']] = None,
-                 hash_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigSignInHashConfigArgs']]]] = None,
-                 phone_number: Optional[pulumi.Input['ConfigSignInPhoneNumberArgs']] = None):
+                 anonymous: Optional[pulumi.Input['ConfigSignInAnonymousArrgs']] = None,
+                 email: Optional[pulumi.Input['ConfigSignInEmailArrgs']] = None,
+                 hash_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigSignInHashConfigArrgs']]]] = None,
+                 phone_number: Optional[pulumi.Input['ConfigSignInPhoneNumberArrgs']] = None):
         """
         :param pulumi.Input[bool] allow_duplicate_emails: Whether to allow more than one account to have the same email.
-        :param pulumi.Input['ConfigSignInAnonymousArgs'] anonymous: Configuration options related to authenticating an anonymous user.
+        :param pulumi.Input['ConfigSignInAnonymousArrgs'] anonymous: Configuration options related to authenticating an anonymous user.
                Structure is documented below.
-        :param pulumi.Input['ConfigSignInEmailArgs'] email: Configuration options related to authenticating a user by their email address.
+        :param pulumi.Input['ConfigSignInEmailArrgs'] email: Configuration options related to authenticating a user by their email address.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ConfigSignInHashConfigArgs']]] hash_configs: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['ConfigSignInHashConfigArrgs']]] hash_configs: (Output)
                Output only. Hash config information.
                Structure is documented below.
-        :param pulumi.Input['ConfigSignInPhoneNumberArgs'] phone_number: Configuration options related to authenticated a user by their phone number.
+        :param pulumi.Input['ConfigSignInPhoneNumberArrgs'] phone_number: Configuration options related to authenticated a user by their phone number.
                Structure is documented below.
         """
         if allow_duplicate_emails is not None:
@@ -315,7 +315,7 @@ class ConfigSignInArgs:
 
     @property
     @pulumi.getter
-    def anonymous(self) -> Optional[pulumi.Input['ConfigSignInAnonymousArgs']]:
+    def anonymous(self) -> Optional[pulumi.Input['ConfigSignInAnonymousArrgs']]:
         """
         Configuration options related to authenticating an anonymous user.
         Structure is documented below.
@@ -323,12 +323,12 @@ class ConfigSignInArgs:
         return pulumi.get(self, "anonymous")
 
     @anonymous.setter
-    def anonymous(self, value: Optional[pulumi.Input['ConfigSignInAnonymousArgs']]):
+    def anonymous(self, value: Optional[pulumi.Input['ConfigSignInAnonymousArrgs']]):
         pulumi.set(self, "anonymous", value)
 
     @property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input['ConfigSignInEmailArgs']]:
+    def email(self) -> Optional[pulumi.Input['ConfigSignInEmailArrgs']]:
         """
         Configuration options related to authenticating a user by their email address.
         Structure is documented below.
@@ -336,12 +336,12 @@ class ConfigSignInArgs:
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input['ConfigSignInEmailArgs']]):
+    def email(self, value: Optional[pulumi.Input['ConfigSignInEmailArrgs']]):
         pulumi.set(self, "email", value)
 
     @property
     @pulumi.getter(name="hashConfigs")
-    def hash_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConfigSignInHashConfigArgs']]]]:
+    def hash_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConfigSignInHashConfigArrgs']]]]:
         """
         (Output)
         Output only. Hash config information.
@@ -350,12 +350,12 @@ class ConfigSignInArgs:
         return pulumi.get(self, "hash_configs")
 
     @hash_configs.setter
-    def hash_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigSignInHashConfigArgs']]]]):
+    def hash_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigSignInHashConfigArrgs']]]]):
         pulumi.set(self, "hash_configs", value)
 
     @property
     @pulumi.getter(name="phoneNumber")
-    def phone_number(self) -> Optional[pulumi.Input['ConfigSignInPhoneNumberArgs']]:
+    def phone_number(self) -> Optional[pulumi.Input['ConfigSignInPhoneNumberArrgs']]:
         """
         Configuration options related to authenticated a user by their phone number.
         Structure is documented below.
@@ -363,12 +363,12 @@ class ConfigSignInArgs:
         return pulumi.get(self, "phone_number")
 
     @phone_number.setter
-    def phone_number(self, value: Optional[pulumi.Input['ConfigSignInPhoneNumberArgs']]):
+    def phone_number(self, value: Optional[pulumi.Input['ConfigSignInPhoneNumberArrgs']]):
         pulumi.set(self, "phone_number", value)
 
 
 @pulumi.input_type
-class ConfigSignInAnonymousArgs:
+calass ConfigSignInAnonymousArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -394,7 +394,7 @@ class ConfigSignInAnonymousArgs:
 
 
 @pulumi.input_type
-class ConfigSignInEmailArgs:
+calass ConfigSignInEmailArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
                  password_required: Optional[pulumi.Input[bool]] = None):
@@ -436,7 +436,7 @@ class ConfigSignInEmailArgs:
 
 
 @pulumi.input_type
-class ConfigSignInHashConfigArgs:
+calass ConfigSignInHashConfigArrgs:
     def __init__(__self__, *,
                  algorithm: Optional[pulumi.Input[str]] = None,
                  memory_cost: Optional[pulumi.Input[int]] = None,
@@ -533,7 +533,7 @@ class ConfigSignInHashConfigArgs:
 
 
 @pulumi.input_type
-class ConfigSignInPhoneNumberArgs:
+calass ConfigSignInPhoneNumberArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
                  test_phone_numbers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -571,14 +571,14 @@ class ConfigSignInPhoneNumberArgs:
 
 
 @pulumi.input_type
-class ConfigSmsRegionConfigArgs:
+calass ConfigSmsRegionConfigArrgs:
     def __init__(__self__, *,
-                 allow_by_default: Optional[pulumi.Input['ConfigSmsRegionConfigAllowByDefaultArgs']] = None,
-                 allowlist_only: Optional[pulumi.Input['ConfigSmsRegionConfigAllowlistOnlyArgs']] = None):
+                 allow_by_default: Optional[pulumi.Input['ConfigSmsRegionConfigAllowByDefaultArrgs']] = None,
+                 allowlist_only: Optional[pulumi.Input['ConfigSmsRegionConfigAllowlistOnlyArrgs']] = None):
         """
-        :param pulumi.Input['ConfigSmsRegionConfigAllowByDefaultArgs'] allow_by_default: A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
+        :param pulumi.Input['ConfigSmsRegionConfigAllowByDefaultArrgs'] allow_by_default: A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
                Structure is documented below.
-        :param pulumi.Input['ConfigSmsRegionConfigAllowlistOnlyArgs'] allowlist_only: A policy of only allowing regions by explicitly adding them to an allowlist.
+        :param pulumi.Input['ConfigSmsRegionConfigAllowlistOnlyArrgs'] allowlist_only: A policy of only allowing regions by explicitly adding them to an allowlist.
                Structure is documented below.
         """
         if allow_by_default is not None:
@@ -588,7 +588,7 @@ class ConfigSmsRegionConfigArgs:
 
     @property
     @pulumi.getter(name="allowByDefault")
-    def allow_by_default(self) -> Optional[pulumi.Input['ConfigSmsRegionConfigAllowByDefaultArgs']]:
+    def allow_by_default(self) -> Optional[pulumi.Input['ConfigSmsRegionConfigAllowByDefaultArrgs']]:
         """
         A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
         Structure is documented below.
@@ -596,12 +596,12 @@ class ConfigSmsRegionConfigArgs:
         return pulumi.get(self, "allow_by_default")
 
     @allow_by_default.setter
-    def allow_by_default(self, value: Optional[pulumi.Input['ConfigSmsRegionConfigAllowByDefaultArgs']]):
+    def allow_by_default(self, value: Optional[pulumi.Input['ConfigSmsRegionConfigAllowByDefaultArrgs']]):
         pulumi.set(self, "allow_by_default", value)
 
     @property
     @pulumi.getter(name="allowlistOnly")
-    def allowlist_only(self) -> Optional[pulumi.Input['ConfigSmsRegionConfigAllowlistOnlyArgs']]:
+    def allowlist_only(self) -> Optional[pulumi.Input['ConfigSmsRegionConfigAllowlistOnlyArrgs']]:
         """
         A policy of only allowing regions by explicitly adding them to an allowlist.
         Structure is documented below.
@@ -609,12 +609,12 @@ class ConfigSmsRegionConfigArgs:
         return pulumi.get(self, "allowlist_only")
 
     @allowlist_only.setter
-    def allowlist_only(self, value: Optional[pulumi.Input['ConfigSmsRegionConfigAllowlistOnlyArgs']]):
+    def allowlist_only(self, value: Optional[pulumi.Input['ConfigSmsRegionConfigAllowlistOnlyArrgs']]):
         pulumi.set(self, "allowlist_only", value)
 
 
 @pulumi.input_type
-class ConfigSmsRegionConfigAllowByDefaultArgs:
+calass ConfigSmsRegionConfigAllowByDefaultArrgs:
     def __init__(__self__, *,
                  disallowed_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -637,7 +637,7 @@ class ConfigSmsRegionConfigAllowByDefaultArgs:
 
 
 @pulumi.input_type
-class ConfigSmsRegionConfigAllowlistOnlyArgs:
+calass ConfigSmsRegionConfigAllowlistOnlyArrgs:
     def __init__(__self__, *,
                  allowed_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -660,14 +660,14 @@ class ConfigSmsRegionConfigAllowlistOnlyArgs:
 
 
 @pulumi.input_type
-class InboundSamlConfigIdpConfigArgs:
+calass InboundSamlConfigIdpConfigArrgs:
     def __init__(__self__, *,
-                 idp_certificates: pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigIdpConfigIdpCertificateArgs']]],
+                 idp_certificates: pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigIdpConfigIdpCertificateArrgs']]],
                  idp_entity_id: pulumi.Input[str],
                  sso_url: pulumi.Input[str],
                  sign_request: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigIdpConfigIdpCertificateArgs']]] idp_certificates: The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+        :param pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigIdpConfigIdpCertificateArrgs']]] idp_certificates: The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
         :param pulumi.Input[str] idp_entity_id: Unique identifier for all SAML entities
         :param pulumi.Input[str] sso_url: URL to send Authentication request to.
@@ -681,7 +681,7 @@ class InboundSamlConfigIdpConfigArgs:
 
     @property
     @pulumi.getter(name="idpCertificates")
-    def idp_certificates(self) -> pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigIdpConfigIdpCertificateArgs']]]:
+    def idp_certificates(self) -> pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigIdpConfigIdpCertificateArrgs']]]:
         """
         The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         Structure is documented below.
@@ -689,7 +689,7 @@ class InboundSamlConfigIdpConfigArgs:
         return pulumi.get(self, "idp_certificates")
 
     @idp_certificates.setter
-    def idp_certificates(self, value: pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigIdpConfigIdpCertificateArgs']]]):
+    def idp_certificates(self, value: pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigIdpConfigIdpCertificateArrgs']]]):
         pulumi.set(self, "idp_certificates", value)
 
     @property
@@ -730,7 +730,7 @@ class InboundSamlConfigIdpConfigArgs:
 
 
 @pulumi.input_type
-class InboundSamlConfigIdpConfigIdpCertificateArgs:
+calass InboundSamlConfigIdpConfigIdpCertificateArrgs:
     def __init__(__self__, *,
                  x509_certificate: Optional[pulumi.Input[str]] = None):
         """
@@ -753,14 +753,14 @@ class InboundSamlConfigIdpConfigIdpCertificateArgs:
 
 
 @pulumi.input_type
-class InboundSamlConfigSpConfigArgs:
+calass InboundSamlConfigSpConfigArrgs:
     def __init__(__self__, *,
                  callback_uri: Optional[pulumi.Input[str]] = None,
-                 sp_certificates: Optional[pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArgs']]]] = None,
+                 sp_certificates: Optional[pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArrgs']]]] = None,
                  sp_entity_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] callback_uri: Callback URI where responses from IDP are handled. Must start with `https://`.
-        :param pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArgs']]] sp_certificates: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArrgs']]] sp_certificates: (Output)
                The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
                
@@ -789,7 +789,7 @@ class InboundSamlConfigSpConfigArgs:
 
     @property
     @pulumi.getter(name="spCertificates")
-    def sp_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArgs']]]]:
+    def sp_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArrgs']]]]:
         """
         (Output)
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
@@ -801,7 +801,7 @@ class InboundSamlConfigSpConfigArgs:
         return pulumi.get(self, "sp_certificates")
 
     @sp_certificates.setter
-    def sp_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArgs']]]]):
+    def sp_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArrgs']]]]):
         pulumi.set(self, "sp_certificates", value)
 
     @property
@@ -818,7 +818,7 @@ class InboundSamlConfigSpConfigArgs:
 
 
 @pulumi.input_type
-class InboundSamlConfigSpConfigSpCertificateArgs:
+calass InboundSamlConfigSpConfigSpCertificateArrgs:
     def __init__(__self__, *,
                  x509_certificate: Optional[pulumi.Input[str]] = None):
         """
@@ -841,23 +841,23 @@ class InboundSamlConfigSpConfigSpCertificateArgs:
 
 
 @pulumi.input_type
-class ProjectDefaultConfigSignInArgs:
+calass ProjectDefaultConfigSignInArrgs:
     def __init__(__self__, *,
                  allow_duplicate_emails: Optional[pulumi.Input[bool]] = None,
-                 anonymous: Optional[pulumi.Input['ProjectDefaultConfigSignInAnonymousArgs']] = None,
-                 email: Optional[pulumi.Input['ProjectDefaultConfigSignInEmailArgs']] = None,
-                 hash_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectDefaultConfigSignInHashConfigArgs']]]] = None,
-                 phone_number: Optional[pulumi.Input['ProjectDefaultConfigSignInPhoneNumberArgs']] = None):
+                 anonymous: Optional[pulumi.Input['ProjectDefaultConfigSignInAnonymousArrgs']] = None,
+                 email: Optional[pulumi.Input['ProjectDefaultConfigSignInEmailArrgs']] = None,
+                 hash_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectDefaultConfigSignInHashConfigArrgs']]]] = None,
+                 phone_number: Optional[pulumi.Input['ProjectDefaultConfigSignInPhoneNumberArrgs']] = None):
         """
         :param pulumi.Input[bool] allow_duplicate_emails: Whether to allow more than one account to have the same email.
-        :param pulumi.Input['ProjectDefaultConfigSignInAnonymousArgs'] anonymous: Configuration options related to authenticating an anonymous user.
+        :param pulumi.Input['ProjectDefaultConfigSignInAnonymousArrgs'] anonymous: Configuration options related to authenticating an anonymous user.
                Structure is documented below.
-        :param pulumi.Input['ProjectDefaultConfigSignInEmailArgs'] email: Configuration options related to authenticating a user by their email address.
+        :param pulumi.Input['ProjectDefaultConfigSignInEmailArrgs'] email: Configuration options related to authenticating a user by their email address.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ProjectDefaultConfigSignInHashConfigArgs']]] hash_configs: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['ProjectDefaultConfigSignInHashConfigArrgs']]] hash_configs: (Output)
                Output only. Hash config information.
                Structure is documented below.
-        :param pulumi.Input['ProjectDefaultConfigSignInPhoneNumberArgs'] phone_number: Configuration options related to authenticated a user by their phone number.
+        :param pulumi.Input['ProjectDefaultConfigSignInPhoneNumberArrgs'] phone_number: Configuration options related to authenticated a user by their phone number.
                Structure is documented below.
         """
         if allow_duplicate_emails is not None:
@@ -885,7 +885,7 @@ class ProjectDefaultConfigSignInArgs:
 
     @property
     @pulumi.getter
-    def anonymous(self) -> Optional[pulumi.Input['ProjectDefaultConfigSignInAnonymousArgs']]:
+    def anonymous(self) -> Optional[pulumi.Input['ProjectDefaultConfigSignInAnonymousArrgs']]:
         """
         Configuration options related to authenticating an anonymous user.
         Structure is documented below.
@@ -893,12 +893,12 @@ class ProjectDefaultConfigSignInArgs:
         return pulumi.get(self, "anonymous")
 
     @anonymous.setter
-    def anonymous(self, value: Optional[pulumi.Input['ProjectDefaultConfigSignInAnonymousArgs']]):
+    def anonymous(self, value: Optional[pulumi.Input['ProjectDefaultConfigSignInAnonymousArrgs']]):
         pulumi.set(self, "anonymous", value)
 
     @property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input['ProjectDefaultConfigSignInEmailArgs']]:
+    def email(self) -> Optional[pulumi.Input['ProjectDefaultConfigSignInEmailArrgs']]:
         """
         Configuration options related to authenticating a user by their email address.
         Structure is documented below.
@@ -906,12 +906,12 @@ class ProjectDefaultConfigSignInArgs:
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input['ProjectDefaultConfigSignInEmailArgs']]):
+    def email(self, value: Optional[pulumi.Input['ProjectDefaultConfigSignInEmailArrgs']]):
         pulumi.set(self, "email", value)
 
     @property
     @pulumi.getter(name="hashConfigs")
-    def hash_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectDefaultConfigSignInHashConfigArgs']]]]:
+    def hash_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectDefaultConfigSignInHashConfigArrgs']]]]:
         """
         (Output)
         Output only. Hash config information.
@@ -920,12 +920,12 @@ class ProjectDefaultConfigSignInArgs:
         return pulumi.get(self, "hash_configs")
 
     @hash_configs.setter
-    def hash_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectDefaultConfigSignInHashConfigArgs']]]]):
+    def hash_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectDefaultConfigSignInHashConfigArrgs']]]]):
         pulumi.set(self, "hash_configs", value)
 
     @property
     @pulumi.getter(name="phoneNumber")
-    def phone_number(self) -> Optional[pulumi.Input['ProjectDefaultConfigSignInPhoneNumberArgs']]:
+    def phone_number(self) -> Optional[pulumi.Input['ProjectDefaultConfigSignInPhoneNumberArrgs']]:
         """
         Configuration options related to authenticated a user by their phone number.
         Structure is documented below.
@@ -933,12 +933,12 @@ class ProjectDefaultConfigSignInArgs:
         return pulumi.get(self, "phone_number")
 
     @phone_number.setter
-    def phone_number(self, value: Optional[pulumi.Input['ProjectDefaultConfigSignInPhoneNumberArgs']]):
+    def phone_number(self, value: Optional[pulumi.Input['ProjectDefaultConfigSignInPhoneNumberArrgs']]):
         pulumi.set(self, "phone_number", value)
 
 
 @pulumi.input_type
-class ProjectDefaultConfigSignInAnonymousArgs:
+calass ProjectDefaultConfigSignInAnonymousArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -964,7 +964,7 @@ class ProjectDefaultConfigSignInAnonymousArgs:
 
 
 @pulumi.input_type
-class ProjectDefaultConfigSignInEmailArgs:
+calass ProjectDefaultConfigSignInEmailArrgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  password_required: Optional[pulumi.Input[bool]] = None):
@@ -1007,7 +1007,7 @@ class ProjectDefaultConfigSignInEmailArgs:
 
 
 @pulumi.input_type
-class ProjectDefaultConfigSignInHashConfigArgs:
+calass ProjectDefaultConfigSignInHashConfigArrgs:
     def __init__(__self__, *,
                  algorithm: Optional[pulumi.Input[str]] = None,
                  memory_cost: Optional[pulumi.Input[int]] = None,
@@ -1104,7 +1104,7 @@ class ProjectDefaultConfigSignInHashConfigArgs:
 
 
 @pulumi.input_type
-class ProjectDefaultConfigSignInPhoneNumberArgs:
+calass ProjectDefaultConfigSignInPhoneNumberArrgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  test_phone_numbers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -1143,14 +1143,14 @@ class ProjectDefaultConfigSignInPhoneNumberArgs:
 
 
 @pulumi.input_type
-class TenantInboundSamlConfigIdpConfigArgs:
+calass TenantInboundSamlConfigIdpConfigArrgs:
     def __init__(__self__, *,
-                 idp_certificates: pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigIdpConfigIdpCertificateArgs']]],
+                 idp_certificates: pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigIdpConfigIdpCertificateArrgs']]],
                  idp_entity_id: pulumi.Input[str],
                  sso_url: pulumi.Input[str],
                  sign_request: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigIdpConfigIdpCertificateArgs']]] idp_certificates: The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+        :param pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigIdpConfigIdpCertificateArrgs']]] idp_certificates: The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
         :param pulumi.Input[str] idp_entity_id: Unique identifier for all SAML entities
         :param pulumi.Input[str] sso_url: URL to send Authentication request to.
@@ -1164,7 +1164,7 @@ class TenantInboundSamlConfigIdpConfigArgs:
 
     @property
     @pulumi.getter(name="idpCertificates")
-    def idp_certificates(self) -> pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigIdpConfigIdpCertificateArgs']]]:
+    def idp_certificates(self) -> pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigIdpConfigIdpCertificateArrgs']]]:
         """
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         Structure is documented below.
@@ -1172,7 +1172,7 @@ class TenantInboundSamlConfigIdpConfigArgs:
         return pulumi.get(self, "idp_certificates")
 
     @idp_certificates.setter
-    def idp_certificates(self, value: pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigIdpConfigIdpCertificateArgs']]]):
+    def idp_certificates(self, value: pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigIdpConfigIdpCertificateArrgs']]]):
         pulumi.set(self, "idp_certificates", value)
 
     @property
@@ -1213,7 +1213,7 @@ class TenantInboundSamlConfigIdpConfigArgs:
 
 
 @pulumi.input_type
-class TenantInboundSamlConfigIdpConfigIdpCertificateArgs:
+calass TenantInboundSamlConfigIdpConfigIdpCertificateArrgs:
     def __init__(__self__, *,
                  x509_certificate: Optional[pulumi.Input[str]] = None):
         """
@@ -1236,15 +1236,15 @@ class TenantInboundSamlConfigIdpConfigIdpCertificateArgs:
 
 
 @pulumi.input_type
-class TenantInboundSamlConfigSpConfigArgs:
+calass TenantInboundSamlConfigSpConfigArrgs:
     def __init__(__self__, *,
                  callback_uri: pulumi.Input[str],
                  sp_entity_id: pulumi.Input[str],
-                 sp_certificates: Optional[pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArgs']]]] = None):
+                 sp_certificates: Optional[pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArrgs']]]] = None):
         """
         :param pulumi.Input[str] callback_uri: Callback URI where responses from IDP are handled. Must start with `https://`.
         :param pulumi.Input[str] sp_entity_id: Unique identifier for all SAML entities.
-        :param pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArgs']]] sp_certificates: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArrgs']]] sp_certificates: (Output)
                The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
                
@@ -1282,7 +1282,7 @@ class TenantInboundSamlConfigSpConfigArgs:
 
     @property
     @pulumi.getter(name="spCertificates")
-    def sp_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArgs']]]]:
+    def sp_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArrgs']]]]:
         """
         (Output)
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
@@ -1294,12 +1294,12 @@ class TenantInboundSamlConfigSpConfigArgs:
         return pulumi.get(self, "sp_certificates")
 
     @sp_certificates.setter
-    def sp_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArgs']]]]):
+    def sp_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArrgs']]]]):
         pulumi.set(self, "sp_certificates", value)
 
 
 @pulumi.input_type
-class TenantInboundSamlConfigSpConfigSpCertificateArgs:
+calass TenantInboundSamlConfigSpConfigSpCertificateArrgs:
     def __init__(__self__, *,
                  x509_certificate: Optional[pulumi.Input[str]] = None):
         """

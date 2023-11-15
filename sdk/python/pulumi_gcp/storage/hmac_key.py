@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['HmacKeyArgs', 'HmacKey']
+__all__ = ['HmacKeyArrgs', 'HmacKey']
 
 @pulumi.input_type
-class HmacKeyArgs:
+calass HmacKeyArrgs:
     def __init__(__self__, *,
                  service_account_email: pulumi.Input[str],
                  project: Optional[pulumi.Input[str]] = None,
@@ -79,7 +79,7 @@ class HmacKeyArgs:
 
 
 @pulumi.input_type
-class _HmacKeyState:
+calass _HmacKeyState:
     def __init__(__self__, *,
                  access_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -212,7 +212,7 @@ class _HmacKeyState:
         pulumi.set(self, "updated", value)
 
 
-class HmacKey(pulumi.CustomResource):
+calass HmacKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -291,7 +291,7 @@ class HmacKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: HmacKeyArgs,
+                 args: HmacKeyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The hmacKeys resource represents an HMAC key within Cloud Storage. The resource
@@ -348,12 +348,12 @@ class HmacKey(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param HmacKeyArgs args: The arguments to use to populate this resource's properties.
+        :param HmacKeyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(HmacKeyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(HmacKeyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -372,7 +372,7 @@ class HmacKey(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = HmacKeyArgs.__new__(HmacKeyArgs)
+            __props__ = HmacKeyArrgs.__new__(HmacKeyArrgs)
 
             __props__.__dict__["project"] = project
             if service_account_email is None and not opts.urn:

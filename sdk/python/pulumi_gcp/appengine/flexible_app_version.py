@@ -11,64 +11,64 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['FlexibleAppVersionArgs', 'FlexibleAppVersion']
+__all__ = ['FlexibleAppVersionArrgs', 'FlexibleAppVersion']
 
 @pulumi.input_type
-class FlexibleAppVersionArgs:
+calass FlexibleAppVersionArrgs:
     def __init__(__self__, *,
-                 liveness_check: pulumi.Input['FlexibleAppVersionLivenessCheckArgs'],
-                 readiness_check: pulumi.Input['FlexibleAppVersionReadinessCheckArgs'],
+                 liveness_check: pulumi.Input['FlexibleAppVersionLivenessCheckArrgs'],
+                 readiness_check: pulumi.Input['FlexibleAppVersionReadinessCheckArrgs'],
                  runtime: pulumi.Input[str],
                  service: pulumi.Input[str],
-                 api_config: Optional[pulumi.Input['FlexibleAppVersionApiConfigArgs']] = None,
-                 automatic_scaling: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingArgs']] = None,
+                 api_config: Optional[pulumi.Input['FlexibleAppVersionApiConfigArrgs']] = None,
+                 automatic_scaling: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingArrgs']] = None,
                  beta_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  default_expiration: Optional[pulumi.Input[str]] = None,
                  delete_service_on_destroy: Optional[pulumi.Input[bool]] = None,
-                 deployment: Optional[pulumi.Input['FlexibleAppVersionDeploymentArgs']] = None,
-                 endpoints_api_service: Optional[pulumi.Input['FlexibleAppVersionEndpointsApiServiceArgs']] = None,
-                 entrypoint: Optional[pulumi.Input['FlexibleAppVersionEntrypointArgs']] = None,
+                 deployment: Optional[pulumi.Input['FlexibleAppVersionDeploymentArrgs']] = None,
+                 endpoints_api_service: Optional[pulumi.Input['FlexibleAppVersionEndpointsApiServiceArrgs']] = None,
+                 entrypoint: Optional[pulumi.Input['FlexibleAppVersionEntrypointArrgs']] = None,
                  env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 handlers: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArgs']]]] = None,
+                 handlers: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArrgs']]]] = None,
                  inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
-                 manual_scaling: Optional[pulumi.Input['FlexibleAppVersionManualScalingArgs']] = None,
-                 network: Optional[pulumi.Input['FlexibleAppVersionNetworkArgs']] = None,
+                 manual_scaling: Optional[pulumi.Input['FlexibleAppVersionManualScalingArrgs']] = None,
+                 network: Optional[pulumi.Input['FlexibleAppVersionNetworkArrgs']] = None,
                  nobuild_files_regex: Optional[pulumi.Input[str]] = None,
                  noop_on_destroy: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 resources: Optional[pulumi.Input['FlexibleAppVersionResourcesArgs']] = None,
+                 resources: Optional[pulumi.Input['FlexibleAppVersionResourcesArrgs']] = None,
                  runtime_api_version: Optional[pulumi.Input[str]] = None,
                  runtime_channel: Optional[pulumi.Input[str]] = None,
                  runtime_main_executable_path: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input[str]] = None,
                  version_id: Optional[pulumi.Input[str]] = None,
-                 vpc_access_connector: Optional[pulumi.Input['FlexibleAppVersionVpcAccessConnectorArgs']] = None):
+                 vpc_access_connector: Optional[pulumi.Input['FlexibleAppVersionVpcAccessConnectorArrgs']] = None):
         """
         The set of arguments for constructing a FlexibleAppVersion resource.
-        :param pulumi.Input['FlexibleAppVersionLivenessCheckArgs'] liveness_check: Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
+        :param pulumi.Input['FlexibleAppVersionLivenessCheckArrgs'] liveness_check: Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
                Structure is documented below.
-        :param pulumi.Input['FlexibleAppVersionReadinessCheckArgs'] readiness_check: Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
+        :param pulumi.Input['FlexibleAppVersionReadinessCheckArrgs'] readiness_check: Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
                Structure is documented below.
         :param pulumi.Input[str] runtime: Desired runtime. Example python27.
         :param pulumi.Input[str] service: AppEngine service resource. Can contain numbers, letters, and hyphens.
-        :param pulumi.Input['FlexibleAppVersionApiConfigArgs'] api_config: Serving configuration for Google Cloud Endpoints.
+        :param pulumi.Input['FlexibleAppVersionApiConfigArrgs'] api_config: Serving configuration for Google Cloud Endpoints.
                Structure is documented below.
-        :param pulumi.Input['FlexibleAppVersionAutomaticScalingArgs'] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.
+        :param pulumi.Input['FlexibleAppVersionAutomaticScalingArrgs'] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] beta_settings: Metadata settings that are supplied to this version to enable beta runtime features.
         :param pulumi.Input[str] default_expiration: Duration that static files should be cached by web proxies and browsers.
                Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
         :param pulumi.Input[bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.
-        :param pulumi.Input['FlexibleAppVersionDeploymentArgs'] deployment: Code and application artifacts that make up this version.
+        :param pulumi.Input['FlexibleAppVersionDeploymentArrgs'] deployment: Code and application artifacts that make up this version.
                Structure is documented below.
-        :param pulumi.Input['FlexibleAppVersionEndpointsApiServiceArgs'] endpoints_api_service: Code and application artifacts that make up this version.
+        :param pulumi.Input['FlexibleAppVersionEndpointsApiServiceArrgs'] endpoints_api_service: Code and application artifacts that make up this version.
                Structure is documented below.
-        :param pulumi.Input['FlexibleAppVersionEntrypointArgs'] entrypoint: The entrypoint for the application.
+        :param pulumi.Input['FlexibleAppVersionEntrypointArrgs'] entrypoint: The entrypoint for the application.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env_variables: Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
-        :param pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArgs']]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
+        :param pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArrgs']]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
                The first matching URL handles the request and other request handlers are not attempted.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] inbound_services: A list of the types of messages that this application is able to receive.
@@ -77,15 +77,15 @@ class FlexibleAppVersionArgs:
                AutomaticScaling: F1, F2, F4, F4_1G
                ManualScaling: B1, B2, B4, B8, B4_1G
                Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
-        :param pulumi.Input['FlexibleAppVersionManualScalingArgs'] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        :param pulumi.Input['FlexibleAppVersionManualScalingArrgs'] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
-        :param pulumi.Input['FlexibleAppVersionNetworkArgs'] network: Extra network settings
+        :param pulumi.Input['FlexibleAppVersionNetworkArrgs'] network: Extra network settings
                Structure is documented below.
         :param pulumi.Input[str] nobuild_files_regex: Files that match this pattern will not be built into this version. Only applicable for Go runtimes.
         :param pulumi.Input[bool] noop_on_destroy: If set to `true`, the application version will not be deleted.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['FlexibleAppVersionResourcesArgs'] resources: Machine resources for a version.
+        :param pulumi.Input['FlexibleAppVersionResourcesArrgs'] resources: Machine resources for a version.
                Structure is documented below.
         :param pulumi.Input[str] runtime_api_version: The version of the API in the given runtime environment.
                Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\\
@@ -99,7 +99,7 @@ class FlexibleAppVersionArgs:
                Possible values are: `SERVING`, `STOPPED`.
         :param pulumi.Input[str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
                Reserved names,"default", "latest", and any name with the prefix "ah-".
-        :param pulumi.Input['FlexibleAppVersionVpcAccessConnectorArgs'] vpc_access_connector: Enables VPC connectivity for standard apps.
+        :param pulumi.Input['FlexibleAppVersionVpcAccessConnectorArrgs'] vpc_access_connector: Enables VPC connectivity for standard apps.
                Structure is documented below.
         """
         pulumi.set(__self__, "liveness_check", liveness_check)
@@ -159,7 +159,7 @@ class FlexibleAppVersionArgs:
 
     @property
     @pulumi.getter(name="livenessCheck")
-    def liveness_check(self) -> pulumi.Input['FlexibleAppVersionLivenessCheckArgs']:
+    def liveness_check(self) -> pulumi.Input['FlexibleAppVersionLivenessCheckArrgs']:
         """
         Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
         Structure is documented below.
@@ -167,12 +167,12 @@ class FlexibleAppVersionArgs:
         return pulumi.get(self, "liveness_check")
 
     @liveness_check.setter
-    def liveness_check(self, value: pulumi.Input['FlexibleAppVersionLivenessCheckArgs']):
+    def liveness_check(self, value: pulumi.Input['FlexibleAppVersionLivenessCheckArrgs']):
         pulumi.set(self, "liveness_check", value)
 
     @property
     @pulumi.getter(name="readinessCheck")
-    def readiness_check(self) -> pulumi.Input['FlexibleAppVersionReadinessCheckArgs']:
+    def readiness_check(self) -> pulumi.Input['FlexibleAppVersionReadinessCheckArrgs']:
         """
         Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
         Structure is documented below.
@@ -180,7 +180,7 @@ class FlexibleAppVersionArgs:
         return pulumi.get(self, "readiness_check")
 
     @readiness_check.setter
-    def readiness_check(self, value: pulumi.Input['FlexibleAppVersionReadinessCheckArgs']):
+    def readiness_check(self, value: pulumi.Input['FlexibleAppVersionReadinessCheckArrgs']):
         pulumi.set(self, "readiness_check", value)
 
     @property
@@ -209,7 +209,7 @@ class FlexibleAppVersionArgs:
 
     @property
     @pulumi.getter(name="apiConfig")
-    def api_config(self) -> Optional[pulumi.Input['FlexibleAppVersionApiConfigArgs']]:
+    def api_config(self) -> Optional[pulumi.Input['FlexibleAppVersionApiConfigArrgs']]:
         """
         Serving configuration for Google Cloud Endpoints.
         Structure is documented below.
@@ -217,12 +217,12 @@ class FlexibleAppVersionArgs:
         return pulumi.get(self, "api_config")
 
     @api_config.setter
-    def api_config(self, value: Optional[pulumi.Input['FlexibleAppVersionApiConfigArgs']]):
+    def api_config(self, value: Optional[pulumi.Input['FlexibleAppVersionApiConfigArrgs']]):
         pulumi.set(self, "api_config", value)
 
     @property
     @pulumi.getter(name="automaticScaling")
-    def automatic_scaling(self) -> Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingArgs']]:
+    def automatic_scaling(self) -> Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingArrgs']]:
         """
         Automatic scaling is based on request rate, response latencies, and other application metrics.
         Structure is documented below.
@@ -230,7 +230,7 @@ class FlexibleAppVersionArgs:
         return pulumi.get(self, "automatic_scaling")
 
     @automatic_scaling.setter
-    def automatic_scaling(self, value: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingArgs']]):
+    def automatic_scaling(self, value: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingArrgs']]):
         pulumi.set(self, "automatic_scaling", value)
 
     @property
@@ -272,7 +272,7 @@ class FlexibleAppVersionArgs:
 
     @property
     @pulumi.getter
-    def deployment(self) -> Optional[pulumi.Input['FlexibleAppVersionDeploymentArgs']]:
+    def deployment(self) -> Optional[pulumi.Input['FlexibleAppVersionDeploymentArrgs']]:
         """
         Code and application artifacts that make up this version.
         Structure is documented below.
@@ -280,12 +280,12 @@ class FlexibleAppVersionArgs:
         return pulumi.get(self, "deployment")
 
     @deployment.setter
-    def deployment(self, value: Optional[pulumi.Input['FlexibleAppVersionDeploymentArgs']]):
+    def deployment(self, value: Optional[pulumi.Input['FlexibleAppVersionDeploymentArrgs']]):
         pulumi.set(self, "deployment", value)
 
     @property
     @pulumi.getter(name="endpointsApiService")
-    def endpoints_api_service(self) -> Optional[pulumi.Input['FlexibleAppVersionEndpointsApiServiceArgs']]:
+    def endpoints_api_service(self) -> Optional[pulumi.Input['FlexibleAppVersionEndpointsApiServiceArrgs']]:
         """
         Code and application artifacts that make up this version.
         Structure is documented below.
@@ -293,12 +293,12 @@ class FlexibleAppVersionArgs:
         return pulumi.get(self, "endpoints_api_service")
 
     @endpoints_api_service.setter
-    def endpoints_api_service(self, value: Optional[pulumi.Input['FlexibleAppVersionEndpointsApiServiceArgs']]):
+    def endpoints_api_service(self, value: Optional[pulumi.Input['FlexibleAppVersionEndpointsApiServiceArrgs']]):
         pulumi.set(self, "endpoints_api_service", value)
 
     @property
     @pulumi.getter
-    def entrypoint(self) -> Optional[pulumi.Input['FlexibleAppVersionEntrypointArgs']]:
+    def entrypoint(self) -> Optional[pulumi.Input['FlexibleAppVersionEntrypointArrgs']]:
         """
         The entrypoint for the application.
         Structure is documented below.
@@ -306,7 +306,7 @@ class FlexibleAppVersionArgs:
         return pulumi.get(self, "entrypoint")
 
     @entrypoint.setter
-    def entrypoint(self, value: Optional[pulumi.Input['FlexibleAppVersionEntrypointArgs']]):
+    def entrypoint(self, value: Optional[pulumi.Input['FlexibleAppVersionEntrypointArrgs']]):
         pulumi.set(self, "entrypoint", value)
 
     @property
@@ -323,7 +323,7 @@ class FlexibleAppVersionArgs:
 
     @property
     @pulumi.getter
-    def handlers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArgs']]]]:
+    def handlers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArrgs']]]]:
         """
         An ordered list of URL-matching patterns that should be applied to incoming requests.
         The first matching URL handles the request and other request handlers are not attempted.
@@ -332,7 +332,7 @@ class FlexibleAppVersionArgs:
         return pulumi.get(self, "handlers")
 
     @handlers.setter
-    def handlers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArgs']]]]):
+    def handlers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArrgs']]]]):
         pulumi.set(self, "handlers", value)
 
     @property
@@ -365,7 +365,7 @@ class FlexibleAppVersionArgs:
 
     @property
     @pulumi.getter(name="manualScaling")
-    def manual_scaling(self) -> Optional[pulumi.Input['FlexibleAppVersionManualScalingArgs']]:
+    def manual_scaling(self) -> Optional[pulumi.Input['FlexibleAppVersionManualScalingArrgs']]:
         """
         A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
         Structure is documented below.
@@ -373,12 +373,12 @@ class FlexibleAppVersionArgs:
         return pulumi.get(self, "manual_scaling")
 
     @manual_scaling.setter
-    def manual_scaling(self, value: Optional[pulumi.Input['FlexibleAppVersionManualScalingArgs']]):
+    def manual_scaling(self, value: Optional[pulumi.Input['FlexibleAppVersionManualScalingArrgs']]):
         pulumi.set(self, "manual_scaling", value)
 
     @property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input['FlexibleAppVersionNetworkArgs']]:
+    def network(self) -> Optional[pulumi.Input['FlexibleAppVersionNetworkArrgs']]:
         """
         Extra network settings
         Structure is documented below.
@@ -386,7 +386,7 @@ class FlexibleAppVersionArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input['FlexibleAppVersionNetworkArgs']]):
+    def network(self, value: Optional[pulumi.Input['FlexibleAppVersionNetworkArrgs']]):
         pulumi.set(self, "network", value)
 
     @property
@@ -428,7 +428,7 @@ class FlexibleAppVersionArgs:
 
     @property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input['FlexibleAppVersionResourcesArgs']]:
+    def resources(self) -> Optional[pulumi.Input['FlexibleAppVersionResourcesArrgs']]:
         """
         Machine resources for a version.
         Structure is documented below.
@@ -436,7 +436,7 @@ class FlexibleAppVersionArgs:
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input['FlexibleAppVersionResourcesArgs']]):
+    def resources(self, value: Optional[pulumi.Input['FlexibleAppVersionResourcesArrgs']]):
         pulumi.set(self, "resources", value)
 
     @property
@@ -519,7 +519,7 @@ class FlexibleAppVersionArgs:
 
     @property
     @pulumi.getter(name="vpcAccessConnector")
-    def vpc_access_connector(self) -> Optional[pulumi.Input['FlexibleAppVersionVpcAccessConnectorArgs']]:
+    def vpc_access_connector(self) -> Optional[pulumi.Input['FlexibleAppVersionVpcAccessConnectorArrgs']]:
         """
         Enables VPC connectivity for standard apps.
         Structure is documented below.
@@ -527,34 +527,34 @@ class FlexibleAppVersionArgs:
         return pulumi.get(self, "vpc_access_connector")
 
     @vpc_access_connector.setter
-    def vpc_access_connector(self, value: Optional[pulumi.Input['FlexibleAppVersionVpcAccessConnectorArgs']]):
+    def vpc_access_connector(self, value: Optional[pulumi.Input['FlexibleAppVersionVpcAccessConnectorArrgs']]):
         pulumi.set(self, "vpc_access_connector", value)
 
 
 @pulumi.input_type
-class _FlexibleAppVersionState:
+calass _FlexibleAppVersionState:
     def __init__(__self__, *,
-                 api_config: Optional[pulumi.Input['FlexibleAppVersionApiConfigArgs']] = None,
-                 automatic_scaling: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingArgs']] = None,
+                 api_config: Optional[pulumi.Input['FlexibleAppVersionApiConfigArrgs']] = None,
+                 automatic_scaling: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingArrgs']] = None,
                  beta_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  default_expiration: Optional[pulumi.Input[str]] = None,
                  delete_service_on_destroy: Optional[pulumi.Input[bool]] = None,
-                 deployment: Optional[pulumi.Input['FlexibleAppVersionDeploymentArgs']] = None,
-                 endpoints_api_service: Optional[pulumi.Input['FlexibleAppVersionEndpointsApiServiceArgs']] = None,
-                 entrypoint: Optional[pulumi.Input['FlexibleAppVersionEntrypointArgs']] = None,
+                 deployment: Optional[pulumi.Input['FlexibleAppVersionDeploymentArrgs']] = None,
+                 endpoints_api_service: Optional[pulumi.Input['FlexibleAppVersionEndpointsApiServiceArrgs']] = None,
+                 entrypoint: Optional[pulumi.Input['FlexibleAppVersionEntrypointArrgs']] = None,
                  env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 handlers: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArgs']]]] = None,
+                 handlers: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArrgs']]]] = None,
                  inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
-                 liveness_check: Optional[pulumi.Input['FlexibleAppVersionLivenessCheckArgs']] = None,
-                 manual_scaling: Optional[pulumi.Input['FlexibleAppVersionManualScalingArgs']] = None,
+                 liveness_check: Optional[pulumi.Input['FlexibleAppVersionLivenessCheckArrgs']] = None,
+                 manual_scaling: Optional[pulumi.Input['FlexibleAppVersionManualScalingArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input['FlexibleAppVersionNetworkArgs']] = None,
+                 network: Optional[pulumi.Input['FlexibleAppVersionNetworkArrgs']] = None,
                  nobuild_files_regex: Optional[pulumi.Input[str]] = None,
                  noop_on_destroy: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 readiness_check: Optional[pulumi.Input['FlexibleAppVersionReadinessCheckArgs']] = None,
-                 resources: Optional[pulumi.Input['FlexibleAppVersionResourcesArgs']] = None,
+                 readiness_check: Optional[pulumi.Input['FlexibleAppVersionReadinessCheckArrgs']] = None,
+                 resources: Optional[pulumi.Input['FlexibleAppVersionResourcesArrgs']] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
                  runtime_api_version: Optional[pulumi.Input[str]] = None,
                  runtime_channel: Optional[pulumi.Input[str]] = None,
@@ -563,25 +563,25 @@ class _FlexibleAppVersionState:
                  service_account: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input[str]] = None,
                  version_id: Optional[pulumi.Input[str]] = None,
-                 vpc_access_connector: Optional[pulumi.Input['FlexibleAppVersionVpcAccessConnectorArgs']] = None):
+                 vpc_access_connector: Optional[pulumi.Input['FlexibleAppVersionVpcAccessConnectorArrgs']] = None):
         """
         Input properties used for looking up and filtering FlexibleAppVersion resources.
-        :param pulumi.Input['FlexibleAppVersionApiConfigArgs'] api_config: Serving configuration for Google Cloud Endpoints.
+        :param pulumi.Input['FlexibleAppVersionApiConfigArrgs'] api_config: Serving configuration for Google Cloud Endpoints.
                Structure is documented below.
-        :param pulumi.Input['FlexibleAppVersionAutomaticScalingArgs'] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.
+        :param pulumi.Input['FlexibleAppVersionAutomaticScalingArrgs'] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] beta_settings: Metadata settings that are supplied to this version to enable beta runtime features.
         :param pulumi.Input[str] default_expiration: Duration that static files should be cached by web proxies and browsers.
                Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
         :param pulumi.Input[bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.
-        :param pulumi.Input['FlexibleAppVersionDeploymentArgs'] deployment: Code and application artifacts that make up this version.
+        :param pulumi.Input['FlexibleAppVersionDeploymentArrgs'] deployment: Code and application artifacts that make up this version.
                Structure is documented below.
-        :param pulumi.Input['FlexibleAppVersionEndpointsApiServiceArgs'] endpoints_api_service: Code and application artifacts that make up this version.
+        :param pulumi.Input['FlexibleAppVersionEndpointsApiServiceArrgs'] endpoints_api_service: Code and application artifacts that make up this version.
                Structure is documented below.
-        :param pulumi.Input['FlexibleAppVersionEntrypointArgs'] entrypoint: The entrypoint for the application.
+        :param pulumi.Input['FlexibleAppVersionEntrypointArrgs'] entrypoint: The entrypoint for the application.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env_variables: Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
-        :param pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArgs']]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
+        :param pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArrgs']]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
                The first matching URL handles the request and other request handlers are not attempted.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] inbound_services: A list of the types of messages that this application is able to receive.
@@ -590,21 +590,21 @@ class _FlexibleAppVersionState:
                AutomaticScaling: F1, F2, F4, F4_1G
                ManualScaling: B1, B2, B4, B8, B4_1G
                Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
-        :param pulumi.Input['FlexibleAppVersionLivenessCheckArgs'] liveness_check: Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
+        :param pulumi.Input['FlexibleAppVersionLivenessCheckArrgs'] liveness_check: Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
                Structure is documented below.
-        :param pulumi.Input['FlexibleAppVersionManualScalingArgs'] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        :param pulumi.Input['FlexibleAppVersionManualScalingArrgs'] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
         :param pulumi.Input[str] name: Endpoints service name which is the name of the "service" resource in the Service Management API.
                For example "myapi.endpoints.myproject.cloud.goog"
-        :param pulumi.Input['FlexibleAppVersionNetworkArgs'] network: Extra network settings
+        :param pulumi.Input['FlexibleAppVersionNetworkArrgs'] network: Extra network settings
                Structure is documented below.
         :param pulumi.Input[str] nobuild_files_regex: Files that match this pattern will not be built into this version. Only applicable for Go runtimes.
         :param pulumi.Input[bool] noop_on_destroy: If set to `true`, the application version will not be deleted.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['FlexibleAppVersionReadinessCheckArgs'] readiness_check: Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
+        :param pulumi.Input['FlexibleAppVersionReadinessCheckArrgs'] readiness_check: Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
                Structure is documented below.
-        :param pulumi.Input['FlexibleAppVersionResourcesArgs'] resources: Machine resources for a version.
+        :param pulumi.Input['FlexibleAppVersionResourcesArrgs'] resources: Machine resources for a version.
                Structure is documented below.
         :param pulumi.Input[str] runtime: Desired runtime. Example python27.
         :param pulumi.Input[str] runtime_api_version: The version of the API in the given runtime environment.
@@ -620,7 +620,7 @@ class _FlexibleAppVersionState:
                Possible values are: `SERVING`, `STOPPED`.
         :param pulumi.Input[str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
                Reserved names,"default", "latest", and any name with the prefix "ah-".
-        :param pulumi.Input['FlexibleAppVersionVpcAccessConnectorArgs'] vpc_access_connector: Enables VPC connectivity for standard apps.
+        :param pulumi.Input['FlexibleAppVersionVpcAccessConnectorArrgs'] vpc_access_connector: Enables VPC connectivity for standard apps.
                Structure is documented below.
         """
         if api_config is not None:
@@ -686,7 +686,7 @@ class _FlexibleAppVersionState:
 
     @property
     @pulumi.getter(name="apiConfig")
-    def api_config(self) -> Optional[pulumi.Input['FlexibleAppVersionApiConfigArgs']]:
+    def api_config(self) -> Optional[pulumi.Input['FlexibleAppVersionApiConfigArrgs']]:
         """
         Serving configuration for Google Cloud Endpoints.
         Structure is documented below.
@@ -694,12 +694,12 @@ class _FlexibleAppVersionState:
         return pulumi.get(self, "api_config")
 
     @api_config.setter
-    def api_config(self, value: Optional[pulumi.Input['FlexibleAppVersionApiConfigArgs']]):
+    def api_config(self, value: Optional[pulumi.Input['FlexibleAppVersionApiConfigArrgs']]):
         pulumi.set(self, "api_config", value)
 
     @property
     @pulumi.getter(name="automaticScaling")
-    def automatic_scaling(self) -> Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingArgs']]:
+    def automatic_scaling(self) -> Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingArrgs']]:
         """
         Automatic scaling is based on request rate, response latencies, and other application metrics.
         Structure is documented below.
@@ -707,7 +707,7 @@ class _FlexibleAppVersionState:
         return pulumi.get(self, "automatic_scaling")
 
     @automatic_scaling.setter
-    def automatic_scaling(self, value: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingArgs']]):
+    def automatic_scaling(self, value: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingArrgs']]):
         pulumi.set(self, "automatic_scaling", value)
 
     @property
@@ -749,7 +749,7 @@ class _FlexibleAppVersionState:
 
     @property
     @pulumi.getter
-    def deployment(self) -> Optional[pulumi.Input['FlexibleAppVersionDeploymentArgs']]:
+    def deployment(self) -> Optional[pulumi.Input['FlexibleAppVersionDeploymentArrgs']]:
         """
         Code and application artifacts that make up this version.
         Structure is documented below.
@@ -757,12 +757,12 @@ class _FlexibleAppVersionState:
         return pulumi.get(self, "deployment")
 
     @deployment.setter
-    def deployment(self, value: Optional[pulumi.Input['FlexibleAppVersionDeploymentArgs']]):
+    def deployment(self, value: Optional[pulumi.Input['FlexibleAppVersionDeploymentArrgs']]):
         pulumi.set(self, "deployment", value)
 
     @property
     @pulumi.getter(name="endpointsApiService")
-    def endpoints_api_service(self) -> Optional[pulumi.Input['FlexibleAppVersionEndpointsApiServiceArgs']]:
+    def endpoints_api_service(self) -> Optional[pulumi.Input['FlexibleAppVersionEndpointsApiServiceArrgs']]:
         """
         Code and application artifacts that make up this version.
         Structure is documented below.
@@ -770,12 +770,12 @@ class _FlexibleAppVersionState:
         return pulumi.get(self, "endpoints_api_service")
 
     @endpoints_api_service.setter
-    def endpoints_api_service(self, value: Optional[pulumi.Input['FlexibleAppVersionEndpointsApiServiceArgs']]):
+    def endpoints_api_service(self, value: Optional[pulumi.Input['FlexibleAppVersionEndpointsApiServiceArrgs']]):
         pulumi.set(self, "endpoints_api_service", value)
 
     @property
     @pulumi.getter
-    def entrypoint(self) -> Optional[pulumi.Input['FlexibleAppVersionEntrypointArgs']]:
+    def entrypoint(self) -> Optional[pulumi.Input['FlexibleAppVersionEntrypointArrgs']]:
         """
         The entrypoint for the application.
         Structure is documented below.
@@ -783,7 +783,7 @@ class _FlexibleAppVersionState:
         return pulumi.get(self, "entrypoint")
 
     @entrypoint.setter
-    def entrypoint(self, value: Optional[pulumi.Input['FlexibleAppVersionEntrypointArgs']]):
+    def entrypoint(self, value: Optional[pulumi.Input['FlexibleAppVersionEntrypointArrgs']]):
         pulumi.set(self, "entrypoint", value)
 
     @property
@@ -800,7 +800,7 @@ class _FlexibleAppVersionState:
 
     @property
     @pulumi.getter
-    def handlers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArgs']]]]:
+    def handlers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArrgs']]]]:
         """
         An ordered list of URL-matching patterns that should be applied to incoming requests.
         The first matching URL handles the request and other request handlers are not attempted.
@@ -809,7 +809,7 @@ class _FlexibleAppVersionState:
         return pulumi.get(self, "handlers")
 
     @handlers.setter
-    def handlers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArgs']]]]):
+    def handlers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArrgs']]]]):
         pulumi.set(self, "handlers", value)
 
     @property
@@ -842,7 +842,7 @@ class _FlexibleAppVersionState:
 
     @property
     @pulumi.getter(name="livenessCheck")
-    def liveness_check(self) -> Optional[pulumi.Input['FlexibleAppVersionLivenessCheckArgs']]:
+    def liveness_check(self) -> Optional[pulumi.Input['FlexibleAppVersionLivenessCheckArrgs']]:
         """
         Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
         Structure is documented below.
@@ -850,12 +850,12 @@ class _FlexibleAppVersionState:
         return pulumi.get(self, "liveness_check")
 
     @liveness_check.setter
-    def liveness_check(self, value: Optional[pulumi.Input['FlexibleAppVersionLivenessCheckArgs']]):
+    def liveness_check(self, value: Optional[pulumi.Input['FlexibleAppVersionLivenessCheckArrgs']]):
         pulumi.set(self, "liveness_check", value)
 
     @property
     @pulumi.getter(name="manualScaling")
-    def manual_scaling(self) -> Optional[pulumi.Input['FlexibleAppVersionManualScalingArgs']]:
+    def manual_scaling(self) -> Optional[pulumi.Input['FlexibleAppVersionManualScalingArrgs']]:
         """
         A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
         Structure is documented below.
@@ -863,7 +863,7 @@ class _FlexibleAppVersionState:
         return pulumi.get(self, "manual_scaling")
 
     @manual_scaling.setter
-    def manual_scaling(self, value: Optional[pulumi.Input['FlexibleAppVersionManualScalingArgs']]):
+    def manual_scaling(self, value: Optional[pulumi.Input['FlexibleAppVersionManualScalingArrgs']]):
         pulumi.set(self, "manual_scaling", value)
 
     @property
@@ -881,7 +881,7 @@ class _FlexibleAppVersionState:
 
     @property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input['FlexibleAppVersionNetworkArgs']]:
+    def network(self) -> Optional[pulumi.Input['FlexibleAppVersionNetworkArrgs']]:
         """
         Extra network settings
         Structure is documented below.
@@ -889,7 +889,7 @@ class _FlexibleAppVersionState:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input['FlexibleAppVersionNetworkArgs']]):
+    def network(self, value: Optional[pulumi.Input['FlexibleAppVersionNetworkArrgs']]):
         pulumi.set(self, "network", value)
 
     @property
@@ -931,7 +931,7 @@ class _FlexibleAppVersionState:
 
     @property
     @pulumi.getter(name="readinessCheck")
-    def readiness_check(self) -> Optional[pulumi.Input['FlexibleAppVersionReadinessCheckArgs']]:
+    def readiness_check(self) -> Optional[pulumi.Input['FlexibleAppVersionReadinessCheckArrgs']]:
         """
         Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
         Structure is documented below.
@@ -939,12 +939,12 @@ class _FlexibleAppVersionState:
         return pulumi.get(self, "readiness_check")
 
     @readiness_check.setter
-    def readiness_check(self, value: Optional[pulumi.Input['FlexibleAppVersionReadinessCheckArgs']]):
+    def readiness_check(self, value: Optional[pulumi.Input['FlexibleAppVersionReadinessCheckArrgs']]):
         pulumi.set(self, "readiness_check", value)
 
     @property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input['FlexibleAppVersionResourcesArgs']]:
+    def resources(self) -> Optional[pulumi.Input['FlexibleAppVersionResourcesArrgs']]:
         """
         Machine resources for a version.
         Structure is documented below.
@@ -952,7 +952,7 @@ class _FlexibleAppVersionState:
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input['FlexibleAppVersionResourcesArgs']]):
+    def resources(self, value: Optional[pulumi.Input['FlexibleAppVersionResourcesArrgs']]):
         pulumi.set(self, "resources", value)
 
     @property
@@ -1059,7 +1059,7 @@ class _FlexibleAppVersionState:
 
     @property
     @pulumi.getter(name="vpcAccessConnector")
-    def vpc_access_connector(self) -> Optional[pulumi.Input['FlexibleAppVersionVpcAccessConnectorArgs']]:
+    def vpc_access_connector(self) -> Optional[pulumi.Input['FlexibleAppVersionVpcAccessConnectorArrgs']]:
         """
         Enables VPC connectivity for standard apps.
         Structure is documented below.
@@ -1067,35 +1067,35 @@ class _FlexibleAppVersionState:
         return pulumi.get(self, "vpc_access_connector")
 
     @vpc_access_connector.setter
-    def vpc_access_connector(self, value: Optional[pulumi.Input['FlexibleAppVersionVpcAccessConnectorArgs']]):
+    def vpc_access_connector(self, value: Optional[pulumi.Input['FlexibleAppVersionVpcAccessConnectorArrgs']]):
         pulumi.set(self, "vpc_access_connector", value)
 
 
-class FlexibleAppVersion(pulumi.CustomResource):
+calass FlexibleAppVersion(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_config: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionApiConfigArgs']]] = None,
-                 automatic_scaling: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionAutomaticScalingArgs']]] = None,
+                 api_config: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionApiConfigArrgs']]] = None,
+                 automatic_scaling: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionAutomaticScalingArrgs']]] = None,
                  beta_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  default_expiration: Optional[pulumi.Input[str]] = None,
                  delete_service_on_destroy: Optional[pulumi.Input[bool]] = None,
-                 deployment: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionDeploymentArgs']]] = None,
-                 endpoints_api_service: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionEndpointsApiServiceArgs']]] = None,
-                 entrypoint: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionEntrypointArgs']]] = None,
+                 deployment: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionDeploymentArrgs']]] = None,
+                 endpoints_api_service: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionEndpointsApiServiceArrgs']]] = None,
+                 entrypoint: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionEntrypointArrgs']]] = None,
                  env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlexibleAppVersionHandlerArgs']]]]] = None,
+                 handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlexibleAppVersionHandlerArrgs']]]]] = None,
                  inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
-                 liveness_check: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionLivenessCheckArgs']]] = None,
-                 manual_scaling: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionManualScalingArgs']]] = None,
-                 network: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionNetworkArgs']]] = None,
+                 liveness_check: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionLivenessCheckArrgs']]] = None,
+                 manual_scaling: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionManualScalingArrgs']]] = None,
+                 network: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionNetworkArrgs']]] = None,
                  nobuild_files_regex: Optional[pulumi.Input[str]] = None,
                  noop_on_destroy: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 readiness_check: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionReadinessCheckArgs']]] = None,
-                 resources: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionResourcesArgs']]] = None,
+                 readiness_check: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionReadinessCheckArrgs']]] = None,
+                 resources: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionResourcesArrgs']]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
                  runtime_api_version: Optional[pulumi.Input[str]] = None,
                  runtime_channel: Optional[pulumi.Input[str]] = None,
@@ -1104,7 +1104,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
                  service_account: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input[str]] = None,
                  version_id: Optional[pulumi.Input[str]] = None,
-                 vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionVpcAccessConnectorArgs']]] = None,
+                 vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionVpcAccessConnectorArrgs']]] = None,
                  __props__=None):
         """
         Flexible App Version resource to create a new version of flexible GAE Application. Based on Google Compute Engine,
@@ -1166,36 +1166,36 @@ class FlexibleAppVersion(pulumi.CustomResource):
             project=gae_api.project,
             service="default",
             runtime="nodejs",
-            entrypoint=gcp.appengine.FlexibleAppVersionEntrypointArgs(
+            entrypoint=gcp.appengine.FlexibleAppVersionEntrypointArrgs(
                 shell="node ./app.js",
             ),
-            deployment=gcp.appengine.FlexibleAppVersionDeploymentArgs(
-                zip=gcp.appengine.FlexibleAppVersionDeploymentZipArgs(
+            deployment=gcp.appengine.FlexibleAppVersionDeploymentArrgs(
+                zip=gcp.appengine.FlexibleAppVersionDeploymentZipArrgs(
                     source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
                 ),
             ),
-            liveness_check=gcp.appengine.FlexibleAppVersionLivenessCheckArgs(
+            liveness_check=gcp.appengine.FlexibleAppVersionLivenessCheckArrgs(
                 path="/",
             ),
-            readiness_check=gcp.appengine.FlexibleAppVersionReadinessCheckArgs(
+            readiness_check=gcp.appengine.FlexibleAppVersionReadinessCheckArrgs(
                 path="/",
             ),
             env_variables={
                 "port": "8080",
             },
-            handlers=[gcp.appengine.FlexibleAppVersionHandlerArgs(
+            handlers=[gcp.appengine.FlexibleAppVersionHandlerArrgs(
                 url_regex=".*\\\\/my-path\\\\/*",
                 security_level="SECURE_ALWAYS",
                 login="LOGIN_REQUIRED",
                 auth_fail_action="AUTH_FAIL_ACTION_REDIRECT",
-                static_files=gcp.appengine.FlexibleAppVersionHandlerStaticFilesArgs(
+                static_files=gcp.appengine.FlexibleAppVersionHandlerStaticFilesArrgs(
                     path="my-other-path",
                     upload_path_regex=".*\\\\/my-path\\\\/*",
                 ),
             )],
-            automatic_scaling=gcp.appengine.FlexibleAppVersionAutomaticScalingArgs(
+            automatic_scaling=gcp.appengine.FlexibleAppVersionAutomaticScalingArrgs(
                 cool_down_period="120s",
-                cpu_utilization=gcp.appengine.FlexibleAppVersionAutomaticScalingCpuUtilizationArgs(
+                cpu_utilization=gcp.appengine.FlexibleAppVersionAutomaticScalingCpuUtilizationArrgs(
                     target_utilization=0.5,
                 ),
             ),
@@ -1229,22 +1229,22 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionApiConfigArgs']] api_config: Serving configuration for Google Cloud Endpoints.
+        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionApiConfigArrgs']] api_config: Serving configuration for Google Cloud Endpoints.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionAutomaticScalingArgs']] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.
+        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionAutomaticScalingArrgs']] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] beta_settings: Metadata settings that are supplied to this version to enable beta runtime features.
         :param pulumi.Input[str] default_expiration: Duration that static files should be cached by web proxies and browsers.
                Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
         :param pulumi.Input[bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.
-        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionDeploymentArgs']] deployment: Code and application artifacts that make up this version.
+        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionDeploymentArrgs']] deployment: Code and application artifacts that make up this version.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionEndpointsApiServiceArgs']] endpoints_api_service: Code and application artifacts that make up this version.
+        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionEndpointsApiServiceArrgs']] endpoints_api_service: Code and application artifacts that make up this version.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionEntrypointArgs']] entrypoint: The entrypoint for the application.
+        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionEntrypointArrgs']] entrypoint: The entrypoint for the application.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env_variables: Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlexibleAppVersionHandlerArgs']]]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlexibleAppVersionHandlerArrgs']]]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
                The first matching URL handles the request and other request handlers are not attempted.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] inbound_services: A list of the types of messages that this application is able to receive.
@@ -1253,19 +1253,19 @@ class FlexibleAppVersion(pulumi.CustomResource):
                AutomaticScaling: F1, F2, F4, F4_1G
                ManualScaling: B1, B2, B4, B8, B4_1G
                Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
-        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionLivenessCheckArgs']] liveness_check: Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
+        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionLivenessCheckArrgs']] liveness_check: Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionManualScalingArgs']] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionManualScalingArrgs']] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionNetworkArgs']] network: Extra network settings
+        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionNetworkArrgs']] network: Extra network settings
                Structure is documented below.
         :param pulumi.Input[str] nobuild_files_regex: Files that match this pattern will not be built into this version. Only applicable for Go runtimes.
         :param pulumi.Input[bool] noop_on_destroy: If set to `true`, the application version will not be deleted.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionReadinessCheckArgs']] readiness_check: Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
+        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionReadinessCheckArrgs']] readiness_check: Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionResourcesArgs']] resources: Machine resources for a version.
+        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionResourcesArrgs']] resources: Machine resources for a version.
                Structure is documented below.
         :param pulumi.Input[str] runtime: Desired runtime. Example python27.
         :param pulumi.Input[str] runtime_api_version: The version of the API in the given runtime environment.
@@ -1281,14 +1281,14 @@ class FlexibleAppVersion(pulumi.CustomResource):
                Possible values are: `SERVING`, `STOPPED`.
         :param pulumi.Input[str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
                Reserved names,"default", "latest", and any name with the prefix "ah-".
-        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionVpcAccessConnectorArgs']] vpc_access_connector: Enables VPC connectivity for standard apps.
+        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionVpcAccessConnectorArrgs']] vpc_access_connector: Enables VPC connectivity for standard apps.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FlexibleAppVersionArgs,
+                 args: FlexibleAppVersionArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Flexible App Version resource to create a new version of flexible GAE Application. Based on Google Compute Engine,
@@ -1350,36 +1350,36 @@ class FlexibleAppVersion(pulumi.CustomResource):
             project=gae_api.project,
             service="default",
             runtime="nodejs",
-            entrypoint=gcp.appengine.FlexibleAppVersionEntrypointArgs(
+            entrypoint=gcp.appengine.FlexibleAppVersionEntrypointArrgs(
                 shell="node ./app.js",
             ),
-            deployment=gcp.appengine.FlexibleAppVersionDeploymentArgs(
-                zip=gcp.appengine.FlexibleAppVersionDeploymentZipArgs(
+            deployment=gcp.appengine.FlexibleAppVersionDeploymentArrgs(
+                zip=gcp.appengine.FlexibleAppVersionDeploymentZipArrgs(
                     source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
                 ),
             ),
-            liveness_check=gcp.appengine.FlexibleAppVersionLivenessCheckArgs(
+            liveness_check=gcp.appengine.FlexibleAppVersionLivenessCheckArrgs(
                 path="/",
             ),
-            readiness_check=gcp.appengine.FlexibleAppVersionReadinessCheckArgs(
+            readiness_check=gcp.appengine.FlexibleAppVersionReadinessCheckArrgs(
                 path="/",
             ),
             env_variables={
                 "port": "8080",
             },
-            handlers=[gcp.appengine.FlexibleAppVersionHandlerArgs(
+            handlers=[gcp.appengine.FlexibleAppVersionHandlerArrgs(
                 url_regex=".*\\\\/my-path\\\\/*",
                 security_level="SECURE_ALWAYS",
                 login="LOGIN_REQUIRED",
                 auth_fail_action="AUTH_FAIL_ACTION_REDIRECT",
-                static_files=gcp.appengine.FlexibleAppVersionHandlerStaticFilesArgs(
+                static_files=gcp.appengine.FlexibleAppVersionHandlerStaticFilesArrgs(
                     path="my-other-path",
                     upload_path_regex=".*\\\\/my-path\\\\/*",
                 ),
             )],
-            automatic_scaling=gcp.appengine.FlexibleAppVersionAutomaticScalingArgs(
+            automatic_scaling=gcp.appengine.FlexibleAppVersionAutomaticScalingArrgs(
                 cool_down_period="120s",
-                cpu_utilization=gcp.appengine.FlexibleAppVersionAutomaticScalingCpuUtilizationArgs(
+                cpu_utilization=gcp.appengine.FlexibleAppVersionAutomaticScalingCpuUtilizationArrgs(
                     target_utilization=0.5,
                 ),
             ),
@@ -1412,12 +1412,12 @@ class FlexibleAppVersion(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param FlexibleAppVersionArgs args: The arguments to use to populate this resource's properties.
+        :param FlexibleAppVersionArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(FlexibleAppVersionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(FlexibleAppVersionArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1426,26 +1426,26 @@ class FlexibleAppVersion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_config: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionApiConfigArgs']]] = None,
-                 automatic_scaling: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionAutomaticScalingArgs']]] = None,
+                 api_config: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionApiConfigArrgs']]] = None,
+                 automatic_scaling: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionAutomaticScalingArrgs']]] = None,
                  beta_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  default_expiration: Optional[pulumi.Input[str]] = None,
                  delete_service_on_destroy: Optional[pulumi.Input[bool]] = None,
-                 deployment: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionDeploymentArgs']]] = None,
-                 endpoints_api_service: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionEndpointsApiServiceArgs']]] = None,
-                 entrypoint: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionEntrypointArgs']]] = None,
+                 deployment: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionDeploymentArrgs']]] = None,
+                 endpoints_api_service: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionEndpointsApiServiceArrgs']]] = None,
+                 entrypoint: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionEntrypointArrgs']]] = None,
                  env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlexibleAppVersionHandlerArgs']]]]] = None,
+                 handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlexibleAppVersionHandlerArrgs']]]]] = None,
                  inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
-                 liveness_check: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionLivenessCheckArgs']]] = None,
-                 manual_scaling: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionManualScalingArgs']]] = None,
-                 network: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionNetworkArgs']]] = None,
+                 liveness_check: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionLivenessCheckArrgs']]] = None,
+                 manual_scaling: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionManualScalingArrgs']]] = None,
+                 network: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionNetworkArrgs']]] = None,
                  nobuild_files_regex: Optional[pulumi.Input[str]] = None,
                  noop_on_destroy: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 readiness_check: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionReadinessCheckArgs']]] = None,
-                 resources: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionResourcesArgs']]] = None,
+                 readiness_check: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionReadinessCheckArrgs']]] = None,
+                 resources: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionResourcesArrgs']]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
                  runtime_api_version: Optional[pulumi.Input[str]] = None,
                  runtime_channel: Optional[pulumi.Input[str]] = None,
@@ -1454,7 +1454,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
                  service_account: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input[str]] = None,
                  version_id: Optional[pulumi.Input[str]] = None,
-                 vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionVpcAccessConnectorArgs']]] = None,
+                 vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionVpcAccessConnectorArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1462,7 +1462,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = FlexibleAppVersionArgs.__new__(FlexibleAppVersionArgs)
+            __props__ = FlexibleAppVersionArrgs.__new__(FlexibleAppVersionArrgs)
 
             __props__.__dict__["api_config"] = api_config
             __props__.__dict__["automatic_scaling"] = automatic_scaling
@@ -1512,27 +1512,27 @@ class FlexibleAppVersion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api_config: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionApiConfigArgs']]] = None,
-            automatic_scaling: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionAutomaticScalingArgs']]] = None,
+            api_config: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionApiConfigArrgs']]] = None,
+            automatic_scaling: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionAutomaticScalingArrgs']]] = None,
             beta_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             default_expiration: Optional[pulumi.Input[str]] = None,
             delete_service_on_destroy: Optional[pulumi.Input[bool]] = None,
-            deployment: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionDeploymentArgs']]] = None,
-            endpoints_api_service: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionEndpointsApiServiceArgs']]] = None,
-            entrypoint: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionEntrypointArgs']]] = None,
+            deployment: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionDeploymentArrgs']]] = None,
+            endpoints_api_service: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionEndpointsApiServiceArrgs']]] = None,
+            entrypoint: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionEntrypointArrgs']]] = None,
             env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlexibleAppVersionHandlerArgs']]]]] = None,
+            handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlexibleAppVersionHandlerArrgs']]]]] = None,
             inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             instance_class: Optional[pulumi.Input[str]] = None,
-            liveness_check: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionLivenessCheckArgs']]] = None,
-            manual_scaling: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionManualScalingArgs']]] = None,
+            liveness_check: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionLivenessCheckArrgs']]] = None,
+            manual_scaling: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionManualScalingArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            network: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionNetworkArgs']]] = None,
+            network: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionNetworkArrgs']]] = None,
             nobuild_files_regex: Optional[pulumi.Input[str]] = None,
             noop_on_destroy: Optional[pulumi.Input[bool]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            readiness_check: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionReadinessCheckArgs']]] = None,
-            resources: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionResourcesArgs']]] = None,
+            readiness_check: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionReadinessCheckArrgs']]] = None,
+            resources: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionResourcesArrgs']]] = None,
             runtime: Optional[pulumi.Input[str]] = None,
             runtime_api_version: Optional[pulumi.Input[str]] = None,
             runtime_channel: Optional[pulumi.Input[str]] = None,
@@ -1541,7 +1541,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
             service_account: Optional[pulumi.Input[str]] = None,
             serving_status: Optional[pulumi.Input[str]] = None,
             version_id: Optional[pulumi.Input[str]] = None,
-            vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionVpcAccessConnectorArgs']]] = None) -> 'FlexibleAppVersion':
+            vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionVpcAccessConnectorArrgs']]] = None) -> 'FlexibleAppVersion':
         """
         Get an existing FlexibleAppVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1549,22 +1549,22 @@ class FlexibleAppVersion(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionApiConfigArgs']] api_config: Serving configuration for Google Cloud Endpoints.
+        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionApiConfigArrgs']] api_config: Serving configuration for Google Cloud Endpoints.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionAutomaticScalingArgs']] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.
+        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionAutomaticScalingArrgs']] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] beta_settings: Metadata settings that are supplied to this version to enable beta runtime features.
         :param pulumi.Input[str] default_expiration: Duration that static files should be cached by web proxies and browsers.
                Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
         :param pulumi.Input[bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.
-        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionDeploymentArgs']] deployment: Code and application artifacts that make up this version.
+        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionDeploymentArrgs']] deployment: Code and application artifacts that make up this version.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionEndpointsApiServiceArgs']] endpoints_api_service: Code and application artifacts that make up this version.
+        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionEndpointsApiServiceArrgs']] endpoints_api_service: Code and application artifacts that make up this version.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionEntrypointArgs']] entrypoint: The entrypoint for the application.
+        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionEntrypointArrgs']] entrypoint: The entrypoint for the application.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env_variables: Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlexibleAppVersionHandlerArgs']]]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlexibleAppVersionHandlerArrgs']]]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
                The first matching URL handles the request and other request handlers are not attempted.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] inbound_services: A list of the types of messages that this application is able to receive.
@@ -1573,21 +1573,21 @@ class FlexibleAppVersion(pulumi.CustomResource):
                AutomaticScaling: F1, F2, F4, F4_1G
                ManualScaling: B1, B2, B4, B8, B4_1G
                Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
-        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionLivenessCheckArgs']] liveness_check: Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
+        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionLivenessCheckArrgs']] liveness_check: Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionManualScalingArgs']] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionManualScalingArrgs']] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
         :param pulumi.Input[str] name: Endpoints service name which is the name of the "service" resource in the Service Management API.
                For example "myapi.endpoints.myproject.cloud.goog"
-        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionNetworkArgs']] network: Extra network settings
+        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionNetworkArrgs']] network: Extra network settings
                Structure is documented below.
         :param pulumi.Input[str] nobuild_files_regex: Files that match this pattern will not be built into this version. Only applicable for Go runtimes.
         :param pulumi.Input[bool] noop_on_destroy: If set to `true`, the application version will not be deleted.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionReadinessCheckArgs']] readiness_check: Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
+        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionReadinessCheckArrgs']] readiness_check: Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionResourcesArgs']] resources: Machine resources for a version.
+        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionResourcesArrgs']] resources: Machine resources for a version.
                Structure is documented below.
         :param pulumi.Input[str] runtime: Desired runtime. Example python27.
         :param pulumi.Input[str] runtime_api_version: The version of the API in the given runtime environment.
@@ -1603,7 +1603,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
                Possible values are: `SERVING`, `STOPPED`.
         :param pulumi.Input[str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
                Reserved names,"default", "latest", and any name with the prefix "ah-".
-        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionVpcAccessConnectorArgs']] vpc_access_connector: Enables VPC connectivity for standard apps.
+        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionVpcAccessConnectorArrgs']] vpc_access_connector: Enables VPC connectivity for standard apps.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

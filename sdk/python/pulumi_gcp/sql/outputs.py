@@ -84,7 +84,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class DatabaseInstanceClone(dict):
+calass DatabaseInstanceClone(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -179,7 +179,7 @@ class DatabaseInstanceClone(dict):
 
 
 @pulumi.output_type
-class DatabaseInstanceIpAddress(dict):
+calass DatabaseInstanceIpAddress(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -227,7 +227,7 @@ class DatabaseInstanceIpAddress(dict):
 
 
 @pulumi.output_type
-class DatabaseInstanceReplicaConfiguration(dict):
+calass DatabaseInstanceReplicaConfiguration(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -421,7 +421,7 @@ class DatabaseInstanceReplicaConfiguration(dict):
 
 
 @pulumi.output_type
-class DatabaseInstanceRestoreBackupContext(dict):
+calass DatabaseInstanceRestoreBackupContext(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -484,7 +484,7 @@ class DatabaseInstanceRestoreBackupContext(dict):
 
 
 @pulumi.output_type
-class DatabaseInstanceServerCaCert(dict):
+calass DatabaseInstanceServerCaCert(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -560,7 +560,7 @@ class DatabaseInstanceServerCaCert(dict):
 
 
 @pulumi.output_type
-class DatabaseInstanceSettings(dict):
+calass DatabaseInstanceSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -911,7 +911,7 @@ class DatabaseInstanceSettings(dict):
 
 
 @pulumi.output_type
-class DatabaseInstanceSettingsActiveDirectoryConfig(dict):
+calass DatabaseInstanceSettingsActiveDirectoryConfig(dict):
     def __init__(__self__, *,
                  domain: str):
         """
@@ -931,7 +931,7 @@ class DatabaseInstanceSettingsActiveDirectoryConfig(dict):
 
 
 @pulumi.output_type
-class DatabaseInstanceSettingsAdvancedMachineFeatures(dict):
+calass DatabaseInstanceSettingsAdvancedMachineFeatures(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -967,7 +967,7 @@ class DatabaseInstanceSettingsAdvancedMachineFeatures(dict):
 
 
 @pulumi.output_type
-class DatabaseInstanceSettingsBackupConfiguration(dict):
+calass DatabaseInstanceSettingsBackupConfiguration(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1002,7 +1002,7 @@ class DatabaseInstanceSettingsBackupConfiguration(dict):
                  start_time: Optional[str] = None,
                  transaction_log_retention_days: Optional[int] = None):
         """
-        :param 'DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs' backup_retention_settings: Backup retention settings. The configuration is detailed below.
+        :param 'DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArrgs' backup_retention_settings: Backup retention settings. The configuration is detailed below.
         :param bool binary_log_enabled: True if binary logging is enabled.
                Can only be used with MySQL.
         :param bool enabled: True if backup configuration is enabled.
@@ -1087,7 +1087,7 @@ class DatabaseInstanceSettingsBackupConfiguration(dict):
 
 
 @pulumi.output_type
-class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings(dict):
+calass DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1138,7 +1138,7 @@ class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings(dict):
 
 
 @pulumi.output_type
-class DatabaseInstanceSettingsDataCacheConfig(dict):
+calass DatabaseInstanceSettingsDataCacheConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1174,7 +1174,7 @@ class DatabaseInstanceSettingsDataCacheConfig(dict):
 
 
 @pulumi.output_type
-class DatabaseInstanceSettingsDatabaseFlag(dict):
+calass DatabaseInstanceSettingsDatabaseFlag(dict):
     def __init__(__self__, *,
                  name: str,
                  value: str):
@@ -1203,7 +1203,7 @@ class DatabaseInstanceSettingsDatabaseFlag(dict):
 
 
 @pulumi.output_type
-class DatabaseInstanceSettingsDenyMaintenancePeriod(dict):
+calass DatabaseInstanceSettingsDenyMaintenancePeriod(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1262,7 +1262,7 @@ class DatabaseInstanceSettingsDenyMaintenancePeriod(dict):
 
 
 @pulumi.output_type
-class DatabaseInstanceSettingsInsightsConfig(dict):
+calass DatabaseInstanceSettingsInsightsConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1358,7 +1358,7 @@ class DatabaseInstanceSettingsInsightsConfig(dict):
 
 
 @pulumi.output_type
-class DatabaseInstanceSettingsIpConfiguration(dict):
+calass DatabaseInstanceSettingsIpConfiguration(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1502,7 +1502,7 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
 
 
 @pulumi.output_type
-class DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork(dict):
+calass DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1567,7 +1567,7 @@ class DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork(dict):
 
 
 @pulumi.output_type
-class DatabaseInstanceSettingsIpConfigurationPscConfig(dict):
+calass DatabaseInstanceSettingsIpConfigurationPscConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1617,7 +1617,7 @@ class DatabaseInstanceSettingsIpConfigurationPscConfig(dict):
 
 
 @pulumi.output_type
-class DatabaseInstanceSettingsLocationPreference(dict):
+calass DatabaseInstanceSettingsLocationPreference(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1691,7 +1691,7 @@ class DatabaseInstanceSettingsLocationPreference(dict):
 
 
 @pulumi.output_type
-class DatabaseInstanceSettingsMaintenanceWindow(dict):
+calass DatabaseInstanceSettingsMaintenanceWindow(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1757,7 +1757,7 @@ class DatabaseInstanceSettingsMaintenanceWindow(dict):
 
 
 @pulumi.output_type
-class DatabaseInstanceSettingsPasswordValidationPolicy(dict):
+calass DatabaseInstanceSettingsPasswordValidationPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1866,7 +1866,7 @@ class DatabaseInstanceSettingsPasswordValidationPolicy(dict):
 
 
 @pulumi.output_type
-class DatabaseInstanceSettingsSqlServerAuditConfig(dict):
+calass DatabaseInstanceSettingsSqlServerAuditConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1928,7 +1928,7 @@ class DatabaseInstanceSettingsSqlServerAuditConfig(dict):
 
 
 @pulumi.output_type
-class UserPasswordPolicy(dict):
+calass UserPasswordPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2014,7 +2014,7 @@ class UserPasswordPolicy(dict):
 
 
 @pulumi.output_type
-class UserPasswordPolicyStatus(dict):
+calass UserPasswordPolicyStatus(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2062,7 +2062,7 @@ class UserPasswordPolicyStatus(dict):
 
 
 @pulumi.output_type
-class UserSqlServerUserDetail(dict):
+calass UserSqlServerUserDetail(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2100,7 +2100,7 @@ class UserSqlServerUserDetail(dict):
 
 
 @pulumi.output_type
-class GetCaCertsCertResult(dict):
+calass GetCaCertsCertResult(dict):
     def __init__(__self__, *,
                  cert: str,
                  common_name: str,
@@ -2162,7 +2162,7 @@ class GetCaCertsCertResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstanceCloneResult(dict):
+calass GetDatabaseInstanceCloneResult(dict):
     def __init__(__self__, *,
                  allocated_ip_range: str,
                  database_names: Sequence[str],
@@ -2202,7 +2202,7 @@ class GetDatabaseInstanceCloneResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstanceIpAddressResult(dict):
+calass GetDatabaseInstanceIpAddressResult(dict):
     def __init__(__self__, *,
                  ip_address: str,
                  time_to_retire: str,
@@ -2228,7 +2228,7 @@ class GetDatabaseInstanceIpAddressResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstanceReplicaConfigurationResult(dict):
+calass GetDatabaseInstanceReplicaConfigurationResult(dict):
     def __init__(__self__, *,
                  ca_certificate: str,
                  client_certificate: str,
@@ -2310,7 +2310,7 @@ class GetDatabaseInstanceReplicaConfigurationResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstanceRestoreBackupContextResult(dict):
+calass GetDatabaseInstanceRestoreBackupContextResult(dict):
     def __init__(__self__, *,
                  backup_run_id: int,
                  instance_id: str,
@@ -2342,7 +2342,7 @@ class GetDatabaseInstanceRestoreBackupContextResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstanceServerCaCertResult(dict):
+calass GetDatabaseInstanceServerCaCertResult(dict):
     def __init__(__self__, *,
                  cert: str,
                  common_name: str,
@@ -2382,7 +2382,7 @@ class GetDatabaseInstanceServerCaCertResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstanceSettingResult(dict):
+calass GetDatabaseInstanceSettingResult(dict):
     def __init__(__self__, *,
                  activation_policy: str,
                  active_directory_configs: Sequence['outputs.GetDatabaseInstanceSettingActiveDirectoryConfigResult'],
@@ -2576,7 +2576,7 @@ class GetDatabaseInstanceSettingResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstanceSettingActiveDirectoryConfigResult(dict):
+calass GetDatabaseInstanceSettingActiveDirectoryConfigResult(dict):
     def __init__(__self__, *,
                  domain: str):
         pulumi.set(__self__, "domain", domain)
@@ -2588,7 +2588,7 @@ class GetDatabaseInstanceSettingActiveDirectoryConfigResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstanceSettingAdvancedMachineFeatureResult(dict):
+calass GetDatabaseInstanceSettingAdvancedMachineFeatureResult(dict):
     def __init__(__self__, *,
                  threads_per_core: int):
         pulumi.set(__self__, "threads_per_core", threads_per_core)
@@ -2600,7 +2600,7 @@ class GetDatabaseInstanceSettingAdvancedMachineFeatureResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstanceSettingBackupConfigurationResult(dict):
+calass GetDatabaseInstanceSettingBackupConfigurationResult(dict):
     def __init__(__self__, *,
                  backup_retention_settings: Sequence['outputs.GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingResult'],
                  binary_log_enabled: bool,
@@ -2654,7 +2654,7 @@ class GetDatabaseInstanceSettingBackupConfigurationResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingResult(dict):
+calass GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingResult(dict):
     def __init__(__self__, *,
                  retained_backups: int,
                  retention_unit: str):
@@ -2673,7 +2673,7 @@ class GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingResult(
 
 
 @pulumi.output_type
-class GetDatabaseInstanceSettingDataCacheConfigResult(dict):
+calass GetDatabaseInstanceSettingDataCacheConfigResult(dict):
     def __init__(__self__, *,
                  data_cache_enabled: bool):
         pulumi.set(__self__, "data_cache_enabled", data_cache_enabled)
@@ -2685,7 +2685,7 @@ class GetDatabaseInstanceSettingDataCacheConfigResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstanceSettingDatabaseFlagResult(dict):
+calass GetDatabaseInstanceSettingDatabaseFlagResult(dict):
     def __init__(__self__, *,
                  name: str,
                  value: str):
@@ -2710,7 +2710,7 @@ class GetDatabaseInstanceSettingDatabaseFlagResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstanceSettingDenyMaintenancePeriodResult(dict):
+calass GetDatabaseInstanceSettingDenyMaintenancePeriodResult(dict):
     def __init__(__self__, *,
                  end_date: str,
                  start_date: str,
@@ -2736,7 +2736,7 @@ class GetDatabaseInstanceSettingDenyMaintenancePeriodResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstanceSettingInsightsConfigResult(dict):
+calass GetDatabaseInstanceSettingInsightsConfigResult(dict):
     def __init__(__self__, *,
                  query_insights_enabled: bool,
                  query_plans_per_minute: int,
@@ -2776,7 +2776,7 @@ class GetDatabaseInstanceSettingInsightsConfigResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstanceSettingIpConfigurationResult(dict):
+calass GetDatabaseInstanceSettingIpConfigurationResult(dict):
     def __init__(__self__, *,
                  allocated_ip_range: str,
                  authorized_networks: Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult'],
@@ -2837,7 +2837,7 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult(dict):
+calass GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult(dict):
     def __init__(__self__, *,
                  expiration_time: str,
                  name: str,
@@ -2869,7 +2869,7 @@ class GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstanceSettingIpConfigurationPscConfigResult(dict):
+calass GetDatabaseInstanceSettingIpConfigurationPscConfigResult(dict):
     def __init__(__self__, *,
                  allowed_consumer_projects: Sequence[str],
                  psc_enabled: bool):
@@ -2888,7 +2888,7 @@ class GetDatabaseInstanceSettingIpConfigurationPscConfigResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstanceSettingLocationPreferenceResult(dict):
+calass GetDatabaseInstanceSettingLocationPreferenceResult(dict):
     def __init__(__self__, *,
                  follow_gae_application: str,
                  secondary_zone: str,
@@ -2914,7 +2914,7 @@ class GetDatabaseInstanceSettingLocationPreferenceResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstanceSettingMaintenanceWindowResult(dict):
+calass GetDatabaseInstanceSettingMaintenanceWindowResult(dict):
     def __init__(__self__, *,
                  day: int,
                  hour: int,
@@ -2940,7 +2940,7 @@ class GetDatabaseInstanceSettingMaintenanceWindowResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstanceSettingPasswordValidationPolicyResult(dict):
+calass GetDatabaseInstanceSettingPasswordValidationPolicyResult(dict):
     def __init__(__self__, *,
                  complexity: str,
                  disallow_username_substring: bool,
@@ -2987,7 +2987,7 @@ class GetDatabaseInstanceSettingPasswordValidationPolicyResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstanceSettingSqlServerAuditConfigResult(dict):
+calass GetDatabaseInstanceSettingSqlServerAuditConfigResult(dict):
     def __init__(__self__, *,
                  bucket: str,
                  retention_interval: str,
@@ -3013,7 +3013,7 @@ class GetDatabaseInstanceSettingSqlServerAuditConfigResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstancesInstanceResult(dict):
+calass GetDatabaseInstancesInstanceResult(dict):
     def __init__(__self__, *,
                  available_maintenance_versions: Sequence[str],
                  clones: Sequence['outputs.GetDatabaseInstancesInstanceCloneResult'],
@@ -3207,7 +3207,7 @@ class GetDatabaseInstancesInstanceResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstancesInstanceCloneResult(dict):
+calass GetDatabaseInstancesInstanceCloneResult(dict):
     def __init__(__self__, *,
                  allocated_ip_range: str,
                  database_names: Sequence[str],
@@ -3247,7 +3247,7 @@ class GetDatabaseInstancesInstanceCloneResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstancesInstanceIpAddressResult(dict):
+calass GetDatabaseInstancesInstanceIpAddressResult(dict):
     def __init__(__self__, *,
                  ip_address: str,
                  time_to_retire: str,
@@ -3273,7 +3273,7 @@ class GetDatabaseInstancesInstanceIpAddressResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstancesInstanceReplicaConfigurationResult(dict):
+calass GetDatabaseInstancesInstanceReplicaConfigurationResult(dict):
     def __init__(__self__, *,
                  ca_certificate: str,
                  client_certificate: str,
@@ -3355,7 +3355,7 @@ class GetDatabaseInstancesInstanceReplicaConfigurationResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstancesInstanceRestoreBackupContextResult(dict):
+calass GetDatabaseInstancesInstanceRestoreBackupContextResult(dict):
     def __init__(__self__, *,
                  backup_run_id: int,
                  instance_id: str,
@@ -3387,7 +3387,7 @@ class GetDatabaseInstancesInstanceRestoreBackupContextResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstancesInstanceServerCaCertResult(dict):
+calass GetDatabaseInstancesInstanceServerCaCertResult(dict):
     def __init__(__self__, *,
                  cert: str,
                  common_name: str,
@@ -3427,7 +3427,7 @@ class GetDatabaseInstancesInstanceServerCaCertResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstancesInstanceSettingResult(dict):
+calass GetDatabaseInstancesInstanceSettingResult(dict):
     def __init__(__self__, *,
                  activation_policy: str,
                  active_directory_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingActiveDirectoryConfigResult'],
@@ -3627,7 +3627,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstancesInstanceSettingActiveDirectoryConfigResult(dict):
+calass GetDatabaseInstancesInstanceSettingActiveDirectoryConfigResult(dict):
     def __init__(__self__, *,
                  domain: str):
         pulumi.set(__self__, "domain", domain)
@@ -3639,7 +3639,7 @@ class GetDatabaseInstancesInstanceSettingActiveDirectoryConfigResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureResult(dict):
+calass GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureResult(dict):
     def __init__(__self__, *,
                  threads_per_core: int):
         pulumi.set(__self__, "threads_per_core", threads_per_core)
@@ -3651,7 +3651,7 @@ class GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstancesInstanceSettingBackupConfigurationResult(dict):
+calass GetDatabaseInstancesInstanceSettingBackupConfigurationResult(dict):
     def __init__(__self__, *,
                  backup_retention_settings: Sequence['outputs.GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingResult'],
                  binary_log_enabled: bool,
@@ -3705,7 +3705,7 @@ class GetDatabaseInstancesInstanceSettingBackupConfigurationResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingResult(dict):
+calass GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingResult(dict):
     def __init__(__self__, *,
                  retained_backups: int,
                  retention_unit: str):
@@ -3724,7 +3724,7 @@ class GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetti
 
 
 @pulumi.output_type
-class GetDatabaseInstancesInstanceSettingDataCacheConfigResult(dict):
+calass GetDatabaseInstancesInstanceSettingDataCacheConfigResult(dict):
     def __init__(__self__, *,
                  data_cache_enabled: bool):
         pulumi.set(__self__, "data_cache_enabled", data_cache_enabled)
@@ -3736,7 +3736,7 @@ class GetDatabaseInstancesInstanceSettingDataCacheConfigResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstancesInstanceSettingDatabaseFlagResult(dict):
+calass GetDatabaseInstancesInstanceSettingDatabaseFlagResult(dict):
     def __init__(__self__, *,
                  name: str,
                  value: str):
@@ -3755,7 +3755,7 @@ class GetDatabaseInstancesInstanceSettingDatabaseFlagResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodResult(dict):
+calass GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodResult(dict):
     def __init__(__self__, *,
                  end_date: str,
                  start_date: str,
@@ -3781,7 +3781,7 @@ class GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstancesInstanceSettingInsightsConfigResult(dict):
+calass GetDatabaseInstancesInstanceSettingInsightsConfigResult(dict):
     def __init__(__self__, *,
                  query_insights_enabled: bool,
                  query_plans_per_minute: int,
@@ -3821,7 +3821,7 @@ class GetDatabaseInstancesInstanceSettingInsightsConfigResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
+calass GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
     def __init__(__self__, *,
                  allocated_ip_range: str,
                  authorized_networks: Sequence['outputs.GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkResult'],
@@ -3882,7 +3882,7 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkResult(dict):
+calass GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkResult(dict):
     def __init__(__self__, *,
                  expiration_time: str,
                  name: str,
@@ -3908,7 +3908,7 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkResult(
 
 
 @pulumi.output_type
-class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult(dict):
+calass GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult(dict):
     def __init__(__self__, *,
                  allowed_consumer_projects: Sequence[str],
                  psc_enabled: bool):
@@ -3927,7 +3927,7 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstancesInstanceSettingLocationPreferenceResult(dict):
+calass GetDatabaseInstancesInstanceSettingLocationPreferenceResult(dict):
     def __init__(__self__, *,
                  follow_gae_application: str,
                  secondary_zone: str,
@@ -3959,7 +3959,7 @@ class GetDatabaseInstancesInstanceSettingLocationPreferenceResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstancesInstanceSettingMaintenanceWindowResult(dict):
+calass GetDatabaseInstancesInstanceSettingMaintenanceWindowResult(dict):
     def __init__(__self__, *,
                  day: int,
                  hour: int,
@@ -3985,7 +3985,7 @@ class GetDatabaseInstancesInstanceSettingMaintenanceWindowResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstancesInstanceSettingPasswordValidationPolicyResult(dict):
+calass GetDatabaseInstancesInstanceSettingPasswordValidationPolicyResult(dict):
     def __init__(__self__, *,
                  complexity: str,
                  disallow_username_substring: bool,
@@ -4032,7 +4032,7 @@ class GetDatabaseInstancesInstanceSettingPasswordValidationPolicyResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseInstancesInstanceSettingSqlServerAuditConfigResult(dict):
+calass GetDatabaseInstancesInstanceSettingSqlServerAuditConfigResult(dict):
     def __init__(__self__, *,
                  bucket: str,
                  retention_interval: str,
@@ -4058,7 +4058,7 @@ class GetDatabaseInstancesInstanceSettingSqlServerAuditConfigResult(dict):
 
 
 @pulumi.output_type
-class GetDatabasesDatabaseResult(dict):
+calass GetDatabasesDatabaseResult(dict):
     def __init__(__self__, *,
                  charset: str,
                  collation: str,
@@ -4126,7 +4126,7 @@ class GetDatabasesDatabaseResult(dict):
 
 
 @pulumi.output_type
-class GetTiersTierResult(dict):
+calass GetTiersTierResult(dict):
     def __init__(__self__, *,
                  disk_quota: int,
                  ram: int,

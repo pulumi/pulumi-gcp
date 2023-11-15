@@ -10,50 +10,50 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'DomainMappingMetadataArgs',
-    'DomainMappingSpecArgs',
-    'DomainMappingStatusArgs',
-    'DomainMappingStatusConditionArgs',
-    'DomainMappingStatusResourceRecordArgs',
-    'IamBindingConditionArgs',
-    'IamMemberConditionArgs',
-    'ServiceMetadataArgs',
-    'ServiceStatusArgs',
-    'ServiceStatusConditionArgs',
-    'ServiceStatusTrafficArgs',
-    'ServiceTemplateArgs',
-    'ServiceTemplateMetadataArgs',
-    'ServiceTemplateSpecArgs',
-    'ServiceTemplateSpecContainerArgs',
-    'ServiceTemplateSpecContainerEnvArgs',
-    'ServiceTemplateSpecContainerEnvFromArgs',
-    'ServiceTemplateSpecContainerEnvFromConfigMapRefArgs',
-    'ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs',
-    'ServiceTemplateSpecContainerEnvFromSecretRefArgs',
-    'ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs',
-    'ServiceTemplateSpecContainerEnvValueFromArgs',
-    'ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs',
-    'ServiceTemplateSpecContainerLivenessProbeArgs',
-    'ServiceTemplateSpecContainerLivenessProbeGrpcArgs',
-    'ServiceTemplateSpecContainerLivenessProbeHttpGetArgs',
-    'ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs',
-    'ServiceTemplateSpecContainerPortArgs',
-    'ServiceTemplateSpecContainerResourcesArgs',
-    'ServiceTemplateSpecContainerStartupProbeArgs',
-    'ServiceTemplateSpecContainerStartupProbeGrpcArgs',
-    'ServiceTemplateSpecContainerStartupProbeHttpGetArgs',
-    'ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs',
-    'ServiceTemplateSpecContainerStartupProbeTcpSocketArgs',
-    'ServiceTemplateSpecContainerVolumeMountArgs',
-    'ServiceTemplateSpecVolumeArgs',
-    'ServiceTemplateSpecVolumeEmptyDirArgs',
-    'ServiceTemplateSpecVolumeSecretArgs',
-    'ServiceTemplateSpecVolumeSecretItemArgs',
-    'ServiceTrafficArgs',
+    'DomainMappingMetadataArrgs',
+    'DomainMappingSpecArrgs',
+    'DomainMappingStatusArrgs',
+    'DomainMappingStatusConditionArrgs',
+    'DomainMappingStatusResourceRecordArrgs',
+    'IamBindingConditionArrgs',
+    'IamMemberConditionArrgs',
+    'ServiceMetadataArrgs',
+    'ServiceStatusArrgs',
+    'ServiceStatusConditionArrgs',
+    'ServiceStatusTrafficArrgs',
+    'ServiceTemplateArrgs',
+    'ServiceTemplateMetadataArrgs',
+    'ServiceTemplateSpecArrgs',
+    'ServiceTemplateSpecContainerArrgs',
+    'ServiceTemplateSpecContainerEnvArrgs',
+    'ServiceTemplateSpecContainerEnvFromArrgs',
+    'ServiceTemplateSpecContainerEnvFromConfigMapRefArrgs',
+    'ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArrgs',
+    'ServiceTemplateSpecContainerEnvFromSecretRefArrgs',
+    'ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArrgs',
+    'ServiceTemplateSpecContainerEnvValueFromArrgs',
+    'ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArrgs',
+    'ServiceTemplateSpecContainerLivenessProbeArrgs',
+    'ServiceTemplateSpecContainerLivenessProbeGrpcArrgs',
+    'ServiceTemplateSpecContainerLivenessProbeHttpGetArrgs',
+    'ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrgs',
+    'ServiceTemplateSpecContainerPortArrgs',
+    'ServiceTemplateSpecContainerResourcesArrgs',
+    'ServiceTemplateSpecContainerStartupProbeArrgs',
+    'ServiceTemplateSpecContainerStartupProbeGrpcArrgs',
+    'ServiceTemplateSpecContainerStartupProbeHttpGetArrgs',
+    'ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrgs',
+    'ServiceTemplateSpecContainerStartupProbeTcpSocketArrgs',
+    'ServiceTemplateSpecContainerVolumeMountArrgs',
+    'ServiceTemplateSpecVolumeArrgs',
+    'ServiceTemplateSpecVolumeEmptyDirArrgs',
+    'ServiceTemplateSpecVolumeSecretArrgs',
+    'ServiceTemplateSpecVolumeSecretItemArrgs',
+    'ServiceTrafficArrgs',
 ]
 
 @pulumi.input_type
-class DomainMappingMetadataArgs:
+calass DomainMappingMetadataArrgs:
     def __init__(__self__, *,
                  namespace: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -271,7 +271,7 @@ class DomainMappingMetadataArgs:
 
 
 @pulumi.input_type
-class DomainMappingSpecArgs:
+calass DomainMappingSpecArrgs:
     def __init__(__self__, *,
                  route_name: pulumi.Input[str],
                  certificate_mode: Optional[pulumi.Input[str]] = None,
@@ -341,14 +341,14 @@ class DomainMappingSpecArgs:
 
 
 @pulumi.input_type
-class DomainMappingStatusArgs:
+calass DomainMappingStatusArrgs:
     def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusConditionArgs']]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusConditionArrgs']]]] = None,
                  mapped_route_name: Optional[pulumi.Input[str]] = None,
                  observed_generation: Optional[pulumi.Input[int]] = None,
-                 resource_records: Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusResourceRecordArgs']]]] = None):
+                 resource_records: Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusResourceRecordArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusConditionArgs']]] conditions: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusConditionArrgs']]] conditions: (Output)
                Array of observed DomainMappingConditions, indicating the current state
                of the DomainMapping.
                Structure is documented below.
@@ -357,7 +357,7 @@ class DomainMappingStatusArgs:
         :param pulumi.Input[int] observed_generation: (Output)
                ObservedGeneration is the 'Generation' of the DomainMapping that
                was last processed by the controller.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusResourceRecordArgs']]] resource_records: The resource records required to configure this domain mapping. These
+        :param pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusResourceRecordArrgs']]] resource_records: The resource records required to configure this domain mapping. These
                records must be added to the domain's DNS configuration in order to
                serve the application via this domain mapping.
                Structure is documented below.
@@ -373,7 +373,7 @@ class DomainMappingStatusArgs:
 
     @property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusConditionArgs']]]]:
+    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusConditionArrgs']]]]:
         """
         (Output)
         Array of observed DomainMappingConditions, indicating the current state
@@ -383,7 +383,7 @@ class DomainMappingStatusArgs:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusConditionArgs']]]]):
+    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusConditionArrgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @property
@@ -415,7 +415,7 @@ class DomainMappingStatusArgs:
 
     @property
     @pulumi.getter(name="resourceRecords")
-    def resource_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusResourceRecordArgs']]]]:
+    def resource_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusResourceRecordArrgs']]]]:
         """
         The resource records required to configure this domain mapping. These
         records must be added to the domain's DNS configuration in order to
@@ -425,12 +425,12 @@ class DomainMappingStatusArgs:
         return pulumi.get(self, "resource_records")
 
     @resource_records.setter
-    def resource_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusResourceRecordArgs']]]]):
+    def resource_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusResourceRecordArrgs']]]]):
         pulumi.set(self, "resource_records", value)
 
 
 @pulumi.input_type
-class DomainMappingStatusConditionArgs:
+calass DomainMappingStatusConditionArrgs:
     def __init__(__self__, *,
                  message: Optional[pulumi.Input[str]] = None,
                  reason: Optional[pulumi.Input[str]] = None,
@@ -509,7 +509,7 @@ class DomainMappingStatusConditionArgs:
 
 
 @pulumi.input_type
-class DomainMappingStatusResourceRecordArgs:
+calass DomainMappingStatusResourceRecordArrgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
                  rrdata: Optional[pulumi.Input[str]] = None,
@@ -570,7 +570,7 @@ class DomainMappingStatusResourceRecordArgs:
 
 
 @pulumi.input_type
-class IamBindingConditionArgs:
+calass IamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -609,7 +609,7 @@ class IamBindingConditionArgs:
 
 
 @pulumi.input_type
-class IamMemberConditionArgs:
+calass IamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -648,7 +648,7 @@ class IamMemberConditionArgs:
 
 
 @pulumi.input_type
-class ServiceMetadataArgs:
+calass ServiceMetadataArrgs:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -883,16 +883,16 @@ class ServiceMetadataArgs:
 
 
 @pulumi.input_type
-class ServiceStatusArgs:
+calass ServiceStatusArrgs:
     def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceStatusConditionArgs']]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceStatusConditionArrgs']]]] = None,
                  latest_created_revision_name: Optional[pulumi.Input[str]] = None,
                  latest_ready_revision_name: Optional[pulumi.Input[str]] = None,
                  observed_generation: Optional[pulumi.Input[int]] = None,
-                 traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceStatusTrafficArgs']]]] = None,
+                 traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceStatusTrafficArrgs']]]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceStatusConditionArgs']]] conditions: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceStatusConditionArrgs']]] conditions: (Output)
                Array of observed Service Conditions, indicating the current ready state of the service.
                Structure is documented below.
         :param pulumi.Input[str] latest_created_revision_name: (Output)
@@ -908,7 +908,7 @@ class ServiceStatusArgs:
                controller.
                Clients polling for completed reconciliation should poll until observedGeneration =
                metadata.generation and the Ready condition's status is True or False.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceStatusTrafficArgs']]] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceStatusTrafficArrgs']]] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions
                and Configurations
                Structure is documented below.
         :param pulumi.Input[str] url: (Output)
@@ -931,7 +931,7 @@ class ServiceStatusArgs:
 
     @property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceStatusConditionArgs']]]]:
+    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceStatusConditionArrgs']]]]:
         """
         (Output)
         Array of observed Service Conditions, indicating the current ready state of the service.
@@ -940,7 +940,7 @@ class ServiceStatusArgs:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceStatusConditionArgs']]]]):
+    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceStatusConditionArrgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @property
@@ -991,7 +991,7 @@ class ServiceStatusArgs:
 
     @property
     @pulumi.getter
-    def traffics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceStatusTrafficArgs']]]]:
+    def traffics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceStatusTrafficArrgs']]]]:
         """
         Traffic specifies how to distribute traffic over a collection of Knative Revisions
         and Configurations
@@ -1000,7 +1000,7 @@ class ServiceStatusArgs:
         return pulumi.get(self, "traffics")
 
     @traffics.setter
-    def traffics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceStatusTrafficArgs']]]]):
+    def traffics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceStatusTrafficArrgs']]]]):
         pulumi.set(self, "traffics", value)
 
     @property
@@ -1020,7 +1020,7 @@ class ServiceStatusArgs:
 
 
 @pulumi.input_type
-class ServiceStatusConditionArgs:
+calass ServiceStatusConditionArrgs:
     def __init__(__self__, *,
                  message: Optional[pulumi.Input[str]] = None,
                  reason: Optional[pulumi.Input[str]] = None,
@@ -1099,7 +1099,7 @@ class ServiceStatusConditionArgs:
 
 
 @pulumi.input_type
-class ServiceStatusTrafficArgs:
+calass ServiceStatusTrafficArrgs:
     def __init__(__self__, *,
                  latest_revision: Optional[pulumi.Input[bool]] = None,
                  percent: Optional[pulumi.Input[int]] = None,
@@ -1198,12 +1198,12 @@ class ServiceStatusTrafficArgs:
 
 
 @pulumi.input_type
-class ServiceTemplateArgs:
+calass ServiceTemplateArrgs:
     def __init__(__self__, *,
-                 metadata: Optional[pulumi.Input['ServiceTemplateMetadataArgs']] = None,
-                 spec: Optional[pulumi.Input['ServiceTemplateSpecArgs']] = None):
+                 metadata: Optional[pulumi.Input['ServiceTemplateMetadataArrgs']] = None,
+                 spec: Optional[pulumi.Input['ServiceTemplateSpecArrgs']] = None):
         """
-        :param pulumi.Input['ServiceTemplateMetadataArgs'] metadata: Optional metadata for this Revision, including labels and annotations.
+        :param pulumi.Input['ServiceTemplateMetadataArrgs'] metadata: Optional metadata for this Revision, including labels and annotations.
                Name will be generated by the Configuration. To set minimum instances
                for this revision, use the "autoscaling.knative.dev/minScale" annotation
                key. To set maximum instances for this revision, use the
@@ -1211,7 +1211,7 @@ class ServiceTemplateArgs:
                connections for the revision, use the "run.googleapis.com/cloudsql-instances"
                annotation key.
                Structure is documented below.
-        :param pulumi.Input['ServiceTemplateSpecArgs'] spec: RevisionSpec holds the desired state of the Revision (from the client).
+        :param pulumi.Input['ServiceTemplateSpecArrgs'] spec: RevisionSpec holds the desired state of the Revision (from the client).
                Structure is documented below.
         """
         if metadata is not None:
@@ -1221,7 +1221,7 @@ class ServiceTemplateArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['ServiceTemplateMetadataArgs']]:
+    def metadata(self) -> Optional[pulumi.Input['ServiceTemplateMetadataArrgs']]:
         """
         Optional metadata for this Revision, including labels and annotations.
         Name will be generated by the Configuration. To set minimum instances
@@ -1235,12 +1235,12 @@ class ServiceTemplateArgs:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['ServiceTemplateMetadataArgs']]):
+    def metadata(self, value: Optional[pulumi.Input['ServiceTemplateMetadataArrgs']]):
         pulumi.set(self, "metadata", value)
 
     @property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['ServiceTemplateSpecArgs']]:
+    def spec(self) -> Optional[pulumi.Input['ServiceTemplateSpecArrgs']]:
         """
         RevisionSpec holds the desired state of the Revision (from the client).
         Structure is documented below.
@@ -1248,12 +1248,12 @@ class ServiceTemplateArgs:
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['ServiceTemplateSpecArgs']]):
+    def spec(self, value: Optional[pulumi.Input['ServiceTemplateSpecArrgs']]):
         pulumi.set(self, "spec", value)
 
 
 @pulumi.input_type
-class ServiceTemplateMetadataArgs:
+calass ServiceTemplateMetadataArrgs:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  generation: Optional[pulumi.Input[int]] = None,
@@ -1458,18 +1458,18 @@ class ServiceTemplateMetadataArgs:
 
 
 @pulumi.input_type
-class ServiceTemplateSpecArgs:
+calass ServiceTemplateSpecArrgs:
     def __init__(__self__, *,
                  container_concurrency: Optional[pulumi.Input[int]] = None,
-                 containers: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerArgs']]]] = None,
+                 containers: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerArrgs']]]] = None,
                  service_account_name: Optional[pulumi.Input[str]] = None,
                  serving_state: Optional[pulumi.Input[str]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None,
-                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecVolumeArgs']]]] = None):
+                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecVolumeArrgs']]]] = None):
         """
         :param pulumi.Input[int] container_concurrency: ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
                requests per container of the Revision. Values are:
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerArgs']]] containers: Containers defines the unit of execution for this Revision.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerArrgs']]] containers: Containers defines the unit of execution for this Revision.
                Structure is documented below.
         :param pulumi.Input[str] service_account_name: Email address of the IAM service account associated with the revision of the
                service. The service account represents the identity of the running revision,
@@ -1483,7 +1483,7 @@ class ServiceTemplateSpecArgs:
                
                > **Warning:** `serving_state` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         :param pulumi.Input[int] timeout_seconds: TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecVolumeArgs']]] volumes: Volume represents a named volume in a container.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecVolumeArrgs']]] volumes: Volume represents a named volume in a container.
                Structure is documented below.
         """
         if container_concurrency is not None:
@@ -1517,7 +1517,7 @@ class ServiceTemplateSpecArgs:
 
     @property
     @pulumi.getter
-    def containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerArgs']]]]:
+    def containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerArrgs']]]]:
         """
         Containers defines the unit of execution for this Revision.
         Structure is documented below.
@@ -1525,7 +1525,7 @@ class ServiceTemplateSpecArgs:
         return pulumi.get(self, "containers")
 
     @containers.setter
-    def containers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerArgs']]]]):
+    def containers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerArrgs']]]]):
         pulumi.set(self, "containers", value)
 
     @property
@@ -1578,7 +1578,7 @@ class ServiceTemplateSpecArgs:
 
     @property
     @pulumi.getter
-    def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecVolumeArgs']]]]:
+    def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecVolumeArrgs']]]]:
         """
         Volume represents a named volume in a container.
         Structure is documented below.
@@ -1586,24 +1586,24 @@ class ServiceTemplateSpecArgs:
         return pulumi.get(self, "volumes")
 
     @volumes.setter
-    def volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecVolumeArgs']]]]):
+    def volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecVolumeArrgs']]]]):
         pulumi.set(self, "volumes", value)
 
 
 @pulumi.input_type
-class ServiceTemplateSpecContainerArgs:
+calass ServiceTemplateSpecContainerArrgs:
     def __init__(__self__, *,
                  image: pulumi.Input[str],
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 env_froms: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerEnvFromArgs']]]] = None,
-                 envs: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerEnvArgs']]]] = None,
-                 liveness_probe: Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeArgs']] = None,
+                 env_froms: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerEnvFromArrgs']]]] = None,
+                 envs: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerEnvArrgs']]]] = None,
+                 liveness_probe: Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerPortArgs']]]] = None,
-                 resources: Optional[pulumi.Input['ServiceTemplateSpecContainerResourcesArgs']] = None,
-                 startup_probe: Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeArgs']] = None,
-                 volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerVolumeMountArgs']]]] = None,
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerPortArrgs']]]] = None,
+                 resources: Optional[pulumi.Input['ServiceTemplateSpecContainerResourcesArrgs']] = None,
+                 startup_probe: Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeArrgs']] = None,
+                 volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerVolumeMountArrgs']]]] = None,
                  working_dir: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] image: Docker image name. This is most often a reference to a container located
@@ -1612,7 +1612,7 @@ class ServiceTemplateSpecContainerArgs:
                The docker image's CMD is used if this is not provided.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Entrypoint array. Not executed within a shell.
                The docker image's ENTRYPOINT is used if this is not provided.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerEnvFromArgs']]] env_froms: (Optional, Deprecated)
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerEnvFromArrgs']]] env_froms: (Optional, Deprecated)
                List of sources to populate environment variables in the container.
                All invalid keys will be reported as an event when the container is starting.
                When a key exists in multiple sources, the value associated with the last source will
@@ -1621,21 +1621,21 @@ class ServiceTemplateSpecContainerArgs:
                Structure is documented below.
                
                > **Warning:** `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerEnvArgs']]] envs: List of environment variables to set in the container.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerEnvArrgs']]] envs: List of environment variables to set in the container.
                Structure is documented below.
-        :param pulumi.Input['ServiceTemplateSpecContainerLivenessProbeArgs'] liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+        :param pulumi.Input['ServiceTemplateSpecContainerLivenessProbeArrgs'] liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
                https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the container
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerPortArgs']]] ports: List of open ports in the container.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerPortArrgs']]] ports: List of open ports in the container.
                Structure is documented below.
-        :param pulumi.Input['ServiceTemplateSpecContainerResourcesArgs'] resources: Compute Resources required by this container. Used to set values such as max memory
+        :param pulumi.Input['ServiceTemplateSpecContainerResourcesArrgs'] resources: Compute Resources required by this container. Used to set values such as max memory
                Structure is documented below.
-        :param pulumi.Input['ServiceTemplateSpecContainerStartupProbeArgs'] startup_probe: Startup probe of application within the container.
+        :param pulumi.Input['ServiceTemplateSpecContainerStartupProbeArrgs'] startup_probe: Startup probe of application within the container.
                All other probes are disabled if a startup probe is provided, until it
                succeeds. Container will not be added to service endpoints if the probe fails.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerVolumeMountArgs']]] volume_mounts: Volume to mount into the container's filesystem.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerVolumeMountArrgs']]] volume_mounts: Volume to mount into the container's filesystem.
                Only supports SecretVolumeSources.
                Structure is documented below.
         :param pulumi.Input[str] working_dir: (Optional, Deprecated)
@@ -1716,7 +1716,7 @@ class ServiceTemplateSpecContainerArgs:
 
     @property
     @pulumi.getter(name="envFroms")
-    def env_froms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerEnvFromArgs']]]]:
+    def env_froms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerEnvFromArrgs']]]]:
         """
         (Optional, Deprecated)
         List of sources to populate environment variables in the container.
@@ -1734,12 +1734,12 @@ class ServiceTemplateSpecContainerArgs:
         return pulumi.get(self, "env_froms")
 
     @env_froms.setter
-    def env_froms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerEnvFromArgs']]]]):
+    def env_froms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerEnvFromArrgs']]]]):
         pulumi.set(self, "env_froms", value)
 
     @property
     @pulumi.getter
-    def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerEnvArgs']]]]:
+    def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerEnvArrgs']]]]:
         """
         List of environment variables to set in the container.
         Structure is documented below.
@@ -1747,12 +1747,12 @@ class ServiceTemplateSpecContainerArgs:
         return pulumi.get(self, "envs")
 
     @envs.setter
-    def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerEnvArgs']]]]):
+    def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerEnvArrgs']]]]):
         pulumi.set(self, "envs", value)
 
     @property
     @pulumi.getter(name="livenessProbe")
-    def liveness_probe(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeArgs']]:
+    def liveness_probe(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeArrgs']]:
         """
         Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
         https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
@@ -1761,7 +1761,7 @@ class ServiceTemplateSpecContainerArgs:
         return pulumi.get(self, "liveness_probe")
 
     @liveness_probe.setter
-    def liveness_probe(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeArgs']]):
+    def liveness_probe(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeArrgs']]):
         pulumi.set(self, "liveness_probe", value)
 
     @property
@@ -1778,7 +1778,7 @@ class ServiceTemplateSpecContainerArgs:
 
     @property
     @pulumi.getter
-    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerPortArgs']]]]:
+    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerPortArrgs']]]]:
         """
         List of open ports in the container.
         Structure is documented below.
@@ -1786,12 +1786,12 @@ class ServiceTemplateSpecContainerArgs:
         return pulumi.get(self, "ports")
 
     @ports.setter
-    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerPortArgs']]]]):
+    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerPortArrgs']]]]):
         pulumi.set(self, "ports", value)
 
     @property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerResourcesArgs']]:
+    def resources(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerResourcesArrgs']]:
         """
         Compute Resources required by this container. Used to set values such as max memory
         Structure is documented below.
@@ -1799,12 +1799,12 @@ class ServiceTemplateSpecContainerArgs:
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerResourcesArgs']]):
+    def resources(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerResourcesArrgs']]):
         pulumi.set(self, "resources", value)
 
     @property
     @pulumi.getter(name="startupProbe")
-    def startup_probe(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeArgs']]:
+    def startup_probe(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeArrgs']]:
         """
         Startup probe of application within the container.
         All other probes are disabled if a startup probe is provided, until it
@@ -1814,12 +1814,12 @@ class ServiceTemplateSpecContainerArgs:
         return pulumi.get(self, "startup_probe")
 
     @startup_probe.setter
-    def startup_probe(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeArgs']]):
+    def startup_probe(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeArrgs']]):
         pulumi.set(self, "startup_probe", value)
 
     @property
     @pulumi.getter(name="volumeMounts")
-    def volume_mounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerVolumeMountArgs']]]]:
+    def volume_mounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerVolumeMountArrgs']]]]:
         """
         Volume to mount into the container's filesystem.
         Only supports SecretVolumeSources.
@@ -1828,7 +1828,7 @@ class ServiceTemplateSpecContainerArgs:
         return pulumi.get(self, "volume_mounts")
 
     @volume_mounts.setter
-    def volume_mounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerVolumeMountArgs']]]]):
+    def volume_mounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerVolumeMountArrgs']]]]):
         pulumi.set(self, "volume_mounts", value)
 
     @property
@@ -1853,15 +1853,15 @@ class ServiceTemplateSpecContainerArgs:
 
 
 @pulumi.input_type
-class ServiceTemplateSpecContainerEnvArgs:
+calass ServiceTemplateSpecContainerEnvArrgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
-                 value_from: Optional[pulumi.Input['ServiceTemplateSpecContainerEnvValueFromArgs']] = None):
+                 value_from: Optional[pulumi.Input['ServiceTemplateSpecContainerEnvValueFromArrgs']] = None):
         """
         :param pulumi.Input[str] name: Name of the environment variable.
         :param pulumi.Input[str] value: Defaults to "".
-        :param pulumi.Input['ServiceTemplateSpecContainerEnvValueFromArgs'] value_from: Source for the environment variable's value. Only supports secret_key_ref.
+        :param pulumi.Input['ServiceTemplateSpecContainerEnvValueFromArrgs'] value_from: Source for the environment variable's value. Only supports secret_key_ref.
                Structure is documented below.
         """
         if name is not None:
@@ -1897,7 +1897,7 @@ class ServiceTemplateSpecContainerEnvArgs:
 
     @property
     @pulumi.getter(name="valueFrom")
-    def value_from(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerEnvValueFromArgs']]:
+    def value_from(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerEnvValueFromArrgs']]:
         """
         Source for the environment variable's value. Only supports secret_key_ref.
         Structure is documented below.
@@ -1905,21 +1905,21 @@ class ServiceTemplateSpecContainerEnvArgs:
         return pulumi.get(self, "value_from")
 
     @value_from.setter
-    def value_from(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerEnvValueFromArgs']]):
+    def value_from(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerEnvValueFromArrgs']]):
         pulumi.set(self, "value_from", value)
 
 
 @pulumi.input_type
-class ServiceTemplateSpecContainerEnvFromArgs:
+calass ServiceTemplateSpecContainerEnvFromArrgs:
     def __init__(__self__, *,
-                 config_map_ref: Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromConfigMapRefArgs']] = None,
+                 config_map_ref: Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromConfigMapRefArrgs']] = None,
                  prefix: Optional[pulumi.Input[str]] = None,
-                 secret_ref: Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromSecretRefArgs']] = None):
+                 secret_ref: Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromSecretRefArrgs']] = None):
         """
-        :param pulumi.Input['ServiceTemplateSpecContainerEnvFromConfigMapRefArgs'] config_map_ref: The ConfigMap to select from.
+        :param pulumi.Input['ServiceTemplateSpecContainerEnvFromConfigMapRefArrgs'] config_map_ref: The ConfigMap to select from.
                Structure is documented below.
         :param pulumi.Input[str] prefix: An optional identifier to prepend to each key in the ConfigMap.
-        :param pulumi.Input['ServiceTemplateSpecContainerEnvFromSecretRefArgs'] secret_ref: The Secret to select from.
+        :param pulumi.Input['ServiceTemplateSpecContainerEnvFromSecretRefArrgs'] secret_ref: The Secret to select from.
                Structure is documented below.
         """
         if config_map_ref is not None:
@@ -1931,7 +1931,7 @@ class ServiceTemplateSpecContainerEnvFromArgs:
 
     @property
     @pulumi.getter(name="configMapRef")
-    def config_map_ref(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromConfigMapRefArgs']]:
+    def config_map_ref(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromConfigMapRefArrgs']]:
         """
         The ConfigMap to select from.
         Structure is documented below.
@@ -1939,7 +1939,7 @@ class ServiceTemplateSpecContainerEnvFromArgs:
         return pulumi.get(self, "config_map_ref")
 
     @config_map_ref.setter
-    def config_map_ref(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromConfigMapRefArgs']]):
+    def config_map_ref(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromConfigMapRefArrgs']]):
         pulumi.set(self, "config_map_ref", value)
 
     @property
@@ -1956,7 +1956,7 @@ class ServiceTemplateSpecContainerEnvFromArgs:
 
     @property
     @pulumi.getter(name="secretRef")
-    def secret_ref(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromSecretRefArgs']]:
+    def secret_ref(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromSecretRefArrgs']]:
         """
         The Secret to select from.
         Structure is documented below.
@@ -1964,17 +1964,17 @@ class ServiceTemplateSpecContainerEnvFromArgs:
         return pulumi.get(self, "secret_ref")
 
     @secret_ref.setter
-    def secret_ref(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromSecretRefArgs']]):
+    def secret_ref(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromSecretRefArrgs']]):
         pulumi.set(self, "secret_ref", value)
 
 
 @pulumi.input_type
-class ServiceTemplateSpecContainerEnvFromConfigMapRefArgs:
+calass ServiceTemplateSpecContainerEnvFromConfigMapRefArrgs:
     def __init__(__self__, *,
-                 local_object_reference: Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs']] = None,
+                 local_object_reference: Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArrgs']] = None,
                  optional: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input['ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs'] local_object_reference: The ConfigMap to select from.
+        :param pulumi.Input['ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArrgs'] local_object_reference: The ConfigMap to select from.
                Structure is documented below.
         :param pulumi.Input[bool] optional: Specify whether the ConfigMap must be defined
         """
@@ -1985,7 +1985,7 @@ class ServiceTemplateSpecContainerEnvFromConfigMapRefArgs:
 
     @property
     @pulumi.getter(name="localObjectReference")
-    def local_object_reference(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs']]:
+    def local_object_reference(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArrgs']]:
         """
         The ConfigMap to select from.
         Structure is documented below.
@@ -1993,7 +1993,7 @@ class ServiceTemplateSpecContainerEnvFromConfigMapRefArgs:
         return pulumi.get(self, "local_object_reference")
 
     @local_object_reference.setter
-    def local_object_reference(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs']]):
+    def local_object_reference(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArrgs']]):
         pulumi.set(self, "local_object_reference", value)
 
     @property
@@ -2010,7 +2010,7 @@ class ServiceTemplateSpecContainerEnvFromConfigMapRefArgs:
 
 
 @pulumi.input_type
-class ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs:
+calass ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
         """
@@ -2032,12 +2032,12 @@ class ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs:
 
 
 @pulumi.input_type
-class ServiceTemplateSpecContainerEnvFromSecretRefArgs:
+calass ServiceTemplateSpecContainerEnvFromSecretRefArrgs:
     def __init__(__self__, *,
-                 local_object_reference: Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs']] = None,
+                 local_object_reference: Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArrgs']] = None,
                  optional: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input['ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs'] local_object_reference: The Secret to select from.
+        :param pulumi.Input['ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArrgs'] local_object_reference: The Secret to select from.
                Structure is documented below.
         :param pulumi.Input[bool] optional: Specify whether the Secret must be defined
         """
@@ -2048,7 +2048,7 @@ class ServiceTemplateSpecContainerEnvFromSecretRefArgs:
 
     @property
     @pulumi.getter(name="localObjectReference")
-    def local_object_reference(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs']]:
+    def local_object_reference(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArrgs']]:
         """
         The Secret to select from.
         Structure is documented below.
@@ -2056,7 +2056,7 @@ class ServiceTemplateSpecContainerEnvFromSecretRefArgs:
         return pulumi.get(self, "local_object_reference")
 
     @local_object_reference.setter
-    def local_object_reference(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs']]):
+    def local_object_reference(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArrgs']]):
         pulumi.set(self, "local_object_reference", value)
 
     @property
@@ -2073,7 +2073,7 @@ class ServiceTemplateSpecContainerEnvFromSecretRefArgs:
 
 
 @pulumi.input_type
-class ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs:
+calass ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
         """
@@ -2095,18 +2095,18 @@ class ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs:
 
 
 @pulumi.input_type
-class ServiceTemplateSpecContainerEnvValueFromArgs:
+calass ServiceTemplateSpecContainerEnvValueFromArrgs:
     def __init__(__self__, *,
-                 secret_key_ref: pulumi.Input['ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs']):
+                 secret_key_ref: pulumi.Input['ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArrgs']):
         """
-        :param pulumi.Input['ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs'] secret_key_ref: Selects a key (version) of a secret in Secret Manager.
+        :param pulumi.Input['ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArrgs'] secret_key_ref: Selects a key (version) of a secret in Secret Manager.
                Structure is documented below.
         """
         pulumi.set(__self__, "secret_key_ref", secret_key_ref)
 
     @property
     @pulumi.getter(name="secretKeyRef")
-    def secret_key_ref(self) -> pulumi.Input['ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs']:
+    def secret_key_ref(self) -> pulumi.Input['ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArrgs']:
         """
         Selects a key (version) of a secret in Secret Manager.
         Structure is documented below.
@@ -2114,12 +2114,12 @@ class ServiceTemplateSpecContainerEnvValueFromArgs:
         return pulumi.get(self, "secret_key_ref")
 
     @secret_key_ref.setter
-    def secret_key_ref(self, value: pulumi.Input['ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs']):
+    def secret_key_ref(self, value: pulumi.Input['ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArrgs']):
         pulumi.set(self, "secret_key_ref", value)
 
 
 @pulumi.input_type
-class ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs:
+calass ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArrgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  name: pulumi.Input[str]):
@@ -2166,20 +2166,20 @@ class ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs:
 
 
 @pulumi.input_type
-class ServiceTemplateSpecContainerLivenessProbeArgs:
+calass ServiceTemplateSpecContainerLivenessProbeArrgs:
     def __init__(__self__, *,
                  failure_threshold: Optional[pulumi.Input[int]] = None,
-                 grpc: Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeGrpcArgs']] = None,
-                 http_get: Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetArgs']] = None,
+                 grpc: Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeGrpcArrgs']] = None,
+                 http_get: Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetArrgs']] = None,
                  initial_delay_seconds: Optional[pulumi.Input[int]] = None,
                  period_seconds: Optional[pulumi.Input[int]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] failure_threshold: Minimum consecutive failures for the probe to be considered failed after
                having succeeded. Defaults to 3. Minimum value is 1.
-        :param pulumi.Input['ServiceTemplateSpecContainerLivenessProbeGrpcArgs'] grpc: GRPC specifies an action involving a GRPC port.
+        :param pulumi.Input['ServiceTemplateSpecContainerLivenessProbeGrpcArrgs'] grpc: GRPC specifies an action involving a GRPC port.
                Structure is documented below.
-        :param pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetArgs'] http_get: HttpGet specifies the http request to perform.
+        :param pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetArrgs'] http_get: HttpGet specifies the http request to perform.
                Structure is documented below.
         :param pulumi.Input[int] initial_delay_seconds: Number of seconds after the container has started before the probe is
                initiated.
@@ -2218,7 +2218,7 @@ class ServiceTemplateSpecContainerLivenessProbeArgs:
 
     @property
     @pulumi.getter
-    def grpc(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeGrpcArgs']]:
+    def grpc(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeGrpcArrgs']]:
         """
         GRPC specifies an action involving a GRPC port.
         Structure is documented below.
@@ -2226,12 +2226,12 @@ class ServiceTemplateSpecContainerLivenessProbeArgs:
         return pulumi.get(self, "grpc")
 
     @grpc.setter
-    def grpc(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeGrpcArgs']]):
+    def grpc(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeGrpcArrgs']]):
         pulumi.set(self, "grpc", value)
 
     @property
     @pulumi.getter(name="httpGet")
-    def http_get(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetArgs']]:
+    def http_get(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetArrgs']]:
         """
         HttpGet specifies the http request to perform.
         Structure is documented below.
@@ -2239,7 +2239,7 @@ class ServiceTemplateSpecContainerLivenessProbeArgs:
         return pulumi.get(self, "http_get")
 
     @http_get.setter
-    def http_get(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetArgs']]):
+    def http_get(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetArrgs']]):
         pulumi.set(self, "http_get", value)
 
     @property
@@ -2285,7 +2285,7 @@ class ServiceTemplateSpecContainerLivenessProbeArgs:
 
 
 @pulumi.input_type
-class ServiceTemplateSpecContainerLivenessProbeGrpcArgs:
+calass ServiceTemplateSpecContainerLivenessProbeGrpcArrgs:
     def __init__(__self__, *,
                  port: Optional[pulumi.Input[int]] = None,
                  service: Optional[pulumi.Input[str]] = None):
@@ -2330,13 +2330,13 @@ class ServiceTemplateSpecContainerLivenessProbeGrpcArgs:
 
 
 @pulumi.input_type
-class ServiceTemplateSpecContainerLivenessProbeHttpGetArgs:
+calass ServiceTemplateSpecContainerLivenessProbeHttpGetArrgs:
     def __init__(__self__, *,
-                 http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs']]]] = None,
+                 http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrgs']]]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs']]] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrgs']]] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
                Structure is documented below.
         :param pulumi.Input[str] path: Path to access on the HTTP server. If set, it should not be empty string.
         :param pulumi.Input[int] port: Port number to access on the container. Number must be in the range 1 to 65535.
@@ -2351,7 +2351,7 @@ class ServiceTemplateSpecContainerLivenessProbeHttpGetArgs:
 
     @property
     @pulumi.getter(name="httpHeaders")
-    def http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs']]]]:
+    def http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrgs']]]]:
         """
         Custom headers to set in the request. HTTP allows repeated headers.
         Structure is documented below.
@@ -2359,7 +2359,7 @@ class ServiceTemplateSpecContainerLivenessProbeHttpGetArgs:
         return pulumi.get(self, "http_headers")
 
     @http_headers.setter
-    def http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs']]]]):
+    def http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrgs']]]]):
         pulumi.set(self, "http_headers", value)
 
     @property
@@ -2389,7 +2389,7 @@ class ServiceTemplateSpecContainerLivenessProbeHttpGetArgs:
 
 
 @pulumi.input_type
-class ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs:
+calass ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
@@ -2427,7 +2427,7 @@ class ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs:
 
 
 @pulumi.input_type
-class ServiceTemplateSpecContainerPortArgs:
+calass ServiceTemplateSpecContainerPortArrgs:
     def __init__(__self__, *,
                  container_port: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -2482,7 +2482,7 @@ class ServiceTemplateSpecContainerPortArgs:
 
 
 @pulumi.input_type
-class ServiceTemplateSpecContainerResourcesArgs:
+calass ServiceTemplateSpecContainerResourcesArrgs:
     def __init__(__self__, *,
                  limits: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  requests: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -2533,28 +2533,28 @@ class ServiceTemplateSpecContainerResourcesArgs:
 
 
 @pulumi.input_type
-class ServiceTemplateSpecContainerStartupProbeArgs:
+calass ServiceTemplateSpecContainerStartupProbeArrgs:
     def __init__(__self__, *,
                  failure_threshold: Optional[pulumi.Input[int]] = None,
-                 grpc: Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeGrpcArgs']] = None,
-                 http_get: Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeHttpGetArgs']] = None,
+                 grpc: Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeGrpcArrgs']] = None,
+                 http_get: Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeHttpGetArrgs']] = None,
                  initial_delay_seconds: Optional[pulumi.Input[int]] = None,
                  period_seconds: Optional[pulumi.Input[int]] = None,
-                 tcp_socket: Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeTcpSocketArgs']] = None,
+                 tcp_socket: Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeTcpSocketArrgs']] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] failure_threshold: Minimum consecutive failures for the probe to be considered failed after
                having succeeded. Defaults to 3. Minimum value is 1.
-        :param pulumi.Input['ServiceTemplateSpecContainerStartupProbeGrpcArgs'] grpc: GRPC specifies an action involving a GRPC port.
+        :param pulumi.Input['ServiceTemplateSpecContainerStartupProbeGrpcArrgs'] grpc: GRPC specifies an action involving a GRPC port.
                Structure is documented below.
-        :param pulumi.Input['ServiceTemplateSpecContainerStartupProbeHttpGetArgs'] http_get: HttpGet specifies the http request to perform.
+        :param pulumi.Input['ServiceTemplateSpecContainerStartupProbeHttpGetArrgs'] http_get: HttpGet specifies the http request to perform.
                Structure is documented below.
         :param pulumi.Input[int] initial_delay_seconds: Number of seconds after the container has started before the probe is
                initiated.
                Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
         :param pulumi.Input[int] period_seconds: How often (in seconds) to perform the probe.
                Default to 10 seconds. Minimum value is 1. Maximum value is 240.
-        :param pulumi.Input['ServiceTemplateSpecContainerStartupProbeTcpSocketArgs'] tcp_socket: TcpSocket specifies an action involving a TCP port.
+        :param pulumi.Input['ServiceTemplateSpecContainerStartupProbeTcpSocketArrgs'] tcp_socket: TcpSocket specifies an action involving a TCP port.
                Structure is documented below.
         :param pulumi.Input[int] timeout_seconds: Number of seconds after which the probe times out.
                Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
@@ -2590,7 +2590,7 @@ class ServiceTemplateSpecContainerStartupProbeArgs:
 
     @property
     @pulumi.getter
-    def grpc(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeGrpcArgs']]:
+    def grpc(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeGrpcArrgs']]:
         """
         GRPC specifies an action involving a GRPC port.
         Structure is documented below.
@@ -2598,12 +2598,12 @@ class ServiceTemplateSpecContainerStartupProbeArgs:
         return pulumi.get(self, "grpc")
 
     @grpc.setter
-    def grpc(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeGrpcArgs']]):
+    def grpc(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeGrpcArrgs']]):
         pulumi.set(self, "grpc", value)
 
     @property
     @pulumi.getter(name="httpGet")
-    def http_get(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeHttpGetArgs']]:
+    def http_get(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeHttpGetArrgs']]:
         """
         HttpGet specifies the http request to perform.
         Structure is documented below.
@@ -2611,7 +2611,7 @@ class ServiceTemplateSpecContainerStartupProbeArgs:
         return pulumi.get(self, "http_get")
 
     @http_get.setter
-    def http_get(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeHttpGetArgs']]):
+    def http_get(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeHttpGetArrgs']]):
         pulumi.set(self, "http_get", value)
 
     @property
@@ -2643,7 +2643,7 @@ class ServiceTemplateSpecContainerStartupProbeArgs:
 
     @property
     @pulumi.getter(name="tcpSocket")
-    def tcp_socket(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeTcpSocketArgs']]:
+    def tcp_socket(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeTcpSocketArrgs']]:
         """
         TcpSocket specifies an action involving a TCP port.
         Structure is documented below.
@@ -2651,7 +2651,7 @@ class ServiceTemplateSpecContainerStartupProbeArgs:
         return pulumi.get(self, "tcp_socket")
 
     @tcp_socket.setter
-    def tcp_socket(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeTcpSocketArgs']]):
+    def tcp_socket(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeTcpSocketArrgs']]):
         pulumi.set(self, "tcp_socket", value)
 
     @property
@@ -2670,7 +2670,7 @@ class ServiceTemplateSpecContainerStartupProbeArgs:
 
 
 @pulumi.input_type
-class ServiceTemplateSpecContainerStartupProbeGrpcArgs:
+calass ServiceTemplateSpecContainerStartupProbeGrpcArrgs:
     def __init__(__self__, *,
                  port: Optional[pulumi.Input[int]] = None,
                  service: Optional[pulumi.Input[str]] = None):
@@ -2715,13 +2715,13 @@ class ServiceTemplateSpecContainerStartupProbeGrpcArgs:
 
 
 @pulumi.input_type
-class ServiceTemplateSpecContainerStartupProbeHttpGetArgs:
+calass ServiceTemplateSpecContainerStartupProbeHttpGetArrgs:
     def __init__(__self__, *,
-                 http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs']]]] = None,
+                 http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrgs']]]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs']]] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrgs']]] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
                Structure is documented below.
         :param pulumi.Input[str] path: Path to access on the HTTP server. If set, it should not be empty string.
         :param pulumi.Input[int] port: Port number to access on the container. Number must be in the range 1 to 65535.
@@ -2736,7 +2736,7 @@ class ServiceTemplateSpecContainerStartupProbeHttpGetArgs:
 
     @property
     @pulumi.getter(name="httpHeaders")
-    def http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs']]]]:
+    def http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrgs']]]]:
         """
         Custom headers to set in the request. HTTP allows repeated headers.
         Structure is documented below.
@@ -2744,7 +2744,7 @@ class ServiceTemplateSpecContainerStartupProbeHttpGetArgs:
         return pulumi.get(self, "http_headers")
 
     @http_headers.setter
-    def http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs']]]]):
+    def http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrgs']]]]):
         pulumi.set(self, "http_headers", value)
 
     @property
@@ -2774,7 +2774,7 @@ class ServiceTemplateSpecContainerStartupProbeHttpGetArgs:
 
 
 @pulumi.input_type
-class ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs:
+calass ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
@@ -2812,7 +2812,7 @@ class ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs:
 
 
 @pulumi.input_type
-class ServiceTemplateSpecContainerStartupProbeTcpSocketArgs:
+calass ServiceTemplateSpecContainerStartupProbeTcpSocketArrgs:
     def __init__(__self__, *,
                  port: Optional[pulumi.Input[int]] = None):
         """
@@ -2837,7 +2837,7 @@ class ServiceTemplateSpecContainerStartupProbeTcpSocketArgs:
 
 
 @pulumi.input_type
-class ServiceTemplateSpecContainerVolumeMountArgs:
+calass ServiceTemplateSpecContainerVolumeMountArrgs:
     def __init__(__self__, *,
                  mount_path: pulumi.Input[str],
                  name: pulumi.Input[str]):
@@ -2876,14 +2876,14 @@ class ServiceTemplateSpecContainerVolumeMountArgs:
 
 
 @pulumi.input_type
-class ServiceTemplateSpecVolumeArgs:
+calass ServiceTemplateSpecVolumeArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 empty_dir: Optional[pulumi.Input['ServiceTemplateSpecVolumeEmptyDirArgs']] = None,
-                 secret: Optional[pulumi.Input['ServiceTemplateSpecVolumeSecretArgs']] = None):
+                 empty_dir: Optional[pulumi.Input['ServiceTemplateSpecVolumeEmptyDirArrgs']] = None,
+                 secret: Optional[pulumi.Input['ServiceTemplateSpecVolumeSecretArrgs']] = None):
         """
         :param pulumi.Input[str] name: Volume's name.
-        :param pulumi.Input['ServiceTemplateSpecVolumeSecretArgs'] secret: The secret's value will be presented as the content of a file whose
+        :param pulumi.Input['ServiceTemplateSpecVolumeSecretArrgs'] secret: The secret's value will be presented as the content of a file whose
                name is defined in the item path. If no items are defined, the name of
                the file is the secret_name.
                Structure is documented below.
@@ -2908,16 +2908,16 @@ class ServiceTemplateSpecVolumeArgs:
 
     @property
     @pulumi.getter(name="emptyDir")
-    def empty_dir(self) -> Optional[pulumi.Input['ServiceTemplateSpecVolumeEmptyDirArgs']]:
+    def empty_dir(self) -> Optional[pulumi.Input['ServiceTemplateSpecVolumeEmptyDirArrgs']]:
         return pulumi.get(self, "empty_dir")
 
     @empty_dir.setter
-    def empty_dir(self, value: Optional[pulumi.Input['ServiceTemplateSpecVolumeEmptyDirArgs']]):
+    def empty_dir(self, value: Optional[pulumi.Input['ServiceTemplateSpecVolumeEmptyDirArrgs']]):
         pulumi.set(self, "empty_dir", value)
 
     @property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input['ServiceTemplateSpecVolumeSecretArgs']]:
+    def secret(self) -> Optional[pulumi.Input['ServiceTemplateSpecVolumeSecretArrgs']]:
         """
         The secret's value will be presented as the content of a file whose
         name is defined in the item path. If no items are defined, the name of
@@ -2927,12 +2927,12 @@ class ServiceTemplateSpecVolumeArgs:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input['ServiceTemplateSpecVolumeSecretArgs']]):
+    def secret(self, value: Optional[pulumi.Input['ServiceTemplateSpecVolumeSecretArrgs']]):
         pulumi.set(self, "secret", value)
 
 
 @pulumi.input_type
-class ServiceTemplateSpecVolumeEmptyDirArgs:
+calass ServiceTemplateSpecVolumeEmptyDirArrgs:
     def __init__(__self__, *,
                  medium: Optional[pulumi.Input[str]] = None,
                  size_limit: Optional[pulumi.Input[str]] = None):
@@ -2975,11 +2975,11 @@ class ServiceTemplateSpecVolumeEmptyDirArgs:
 
 
 @pulumi.input_type
-class ServiceTemplateSpecVolumeSecretArgs:
+calass ServiceTemplateSpecVolumeSecretArrgs:
     def __init__(__self__, *,
                  secret_name: pulumi.Input[str],
                  default_mode: Optional[pulumi.Input[int]] = None,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecVolumeSecretItemArgs']]]] = None):
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecVolumeSecretItemArrgs']]]] = None):
         """
         :param pulumi.Input[str] secret_name: The name of the secret in Cloud Secret Manager. By default, the secret
                is assumed to be in the same project.
@@ -2994,7 +2994,7 @@ class ServiceTemplateSpecVolumeSecretArgs:
                and 0777. Defaults to 0644. Directories within the path are not affected by
                this setting. This might be in conflict with other options that affect the
                file mode, like fsGroup, and the result can be other mode bits set.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecVolumeSecretItemArgs']]] items: If unspecified, the volume will expose a file whose name is the
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecVolumeSecretItemArrgs']]] items: If unspecified, the volume will expose a file whose name is the
                secret_name.
                If specified, the key will be used as the version to fetch from Cloud
                Secret Manager and the path will be the name of the file exposed in the
@@ -3044,7 +3044,7 @@ class ServiceTemplateSpecVolumeSecretArgs:
 
     @property
     @pulumi.getter
-    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecVolumeSecretItemArgs']]]]:
+    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecVolumeSecretItemArrgs']]]]:
         """
         If unspecified, the volume will expose a file whose name is the
         secret_name.
@@ -3056,12 +3056,12 @@ class ServiceTemplateSpecVolumeSecretArgs:
         return pulumi.get(self, "items")
 
     @items.setter
-    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecVolumeSecretItemArgs']]]]):
+    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecVolumeSecretItemArrgs']]]]):
         pulumi.set(self, "items", value)
 
 
 @pulumi.input_type
-class ServiceTemplateSpecVolumeSecretItemArgs:
+calass ServiceTemplateSpecVolumeSecretItemArrgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  path: pulumi.Input[str],
@@ -3128,7 +3128,7 @@ class ServiceTemplateSpecVolumeSecretItemArgs:
 
 
 @pulumi.input_type
-class ServiceTrafficArgs:
+calass ServiceTrafficArrgs:
     def __init__(__self__, *,
                  percent: pulumi.Input[int],
                  latest_revision: Optional[pulumi.Input[bool]] = None,

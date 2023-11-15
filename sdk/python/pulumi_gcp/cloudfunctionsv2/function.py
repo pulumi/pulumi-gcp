@@ -11,31 +11,31 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['FunctionArgs', 'Function']
+__all__ = ['FunctionArrgs', 'Function']
 
 @pulumi.input_type
-class FunctionArgs:
+calass FunctionArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 build_config: Optional[pulumi.Input['FunctionBuildConfigArgs']] = None,
+                 build_config: Optional[pulumi.Input['FunctionBuildConfigArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 event_trigger: Optional[pulumi.Input['FunctionEventTriggerArgs']] = None,
+                 event_trigger: Optional[pulumi.Input['FunctionEventTriggerArrgs']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 service_config: Optional[pulumi.Input['FunctionServiceConfigArgs']] = None):
+                 service_config: Optional[pulumi.Input['FunctionServiceConfigArrgs']] = None):
         """
         The set of arguments for constructing a Function resource.
         :param pulumi.Input[str] location: The location of this cloud function.
                
                
                - - -
-        :param pulumi.Input['FunctionBuildConfigArgs'] build_config: Describes the Build step of the function that builds a container
+        :param pulumi.Input['FunctionBuildConfigArrgs'] build_config: Describes the Build step of the function that builds a container
                from the given source.
                Structure is documented below.
         :param pulumi.Input[str] description: User-provided description of a function.
-        :param pulumi.Input['FunctionEventTriggerArgs'] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in
+        :param pulumi.Input['FunctionEventTriggerArrgs'] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in
                response to a condition in another service.
                Structure is documented below.
         :param pulumi.Input[str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
@@ -48,7 +48,7 @@ class FunctionArgs:
                be unique globally and match pattern `projects/*/locations/*/functions/*`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['FunctionServiceConfigArgs'] service_config: Describes the Service being deployed.
+        :param pulumi.Input['FunctionServiceConfigArrgs'] service_config: Describes the Service being deployed.
                Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
@@ -86,7 +86,7 @@ class FunctionArgs:
 
     @property
     @pulumi.getter(name="buildConfig")
-    def build_config(self) -> Optional[pulumi.Input['FunctionBuildConfigArgs']]:
+    def build_config(self) -> Optional[pulumi.Input['FunctionBuildConfigArrgs']]:
         """
         Describes the Build step of the function that builds a container
         from the given source.
@@ -95,7 +95,7 @@ class FunctionArgs:
         return pulumi.get(self, "build_config")
 
     @build_config.setter
-    def build_config(self, value: Optional[pulumi.Input['FunctionBuildConfigArgs']]):
+    def build_config(self, value: Optional[pulumi.Input['FunctionBuildConfigArrgs']]):
         pulumi.set(self, "build_config", value)
 
     @property
@@ -112,7 +112,7 @@ class FunctionArgs:
 
     @property
     @pulumi.getter(name="eventTrigger")
-    def event_trigger(self) -> Optional[pulumi.Input['FunctionEventTriggerArgs']]:
+    def event_trigger(self) -> Optional[pulumi.Input['FunctionEventTriggerArrgs']]:
         """
         An Eventarc trigger managed by Google Cloud Functions that fires events in
         response to a condition in another service.
@@ -121,7 +121,7 @@ class FunctionArgs:
         return pulumi.get(self, "event_trigger")
 
     @event_trigger.setter
-    def event_trigger(self, value: Optional[pulumi.Input['FunctionEventTriggerArgs']]):
+    def event_trigger(self, value: Optional[pulumi.Input['FunctionEventTriggerArrgs']]):
         pulumi.set(self, "event_trigger", value)
 
     @property
@@ -180,7 +180,7 @@ class FunctionArgs:
 
     @property
     @pulumi.getter(name="serviceConfig")
-    def service_config(self) -> Optional[pulumi.Input['FunctionServiceConfigArgs']]:
+    def service_config(self) -> Optional[pulumi.Input['FunctionServiceConfigArrgs']]:
         """
         Describes the Service being deployed.
         Structure is documented below.
@@ -188,37 +188,37 @@ class FunctionArgs:
         return pulumi.get(self, "service_config")
 
     @service_config.setter
-    def service_config(self, value: Optional[pulumi.Input['FunctionServiceConfigArgs']]):
+    def service_config(self, value: Optional[pulumi.Input['FunctionServiceConfigArrgs']]):
         pulumi.set(self, "service_config", value)
 
 
 @pulumi.input_type
-class _FunctionState:
+calass _FunctionState:
     def __init__(__self__, *,
-                 build_config: Optional[pulumi.Input['FunctionBuildConfigArgs']] = None,
+                 build_config: Optional[pulumi.Input['FunctionBuildConfigArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
-                 event_trigger: Optional[pulumi.Input['FunctionEventTriggerArgs']] = None,
+                 event_trigger: Optional[pulumi.Input['FunctionEventTriggerArrgs']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 service_config: Optional[pulumi.Input['FunctionServiceConfigArgs']] = None,
+                 service_config: Optional[pulumi.Input['FunctionServiceConfigArrgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Function resources.
-        :param pulumi.Input['FunctionBuildConfigArgs'] build_config: Describes the Build step of the function that builds a container
+        :param pulumi.Input['FunctionBuildConfigArrgs'] build_config: Describes the Build step of the function that builds a container
                from the given source.
                Structure is documented below.
         :param pulumi.Input[str] description: User-provided description of a function.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] environment: The environment the function is hosted on.
-        :param pulumi.Input['FunctionEventTriggerArgs'] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in
+        :param pulumi.Input['FunctionEventTriggerArrgs'] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in
                response to a condition in another service.
                Structure is documented below.
         :param pulumi.Input[str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
@@ -237,7 +237,7 @@ class _FunctionState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input['FunctionServiceConfigArgs'] service_config: Describes the Service being deployed.
+        :param pulumi.Input['FunctionServiceConfigArrgs'] service_config: Describes the Service being deployed.
                Structure is documented below.
         :param pulumi.Input[str] state: Describes the current state of the function.
         :param pulumi.Input[str] update_time: The last update timestamp of a Cloud Function.
@@ -276,7 +276,7 @@ class _FunctionState:
 
     @property
     @pulumi.getter(name="buildConfig")
-    def build_config(self) -> Optional[pulumi.Input['FunctionBuildConfigArgs']]:
+    def build_config(self) -> Optional[pulumi.Input['FunctionBuildConfigArrgs']]:
         """
         Describes the Build step of the function that builds a container
         from the given source.
@@ -285,7 +285,7 @@ class _FunctionState:
         return pulumi.get(self, "build_config")
 
     @build_config.setter
-    def build_config(self, value: Optional[pulumi.Input['FunctionBuildConfigArgs']]):
+    def build_config(self, value: Optional[pulumi.Input['FunctionBuildConfigArrgs']]):
         pulumi.set(self, "build_config", value)
 
     @property
@@ -326,7 +326,7 @@ class _FunctionState:
 
     @property
     @pulumi.getter(name="eventTrigger")
-    def event_trigger(self) -> Optional[pulumi.Input['FunctionEventTriggerArgs']]:
+    def event_trigger(self) -> Optional[pulumi.Input['FunctionEventTriggerArrgs']]:
         """
         An Eventarc trigger managed by Google Cloud Functions that fires events in
         response to a condition in another service.
@@ -335,7 +335,7 @@ class _FunctionState:
         return pulumi.get(self, "event_trigger")
 
     @event_trigger.setter
-    def event_trigger(self, value: Optional[pulumi.Input['FunctionEventTriggerArgs']]):
+    def event_trigger(self, value: Optional[pulumi.Input['FunctionEventTriggerArrgs']]):
         pulumi.set(self, "event_trigger", value)
 
     @property
@@ -422,7 +422,7 @@ class _FunctionState:
 
     @property
     @pulumi.getter(name="serviceConfig")
-    def service_config(self) -> Optional[pulumi.Input['FunctionServiceConfigArgs']]:
+    def service_config(self) -> Optional[pulumi.Input['FunctionServiceConfigArrgs']]:
         """
         Describes the Service being deployed.
         Structure is documented below.
@@ -430,7 +430,7 @@ class _FunctionState:
         return pulumi.get(self, "service_config")
 
     @service_config.setter
-    def service_config(self, value: Optional[pulumi.Input['FunctionServiceConfigArgs']]):
+    def service_config(self, value: Optional[pulumi.Input['FunctionServiceConfigArrgs']]):
         pulumi.set(self, "service_config", value)
 
     @property
@@ -470,20 +470,20 @@ class _FunctionState:
         pulumi.set(self, "url", value)
 
 
-class Function(pulumi.CustomResource):
+calass Function(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 build_config: Optional[pulumi.Input[pulumi.InputType['FunctionBuildConfigArgs']]] = None,
+                 build_config: Optional[pulumi.Input[pulumi.InputType['FunctionBuildConfigArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 event_trigger: Optional[pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']]] = None,
+                 event_trigger: Optional[pulumi.Input[pulumi.InputType['FunctionEventTriggerArrgs']]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 service_config: Optional[pulumi.Input[pulumi.InputType['FunctionServiceConfigArgs']]] = None,
+                 service_config: Optional[pulumi.Input[pulumi.InputType['FunctionServiceConfigArrgs']]] = None,
                  __props__=None):
         """
         A Cloud Function that contains user computation executed in response to an event.
@@ -538,20 +538,20 @@ class Function(pulumi.CustomResource):
         function = gcp.cloudfunctionsv2.Function("function",
             location="us-central1",
             description="a new function",
-            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
+            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArrgs(
                 runtime="nodejs12",
                 entry_point="entryPoint",
                 environment_variables={
                     "BUILD_CONFIG_TEST": "build_test",
                 },
-                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
-                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
+                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArrgs(
+                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArrgs(
                         bucket=source_bucket.name,
                         object=object.name,
                     ),
                 ),
             ),
-            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
+            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArrgs(
                 max_instance_count=3,
                 min_instance_count=1,
                 available_memory="256M",
@@ -563,12 +563,12 @@ class Function(pulumi.CustomResource):
                 all_traffic_on_latest_revision=True,
                 service_account_email=account.email,
             ),
-            event_trigger=gcp.cloudfunctionsv2.FunctionEventTriggerArgs(
+            event_trigger=gcp.cloudfunctionsv2.FunctionEventTriggerArrgs(
                 trigger_region="us-central1",
                 event_type="google.cloud.storage.object.v1.finalized",
                 retry_policy="RETRY_POLICY_RETRY",
                 service_account_email=account.email,
-                event_filters=[gcp.cloudfunctionsv2.FunctionEventTriggerEventFilterArgs(
+                event_filters=[gcp.cloudfunctionsv2.FunctionEventTriggerEventFilterArrgs(
                     attribute="bucket",
                     value=trigger_bucket.name,
                 )],
@@ -622,20 +622,20 @@ class Function(pulumi.CustomResource):
         function = gcp.cloudfunctionsv2.Function("function",
             location="us-central1",
             description="a new function",
-            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
+            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArrgs(
                 runtime="nodejs12",
                 entry_point="entryPoint",
                 environment_variables={
                     "BUILD_CONFIG_TEST": "build_test",
                 },
-                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
-                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
+                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArrgs(
+                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArrgs(
                         bucket=source_bucket.name,
                         object=object.name,
                     ),
                 ),
             ),
-            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
+            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArrgs(
                 max_instance_count=3,
                 min_instance_count=1,
                 available_memory="256M",
@@ -647,21 +647,21 @@ class Function(pulumi.CustomResource):
                 all_traffic_on_latest_revision=True,
                 service_account_email=account.email,
             ),
-            event_trigger=gcp.cloudfunctionsv2.FunctionEventTriggerArgs(
+            event_trigger=gcp.cloudfunctionsv2.FunctionEventTriggerArrgs(
                 trigger_region="us-central1",
                 event_type="google.cloud.audit.log.v1.written",
                 retry_policy="RETRY_POLICY_RETRY",
                 service_account_email=account.email,
                 event_filters=[
-                    gcp.cloudfunctionsv2.FunctionEventTriggerEventFilterArgs(
+                    gcp.cloudfunctionsv2.FunctionEventTriggerEventFilterArrgs(
                         attribute="serviceName",
                         value="storage.googleapis.com",
                     ),
-                    gcp.cloudfunctionsv2.FunctionEventTriggerEventFilterArgs(
+                    gcp.cloudfunctionsv2.FunctionEventTriggerEventFilterArrgs(
                         attribute="methodName",
                         value="storage.objects.create",
                     ),
-                    gcp.cloudfunctionsv2.FunctionEventTriggerEventFilterArgs(
+                    gcp.cloudfunctionsv2.FunctionEventTriggerEventFilterArrgs(
                         attribute="resourceName",
                         value=audit_log_bucket.name.apply(lambda name: f"/projects/_/buckets/{name}/objects/*.txt"),
                         operator="match-path-pattern",
@@ -700,11 +700,11 @@ class Function(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['FunctionBuildConfigArgs']] build_config: Describes the Build step of the function that builds a container
+        :param pulumi.Input[pulumi.InputType['FunctionBuildConfigArrgs']] build_config: Describes the Build step of the function that builds a container
                from the given source.
                Structure is documented below.
         :param pulumi.Input[str] description: User-provided description of a function.
-        :param pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in
+        :param pulumi.Input[pulumi.InputType['FunctionEventTriggerArrgs']] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in
                response to a condition in another service.
                Structure is documented below.
         :param pulumi.Input[str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
@@ -721,14 +721,14 @@ class Function(pulumi.CustomResource):
                be unique globally and match pattern `projects/*/locations/*/functions/*`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['FunctionServiceConfigArgs']] service_config: Describes the Service being deployed.
+        :param pulumi.Input[pulumi.InputType['FunctionServiceConfigArrgs']] service_config: Describes the Service being deployed.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FunctionArgs,
+                 args: FunctionArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Cloud Function that contains user computation executed in response to an event.
@@ -783,20 +783,20 @@ class Function(pulumi.CustomResource):
         function = gcp.cloudfunctionsv2.Function("function",
             location="us-central1",
             description="a new function",
-            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
+            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArrgs(
                 runtime="nodejs12",
                 entry_point="entryPoint",
                 environment_variables={
                     "BUILD_CONFIG_TEST": "build_test",
                 },
-                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
-                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
+                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArrgs(
+                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArrgs(
                         bucket=source_bucket.name,
                         object=object.name,
                     ),
                 ),
             ),
-            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
+            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArrgs(
                 max_instance_count=3,
                 min_instance_count=1,
                 available_memory="256M",
@@ -808,12 +808,12 @@ class Function(pulumi.CustomResource):
                 all_traffic_on_latest_revision=True,
                 service_account_email=account.email,
             ),
-            event_trigger=gcp.cloudfunctionsv2.FunctionEventTriggerArgs(
+            event_trigger=gcp.cloudfunctionsv2.FunctionEventTriggerArrgs(
                 trigger_region="us-central1",
                 event_type="google.cloud.storage.object.v1.finalized",
                 retry_policy="RETRY_POLICY_RETRY",
                 service_account_email=account.email,
-                event_filters=[gcp.cloudfunctionsv2.FunctionEventTriggerEventFilterArgs(
+                event_filters=[gcp.cloudfunctionsv2.FunctionEventTriggerEventFilterArrgs(
                     attribute="bucket",
                     value=trigger_bucket.name,
                 )],
@@ -867,20 +867,20 @@ class Function(pulumi.CustomResource):
         function = gcp.cloudfunctionsv2.Function("function",
             location="us-central1",
             description="a new function",
-            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
+            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArrgs(
                 runtime="nodejs12",
                 entry_point="entryPoint",
                 environment_variables={
                     "BUILD_CONFIG_TEST": "build_test",
                 },
-                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
-                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
+                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArrgs(
+                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArrgs(
                         bucket=source_bucket.name,
                         object=object.name,
                     ),
                 ),
             ),
-            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
+            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArrgs(
                 max_instance_count=3,
                 min_instance_count=1,
                 available_memory="256M",
@@ -892,21 +892,21 @@ class Function(pulumi.CustomResource):
                 all_traffic_on_latest_revision=True,
                 service_account_email=account.email,
             ),
-            event_trigger=gcp.cloudfunctionsv2.FunctionEventTriggerArgs(
+            event_trigger=gcp.cloudfunctionsv2.FunctionEventTriggerArrgs(
                 trigger_region="us-central1",
                 event_type="google.cloud.audit.log.v1.written",
                 retry_policy="RETRY_POLICY_RETRY",
                 service_account_email=account.email,
                 event_filters=[
-                    gcp.cloudfunctionsv2.FunctionEventTriggerEventFilterArgs(
+                    gcp.cloudfunctionsv2.FunctionEventTriggerEventFilterArrgs(
                         attribute="serviceName",
                         value="storage.googleapis.com",
                     ),
-                    gcp.cloudfunctionsv2.FunctionEventTriggerEventFilterArgs(
+                    gcp.cloudfunctionsv2.FunctionEventTriggerEventFilterArrgs(
                         attribute="methodName",
                         value="storage.objects.create",
                     ),
-                    gcp.cloudfunctionsv2.FunctionEventTriggerEventFilterArgs(
+                    gcp.cloudfunctionsv2.FunctionEventTriggerEventFilterArrgs(
                         attribute="resourceName",
                         value=audit_log_bucket.name.apply(lambda name: f"/projects/_/buckets/{name}/objects/*.txt"),
                         operator="match-path-pattern",
@@ -944,12 +944,12 @@ class Function(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param FunctionArgs args: The arguments to use to populate this resource's properties.
+        :param FunctionArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(FunctionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(FunctionArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -958,15 +958,15 @@ class Function(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 build_config: Optional[pulumi.Input[pulumi.InputType['FunctionBuildConfigArgs']]] = None,
+                 build_config: Optional[pulumi.Input[pulumi.InputType['FunctionBuildConfigArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 event_trigger: Optional[pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']]] = None,
+                 event_trigger: Optional[pulumi.Input[pulumi.InputType['FunctionEventTriggerArrgs']]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 service_config: Optional[pulumi.Input[pulumi.InputType['FunctionServiceConfigArgs']]] = None,
+                 service_config: Optional[pulumi.Input[pulumi.InputType['FunctionServiceConfigArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -974,7 +974,7 @@ class Function(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = FunctionArgs.__new__(FunctionArgs)
+            __props__ = FunctionArrgs.__new__(FunctionArrgs)
 
             __props__.__dict__["build_config"] = build_config
             __props__.__dict__["description"] = description
@@ -1005,18 +1005,18 @@ class Function(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            build_config: Optional[pulumi.Input[pulumi.InputType['FunctionBuildConfigArgs']]] = None,
+            build_config: Optional[pulumi.Input[pulumi.InputType['FunctionBuildConfigArrgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             environment: Optional[pulumi.Input[str]] = None,
-            event_trigger: Optional[pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']]] = None,
+            event_trigger: Optional[pulumi.Input[pulumi.InputType['FunctionEventTriggerArrgs']]] = None,
             kms_key_name: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            service_config: Optional[pulumi.Input[pulumi.InputType['FunctionServiceConfigArgs']]] = None,
+            service_config: Optional[pulumi.Input[pulumi.InputType['FunctionServiceConfigArrgs']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None) -> 'Function':
@@ -1027,13 +1027,13 @@ class Function(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['FunctionBuildConfigArgs']] build_config: Describes the Build step of the function that builds a container
+        :param pulumi.Input[pulumi.InputType['FunctionBuildConfigArrgs']] build_config: Describes the Build step of the function that builds a container
                from the given source.
                Structure is documented below.
         :param pulumi.Input[str] description: User-provided description of a function.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] environment: The environment the function is hosted on.
-        :param pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in
+        :param pulumi.Input[pulumi.InputType['FunctionEventTriggerArrgs']] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in
                response to a condition in another service.
                Structure is documented below.
         :param pulumi.Input[str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
@@ -1052,7 +1052,7 @@ class Function(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['FunctionServiceConfigArgs']] service_config: Describes the Service being deployed.
+        :param pulumi.Input[pulumi.InputType['FunctionServiceConfigArrgs']] service_config: Describes the Service being deployed.
                Structure is documented below.
         :param pulumi.Input[str] state: Describes the current state of the function.
         :param pulumi.Input[str] update_time: The last update timestamp of a Cloud Function.

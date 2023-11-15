@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['PeeredDnsDomainArgs', 'PeeredDnsDomain']
+__all__ = ['PeeredDnsDomainArrgs', 'PeeredDnsDomain']
 
 @pulumi.input_type
-class PeeredDnsDomainArgs:
+calass PeeredDnsDomainArrgs:
     def __init__(__self__, *,
                  dns_suffix: pulumi.Input[str],
                  network: pulumi.Input[str],
@@ -98,7 +98,7 @@ class PeeredDnsDomainArgs:
 
 
 @pulumi.input_type
-class _PeeredDnsDomainState:
+calass _PeeredDnsDomainState:
     def __init__(__self__, *,
                  dns_suffix: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -201,7 +201,7 @@ class _PeeredDnsDomainState:
         pulumi.set(self, "service", value)
 
 
-class PeeredDnsDomain(pulumi.CustomResource):
+calass PeeredDnsDomain(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -258,7 +258,7 @@ class PeeredDnsDomain(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: PeeredDnsDomainArgs,
+                 args: PeeredDnsDomainArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Allows management of a single peered DNS domain for an existing Google Cloud Platform project.
@@ -295,12 +295,12 @@ class PeeredDnsDomain(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param PeeredDnsDomainArgs args: The arguments to use to populate this resource's properties.
+        :param PeeredDnsDomainArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(PeeredDnsDomainArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(PeeredDnsDomainArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -321,7 +321,7 @@ class PeeredDnsDomain(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = PeeredDnsDomainArgs.__new__(PeeredDnsDomainArgs)
+            __props__ = PeeredDnsDomainArrgs.__new__(PeeredDnsDomainArrgs)
 
             if dns_suffix is None and not opts.urn:
                 raise TypeError("Missing required property 'dns_suffix'")

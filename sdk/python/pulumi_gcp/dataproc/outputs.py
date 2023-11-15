@@ -152,7 +152,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class AutoscalingPolicyBasicAlgorithm(dict):
+calass AutoscalingPolicyBasicAlgorithm(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -176,7 +176,7 @@ class AutoscalingPolicyBasicAlgorithm(dict):
                  yarn_config: 'outputs.AutoscalingPolicyBasicAlgorithmYarnConfig',
                  cooldown_period: Optional[str] = None):
         """
-        :param 'AutoscalingPolicyBasicAlgorithmYarnConfigArgs' yarn_config: YARN autoscaling configuration.
+        :param 'AutoscalingPolicyBasicAlgorithmYarnConfigArrgs' yarn_config: YARN autoscaling configuration.
                Structure is documented below.
         :param str cooldown_period: Duration between scaling events. A scaling period starts after the
                update operation from the previous event has completed.
@@ -207,7 +207,7 @@ class AutoscalingPolicyBasicAlgorithm(dict):
 
 
 @pulumi.output_type
-class AutoscalingPolicyBasicAlgorithmYarnConfig(dict):
+calass AutoscalingPolicyBasicAlgorithmYarnConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -338,7 +338,7 @@ class AutoscalingPolicyBasicAlgorithmYarnConfig(dict):
 
 
 @pulumi.output_type
-class AutoscalingPolicyIamBindingCondition(dict):
+calass AutoscalingPolicyIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -365,7 +365,7 @@ class AutoscalingPolicyIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class AutoscalingPolicyIamMemberCondition(dict):
+calass AutoscalingPolicyIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -392,7 +392,7 @@ class AutoscalingPolicyIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class AutoscalingPolicySecondaryWorkerConfig(dict):
+calass AutoscalingPolicySecondaryWorkerConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -480,7 +480,7 @@ class AutoscalingPolicySecondaryWorkerConfig(dict):
 
 
 @pulumi.output_type
-class AutoscalingPolicyWorkerConfig(dict):
+calass AutoscalingPolicyWorkerConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -563,7 +563,7 @@ class AutoscalingPolicyWorkerConfig(dict):
 
 
 @pulumi.output_type
-class ClusterClusterConfig(dict):
+calass ClusterClusterConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -627,34 +627,34 @@ class ClusterClusterConfig(dict):
                  temp_bucket: Optional[str] = None,
                  worker_config: Optional['outputs.ClusterClusterConfigWorkerConfig'] = None):
         """
-        :param 'ClusterClusterConfigAutoscalingConfigArgs' autoscaling_config: The autoscaling policy config associated with the cluster.
+        :param 'ClusterClusterConfigAutoscalingConfigArrgs' autoscaling_config: The autoscaling policy config associated with the cluster.
                Note that once set, if `autoscaling_config` is the only field set in `cluster_config`, it can
                only be removed by setting `policy_uri = ""`, rather than removing the whole block.
                Structure defined below.
-        :param 'ClusterClusterConfigDataprocMetricConfigArgs' dataproc_metric_config: The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+        :param 'ClusterClusterConfigDataprocMetricConfigArrgs' dataproc_metric_config: The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
                Structure defined below.
-        :param 'ClusterClusterConfigEncryptionConfigArgs' encryption_config: The Customer managed encryption keys settings for the cluster.
+        :param 'ClusterClusterConfigEncryptionConfigArrgs' encryption_config: The Customer managed encryption keys settings for the cluster.
                Structure defined below.
-        :param 'ClusterClusterConfigEndpointConfigArgs' endpoint_config: The config settings for port access on the cluster.
+        :param 'ClusterClusterConfigEndpointConfigArrgs' endpoint_config: The config settings for port access on the cluster.
                Structure defined below.
-        :param 'ClusterClusterConfigGceClusterConfigArgs' gce_cluster_config: Common config settings for resources of Google Compute Engine cluster
+        :param 'ClusterClusterConfigGceClusterConfigArrgs' gce_cluster_config: Common config settings for resources of Google Compute Engine cluster
                instances, applicable to all instances in the cluster. Structure defined below.
-        :param Sequence['ClusterClusterConfigInitializationActionArgs'] initialization_actions: Commands to execute on each node after config is completed.
+        :param Sequence['ClusterClusterConfigInitializationActionArrgs'] initialization_actions: Commands to execute on each node after config is completed.
                You can specify multiple versions of these. Structure defined below.
-        :param 'ClusterClusterConfigLifecycleConfigArgs' lifecycle_config: The settings for auto deletion cluster schedule.
+        :param 'ClusterClusterConfigLifecycleConfigArrgs' lifecycle_config: The settings for auto deletion cluster schedule.
                Structure defined below.
-        :param 'ClusterClusterConfigMasterConfigArgs' master_config: The Google Compute Engine config settings for the master instances
+        :param 'ClusterClusterConfigMasterConfigArrgs' master_config: The Google Compute Engine config settings for the master instances
                in a cluster. Structure defined below.
-        :param 'ClusterClusterConfigMetastoreConfigArgs' metastore_config: The config setting for metastore service with the cluster.
+        :param 'ClusterClusterConfigMetastoreConfigArrgs' metastore_config: The config setting for metastore service with the cluster.
                Structure defined below.
                - - -
-        :param 'ClusterClusterConfigPreemptibleWorkerConfigArgs' preemptible_worker_config: The Google Compute Engine config settings for the additional
+        :param 'ClusterClusterConfigPreemptibleWorkerConfigArrgs' preemptible_worker_config: The Google Compute Engine config settings for the additional
                instances in a cluster. Structure defined below.
                * **NOTE** : `preemptible_worker_config` is
                an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't necessarily mean it is preemptible and is named as
                such for legacy/compatibility reasons.
-        :param 'ClusterClusterConfigSecurityConfigArgs' security_config: Security related configuration. Structure defined below.
-        :param 'ClusterClusterConfigSoftwareConfigArgs' software_config: The config settings for software inside the cluster.
+        :param 'ClusterClusterConfigSecurityConfigArrgs' security_config: Security related configuration. Structure defined below.
+        :param 'ClusterClusterConfigSoftwareConfigArrgs' software_config: The config settings for software inside the cluster.
                Structure defined below.
         :param str staging_bucket: The Cloud Storage staging bucket used to stage files,
                such as Hadoop jars, between client machines and the cluster.
@@ -666,7 +666,7 @@ class ClusterClusterConfig(dict):
         :param str temp_bucket: The Cloud Storage temp bucket used to store ephemeral cluster
                and jobs data, such as Spark and MapReduce history files.
                Note: If you don't explicitly specify a `temp_bucket` then GCP will auto create / assign one for you.
-        :param 'ClusterClusterConfigWorkerConfigArgs' worker_config: The Google Compute Engine config settings for the worker instances
+        :param 'ClusterClusterConfigWorkerConfigArrgs' worker_config: The Google Compute Engine config settings for the worker instances
                in a cluster. Structure defined below.
         """
         if autoscaling_config is not None:
@@ -855,7 +855,7 @@ class ClusterClusterConfig(dict):
 
 
 @pulumi.output_type
-class ClusterClusterConfigAutoscalingConfig(dict):
+calass ClusterClusterConfigAutoscalingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -906,11 +906,11 @@ class ClusterClusterConfigAutoscalingConfig(dict):
 
 
 @pulumi.output_type
-class ClusterClusterConfigDataprocMetricConfig(dict):
+calass ClusterClusterConfigDataprocMetricConfig(dict):
     def __init__(__self__, *,
                  metrics: Sequence['outputs.ClusterClusterConfigDataprocMetricConfigMetric']):
         """
-        :param Sequence['ClusterClusterConfigDataprocMetricConfigMetricArgs'] metrics: Metrics sources to enable.
+        :param Sequence['ClusterClusterConfigDataprocMetricConfigMetricArrgs'] metrics: Metrics sources to enable.
         """
         pulumi.set(__self__, "metrics", metrics)
 
@@ -924,7 +924,7 @@ class ClusterClusterConfigDataprocMetricConfig(dict):
 
 
 @pulumi.output_type
-class ClusterClusterConfigDataprocMetricConfigMetric(dict):
+calass ClusterClusterConfigDataprocMetricConfigMetric(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -977,7 +977,7 @@ class ClusterClusterConfigDataprocMetricConfigMetric(dict):
 
 
 @pulumi.output_type
-class ClusterClusterConfigEncryptionConfig(dict):
+calass ClusterClusterConfigEncryptionConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1018,7 +1018,7 @@ class ClusterClusterConfigEncryptionConfig(dict):
 
 
 @pulumi.output_type
-class ClusterClusterConfigEndpointConfig(dict):
+calass ClusterClusterConfigEndpointConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1065,7 +1065,7 @@ class ClusterClusterConfigEndpointConfig(dict):
 
 
 @pulumi.output_type
-class ClusterClusterConfigGceClusterConfig(dict):
+calass ClusterClusterConfigGceClusterConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1116,8 +1116,8 @@ class ClusterClusterConfigGceClusterConfig(dict):
         :param str network: The name or self_link of the Google Compute Engine
                network to the cluster will be part of. Conflicts with `subnetwork`.
                If neither is specified, this defaults to the "default" network.
-        :param 'ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs' node_group_affinity: Node Group Affinity for sole-tenant clusters.
-        :param 'ClusterClusterConfigGceClusterConfigReservationAffinityArgs' reservation_affinity: Reservation Affinity for consuming zonal reservation.
+        :param 'ClusterClusterConfigGceClusterConfigNodeGroupAffinityArrgs' node_group_affinity: Node Group Affinity for sole-tenant clusters.
+        :param 'ClusterClusterConfigGceClusterConfigReservationAffinityArrgs' reservation_affinity: Reservation Affinity for consuming zonal reservation.
         :param str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
         :param Sequence[str] service_account_scopes: The set of Google API scopes
@@ -1125,7 +1125,7 @@ class ClusterClusterConfigGceClusterConfig(dict):
                specified. Both OAuth2 URLs and gcloud
                short names are supported. To allow full access to all Cloud APIs, use the
                `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
-        :param 'ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
+        :param 'ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArrgs' shielded_instance_config: Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
                
                - - -
         :param str subnetwork: The name or self_link of the Google Compute Engine
@@ -1275,7 +1275,7 @@ class ClusterClusterConfigGceClusterConfig(dict):
 
 
 @pulumi.output_type
-class ClusterClusterConfigGceClusterConfigNodeGroupAffinity(dict):
+calass ClusterClusterConfigGceClusterConfigNodeGroupAffinity(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1310,7 +1310,7 @@ class ClusterClusterConfigGceClusterConfigNodeGroupAffinity(dict):
 
 
 @pulumi.output_type
-class ClusterClusterConfigGceClusterConfigReservationAffinity(dict):
+calass ClusterClusterConfigGceClusterConfigReservationAffinity(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1370,7 +1370,7 @@ class ClusterClusterConfigGceClusterConfigReservationAffinity(dict):
 
 
 @pulumi.output_type
-class ClusterClusterConfigGceClusterConfigShieldedInstanceConfig(dict):
+calass ClusterClusterConfigGceClusterConfigShieldedInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1438,7 +1438,7 @@ class ClusterClusterConfigGceClusterConfigShieldedInstanceConfig(dict):
 
 
 @pulumi.output_type
-class ClusterClusterConfigInitializationAction(dict):
+calass ClusterClusterConfigInitializationAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1495,7 +1495,7 @@ class ClusterClusterConfigInitializationAction(dict):
 
 
 @pulumi.output_type
-class ClusterClusterConfigLifecycleConfig(dict):
+calass ClusterClusterConfigLifecycleConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1565,7 +1565,7 @@ class ClusterClusterConfigLifecycleConfig(dict):
 
 
 @pulumi.output_type
-class ClusterClusterConfigMasterConfig(dict):
+calass ClusterClusterConfigMasterConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1602,8 +1602,8 @@ class ClusterClusterConfigMasterConfig(dict):
                  min_cpu_platform: Optional[str] = None,
                  num_instances: Optional[int] = None):
         """
-        :param Sequence['ClusterClusterConfigMasterConfigAcceleratorArgs'] accelerators: The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
-        :param 'ClusterClusterConfigMasterConfigDiskConfigArgs' disk_config: Disk Config
+        :param Sequence['ClusterClusterConfigMasterConfigAcceleratorArrgs'] accelerators: The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+        :param 'ClusterClusterConfigMasterConfigDiskConfigArrgs' disk_config: Disk Config
         :param str image_uri: The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
                for more information.
         :param str machine_type: The name of a Google Compute Engine machine type
@@ -1693,7 +1693,7 @@ class ClusterClusterConfigMasterConfig(dict):
 
 
 @pulumi.output_type
-class ClusterClusterConfigMasterConfigAccelerator(dict):
+calass ClusterClusterConfigMasterConfigAccelerator(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1753,7 +1753,7 @@ class ClusterClusterConfigMasterConfigAccelerator(dict):
 
 
 @pulumi.output_type
-class ClusterClusterConfigMasterConfigDiskConfig(dict):
+calass ClusterClusterConfigMasterConfigDiskConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1829,7 +1829,7 @@ class ClusterClusterConfigMasterConfigDiskConfig(dict):
 
 
 @pulumi.output_type
-class ClusterClusterConfigMetastoreConfig(dict):
+calass ClusterClusterConfigMetastoreConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1872,7 +1872,7 @@ class ClusterClusterConfigMetastoreConfig(dict):
 
 
 @pulumi.output_type
-class ClusterClusterConfigPreemptibleWorkerConfig(dict):
+calass ClusterClusterConfigPreemptibleWorkerConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1903,8 +1903,8 @@ class ClusterClusterConfigPreemptibleWorkerConfig(dict):
                  num_instances: Optional[int] = None,
                  preemptibility: Optional[str] = None):
         """
-        :param 'ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs' disk_config: Disk Config
-        :param 'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs' instance_flexibility_policy: Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+        :param 'ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArrgs' disk_config: Disk Config
+        :param 'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArrgs' instance_flexibility_policy: Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
         :param int num_instances: Specifies the number of preemptible nodes to create.
                Defaults to 0.
         :param str preemptibility: Specifies the preemptibility of the secondary workers. The default value is `PREEMPTIBLE`
@@ -1968,7 +1968,7 @@ class ClusterClusterConfigPreemptibleWorkerConfig(dict):
 
 
 @pulumi.output_type
-class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig(dict):
+calass ClusterClusterConfigPreemptibleWorkerConfigDiskConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2044,7 +2044,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig(dict):
 
 
 @pulumi.output_type
-class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy(dict):
+calass ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2068,7 +2068,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy(dict)
                  instance_selection_lists: Optional[Sequence['outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList']] = None,
                  instance_selection_results: Optional[Sequence['outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult']] = None):
         """
-        :param Sequence['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs'] instance_selection_lists: List of instance selection options that the group will use when creating new VMs.
+        :param Sequence['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrgs'] instance_selection_lists: List of instance selection options that the group will use when creating new VMs.
         """
         if instance_selection_lists is not None:
             pulumi.set(__self__, "instance_selection_lists", instance_selection_lists)
@@ -2090,7 +2090,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy(dict)
 
 
 @pulumi.output_type
-class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList(dict):
+calass ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2142,7 +2142,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
 
 
 @pulumi.output_type
-class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult(dict):
+calass ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2188,7 +2188,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
 
 
 @pulumi.output_type
-class ClusterClusterConfigSecurityConfig(dict):
+calass ClusterClusterConfigSecurityConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2209,7 +2209,7 @@ class ClusterClusterConfigSecurityConfig(dict):
     def __init__(__self__, *,
                  kerberos_config: 'outputs.ClusterClusterConfigSecurityConfigKerberosConfig'):
         """
-        :param 'ClusterClusterConfigSecurityConfigKerberosConfigArgs' kerberos_config: Kerberos Configuration
+        :param 'ClusterClusterConfigSecurityConfigKerberosConfigArrgs' kerberos_config: Kerberos Configuration
         """
         pulumi.set(__self__, "kerberos_config", kerberos_config)
 
@@ -2223,7 +2223,7 @@ class ClusterClusterConfigSecurityConfig(dict):
 
 
 @pulumi.output_type
-class ClusterClusterConfigSecurityConfigKerberosConfig(dict):
+calass ClusterClusterConfigSecurityConfigKerberosConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2487,7 +2487,7 @@ class ClusterClusterConfigSecurityConfigKerberosConfig(dict):
 
 
 @pulumi.output_type
-class ClusterClusterConfigSoftwareConfig(dict):
+calass ClusterClusterConfigSoftwareConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2583,7 +2583,7 @@ class ClusterClusterConfigSoftwareConfig(dict):
 
 
 @pulumi.output_type
-class ClusterClusterConfigWorkerConfig(dict):
+calass ClusterClusterConfigWorkerConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2623,8 +2623,8 @@ class ClusterClusterConfigWorkerConfig(dict):
                  min_num_instances: Optional[int] = None,
                  num_instances: Optional[int] = None):
         """
-        :param Sequence['ClusterClusterConfigWorkerConfigAcceleratorArgs'] accelerators: The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
-        :param 'ClusterClusterConfigWorkerConfigDiskConfigArgs' disk_config: Disk Config
+        :param Sequence['ClusterClusterConfigWorkerConfigAcceleratorArrgs'] accelerators: The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
+        :param 'ClusterClusterConfigWorkerConfigDiskConfigArrgs' disk_config: Disk Config
         :param str image_uri: The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
                for more information.
         :param str machine_type: The name of a Google Compute Engine machine type
@@ -2735,7 +2735,7 @@ class ClusterClusterConfigWorkerConfig(dict):
 
 
 @pulumi.output_type
-class ClusterClusterConfigWorkerConfigAccelerator(dict):
+calass ClusterClusterConfigWorkerConfigAccelerator(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2795,7 +2795,7 @@ class ClusterClusterConfigWorkerConfigAccelerator(dict):
 
 
 @pulumi.output_type
-class ClusterClusterConfigWorkerConfigDiskConfig(dict):
+calass ClusterClusterConfigWorkerConfigDiskConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2871,7 +2871,7 @@ class ClusterClusterConfigWorkerConfigDiskConfig(dict):
 
 
 @pulumi.output_type
-class ClusterIAMBindingCondition(dict):
+calass ClusterIAMBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -2898,7 +2898,7 @@ class ClusterIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class ClusterIAMMemberCondition(dict):
+calass ClusterIAMMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -2925,7 +2925,7 @@ class ClusterIAMMemberCondition(dict):
 
 
 @pulumi.output_type
-class ClusterVirtualClusterConfig(dict):
+calass ClusterVirtualClusterConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2952,9 +2952,9 @@ class ClusterVirtualClusterConfig(dict):
                  kubernetes_cluster_config: Optional['outputs.ClusterVirtualClusterConfigKubernetesClusterConfig'] = None,
                  staging_bucket: Optional[str] = None):
         """
-        :param 'ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs' auxiliary_services_config: Configuration of auxiliary services used by this cluster. 
+        :param 'ClusterVirtualClusterConfigAuxiliaryServicesConfigArrgs' auxiliary_services_config: Configuration of auxiliary services used by this cluster. 
                Structure defined below.
-        :param 'ClusterVirtualClusterConfigKubernetesClusterConfigArgs' kubernetes_cluster_config: The configuration for running the Dataproc cluster on Kubernetes.
+        :param 'ClusterVirtualClusterConfigKubernetesClusterConfigArrgs' kubernetes_cluster_config: The configuration for running the Dataproc cluster on Kubernetes.
                Structure defined below.
                - - -
         :param str staging_bucket: The Cloud Storage staging bucket used to stage files,
@@ -3007,7 +3007,7 @@ class ClusterVirtualClusterConfig(dict):
 
 
 @pulumi.output_type
-class ClusterVirtualClusterConfigAuxiliaryServicesConfig(dict):
+calass ClusterVirtualClusterConfigAuxiliaryServicesConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3031,8 +3031,8 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfig(dict):
                  metastore_config: Optional['outputs.ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig'] = None,
                  spark_history_server_config: Optional['outputs.ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig'] = None):
         """
-        :param 'ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs' metastore_config: The Hive Metastore configuration for this workload.
-        :param 'ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs' spark_history_server_config: The Spark History Server configuration for the workload.
+        :param 'ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArrgs' metastore_config: The Hive Metastore configuration for this workload.
+        :param 'ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArrgs' spark_history_server_config: The Spark History Server configuration for the workload.
         """
         if metastore_config is not None:
             pulumi.set(__self__, "metastore_config", metastore_config)
@@ -3057,7 +3057,7 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfig(dict):
 
 
 @pulumi.output_type
-class ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig(dict):
+calass ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3101,7 +3101,7 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig(dict):
 
 
 @pulumi.output_type
-class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig(dict):
+calass ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3139,7 +3139,7 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig
 
 
 @pulumi.output_type
-class ClusterVirtualClusterConfigKubernetesClusterConfig(dict):
+calass ClusterVirtualClusterConfigKubernetesClusterConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3166,8 +3166,8 @@ class ClusterVirtualClusterConfigKubernetesClusterConfig(dict):
                  kubernetes_software_config: 'outputs.ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig',
                  kubernetes_namespace: Optional[str] = None):
         """
-        :param 'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs' gke_cluster_config: The configuration for running the Dataproc cluster on GKE.
-        :param 'ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs' kubernetes_software_config: The software configuration for this Dataproc cluster running on Kubernetes.
+        :param 'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArrgs' gke_cluster_config: The configuration for running the Dataproc cluster on GKE.
+        :param 'ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArrgs' kubernetes_software_config: The software configuration for this Dataproc cluster running on Kubernetes.
         :param str kubernetes_namespace: A namespace within the Kubernetes cluster to deploy into. 
                If this namespace does not exist, it is created.
                If it  exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it.
@@ -3207,7 +3207,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfig(dict):
 
 
 @pulumi.output_type
-class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig(dict):
+calass ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3233,7 +3233,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig(dict):
         """
         :param str gke_cluster_target: A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster 
                (the GKE cluster can be zonal or regional)
-        :param Sequence['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs'] node_pool_targets: GKE node pools where workloads will be scheduled. At least one node pool must be assigned the `DEFAULT` 
+        :param Sequence['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrgs'] node_pool_targets: GKE node pools where workloads will be scheduled. At least one node pool must be assigned the `DEFAULT` 
                GkeNodePoolTarget.Role. If a GkeNodePoolTarget is not specified, Dataproc constructs a `DEFAULT` GkeNodePoolTarget.
                Each role can be given to only one GkeNodePoolTarget. All node pools must have the same location settings.
         """
@@ -3263,7 +3263,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig(dict):
 
 
 @pulumi.output_type
-class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget(dict):
+calass ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3291,7 +3291,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
         :param str node_pool: The target GKE node pool.
         :param Sequence[str] roles: The roles associated with the GKE node pool. 
                One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
-        :param 'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs' node_pool_config: The configuration for the GKE node pool. 
+        :param 'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArrgs' node_pool_config: The configuration for the GKE node pool. 
                If specified, Dataproc attempts to create a node pool with the specified shape.
                If one with the same name already exists, it is verified against all specified fields.
                If a field differs, the virtual cluster creation will fail.
@@ -3331,7 +3331,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
 
 
 @pulumi.output_type
-class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig(dict):
+calass ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig(dict):
     def __init__(__self__, *,
                  locations: Sequence[str],
                  autoscaling: Optional['outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling'] = None,
@@ -3340,9 +3340,9 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
         :param Sequence[str] locations: The list of Compute Engine zones where node pool nodes associated 
                with a Dataproc on GKE virtual cluster will be located.
                - - -
-        :param 'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs' autoscaling: The autoscaler configuration for this node pool. 
+        :param 'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArrgs' autoscaling: The autoscaler configuration for this node pool. 
                The autoscaler is enabled only when a valid configuration is present.
-        :param 'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs' config: The node pool configuration.
+        :param 'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArrgs' config: The node pool configuration.
         """
         pulumi.set(__self__, "locations", locations)
         if autoscaling is not None:
@@ -3379,7 +3379,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
 
 
 @pulumi.output_type
-class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling(dict):
+calass ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3429,7 +3429,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
 
 
 @pulumi.output_type
-class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig(dict):
+calass ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3527,7 +3527,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
 
 
 @pulumi.output_type
-class ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig(dict):
+calass ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3580,7 +3580,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig
 
 
 @pulumi.output_type
-class JobHadoopConfig(dict):
+calass JobHadoopConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3710,7 +3710,7 @@ class JobHadoopConfig(dict):
 
 
 @pulumi.output_type
-class JobHadoopConfigLoggingConfig(dict):
+calass JobHadoopConfigLoggingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3739,7 +3739,7 @@ class JobHadoopConfigLoggingConfig(dict):
 
 
 @pulumi.output_type
-class JobHiveConfig(dict):
+calass JobHiveConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3847,7 +3847,7 @@ class JobHiveConfig(dict):
 
 
 @pulumi.output_type
-class JobIAMBindingCondition(dict):
+calass JobIAMBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -3874,7 +3874,7 @@ class JobIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class JobIAMMemberCondition(dict):
+calass JobIAMMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -3901,7 +3901,7 @@ class JobIAMMemberCondition(dict):
 
 
 @pulumi.output_type
-class JobPigConfig(dict):
+calass JobPigConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4023,7 +4023,7 @@ class JobPigConfig(dict):
 
 
 @pulumi.output_type
-class JobPigConfigLoggingConfig(dict):
+calass JobPigConfigLoggingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4052,7 +4052,7 @@ class JobPigConfigLoggingConfig(dict):
 
 
 @pulumi.output_type
-class JobPlacement(dict):
+calass JobPlacement(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4091,7 +4091,7 @@ class JobPlacement(dict):
 
 
 @pulumi.output_type
-class JobPrestoConfig(dict):
+calass JobPrestoConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4213,7 +4213,7 @@ class JobPrestoConfig(dict):
 
 
 @pulumi.output_type
-class JobPrestoConfigLoggingConfig(dict):
+calass JobPrestoConfigLoggingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4242,7 +4242,7 @@ class JobPrestoConfigLoggingConfig(dict):
 
 
 @pulumi.output_type
-class JobPysparkConfig(dict):
+calass JobPysparkConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4371,7 +4371,7 @@ class JobPysparkConfig(dict):
 
 
 @pulumi.output_type
-class JobPysparkConfigLoggingConfig(dict):
+calass JobPysparkConfigLoggingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4400,7 +4400,7 @@ class JobPysparkConfigLoggingConfig(dict):
 
 
 @pulumi.output_type
-class JobReference(dict):
+calass JobReference(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4430,7 +4430,7 @@ class JobReference(dict):
 
 
 @pulumi.output_type
-class JobScheduling(dict):
+calass JobScheduling(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4468,7 +4468,7 @@ class JobScheduling(dict):
 
 
 @pulumi.output_type
-class JobSparkConfig(dict):
+calass JobSparkConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4602,7 +4602,7 @@ class JobSparkConfig(dict):
 
 
 @pulumi.output_type
-class JobSparkConfigLoggingConfig(dict):
+calass JobSparkConfigLoggingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4631,7 +4631,7 @@ class JobSparkConfigLoggingConfig(dict):
 
 
 @pulumi.output_type
-class JobSparksqlConfig(dict):
+calass JobSparksqlConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4739,7 +4739,7 @@ class JobSparksqlConfig(dict):
 
 
 @pulumi.output_type
-class JobSparksqlConfigLoggingConfig(dict):
+calass JobSparksqlConfigLoggingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4768,7 +4768,7 @@ class JobSparksqlConfigLoggingConfig(dict):
 
 
 @pulumi.output_type
-class JobStatus(dict):
+calass JobStatus(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4822,7 +4822,7 @@ class JobStatus(dict):
 
 
 @pulumi.output_type
-class MetastoreFederationBackendMetastore(dict):
+calass MetastoreFederationBackendMetastore(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4885,7 +4885,7 @@ class MetastoreFederationBackendMetastore(dict):
 
 
 @pulumi.output_type
-class MetastoreFederationIamBindingCondition(dict):
+calass MetastoreFederationIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -4912,7 +4912,7 @@ class MetastoreFederationIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class MetastoreFederationIamMemberCondition(dict):
+calass MetastoreFederationIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -4939,7 +4939,7 @@ class MetastoreFederationIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class MetastoreServiceEncryptionConfig(dict):
+calass MetastoreServiceEncryptionConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4976,7 +4976,7 @@ class MetastoreServiceEncryptionConfig(dict):
 
 
 @pulumi.output_type
-class MetastoreServiceHiveMetastoreConfig(dict):
+calass MetastoreServiceHiveMetastoreConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5010,7 +5010,7 @@ class MetastoreServiceHiveMetastoreConfig(dict):
         :param str version: The Hive metastore schema version.
         :param Mapping[str, str] config_overrides: A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
                The mappings override system defaults (some keys cannot be overridden)
-        :param 'MetastoreServiceHiveMetastoreConfigKerberosConfigArgs' kerberos_config: Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
+        :param 'MetastoreServiceHiveMetastoreConfigKerberosConfigArrgs' kerberos_config: Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
                Structure is documented below.
         """
         pulumi.set(__self__, "version", version)
@@ -5061,7 +5061,7 @@ class MetastoreServiceHiveMetastoreConfig(dict):
 
 
 @pulumi.output_type
-class MetastoreServiceHiveMetastoreConfigAuxiliaryVersion(dict):
+calass MetastoreServiceHiveMetastoreConfigAuxiliaryVersion(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5121,7 +5121,7 @@ class MetastoreServiceHiveMetastoreConfigAuxiliaryVersion(dict):
 
 
 @pulumi.output_type
-class MetastoreServiceHiveMetastoreConfigKerberosConfig(dict):
+calass MetastoreServiceHiveMetastoreConfigKerberosConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5144,7 +5144,7 @@ class MetastoreServiceHiveMetastoreConfigKerberosConfig(dict):
                  krb5_config_gcs_uri: str,
                  principal: str):
         """
-        :param 'MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs' keytab: A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
+        :param 'MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrgs' keytab: A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
                Structure is documented below.
         :param str krb5_config_gcs_uri: A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
         :param str principal: A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form "primary/instance@REALM", but there is no exact format.
@@ -5180,7 +5180,7 @@ class MetastoreServiceHiveMetastoreConfigKerberosConfig(dict):
 
 
 @pulumi.output_type
-class MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab(dict):
+calass MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5217,7 +5217,7 @@ class MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab(dict):
 
 
 @pulumi.output_type
-class MetastoreServiceIamBindingCondition(dict):
+calass MetastoreServiceIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -5244,7 +5244,7 @@ class MetastoreServiceIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class MetastoreServiceIamMemberCondition(dict):
+calass MetastoreServiceIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -5271,7 +5271,7 @@ class MetastoreServiceIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class MetastoreServiceMaintenanceWindow(dict):
+calass MetastoreServiceMaintenanceWindow(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5321,7 +5321,7 @@ class MetastoreServiceMaintenanceWindow(dict):
 
 
 @pulumi.output_type
-class MetastoreServiceMetadataIntegration(dict):
+calass MetastoreServiceMetadataIntegration(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5342,7 +5342,7 @@ class MetastoreServiceMetadataIntegration(dict):
     def __init__(__self__, *,
                  data_catalog_config: 'outputs.MetastoreServiceMetadataIntegrationDataCatalogConfig'):
         """
-        :param 'MetastoreServiceMetadataIntegrationDataCatalogConfigArgs' data_catalog_config: The integration config for the Data Catalog service.
+        :param 'MetastoreServiceMetadataIntegrationDataCatalogConfigArrgs' data_catalog_config: The integration config for the Data Catalog service.
                Structure is documented below.
         """
         pulumi.set(__self__, "data_catalog_config", data_catalog_config)
@@ -5358,7 +5358,7 @@ class MetastoreServiceMetadataIntegration(dict):
 
 
 @pulumi.output_type
-class MetastoreServiceMetadataIntegrationDataCatalogConfig(dict):
+calass MetastoreServiceMetadataIntegrationDataCatalogConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -5376,11 +5376,11 @@ class MetastoreServiceMetadataIntegrationDataCatalogConfig(dict):
 
 
 @pulumi.output_type
-class MetastoreServiceNetworkConfig(dict):
+calass MetastoreServiceNetworkConfig(dict):
     def __init__(__self__, *,
                  consumers: Sequence['outputs.MetastoreServiceNetworkConfigConsumer']):
         """
-        :param Sequence['MetastoreServiceNetworkConfigConsumerArgs'] consumers: The consumer-side network configuration for the Dataproc Metastore instance.
+        :param Sequence['MetastoreServiceNetworkConfigConsumerArrgs'] consumers: The consumer-side network configuration for the Dataproc Metastore instance.
                Structure is documented below.
         """
         pulumi.set(__self__, "consumers", consumers)
@@ -5396,7 +5396,7 @@ class MetastoreServiceNetworkConfig(dict):
 
 
 @pulumi.output_type
-class MetastoreServiceNetworkConfigConsumer(dict):
+calass MetastoreServiceNetworkConfigConsumer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5451,7 +5451,7 @@ class MetastoreServiceNetworkConfigConsumer(dict):
 
 
 @pulumi.output_type
-class MetastoreServiceScalingConfig(dict):
+calass MetastoreServiceScalingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5503,7 +5503,7 @@ class MetastoreServiceScalingConfig(dict):
 
 
 @pulumi.output_type
-class MetastoreServiceTelemetryConfig(dict):
+calass MetastoreServiceTelemetryConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5543,7 +5543,7 @@ class MetastoreServiceTelemetryConfig(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplateJob(dict):
+calass WorkflowTemplateJob(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5594,17 +5594,17 @@ class WorkflowTemplateJob(dict):
                  spark_sql_job: Optional['outputs.WorkflowTemplateJobSparkSqlJob'] = None):
         """
         :param str step_id: Required. The step id. The id must be unique among all jobs within the template. The step id is used as prefix for job id, as job `goog-dataproc-workflow-step-id` label, and in field from other steps. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-        :param 'WorkflowTemplateJobHadoopJobArgs' hadoop_job: Job is a Hadoop job.
-        :param 'WorkflowTemplateJobHiveJobArgs' hive_job: Job is a Hive job.
+        :param 'WorkflowTemplateJobHadoopJobArrgs' hadoop_job: Job is a Hadoop job.
+        :param 'WorkflowTemplateJobHiveJobArrgs' hive_job: Job is a Hive job.
         :param Mapping[str, str] labels: The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
-        :param 'WorkflowTemplateJobPigJobArgs' pig_job: Job is a Pig job.
+        :param 'WorkflowTemplateJobPigJobArrgs' pig_job: Job is a Pig job.
         :param Sequence[str] prerequisite_step_ids: The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
-        :param 'WorkflowTemplateJobPrestoJobArgs' presto_job: Job is a Presto job.
-        :param 'WorkflowTemplateJobPysparkJobArgs' pyspark_job: Job is a PySpark job.
-        :param 'WorkflowTemplateJobSchedulingArgs' scheduling: Job scheduling configuration.
-        :param 'WorkflowTemplateJobSparkJobArgs' spark_job: Job is a Spark job.
-        :param 'WorkflowTemplateJobSparkRJobArgs' spark_r_job: Job is a SparkR job.
-        :param 'WorkflowTemplateJobSparkSqlJobArgs' spark_sql_job: Job is a SparkSql job.
+        :param 'WorkflowTemplateJobPrestoJobArrgs' presto_job: Job is a Presto job.
+        :param 'WorkflowTemplateJobPysparkJobArrgs' pyspark_job: Job is a PySpark job.
+        :param 'WorkflowTemplateJobSchedulingArrgs' scheduling: Job scheduling configuration.
+        :param 'WorkflowTemplateJobSparkJobArrgs' spark_job: Job is a Spark job.
+        :param 'WorkflowTemplateJobSparkRJobArrgs' spark_r_job: Job is a SparkR job.
+        :param 'WorkflowTemplateJobSparkSqlJobArrgs' spark_sql_job: Job is a SparkSql job.
         """
         pulumi.set(__self__, "step_id", step_id)
         if hadoop_job is not None:
@@ -5728,7 +5728,7 @@ class WorkflowTemplateJob(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplateJobHadoopJob(dict):
+calass WorkflowTemplateJobHadoopJob(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5770,7 +5770,7 @@ class WorkflowTemplateJobHadoopJob(dict):
         :param Sequence[str] args: The arguments to pass to the driver. Do not include arguments, such as `-libjars` or `-Dfoo=bar`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
         :param Sequence[str] file_uris: HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
         :param Sequence[str] jar_file_uris: Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
-        :param 'WorkflowTemplateJobHadoopJobLoggingConfigArgs' logging_config: The runtime log config for job execution.
+        :param 'WorkflowTemplateJobHadoopJobLoggingConfigArrgs' logging_config: The runtime log config for job execution.
         :param str main_class: The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`.
         :param str main_jar_file_uri: The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'
         :param Mapping[str, str] properties: A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
@@ -5858,7 +5858,7 @@ class WorkflowTemplateJobHadoopJob(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplateJobHadoopJobLoggingConfig(dict):
+calass WorkflowTemplateJobHadoopJobLoggingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5894,7 +5894,7 @@ class WorkflowTemplateJobHadoopJobLoggingConfig(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplateJobHiveJob(dict):
+calass WorkflowTemplateJobHiveJob(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5932,7 +5932,7 @@ class WorkflowTemplateJobHiveJob(dict):
         :param Sequence[str] jar_file_uris: HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
         :param Mapping[str, str] properties: A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
         :param str query_file_uri: The HCFS URI of the script that contains Hive queries.
-        :param 'WorkflowTemplateJobHiveJobQueryListArgs' query_list: A list of queries.
+        :param 'WorkflowTemplateJobHiveJobQueryListArrgs' query_list: A list of queries.
         :param Mapping[str, str] script_variables: Mapping of query variable names to values (equivalent to the Hive command: `SET name="value";`).
         """
         if continue_on_failure is not None:
@@ -5998,7 +5998,7 @@ class WorkflowTemplateJobHiveJob(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplateJobHiveJobQueryList(dict):
+calass WorkflowTemplateJobHiveJobQueryList(dict):
     def __init__(__self__, *,
                  queries: Sequence[str]):
         """
@@ -6016,7 +6016,7 @@ class WorkflowTemplateJobHiveJobQueryList(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplateJobPigJob(dict):
+calass WorkflowTemplateJobPigJob(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6055,10 +6055,10 @@ class WorkflowTemplateJobPigJob(dict):
         """
         :param bool continue_on_failure: Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
         :param Sequence[str] jar_file_uris: HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
-        :param 'WorkflowTemplateJobPigJobLoggingConfigArgs' logging_config: The runtime log config for job execution.
+        :param 'WorkflowTemplateJobPigJobLoggingConfigArrgs' logging_config: The runtime log config for job execution.
         :param Mapping[str, str] properties: A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
         :param str query_file_uri: The HCFS URI of the script that contains the Pig queries.
-        :param 'WorkflowTemplateJobPigJobQueryListArgs' query_list: A list of queries.
+        :param 'WorkflowTemplateJobPigJobQueryListArrgs' query_list: A list of queries.
         :param Mapping[str, str] script_variables: Mapping of query variable names to values (equivalent to the Pig command: `name=`).
         """
         if continue_on_failure is not None:
@@ -6134,7 +6134,7 @@ class WorkflowTemplateJobPigJob(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplateJobPigJobLoggingConfig(dict):
+calass WorkflowTemplateJobPigJobLoggingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6170,7 +6170,7 @@ class WorkflowTemplateJobPigJobLoggingConfig(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplateJobPigJobQueryList(dict):
+calass WorkflowTemplateJobPigJobQueryList(dict):
     def __init__(__self__, *,
                  queries: Sequence[str]):
         """
@@ -6188,7 +6188,7 @@ class WorkflowTemplateJobPigJobQueryList(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplateJobPrestoJob(dict):
+calass WorkflowTemplateJobPrestoJob(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6227,11 +6227,11 @@ class WorkflowTemplateJobPrestoJob(dict):
         """
         :param Sequence[str] client_tags: Presto client tags to attach to this query
         :param bool continue_on_failure: Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
-        :param 'WorkflowTemplateJobPrestoJobLoggingConfigArgs' logging_config: The runtime log config for job execution.
+        :param 'WorkflowTemplateJobPrestoJobLoggingConfigArrgs' logging_config: The runtime log config for job execution.
         :param str output_format: The format in which query output will be displayed. See the Presto documentation for supported output formats
         :param Mapping[str, str] properties: A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
         :param str query_file_uri: The HCFS URI of the script that contains SQL queries.
-        :param 'WorkflowTemplateJobPrestoJobQueryListArgs' query_list: A list of queries.
+        :param 'WorkflowTemplateJobPrestoJobQueryListArrgs' query_list: A list of queries.
         """
         if client_tags is not None:
             pulumi.set(__self__, "client_tags", client_tags)
@@ -6306,7 +6306,7 @@ class WorkflowTemplateJobPrestoJob(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplateJobPrestoJobLoggingConfig(dict):
+calass WorkflowTemplateJobPrestoJobLoggingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6342,7 +6342,7 @@ class WorkflowTemplateJobPrestoJobLoggingConfig(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplateJobPrestoJobQueryList(dict):
+calass WorkflowTemplateJobPrestoJobQueryList(dict):
     def __init__(__self__, *,
                  queries: Sequence[str]):
         """
@@ -6360,7 +6360,7 @@ class WorkflowTemplateJobPrestoJobQueryList(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplateJobPysparkJob(dict):
+calass WorkflowTemplateJobPysparkJob(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6403,7 +6403,7 @@ class WorkflowTemplateJobPysparkJob(dict):
         :param Sequence[str] args: The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
         :param Sequence[str] file_uris: HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
         :param Sequence[str] jar_file_uris: HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
-        :param 'WorkflowTemplateJobPysparkJobLoggingConfigArgs' logging_config: The runtime log config for job execution.
+        :param 'WorkflowTemplateJobPysparkJobLoggingConfigArrgs' logging_config: The runtime log config for job execution.
         :param Mapping[str, str] properties: A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
         :param Sequence[str] python_file_uris: HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
         """
@@ -6489,7 +6489,7 @@ class WorkflowTemplateJobPysparkJob(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplateJobPysparkJobLoggingConfig(dict):
+calass WorkflowTemplateJobPysparkJobLoggingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6525,7 +6525,7 @@ class WorkflowTemplateJobPysparkJobLoggingConfig(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplateJobScheduling(dict):
+calass WorkflowTemplateJobScheduling(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6575,7 +6575,7 @@ class WorkflowTemplateJobScheduling(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplateJobSparkJob(dict):
+calass WorkflowTemplateJobSparkJob(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6617,7 +6617,7 @@ class WorkflowTemplateJobSparkJob(dict):
         :param Sequence[str] args: The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
         :param Sequence[str] file_uris: HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
         :param Sequence[str] jar_file_uris: HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
-        :param 'WorkflowTemplateJobSparkJobLoggingConfigArgs' logging_config: The runtime log config for job execution.
+        :param 'WorkflowTemplateJobSparkJobLoggingConfigArrgs' logging_config: The runtime log config for job execution.
         :param str main_class: The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jar_file_uris`.
         :param str main_jar_file_uri: The HCFS URI of the jar file that contains the main class.
         :param Mapping[str, str] properties: A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
@@ -6705,7 +6705,7 @@ class WorkflowTemplateJobSparkJob(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplateJobSparkJobLoggingConfig(dict):
+calass WorkflowTemplateJobSparkJobLoggingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6741,7 +6741,7 @@ class WorkflowTemplateJobSparkJobLoggingConfig(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplateJobSparkRJob(dict):
+calass WorkflowTemplateJobSparkRJob(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6777,7 +6777,7 @@ class WorkflowTemplateJobSparkRJob(dict):
         :param Sequence[str] archive_uris: HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
         :param Sequence[str] args: The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
         :param Sequence[str] file_uris: HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
-        :param 'WorkflowTemplateJobSparkRJobLoggingConfigArgs' logging_config: The runtime log config for job execution.
+        :param 'WorkflowTemplateJobSparkRJobLoggingConfigArrgs' logging_config: The runtime log config for job execution.
         :param Mapping[str, str] properties: A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
         """
         pulumi.set(__self__, "main_r_file_uri", main_r_file_uri)
@@ -6842,7 +6842,7 @@ class WorkflowTemplateJobSparkRJob(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplateJobSparkRJobLoggingConfig(dict):
+calass WorkflowTemplateJobSparkRJobLoggingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6878,7 +6878,7 @@ class WorkflowTemplateJobSparkRJobLoggingConfig(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplateJobSparkSqlJob(dict):
+calass WorkflowTemplateJobSparkSqlJob(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6913,10 +6913,10 @@ class WorkflowTemplateJobSparkSqlJob(dict):
                  script_variables: Optional[Mapping[str, str]] = None):
         """
         :param Sequence[str] jar_file_uris: HCFS URIs of jar files to be added to the Spark CLASSPATH.
-        :param 'WorkflowTemplateJobSparkSqlJobLoggingConfigArgs' logging_config: The runtime log config for job execution.
+        :param 'WorkflowTemplateJobSparkSqlJobLoggingConfigArrgs' logging_config: The runtime log config for job execution.
         :param Mapping[str, str] properties: A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
         :param str query_file_uri: The HCFS URI of the script that contains SQL queries.
-        :param 'WorkflowTemplateJobSparkSqlJobQueryListArgs' query_list: A list of queries.
+        :param 'WorkflowTemplateJobSparkSqlJobQueryListArrgs' query_list: A list of queries.
         :param Mapping[str, str] script_variables: Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
         """
         if jar_file_uris is not None:
@@ -6982,7 +6982,7 @@ class WorkflowTemplateJobSparkSqlJob(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplateJobSparkSqlJobLoggingConfig(dict):
+calass WorkflowTemplateJobSparkSqlJobLoggingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7018,7 +7018,7 @@ class WorkflowTemplateJobSparkSqlJobLoggingConfig(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplateJobSparkSqlJobQueryList(dict):
+calass WorkflowTemplateJobSparkSqlJobQueryList(dict):
     def __init__(__self__, *,
                  queries: Sequence[str]):
         """
@@ -7036,7 +7036,7 @@ class WorkflowTemplateJobSparkSqlJobQueryList(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplateParameter(dict):
+calass WorkflowTemplateParameter(dict):
     def __init__(__self__, *,
                  fields: Sequence[str],
                  name: str,
@@ -7046,7 +7046,7 @@ class WorkflowTemplateParameter(dict):
         :param Sequence[str] fields: Required. Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths. A field path is similar in syntax to a .sparkJob.args
         :param str name: Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
         :param str description: Brief description of the parameter. Must not exceed 1024 characters.
-        :param 'WorkflowTemplateParameterValidationArgs' validation: Validation rules to be applied to this parameter's value.
+        :param 'WorkflowTemplateParameterValidationArrgs' validation: Validation rules to be applied to this parameter's value.
         """
         pulumi.set(__self__, "fields", fields)
         pulumi.set(__self__, "name", name)
@@ -7089,13 +7089,13 @@ class WorkflowTemplateParameter(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplateParameterValidation(dict):
+calass WorkflowTemplateParameterValidation(dict):
     def __init__(__self__, *,
                  regex: Optional['outputs.WorkflowTemplateParameterValidationRegex'] = None,
                  values: Optional['outputs.WorkflowTemplateParameterValidationValues'] = None):
         """
-        :param 'WorkflowTemplateParameterValidationRegexArgs' regex: Validation based on regular expressions.
-        :param 'WorkflowTemplateParameterValidationValuesArgs' values: Validation based on a list of allowed values.
+        :param 'WorkflowTemplateParameterValidationRegexArrgs' regex: Validation based on regular expressions.
+        :param 'WorkflowTemplateParameterValidationValuesArrgs' values: Validation based on a list of allowed values.
         """
         if regex is not None:
             pulumi.set(__self__, "regex", regex)
@@ -7120,7 +7120,7 @@ class WorkflowTemplateParameterValidation(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplateParameterValidationRegex(dict):
+calass WorkflowTemplateParameterValidationRegex(dict):
     def __init__(__self__, *,
                  regexes: Sequence[str]):
         """
@@ -7138,7 +7138,7 @@ class WorkflowTemplateParameterValidationRegex(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplateParameterValidationValues(dict):
+calass WorkflowTemplateParameterValidationValues(dict):
     def __init__(__self__, *,
                  values: Sequence[str]):
         """
@@ -7156,7 +7156,7 @@ class WorkflowTemplateParameterValidationValues(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacement(dict):
+calass WorkflowTemplatePlacement(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7180,8 +7180,8 @@ class WorkflowTemplatePlacement(dict):
                  cluster_selector: Optional['outputs.WorkflowTemplatePlacementClusterSelector'] = None,
                  managed_cluster: Optional['outputs.WorkflowTemplatePlacementManagedCluster'] = None):
         """
-        :param 'WorkflowTemplatePlacementClusterSelectorArgs' cluster_selector: A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
-        :param 'WorkflowTemplatePlacementManagedClusterArgs' managed_cluster: A cluster that is managed by the workflow.
+        :param 'WorkflowTemplatePlacementClusterSelectorArrgs' cluster_selector: A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+        :param 'WorkflowTemplatePlacementManagedClusterArrgs' managed_cluster: A cluster that is managed by the workflow.
         """
         if cluster_selector is not None:
             pulumi.set(__self__, "cluster_selector", cluster_selector)
@@ -7206,7 +7206,7 @@ class WorkflowTemplatePlacement(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementClusterSelector(dict):
+calass WorkflowTemplatePlacementClusterSelector(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7253,7 +7253,7 @@ class WorkflowTemplatePlacementClusterSelector(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedCluster(dict):
+calass WorkflowTemplatePlacementManagedCluster(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7277,7 +7277,7 @@ class WorkflowTemplatePlacementManagedCluster(dict):
                  labels: Optional[Mapping[str, str]] = None):
         """
         :param str cluster_name: Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix. The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigArgs' config: Required. The cluster configuration.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigArrgs' config: Required. The cluster configuration.
         :param Mapping[str, str] labels: The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
         """
         pulumi.set(__self__, "cluster_name", cluster_name)
@@ -7311,7 +7311,7 @@ class WorkflowTemplatePlacementManagedCluster(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfig(dict):
+calass WorkflowTemplatePlacementManagedClusterConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7374,21 +7374,21 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
                  temp_bucket: Optional[str] = None,
                  worker_config: Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfig'] = None):
         """
-        :param 'WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs' autoscaling_config: Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs' encryption_config: Encryption settings for the cluster.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs' endpoint_config: Port/endpoint configuration for this cluster
-        :param 'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs' gce_cluster_config: The shared Compute Engine config settings for all instances in a cluster.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs' gke_cluster_config: The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gce_cluster_config`, `master_config`, `worker_config`, `secondary_worker_config`, and `autoscaling_config`.
-        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs'] initialization_actions: Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's `role` metadata to run an executable on a master or worker node, as shown below using `curl` (you can also use `wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if ; then ... master specific actions ... else ... worker specific actions ... fi
-        :param 'WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs' lifecycle_config: Lifecycle setting for the cluster.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs' master_config: The Compute Engine config settings for additional worker instances in a cluster.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs' metastore_config: Metastore configuration.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs' secondary_worker_config: The Compute Engine config settings for additional worker instances in a cluster.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs' security_config: Security settings for the cluster.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs' software_config: The config settings for software inside the cluster.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArrgs' autoscaling_config: Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArrgs' encryption_config: Encryption settings for the cluster.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArrgs' endpoint_config: Port/endpoint configuration for this cluster
+        :param 'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArrgs' gce_cluster_config: The shared Compute Engine config settings for all instances in a cluster.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArrgs' gke_cluster_config: The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gce_cluster_config`, `master_config`, `worker_config`, `secondary_worker_config`, and `autoscaling_config`.
+        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrgs'] initialization_actions: Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's `role` metadata to run an executable on a master or worker node, as shown below using `curl` (you can also use `wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if ; then ... master specific actions ... else ... worker specific actions ... fi
+        :param 'WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArrgs' lifecycle_config: Lifecycle setting for the cluster.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigMasterConfigArrgs' master_config: The Compute Engine config settings for additional worker instances in a cluster.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArrgs' metastore_config: Metastore configuration.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArrgs' secondary_worker_config: The Compute Engine config settings for additional worker instances in a cluster.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArrgs' security_config: Security settings for the cluster.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArrgs' software_config: The config settings for software inside the cluster.
         :param str staging_bucket: A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
         :param str temp_bucket: A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs' worker_config: The Compute Engine config settings for additional worker instances in a cluster.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArrgs' worker_config: The Compute Engine config settings for additional worker instances in a cluster.
                
                - - -
         """
@@ -7547,7 +7547,7 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig(dict):
     def __init__(__self__, *,
                  policy: Optional[str] = None):
         """
@@ -7566,7 +7566,7 @@ class WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7602,7 +7602,7 @@ class WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigEndpointConfig(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigEndpointConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7652,7 +7652,7 @@ class WorkflowTemplatePlacementManagedClusterConfigEndpointConfig(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7699,12 +7699,12 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
         :param bool internal_ip_only: If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
         :param Mapping[str, str] metadata: The Compute Engine metadata entries to add to all instances (see (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
         :param str network: The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `network_uri` nor `subnetwork_uri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default` * `default`
-        :param 'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs' node_group_affinity: Node Group Affinity for sole-tenant clusters.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArrgs' node_group_affinity: Node Group Affinity for sole-tenant clusters.
         :param str private_ipv6_google_access: The type of IPv6 access for a cluster. Possible values: PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED, INHERIT_FROM_SUBNETWORK, OUTBOUND, BIDIRECTIONAL
-        :param 'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs' reservation_affinity: Reservation Affinity for consuming Zonal reservation.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArrgs' reservation_affinity: Reservation Affinity for consuming Zonal reservation.
         :param str service_account: The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
         :param Sequence[str] service_account_scopes: The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
-        :param 'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArrgs' shielded_instance_config: Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
         :param str subnetwork: The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
         :param Sequence[str] tags: The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
         :param str zone: The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
@@ -7832,7 +7832,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7867,7 +7867,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffi
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7927,7 +7927,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAf
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7991,7 +7991,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInsta
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8012,7 +8012,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig(dict):
     def __init__(__self__, *,
                  namespaced_gke_deployment_target: Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget'] = None):
         """
-        :param 'WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs' namespaced_gke_deployment_target: A target for the deployment.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArrgs' namespaced_gke_deployment_target: A target for the deployment.
         """
         if namespaced_gke_deployment_target is not None:
             pulumi.set(__self__, "namespaced_gke_deployment_target", namespaced_gke_deployment_target)
@@ -8027,7 +8027,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8077,7 +8077,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGke
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigInitializationAction(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigInitializationAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8127,7 +8127,7 @@ class WorkflowTemplatePlacementManagedClusterConfigInitializationAction(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8205,7 +8205,7 @@ class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigMasterConfig(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigMasterConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8247,13 +8247,13 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig(dict):
                  num_instances: Optional[int] = None,
                  preemptibility: Optional[str] = None):
         """
-        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs'] accelerators: The Compute Engine accelerator configuration for these instances.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs' disk_config: Disk option config settings.
+        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrgs'] accelerators: The Compute Engine accelerator configuration for these instances.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArrgs' disk_config: Disk option config settings.
         :param str image: The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
         :param Sequence[str] instance_names: Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
         :param bool is_preemptible: Output only. Specifies that this instance group contains preemptible instances.
         :param str machine_type: The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
-        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs'] managed_group_configs: Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrgs'] managed_group_configs: Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
         :param str min_cpu_platform: Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
         :param int num_instances: The number of VM instances in the instance group. For master instance groups, must be set to 1.
         :param str preemptibility: Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
@@ -8361,7 +8361,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8411,7 +8411,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator(dict)
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8475,7 +8475,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8515,7 +8515,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfi
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8550,7 +8550,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8592,13 +8592,13 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(dict):
                  num_instances: Optional[int] = None,
                  preemptibility: Optional[str] = None):
         """
-        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs'] accelerators: The Compute Engine accelerator configuration for these instances.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs' disk_config: Disk option config settings.
+        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrgs'] accelerators: The Compute Engine accelerator configuration for these instances.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArrgs' disk_config: Disk option config settings.
         :param str image: The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
         :param Sequence[str] instance_names: Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
         :param bool is_preemptible: Output only. Specifies that this instance group contains preemptible instances.
         :param str machine_type: The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
-        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs'] managed_group_configs: Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrgs'] managed_group_configs: Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
         :param str min_cpu_platform: Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
         :param int num_instances: The number of VM instances in the instance group. For master instance groups, must be set to 1.
         :param str preemptibility: Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
@@ -8706,7 +8706,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8756,7 +8756,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelera
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8820,7 +8820,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConf
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8860,7 +8860,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedG
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigSecurityConfig(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigSecurityConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8881,7 +8881,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfig(dict):
     def __init__(__self__, *,
                  kerberos_config: Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig'] = None):
         """
-        :param 'WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs' kerberos_config: Kerberos related configuration.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArrgs' kerberos_config: Kerberos related configuration.
         """
         if kerberos_config is not None:
             pulumi.set(__self__, "kerberos_config", kerberos_config)
@@ -8896,7 +8896,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfig(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9122,7 +9122,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig(
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9214,7 +9214,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigWorkerConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9256,13 +9256,13 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig(dict):
                  num_instances: Optional[int] = None,
                  preemptibility: Optional[str] = None):
         """
-        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs'] accelerators: The Compute Engine accelerator configuration for these instances.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs' disk_config: Disk option config settings.
+        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrgs'] accelerators: The Compute Engine accelerator configuration for these instances.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArrgs' disk_config: Disk option config settings.
         :param str image: The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
         :param Sequence[str] instance_names: Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
         :param bool is_preemptible: Output only. Specifies that this instance group contains preemptible instances.
         :param str machine_type: The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
-        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs'] managed_group_configs: Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrgs'] managed_group_configs: Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
         :param str min_cpu_platform: Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
         :param int num_instances: The number of VM instances in the instance group. For master instance groups, must be set to 1.
         :param str preemptibility: Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
@@ -9370,7 +9370,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9420,7 +9420,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator(dict)
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9484,7 +9484,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig(dict):
 
 
 @pulumi.output_type
-class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig(dict):
+calass WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

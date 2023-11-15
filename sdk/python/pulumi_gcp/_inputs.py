@@ -10,11 +10,11 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
-    'ProviderBatchingArgs',
+    'ProviderBatchingArrgs',
 ]
 
 @pulumi.input_type
-class ProviderBatchingArgs:
+calass ProviderBatchingArrgs:
     def __init__(__self__, *,
                  enable_batching: Optional[pulumi.Input[bool]] = None,
                  send_after: Optional[pulumi.Input[str]] = None):

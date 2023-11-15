@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetGroupLookupResult:
+calass GetGroupLookupResult:
     """
     A collection of values returned by getGroupLookup.
     """
@@ -56,7 +56,7 @@ class GetGroupLookupResult:
         return pulumi.get(self, "name")
 
 
-class AwaitableGetGroupLookupResult(GetGroupLookupResult):
+calass AwaitableGetGroupLookupResult(GetGroupLookupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
@@ -67,7 +67,7 @@ class AwaitableGetGroupLookupResult(GetGroupLookupResult):
             name=self.name)
 
 
-def get_group_lookup(group_key: Optional[pulumi.InputType['GetGroupLookupGroupKeyArgs']] = None,
+def get_group_lookup(group_key: Optional[pulumi.InputType['GetGroupLookupGroupKeyArrgs']] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupLookupResult:
     """
     Use this data source to look up the resource name of a Cloud Identity Group by its [EntityKey](https://cloud.google.com/identity/docs/reference/rest/v1/EntityKey), i.e. the group's email.
@@ -80,13 +80,13 @@ def get_group_lookup(group_key: Optional[pulumi.InputType['GetGroupLookupGroupKe
     import pulumi
     import pulumi_gcp as gcp
 
-    group = gcp.cloudidentity.get_group_lookup(group_key=gcp.cloudidentity.GetGroupLookupGroupKeyArgs(
+    group = gcp.cloudidentity.get_group_lookup(group_key=gcp.cloudidentity.GetGroupLookupGroupKeyArrgs(
         id="my-group@example.com",
     ))
     ```
 
 
-    :param pulumi.InputType['GetGroupLookupGroupKeyArgs'] group_key: The EntityKey of the Group to lookup. A unique identifier for an entity in the Cloud Identity Groups API.
+    :param pulumi.InputType['GetGroupLookupGroupKeyArrgs'] group_key: The EntityKey of the Group to lookup. A unique identifier for an entity in the Cloud Identity Groups API.
            An entity can represent either a group with an optional namespace or a user without a namespace.
            The combination of id and namespace must be unique; however, the same id can be used with different namespaces. Structure is documented below.
     """
@@ -102,7 +102,7 @@ def get_group_lookup(group_key: Optional[pulumi.InputType['GetGroupLookupGroupKe
 
 
 @_utilities.lift_output_func(get_group_lookup)
-def get_group_lookup_output(group_key: Optional[pulumi.Input[pulumi.InputType['GetGroupLookupGroupKeyArgs']]] = None,
+def get_group_lookup_output(group_key: Optional[pulumi.Input[pulumi.InputType['GetGroupLookupGroupKeyArrgs']]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupLookupResult]:
     """
     Use this data source to look up the resource name of a Cloud Identity Group by its [EntityKey](https://cloud.google.com/identity/docs/reference/rest/v1/EntityKey), i.e. the group's email.
@@ -115,13 +115,13 @@ def get_group_lookup_output(group_key: Optional[pulumi.Input[pulumi.InputType['G
     import pulumi
     import pulumi_gcp as gcp
 
-    group = gcp.cloudidentity.get_group_lookup(group_key=gcp.cloudidentity.GetGroupLookupGroupKeyArgs(
+    group = gcp.cloudidentity.get_group_lookup(group_key=gcp.cloudidentity.GetGroupLookupGroupKeyArrgs(
         id="my-group@example.com",
     ))
     ```
 
 
-    :param pulumi.InputType['GetGroupLookupGroupKeyArgs'] group_key: The EntityKey of the Group to lookup. A unique identifier for an entity in the Cloud Identity Groups API.
+    :param pulumi.InputType['GetGroupLookupGroupKeyArrgs'] group_key: The EntityKey of the Group to lookup. A unique identifier for an entity in the Cloud Identity Groups API.
            An entity can represent either a group with an optional namespace or a user without a namespace.
            The combination of id and namespace must be unique; however, the same id can be used with different namespaces. Structure is documented below.
     """

@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class DeploymentLabel(dict):
+calass DeploymentLabel(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
                  value: Optional[str] = None):
@@ -49,14 +49,14 @@ class DeploymentLabel(dict):
 
 
 @pulumi.output_type
-class DeploymentTarget(dict):
+calass DeploymentTarget(dict):
     def __init__(__self__, *,
                  config: 'outputs.DeploymentTargetConfig',
                  imports: Optional[Sequence['outputs.DeploymentTargetImport']] = None):
         """
-        :param 'DeploymentTargetConfigArgs' config: The root configuration file to use for this deployment.
+        :param 'DeploymentTargetConfigArrgs' config: The root configuration file to use for this deployment.
                Structure is documented below.
-        :param Sequence['DeploymentTargetImportArgs'] imports: Specifies import files for this configuration. This can be
+        :param Sequence['DeploymentTargetImportArrgs'] imports: Specifies import files for this configuration. This can be
                used to import templates or other files. For example, you might
                import a text file in order to use the file in a template.
                Structure is documented below.
@@ -87,7 +87,7 @@ class DeploymentTarget(dict):
 
 
 @pulumi.output_type
-class DeploymentTargetConfig(dict):
+calass DeploymentTargetConfig(dict):
     def __init__(__self__, *,
                  content: str):
         """
@@ -105,7 +105,7 @@ class DeploymentTargetConfig(dict):
 
 
 @pulumi.output_type
-class DeploymentTargetImport(dict):
+calass DeploymentTargetImport(dict):
     def __init__(__self__, *,
                  content: Optional[str] = None,
                  name: Optional[str] = None):

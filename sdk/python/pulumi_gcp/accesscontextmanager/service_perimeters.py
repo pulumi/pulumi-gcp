@@ -11,13 +11,13 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ServicePerimetersArgs', 'ServicePerimeters']
+__all__ = ['ServicePerimetersArrgs', 'ServicePerimeters']
 
 @pulumi.input_type
-class ServicePerimetersArgs:
+calass ServicePerimetersArrgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[str],
-                 service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]]] = None):
+                 service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArrgs']]]] = None):
         """
         The set of arguments for constructing a ServicePerimeters resource.
         :param pulumi.Input[str] parent: The AccessPolicy this ServicePerimeter lives in.
@@ -25,7 +25,7 @@ class ServicePerimetersArgs:
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]] service_perimeters: The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArrgs']]] service_perimeters: The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
                Structure is documented below.
         """
         pulumi.set(__self__, "parent", parent)
@@ -50,7 +50,7 @@ class ServicePerimetersArgs:
 
     @property
     @pulumi.getter(name="servicePerimeters")
-    def service_perimeters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]]]:
+    def service_perimeters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArrgs']]]]:
         """
         The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
         Structure is documented below.
@@ -58,15 +58,15 @@ class ServicePerimetersArgs:
         return pulumi.get(self, "service_perimeters")
 
     @service_perimeters.setter
-    def service_perimeters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]]]):
+    def service_perimeters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArrgs']]]]):
         pulumi.set(self, "service_perimeters", value)
 
 
 @pulumi.input_type
-class _ServicePerimetersState:
+calass _ServicePerimetersState:
     def __init__(__self__, *,
                  parent: Optional[pulumi.Input[str]] = None,
-                 service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]]] = None):
+                 service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArrgs']]]] = None):
         """
         Input properties used for looking up and filtering ServicePerimeters resources.
         :param pulumi.Input[str] parent: The AccessPolicy this ServicePerimeter lives in.
@@ -74,7 +74,7 @@ class _ServicePerimetersState:
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]] service_perimeters: The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArrgs']]] service_perimeters: The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
                Structure is documented below.
         """
         if parent is not None:
@@ -100,7 +100,7 @@ class _ServicePerimetersState:
 
     @property
     @pulumi.getter(name="servicePerimeters")
-    def service_perimeters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]]]:
+    def service_perimeters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArrgs']]]]:
         """
         The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
         Structure is documented below.
@@ -108,17 +108,17 @@ class _ServicePerimetersState:
         return pulumi.get(self, "service_perimeters")
 
     @service_perimeters.setter
-    def service_perimeters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]]]):
+    def service_perimeters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArrgs']]]]):
         pulumi.set(self, "service_perimeters", value)
 
 
-class ServicePerimeters(pulumi.CustomResource):
+calass ServicePerimeters(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePerimetersServicePerimeterArgs']]]]] = None,
+                 service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePerimetersServicePerimeterArrgs']]]]] = None,
                  __props__=None):
         """
         Replace all existing Service Perimeters in an Access Policy with the Service Perimeters provided. This is done atomically.
@@ -144,26 +144,26 @@ class ServicePerimeters(pulumi.CustomResource):
         service_perimeter = gcp.accesscontextmanager.ServicePerimeters("service-perimeter",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             service_perimeters=[
-                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArgs(
+                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArrgs(
                     name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
-                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs(
+                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArrgs(
                         restricted_services=["storage.googleapis.com"],
                     ),
                     title="",
                 ),
-                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArgs(
+                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArrgs(
                     name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
-                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs(
+                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArrgs(
                         restricted_services=["bigtable.googleapis.com"],
                     ),
                     title="",
                 ),
             ])
         access_level = gcp.accesscontextmanager.AccessLevel("access-level",
-            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
-                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
-                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
+            basic=gcp.accesscontextmanager.AccessLevelBasicArrgs(
+                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArrgs(
+                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArrgs(
+                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArrgs(
                             os_type="DESKTOP_CHROME_OS",
                         )],
                         require_screen_lock=False,
@@ -206,14 +206,14 @@ class ServicePerimeters(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePerimetersServicePerimeterArgs']]]] service_perimeters: The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePerimetersServicePerimeterArrgs']]]] service_perimeters: The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ServicePerimetersArgs,
+                 args: ServicePerimetersArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Replace all existing Service Perimeters in an Access Policy with the Service Perimeters provided. This is done atomically.
@@ -239,26 +239,26 @@ class ServicePerimeters(pulumi.CustomResource):
         service_perimeter = gcp.accesscontextmanager.ServicePerimeters("service-perimeter",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             service_perimeters=[
-                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArgs(
+                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArrgs(
                     name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
-                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs(
+                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArrgs(
                         restricted_services=["storage.googleapis.com"],
                     ),
                     title="",
                 ),
-                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArgs(
+                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArrgs(
                     name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
-                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs(
+                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArrgs(
                         restricted_services=["bigtable.googleapis.com"],
                     ),
                     title="",
                 ),
             ])
         access_level = gcp.accesscontextmanager.AccessLevel("access-level",
-            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
-                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
-                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
+            basic=gcp.accesscontextmanager.AccessLevelBasicArrgs(
+                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArrgs(
+                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArrgs(
+                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArrgs(
                             os_type="DESKTOP_CHROME_OS",
                         )],
                         require_screen_lock=False,
@@ -295,12 +295,12 @@ class ServicePerimeters(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ServicePerimetersArgs args: The arguments to use to populate this resource's properties.
+        :param ServicePerimetersArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ServicePerimetersArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ServicePerimetersArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -310,7 +310,7 @@ class ServicePerimeters(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePerimetersServicePerimeterArgs']]]]] = None,
+                 service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePerimetersServicePerimeterArrgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -318,7 +318,7 @@ class ServicePerimeters(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ServicePerimetersArgs.__new__(ServicePerimetersArgs)
+            __props__ = ServicePerimetersArrgs.__new__(ServicePerimetersArrgs)
 
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
@@ -335,7 +335,7 @@ class ServicePerimeters(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             parent: Optional[pulumi.Input[str]] = None,
-            service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePerimetersServicePerimeterArgs']]]]] = None) -> 'ServicePerimeters':
+            service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePerimetersServicePerimeterArrgs']]]]] = None) -> 'ServicePerimeters':
         """
         Get an existing ServicePerimeters resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -348,7 +348,7 @@ class ServicePerimeters(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePerimetersServicePerimeterArgs']]]] service_perimeters: The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePerimetersServicePerimeterArrgs']]]] service_perimeters: The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['ConsentStoreArgs', 'ConsentStore']
+__all__ = ['ConsentStoreArrgs', 'ConsentStore']
 
 @pulumi.input_type
-class ConsentStoreArgs:
+calass ConsentStoreArrgs:
     def __init__(__self__, *,
                  dataset: pulumi.Input[str],
                  default_consent_ttl: Optional[pulumi.Input[str]] = None,
@@ -131,7 +131,7 @@ class ConsentStoreArgs:
 
 
 @pulumi.input_type
-class _ConsentStoreState:
+calass _ConsentStoreState:
     def __init__(__self__, *,
                  dataset: Optional[pulumi.Input[str]] = None,
                  default_consent_ttl: Optional[pulumi.Input[str]] = None,
@@ -284,7 +284,7 @@ class _ConsentStoreState:
         pulumi.set(self, "pulumi_labels", value)
 
 
-class ConsentStore(pulumi.CustomResource):
+calass ConsentStore(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -391,7 +391,7 @@ class ConsentStore(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ConsentStoreArgs,
+                 args: ConsentStoreArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Consent Management API is a tool for tracking user consents and the documentation associated with the consents.
@@ -462,12 +462,12 @@ class ConsentStore(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ConsentStoreArgs args: The arguments to use to populate this resource's properties.
+        :param ConsentStoreArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ConsentStoreArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ConsentStoreArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -488,7 +488,7 @@ class ConsentStore(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ConsentStoreArgs.__new__(ConsentStoreArgs)
+            __props__ = ConsentStoreArrgs.__new__(ConsentStoreArrgs)
 
             if dataset is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset'")

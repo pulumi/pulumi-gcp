@@ -11,17 +11,17 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['IamAuditConfigArgs', 'IamAuditConfig']
+__all__ = ['IamAuditConfigArrgs', 'IamAuditConfig']
 
 @pulumi.input_type
-class IamAuditConfigArgs:
+calass IamAuditConfigArrgs:
     def __init__(__self__, *,
-                 audit_log_configs: pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]],
+                 audit_log_configs: pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArrgs']]],
                  folder: pulumi.Input[str],
                  service: pulumi.Input[str]):
         """
         The set of arguments for constructing a IamAuditConfig resource.
-        :param pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArrgs']]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
         :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_folder\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
@@ -31,14 +31,14 @@ class IamAuditConfigArgs:
 
     @property
     @pulumi.getter(name="auditLogConfigs")
-    def audit_log_configs(self) -> pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]]:
+    def audit_log_configs(self) -> pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArrgs']]]:
         """
         The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         """
         return pulumi.get(self, "audit_log_configs")
 
     @audit_log_configs.setter
-    def audit_log_configs(self, value: pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]]):
+    def audit_log_configs(self, value: pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArrgs']]]):
         pulumi.set(self, "audit_log_configs", value)
 
     @property
@@ -67,15 +67,15 @@ class IamAuditConfigArgs:
 
 
 @pulumi.input_type
-class _IamAuditConfigState:
+calass _IamAuditConfigState:
     def __init__(__self__, *,
-                 audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]]] = None,
+                 audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArrgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering IamAuditConfig resources.
-        :param pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArrgs']]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the folder's IAM policy.
         :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
         :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_folder\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
@@ -91,14 +91,14 @@ class _IamAuditConfigState:
 
     @property
     @pulumi.getter(name="auditLogConfigs")
-    def audit_log_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]]]:
+    def audit_log_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArrgs']]]]:
         """
         The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         """
         return pulumi.get(self, "audit_log_configs")
 
     @audit_log_configs.setter
-    def audit_log_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]]]):
+    def audit_log_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArrgs']]]]):
         pulumi.set(self, "audit_log_configs", value)
 
     @property
@@ -138,12 +138,12 @@ class _IamAuditConfigState:
         pulumi.set(self, "service", value)
 
 
-class IamAuditConfig(pulumi.CustomResource):
+calass IamAuditConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IamAuditConfigAuditLogConfigArgs']]]]] = None,
+                 audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IamAuditConfigAuditLogConfigArrgs']]]]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -176,7 +176,7 @@ class IamAuditConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -191,8 +191,8 @@ class IamAuditConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -224,7 +224,7 @@ class IamAuditConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         folder = gcp.folder.IAMBinding("folder",
-            condition=gcp.folder.IAMBindingConditionArgs(
+            condition=gcp.folder.IAMBindingConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -253,7 +253,7 @@ class IamAuditConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         folder = gcp.folder.IAMMember("folder",
-            condition=gcp.folder.IAMMemberConditionArgs(
+            condition=gcp.folder.IAMMemberConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -271,10 +271,10 @@ class IamAuditConfig(pulumi.CustomResource):
 
         folder = gcp.folder.IamAuditConfig("folder",
             audit_log_configs=[
-                gcp.folder.IamAuditConfigAuditLogConfigArgs(
+                gcp.folder.IamAuditConfigAuditLogConfigArrgs(
                     log_type="ADMIN_READ",
                 ),
-                gcp.folder.IamAuditConfigAuditLogConfigArgs(
+                gcp.folder.IamAuditConfigAuditLogConfigArrgs(
                     exempted_members=["user:joebloggs@hashicorp.com"],
                     log_type="DATA_READ",
                 ),
@@ -301,7 +301,7 @@ class IamAuditConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IamAuditConfigAuditLogConfigArgs']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IamAuditConfigAuditLogConfigArrgs']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
         :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_folder\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
@@ -309,7 +309,7 @@ class IamAuditConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: IamAuditConfigArgs,
+                 args: IamAuditConfigArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Four different resources help you manage your IAM policy for a folder. Each of these resources serves a different use case:
@@ -340,7 +340,7 @@ class IamAuditConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -355,8 +355,8 @@ class IamAuditConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -388,7 +388,7 @@ class IamAuditConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         folder = gcp.folder.IAMBinding("folder",
-            condition=gcp.folder.IAMBindingConditionArgs(
+            condition=gcp.folder.IAMBindingConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -417,7 +417,7 @@ class IamAuditConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         folder = gcp.folder.IAMMember("folder",
-            condition=gcp.folder.IAMMemberConditionArgs(
+            condition=gcp.folder.IAMMemberConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -435,10 +435,10 @@ class IamAuditConfig(pulumi.CustomResource):
 
         folder = gcp.folder.IamAuditConfig("folder",
             audit_log_configs=[
-                gcp.folder.IamAuditConfigAuditLogConfigArgs(
+                gcp.folder.IamAuditConfigAuditLogConfigArrgs(
                     log_type="ADMIN_READ",
                 ),
-                gcp.folder.IamAuditConfigAuditLogConfigArgs(
+                gcp.folder.IamAuditConfigAuditLogConfigArrgs(
                     exempted_members=["user:joebloggs@hashicorp.com"],
                     log_type="DATA_READ",
                 ),
@@ -464,12 +464,12 @@ class IamAuditConfig(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param IamAuditConfigArgs args: The arguments to use to populate this resource's properties.
+        :param IamAuditConfigArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(IamAuditConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(IamAuditConfigArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -478,7 +478,7 @@ class IamAuditConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IamAuditConfigAuditLogConfigArgs']]]]] = None,
+                 audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IamAuditConfigAuditLogConfigArrgs']]]]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -488,7 +488,7 @@ class IamAuditConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = IamAuditConfigArgs.__new__(IamAuditConfigArgs)
+            __props__ = IamAuditConfigArrgs.__new__(IamAuditConfigArrgs)
 
             if audit_log_configs is None and not opts.urn:
                 raise TypeError("Missing required property 'audit_log_configs'")
@@ -510,7 +510,7 @@ class IamAuditConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IamAuditConfigAuditLogConfigArgs']]]]] = None,
+            audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IamAuditConfigAuditLogConfigArrgs']]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             folder: Optional[pulumi.Input[str]] = None,
             service: Optional[pulumi.Input[str]] = None) -> 'IamAuditConfig':
@@ -521,7 +521,7 @@ class IamAuditConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IamAuditConfigAuditLogConfigArgs']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IamAuditConfigAuditLogConfigArrgs']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the folder's IAM policy.
         :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
         :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_folder\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.

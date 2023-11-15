@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ApiConfigIamMemberArgs', 'ApiConfigIamMember']
+__all__ = ['ApiConfigIamMemberArrgs', 'ApiConfigIamMember']
 
 @pulumi.input_type
-class ApiConfigIamMemberArgs:
+calass ApiConfigIamMemberArrgs:
     def __init__(__self__, *,
                  api: pulumi.Input[str],
                  api_config: pulumi.Input[str],
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['ApiConfigIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['ApiConfigIamMemberConditionArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ApiConfigIamMember resource.
@@ -100,11 +100,11 @@ class ApiConfigIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ApiConfigIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ApiConfigIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ApiConfigIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ApiConfigIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -134,11 +134,11 @@ class ApiConfigIamMemberArgs:
 
 
 @pulumi.input_type
-class _ApiConfigIamMemberState:
+calass _ApiConfigIamMemberState:
     def __init__(__self__, *,
                  api: Optional[pulumi.Input[str]] = None,
                  api_config: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input['ApiConfigIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['ApiConfigIamMemberConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -205,11 +205,11 @@ class _ApiConfigIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ApiConfigIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ApiConfigIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ApiConfigIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ApiConfigIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -273,14 +273,14 @@ class _ApiConfigIamMemberState:
         pulumi.set(self, "role", value)
 
 
-class ApiConfigIamMember(pulumi.CustomResource):
+calass ApiConfigIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: Optional[pulumi.Input[str]] = None,
                  api_config: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ApiConfigIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ApiConfigIamMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -306,7 +306,7 @@ class ApiConfigIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/apigateway.viewer",
             members=["user:jane@example.com"],
         )])
@@ -395,7 +395,7 @@ class ApiConfigIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ApiConfigIamMemberArgs,
+                 args: ApiConfigIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for API Gateway ApiConfig. Each of these resources serves a different use case:
@@ -418,7 +418,7 @@ class ApiConfigIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/apigateway.viewer",
             members=["user:jane@example.com"],
         )])
@@ -482,12 +482,12 @@ class ApiConfigIamMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param ApiConfigIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param ApiConfigIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ApiConfigIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ApiConfigIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -498,7 +498,7 @@ class ApiConfigIamMember(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: Optional[pulumi.Input[str]] = None,
                  api_config: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ApiConfigIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ApiConfigIamMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -509,7 +509,7 @@ class ApiConfigIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ApiConfigIamMemberArgs.__new__(ApiConfigIamMemberArgs)
+            __props__ = ApiConfigIamMemberArrgs.__new__(ApiConfigIamMemberArrgs)
 
             if api is None and not opts.urn:
                 raise TypeError("Missing required property 'api'")
@@ -538,7 +538,7 @@ class ApiConfigIamMember(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             api: Optional[pulumi.Input[str]] = None,
             api_config: Optional[pulumi.Input[str]] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['ApiConfigIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['ApiConfigIamMemberConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,

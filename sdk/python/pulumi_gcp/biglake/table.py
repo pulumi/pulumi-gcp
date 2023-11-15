@@ -11,19 +11,19 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['TableArgs', 'Table']
+__all__ = ['TableArrgs', 'Table']
 
 @pulumi.input_type
-class TableArgs:
+calass TableArrgs:
     def __init__(__self__, *,
                  database: Optional[pulumi.Input[str]] = None,
-                 hive_options: Optional[pulumi.Input['TableHiveOptionsArgs']] = None,
+                 hive_options: Optional[pulumi.Input['TableHiveOptionsArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Table resource.
         :param pulumi.Input[str] database: The id of the parent database.
-        :param pulumi.Input['TableHiveOptionsArgs'] hive_options: Options of a Hive table.
+        :param pulumi.Input['TableHiveOptionsArrgs'] hive_options: Options of a Hive table.
                Structure is documented below.
         :param pulumi.Input[str] name: Output only. The name of the Table. Format:
                projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
@@ -56,7 +56,7 @@ class TableArgs:
 
     @property
     @pulumi.getter(name="hiveOptions")
-    def hive_options(self) -> Optional[pulumi.Input['TableHiveOptionsArgs']]:
+    def hive_options(self) -> Optional[pulumi.Input['TableHiveOptionsArrgs']]:
         """
         Options of a Hive table.
         Structure is documented below.
@@ -64,7 +64,7 @@ class TableArgs:
         return pulumi.get(self, "hive_options")
 
     @hive_options.setter
-    def hive_options(self, value: Optional[pulumi.Input['TableHiveOptionsArgs']]):
+    def hive_options(self, value: Optional[pulumi.Input['TableHiveOptionsArrgs']]):
         pulumi.set(self, "hive_options", value)
 
     @property
@@ -98,14 +98,14 @@ class TableArgs:
 
 
 @pulumi.input_type
-class _TableState:
+calass _TableState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
-                 hive_options: Optional[pulumi.Input['TableHiveOptionsArgs']] = None,
+                 hive_options: Optional[pulumi.Input['TableHiveOptionsArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
@@ -128,7 +128,7 @@ class _TableState:
                after the table is deleted. A timestamp in RFC3339 UTC "Zulu" format,
                with nanosecond resolution and up to nine fractional digits. Examples:
                "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input['TableHiveOptionsArgs'] hive_options: Options of a Hive table.
+        :param pulumi.Input['TableHiveOptionsArrgs'] hive_options: Options of a Hive table.
                Structure is documented below.
         :param pulumi.Input[str] name: Output only. The name of the Table. Format:
                projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
@@ -235,7 +235,7 @@ class _TableState:
 
     @property
     @pulumi.getter(name="hiveOptions")
-    def hive_options(self) -> Optional[pulumi.Input['TableHiveOptionsArgs']]:
+    def hive_options(self) -> Optional[pulumi.Input['TableHiveOptionsArrgs']]:
         """
         Options of a Hive table.
         Structure is documented below.
@@ -243,7 +243,7 @@ class _TableState:
         return pulumi.get(self, "hive_options")
 
     @hive_options.setter
-    def hive_options(self, value: Optional[pulumi.Input['TableHiveOptionsArgs']]):
+    def hive_options(self, value: Optional[pulumi.Input['TableHiveOptionsArrgs']]):
         pulumi.set(self, "hive_options", value)
 
     @property
@@ -291,13 +291,13 @@ class _TableState:
         pulumi.set(self, "update_time", value)
 
 
-class Table(pulumi.CustomResource):
+calass Table(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database: Optional[pulumi.Input[str]] = None,
-                 hive_options: Optional[pulumi.Input[pulumi.InputType['TableHiveOptionsArgs']]] = None,
+                 hive_options: Optional[pulumi.Input[pulumi.InputType['TableHiveOptionsArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -331,7 +331,7 @@ class Table(pulumi.CustomResource):
         database = gcp.biglake.Database("database",
             catalog=catalog.id,
             type="HIVE",
-            hive_options=gcp.biglake.DatabaseHiveOptionsArgs(
+            hive_options=gcp.biglake.DatabaseHiveOptionsArrgs(
                 location_uri=pulumi.Output.all(bucket.name, metadata_folder.name).apply(lambda bucketName, metadataFolderName: f"gs://{bucket_name}/{metadata_folder_name}"),
                 parameters={
                     "owner": "Alex",
@@ -340,9 +340,9 @@ class Table(pulumi.CustomResource):
         table = gcp.biglake.Table("table",
             database=database.id,
             type="HIVE",
-            hive_options=gcp.biglake.TableHiveOptionsArgs(
+            hive_options=gcp.biglake.TableHiveOptionsArrgs(
                 table_type="MANAGED_TABLE",
-                storage_descriptor=gcp.biglake.TableHiveOptionsStorageDescriptorArgs(
+                storage_descriptor=gcp.biglake.TableHiveOptionsStorageDescriptorArrgs(
                     location_uri=pulumi.Output.all(bucket.name, data_folder.name).apply(lambda bucketName, dataFolderName: f"gs://{bucket_name}/{data_folder_name}"),
                     input_format="org.apache.hadoop.mapred.SequenceFileInputFormat",
                     output_format="org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
@@ -379,7 +379,7 @@ class Table(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The id of the parent database.
-        :param pulumi.Input[pulumi.InputType['TableHiveOptionsArgs']] hive_options: Options of a Hive table.
+        :param pulumi.Input[pulumi.InputType['TableHiveOptionsArrgs']] hive_options: Options of a Hive table.
                Structure is documented below.
         :param pulumi.Input[str] name: Output only. The name of the Table. Format:
                projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
@@ -393,7 +393,7 @@ class Table(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[TableArgs] = None,
+                 args: Optional[TableArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a table.
@@ -425,7 +425,7 @@ class Table(pulumi.CustomResource):
         database = gcp.biglake.Database("database",
             catalog=catalog.id,
             type="HIVE",
-            hive_options=gcp.biglake.DatabaseHiveOptionsArgs(
+            hive_options=gcp.biglake.DatabaseHiveOptionsArrgs(
                 location_uri=pulumi.Output.all(bucket.name, metadata_folder.name).apply(lambda bucketName, metadataFolderName: f"gs://{bucket_name}/{metadata_folder_name}"),
                 parameters={
                     "owner": "Alex",
@@ -434,9 +434,9 @@ class Table(pulumi.CustomResource):
         table = gcp.biglake.Table("table",
             database=database.id,
             type="HIVE",
-            hive_options=gcp.biglake.TableHiveOptionsArgs(
+            hive_options=gcp.biglake.TableHiveOptionsArrgs(
                 table_type="MANAGED_TABLE",
-                storage_descriptor=gcp.biglake.TableHiveOptionsStorageDescriptorArgs(
+                storage_descriptor=gcp.biglake.TableHiveOptionsStorageDescriptorArrgs(
                     location_uri=pulumi.Output.all(bucket.name, data_folder.name).apply(lambda bucketName, dataFolderName: f"gs://{bucket_name}/{data_folder_name}"),
                     input_format="org.apache.hadoop.mapred.SequenceFileInputFormat",
                     output_format="org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
@@ -471,12 +471,12 @@ class Table(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param TableArgs args: The arguments to use to populate this resource's properties.
+        :param TableArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(TableArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TableArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -486,7 +486,7 @@ class Table(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database: Optional[pulumi.Input[str]] = None,
-                 hive_options: Optional[pulumi.Input[pulumi.InputType['TableHiveOptionsArgs']]] = None,
+                 hive_options: Optional[pulumi.Input[pulumi.InputType['TableHiveOptionsArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -496,7 +496,7 @@ class Table(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = TableArgs.__new__(TableArgs)
+            __props__ = TableArrgs.__new__(TableArrgs)
 
             __props__.__dict__["database"] = database
             __props__.__dict__["hive_options"] = hive_options
@@ -522,7 +522,7 @@ class Table(pulumi.CustomResource):
             delete_time: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             expire_time: Optional[pulumi.Input[str]] = None,
-            hive_options: Optional[pulumi.Input[pulumi.InputType['TableHiveOptionsArgs']]] = None,
+            hive_options: Optional[pulumi.Input[pulumi.InputType['TableHiveOptionsArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Table':
@@ -550,7 +550,7 @@ class Table(pulumi.CustomResource):
                after the table is deleted. A timestamp in RFC3339 UTC "Zulu" format,
                with nanosecond resolution and up to nine fractional digits. Examples:
                "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[pulumi.InputType['TableHiveOptionsArgs']] hive_options: Options of a Hive table.
+        :param pulumi.Input[pulumi.InputType['TableHiveOptionsArrgs']] hive_options: Options of a Hive table.
                Structure is documented below.
         :param pulumi.Input[str] name: Output only. The name of the Table. Format:
                projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}

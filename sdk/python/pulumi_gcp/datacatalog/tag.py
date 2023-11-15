@@ -11,18 +11,18 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['TagArgs', 'Tag']
+__all__ = ['TagArrgs', 'Tag']
 
 @pulumi.input_type
-class TagArgs:
+calass TagArrgs:
     def __init__(__self__, *,
-                 fields: pulumi.Input[Sequence[pulumi.Input['TagFieldArgs']]],
+                 fields: pulumi.Input[Sequence[pulumi.Input['TagFieldArrgs']]],
                  template: pulumi.Input[str],
                  column: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Tag resource.
-        :param pulumi.Input[Sequence[pulumi.Input['TagFieldArgs']]] fields: This maps the ID of a tag field to the value of and additional information about that field.
+        :param pulumi.Input[Sequence[pulumi.Input['TagFieldArrgs']]] fields: This maps the ID of a tag field to the value of and additional information about that field.
                Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
                Structure is documented below.
         :param pulumi.Input[str] template: The resource name of the tag template that this tag uses. Example:
@@ -44,7 +44,7 @@ class TagArgs:
 
     @property
     @pulumi.getter
-    def fields(self) -> pulumi.Input[Sequence[pulumi.Input['TagFieldArgs']]]:
+    def fields(self) -> pulumi.Input[Sequence[pulumi.Input['TagFieldArrgs']]]:
         """
         This maps the ID of a tag field to the value of and additional information about that field.
         Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
@@ -53,7 +53,7 @@ class TagArgs:
         return pulumi.get(self, "fields")
 
     @fields.setter
-    def fields(self, value: pulumi.Input[Sequence[pulumi.Input['TagFieldArgs']]]):
+    def fields(self, value: pulumi.Input[Sequence[pulumi.Input['TagFieldArrgs']]]):
         pulumi.set(self, "fields", value)
 
     @property
@@ -100,10 +100,10 @@ class TagArgs:
 
 
 @pulumi.input_type
-class _TagState:
+calass _TagState:
     def __init__(__self__, *,
                  column: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input['TagFieldArgs']]]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input['TagFieldArrgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  template: Optional[pulumi.Input[str]] = None,
@@ -114,7 +114,7 @@ class _TagState:
                individual column based on that schema.
                For attaching a tag to a nested column, use `.` to separate the column names. Example:
                `outer_column.inner_column`
-        :param pulumi.Input[Sequence[pulumi.Input['TagFieldArgs']]] fields: This maps the ID of a tag field to the value of and additional information about that field.
+        :param pulumi.Input[Sequence[pulumi.Input['TagFieldArrgs']]] fields: This maps the ID of a tag field to the value of and additional information about that field.
                Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
                Structure is documented below.
         :param pulumi.Input[str] name: The resource name of the tag in URL format. Example:
@@ -158,7 +158,7 @@ class _TagState:
 
     @property
     @pulumi.getter
-    def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TagFieldArgs']]]]:
+    def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TagFieldArrgs']]]]:
         """
         This maps the ID of a tag field to the value of and additional information about that field.
         Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
@@ -167,7 +167,7 @@ class _TagState:
         return pulumi.get(self, "fields")
 
     @fields.setter
-    def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TagFieldArgs']]]]):
+    def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TagFieldArrgs']]]]):
         pulumi.set(self, "fields", value)
 
     @property
@@ -225,13 +225,13 @@ class _TagState:
         pulumi.set(self, "template_displayname", value)
 
 
-class Tag(pulumi.CustomResource):
+calass Tag(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  column: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagFieldArgs']]]]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagFieldArrgs']]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  template: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -264,34 +264,34 @@ class Tag(pulumi.CustomResource):
             region="us-central1",
             display_name="Demo Tag Template",
             fields=[
-                gcp.datacatalog.TagTemplateFieldArgs(
+                gcp.datacatalog.TagTemplateFieldArrgs(
                     field_id="source",
                     display_name="Source of data asset",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                    type=gcp.datacatalog.TagTemplateFieldTypeArrgs(
                         primitive_type="STRING",
                     ),
                     is_required=True,
                 ),
-                gcp.datacatalog.TagTemplateFieldArgs(
+                gcp.datacatalog.TagTemplateFieldArrgs(
                     field_id="num_rows",
                     display_name="Number of rows in the data asset",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                    type=gcp.datacatalog.TagTemplateFieldTypeArrgs(
                         primitive_type="DOUBLE",
                     ),
                 ),
-                gcp.datacatalog.TagTemplateFieldArgs(
+                gcp.datacatalog.TagTemplateFieldArrgs(
                     field_id="pii_type",
                     display_name="PII type",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
-                        enum_type=gcp.datacatalog.TagTemplateFieldTypeEnumTypeArgs(
+                    type=gcp.datacatalog.TagTemplateFieldTypeArrgs(
+                        enum_type=gcp.datacatalog.TagTemplateFieldTypeEnumTypeArrgs(
                             allowed_values=[
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArrgs(
                                     display_name="EMAIL",
                                 ),
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArrgs(
                                     display_name="SOCIAL SECURITY NUMBER",
                                 ),
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArrgs(
                                     display_name="NONE",
                                 ),
                             ],
@@ -303,7 +303,7 @@ class Tag(pulumi.CustomResource):
         basic_tag = gcp.datacatalog.Tag("basicTag",
             parent=entry.id,
             template=tag_template.id,
-            fields=[gcp.datacatalog.TagFieldArgs(
+            fields=[gcp.datacatalog.TagFieldArrgs(
                 field_name="source",
                 string_value="my-string",
             )])
@@ -330,34 +330,34 @@ class Tag(pulumi.CustomResource):
             region="us-central1",
             display_name="Demo Tag Template",
             fields=[
-                gcp.datacatalog.TagTemplateFieldArgs(
+                gcp.datacatalog.TagTemplateFieldArrgs(
                     field_id="source",
                     display_name="Source of data asset",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                    type=gcp.datacatalog.TagTemplateFieldTypeArrgs(
                         primitive_type="STRING",
                     ),
                     is_required=True,
                 ),
-                gcp.datacatalog.TagTemplateFieldArgs(
+                gcp.datacatalog.TagTemplateFieldArrgs(
                     field_id="num_rows",
                     display_name="Number of rows in the data asset",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                    type=gcp.datacatalog.TagTemplateFieldTypeArrgs(
                         primitive_type="DOUBLE",
                     ),
                 ),
-                gcp.datacatalog.TagTemplateFieldArgs(
+                gcp.datacatalog.TagTemplateFieldArrgs(
                     field_id="pii_type",
                     display_name="PII type",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
-                        enum_type=gcp.datacatalog.TagTemplateFieldTypeEnumTypeArgs(
+                    type=gcp.datacatalog.TagTemplateFieldTypeArrgs(
+                        enum_type=gcp.datacatalog.TagTemplateFieldTypeEnumTypeArrgs(
                             allowed_values=[
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArrgs(
                                     display_name="EMAIL",
                                 ),
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArrgs(
                                     display_name="SOCIAL SECURITY NUMBER",
                                 ),
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArrgs(
                                     display_name="NONE",
                                 ),
                             ],
@@ -369,7 +369,7 @@ class Tag(pulumi.CustomResource):
         entry_group_tag = gcp.datacatalog.Tag("entryGroupTag",
             parent=entry_group.id,
             template=tag_template.id,
-            fields=[gcp.datacatalog.TagFieldArgs(
+            fields=[gcp.datacatalog.TagFieldArrgs(
                 field_name="source",
                 string_value="my-string",
             )])
@@ -428,34 +428,34 @@ class Tag(pulumi.CustomResource):
             region="us-central1",
             display_name="Demo Tag Template",
             fields=[
-                gcp.datacatalog.TagTemplateFieldArgs(
+                gcp.datacatalog.TagTemplateFieldArrgs(
                     field_id="source",
                     display_name="Source of data asset",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                    type=gcp.datacatalog.TagTemplateFieldTypeArrgs(
                         primitive_type="STRING",
                     ),
                     is_required=True,
                 ),
-                gcp.datacatalog.TagTemplateFieldArgs(
+                gcp.datacatalog.TagTemplateFieldArrgs(
                     field_id="num_rows",
                     display_name="Number of rows in the data asset",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                    type=gcp.datacatalog.TagTemplateFieldTypeArrgs(
                         primitive_type="DOUBLE",
                     ),
                 ),
-                gcp.datacatalog.TagTemplateFieldArgs(
+                gcp.datacatalog.TagTemplateFieldArrgs(
                     field_id="pii_type",
                     display_name="PII type",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
-                        enum_type=gcp.datacatalog.TagTemplateFieldTypeEnumTypeArgs(
+                    type=gcp.datacatalog.TagTemplateFieldTypeArrgs(
+                        enum_type=gcp.datacatalog.TagTemplateFieldTypeEnumTypeArrgs(
                             allowed_values=[
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArrgs(
                                     display_name="EMAIL",
                                 ),
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArrgs(
                                     display_name="SOCIAL SECURITY NUMBER",
                                 ),
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArrgs(
                                     display_name="NONE",
                                 ),
                             ],
@@ -468,15 +468,15 @@ class Tag(pulumi.CustomResource):
             parent=entry.id,
             template=tag_template.id,
             fields=[
-                gcp.datacatalog.TagFieldArgs(
+                gcp.datacatalog.TagFieldArrgs(
                     field_name="source",
                     string_value="my-string",
                 ),
-                gcp.datacatalog.TagFieldArgs(
+                gcp.datacatalog.TagFieldArrgs(
                     field_name="num_rows",
                     double_value=5,
                 ),
-                gcp.datacatalog.TagFieldArgs(
+                gcp.datacatalog.TagFieldArrgs(
                     field_name="pii_type",
                     enum_value="EMAIL",
                 ),
@@ -486,11 +486,11 @@ class Tag(pulumi.CustomResource):
             parent=entry.id,
             template=tag_template.id,
             fields=[
-                gcp.datacatalog.TagFieldArgs(
+                gcp.datacatalog.TagFieldArrgs(
                     field_name="source",
                     string_value="my-string",
                 ),
-                gcp.datacatalog.TagFieldArgs(
+                gcp.datacatalog.TagFieldArrgs(
                     field_name="pii_type",
                     enum_value="NONE",
                 ),
@@ -520,7 +520,7 @@ class Tag(pulumi.CustomResource):
                individual column based on that schema.
                For attaching a tag to a nested column, use `.` to separate the column names. Example:
                `outer_column.inner_column`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagFieldArgs']]]] fields: This maps the ID of a tag field to the value of and additional information about that field.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagFieldArrgs']]]] fields: This maps the ID of a tag field to the value of and additional information about that field.
                Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
                Structure is documented below.
         :param pulumi.Input[str] parent: The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
@@ -533,7 +533,7 @@ class Tag(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TagArgs,
+                 args: TagArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Tags are used to attach custom metadata to Data Catalog resources. Tags conform to the specifications within their tag template.
@@ -564,34 +564,34 @@ class Tag(pulumi.CustomResource):
             region="us-central1",
             display_name="Demo Tag Template",
             fields=[
-                gcp.datacatalog.TagTemplateFieldArgs(
+                gcp.datacatalog.TagTemplateFieldArrgs(
                     field_id="source",
                     display_name="Source of data asset",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                    type=gcp.datacatalog.TagTemplateFieldTypeArrgs(
                         primitive_type="STRING",
                     ),
                     is_required=True,
                 ),
-                gcp.datacatalog.TagTemplateFieldArgs(
+                gcp.datacatalog.TagTemplateFieldArrgs(
                     field_id="num_rows",
                     display_name="Number of rows in the data asset",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                    type=gcp.datacatalog.TagTemplateFieldTypeArrgs(
                         primitive_type="DOUBLE",
                     ),
                 ),
-                gcp.datacatalog.TagTemplateFieldArgs(
+                gcp.datacatalog.TagTemplateFieldArrgs(
                     field_id="pii_type",
                     display_name="PII type",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
-                        enum_type=gcp.datacatalog.TagTemplateFieldTypeEnumTypeArgs(
+                    type=gcp.datacatalog.TagTemplateFieldTypeArrgs(
+                        enum_type=gcp.datacatalog.TagTemplateFieldTypeEnumTypeArrgs(
                             allowed_values=[
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArrgs(
                                     display_name="EMAIL",
                                 ),
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArrgs(
                                     display_name="SOCIAL SECURITY NUMBER",
                                 ),
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArrgs(
                                     display_name="NONE",
                                 ),
                             ],
@@ -603,7 +603,7 @@ class Tag(pulumi.CustomResource):
         basic_tag = gcp.datacatalog.Tag("basicTag",
             parent=entry.id,
             template=tag_template.id,
-            fields=[gcp.datacatalog.TagFieldArgs(
+            fields=[gcp.datacatalog.TagFieldArrgs(
                 field_name="source",
                 string_value="my-string",
             )])
@@ -630,34 +630,34 @@ class Tag(pulumi.CustomResource):
             region="us-central1",
             display_name="Demo Tag Template",
             fields=[
-                gcp.datacatalog.TagTemplateFieldArgs(
+                gcp.datacatalog.TagTemplateFieldArrgs(
                     field_id="source",
                     display_name="Source of data asset",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                    type=gcp.datacatalog.TagTemplateFieldTypeArrgs(
                         primitive_type="STRING",
                     ),
                     is_required=True,
                 ),
-                gcp.datacatalog.TagTemplateFieldArgs(
+                gcp.datacatalog.TagTemplateFieldArrgs(
                     field_id="num_rows",
                     display_name="Number of rows in the data asset",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                    type=gcp.datacatalog.TagTemplateFieldTypeArrgs(
                         primitive_type="DOUBLE",
                     ),
                 ),
-                gcp.datacatalog.TagTemplateFieldArgs(
+                gcp.datacatalog.TagTemplateFieldArrgs(
                     field_id="pii_type",
                     display_name="PII type",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
-                        enum_type=gcp.datacatalog.TagTemplateFieldTypeEnumTypeArgs(
+                    type=gcp.datacatalog.TagTemplateFieldTypeArrgs(
+                        enum_type=gcp.datacatalog.TagTemplateFieldTypeEnumTypeArrgs(
                             allowed_values=[
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArrgs(
                                     display_name="EMAIL",
                                 ),
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArrgs(
                                     display_name="SOCIAL SECURITY NUMBER",
                                 ),
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArrgs(
                                     display_name="NONE",
                                 ),
                             ],
@@ -669,7 +669,7 @@ class Tag(pulumi.CustomResource):
         entry_group_tag = gcp.datacatalog.Tag("entryGroupTag",
             parent=entry_group.id,
             template=tag_template.id,
-            fields=[gcp.datacatalog.TagFieldArgs(
+            fields=[gcp.datacatalog.TagFieldArrgs(
                 field_name="source",
                 string_value="my-string",
             )])
@@ -728,34 +728,34 @@ class Tag(pulumi.CustomResource):
             region="us-central1",
             display_name="Demo Tag Template",
             fields=[
-                gcp.datacatalog.TagTemplateFieldArgs(
+                gcp.datacatalog.TagTemplateFieldArrgs(
                     field_id="source",
                     display_name="Source of data asset",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                    type=gcp.datacatalog.TagTemplateFieldTypeArrgs(
                         primitive_type="STRING",
                     ),
                     is_required=True,
                 ),
-                gcp.datacatalog.TagTemplateFieldArgs(
+                gcp.datacatalog.TagTemplateFieldArrgs(
                     field_id="num_rows",
                     display_name="Number of rows in the data asset",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                    type=gcp.datacatalog.TagTemplateFieldTypeArrgs(
                         primitive_type="DOUBLE",
                     ),
                 ),
-                gcp.datacatalog.TagTemplateFieldArgs(
+                gcp.datacatalog.TagTemplateFieldArrgs(
                     field_id="pii_type",
                     display_name="PII type",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
-                        enum_type=gcp.datacatalog.TagTemplateFieldTypeEnumTypeArgs(
+                    type=gcp.datacatalog.TagTemplateFieldTypeArrgs(
+                        enum_type=gcp.datacatalog.TagTemplateFieldTypeEnumTypeArrgs(
                             allowed_values=[
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArrgs(
                                     display_name="EMAIL",
                                 ),
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArrgs(
                                     display_name="SOCIAL SECURITY NUMBER",
                                 ),
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArrgs(
                                     display_name="NONE",
                                 ),
                             ],
@@ -768,15 +768,15 @@ class Tag(pulumi.CustomResource):
             parent=entry.id,
             template=tag_template.id,
             fields=[
-                gcp.datacatalog.TagFieldArgs(
+                gcp.datacatalog.TagFieldArrgs(
                     field_name="source",
                     string_value="my-string",
                 ),
-                gcp.datacatalog.TagFieldArgs(
+                gcp.datacatalog.TagFieldArrgs(
                     field_name="num_rows",
                     double_value=5,
                 ),
-                gcp.datacatalog.TagFieldArgs(
+                gcp.datacatalog.TagFieldArrgs(
                     field_name="pii_type",
                     enum_value="EMAIL",
                 ),
@@ -786,11 +786,11 @@ class Tag(pulumi.CustomResource):
             parent=entry.id,
             template=tag_template.id,
             fields=[
-                gcp.datacatalog.TagFieldArgs(
+                gcp.datacatalog.TagFieldArrgs(
                     field_name="source",
                     string_value="my-string",
                 ),
-                gcp.datacatalog.TagFieldArgs(
+                gcp.datacatalog.TagFieldArrgs(
                     field_name="pii_type",
                     enum_value="NONE",
                 ),
@@ -815,12 +815,12 @@ class Tag(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param TagArgs args: The arguments to use to populate this resource's properties.
+        :param TagArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(TagArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TagArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -830,7 +830,7 @@ class Tag(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  column: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagFieldArgs']]]]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagFieldArrgs']]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  template: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -840,7 +840,7 @@ class Tag(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = TagArgs.__new__(TagArgs)
+            __props__ = TagArrgs.__new__(TagArrgs)
 
             __props__.__dict__["column"] = column
             if fields is None and not opts.urn:
@@ -863,7 +863,7 @@ class Tag(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             column: Optional[pulumi.Input[str]] = None,
-            fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagFieldArgs']]]]] = None,
+            fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagFieldArrgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
             template: Optional[pulumi.Input[str]] = None,
@@ -879,7 +879,7 @@ class Tag(pulumi.CustomResource):
                individual column based on that schema.
                For attaching a tag to a nested column, use `.` to separate the column names. Example:
                `outer_column.inner_column`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagFieldArgs']]]] fields: This maps the ID of a tag field to the value of and additional information about that field.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagFieldArrgs']]]] fields: This maps the ID of a tag field to the value of and additional information about that field.
                Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
                Structure is documented below.
         :param pulumi.Input[str] name: The resource name of the tag in URL format. Example:

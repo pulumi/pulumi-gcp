@@ -10,16 +10,16 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'QueueAppEngineRoutingOverrideArgs',
-    'QueueIamBindingConditionArgs',
-    'QueueIamMemberConditionArgs',
-    'QueueRateLimitsArgs',
-    'QueueRetryConfigArgs',
-    'QueueStackdriverLoggingConfigArgs',
+    'QueueAppEngineRoutingOverrideArrgs',
+    'QueueIamBindingConditionArrgs',
+    'QueueIamMemberConditionArrgs',
+    'QueueRateLimitsArrgs',
+    'QueueRetryConfigArrgs',
+    'QueueStackdriverLoggingConfigArrgs',
 ]
 
 @pulumi.input_type
-class QueueAppEngineRoutingOverrideArgs:
+calass QueueAppEngineRoutingOverrideArrgs:
     def __init__(__self__, *,
                  host: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
@@ -98,7 +98,7 @@ class QueueAppEngineRoutingOverrideArgs:
 
 
 @pulumi.input_type
-class QueueIamBindingConditionArgs:
+calass QueueIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -137,7 +137,7 @@ class QueueIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class QueueIamMemberConditionArgs:
+calass QueueIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -176,7 +176,7 @@ class QueueIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class QueueRateLimitsArgs:
+calass QueueRateLimitsArrgs:
     def __init__(__self__, *,
                  max_burst_size: Optional[pulumi.Input[int]] = None,
                  max_concurrent_dispatches: Optional[pulumi.Input[int]] = None,
@@ -249,7 +249,7 @@ class QueueRateLimitsArgs:
 
 
 @pulumi.input_type
-class QueueRetryConfigArgs:
+calass QueueRetryConfigArrgs:
     def __init__(__self__, *,
                  max_attempts: Optional[pulumi.Input[int]] = None,
                  max_backoff: Optional[pulumi.Input[str]] = None,
@@ -372,7 +372,7 @@ class QueueRetryConfigArgs:
 
 
 @pulumi.input_type
-class QueueStackdriverLoggingConfigArgs:
+calass QueueStackdriverLoggingConfigArrgs:
     def __init__(__self__, *,
                  sampling_ratio: pulumi.Input[float]):
         """

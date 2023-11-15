@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class ManagementServerManagementUri(dict):
+calass ManagementServerManagementUri(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -69,7 +69,7 @@ class ManagementServerManagementUri(dict):
 
 
 @pulumi.output_type
-class ManagementServerNetwork(dict):
+calass ManagementServerNetwork(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -124,7 +124,7 @@ class ManagementServerNetwork(dict):
 
 
 @pulumi.output_type
-class GetManagementServerManagementUriResult(dict):
+calass GetManagementServerManagementUriResult(dict):
     def __init__(__self__, *,
                  api: str,
                  web_ui: str):
@@ -143,7 +143,7 @@ class GetManagementServerManagementUriResult(dict):
 
 
 @pulumi.output_type
-class GetManagementServerNetworkResult(dict):
+calass GetManagementServerNetworkResult(dict):
     def __init__(__self__, *,
                  network: str,
                  peering_mode: str):

@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AppGatewayArgs', 'AppGateway']
+__all__ = ['AppGatewayArrgs', 'AppGateway']
 
 @pulumi.input_type
-class AppGatewayArgs:
+calass AppGatewayArrgs:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
                  host_type: Optional[pulumi.Input[str]] = None,
@@ -156,9 +156,9 @@ class AppGatewayArgs:
 
 
 @pulumi.input_type
-class _AppGatewayState:
+calass _AppGatewayState:
     def __init__(__self__, *,
-                 allocated_connections: Optional[pulumi.Input[Sequence[pulumi.Input['AppGatewayAllocatedConnectionArgs']]]] = None,
+                 allocated_connections: Optional[pulumi.Input[Sequence[pulumi.Input['AppGatewayAllocatedConnectionArrgs']]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  host_type: Optional[pulumi.Input[str]] = None,
@@ -172,7 +172,7 @@ class _AppGatewayState:
                  uri: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AppGateway resources.
-        :param pulumi.Input[Sequence[pulumi.Input['AppGatewayAllocatedConnectionArgs']]] allocated_connections: A list of connections allocated for the Gateway.
+        :param pulumi.Input[Sequence[pulumi.Input['AppGatewayAllocatedConnectionArrgs']]] allocated_connections: A list of connections allocated for the Gateway.
                Structure is documented below.
         :param pulumi.Input[str] display_name: An arbitrary user-provided name for the AppGateway.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -225,7 +225,7 @@ class _AppGatewayState:
 
     @property
     @pulumi.getter(name="allocatedConnections")
-    def allocated_connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppGatewayAllocatedConnectionArgs']]]]:
+    def allocated_connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppGatewayAllocatedConnectionArrgs']]]]:
         """
         A list of connections allocated for the Gateway.
         Structure is documented below.
@@ -233,7 +233,7 @@ class _AppGatewayState:
         return pulumi.get(self, "allocated_connections")
 
     @allocated_connections.setter
-    def allocated_connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppGatewayAllocatedConnectionArgs']]]]):
+    def allocated_connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppGatewayAllocatedConnectionArrgs']]]]):
         pulumi.set(self, "allocated_connections", value)
 
     @property
@@ -381,7 +381,7 @@ class _AppGatewayState:
         pulumi.set(self, "uri", value)
 
 
-class AppGateway(pulumi.CustomResource):
+calass AppGateway(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -487,7 +487,7 @@ class AppGateway(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[AppGatewayArgs] = None,
+                 args: Optional[AppGatewayArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A BeyondCorp AppGateway resource represents a BeyondCorp protected AppGateway to a remote application. It creates
@@ -558,12 +558,12 @@ class AppGateway(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AppGatewayArgs args: The arguments to use to populate this resource's properties.
+        :param AppGatewayArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AppGatewayArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AppGatewayArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -586,7 +586,7 @@ class AppGateway(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AppGatewayArgs.__new__(AppGatewayArgs)
+            __props__ = AppGatewayArrgs.__new__(AppGatewayArrgs)
 
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["host_type"] = host_type
@@ -612,7 +612,7 @@ class AppGateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allocated_connections: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppGatewayAllocatedConnectionArgs']]]]] = None,
+            allocated_connections: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppGatewayAllocatedConnectionArrgs']]]]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             host_type: Optional[pulumi.Input[str]] = None,
@@ -631,7 +631,7 @@ class AppGateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppGatewayAllocatedConnectionArgs']]]] allocated_connections: A list of connections allocated for the Gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppGatewayAllocatedConnectionArrgs']]]] allocated_connections: A list of connections allocated for the Gateway.
                Structure is documented below.
         :param pulumi.Input[str] display_name: An arbitrary user-provided name for the AppGateway.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

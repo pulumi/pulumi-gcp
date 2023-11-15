@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['TlsInspectionPolicyArgs', 'TlsInspectionPolicy']
+__all__ = ['TlsInspectionPolicyArrgs', 'TlsInspectionPolicy']
 
 @pulumi.input_type
-class TlsInspectionPolicyArgs:
+calass TlsInspectionPolicyArrgs:
     def __init__(__self__, *,
                  ca_pool: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -123,7 +123,7 @@ class TlsInspectionPolicyArgs:
 
 
 @pulumi.input_type
-class _TlsInspectionPolicyState:
+calass _TlsInspectionPolicyState:
     def __init__(__self__, *,
                  ca_pool: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -266,7 +266,7 @@ class _TlsInspectionPolicyState:
         pulumi.set(self, "update_time", value)
 
 
-class TlsInspectionPolicy(pulumi.CustomResource):
+calass TlsInspectionPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -289,19 +289,19 @@ class TlsInspectionPolicy(pulumi.CustomResource):
         default_ca_pool = gcp.certificateauthority.CaPool("defaultCaPool",
             location="us-central1",
             tier="DEVOPS",
-            publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArgs(
+            publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArrgs(
                 publish_ca_cert=False,
                 publish_crl=False,
             ),
-            issuance_policy=gcp.certificateauthority.CaPoolIssuancePolicyArgs(
+            issuance_policy=gcp.certificateauthority.CaPoolIssuancePolicyArrgs(
                 maximum_lifetime="1209600s",
-                baseline_values=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesArgs(
-                    ca_options=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesCaOptionsArgs(
+                baseline_values=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesArrgs(
+                    ca_options=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesCaOptionsArrgs(
                         is_ca=False,
                     ),
-                    key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs(),
-                        extended_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs(
+                    key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageArrgs(
+                        base_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArrgs(),
+                        extended_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArrgs(
                             server_auth=True,
                         ),
                     ),
@@ -317,29 +317,29 @@ class TlsInspectionPolicy(pulumi.CustomResource):
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True,
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+            config=gcp.certificateauthority.AuthorityConfigArrgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArrgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArrgs(
                         organization="Test LLC",
                         common_name="my-ca",
                     ),
                 ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArrgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArrgs(
                         is_ca=True,
                     ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArrgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrgs(
                             cert_sign=True,
                             crl_sign=True,
                         ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrgs(
                             server_auth=False,
                         ),
                     ),
                 ),
             ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArrgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -403,7 +403,7 @@ class TlsInspectionPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TlsInspectionPolicyArgs,
+                 args: TlsInspectionPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -416,19 +416,19 @@ class TlsInspectionPolicy(pulumi.CustomResource):
         default_ca_pool = gcp.certificateauthority.CaPool("defaultCaPool",
             location="us-central1",
             tier="DEVOPS",
-            publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArgs(
+            publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArrgs(
                 publish_ca_cert=False,
                 publish_crl=False,
             ),
-            issuance_policy=gcp.certificateauthority.CaPoolIssuancePolicyArgs(
+            issuance_policy=gcp.certificateauthority.CaPoolIssuancePolicyArrgs(
                 maximum_lifetime="1209600s",
-                baseline_values=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesArgs(
-                    ca_options=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesCaOptionsArgs(
+                baseline_values=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesArrgs(
+                    ca_options=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesCaOptionsArrgs(
                         is_ca=False,
                     ),
-                    key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs(),
-                        extended_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs(
+                    key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageArrgs(
+                        base_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArrgs(),
+                        extended_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArrgs(
                             server_auth=True,
                         ),
                     ),
@@ -444,29 +444,29 @@ class TlsInspectionPolicy(pulumi.CustomResource):
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True,
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+            config=gcp.certificateauthority.AuthorityConfigArrgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArrgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArrgs(
                         organization="Test LLC",
                         common_name="my-ca",
                     ),
                 ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArrgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArrgs(
                         is_ca=True,
                     ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArrgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrgs(
                             cert_sign=True,
                             crl_sign=True,
                         ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrgs(
                             server_auth=False,
                         ),
                     ),
                 ),
             ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArrgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -514,12 +514,12 @@ class TlsInspectionPolicy(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param TlsInspectionPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param TlsInspectionPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(TlsInspectionPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TlsInspectionPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -541,7 +541,7 @@ class TlsInspectionPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = TlsInspectionPolicyArgs.__new__(TlsInspectionPolicyArgs)
+            __props__ = TlsInspectionPolicyArrgs.__new__(TlsInspectionPolicyArrgs)
 
             if ca_pool is None and not opts.urn:
                 raise TypeError("Missing required property 'ca_pool'")

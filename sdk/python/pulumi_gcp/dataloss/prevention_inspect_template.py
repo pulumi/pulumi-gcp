@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['PreventionInspectTemplateArgs', 'PreventionInspectTemplate']
+__all__ = ['PreventionInspectTemplateArrgs', 'PreventionInspectTemplate']
 
 @pulumi.input_type
-class PreventionInspectTemplateArgs:
+calass PreventionInspectTemplateArrgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 inspect_config: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigArgs']] = None,
+                 inspect_config: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigArrgs']] = None,
                  template_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PreventionInspectTemplate resource.
@@ -33,7 +33,7 @@ class PreventionInspectTemplateArgs:
                - - -
         :param pulumi.Input[str] description: A description of the inspect template.
         :param pulumi.Input[str] display_name: User set display name of the inspect template.
-        :param pulumi.Input['PreventionInspectTemplateInspectConfigArgs'] inspect_config: The core content of the template.
+        :param pulumi.Input['PreventionInspectTemplateInspectConfigArrgs'] inspect_config: The core content of the template.
                Structure is documented below.
         :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens;
                that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
@@ -94,7 +94,7 @@ class PreventionInspectTemplateArgs:
 
     @property
     @pulumi.getter(name="inspectConfig")
-    def inspect_config(self) -> Optional[pulumi.Input['PreventionInspectTemplateInspectConfigArgs']]:
+    def inspect_config(self) -> Optional[pulumi.Input['PreventionInspectTemplateInspectConfigArrgs']]:
         """
         The core content of the template.
         Structure is documented below.
@@ -102,7 +102,7 @@ class PreventionInspectTemplateArgs:
         return pulumi.get(self, "inspect_config")
 
     @inspect_config.setter
-    def inspect_config(self, value: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigArgs']]):
+    def inspect_config(self, value: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigArrgs']]):
         pulumi.set(self, "inspect_config", value)
 
     @property
@@ -121,11 +121,11 @@ class PreventionInspectTemplateArgs:
 
 
 @pulumi.input_type
-class _PreventionInspectTemplateState:
+calass _PreventionInspectTemplateState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 inspect_config: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigArgs']] = None,
+                 inspect_config: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None):
@@ -133,7 +133,7 @@ class _PreventionInspectTemplateState:
         Input properties used for looking up and filtering PreventionInspectTemplate resources.
         :param pulumi.Input[str] description: A description of the inspect template.
         :param pulumi.Input[str] display_name: User set display name of the inspect template.
-        :param pulumi.Input['PreventionInspectTemplateInspectConfigArgs'] inspect_config: The core content of the template.
+        :param pulumi.Input['PreventionInspectTemplateInspectConfigArrgs'] inspect_config: The core content of the template.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
                listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
@@ -188,7 +188,7 @@ class _PreventionInspectTemplateState:
 
     @property
     @pulumi.getter(name="inspectConfig")
-    def inspect_config(self) -> Optional[pulumi.Input['PreventionInspectTemplateInspectConfigArgs']]:
+    def inspect_config(self) -> Optional[pulumi.Input['PreventionInspectTemplateInspectConfigArrgs']]:
         """
         The core content of the template.
         Structure is documented below.
@@ -196,7 +196,7 @@ class _PreventionInspectTemplateState:
         return pulumi.get(self, "inspect_config")
 
     @inspect_config.setter
-    def inspect_config(self, value: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigArgs']]):
+    def inspect_config(self, value: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigArrgs']]):
         pulumi.set(self, "inspect_config", value)
 
     @property
@@ -246,14 +246,14 @@ class _PreventionInspectTemplateState:
         pulumi.set(self, "template_id", value)
 
 
-class PreventionInspectTemplate(pulumi.CustomResource):
+calass PreventionInspectTemplate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 inspect_config: Optional[pulumi.Input[pulumi.InputType['PreventionInspectTemplateInspectConfigArgs']]] = None,
+                 inspect_config: Optional[pulumi.Input[pulumi.InputType['PreventionInspectTemplateInspectConfigArrgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -276,51 +276,51 @@ class PreventionInspectTemplate(pulumi.CustomResource):
         custom = gcp.dataloss.PreventionInspectTemplate("custom",
             description="My description",
             display_name="display_name",
-            inspect_config=gcp.dataloss.PreventionInspectTemplateInspectConfigArgs(
-                custom_info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeArgs(
-                    info_type=gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs(
+            inspect_config=gcp.dataloss.PreventionInspectTemplateInspectConfigArrgs(
+                custom_info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeArrgs(
+                    info_type=gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArrgs(
                         name="MY_CUSTOM_TYPE",
                     ),
                     likelihood="UNLIKELY",
-                    regex=gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs(
+                    regex=gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArrgs(
                         pattern="test*",
                     ),
                 )],
-                info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs(
+                info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArrgs(
                     name="EMAIL_ADDRESS",
                 )],
-                limits=gcp.dataloss.PreventionInspectTemplateInspectConfigLimitsArgs(
+                limits=gcp.dataloss.PreventionInspectTemplateInspectConfigLimitsArrgs(
                     max_findings_per_item=10,
                     max_findings_per_request=50,
                 ),
                 min_likelihood="UNLIKELY",
                 rule_sets=[
-                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs(
-                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs(
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArrgs(
+                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArrgs(
                             name="EMAIL_ADDRESS",
                         )],
-                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs(
-                            exclusion_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs(
+                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArrgs(
+                            exclusion_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArrgs(
                                 matching_type="MATCHING_TYPE_FULL_MATCH",
-                                regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs(
+                                regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArrgs(
                                     pattern=".+@example.com",
                                 ),
                             ),
                         )],
                     ),
-                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs(
-                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs(
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArrgs(
+                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArrgs(
                             name="MY_CUSTOM_TYPE",
                         )],
-                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs(
-                            hotword_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs(
-                                hotword_regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs(
+                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArrgs(
+                            hotword_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArrgs(
+                                hotword_regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArrgs(
                                     pattern="example*",
                                 ),
-                                likelihood_adjustment=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs(
+                                likelihood_adjustment=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArrgs(
                                     fixed_likelihood="VERY_LIKELY",
                                 ),
-                                proximity=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs(
+                                proximity=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArrgs(
                                     window_before=50,
                                 ),
                             ),
@@ -339,49 +339,49 @@ class PreventionInspectTemplate(pulumi.CustomResource):
         custom_type_surrogate = gcp.dataloss.PreventionInspectTemplate("customTypeSurrogate",
             description="My description",
             display_name="display_name",
-            inspect_config=gcp.dataloss.PreventionInspectTemplateInspectConfigArgs(
-                custom_info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeArgs(
-                    info_type=gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs(
+            inspect_config=gcp.dataloss.PreventionInspectTemplateInspectConfigArrgs(
+                custom_info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeArrgs(
+                    info_type=gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArrgs(
                         name="MY_CUSTOM_TYPE",
                     ),
                     likelihood="UNLIKELY",
-                    surrogate_type=gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArgs(),
+                    surrogate_type=gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArrgs(),
                 )],
-                info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs(
+                info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArrgs(
                     name="EMAIL_ADDRESS",
                 )],
-                limits=gcp.dataloss.PreventionInspectTemplateInspectConfigLimitsArgs(
+                limits=gcp.dataloss.PreventionInspectTemplateInspectConfigLimitsArrgs(
                     max_findings_per_item=10,
                     max_findings_per_request=50,
                 ),
                 min_likelihood="UNLIKELY",
                 rule_sets=[
-                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs(
-                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs(
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArrgs(
+                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArrgs(
                             name="EMAIL_ADDRESS",
                         )],
-                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs(
-                            exclusion_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs(
+                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArrgs(
+                            exclusion_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArrgs(
                                 matching_type="MATCHING_TYPE_FULL_MATCH",
-                                regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs(
+                                regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArrgs(
                                     pattern=".+@example.com",
                                 ),
                             ),
                         )],
                     ),
-                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs(
-                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs(
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArrgs(
+                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArrgs(
                             name="MY_CUSTOM_TYPE",
                         )],
-                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs(
-                            hotword_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs(
-                                hotword_regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs(
+                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArrgs(
+                            hotword_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArrgs(
+                                hotword_regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArrgs(
                                     pattern="example*",
                                 ),
-                                likelihood_adjustment=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs(
+                                likelihood_adjustment=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArrgs(
                                     fixed_likelihood="VERY_LIKELY",
                                 ),
-                                proximity=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs(
+                                proximity=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArrgs(
                                     window_before=50,
                                 ),
                             ),
@@ -416,7 +416,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the inspect template.
         :param pulumi.Input[str] display_name: User set display name of the inspect template.
-        :param pulumi.Input[pulumi.InputType['PreventionInspectTemplateInspectConfigArgs']] inspect_config: The core content of the template.
+        :param pulumi.Input[pulumi.InputType['PreventionInspectTemplateInspectConfigArrgs']] inspect_config: The core content of the template.
                Structure is documented below.
         :param pulumi.Input[str] parent: The parent of the inspect template in any of the following formats:
                * `projects/{{project}}`
@@ -434,7 +434,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: PreventionInspectTemplateArgs,
+                 args: PreventionInspectTemplateArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An inspect job template.
@@ -455,51 +455,51 @@ class PreventionInspectTemplate(pulumi.CustomResource):
         custom = gcp.dataloss.PreventionInspectTemplate("custom",
             description="My description",
             display_name="display_name",
-            inspect_config=gcp.dataloss.PreventionInspectTemplateInspectConfigArgs(
-                custom_info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeArgs(
-                    info_type=gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs(
+            inspect_config=gcp.dataloss.PreventionInspectTemplateInspectConfigArrgs(
+                custom_info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeArrgs(
+                    info_type=gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArrgs(
                         name="MY_CUSTOM_TYPE",
                     ),
                     likelihood="UNLIKELY",
-                    regex=gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs(
+                    regex=gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArrgs(
                         pattern="test*",
                     ),
                 )],
-                info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs(
+                info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArrgs(
                     name="EMAIL_ADDRESS",
                 )],
-                limits=gcp.dataloss.PreventionInspectTemplateInspectConfigLimitsArgs(
+                limits=gcp.dataloss.PreventionInspectTemplateInspectConfigLimitsArrgs(
                     max_findings_per_item=10,
                     max_findings_per_request=50,
                 ),
                 min_likelihood="UNLIKELY",
                 rule_sets=[
-                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs(
-                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs(
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArrgs(
+                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArrgs(
                             name="EMAIL_ADDRESS",
                         )],
-                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs(
-                            exclusion_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs(
+                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArrgs(
+                            exclusion_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArrgs(
                                 matching_type="MATCHING_TYPE_FULL_MATCH",
-                                regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs(
+                                regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArrgs(
                                     pattern=".+@example.com",
                                 ),
                             ),
                         )],
                     ),
-                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs(
-                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs(
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArrgs(
+                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArrgs(
                             name="MY_CUSTOM_TYPE",
                         )],
-                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs(
-                            hotword_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs(
-                                hotword_regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs(
+                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArrgs(
+                            hotword_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArrgs(
+                                hotword_regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArrgs(
                                     pattern="example*",
                                 ),
-                                likelihood_adjustment=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs(
+                                likelihood_adjustment=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArrgs(
                                     fixed_likelihood="VERY_LIKELY",
                                 ),
-                                proximity=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs(
+                                proximity=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArrgs(
                                     window_before=50,
                                 ),
                             ),
@@ -518,49 +518,49 @@ class PreventionInspectTemplate(pulumi.CustomResource):
         custom_type_surrogate = gcp.dataloss.PreventionInspectTemplate("customTypeSurrogate",
             description="My description",
             display_name="display_name",
-            inspect_config=gcp.dataloss.PreventionInspectTemplateInspectConfigArgs(
-                custom_info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeArgs(
-                    info_type=gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs(
+            inspect_config=gcp.dataloss.PreventionInspectTemplateInspectConfigArrgs(
+                custom_info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeArrgs(
+                    info_type=gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArrgs(
                         name="MY_CUSTOM_TYPE",
                     ),
                     likelihood="UNLIKELY",
-                    surrogate_type=gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArgs(),
+                    surrogate_type=gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArrgs(),
                 )],
-                info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs(
+                info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArrgs(
                     name="EMAIL_ADDRESS",
                 )],
-                limits=gcp.dataloss.PreventionInspectTemplateInspectConfigLimitsArgs(
+                limits=gcp.dataloss.PreventionInspectTemplateInspectConfigLimitsArrgs(
                     max_findings_per_item=10,
                     max_findings_per_request=50,
                 ),
                 min_likelihood="UNLIKELY",
                 rule_sets=[
-                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs(
-                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs(
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArrgs(
+                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArrgs(
                             name="EMAIL_ADDRESS",
                         )],
-                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs(
-                            exclusion_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs(
+                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArrgs(
+                            exclusion_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArrgs(
                                 matching_type="MATCHING_TYPE_FULL_MATCH",
-                                regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs(
+                                regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArrgs(
                                     pattern=".+@example.com",
                                 ),
                             ),
                         )],
                     ),
-                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs(
-                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs(
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArrgs(
+                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArrgs(
                             name="MY_CUSTOM_TYPE",
                         )],
-                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs(
-                            hotword_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs(
-                                hotword_regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs(
+                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArrgs(
+                            hotword_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArrgs(
+                                hotword_regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArrgs(
                                     pattern="example*",
                                 ),
-                                likelihood_adjustment=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs(
+                                likelihood_adjustment=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArrgs(
                                     fixed_likelihood="VERY_LIKELY",
                                 ),
-                                proximity=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs(
+                                proximity=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArrgs(
                                     window_before=50,
                                 ),
                             ),
@@ -592,12 +592,12 @@ class PreventionInspectTemplate(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param PreventionInspectTemplateArgs args: The arguments to use to populate this resource's properties.
+        :param PreventionInspectTemplateArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(PreventionInspectTemplateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(PreventionInspectTemplateArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -608,7 +608,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 inspect_config: Optional[pulumi.Input[pulumi.InputType['PreventionInspectTemplateInspectConfigArgs']]] = None,
+                 inspect_config: Optional[pulumi.Input[pulumi.InputType['PreventionInspectTemplateInspectConfigArrgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -618,7 +618,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = PreventionInspectTemplateArgs.__new__(PreventionInspectTemplateArgs)
+            __props__ = PreventionInspectTemplateArrgs.__new__(PreventionInspectTemplateArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
@@ -640,7 +640,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            inspect_config: Optional[pulumi.Input[pulumi.InputType['PreventionInspectTemplateInspectConfigArgs']]] = None,
+            inspect_config: Optional[pulumi.Input[pulumi.InputType['PreventionInspectTemplateInspectConfigArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
             template_id: Optional[pulumi.Input[str]] = None) -> 'PreventionInspectTemplate':
@@ -653,7 +653,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the inspect template.
         :param pulumi.Input[str] display_name: User set display name of the inspect template.
-        :param pulumi.Input[pulumi.InputType['PreventionInspectTemplateInspectConfigArgs']] inspect_config: The core content of the template.
+        :param pulumi.Input[pulumi.InputType['PreventionInspectTemplateInspectConfigArrgs']] inspect_config: The core content of the template.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
                listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.

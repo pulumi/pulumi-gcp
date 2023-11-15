@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['SnapshotIamPolicyArgs', 'SnapshotIamPolicy']
+__all__ = ['SnapshotIamPolicyArrgs', 'SnapshotIamPolicy']
 
 @pulumi.input_type
-class SnapshotIamPolicyArgs:
+calass SnapshotIamPolicyArrgs:
     def __init__(__self__, *,
                  policy_data: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
@@ -95,7 +95,7 @@ class SnapshotIamPolicyArgs:
 
 
 @pulumi.input_type
-class _SnapshotIamPolicyState:
+calass _SnapshotIamPolicyState:
     def __init__(__self__, *,
                  etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -194,7 +194,7 @@ class _SnapshotIamPolicyState:
         pulumi.set(self, "project", value)
 
 
-class SnapshotIamPolicy(pulumi.CustomResource):
+calass SnapshotIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -224,7 +224,7 @@ class SnapshotIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -305,7 +305,7 @@ class SnapshotIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SnapshotIamPolicyArgs,
+                 args: SnapshotIamPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Compute Engine Snapshot. Each of these resources serves a different use case:
@@ -328,7 +328,7 @@ class SnapshotIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -386,12 +386,12 @@ class SnapshotIamPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param SnapshotIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param SnapshotIamPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SnapshotIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SnapshotIamPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -410,7 +410,7 @@ class SnapshotIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SnapshotIamPolicyArgs.__new__(SnapshotIamPolicyArgs)
+            __props__ = SnapshotIamPolicyArrgs.__new__(SnapshotIamPolicyArrgs)
 
             __props__.__dict__["name"] = name
             if policy_data is None and not opts.urn:

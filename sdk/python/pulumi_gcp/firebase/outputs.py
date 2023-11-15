@@ -37,7 +37,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class ExtensionsInstanceConfig(dict):
+calass ExtensionsInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -203,7 +203,7 @@ class ExtensionsInstanceConfig(dict):
 
 
 @pulumi.output_type
-class ExtensionsInstanceErrorStatus(dict):
+calass ExtensionsInstanceErrorStatus(dict):
     def __init__(__self__, *,
                  code: Optional[int] = None,
                  details: Optional[Sequence[Mapping[str, Any]]] = None,
@@ -246,7 +246,7 @@ class ExtensionsInstanceErrorStatus(dict):
 
 
 @pulumi.output_type
-class ExtensionsInstanceRuntimeData(dict):
+calass ExtensionsInstanceRuntimeData(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -273,9 +273,9 @@ class ExtensionsInstanceRuntimeData(dict):
                  processing_state: Optional['outputs.ExtensionsInstanceRuntimeDataProcessingState'] = None,
                  state_update_time: Optional[str] = None):
         """
-        :param 'ExtensionsInstanceRuntimeDataFatalErrorArgs' fatal_error: The fatal error state for the extension instance
+        :param 'ExtensionsInstanceRuntimeDataFatalErrorArrgs' fatal_error: The fatal error state for the extension instance
                Structure is documented below.
-        :param 'ExtensionsInstanceRuntimeDataProcessingStateArgs' processing_state: The processing state for the extension instance
+        :param 'ExtensionsInstanceRuntimeDataProcessingStateArrgs' processing_state: The processing state for the extension instance
                Structure is documented below.
         :param str state_update_time: The time of the last state update.
         """
@@ -314,7 +314,7 @@ class ExtensionsInstanceRuntimeData(dict):
 
 
 @pulumi.output_type
-class ExtensionsInstanceRuntimeDataFatalError(dict):
+calass ExtensionsInstanceRuntimeDataFatalError(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -354,7 +354,7 @@ class ExtensionsInstanceRuntimeDataFatalError(dict):
 
 
 @pulumi.output_type
-class ExtensionsInstanceRuntimeDataProcessingState(dict):
+calass ExtensionsInstanceRuntimeDataProcessingState(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -408,7 +408,7 @@ class ExtensionsInstanceRuntimeDataProcessingState(dict):
 
 
 @pulumi.output_type
-class HostingCustomDomainCert(dict):
+calass HostingCustomDomainCert(dict):
     def __init__(__self__, *,
                  state: Optional[str] = None,
                  type: Optional[str] = None,
@@ -420,7 +420,7 @@ class HostingCustomDomainCert(dict):
                before, that formerly-active cert provides SSL coverage for the domain name
                until the current cert propagates.
         :param str type: The record's type, which determines what data the record contains.
-        :param 'HostingCustomDomainCertVerificationArgs' verification: A set of ACME challenges you can add to your DNS records or existing,
+        :param 'HostingCustomDomainCertVerificationArrgs' verification: A set of ACME challenges you can add to your DNS records or existing,
                non-Hosting hosting provider to allow Hosting to create an SSL certificate
                for your domain name before you point traffic toward hosting. You can use
                thse challenges as part of a zero downtime transition from your old
@@ -469,15 +469,15 @@ class HostingCustomDomainCert(dict):
 
 
 @pulumi.output_type
-class HostingCustomDomainCertVerification(dict):
+calass HostingCustomDomainCertVerification(dict):
     def __init__(__self__, *,
                  dns: Optional['outputs.HostingCustomDomainCertVerificationDns'] = None,
                  http: Optional['outputs.HostingCustomDomainCertVerificationHttp'] = None):
         """
-        :param 'HostingCustomDomainCertVerificationDnsArgs' dns: A `TXT` record to add to your DNS records that confirms your intent to
+        :param 'HostingCustomDomainCertVerificationDnsArrgs' dns: A `TXT` record to add to your DNS records that confirms your intent to
                let Hosting create an SSL cert for your domain name.
                Structure is documented below.
-        :param 'HostingCustomDomainCertVerificationHttpArgs' http: A file to add to your existing, non-Hosting hosting service that confirms
+        :param 'HostingCustomDomainCertVerificationHttpArrgs' http: A file to add to your existing, non-Hosting hosting service that confirms
                your intent to let Hosting create an SSL cert for your domain name.
                Structure is documented below.
         """
@@ -508,7 +508,7 @@ class HostingCustomDomainCertVerification(dict):
 
 
 @pulumi.output_type
-class HostingCustomDomainCertVerificationDns(dict):
+calass HostingCustomDomainCertVerificationDns(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -533,8 +533,8 @@ class HostingCustomDomainCertVerificationDns(dict):
         """
         :param str check_time: (Output)
                The last time Hosting checked your CustomDomain's DNS records.
-        :param Sequence['HostingCustomDomainCertVerificationDnsDesiredArgs'] desireds: A text string to serve at the path.
-        :param Sequence['HostingCustomDomainCertVerificationDnsDiscoveredArgs'] discovereds: Whether Hosting was able to find the required file contents on the
+        :param Sequence['HostingCustomDomainCertVerificationDnsDesiredArrgs'] desireds: A text string to serve at the path.
+        :param Sequence['HostingCustomDomainCertVerificationDnsDiscoveredArrgs'] discovereds: Whether Hosting was able to find the required file contents on the
                specified path during its last check.
         """
         if check_time is not None:
@@ -572,7 +572,7 @@ class HostingCustomDomainCertVerificationDns(dict):
 
 
 @pulumi.output_type
-class HostingCustomDomainCertVerificationDnsDesired(dict):
+calass HostingCustomDomainCertVerificationDnsDesired(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -595,7 +595,7 @@ class HostingCustomDomainCertVerificationDnsDesired(dict):
                  records: Optional[Sequence['outputs.HostingCustomDomainCertVerificationDnsDesiredRecord']] = None):
         """
         :param str domain_name: The domain name the record pertains to, e.g. `foo.bar.com.`.
-        :param Sequence['HostingCustomDomainCertVerificationDnsDesiredRecordArgs'] records: Records on the domain
+        :param Sequence['HostingCustomDomainCertVerificationDnsDesiredRecordArrgs'] records: Records on the domain
                Structure is documented below.
         """
         if domain_name is not None:
@@ -622,7 +622,7 @@ class HostingCustomDomainCertVerificationDnsDesired(dict):
 
 
 @pulumi.output_type
-class HostingCustomDomainCertVerificationDnsDesiredRecord(dict):
+calass HostingCustomDomainCertVerificationDnsDesiredRecord(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -708,7 +708,7 @@ class HostingCustomDomainCertVerificationDnsDesiredRecord(dict):
 
 
 @pulumi.output_type
-class HostingCustomDomainCertVerificationDnsDiscovered(dict):
+calass HostingCustomDomainCertVerificationDnsDiscovered(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -731,7 +731,7 @@ class HostingCustomDomainCertVerificationDnsDiscovered(dict):
                  records: Optional[Sequence['outputs.HostingCustomDomainCertVerificationDnsDiscoveredRecord']] = None):
         """
         :param str domain_name: The domain name the record pertains to, e.g. `foo.bar.com.`.
-        :param Sequence['HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs'] records: Records on the domain
+        :param Sequence['HostingCustomDomainCertVerificationDnsDiscoveredRecordArrgs'] records: Records on the domain
                Structure is documented below.
         """
         if domain_name is not None:
@@ -758,7 +758,7 @@ class HostingCustomDomainCertVerificationDnsDiscovered(dict):
 
 
 @pulumi.output_type
-class HostingCustomDomainCertVerificationDnsDiscoveredRecord(dict):
+calass HostingCustomDomainCertVerificationDnsDiscoveredRecord(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -844,7 +844,7 @@ class HostingCustomDomainCertVerificationDnsDiscoveredRecord(dict):
 
 
 @pulumi.output_type
-class HostingCustomDomainCertVerificationHttp(dict):
+calass HostingCustomDomainCertVerificationHttp(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -920,7 +920,7 @@ class HostingCustomDomainCertVerificationHttp(dict):
 
 
 @pulumi.output_type
-class HostingCustomDomainIssue(dict):
+calass HostingCustomDomainIssue(dict):
     def __init__(__self__, *,
                  code: Optional[int] = None,
                  details: Optional[Sequence[Mapping[str, Any]]] = None,
@@ -963,7 +963,7 @@ class HostingCustomDomainIssue(dict):
 
 
 @pulumi.output_type
-class HostingCustomDomainRequiredDnsUpdate(dict):
+calass HostingCustomDomainRequiredDnsUpdate(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -988,8 +988,8 @@ class HostingCustomDomainRequiredDnsUpdate(dict):
         """
         :param str check_time: (Output)
                The last time Hosting checked your CustomDomain's DNS records.
-        :param Sequence['HostingCustomDomainRequiredDnsUpdateDesiredArgs'] desireds: A text string to serve at the path.
-        :param Sequence['HostingCustomDomainRequiredDnsUpdateDiscoveredArgs'] discovereds: Whether Hosting was able to find the required file contents on the
+        :param Sequence['HostingCustomDomainRequiredDnsUpdateDesiredArrgs'] desireds: A text string to serve at the path.
+        :param Sequence['HostingCustomDomainRequiredDnsUpdateDiscoveredArrgs'] discovereds: Whether Hosting was able to find the required file contents on the
                specified path during its last check.
         """
         if check_time is not None:
@@ -1027,7 +1027,7 @@ class HostingCustomDomainRequiredDnsUpdate(dict):
 
 
 @pulumi.output_type
-class HostingCustomDomainRequiredDnsUpdateDesired(dict):
+calass HostingCustomDomainRequiredDnsUpdateDesired(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1050,7 +1050,7 @@ class HostingCustomDomainRequiredDnsUpdateDesired(dict):
                  records: Optional[Sequence['outputs.HostingCustomDomainRequiredDnsUpdateDesiredRecord']] = None):
         """
         :param str domain_name: The domain name the record pertains to, e.g. `foo.bar.com.`.
-        :param Sequence['HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs'] records: Records on the domain
+        :param Sequence['HostingCustomDomainRequiredDnsUpdateDesiredRecordArrgs'] records: Records on the domain
                Structure is documented below.
         """
         if domain_name is not None:
@@ -1077,7 +1077,7 @@ class HostingCustomDomainRequiredDnsUpdateDesired(dict):
 
 
 @pulumi.output_type
-class HostingCustomDomainRequiredDnsUpdateDesiredRecord(dict):
+calass HostingCustomDomainRequiredDnsUpdateDesiredRecord(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1163,7 +1163,7 @@ class HostingCustomDomainRequiredDnsUpdateDesiredRecord(dict):
 
 
 @pulumi.output_type
-class HostingCustomDomainRequiredDnsUpdateDiscovered(dict):
+calass HostingCustomDomainRequiredDnsUpdateDiscovered(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1186,7 +1186,7 @@ class HostingCustomDomainRequiredDnsUpdateDiscovered(dict):
                  records: Optional[Sequence['outputs.HostingCustomDomainRequiredDnsUpdateDiscoveredRecord']] = None):
         """
         :param str domain_name: The domain name the record pertains to, e.g. `foo.bar.com.`.
-        :param Sequence['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs'] records: Records on the domain
+        :param Sequence['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrgs'] records: Records on the domain
                Structure is documented below.
         """
         if domain_name is not None:
@@ -1213,7 +1213,7 @@ class HostingCustomDomainRequiredDnsUpdateDiscovered(dict):
 
 
 @pulumi.output_type
-class HostingCustomDomainRequiredDnsUpdateDiscoveredRecord(dict):
+calass HostingCustomDomainRequiredDnsUpdateDiscoveredRecord(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1299,15 +1299,15 @@ class HostingCustomDomainRequiredDnsUpdateDiscoveredRecord(dict):
 
 
 @pulumi.output_type
-class HostingVersionConfig(dict):
+calass HostingVersionConfig(dict):
     def __init__(__self__, *,
                  redirects: Optional[Sequence['outputs.HostingVersionConfigRedirect']] = None,
                  rewrites: Optional[Sequence['outputs.HostingVersionConfigRewrite']] = None):
         """
-        :param Sequence['HostingVersionConfigRedirectArgs'] redirects: An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
+        :param Sequence['HostingVersionConfigRedirectArrgs'] redirects: An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
                triggers Hosting to respond with a redirect to the specified destination path.
                Structure is documented below.
-        :param Sequence['HostingVersionConfigRewriteArgs'] rewrites: An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the
+        :param Sequence['HostingVersionConfigRewriteArrgs'] rewrites: An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the
                request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
                Structure is documented below.
         """
@@ -1338,7 +1338,7 @@ class HostingVersionConfig(dict):
 
 
 @pulumi.output_type
-class HostingVersionConfigRedirect(dict):
+calass HostingVersionConfigRedirect(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1418,7 +1418,7 @@ class HostingVersionConfigRedirect(dict):
 
 
 @pulumi.output_type
-class HostingVersionConfigRewrite(dict):
+calass HostingVersionConfigRewrite(dict):
     def __init__(__self__, *,
                  function: Optional[str] = None,
                  glob: Optional[str] = None,
@@ -1428,7 +1428,7 @@ class HostingVersionConfigRewrite(dict):
         :param str function: The function to proxy requests to. Must match the exported function name exactly.
         :param str glob: The user-supplied glob to match against the request URL path.
         :param str regex: The user-supplied RE2 regular expression to match against the request URL path.
-        :param 'HostingVersionConfigRewriteRunArgs' run: The request will be forwarded to Cloud Run.
+        :param 'HostingVersionConfigRewriteRunArrgs' run: The request will be forwarded to Cloud Run.
                Structure is documented below.
         """
         if function is not None:
@@ -1475,7 +1475,7 @@ class HostingVersionConfigRewrite(dict):
 
 
 @pulumi.output_type
-class HostingVersionConfigRewriteRun(dict):
+calass HostingVersionConfigRewriteRun(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

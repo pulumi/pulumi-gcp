@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['InterconnectAttachmentArgs', 'InterconnectAttachment']
+__all__ = ['InterconnectAttachmentArrgs', 'InterconnectAttachment']
 
 @pulumi.input_type
-class InterconnectAttachmentArgs:
+calass InterconnectAttachmentArrgs:
     def __init__(__self__, *,
                  router: pulumi.Input[str],
                  admin_enabled: Optional[pulumi.Input[bool]] = None,
@@ -383,7 +383,7 @@ class InterconnectAttachmentArgs:
 
 
 @pulumi.input_type
-class _InterconnectAttachmentState:
+calass _InterconnectAttachmentState:
     def __init__(__self__, *,
                  admin_enabled: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[str]] = None,
@@ -401,7 +401,7 @@ class _InterconnectAttachmentState:
                  name: Optional[pulumi.Input[str]] = None,
                  pairing_key: Optional[pulumi.Input[str]] = None,
                  partner_asn: Optional[pulumi.Input[str]] = None,
-                 private_interconnect_infos: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentPrivateInterconnectInfoArgs']]]] = None,
+                 private_interconnect_infos: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentPrivateInterconnectInfoArrgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
@@ -488,7 +488,7 @@ class _InterconnectAttachmentState:
         :param pulumi.Input[str] partner_asn: [Output only for type PARTNER. Not present for DEDICATED]. Optional
                BGP ASN for the router that should be supplied by a layer 3 Partner if
                they configured BGP on behalf of the customer.
-        :param pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentPrivateInterconnectInfoArgs']]] private_interconnect_infos: Information specific to an InterconnectAttachment. This property
+        :param pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentPrivateInterconnectInfoArrgs']]] private_interconnect_infos: Information specific to an InterconnectAttachment. This property
                is populated if the interconnect that this is attached to is of type DEDICATED.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -810,7 +810,7 @@ class _InterconnectAttachmentState:
 
     @property
     @pulumi.getter(name="privateInterconnectInfos")
-    def private_interconnect_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentPrivateInterconnectInfoArgs']]]]:
+    def private_interconnect_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentPrivateInterconnectInfoArrgs']]]]:
         """
         Information specific to an InterconnectAttachment. This property
         is populated if the interconnect that this is attached to is of type DEDICATED.
@@ -819,7 +819,7 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "private_interconnect_infos")
 
     @private_interconnect_infos.setter
-    def private_interconnect_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentPrivateInterconnectInfoArgs']]]]):
+    def private_interconnect_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentPrivateInterconnectInfoArrgs']]]]):
         pulumi.set(self, "private_interconnect_infos", value)
 
     @property
@@ -914,7 +914,7 @@ class _InterconnectAttachmentState:
         pulumi.set(self, "vlan_tag8021q", value)
 
 
-class InterconnectAttachment(pulumi.CustomResource):
+calass InterconnectAttachment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -949,7 +949,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         foobar_network = gcp.compute.Network("foobarNetwork", auto_create_subnetworks=False)
         foobar_router = gcp.compute.Router("foobarRouter",
             network=foobar_network.name,
-            bgp=gcp.compute.RouterBgpArgs(
+            bgp=gcp.compute.RouterBgpArrgs(
                 asn=16550,
             ))
         on_prem = gcp.compute.InterconnectAttachment("onPrem",
@@ -974,7 +974,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         router = gcp.compute.Router("router",
             network=network.name,
             encrypted_interconnect_router=True,
-            bgp=gcp.compute.RouterBgpArgs(
+            bgp=gcp.compute.RouterBgpArrgs(
                 asn=16550,
             ))
         ipsec_encrypted_interconnect_attachment = gcp.compute.InterconnectAttachment("ipsec-encrypted-interconnect-attachment",
@@ -1096,7 +1096,7 @@ class InterconnectAttachment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: InterconnectAttachmentArgs,
+                 args: InterconnectAttachmentArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents an InterconnectAttachment (VLAN attachment) resource. For more
@@ -1112,7 +1112,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         foobar_network = gcp.compute.Network("foobarNetwork", auto_create_subnetworks=False)
         foobar_router = gcp.compute.Router("foobarRouter",
             network=foobar_network.name,
-            bgp=gcp.compute.RouterBgpArgs(
+            bgp=gcp.compute.RouterBgpArrgs(
                 asn=16550,
             ))
         on_prem = gcp.compute.InterconnectAttachment("onPrem",
@@ -1137,7 +1137,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         router = gcp.compute.Router("router",
             network=network.name,
             encrypted_interconnect_router=True,
-            bgp=gcp.compute.RouterBgpArgs(
+            bgp=gcp.compute.RouterBgpArrgs(
                 asn=16550,
             ))
         ipsec_encrypted_interconnect_attachment = gcp.compute.InterconnectAttachment("ipsec-encrypted-interconnect-attachment",
@@ -1177,12 +1177,12 @@ class InterconnectAttachment(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param InterconnectAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param InterconnectAttachmentArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(InterconnectAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(InterconnectAttachmentArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1213,7 +1213,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = InterconnectAttachmentArgs.__new__(InterconnectAttachmentArgs)
+            __props__ = InterconnectAttachmentArrgs.__new__(InterconnectAttachmentArrgs)
 
             __props__.__dict__["admin_enabled"] = admin_enabled
             __props__.__dict__["bandwidth"] = bandwidth
@@ -1267,7 +1267,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             pairing_key: Optional[pulumi.Input[str]] = None,
             partner_asn: Optional[pulumi.Input[str]] = None,
-            private_interconnect_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InterconnectAttachmentPrivateInterconnectInfoArgs']]]]] = None,
+            private_interconnect_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InterconnectAttachmentPrivateInterconnectInfoArrgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             router: Optional[pulumi.Input[str]] = None,
@@ -1359,7 +1359,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] partner_asn: [Output only for type PARTNER. Not present for DEDICATED]. Optional
                BGP ASN for the router that should be supplied by a layer 3 Partner if
                they configured BGP on behalf of the customer.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InterconnectAttachmentPrivateInterconnectInfoArgs']]]] private_interconnect_infos: Information specific to an InterconnectAttachment. This property
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InterconnectAttachmentPrivateInterconnectInfoArrgs']]]] private_interconnect_infos: Information specific to an InterconnectAttachment. This property
                is populated if the interconnect that this is attached to is of type DEDICATED.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.

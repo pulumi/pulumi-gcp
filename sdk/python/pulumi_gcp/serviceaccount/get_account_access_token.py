@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetAccountAccessTokenResult:
+calass GetAccountAccessTokenResult:
     """
     A collection of values returned by getAccountAccessToken.
     """
@@ -78,7 +78,7 @@ class GetAccountAccessTokenResult:
         return pulumi.get(self, "target_service_account")
 
 
-class AwaitableGetAccountAccessTokenResult(GetAccountAccessTokenResult):
+calass AwaitableGetAccountAccessTokenResult(GetAccountAccessTokenResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

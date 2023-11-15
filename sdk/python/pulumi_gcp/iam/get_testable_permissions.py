@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetTestablePermissionsResult:
+calass GetTestablePermissionsResult:
     """
     A collection of values returned by getTestablePermissions.
     """
@@ -74,7 +74,7 @@ class GetTestablePermissionsResult:
         return pulumi.get(self, "stages")
 
 
-class AwaitableGetTestablePermissionsResult(GetTestablePermissionsResult):
+calass AwaitableGetTestablePermissionsResult(GetTestablePermissionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

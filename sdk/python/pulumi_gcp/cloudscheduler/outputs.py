@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class JobAppEngineHttpTarget(dict):
+calass JobAppEngineHttpTarget(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -55,7 +55,7 @@ class JobAppEngineHttpTarget(dict):
                It can contain a path, query string arguments, and \\# fragments.
                If the relative URL is empty, then the root path "/" will be used.
                No spaces are allowed, and the maximum length allowed is 2083 characters
-        :param 'JobAppEngineHttpTargetAppEngineRoutingArgs' app_engine_routing: App Engine Routing setting for the job.
+        :param 'JobAppEngineHttpTargetAppEngineRoutingArrgs' app_engine_routing: App Engine Routing setting for the job.
                Structure is documented below.
         :param str body: HTTP request body.
                A request body is allowed only if the HTTP method is POST or PUT.
@@ -128,7 +128,7 @@ class JobAppEngineHttpTarget(dict):
 
 
 @pulumi.output_type
-class JobAppEngineHttpTargetAppEngineRouting(dict):
+calass JobAppEngineHttpTargetAppEngineRouting(dict):
     def __init__(__self__, *,
                  instance: Optional[str] = None,
                  service: Optional[str] = None,
@@ -177,7 +177,7 @@ class JobAppEngineHttpTargetAppEngineRouting(dict):
 
 
 @pulumi.output_type
-class JobHttpTarget(dict):
+calass JobHttpTarget(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -215,10 +215,10 @@ class JobHttpTarget(dict):
         :param Mapping[str, str] headers: This map contains the header field names and values.
                Repeated headers are not supported, but a header value can contain commas.
         :param str http_method: Which HTTP method to use for the request.
-        :param 'JobHttpTargetOauthTokenArgs' oauth_token: Contains information needed for generating an OAuth token.
+        :param 'JobHttpTargetOauthTokenArrgs' oauth_token: Contains information needed for generating an OAuth token.
                This type of authorization should be used when sending requests to a GCP endpoint.
                Structure is documented below.
-        :param 'JobHttpTargetOidcTokenArgs' oidc_token: Contains information needed for generating an OpenID Connect token.
+        :param 'JobHttpTargetOidcTokenArrgs' oidc_token: Contains information needed for generating an OpenID Connect token.
                This type of authorization should be used when sending requests to third party endpoints or Cloud Run.
                Structure is documented below.
         """
@@ -292,7 +292,7 @@ class JobHttpTarget(dict):
 
 
 @pulumi.output_type
-class JobHttpTargetOauthToken(dict):
+calass JobHttpTargetOauthToken(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -343,7 +343,7 @@ class JobHttpTargetOauthToken(dict):
 
 
 @pulumi.output_type
-class JobHttpTargetOidcToken(dict):
+calass JobHttpTargetOidcToken(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -394,7 +394,7 @@ class JobHttpTargetOidcToken(dict):
 
 
 @pulumi.output_type
-class JobPubsubTarget(dict):
+calass JobPubsubTarget(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -465,7 +465,7 @@ class JobPubsubTarget(dict):
 
 
 @pulumi.output_type
-class JobRetryConfig(dict):
+calass JobRetryConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

@@ -10,58 +10,58 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'FeatureFleetDefaultMemberConfigArgs',
-    'FeatureFleetDefaultMemberConfigConfigmanagementArgs',
-    'FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs',
-    'FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs',
-    'FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs',
-    'FeatureFleetDefaultMemberConfigMeshArgs',
-    'FeatureIamBindingConditionArgs',
-    'FeatureIamMemberConditionArgs',
-    'FeatureMembershipConfigmanagementArgs',
-    'FeatureMembershipConfigmanagementBinauthzArgs',
-    'FeatureMembershipConfigmanagementConfigSyncArgs',
-    'FeatureMembershipConfigmanagementConfigSyncGitArgs',
-    'FeatureMembershipConfigmanagementConfigSyncOciArgs',
-    'FeatureMembershipConfigmanagementHierarchyControllerArgs',
-    'FeatureMembershipConfigmanagementPolicyControllerArgs',
-    'FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs',
-    'FeatureMembershipMeshArgs',
-    'FeatureResourceStateArgs',
-    'FeatureSpecArgs',
-    'FeatureSpecFleetobservabilityArgs',
-    'FeatureSpecFleetobservabilityLoggingConfigArgs',
-    'FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs',
-    'FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs',
-    'FeatureSpecMulticlusteringressArgs',
-    'FeatureStateArgs',
-    'FeatureStateStateArgs',
-    'FleetStateArgs',
-    'MembershipAuthorityArgs',
-    'MembershipBindingStateArgs',
-    'MembershipEndpointArgs',
-    'MembershipEndpointGkeClusterArgs',
-    'MembershipIamBindingConditionArgs',
-    'MembershipIamMemberConditionArgs',
-    'MembershipRbacRoleBindingRoleArgs',
-    'MembershipRbacRoleBindingStateArgs',
-    'NamespaceStateArgs',
-    'ScopeIamBindingConditionArgs',
-    'ScopeIamMemberConditionArgs',
-    'ScopeRbacRoleBindingRoleArgs',
-    'ScopeRbacRoleBindingStateArgs',
-    'ScopeStateArgs',
+    'FeatureFleetDefaultMemberConfigArrgs',
+    'FeatureFleetDefaultMemberConfigConfigmanagementArrgs',
+    'FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrgs',
+    'FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrgs',
+    'FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrgs',
+    'FeatureFleetDefaultMemberConfigMeshArrgs',
+    'FeatureIamBindingConditionArrgs',
+    'FeatureIamMemberConditionArrgs',
+    'FeatureMembershipConfigmanagementArrgs',
+    'FeatureMembershipConfigmanagementBinauthzArrgs',
+    'FeatureMembershipConfigmanagementConfigSyncArrgs',
+    'FeatureMembershipConfigmanagementConfigSyncGitArrgs',
+    'FeatureMembershipConfigmanagementConfigSyncOciArrgs',
+    'FeatureMembershipConfigmanagementHierarchyControllerArrgs',
+    'FeatureMembershipConfigmanagementPolicyControllerArrgs',
+    'FeatureMembershipConfigmanagementPolicyControllerMonitoringArrgs',
+    'FeatureMembershipMeshArrgs',
+    'FeatureResourceStateArrgs',
+    'FeatureSpecArrgs',
+    'FeatureSpecFleetobservabilityArrgs',
+    'FeatureSpecFleetobservabilityLoggingConfigArrgs',
+    'FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrgs',
+    'FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrgs',
+    'FeatureSpecMulticlusteringressArrgs',
+    'FeatureStateArrgs',
+    'FeatureStateStateArrgs',
+    'FleetStateArrgs',
+    'MembershipAuthorityArrgs',
+    'MembershipBindingStateArrgs',
+    'MembershipEndpointArrgs',
+    'MembershipEndpointGkeClusterArrgs',
+    'MembershipIamBindingConditionArrgs',
+    'MembershipIamMemberConditionArrgs',
+    'MembershipRbacRoleBindingRoleArrgs',
+    'MembershipRbacRoleBindingStateArrgs',
+    'NamespaceStateArrgs',
+    'ScopeIamBindingConditionArrgs',
+    'ScopeIamMemberConditionArrgs',
+    'ScopeRbacRoleBindingRoleArrgs',
+    'ScopeRbacRoleBindingStateArrgs',
+    'ScopeStateArrgs',
 ]
 
 @pulumi.input_type
-class FeatureFleetDefaultMemberConfigArgs:
+calass FeatureFleetDefaultMemberConfigArrgs:
     def __init__(__self__, *,
-                 configmanagement: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementArgs']] = None,
-                 mesh: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigMeshArgs']] = None):
+                 configmanagement: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementArrgs']] = None,
+                 mesh: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigMeshArrgs']] = None):
         """
-        :param pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementArgs'] configmanagement: Config Management spec
+        :param pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementArrgs'] configmanagement: Config Management spec
                Structure is documented below.
-        :param pulumi.Input['FeatureFleetDefaultMemberConfigMeshArgs'] mesh: Service Mesh spec
+        :param pulumi.Input['FeatureFleetDefaultMemberConfigMeshArrgs'] mesh: Service Mesh spec
                Structure is documented below.
         """
         if configmanagement is not None:
@@ -71,7 +71,7 @@ class FeatureFleetDefaultMemberConfigArgs:
 
     @property
     @pulumi.getter
-    def configmanagement(self) -> Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementArgs']]:
+    def configmanagement(self) -> Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementArrgs']]:
         """
         Config Management spec
         Structure is documented below.
@@ -79,12 +79,12 @@ class FeatureFleetDefaultMemberConfigArgs:
         return pulumi.get(self, "configmanagement")
 
     @configmanagement.setter
-    def configmanagement(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementArgs']]):
+    def configmanagement(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementArrgs']]):
         pulumi.set(self, "configmanagement", value)
 
     @property
     @pulumi.getter
-    def mesh(self) -> Optional[pulumi.Input['FeatureFleetDefaultMemberConfigMeshArgs']]:
+    def mesh(self) -> Optional[pulumi.Input['FeatureFleetDefaultMemberConfigMeshArrgs']]:
         """
         Service Mesh spec
         Structure is documented below.
@@ -92,16 +92,16 @@ class FeatureFleetDefaultMemberConfigArgs:
         return pulumi.get(self, "mesh")
 
     @mesh.setter
-    def mesh(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigMeshArgs']]):
+    def mesh(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigMeshArrgs']]):
         pulumi.set(self, "mesh", value)
 
 
 @pulumi.input_type
-class FeatureFleetDefaultMemberConfigConfigmanagementArgs:
+calass FeatureFleetDefaultMemberConfigConfigmanagementArrgs:
     def __init__(__self__, *,
-                 config_sync: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs']] = None):
+                 config_sync: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrgs']] = None):
         """
-        :param pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs'] config_sync: ConfigSync configuration for the cluster
+        :param pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrgs'] config_sync: ConfigSync configuration for the cluster
                Structure is documented below.
         """
         if config_sync is not None:
@@ -109,7 +109,7 @@ class FeatureFleetDefaultMemberConfigConfigmanagementArgs:
 
     @property
     @pulumi.getter(name="configSync")
-    def config_sync(self) -> Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs']]:
+    def config_sync(self) -> Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrgs']]:
         """
         ConfigSync configuration for the cluster
         Structure is documented below.
@@ -117,20 +117,20 @@ class FeatureFleetDefaultMemberConfigConfigmanagementArgs:
         return pulumi.get(self, "config_sync")
 
     @config_sync.setter
-    def config_sync(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs']]):
+    def config_sync(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrgs']]):
         pulumi.set(self, "config_sync", value)
 
 
 @pulumi.input_type
-class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs:
+calass FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrgs:
     def __init__(__self__, *,
-                 git: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs']] = None,
-                 oci: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs']] = None,
+                 git: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrgs']] = None,
+                 oci: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrgs']] = None,
                  source_format: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs'] git: Git repo configuration for the cluster
+        :param pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrgs'] git: Git repo configuration for the cluster
                Structure is documented below.
-        :param pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs'] oci: OCI repo configuration for the cluster
+        :param pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrgs'] oci: OCI repo configuration for the cluster
                Structure is documented below.
         :param pulumi.Input[str] source_format: Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
         """
@@ -143,7 +143,7 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs:
 
     @property
     @pulumi.getter
-    def git(self) -> Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs']]:
+    def git(self) -> Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrgs']]:
         """
         Git repo configuration for the cluster
         Structure is documented below.
@@ -151,12 +151,12 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs:
         return pulumi.get(self, "git")
 
     @git.setter
-    def git(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs']]):
+    def git(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrgs']]):
         pulumi.set(self, "git", value)
 
     @property
     @pulumi.getter
-    def oci(self) -> Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs']]:
+    def oci(self) -> Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrgs']]:
         """
         OCI repo configuration for the cluster
         Structure is documented below.
@@ -164,7 +164,7 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs:
         return pulumi.get(self, "oci")
 
     @oci.setter
-    def oci(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs']]):
+    def oci(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrgs']]):
         pulumi.set(self, "oci", value)
 
     @property
@@ -181,7 +181,7 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs:
 
 
 @pulumi.input_type
-class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs:
+calass FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrgs:
     def __init__(__self__, *,
                  secret_type: pulumi.Input[str],
                  gcp_service_account_email: Optional[pulumi.Input[str]] = None,
@@ -315,7 +315,7 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs:
 
 
 @pulumi.input_type
-class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs:
+calass FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrgs:
     def __init__(__self__, *,
                  secret_type: pulumi.Input[str],
                  gcp_service_account_email: Optional[pulumi.Input[str]] = None,
@@ -417,7 +417,7 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs:
 
 
 @pulumi.input_type
-class FeatureFleetDefaultMemberConfigMeshArgs:
+calass FeatureFleetDefaultMemberConfigMeshArrgs:
     def __init__(__self__, *,
                  management: pulumi.Input[str]):
         """
@@ -441,7 +441,7 @@ class FeatureFleetDefaultMemberConfigMeshArgs:
 
 
 @pulumi.input_type
-class FeatureIamBindingConditionArgs:
+calass FeatureIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -480,7 +480,7 @@ class FeatureIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class FeatureIamMemberConditionArgs:
+calass FeatureIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -519,18 +519,18 @@ class FeatureIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class FeatureMembershipConfigmanagementArgs:
+calass FeatureMembershipConfigmanagementArrgs:
     def __init__(__self__, *,
-                 binauthz: Optional[pulumi.Input['FeatureMembershipConfigmanagementBinauthzArgs']] = None,
-                 config_sync: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncArgs']] = None,
-                 hierarchy_controller: Optional[pulumi.Input['FeatureMembershipConfigmanagementHierarchyControllerArgs']] = None,
-                 policy_controller: Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerArgs']] = None,
+                 binauthz: Optional[pulumi.Input['FeatureMembershipConfigmanagementBinauthzArrgs']] = None,
+                 config_sync: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncArrgs']] = None,
+                 hierarchy_controller: Optional[pulumi.Input['FeatureMembershipConfigmanagementHierarchyControllerArrgs']] = None,
+                 policy_controller: Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerArrgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['FeatureMembershipConfigmanagementBinauthzArgs'] binauthz: Binauthz configuration for the cluster. Structure is documented below.
-        :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncArgs'] config_sync: Config Sync configuration for the cluster. Structure is documented below.
-        :param pulumi.Input['FeatureMembershipConfigmanagementHierarchyControllerArgs'] hierarchy_controller: Hierarchy Controller configuration for the cluster. Structure is documented below.
-        :param pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerArgs'] policy_controller: Policy Controller configuration for the cluster. Structure is documented below.
+        :param pulumi.Input['FeatureMembershipConfigmanagementBinauthzArrgs'] binauthz: Binauthz configuration for the cluster. Structure is documented below.
+        :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncArrgs'] config_sync: Config Sync configuration for the cluster. Structure is documented below.
+        :param pulumi.Input['FeatureMembershipConfigmanagementHierarchyControllerArrgs'] hierarchy_controller: Hierarchy Controller configuration for the cluster. Structure is documented below.
+        :param pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerArrgs'] policy_controller: Policy Controller configuration for the cluster. Structure is documented below.
         :param pulumi.Input[str] version: Version of ACM installed.
         """
         if binauthz is not None:
@@ -546,50 +546,50 @@ class FeatureMembershipConfigmanagementArgs:
 
     @property
     @pulumi.getter
-    def binauthz(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementBinauthzArgs']]:
+    def binauthz(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementBinauthzArrgs']]:
         """
         Binauthz configuration for the cluster. Structure is documented below.
         """
         return pulumi.get(self, "binauthz")
 
     @binauthz.setter
-    def binauthz(self, value: Optional[pulumi.Input['FeatureMembershipConfigmanagementBinauthzArgs']]):
+    def binauthz(self, value: Optional[pulumi.Input['FeatureMembershipConfigmanagementBinauthzArrgs']]):
         pulumi.set(self, "binauthz", value)
 
     @property
     @pulumi.getter(name="configSync")
-    def config_sync(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncArgs']]:
+    def config_sync(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncArrgs']]:
         """
         Config Sync configuration for the cluster. Structure is documented below.
         """
         return pulumi.get(self, "config_sync")
 
     @config_sync.setter
-    def config_sync(self, value: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncArgs']]):
+    def config_sync(self, value: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncArrgs']]):
         pulumi.set(self, "config_sync", value)
 
     @property
     @pulumi.getter(name="hierarchyController")
-    def hierarchy_controller(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementHierarchyControllerArgs']]:
+    def hierarchy_controller(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementHierarchyControllerArrgs']]:
         """
         Hierarchy Controller configuration for the cluster. Structure is documented below.
         """
         return pulumi.get(self, "hierarchy_controller")
 
     @hierarchy_controller.setter
-    def hierarchy_controller(self, value: Optional[pulumi.Input['FeatureMembershipConfigmanagementHierarchyControllerArgs']]):
+    def hierarchy_controller(self, value: Optional[pulumi.Input['FeatureMembershipConfigmanagementHierarchyControllerArrgs']]):
         pulumi.set(self, "hierarchy_controller", value)
 
     @property
     @pulumi.getter(name="policyController")
-    def policy_controller(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerArgs']]:
+    def policy_controller(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerArrgs']]:
         """
         Policy Controller configuration for the cluster. Structure is documented below.
         """
         return pulumi.get(self, "policy_controller")
 
     @policy_controller.setter
-    def policy_controller(self, value: Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerArgs']]):
+    def policy_controller(self, value: Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerArrgs']]):
         pulumi.set(self, "policy_controller", value)
 
     @property
@@ -606,7 +606,7 @@ class FeatureMembershipConfigmanagementArgs:
 
 
 @pulumi.input_type
-class FeatureMembershipConfigmanagementBinauthzArgs:
+calass FeatureMembershipConfigmanagementBinauthzArrgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
@@ -629,16 +629,16 @@ class FeatureMembershipConfigmanagementBinauthzArgs:
 
 
 @pulumi.input_type
-class FeatureMembershipConfigmanagementConfigSyncArgs:
+calass FeatureMembershipConfigmanagementConfigSyncArrgs:
     def __init__(__self__, *,
-                 git: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArgs']] = None,
+                 git: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArrgs']] = None,
                  metrics_gcp_service_account_email: Optional[pulumi.Input[str]] = None,
-                 oci: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncOciArgs']] = None,
+                 oci: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncOciArrgs']] = None,
                  prevent_drift: Optional[pulumi.Input[bool]] = None,
                  source_format: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArgs'] git: (Optional) Structure is documented below.
-        :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncOciArgs'] oci: (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+        :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArrgs'] git: (Optional) Structure is documented below.
+        :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncOciArrgs'] oci: (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
                
                Use either `git` or `oci` config option.
         :param pulumi.Input[bool] prevent_drift: Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
@@ -657,14 +657,14 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
 
     @property
     @pulumi.getter
-    def git(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArgs']]:
+    def git(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArrgs']]:
         """
         (Optional) Structure is documented below.
         """
         return pulumi.get(self, "git")
 
     @git.setter
-    def git(self, value: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArgs']]):
+    def git(self, value: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArrgs']]):
         pulumi.set(self, "git", value)
 
     @property
@@ -678,7 +678,7 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
 
     @property
     @pulumi.getter
-    def oci(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncOciArgs']]:
+    def oci(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncOciArrgs']]:
         """
         (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
 
@@ -687,7 +687,7 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
         return pulumi.get(self, "oci")
 
     @oci.setter
-    def oci(self, value: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncOciArgs']]):
+    def oci(self, value: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncOciArrgs']]):
         pulumi.set(self, "oci", value)
 
     @property
@@ -716,7 +716,7 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
 
 
 @pulumi.input_type
-class FeatureMembershipConfigmanagementConfigSyncGitArgs:
+calass FeatureMembershipConfigmanagementConfigSyncGitArrgs:
     def __init__(__self__, *,
                  gcp_service_account_email: Optional[pulumi.Input[str]] = None,
                  https_proxy: Optional[pulumi.Input[str]] = None,
@@ -851,7 +851,7 @@ class FeatureMembershipConfigmanagementConfigSyncGitArgs:
 
 
 @pulumi.input_type
-class FeatureMembershipConfigmanagementConfigSyncOciArgs:
+calass FeatureMembershipConfigmanagementConfigSyncOciArrgs:
     def __init__(__self__, *,
                  gcp_service_account_email: Optional[pulumi.Input[str]] = None,
                  policy_dir: Optional[pulumi.Input[str]] = None,
@@ -938,7 +938,7 @@ class FeatureMembershipConfigmanagementConfigSyncOciArgs:
 
 
 @pulumi.input_type
-class FeatureMembershipConfigmanagementHierarchyControllerArgs:
+calass FeatureMembershipConfigmanagementHierarchyControllerArrgs:
     def __init__(__self__, *,
                  enable_hierarchical_resource_quota: Optional[pulumi.Input[bool]] = None,
                  enable_pod_tree_labels: Optional[pulumi.Input[bool]] = None,
@@ -993,13 +993,13 @@ class FeatureMembershipConfigmanagementHierarchyControllerArgs:
 
 
 @pulumi.input_type
-class FeatureMembershipConfigmanagementPolicyControllerArgs:
+calass FeatureMembershipConfigmanagementPolicyControllerArrgs:
     def __init__(__self__, *,
                  audit_interval_seconds: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  exemptable_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  log_denies_enabled: Optional[pulumi.Input[bool]] = None,
-                 monitoring: Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs']] = None,
+                 monitoring: Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerMonitoringArrgs']] = None,
                  mutation_enabled: Optional[pulumi.Input[bool]] = None,
                  referential_rules_enabled: Optional[pulumi.Input[bool]] = None,
                  template_library_installed: Optional[pulumi.Input[bool]] = None):
@@ -1008,7 +1008,7 @@ class FeatureMembershipConfigmanagementPolicyControllerArgs:
         :param pulumi.Input[bool] enabled: Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exemptable_namespaces: The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
         :param pulumi.Input[bool] log_denies_enabled: Logs all denies and dry run failures.
-        :param pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs'] monitoring: Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\\"cloudmonitoring\\", \\"prometheus\\"]. Default: [\\"cloudmonitoring\\", \\"prometheus\\"]
+        :param pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerMonitoringArrgs'] monitoring: Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\\"cloudmonitoring\\", \\"prometheus\\"]. Default: [\\"cloudmonitoring\\", \\"prometheus\\"]
         :param pulumi.Input[bool] mutation_enabled: Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
         :param pulumi.Input[bool] referential_rules_enabled: Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
         :param pulumi.Input[bool] template_library_installed: Installs the default template library along with Policy Controller.
@@ -1080,14 +1080,14 @@ class FeatureMembershipConfigmanagementPolicyControllerArgs:
 
     @property
     @pulumi.getter
-    def monitoring(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs']]:
+    def monitoring(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerMonitoringArrgs']]:
         """
         Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\\"cloudmonitoring\\", \\"prometheus\\"]. Default: [\\"cloudmonitoring\\", \\"prometheus\\"]
         """
         return pulumi.get(self, "monitoring")
 
     @monitoring.setter
-    def monitoring(self, value: Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs']]):
+    def monitoring(self, value: Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerMonitoringArrgs']]):
         pulumi.set(self, "monitoring", value)
 
     @property
@@ -1128,7 +1128,7 @@ class FeatureMembershipConfigmanagementPolicyControllerArgs:
 
 
 @pulumi.input_type
-class FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs:
+calass FeatureMembershipConfigmanagementPolicyControllerMonitoringArrgs:
     def __init__(__self__, *,
                  backends: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         if backends is not None:
@@ -1145,7 +1145,7 @@ class FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs:
 
 
 @pulumi.input_type
-class FeatureMembershipMeshArgs:
+calass FeatureMembershipMeshArrgs:
     def __init__(__self__, *,
                  control_plane: Optional[pulumi.Input[str]] = None,
                  management: Optional[pulumi.Input[str]] = None):
@@ -1186,7 +1186,7 @@ class FeatureMembershipMeshArgs:
 
 
 @pulumi.input_type
-class FeatureResourceStateArgs:
+calass FeatureResourceStateArrgs:
     def __init__(__self__, *,
                  has_resources: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None):
@@ -1231,14 +1231,14 @@ class FeatureResourceStateArgs:
 
 
 @pulumi.input_type
-class FeatureSpecArgs:
+calass FeatureSpecArrgs:
     def __init__(__self__, *,
-                 fleetobservability: Optional[pulumi.Input['FeatureSpecFleetobservabilityArgs']] = None,
-                 multiclusteringress: Optional[pulumi.Input['FeatureSpecMulticlusteringressArgs']] = None):
+                 fleetobservability: Optional[pulumi.Input['FeatureSpecFleetobservabilityArrgs']] = None,
+                 multiclusteringress: Optional[pulumi.Input['FeatureSpecMulticlusteringressArrgs']] = None):
         """
-        :param pulumi.Input['FeatureSpecFleetobservabilityArgs'] fleetobservability: Fleet Observability feature spec.
+        :param pulumi.Input['FeatureSpecFleetobservabilityArrgs'] fleetobservability: Fleet Observability feature spec.
                Structure is documented below.
-        :param pulumi.Input['FeatureSpecMulticlusteringressArgs'] multiclusteringress: Multicluster Ingress-specific spec.
+        :param pulumi.Input['FeatureSpecMulticlusteringressArrgs'] multiclusteringress: Multicluster Ingress-specific spec.
                Structure is documented below.
         """
         if fleetobservability is not None:
@@ -1248,7 +1248,7 @@ class FeatureSpecArgs:
 
     @property
     @pulumi.getter
-    def fleetobservability(self) -> Optional[pulumi.Input['FeatureSpecFleetobservabilityArgs']]:
+    def fleetobservability(self) -> Optional[pulumi.Input['FeatureSpecFleetobservabilityArrgs']]:
         """
         Fleet Observability feature spec.
         Structure is documented below.
@@ -1256,12 +1256,12 @@ class FeatureSpecArgs:
         return pulumi.get(self, "fleetobservability")
 
     @fleetobservability.setter
-    def fleetobservability(self, value: Optional[pulumi.Input['FeatureSpecFleetobservabilityArgs']]):
+    def fleetobservability(self, value: Optional[pulumi.Input['FeatureSpecFleetobservabilityArrgs']]):
         pulumi.set(self, "fleetobservability", value)
 
     @property
     @pulumi.getter
-    def multiclusteringress(self) -> Optional[pulumi.Input['FeatureSpecMulticlusteringressArgs']]:
+    def multiclusteringress(self) -> Optional[pulumi.Input['FeatureSpecMulticlusteringressArrgs']]:
         """
         Multicluster Ingress-specific spec.
         Structure is documented below.
@@ -1269,16 +1269,16 @@ class FeatureSpecArgs:
         return pulumi.get(self, "multiclusteringress")
 
     @multiclusteringress.setter
-    def multiclusteringress(self, value: Optional[pulumi.Input['FeatureSpecMulticlusteringressArgs']]):
+    def multiclusteringress(self, value: Optional[pulumi.Input['FeatureSpecMulticlusteringressArrgs']]):
         pulumi.set(self, "multiclusteringress", value)
 
 
 @pulumi.input_type
-class FeatureSpecFleetobservabilityArgs:
+calass FeatureSpecFleetobservabilityArrgs:
     def __init__(__self__, *,
-                 logging_config: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigArgs']] = None):
+                 logging_config: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigArrgs']] = None):
         """
-        :param pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigArgs'] logging_config: Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+        :param pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigArrgs'] logging_config: Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
                Structure is documented below.
         """
         if logging_config is not None:
@@ -1286,7 +1286,7 @@ class FeatureSpecFleetobservabilityArgs:
 
     @property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigArgs']]:
+    def logging_config(self) -> Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigArrgs']]:
         """
         Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
         Structure is documented below.
@@ -1294,19 +1294,19 @@ class FeatureSpecFleetobservabilityArgs:
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigArgs']]):
+    def logging_config(self, value: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigArrgs']]):
         pulumi.set(self, "logging_config", value)
 
 
 @pulumi.input_type
-class FeatureSpecFleetobservabilityLoggingConfigArgs:
+calass FeatureSpecFleetobservabilityLoggingConfigArrgs:
     def __init__(__self__, *,
-                 default_config: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs']] = None,
-                 fleet_scope_logs_config: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs']] = None):
+                 default_config: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrgs']] = None,
+                 fleet_scope_logs_config: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrgs']] = None):
         """
-        :param pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs'] default_config: Specified if applying the default routing config to logs not specified in other configs.
+        :param pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrgs'] default_config: Specified if applying the default routing config to logs not specified in other configs.
                Structure is documented below.
-        :param pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs'] fleet_scope_logs_config: Specified if applying the routing config to all logs for all fleet scopes.
+        :param pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrgs'] fleet_scope_logs_config: Specified if applying the routing config to all logs for all fleet scopes.
                Structure is documented below.
         """
         if default_config is not None:
@@ -1316,7 +1316,7 @@ class FeatureSpecFleetobservabilityLoggingConfigArgs:
 
     @property
     @pulumi.getter(name="defaultConfig")
-    def default_config(self) -> Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs']]:
+    def default_config(self) -> Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrgs']]:
         """
         Specified if applying the default routing config to logs not specified in other configs.
         Structure is documented below.
@@ -1324,12 +1324,12 @@ class FeatureSpecFleetobservabilityLoggingConfigArgs:
         return pulumi.get(self, "default_config")
 
     @default_config.setter
-    def default_config(self, value: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs']]):
+    def default_config(self, value: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrgs']]):
         pulumi.set(self, "default_config", value)
 
     @property
     @pulumi.getter(name="fleetScopeLogsConfig")
-    def fleet_scope_logs_config(self) -> Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs']]:
+    def fleet_scope_logs_config(self) -> Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrgs']]:
         """
         Specified if applying the routing config to all logs for all fleet scopes.
         Structure is documented below.
@@ -1337,12 +1337,12 @@ class FeatureSpecFleetobservabilityLoggingConfigArgs:
         return pulumi.get(self, "fleet_scope_logs_config")
 
     @fleet_scope_logs_config.setter
-    def fleet_scope_logs_config(self, value: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs']]):
+    def fleet_scope_logs_config(self, value: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrgs']]):
         pulumi.set(self, "fleet_scope_logs_config", value)
 
 
 @pulumi.input_type
-class FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs:
+calass FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrgs:
     def __init__(__self__, *,
                  mode: Optional[pulumi.Input[str]] = None):
         """
@@ -1367,7 +1367,7 @@ class FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs:
 
 
 @pulumi.input_type
-class FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs:
+calass FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrgs:
     def __init__(__self__, *,
                  mode: Optional[pulumi.Input[str]] = None):
         """
@@ -1392,7 +1392,7 @@ class FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs:
 
 
 @pulumi.input_type
-class FeatureSpecMulticlusteringressArgs:
+calass FeatureSpecMulticlusteringressArrgs:
     def __init__(__self__, *,
                  config_membership: pulumi.Input[str]):
         """
@@ -1414,11 +1414,11 @@ class FeatureSpecMulticlusteringressArgs:
 
 
 @pulumi.input_type
-class FeatureStateArgs:
+calass FeatureStateArrgs:
     def __init__(__self__, *,
-                 states: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateStateArgs']]]] = None):
+                 states: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateStateArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['FeatureStateStateArgs']]] states: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureStateStateArrgs']]] states: (Output)
                Output only. The "running state" of the Feature in this Hub.
                Structure is documented below.
         """
@@ -1427,7 +1427,7 @@ class FeatureStateArgs:
 
     @property
     @pulumi.getter
-    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateStateArgs']]]]:
+    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateStateArrgs']]]]:
         """
         (Output)
         Output only. The "running state" of the Feature in this Hub.
@@ -1436,12 +1436,12 @@ class FeatureStateArgs:
         return pulumi.get(self, "states")
 
     @states.setter
-    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateStateArgs']]]]):
+    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateStateArrgs']]]]):
         pulumi.set(self, "states", value)
 
 
 @pulumi.input_type
-class FeatureStateStateArgs:
+calass FeatureStateStateArrgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -1502,7 +1502,7 @@ class FeatureStateStateArgs:
 
 
 @pulumi.input_type
-class FleetStateArgs:
+calass FleetStateArrgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[str]] = None):
         """
@@ -1527,7 +1527,7 @@ class FleetStateArgs:
 
 
 @pulumi.input_type
-class MembershipAuthorityArgs:
+calass MembershipAuthorityArrgs:
     def __init__(__self__, *,
                  issuer: pulumi.Input[str]):
         pulumi.set(__self__, "issuer", issuer)
@@ -1543,7 +1543,7 @@ class MembershipAuthorityArgs:
 
 
 @pulumi.input_type
-class MembershipBindingStateArgs:
+calass MembershipBindingStateArrgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[str]] = None):
         """
@@ -1568,11 +1568,11 @@ class MembershipBindingStateArgs:
 
 
 @pulumi.input_type
-class MembershipEndpointArgs:
+calass MembershipEndpointArrgs:
     def __init__(__self__, *,
-                 gke_cluster: Optional[pulumi.Input['MembershipEndpointGkeClusterArgs']] = None):
+                 gke_cluster: Optional[pulumi.Input['MembershipEndpointGkeClusterArrgs']] = None):
         """
-        :param pulumi.Input['MembershipEndpointGkeClusterArgs'] gke_cluster: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
+        :param pulumi.Input['MembershipEndpointGkeClusterArrgs'] gke_cluster: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
                Structure is documented below.
         """
         if gke_cluster is not None:
@@ -1580,7 +1580,7 @@ class MembershipEndpointArgs:
 
     @property
     @pulumi.getter(name="gkeCluster")
-    def gke_cluster(self) -> Optional[pulumi.Input['MembershipEndpointGkeClusterArgs']]:
+    def gke_cluster(self) -> Optional[pulumi.Input['MembershipEndpointGkeClusterArrgs']]:
         """
         If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
         Structure is documented below.
@@ -1588,12 +1588,12 @@ class MembershipEndpointArgs:
         return pulumi.get(self, "gke_cluster")
 
     @gke_cluster.setter
-    def gke_cluster(self, value: Optional[pulumi.Input['MembershipEndpointGkeClusterArgs']]):
+    def gke_cluster(self, value: Optional[pulumi.Input['MembershipEndpointGkeClusterArrgs']]):
         pulumi.set(self, "gke_cluster", value)
 
 
 @pulumi.input_type
-class MembershipEndpointGkeClusterArgs:
+calass MembershipEndpointGkeClusterArrgs:
     def __init__(__self__, *,
                  resource_link: pulumi.Input[str]):
         pulumi.set(__self__, "resource_link", resource_link)
@@ -1609,7 +1609,7 @@ class MembershipEndpointGkeClusterArgs:
 
 
 @pulumi.input_type
-class MembershipIamBindingConditionArgs:
+calass MembershipIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -1648,7 +1648,7 @@ class MembershipIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class MembershipIamMemberConditionArgs:
+calass MembershipIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -1687,7 +1687,7 @@ class MembershipIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class MembershipRbacRoleBindingRoleArgs:
+calass MembershipRbacRoleBindingRoleArrgs:
     def __init__(__self__, *,
                  predefined_role: pulumi.Input[str]):
         """
@@ -1715,7 +1715,7 @@ class MembershipRbacRoleBindingRoleArgs:
 
 
 @pulumi.input_type
-class MembershipRbacRoleBindingStateArgs:
+calass MembershipRbacRoleBindingStateArrgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[str]] = None):
         """
@@ -1740,7 +1740,7 @@ class MembershipRbacRoleBindingStateArgs:
 
 
 @pulumi.input_type
-class NamespaceStateArgs:
+calass NamespaceStateArrgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[str]] = None):
         """
@@ -1765,7 +1765,7 @@ class NamespaceStateArgs:
 
 
 @pulumi.input_type
-class ScopeIamBindingConditionArgs:
+calass ScopeIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -1804,7 +1804,7 @@ class ScopeIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class ScopeIamMemberConditionArgs:
+calass ScopeIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -1843,7 +1843,7 @@ class ScopeIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class ScopeRbacRoleBindingRoleArgs:
+calass ScopeRbacRoleBindingRoleArrgs:
     def __init__(__self__, *,
                  predefined_role: Optional[pulumi.Input[str]] = None):
         """
@@ -1872,7 +1872,7 @@ class ScopeRbacRoleBindingRoleArgs:
 
 
 @pulumi.input_type
-class ScopeRbacRoleBindingStateArgs:
+calass ScopeRbacRoleBindingStateArrgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[str]] = None):
         """
@@ -1897,7 +1897,7 @@ class ScopeRbacRoleBindingStateArgs:
 
 
 @pulumi.input_type
-class ScopeStateArgs:
+calass ScopeStateArrgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[str]] = None):
         """

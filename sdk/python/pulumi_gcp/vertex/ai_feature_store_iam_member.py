@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AiFeatureStoreIamMemberArgs', 'AiFeatureStoreIamMember']
+__all__ = ['AiFeatureStoreIamMemberArrgs', 'AiFeatureStoreIamMember']
 
 @pulumi.input_type
-class AiFeatureStoreIamMemberArgs:
+calass AiFeatureStoreIamMemberArrgs:
     def __init__(__self__, *,
                  featurestore: pulumi.Input[str],
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['AiFeatureStoreIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['AiFeatureStoreIamMemberConditionArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
         """
@@ -93,11 +93,11 @@ class AiFeatureStoreIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['AiFeatureStoreIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['AiFeatureStoreIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['AiFeatureStoreIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['AiFeatureStoreIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -141,9 +141,9 @@ class AiFeatureStoreIamMemberArgs:
 
 
 @pulumi.input_type
-class _AiFeatureStoreIamMemberState:
+calass _AiFeatureStoreIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['AiFeatureStoreIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['AiFeatureStoreIamMemberConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  featurestore: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
@@ -192,11 +192,11 @@ class _AiFeatureStoreIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['AiFeatureStoreIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['AiFeatureStoreIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['AiFeatureStoreIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['AiFeatureStoreIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -286,12 +286,12 @@ class _AiFeatureStoreIamMemberState:
         pulumi.set(self, "role", value)
 
 
-class AiFeatureStoreIamMember(pulumi.CustomResource):
+calass AiFeatureStoreIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreIamMemberConditionArrgs']]] = None,
                  featurestore: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -351,7 +351,7 @@ class AiFeatureStoreIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AiFeatureStoreIamMemberArgs,
+                 args: AiFeatureStoreIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Import
@@ -379,12 +379,12 @@ class AiFeatureStoreIamMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param AiFeatureStoreIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param AiFeatureStoreIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AiFeatureStoreIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AiFeatureStoreIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -393,7 +393,7 @@ class AiFeatureStoreIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreIamMemberConditionArrgs']]] = None,
                  featurestore: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -406,7 +406,7 @@ class AiFeatureStoreIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AiFeatureStoreIamMemberArgs.__new__(AiFeatureStoreIamMemberArgs)
+            __props__ = AiFeatureStoreIamMemberArrgs.__new__(AiFeatureStoreIamMemberArrgs)
 
             __props__.__dict__["condition"] = condition
             if featurestore is None and not opts.urn:
@@ -431,7 +431,7 @@ class AiFeatureStoreIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreIamMemberConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             featurestore: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
